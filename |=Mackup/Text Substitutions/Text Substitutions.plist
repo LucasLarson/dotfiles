@@ -76,6 +76,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>↉</string>
+		<key>shortcut</key>
+		<string>0/3</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>½</string>
 		<key>shortcut</key>
 		<string>1/2</string>
@@ -106,9 +112,27 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⅐</string>
+		<key>shortcut</key>
+		<string>1/7</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>⅛</string>
 		<key>shortcut</key>
 		<string>1/8</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⅑</string>
+		<key>shortcut</key>
+		<string>1/9</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⅒</string>
+		<key>shortcut</key>
+		<string>1/10</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -208,6 +232,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>AT&amp;T</string>
+		<key>shortcut</key>
+		<string>att</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>AT&amp;T</string>
+		<key>shortcut</key>
+		<string>ATT</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>aujourd’hui</string>
 		<key>shortcut</key>
 		<string>aujourd'hui</string>
@@ -283,6 +319,12 @@
 		<string>c’est</string>
 		<key>shortcut</key>
 		<string>cest</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>🚬</string>
+		<key>shortcut</key>
+		<string>cigarette</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -583,6 +625,18 @@
 		<string>hadn’t</string>
 		<key>shortcut</key>
 		<string>hadnt</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>☭</string>
+		<key>shortcut</key>
+		<string>hammerandsickle</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>☭</string>
+		<key>shortcut</key>
+		<string>hammersickle</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1048,9 +1102,21 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>🚬</string>
+		<key>shortcut</key>
+		<string>smoking</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>/</string>
 		<key>shortcut</key>
 		<string>solidus</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>☭</string>
+		<key>shortcut</key>
+		<string>Soviet</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1321,6 +1387,18 @@
 		<string>wouldn’t</string>
 		<key>shortcut</key>
 		<string>wouldnt</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>😂</string>
+		<key>shortcut</key>
+		<string>xD</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>😂</string>
+		<key>shortcut</key>
+		<string>XD</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
