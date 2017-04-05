@@ -286,15 +286,21 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>c’est</string>
+		<string>c’est‑à‑dire</string>
 		<key>shortcut</key>
-		<string>c'est</string>
+		<string>c'est-à-dire</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
 		<string>c’est</string>
 		<key>shortcut</key>
 		<string>c’est</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>c’est‑à‑dire</string>
+		<key>shortcut</key>
+		<string>c’est-à-dire</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -307,6 +313,12 @@
 		<string>ça</string>
 		<key>shortcut</key>
 		<string>ça</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>c.‑à‑d.</string>
+		<key>shortcut</key>
+		<string>cad</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -559,6 +571,18 @@
 		<string>Etats‑Unis</string>
 		<key>shortcut</key>
 		<string>Etats‑Unis</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Etats‑Unis</string>
+		<key>shortcut</key>
+		<string>etatsunis</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Etats‑Unis</string>
+		<key>shortcut</key>
+		<string>étatsunis</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
