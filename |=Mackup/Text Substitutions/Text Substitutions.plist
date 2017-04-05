@@ -202,6 +202,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>№</string>
+		<key>shortcut</key>
+		<string>8470</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ℜ</string>
+		<key>shortcut</key>
+		<string>8476</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>≈</string>
 		<key>shortcut</key>
 		<string>approxe</string>
@@ -508,6 +520,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>″</string>
+		<key>shortcut</key>
+		<string>doubleprime</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>fucking</string>
 		<key>shortcut</key>
 		<string>ducking</string>
@@ -565,6 +583,18 @@
 		<string>Evidemment</string>
 		<key>shortcut</key>
 		<string>Évidemment</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>🤦‍♂️</string>
+		<key>shortcut</key>
+		<string>facepalm</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>′</string>
+		<key>shortcut</key>
+		<string>feet</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -796,6 +826,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>″</string>
+		<key>shortcut</key>
+		<string>inches</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>∞</string>
 		<key>shortcut</key>
 		<string>infinity</string>
@@ -976,6 +1012,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>№</string>
+		<key>shortcut</key>
+		<string>numerosign</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>÷</string>
 		<key>shortcut</key>
 		<string>obelus</string>
@@ -985,6 +1027,12 @@
 		<string>ʻ</string>
 		<key>shortcut</key>
 		<string>okina</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>π</string>
+		<key>shortcut</key>
+		<string>pi</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1003,6 +1051,12 @@
 		<string>President‑Elect</string>
 		<key>shortcut</key>
 		<string>president-elect</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>′</string>
+		<key>shortcut</key>
+		<string>prime</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
