@@ -1264,12 +1264,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Rainbow Room</string>
-		<key>shortcut</key>
-		<string>Rainbow Room</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>→</string>
 		<key>shortcut</key>
 		<string>rarr</string>
@@ -1495,12 +1489,6 @@
 		<string>£</string>
 		<key>shortcut</key>
 		<string>ukpound</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>United States</string>
-		<key>shortcut</key>
-		<string>United States</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
