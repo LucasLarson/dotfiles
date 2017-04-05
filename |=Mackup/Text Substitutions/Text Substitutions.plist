@@ -1706,5 +1706,17 @@
 		<key>shortcut</key>
 		<string>youve</string>
 	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>zw​s</string>
+		<key>shortcut</key>
+		<string>zws</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>zw​sp</string>
+		<key>shortcut</key>
+		<string>zwsp</string>
+	</dict>
 </array>
 </plist>
