@@ -1246,6 +1246,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>pls</string>
+		<key>shortcut</key>
+		<string>pls</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>£</string>
 		<key>shortcut</key>
 		<string>poundsterling</string>
