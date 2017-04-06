@@ -1120,12 +1120,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Lucas Larson</string>
-		<key>shortcut</key>
-		<string>Lucas Larson</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>Lucas.Larson</string>
 		<key>shortcut</key>
 		<string>Lucas.Larson</string>
