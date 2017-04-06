@@ -784,6 +784,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Hunter</string>
+		<key>shortcut</key>
+		<string>hubter</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Hunter</string>
+		<key>shortcut</key>
+		<string>hunter</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>ʻ</string>
 		<key>shortcut</key>
 		<string>ʻokina</string>
