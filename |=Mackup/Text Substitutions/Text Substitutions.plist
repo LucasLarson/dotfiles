@@ -1552,6 +1552,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>vmail</string>
+		<key>shortcut</key>
+		<string>vmail</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>🖖</string>
 		<key>shortcut</key>
 		<string>vulcan</string>
