@@ -1228,6 +1228,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Patsy</string>
+		<key>shortcut</key>
+		<string>patsy</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>π</string>
 		<key>shortcut</key>
 		<string>pi</string>
