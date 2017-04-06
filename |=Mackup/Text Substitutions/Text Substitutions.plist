@@ -1486,6 +1486,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>tongue‑in‑cheek</string>
+		<key>shortcut</key>
+		<string>tongue-in-cheek</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>tongue‑in‑cheek</string>
+		<key>shortcut</key>
+		<string>tongueincheek</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>ı</string>
 		<key>shortcut</key>
 		<string>Turkishi</string>
