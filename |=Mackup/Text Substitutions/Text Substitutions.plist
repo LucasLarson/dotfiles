@@ -616,6 +616,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>fam</string>
+		<key>shortcut</key>
+		<string>fam</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>′</string>
 		<key>shortcut</key>
 		<string>feet</string>
