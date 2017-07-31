@@ -1450,6 +1450,30 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⁰</string>
+		<key>shortcut</key>
+		<string>sup0</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>¹</string>
+		<key>shortcut</key>
+		<string>sup1</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>²</string>
+		<key>shortcut</key>
+		<string>sup2</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>³</string>
+		<key>shortcut</key>
+		<string>sup3</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>TheDailyBeast</string>
 		<key>shortcut</key>
 		<string>tdb</string>
