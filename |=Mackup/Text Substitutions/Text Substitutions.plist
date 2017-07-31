@@ -1098,6 +1098,12 @@
 		<key>phrase</key>
 		<string>Larson</string>
 		<key>shortcut</key>
+		<string>larson</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Larson</string>
+		<key>shortcut</key>
 		<string>Larson</string>
 	</dict>
 	<dict>
@@ -1117,6 +1123,12 @@
 		<string>Lucas</string>
 		<key>shortcut</key>
 		<string>lucad</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
+		<string>lucas</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
