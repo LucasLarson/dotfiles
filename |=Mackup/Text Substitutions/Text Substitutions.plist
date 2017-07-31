@@ -274,6 +274,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>c’est</string>
+		<key>shortcut</key>
+		<string>c'est</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>c’est‑à‑dire</string>
 		<key>shortcut</key>
 		<string>c'est-à-dire</string>
@@ -847,6 +853,12 @@
 		<string>ick</string>
 		<key>shortcut</key>
 		<string>ick</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>I’d</string>
+		<key>shortcut</key>
+		<string>id</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
