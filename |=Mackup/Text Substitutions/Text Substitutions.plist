@@ -706,12 +706,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>↬</string>
-		<key>shortcut</key>
-		<string>hattip</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>haven’t</string>
 		<key>shortcut</key>
 		<string>haven't</string>
