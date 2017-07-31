@@ -1708,12 +1708,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>which</string>
-		<key>shortcut</key>
-		<string>whihc</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>won’t</string>
 		<key>shortcut</key>
 		<string>won't</string>
