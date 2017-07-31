@@ -664,6 +664,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>≥</string>
+		<key>shortcut</key>
+		<string>gte</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>hadn’t</string>
 		<key>shortcut</key>
 		<string>hadn't</string>
