@@ -34,18 +34,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>©</string>
-		<key>shortcut</key>
-		<string>(c</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>®</string>
-		<key>shortcut</key>
-		<string>(r</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>↑</string>
 		<key>shortcut</key>
 		<string>^^</string>
