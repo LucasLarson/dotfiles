@@ -1252,6 +1252,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>¶</string>
+		<key>shortcut</key>
+		<string>para</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Patsy</string>
 		<key>shortcut</key>
 		<string>patsy</string>
