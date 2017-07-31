@@ -334,6 +334,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>¢</string>
+		<key>shortcut</key>
+		<string>centsign</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>c’est</string>
 		<key>shortcut</key>
 		<string>cest</string>
@@ -1213,6 +1219,12 @@
 		<string>≠</string>
 		<key>shortcut</key>
 		<string>notequal</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>№</string>
+		<key>shortcut</key>
+		<string>numero</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
