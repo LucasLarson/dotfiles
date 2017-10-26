@@ -346,6 +346,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>☤</string>
+		<key>shortcut</key>
+		<string>caduceus</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>can’t</string>
 		<key>shortcut</key>
 		<string>can't</string>
@@ -1204,6 +1210,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>☤</string>
+		<key>shortcut</key>
+		<string>medicalstaff</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>−</string>
 		<key>shortcut</key>
 		<string>minus</string>
@@ -1447,6 +1459,12 @@
 		<string>²</string>
 		<key>shortcut</key>
 		<string>squared</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>☤</string>
+		<key>shortcut</key>
+		<string>staffofhermes</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
