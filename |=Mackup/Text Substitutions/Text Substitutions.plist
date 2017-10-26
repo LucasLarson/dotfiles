@@ -1252,6 +1252,30 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>montana</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>montanaa</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>montnan</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>montnana</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>‑</string>
 		<key>shortcut</key>
 		<string>nb</string>
