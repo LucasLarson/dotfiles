@@ -34,6 +34,36 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Lucas.Larson@gmail.com</string>
+		<key>shortcut</key>
+		<string>@@</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ll2914@columbia.edu</string>
+		<key>shortcut</key>
+		<string>@c</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas.Larson@gmail.com</string>
+		<key>shortcut</key>
+		<string>@g</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas.Larson86@myhunter.cuny.edu</string>
+		<key>shortcut</key>
+		<string>@h</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas@LucasLarson.net</string>
+		<key>shortcut</key>
+		<string>@l</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>↑</string>
 		<key>shortcut</key>
 		<string>^^</string>
