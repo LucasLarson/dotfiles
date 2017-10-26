@@ -1168,6 +1168,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>( ͡° ͜ʖ ͡°)</string>
+		<key>shortcut</key>
+		<string>lennyface</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Lucas</string>
 		<key>shortcut</key>
 		<string>licas</string>
