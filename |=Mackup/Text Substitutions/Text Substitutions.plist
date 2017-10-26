@@ -1378,6 +1378,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>PrEP</string>
+		<key>shortcut</key>
+		<string>prep</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>President‑Elect</string>
 		<key>shortcut</key>
 		<string>president-elect</string>
@@ -1477,6 +1483,12 @@
 		<string>¯\_(ツ)_/¯</string>
 		<key>shortcut</key>
 		<string>shrug</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>😏</string>
+		<key>shortcut</key>
+		<string>smirk</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
