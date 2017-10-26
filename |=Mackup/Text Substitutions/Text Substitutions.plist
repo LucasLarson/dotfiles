@@ -1976,5 +1976,17 @@
 		<key>shortcut</key>
 		<string>zwsp</string>
 	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>😴</string>
+		<key>shortcut</key>
+		<string>zzz</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>💤</string>
+		<key>shortcut</key>
+		<string>zzzz</string>
+	</dict>
 </array>
 </plist>
