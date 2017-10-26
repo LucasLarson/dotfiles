@@ -1816,6 +1816,24 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>who’s</string>
+		<key>shortcut</key>
+		<string>who's</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>who’s</string>
+		<key>shortcut</key>
+		<string>whos</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>whose</string>
+		<key>shortcut</key>
+		<string>whose</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>won’t</string>
 		<key>shortcut</key>
 		<string>won't</string>
