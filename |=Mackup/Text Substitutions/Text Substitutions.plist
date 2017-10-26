@@ -592,6 +592,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>. . .</string>
+		<key>shortcut</key>
+		<string>ellipsis</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>et</string>
 		<key>shortcut</key>
 		<string>ét</string>
