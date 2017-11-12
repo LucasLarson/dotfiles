@@ -682,6 +682,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>🙄</string>
+		<key>shortcut</key>
+		<string>eyeroll</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>🤦‍♂️</string>
 		<key>shortcut</key>
 		<string>facepalm</string>
