@@ -400,6 +400,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⌘</string>
+		<key>shortcut</key>
+		<string>commandkey</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>couldn’t</string>
 		<key>shortcut</key>
 		<string>couldn't</string>
@@ -1465,6 +1471,12 @@
 		<string>she’s</string>
 		<key>shortcut</key>
 		<string>shes</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⇧</string>
+		<key>shortcut</key>
+		<string>shiftkey</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
