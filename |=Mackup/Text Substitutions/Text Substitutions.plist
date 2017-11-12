@@ -952,9 +952,33 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⇔</string>
+		<key>shortcut</key>
+		<string>iff</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>I’m</string>
 		<key>shortcut</key>
 		<string>im</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⇒</string>
+		<key>shortcut</key>
+		<string>implies</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⇒</string>
+		<key>shortcut</key>
+		<string>impliessymbol</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⇒</string>
+		<key>shortcut</key>
+		<string>implysymbol</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
