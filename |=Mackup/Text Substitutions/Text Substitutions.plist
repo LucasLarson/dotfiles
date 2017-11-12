@@ -484,6 +484,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>😈</string>
+		<key>shortcut</key>
+		<string>devil</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>didn’t</string>
 		<key>shortcut</key>
 		<string>didn't</string>
