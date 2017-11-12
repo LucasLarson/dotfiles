@@ -1234,6 +1234,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>𝑙𝑖𝑡𝑒𝑟𝑎𝑙𝑙𝑦</string>
+		<key>shortcut</key>
+		<string>literallyitalic</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Lucas</string>
 		<key>shortcut</key>
 		<string>lucad</string>
