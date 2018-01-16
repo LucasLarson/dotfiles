@@ -1534,6 +1534,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>ℝ</string>
+		<key>shortcut</key>
+		<string>realnumber</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ℝ</string>
+		<key>shortcut</key>
+		<string>realnumbers</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>the</string>
 		<key>shortcut</key>
 		<string>rge</string>
