@@ -1018,6 +1018,24 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>∫</string>
+		<key>shortcut</key>
+		<string>integral</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∫</string>
+		<key>shortcut</key>
+		<string>integralsign</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∫</string>
+		<key>shortcut</key>
+		<string>integralsymbol</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>it’d</string>
 		<key>shortcut</key>
 		<string>it'd</string>
