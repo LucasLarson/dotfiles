@@ -610,6 +610,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>dreamhost</string>
+		<key>shortcut</key>
+		<string>dreamhost</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>DreamHost</string>
+		<key>shortcut</key>
+		<string>Dreamhost</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>fucking</string>
 		<key>shortcut</key>
 		<string>ducking</string>
