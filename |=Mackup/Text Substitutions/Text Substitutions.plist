@@ -238,6 +238,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>😇</string>
+		<key>shortcut</key>
+		<string>angel</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>≈</string>
 		<key>shortcut</key>
 		<string>approxe</string>
