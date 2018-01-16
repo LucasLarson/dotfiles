@@ -1828,6 +1828,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>this’ll</string>
+		<key>shortcut</key>
+		<string>thisll</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>×</string>
 		<key>shortcut</key>
 		<string>timessign</string>
