@@ -1804,6 +1804,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>θ</string>
+		<key>shortcut</key>
+		<string>theta</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>they’re</string>
 		<key>shortcut</key>
 		<string>they're</string>
