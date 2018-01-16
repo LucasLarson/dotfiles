@@ -1684,6 +1684,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⊆</string>
+		<key>shortcut</key>
+		<string>subset</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>⁰</string>
 		<key>shortcut</key>
 		<string>sup0</string>
