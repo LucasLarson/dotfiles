@@ -412,6 +412,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⌃</string>
+		<key>shortcut</key>
+		<string>controlkey</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>couldn’t</string>
 		<key>shortcut</key>
 		<string>couldn't</string>
@@ -1405,6 +1411,12 @@
 		<string>ʻ</string>
 		<key>shortcut</key>
 		<string>okina</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⌥</string>
+		<key>shortcut</key>
+		<string>optionkey</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
