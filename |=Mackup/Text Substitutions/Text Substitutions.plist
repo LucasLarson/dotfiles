@@ -1114,6 +1114,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>imagine</string>
+		<key>shortcut</key>
+		<string>imahine</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>⇒</string>
 		<key>shortcut</key>
 		<string>implies</string>
