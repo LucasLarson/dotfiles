@@ -250,6 +250,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>𝑎𝑛𝑑</string>
+		<key>shortcut</key>
+		<string>𝑎𝑛𝑑</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>😇</string>
 		<key>shortcut</key>
 		<string>angel</string>
@@ -289,6 +295,12 @@
 		<string>aren’t</string>
 		<key>shortcut</key>
 		<string>arent</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>𝑎𝑡</string>
+		<key>shortcut</key>
+		<string>𝑎𝑡</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -757,6 +769,12 @@
 		<string>des</string>
 		<key>shortcut</key>
 		<string>fes</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>𝑓𝑜𝑟</string>
+		<key>shortcut</key>
+		<string>𝑓𝑜𝑟</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1249,6 +1267,12 @@
 		<string>j’étais</string>
 		<key>shortcut</key>
 		<string>j’étais</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>𝑗𝑢𝑠𝑡</string>
+		<key>shortcut</key>
+		<string>𝑗𝑢𝑠𝑡</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
