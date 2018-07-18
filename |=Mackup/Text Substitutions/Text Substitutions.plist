@@ -244,6 +244,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>antidote</string>
+		<key>shortcut</key>
+		<string>antedote</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>≈</string>
 		<key>shortcut</key>
 		<string>approxe</string>
