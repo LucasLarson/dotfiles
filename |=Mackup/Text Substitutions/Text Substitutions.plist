@@ -2014,6 +2014,42 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⁴</string>
+		<key>shortcut</key>
+		<string>sup4</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⁵</string>
+		<key>shortcut</key>
+		<string>sup5</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⁶</string>
+		<key>shortcut</key>
+		<string>sup6</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⁷</string>
+		<key>shortcut</key>
+		<string>sup7</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⁸</string>
+		<key>shortcut</key>
+		<string>sup8</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⁹</string>
+		<key>shortcut</key>
+		<string>sup9</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>TheDailyBeast</string>
 		<key>shortcut</key>
 		<string>tdb</string>
