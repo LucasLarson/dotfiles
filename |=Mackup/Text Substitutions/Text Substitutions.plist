@@ -1450,6 +1450,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
+		<string>l6fad</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>←</string>
 		<key>shortcut</key>
 		<string>larr</string>
@@ -1537,6 +1543,12 @@
 		<string>LucasLarson</string>
 		<key>shortcut</key>
 		<string>LucasLarson</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
+		<string>lyfad</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
