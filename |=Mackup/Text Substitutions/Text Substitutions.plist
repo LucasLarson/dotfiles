@@ -684,7 +684,19 @@
 		<key>phrase</key>
 		<string>fucking</string>
 		<key>shortcut</key>
+		<string>ducjing</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>fucking</string>
+		<key>shortcut</key>
 		<string>ducking</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>East Side Club</string>
+		<key>shortcut</key>
+		<string>eastsideclub</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -784,6 +796,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>free</string>
+		<key>shortcut</key>
+		<string>feee</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>′</string>
 		<key>shortcut</key>
 		<string>feet</string>
@@ -814,6 +832,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>fucking</string>
+		<key>shortcut</key>
+		<string>fucjign</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>fuck</string>
 		<key>shortcut</key>
 		<string>fuck</string>
@@ -829,6 +853,12 @@
 		<string>£</string>
 		<key>shortcut</key>
 		<string>gbp</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>😌</string>
+		<key>shortcut</key>
+		<string>gratefulface</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1702,6 +1732,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>smörgåsbord</string>
+		<key>shortcut</key>
+		<string>smorgasbord</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>/</string>
 		<key>shortcut</key>
 		<string>solidus</string>
@@ -2023,6 +2059,12 @@
 		<string>weren’t</string>
 		<key>shortcut</key>
 		<string>werent</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>West Side Club</string>
+		<key>shortcut</key>
+		<string>westsideclub</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
