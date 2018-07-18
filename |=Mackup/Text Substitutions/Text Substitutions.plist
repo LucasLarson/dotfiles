@@ -904,6 +904,24 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>hasn’t</string>
+		<key>shortcut</key>
+		<string>hasn't</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>hasn’t</string>
+		<key>shortcut</key>
+		<string>hasn’t</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>hasn’t</string>
+		<key>shortcut</key>
+		<string>hasnt</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>haven’t</string>
 		<key>shortcut</key>
 		<string>haven't</string>
