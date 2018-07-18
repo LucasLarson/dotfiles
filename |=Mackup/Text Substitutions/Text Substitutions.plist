@@ -1138,6 +1138,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>inadvertently</string>
+		<key>shortcut</key>
+		<string>inadvertantly</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>″</string>
 		<key>shortcut</key>
 		<string>inches</string>
