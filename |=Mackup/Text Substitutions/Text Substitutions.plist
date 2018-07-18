@@ -1936,6 +1936,42 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>₄</string>
+		<key>shortcut</key>
+		<string>sub4</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>₅</string>
+		<key>shortcut</key>
+		<string>sub5</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>₆</string>
+		<key>shortcut</key>
+		<string>sub6</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>₇</string>
+		<key>shortcut</key>
+		<string>sub7</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>₈</string>
+		<key>shortcut</key>
+		<string>sub8</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>₉</string>
+		<key>shortcut</key>
+		<string>sub9</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>ₙ</string>
 		<key>shortcut</key>
 		<string>subn</string>
