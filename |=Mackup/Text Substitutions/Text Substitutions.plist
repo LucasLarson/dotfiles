@@ -1600,6 +1600,36 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Mother’s Day</string>
+		<key>shortcut</key>
+		<string>mother'sday</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Mother’s Day</string>
+		<key>shortcut</key>
+		<string>mother’sday</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Mother’s Day</string>
+		<key>shortcut</key>
+		<string>mothers'day</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Mother’s Day</string>
+		<key>shortcut</key>
+		<string>mothers’day</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Mother’s Day</string>
+		<key>shortcut</key>
+		<string>mothersday</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>‑</string>
 		<key>shortcut</key>
 		<string>nb</string>
