@@ -244,6 +244,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>α</string>
+		<key>shortcut</key>
+		<string>alpha</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>😇</string>
 		<key>shortcut</key>
 		<string>angel</string>
