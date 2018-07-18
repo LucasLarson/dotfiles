@@ -442,6 +442,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>comp sci</string>
+		<key>shortcut</key>
+		<string>compsci</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>⌃</string>
 		<key>shortcut</key>
 		<string>controlkey</string>
@@ -481,6 +487,12 @@
 		<string>↓</string>
 		<key>shortcut</key>
 		<string>darr</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>data loss</string>
+		<key>shortcut</key>
+		<string>dataloss</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
