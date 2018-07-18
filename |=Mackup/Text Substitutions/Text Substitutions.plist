@@ -610,6 +610,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>docuseries</string>
+		<key>shortcut</key>
+		<string>docuseries</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>doesn’t</string>
 		<key>shortcut</key>
 		<string>doesn't</string>
