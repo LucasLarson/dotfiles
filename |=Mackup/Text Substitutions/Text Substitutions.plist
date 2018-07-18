@@ -564,7 +564,19 @@
 		<key>phrase</key>
 		<string>ಠ_ಠ</string>
 		<key>shortcut</key>
+		<string>disapprovalface</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ಠ_ಠ</string>
+		<key>shortcut</key>
 		<string>disapprove</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ಠ_ಠ</string>
+		<key>shortcut</key>
+		<string>disapproveface</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1267,6 +1279,12 @@
 		<string>j’étais</string>
 		<key>shortcut</key>
 		<string>j’étais</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ಠ_ಠ</string>
+		<key>shortcut</key>
+		<string>judgmentalface</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
