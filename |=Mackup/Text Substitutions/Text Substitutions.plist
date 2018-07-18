@@ -2362,6 +2362,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>X‑ray</string>
+		<key>shortcut</key>
+		<string>x-ray</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>X‑rays</string>
+		<key>shortcut</key>
+		<string>x-rays</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>😂</string>
 		<key>shortcut</key>
 		<string>xd</string>
@@ -2377,6 +2389,18 @@
 		<string>xo</string>
 		<key>shortcut</key>
 		<string>xo</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>X‑ray</string>
+		<key>shortcut</key>
+		<string>xray</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>X‑rays</string>
+		<key>shortcut</key>
+		<string>xrays</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
