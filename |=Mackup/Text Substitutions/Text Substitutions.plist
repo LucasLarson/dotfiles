@@ -1420,6 +1420,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>𝑜𝑟</string>
+		<key>shortcut</key>
+		<string>italicor</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>𝑝</string>
 		<key>shortcut</key>
 		<string>italicp</string>
