@@ -432,6 +432,12 @@
 		<key>phrase</key>
 		<string>can’t</string>
 		<key>shortcut</key>
+		<string>camt</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>can’t</string>
+		<key>shortcut</key>
 		<string>can't</string>
 	</dict>
 	<dict>
