@@ -286,6 +286,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>agency</string>
+		<key>shortcut</key>
+		<string>angency</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>antidote</string>
 		<key>shortcut</key>
 		<string>antedote</string>
