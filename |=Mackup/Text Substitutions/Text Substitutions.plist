@@ -2650,6 +2650,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>York</string>
+		<key>shortcut</key>
+		<string>yotk</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>you’d</string>
 		<key>shortcut</key>
 		<string>you'd</string>
@@ -2719,6 +2725,18 @@
 		<string>you’ve</string>
 		<key>shortcut</key>
 		<string>youve</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>York</string>
+		<key>shortcut</key>
+		<string>yrik</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>York</string>
+		<key>shortcut</key>
+		<string>yrok</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
