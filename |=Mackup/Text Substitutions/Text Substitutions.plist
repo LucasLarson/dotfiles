@@ -2272,6 +2272,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Super Bowl</string>
+		<key>shortcut</key>
+		<string>superbowl</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>TheDailyBeast</string>
 		<key>shortcut</key>
 		<string>tdb</string>
