@@ -1390,6 +1390,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>𝑙𝑖𝑡𝑒𝑟𝑎𝑙𝑙𝑦</string>
+		<key>shortcut</key>
+		<string>italicliterally</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>𝑚</string>
 		<key>shortcut</key>
 		<string>italicm</string>
