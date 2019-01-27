@@ -964,6 +964,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Haitian</string>
+		<key>shortcut</key>
+		<string>HAÏTIAN</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>☭</string>
 		<key>shortcut</key>
 		<string>hammerandsickle</string>
