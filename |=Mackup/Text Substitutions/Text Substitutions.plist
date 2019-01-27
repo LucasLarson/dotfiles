@@ -274,6 +274,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⟨⟩</string>
+		<key>shortcut</key>
+		<string>angbr</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>😇</string>
 		<key>shortcut</key>
 		<string>angel</string>
