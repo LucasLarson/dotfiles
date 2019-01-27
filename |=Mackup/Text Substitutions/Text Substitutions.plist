@@ -760,6 +760,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>ɛ</string>
+		<key>shortcut</key>
+		<string>epsilon</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>et</string>
 		<key>shortcut</key>
 		<string>ét</string>
@@ -1558,6 +1564,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>≤</string>
+		<key>shortcut</key>
+		<string>lessthaneq</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Lucas</string>
 		<key>shortcut</key>
 		<string>licas</string>
@@ -1567,6 +1579,12 @@
 		<string>𝑙𝑖𝑡𝑒𝑟𝑎𝑙𝑙𝑦</string>
 		<key>shortcut</key>
 		<string>literallyitalic</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>≤</string>
+		<key>shortcut</key>
+		<string>lte</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2236,6 +2254,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>∃</string>
+		<key>shortcut</key>
+		<string>thereexists</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>∴</string>
 		<key>shortcut</key>
 		<string>therefore</string>
@@ -2245,6 +2269,12 @@
 		<string>there’s</string>
 		<key>shortcut</key>
 		<string>theres</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∃</string>
+		<key>shortcut</key>
+		<string>therexists</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
