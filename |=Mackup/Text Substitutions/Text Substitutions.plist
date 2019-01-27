@@ -514,6 +514,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>³</string>
+		<key>shortcut</key>
+		<string>cubed</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>d’accord</string>
 		<key>shortcut</key>
 		<string>d'accord</string>
