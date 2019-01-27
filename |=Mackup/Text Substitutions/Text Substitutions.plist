@@ -532,6 +532,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Damien</string>
+		<key>shortcut</key>
+		<string>damnien</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>↓</string>
 		<key>shortcut</key>
 		<string>darr</string>
