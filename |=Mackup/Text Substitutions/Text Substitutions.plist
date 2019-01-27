@@ -1620,6 +1620,12 @@
 		<key>phrase</key>
 		<string>Lucas</string>
 		<key>shortcut</key>
+		<string>licad</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
 		<string>licas</string>
 	</dict>
 	<dict>
@@ -1686,7 +1692,25 @@
 		<key>phrase</key>
 		<string>Lucas</string>
 		<key>shortcut</key>
+		<string>lufad</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
+		<string>luvad</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
 		<string>lyfad</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
+		<string>lyvad</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
