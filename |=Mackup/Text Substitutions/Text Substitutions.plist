@@ -1764,6 +1764,24 @@
 		<key>phrase</key>
 		<string>Montana</string>
 		<key>shortcut</key>
+		<string>monatana</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>monatnan</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>montaba</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
 		<string>montana</string>
 	</dict>
 	<dict>
@@ -1771,6 +1789,12 @@
 		<string>Montana</string>
 		<key>shortcut</key>
 		<string>montanaa</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>montna</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
