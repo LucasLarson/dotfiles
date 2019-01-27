@@ -1222,6 +1222,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>𝑎𝑛𝑑</string>
+		<key>shortcut</key>
+		<string>italicand</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>𝑏</string>
 		<key>shortcut</key>
 		<string>italicb</string>
