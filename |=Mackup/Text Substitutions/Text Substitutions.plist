@@ -862,6 +862,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Find My Friends</string>
+		<key>shortcut</key>
+		<string>findmyfriends</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Find My Friends</string>
+		<key>shortcut</key>
+		<string>fmf</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>𝑓𝑜𝑟</string>
 		<key>shortcut</key>
 		<string>𝑓𝑜𝑟</string>
