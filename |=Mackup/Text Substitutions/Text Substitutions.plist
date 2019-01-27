@@ -2122,6 +2122,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>srsly</string>
+		<key>shortcut</key>
+		<string>srsly</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>☤</string>
 		<key>shortcut</key>
 		<string>staffofhermes</string>
