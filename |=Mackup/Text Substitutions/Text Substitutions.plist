@@ -250,6 +250,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>article</string>
+		<key>shortcut</key>
+		<string>adrticlr</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>😌</string>
 		<key>shortcut</key>
 		<string>ahh</string>
