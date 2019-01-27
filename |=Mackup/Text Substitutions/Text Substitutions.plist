@@ -1486,6 +1486,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>𝑦𝑜𝑢</string>
+		<key>shortcut</key>
+		<string>italicyou</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>𝑧</string>
 		<key>shortcut</key>
 		<string>italicz</string>
