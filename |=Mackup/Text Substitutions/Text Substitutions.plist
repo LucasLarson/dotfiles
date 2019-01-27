@@ -2710,6 +2710,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Xs Max</string>
+		<key>shortcut</key>
+		<string>xsmax</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>×</string>
 		<key>shortcut</key>
 		<string>xx</string>
