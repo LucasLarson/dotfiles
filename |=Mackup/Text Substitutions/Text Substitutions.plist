@@ -1126,6 +1126,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>the</string>
+		<key>shortcut</key>
+		<string>hte</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Hunter</string>
 		<key>shortcut</key>
 		<string>hubt3r</string>
