@@ -160,6 +160,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>1Password</string>
+		<key>shortcut</key>
+		<string>1p</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>1Password</string>
+		<key>shortcut</key>
+		<string>1PASSWORD</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>⅔</string>
 		<key>shortcut</key>
 		<string>2/3</string>
