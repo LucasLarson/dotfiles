@@ -910,6 +910,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>ʔ</string>
+		<key>shortcut</key>
+		<string>glottal</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ʔ</string>
+		<key>shortcut</key>
+		<string>glottalstop</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>😌</string>
 		<key>shortcut</key>
 		<string>gratefulface</string>
