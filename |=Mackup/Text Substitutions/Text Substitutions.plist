@@ -1096,6 +1096,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>thank</string>
+		<key>shortcut</key>
+		<string>htank</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Hunter</string>
 		<key>shortcut</key>
 		<string>hubt3r</string>
@@ -2158,6 +2164,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>thanks</string>
+		<key>shortcut</key>
+		<string>thakns</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Thanksgiving</string>
 		<key>shortcut</key>
 		<string>thangkgiving</string>
@@ -2314,9 +2326,21 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>thanks</string>
+		<key>shortcut</key>
+		<string>thnaks</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Thanksgiving</string>
 		<key>shortcut</key>
 		<string>thnaksgiving</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>thanks</string>
+		<key>shortcut</key>
+		<string>thnask</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
