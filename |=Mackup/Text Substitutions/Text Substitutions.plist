@@ -1408,6 +1408,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>𝑛𝑜𝑡</string>
+		<key>shortcut</key>
+		<string>italicnot</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>𝑜</string>
 		<key>shortcut</key>
 		<string>italico</string>
