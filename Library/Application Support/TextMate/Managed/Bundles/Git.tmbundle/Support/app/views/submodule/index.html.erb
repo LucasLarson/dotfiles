@@ -1,0 +1,16 @@
+<%= content_tag :h1, "Submodules on branch ‘#{git.branch.current_name}’"%>
+
+<div id='submodules'>
+  <% render_component(:controller => "submodule", :action => "list", :layout => false) %>
+</div>
+<%= button_to_remote("Add...", :params => {:controller => "submodule", :action => "add" }, 
+  :on_complete => remote_function(:params => {:controller => "submodule", :action => "list"}, :update => "submodules"), 
+  :update_streaming => "iframe_output") 
+%>
+
+<%= button_to_remote("Force Update", :params => {:controller => "submodule", :action => "update" }, 
+  :on_complete => remote_function(:params => {:controller => "submodule", :action => "list"}, :update => "submodules"), 
+  :update_streaming => "iframe_output") 
+%>
+
+<iframe id='iframe_output' class="output"></iframe>

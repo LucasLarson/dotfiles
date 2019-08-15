@@ -1,0 +1,12 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    hpricot (0.8.6)
+    rspec (1.3.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  hpricot
+  rspec (~> 1.3)

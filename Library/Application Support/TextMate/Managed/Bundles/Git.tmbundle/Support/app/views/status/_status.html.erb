@@ -1,0 +1,18 @@
+<table border=0 id="status_output">
+<% status_data.each do |e| %>
+  <tr>
+    <td style='padding:0px 10px;'>
+      <span title="<%= htmlize(e[:status][:long]) %>" style="display:block; padding: 2px; margin: 1px; background-color: <%= e[:status][:background] %>; color: <%= e[:status][:foreground] %>">
+        <%= htmlize(e[:status][:short]) %>
+      </span>
+    </td>
+    <td>
+      <% if e[:path][-1..-1]=="/" %>
+        <%= htmlize(git.root_relative_path_for(e[:display])) %>
+      <% else %>
+        <%= link_to_relative_file(git, e[:path]) %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>

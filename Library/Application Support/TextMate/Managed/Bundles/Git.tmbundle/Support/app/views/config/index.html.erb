@@ -1,0 +1,45 @@
+<h1>Git Config</h1>
+<p>Values are saved when the form-field loses focus.</p>
+<form onsubmit="return false">
+  <table class="listing">
+    <thead>
+      <tr>
+        <th>Global</th>
+        <th></th>
+        <th>Local</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%
+        tabindex = 0
+        [
+          ["Name",              "user.name",                      [:global]],
+          ["Email",             "user.email",                     [:global]],
+          [],
+          ["Log limit",         "git-tmbundle.log.limit",         [:global, :local], {:style => "width: 40px"}],
+          ["Log context lines", "git-tmbundle.log.context-lines", [:global, :local], {:style => "width: 40px"}],
+          ["Show diff check (yes or no)",   "git-tmbundle.show-diff-check",   [:global, :local], {:style => "width: 40px"}],
+          [],
+          ["Gitnub path",       "git-tmbundle.gitnub-path",       [:global], {:style => "width: 250px"}],
+          ["GitX path",         "git-tmbundle.gitx-path",         [:global], {:style => "width: 250px"}],
+        ].each do |label, key, scopes, input_options|
+      %>
+      <tr>
+        <% [:global, :local].each do |scope| %>
+          <% if scopes && scopes.include?(scope) 
+            tabindex += 1 %>
+            <td><%= label %></td>
+            <td><%= config_text_field scope, key, {:tabindex => tabindex}.merge(input_options || {}) %></td>
+          <% else %>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          <% end %>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+</form>
+

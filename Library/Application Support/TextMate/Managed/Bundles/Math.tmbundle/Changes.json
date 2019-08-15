@@ -1,0 +1,1 @@
+{"commits":[{"commit":"91ec0acfc389c9e39a51142c6417b27dca483778","date":"2018-08-05T21:32:07+02:00","author":"Allan Odgaard","summary":"Update Evaluate-commands to understand scientific notation","body":"Example: 140e9*1.31/65e6"}],"name":"Math"}

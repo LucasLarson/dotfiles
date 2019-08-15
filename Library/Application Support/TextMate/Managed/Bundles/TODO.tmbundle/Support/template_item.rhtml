@@ -1,0 +1,9 @@
+<tr id="item_<%= tag[:label] %>_<%= match[:index] %>">
+	<td class="file">
+		<a title="<%= html_escape(match[:content]) %>" href="<%= TextMate.file_link(match[:file], match[:line]) %>">
+		<span class="item_relative_path todo_hidden"><%= "#{html_escape(match[:file].sub(Regexp.new(project_dir+"/?"), ''))}" %></span><span class="item_filename"><%= "#{html_escape(File.basename(match[:file]))}" %></span></a> (<%= match[:line] %>)
+	</td>
+	<td class="comment">
+		<%= match[:match] %>
+	</td>
+</tr>

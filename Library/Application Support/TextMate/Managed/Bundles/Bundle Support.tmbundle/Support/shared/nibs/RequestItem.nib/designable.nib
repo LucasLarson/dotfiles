@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment version="101000" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="3" userLabel="Panel (Window)" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="581" y="288" width="285" height="307"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1600" height="1178"/>
+            <view key="contentView" id="4">
+                <rect key="frame" x="0.0" y="0.0" width="285" height="307"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" id="7">
+                        <rect key="frame" x="17" y="280" width="394" height="17"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Prompt:" id="200057">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="17" name="value" keyPath="selection.prompt" id="20"/>
+                        </connections>
+                    </textField>
+                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="9">
+                        <rect key="frame" x="175" y="12" width="96" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="200058">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="200017" name="argument" keyPath="selectedObjects" id="200025">
+                                <dictionary key="options">
+                                    <string key="NSSelectorName">returnArgument:</string>
+                                </dictionary>
+                            </binding>
+                            <binding destination="17" name="title" keyPath="selection.button1" id="24">
+                                <dictionary key="options">
+                                    <string key="NSMultipleValuesPlaceholder">OK</string>
+                                    <string key="NSNoSelectionPlaceholder">OK</string>
+                                    <string key="NSNotApplicablePlaceholder">OK</string>
+                                    <string key="NSNullPlaceholder">OK</string>
+                                    <bool key="NSRaisesForNotApplicableKeys" value="YES"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="17" name="target" keyPath="selection.controller" previousBinding="200025" id="200026">
+                                <dictionary key="options">
+                                    <string key="NSSelectorName">returnArgument:</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="11">
+                        <rect key="frame" x="79" y="12" width="96" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="200059">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="performClose:" target="3" id="30"/>
+                            <binding destination="17" name="title" keyPath="selection.button2" id="25">
+                                <dictionary key="options">
+                                    <string key="NSMultipleValuesPlaceholder">Cancel</string>
+                                    <string key="NSNoSelectionPlaceholder">Cancel</string>
+                                    <string key="NSNotApplicablePlaceholder">Cancel</string>
+                                    <string key="NSNullPlaceholder">Cancel</string>
+                                    <bool key="NSRaisesForNotApplicableKeys" value="YES"/>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="100012">
+                        <rect key="frame" x="20" y="53" width="245" height="219"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <clipView key="contentView" id="UNf-tk-R3A">
+                            <rect key="frame" x="1" y="1" width="243" height="217"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" id="100015">
+                                    <rect key="frame" x="0.0" y="0.0" width="243" height="217"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <size key="intercellSpacing" width="3" height="2"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn editable="NO" width="240" minWidth="40" maxWidth="1000" id="100017">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" white="0.33333299" alpha="1" colorSpace="calibratedWhite"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" id="100020">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                            <connections>
+                                                <binding destination="200017" name="value" keyPath="arrangedObjects" id="200020"/>
+                                            </connections>
+                                        </tableColumn>
+                                    </tableColumns>
+                                    <connections>
+                                        <binding destination="200017" name="doubleClickArgument" keyPath="selectedObjects" id="200052">
+                                            <dictionary key="options">
+                                                <bool key="NSAllowsNullArgument" value="NO"/>
+                                                <bool key="NSConditionallySetsEnabled" value="YES"/>
+                                                <bool key="NSConditionallySetsHidden" value="NO"/>
+                                                <bool key="NSInvokesSeparatelyWithArrayObjects" value="NO"/>
+                                                <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                                <string key="NSSelectorName">returnArgument:</string>
+                                            </dictionary>
+                                        </binding>
+                                        <binding destination="17" name="doubleClickTarget" keyPath="selection.controller" previousBinding="200052" id="200054"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="200060">
+                            <rect key="frame" x="-100" y="-100" width="397" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="200061">
+                            <rect key="frame" x="-30" y="1" width="15" height="220"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+            </view>
+            <connections>
+                <binding destination="17" name="title" keyPath="selection.title" id="23">
+                    <dictionary key="options">
+                        <string key="NSMultipleValuesPlaceholder">Request String</string>
+                        <string key="NSNoSelectionPlaceholder">Request String</string>
+                        <string key="NSNotApplicablePlaceholder">Request String</string>
+                        <string key="NSNullPlaceholder">Request String</string>
+                        <bool key="NSRaisesForNotApplicableKeys" value="YES"/>
+                    </dictionary>
+                </binding>
+            </connections>
+        </window>
+        <objectController id="17" userLabel="Object Controller">
+            <declaredKeys>
+                <string>prompt</string>
+                <string>value</string>
+                <string>string</string>
+                <string>title</string>
+                <string>button1</string>
+                <string>button2</string>
+                <string>controller</string>
+                <string>items</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentObject" keyPath="parameters" id="18"/>
+            </connections>
+        </objectController>
+        <arrayController id="200017" userLabel="Item Array">
+            <declaredKeys>
+                <string>string</string>
+                <string>items</string>
+                <string>controller</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="17" name="contentArray" keyPath="selection.items" id="200019"/>
+            </connections>
+        </arrayController>
+    </objects>
+</document>

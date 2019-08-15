@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# This script is designed for backwards compatibility with bundle items that
+# were designed for ruby 1.8. It passes the input along to ruby 1.8 if already
+# installed or if needed downloads and installs a copy for TextMates exclusive
+# use. This does not affect the system ruby version or any other part of the
+# system.
+
+if [[ -e /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby ]]; then
+	exec /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby "$@"
+elif [[ ! -e ~/Library/Application\ Support/TextMate/Ruby/1.8.7/bin/ruby ]]; then
+	token=$("$DIALOG" -ap '{ title = "Preparing Ruby"; summary = "Please wait while ruby 1.8 is prepared for use…"; isIndeterminate = 1; }' "ProgressDialog.nib")
+	"$DIALOG" -t "$token" -p '{ progressAnimate = 1; }'
+
+	# Remove potentially broken ruby 1.8.7 install
+	rm -rf ~/Library/Application\ Support/TextMate/Ruby/1.8
+
+	# Start a new error log
+	echo "Error log:" > ~/Library/Logs/TextMate\ Ruby\ Preparation.log
+
+	# Create directory for installation
+	mkdir -p ~/Library/Application\ Support/TextMate/Ruby
+	cd ~/Library/Application\ Support/TextMate/Ruby
+
+	# Download and decompress
+	/usr/bin/curl -fsSL --connect-timeout 10 https://archive.textmate.org/ruby/ruby_1.8.7.tbz 2>> ~/Library/Logs/TextMate\ Ruby\ Preparation.log | /usr/bin/tar xz -m 2>> ~/Library/Logs/TextMate\ Ruby\ Preparation.log
+
+	"$DIALOG" -x "$token"
+
+	if [[ ! -e ~/Library/Application\ Support/TextMate/Ruby/1.8.7/bin/ruby ]]; then
+		echo >&2 "Unable to install ruby 1.8. Please try again or contact support if issue persists."
+		cat  >&2 ~/Library/Logs/TextMate\ Ruby\ Preparation.log
+		exit 1
+	fi
+
+	# Remove error log
+	unlink ~/Library/Logs/TextMate\ Ruby\ Preparation.log
+
+	# Return to previous directory
+	cd - &>/dev/null
+fi
+
+exec ~/Library/Application\ Support/TextMate/Ruby/1.8.7/bin/ruby -r"$TM_SUPPORT_PATH/lib/ruby18_fix_loadpath.rb" "$@"

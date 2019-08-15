@@ -1,0 +1,95 @@
+	<script type="text/javascript" charset="utf-8">
+		document.getElementById("current_dir_container").style.display = "none";
+		var box = document.getElementById("total_count");
+		box.innerHTML = "<%= total %>";
+	</script>
+	
+	<fieldset>
+		<legend>Options</legend>
+		<p><label class="filter">Filter:</label><input type="text" value="" id="filter" size="40"></p>
+		<p><input type="checkbox" id="trigger_relative_paths" <% if project_dir == "" %>disabled="true"<% end %>> <label for="trigger_relative_paths" <% if project_dir == "" %>class="disabled"<% end %>>Show relative paths</label> </p>
+	</fieldset>
+	
+	<% tags.each do |tag| %>
+	<% next if tag[:matches].length == 0 %>
+		
+		<% tag[:matches].each do |match| %>
+			<script type="text/javascript" charset="utf-8">
+				window["_todo"]["<%= tag[:label] %>"][<%= match[:index] %>] = "<%= html_escape(match[:clean]) %>";
+			</script>
+		<% end %>
+		
+		
+		<h3 id="heading_<%= tag[:label] %>"><a id="jump_to_<%= tag[:label] %>"><%= tag[:label] %></a></h3>
+		<table class="todo_content sortable" id="table_<%= tag[:label] %>">
+			<tr>
+				<th>File</th>
+				<th>Comment</th>
+			</tr>
+
+			<% tag[:matches].each do |match| %>
+				<%= match[:rendered] %>
+			<% end %>
+		</table>
+	<% end %>
+	<a href="#todo_list" id="toplink">↑ top</a>
+	<div id="info_no_results" class="todo_hidden">None of the items matched your filter criteria.</div>
+</div>
+<script type="text/javascript" charset="utf-8">
+	document.getElementById("filter").focus();
+	document.getElementById("filter").onkeyup = function(e) {
+		var counter_all = 0;
+		var filter = document.getElementById("filter").value;
+		for(var tag_key in window._tags)
+		{
+			var counter = 0;
+			var tag = window._tags[tag_key];
+			for (var i = window._todo[tag].length - 1; i >= 0; i--){
+				var match = window._todo[tag][i].toLowerCase();
+				if (!match) continue;
+				var res = match.indexOf(filter);
+				var element = document.getElementById("item_"+tag+"_"+i);
+				if (element)
+					element.className = ((res >= 0) ? '' : 'todo_hidden');
+				if (res >= 0)
+					counter++;
+			}
+			// Change counters accordingly
+			var id = tag.replace(/\W/, '_');
+			var element = document.getElementById("count_"+id)
+			if (element)
+				element.innerHTML = counter;
+			// Hide empty tables
+			var element = document.getElementById("table_"+id)
+			if (element)
+			{
+				var css_classes = element.className.split(" ");
+				var index = css_classes.indexOf("todo_hidden");
+				if (counter == 0 && index == -1)
+					css_classes.push("todo_hidden")
+				else if (counter > 0 && index >= 0)
+					css_classes = css_classes.slice(0, index).concat(css_classes.slice(index+1))
+				element.className = css_classes.join(" ");
+			}
+			var element = document.getElementById("heading_"+id)
+			if (element)
+				element.className = counter == 0 ? 'todo_hidden' : '';
+			counter_all += counter
+		}
+		document.getElementById("total_count").innerHTML = counter_all;
+		document.getElementById("info_no_results").className = counter_all > 0 ? 'todo_hidden' : '';
+	}
+	document.getElementById("trigger_relative_paths").onchange = function(e) {
+		var on = document.getElementById("trigger_relative_paths").checked;
+		var list = document.getElementsByClassName('item_filename');
+		for (var i = list.length - 1; i >= 0; i--){
+			var el = list[i];
+			el.className = "item_filename" + (on ? " todo_hidden" : "");
+		};
+		var list = document.getElementsByClassName('item_relative_path');
+		for (var i = list.length - 1; i >= 0; i--){
+			var el = list[i];
+			el.className = "item_relative_path" + (on ? "" : " todo_hidden");
+		};
+	}
+</script>

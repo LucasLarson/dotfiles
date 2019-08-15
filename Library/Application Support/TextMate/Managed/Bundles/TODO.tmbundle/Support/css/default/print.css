@@ -1,0 +1,39 @@
+#todo_list .counters {
+/*	margin-left: 0;*/
+	padding-left: 0ex;
+	margin-bottom: 1em;
+	height: 1.5em;
+}
+
+#todo_list .counters li {
+/*	list-style:none;*/
+	color: #000;
+	background-color: #FFF;
+	display: block;
+	float: left;
+	padding-right: 1em;
+}
+
+#todo_list #counter_tab_total {
+	padding: 3px;
+}
+
+#todo_list h3 {
+	clear: both;
+}
+
+#todo_list a {
+	text-decoration: none;
+}
+
+#todo_list table a, #todo_list .counters a {
+	color: #000;
+}
+
+#todo_list table td {
+	text-align: left;
+}
+
+#todo_list #toplink {
+	display: none;
+}

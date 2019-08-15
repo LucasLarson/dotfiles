@@ -1,0 +1,18 @@
+<h2>Result:</h2>
+
+<pre><%= htmlize(result[:output]) %></pre>
+
+<h2>Commit Files:</h2>
+<ul>
+  <% files.each do |e| %>
+    <li><%= htmlize(e) %></li>
+  <% end %>
+</ul>
+
+<h2>Using Message:</h2>
+<pre style="white-space: pre-wrap;"><%= htmlize_attr(message) %></pre>
+  
+<% if result[:rev] %>
+  <h2>Diff of committed changes:</h2>
+  <% render_component(:controller => "diff", :action => "diff", :path => ".", :revisions => "#{result[:rev]}^..#{result[:rev]}") %>
+<% end %>

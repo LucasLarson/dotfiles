@@ -1,0 +1,26 @@
+<div style='position:fixed; top:0px; background: #fff; width: 100%; ' id="navigate-box">
+  <div id='debug'></div>
+  <div style='float:right; margin-right: 15px;'>
+    <b>Commands</b>: <%= %w[next previous open branch tag].map { |word| "<strong>(#{word[0..0]})</strong>#{word[1..-1]}" } * ' / ' %>
+  </div>
+  Annotations for ‘<%= htmlize(shorten(@file_path)) %>’ on branch ‘<%= git.branch.current_name %>’
+  <br clear='both'/>
+  <div style='margin-right: 15px'>
+    <%= 
+    formatted_options = [["current", ""]] + @log_entries.map do |le|    
+      unless le[:msg].nil?
+        msg = le[:msg].split("\n").first
+      else
+        msg = ''
+      end
+      
+      le_str = [short_rev(le[:rev]), relative_date(le[:date]), le[:author], msg].compact.join(' - ')
+      [le_str, short_rev(le[:rev]), le[:filepath]]
+    end
+    
+    select_box( "rev",
+      options_for_select(formatted_options, revision),
+      :onchange => "show_annotation($F(this))"
+    ) %>
+  </div>
+</div>

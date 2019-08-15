@@ -1,0 +1,7 @@
+<style type="text/css">
+<% tags.each do |tag| %>
+  .bg_<%= tag[:label].gsub(/\W/, '_') %> {background-color: <%= tag[:color] %>; color: #FFF; padding: 0.5ex;}
+  #jump_to_<%= tag[:label].gsub(/\W/, '_') %> {color: <%= tag[:color] %>;}
+  .color_<%= tag[:label].gsub(/\W/, '_') %> {color: <%= tag[:color] %>}
+<% end %>
+</style>

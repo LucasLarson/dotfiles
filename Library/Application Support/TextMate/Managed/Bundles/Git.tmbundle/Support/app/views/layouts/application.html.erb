@@ -1,0 +1,26 @@
+<% script_tag = javascript_include_tag("prototype", "rb_gateway", "toggle") %>
+<html>
+<head>
+  <title></title>
+  <link type="text/css" rel="stylesheet" media="screen" href="<%= resource_url('style.css') %>"/>
+  <% if @script_at_top %>
+    <%= script_tag %>
+  <% end %>
+</head>
+<body id='body'>
+  <div id='debug'></div>
+  <% yield %>
+</body>
+<!-- we put the script at the end because it messes up TextMate's html rendering, for some reason -->
+<% unless @script_at_top %>
+  <%= script_tag %>
+<% end %>
+<%= @content_for_javascript %>
+<% if params[:on_complete] %>
+<script language="javascript">
+  try {
+    setTimeout(function() { a=1 }, 1)
+  } catch(e) { $('debug').update("Error" + e + " - <br/><%= e_js params[:on_complete] %>")}
+</script>
+<% end %>
+</html>

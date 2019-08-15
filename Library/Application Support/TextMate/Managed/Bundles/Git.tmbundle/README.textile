@@ -1,0 +1,56 @@
+h1. The Git Textmate Bundle
+
+h2. Installation
+
+You can install this bundle in TextMate by opening the preferences and going to the bundles tab. After installation it will be automatically updated for you.
+
+* Many shortcuts are available from the SCM shortcut ⌘Y  Subversion commands are ⌘⌥G.  Less frequent commands are accessed via the menu.
+
+h2. Support
+
+* "Issue tracker":https://github.com/textmate/git.tmbundle/issues
+* "Repository":https://github.com/textmate/git.tmbundle
+
+The "Mailing list":http://groups.google.com/group/git-tmbundle has now been closed. Please feel free to report issues using the "Issue tracker":https://github.com/textmate/git.tmbundle/issues.
+
+h2. Theme notes:
+
+The "Git Commit Message" Language defines two scopes that can be used by a theme to generate "line too long" warnings for the first line of the commit:
+
+* invalid.deprecated.line-too-long.git-commit
+* invalid.illegal.line-too-long.git-commit
+
+The warning scope triggers when the first line exceeds 50 characters; the error scope over 65 characters. These aren't generally-used TextMate scopes, so you can add new rules to your preferred themes, such as orange background/red background. You can also edit the regex to change the preferred character counts.
+
+h2. Development
+
+h3. Running Specs
+
+The specs must be run with Ruby 1.8.7 (p358). Use your Ruby version manager of choice to install this version. Then, with this version activated (and @Support/@ as current directory), run @bundle install@ to install the appropriate versions of RSpec and hpricot.
+
+When running the specs from the command line you need to set @TM_SPPORT_PATH@ explicitly. The following should work:
+
+    export TM_SUPPORT_PATH=~/Library/Application\ Support/TextMate/Managed/Bundles/Bundle\ Support.tmbundle/Support/shared
+
+To run the specs then use:
+
+    bundle exec spec spec/
+
+h2. Who:
+
+h3. Previous Maintainers
+
+* January 2010 - 2012: "James Conroy-Finn":http://jamesconroyfinn.com/
+* January 2008 - December 2009: "Tim Harper":http://tim.theenchanter.com/ (with "Lead Media Partners":http://leadmediapartners.com).
+
+h2. Git-tmbundle superstars
+
+The Git TextMate Bundle wouldn't be possible without the contributions of the following fine gentlemen:
+
+h3. Major Contributions
+
+* <b>Allan Odgaard</b> - Started the bundle, got it rolling. Many patches. Oh, and TextMate :-).
+* <b>Sam Granieri</b> - GitK, Many of the git-svn commands, Git initialize repository command, menu layouting, create-tag.
+* <b>Johan S&oslash;rensen</b> - Contributing the CSS styling.
+
+Please feel free to send a pull request if you've added any functionality to this bundle that you think the rest of the git-loving, TextMate-using world would appreciate!

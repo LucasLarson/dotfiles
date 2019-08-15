@@ -1,0 +1,20 @@
+<script type="text/javascript" charset="utf-8">
+	function goTo(id) {
+	  document.body.scrollTop = document.getElementById(id).offsetTop + 8;
+	}
+	window["_todo"] = {};
+	window["_tags"] = [];
+	<% tags.each do |tag| %>
+		window["_tags"].push("<%= tag[:label] %>");
+		window["_todo"]["<%= tag[:label] %>"] = [];
+	<% end %>
+</script>
+
+<div id="todo_list">
+	<ul class="counters">
+		<% tags.each do |tag| %>
+			<li id="counter_tab_<%= tag[:label].sub(/\W/, '_') %>" class="bg_<%= tag[:label].sub(/\W/, '_') %>" <% if tag[:trim_if_empty] then %>style="display: none;"<% end %>><a onclick="goTo('jump_to_<%= tag[:label].sub(/\W/, '_') %>'); return false;" href="#jump_to_<%= tag[:label].sub(/\W/, '_') %>" accesskey="<%= tag[:label][0..0] %>"><%= tag[:label] %></a>: <span id="count_<%= tag[:label].sub(/\W/, '_') %>">0</span></li>
+		<% end %>
+		<li id="counter_tab_total" class="bg_total %>"><a href="#" onclick="return false;">Total</a>: <span id="total_count">counting…</span></li>
+	</ul>
+	<p id="current_dir_container" style="clear: both;">Scanning directory: <span id="current_dir"></span></p>

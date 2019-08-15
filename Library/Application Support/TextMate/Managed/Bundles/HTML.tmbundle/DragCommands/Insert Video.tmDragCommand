@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby20
+
+if ENV['TM_DROPPED_FILE'] =~ /(?i)\.mp4$/
+  mimetype = 'mp4'
+elsif ENV['TM_DROPPED_FILE'] =~ /(?i)\.og[gv]$/
+  mimetype = 'ogg'
+elsif ENV['TM_DROPPED_FILE'] =~ /(?i)\.webm$/
+  mimetype = 'webm'
+elsif ENV['TM_DROPPED_FILE'] =~ /(?i)\.mov$/
+  mimetype = 'quicktime'  
+end
+
+puts &lt;&lt;~TAG
+  &lt;video controls&gt;
+  	&lt;source src="#{ENV['TM_DROPPED_FILE']}" type="video/#{mimetype}"${TM_XHTML}&gt;
+
+  	&lt;p&gt;Your browser doesn't support HTML5 video. Here is
+  		a &lt;a href="#{ENV['TM_DROPPED_FILE']}"&gt;link to the video&lt;/a&gt; instead.&lt;/p&gt;
+  &lt;/video&gt;
+TAG
+</string>
+	<key>draggedFileExtensions</key>
+	<array>
+		<string>mp4</string>
+		<string>ogg</string>
+		<string>ogv</string>
+		<string>webm</string>
+		<string>mov</string>
+	</array>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Insert Video</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>text.html</string>
+	<key>uuid</key>
+	<string>EBE53CE6-AEBB-4318-AE98-D07F3755E3F9</string>
+</dict>
+</plist>

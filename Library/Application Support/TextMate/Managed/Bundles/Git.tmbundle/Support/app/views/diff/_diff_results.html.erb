@@ -1,0 +1,22 @@
+<% @diff_line_count = 0 %>
+<% revision ||= nil %>
+<code>
+  <% if not (diff_check_results||=[]).empty? %>
+    <% diff_check_results.each do |diff_result| %>
+      <% render "diff/_diff_check_result", :locals => {:git => git, :diff_result => diff_result } %>
+      <% flush %>
+    <% end %>
+  <% end %>
+  <% diff_results.each do |diff_result| %>
+    <% next if @diff_line_count >= Git::DEFAULT_DIFF_LIMIT %>
+    <% if diff_result[:mode] == Git::SUBMODULE_MODE %>
+      <% render "diff/_submodule_diff_result", :locals => {:git => git, :diff_result => diff_result, :revision => revision } %>
+    <% else %>
+      <% render "diff/_diff_result", :locals => {:git => git, :diff_result => diff_result, :revision => revision } %>
+    <% end %>
+    <% flush %>
+  <% end %>
+</code>
+<% if @diff_line_count >= Git::DEFAULT_DIFF_LIMIT %>
+  <h2>Diff taking to long to render... aborted</h2>
+<% end %>

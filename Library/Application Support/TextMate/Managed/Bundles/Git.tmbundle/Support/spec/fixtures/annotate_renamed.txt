@@ -1,0 +1,428 @@
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700   1) require LIB_ROOT + "/parsers.rb"
+18ed3ecc Support/lib/git.rb (Tim Harper         2008-04-02 13:43:28 -0600   2) require LIB_ROOT + "/commands/proxy_command_base.rb"
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700   3) require LIB_ROOT + "/commands/config.rb" # we have to specifically require this
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000   4) module SCM
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000   5)   class Git
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600   6)     attr_reader :parent
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700   7)     GIT_SCM_STATUS_MAP = {
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700   8)       'A' => {:short => 'A', :long => 'added',        :foreground => '#008000', :background => '#bbffb3'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700   9)       '+' => {:short => '+', :long => 'added',        :foreground => '#008000', :background => '#bbffb3'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  10)       'D' => {:short => 'D', :long => 'deleted',      :foreground => '#FF0000', :background => '#f59696'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  11)       'G' => {:short => 'G', :long => 'merged',       :foreground => '#eb6400', :background => '#f7e1ad'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  12)       'U' => {:short => 'U', :long => 'updated',      :foreground => '#eb6400', :background => '#f7e1ad'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  13)       'M' => {:short => 'M', :long => 'modified',     :foreground => '#eb6400', :background => '#f7e1ad'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  14)       'L' => {:short => 'L', :long => 'locked',       :foreground => nil      , :background => nil      },
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  15)       'B' => {:short => 'B', :long => 'broken',       :foreground => nil      , :background => nil      },
+987081e1 Support/lib/git.rb (Tim Harper         2008-03-03 10:31:37 -0700  16)       'R' => {:short => 'R', :long => 'renamed',      :foreground => '#FF0000', :background => '#f59696'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  17)       'C' => {:short => 'C', :long => 'conflict',     :foreground => '#008080', :background => '#A3CED0'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  18)       '!' => {:short => '!', :long => 'missing',      :foreground => '#008080', :background => '#A3CED0'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  19)       '"' => {:short => '"', :long => 'typeconflict', :foreground => '#008080', :background => '#A3CED0'},
+8166674e Support/lib/git.rb (Tim Harper         2008-05-20 23:03:24 -0600  20)       '?' => {:short => '?', :long => 'unknown',      :foreground => '#008080', :background => '#A3CED0'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  21)       'I' => {:short => 'I', :long => 'ignored',      :foreground => '#800080', :background => '#edaef5'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  22)       'X' => {:short => 'X', :long => 'external',     :foreground => '#800080', :background => '#edaef5'},
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  23)     }
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  24)     
+f698e13b Support/lib/git.rb (Tim Harper         2008-04-30 10:59:53 -0600  25)     DEFAULT_DIFF_LIMIT = 3000
+d1b253bb Support/lib/git.rb (Tim Harper         2008-05-22 11:24:43 -0600  26)     SUBMODULE_MODE = "160000"
+f698e13b Support/lib/git.rb (Tim Harper         2008-04-30 10:59:53 -0600  27)     
+b0026ef3 Support/lib/git.rb (Tim Harper         2008-04-01 18:18:36 -0600  28)     def short_rev(rev)
+b0026ef3 Support/lib/git.rb (Tim Harper         2008-04-01 18:18:36 -0600  29)       rev.to_s[0..7]
+b0026ef3 Support/lib/git.rb (Tim Harper         2008-04-01 18:18:36 -0600  30)     end
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700  31)     
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600  32)     def initialize(options = {})
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600  33)       @path = options[:path] if options[:path]
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  34)       @parent = options[:parent] if options[:parent]
+450c7065 Support/lib/git.rb (Tim Harper         2008-03-01 16:36:06 -0700  35)     end
+450c7065 Support/lib/git.rb (Tim Harper         2008-03-01 16:36:06 -0700  36)     
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  37)     def version
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  38)       @version ||= command("version").scan(/[0-9\.]+/).first
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  39)     end
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  40)     
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  41)     def version_1_5_3?
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  42)       /^1\.5\.3\./.match(version)
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  43)     end
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  44)     
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  45)     def version_1_5_4?
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  46)       /^1\.5\.4\./.match(version)
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  47)     end
+c70a09ef Support/lib/git.rb (Tim Harper         2008-03-05 11:55:37 -0700  48)     
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  49)     def command_str(*args)
+1e72ee31 Support/lib/git.rb (Stephen Bannasch   2010-08-31 12:53:58 +0800  50)       str = %{unset DISPLAY && cd "#{path}" && #{e_sh git} #{args.map{ |arg| e_sh(arg) } * ' '}}
+27932a01 Support/lib/git.rb (Tim Harper         2008-06-11 12:20:53 -0600  51)       logger.error(str) if debug_mode
+27932a01 Support/lib/git.rb (Tim Harper         2008-06-11 12:20:53 -0600  52)       str
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  53)     end
+b95e4fcf Support/lib/git.rb (Tim Harper         2008-02-14 03:30:17 -0700  54) 
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  55)     def command_verbose(*args)
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  56)       r = %x{#{command_str(*args)} 2>&1 }
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  57)       puts "<pre>#{command_str(*args)}</pre>"
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  58)       puts "Result: <pre>#{r}</pre>"
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  59)       r
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  60)     end
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  61)     
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  62)     # Run a command a return it's results
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  63)     def command(*args)
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  64)       %x{#{command_str(*args)} 2>&1 }
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  65)     end
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  66)     
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  67)     # Run a command with POPEN
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  68)     def popen_command(*args)
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  69)       cmd = command_str(*args)
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  70)       IO.popen("#{cmd} 2>&1", "r")
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  71)     end
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  72)     
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  73)     # Return the full working path to "git"
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  74)     def git
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  75)       git ||= e_sh(ENV['TM_GIT'] || 'git')
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  76)     end
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600  77)     
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  78)     # The absolute path to working copy
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600  79)     def path
+52171822 Support/lib/git.rb (Stefan Daschek     2014-02-22 23:05:34 +0100  80)       @path ||= %x{
+52171822 Support/lib/git.rb (Stefan Daschek     2014-02-22 23:05:34 +0100  81)         cd #{e_sh dir_part(paths.first)}
+52171822 Support/lib/git.rb (Stefan Daschek     2014-02-22 23:05:34 +0100  82)         #{git} rev-parse --show-toplevel;
+52171822 Support/lib/git.rb (Stefan Daschek     2014-02-22 23:05:34 +0100  83)         cd - > /dev/null;
+52171822 Support/lib/git.rb (Stefan Daschek     2014-02-22 23:05:34 +0100  84)       }.chomp
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700  85)     end
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  86)     
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  87)     def root
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  88)       @root ||= parent ? parent : self
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  89)     end
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  90)     
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  91)     # an absolute path for a given relative path
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  92)     def path_for(p)
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  93)       File.expand_path(p, path)
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  94)     end
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  95)     
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  96)     def root_relative_path_for(p)
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  97)       root.relative_path_for(path_for(p))
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  98)     end
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600  99)     
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 100)     def relative_path_for(p)
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 101)       File.expand_path(p, path).gsub(path, "").gsub(/^\//, "")
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 102)     end
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 103)     
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 104)     def dir_part(file_or_dir)
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 105)       File.directory?(file_or_dir) ? file_or_dir : File.split(file_or_dir).first
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 106)     end
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 107)     
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 108)     def make_local_path(fullpath)
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 109)       fullpath = fullpath.gsub(/#{path}\/{0,1}/, "")
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 110)       fullpath = "." if fullpath == ""
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 111)       fullpath
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 112)     end
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 113)     
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 114)     def paths(options = { :unique => true, :fallback => :project })
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 115)       if ENV.has_key? 'TM_SELECTED_FILES'
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 116)         res = Shellwords.shellwords(ENV['TM_SELECTED_FILES'])
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 117)         if(options[:unique])
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 118)           ancestors = Set.new(res)
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 119)           res = res.reject do |path|
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 120)             !path.split('/')[0...-1].inject('') do |base, dir|
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 121)               ancestors.include?(base + dir) ? false : base + dir + '/' if base
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 122)             end
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 123)           end
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 124)         end
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 125)         res
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 126)       elsif options[:fallback] == :project && ENV.has_key?('TM_PROJECT_DIRECTORY')
+58e7d74a Support/lib/git.rb (James Conroy-Finn  2010-02-08 11:24:48 +0000 127)         [ENV['TM_PROJECT_DIRECTORY']]
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 128)       elsif options[:fallback] == :current_file && ENV.has_key?('TM_FILEPATH')
+58e7d74a Support/lib/git.rb (James Conroy-Finn  2010-02-08 11:24:48 +0000 129)         [ENV['TM_FILEPATH']]
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 130)       elsif ENV.has_key?('TM_DIRECTORY')
+58e7d74a Support/lib/git.rb (James Conroy-Finn  2010-02-08 11:24:48 +0000 131)         [ENV['TM_DIRECTORY']]
+9ceb1465 Support/lib/git.rb (Allan Odgaard      2008-03-25 08:03:19 +0100 132)       elsif ENV.has_key?('TM_PROJECT_DIRECTORY')
+58e7d74a Support/lib/git.rb (James Conroy-Finn  2010-02-08 11:24:48 +0000 133)         [ENV['TM_PROJECT_DIRECTORY']]
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 134)       else
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 135)         raise "No selected files." # FIXME throw an object with more info
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 136)       end
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 137)     end
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 138) 
+41962c7c Support/lib/git.rb (Stefan Daschek     2014-04-06 19:29:08 +0200 139)     def git_dir(file_or_dir = paths.first)
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 140)       file = %x{
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 141)         cd #{e_sh dir_part(file_or_dir)}
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 142)         #{git} rev-parse --git-dir;
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 143)         cd - > /dev/null;
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 144)       }.chomp
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 145)       File.expand_path(file, dir_part(file_or_dir))
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 146)     end
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 147) 
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 148)     def nca(files = nil)
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 149)       files||=paths
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 150)       if(files.size == 1)
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 151)         File.directory?(files.first) ? files.first : File.split(files.first).first
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 152)       else
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 153)         components = files.map { |e| e.split('/') }
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 154)         i = 0
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 155)         while components.all? { |e| e.size > i && e[i] == components[0][i] }
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 156)           i += 1
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 157)         end
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 158)         i == 0 ? '/' : components[0][0...i].join('/')
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 159)       end
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 160)     end
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 161)     
+6260242f Support/lib/git.rb (Tim Harper         2008-04-29 23:27:19 -0600 162)     def remotes
+1ad05283 Support/lib/git.rb (Tim Harper         2008-05-12 10:48:55 -0600 163)       remote.names
+7ef2e703 Support/lib/git.rb (Tim Harper         2008-01-25 16:51:39 -0700 164)     end
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 165)     
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 166)     def list_files(dir, options = {})
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 167)       options[:exclude_file] ||= File.exists?(excl_file = git_dir(dir) + '/info/exclude') ? excl_file : nil
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 168)       options[:type] ||= nil
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 169)       params = []
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 170)       params << "-#{options[:type]}" if options[:type]
+a58c7355 Support/lib/git.rb (Tim Harper         2008-06-13 15:29:24 -0600 171)       params << "--exclude-per-directory=.gitignore"
+a58c7355 Support/lib/git.rb (Tim Harper         2008-06-13 15:29:24 -0600 172)       params << "--exclude-from=#{e_sh options[:exclude_file]}" if options[:exclude_file]
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 173)       
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 174)       command("ls-files", *params).split("\n")
+0a609871 Support/lib/git.rb (duff               2007-06-10 19:22:49 +0000 175)     end
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 176)     
+a93e349f Support/lib/git.rb (Tim Harper         2008-04-04 18:53:51 -0600 177)     def create_tag(name)
+b7799aa8 Support/lib/git.rb (Sam Granieri       2008-02-07 10:31:16 -0600 178)       %x{#{command_str("tag", name)}}
+a93e349f Support/lib/git.rb (Tim Harper         2008-04-04 18:53:51 -0600 179)       true
+b7799aa8 Support/lib/git.rb (Sam Granieri       2008-02-07 10:31:16 -0600 180)     end
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 181)   
+4c00c914 Support/lib/git.rb (Tim Harper         2008-01-26 01:01:25 -0700 182)     def revert(paths = [])
+4c00c914 Support/lib/git.rb (Tim Harper         2008-01-26 01:01:25 -0700 183)       output = ""
+d7e9145a Support/lib/git.rb (Tim Harper         2008-02-27 15:10:42 -0700 184)       
+d7e9145a Support/lib/git.rb (Tim Harper         2008-02-27 15:10:42 -0700 185)         
+4c00c914 Support/lib/git.rb (Tim Harper         2008-01-26 01:01:25 -0700 186)       paths.each do |e|
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 187)         output << command("checkout", "--", shorten(e, path))
+4c00c914 Support/lib/git.rb (Tim Harper         2008-01-26 01:01:25 -0700 188)       end
+4c00c914 Support/lib/git.rb (Tim Harper         2008-01-26 01:01:25 -0700 189)       output
+4c00c914 Support/lib/git.rb (Tim Harper         2008-01-26 01:01:25 -0700 190)     end
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 191)   
+85b581ee Support/lib/git.rb (Tim Harper         2008-02-01 09:57:39 -0700 192)     def self.const_missing(name)
+0b547437 Support/lib/git.rb (Tim Harper         2008-02-01 10:12:35 -0700 193)       @last_try||=nil
+0b547437 Support/lib/git.rb (Tim Harper         2008-02-01 10:12:35 -0700 194)       raise if @last_try==name
+0b547437 Support/lib/git.rb (Tim Harper         2008-02-01 10:12:35 -0700 195)       @last_try = name
+be20ce85 Support/lib/git.rb (Tim Harper         2008-02-12 02:43:36 -0700 196)     
+85b581ee Support/lib/git.rb (Tim Harper         2008-02-01 09:57:39 -0700 197)       file = File.dirname(__FILE__) + "/commands/#{name.to_s.downcase}.rb"
+85b581ee Support/lib/git.rb (Tim Harper         2008-02-01 09:57:39 -0700 198)       require file
+85b581ee Support/lib/git.rb (Tim Harper         2008-02-01 09:57:39 -0700 199)       klass = const_get(name)
+85b581ee Support/lib/git.rb (Tim Harper         2008-02-01 09:57:39 -0700 200)     end
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 201)     
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 202)     def merge_message
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 203)       return unless File.exist?(File.join(path, ".git/MERGE_HEAD"))
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 204)       File.read(File.join(path, ".git/MERGE_MSG"))
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 205)     end
+e35c34e1 Support/lib/git.rb (Tim Harper         2008-04-02 13:50:29 -0600 206)     
+e35c34e1 Support/lib/git.rb (Tim Harper         2008-04-02 13:50:29 -0600 207)     def initial_commit_pending?
+9ccccb9b Support/lib/git.rb (Kai Wood           2014-01-11 18:36:51 +0100 208)       /^(# )?Initial commit$/.match(command("status")) ? true : false
+e35c34e1 Support/lib/git.rb (Tim Harper         2008-04-02 13:50:29 -0600 209)     end
+e35c34e1 Support/lib/git.rb (Tim Harper         2008-04-02 13:50:29 -0600 210)     
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 211)     def status(file_or_dir = nil, options = {})
+bbfd14d9 Support/lib/git.rb (Kai Wood           2014-01-11 18:35:48 +0100 212)       results = parse_status(command("status", "--porcelain"))
+8ecadc8f Support/lib/git.rb (Allan Odgaard      2008-12-02 22:09:16 +0100 213)       return results if file_or_dir.nil?
+8ecadc8f Support/lib/git.rb (Allan Odgaard      2008-12-02 22:09:16 +0100 214)       results.select do |status|
+8ecadc8f Support/lib/git.rb (Allan Odgaard      2008-12-02 22:09:16 +0100 215)         Array(file_or_dir).find { |e| status[:path] =~ /^#{Regexp.escape(e)}(\/|$)/ }
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 216)       end
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 217)     end
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 218) 
+2ea0fd04 Support/lib/git.rb (Tim Harper         2008-05-20 12:42:22 -0600 219)     def is_a_path?(file_path)
+2ea0fd04 Support/lib/git.rb (Tim Harper         2008-05-20 12:42:22 -0600 220)       /\/$/.match(file_path)
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 221)     end
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 222) 
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 223)     def expand_path_preserving_trailing_slash(file, base_dir)
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 224)       result = File.expand_path(file, base_dir)
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 225)       result << "/" if is_a_path?(file)
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 226)       result
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 227)     end
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 228)     
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 229)     def clean_directory?
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 230)       status.empty?
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 231)     end
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 232) 
+57d4ef4e Support/lib/git.rb (Tim Harper         2008-04-11 15:24:53 -0600 233)     def commit(msg, files = ["."], options = {})
+57d4ef4e Support/lib/git.rb (Tim Harper         2008-04-11 15:24:53 -0600 234)       args = ["commit"]
+57d4ef4e Support/lib/git.rb (Tim Harper         2008-04-11 15:24:53 -0600 235)       args << "--amend" if options[:amend]
+57d4ef4e Support/lib/git.rb (Tim Harper         2008-04-11 15:24:53 -0600 236)       args += ["-m", msg, *files]
+57d4ef4e Support/lib/git.rb (Tim Harper         2008-04-11 15:24:53 -0600 237)       parse_commit(command(*args))
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 238)     end
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 239)     
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 240)     def add(files = ["."])
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 241)       command("add", *files)
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 242)     end
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 243) 
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 244)     def rm(files = ["."])
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 245)       command("rm", *files)
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 246)     end
+3de2901b Support/lib/git.rb (Tim Harper         2008-03-02 01:27:35 -0700 247)     
+88e756e3 Support/lib/git.rb (Tim Harper         2008-04-24 13:51:43 -0600 248)     def auto_add_rm(files)
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 249)       add_files = files.select{ |f| File.exist?(File.expand_path(f, path)) }
+f6b835ec Support/lib/git.rb (Tim Harper         2008-06-13 15:19:58 -0600 250)       remove_files = files.reject{ |f| File.exist?(File.expand_path(f, path)) }
+88e756e3 Support/lib/git.rb (Tim Harper         2008-04-24 13:51:43 -0600 251)       res = ""
+88e756e3 Support/lib/git.rb (Tim Harper         2008-04-24 13:51:43 -0600 252)       res << add(add_files) unless add_files.empty?
+88e756e3 Support/lib/git.rb (Tim Harper         2008-04-24 13:51:43 -0600 253)       res << rm(remove_files) unless remove_files.empty?
+88e756e3 Support/lib/git.rb (Tim Harper         2008-04-24 13:51:43 -0600 254)       res
+88e756e3 Support/lib/git.rb (Tim Harper         2008-04-24 13:51:43 -0600 255)     end
+88e756e3 Support/lib/git.rb (Tim Harper         2008-04-24 13:51:43 -0600 256)     
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 257)     def merge(merge_from_branch)
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 258)       parse_merge(command("merge", merge_from_branch))
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 259)     end
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 260)     
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 261)     def show(fullpath, revision)
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 262)       path = make_local_path(fullpath)
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 263)       path = "" if path=="."
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 264)       command("show", "#{revision}:#{path}")
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 265)     end
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 266)     
+6260242f Support/lib/git.rb (Tim Harper         2008-04-29 23:27:19 -0600 267)     def push(remote, options = {})
+68e60f4f Support/lib/git.rb (Tim Harper         2008-03-31 17:44:17 -0600 268)       options = options.dup
+6260242f Support/lib/git.rb (Tim Harper         2008-04-29 23:27:19 -0600 269)       args = ["push", remote]
+68e60f4f Support/lib/git.rb (Tim Harper         2008-03-31 17:44:17 -0600 270)       args << options.delete(:branch) if options[:branch]
+a93e349f Support/lib/git.rb (Tim Harper         2008-04-04 18:53:51 -0600 271)       args << options.delete(:tag) if options[:tag]
+68e60f4f Support/lib/git.rb (Tim Harper         2008-03-31 17:44:17 -0600 272)       
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 273)       p = popen_command(*args)
+68e60f4f Support/lib/git.rb (Tim Harper         2008-03-31 17:44:17 -0600 274)       process_push(p, options)
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 275)     end
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 276)     
+6260242f Support/lib/git.rb (Tim Harper         2008-04-29 23:27:19 -0600 277)     def pull(remote, remote_merge_branch = nil, callbacks = {})
+6260242f Support/lib/git.rb (Tim Harper         2008-04-29 23:27:19 -0600 278)       args = ["pull", remote]
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 279)       args << remote_merge_branch.split('/').last if remote_merge_branch
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 280)       p = popen_command(*args)
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 281)       process_pull(p, callbacks)
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 282)     end
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 283)     
+6260242f Support/lib/git.rb (Tim Harper         2008-04-29 23:27:19 -0600 284)     def fetch(remote, callbacks = {})
+6260242f Support/lib/git.rb (Tim Harper         2008-04-29 23:27:19 -0600 285)       p = popen_command("fetch", remote)
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 286)       process_fetch(p, callbacks)
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 287)     end
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 288) 
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 289)     def show_to_tmp_file(fullpath, revision)
+cf0529e8 Support/lib/git.rb (Allan Odgaard      2013-01-22 20:50:15 +0100 290)       temp_name = "#{ENV['TMPDIR']}/" + human_readable_mktemp(fullpath, revision)
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 291)       File.open(temp_name, "w") {|f| f.puts show(fullpath, revision) }
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 292)       temp_name
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 293)     end
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 294) 
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 295)     def human_readable_mktemp(filename, rev)
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 296)       extname = File.extname(filename)
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 297)       filename = File.basename(filename)
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 298)       # TODO: Make sure the filename can fit in 255 characters, the limit on HFS+ volumes.
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 299)       "#{filename.sub(extname, '')}-rev-#{rev}#{extname}"
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 300)     end
+42827eb5 Support/lib/git.rb (Tim Harper         2008-03-04 16:10:31 -0700 301)     
+82f0eda7 Support/lib/git.rb (Tim Harper         2008-03-31 18:31:04 -0600 302)     %w[config branch stash svn remote submodule].each do |command|
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 303)       class_eval <<-EOF
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 304)       def #{command}
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 305)         @#{command} ||= SCM::Git::#{command.classify}.new(self)
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 306)       end
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 307)       EOF
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 308)     end
+3841213f Support/lib/git.rb (Tim Harper         2008-03-03 14:19:24 -0700 309)     
+2ea0fd04 Support/lib/git.rb (Tim Harper         2008-05-20 12:42:22 -0600 310)     def annotate(file_path, revision = nil)
+2ea0fd04 Support/lib/git.rb (Tim Harper         2008-05-20 12:42:22 -0600 311)       file = make_local_path(file_path)
+6bb8956e Support/lib/git.rb (Cina Saffary       2014-05-21 14:41:26 -0500 312)       args = []
+6bb8956e Support/lib/git.rb (Cina Saffary       2014-05-21 14:41:26 -0500 313)       args += ["--follow", revision, "--"] unless revision.nil? || revision.empty?
+6bb8956e Support/lib/git.rb (Cina Saffary       2014-05-21 14:41:26 -0500 314)       args << file
+6bb8956e Support/lib/git.rb (Cina Saffary       2014-05-21 14:41:26 -0500 315)       output = command("blame", *args)
+3841213f Support/lib/git.rb (Tim Harper         2008-03-03 14:19:24 -0700 316)       if output.match(/^fatal:/)
+3841213f Support/lib/git.rb (Tim Harper         2008-03-03 14:19:24 -0700 317)         puts output 
+3841213f Support/lib/git.rb (Tim Harper         2008-03-03 14:19:24 -0700 318)         return nil
+3841213f Support/lib/git.rb (Tim Harper         2008-03-03 14:19:24 -0700 319)       end
+42cc5aa5 Support/lib/git.rb (Kai Wood           2014-08-19 09:12:33 +0200 320)       parse_annotation(output)
+3841213f Support/lib/git.rb (Tim Harper         2008-03-03 14:19:24 -0700 321)     end
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 322)     
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 323)     def describe(revision, options = {})
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 324)       args = ["describe"]
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 325)       case options[:use]
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 326)       when nil, :all then args << "--all"
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 327)       end
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 328)       args << revision
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 329)       description = command(*args).strip
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 330)       $?.exitstatus == 0 ? description : short_rev(revision)
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 331)     end
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 332)     
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 333)     def current_revision
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 334)       command("rev-parse", "HEAD").strip
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 335)     end
+635326b2 Support/lib/git.rb (Tim Harper         2008-05-20 00:00:09 -0600 336)     
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 337)     def diff_check_output(options = {})
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 338)       options = {:file => options} unless options.is_a?(Hash)
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 339)       params = ["diff"]
+132724ab Support/lib/git.rb (Michael Sheets     2012-09-17 04:27:57 -0500 340)       params << ["--no-ext-diff"]
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 341)       params << ["--check"]
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 342) 
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 343)       lr = get_range_arg(options)
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 344)       params << lr if lr
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 345)       params << make_local_path(options[:path]) if options[:path]
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 346) 
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 347)       output = command(*params)
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 348)     end
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 349) 
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 350)     def diff_check(options = {})
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 351)       output = diff_check_output(options)
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 352)       parse_diff_check(output)
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 353)     end
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 354) 
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 355)     def diff(options = {})
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 356)       options = {:file => options} unless options.is_a?(Hash)
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 357)       params = ["diff"]
+132724ab Support/lib/git.rb (Michael Sheets     2012-09-17 04:27:57 -0500 358)       params << ["--no-ext-diff"]
+388bb507 Support/lib/git.rb (Diego Barros       2008-04-12 21:36:49 +1000 359)       params << ["-U", options[:context_lines]] if options[:context_lines]
+2e27e363 Support/lib/git.rb (Tim Harper         2008-03-08 03:22:39 -0700 360)       
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 361)       lr = get_range_arg(options)
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 362)       params << lr if lr
+2e27e363 Support/lib/git.rb (Tim Harper         2008-03-08 03:22:39 -0700 363)       params << make_local_path(options[:path]) if options[:path]
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 364)       
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 365)       check = diff_check_output(options)
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 366)       if not check.empty?
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 367)         check += "\n\n\n"
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 368)       end
+a0bfa4c0 Support/lib/git.rb (Michail Pishchagin 2008-06-15 14:42:45 +0400 369) 
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 370)       output = command(*params)
+cf0529e8 Support/lib/git.rb (Allan Odgaard      2013-01-22 20:50:15 +0100 371)       File.open("#{ENV['TMPDIR']}/output.diff", "a") {|f| f.puts check + output }
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 372)       parse_diff(output)
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 373)     end
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 374)     
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 375)     def log(options = {})
+91235f50 Support/lib/git.rb (Allan Odgaard      2009-10-07 20:32:44 +0200 376)       params = ["log", "--date=default", "--format=medium"]
+c7429a56 Support/lib/git.rb (Tim Harper         2008-03-08 02:57:07 -0700 377)       params += ["-n", options[:limit]] if options[:limit]
+c7429a56 Support/lib/git.rb (Tim Harper         2008-03-08 02:57:07 -0700 378)       params << "-p" if options[:with_log]
+6bb8956e Support/lib/git.rb (Cina Saffary       2014-05-21 14:41:26 -0500 379)       params << "--follow" if options[:follow]
+6bb8956e Support/lib/git.rb (Cina Saffary       2014-05-21 14:41:26 -0500 380)       params << "--name-only" if options[:name]
+c7429a56 Support/lib/git.rb (Tim Harper         2008-03-08 02:57:07 -0700 381)       params << options[:branch]  if options[:branch]
+c7429a56 Support/lib/git.rb (Tim Harper         2008-03-08 02:57:07 -0700 382)       
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 383)       lr = get_range_arg(options)
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 384)       params << lr if lr
+c7429a56 Support/lib/git.rb (Tim Harper         2008-03-08 02:57:07 -0700 385)       
+c7429a56 Support/lib/git.rb (Tim Harper         2008-03-08 02:57:07 -0700 386)       params << make_local_path(options[:path]) if options[:path]
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 387)       parse_log(command(*params))
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 388)     end
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 389)     
+484c008a Support/lib/git.rb (Tim Harper         2008-03-08 01:19:44 -0700 390)     def init(directory)
+484c008a Support/lib/git.rb (Tim Harper         2008-03-08 01:19:44 -0700 391)       Dir.chdir(directory) do
+8906dd0a Support/lib/git.rb (Allan Odgaard      2009-08-11 09:47:30 +0200 392)         %x{"${TM_GIT:-git}" init}
+484c008a Support/lib/git.rb (Tim Harper         2008-03-08 01:19:44 -0700 393)       end
+484c008a Support/lib/git.rb (Tim Harper         2008-03-08 01:19:44 -0700 394)     end
+484c008a Support/lib/git.rb (Tim Harper         2008-03-08 01:19:44 -0700 395)     
+81323ac2 Support/lib/git.rb (Tim Harper         2008-04-30 11:42:23 -0600 396)     def logger
+81323ac2 Support/lib/git.rb (Tim Harper         2008-04-30 11:42:23 -0600 397)       @logger ||= 
+81323ac2 Support/lib/git.rb (Tim Harper         2008-04-30 11:42:23 -0600 398)         begin
+81323ac2 Support/lib/git.rb (Tim Harper         2008-04-30 11:42:23 -0600 399)           require 'logger'
+27932a01 Support/lib/git.rb (Tim Harper         2008-06-11 12:20:53 -0600 400)           Logger.new(ROOT + "/log/git.log")
+81323ac2 Support/lib/git.rb (Tim Harper         2008-04-30 11:42:23 -0600 401)         end
+81323ac2 Support/lib/git.rb (Tim Harper         2008-04-30 11:42:23 -0600 402)     end
+484c008a Support/lib/git.rb (Tim Harper         2008-03-08 01:19:44 -0700 403)     
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 404)     def with_path(path)
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 405)       @gits ||= {}
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 406)       return self if path.blank?
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 407)       @gits[path] = Git.new(:path => path_for(path), :parent => self)
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 408)     end
+eba6c1e9 Support/lib/git.rb (Tim Harper         2008-05-20 12:41:49 -0600 409)     
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 410)     protected
+27e4c8bf Support/lib/git.rb (Tim Harper         2008-05-20 00:57:51 -0600 411)       def get_range_arg(options = {})
+ee73d7d5 Support/lib/git.rb (Tim Harper         2008-03-25 00:03:31 -0600 412)         return options[:since] if options[:since]
+2e27e363 Support/lib/git.rb (Tim Harper         2008-03-08 03:22:39 -0700 413)         lr = [:revisions, :revision, :branches, :tags].map{ |k| options[k] }.compact.first
+2e27e363 Support/lib/git.rb (Tim Harper         2008-03-08 03:22:39 -0700 414)         case lr
+2e27e363 Support/lib/git.rb (Tim Harper         2008-03-08 03:22:39 -0700 415)         when Array, Range
+2e27e363 Support/lib/git.rb (Tim Harper         2008-03-08 03:22:39 -0700 416)           "#{lr.first}..#{lr.last}"
+2e27e363 Support/lib/git.rb (Tim Harper         2008-03-08 03:22:39 -0700 417)         when String
+a6961b3c Support/lib/git.rb (Tim Harper         2008-03-08 03:26:59 -0700 418)           lr.include?("..") ? lr : "#{lr}^..#{lr}"
+2e27e363 Support/lib/git.rb (Tim Harper         2008-03-08 03:22:39 -0700 419)         else
+2e27e363 Support/lib/git.rb (Tim Harper         2008-03-08 03:22:39 -0700 420)           lr
+2e27e363 Support/lib/git.rb (Tim Harper         2008-03-08 03:22:39 -0700 421)         end
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 422)       end
+f4e7c4b5 Support/lib/git.rb (Tim Harper         2008-03-06 04:01:30 -0700 423)     
+26e2d189 Support/lib/git.rb (Tim Harper         2008-03-02 00:24:40 -0700 424)     include Parsers
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 425)   end
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 426) end
+^4c47a64 Support/lib/git.rb (duff               2007-06-10 15:41:03 +0000 427) 
+58e7d74a Support/lib/git.rb (James Conroy-Finn  2010-02-08 11:24:48 +0000 428) Git = SCM::Git

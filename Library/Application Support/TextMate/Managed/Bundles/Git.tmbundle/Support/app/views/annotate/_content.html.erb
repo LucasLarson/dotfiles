@@ -1,0 +1,81 @@
+<%
+  # puts annotations.inspect
+  last_formatted_line = {}
+
+  range_min, range_max = selected_line_range
+
+  formatted_annotations = annotations.map do |annotation|
+    line_class = []
+
+    if (range_min == range_max) && range_min == annotation[:ln].to_i
+      line_class << "selected"
+    elsif range_min == annotation[:ln].to_i
+      line_class << "ranged-top"
+    elsif range_max == annotation[:ln].to_i
+      line_class << "ranged-bottom"
+    elsif annotation[:ln].to_i.between?(range_min, range_max)
+      line_class << "ranged-middle"
+    end
+
+    line_class << "ins" if annotation[:rev] == "-current-" || annotation[:rev] == revision
+    line_class = line_class * " "
+    formatted_line = {
+      :rev => annotation[:rev], 
+      :author => annotation[:author], 
+      :date => relative_date(annotation[:date]), 
+      :ln => annotation[:ln], 
+      :text => annotation[:text]
+    }
+    display = formatted_line.dup
+  
+    [:rev, :author, :date].each { |k| display[k] = "…" } if display[:rev]==last_formatted_line[:rev]
+  
+    friendly_date = annotation[:date].is_a?(Time) ? annotation[:date].to_friendly : annotation[:date]
+  
+    display[:rev_tooltip] = <<EOF
+  Revision: #{annotation[:rev]}
+  Date: #{friendly_date} (#{display[:date]})
+  Author: #{annotation[:author]}
+EOF
+    display[:line_class] = line_class
+    
+    last_formatted_line = formatted_line
+    display
+  end
+%>
+
+<code>
+
+<% unless @as_partial %><div id='content' style='margin-top:60px;'><% end %>
+
+<table class='codediff inline'>
+  <thead>
+    <tr>
+      <td class='line-numbers'>revision</td>
+      <td class='line-numbers'>author</td>
+      <td class='line-numbers'>date</td>
+      <td class='line-numbers'>line</td>
+      <td/>
+    </tr>
+  </thead>
+  <tbody>
+    <% for display in formatted_annotations %>
+      <tr id="line-<%= display[:ln] %>">
+      
+        <td class="line-numbers">
+          <% if display[:rev]=="…" %>
+            <%= display[:rev] %>
+          <% else %>
+            <%= link_to_function display[:rev], "show_annotation('#{display[:rev]}');", :title => htmlize_attr(display[:rev_tooltip]) %>
+          <% end %>
+        </td>
+        <td class="line-numbers"><%= make_non_breaking display[:author] %></td>
+        <td class="line-numbers"><%= make_non_breaking display[:date] %></td>
+        <td class="line-numbers"><%= display[:ln] %></td>
+        <td class="code <%= display[:line_class] %>"><%= htmlize(display[:text]) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% unless @as_partial %></div><!-- end div#content --><% end %>
+</code>

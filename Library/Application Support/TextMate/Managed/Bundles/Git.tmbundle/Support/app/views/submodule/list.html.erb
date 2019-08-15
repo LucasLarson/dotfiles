@@ -1,0 +1,26 @@
+
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Revision</th>
+      <th>Tag</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @submodules.each do |submodule| %>
+    <tr>
+      <td><%= submodule.modified? ? "M" : "" %></td>
+      <td><%= link_to_mate submodule.name, File.join(git.path, submodule.name) %></td>
+      <td><%= git.short_rev(submodule.current_revision) %></td>
+      <td><%= submodule.current_revision_description %></td>
+    </tr>
+  <% end %>
+  <% if @submodules.empty? %>
+    <tr>
+      <td colspan=3>No submodules defined.</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

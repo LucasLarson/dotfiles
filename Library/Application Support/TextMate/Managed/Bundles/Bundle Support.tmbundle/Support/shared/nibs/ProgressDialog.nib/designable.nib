@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment version="101000" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <objectController id="21" userLabel="Object Controller">
+            <declaredKeys>
+                <string>title</string>
+                <string>summary</string>
+                <string>details</string>
+                <string>progressValue</string>
+                <string>isIndeterminate</string>
+                <string>progressMax</string>
+                <string>progressMin</string>
+                <string>YES</string>
+                <string>cancelButtonVisible</string>
+                <string>cancelButtonHidden</string>
+                <string>progressAnimate</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentObject" keyPath="parameters" id="34">
+                    <dictionary key="options">
+                        <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                    </dictionary>
+                </binding>
+            </connections>
+        </objectController>
+        <window title="Progress" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="78" userLabel="Panel" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="174" y="383" width="412" height="119"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="1002"/>
+            <view key="contentView" id="79">
+                <rect key="frame" x="0.0" y="0.0" width="412" height="119"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <progressIndicator wantsLayer="YES" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="bar" id="80">
+                        <rect key="frame" x="18" y="54" width="376" height="20"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        <connections>
+                            <binding destination="21" name="animate" keyPath="selection.progressAnimate" id="144">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="1"/>
+                                    <integer key="NSNullPlaceholder" value="1"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="21" name="isIndeterminate" keyPath="selection.isIndeterminate" previousBinding="144" id="145">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="0"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="0"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="0"/>
+                                    <integer key="NSNullPlaceholder" value="0"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="21" name="maxValue" keyPath="selection.progressMax" id="105">
+                                <dictionary key="options">
+                                    <real key="NSMultipleValuesPlaceholder" value="100"/>
+                                    <real key="NSNoSelectionPlaceholder" value="100"/>
+                                    <real key="NSNotApplicablePlaceholder" value="100"/>
+                                    <real key="NSNullPlaceholder" value="100"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="21" name="minValue" keyPath="selection.progressMin" previousBinding="105" id="115">
+                                <dictionary key="options">
+                                    <real key="NSMultipleValuesPlaceholder" value="0.0"/>
+                                    <real key="NSNoSelectionPlaceholder" value="0.0"/>
+                                    <real key="NSNotApplicablePlaceholder" value="0.0"/>
+                                    <real key="NSNullPlaceholder" value="0.0"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="21" name="value" keyPath="selection.progressValue" previousBinding="115" id="116">
+                                <dictionary key="options">
+                                    <real key="NSMultipleValuesPlaceholder" value="0.0"/>
+                                    <real key="NSNoSelectionPlaceholder" value="0.0"/>
+                                    <real key="NSNotApplicablePlaceholder" value="0.0"/>
+                                    <real key="NSNullPlaceholder" value="0.0"/>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </progressIndicator>
+                    <textField verticalHuggingPriority="750" id="81">
+                        <rect key="frame" x="17" y="82" width="378" height="17"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Primary text is displayed here" id="147">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="21" name="value" keyPath="selection.summary" id="83"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" id="82">
+                        <rect key="frame" x="17" y="20" width="300" height="30"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Secondary text is displayed here" id="148">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <binding destination="21" name="value" keyPath="selection.details" id="84"/>
+                        </connections>
+                    </textField>
+                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="129">
+                        <rect key="frame" x="316" y="10" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="149">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="performButtonClick:" target="-2" id="131"/>
+                            <binding destination="21" name="hidden" keyPath="selection.cancelButtonHidden" id="143">
+                                <dictionary key="options">
+                                    <integer key="NSMultipleValuesPlaceholder" value="1"/>
+                                    <integer key="NSNoSelectionPlaceholder" value="1"/>
+                                    <integer key="NSNotApplicablePlaceholder" value="1"/>
+                                    <integer key="NSNullPlaceholder" value="1"/>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <connections>
+                <binding destination="21" name="title" keyPath="selection.title" id="96"/>
+            </connections>
+        </window>
+    </objects>
+</document>

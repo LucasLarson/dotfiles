@@ -1,0 +1,110 @@
+#todo_list table {
+	clear: both;
+	border-collapse: collapse;
+}
+
+#todo_list h3 {
+	clear: both;
+}
+
+#todo_list_list td, #todo_list th {
+	font-family: monospace;
+}
+
+#todo_list th {
+	white-space: nowrap;
+	border-bottom: 1px solid #000;
+	text-align: left;
+}
+
+#todo_list th a {
+	text-decoration: none;
+}
+
+#todo_list td {
+	font-size: 9pt;
+	padding: 0.5ex 1ex 0.5ex 0;
+	vertical-align: top;
+}
+
+#todo_list tr.alternate {
+	background-color: rgba(127,127,127,0.15);
+}
+
+#todo_list td.file {
+/*	max-width: 16em;
+	text-wrap: unrestricted;
+	word-wrap: break-word;*/
+	white-space: nowrap;
+}
+
+#todo_list td.comment {
+	min-width: 20em;
+}
+
+#todo_list .counters {
+	padding: 0;
+	overflow: hidden;
+}
+
+#todo_list .counters li {
+	display: block;
+	float: left;
+	padding: 1ex;
+	border: 1px solid #444;
+	border-collapse: collapse;
+	min-width: 6em;
+	text-align: center;
+}
+
+#todo_list .counters li a {
+	color: #FFF;
+}
+
+#todo_list .bg_total, #todo_list #total_count {
+	color: #FFF;
+	background-color: #000;
+}
+
+#todo_list td.type {
+	padding: 2px;
+}
+
+#todo_list .todo_hidden {
+	display: none;
+}
+
+/* TODO: alternate row bg colors don't work anymore with filtering */
+/*#todo_list table.todo_content tr[class=""]:nth-child(even) {
+  background-color: rgba(127,127,127,0.15);
+}*/
+
+#toplink {
+	position: fixed;
+	bottom: 1em;
+	right: 1em;
+}
+
+label.filter {
+  position: absolute;
+  padding-top: 4px;
+}
+
+label.disabled {
+  opacity: .66;
+}
+
+#filter, #trigger_relative_paths {
+	margin-left: 4em;
+}
+
+fieldset {
+	clear: both;
+}
+fieldset p {
+	margin: 0;
+}
+
+fieldset p ~ p {
+	margin-top: 1ex;
+}

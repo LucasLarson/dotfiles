@@ -1,0 +1,108 @@
+<html>
+<head>
+<!-- Recognized mime-types, should be JavaScript -->
+  <script type="application/ecmascript">
+    class ClassName { }
+  </script>
+
+  <script type="application/javascript">
+    class ClassName { }
+  </script>
+
+  <script type="application/x-ecmascript">
+    class ClassName { }
+  </script>
+
+  <script type="application/x-javascript">
+    class ClassName { }
+  </script>
+
+  <script type="text/ecmascript">
+    class ClassName { }
+  </script>
+
+  <script type="text/javascript">
+    class ClassName { }
+  </script>
+
+  <script type="text/javascript1.0">
+    class ClassName { }
+  </script>
+
+  <script type="text/javascript1.1">
+    class ClassName { }
+  </script>
+
+  <script type="text/javascript1.2">
+    class ClassName { }
+  </script>
+
+  <script type="text/javascript1.3">
+    class ClassName { }
+  </script>
+
+  <script type="text/javascript1.4">
+    class ClassName { }
+  </script>
+
+  <script type="text/javascript1.5">
+    class ClassName { }
+  </script>
+
+  <script type="text/jscript">
+    class ClassName { }
+  </script>
+
+  <script type="text/livescript">
+    class ClassName { }
+  </script>
+
+  <script type="text/x-ecmascript">
+    class ClassName { }
+  </script>
+
+  <script type="text/x-javascript">
+    class ClassName { }
+  </script>
+
+
+
+<!-- Recognized mime-types should be case insensitive, should be JavaScript -->
+  <script type="text/JavaScript">
+    class ClassName { }
+  </script>
+
+
+<!-- Module special case, should be JavaScript -->
+  <script type="module">
+    class ClassName { }
+  </script>
+
+
+<!-- Empty value, should be JavaScript -->
+  <script type="">
+    class ClassName { }
+  </script>
+
+
+<!-- HTML Template, should be embedded HTML -->
+  <script type="text/template">
+    <h1>Foobar</h1>
+  </script>
+
+
+<!-- Unrecognized value, should NOT be JavaScript -->
+  <script type="foobar">
+    class ClassName { }
+  </script>
+
+
+<!-- Anonymous, should be JavaScript -->
+  <script>
+    class ClassName { }
+  </script>
+</head>
+<body>
+
+</body>
+</html>

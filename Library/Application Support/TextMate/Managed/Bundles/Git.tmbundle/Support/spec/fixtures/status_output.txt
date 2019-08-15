@@ -1,0 +1,6 @@
+A  new_file_and_added.txt
+R  lib/formatters/commit/layout.html.erb -> app/views/layouts/application.html.erb
+ M project.txt
+ D small.diff
+?? dir/
+?? directory.txt

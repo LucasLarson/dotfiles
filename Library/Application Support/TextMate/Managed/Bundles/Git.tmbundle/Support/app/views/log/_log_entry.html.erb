@@ -1,0 +1,25 @@
+<div>
+  <div class="infobox">
+    <% expanded_detail_dom_id = "detail_#{branch_name}_#{log_entry[:rev]}" %>
+    <a href="javascript:toggle_diff('<%= expanded_detail_dom_id %>');" id="toggle_link_<%= expanded_detail_dom_id %>" class="expand_link">+</a>
+    <span style='float:left'>
+      <strong><%= short_rev(log_entry[:rev]) %></strong>
+      committed by 
+      <strong><%= log_entry[:author] %></strong>
+    </span>
+    
+    <span style='float:right'> 
+      <abbr title="<%= log_entry[:date].to_friendly %>">
+        <%= htmlize(relative_date(log_entry[:date])) %> ago
+      </abbr>
+    </span>      
+    <br clear="all" />
+  </div>
+  <div style='padding: 10px 15px 0px 15px;'>
+    <div>
+      <%= htmlize(log_entry[:msg])%>
+    </div>
+    <br clear="both"/>
+    <%= content_tag :div, :class => "diff", :style => "display: none;", :rev => log_entry[:rev], :path => path, :git_path => git.path, :id => expanded_detail_dom_id %>
+  </div>  
+</div>

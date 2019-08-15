@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby20
+
+if ENV['TM_DROPPED_FILE'] =~ /(?i)\.mp4$/
+  mimetype = 'mp4'
+elsif ENV['TM_DROPPED_FILE'] =~ /(?i)\.mp3$/
+  mimetype = 'mp3'
+elsif ENV['TM_DROPPED_FILE'] =~ /(?i)\.og[ga]$/
+  mimetype = 'ogg'
+elsif ENV['TM_DROPPED_FILE'] =~ /(?i)\.webm$/
+  mimetype = 'webm'
+elsif ENV['TM_DROPPED_FILE'] =~ /(?i)\.flac$/
+  mimetype = 'flac'  
+elsif ENV['TM_DROPPED_FILE'] =~ /(?i)\.wave?$/
+  mimetype = 'wav'  
+end
+
+puts &lt;&lt;~TAG
+  &lt;audio controls&gt;
+  	&lt;source src="#{ENV['TM_DROPPED_FILE']}" type="audio/#{mimetype}"${TM_XHTML}&gt;
+
+  	&lt;p&gt;Your browser doesn't support HTML5 audio. Here is
+  		a &lt;a href="#{ENV['TM_DROPPED_FILE']}"&gt;link to the audio&lt;/a&gt; instead.&lt;/p&gt;
+  &lt;/audio&gt;
+TAG
+</string>
+	<key>draggedFileExtensions</key>
+	<array>
+		<string>mp4</string>
+		<string>mp3</string>
+		<string>ogg</string>
+		<string>oga</string>
+		<string>webm</string>
+		<string>flac</string>
+		<string>wav</string>
+		<string>wave</string>
+	</array>
+	<key>name</key>
+	<string>Insert Audio</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>text.html</string>
+	<key>uuid</key>
+	<string>01D7DB7F-0A1E-4086-9277-562FD85A58CC</string>
+</dict>
+</plist>
