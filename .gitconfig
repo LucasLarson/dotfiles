@@ -1,0 +1,10 @@
+[user]
+	name = Lucas Larson
+	email = LucasLarson@users.noreply.github.com
+[core]
+	excludesfile = ~/.gitignore_global
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

@@ -1,0 +1,12 @@
+"*":
+  core:
+    projectHome: "/Users/LucasLarson/Code"
+    telemetryConsent: "limited"
+  editor:
+    preferredLineLength: 79
+    showInvisibles: true
+    softWrap: true
+  "exception-reporting":
+    userId: "211d116f-e19e-4563-a558-477e75bb795f"
+  welcome:
+    showOnStartup: false
