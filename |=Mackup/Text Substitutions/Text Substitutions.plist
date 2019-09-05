@@ -1894,6 +1894,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>�</string>
+		<key>shortcut</key>
+		<string>mojibake</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Montana</string>
 		<key>shortcut</key>
 		<string>monatana</string>
