@@ -1708,6 +1708,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>≤</string>
+		<key>shortcut</key>
+		<string>lessthanequal</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Lucas</string>
 		<key>shortcut</key>
 		<string>licad</string>
