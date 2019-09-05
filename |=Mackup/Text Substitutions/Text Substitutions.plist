@@ -2092,6 +2092,36 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Pellettieri</string>
+		<key>shortcut</key>
+		<string>peletieri</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Pellettieri</string>
+		<key>shortcut</key>
+		<string>pelettieri</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Pellettieri</string>
+		<key>shortcut</key>
+		<string>pelletieri</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Pellettieri</string>
+		<key>shortcut</key>
+		<string>pellettieri</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Pellettieri</string>
+		<key>shortcut</key>
+		<string>PELLETTIERI</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>π</string>
 		<key>shortcut</key>
 		<string>pi</string>
