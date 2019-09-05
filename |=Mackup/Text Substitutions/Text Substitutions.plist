@@ -2638,6 +2638,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>tszuj</string>
+		<key>shortcut</key>
+		<string>tsujz</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Tuesday</string>
 		<key>shortcut</key>
 		<string>tuesfay</string>
@@ -2647,6 +2653,12 @@
 		<string>ı</string>
 		<key>shortcut</key>
 		<string>Turkishi</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>tszuj</string>
+		<key>shortcut</key>
+		<string>tzujz</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -3061,6 +3073,12 @@
 		<string>York</string>
 		<key>shortcut</key>
 		<string>yrok</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>tszuj</string>
+		<key>shortcut</key>
+		<string>zhoozh</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
