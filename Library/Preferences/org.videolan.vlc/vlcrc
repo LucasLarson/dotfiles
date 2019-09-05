@@ -163,7 +163,7 @@
 [macosx] # Mac OS X interface
 
 # Run VLC with dark interface style (boolean)
-#macosx-interfacestyle=0
+macosx-interfacestyle=1
 
 # Use the native fullscreen mode (boolean)
 #macosx-nativefullscreenmode=0
