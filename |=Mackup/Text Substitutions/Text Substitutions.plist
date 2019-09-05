@@ -964,6 +964,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>GoDaddy</string>
+		<key>shortcut</key>
+		<string>GoDaddy</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>😌</string>
 		<key>shortcut</key>
 		<string>gratefulface</string>
@@ -2791,6 +2797,12 @@
 		<string>won’t</string>
 		<key>shortcut</key>
 		<string>wont</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>WordPress</string>
+		<key>shortcut</key>
+		<string>WordPress</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
