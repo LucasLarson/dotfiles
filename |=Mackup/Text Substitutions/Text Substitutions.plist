@@ -1828,6 +1828,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Massachusetts</string>
+		<key>shortcut</key>
+		<string>massa</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Massachusetts</string>
+		<key>shortcut</key>
+		<string>massachussetts</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>☤</string>
 		<key>shortcut</key>
 		<string>medicalstaff</string>
