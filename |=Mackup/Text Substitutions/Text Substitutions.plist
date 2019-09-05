@@ -1438,6 +1438,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>𝑗𝑢𝑠𝑡</string>
+		<key>shortcut</key>
+		<string>italicjust</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>𝑘</string>
 		<key>shortcut</key>
 		<string>italick</string>
@@ -1585,12 +1591,6 @@
 		<string>ಠ_ಠ</string>
 		<key>shortcut</key>
 		<string>judgmentalface</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>𝑗𝑢𝑠𝑡</string>
-		<key>shortcut</key>
-		<string>𝑗𝑢𝑠𝑡</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
