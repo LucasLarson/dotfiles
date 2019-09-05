@@ -256,6 +256,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>adorbs</string>
+		<key>shortcut</key>
+		<string>adorbs</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>article</string>
 		<key>shortcut</key>
 		<string>adrticlr</string>
@@ -379,6 +385,12 @@
 		<string>(｡˘З˘)ᗡლ==8</string>
 		<key>shortcut</key>
 		<string>blowjob</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>boyf</string>
+		<key>shortcut</key>
+		<string>boyf</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1993,6 +2005,12 @@
 		<string>′</string>
 		<key>shortcut</key>
 		<string>prime</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>printworthy</string>
+		<key>shortcut</key>
+		<string>printworthy</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
