@@ -2122,6 +2122,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>phở</string>
+		<key>shortcut</key>
+		<string>pho</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>π</string>
 		<key>shortcut</key>
 		<string>pi</string>
