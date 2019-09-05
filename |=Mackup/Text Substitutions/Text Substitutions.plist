@@ -76,6 +76,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>±</string>
+		<key>shortcut</key>
+		<string>+/-</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>+1.646.318.1888</string>
 		<key>shortcut</key>
 		<string>+1.646.318.1888</string>
@@ -1945,6 +1951,24 @@
 		<string>pls</string>
 		<key>shortcut</key>
 		<string>pls</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>±</string>
+		<key>shortcut</key>
+		<string>plusmin</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>±</string>
+		<key>shortcut</key>
+		<string>plusminus</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>±</string>
+		<key>shortcut</key>
+		<string>plusmn</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
