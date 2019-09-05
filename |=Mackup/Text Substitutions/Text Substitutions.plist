@@ -1684,6 +1684,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
+		<string>lcuas</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>ℒ</string>
 		<key>shortcut</key>
 		<string>lcursive</string>
@@ -1717,6 +1723,12 @@
 		<string>𝑙𝑖𝑡𝑒𝑟𝑎𝑙𝑙𝑦</string>
 		<key>shortcut</key>
 		<string>literallyitalic</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Larson</string>
+		<key>shortcut</key>
+		<string>lqrson</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1783,6 +1795,12 @@
 		<string>Lucas</string>
 		<key>shortcut</key>
 		<string>luvad</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
+		<string>luvas</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
