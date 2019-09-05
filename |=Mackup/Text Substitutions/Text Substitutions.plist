@@ -1852,6 +1852,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Kevin</string>
+		<key>shortcut</key>
+		<string>mevib</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>−</string>
 		<key>shortcut</key>
 		<string>minus</string>
