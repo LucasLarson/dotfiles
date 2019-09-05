@@ -1,6 +1,7 @@
 [user]
 	name = Lucas Larson
-	email = LucasLarson@users.noreply.github.com
+	email = Lucas.Larson+git@gmail.com
+	signingkey = A30A5D0654370E2ADC59618E6D2FDC0BEC1F41B8
 [core]
 	excludesfile = ~/.gitignore_global
 [filter "lfs"]
@@ -8,3 +9,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[gpg]
+	program = /usr/local/bin/gpg
+[commit]
+	gpgsign = true
