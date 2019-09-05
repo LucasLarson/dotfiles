@@ -808,6 +808,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>ʃ</string>
+		<key>shortcut</key>
+		<string>esh</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>et</string>
 		<key>shortcut</key>
 		<string>ét</string>
