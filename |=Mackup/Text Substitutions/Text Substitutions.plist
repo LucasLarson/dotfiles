@@ -1318,6 +1318,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Iñigo</string>
+		<key>shortcut</key>
+		<string>inigo</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>∫</string>
 		<key>shortcut</key>
 		<string>integral</string>
