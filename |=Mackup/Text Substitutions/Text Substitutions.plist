@@ -2770,6 +2770,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>↑</string>
+		<key>shortcut</key>
+		<string>uparrow</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>vis‑à‑vis</string>
 		<key>shortcut</key>
 		<string>vav</string>
