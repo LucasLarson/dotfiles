@@ -1162,6 +1162,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>thanks</string>
+		<key>shortcut</key>
+		<string>htanks</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>the</string>
 		<key>shortcut</key>
 		<string>hte</string>
@@ -2371,6 +2377,12 @@
 		<string>Thanksgiving</string>
 		<key>shortcut</key>
 		<string>thanhskivigg</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>thank</string>
+		<key>shortcut</key>
+		<string>tHank</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
