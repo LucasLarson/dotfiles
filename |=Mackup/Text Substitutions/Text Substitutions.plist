@@ -2164,6 +2164,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Post‑it Notes</string>
+		<key>shortcut</key>
+		<string>postits</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>£</string>
 		<key>shortcut</key>
 		<string>poundsterling</string>
