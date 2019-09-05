@@ -2056,6 +2056,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>onomatopoeia</string>
+		<key>shortcut</key>
+		<string>onomanopeia</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>onomatopoeia</string>
+		<key>shortcut</key>
+		<string>onomonopeia</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>⌥</string>
 		<key>shortcut</key>
 		<string>optionkey</string>
