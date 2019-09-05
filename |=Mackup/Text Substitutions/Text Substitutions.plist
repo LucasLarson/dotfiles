@@ -1822,6 +1822,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>‾</string>
+		<key>shortcut</key>
+		<string>macron</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>♂</string>
 		<key>shortcut</key>
 		<string>malesymbol</string>
@@ -2011,6 +2017,12 @@
 		<string>⌥</string>
 		<key>shortcut</key>
 		<string>optionkey</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>‾</string>
+		<key>shortcut</key>
+		<string>overline</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
