@@ -1870,6 +1870,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Missoula</string>
+		<key>shortcut</key>
+		<string>missoual</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Montana</string>
 		<key>shortcut</key>
 		<string>monatana</string>
@@ -1945,6 +1951,12 @@
 		<string>Mother’s Day</string>
 		<key>shortcut</key>
 		<string>mothersday</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>motnant</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
