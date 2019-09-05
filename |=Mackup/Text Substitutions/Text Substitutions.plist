@@ -958,6 +958,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>fucked</string>
+		<key>shortcut</key>
+		<string>fycked</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>£</string>
 		<key>shortcut</key>
 		<string>gbp</string>
