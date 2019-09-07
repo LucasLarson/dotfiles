@@ -17,3 +17,11 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH # delete if you already modified MANPATH elsewhere
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+
+#######################
+# Alias and Functions # via https://github.com/jeefberkey/dotfiles/blob/2ded1c3a813957909687a8ddce8a9befcc6b51d1/.zshrc#L48-L61
+#######################
+alias gti  = "git"
+alias atom = "atom-beta"
+alias apm  = "apm-beta"
