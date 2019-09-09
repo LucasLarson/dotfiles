@@ -8,5 +8,10 @@
     softWrap: true
   "exception-reporting":
     userId: "211d116f-e19e-4563-a558-477e75bb795f"
+  "gitlab-integration":
+    token: "MGH-pQyz3rMrsU1Egyth"
   welcome:
     showOnStartup: false
+".git-commit.text":
+  editor:
+    preferredLineLength: 72
