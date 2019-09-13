@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>children</key>
+	<array>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Library/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Library</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+	</array>
+	<key>expanded</key>
+	<true/>
+	<key>name</key>
+	<string>Repositories</string>
+	<key>type</key>
+	<integer>3</integer>
+</dict>
+</plist>
