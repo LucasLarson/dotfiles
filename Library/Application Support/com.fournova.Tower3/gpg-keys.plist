@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>email</key>
+		<string>Lucas.Larson@gmail.com</string>
+		<key>fingerprint</key>
+		<string>D096F1662BB5270BE887E86FD91333D24E8231BB</string>
+		<key>username</key>
+		<string>Lucas Larson</string>
+	</dict>
+	<dict>
+		<key>email</key>
+		<string>lucas@lucaslarson.net</string>
+		<key>fingerprint</key>
+		<string>AE0EBA55B8F121F2421180AF148E347594485E9F</string>
+		<key>username</key>
+		<string>Lucas Larson</string>
+	</dict>
+	<dict>
+		<key>email</key>
+		<string>Lucas@LucasLarson.net</string>
+		<key>fingerprint</key>
+		<string>1FE204C82D5FE12F22FB60BB841A18979E4FB685</string>
+		<key>username</key>
+		<string>Lucas Larson</string>
+	</dict>
+	<dict>
+		<key>email</key>
+		<string>Lucas.Larson+git@gmail.com</string>
+		<key>fingerprint</key>
+		<string>A30A5D0654370E2ADC59618E6D2FDC0BEC1F41B8</string>
+		<key>username</key>
+		<string>Lucas Larson</string>
+	</dict>
+</array>
+</plist>
