@@ -10,6 +10,7 @@
     userId: "211d116f-e19e-4563-a558-477e75bb795f"
   "gitlab-integration":
     token: ""
+  "split-diff": {}
   welcome:
     showOnStartup: false
 ".git-commit.text":
