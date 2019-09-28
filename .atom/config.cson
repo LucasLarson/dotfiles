@@ -3,6 +3,8 @@
     projectHome: "/Users/LucasLarson/Code"
     telemetryConsent: "limited"
   editor:
+    fontFamily: "Dank, Dank Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 15
     preferredLineLength: 79
     showInvisibles: true
     softWrap: true
@@ -10,7 +12,8 @@
     userId: "211d116f-e19e-4563-a558-477e75bb795f"
   "gitlab-integration":
     token: 
-  "split-diff": {}
+  "split-diff":
+    ignoreWhitespace: true
   welcome:
     showOnStartup: false
 ".git-commit.text":
