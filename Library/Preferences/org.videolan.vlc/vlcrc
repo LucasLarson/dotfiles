@@ -1,5 +1,5 @@
 ﻿###
-###  vlc 3.0.6
+###  vlc 3.0.8
 ###
 
 ###
@@ -522,7 +522,7 @@ macosx-interfacestyle=1
 #sout-avi-subject=
 
 # Encoder (string)
-#sout-avi-encoder=VLC Media Player - 3.0.6 Vetinari
+#sout-avi-encoder=VLC Media Player - 3.0.8 Vetinari
 
 # Keywords (string)
 #sout-avi-keywords=
@@ -1253,7 +1253,7 @@ macosx-interfacestyle=1
 #prefetch-buffer-size=16384
 
 # Read size (integer)
-#prefetch-read-size=16384
+#prefetch-read-size=16777216
 
 # Seek threshold (integer)
 #prefetch-seek-threshold=16384
@@ -2964,6 +2964,9 @@ auhal-audio-device=0
 # Advanced options (string)
 #sout-avformat-options=
 
+# Reset timestamps (boolean)
+#sout-avformat-reset-ts=0
+
 # Advanced options (string)
 #avio-options=
 
@@ -3867,7 +3870,7 @@ auhal-audio-device=0
 #keystore=
 
 # Play files randomly forever (boolean)
-#random=0
+random=1
 
 # Repeat all (boolean)
 #loop=0

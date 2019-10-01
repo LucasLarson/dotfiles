@@ -2,7 +2,54 @@
 <playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
 	<title>Media Library</title>
 	<trackList>
+		<track>
+			<location>http://quarrel.streamguys1.com:8290/xstream</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>vlc://nop</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>1</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://18243.live.streamtheworld.com:80/KUFMFM_SC</location>
+			<title>KUFM-FM</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>2</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://khpr-ice.streamguys1.com:80/kipo64-aac</location>
+			<title>/kipo64-aac</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>3</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>https://streams.kqed.org/kqedradio</location>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>4</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://khpr-ice.streamguys1.com:80/khpr64-aac</location>
+			<title>/khpr64-aac</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>5</vlc:id>
+			</extension>
+		</track>
 	</trackList>
 	<extension application="http://www.videolan.org/vlc/playlist/0">
+		<vlc:node title="xstream.m3u">
+			<vlc:item tid="0"/>
+		</vlc:node>
+		<vlc:item tid="1"/>
+		<vlc:item tid="2"/>
+		<vlc:item tid="3"/>
+		<vlc:item tid="4"/>
+		<vlc:item tid="5"/>
 	</extension>
 </playlist>
