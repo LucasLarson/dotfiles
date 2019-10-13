@@ -1,6 +1,6 @@
 [user]
 	name = Lucas Larson
-	email = LucasLarson@users.noreply.github.com
+	email = LucasLarson@protonmail.com
 	signingkey = A30A5D0654370E2ADC59618E6D2FDC0BEC1F41B8
 [core]
 	excludesfile = ~/.gitignore_global
