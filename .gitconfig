@@ -1,7 +1,7 @@
 [user]
 	name = Lucas Larson
 	email = LucasLarson@protonmail.com
-	signingkey = A30A5D0654370E2ADC59618E6D2FDC0BEC1F41B8
+	signingkey = 95A36FDCABD3126977903037328BF41D38B47CC2
 [core]
 	excludesfile = ~/.gitignore_global
 [filter "lfs"]
