@@ -2206,6 +2206,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Pirahã</string>
+		<key>shortcut</key>
+		<string>piraha</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>pls</string>
 		<key>shortcut</key>
 		<string>pls</string>
@@ -2251,6 +2257,12 @@
 		<string>President‑Elect</string>
 		<key>shortcut</key>
 		<string>president-elect</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Pirahã</string>
+		<key>shortcut</key>
+		<string>priaha</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
