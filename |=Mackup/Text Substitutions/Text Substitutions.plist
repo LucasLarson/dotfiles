@@ -2584,6 +2584,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>ᵉ</string>
+		<key>shortcut</key>
+		<string>supe</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Super Bowl</string>
 		<key>shortcut</key>
 		<string>superbowl</string>
