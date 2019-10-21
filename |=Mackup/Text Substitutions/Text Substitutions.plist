@@ -2338,6 +2338,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>ə</string>
+		<key>shortcut</key>
+		<string>schwa</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>§</string>
 		<key>shortcut</key>
 		<string>sect</string>
