@@ -490,6 +490,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>↑</string>
+		<key>shortcut</key>
+		<string>carr</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>↑</string>
+		<key>shortcut</key>
+		<string>Carr</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>¢</string>
 		<key>shortcut</key>
 		<string>centsign</string>
