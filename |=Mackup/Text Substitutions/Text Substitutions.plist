@@ -330,6 +330,12 @@
 		<key>phrase</key>
 		<string>≈</string>
 		<key>shortcut</key>
+		<string>approxequal</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>≈</string>
+		<key>shortcut</key>
 		<string>approximatelye</string>
 	</dict>
 	<dict>
