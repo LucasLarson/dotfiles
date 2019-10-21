@@ -1896,6 +1896,12 @@
 		<key>phrase</key>
 		<string>Missoula</string>
 		<key>shortcut</key>
+		<string>missioula</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Missoula</string>
+		<key>shortcut</key>
 		<string>missoual</string>
 	</dict>
 	<dict>
@@ -1903,6 +1909,12 @@
 		<string>�</string>
 		<key>shortcut</key>
 		<string>mojibake</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>monatan</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1944,6 +1956,18 @@
 		<key>phrase</key>
 		<string>Montana</string>
 		<key>shortcut</key>
+		<string>montnaa</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>montnaan</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
 		<string>montnan</string>
 	</dict>
 	<dict>
@@ -1951,6 +1975,18 @@
 		<string>Montana</string>
 		<key>shortcut</key>
 		<string>montnana</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>monyana</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>monynaa</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
