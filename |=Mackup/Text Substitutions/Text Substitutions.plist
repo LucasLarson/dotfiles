@@ -2992,12 +2992,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Walker</string>
-		<key>shortcut</key>
-		<string>walker</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>wasn’t</string>
 		<key>shortcut</key>
 		<string>wasn't</string>
