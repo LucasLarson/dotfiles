@@ -1702,6 +1702,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Larson</string>
+		<key>shortcut</key>
+		<string>larosn</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Larson</string>
+		<key>shortcut</key>
+		<string>laroson</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>←</string>
 		<key>shortcut</key>
 		<string>larr</string>
