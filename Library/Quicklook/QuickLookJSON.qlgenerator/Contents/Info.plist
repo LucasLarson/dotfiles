@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>13A603</string>
+	<string>19A602</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDocumentTypes</key>
@@ -28,13 +28,17 @@
 	<key>CFBundleExecutable</key>
 	<string>QuickLookJSON</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.jade.quicklook.json</string>
+	<string>com.sagtau.quicklook.json</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>QuickJLookSON</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1</string>
+	<string>2</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFPlugInDynamicRegisterFunction</key>
@@ -58,19 +62,21 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>5A2053</string>
+	<string>11A1027</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>13A595</string>
+	<string>19A547</string>
 	<key>DTSDKName</key>
-	<string>macosx10.9</string>
+	<string>macosx10.15</string>
 	<key>DTXcode</key>
-	<string>0501</string>
+	<string>1110</string>
 	<key>DTXcodeBuild</key>
-	<string>5A2053</string>
+	<string>11A1027</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.10</string>
 	<key>QLNeedsToBeRunInMainThread</key>
 	<true/>
 	<key>QLPreviewHeight</key>
