@@ -4,6 +4,7 @@
 	signingkey = 95A36FDCABD3126977903037328BF41D38B47CC2
 [core]
 	excludesfile = ~/.gitignore_global
+	ignorecase = false
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
