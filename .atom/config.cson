@@ -10,8 +10,13 @@
     softWrap: true
   "exception-reporting":
     userId: "211d116f-e19e-4563-a558-477e75bb795f"
+  "find-and-replace":
+    enablePCRE2: true
+    useRipgrep: true
   "gitlab-integration":
     token: 
+  "spell-check":
+    addKnownWords: true
   "split-diff":
     ignoreWhitespace: true
   welcome:
