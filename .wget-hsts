@@ -3,3 +3,4 @@
 # <hostname>	<port>	<incl. subdomains>	<created>	<max-age>
 lucascantor.com	0	1	1511121306	31536000
 wordpress.com	0	0	1560713100	15552000
+accounts.google.com	0	1	1573755110	31536000
