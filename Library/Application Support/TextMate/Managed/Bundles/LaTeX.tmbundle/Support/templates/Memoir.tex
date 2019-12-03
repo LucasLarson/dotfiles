@@ -1,0 +1,89 @@
+% !TEX style = snippet
+% !TEX TS-program = pdflatex
+%
+% Created by ${TM_FULLNAME} on `date "+%Y-%m-%d"`.
+% Copyright (c) `date "+%Y"` ${TM_ORGANIZATION}.
+\documentclass[
+  a4paper, % paper size.
+  11pt, % type size.
+  % article,
+  % oneside,  % all pages setup with the same margins.
+  twoside,    % margins change from recto to verso pages.
+  onecolumn,  % only one column of text on a page.
+  openright,  % each chapter will start on a recto page.
+  % openleft, % each chapter will start on a verso page.
+  % openany,  % chapters may start on either recto or verso pages.
+]{memoir}
+
+% Enable hyperlinking/hypertext and PDF metadata
+\usepackage{hyperref}
+
+\hypersetup
+{
+  pdftitle   = {${1:Title}},
+  pdfauthor  = {${2:Author}},
+  pdfsubject = {${3:Subject}}
+}
+
+\title{$1}
+\author{$2}
+
+\usepackage{lipsum} % to support fake lorem ipsum text
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+
+\begin{abstract}
+\lipsum[1-2]
+\end{abstract}
+\clearpage
+
+\tableofcontents*
+\clearpage
+
+\chapter*[Intro Heading]{Introduction}
+
+\lipsum[1-12]
+
+\mainmatter
+
+\part{Memoir Supported Part I}
+
+\chapter[Chapter 1 TOC entry][Chapter One Heading]{Chapter One}
+
+\lipsum[1-13] 
+
+\chapter{Chapter Two}
+
+\lipsum[1-14]
+
+\part{Memoir Supported Part II}
+
+\chapter{Another Part, Another Chapter}
+
+\lipsum[1-14]
+
+\appendix
+
+\part{Appendices go here}
+
+\chapter{Appendix I am}
+
+\lipsum[1-9]
+
+\chapter{Because I am appended}
+
+\lipsum[1-11]
+
+\backmatter
+
+% Bibliography goes here
+% ----------------------
+
+% \bibliographystyle{ieeetr}
+% \bibliography{ref}
+
+\end{document}

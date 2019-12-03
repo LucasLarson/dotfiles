@@ -1,0 +1,16 @@
+INFO - This is Biber 1.8
+INFO - Logfile is 'Computer Aided Verification [Exercises 2014].blg'
+INFO - Reading 'Computer Aided Verification [Exercises 2014].bcf'
+INFO - Found 2 citekeys in bib section 0
+INFO - Processing section 0
+INFO - Looking for bibtex format file 'References.bib' for section 0
+INFO - Decoding LaTeX character macros into UTF-8
+INFO - Found BibTeX data source 'References.bib'
+INFO - Overriding locale 'en_US.UTF-8' default tailoring 'variable = shifted' with 'variable = non-ignorable'
+INFO - Sorting 'entry' list 'anyt' keys
+INFO - No sort tailoring available for locale 'en_US.UTF-8'
+INFO - Writing 'Computer Aided Verification [Exercises 2014].bbl' with encoding 'UTF-8'
+WARN - Warning: Found biblatex control file version 2.6, expected version 2.5
+FATAL - Cannot find control file 'myfile.bcf'! - did you pass the "backend=biber" option to BibLaTeX?
+ERROR - Cannot find file 'References/References1'!
+INFO - Output to Computer Aided Verification [Exercises 2014].bbl

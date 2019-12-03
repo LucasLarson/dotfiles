@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby18
+
+# -- Imports -------------------------------------------------------------------
+
+require ENV['TM_BUNDLE_SUPPORT'] + '/lib/Ruby/command.rb'
+
+# -- Main ----------------------------------------------------------------------
+
+include_file</string>
+	<key>draggedFileExtensions</key>
+	<array>
+		<string>tex</string>
+	</array>
+	<key>name</key>
+	<string>Include File</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>text.tex.latex</string>
+	<key>uuid</key>
+	<string>5C321350-C9CD-11D9-B88C-000A95C0F626</string>
+</dict>
+</plist>

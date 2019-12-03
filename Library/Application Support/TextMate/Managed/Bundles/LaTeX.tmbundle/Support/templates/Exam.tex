@@ -1,0 +1,29 @@
+% !TEX style = snippet
+% !TEX TS-program = xelatex
+%
+% Created by ${TM_FULLNAME} on `date "+%Y-%m-%d"`.
+% Copyright (c) `date "+%Y"` ${TM_ORGANIZATION}.
+\documentclass[addpoints]{exam}
+
+\usepackage{polyglossia}
+
+\firstpageheader{${1:Course}}{Exam}{Page \thepage\ of \numpages}
+\firstpageheadrule
+
+\begin{document}
+
+\begin{center}
+  \fbox{\parbox{0.9\textwidth}{\centering
+        Answer the questions in the spaces provided on the
+        question sheets. If you run out of room for an answer,
+        continue on the back of the page.}}
+\end{center}
+
+\vspace{0.5cm}
+\makebox[0.9\textwidth]{Name:\enspace\hrulefill}
+
+\begin{questions}
+\question[${2:5}] ${3:First question}
+\end{questions}
+$4
+\end{document}

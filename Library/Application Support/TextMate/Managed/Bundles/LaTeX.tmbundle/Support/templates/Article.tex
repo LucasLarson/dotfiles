@@ -1,0 +1,31 @@
+% !TEX style = snippet
+% !TEX TS-program = xelatex
+%
+% Created by ${TM_FULLNAME} on `date "+%Y-%m-%d"`.
+% Copyright (c) `date "+%Y"` ${TM_ORGANIZATION}.
+\documentclass{article}
+
+\usepackage{polyglossia}
+\usepackage{hyperref}
+
+\hypersetup
+{
+  pdftitle   = {${1:Title}},
+  pdfsubject = {${2:Subject}},
+  pdfauthor  = {${TM_FULLNAME}}
+}
+
+\title{$1}
+\author{${TM_FULLNAME}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    ${3:Abstract}
+\end{abstract}
+
+\section{Introduction}
+$4
+\end{document}

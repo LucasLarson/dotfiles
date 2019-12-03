@@ -1,0 +1,36 @@
+% !TEX style = snippet
+% !TEX TS-program = xelatex
+%
+% Created by ${TM_FULLNAME} on `date "+%Y-%m-%d"`.
+% Copyright (c) `date "+%Y"` ${TM_ORGANIZATION}.
+\documentclass[foldmarks=false, fromalign=center, fromemail, fromrule=afteraddress,
+               refline=wide, subject=titled]{scrlttr2}
+
+\usepackage{polyglossia}
+\usepackage{hyperref}
+
+\hypersetup
+{
+  pdftitle   = {${1:Title}},
+  pdfsubject = {${2:Subject}},
+  pdfauthor  = {${TM_FULLNAME}}
+}
+
+\setkomavar{fromname}{${TM_FULLNAME}}
+\setkomavar{fromaddress}{${TM_ADDRESS}}
+\setkomavar{fromemail}{${TM_MAIL}}
+\setkomavar{fromphone}{${TM_PHONE}}
+\setkomavar{place}{${TM_CITY}}
+\setkomavar{title}{${1:Title}}
+\setkomavar{subject}{${2:Subject}}
+
+\begin{document}
+\begin{letter}{${3:Address Recipient}}
+
+\opening{Dear Recipient,}
+$4
+\closing{Yours Faithfully,}
+
+\end{letter}
+
+\end{document}

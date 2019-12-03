@@ -1,0 +1,66 @@
+Latexmk: This is Latexmk, John Collins, 10 Nov 2013, version: 4.39.
+**** Report bugs etc to John Collins <collins at phys.psu.edu>. ****
+Rule 'pdflatex': Rules & subrules not known to be previously run:
+   pdflatex
+Rule 'pdflatex': The following rules & subrules became out-of-date:
+      'pdflatex'
+------------
+Run number 1 of rule 'pdflatex'
+------------
+------------
+Running 'xelatex  -synctex=1 -file-line-error-style  -interaction=nonstopmode -recorder  "./ünicöde.tex"'
+------------
+Latexmk: applying rule 'pdflatex'...
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014) (preloaded format=xelatex)
+ restricted \write18 enabled.
+entering extended mode
+(./ünicöde.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/fontspec/fontspec.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/l3kernel/expl3.sty
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifpdf.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+(/usr/local/texlive/2014/texmf-dist/tex/latex/etex-pkg/etex.sty)))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/l3packages/xparse/xparse.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/fontspec/fontspec-patches.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/fixltx2e.sty)
+*************************************************
+* LaTeX warning: "xparse/redefine-command"
+*
+* Redefining document command \oldstylenums with arg. spec. 'm' on line 128.
+*************************************************
+) (/usr/local/texlive/2014/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/euenc/eu1enc.def)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/euenc/eu1lmr.fd))
+(/usr/local/texlive/2014/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/tipa/t3enc.def
+(/usr/local/texlive/2014/texmf-dist/tex/latex/euenc/eu1lmss.fd))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/trig.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/latexconfig/graphics.cfg)
+(/usr/local/texlive/2014/texmf-dist/tex/xelatex/xetex-def/xetex.def))))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+(./ünicöde.aux) (/usr/local/texlive/2014/texmf-dist/tex/latex/tipa/t3cmr.fd)
+Underfull \hbox (badness 10000) in paragraph at lines 8--12
+
+./ünicöde.tex:15: Undefined control sequence.
+l.15 \hi
+
+[1] (./ünicöde.aux) )
+(see the transcript file for additional information)
+Output written on ünicöde.pdf (1 page).
+SyncTeX written on ünicöde.synctex.gz.
+Transcript written on ünicöde.log.
+Latexmk: Log file says output to 'ünicöde.pdf'
+Collected error summary (may duplicate other messages):
+  pdflatex: Command for 'pdflatex' gave return code 256
+Latexmk: Use the -f option to force complete processing,
+ unless error was exceeding maximum runs of latex/pdflatex.
+Latexmk: Errors, so I did not complete making targets

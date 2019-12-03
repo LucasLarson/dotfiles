@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby18
+
+# -- Imports -------------------------------------------------------------------
+
+require ENV['TM_BUNDLE_SUPPORT'] + '/lib/Ruby/command.rb'
+
+# -- Main ----------------------------------------------------------------------
+
+include_code_listing</string>
+	<key>draggedFileExtensions</key>
+	<array>
+		<string>ada</string>
+		<string>ant</string>
+		<string>asm</string>
+		<string>as</string>
+		<string>c</string>
+		<string>cpp</string>
+		<string>htm</string>
+		<string>html</string>
+		<string>java</string>
+		<string>js</string>
+		<string>json</string>
+		<string>pl</string>
+		<string>php</string>
+		<string>py</string>
+		<string>rb</string>
+		<string>sh</string>
+		<string>sql</string>
+		<string>xml</string>
+		<string>vhdl</string>
+	</array>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Include Code Listing</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>text.tex.latex</string>
+	<key>uuid</key>
+	<string>404AC956-0D69-4E51-A0F0-771321A0914F</string>
+</dict>
+</plist>
