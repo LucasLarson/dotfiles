@@ -1,0 +1,150 @@
+Latexmk: This is Latexmk, John Collins, 10 Nov 2013, version: 4.39.
+**** Report bugs etc to John Collins <collins at phys.psu.edu>. ****
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex': Rules & subrules not known to be previously run:
+   pdflatex
+Rule 'pdflatex': The following rules & subrules became out-of-date:
+      'pdflatex'
+------------
+Run number 1 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -recorder  "external_bibliography.tex"'
+------------
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./external_bibliography.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/cite/cite.sty)
+(./external_bibliography.aux)
+
+LaTeX Warning: Citation `Deltron3030' on page 1 undefined on input line 8.
+
+No file external_bibliography.bbl.
+[1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./external_bibliography.aux)
+
+LaTeX Warning: There were undefined references.
+
+ )</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on external_bibliography.pdf (1 page, 24535 bytes).
+Transcript written on external_bibliography.log.
+Latexmk: Citation `Deltron3030' on page 1 undefined
+Latexmk: Non-existent bbl file 'external_bibliography.bbl'
+ No file external_bibliography.bbl.
+Latexmk: Log file says output to 'external_bibliography.pdf'
+Latexmk: Found bibliography file(s) [references.bib]
+Latexmk: Summary of warnings:
+  Latex failed to resolve 1 citation(s)
+Latexmk: applying rule 'bibtex external_bibliography'...
+Rule 'bibtex external_bibliography': File changes, etc:
+   Non-existent destination files:
+      'external_bibliography.bbl'
+------------
+Run number 1 of rule 'bibtex external_bibliography'
+------------
+For rule 'bibtex external_bibliography', running '&run_bibtex(  )' ...
+------------
+Running 'bibtex  "external_bibliography"'
+------------
+This is BibTeX, Version 0.99d (TeX Live 2014)
+The top-level auxiliary file: external_bibliography.aux
+The style file: plain.bst
+Database file #1: references.bib
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'external_bibliography.aux'
+      'external_bibliography.bbl'
+------------
+Run number 2 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -recorder  "external_bibliography.tex"'
+------------
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./external_bibliography.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/cite/cite.sty)
+(./external_bibliography.aux)
+
+LaTeX Warning: Citation `Deltron3030' on page 1 undefined on input line 8.
+
+(./external_bibliography.bbl) [1{/usr/local/texlive/2014/texmf-var/fonts/map/pd
+ftex/updmap/pdftex.map}] (./external_bibliography.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on external_bibliography.pdf (1 page, 33905 bytes).
+Transcript written on external_bibliography.log.
+Latexmk: Citation `Deltron3030' on page 1 undefined
+Latexmk: Found input bbl file 'external_bibliography.bbl'
+Latexmk: References changed.
+Latexmk: Log file says output to 'external_bibliography.pdf'
+Latexmk: Found bibliography file(s) [references.bib]
+Latexmk: Summary of warnings:
+  Latex failed to resolve 1 citation(s)
+Latexmk: applying rule 'bibtex external_bibliography'...
+Rule 'bibtex external_bibliography': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'external_bibliography.aux'
+------------
+Run number 2 of rule 'bibtex external_bibliography'
+------------
+For rule 'bibtex external_bibliography', running '&run_bibtex(  )' ...
+------------
+Running 'bibtex  "external_bibliography"'
+------------
+This is BibTeX, Version 0.99d (TeX Live 2014)
+The top-level auxiliary file: external_bibliography.aux
+The style file: plain.bst
+Database file #1: references.bib
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'external_bibliography.aux'
+------------
+Run number 3 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -recorder  "external_bibliography.tex"'
+------------
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./external_bibliography.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/cite/cite.sty)
+(./external_bibliography.aux) (./external_bibliography.bbl) [1{/usr/local/texli
+ve/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./external_bibliography.aux) )</usr/local/texlive/2014/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr10.pfb>
+Output written on external_bibliography.pdf (1 page, 25058 bytes).
+Transcript written on external_bibliography.log.
+Latexmk: Found input bbl file 'external_bibliography.bbl'
+Latexmk: Log file says output to 'external_bibliography.pdf'
+Latexmk: Found bibliography file(s) [references.bib]
+Latexmk: All targets (external_bibliography.pdf) are up-to-date

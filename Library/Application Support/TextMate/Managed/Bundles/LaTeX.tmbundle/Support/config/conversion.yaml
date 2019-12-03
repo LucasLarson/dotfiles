@@ -1,0 +1,43 @@
+# ------------------------------------------------------------------------------
+# This file contains two dictionaries. The command “Convert Character /
+# Selection to Symbol” uses both of them.
+#
+# 1. First the command searches for the character sequences specified in the
+#    keys of `word_to_character` in the current text. It then replaces every
+#    occurrence of a key with its value (a special character).
+#
+# 2. After that the command searches for the special characters specified in
+#    the keys of `character_to_symbol`. It then replaces each of these
+#    characters with their LaTeX symbol (the value of a key).
+# ------------------------------------------------------------------------------
+
+word_to_character:
+  ->: →
+  -->: ⟶
+  =>: ⇒
+  ==>: ⟹
+  '|->': ↦
+  <-: ←
+  <--: ⟵
+  <=: ⇐
+  <==: ⟸
+  <->: ↔
+  <=>: ⇔
+
+character_to_symbol:
+  →: \rightarrow
+  ⟶: \longrightarrow
+  ⇒: \Rightarrow
+  ⟹: \Longrightarrow
+  ↦: \mapsto
+  ←: \leftarrow
+  ⟵: \longleftarrow
+  ⇐: \Leftarrow
+  ⟸: \Longleftarrow
+  ↔: \leftrightarrow
+  ⇔: \Leftrightarrow
+  ≤: \leq
+  ≥: \geq
+  ¬: \lnot
+  ∧: \land
+  ∨: \lor

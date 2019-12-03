@@ -1,0 +1,33 @@
+a.dsphead {
+    text-decoration: none;
+    font-family: "Lucida Grande", sans-serif;
+    font-size: 120%;
+    font-weight: bold;
+    margin-left: .5em;
+}
+a.dsphead:hover {
+    text-decoration: underline;
+}
+.dspcont {
+    display: none;
+    text-decoration: none;
+    font-family: "Bitstream Vera Sans Mono", "Monaco", monospace;
+    margin: 0 20px 0 20px;
+}
+.dspcont a {
+    text-decoration: none;
+}
+.dspcont a:hover {
+    text-decoration: underline;
+}
+div#mypkg {
+    text-decoration: none;
+    font-family: "Bitstream Vera Sans Mono", "Monaco", monospace;
+}
+div#mypkg a {
+    text-decoration: none;
+    font-family: "Bitstream Vera Sans Mono", "Monaco", monospace;
+}
+div#mypkg a:hover {
+    text-decoration: none;
+}

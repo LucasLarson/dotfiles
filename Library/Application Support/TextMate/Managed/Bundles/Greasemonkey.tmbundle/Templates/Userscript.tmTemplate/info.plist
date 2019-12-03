@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>command</key>
+	<string>if [[ ! -f "$TM_NEW_FILE" ]]; then
+	ruby18 -e '
+		template = STDIN.read
+		# This file stores staple functions outside of the bundle
+		STAPLES = "#{ENV["HOME"]}/Library/Preferences/com.macromates.textmate.gmbundle.staples.user.js"
+		template.sub!(%r{// ==UserScript==.*?// ==/UserScript==\n\n}m, "");
+		template.sub!("/* Your favorite functions go here. */", File.read(STAPLES)) if File.exist?(STAPLES)
+		print template
+	' &lt; template.user.js &gt; "$TM_NEW_FILE"
+fi
+
+{ # Detach a process that inserts a header snippet
+
+	osascript "${TM_BUNDLE_SUPPORT}/load_snippet.scpt" "snippet.user.js"
+
+} &amp;&gt;/dev/null &amp;</string>
+	<key>extension</key>
+	<string>user.js</string>
+	<key>name</key>
+	<string>Userscript</string>
+	<key>uuid</key>
+	<string>CE909406-072C-4C55-B1B7-2EE123D27C20</string>
+</dict>
+</plist>

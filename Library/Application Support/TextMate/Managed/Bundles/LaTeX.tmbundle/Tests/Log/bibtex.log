@@ -1,0 +1,17 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+The top-level auxiliary file: Embedded Operating Systems.aux
+The style file: alpha.bst
+Database file #1: References.bib
+--line 45 of file References.bib
+Warning--entry type for "Life_With_Adeos" isn't style-file defined
+Warning--empty journal in Real-Time_Linux_Manifesto
+Warning--I didn't find a database entry for "Haggarty:01"
+Warning--to sort, need author or key in IEEE_1003_26
+Warning--entry type for "Realtime_Linux_Academic_Vs_Reality" isn't style-file defined
+--line 263 of file References.bib
+I was expecting a `,' or a `}'---line 25 of file biblio.bib
+Too many commas in name 1 of "S.R.~Arridge, S.R.~Grindrod, A.D.~Linney, P.S.~Tofts, D.~Wicks" for entry Arridge89
+You're missing a field name---line 5 of file biblio.bib
+I found no \bibdata command---while reading file Thesis_Final_ps_11142012a.aux
+I couldn't open style file natbib.bst
+(There were 4 warnings)

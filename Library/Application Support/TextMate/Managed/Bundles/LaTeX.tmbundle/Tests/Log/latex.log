@@ -1,0 +1,57 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./Embedded Operating Systems.tex
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+<Figures/Operating_System_Layer.pdf, id=20, 240.9pt x 338.26375pt>
+<use Figures/Operating_System_Layer.pdf>
+
+LaTeX Warning: Reference `figure:Operating_System_Layer' on page 3 undefined on
+ input line 159.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
+
+
+LaTeX Warning: Citation `Software_Entwicklung' on page 3 undefined on input lin
+e 161.
+
+LaTeX Warning: Citation `Embedded_OS_Market_Share_2005' on page 5 undefined on
+input line 194.
+
+[28] (./Embedded Operating Systems.aux)
+
+Package rerunfilecheck Warning: File `"Embedded Operating Systems".out' has cha
+nged.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
+
+pdfTeX warning: pdflatex (file ./figure/figure_1.pdf): PDF inclusion: found PDF version <1.6>, but at most version <1.5> allowed
+
+./makeglossaries.tex:22: Undefined control sequence.
+l.22 \blubber
+
+LaTeX Warning: There were undefined references.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2014/te
+xmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2014/texmf-dist/fonts
+/enc/dvips/inconsolata/i4-t1-0.enc}{/usr/local/texlive/2014/texmf-dist/fonts/en
+c/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/tex-g
+yre/q-ts1.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/tex-gyre/q-ec
+.enc}{/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/loca
+l/texlive/2014/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><
+/usr/local/texlive/2014/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/l
+ocal/texlive/2014/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/lm/lmb10.pfb></usr/local/texlive/20
+14/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2014/texmf-di
+st/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
+pe1/public/lm/lmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/l
+m/lmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/lm/lmri12.pfb
+></usr/local/texlive/2014/texmf-dist/fonts/type1/public/tex-gyre/qhvb.pfb>
+Output written on "Embedded Operating Systems.pdf" (28 pages, 474379 bytes).
+Transcript written on "Embedded Operating Systems.log".

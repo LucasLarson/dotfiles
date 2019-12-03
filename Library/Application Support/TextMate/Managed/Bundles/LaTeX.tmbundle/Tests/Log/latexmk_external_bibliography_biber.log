@@ -1,0 +1,204 @@
+Latexmk: This is Latexmk, John Collins, 10 Nov 2013, version: 4.39.
+**** Report bugs etc to John Collins <collins at phys.psu.edu>. ****
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex': Rules & subrules not known to be previously run:
+   pdflatex
+Rule 'pdflatex': The following rules & subrules became out-of-date:
+      'pdflatex'
+------------
+Run number 1 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -recorder  "external_bibliography_biber.tex"'
+------------
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./external_bibliography_biber.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex2.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/etex-pkg/etex.sty))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty))))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/logreq/logreq.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/logreq/logreq.def))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/blx-dm.def)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/blx-compat.def)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex.def)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/bbx/alphabetic.bbx
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/bbx/standard.bbx))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/cbx/alphabetic.cbx)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex.cfg)))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/lbx/english.lbx)
+(./external_bibliography_biber.aux)
+No file external_bibliography_biber.bbl.
+
+LaTeX Warning: Citation 'Deltron3030' on page 1 undefined on input line 10.
+
+
+LaTeX Warning: Empty bibliography on input line 13.
+
+[1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./external_bibliography_biber.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                external_bibliography_biber
+(biblatex)                and rerun LaTeX afterwards.
+
+ )</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+Output written on external_bibliography_biber.pdf (1 page, 26010 bytes).
+Transcript written on external_bibliography_biber.log.
+Latexmk: Non-existent bbl file 'external_bibliography_biber.bbl'
+ No file external_bibliography_biber.bbl.
+Latexmk: Citation 'Deltron3030' on page 1 undefined
+Latexmk: Log file says output to 'external_bibliography_biber.pdf'
+Latexmk: Summary of warnings:
+  Latex failed to resolve 1 citation(s)
+Latexmk: applying rule 'biber external_bibliography_biber'...
+Rule 'biber external_bibliography_biber': File changes, etc:
+   Non-existent destination files:
+      'external_bibliography_biber.bbl'
+------------
+Run number 1 of rule 'biber external_bibliography_biber'
+------------
+------------
+Running 'biber  "external_bibliography_biber"'
+------------
+INFO - This is Biber 1.8
+INFO - Logfile is 'external_bibliography_biber.blg'
+INFO - Reading 'external_bibliography_biber.bcf'
+INFO - Found 1 citekeys in bib section 0
+INFO - Processing section 0
+INFO - Looking for bibtex format file 'references.bib' for section 0
+INFO - Found BibTeX data source 'references.bib'
+INFO - Overriding locale 'en_US.UTF-8' default tailoring 'variable = shifted' with 'variable = non-ignorable'
+INFO - Sorting 'entry' list 'anyt' keys
+INFO - No sort tailoring available for locale 'en_US.UTF-8'
+INFO - Writing 'external_bibliography_biber.bbl' with encoding 'ascii'
+INFO - Output to external_bibliography_biber.bbl
+Latexmk: Found biber source file(s) [external_bibliography_biber.bcf references.bib]
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'external_bibliography_biber.aux'
+      'external_bibliography_biber.bbl'
+------------
+Run number 2 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -recorder  "external_bibliography_biber.tex"'
+------------
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./external_bibliography_biber.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex2.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/etex-pkg/etex.sty))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty))))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/logreq/logreq.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/logreq/logreq.def))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/blx-dm.def)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/blx-compat.def)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex.def)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/bbx/alphabetic.bbx
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/bbx/standard.bbx))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/cbx/alphabetic.cbx)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex.cfg)))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/lbx/english.lbx)
+(./external_bibliography_biber.aux) (./external_bibliography_biber.bbl)
+[1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./external_bibliography_biber.aux) )</usr/local/texlive/2014/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb>
+Output written on external_bibliography_biber.pdf (1 page, 34281 bytes).
+Transcript written on external_bibliography_biber.log.
+Latexmk: Found input bbl file 'external_bibliography_biber.bbl'
+Latexmk: Log file says output to 'external_bibliography_biber.pdf'
+Latexmk: Found biber source file(s) [external_bibliography_biber.bcf references.bib]
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'external_bibliography_biber.run.xml'
+------------
+Run number 3 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -recorder  "external_bibliography_biber.tex"'
+------------
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./external_bibliography_biber.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex2.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/etex-pkg/etex.sty))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/graphics/keyval.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/local/texlive/2014/texmf-dist/tex/generic/oberdiek/ifluatex.sty))))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/logreq/logreq.sty
+(/usr/local/texlive/2014/texmf-dist/tex/latex/logreq/logreq.def))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/blx-dm.def)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/blx-compat.def)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex.def)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/bbx/alphabetic.bbx
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/bbx/standard.bbx))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/cbx/alphabetic.cbx)
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/biblatex.cfg)))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/biblatex/lbx/english.lbx)
+(./external_bibliography_biber.aux) (./external_bibliography_biber.bbl)
+[1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./external_bibliography_biber.aux) )</usr/local/texlive/2014/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmti10.pfb>
+Output written on external_bibliography_biber.pdf (1 page, 34281 bytes).
+Transcript written on external_bibliography_biber.log.
+Latexmk: Found input bbl file 'external_bibliography_biber.bbl'
+Latexmk: Log file says output to 'external_bibliography_biber.pdf'
+Latexmk: Found biber source file(s) [external_bibliography_biber.bcf references.bib]
+Latexmk: All targets (external_bibliography_biber.pdf) are up-to-date

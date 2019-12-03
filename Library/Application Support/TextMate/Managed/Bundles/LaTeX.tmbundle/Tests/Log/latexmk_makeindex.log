@@ -1,0 +1,86 @@
+Latexmk: This is Latexmk, John Collins, 10 Nov 2013, version: 4.39.
+**** Report bugs etc to John Collins <collins at phys.psu.edu>. ****
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex': Rules & subrules not known to be previously run:
+   pdflatex
+Rule 'pdflatex': The following rules & subrules became out-of-date:
+      'pdflatex'
+------------
+Run number 1 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -recorder  "makeindex.tex"'
+------------
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./makeindex.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/makeidx.sty)
+Writing index file makeindex.idx
+(./makeindex.aux) (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd)
+No file makeindex.ind.
+[1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(./makeindex.aux) )</usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmti10.pfb>
+Output written on makeindex.pdf (1 page, 29414 bytes).
+Transcript written on makeindex.log.
+Latexmk: Index file 'makeindex.idx' was written
+Latexmk: Missing input file: 'makeindex.ind' from line
+  'No file makeindex.ind.'
+Latexmk: Log file says output to 'makeindex.pdf'
+Latexmk: applying rule 'makeindex makeindex.idx'...
+Rule 'makeindex makeindex.idx': File changes, etc:
+   Non-existent destination files:
+      'makeindex.ind'
+------------
+Run number 1 of rule 'makeindex makeindex.idx'
+------------
+------------
+Running 'makeindex  -o "makeindex.ind" "makeindex.idx"'
+------------
+This is makeindex, version 2.15 [TeX Live 2014] (kpathsea + Thai support).
+Scanning input file makeindex.idx....done (2 entries accepted, 0 rejected).
+Sorting entries....done (2 comparisons).
+Generating output file makeindex.ind....done (9 lines written, 0 warnings).
+Output written in makeindex.ind.
+Transcript written in makeindex.ilg.
+Latexmk: applying rule 'pdflatex'...
+Rule 'pdflatex': File changes, etc:
+   Changed files, or newly in use since previous run(s):
+      'makeindex.ind'
+------------
+Run number 2 of rule 'pdflatex'
+------------
+------------
+Running 'pdflatex  -recorder  "makeindex.tex"'
+------------
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./makeindex.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/size10.clo))
+(/usr/local/texlive/2014/texmf-dist/tex/latex/base/makeidx.sty)
+Writing index file makeindex.idx
+(./makeindex.aux) (/usr/local/texlive/2014/texmf-dist/tex/latex/base/omscmr.fd)
+(./makeindex.ind [1{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/p
+dftex.map}] [2]) (./makeindex.aux) )</usr/local/texlive/2014/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmti10.pfb>
+Output written on makeindex.pdf (2 pages, 38902 bytes).
+Transcript written on makeindex.log.
+Latexmk: Index file 'makeindex.idx' was written
+Latexmk: Log file says output to 'makeindex.pdf'
+Latexmk: All targets (makeindex.pdf) are up-to-date

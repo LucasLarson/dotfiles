@@ -1,0 +1,45 @@
+makeglossaries version 2.14 (2014-03-06)
+added glossary type 'main' (glg,gls,glo)
+added glossary type 'acronym' (alg,acr,acn)
+makeindex  -s "makeglossaries.ist" -t "makeglossaries.glg" -o "makeglossaries.gls" "makeglossaries.glo"
+This is makeindex, version 2.15 [TeX Live 2014] (kpathsea + Thai support).
+Scanning style file ./makeglossaries.ist.............................done (29 attributes redefined, 0 ignored).
+Scanning input file makeglossaries.glo....done (1 entries accepted, 0 rejected).
+Sorting entries...done (0 comparisons).
+Generating output file makeglossaries.gls....done (6 lines written, 0 warnings).
+Output written in makeglossaries.gls.
+Transcript written in makeglossaries.glg.
+makeindex  -s "makeglossaries.ist" -t "makeglossaries.alg" -o "makeglossaries.acr" "makeglossaries.acn"
+This is makeindex, version 2.15 [TeX Live 2014] (kpathsea + Thai support).
+Scanning style file ./makeglossaries.ist.............................done (29 attributes redefined, 0 ignored).
+Scanning input file makeglossaries.acn....done (1 entries accepted, 0 rejected).
+Sorting entries...done (0 comparisons).
+Generating output file makeglossaries.acr....done (6 lines written, 0 warnings).
+Output written in makeglossaries.acr.
+Transcript written in makeglossaries.alg.
+makeglossaries version 2.14 (2014-03-06)
+added glossary type 'main' (glg,gls,glo)
+xindy  -L english  -I xindy -M "makeglossaries" -t "makeglossaries.glg" -o "makeglossaries.gls" "makeglossaries.glo"
+Opening logfile "makeglossaries.glg" (done)
+Reading indexstyle...
+Loading module "/var/folders/hx/flbncdhj4fs87095gzxvnj3h0000gn/T/Ksodv8TUFk"...
+Loading module "lang/english/latin9-lang.xdy"...
+Loading module "lang/english/latin9.xdy"...
+Finished loading module "lang/english/latin9.xdy".
+Finished loading module "lang/english/latin9-lang.xdy".
+Loading module "makeglossaries.xdy"...
+Loading module "tex.xdy"...
+Finished loading module "tex.xdy".
+Finished loading module "makeglossaries.xdy".
+Finished loading module "/var/folders/hx/flbncdhj4fs87095gzxvnj3h0000gn/T/Ksodv8TUFk".
+Finished reading indexstyle.
+Finalizing indexstyle... (done)
+
+Reading raw-index "/var/folders/hx/flbncdhj4fs87095gzxvnj3h0000gn/T/oZOEAOjoQV"...
+Finished reading raw-index.
+
+Processing index... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
+Finished processing index.
+
+Writing markup... [10%] [20%] [30%] [40%] [50%] [60%] [70%] [80%] [90%] [100%]
+Markup written into file "makeglossaries.gls".

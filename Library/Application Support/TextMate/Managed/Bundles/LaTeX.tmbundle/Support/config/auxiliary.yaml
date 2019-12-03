@@ -1,0 +1,68 @@
+# List Of Auxiliary Files
+# =======================
+
+# The files specified here will be deleted by the commands “Clean”, and by
+# “Watch Document” if you close the previewer.
+#
+# We specify auxiliary files and directories via free-spacing regular
+# expressions. Before TextMate matches the regular expression specified here, it
+# replaces the variable `${NAME}` with the base-name of the master file (without
+# its extension).
+#
+# For example: Let us assume that your main tex file is called `Sandy.tex`, and
+# you specify the pattern `${NAME}\.aux`. In this case the command “Clean”
+# will search for a file matching the regex `Sandy\.aux` in the directory where
+# `Sandy.tex` is stored.
+#
+# If you want to match a modified version of the name of the main TeX file use
+# the syntax ${NAME/SUBSTRING/REPLACEMENT/}.
+#
+# For example: If your file is called `Giving Bad People Good Ideas.tex`, then
+# the pattern `${NAME/ /_/}\.toc` will result in the regex
+# `Giving_Bad_People_Good_Ideas\.toc`.
+
+files:
+  - \.${NAME}\.lb$
+  - '${NAME}\.(?:acn|
+                 acr|
+                 alg|
+                 aux|
+                 bbl|
+                 bcf|
+                 blg|
+                 fdb_latexmk|
+                 fls|
+                 fmt|
+                 glo|
+                 glg|
+                 gls|
+                 idx|
+                 ilg|
+                 ind|
+                 ini|
+                 ist|
+                 latexmk.log|
+                 lof|
+                 log|
+                 lol|
+                 lot|
+                 maf|
+                 mtc|
+                 mtc1|
+                 mw|
+                 nav|
+                 nlo|
+                 nls|
+                 pytxcode|
+                 out|
+                 pdfsync|
+                 run\.xml|
+                 snm|
+                 synctex\.gz|
+                 toc|
+                 vrb)$'
+  - '.+/.+\.aux$'
+
+directories:
+  - pythontex-files-${NAME/ /-/}
+  - _minted-${NAME/ /_/}

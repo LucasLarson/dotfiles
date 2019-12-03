@@ -1,0 +1,29 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(./makeglossaries.tex
+LaTeX2e <2014/05/01>
+Babel <3.9k> and hyphenation patterns for 78 languages loaded.
+
+! LaTeX Error: File `Word.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Runaway argument?
+{ \par bla \par \printglossaries \par \end {document}
+! File ended while scanning use of \@xdblarg.
+<inserted text>
+                \par
+<*> makeglossaries.tex
+
+! LaTeX Error: There's no line here to end
+
+Enter file name:
+./makeglossaries.tex:6: Emergency stop.
+<read *>
+
+l.6 ^^M
+
+./makeglossaries.tex:6:  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on makeglossaries.log.

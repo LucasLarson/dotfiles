@@ -1,0 +1,15 @@
+ChkTeX v1.7.2 - Copyright 1995-96 Jens T. Berger Thielemann.
+Compiled with POSIX extended regex support.
+Warning 1 in makeglossaries.tex line 4: Command terminated with space.
+        \makeglossaries
+                       ^
+Warning 1 in makeglossaries.tex line 23: Command terminated with space.
+\printglossaries
+                ^
+
+Error 14 in dodo.tex line 4: Could not find argument for command.
+         \verb*!something!
+         ^^^^^
+
+1 errors printed; 2 warnings printed; No user suppressed warnings; No line suppressed warnings.
+

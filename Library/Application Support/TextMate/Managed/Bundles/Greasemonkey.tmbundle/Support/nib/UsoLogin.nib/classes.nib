@@ -1,0 +1,13 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {performButtonClick = id; }; 
+            CLASS = ClickableOwner; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {CLASS = NSObject; LANGUAGE = ObjC; }
+    ); 
+    IBVersion = 1; 
+}
