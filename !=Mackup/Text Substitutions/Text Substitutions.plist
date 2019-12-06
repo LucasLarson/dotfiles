@@ -2074,6 +2074,36 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Morningside</string>
+		<key>shortcut</key>
+		<string>Morningside</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Morningside Dr</string>
+		<key>shortcut</key>
+		<string>morningsidedr</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Morningside Drive</string>
+		<key>shortcut</key>
+		<string>morningsidedrive</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Morningside Heights</string>
+		<key>shortcut</key>
+		<string>morningsideheights</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Morningside Park</string>
+		<key>shortcut</key>
+		<string>morningsidepark</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Mother’s Day</string>
 		<key>shortcut</key>
 		<string>mother'sday</string>
