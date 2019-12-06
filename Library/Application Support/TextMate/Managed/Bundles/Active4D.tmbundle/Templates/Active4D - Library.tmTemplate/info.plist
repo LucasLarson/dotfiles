@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>command</key>
+	<string>if [[ ! -f "$TM_NEW_FILE" ]]; then
+   perl -pe 's/\$\{([^}]*)\}/$ENV{$1}/g' \
+      &lt; library.a4l &gt; "$TM_NEW_FILE"
+fi</string>
+	<key>extension</key>
+	<string>a4l</string>
+	<key>name</key>
+	<string>Active4D - Library</string>
+	<key>uuid</key>
+	<string>3FADD712-AE1A-4652-9057-63E853705EB0</string>
+</dict>
+</plist>
