@@ -1,0 +1,37 @@
+/*
+	${TM_NEW_FILE_BASENAME} library
+	
+	$Id$
+*/
+
+library "${TM_NEW_FILE_BASENAME}"
+
+
+/*
+	library constructor
+*/
+method "__load__"
+
+	// Here you typically would preload cached data, for example:
+	//		all records([companies])
+	//		order by([companies]; [companies]name)
+	//		self{"_companies"} := new global collection
+	//		selection to array([companies]id; self{"_companies"}{"ids"}; \\
+	//						   [companies]name; self{"_companies"}{"names"})
+	
+end method
+
+
+/*
+	library destructor
+*/
+method "__unload__"
+
+	// If you are storing any collections in self, you need to clear them here.
+	// For example:
+	//		clear collection(self{"_companies"})
+	
+end method
+
+end library
+

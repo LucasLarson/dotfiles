@@ -1,0 +1,23 @@
+<% /*
+<fusedoc fuse="fbx_switch.a4d" language="Active4D" specification="2.0">
+	<responsibilities>
+		I am the switch statement that handles fuseactions in this circuit.
+		I delegate to the fuses responsible for handling a given fuseaction.
+	</responsibilities>
+	<io>
+	</io>	
+</fusedoc>
+
+$Id$
+*/
+
+$fuseaction := $fusebox{"fuseaction"}
+
+case of
+	:($fuseaction = "main")
+		// do something
+		
+else
+	throw('Fusebox: I received a fuseaction called "$fusebox{"fuseaction"}" that the circuit "$fusebox{"circuit"}" does not have a handler for.')
+end case
+%>

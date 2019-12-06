@@ -1,0 +1,1 @@
+{"commits":[{"commit":"f80dea07a8ea451361e134540d18c00cfbbc9c86","date":"2018-07-06T03:34:20-05:00","author":"Michael Sheets","summary":"Match new HTML scopes for doctype/processing tags","body":"Other tags are out of line now but this should probably be corrected by reducing the current duplication to a minimum."}],"name":"Active4D"}

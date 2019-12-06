@@ -1,0 +1,19 @@
+<% /*
+<fusedoc fuse="fbx_layouts.a4d" language="Active4D" specification="2.0">
+	<responsibilities>
+		This file contains all the conditional logic for determining which layout file, if any, should be used for this circuit. It should result in the setting of the Fusebox public API variables $fusebox{'layoutDir'} and $fusebox{'layoutFile'}.
+	</responsibilities>	
+	<io>
+		<out>
+			<string name="$fusebox{'layoutDir'}" />
+			<string name="$fusebox{'layoutFile'}" />
+		</out>
+	</io>
+</fusedoc>
+
+$Id$
+*/
+
+$fusebox{"layoutDir"}  := "layouts"
+$fusebox{"layoutFile"} := "lay_main.a4d"
+%>
