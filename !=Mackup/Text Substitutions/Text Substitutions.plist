@@ -292,6 +292,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>anesthetic</string>
+		<key>shortcut</key>
+		<string>anasthetic</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>𝑎𝑛𝑑</string>
 		<key>shortcut</key>
 		<string>𝑎𝑛𝑑</string>
