@@ -1840,6 +1840,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>LucasLarson</string>
+		<key>shortcut</key>
+		<string>lucalsarson</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Lucas</string>
 		<key>shortcut</key>
 		<string>lucas</string>
@@ -1879,6 +1885,12 @@
 		<string>LucasLarson</string>
 		<key>shortcut</key>
 		<string>LucasLarson</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>LucasLarson</string>
+		<key>shortcut</key>
+		<string>lucaslarssn</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
