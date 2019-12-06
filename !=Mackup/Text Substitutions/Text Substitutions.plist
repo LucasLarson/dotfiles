@@ -1936,6 +1936,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Manhattan</string>
+		<key>shortcut</key>
+		<string>MANHATTAN</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Massachusetts</string>
 		<key>shortcut</key>
 		<string>massa</string>
