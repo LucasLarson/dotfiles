@@ -1090,6 +1090,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>happy Thanksgiving</string>
+		<key>shortcut</key>
+		<string>happythanksgiving</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Happy Thanksgiving</string>
+		<key>shortcut</key>
+		<string>Happythanksgiving</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>hasn’t</string>
 		<key>shortcut</key>
 		<string>hasn't</string>
