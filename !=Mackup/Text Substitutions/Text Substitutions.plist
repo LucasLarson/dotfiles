@@ -1366,6 +1366,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Iñigo</string>
+		<key>shortcut</key>
+		<string>iñ</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>inadvertently</string>
 		<key>shortcut</key>
 		<string>inadvertantly</string>
