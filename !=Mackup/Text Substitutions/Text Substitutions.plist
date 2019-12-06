@@ -1084,6 +1084,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Hanukkah</string>
+		<key>shortcut</key>
+		<string>hannikah</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>hasn’t</string>
 		<key>shortcut</key>
 		<string>hasn't</string>
