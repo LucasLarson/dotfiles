@@ -882,7 +882,19 @@
 		<key>phrase</key>
 		<string>€</string>
 		<key>shortcut</key>
+		<string>euros</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>€</string>
+		<key>shortcut</key>
 		<string>eurosign</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>€</string>
+		<key>shortcut</key>
+		<string>eurosymbol</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
