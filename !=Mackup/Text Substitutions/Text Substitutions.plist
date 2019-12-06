@@ -2482,6 +2482,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>sitch</string>
+		<key>shortcut</key>
+		<string>sitch</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>😏</string>
 		<key>shortcut</key>
 		<string>smirk</string>
