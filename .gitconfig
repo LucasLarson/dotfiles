@@ -16,3 +16,5 @@
 	gpgsign = true
 [pull]
 	rebase = true
+[color]
+	ui = auto
