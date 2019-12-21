@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
-<FileZilla3 version="3.40.0" platform="mac">
-	<Layout Builddate="2019-01-25" Buildtime="14:28:42">
+<FileZilla3 version="3.46.0" platform="mac">
+	<Layout Builddate="2019-11-25" Buildtime="08:04:10">
 		<Resources>
 			<xrc file="sitemanager.xrc" date="1548422960" />
 			<xrc file="inputdialog.xrc" date="1548422960" />
-			<xrc file="netconfwizard.xrc" date="1548422960" />
+			<xrc file="netconfwizard.xrc" date="1574665491" />
 			<xrc file="update.xrc" date="1548422960" />
-			<xrc file="settings.xrc" date="1548422960" />
-			<xrc file="certificate.xrc" date="1548422960" />
-			<xrc file="storj.xrc" date="1548422960" />
+			<xrc file="settings.xrc" date="1574665491" />
+			<xrc file="certificate.xrc" date="1574665491" />
+			<xrc file="storj.xrc" date="1574665491" />
 			<xrc file="menus.xrc" date="1502727024" />
-			<xrc file="dialogs.xrc" date="1548422960" />
+			<xrc file="dialogs.xrc" date="1574665491" />
 		</Resources>
 		<Language id="en_US" date="">
-			<Font font="0;13;70;90;90;0;.SF NS Text;49" width="779" height="15" />
-			<Dialog name="Settings" width="567" />
+			<Font font="0;13;70;90;90;0;.AppleSystemUIFont;49" width="779" height="15" />
+			<Dialog name="Settings" width="562" />
 		</Language>
 	</Layout>
 </FileZilla3>
