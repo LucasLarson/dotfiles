@@ -1774,7 +1774,7 @@ macosx-interfacestyle=1
 [auhal] # HAL AudioUnit output
 
 # Audio volume (integer)
-#auhal-volume=256
+auhal-volume=384
 
 # Last audio device (string)
 auhal-audio-device=0
