@@ -1,0 +1,50 @@
+{
+  "lastUpgradeScriptRun": "v6.1.0",
+  "lastVersion": "6.4.1",
+  "lastReleaseNotesDisplayed": "6.4.1",
+  "appId": "54be860b520fe8787ebb2b71fae161e2155b1fdc",
+  "registration": {
+    "email": "Lucas.Larson@gmail.com",
+    "name": "Lucas Larson",
+    "status": "activated",
+    "loginType": "github",
+    "providerToken": {
+      "access_token": "9a66ea044a08603a90229b5f8582df0b2b2bd0f0",
+      "token_type": "bearer",
+      "scope": "admin:public_key,repo,user:email,workflow",
+      "expires_at": null
+    },
+    "date": "2019-12-28T22:29:27.602Z",
+    "EULA": {
+      "version": "1.5.0",
+      "status": "agree_verified"
+    }
+  },
+  "userId": "69bb444c-49c7-41ec-bf5d-88475303e05a",
+  "licensedFeatures": [
+    "pro",
+    "student"
+  ],
+  "userFeatures": [
+    {
+      "betaFeaturesEnabled": false,
+      "name": "gitkraken"
+    },
+    {
+      "betaFeaturesEnabled": false,
+      "name": "glo"
+    },
+    {
+      "betaFeaturesEnabled": false,
+      "name": "timelines"
+    }
+  ],
+  "hasSeenNewUserOnboarding": true,
+  "commits": {
+    "maxCommitsInGraph": 2000
+  },
+  "windowSettings": {
+    "fullScreen": false,
+    "maximized": true
+  }
+}
