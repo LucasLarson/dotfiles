@@ -1,0 +1,30 @@
+{
+  "tabInfo": {
+    "tabs": [
+      {
+        "id": "88887fe4-b602-481a-8029-8e51741d0c4c",
+        "type": "REPO",
+        "repoName": "Fallback",
+        "repoPath": "/Users/LucasLarson/Code/Fallback/"
+      }
+    ],
+    "selectedTabId": "88887fe4-b602-481a-8029-8e51741d0c4c"
+  },
+  "profileIcon": "gravatar",
+  "profileName": "Default Profile",
+  "userEmail": "LucasLarson@riseup.net",
+  "userName": "Lucas Larson",
+  "gpg": {
+    "gpgProgram": "/usr/local/bin/gpg",
+    "userSigningKey": "AA4FB0D44C2AA5C90B91861DF09A4FB0FE301234",
+    "commitGpgSign": true
+  },
+  "editor": {
+    "fontFamily": "Monaco",
+    "wordWrap": false
+  },
+  "ssh": {
+    "useLocalAgent": true
+  },
+  "defaultTerminal": "iTerm2"
+}

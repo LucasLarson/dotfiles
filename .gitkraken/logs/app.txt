@@ -1,0 +1,23 @@
+[2019-12-28T22:19:16.618Z] Detecting Git and Git LFS: started
+[2019-12-28T22:19:19.506Z] Detected Git: 2.21.0
+[2019-12-28T22:19:19.546Z] Did not detect Git LFS
+[2019-12-28T22:30:51.675Z] Add user profile Default Profile: started.
+[2019-12-28T22:30:51.709Z] Setting global gitconfig option user.name: started.
+[2019-12-28T22:30:51.712Z] Setting global gitconfig option user.name: finished. gk-log://duration?t=3
+[2019-12-28T22:30:51.717Z] Setting global gitconfig option user.email: started.
+[2019-12-28T22:30:51.753Z] Setting global gitconfig option user.email: finished. gk-log://duration?t=36
+[2019-12-28T22:30:51.823Z] Add user profile Default Profile: finished. gk-log://duration?t=148
+[2019-12-28T22:31:34.668Z] Add user profile Default Profile: started.
+[2019-12-28T22:31:34.691Z] Add user profile Default Profile: finished. gk-log://duration?t=23
+[2019-12-28T22:31:34.691Z] Setting global gitconfig option user.name: started.
+[2019-12-28T22:31:34.693Z] Setting global gitconfig option user.name: finished. gk-log://duration?t=1
+[2019-12-28T22:31:34.694Z] Setting global gitconfig option user.email: started.
+[2019-12-28T22:31:34.694Z] Setting global gitconfig option user.email: finished.
+[2019-12-28T22:32:24.374Z] Request OAuth token from GitHub: started.
+[2019-12-28T22:32:44.799Z] Request OAuth token from GitHub: finished. gk-log://duration?t=20425
+[2019-12-28T22:33:16.395Z] Request OAuth token from GitLab: started.
+[2019-12-28T22:34:02.577Z] Request OAuth token from GitLab: finished. gk-log://duration?t=46181
+[2019-12-28T22:34:11.066Z] Request OAuth token from Bitbucket: started.
+[2019-12-28T22:34:32.279Z] Request OAuth token from Bitbucket: finished. gk-log://duration?t=21213
+[2019-12-28T22:39:32.993Z] Open repository /Users/LucasLarson/Code/Fallback/: started.
+[2019-12-28T22:39:33.984Z] Open repository: finished. gk-log://duration?t=991
