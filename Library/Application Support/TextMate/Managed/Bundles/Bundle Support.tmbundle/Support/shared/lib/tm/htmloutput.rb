@@ -88,7 +88,7 @@ module TextMate
 
         support_path = ENV['TM_SUPPORT_PATH']
 
-        ERB.new(HTMLOUTPUT_TEMPLATE, 0, '%-<>').result(binding)
+        ERB.new(HTMLOUTPUT_TEMPLATE, 0, '%-').result(binding)
       end
 
       def footer
