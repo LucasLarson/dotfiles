@@ -4,6 +4,7 @@
 	<trackList>
 		<track>
 			<location>http://quarrel.streamguys1.com:8290/xstream</location>
+			<title>KSKA Streaming</title>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
 				<vlc:id>0</vlc:id>
 			</extension>
