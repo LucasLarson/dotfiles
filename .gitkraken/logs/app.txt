@@ -21,3 +21,10 @@
 [2019-12-28T22:34:32.279Z] Request OAuth token from Bitbucket: finished. gk-log://duration?t=21213
 [2019-12-28T22:39:32.993Z] Open repository /Users/LucasLarson/Code/Fallback/: started.
 [2019-12-28T22:39:33.984Z] Open repository: finished. gk-log://duration?t=991
+[2019-12-29T22:35:04.139Z] Detecting Git and Git LFS: started
+[2019-12-29T22:35:12.057Z] Open repository /Users/LucasLarson/Code/Fallback/: started.
+[2019-12-29T22:35:18.635Z] Detected Git: 2.21.0
+[2019-12-29T22:35:19.233Z] Did not detect Git LFS
+[2019-12-29T22:35:20.370Z] Open repository: finished. gk-log://duration?t=8313
+[2019-12-29T22:35:43.143Z] Send usage data to Axosoft: started.
+[2019-12-29T22:35:43.197Z] Send usage data to Axosoft: finished. (Thank you!) gk-log://duration?t=54
