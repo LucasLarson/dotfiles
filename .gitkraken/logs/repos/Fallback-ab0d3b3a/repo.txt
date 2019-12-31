@@ -33,3 +33,10 @@
 [2019-12-28T23:13:48.974Z] Create submodule https://github.com/davatron5000/Lettering.js.git at js/Lettering.js: started.
 [2019-12-28T23:13:48.989Z] Create submodule https://github.com/davatron5000/Lettering.js.git at js/Lettering.js: attempt to add submodule 'js/Lettering.js' that already exists
 [2019-12-28T23:13:48.991Z] Create submodule https://github.com/davatron5000/Lettering.js.git at js/Lettering.js: finished with errors. gk-log://duration?t=17
+[2019-12-30T04:00:22.216Z] Fetch remote upstream: failed to resolve address for github.com: nodename nor servname provided, or not known
+[2019-12-30T04:00:22.228Z] Fetch remote origin: failed to resolve address for github.com: nodename nor servname provided, or not known
+[2019-12-30T13:15:09.891Z] Fetch remote origin: failed to resolve address for github.com: nodename nor servname provided, or not known
+[2019-12-30T13:15:09.966Z] Fetch remote upstream: failed to resolve address for github.com: nodename nor servname provided, or not known
+[2019-12-30T20:22:16.361Z] Fetch remote origin: failed to resolve address for github.com: nodename nor servname provided, or not known
+[2019-12-31T16:15:00.714Z] Fetch remote origin: failed to resolve address for github.com: nodename nor servname provided, or not known
+[2019-12-31T16:15:00.739Z] Fetch remote upstream: failed to resolve address for github.com: nodename nor servname provided, or not known
