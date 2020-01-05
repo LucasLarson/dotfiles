@@ -1,0 +1,38 @@
+{
+  "remoteParents": {
+    "github": {
+      "LucasLarson": {
+        ".dotfiles": {
+          "hostingServiceType": "github",
+          "owner": "LucasLarson",
+          "name": ".dotfiles"
+        }
+      },
+      "jonreid": {
+        "XcodeWarnings": {
+          "hostingServiceType": "github",
+          "owner": "jonreid",
+          "name": "XcodeWarnings"
+        }
+      }
+    }
+  },
+  "remoteHeadCollectionByRemoteName": {
+    "origin": {
+      "HEAD": {
+        "name": "HEAD",
+        "oid": "71b653102494d9a0e7be4a84558a1c1aa927bcec",
+        "local": 0,
+        "loid": "0000000000000000000000000000000000000000",
+        "symrefTarget": "refs/heads/master"
+      },
+      "refs/heads/master": {
+        "name": "refs/heads/master",
+        "oid": "71b653102494d9a0e7be4a84558a1c1aa927bcec",
+        "local": 1,
+        "loid": "0000000000000000000000000000000000000000",
+        "symrefTarget": null
+      }
+    }
+  }
+}
