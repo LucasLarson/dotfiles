@@ -28,3 +28,73 @@
 [2019-12-29T22:35:20.370Z] Open repository: finished. gk-log://duration?t=8313
 [2019-12-29T22:35:43.143Z] Send usage data to Axosoft: started.
 [2019-12-29T22:35:43.197Z] Send usage data to Axosoft: finished. (Thank you!) gk-log://duration?t=54
+[2020-01-03T01:46:50.977Z] Detecting Git and Git LFS: started
+[2020-01-03T01:46:53.950Z] Open repository /Users/LucasLarson/Code/Fallback/: started.
+[2020-01-03T01:46:55.748Z] Detected Git: 2.21.0
+[2020-01-03T01:46:55.870Z] Detected Git LFS: 2.9.1
+[2020-01-03T01:46:55.883Z] Detecting Git and Git LFS: finished gk-log://duration?t=4906
+[2020-01-03T01:46:56.224Z] Open repository: finished. gk-log://duration?t=2274
+[2020-01-03T01:47:24.106Z] Send usage data to Axosoft: started.
+[2020-01-03T01:47:24.149Z] Send usage data to Axosoft: finished. (Thank you!) gk-log://duration?t=43
+[2020-01-03T02:28:51.022Z] Open repository /Users/LucasLarson/Code/OSMLab/: started.
+[2020-01-03T02:28:52.415Z] Open repository: finished. gk-log://duration?t=1393
+[2020-01-03T02:29:12.592Z] Open repository /Users/LucasLarson/Code/AppIcons/: started.
+[2020-01-03T02:29:13.297Z] Open repository: finished. gk-log://duration?t=705
+[2020-01-03T02:30:19.773Z] Open repository /Users/LucasLarson/Code/awesome-bookmarklets/: started.
+[2020-01-03T02:30:20.645Z] Open repository: finished. gk-log://duration?t=872
+[2020-01-03T02:31:45.811Z] Open repository /Users/LucasLarson/Code/Awesome-ML/: started.
+[2020-01-03T02:31:47.562Z] Open repository: finished. gk-log://duration?t=1751
+[2020-01-03T02:32:14.660Z] Open repository /Users/LucasLarson/Code/bonvortaro/: started.
+[2020-01-03T02:32:15.697Z] Open repository: finished. gk-log://duration?t=1037
+[2020-01-03T02:32:52.089Z] Open repository /Users/LucasLarson/Code/Brave/: started.
+[2020-01-03T02:32:55.538Z] Open repository: finished. gk-log://duration?t=3449
+[2020-01-03T02:33:14.021Z] Open repository /Users/LucasLarson/Code/Catch2/: started.
+[2020-01-03T02:33:15.547Z] Open repository: finished. gk-log://duration?t=1526
+[2020-01-03T02:33:37.640Z] Open repository /Users/LucasLarson/Code/Brave/: started.
+[2020-01-03T02:33:40.431Z] Open repository: finished. gk-log://duration?t=2791
+[2020-01-03T02:33:47.028Z] Open repository /Users/LucasLarson/Code/Catch2/: started.
+[2020-01-03T02:33:47.751Z] Open repository: finished. gk-log://duration?t=723
+[2020-01-03T02:36:20.092Z] Open repository /Users/LucasLarson/Code/Brave/: started.
+[2020-01-03T02:36:22.888Z] Open repository: finished. gk-log://duration?t=2796
+[2020-01-03T02:36:34.878Z] Open repository /Users/LucasLarson/Dropbox/Mackup/: started.
+[2020-01-03T02:36:36.045Z] Open repository: finished. gk-log://duration?t=1167
+[2020-01-03T02:37:08.569Z] Open repository /Users/LucasLarson/Library/Application Support/: started.
+[2020-01-03T02:38:47.541Z] Open repository: finished. gk-log://duration?t=98972
+[2020-01-03T02:39:32.477Z] Detecting Git and Git LFS: started
+[2020-01-03T02:39:34.607Z] Open repository /Users/LucasLarson/Library/Application Support/: started.
+[2020-01-03T02:39:35.401Z] Detected Git: 2.21.0
+[2020-01-03T02:39:35.426Z] Detected Git LFS: 2.9.1
+[2020-01-03T02:39:35.441Z] Detecting Git and Git LFS: finished gk-log://duration?t=2964
+[2020-01-03T02:40:36.045Z] Detecting Git and Git LFS: started
+[2020-01-03T02:40:37.868Z] Open repository /Users/LucasLarson/Library/Application Support/: started.
+[2020-01-03T02:40:38.626Z] Detected Git: 2.21.0
+[2020-01-03T02:40:38.670Z] Detected Git LFS: 2.9.1
+[2020-01-03T02:40:38.733Z] Detecting Git and Git LFS: finished gk-log://duration?t=2687
+[2020-01-03T02:40:59.009Z] Detecting Git and Git LFS: started
+[2020-01-03T02:41:00.991Z] Open repository /Users/LucasLarson/Library/Application Support/: started.
+[2020-01-03T02:41:02.191Z] Detected Git: 2.21.0
+[2020-01-03T02:41:02.244Z] Detected Git LFS: 2.9.1
+[2020-01-03T02:41:02.304Z] Detecting Git and Git LFS: finished gk-log://duration?t=3294
+[2020-01-03T02:42:34.937Z] Open repository: finished. gk-log://duration?t=93946
+[2020-01-03T02:46:26.623Z] Open repository /Users/LucasLarson/Code/bonvortaro/: started.
+[2020-01-03T02:46:27.784Z] Open repository: finished. gk-log://duration?t=1161
+[2020-01-03T02:55:01.737Z] Open repository /Users/LucasLarson/Library/Preferences/: started.
+[2020-01-03T02:55:03.396Z] Open repository: finished. gk-log://duration?t=1659
+[2020-01-03T03:00:23.165Z] Open repository /Users/LucasLarson/Code/XcodeWarnings/: started.
+[2020-01-03T03:00:24.210Z] Open repository: finished. gk-log://duration?t=1045
+[2020-01-03T03:04:26.699Z] Open repository /Users/LucasLarson/Code/Brave/: started.
+[2020-01-03T03:04:28.860Z] Open repository: finished. gk-log://duration?t=2161
+[2020-01-03T04:41:36.684Z] Open repository /Users/LucasLarson/Library/Preferences/: started.
+[2020-01-03T04:41:38.117Z] Open repository: finished. gk-log://duration?t=1433
+[2020-01-03T04:41:42.671Z] Open repository /Users/LucasLarson/Code/XcodeWarnings/: started.
+[2020-01-03T04:41:43.014Z] Open repository: finished. gk-log://duration?t=343
+[2020-01-03T04:41:44.165Z] Open repository /Users/LucasLarson/Code/Brave/: started.
+[2020-01-03T04:41:44.823Z] Open repository: finished. gk-log://duration?t=658
+[2020-01-05T20:42:19.912Z] Detecting Git and Git LFS: started
+[2020-01-05T20:42:24.055Z] Detected Git: 2.21.0
+[2020-01-05T20:42:24.061Z] Detected Git LFS: 2.9.1
+[2020-01-05T20:42:24.062Z] Detecting Git and Git LFS: finished gk-log://duration?t=4149
+[2020-01-05T20:42:52.042Z] Send usage data to Axosoft: started.
+[2020-01-05T20:42:52.086Z] Send usage data to Axosoft: finished. (Thank you!) gk-log://duration?t=44
+[2020-01-05T21:08:03.733Z] Open repository /Users/LucasLarson/Dropbox/Mackup/: started.
+[2020-01-05T21:08:05.577Z] Open repository: finished. gk-log://duration?t=1844

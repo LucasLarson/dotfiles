@@ -2,13 +2,13 @@
   "tabInfo": {
     "tabs": [
       {
-        "id": "88887fe4-b602-481a-8029-8e51741d0c4c",
+        "id": "f83009aa-e607-4b26-87de-be32c47e0ce2",
         "type": "REPO",
-        "repoName": "Fallback",
-        "repoPath": "/Users/LucasLarson/Code/Fallback/"
+        "repoName": "Mackup",
+        "repoPath": "/Users/LucasLarson/Dropbox/Mackup/"
       }
     ],
-    "selectedTabId": "88887fe4-b602-481a-8029-8e51741d0c4c"
+    "selectedTabId": "f83009aa-e607-4b26-87de-be32c47e0ce2"
   },
   "profileIcon": "gravatar",
   "profileName": "Default Profile",
@@ -21,10 +21,14 @@
   },
   "editor": {
     "fontFamily": "Monaco",
-    "wordWrap": false
+    "wordWrap": true
   },
   "ssh": {
     "useLocalAgent": true
   },
-  "defaultTerminal": "iTerm2"
+  "defaultTerminal": "iTerm2",
+  "favoriteRepositories": [
+    "/Users/LucasLarson/Dropbox/Mackup"
+  ],
+  "mergeTool": "file-merge"
 }

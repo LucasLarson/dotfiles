@@ -1,0 +1,85 @@
+{
+  "remoteParents": {
+    "github": {
+      "osmlab": {
+        "editor-layer-index": {
+          "hostingServiceType": "github",
+          "owner": "osmlab",
+          "name": "editor-layer-index"
+        }
+      },
+      "LucasLarson": {
+        "AppIcons": {
+          "hostingServiceType": "github",
+          "owner": "kuyawa",
+          "name": "AppIcons"
+        },
+        "Mackup": {
+          "hostingServiceType": "github",
+          "owner": "LucasLarson",
+          "name": "Mackup"
+        }
+      },
+      "kuyawa": {
+        "AppIcons": {
+          "hostingServiceType": "github",
+          "owner": "kuyawa",
+          "name": "AppIcons"
+        }
+      },
+      "marcobiedermann": {
+        "awesome-bookmarklets": {
+          "hostingServiceType": "github",
+          "owner": "marcobiedermann",
+          "name": "awesome-bookmarklets"
+        }
+      },
+      "eugenebokhan": {
+        "Awesome-ML": {
+          "hostingServiceType": "github",
+          "owner": "eugenebokhan",
+          "name": "Awesome-ML"
+        }
+      },
+      "pupeno": {
+        "bonvortaro": {
+          "hostingServiceType": "github",
+          "owner": "pupeno",
+          "name": "bonvortaro"
+        }
+      },
+      "brave": {
+        "brave-ios": {
+          "hostingServiceType": "github",
+          "owner": "brave",
+          "name": "brave-ios"
+        }
+      },
+      "catchorg": {
+        "Catch2": {
+          "hostingServiceType": "github",
+          "owner": "catchorg",
+          "name": "Catch2"
+        }
+      }
+    }
+  },
+  "remoteHeadCollectionByRemoteName": {
+    "origin": {
+      "HEAD": {
+        "name": "HEAD",
+        "oid": "88ca04a828b2f097f86aec7d8ef8b91bf66985e6",
+        "local": 0,
+        "loid": "0000000000000000000000000000000000000000",
+        "symrefTarget": "refs/heads/master"
+      },
+      "refs/heads/master": {
+        "name": "refs/heads/master",
+        "oid": "88ca04a828b2f097f86aec7d8ef8b91bf66985e6",
+        "local": 1,
+        "loid": "0000000000000000000000000000000000000000",
+        "symrefTarget": null
+      }
+    }
+  }
+}
