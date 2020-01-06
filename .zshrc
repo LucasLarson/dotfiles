@@ -95,7 +95,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 
 # gem update
-eval "$(rbenv init -)" # https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
+# https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
+# instead of just eval "$(rbenv init -)" via https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH="$HOME/.rbenv/bin:$PATH"
 
 
