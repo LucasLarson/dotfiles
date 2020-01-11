@@ -2,13 +2,11 @@
   "tabInfo": {
     "tabs": [
       {
-        "id": "f83009aa-e607-4b26-87de-be32c47e0ce2",
-        "type": "REPO",
-        "repoName": "Mackup",
-        "repoPath": "/Users/LucasLarson/Dropbox/Mackup/"
+        "id": "3ee366d1-0d23-4a4c-94da-a71a0397be13",
+        "type": "NEW"
       }
     ],
-    "selectedTabId": "f83009aa-e607-4b26-87de-be32c47e0ce2"
+    "selectedTabId": "3ee366d1-0d23-4a4c-94da-a71a0397be13"
   },
   "profileIcon": "gravatar",
   "profileName": "Default Profile",
