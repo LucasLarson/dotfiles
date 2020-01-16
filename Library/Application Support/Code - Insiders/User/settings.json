@@ -1,4 +1,5 @@
 {
     "python.insidersChannel": "daily",
-    "git.autofetch": true
+    "git.autofetch": true,
+    "vsintellicode.features.python.deepLearning": "enabled"
 }
