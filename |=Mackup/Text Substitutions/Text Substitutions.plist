@@ -2020,6 +2020,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>misogyny</string>
+		<key>shortcut</key>
+		<string>misogeny</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Missoula</string>
 		<key>shortcut</key>
 		<string>missioula</string>
@@ -2179,6 +2185,12 @@
 		<string>Montana</string>
 		<key>shortcut</key>
 		<string>motnant</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>misogyny</string>
+		<key>shortcut</key>
+		<string>mysogyny</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
