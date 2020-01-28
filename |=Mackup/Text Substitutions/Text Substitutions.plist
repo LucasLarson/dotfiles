@@ -16,12 +16,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>😊</string>
-		<key>shortcut</key>
-		<string>:)</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>😘</string>
 		<key>shortcut</key>
 		<string>:*</string>
