@@ -15,6 +15,9 @@
     useRipgrep: true
   "gitlab-integration":
     token: "MGH-pQyz3rMrsU1Egyth"
+  "linter-ui-default":
+    panelHeight: 193
+    showPanel: true
   "spell-check":
     addKnownWords: true
   "split-diff":
