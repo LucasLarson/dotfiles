@@ -138,3 +138,15 @@
 [2020-01-15T03:40:45.584Z] Detecting Git and Git LFS: finished gk-log://duration?t=2314
 [2020-01-15T03:41:17.247Z] Open repository /Users/LucasLarson/Code/XcodeWarnings/: started.
 [2020-01-15T03:41:18.585Z] Open repository: finished. gk-log://duration?t=1338
+[2020-01-22T20:12:52.804Z] Detecting Git and Git LFS: started
+[2020-01-22T20:12:59.406Z] Detected Git: 2.21.1
+[2020-01-22T20:12:59.416Z] Detected Git LFS: 2.9.1
+[2020-01-22T20:12:59.417Z] Detecting Git and Git LFS: finished gk-log://duration?t=6610
+[2020-01-23T19:03:16.890Z] Detecting Git and Git LFS: started
+[2020-01-23T19:03:19.548Z] Detected Git: 2.21.1
+[2020-01-23T19:03:19.690Z] Detected Git LFS: 2.9.1
+[2020-01-23T19:03:19.717Z] Detecting Git and Git LFS: finished gk-log://duration?t=2825
+[2020-01-23T19:03:34.436Z] Open repository /Users/LucasLarson/Library/Application Support/: started.
+[2020-01-23T19:03:49.584Z] Send usage data to Axosoft: started.
+[2020-01-23T19:03:49.629Z] Send usage data to Axosoft: finished. (Thank you!) gk-log://duration?t=45
+[2020-01-23T19:04:03.014Z] Open repository: finished. gk-log://duration?t=28578
