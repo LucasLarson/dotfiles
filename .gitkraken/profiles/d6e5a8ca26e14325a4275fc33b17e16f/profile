@@ -3,7 +3,9 @@
     "tabs": [
       {
         "id": "af745f12-f2c1-48fc-9d6a-57758f2c9993",
-        "type": "NEW"
+        "type": "REPO",
+        "repoName": "Application Support",
+        "repoPath": "/Users/LucasLarson/Library/Application Support/"
       }
     ],
     "selectedTabId": "af745f12-f2c1-48fc-9d6a-57758f2c9993"
