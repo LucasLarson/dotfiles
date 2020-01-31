@@ -982,6 +982,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⁄</string>
+		<key>shortcut</key>
+		<string>fraction</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⁄</string>
+		<key>shortcut</key>
+		<string>fractionslash</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>français</string>
 		<key>shortcut</key>
 		<string>francais</string>
