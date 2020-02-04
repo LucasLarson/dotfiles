@@ -20,7 +20,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Library/Application%20Support/</string>
 			<key>lastOpenedDate</key>
-			<real>1579891015.3460422</real>
+			<real>1580746461.790657</real>
 			<key>name</key>
 			<string>Application Support</string>
 			<key>type</key>
@@ -236,7 +236,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Completionist/</string>
 			<key>lastOpenedDate</key>
-			<real>1579061991.3033819</real>
+			<real>1580746453.8973331</real>
 			<key>name</key>
 			<string>Completionist</string>
 			<key>type</key>
@@ -246,11 +246,11 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Completionist2019/</string>
+			<string>file:///Users/LucasLarson/Code/CompletionistLL/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>Completionist2019</string>
+			<string>CompletionistLL</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -380,7 +380,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/editor-layer-index/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1580689034.196769</real>
 			<key>name</key>
 			<string>editor-layer-index</string>
 			<key>type</key>
@@ -594,18 +594,6 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/IPA-Keyboard-iOS/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>IPA-Keyboard-iOS</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/iSH/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -726,18 +714,6 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Mac-Keyboard-Esperanto/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Mac-Keyboard-Esperanto</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Mackup/</string>
 			<key>lastOpenedDate</key>
 			<real>1579890747.4132838</real>
@@ -752,7 +728,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Dropbox/Mackup/</string>
 			<key>lastOpenedDate</key>
-			<real>1579890032.0410819</real>
+			<real>1580504319.179935</real>
 			<key>name</key>
 			<string>Mackup</string>
 			<key>type</key>
@@ -803,18 +779,6 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>mmenu</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/MongolianIPAKeyboardContainer/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>MongolianIPAKeyboardContainer</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -956,7 +920,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/PoshReVo/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1580320357.5876689</real>
 			<key>name</key>
 			<string>PoshReVo</string>
 			<key>type</key>
@@ -968,7 +932,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Library/Preferences/</string>
 			<key>lastOpenedDate</key>
-			<real>1579805855.0915751</real>
+			<real>1580746855.066191</real>
 			<key>name</key>
 			<string>Preferences</string>
 			<key>type</key>
