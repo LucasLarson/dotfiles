@@ -91,7 +91,7 @@ EOS
 myFile = __FILE__
 myDir = File.dirname(myFile) + '/'
 # include RMate.css and substitute some placeholder
-File.open(File.join(myDir, 'RMate.css')) {|f| f.each_line {|l| print l.gsub('FONTPLACEHOLDER',outputFont).gsub('FONTSIZEPLACEHOLDER',outputFontSize)} }
+File.open(File.join(myDir, 'Rmate.css')) {|f| f.each_line {|l| print l.gsub('FONTPLACEHOLDER',outputFont).gsub('FONTSIZEPLACEHOLDER',outputFontSize)} }
 print <<-HTML
 </style>
 <script type="text/javascript">
