@@ -3190,6 +3190,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>week‑end</string>
+		<key>shortcut</key>
+		<string>week-end</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>weren’t</string>
 		<key>shortcut</key>
 		<string>weren't</string>
