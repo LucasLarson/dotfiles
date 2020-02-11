@@ -418,6 +418,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Buttigieg</string>
+		<key>shortcut</key>
+		<string>buttegieg</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>c’est</string>
 		<key>shortcut</key>
 		<string>c'est</string>
