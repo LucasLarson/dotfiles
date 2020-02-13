@@ -8,7 +8,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/AppIcons/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581103887.6098251</real>
 			<key>name</key>
 			<string>AppIcons</string>
 			<key>type</key>
@@ -20,7 +20,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Library/Application%20Support/</string>
 			<key>lastOpenedDate</key>
-			<real>1580746461.790657</real>
+			<real>1581283593.565968</real>
 			<key>name</key>
 			<string>Application Support</string>
 			<key>type</key>
@@ -56,7 +56,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/awesome-bookmarklets/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581103908.454124</real>
 			<key>name</key>
 			<string>awesome-bookmarklets</string>
 			<key>type</key>
@@ -68,7 +68,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Awesome-ML/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581103941.867677</real>
 			<key>name</key>
 			<string>Awesome-ML</string>
 			<key>type</key>
@@ -236,7 +236,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Completionist/</string>
 			<key>lastOpenedDate</key>
-			<real>1580746453.8973331</real>
+			<real>1581283622.2135239</real>
 			<key>name</key>
 			<string>Completionist</string>
 			<key>type</key>
@@ -248,7 +248,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/CompletionistLL/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1580842583.2256122</real>
 			<key>name</key>
 			<string>CompletionistLL</string>
 			<key>type</key>
@@ -308,7 +308,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/cpplint/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581103987.8461928</real>
 			<key>name</key>
 			<string>cpplint</string>
 			<key>type</key>
@@ -332,7 +332,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/custom-content-type-manager/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581104086.4664059</real>
 			<key>name</key>
 			<string>custom-content-type-manager</string>
 			<key>type</key>
@@ -464,7 +464,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/GoMap/</string>
 			<key>lastOpenedDate</key>
-			<real>1579804976.011709</real>
+			<real>1581104132.469125</real>
 			<key>name</key>
 			<string>GoMap</string>
 			<key>type</key>
@@ -476,7 +476,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/ImageOptim/guetzli/guetzli/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581104157.8421512</real>
 			<key>name</key>
 			<string>guetzli</string>
 			<key>type</key>
@@ -536,7 +536,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Imagery/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1580866839.6040249</real>
 			<key>name</key>
 			<string>Imagery</string>
 			<key>type</key>
@@ -596,7 +596,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/iSH/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581104389.549993</real>
 			<key>name</key>
 			<string>iSH</string>
 			<key>type</key>
@@ -714,9 +714,9 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Mackup/</string>
+			<string>file:///Users/LucasLarson/Dropbox/Mackup/</string>
 			<key>lastOpenedDate</key>
-			<real>1579890747.4132838</real>
+			<real>1580504319.179935</real>
 			<key>name</key>
 			<string>Mackup</string>
 			<key>type</key>
@@ -726,9 +726,9 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Dropbox/Mackup/</string>
+			<string>file:///Users/LucasLarson/Code/Mackup/</string>
 			<key>lastOpenedDate</key>
-			<real>1580504319.179935</real>
+			<real>1581451851.999444</real>
 			<key>name</key>
 			<string>Mackup</string>
 			<key>type</key>
@@ -824,7 +824,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Onion/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581114443.136755</real>
 			<key>name</key>
 			<string>Onion</string>
 			<key>type</key>
@@ -882,9 +882,9 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/OSMLab/</string>
+			<string>file:///Users/LucasLarson/Code/osmlab/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1580999596.2989359</real>
 			<key>name</key>
 			<string>OSMLab</string>
 			<key>type</key>
@@ -1100,7 +1100,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Swift-30-Projects/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581114516.4678822</real>
 			<key>name</key>
 			<string>Swift-30-Projects</string>
 			<key>type</key>
@@ -1256,7 +1256,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/XCAssets/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581114581.2870779</real>
 			<key>name</key>
 			<string>XCAssets</string>
 			<key>type</key>
@@ -1268,7 +1268,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/XcodeWarnings/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1580999604.5549741</real>
 			<key>name</key>
 			<string>XcodeWarnings</string>
 			<key>type</key>
@@ -1280,7 +1280,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Xippy/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581114614.0971689</real>
 			<key>name</key>
 			<string>Xippy</string>
 			<key>type</key>
@@ -1292,7 +1292,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Brave/Carthage/Checkouts/yubikit-ios/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581114911.7607551</real>
 			<key>name</key>
 			<string>yubikit-ios</string>
 			<key>type</key>
@@ -1304,7 +1304,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/ImageOptim/zopfli-png/zopfli/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581114924.8988039</real>
 			<key>name</key>
 			<string>zopfli</string>
 			<key>type</key>
