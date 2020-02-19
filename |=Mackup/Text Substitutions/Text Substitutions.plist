@@ -652,6 +652,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>de minimis</string>
+		<key>shortcut</key>
+		<string>deminimus</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>😈</string>
 		<key>shortcut</key>
 		<string>devil</string>
