@@ -11,6 +11,15 @@
 	excludesfile = ~/.gitignore_global
 	ignorecase = false
 
+[color]
+	ui = auto
+
+[commit]
+	gpgsign = true
+
+[credential]
+	helper = osxkeychain
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
@@ -20,14 +29,5 @@
 [gpg]
 	program = /usr/local/bin/gpg
 
-[commit]
-	gpgsign = true
-
 [pull]
 	rebase = true
-
-[color]
-	ui = auto
-
-[credential]
-	helper = osxkeychain
