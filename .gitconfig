@@ -2,21 +2,28 @@
 	name = Lucas Larson
 	email = LucasLarson@riseup.net
 	signingkey = AA4FB0D44C2AA5C90B91861DF09A4FB0FE301234
+
 [core]
 	excludesfile = ~/.gitignore_global
 	ignorecase = false
+
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+
 [gpg]
 	program = /usr/local/bin/gpg
+
 [commit]
 	gpgsign = true
+
 [pull]
 	rebase = true
+
 [color]
 	ui = auto
+
 [credential]
 	helper = osxkeychain
