@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>code</key>
+	<string>3f37220b4db387bf0ebc8ad4769d5eb2</string>
+	<key>email</key>
+	<string>Lucas.Larson86@myhunter.cuny.edu</string>
+	<key>expiration_date</key>
+	<string>2021-03-12T00:00:00Z</string>
+	<key>license_code</key>
+	<string>TOWR-****-****-****-JULI</string>
+	<key>machine</key>
+	<string>b201842698c8d5fb290b2e079b18d1b2</string>
+	<key>plan</key>
+	<string>Tower Student</string>
+	<key>plan_features</key>
+	<array>
+		<string>enterprise_services</string>
+	</array>
+	<key>plan_uuid</key>
+	<string>0caae1a4-28c2-4cde-ac9a-1de77d255374</string>
+	<key>product</key>
+	<string>tower</string>
+	<key>revoked</key>
+	<string>false</string>
+	<key>type</key>
+	<string>LICENSE</string>
+	<key>user</key>
+	<string>106f8b69549b16297ac0b9a4adb06f72</string>
+	<key>uuid</key>
+	<string>884c3662-b0b0-4e62-92f2-e5109be41b13</string>
+</dict>
+</plist>
