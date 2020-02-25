@@ -5,7 +5,8 @@
 
 [core]
 
-	# macOS and Linux only per https://wildlyinaccurate.com/useful-git-configuration-items/#prevent-line-ending-issues
+	# macOS and Linux only per
+	# https://wildlyinaccurate.com/useful-git-configuration-items/#prevent-line-ending-issues
 	autocrlf = input
 
 	excludesfile = ~/.gitignore_global
