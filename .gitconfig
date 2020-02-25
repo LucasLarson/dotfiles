@@ -18,6 +18,15 @@
 
 	ignorecase = false
 
+[color]
+	ui = auto
+
+[commit]
+	gpgsign = true
+
+[credential]
+	helper = osxkeychain
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
@@ -27,9 +36,6 @@
 [gpg]
 	program = /usr/local/bin/gpg
 
-[commit]
-	gpgsign = true
-
 [pack]
 	# slow, aggressive compression via
 	# https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression
@@ -37,9 +43,3 @@
 
 [pull]
 	rebase = true
-
-[color]
-	ui = auto
-
-[credential]
-	helper = osxkeychain
