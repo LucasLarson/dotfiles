@@ -4,11 +4,18 @@
 	signingkey = AA4FB0D44C2AA5C90B91861DF09A4FB0FE301234
 
 [core]
-
-	# macOS and Linux only per https://wildlyinaccurate.com/useful-git-configuration-items/#prevent-line-ending-issues
+	# macOS and Linux only per
+	# https://wildlyinaccurate.com/useful-git-configuration-items/#prevent-line-ending-issues
 	autocrlf = input
 
 	excludesfile = ~/.gitignore_global
+
+	# aggressive but slow repo compression via
+	# https://stackoverflow.com/a/28156806 and
+	# https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression
+	compression = 9
+	looseCompression = 9
+
 	ignorecase = false
 
 [filter "lfs"]
@@ -22,6 +29,11 @@
 
 [commit]
 	gpgsign = true
+
+[pack]
+	# slow, aggressive compression via
+	# https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression
+	compression = 9
 
 [pull]
 	rebase = true
