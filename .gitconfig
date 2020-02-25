@@ -9,6 +9,13 @@
 	autocrlf = input
 
 	excludesfile = ~/.gitignore_global
+
+	# aggressive but slow repo compression via
+	# https://stackoverflow.com/a/28156806 and
+	# https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression
+	compression = 9
+	looseCompression = 9
+
 	ignorecase = false
 
 [color]
@@ -28,6 +35,11 @@
 
 [gpg]
 	program = /usr/local/bin/gpg
+
+[pack]
+	# slow, aggressive compression via
+	# https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression
+	compression = 9
 
 [pull]
 	rebase = true
