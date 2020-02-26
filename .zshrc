@@ -109,8 +109,10 @@ unset MANPATH # delete if you already modified MANPATH elsewhere
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 
+# RVM and rbenv are incompatible and shell references to RVM have to be removed
+# https://github.com/rbenv/rbenv/blob/577f04653df2289f492d4cd9ea3e9d441281f317/README.md#installation
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# export PATH="$PATH:$HOME/.rvm/bin"
 
 
 
