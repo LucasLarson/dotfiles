@@ -51,3 +51,9 @@
 
 [pull]
 	rebase = true
+
+[rerere]
+	# Git remembers your partial merge choices and replays them next time
+	# via https://stackoverflow.com/a/28156806
+	autoupdate = true
+	enabled = true
