@@ -41,6 +41,9 @@
 [gpg]
 	program = /usr/local/bin/gpg
 
+[mergetool]
+	keepBackup = true
+
 [pack]
 	# slow, aggressive compression via
 	# https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression
