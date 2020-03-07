@@ -42,7 +42,11 @@ export UPDATE_ZSH_DAYS=1
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# UPDATE: as of 2020-03-04, this was too costly for whatever potential benefits
+#         I’m seeking, and there is no “remember this answer of mine for next
+#         time” option.
+#         $ `brew remove rbenv` returned `correct 'rbenv' to '.rbenv' [nyae]?`
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
