@@ -94,14 +94,6 @@ source $ZSH/oh-my-zsh.sh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
-# # # gem update
-# # # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
-# # # instead of just eval "$(rbenv init -)" via https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
-# # # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-# eval "$(rbenv init -)" # https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
-# export PATH="$HOME/.rbenv/bin:$PATH"
-
-
 # npm without sudo
 # https://github.com/sindresorhus/guides/blob/285270f06e117c7e0a6b6e51eca6e488d9d7c44d/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES="${HOME}/.npm-packages"
@@ -135,3 +127,12 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+
+# # # gem update
+# # # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
+# # # instead of just eval "$(rbenv init -)" via https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
+# # # if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
+# eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
