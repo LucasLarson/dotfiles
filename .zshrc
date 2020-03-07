@@ -123,6 +123,8 @@ alias apm="apm-beta"
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
+#       which is at $ZSH_CUSTOM/aliases.zsh for me per
+#       https://github.com/ohmyzsh/ohmyzsh/issues/4865#issuecomment-401121707
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
