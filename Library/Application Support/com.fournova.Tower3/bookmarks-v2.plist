@@ -11,6 +11,8 @@
 			<real>1581103887.6098251</real>
 			<key>name</key>
 			<string>AppIcons</string>
+			<key>repositoryIdentifier</key>
+			<string>5AFA1A51-D37E-4677-8D72-FF90B8DF2ABF</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -20,9 +22,11 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Library/Application%20Support/</string>
 			<key>lastOpenedDate</key>
-			<real>1581283593.565968</real>
+			<real>1583104855.085135</real>
 			<key>name</key>
 			<string>Application Support</string>
+			<key>repositoryIdentifier</key>
+			<string>BCA13364-994F-490E-851A-7EEAAF308273</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -35,6 +39,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>AppTrap</string>
+			<key>repositoryIdentifier</key>
+			<string>E43D6BA7-A6F1-41BA-A2F2-25511532261D</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -47,6 +53,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>ArrayBag</string>
+			<key>repositoryIdentifier</key>
+			<string>E530E9F6-BDF8-471E-ABEE-F5F88A341C14</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -59,6 +67,8 @@
 			<real>1581103908.454124</real>
 			<key>name</key>
 			<string>awesome-bookmarklets</string>
+			<key>repositoryIdentifier</key>
+			<string>CBE899E4-7988-4C76-9451-33318C995EE5</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -71,6 +81,8 @@
 			<real>1581103941.867677</real>
 			<key>name</key>
 			<string>Awesome-ML</string>
+			<key>repositoryIdentifier</key>
+			<string>CCFB13FF-C4DF-4CB4-9C47-C44E9412134D</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -83,6 +95,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>AwesomeCache</string>
+			<key>repositoryIdentifier</key>
+			<string>76BCB1C6-54D4-47AD-8F6C-268268D8C623</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -95,6 +109,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>bjhstudios-iOSCustomKeyboard</string>
+			<key>repositoryIdentifier</key>
+			<string>9C9575DD-9ADA-4FD0-940A-B380F7D4F071</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -107,6 +123,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>bonvortaro</string>
+			<key>repositoryIdentifier</key>
+			<string>2E51CE0F-9F62-443B-9E4D-2E59B52C08E7</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -119,6 +137,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>branchesapp</string>
+			<key>repositoryIdentifier</key>
+			<string>C51576FF-9197-43D5-B738-C3441AA93A46</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -128,9 +148,11 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Brave/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1582651495.5179582</real>
 			<key>name</key>
 			<string>Brave</string>
+			<key>repositoryIdentifier</key>
+			<string>B4002876-A88E-429D-94A0-6388616BC225</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -143,6 +165,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>BST-Roster</string>
+			<key>repositoryIdentifier</key>
+			<string>3CD196D5-3499-4274-9C1A-2E46396784D5</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -155,6 +179,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Cafe</string>
+			<key>repositoryIdentifier</key>
+			<string>7868878B-B417-4665-96B2-4EDE6030135E</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -167,6 +193,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>CalFaq</string>
+			<key>repositoryIdentifier</key>
+			<string>B0F5AC55-7F16-437D-87B1-C3DE7295C6BA</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -176,9 +204,11 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Catch2/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1582650342.79842</real>
 			<key>name</key>
 			<string>Catch2</string>
+			<key>repositoryIdentifier</key>
+			<string>12DA6127-BE34-4043-832D-C9868B772DA0</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -191,6 +221,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>cemolcay-KeyboardLayoutEngine</string>
+			<key>repositoryIdentifier</key>
+			<string>3FFA686D-2464-4C92-85B0-C14C9D93797E</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -203,6 +235,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>CFunctions</string>
+			<key>repositoryIdentifier</key>
+			<string>D0CBD1BE-7EFE-4E81-8E7A-73E6E0F1304C</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -215,6 +249,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>CleanStore</string>
+			<key>repositoryIdentifier</key>
+			<string>F1749F59-173F-4CC6-8D51-35864E49BB4C</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -227,6 +263,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>ClipboardViewer</string>
+			<key>repositoryIdentifier</key>
+			<string>9A6792C7-DA5B-41E6-87FD-5C61589E9D98</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -236,21 +274,11 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Completionist/</string>
 			<key>lastOpenedDate</key>
-			<real>1581283622.2135239</real>
+			<real>1582750096.2052531</real>
 			<key>name</key>
 			<string>Completionist</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/CompletionistLL/</string>
-			<key>lastOpenedDate</key>
-			<real>1580842583.2256122</real>
-			<key>name</key>
-			<string>CompletionistLL</string>
+			<key>repositoryIdentifier</key>
+			<string>61DD7274-D45F-4AF7-8127-42C5C33C8F27</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -263,6 +291,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Content-Security-Policy</string>
+			<key>repositoryIdentifier</key>
+			<string>6DCDE013-76F8-41AC-9D3B-3A5F7BA5744A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -275,6 +305,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>CPP-Data-Structure-Cheat-Sheet</string>
+			<key>repositoryIdentifier</key>
+			<string>5D263199-D227-4B78-89DB-9EC4CE37BB74</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -287,6 +319,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>CPP-struct</string>
+			<key>repositoryIdentifier</key>
+			<string>0DF3B342-58C7-4CE9-B230-16D592478FCA</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -299,6 +333,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>CppFunctions</string>
+			<key>repositoryIdentifier</key>
+			<string>BAFEB4A6-3F6A-4FBD-8698-ED17CA59353A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -311,6 +347,8 @@
 			<real>1581103987.8461928</real>
 			<key>name</key>
 			<string>cpplint</string>
+			<key>repositoryIdentifier</key>
+			<string>04324DFC-3DC0-4809-94EF-1A1A40A6F064</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -323,6 +361,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>CSCI235final</string>
+			<key>repositoryIdentifier</key>
+			<string>37BF6E9A-7DEA-4C78-8BA6-BEE0FA62C21B</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -335,6 +375,8 @@
 			<real>1581104086.4664059</real>
 			<key>name</key>
 			<string>custom-content-type-manager</string>
+			<key>repositoryIdentifier</key>
+			<string>2A01A210-A26A-441F-8926-CC4B6FEA8505</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -347,6 +389,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Donohue-CustomKeyboard</string>
+			<key>repositoryIdentifier</key>
+			<string>74E6287E-025C-452A-A32C-317B592FE367</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -359,6 +403,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>DTFoundation</string>
+			<key>repositoryIdentifier</key>
+			<string>E97E156C-F723-4622-B4EF-70CDAF4E5B4A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -371,6 +417,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>ed25519</string>
+			<key>repositoryIdentifier</key>
+			<string>3CF0651C-2150-4795-98E9-A85475094DCC</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -383,6 +431,8 @@
 			<real>1580689034.196769</real>
 			<key>name</key>
 			<string>editor-layer-index</string>
+			<key>repositoryIdentifier</key>
+			<string>91681B38-E826-46CD-AC17-C76C1FEFC430</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -395,6 +445,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Fallback</string>
+			<key>repositoryIdentifier</key>
+			<string>C8720F7C-41AF-4D7A-905D-F8D467C47A4D</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -407,6 +459,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>ffffallback</string>
+			<key>repositoryIdentifier</key>
+			<string>21FD2E0A-4509-46A8-B78C-AC8A2DE875F4</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -419,6 +473,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Firefox</string>
+			<key>repositoryIdentifier</key>
+			<string>3543D19B-9D2F-43BF-949D-138563540C9A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -431,6 +487,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>freshOS-KeyboardLayoutGuide</string>
+			<key>repositoryIdentifier</key>
+			<string>43332A65-010E-4430-97E0-D3B9C18C29B0</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -443,6 +501,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Gday</string>
+			<key>repositoryIdentifier</key>
+			<string>6579F7C6-4EB6-46AC-8B09-493830F765DC</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -455,6 +515,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>GeniusBar</string>
+			<key>repositoryIdentifier</key>
+			<string>195AACF7-AE6A-42D3-9A17-C19B42271B8B</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -464,9 +526,11 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/GoMap/</string>
 			<key>lastOpenedDate</key>
-			<real>1581104132.469125</real>
+			<real>1582076193.9491529</real>
 			<key>name</key>
 			<string>GoMap</string>
+			<key>repositoryIdentifier</key>
+			<string>1DBD9CBC-AF38-407A-9EEE-81BC9D3E728B</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -479,6 +543,8 @@
 			<real>1581104157.8421512</real>
 			<key>name</key>
 			<string>guetzli</string>
+			<key>repositoryIdentifier</key>
+			<string>2DBBF237-0FDB-4497-B839-CCD78737ED0F</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -491,6 +557,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Hack</string>
+			<key>repositoryIdentifier</key>
+			<string>1EF7DE88-19B6-47C5-BD51-910A3ACB5A9C</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -503,6 +571,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>HTML5test</string>
+			<key>repositoryIdentifier</key>
+			<string>953757BF-31FA-4C77-88E5-A4F670459DA4</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -515,6 +585,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>iA Fonts</string>
+			<key>repositoryIdentifier</key>
+			<string>5977D3A0-D4AC-45FB-8ADE-70543D45C23A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -527,6 +599,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>ImageOptim</string>
+			<key>repositoryIdentifier</key>
+			<string>7B67F75E-A8CD-43EF-9C12-2D4AD9ACFCC6</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -539,6 +613,8 @@
 			<real>1580866839.6040249</real>
 			<key>name</key>
 			<string>Imagery</string>
+			<key>repositoryIdentifier</key>
+			<string>9E6574CE-F4AA-4017-98CC-E32154C86111</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -551,6 +627,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>InputAssistant</string>
+			<key>repositoryIdentifier</key>
+			<string>C24B906F-B137-47AE-90C0-46170861D2C0</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -563,6 +641,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>interactive-examples</string>
+			<key>repositoryIdentifier</key>
+			<string>A6F6D3D4-4BA8-4DC4-8B05-A6D00DA311EB</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -575,6 +655,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>ios-decal-hw2</string>
+			<key>repositoryIdentifier</key>
+			<string>BE2E21FF-058A-4B68-9CB9-35181FA8E120</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -587,6 +669,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>iOSAppsInfo</string>
+			<key>repositoryIdentifier</key>
+			<string>0C94E303-E6CD-4637-A045-B2E68D3126BB</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -599,6 +683,8 @@
 			<real>1581104389.549993</real>
 			<key>name</key>
 			<string>iSH</string>
+			<key>repositoryIdentifier</key>
+			<string>D167A43D-40E6-4147-9AB3-7BA8CD51C24E</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -611,6 +697,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Klavye</string>
+			<key>repositoryIdentifier</key>
+			<string>FD05D69F-6AF1-4DA1-AC29-42E131278367</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -623,6 +711,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>LCD</string>
+			<key>repositoryIdentifier</key>
+			<string>165E9A2A-F6C2-439C-B7CA-FD55963C46F8</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -635,6 +725,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>lib</string>
+			<key>repositoryIdentifier</key>
+			<string>EEB819C8-BB8B-4213-9906-1AA668877924</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -647,6 +739,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>libapps</string>
+			<key>repositoryIdentifier</key>
+			<string>2CE57191-51D2-43BE-A34E-591D74970B06</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -659,6 +753,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>libmfs</string>
+			<key>repositoryIdentifier</key>
+			<string>257BF729-6D39-454D-8BA3-2A4EB4E68E1A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -671,6 +767,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>libres</string>
+			<key>repositoryIdentifier</key>
+			<string>F3339615-EBDE-455F-9A44-CE19AFEE0741</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -683,6 +781,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>LinkKeyboard</string>
+			<key>repositoryIdentifier</key>
+			<string>B645312D-2224-4B25-8411-B963B6B31474</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -695,6 +795,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>location-history-json-converter</string>
+			<key>repositoryIdentifier</key>
+			<string>2CE6E60B-98F0-456F-822E-B6DCDFAF39A9</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -707,6 +809,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>LucasLarson.github.io</string>
+			<key>repositoryIdentifier</key>
+			<string>E701F5B8-1690-48F6-87AD-D61E144B076A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -716,9 +820,11 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Dropbox/Mackup/</string>
 			<key>lastOpenedDate</key>
-			<real>1580504319.179935</real>
+			<real>1583619218.7476192</real>
 			<key>name</key>
 			<string>Mackup</string>
+			<key>repositoryIdentifier</key>
+			<string>DD2BE074-1015-4A6B-AA33-FDCDB71ECFA5</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -728,9 +834,11 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Mackup/</string>
 			<key>lastOpenedDate</key>
-			<real>1581451851.999444</real>
+			<real>1581452144.9118581</real>
 			<key>name</key>
 			<string>Mackup</string>
+			<key>repositoryIdentifier</key>
+			<string>B5D6B1DB-AB32-4BFB-9668-6A63848787DD</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -743,6 +851,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Mailto</string>
+			<key>repositoryIdentifier</key>
+			<string>40223C1F-ADF5-4418-9DA7-6744140B6E66</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -755,6 +865,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Maps.me</string>
+			<key>repositoryIdentifier</key>
+			<string>79E7FC1F-328D-4C2D-B172-B6680D6A881B</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -767,6 +879,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>minivmac4ios</string>
+			<key>repositoryIdentifier</key>
+			<string>962490F3-7C6D-429B-8437-6F6F979AD04A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -779,6 +893,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>mmenu</string>
+			<key>repositoryIdentifier</key>
+			<string>3E11692A-C960-4DA2-8C8D-883A46E15EDD</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -791,6 +907,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>ncsa-mosaic</string>
+			<key>repositoryIdentifier</key>
+			<string>30327884-8D3D-4C06-9E58-0C70AC54A9B5</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -803,6 +921,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>NewThinkTank</string>
+			<key>repositoryIdentifier</key>
+			<string>178B5557-DB49-4321-A933-D7754C3E908F</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -815,6 +935,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>no-future-posts</string>
+			<key>repositoryIdentifier</key>
+			<string>5F2F42F9-E1A8-4085-9EC8-D799CE5B89A1</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -827,6 +949,8 @@
 			<real>1581114443.136755</real>
 			<key>name</key>
 			<string>Onion</string>
+			<key>repositoryIdentifier</key>
+			<string>4CE96BFA-48DB-4A4D-9173-6AA509F10C37</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -839,6 +963,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>OpenCCTV</string>
+			<key>repositoryIdentifier</key>
+			<string>E3D1701B-47AA-40E4-B967-DE2C448FA7A1</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -851,6 +977,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>OpenGL-Metal</string>
+			<key>repositoryIdentifier</key>
+			<string>24058AA4-7A93-499B-ADCF-3BDBC127A269</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -863,6 +991,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>orig</string>
+			<key>repositoryIdentifier</key>
+			<string>DFC30533-404F-4F2D-81EA-852DB4A39A28</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -875,6 +1005,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>OsmAnd</string>
+			<key>repositoryIdentifier</key>
+			<string>F637DE5B-FF32-4AB8-99C4-57694F4C4523</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -887,6 +1019,8 @@
 			<real>1580999596.2989359</real>
 			<key>name</key>
 			<string>OSMLab</string>
+			<key>repositoryIdentifier</key>
+			<string>ED16275D-ED4A-44A6-BA64-54696FB59627</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -899,6 +1033,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>oxipng</string>
+			<key>repositoryIdentifier</key>
+			<string>EC2624CF-1884-408E-93E9-ECE6DBB437FC</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -911,6 +1047,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Pisth</string>
+			<key>repositoryIdentifier</key>
+			<string>A354AB8D-DC46-43A5-A33B-3B15AC6A9AD9</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -923,6 +1061,8 @@
 			<real>1580320357.5876689</real>
 			<key>name</key>
 			<string>PoshReVo</string>
+			<key>repositoryIdentifier</key>
+			<string>D04EF87E-6842-4E90-A5DA-FBA937A5EA17</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -932,9 +1072,11 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Library/Preferences/</string>
 			<key>lastOpenedDate</key>
-			<real>1580746855.066191</real>
+			<real>1582076217.03372</real>
 			<key>name</key>
 			<string>Preferences</string>
+			<key>repositoryIdentifier</key>
+			<string>05043863-8F97-4B24-8CF3-A0B55D225467</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -947,6 +1089,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>python-random-quote</string>
+			<key>repositoryIdentifier</key>
+			<string>4DB72E26-44C9-4B3E-8F81-57DFA8C6AF4F</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -959,6 +1103,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>RPSLS</string>
+			<key>repositoryIdentifier</key>
+			<string>5EC9B2E9-6541-47D9-97D3-2D22B8A33759</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -971,6 +1117,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Sandbox</string>
+			<key>repositoryIdentifier</key>
+			<string>B11340C8-156F-4946-BE8A-94B3E3E0D207</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -983,6 +1131,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Semester</string>
+			<key>repositoryIdentifier</key>
+			<string>F1DCEB5E-AF92-4E1E-813E-AE70AD161983</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -995,6 +1145,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>ShowAnchors</string>
+			<key>repositoryIdentifier</key>
+			<string>2B1C02C4-A5F7-48B2-B920-57D2195DB7CA</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1007,6 +1159,8 @@
 			<real>1579723999.5807981</real>
 			<key>name</key>
 			<string>Sift</string>
+			<key>repositoryIdentifier</key>
+			<string>F6EC3D9B-06B7-4499-9235-2F116EE023E6</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1019,6 +1173,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Slidden</string>
+			<key>repositoryIdentifier</key>
+			<string>FBA6BC02-F0AE-4EB9-812A-42E46E5CD05A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1031,6 +1187,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Slideshow</string>
+			<key>repositoryIdentifier</key>
+			<string>A1FB3DC9-F703-4892-8FBD-3B96AAEB4B2A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1043,6 +1201,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Sparkle</string>
+			<key>repositoryIdentifier</key>
+			<string>D1A87428-D801-4240-9FD1-34559F5DEAA3</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1055,6 +1215,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>src</string>
+			<key>repositoryIdentifier</key>
+			<string>25F9D4B9-BA1F-45B8-8FB6-DDC7FD1D2ACD</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1067,6 +1229,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>src</string>
+			<key>repositoryIdentifier</key>
+			<string>1C638768-C00B-4A27-9745-62F1F467B63B</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1079,6 +1243,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>src</string>
+			<key>repositoryIdentifier</key>
+			<string>8F91ED82-A805-4FFC-8BCB-74FEC92796C2</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1091,6 +1257,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>src</string>
+			<key>repositoryIdentifier</key>
+			<string>F0D7206B-41F1-403D-B5F7-DEF01D3A01E2</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1103,6 +1271,8 @@
 			<real>1581114516.4678822</real>
 			<key>name</key>
 			<string>Swift-30-Projects</string>
+			<key>repositoryIdentifier</key>
+			<string>42C114DF-59C4-4A9E-B1E1-4F0EB83B5F8A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1115,6 +1285,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Tasty Iñupiaq</string>
+			<key>repositoryIdentifier</key>
+			<string>C8F2A53B-E137-475E-85CA-6D592E21DEAD</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1127,6 +1299,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>tasty-faux-testing-keyboard</string>
+			<key>repositoryIdentifier</key>
+			<string>7971D493-FCB9-4B8D-ADDA-DD652CBA8042</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1139,6 +1313,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>tasty-imitation-keyboard</string>
+			<key>repositoryIdentifier</key>
+			<string>FE68D8E1-72EF-4EEE-8C0E-51F6E598C879</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1151,6 +1327,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>tasty-imitation-keyboard (ChatterCommerce)</string>
+			<key>repositoryIdentifier</key>
+			<string>EB5AEDED-2809-4FB4-8BAD-004B13729F35</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1163,6 +1341,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>TextEditor</string>
+			<key>repositoryIdentifier</key>
+			<string>3D056E81-B469-4FE4-9453-1A362DDE0061</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1175,6 +1355,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Tiime</string>
+			<key>repositoryIdentifier</key>
+			<string>273CC1DD-919B-4CD2-80ED-524492E79F82</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1184,9 +1366,11 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/TypeStyle/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1582510116.9259648</real>
 			<key>name</key>
 			<string>TypeStyle</string>
+			<key>repositoryIdentifier</key>
+			<string>E719709D-CC0A-4B09-A7AA-A3F0CD56D73E</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1199,6 +1383,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Typist</string>
+			<key>repositoryIdentifier</key>
+			<string>FBBBB7A3-3762-4BFE-9845-0B4A535903C3</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1211,6 +1397,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>UI</string>
+			<key>repositoryIdentifier</key>
+			<string>77240116-47A7-4DA0-9CB2-A9F215EB9B69</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1223,6 +1411,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Unwrap</string>
+			<key>repositoryIdentifier</key>
+			<string>C15F10E0-7EFB-4BBE-96B0-81669D41E419</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1235,6 +1425,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>vortaro</string>
+			<key>repositoryIdentifier</key>
+			<string>33AB595E-D622-4238-9C4F-73423B45622D</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1247,6 +1439,8 @@
 			<real>0.0</real>
 			<key>name</key>
 			<string>Wayback Machine</string>
+			<key>repositoryIdentifier</key>
+			<string>51455F77-39D8-4FBC-957D-8635E147778E</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1259,6 +1453,8 @@
 			<real>1581114581.2870779</real>
 			<key>name</key>
 			<string>XCAssets</string>
+			<key>repositoryIdentifier</key>
+			<string>19C852A1-2D81-4885-A9C4-F6E078E4B1DB</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1271,6 +1467,8 @@
 			<real>1580999604.5549741</real>
 			<key>name</key>
 			<string>XcodeWarnings</string>
+			<key>repositoryIdentifier</key>
+			<string>5A24CF94-0F87-4C1F-83BA-11EC719F9163</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1283,6 +1481,8 @@
 			<real>1581114614.0971689</real>
 			<key>name</key>
 			<string>Xippy</string>
+			<key>repositoryIdentifier</key>
+			<string>B0D02575-C12B-448A-8E0F-64A0F364DF0E</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1295,6 +1495,8 @@
 			<real>1581114911.7607551</real>
 			<key>name</key>
 			<string>yubikit-ios</string>
+			<key>repositoryIdentifier</key>
+			<string>FFE0367F-71E2-4091-AD32-9FBD816E217A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1307,6 +1509,8 @@
 			<real>1581114924.8988039</real>
 			<key>name</key>
 			<string>zopfli</string>
+			<key>repositoryIdentifier</key>
+			<string>4A53529F-3B64-4AF7-9B96-9C05349B01CC</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
