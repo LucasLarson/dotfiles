@@ -2536,6 +2536,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>SCOTUS</string>
+		<key>shortcut</key>
+		<string>SCOTUS</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>§</string>
 		<key>shortcut</key>
 		<string>sect</string>
