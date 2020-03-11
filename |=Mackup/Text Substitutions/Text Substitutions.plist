@@ -2800,6 +2800,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>their</string>
+		<key>shortcut</key>
+		<string>tbeir</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>TheDailyBeast</string>
 		<key>shortcut</key>
 		<string>tdb</string>
