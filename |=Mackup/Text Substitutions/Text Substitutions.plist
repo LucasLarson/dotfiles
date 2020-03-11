@@ -574,6 +574,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>COVID‑19</string>
+		<key>shortcut</key>
+		<string>covid</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>³</string>
 		<key>shortcut</key>
 		<string>cubed</string>
