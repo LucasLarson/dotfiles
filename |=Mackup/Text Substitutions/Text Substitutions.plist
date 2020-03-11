@@ -2512,6 +2512,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>readme</string>
+		<key>shortcut</key>
+		<string>reamde</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>README</string>
+		<key>shortcut</key>
+		<string>REAMDE</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>the</string>
 		<key>shortcut</key>
 		<string>rge</string>
