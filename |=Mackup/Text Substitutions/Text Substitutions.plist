@@ -1720,6 +1720,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>iTerm</string>
+		<key>shortcut</key>
+		<string>itmer</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Ivory</string>
 		<key>shortcut</key>
 		<string>ivory</string>
