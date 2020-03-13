@@ -1,1 +1,2 @@
 mackup==0.8.28
+nokogiri==1.10.4
