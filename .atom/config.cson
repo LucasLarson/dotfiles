@@ -20,6 +20,14 @@
     showPanel: true
   "spell-check":
     addKnownWords: true
+    locales: [
+      "en-US"
+      "fr-FR"
+      "eo-EO"
+      "es-MX"
+      "ht-HT"
+    ]
+    useLocales: false
   "split-diff":
     ignoreWhitespace: true
   welcome:
