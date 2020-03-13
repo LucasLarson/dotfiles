@@ -142,3 +142,4 @@ fi
 # https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
 # eval "$(rbenv init -)"
 # export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
