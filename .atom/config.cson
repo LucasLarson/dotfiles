@@ -1,5 +1,8 @@
 "*":
   core:
+    disabledPackages: [
+      "whitespace"
+    ]
     projectHome: "/Users/LucasLarson/Code"
     telemetryConsent: "limited"
   editor:
