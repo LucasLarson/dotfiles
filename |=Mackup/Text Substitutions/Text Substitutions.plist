@@ -2248,6 +2248,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Mullan</string>
+		<key>shortcut</key>
+		<string>Mullan</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>misogyny</string>
 		<key>shortcut</key>
 		<string>mysogyny</string>
