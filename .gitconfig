@@ -8,6 +8,10 @@
 	# https://wildlyinaccurate.com/useful-git-configuration-items/#prevent-line-ending-issues
 	autocrlf = input
 
+	# use Atom instead of iTerm’s vim for editing commit messages
+	# https://apple.stackexchange.com/a/57868
+	editor = /usr/local/bin/atom
+
 	excludesfile = ~/.gitignore_global
 
 	# aggressive but slow repo compression via
