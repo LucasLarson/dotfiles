@@ -3,5 +3,6 @@
     "git.autofetch": true,
     "vsintellicode.features.python.deepLearning": "enabled",
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "deepcode.api.cloudBackend": "https://www.deepcode.ai/"
 }
