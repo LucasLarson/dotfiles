@@ -5,6 +5,8 @@
     ]
     projectHome: "/Users/LucasLarson/Code"
     telemetryConsent: "limited"
+  deepcode:
+    sessionToken: "672a47a705b0606b2de26fdb46e617a119031628d3b4da44bb7bb420a9807f63"
   editor:
     fontFamily: "Fira Code, JetBrains Mono, Dank, Dank Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
     fontSize: 15
