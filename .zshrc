@@ -73,6 +73,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+#plugins=(git safe-paste) # safe-paste broke the ↑ up button functionality
 
 source $ZSH/oh-my-zsh.sh
 
