@@ -1,0 +1,6 @@
+<application>
+  <component name="PhpRefactoringSettings">
+    <option name="RENAME_SEARCH_IN_COMMENTS_FOR_VARIABLE" value="true" />
+    <option name="RENAME_SEARCH_NON_CODE_FOR_VARIABLE" value="true" />
+  </component>
+</application>

@@ -1,0 +1,5 @@
+<application>
+  <component name="NotificationConfiguration">
+    <notification groupId="Python Compatibility Inspection Advertiser" displayType="STICKY_BALLOON" />
+  </component>
+</application>

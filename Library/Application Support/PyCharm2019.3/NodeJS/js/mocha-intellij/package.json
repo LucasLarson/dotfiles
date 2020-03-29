@@ -1,0 +1,27 @@
+{
+  "name": "mocha-intellij",
+  "version": "0.0.1",
+  "description": "Mocha reporter for WebStorm and other IntelliJ IDEs.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:JetBrains/mocha-intellij.git"
+  },
+  "keywords": [
+    "mocha reporter",
+    "WebStorm",
+    "IntelliJ"
+  ],
+  "contributors": [
+    {
+      "name": "Sergey Simonchik",
+      "email": "sergey.simonchik@jetbrains.com"
+    }
+  ],
+  "dependencies": {},
+  "licenses": [
+    {
+      "type": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ]
+}

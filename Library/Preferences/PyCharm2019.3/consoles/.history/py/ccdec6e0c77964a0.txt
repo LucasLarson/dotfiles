@@ -1,0 +1,1 @@
+runfile('/Users/LucasLarson/Code/Mackup/mackup/main.py', wdir='/Users/LucasLarson/Code/Mackup')

@@ -1,0 +1,37 @@
+<application>
+  <component name="RecentDirectoryProjectsManager">
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$/Code/cpplint">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1Uj0TZizN3RKqYSumM2f5kXjiLh">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PY-193.5662.18" />
+              <option name="buildTimestamp" value="1575582075623" />
+              <option name="productionCode" value="PY" />
+              <option name="projectOpenTimestamp" value="1575854925664" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Code/Mackup">
+          <value>
+            <RecentProjectMetaInfo opened="true" projectWorkspaceId="1T8AffnPN9nKRVIeuXzvrlknYoW">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PY-193.6015.10" />
+              <option name="buildTimestamp" value="1577348505070" />
+              <frame x="0" y="23" width="1404" height="877" />
+              <option name="productionCode" value="PY" />
+              <option name="projectOpenTimestamp" value="1579039849781" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="recentPaths">
+      <list>
+        <option value="$USER_HOME$/Code/Mackup" />
+        <option value="$USER_HOME$/Code/cpplint" />
+      </list>
+    </option>
+  </component>
+</application>

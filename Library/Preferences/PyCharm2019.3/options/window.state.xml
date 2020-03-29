@@ -1,0 +1,43 @@
+<application>
+  <component name="DimensionService">
+    <size key="GridCell.Tab.0.left.0.0.2880.1800@192dpi" width="912" height="446" />
+    <size key="GridCell.Tab.0.center.0.0.2880.1800@192dpi" width="912" height="446" />
+    <size key="GridCell.Tab.0.right.0.0.2880.1800@192dpi" width="912" height="446" />
+    <size key="GridCell.Tab.0.bottom.0.0.2880.1800@192dpi" width="912" height="446" />
+    <size key="GridCell.Tab.1.left.0.0.2880.1800@192dpi" width="1362" height="552" />
+    <size key="GridCell.Tab.1.center.0.0.2880.1800@192dpi" width="1362" height="552" />
+    <size key="GridCell.Tab.1.right.0.0.2880.1800@192dpi" width="1362" height="552" />
+    <size key="GridCell.Tab.1.bottom.0.0.2880.1800@192dpi" width="1362" height="552" />
+  </component>
+  <component name="WindowManager">
+    <frame x="0" y="23" width="1404" height="877" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="WindowStateApplicationService">
+    <state x="302" y="69" key="#Updates" timestamp="1572831399102">
+      <screen x="0" y="23" width="1404" height="877" />
+    </state>
+    <state x="302" y="69" key="#Updates/0.23.1404.877" timestamp="1572831399102" />
+    <state x="390" y="138" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1572831401434">
+      <screen x="0" y="23" width="1404" height="877" />
+    </state>
+    <state x="390" y="138" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1404.877" timestamp="1572831401434" />
+    <state x="702" y="403" key="WELCOME_SCREEN" timestamp="1572831406090">
+      <screen x="0" y="23" width="1404" height="877" />
+    </state>
+    <state x="702" y="403" key="WELCOME_SCREEN/0.23.1404.877" timestamp="1572831406090" />
+  </component>
+</application>

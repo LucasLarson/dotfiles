@@ -1,0 +1,6 @@
+<application>
+  <component name="GeneralSettings">
+    <option name="showTipsOnStartup" value="false" />
+    <option name="useSafeWrite" value="false" />
+  </component>
+</application>
