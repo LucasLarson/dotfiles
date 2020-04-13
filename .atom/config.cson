@@ -1,4 +1,10 @@
 "*":
+  "atom-beautify":
+    c: {}
+    general:
+      _analyticsUserId: "cf34e041-58cb-4a93-aa33-9ac69f68089e"
+    objectivec:
+      configPath: "~/.atom/packages/atom-beautify/uncrustify.cfg"
   core:
     disabledPackages: [
       "whitespace"
