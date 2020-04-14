@@ -1750,6 +1750,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Ivory</string>
+		<key>shortcut</key>
+		<string>ivroy</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>j’ai</string>
 		<key>shortcut</key>
 		<string>j’ai</string>
