@@ -36,6 +36,11 @@
 	# https://www.programming-books.io/essential/git/diff-utf-16-encoded-text-and-binary-plist-files-b4b8d7c85497429ea2c7a18cca6a1c53
 	textconv = plutil -convert xml1 -o -
 
+[diff "utf16"]
+	# macOS strings files via
+	# https://www.programming-books.io/essential/git/diff-utf-16-encoded-text-and-binary-plist-files-b4b8d7c85497429ea2c7a18cca6a1c53
+	textconv = "iconv -f utf-16 -t utf-8"
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	process = git-lfs filter-process
