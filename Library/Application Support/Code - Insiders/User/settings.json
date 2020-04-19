@@ -1,8 +1,3 @@
-{
-    "python.insidersChannel": "daily",
-    "git.autofetch": true,
-    "vsintellicode.features.python.deepLearning": "enabled",
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "deepcode.api.cloudBackend": "https://www.deepcode.ai/"
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:153ac6d8ded9f03bc705adff2ed1b67bdb2194a02f3ae69a7fb3336bbde223da
+size 351
