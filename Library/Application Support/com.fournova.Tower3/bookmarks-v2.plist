@@ -6,6 +6,20 @@
 	<array>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/.oh-my-zsh/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>.oh-my-zsh</string>
+			<key>repositoryIdentifier</key>
+			<string>171A3B7C-4CA5-4151-8436-58D9F9579AFF</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/AppIcons/</string>
 			<key>lastOpenedDate</key>
 			<real>1581103887.6098251</real>
@@ -22,7 +36,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Library/Application%20Support/</string>
 			<key>lastOpenedDate</key>
-			<real>1583104855.085135</real>
+			<real>1584645510.5364599</real>
 			<key>name</key>
 			<string>Application Support</string>
 			<key>repositoryIdentifier</key>
@@ -288,7 +302,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Completionist/</string>
 			<key>lastOpenedDate</key>
-			<real>1583619233.8347831</real>
+			<real>1584123641.621783</real>
 			<key>name</key>
 			<string>Completionist</string>
 			<key>repositoryIdentifier</key>
@@ -372,7 +386,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/CppSandbox/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1583890372.12992</real>
 			<key>name</key>
 			<string>CppSandbox</string>
 			<key>repositoryIdentifier</key>
@@ -708,7 +722,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Imagery/</string>
 			<key>lastOpenedDate</key>
-			<real>1580866839.6040249</real>
+			<real>1584044045.953274</real>
 			<key>name</key>
 			<string>Imagery</string>
 			<key>repositoryIdentifier</key>
@@ -974,7 +988,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Dropbox/Mackup/</string>
 			<key>lastOpenedDate</key>
-			<real>1583619218.7476192</real>
+			<real>1584645492.0694408</real>
 			<key>name</key>
 			<string>Mackup</string>
 			<key>repositoryIdentifier</key>
@@ -1282,7 +1296,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Library/Preferences/</string>
 			<key>lastOpenedDate</key>
-			<real>1582076217.03372</real>
+			<real>1585232651.9794521</real>
 			<key>name</key>
 			<string>Preferences</string>
 			<key>repositoryIdentifier</key>
@@ -1604,7 +1618,7 @@
 			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/TypeStyle/</string>
 			<key>lastOpenedDate</key>
-			<real>1582510116.9259648</real>
+			<real>1584644957.0455251</real>
 			<key>name</key>
 			<string>TypeStyle</string>
 			<key>repositoryIdentifier</key>
