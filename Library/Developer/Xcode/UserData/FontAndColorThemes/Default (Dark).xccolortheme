@@ -11,7 +11,7 @@
 	<key>DVTConsoleDebuggerOutputTextFont</key>
 	<string>FiraCode-Regular - 12.0</string>
 	<key>DVTConsoleDebuggerPromptTextColor</key>
-	<string>0.255 0.714 0.27 1</string>
+	<string>0.254902 0.713725 0.270588 1</string>
 	<key>DVTConsoleDebuggerPromptTextFont</key>
 	<string>FiraCode-Regular - 12.0</string>
 	<key>DVTConsoleExectuableInputTextColor</key>
@@ -19,7 +19,7 @@
 	<key>DVTConsoleExectuableInputTextFont</key>
 	<string>FiraCode-Regular - 12.0</string>
 	<key>DVTConsoleExectuableOutputTextColor</key>
-	<string>1 1 1 1</string>
+	<string>0.254902 0.713725 0.270588 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
 	<string>FiraCode-Bold - 12.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
