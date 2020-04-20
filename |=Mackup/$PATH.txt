@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8c07922ceb792e513a0c6b96be2ee72d4fec0c811c386df2c65ea6618b53134c
-size 410
+/Users/LucasLarson/.rbenv/shims:/Users/LucasLarson/.pyenv/shims:/Users/LucasLarson/.npm-packages/bin:/Users/LucasLarson/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin
