@@ -27,7 +27,9 @@
 	precomposeUnicode = true
 
 [color]
-	ui = auto
+	# changed from auto to true in 2020-04
+	# https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_bootstrapping_configuration
+	ui = true
 
 [commit]
 	gpgsign = true
