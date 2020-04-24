@@ -8,7 +8,7 @@
 	# https://wildlyinaccurate.com/useful-git-configuration-items/#prevent-line-ending-issues
 	autocrlf = input
 
-	# use Nano via Homebrew to edit commit messages
+	# use nano via Homebrew to edit commit messages
 	# https://apple.stackexchange.com/a/57868
 	editor = /usr/local/bin/nano
 
