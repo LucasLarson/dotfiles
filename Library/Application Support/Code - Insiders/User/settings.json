@@ -1,5 +1,6 @@
 {
     "deepcode.api.cloudBackend": "https://www.deepcode.ai/",
+    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 13,
     "editor.renderWhitespace": "all",
     "editor.scrollBeyondLastLine": false,
