@@ -8,5 +8,6 @@
     "python.insidersChannel": "on",
     "python.jediEnabled": false,
     "vsintellicode.features.python.deepLearning": "enabled",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "window.zoomLevel": -1
 }
