@@ -1,5 +1,6 @@
 {
     "deepcode.api.cloudBackend": "https://www.deepcode.ai/",
+    "editor.scrollBeyondLastLine": false,
     "editor.suggestSelection": "first",
     "editor.wordWrapColumn": 79,
     "git.autofetch": true,
