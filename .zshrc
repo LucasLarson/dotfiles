@@ -135,6 +135,8 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# expose C family of headers via https://apple.stackexchange.com/a/372600
+export CPATH=`xcrun --show-sdk-path`/usr/include
 
 # # # gem update
 # # # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
