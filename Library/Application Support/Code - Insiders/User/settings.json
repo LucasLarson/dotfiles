@@ -2,7 +2,7 @@
     "deepcode.api.cloudBackend": "https://www.deepcode.ai/",
     "editor.suggestSelection": "first",
     "git.autofetch": true,
-    "python.insidersChannel": "off",
+    "python.insidersChannel": "on",
     "python.jediEnabled": false,
     "vsintellicode.features.python.deepLearning": "enabled",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
