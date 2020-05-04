@@ -1,1 +1,4 @@
+# `echo $PATH` or
+# `<<<${(F)path}` via https://codegolf.stackexchange.com/a/96471
+#
 /usr/local/sbin:/Users/LucasLarson/.rbenv/shims:/Users/LucasLarson/.pyenv/shims:/Users/LucasLarson/.npm-packages/bin:/Users/LucasLarson/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin
