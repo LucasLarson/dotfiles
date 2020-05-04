@@ -3,6 +3,7 @@
 #
 /usr/local/sbin
 /Users/LucasLarson/.rbenv/shims
+/Users/LucasLarson/Code/Flutter/flutter/bin
 /Users/LucasLarson/.pyenv/shims
 /Users/LucasLarson/.npm-packages/bin
 /Users/LucasLarson/.cargo/bin
