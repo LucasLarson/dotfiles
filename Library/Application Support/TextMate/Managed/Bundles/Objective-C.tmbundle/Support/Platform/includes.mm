@@ -11,6 +11,7 @@
 #import <QuartzComposer/QuartzComposer.h>
 #import <QuickLook/QuickLook.h>
 #import <ScreenSaver/ScreenSaver.h>
+#import <UserNotifications/UserNotifications.h>
 #import <WebKit/WebKit.h>
 
 int main (int argc, char const* argv[])

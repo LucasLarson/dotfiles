@@ -292,7 +292,7 @@ int main (int argc, char const* argv[])
 		{ false, ".mac-classic",  std::regex(".*/MacTypes\\.h")                  },
 		{ false, ".cf",           std::regex(".*/CoreFoundation\\.framework/.*") },
 		{ true,  ".run-time",     std::regex(".*?/objc/(?:objc|runtime|NSObjCRuntime).h") },
-		{ true,  ".cocoa",        std::regex(".*?/(?:AddressBook|AppKit|ExceptionHandling|Foundation|WebKit)\\.framework/(?!.*\\.framework/).*") },
+		{ true,  ".cocoa",        std::regex(".*?/(?:AddressBook|AppKit|ExceptionHandling|Foundation|UserNotifications|WebKit)\\.framework/(?!.*\\.framework/).*") },
 	};
 
 	std::map<std::string, std::set<std::string>> functions;
