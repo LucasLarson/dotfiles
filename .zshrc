@@ -138,6 +138,15 @@ fi
 # expose C family of headers via https://apple.stackexchange.com/a/372600
 export CPATH=`xcrun --show-sdk-path`/usr/include
 
+
+
+# Flutter
+# https://github.com/flutter/website/blob/e5f725c7ff39d2cb5356f2ccd998e560c4060a4a/src/docs/get-started/install/_path-mac.md#user-content-update-your-path
+export PATH="$PATH:$HOME/Code/Flutter/bin"
+export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+
+
+
 # # # gem update
 # # # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # # # instead of just eval "$(rbenv init -)" via https://github.com/rbenv/rbenv/issues/938#issuecomment-285342541
