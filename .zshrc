@@ -117,8 +117,10 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # Alias and Functions # via https://github.com/jeefberkey/dotfiles/blob/2ded1c3a813957909687a8ddce8a9befcc6b51d1/.zshrc#L48-L61
 #######################
 alias gti="git"
-alias atom="atom-beta"
-alias apm="apm-beta"
+alias atom-beta="atom-nightly"
+alias apm-beta="apm-nightly"
+alias atom="atom-nightly"
+alias apm="apm-nightly"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
