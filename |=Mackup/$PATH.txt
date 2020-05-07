@@ -1,4 +1,3 @@
-# `echo $PATH` or
 # `<<<${(F)path}` via https://codegolf.stackexchange.com/a/96471
 #
 /usr/local/sbin
