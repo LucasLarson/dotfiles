@@ -2,7 +2,6 @@
 #
 /usr/local/sbin
 /Users/LucasLarson/.rbenv/shims
-/Users/LucasLarson/Code/Flutter/flutter/bin
 /Users/LucasLarson/.pyenv/shims
 /Users/LucasLarson/.npm-packages/bin
 /Users/LucasLarson/.cargo/bin
@@ -18,4 +17,4 @@
 /Library/Apple/usr/bin
 /Library/Frameworks/Mono.framework/Versions/Current/Commands
 /Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin
-
+/Users/LucasLarson/Code/Flutter/bin
