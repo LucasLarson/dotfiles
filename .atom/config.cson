@@ -29,6 +29,7 @@
   "find-and-replace":
     autocompleteSearches: true
     enablePCRE2: true
+    liveSearchMinimumCharacters: 2
     scrollToResultOnLiveSearch: true
     useRipgrep: true
   "gitlab-integration":
