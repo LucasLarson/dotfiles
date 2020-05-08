@@ -39,6 +39,9 @@
     showPanel: true
   "spell-check":
     addKnownWords: true
+    knownWords: [
+      "kbd"
+    ]
     locales: [
       "en-US"
       "fr-FR"
