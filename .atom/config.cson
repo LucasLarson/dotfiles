@@ -27,6 +27,7 @@
   "exception-reporting":
     userId: "211d116f-e19e-4563-a558-477e75bb795f"
   "find-and-replace":
+    autocompleteSearches: true
     enablePCRE2: true
     useRipgrep: true
   "gitlab-integration":
