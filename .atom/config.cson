@@ -29,6 +29,7 @@
   "find-and-replace":
     autocompleteSearches: true
     enablePCRE2: true
+    scrollToResultOnLiveSearch: true
     useRipgrep: true
   "gitlab-integration":
     token: "MGH-pQyz3rMrsU1Egyth"
