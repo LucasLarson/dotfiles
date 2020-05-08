@@ -21,6 +21,7 @@
     fontFamily: "Fira Code, JetBrains Mono, Dank, Dank Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
     fontSize: 15
     preferredLineLength: 79
+    showIndentGuide: true
     showInvisibles: true
     softWrap: true
   "exception-reporting":
