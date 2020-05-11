@@ -21,13 +21,14 @@
 | Control | <kbd title=Control>⌃</kbd> | `<kbd title=Control>⌃</kbd>` |
 | Shift   | <kbd title=Shift>⇧</kbd>   | `<kbd title=Shift>⇧</kbd>`   |
 
+<!--
 <kbd title=Command>⌘</kbd>
 <kbd title=Option>⌥</kbd>
 <kbd title=Control>⌃</kbd>
 <kbd title=Shift>⇧</kbd>
 <kbd title=Function>fn</kbd>
 <kbd></kbd>
-
+-->
 ### All Applications
 
 #### Standard
