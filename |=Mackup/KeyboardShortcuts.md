@@ -53,6 +53,7 @@
 | All Upper Case | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd>U</kbd> | Barebones [@BBEdit](https://github.com/BBEdit) |
 | Freeze Panes | <kbd title=Function>fn</kbd><kbd>F3</kbd> | [@Microsoft](https://github.com/microsoft) Excel |
 | HTTPS± | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd title=Control>⌃</kbd><kbd>H</kbd> | bookmarklet |
+| Make Upper Case | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd>U</kbd> | [@Apple](https://github.com/apple) Xcode |
 | Minimize All | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd title=Control>⌃</kbd><kbd title=Shift>⇧</kbd><kbd>/</kbd> | |
 | New Private Window with Tor | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>N</kbd> | [@Brave](https://github.com/brave) Brave |
 | Paste and Match Formatting | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>V</kbd> | [@Microsoft](https://github.com/microsoft) Word |
