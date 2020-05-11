@@ -1,5 +1,16 @@
 # Keyboard Shortcuts
-<!-- @TODO add table of contents -->
+<!-- TOC -->
+## Table of contents
+-   [Access](#access)
+-   [Shortcuts](#shortcuts)
+    -   [Keys](#keys)
+    -   [All Applications](#all-applications)
+        -   [Standard](#standard)
+        -   [Custom](#custom)
+    -   [Brave](#brave)
+        -   [Custom](#custom-1)
+-   [Status](#status)
+
 ## Access
 1.  open <kbd>System Preferences.app</kbd>
 1.  select <kbd>Keyboard</kbd>
