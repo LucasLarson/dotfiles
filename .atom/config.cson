@@ -24,6 +24,7 @@
     showIndentGuide: true
     showInvisibles: true
     softWrap: true
+    tabLength: 4
   "exception-reporting":
     userId: "211d116f-e19e-4563-a558-477e75bb795f"
   "find-and-replace":
