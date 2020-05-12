@@ -38,6 +38,8 @@
   "linter-ui-default":
     panelHeight: 193
     showPanel: true
+  "markdown-preview":
+    useGitHubStyle: true
   "spell-check":
     addKnownWords: true
     knownWords: [
