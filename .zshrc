@@ -130,8 +130,8 @@ alias apm="apm-nightly"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="atom ~/.zshrc"
 alias ohmyzsh="atom ~/.oh-my-zsh"
+alias zshconfig="atom ~/.zshrc"
 
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
