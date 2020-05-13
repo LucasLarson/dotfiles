@@ -1,7 +1,7 @@
 analyzer_rules:
-  - explicit_self
-  - unused_declaration
-  - unused_import
+  - explicit_self # enable in either analyzer_rules or opt_in_rules
+  - unused_declaration # enable in either analyzer_rules or opt_in_rules
+  - unused_import # enable in either analyzer_rules or opt_in_rules
 
 excluded:
   - Carthage
@@ -55,7 +55,7 @@ opt_in_rules:
   - explicit_acl
   - explicit_enum_raw_value
   - explicit_init
-  - explicit_self
+# - explicit_self # enable in either analyzer_rules or opt_in_rules
   - explicit_top_level_acl
   - explicit_type_interface
   - extension_access_modifier
@@ -192,9 +192,9 @@ opt_in_rules:
   - unused_capture_list
   - unused_closure_parameter
   - unused_control_flow_label
-  - unused_declaration
+# - unused_declaration # enable in either analyzer_rules or opt_in_rules
   - unused_enumerated
-  - unused_import
+# - unused_import # enable in either analyzer_rules or opt_in_rules
   - unused_optional_binding
   - unused_setter_value
   - valid_ibinspectable
