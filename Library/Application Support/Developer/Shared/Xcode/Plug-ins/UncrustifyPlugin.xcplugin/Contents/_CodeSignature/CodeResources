@@ -24,21 +24,49 @@
 	<key>files2</key>
 	<dict>
 		<key>Resources/XCFPreferencesWindowController.nib</key>
-		<data>
-		PbjGvHV8QgxnLLI9DaMSYmaeA9o=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			PbjGvHV8QgxnLLI9DaMSYmaeA9o=
+			</data>
+			<key>hash2</key>
+			<data>
+			7Gpimx3G5j1bC8clNXZNIXepdLxnRlceLuJ7Z1YXCO0=
+			</data>
+		</dict>
 		<key>Resources/clang-format</key>
-		<data>
-		XIjUf8edhoWo2+W0MbnUOlnzRU0=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			XIjUf8edhoWo2+W0MbnUOlnzRU0=
+			</data>
+			<key>hash2</key>
+			<data>
+			Dap7DNi0TlpWFymuilTIYuq5g/isp030NodH79uDF1c=
+			</data>
+		</dict>
 		<key>Resources/icon.icns</key>
-		<data>
-		43t/Hg41/REtZ8wo3Y5loYspcs4=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			43t/Hg41/REtZ8wo3Y5loYspcs4=
+			</data>
+			<key>hash2</key>
+			<data>
+			J/Wz+2/vzz8FoPPfc8Izat9W9rOVrFxatV/KARHiwu8=
+			</data>
+		</dict>
 		<key>Resources/uncrustify</key>
-		<data>
-		KAv7QWaoWJSXQu1yrA91+QRIzsU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			KAv7QWaoWJSXQu1yrA91+QRIzsU=
+			</data>
+			<key>hash2</key>
+			<data>
+			ExsMUpvZEUMKtaYOeiWUIJkdY5ZL/m9q6/Ew1k+7cHY=
+			</data>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>
