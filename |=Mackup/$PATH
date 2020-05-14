@@ -11,7 +11,6 @@
 /sbin
 /Library/TeX/texbin
 /usr/local/MacGPG2/bin
-~/.dotnet/tools
 /Library/Apple/usr/bin
 /Library/Frameworks/Mono.framework/Versions/Current/Commands
 /Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin
