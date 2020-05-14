@@ -11,7 +11,6 @@
 /sbin
 /Library/TeX/texbin
 /usr/local/MacGPG2/bin
-/usr/local/share/dotnet
 ~/.dotnet/tools
 /Library/Apple/usr/bin
 /Library/Frameworks/Mono.framework/Versions/Current/Commands
