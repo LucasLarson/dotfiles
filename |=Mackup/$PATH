@@ -1,6 +1,5 @@
 # `<<<${(F)path}` via https://codegolf.stackexchange.com/a/96471
 #
-/usr/local/sbin
 /Users/LucasLarson/.rbenv/shims
 /Users/LucasLarson/.pyenv/shims
 /Users/LucasLarson/.npm-packages/bin
