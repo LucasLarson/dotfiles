@@ -1,0 +1,218 @@
+'!'=0
+'#'=0
+'$'=19053
+'*'=(  )
+-=569JNRXZghiklms
+0=-zsh
+'?'=0
+@=(  )
+ANDROID_SDK_ROOT=/Users/LucasLarson/Library/Android/sdk
+ARGC=0
+BG
+CDPATH=''
+COLORFGBG='15;0'
+COLORTERM=truecolor
+COLUMNS=80
+COMPLETION_WAITING_DOTS=true
+CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
+CPUTYPE=x86_64
+DISABLE_UPDATE_PROMPT=true
+EGID=20
+EUID=501
+FG
+FIGNORE=''
+FPATH=/Users/LucasLarson/.oh-my-zsh/plugins/git:/Users/LucasLarson/.oh-my-zsh/functions:/Users/LucasLarson/.oh-my-zsh/completions:/usr/local/share/zsh/site-functions:/usr/local/Cellar/zsh/5.8/share/zsh/functions
+FUNCNEST=500
+FX
+GID=20
+HISTCHARS='!^#'
+HISTCMD=10273
+HISTFILE=/Users/LucasLarson/.zsh_history
+HISTSIZE=50000
+HIST_STAMPS=yyyy-mm-dd
+HOME=/Users/LucasLarson
+HOST=LBook.local
+IFS=$' \t\n\C-@'
+ITERM2_PRECMD_PS1=$'%(?:%{\C-[[01;32m%}➜ :%{\C-[[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+ITERM2_SHOULD_DECORATE_PROMPT=1
+ITERM_PROFILE=Default
+ITERM_SESSION_ID=w1t0p0:AA70C7AB-9136-4927-A0A3-F5CE1734436D
+ITERM_SHELL_INTEGRATION_INSTALLED=Yes
+KEYBOARD_HACK=''
+KEYTIMEOUT=40
+LANG=en_US.UTF-8
+LC_TERMINAL=iTerm2
+LC_TERMINAL_VERSION=3.3.10beta4
+LESS=-R
+LINENO=16
+LINES=25
+LISTMAX=100
+LOGCHECK=60
+LOGNAME=LucasLarson
+LSCOLORS=Gxfxcxdxbxegedabagacad
+MACHTYPE=x86_64
+MAILCHECK=60
+MAILPATH=''
+MANPATH=/Users/LucasLarson/.npm-packages/share/man:/Users/LucasLarson/.npm-packages/share/man:/usr/local/share/man:/usr/share/man:/Library/TeX/texbin/man:/usr/local/MacGPG2/share/man:/Library/Apple/usr/share/man:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man
+MODULE_PATH=/usr/local/Cellar/zsh/5.8/lib
+NPM_PACKAGES=/Users/LucasLarson/.npm-packages
+NULLCMD=cat
+OLDPWD=/Users/LucasLarson/Dropbox/Mackup
+OPTARG=args
+OPTIND=1
+OSTYPE=darwin19.3.0
+PAGER=less
+PATH=/Users/LucasLarson/.rbenv/shims:/Users/LucasLarson/.pyenv/shims:/Users/LucasLarson/.npm-packages/bin:/Users/LucasLarson/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/Users/LucasLarson/Code/Flutter/bin
+PPID=19052
+PROMPT=$'%(?:%{\C-[[01;32m%}➜ :%{\C-[[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+PROMPT2='%_> '
+PROMPT3='?# '
+PROMPT4='+%N:%i> '
+PS1=$'%(?:%{\C-[[01;32m%}➜ :%{\C-[[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+PS2='%_> '
+PS3='?# '
+PS4='+%N:%i> '
+PSVAR=''
+PWD='/Users/LucasLarson/Dropbox/Mackup/|=Mackup'
+PYENV_SHELL=zsh
+RANDOM=29111
+RBENV_SHELL=zsh
+READNULLCMD=more
+SAVEHIST=10000
+SCREEN_NO=''
+SECONDS=4627
+SHELL=/usr/local/bin/zsh
+SHLVL=1
+SHORT_HOST=LBook
+SPROMPT='zsh: correct '\''%R'\'' to '\''%r'\'' [nyae]? '
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.k4mZuPpYEY/Listeners
+TERM=xterm-256color
+TERM_PROGRAM=iTerm.app
+TERM_PROGRAM_VERSION=3.3.10beta4
+TERM_SESSION_ID=w1t0p0:AA70C7AB-9136-4927-A0A3-F5CE1734436D
+TIMEFMT='%J  %U user %S system %P cpu %*E total'
+TMPDIR=/var/folders/64/l35_w51s78jc1hzw5nr5jvj40000gn/T/
+TMPPREFIX=/tmp/zsh
+TRY_BLOCK_ERROR=-1
+TRY_BLOCK_INTERRUPT=-1
+TTY=/dev/ttys001
+TTYIDLE=0
+UID=501
+UPDATE_ZSH_DAYS=1
+USER=LucasLarson
+USERNAME=LucasLarson
+VENDOR=apple
+WATCH=''
+WATCHFMT='%n has %a %l from %m.'
+WORDCHARS=''
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+ZLS_COLORS=''
+ZSH=/Users/LucasLarson/.oh-my-zsh
+ZSH_ARGZERO=-zsh
+ZSH_CACHE_DIR=/Users/LucasLarson/.oh-my-zsh/cache
+ZSH_COMPDUMP=/Users/LucasLarson/.zcompdump
+ZSH_CUSTOM=/Users/LucasLarson/.oh-my-zsh/custom
+ZSH_EVAL_CONTEXT=toplevel
+ZSH_NAME=zsh
+ZSH_PATCHLEVEL=zsh-5.8-0-g77d203f
+ZSH_SUBSHELL=0
+ZSH_THEME=robbyrussell
+ZSH_THEME_GIT_PROMPT_CLEAN=$'%{\C-[[34m%})'
+ZSH_THEME_GIT_PROMPT_DIRTY=$'%{\C-[[34m%}) %{\C-[[33m%}✗'
+ZSH_THEME_GIT_PROMPT_PREFIX=$'%{\C-[[01;34m%}git:(%{\C-[[31m%}'
+ZSH_THEME_GIT_PROMPT_SUFFIX=$'%{\C-[[00m%} '
+ZSH_THEME_RUBY_PROMPT_PREFIX='('
+ZSH_THEME_RUBY_PROMPT_SUFFIX=')'
+ZSH_THEME_RVM_PROMPT_OPTIONS='i v g'
+ZSH_THEME_TERM_TAB_TITLE_IDLE='%15<..<%~%<<'
+ZSH_THEME_TERM_TITLE_IDLE='%n@%m: %~'
+ZSH_VERSION=5.8
+_=set
+__CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0
+_comp_assocs=( '' )
+_comp_dumpfile=/Users/LucasLarson/.zcompdump
+_comp_options
+_comp_setup
+_compautos
+_comps
+_lastcomp
+_patcomps
+_postpatcomps
+_services
+aliases
+argv=(  )
+bg
+bg_bold
+bg_no_bold
+bold_color
+builtins
+cdpath=(  )
+color=( [00]=none [01]=bold [02]=faint [03]=standout [04]=underline [05]=blink [07]=reverse [08]=conceal [22]=normal [23]=no-standout [24]=no-underline [25]=no-blink [27]=no-reverse [28]=no-conceal [30]=black [31]=red [32]=green [33]=yellow [34]=blue [35]=magenta [36]=cyan [37]=white [39]=default [40]=bg-black [41]=bg-red [42]=bg-green [43]=bg-yellow [44]=bg-blue [45]=bg-magenta [46]=bg-cyan [47]=bg-white [49]=bg-default [bg-black]=40 [bg-blue]=44 [bg-cyan]=46 [bg-default]=49 [bg-green]=42 [bg-grey]=40 [bg-magenta]=45 [bg-red]=41 [bg-white]=47 [bg-yellow]=43 [black]=30 [blink]=05 [blue]=34 [bold]=01 [conceal]=08 [cyan]=36 [default]=39 [faint]=02 [fg-black]=30 [fg-blue]=34 [fg-cyan]=36 [fg-default]=39 [fg-green]=32 [fg-grey]=30 [fg-magenta]=35 [fg-red]=31 [fg-white]=37 [fg-yellow]=33 [green]=32 [grey]=30 [magenta]=35 [no-blink]=25 [no-conceal]=28 [no-reverse]=27 [no-standout]=23 [no-underline]=24 [none]=00 [normal]=22 [red]=31 [reverse]=07 [standout]=03 [underline]=04 [white]=37 [yellow]=33 )
+colour=( [00]=none [01]=bold [02]=faint [03]=standout [04]=underline [05]=blink [07]=reverse [08]=conceal [22]=normal [23]=no-standout [24]=no-underline [25]=no-blink [27]=no-reverse [28]=no-conceal [30]=black [31]=red [32]=green [33]=yellow [34]=blue [35]=magenta [36]=cyan [37]=white [39]=default [40]=bg-black [41]=bg-red [42]=bg-green [43]=bg-yellow [44]=bg-blue [45]=bg-magenta [46]=bg-cyan [47]=bg-white [49]=bg-default [bg-black]=40 [bg-blue]=44 [bg-cyan]=46 [bg-default]=49 [bg-green]=42 [bg-grey]=40 [bg-magenta]=45 [bg-red]=41 [bg-white]=47 [bg-yellow]=43 [black]=30 [blink]=05 [blue]=34 [bold]=01 [conceal]=08 [cyan]=36 [default]=39 [faint]=02 [fg-black]=30 [fg-blue]=34 [fg-cyan]=36 [fg-default]=39 [fg-green]=32 [fg-grey]=30 [fg-magenta]=35 [fg-red]=31 [fg-white]=37 [fg-yellow]=33 [green]=32 [grey]=30 [magenta]=35 [no-blink]=25 [no-conceal]=28 [no-reverse]=27 [no-standout]=23 [no-underline]=24 [none]=00 [normal]=22 [red]=31 [reverse]=07 [standout]=03 [underline]=04 [white]=37 [yellow]=33 )
+commands
+comppostfuncs=(  )
+compprefuncs=(  )
+custom_config_file=/Users/LucasLarson/.oh-my-zsh/custom/lib/theme-and-appearance.zsh
+d=/usr/local/Cellar/zsh/5.8/share/zsh/functions
+dirstack
+dis_aliases
+dis_builtins
+dis_functions
+dis_functions_source
+dis_galiases
+dis_patchars
+dis_reswords
+dis_saliases
+fg
+fg_bold
+fg_no_bold
+fignore=(  )
+fpath=( /Users/LucasLarson/.oh-my-zsh/plugins/git /Users/LucasLarson/.oh-my-zsh/functions /Users/LucasLarson/.oh-my-zsh/completions /usr/local/share/zsh/site-functions /usr/local/Cellar/zsh/5.8/share/zsh/functions )
+funcfiletrace
+funcsourcetrace
+funcstack
+functions
+functions_source
+functrace
+galiases
+histchars='!^#'
+history
+historywords
+iterm2_hostname=LBook.local
+jobdirs
+jobstates
+jobtexts
+key=( [Backspace]=$'\C-H' [Delete]=$'\C-[[3~' [Down]=$'\C-[OB' [End]=$'\C-[OF' [F1]=$'\C-[OP' [F10]=$'\C-[[21~' [F11]=$'\C-[[23~' [F12]=$'\C-[[24~' [F13]=$'\C-[[1;2P' [F14]=$'\C-[[1;2Q' [F15]=$'\C-[[1;2R' [F16]=$'\C-[[1;2S' [F17]=$'\C-[[15;2~' [F18]=$'\C-[[17;2~' [F19]=$'\C-[[18;2~' [F2]=$'\C-[OQ' [F20]=$'\C-[[19;2~' [F3]=$'\C-[OR' [F4]=$'\C-[OS' [F5]=$'\C-[[15~' [F6]=$'\C-[[17~' [F7]=$'\C-[[18~' [F8]=$'\C-[[19~' [F9]=$'\C-[[20~' [Home]=$'\C-[OH' [Insert]=$'\C-[[2~' [Left]=$'\C-[OD' [PageDown]=$'\C-[[6~' [PageUp]=$'\C-[[5~' [Right]=$'\C-[OC' [Up]=$'\C-[OA' )
+keymaps
+langinfo
+mailpath=(  )
+manpath=( /Users/LucasLarson/.npm-packages/share/man /Users/LucasLarson/.npm-packages/share/man /usr/local/share/man /usr/share/man /Library/TeX/texbin/man /usr/local/MacGPG2/share/man /Library/Apple/usr/share/man /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/share/man /Applications/Xcode.app/Contents/Developer/usr/share/man /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man )
+module_path=( /usr/local/Cellar/zsh/5.8/lib )
+modules
+nameddirs
+options
+parameters
+patchars
+path=( /Users/LucasLarson/.rbenv/shims /Users/LucasLarson/.pyenv/shims /Users/LucasLarson/.npm-packages/bin /Users/LucasLarson/.cargo/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin /Library/TeX/texbin /usr/local/MacGPG2/bin /Library/Apple/usr/bin /Users/LucasLarson/Code/Flutter/bin )
+pipestatus=( 0 )
+plugin=git
+plugins=( git )
+precmd_functions=( omz_termsupport_precmd iterm2_precmd )
+preexec_functions=( omz_termsupport_preexec iterm2_preexec )
+prompt=$'%(?:%{\C-[[01;32m%}➜ :%{\C-[[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+psvar=(  )
+reset_color
+reswords
+saliases
+signals=( EXIT HUP INT QUIT ILL TRAP ABRT EMT FPE KILL BUS SEGV SYS PIPE ALRM TERM URG STOP TSTP CONT CHLD TTIN TTOU IO XCPU XFSZ VTALRM PROF WINCH INFO USR1 USR2 ZERR DEBUG )
+status=0
+termcap
+terminfo
+userdirs
+usergroups
+watch=(  )
+widgets
+zle_bracketed_paste=( $'\C-[[?2004h' $'\C-[[?2004l' )
+zsh_eval_context=( toplevel )
+zsh_scheduled_events
