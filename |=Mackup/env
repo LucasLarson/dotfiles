@@ -1,0 +1,38 @@
+# the output of
+$ env
+# via https://cyberciti.biz/faq/linux-list-all-environment-variables-env-command
+TERM_SESSION_ID=w1t0p0:AA70C7AB-9136-4927-A0A3-F5CE1734436D
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.k4mZuPpYEY/Listeners
+LC_TERMINAL_VERSION=3.3.10beta4
+COLORFGBG=15;0
+ITERM_PROFILE=Default
+XPC_FLAGS=0x0
+LANG=en_US.UTF-8
+PWD=/Users/LucasLarson/Dropbox/Mackup/|=Mackup
+SHELL=/usr/local/bin/zsh
+TERM_PROGRAM_VERSION=3.3.10beta4
+TERM_PROGRAM=iTerm.app
+PATH=/Users/LucasLarson/.rbenv/shims:/Users/LucasLarson/.pyenv/shims:/Users/LucasLarson/.npm-packages/bin:/Users/LucasLarson/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/Users/LucasLarson/Code/Flutter/bin
+LC_TERMINAL=iTerm2
+COLORTERM=truecolor
+TERM=xterm-256color
+HOME=/Users/LucasLarson
+TMPDIR=/var/folders/64/l35_w51s78jc1hzw5nr5jvj40000gn/T/
+USER=LucasLarson
+XPC_SERVICE_NAME=0
+LOGNAME=LucasLarson
+ITERM_SESSION_ID=w1t0p0:AA70C7AB-9136-4927-A0A3-F5CE1734436D
+__CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0
+SHLVL=1
+OLDPWD=/Users/LucasLarson/Dropbox/Mackup
+ZSH=/Users/LucasLarson/.oh-my-zsh
+UPDATE_ZSH_DAYS=1
+PAGER=less
+LESS=-R
+LSCOLORS=Gxfxcxdxbxegedabagacad
+MANPATH=/Users/LucasLarson/.npm-packages/share/man:/Users/LucasLarson/.npm-packages/share/man:/usr/local/share/man:/usr/share/man:/Library/TeX/texbin/man:/usr/local/MacGPG2/share/man:/Library/Apple/usr/share/man:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man
+PYENV_SHELL=zsh
+CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
+ANDROID_SDK_ROOT=/Users/LucasLarson/Library/Android/sdk
+RBENV_SHELL=zsh
+_=/usr/bin/env
