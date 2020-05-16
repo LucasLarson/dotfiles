@@ -130,7 +130,7 @@ alias apm="apm-nightly"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias ohmyzsh="atom ~/.oh-my-zsh"
+alias ohmyzsh="~/.oh-my-zsh"
 alias zshconfig="vim ~/.zshrc"
 alias zshcustom="$ZSH_CUSTOM"
 
