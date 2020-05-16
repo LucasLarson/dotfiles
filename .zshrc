@@ -94,8 +94,12 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+# Homebrew
+# https://github.com/Homebrew/brew/blob/a5b6c5f2621298c879aa205754ae01d5417572d9/Library/Homebrew/diagnostic.rb#L432-L435
+export PATH="/usr/local/sbin:$PATH"
 
 
 # npm without sudo
@@ -110,7 +114,6 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # https://github.com/rbenv/rbenv/blob/577f04653df2289f492d4cd9ea3e9d441281f317/README.md#installation
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
-
 
 
 #######################
@@ -133,6 +136,7 @@ alias apm="apm-nightly"
 alias ohmyzsh="~/.oh-my-zsh"
 alias zshconfig="vim ~/.zshrc"
 alias zshcustom="$ZSH_CUSTOM"
+
 
 # pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -159,4 +163,3 @@ export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 # eval "$(rbenv init -)"
 # export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-export PATH="/usr/local/sbin:$PATH"
