@@ -116,26 +116,21 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # export PATH="$PATH:$HOME/.rvm/bin"
 
 
-#######################
-# Alias and Functions # via https://github.com/jeefberkey/dotfiles/blob/2ded1c3a813957909687a8ddce8a9befcc6b51d1/.zshrc#L48-L61
-#######################
+
+# aliases
+# see also $ZSH_CUSTOM/aliases.zsh via
+# https://github.com/ohmyzsh/ohmyzsh/issues/4865#issuecomment-401121707
 alias gti="git"
+alias ohmyzsh="~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+alias zshcustom="$ZSH_CUSTOM"
+
+# https://github.com/jeefberkey/dotfiles/blob/2ded1c3a813957909687a8ddce8a9befcc6b51d1/.zshrc#L48-L61
 alias atom-beta="atom-nightly"
 alias apm-beta="apm-nightly"
 alias atom="atom-nightly"
 alias apm="apm-nightly"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-#       which is at $ZSH_CUSTOM/aliases.zsh for me per
-#       https://github.com/ohmyzsh/ohmyzsh/issues/4865#issuecomment-401121707
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias ohmyzsh="~/.oh-my-zsh"
-alias zshconfig="vim ~/.zshrc"
-alias zshcustom="$ZSH_CUSTOM"
 
 
 # pyenv
