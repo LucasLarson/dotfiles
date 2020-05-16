@@ -1,0 +1,201 @@
+'!'=0
+'#'=0
+'$'=8
+'*'=(  )
+-=569JNRXZghiklms
+0=-zsh
+'?'=0
+@=(  )
+ARGC=0
+BG
+CDPATH=''
+CHARSET=UTF-8
+COLUMNS=47
+COMPLETION_WAITING_DOTS=true
+CPUTYPE=i686
+DISABLE_UPDATE_PROMPT=true
+EGID=0
+EUID=0
+FG
+FIGNORE=''
+FPATH=/root/.oh-my-zsh/plugins/git:/root/.oh-my-zsh/functions:/root/.oh-my-zsh/completions:/root/.oh-my-zsh/plugins/git:/root/.oh-my-zsh/functions:/root/.oh-my-zsh/completions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.7.1/functions/Calendar:/usr/share/zsh/5.7.1/functions/Chpwd:/usr/share/zsh/5.7.1/functions/Completion:/usr/share/zsh/5.7.1/functions/Completion/AIX:/usr/share/zsh/5.7.1/functions/Completion/BSD:/usr/share/zsh/5.7.1/functions/Completion/Base:/usr/share/zsh/5.7.1/functions/Completion/Cygwin:/usr/share/zsh/5.7.1/functions/Completion/Darwin:/usr/share/zsh/5.7.1/functions/Completion/Debian:/usr/share/zsh/5.7.1/functions/Completion/Linux:/usr/share/zsh/5.7.1/functions/Completion/Mandriva:/usr/share/zsh/5.7.1/functions/Completion/Redhat:/usr/share/zsh/5.7.1/functions/Completion/Solaris:/usr/share/zsh/5.7.1/functions/Completion/Unix:/usr/share/zsh/5.7.1/functions/Completion/X:/usr/share/zsh/5.7.1/functions/Completion/Zsh:/usr/share/zsh/5.7.1/functions/Completion/openSUSE:/usr/share/zsh/5.7.1/functions/Exceptions:/usr/share/zsh/5.7.1/functions/MIME:/usr/share/zsh/5.7.1/functions/Math:/usr/share/zsh/5.7.1/functions/Misc:/usr/share/zsh/5.7.1/functions/Newuser:/usr/share/zsh/5.7.1/functions/Prompts:/usr/share/zsh/5.7.1/functions/TCP:/usr/share/zsh/5.7.1/functions/VCS_Info:/usr/share/zsh/5.7.1/functions/VCS_Info/Backends:/usr/share/zsh/5.7.1/functions/Zftp:/usr/share/zsh/5.7.1/functions/Zle
+FUNCNEST=500
+FX
+GID=0
+GPG_TTY=/dev/pts/0
+HISTCHARS='!^#'
+HISTCMD=2090
+HISTFILE=/root/.zsh_history
+HISTSIZE=50000
+HIST_STAMPS=yyyy-mm-dd
+HOME=/root
+HOST=LPhoneXSMax
+HUSHLOGIN=FALSE
+IFS=$' \t\n\C-@'
+KEYBOARD_HACK=''
+KEYTIMEOUT=40
+LANG=C.UTF-8
+LESS=-R
+LINENO=24
+LINES=29
+LISTMAX=100
+LOGCHECK=60
+LOGNAME=root
+LSCOLORS=Gxfxcxdxbxegedabagacad
+MACHTYPE=i586
+MAILCHECK=60
+MAILPATH=''
+MANPATH=''
+MENUSELECT=0
+MODULE_PATH=/usr/lib/zsh/5.7.1
+NULLCMD=cat
+OLDPWD=/root/Software/dotfiles
+OPTARG=args
+OPTIND=1
+OSTYPE=linux-musl
+PAGER=less
+PATH=/root/bin:/usr/local/bin:/root/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PPID=7
+PROMPT=$'%(?:%{\C-[[01;32m%}➜ :%{\C-[[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+PROMPT2='%_> '
+PROMPT3='?# '
+PROMPT4='+%N:%i> '
+PS1=$'%(?:%{\C-[[01;32m%}➜ :%{\C-[[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+PS2='%_> '
+PS3='?# '
+PS4='+%N:%i> '
+PSVAR=''
+PWD=/root
+RANDOM=19624
+READNULLCMD=more
+SAVEHIST=10000
+SCREEN_NO=''
+SECONDS=3630
+SHELL=/bin/zsh
+SHLVL=1
+SHORT_HOST=LPhoneXSMax
+SPROMPT='zsh: correct '\''%R'\'' to '\''%r'\'' [nyae]? '
+TERM=xterm-256color
+TIMEFMT='%J  %U user %S system %P cpu %*E total'
+TMPPREFIX=/tmp/zsh
+TRY_BLOCK_ERROR=-1
+TRY_BLOCK_INTERRUPT=-1
+TTY=/dev/pts/0
+TTYIDLE=1589638334
+UID=0
+UPDATE_ZSH_DAYS=1
+USER=root
+USERNAME=root
+VENDOR=alpine
+WATCH=''
+WATCHFMT='%n has %a %l from %m.'
+WORDCHARS=''
+ZLS_COLORS=''
+ZSH=/root/.oh-my-zsh
+ZSHCUSTOM=/root/.oh-my-zsh/custom
+ZSH_ARGZERO=-zsh
+ZSH_CACHE_DIR=/root/.oh-my-zsh/cache
+ZSH_COMPDUMP=/root/.zcompdump
+ZSH_CUSTOM=/root/.oh-my-zsh/custom
+ZSH_EVAL_CONTEXT=toplevel
+ZSH_NAME=zsh
+ZSH_PATCHLEVEL=zsh-5.7.1-0-g8b89d0d
+ZSH_SUBSHELL=0
+ZSH_THEME=robbyrussell
+ZSH_THEME_GIT_PROMPT_CLEAN=$'%{\C-[[34m%})'
+ZSH_THEME_GIT_PROMPT_DIRTY=$'%{\C-[[34m%}) %{\C-[[33m%}✗'
+ZSH_THEME_GIT_PROMPT_PREFIX=$'%{\C-[[01;34m%}git:(%{\C-[[31m%}'
+ZSH_THEME_GIT_PROMPT_SUFFIX=$'%{\C-[[00m%} '
+ZSH_THEME_RUBY_PROMPT_PREFIX='('
+ZSH_THEME_RUBY_PROMPT_SUFFIX=')'
+ZSH_THEME_RVM_PROMPT_OPTIONS='i v g'
+ZSH_THEME_TERM_TAB_TITLE_IDLE='%15<..<%~%<<'
+ZSH_THEME_TERM_TITLE_IDLE='%n@%m: %~'
+ZSH_VERSION=5.7.1
+_=set
+__savecursor=0
+__searching=up-line-or-beginning-search
+_comp_dumpfile=/root/.zcompdump
+_comp_options
+_comp_setup
+_compautos
+_comps
+_lastcomp
+_patcomps
+_postpatcomps
+_services
+aliases
+argv=(  )
+bg
+bg_bold
+bg_no_bold
+bold_color
+builtins
+cdpath=(  )
+color=( [00]=none [01]=bold [02]=faint [03]=standout [04]=underline [05]=blink [07]=reverse [08]=conceal [22]=normal [23]=no-standout [24]=no-underline [25]=no-blink [27]=no-reverse [28]=no-conceal [30]=black [31]=red [32]=green [33]=yellow [34]=blue [35]=magenta [36]=cyan [37]=white [39]=default [40]=bg-black [41]=bg-red [42]=bg-green [43]=bg-yellow [44]=bg-blue [45]=bg-magenta [46]=bg-cyan [47]=bg-white [49]=bg-default [bg-black]=40 [bg-blue]=44 [bg-cyan]=46 [bg-default]=49 [bg-green]=42 [bg-grey]=40 [bg-magenta]=45 [bg-red]=41 [bg-white]=47 [bg-yellow]=43 [black]=30 [blink]=05 [blue]=34 [bold]=01 [conceal]=08 [cyan]=36 [default]=39 [faint]=02 [fg-black]=30 [fg-blue]=34 [fg-cyan]=36 [fg-default]=39 [fg-green]=32 [fg-grey]=30 [fg-magenta]=35 [fg-red]=31 [fg-white]=37 [fg-yellow]=33 [green]=32 [grey]=30 [magenta]=35 [no-blink]=25 [no-conceal]=28 [no-reverse]=27 [no-standout]=23 [no-underline]=24 [none]=00 [normal]=22 [red]=31 [reverse]=07 [standout]=03 [underline]=04 [white]=37 [yellow]=33 )
+colour=( [00]=none [01]=bold [02]=faint [03]=standout [04]=underline [05]=blink [07]=reverse [08]=conceal [22]=normal [23]=no-standout [24]=no-underline [25]=no-blink [27]=no-reverse [28]=no-conceal [30]=black [31]=red [32]=green [33]=yellow [34]=blue [35]=magenta [36]=cyan [37]=white [39]=default [40]=bg-black [41]=bg-red [42]=bg-green [43]=bg-yellow [44]=bg-blue [45]=bg-magenta [46]=bg-cyan [47]=bg-white [49]=bg-default [bg-black]=40 [bg-blue]=44 [bg-cyan]=46 [bg-default]=49 [bg-green]=42 [bg-grey]=40 [bg-magenta]=45 [bg-red]=41 [bg-white]=47 [bg-yellow]=43 [black]=30 [blink]=05 [blue]=34 [bold]=01 [conceal]=08 [cyan]=36 [default]=39 [faint]=02 [fg-black]=30 [fg-blue]=34 [fg-cyan]=36 [fg-default]=39 [fg-green]=32 [fg-grey]=30 [fg-magenta]=35 [fg-red]=31 [fg-white]=37 [fg-yellow]=33 [green]=32 [grey]=30 [magenta]=35 [no-blink]=25 [no-conceal]=28 [no-reverse]=27 [no-standout]=23 [no-underline]=24 [none]=00 [normal]=22 [red]=31 [reverse]=07 [standout]=03 [underline]=04 [white]=37 [yellow]=33 )
+commands
+comppostfuncs=(  )
+compprefuncs=(  )
+custom_config_file=/root/.oh-my-zsh/custom/lib/theme-and-appearance.zsh
+d=/usr/share/zsh/5.7.1/functions/Zle
+dirstack
+dis_aliases
+dis_builtins
+dis_functions
+dis_functions_source
+dis_galiases
+dis_patchars
+dis_reswords
+dis_saliases
+fg
+fg_bold
+fg_no_bold
+fignore=(  )
+fpath=( /root/.oh-my-zsh/plugins/git /root/.oh-my-zsh/functions /root/.oh-my-zsh/completions /root/.oh-my-zsh/plugins/git /root/.oh-my-zsh/functions /root/.oh-my-zsh/completions /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions /usr/share/zsh/5.7.1/functions/Calendar /usr/share/zsh/5.7.1/functions/Chpwd /usr/share/zsh/5.7.1/functions/Completion /usr/share/zsh/5.7.1/functions/Completion/AIX /usr/share/zsh/5.7.1/functions/Completion/BSD /usr/share/zsh/5.7.1/functions/Completion/Base /usr/share/zsh/5.7.1/functions/Completion/Cygwin /usr/share/zsh/5.7.1/functions/Completion/Darwin /usr/share/zsh/5.7.1/functions/Completion/Debian /usr/share/zsh/5.7.1/functions/Completion/Linux /usr/share/zsh/5.7.1/functions/Completion/Mandriva /usr/share/zsh/5.7.1/functions/Completion/Redhat /usr/share/zsh/5.7.1/functions/Completion/Solaris /usr/share/zsh/5.7.1/functions/Completion/Unix /usr/share/zsh/5.7.1/functions/Completion/X /usr/share/zsh/5.7.1/functions/Completion/Zsh /usr/share/zsh/5.7.1/functions/Completion/openSUSE /usr/share/zsh/5.7.1/functions/Exceptions /usr/share/zsh/5.7.1/functions/MIME /usr/share/zsh/5.7.1/functions/Math /usr/share/zsh/5.7.1/functions/Misc /usr/share/zsh/5.7.1/functions/Newuser /usr/share/zsh/5.7.1/functions/Prompts /usr/share/zsh/5.7.1/functions/TCP /usr/share/zsh/5.7.1/functions/VCS_Info /usr/share/zsh/5.7.1/functions/VCS_Info/Backends /usr/share/zsh/5.7.1/functions/Zftp /usr/share/zsh/5.7.1/functions/Zle )
+funcfiletrace
+funcsourcetrace
+funcstack
+functions
+functions_source
+functrace
+galiases
+histchars='!^#'
+history
+historywords
+jobdirs
+jobstates
+jobtexts
+keymaps
+langinfo
+mailpath=(  )
+manpath=(  )
+module_path=( /usr/lib/zsh/5.7.1 )
+modules
+nameddirs
+options
+parameters
+patchars
+path=( /root/bin /usr/local/bin /root/bin /usr/local/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin )
+pipestatus=( 0 )
+plugin=git
+plugins=( git )
+precmd_functions=( omz_termsupport_precmd )
+preexec_functions=( omz_termsupport_preexec )
+prompt=$'%(?:%{\C-[[01;32m%}➜ :%{\C-[[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+psvar=(  )
+reset_color
+reswords
+saliases
+script='/etc/profile.d/*.sh'
+signals=( EXIT HUP INT QUIT ILL TRAP ABRT BUS FPE KILL USR1 SEGV USR2 PIPE ALRM TERM STKFLT CHLD CONT STOP TSTP TTIN TTOU URG XCPU XFSZ VTALRM PROF WINCH POLL PWR SYS ZERR DEBUG )
+status=0
+termcap
+terminfo
+userdirs
+usergroups
+watch=(  )
+widgets
+zle_bracketed_paste=( $'\C-[[?2004h' $'\C-[[?2004l' )
+zsh_eval_context=( toplevel )
+zsh_scheduled_events
