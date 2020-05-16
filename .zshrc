@@ -118,6 +118,7 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 
 # aliases
+# for all active aliases, run `alias`
 # see also $ZSH_CUSTOM/aliases.zsh via
 # https://github.com/ohmyzsh/ohmyzsh/issues/4865#issuecomment-401121707
 alias gti="git"
