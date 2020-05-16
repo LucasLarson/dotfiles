@@ -143,9 +143,10 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# expose C family of headers via https://apple.stackexchange.com/a/372600
-export CPATH=`xcrun --show-sdk-path`/usr/include
 
+# C, C++ headers
+# https://apple.stackexchange.com/a/372600
+export CPATH=`xcrun --show-sdk-path`/usr/include
 
 
 # Flutter
