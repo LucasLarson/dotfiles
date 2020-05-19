@@ -55,51 +55,51 @@ brew update && brew upgrade && brew cask upgrade && brew cleanup && xcrun simctl
 `brew update --debug --verbose && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/launchagents.md#periodic-homebrew-update-and-upgrade)`,` [via](https://stackoverflow.com/a/47664603) `\`<br/>
 `brew upgrade && \`<br/>
 `brew cask upgrade && #` [via](https://github.com/hisaac/hisaac.net/blob/8c63d51119fe2a0f05fa6c1c2a404d12256b0594/source/_posts/2018/2018-02-12-update-all-the-things.md#readme) `\`<br/>
-brew doctor --debug --verbose && `\`<br/>
-brew cleanup --debug --verbose && # [via](https://stackoverflow.com/a/41030599) `\`<br/>
-brew install mackup --devel && # 0.8.28 [2020-02-26](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br/>
+`brew doctor --debug --verbose && \`<br/>
+`brew cleanup --debug --verbose && #` [via](https://stackoverflow.com/a/41030599) `\`<br/>
+`brew install mackup --devel && #` 0.8.28 [2020-02-26](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br/>
 `mackup backup && # || mackup backup --force \`<br/>
 `upgrade_oh_my_zsh && #` [via](https://github.com/robbyrussell/oh-my-zsh/blob/17f4cfca99398cb5511557b8515a17bf1bf2948a/README.md#manual-updates) `\`<br/>
-git clone --recursive --recurse-submodules --depth=1 --branch master # [via](https://github.com/mapsme/omim/blob/f93cc4cc270baa886ad9bfccca2fc5e815f7245e/README.md#submodules), [via](https://github.com/hisaac/Tiime/blob/ff1a39d6765d8ae5c9724ca84d5c680dff4c602e/README.md#bootstrapping-instructions), [via](https://stackoverflow.com/a/50028481) `\`<br/>
-git submodule update --init --recursive && # [via](https://stackoverflow.com/a/10168693) `\`<br/>
-npm update -g && # 6.14.2 [2020-03-03](https://www.npmjs.com/package/npm?activeTab=versions#versions) `\`<br/>
-apm upgrade && # via npm analogy `\`<br/>
-gem update --system && #  3.1.2 [2019-12-20](https://blog.rubygems.org) `\`<br/>
+`git clone --recursive --recurse-submodules --depth=1 --branch master #` [via](https://github.com/mapsme/omim/blob/f93cc4cc270baa886ad9bfccca2fc5e815f7245e/README.md#submodules), [via](https://github.com/hisaac/Tiime/blob/ff1a39d6765d8ae5c9724ca84d5c680dff4c602e/README.md#bootstrapping-instructions), [via](https://stackoverflow.com/a/50028481) `\`<br/>
+`git submodule update --init --recursive && #` [via](https://stackoverflow.com/a/10168693) `\`<br/>
+`npm update -g && #` 6.14.2 [2020-03-03](https://www.npmjs.com/package/npm?activeTab=versions#versions) `\`<br/>
+`apm upgrade && #` via npm analogy `\`<br/>
+`gem update --system && #`  3.1.2 [2019-12-20](https://blog.rubygems.org) `\`<br/>
 `gem update && \`<br/>
-gem install bundler --pre && #  2.1.4 [2020-01-05](https://rubygems.org/gems/bundler/versions) `\`<br/>
-gem install cocoapods --pre && #  1.9.1 [2020-03-09](https://rubygems.org/gems/cocoapods/versions) `\`<br/>
+`gem install bundler --pre && #`  2.1.4 [2020-01-05](https://rubygems.org/gems/bundler/versions) `\`<br/>
+`gem install cocoapods --pre && #`  1.9.1 [2020-03-09](https://rubygems.org/gems/cocoapods/versions) `\`<br/>
 `gem cleanup && \`<br/>
-bundle update && # [via](https://github.com/ffi/ffi/issues/651#issuecomment-513835103) `\`<br/>
+`bundle update && #` [via](https://github.com/ffi/ffi/issues/651#issuecomment-513835103) `\`<br/>
 `bundle install --verbose && \`<br/>
 `bundle exec pod install --verbose && \`<br/>
 `pod repo update && pod repo update && \`<br/>
 `pod install && \`<br/>
-pod update && # [via](https://web.archive.org/web/20190719112335id_/https:/guides.cocoapods.org/using/pod-install-vs-update.html#pod-update) `\`<br/>
+`pod update && #` [via](https://web.archive.org/web/20190719112335id_/https:/guides.cocoapods.org/using/pod-install-vs-update.html#pod-update) `\`<br/>
 `rbenv rehash && pyenv rehash && \`<br/>
-python -m pip install --upgrade pip && # 20.1 [2020-04-28](https://pip.pypa.io/en/stable/news/#id1) [via](https://opensource.com/article/19/5/python-3-default-mac#comment-180271), [via](https://github.com/pypa/pip/blob/52309f98d10d8feec6d319d714b0d2e5612eaa47/src/pip/_internal/self_outdated_check.py#L233-L236) `\`<br/>
+`python -m pip install --upgrade pip` && # 20.1 [2020-04-28](https://pip.pypa.io/en/stable/news/#id1) [via](https://opensource.com/article/19/5/python-3-default-mac#comment-180271), [via](https://github.com/pypa/pip/blob/52309f98d10d8feec6d319d714b0d2e5612eaa47/src/pip/_internal/self_outdated_check.py#L233-L236) `\`<br/>
 `python -m pip check && \`<br/>
 `pip list --outdated --format=freeze \`<br/>
     `| grep -v '^\-e' \`<br/>
     `| cut -d = -f 1 \`<br/>
     `| xargs -n1 pip install -U && #` [via](https://stackoverflow.com/revisions/3452888/14) `\`<br/>
 `pip install -U $(pip freeze | cut -d '=' -f 1) && #` [via](https://web.archive.org/web/20200508173219id_/coderwall.com/p/quwaxa/update-all-installed-python-packages-with-pip#comment_29830) `\`<br/>
-pipenv shell && # [via](https://github.com/pypa/pipenv/blob/bfbe1304f63372a0eb7c1531590b51195db453ea/pipenv/core.py?instructions_while_running_pipenv_install#L1282) `\`<br/>
-pipenv install --dev && # [via](https://stackoverflow.com/a/49867443) `\`<br/>
+`pipenv shell &&` # [via](https://github.com/pypa/pipenv/blob/bfbe1304f63372a0eb7c1531590b51195db453ea/pipenv/core.py?instructions_while_running_pipenv_install#L1282) `\`<br/>
+`pipenv install --dev && #` [via](https://stackoverflow.com/a/49867443) `\`<br/>
 `rustup update && \`<br/>
 `source ~/.zsh && \`<br/>
 `exec zsh && \`<br/>
-brew install carthage --devel && # 0.34.0 [2019-10-21](https://github.com/Carthage/Carthage/releases) `\`<br/>
-carthage update --no-use-binaries && # [via](https://stackoverflow.com/a/41526660) `\`<br/>
-brew install swiftgen --devel && #  6.1.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
+`brew install carthage --devel && #` 0.34.0 [2019-10-21](https://github.com/Carthage/Carthage/releases) `\`<br/>
+`carthage update --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
+`brew install swiftgen --devel && #`  6.1.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
 `swiftgen && \`<br/>
-brew install swiftlint --devel && # 0.39.1 [2020-02-11](https://github.com/realm/SwiftLint/releases) `\`<br/>
+`brew install swiftlint --devel && #` 0.39.1 [2020-02-11](https://github.com/realm/SwiftLint/releases) `\`<br/>
 `swiftlint autocorrect && \`<br/>
 `git submodule update --init --recursive && \`<br/>
 `# git add . && git add -u || git add -A && #` [via](https://stackoverflow.com/a/15011313) `\`<br/>
 `git gc && \`<br/>
 `mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && \`<br/>
-`# npm doctor # creates empty node_modules folders && \`<br/>
-`# gradle build --refresh-dependencies --warning-mode all &&` # [via](https://stackoverflow.com/a/35374051) `\`
+`# npm doctor #` creates empty node_modules folders && `\`<br/>
+`# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`
 
 ## Mackup
 ### add
