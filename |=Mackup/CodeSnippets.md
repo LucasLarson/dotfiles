@@ -158,7 +158,7 @@ For pkg-config to find ruby you may need to set:<br/>
 ### flags for C, C++
 `-Wall -Wextra -pedantic`<br/>
 `#ifdef __APPLE__`<br/>
-  `-Weverything <!--` do not use ([via](https://web.archive.org/web/20190926015534id_/quuxplusone.github.io/blog/2018/12/06/dont-use-weverything/#for-example-if-you-want-to-see-a)) `-->`<br/>
+    `-Weverything <!--` do not use ([via](https://web.archive.org/web/20190926015534id_/quuxplusone.github.io/blog/2018/12/06/dont-use-weverything/#for-example-if-you-want-to-see-a)) `-->`<br/>
 `#endif`<br/>
 `-Woverriding-method-mismatch -Weffc++ -Wcall-to-pure-virtual-from-ctor-dtor -Wmemset-transposed-args -Wreturn-std-move -Wsizeof-pointer-div -Wdefaulted-function-deleted` # [via](https://archive.is/2019.06.25-171347/https:/github.com/jonreid/XcodeWarnings/issues/8#19%25)<br/>
 `-lstdc++ #` [via](https://web.archive.org/web/20200517174238id_/unspecified.wordpress.com/2009/03/15/linking-c-code-with-gcc/amp/#post-consent-ui) but this might – or might not – be helpful on macOS using gcc or g++
