@@ -3,6 +3,7 @@
 
 - [Code snippets](#code-snippets)
   - [copy, paste, return](#copy-paste-return)
+    - [detail](#detail)
   - [Mackup](#mackup)
     - [manual add](#manual-add)
   - [grep](#grep)
