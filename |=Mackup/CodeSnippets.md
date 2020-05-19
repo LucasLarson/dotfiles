@@ -76,9 +76,9 @@ pod update && # [via](https://web.archive.org/web/20190719112335id_/https:/guide
 python -m pip install --upgrade pip && # 20.1 [2020-04-28](https://pip.pypa.io/en/stable/news/#id1) [via](https://opensource.com/article/19/5/python-3-default-mac#comment-180271), [via](https://github.com/pypa/pip/blob/52309f98d10d8feec6d319d714b0d2e5612eaa47/src/pip/_internal/self_outdated_check.py#L233-L236) `\`<br/>
 `python -m pip check && \`<br/>
 `pip list --outdated --format=freeze \`<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;`| grep -v '^\-e' \`<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;`| cut -d = -f 1 \`<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;`| xargs -n1 pip install -U && #` [via](https://stackoverflow.com/revisions/3452888/14) `\`<br/>
+    `| grep -v '^\-e' \`<br/>
+    `| cut -d = -f 1 \`<br/>
+    `| xargs -n1 pip install -U && #` [via](https://stackoverflow.com/revisions/3452888/14) `\`<br/>
 `pip install -U $(pip freeze | cut -d '=' -f 1) && #` [via](https://web.archive.org/web/20200508173219id_/coderwall.com/p/quwaxa/update-all-installed-python-packages-with-pip#comment_29830) `\`<br/>
 pipenv shell && # [via](https://github.com/pypa/pipenv/blob/bfbe1304f63372a0eb7c1531590b51195db453ea/pipenv/core.py?instructions_while_running_pipenv_install#L1282) `\`<br/>
 pipenv install --dev && # [via](https://stackoverflow.com/a/49867443) `\`<br/>
@@ -137,8 +137,8 @@ For pkg-config to find ruby you may need to set:<br/>
 `sudo $(locate lsregister) -kill -seed -r`<br/>
 
 ### repair website disk permissions
-`find /path/to/your/wordpress -type d -exec chmod 755 {} \; && \`<br/>
-`find /path/to/your/wordpress -type f -exec chmod 644 {} \; #`&nbsp;[via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
+`find /path/to/your/wordpress -type d -exec chmod 755 {} \; && \`<br/>
+`find /path/to/your/wordpress -type f -exec chmod 644 {} \; #` [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
 
 #### date modified modify
 `touch -t 2003040500 file.txt` \# date modified → 2020-03-04 5:00am
@@ -146,10 +146,10 @@ For pkg-config to find ruby you may need to set:<br/>
 ### flags for C, C++
 `-Wall -Wextra -pedantic`<br/>
 `#ifdef __APPLE__`<br/>
-&nbsp;&nbsp;`-Weverything <!--` do not use ([via](https://web.archive.org/web/20190926015534id_/quuxplusone.github.io/blog/2018/12/06/dont-use-weverything/#for-example-if-you-want-to-see-a)) `-->`<br/>
+  `-Weverything <!--` do not use ([via](https://web.archive.org/web/20190926015534id_/quuxplusone.github.io/blog/2018/12/06/dont-use-weverything/#for-example-if-you-want-to-see-a)) `-->`<br/>
 `#endif`<br/>
 `-Woverriding-method-mismatch -Weffc++ -Wcall-to-pure-virtual-from-ctor-dtor -Wmemset-transposed-args -Wreturn-std-move -Wsizeof-pointer-div -Wdefaulted-function-deleted` # [via](https://archive.is/2019.06.25-171347/https:/github.com/jonreid/XcodeWarnings/issues/8#19%25)<br/>
-`-lstdc++ #` [via](https://web.archive.org/web/20200517174238id_/unspecified.wordpress.com/2009/03/15/linking-c-code-with-gcc/amp/#post-consent-ui) but this might&nbsp;– or might not&nbsp;– be helpful on macOS using gcc or g++
+`-lstdc++ #` [via](https://web.archive.org/web/20200517174238id_/unspecified.wordpress.com/2009/03/15/linking-c-code-with-gcc/amp/#post-consent-ui) but this might – or might not – be helpful on macOS using gcc or g++
 
 #### C++ features before wide support
 for example, C++17’s `<filesystem>`<br/>
