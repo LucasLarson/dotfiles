@@ -6,7 +6,9 @@
     - [detail](#detail)
   - [Mackup](#mackup)
     - [manual add](#manual-add)
-  - [grep](#grep)
+  - [search](#search)
+    - [`grep`](#grep)
+    - [locate all](#locate-all)
   - [`$PATH`](#path)
     - [entries](#entries)
     - [sandbox](#sandbox)
@@ -33,7 +35,6 @@
 - [delete](#delete)
   - [with confirmation first](#with-confirmation-first)
   - [without confirmation](#without-confirmation)
-    - [locate all](#locate-all)
     - [compare two folders](#compare-two-folders)
       - [purge memory cache](#purge-memory-cache)
     - [create an alias](#create-an-alias)
@@ -100,13 +101,17 @@ brew install swiftlint --devel && # 0.39.1 [2020-02-11](https://github.com/realm
 ## Mackup
 ### manual add
 `add='`~/Desktop/example.txt`' && cp ~/$add ~/Dropbox/Mackup/$add && mv ~/$add ~/.Trash && ln -s ~/Dropbox/Mackup/$add ~/$add`
-
-## grep
-search for the word “example” inside the current directory which is&nbsp;“.”<br/>
+## search
+### `grep`
+search for the word “example” inside the current directory which is “.”<br/>
 `grep -inr 'example' .`<br/>
 `-i` means case-<u>i</u>nsensitive<br/>
 `-n` means show line <u>n</u>umbers<br/>
 `-r` means <u>r</u>ecursively or in a scope bigger than a file which is the dot
+
+### locate all
+for example, locate all JPEG files<br/>
+`locate -i *.jpg #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#search-via-locate); see also [§ grep](#grep)
 
 ## `$PATH`
 
@@ -213,10 +218,6 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 ## without confirmation
 `rm -rf /ExampleDirectoryFullOfImportantDocuments` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br/>
 `rm     /ExampleTrashDocument.txt`
-
-#### locate all
-for example, locate all JPEG files<br/>
-`locate -i *.jpg #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#search-via-locate); see also [§&nbsp;grep](#grep)
 
 ### compare two folders
 `diff -qr /path/to/folder1 /path/to/folder2` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#compare-two-folders)
