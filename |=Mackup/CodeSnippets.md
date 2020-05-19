@@ -13,6 +13,8 @@
   - [`$PATH`](#path)
     - [entries](#entries)
     - [sandbox](#sandbox)
+  - [text editing](#text-editing)
+    - [export output](#export-output)
   - [make invisible](#make-invisible)
   - [launch services](#launch-services)
     - [reset](#reset)
@@ -132,6 +134,12 @@ For compilers to find ruby you may need to set:<br/>
 
 For pkg-config to find ruby you may need to set:<br/>
 `export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"`
+
+## text editing
+### export output
+`echo "First Name\n" > ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
+`echo "Other First Name\n" `**>**` ExampleFileWithGivenName.txt` # overwrites the existing file<br/>
+`echo "Last Name\n" `**>>**` ExampleFileWithGivenName.txt` # append “Last Name” to the text document
 
 ## make invisible
 `chflags hidden example.txt`
