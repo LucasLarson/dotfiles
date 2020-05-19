@@ -225,7 +225,7 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 # delete
 ## with confirmation first
 `rm -i /ExampleDirectoryFullOfImportantDocuments`<br/>
-`rm -i /ExampleTrashDocument.txt`
+`rm -i /ExampleTrashDocument.txt # -i` stands for <u>i</u>nteractive
 
 ## without confirmation
 `rm -rf /ExampleDirectoryFullOfImportantDocuments` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br/>
