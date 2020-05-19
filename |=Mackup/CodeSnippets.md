@@ -43,7 +43,7 @@
 
 ## copy, paste, return
 ```bash
-brew update && brew upgrade && brew cask upgrade && brew cleanup && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm update -g && apm upgrade && gem update --system && gem update && rbenv rehash && gem cleanup && python -m pip install --upgrade pip && pyenv rehash && source ~/.zshrc && exec zsh && echo '✅ Done!'
+brew update && brew upgrade && brew cask upgrade && brew cleanup && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm update -g && apm upgrade && gem update --system && gem update && rbenv rehash && gem cleanup && python -m pip install --upgrade pip && pyenv rehash && source ~/.zshrc && exec zsh
 ```
 ### detail
 ` && xcode-select --install && \`<br/>
@@ -95,8 +95,7 @@ brew install swiftlint --devel && # 0.39.1 [2020-02-11](https://github.com/realm
 `git gc && \`<br/>
 `mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && \`<br/>
 `# npm doctor # creates empty node_modules folders && \`<br/>
-`# gradle build --refresh-dependencies --warning-mode all &&` # [via](https://stackoverflow.com/a/35374051) `\`<br/>
-`echo '✅ Done!'`
+`# gradle build --refresh-dependencies --warning-mode all &&` # [via](https://stackoverflow.com/a/35374051) `\`
 
 ## Mackup
 ### manual add
