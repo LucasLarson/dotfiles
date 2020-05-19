@@ -60,10 +60,10 @@ git clone --recursive --recurse-submodules --depth=1 --branch master # [via](htt
 git submodule update --init --recursive && # [via](https://stackoverflow.com/a/10168693) `\`<br/>
 npm update -g && # 6.14.2 [2020-03-03](https://www.npmjs.com/package/npm?activeTab=versions#versions) `\`<br/>
 apm upgrade && # via npm analogy `\`<br/>
-gem update --system && # &nbsp;3.1.2 [2019-12-20](https://blog.rubygems.org) `\`<br/>
+gem update --system && #  3.1.2 [2019-12-20](https://blog.rubygems.org) `\`<br/>
 `gem update && \`<br/>
-gem install bundler --pre && # &nbsp;2.1.4 [2020-01-05](https://rubygems.org/gems/bundler/versions) `\`<br/>
-gem install cocoapods --pre && # &nbsp;1.9.1 [2020-03-09](https://rubygems.org/gems/cocoapods/versions) `\`<br/>
+gem install bundler --pre && #  2.1.4 [2020-01-05](https://rubygems.org/gems/bundler/versions) `\`<br/>
+gem install cocoapods --pre && #  1.9.1 [2020-03-09](https://rubygems.org/gems/cocoapods/versions) `\`<br/>
 `gem cleanup && \`<br/>
 bundle update && # [via](https://github.com/ffi/ffi/issues/651#issuecomment-513835103) `\`<br/>
 `bundle install --verbose && \`<br/>
@@ -86,7 +86,7 @@ pipenv install --dev && # [via](https://stackoverflow.com/a/49867443) `\`<br/>
 `exec zsh && \`<br/>
 brew install carthage --devel && # 0.34.0 [2019-10-21](https://github.com/Carthage/Carthage/releases) `\`<br/>
 carthage update --no-use-binaries && # [via](https://stackoverflow.com/a/41526660) `\`<br/>
-brew install swiftgen --devel && # &nbsp;6.1.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
+brew install swiftgen --devel && #  6.1.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
 `swiftgen && \`<br/>
 brew install swiftlint --devel && # 0.39.1 [2020-02-11](https://github.com/realm/SwiftLint/releases) `\`<br/>
 `swiftlint autocorrect && \`<br/>
