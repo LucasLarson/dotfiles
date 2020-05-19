@@ -5,7 +5,8 @@
   - [copy, paste, return](#copy-paste-return)
     - [detail](#detail)
   - [Mackup](#mackup)
-    - [manual add](#manual-add)
+    - [add](#add)
+      - [manual](#manual)
   - [search](#search)
     - [`grep`](#grep)
     - [locate all](#locate-all)
@@ -99,8 +100,11 @@ brew install swiftlint --devel && # 0.39.1 [2020-02-11](https://github.com/realm
 `# gradle build --refresh-dependencies --warning-mode all &&` # [via](https://stackoverflow.com/a/35374051) `\`
 
 ## Mackup
-### manual add
-`add='`~/Desktop/example.txt`' && cp ~/$add ~/Dropbox/Mackup/$add && mv ~/$add ~/.Trash && ln -s ~/Dropbox/Mackup/$add ~/$add`
+### add
+#### manual
+to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/mackup) might’ve but hasn’t
+`add='`**~/Desktop/example.txt**`' && cp ~/$add ~/Dropbox/Mackup/$add && mv ~/$add ~/.Trash && ln -s ~/Dropbox/Mackup/$add ~/$add`
+
 ## search
 ### `grep`
 search for the word “example” inside the current directory which is “.”<br/>
