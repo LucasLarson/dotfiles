@@ -4,21 +4,9 @@
 <array>
 	<dict>
 		<key>phrase</key>
-		<string>😉</string>
-		<key>shortcut</key>
-		<string>;)</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>😔</string>
 		<key>shortcut</key>
 		<string>:(</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>😊</string>
-		<key>shortcut</key>
-		<string>:)</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -232,6 +220,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>9th</string>
+		<key>shortcut</key>
+		<string>9tb</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>646.318.1888</string>
 		<key>shortcut</key>
 		<string>646.318.1888</string>
@@ -289,6 +283,12 @@
 		<string>α</string>
 		<key>shortcut</key>
 		<string>alpha</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>anomaly</string>
+		<key>shortcut</key>
+		<string>anamaly</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -421,6 +421,12 @@
 		<string>£</string>
 		<key>shortcut</key>
 		<string>britishpound</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Buttigieg</string>
+		<key>shortcut</key>
+		<string>buttegieg</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -568,6 +574,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>COVID‑19</string>
+		<key>shortcut</key>
+		<string>covid</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>³</string>
 		<key>shortcut</key>
 		<string>cubed</string>
@@ -622,6 +634,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>° F</string>
+		<key>shortcut</key>
+		<string>degf</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>°</string>
 		<key>shortcut</key>
 		<string>degree</string>
@@ -646,6 +664,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>de minimis</string>
+		<key>shortcut</key>
+		<string>deminimis</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>de minimis</string>
+		<key>shortcut</key>
+		<string>deminimus</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>😈</string>
 		<key>shortcut</key>
 		<string>devil</string>
@@ -667,6 +697,18 @@
 		<string>didn’t</string>
 		<key>shortcut</key>
 		<string>didnt</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>de minimis</string>
+		<key>shortcut</key>
+		<string>diminimis</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>de minimis</string>
+		<key>shortcut</key>
+		<string>diminimus</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -805,6 +847,12 @@
 		<string>East Side Club</string>
 		<key>shortcut</key>
 		<string>eastsideclub</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>eligible</string>
+		<key>shortcut</key>
+		<string>elligible</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -970,6 +1018,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⁄</string>
+		<key>shortcut</key>
+		<string>fraction</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⁄</string>
+		<key>shortcut</key>
+		<string>fractionslash</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>français</string>
 		<key>shortcut</key>
 		<string>francais</string>
@@ -1009,6 +1069,12 @@
 		<string>ʔ</string>
 		<key>shortcut</key>
 		<string>glottal</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ʔ</string>
+		<key>shortcut</key>
+		<string>glottals</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1087,6 +1153,12 @@
 		<string>Hanukkah</string>
 		<key>shortcut</key>
 		<string>hannikah</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Hanukkah</string>
+		<key>shortcut</key>
+		<string>Hannukah</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1336,6 +1408,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Ivory</string>
+		<key>shortcut</key>
+		<string>ibory</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>ick</string>
 		<key>shortcut</key>
 		<string>ick</string>
@@ -1429,6 +1507,18 @@
 		<string>∫</string>
 		<key>shortcut</key>
 		<string>integralsymbol</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>isn’t</string>
+		<key>shortcut</key>
+		<string>isn't</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>isn’t</string>
+		<key>shortcut</key>
+		<string>isnt</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1648,9 +1738,21 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>iTerm</string>
+		<key>shortcut</key>
+		<string>itmer</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Ivory</string>
 		<key>shortcut</key>
 		<string>ivory</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Ivory</string>
+		<key>shortcut</key>
+		<string>ivroy</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1896,6 +1998,18 @@
 		<key>phrase</key>
 		<string>Lucas</string>
 		<key>shortcut</key>
+		<string>luccas</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
+		<string>Luccas</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
 		<string>lufad</string>
 	</dict>
 	<dict>
@@ -1909,6 +2023,12 @@
 		<string>Lucas</string>
 		<key>shortcut</key>
 		<string>luvas</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Lucas</string>
+		<key>shortcut</key>
+		<string>lycsd</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -1978,6 +2098,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>misogyny</string>
+		<key>shortcut</key>
+		<string>misogeny</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Missoula</string>
 		<key>shortcut</key>
 		<string>missioula</string>
@@ -2029,6 +2155,12 @@
 		<string>Montana</string>
 		<key>shortcut</key>
 		<string>montanaa</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
+		<string>Montanta</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2136,7 +2268,25 @@
 		<key>phrase</key>
 		<string>Montana</string>
 		<key>shortcut</key>
+		<string>Motnana</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Montana</string>
+		<key>shortcut</key>
 		<string>motnant</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Mullan</string>
+		<key>shortcut</key>
+		<string>Mullan</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>misogyny</string>
+		<key>shortcut</key>
+		<string>mysogyny</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2203,6 +2353,12 @@
 		<string>÷</string>
 		<key>shortcut</key>
 		<string>obelus</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>O’Connor</string>
+		<key>shortcut</key>
+		<string>Oconnot</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2410,6 +2566,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>readme</string>
+		<key>shortcut</key>
+		<string>reamde</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>README</string>
+		<key>shortcut</key>
+		<string>REAMDE</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>the</string>
 		<key>shortcut</key>
 		<string>rge</string>
@@ -2422,6 +2590,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>royalties</string>
+		<key>shortcut</key>
+		<string>royalites</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>℞</string>
 		<key>shortcut</key>
 		<string>rx</string>
@@ -2431,6 +2605,12 @@
 		<string>ə</string>
 		<key>shortcut</key>
 		<string>schwa</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>SCOTUS</string>
+		<key>shortcut</key>
+		<string>SCOTUS</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -2689,6 +2869,36 @@
 		<string>Super Bowl</string>
 		<key>shortcut</key>
 		<string>superbowl</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ᵀ</string>
+		<key>shortcut</key>
+		<string>supt</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>synecdoche</string>
+		<key>shortcut</key>
+		<string>synechdote</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>synecdoches</string>
+		<key>shortcut</key>
+		<string>synechdotes</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>thank</string>
+		<key>shortcut</key>
+		<string>tbank</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>their</string>
+		<key>shortcut</key>
+		<string>tbeir</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -3106,6 +3316,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>week‑end</string>
+		<key>shortcut</key>
+		<string>week-end</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>weren’t</string>
 		<key>shortcut</key>
 		<string>weren't</string>
@@ -3145,6 +3361,12 @@
 		<string>what’s</string>
 		<key>shortcut</key>
 		<string>whats</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>which</string>
+		<key>shortcut</key>
+		<string>whihc</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -3349,6 +3571,12 @@
 		<string>York</string>
 		<key>shortcut</key>
 		<string>yrok</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>yvw</string>
+		<key>shortcut</key>
+		<string>yvw</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
