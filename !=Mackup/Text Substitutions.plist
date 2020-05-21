@@ -1000,13 +1000,13 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Find My Friends</string>
+		<string>Find My</string>
 		<key>shortcut</key>
 		<string>findmyfriends</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>Find My Friends</string>
+		<string>Find My</string>
 		<key>shortcut</key>
 		<string>fmf</string>
 	</dict>
