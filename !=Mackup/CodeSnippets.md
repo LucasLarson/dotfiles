@@ -107,6 +107,12 @@ brew update && brew upgrade && brew cask upgrade && brew cleanup && xcrun simctl
 to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/mackup) might’ve but hasn’t
 `add='`**~/Desktop/example.txt**`' && cp ~/$add ~/Dropbox/Mackup/$add && mv ~/$add ~/.Trash && ln -s ~/Dropbox/Mackup/$add ~/$add`
 
+##### lists
+###### applications
+track changes to which applications are installed without syncing them<br/>
+```bash
+take ~/Dropbox/Mackup/\!=Mackup && take /Applications && pwd > ~/Dropbox/Mackup/\!=Mackup/:Applications && date "+%Y-%m-%d" >> ~/Dropbox/Mackup/\!=Mackup/:Applications && ls -F1 >> ~/Dropbox/Mackup/\!=Mackup/:Applications && echo '\n✅ done!'
+```
 ## search
 ### `grep`
 search for the word “example” inside the current directory which is “.”<br/>
