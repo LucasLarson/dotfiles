@@ -7,6 +7,8 @@
   - [Mackup](#mackup)
     - [add](#add)
       - [manual](#manual)
+        - [lists](#lists)
+          - [applications](#applications)
   - [search](#search)
     - [`grep`](#grep)
     - [locate all](#locate-all)
