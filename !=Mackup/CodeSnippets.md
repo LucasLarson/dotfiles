@@ -83,8 +83,8 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `pip list --outdated --format=freeze \`<br/>
     `| grep -v '^\-e' \`<br/>
     `| cut -d = -f 1 \`<br/>
-    `| xargs -n1 pip install -U && #` [via](https://stackoverflow.com/revisions/3452888/14) `\`<br/>
-`pip install -U $(pip freeze | cut -d '=' -f 1) && #` [via](https://web.archive.org/web/20200508173219id_/coderwall.com/p/quwaxa/update-all-installed-python-packages-with-pip#comment_29830) `\`<br/>
+    `| xargs -n1 pip install --upgrade && #` [via](https://stackoverflow.com/revisions/3452888/14) `\`<br/>
+`pip install --upgrade $(pip freeze | cut -d '=' -f 1) && #` [via](https://web.archive.org/web/20200508173219id_/coderwall.com/p/quwaxa/update-all-installed-python-packages-with-pip#comment_29830) `\`<br/>
 `pipenv shell &&` # [via](https://github.com/pypa/pipenv/blob/bfbe1304f63372a0eb7c1531590b51195db453ea/pipenv/core.py?instructions_while_running_pipenv_install#L1282) `\`<br/>
 `pipenv install --dev && #` [via](https://stackoverflow.com/a/49867443) `\`<br/>
 `rustup update && \`<br/>
