@@ -46,13 +46,21 @@
   - [wget](#wget)
 
 <!-- /TOC -->
+<!-- @TODO
+   brew doctor
+&& brew cask doctor
+&& brew cleanup
+&& npm doctor
+&& gem cleanup
+&& flutter doctor -v
+-->
 
 ## copy, paste, return
 ```bash
 brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm -g && npm update -g && apm upgrade && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && exec zsh
 ```
 ### detail
-` && xcode-select --install && \`<br/>
+`xcode-select --install && \`<br/>
 `xcrun simctl delete unavailable && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/d7406c3bb347af9fb1734885ed571117a5dbf90a/README.md#remove-all-unavailable-simulators) `\`<br/>
 `brew update --debug --verbose && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/launchagents.md#periodic-homebrew-update-and-upgrade)`,` [via](https://stackoverflow.com/a/47664603) `\`<br/>
 `brew upgrade && \`<br/>
