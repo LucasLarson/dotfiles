@@ -78,7 +78,7 @@ brew update && brew upgrade && brew cask upgrade && brew cleanup && xcrun simctl
 `pod install && \`<br/>
 `pod update && #` [via](https://web.archive.org/web/20190719112335id_/https:/guides.cocoapods.org/using/pod-install-vs-update.html#pod-update) `\`<br/>
 `rbenv rehash && pyenv rehash && \`<br/>
-`python -m pip install --upgrade pip` && # 20.1 [2020-04-28](https://pip.pypa.io/en/stable/news/#id1) [via](https://opensource.com/article/19/5/python-3-default-mac#comment-180271), [via](https://github.com/pypa/pip/blob/52309f98d10d8feec6d319d714b0d2e5612eaa47/src/pip/_internal/self_outdated_check.py#L233-L236) `\`<br/>
+`python -m pip install --upgrade pip` && # 20.1.1 [2020-05-19](https://pip.pypa.io/en/stable/news/#id1) [via](https://opensource.com/article/19/5/python-3-default-mac#comment-180271), [via](https://github.com/pypa/pip/blob/52309f98d10d8feec6d319d714b0d2e5612eaa47/src/pip/_internal/self_outdated_check.py#L233-L236) `\`<br/>
 `python -m pip check && \`<br/>
 `pip list --outdated --format=freeze \`<br/>
     `| grep -v '^\-e' \`<br/>
