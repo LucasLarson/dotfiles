@@ -57,7 +57,7 @@
 
 ## copy, paste, return
 ```bash
-brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm -g && npm update -g && apm upgrade && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && exec zsh
+brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm -g && npm update -g && apm upgrade && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && echo '\n\n✅ done!\n' && exec zsh
 ```
 ### detail
 `xcode-select --install && \`<br/>
@@ -97,7 +97,6 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `pipenv install --dev && #` [via](https://stackoverflow.com/a/49867443) `\`<br/>
 `rustup update && #` 1.43.1 [2020-05-07](https://github.com/rust-lang/rust/releases) `\`<br/>
 `source ~/.zsh && \`<br/>
-`exec zsh && \`<br/>
 `brew install carthage --devel && #` 0.34.0 [2019-10-21](https://github.com/Carthage/Carthage/releases) `\`<br/>
 `carthage update --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
 `brew install swiftgen --devel && #`  6.1.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
@@ -109,7 +108,8 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `git gc && \`<br/>
 `mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && \`<br/>
 `# npm doctor #` creates empty node_modules folders && `\`<br/>
-`# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`
+`# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br/>
+`echo '\n\n✅ done!\n' && exec zsh #` note successful finish before restarting the shell
 
 ## Mackup
 ### add
