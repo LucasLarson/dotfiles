@@ -49,7 +49,7 @@
 
 ## copy, paste, return
 ```bash
-brew update && brew upgrade && brew cask upgrade && brew cleanup && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm update -g && apm upgrade && gem update --system && gem update && rbenv rehash && gem cleanup && python -m pip install --upgrade pip && pyenv rehash && source ~/.zshrc && exec zsh
+brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm update -g && apm upgrade && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pyenv rehash && source ~/.zshrc && exec zsh
 ```
 ### detail
 ` && xcode-select --install && \`<br/>
