@@ -12,5 +12,5 @@
     "vsintellicode.features.python.deepLearning": "enabled",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "vsonline.authentication.accountProvider": "Microsoft",
-    "window.zoomLevel": -1
+    "window.zoomLevel": 0,
 }
