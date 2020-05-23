@@ -46,7 +46,7 @@ opt_in_rules:
   - empty_string
   - empty_xctest_method
   - enum_case_associated_values_count
-  - expiringtodo
+  - expiring_todo
 # - explicit_acl # I don’t understand this concept
   - explicit_enum_raw_value
   - explicit_init
