@@ -13,4 +13,6 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "vsonline.authentication.accountProvider": "Microsoft",
     "window.zoomLevel": 0,
+    "deepcode.url": "https://www.deepcode.ai",
+    "deepcode.token": ""
 }
