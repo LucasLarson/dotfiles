@@ -71,7 +71,7 @@ opt_in_rules:
   - function_parameter_count
   - generic_type_name
   - identical_operands
-  - identifier_name
+  - identifier_name # previously `variable_name`
   - implicit_getter
   - implicit_return
   - implicitly_unwrapped_optional
