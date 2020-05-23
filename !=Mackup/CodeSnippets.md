@@ -57,7 +57,7 @@
 
 ## copy, paste, return
 ```bash
-brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm -g && npm update -g && apm upgrade && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && echo '\n\n✅ done!\n' && exec zsh
+brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm -g && npm update -g && apm upgrade && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && printf '\n\n✅ done!\n\n' && exec zsh
 ```
 ### detail
 `xcode-select --install && \`<br/>
@@ -109,7 +109,8 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && \`<br/>
 `# npm doctor #` creates empty node_modules folders && `\`<br/>
 `# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br/>
-`echo '\n\n✅ done!\n' && exec zsh #` note successful finish before restarting the shell
+`printf '\n\n✅ done!\n\n' && #` [via](https://stackoverflow.com/a/30762087) `\`<br/>
+`exec zsh #` note successful finish before restarting the shell
 
 ## Mackup
 ### add
@@ -121,7 +122,7 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 ###### applications
 track changes to which applications are installed without syncing them<br/>
 ```bash
-mkdir -p ~/Dropbox/Mackup/\!=Mackup && mkdir -p /Applications && cd /Applications && pwd > ~/Dropbox/Mackup/\!=Mackup/:Applications && date "+%Y-%m-%d" >> ~/Dropbox/Mackup/\!=Mackup/:Applications && ls -F1 >> ~/Dropbox/Mackup/\!=Mackup/:Applications && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/:Applications && echo '\n✅ done!'
+mkdir -p ~/Dropbox/Mackup/\!=Mackup && mkdir -p /Applications && cd /Applications && pwd > ~/Dropbox/Mackup/\!=Mackup/:Applications && date "+%Y-%m-%d" >> ~/Dropbox/Mackup/\!=Mackup/:Applications && ls -F1 >> ~/Dropbox/Mackup/\!=Mackup/:Applications && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/:Applications && printf '\n\n✅ done!\n\n'
 ```
 ## search
 ### `grep`
@@ -153,9 +154,9 @@ For pkg-config to find ruby you may need to set:<br/>
 
 ## text editing
 ### export output
-`echo "First Name\n" > ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
-`echo "Other First Name\n" `**>**` ExampleFileWithGivenName.txt` # overwrites the existing file<br/>
-`echo "Last Name\n" `**>>**` ExampleFileWithGivenName.txt` # append “Last Name” to the text document
+`printf 'First Name\n' > ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
+`printf 'Other First Name\n' `**>**` ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
+`printf "Last Name\n" `**>>**` ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
 
 ## make invisible
 `chflags hidden example.txt`
