@@ -7,7 +7,7 @@
     "editor.suggestSelection": "first",
     "editor.wordWrapColumn": 79,
     "git.autofetch": true,
-    "python.insidersChannel": "on",
+    "python.insidersChannel": "off",
     "python.jediEnabled": false,
     "vsintellicode.features.python.deepLearning": "enabled",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
