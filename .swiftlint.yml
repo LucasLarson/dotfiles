@@ -134,6 +134,7 @@ opt_in_rules:
   - raw_value_for_camel_cased_codable_enum
   - reduce_boolean
   - reduce_into
+  - redundant_objc_attribute
   - redundant_discardable_let
   - redundant_nil_coalescing
   - redundant_optional_initialization
