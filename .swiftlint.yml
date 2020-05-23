@@ -47,7 +47,7 @@ opt_in_rules:
   - empty_xctest_method
   - enum_case_associated_values_count
   - expiringtodo
-  - explicit_acl
+# - explicit_acl # I don’t understand this concept
   - explicit_enum_raw_value
   - explicit_init
 # - explicit_self # enable in either analyzer_rules or opt_in_rules
