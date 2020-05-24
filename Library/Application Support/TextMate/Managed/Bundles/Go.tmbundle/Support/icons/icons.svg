@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with PhotoLine 19.40B10 (www.pl32.com) -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="30" height="15" viewBox="0 0 30 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="(var)">
+    <g id="( )">
+      <path fill="#ff7f00" fill-opacity="0.6" fill-rule="evenodd" d="M7 1 L23 1 C26.5 1 30 4.5 30 8 L30 8 C30 11.5 26.5 15 23 15 L7 15 C3.5 15 0 11.5 0 8 L0 8 C0 4.5 3.5 1 7 1 Z"/>
+    </g>
+    <g id="var">
+      <g id="r">
+        <path fill="#ffffff" fill-rule="evenodd" d="M19 8 L19 6 L20 6 L20 7 C20.26 6.53 20.8 6 22 6 L23 6 L23 7 L22 7 C20 7 20 9 20 10 L20 12 L19 12 Z"/>
+      </g>
+      <g id="a">
+        <path fill="#ffffff" fill-rule="evenodd" d="M16 6 C17 6 18 7 18 8 L18 12 L17 12 L15 12 C14 12 13 12 13 10 C13 8 14 8 15 8 L17 8 C17 7 16 7 14 7 L14 6 Z M14.75 9 L17 9 L17 11 L14.75 11 C13.75 11 13.75 9 14.75 9 Z"/>
+      </g>
+      <g id="v">
+        <path fill="#ffffff" fill-rule="evenodd" d="M7 6 L8.2 6 L10 10.33 L11.8 6 L13 6 L10.6 12 L9.4 12 Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="(func)">
+    <g id="( )">
+      <path fill="#0053c0" fill-opacity="0.6" fill-rule="evenodd" d="M7 1 L23 1 C26.5 1 30 4.5 30 8 L30 8 C30 11.5 26.5 15 23 15 L7 15 C3.5 15 0 11.5 0 8 L0 8 C0 4.5 3.5 1 7 1 Z"/>
+    </g>
+    <g id="func">
+      <g id="c">
+        <path fill="#ffffff" fill-rule="evenodd" d="M21 8 C21 7 22 6 23 6 L25 6 L25 7 L24 7 C22 7 22 8 22 9 C22 10 22 11 24 11 L25 11 L25 12 L23 12 C22 12 21 11 21 10 Z"/>
+      </g>
+      <g id="n">
+        <path fill="#ffffff" fill-rule="evenodd" d="M15 6 L18 6 C19 6 20 7 20 8 L20 12 L19 12 L19 9 C19 7 18 7 17 7 L16 7 L16 12 L15 12 Z"/>
+      </g>
+      <g id="u">
+        <path fill="#ffffff" fill-rule="evenodd" d="M9 6 L10 6 L10 9 C10 10 10 11 11 11 L12 11 C13 11 13 10 13 9 L13 6 L14 6 L14 10 C14 11 13 12 12 12 L11 12 C10 12 9 11 9 10 Z"/>
+      </g>
+      <g id="f">
+        <path fill="#ffffff" fill-rule="evenodd" d="M6 5 C6 4 7 3 8 3 L9 3 L9 4 C7 4 7 5 7 6.01 L8 6 L8 7 L7 7 L7 12 L6 12 L6 7 L5 7 L5 6 L6 6 Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="(const)">
+    <g id="( )">
+      <path fill="#3a8500" fill-opacity="0.6" fill-rule="evenodd" d="M7 1 L23 1 C26.5 1 30 4.5 30 8 L30 8 C30 11.5 26.5 15 23 15 L7 15 C3.5 15 0 11.5 0 8 L0 8 C0 4.5 3.5 1 7 1 Z"/>
+    </g>
+    <g id="const">
+      <g id="t">
+        <path fill="#ffffff" fill-rule="evenodd" d="M24 10 C24 11 25 12 26 12 L27 12 L27 11 C25 11 25 10 25 9 L25 7 L26 7 L26 6 L25 6 L25 3 L24 3 L24 6 L23 6 L23 7 L24 7 Z"/>
+      </g>
+      <g id="s">
+        <path fill="#ffffff" fill-rule="evenodd" d="M20 6 L22 6 L22 7 L20.67 7 C19.66 7 19 7 19 7.47 C19 8 19.85 8 20.35 8 C20.99 8 22 8.54 22 10 C22 11 21 12 20 12 L18 12 L18 11 L19 11 C20 11 21 11 21 10 C21 9 20 9 19.56 9 C19 9 18 8.56 18 7.37 C18 6.27 19 6 20 6 Z"/>
+      </g>
+      <g id="n">
+        <path fill="#ffffff" fill-rule="evenodd" d="M13 6 L15 6 C16 6 17 7 17 8 L17 12 L16 12 L16 9 C16 7 15 7 14 7 L14 7 L14 12 L13 12 Z"/>
+      </g>
+      <g id="o">
+        <path fill="#ffffff" fill-rule="evenodd" d="M8 8 C8 7 9 6 10 6 C11 6 12 7 12 8 L12 10 C12 11 11 12 10 12 C9 12 8 11 8 10 Z M9 9 C9 8 9 7 10 7 C11 7 11 8 11 9 C11 10 11 11 10 11 C9 11 9 10 9 9 Z"/>
+      </g>
+      <g id="c">
+        <path fill="#ffffff" fill-rule="evenodd" d="M3 8 C3 7 4 6 5 6 L7 6 L7 7 L6 7 C4 7 4 8 4 9 C4 10 4 11 6 11 L7 11 L7 12 L5 12 C4 12 3 11 3 10 Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="(type)">
+    <g id="( )">
+      <path fill="#c000a1" fill-opacity="0.6" fill-rule="evenodd" d="M7 1 L23 1 C26.5 1 30 4.5 30 8 L30 8 C30 11.5 26.5 15 23 15 L7 15 C3.5 15 0 11.5 0 8 L0 8 C0 4.5 3.5 1 7 1 Z"/>
+    </g>
+    <g id="type">
+      <g id="e">
+        <path fill="#ffffff" fill-rule="evenodd" d="M26 10 L26 8 C26 7 24.75 6 23.5 6 C22.25 6 21 7 21 8 L21 10 C21 10.87 22 12 23 12 L25 12 L26 11 L23 11 C22.52 10.86 22.25 10.44 22.12 10 Z M25 9 L22 9 C22 8 22.25 7 23.5 7 C24.75 7 25 8 25 9 Z"/>
+      </g>
+      <g id="p">
+        <path fill="#ffffff" fill-rule="evenodd" d="M15 6 L17.5 6 C18.75 6 20 7 20 8 L20 10 C20 11 18.75 12 17.5 12 L16 12 L16 14 L15 14 Z M16 7 L17.5 7 C18.75 7 19 8 19 9 C19 10 18.75 11 17.5 11 L16 11 Z"/>
+      </g>
+      <g id="y">
+        <path fill="#ffffff" fill-rule="evenodd" d="M8 6 L9.2 6 L11 10.33 L12.8 6 L14 6 L10.78 14 L9.5 14 L10.37 11.94 Z"/>
+      </g>
+      <g id="t">
+        <path fill="#ffffff" fill-rule="evenodd" d="M5 10 C5 11 6 12 7 12 L8 12 L8 11 C6 11 6 10 6 9 L6 7 L7 7 L7 6 L6 6 L6 3 L5 3 L5 6 L4 6 L4 7 L5 7 Z"/>
+      </g>
+    </g>
+  </g>
+  <g id="(pkg)">
+    <g id="( )">
+      <path fill="#c00000" fill-opacity="0.6" fill-rule="evenodd" d="M7 1 L23 1 C26.5 1 30 4.5 30 8 L30 8 C30 11.5 26.5 15 23 15 L7 15 C3.5 15 0 11.5 0 8 L0 8 C0 4.5 3.5 1 7 1 Z"/>
+    </g>
+    <g id="pkg">
+      <g id="g">
+        <path fill="#ffffff" fill-rule="evenodd" d="M23 9 L23 11 C23 12 21.75 13 20.5 13 C19.25 13 18.56 12.56 18.19 11.56 L19.18 11.25 C19.36 11.82 19.68 12 20.5 12 C21.32 12 21.8 11.57 21.97 11 L21.98 10.54 C21.55 10.82 21.03 11 20.5 11 C19.25 11 18 10 18 9 L18 8 C18 7 19.25 6 20.5 6 C21.75 6 23 7 23 8 Z M19 8.47 C19 7.94 19.25 7 20.5 7 C21.75 7 22 7.94 22 8.47 C22 9 21.75 10 20.5 10 C19.25 10 19 9 19 8.47 Z"/>
+      </g>
+      <g id="k">
+        <path fill="#ffffff" fill-rule="evenodd" d="M13 3 L14 3 L14 8.17 L16.35 6 L17.83 6 L15.15 8.57 L18 12 L16.57 12 L14.39 9.27 L14 9.64 L14 12 L13 12 Z"/>
+      </g>
+      <g id="p">
+        <path fill="#ffffff" fill-rule="evenodd" d="M7 6 L9.5 6 C10.75 6 12 7 12 8 L12 10 C12 11 10.75 12 9.5 12 L8 12 L8 14 L7 14 Z M8 7 L9.5 7 C10.75 7 11 8 11 9 C11 10 10.75 11 9.5 11 L8 11 Z"/>
+      </g>
+    </g>
+  </g>
+</svg>
