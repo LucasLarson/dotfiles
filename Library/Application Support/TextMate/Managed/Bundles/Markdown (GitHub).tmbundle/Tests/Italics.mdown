@@ -1,0 +1,35 @@
+# Should Match
+
+_italic_
+
+_italic italic_
+
+_italic_regular
+
+
+# Should Not Match
+
+regular_regular_regular
+
+
+# Should Not Match But Does
+
+regular _italic_regular
+
+
+# Other Cases (Should not match)
+
+__double underscores__
+
+    _raw_
+    
+    raw_raw_raw
+
+Lorem `ipsum_dolor_sit` amet
+
+
+# Exceptional Cases
+
+$$y_i = \alpha_{j[i]} + \beta x_i + \epsilon_i$$
+
+This is MathJax code which should be parsed separately, but shows just how loose the main spec is about what can be in italic.
