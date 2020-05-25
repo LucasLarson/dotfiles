@@ -18,6 +18,7 @@
   - [text editing](#text-editing)
     - [export output](#export-output)
   - [make invisible](#make-invisible)
+  - [create an alias](#create-an-alias)
   - [launch services](#launch-services)
     - [reset](#reset)
     - [repair website disk permissions](#repair-website-disk-permissions)
@@ -42,7 +43,6 @@
   - [without confirmation](#without-confirmation)
     - [compare two folders](#compare-two-folders)
       - [purge memory cache](#purge-memory-cache)
-    - [create an alias](#create-an-alias)
   - [wget](#wget)
 
 <!-- /TOC -->
@@ -161,6 +161,10 @@ For pkg-config to find ruby you may need to set:<br/>
 ## make invisible
 `chflags hidden example.txt`
 
+## create an alias
+`ln -s file shortcut #` [via](https://www.reddit.com/r/programming/comments/1qt0z/ln_s_d1_d2_am_i_the_only_person_who_gets_this_the/c1qtge/)<br/>
+(just like `cp existing new`)
+
 ## launch services
 ### reset
 `sudo $(locate lsregister) -kill -seed -r`<br/>
@@ -253,11 +257,6 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 
 ##### purge memory cache
 `sudo purge` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#purge-memory-cache)
-
-### create an alias
-`ln -s file shortcut #` [via](https://www.reddit.com/r/programming/comments/1qt0z/ln_s_d1_d2_am_i_the_only_person_who_gets_this_the/c1qtge/)<br/>
-(just like `cp existing new`)
-
 ## wget
 `wgetserver=`'**example.com**' `&& \`<br/>
 `wget --mirror --continue --verbose --append-output=$wgetserver.log --execute robots=off --restrict-file-names=nocontrol http://$wgetserver`
