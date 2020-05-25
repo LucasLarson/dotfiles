@@ -1000,6 +1000,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Finder</string>
+		<key>shortcut</key>
+		<string>finder</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Find My</string>
 		<key>shortcut</key>
 		<string>findmyfriends</string>
