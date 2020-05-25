@@ -40,12 +40,12 @@
     - [password](#password)
       - [Windows](#windows)
       - [macOS](#macos)
-- [delete](#delete)
-  - [with confirmation first](#with-confirmation-first)
-  - [without confirmation](#without-confirmation)
-  - [empty directories](#empty-directories)
+  - [delete](#delete)
+    - [with confirmation first](#with-confirmation-first)
+    - [without confirmation](#without-confirmation)
+    - [empty directories](#empty-directories)
     - [compare two folders](#compare-two-folders)
-      - [purge memory cache](#purge-memory-cache)
+    - [purge memory cache](#purge-memory-cache)
 
 <!-- /TOC -->
 <!-- @TODO
@@ -254,16 +254,16 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 #### macOS
 `security find-generic-password -wa ExampleNetwork #` [via](https://www.labnol.org/software/find-wi-fi-network-password/28949/)
 
-# delete
-## with confirmation first
+## delete
+### with confirmation first
 `rm -i /ExampleDirectoryFullOfImportantDocuments`<br/>
 `rm -i /ExampleTrashDocument.txt # -i` stands for <u>i</u>nteractive
 
-## without confirmation
+### without confirmation
 `rm -rf /ExampleDirectoryFullOfImportantDocuments` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br/>
 `rm     /ExampleTrashDocument.txt`
 
-## empty directories
+### empty directories
 make a list of empty folders inside and beneath current directory **`.`** ([via](https://unix.stackexchange.com/a/46326))<br/>
 `find . -type d -empty -print`<br/>
 if satisfied with the results being lost and gone forever, execute:<br/>
@@ -272,5 +272,5 @@ if satisfied with the results being lost and gone forever, execute:<br/>
 ### compare two folders
 `diff -qr /path/to/folder1 /path/to/folder2` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#compare-two-folders)
 
-##### purge memory cache
+### purge memory cache
 `sudo purge` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#purge-memory-cache)
