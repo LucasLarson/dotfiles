@@ -40,6 +40,8 @@
     - [password](#password)
       - [Windows](#windows)
       - [macOS](#macos)
+  - [Xcode](#xcode)
+    - [signing](#signing)
   - [delete](#delete)
     - [with confirmation first](#with-confirmation-first)
     - [without confirmation](#without-confirmation)
@@ -253,6 +255,13 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 `netsh wlan show profile WiFi-name key=clear #` [via](https://reddit.com/r/LifeProTips/comments/d5vknk/lpt_if_you_ever_forget_your_wifi_password_or_you/)
 #### macOS
 `security find-generic-password -wa ExampleNetwork #` [via](https://www.labnol.org/software/find-wi-fi-network-password/28949/)
+
+## Xcode
+### signing
+`PRODUCT_BUNDLE_IDENTIFIER = net.LucasLarson.$(PRODUCT_NAME:rfc1034identifier);`<br/>
+`PRODUCT_NAME = $(PROJECT_NAME);`<br/>
+`DEVELOPMENT_TEAM = Z25963JBNP;`<br/>
+`DevelopmentTeam = Z25963JBNP;`
 
 ## delete
 ### with confirmation first
