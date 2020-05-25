@@ -35,9 +35,10 @@
     - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
   - [SSH](#ssh)
     - [`ls` on Windows](#ls-on-windows)
-  - [WiFi password](#wifi-password)
-    - [Windows](#windows)
-    - [macOS](#macos)
+  - [WiFi](#wifi)
+    - [password](#password)
+      - [Windows](#windows)
+      - [macOS](#macos)
 - [delete](#delete)
   - [with confirmation first](#with-confirmation-first)
   - [without confirmation](#without-confirmation)
@@ -237,10 +238,11 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 #### `ls` on Windows
 `dir` # [via](https://stackoverflow.com/a/58740114)
 
-## WiFi password
-### Windows
+## WiFi
+### password
+#### Windows
 `netsh wlan show profile WiFi-name key=clear #` [via](https://reddit.com/r/LifeProTips/comments/d5vknk/lpt_if_you_ever_forget_your_wifi_password_or_you/)
-### macOS
+#### macOS
 `security find-generic-password -wa ExampleNetwork #` [via](https://www.labnol.org/software/find-wi-fi-network-password/28949/)
 
 # delete
