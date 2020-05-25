@@ -35,6 +35,7 @@
     - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
   - [SSH](#ssh)
     - [`ls` on Windows](#ls-on-windows)
+  - [wget](#wget)
   - [WiFi](#wifi)
     - [password](#password)
       - [Windows](#windows)
@@ -44,7 +45,6 @@
   - [without confirmation](#without-confirmation)
     - [compare two folders](#compare-two-folders)
       - [purge memory cache](#purge-memory-cache)
-  - [wget](#wget)
 
 <!-- /TOC -->
 <!-- @TODO
@@ -238,6 +238,13 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 #### `ls` on Windows
 `dir` # [via](https://stackoverflow.com/a/58740114)
 
+## wget
+`wgetserver=`'**example.com**' `&& \`<br/>
+`wget --mirror --continue --verbose --append-output=$wgetserver.log --execute robots=off --restrict-file-names=nocontrol http://$wgetserver`
+
+`wgetserver=`'**example.com**' `&& \`<br/>
+`wget -m -c -v -a $wgetserver.log -e robots=off --restrict-file-names=nocontrol http://$wgetserver`
+
 ## WiFi
 ### password
 #### Windows
@@ -259,9 +266,3 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 
 ##### purge memory cache
 `sudo purge` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#purge-memory-cache)
-## wget
-`wgetserver=`'**example.com**' `&& \`<br/>
-`wget --mirror --continue --verbose --append-output=$wgetserver.log --execute robots=off --restrict-file-names=nocontrol http://$wgetserver`
-
-`wgetserver=`'**example.com**' `&& \`<br/>
-`wget -m -c -v -a $wgetserver.log -e robots=off --restrict-file-names=nocontrol http://$wgetserver`
