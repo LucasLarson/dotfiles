@@ -43,6 +43,7 @@
 - [delete](#delete)
   - [with confirmation first](#with-confirmation-first)
   - [without confirmation](#without-confirmation)
+  - [empty directories](#empty-directories)
     - [compare two folders](#compare-two-folders)
       - [purge memory cache](#purge-memory-cache)
 
@@ -260,6 +261,12 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 ## without confirmation
 `rm -rf /ExampleDirectoryFullOfImportantDocuments` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br/>
 `rm     /ExampleTrashDocument.txt`
+
+## empty directories
+make a list of empty folders inside and beneath current directory **`.`** ([via](https://unix.stackexchange.com/a/46326))<br/>
+`find . -type d -empty -print`<br/>
+if satisfied with the results being lost and gone forever, execute:<br/>
+<span title="You were warned: don’t do this!">`find . -type d -empty -delete`</span>
 
 ### compare two folders
 `diff -qr /path/to/folder1 /path/to/folder2` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#compare-two-folders)
