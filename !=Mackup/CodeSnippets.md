@@ -123,7 +123,7 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 ###### applications
 track changes to which applications are installed without syncing them<br/>
 ```bash
-mkdir -p ~/Dropbox/Mackup/\!=Mackup && mkdir -p /Applications && cd /Applications && pwd > ~/Dropbox/Mackup/\!=Mackup/:Applications && date "+%Y-%m-%d" >> ~/Dropbox/Mackup/\!=Mackup/:Applications && ls -F1 >> ~/Dropbox/Mackup/\!=Mackup/:Applications && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/:Applications && printf '\n\n✅ done!\n\n'
+mkdir -p ~/Dropbox/Mackup/\!=Mackup && mkdir -p /Applications && cd /Applications && pwd > ~/Dropbox/Mackup/\!=Mackup/:Applications && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/:Applications && ls -F1 >> ~/Dropbox/Mackup/\!=Mackup/:Applications && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/:Applications && printf '\n\n✅ done!\n\n'
 ```
 ## search
 ### `grep`
