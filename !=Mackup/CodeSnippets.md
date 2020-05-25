@@ -169,7 +169,8 @@ For pkg-config to find ruby you may need to set:<br/>
 
 ## launch services
 ### reset
-`sudo $(locate lsregister) -kill -seed -r`<br/>
+remove bogus entries from Finder’s “Open With” menu ([via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L69-L70))<br/>
+`/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -seed -r -domain local -domain system -domain user && killall Finder`
 
 ### repair website disk permissions
 `find /path/to/your/wordpress -type d -exec chmod 755 {} \; && \`<br/>
