@@ -204,7 +204,7 @@ line_length:
   ignores_urls: false
   warning: 79
 
-maxEmptyLines: 3
+maxEmptyLines: 2
 
 type_name:
   min_length: 4
