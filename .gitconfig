@@ -66,3 +66,6 @@
 	# via https://stackoverflow.com/a/28156806
 	autoupdate = true
 	enabled = true
+
+[tag]
+	forceSignAnnotated = true
