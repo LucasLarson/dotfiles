@@ -1,19 +1,14 @@
 {
-  "lastUpgradeScriptRun": "v6.1.0",
-  "lastVersion": "6.4.1",
-  "lastReleaseNotesDisplayed": "6.4.1",
+  "lastUpgradeScriptRun": "v6.5.0",
+  "lastVersion": "7.0.0",
+  "lastReleaseNotesDisplayed": "7.0.0",
   "appId": "54be860b520fe8787ebb2b71fae161e2155b1fdc",
   "registration": {
     "email": "Lucas.Larson@gmail.com",
     "name": "Lucas Larson",
     "status": "activated",
-    "loginType": "github",
-    "providerToken": {
-      "access_token": "9a66ea044a08603a90229b5f8582df0b2b2bd0f0",
-      "token_type": "bearer",
-      "scope": "admin:public_key,repo,user:email,workflow",
-      "expires_at": null
-    },
+    "loginType": "username_and_password",
+    "providerToken": null,
     "date": "2019-12-28T22:29:27.602Z",
     "EULA": {
       "version": "1.5.0",
@@ -27,11 +22,11 @@
   ],
   "userFeatures": [
     {
-      "betaFeaturesEnabled": true,
+      "betaFeaturesEnabled": false,
       "name": "gitkraken"
     },
     {
-      "betaFeaturesEnabled": true,
+      "betaFeaturesEnabled": false,
       "name": "glo"
     },
     {
@@ -46,5 +41,34 @@
   "windowSettings": {
     "fullScreen": false,
     "maximized": true
+  },
+  "notification": {
+    "toastrLocationClassname": "toast-bottom-right"
+  },
+  "fuzzyFinderMetadata": {
+    "queryMetadata": {
+      "TOP": {
+        "fetch": [
+          {
+            "id": "fetchAll",
+            "timestamps": [
+              1590542768394
+            ],
+            "total": 1
+          }
+        ]
+      }
+    },
+    "itemMetadata": {
+      "TOP": {
+        "fetchAll": {
+          "id": "fetchAll",
+          "timestamps": [
+            1590542768392
+          ],
+          "total": 1
+        }
+      }
+    }
   }
 }

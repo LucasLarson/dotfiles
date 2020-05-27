@@ -150,3 +150,47 @@
 [2020-01-23T19:03:49.584Z] Send usage data to Axosoft: started.
 [2020-01-23T19:03:49.629Z] Send usage data to Axosoft: finished. (Thank you!) gk-log://duration?t=45
 [2020-01-23T19:04:03.014Z] Open repository: finished. gk-log://duration?t=28578
+[2020-04-22T16:27:05.764Z] Detecting Git and Git LFS: started
+[2020-04-22T16:27:11.067Z] Detected Git: 2.24.2
+[2020-04-22T16:27:11.072Z] Detected Git LFS: 2.10.0
+[2020-04-22T16:27:11.074Z] Detecting Git and Git LFS: finished gk-log://duration?t=5310
+[2020-04-22T16:27:38.785Z] Send usage data to Axosoft: started.
+[2020-04-22T16:27:38.892Z] Send usage data to Axosoft: API returned 400
+[2020-04-22T16:27:38.898Z] Send usage data to Axosoft: finished with errors. gk-log://duration?t=113
+[2020-04-22T16:30:35.637Z] Open repository /Users/LucasLarson/Library/Application Support/: started.
+[2020-04-22T16:30:43.804Z] Open repository: finished. gk-log://duration?t=8166
+[2020-04-22T16:30:55.940Z] Open repository /Users/LucasLarson/Library/Application Support/: started.
+[2020-04-22T16:31:02.775Z] Open repository: finished. gk-log://duration?t=6835
+[2020-04-22T16:32:49.426Z] Open repository /Users/LucasLarson/Library/Preferences/: started.
+[2020-04-22T16:33:06.649Z] Open repository: finished. gk-log://duration?t=17223
+[2020-04-22T16:33:30.908Z] Detecting Git and Git LFS: started
+[2020-04-22T16:33:33.074Z] Detected Git: 2.24.2
+[2020-04-22T16:33:33.221Z] Detected Git LFS: 2.10.0
+[2020-04-22T16:33:33.549Z] Detecting Git and Git LFS: finished gk-log://duration?t=2640
+[2020-04-22T16:34:07.377Z] Open repository /Users/LucasLarson/Library/Preferences/: started.
+[2020-04-22T16:34:25.269Z] Open repository: finished. gk-log://duration?t=17892
+[2020-05-26T15:56:10.428Z] Detecting Git and Git LFS: started
+[2020-05-26T15:56:12.581Z] Open repository /Users/LucasLarson/Library/Preferences/: started.
+[2020-05-26T15:56:15.573Z] Open repository: finished. gk-log://duration?t=2992
+[2020-05-26T15:56:15.940Z] Detected Git: 2.24.3
+[2020-05-26T15:56:16.011Z] Detected Git LFS: 2.11.0
+[2020-05-26T15:56:16.024Z] Detecting Git and Git LFS: finished gk-log://duration?t=5595
+[2020-05-26T15:56:43.066Z] Send usage data to Axosoft: started.
+[2020-05-26T15:56:43.101Z] Send usage data to Axosoft: API returned 400
+[2020-05-26T15:56:43.107Z] Send usage data to Axosoft: finished with errors. gk-log://duration?t=41
+[2020-05-26T15:57:59.628Z] Detecting Git and Git LFS: started
+[2020-05-26T15:58:01.411Z] Detected Git: 2.24.3
+[2020-05-26T15:58:01.612Z] Detected Git LFS: 2.11.0
+[2020-05-26T15:58:01.641Z] Detecting Git and Git LFS: finished gk-log://duration?t=2012
+[2020-05-26T15:58:18.474Z] Open repository /Users/LucasLarson/Library/Preferences/: started.
+[2020-05-26T15:58:28.854Z] Open repository: finished. gk-log://duration?t=10380
+[2020-05-26T16:47:10.140Z] Open repository /Users/LucasLarson/Dropbox/Mackup/: started.
+[2020-05-26T16:47:13.056Z] Open repository: finished. gk-log://duration?t=2916
+[2020-05-26T17:10:36.926Z] Open repository /Users/LucasLarson/Dropbox/Mackup/: started.
+[2020-05-26T17:10:38.823Z] Open repository: finished. gk-log://duration?t=1896
+[2020-05-26T18:03:12.940Z] Open repository /Users/LucasLarson/Dropbox/Mackup/: started.
+[2020-05-26T18:03:15.031Z] Open repository: finished. gk-log://duration?t=2091
+[2020-05-26T18:04:11.353Z] Open repository /Users/LucasLarson/Library/Application Support/: started.
+[2020-05-26T18:05:01.831Z] Open repository: finished. gk-log://duration?t=50478
+[2020-05-27T01:25:35.540Z] Open repository /Users/LucasLarson/Dropbox/Mackup/: started.
+[2020-05-27T01:25:37.019Z] Open repository: finished. gk-log://duration?t=1479

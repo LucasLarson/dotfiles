@@ -6,6 +6,11 @@
           "hostingServiceType": "github",
           "owner": "LucasLarson",
           "name": ".dotfiles"
+        },
+        "Library-Preferences": {
+          "hostingServiceType": "github",
+          "owner": "LucasLarson",
+          "name": "Library-Preferences"
         }
       },
       "jonreid": {
@@ -21,14 +26,14 @@
     "origin": {
       "HEAD": {
         "name": "HEAD",
-        "oid": "8f57145a276b1edefa980e73945a40ed5d908382",
+        "oid": "4046d62c80b1c0b07cc2b2e4608edafd01569c59",
         "local": 0,
         "loid": "0000000000000000000000000000000000000000",
         "symrefTarget": "refs/heads/master"
       },
       "refs/heads/master": {
         "name": "refs/heads/master",
-        "oid": "8f57145a276b1edefa980e73945a40ed5d908382",
+        "oid": "4046d62c80b1c0b07cc2b2e4608edafd01569c59",
         "local": 1,
         "loid": "0000000000000000000000000000000000000000",
         "symrefTarget": null

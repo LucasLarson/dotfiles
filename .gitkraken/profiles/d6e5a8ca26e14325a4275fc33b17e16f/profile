@@ -2,13 +2,11 @@
   "tabInfo": {
     "tabs": [
       {
-        "id": "af745f12-f2c1-48fc-9d6a-57758f2c9993",
-        "type": "REPO",
-        "repoName": "Application Support",
-        "repoPath": "/Users/LucasLarson/Library/Application Support/"
+        "id": "17629e5a-034b-4d3b-9df3-7869cd333add",
+        "type": "NEW"
       }
     ],
-    "selectedTabId": "af745f12-f2c1-48fc-9d6a-57758f2c9993"
+    "selectedTabId": "17629e5a-034b-4d3b-9df3-7869cd333add"
   },
   "profileIcon": "gravatar",
   "profileName": "Default Profile",
@@ -17,10 +15,11 @@
   "gpg": {
     "gpgProgram": "/usr/local/bin/gpg",
     "userSigningKey": "AA4FB0D44C2AA5C90B91861DF09A4FB0FE301234",
-    "commitGpgSign": true
+    "commitGpgSign": true,
+    "tagForceSignAnnotated": true
   },
   "editor": {
-    "fontFamily": "Monaco",
+    "fontFamily": "FiraCode Nerd Font",
     "wordWrap": true
   },
   "ssh": {
@@ -32,5 +31,11 @@
     "/Users/LucasLarson/Library/Preferences",
     "/Users/LucasLarson/Library/Application Support"
   ],
-  "mergeTool": "file-merge"
+  "mergeTool": "file-merge",
+  "services": {
+    "azureDevops": {
+      "url": "dev.azure.com/lucaslarson",
+      "username": null
+    }
+  }
 }
