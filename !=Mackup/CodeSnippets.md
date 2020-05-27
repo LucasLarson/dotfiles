@@ -15,6 +15,7 @@
   - [`$PATH`](#path)
     - [entries](#entries)
       - [macOS](#macos)
+      - [Linux](#linux)
     - [sandbox](#sandbox)
   - [text editing](#text-editing)
     - [export output](#export-output)
@@ -146,6 +147,9 @@ for example, locate all JPEG files<br/>
 ### entries
 #### macOS
 `<<<${(F)path}` # [via](https://codegolf.stackexchange.com/a/96471)
+
+#### Linux
+`mkdir -p ~/Code/dotfiles && cd ~/Code/dotfiles && printf 'PATH\n' > \$PATH && date '+%Y-%m-%d' >> \$PATH && printf 'automagically generated' >> \$PATH && printf '\n———————————————————————\n' >> \$PATH && <<<${(F)path} >> \$PATH && git fetch && git submodule update --init --recursive && git status && git diff \$PATH  && printf '\n\n✅ done!\n\n'`
 
 ### sandbox
 If you need to have ruby first in your PATH run:<br/>
