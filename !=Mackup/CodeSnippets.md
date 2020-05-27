@@ -14,6 +14,7 @@
     - [locate all](#locate-all)
   - [`$PATH`](#path)
     - [entries](#entries)
+      - [macOS](#macos)
     - [sandbox](#sandbox)
   - [text editing](#text-editing)
     - [export output](#export-output)
@@ -143,6 +144,7 @@ for example, locate all JPEG files<br/>
 ## `$PATH`
 
 ### entries
+#### macOS
 `<<<${(F)path}` # [via](https://codegolf.stackexchange.com/a/96471)
 
 ### sandbox
