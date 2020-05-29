@@ -58,7 +58,7 @@
 && brew cleanup
 && npm doctor
 && gem cleanup
-&& flutter doctor -v
+&& ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose
 -->
 
 ## copy, paste, return
