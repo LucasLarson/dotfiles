@@ -3106,6 +3106,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>it</string>
+		<key>shortcut</key>
+		<string>ti</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>×</string>
 		<key>shortcut</key>
 		<string>timessign</string>
