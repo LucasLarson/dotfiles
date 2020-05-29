@@ -41,7 +41,7 @@
   - [WiFi](#wifi)
     - [password](#password)
       - [Windows](#windows)
-      - [macOS](#macos)
+      - [macOS](#macos-1)
   - [Xcode](#xcode)
     - [signing](#signing)
   - [delete](#delete)
