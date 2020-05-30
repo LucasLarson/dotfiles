@@ -63,7 +63,7 @@
 
 ## copy, paste, return
 ```bash
-brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm -g && npm update -g && apm upgrade && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && printf '\n\n✅ done!\n\n' && exec zsh
+brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm --global && npm update --global && apm upgrade && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && printf '\n\n✅ done!\n\n' && exec zsh
 ```
 ### detail
 `xcode-select --install && \`<br/>
@@ -78,8 +78,8 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `upgrade_oh_my_zsh && #` [via](https://github.com/robbyrussell/oh-my-zsh/blob/17f4cfca99398cb5511557b8515a17bf1bf2948a/README.md#manual-updates) `\`<br/>
 `git clone --recursive --recurse-submodules --depth=1 --branch master #` [via](https://github.com/mapsme/omim/blob/f93cc4cc270baa886ad9bfccca2fc5e815f7245e/README.md#submodules), [via](https://github.com/hisaac/Tiime/blob/ff1a39d6765d8ae5c9724ca84d5c680dff4c602e/README.md#bootstrapping-instructions), [via](https://stackoverflow.com/a/50028481) `\`<br/>
 `git submodule update --init --recursive && #` [via](https://stackoverflow.com/a/10168693) `\`<br/>
-`npm install npm -g && #` [via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L51-L52) `\`<br/>
-`npm update -g && #` 6.14.5 [2020-05-04](https://www.npmjs.com/package/npm?activeTab=versions#versions) `\`<br/>
+`npm install npm --global && #` [via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L51-L52), [via](https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties) `\`<br/>
+`npm update --global && #` 6.14.5 [2020-05-04](https://www.npmjs.com/package/npm?activeTab=versions#versions) `\`<br/>
 `apm upgrade && #` via npm analogy `\`<br/>
 `gem update --system && #`  3.1.2 [2019-12-20](https://blog.rubygems.org) `\`<br/>
 `gem update && \`<br/>
