@@ -1,7 +1,5 @@
 # Code snippets
 <!-- TOC -->
-
-- [Code snippets](#code-snippets)
   - [copy, paste, return](#copy-paste-return)
     - [detail](#detail)
   - [Mackup](#mackup)
