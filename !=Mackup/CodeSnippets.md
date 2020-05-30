@@ -33,7 +33,8 @@
     - [`init` via GitHub](#init-via-github)
     - [`add`](#add)
     - [`diff`](#diff)
-    - [`commit` with subject ***and*** body](#commit-with-subject-and-body)
+    - [`commit`](#commit)
+      - [with subject *and* body](#with-subject-and-body)
     - [`editor`](#editor)
     - [rename files](#rename-files)
     - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
@@ -238,8 +239,9 @@ do not disable it, because that would allow you to install any software, even if
 more detailed `git diff` and how I once found an LF‑to‑CRLF‑only difference<br/>
 `git diff --raw`
 
-### `commit` with subject ***and*** body
-`git commit -m 'subject' -m 'body' #` [via](https://stackoverflow.com/a/40506149)<br/>
+### `commit`
+#### with subject *and* body
+`git commit -m 'subject' -m 'body' #` [via](https://stackoverflow.com/a/40506149)
 
 ### `editor`
 Vim<br/>
