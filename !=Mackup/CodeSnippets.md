@@ -35,6 +35,7 @@
     - [`diff`](#diff)
     - [`commit`](#commit)
       - [with subject *and* body](#with-subject-and-body)
+      - [in the past](#in-the-past)
     - [`editor`](#editor)
     - [rename files](#rename-files)
     - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
@@ -242,6 +243,9 @@ more detailed `git diff` and how I once found an LF‑to‑CRLF‑only differen
 ### `commit`
 #### with subject *and* body
 `git commit -m 'subject' -m 'body' #` [via](https://stackoverflow.com/a/40506149)
+#### in the past
+to backdate a commit:<br/>
+`GIT_TIME='`**2000-01-02T15:04:05 -0500**`' GIT_AUTHOR_DATE=$GIT_TIME GIT_COMMITTER_DATE=$GIT_TIME git commit -m 'add modifications made at 3:04:05pm EST on January 2, 2000' #` [via](https://stackoverflow.com/questions/3895453/how-do-i-make-a-git-commit-in-the-past#comment97787061_3896112)
 
 ### `editor`
 Vim<br/>
