@@ -1,5 +1,6 @@
 # Code snippets
 <!-- TOC -->
+
   - [copy, paste, return](#copy-paste-return)
     - [detail](#detail)
   - [Mackup](#mackup)
@@ -8,6 +9,7 @@
         - [lists](#lists)
           - [applications](#applications)
         - [Atom packages](#atom-packages)
+        - [pip packages](#pip-packages)
   - [search](#search)
     - [`grep`](#grep)
     - [locate all](#locate-all)
@@ -133,6 +135,10 @@ mkdir -p ~/Dropbox/Mackup/\!=Mackup && mkdir -p /Applications && cd /Application
 ##### Atom packages
 ```bash
 apm list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'Atom extensions ' > ~/Dropbox/Mackup/\!=Mackup/Atom && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/Atom && printf '———————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/Atom && apm list >> ~/Dropbox/Mackup/\!=Mackup/Atom && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/Atom && printf '\n\n✅ done!\n\n'
+```
+##### pip packages
+```bash
+pip list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'pip packages installed ' > ~/Dropbox/Mackup/\!=Mackup/pip && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/pip && printf '—————————————————————————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/pip && pip list >> ~/Dropbox/Mackup/\!=Mackup/pip && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n✅ done!\n\n'
 ```
 ## search
 ### `grep`
