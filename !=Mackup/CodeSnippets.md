@@ -27,6 +27,7 @@
       - [date modified modify](#date-modified-modify)
     - [flags for C, C++](#flags-for-c-c)
       - [C++ features before wide support](#c-features-before-wide-support)
+  - [Gatekeeper](#gatekeeper)
   - [Git](#git)
     - [`init` via GitHub](#init-via-github)
     - [`add`](#add)
@@ -198,6 +199,10 @@ remove bogus entries from Finder’s “Open With” menu ([via](https://githu
 #### C++ features before wide support
 for example, C++17’s `<filesystem>`<br/>
 `-lstdc++fs`
+
+## Gatekeeper
+do not disable it, because that would allow you to install any software, even if unsigned, even if malicious:<br/>
+`sudo spctl --master-disable #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/bd25a136655e63fcb7f3462a8dc7105f30093e54/README.md#manage-gatekeeper)
 
 ## Git
 ### `init` via GitHub
