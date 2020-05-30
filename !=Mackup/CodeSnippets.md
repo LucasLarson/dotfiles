@@ -272,9 +272,6 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 `wgetserver=`'**example.com**' `&& \`<br/>
 `wget --mirror --continue --verbose --append-output=$wgetserver.log --execute robots=off --restrict-file-names=nocontrol http://$wgetserver`
 
-`wgetserver=`'**example.com**' `&& \`<br/>
-`wget -m -c -v -a $wgetserver.log -e robots=off --restrict-file-names=nocontrol http://$wgetserver`
-
 ## WiFi
 ### password
 #### Windows
