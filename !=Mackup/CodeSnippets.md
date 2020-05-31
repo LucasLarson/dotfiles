@@ -261,7 +261,6 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 `split -l 2000 example.csv; for i in *; do mv "$i" "$i.csv"; done`
 
 ## SSH
-`git clone ssh://example.com/home/username/example.com/public/.git`<br/>
 `ssh username@example.com`
 
 #### `ls` on Windows
