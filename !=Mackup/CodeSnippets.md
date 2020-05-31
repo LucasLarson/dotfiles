@@ -113,7 +113,6 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `swiftgen && \`<br/>
 `brew install swiftlint --devel && #` 0.39.1 [2020-02-11](https://github.com/realm/SwiftLint/releases) `\`<br/>
 `swiftlint autocorrect && \`<br/>
-`git submodule update --init --recursive && \`<br/>
 `# git add . && git add -u || git add -A && #` [via](https://stackoverflow.com/a/15011313) `\`<br/>
 `git gc && \`<br/>
 `mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && \`<br/>
