@@ -18,13 +18,13 @@ EGID=0
 EUID=0
 FG
 FIGNORE=''
-FPATH=/root/.oh-my-zsh/plugins/git:/root/.oh-my-zsh/functions:/root/.oh-my-zsh/completions:/root/.oh-my-zsh/plugins/git:/root/.oh-my-zsh/functions:/root/.oh-my-zsh/completions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.7.1/functions/Calendar:/usr/share/zsh/5.7.1/functions/Chpwd:/usr/share/zsh/5.7.1/functions/Completion:/usr/share/zsh/5.7.1/functions/Completion/AIX:/usr/share/zsh/5.7.1/functions/Completion/BSD:/usr/share/zsh/5.7.1/functions/Completion/Base:/usr/share/zsh/5.7.1/functions/Completion/Cygwin:/usr/share/zsh/5.7.1/functions/Completion/Darwin:/usr/share/zsh/5.7.1/functions/Completion/Debian:/usr/share/zsh/5.7.1/functions/Completion/Linux:/usr/share/zsh/5.7.1/functions/Completion/Mandriva:/usr/share/zsh/5.7.1/functions/Completion/Redhat:/usr/share/zsh/5.7.1/functions/Completion/Solaris:/usr/share/zsh/5.7.1/functions/Completion/Unix:/usr/share/zsh/5.7.1/functions/Completion/X:/usr/share/zsh/5.7.1/functions/Completion/Zsh:/usr/share/zsh/5.7.1/functions/Completion/openSUSE:/usr/share/zsh/5.7.1/functions/Exceptions:/usr/share/zsh/5.7.1/functions/MIME:/usr/share/zsh/5.7.1/functions/Math:/usr/share/zsh/5.7.1/functions/Misc:/usr/share/zsh/5.7.1/functions/Newuser:/usr/share/zsh/5.7.1/functions/Prompts:/usr/share/zsh/5.7.1/functions/TCP:/usr/share/zsh/5.7.1/functions/VCS_Info:/usr/share/zsh/5.7.1/functions/VCS_Info/Backends:/usr/share/zsh/5.7.1/functions/Zftp:/usr/share/zsh/5.7.1/functions/Zle
+FPATH=/root/.oh-my-zsh/plugins/git:/root/.oh-my-zsh/functions:/root/.oh-my-zsh/completions:/usr/local/share/zsh/site-functions:/usr/share/zsh/site-functions:/usr/share/zsh/5.7.1/functions/Calendar:/usr/share/zsh/5.7.1/functions/Chpwd:/usr/share/zsh/5.7.1/functions/Completion:/usr/share/zsh/5.7.1/functions/Completion/AIX:/usr/share/zsh/5.7.1/functions/Completion/BSD:/usr/share/zsh/5.7.1/functions/Completion/Base:/usr/share/zsh/5.7.1/functions/Completion/Cygwin:/usr/share/zsh/5.7.1/functions/Completion/Darwin:/usr/share/zsh/5.7.1/functions/Completion/Debian:/usr/share/zsh/5.7.1/functions/Completion/Linux:/usr/share/zsh/5.7.1/functions/Completion/Mandriva:/usr/share/zsh/5.7.1/functions/Completion/Redhat:/usr/share/zsh/5.7.1/functions/Completion/Solaris:/usr/share/zsh/5.7.1/functions/Completion/Unix:/usr/share/zsh/5.7.1/functions/Completion/X:/usr/share/zsh/5.7.1/functions/Completion/Zsh:/usr/share/zsh/5.7.1/functions/Completion/openSUSE:/usr/share/zsh/5.7.1/functions/Exceptions:/usr/share/zsh/5.7.1/functions/MIME:/usr/share/zsh/5.7.1/functions/Math:/usr/share/zsh/5.7.1/functions/Misc:/usr/share/zsh/5.7.1/functions/Newuser:/usr/share/zsh/5.7.1/functions/Prompts:/usr/share/zsh/5.7.1/functions/TCP:/usr/share/zsh/5.7.1/functions/VCS_Info:/usr/share/zsh/5.7.1/functions/VCS_Info/Backends:/usr/share/zsh/5.7.1/functions/Zftp:/usr/share/zsh/5.7.1/functions/Zle
 FUNCNEST=500
 FX
 GID=0
 GPG_TTY=/dev/pts/0
 HISTCHARS='!^#'
-HISTCMD=2090
+HISTCMD=3345
 HISTFILE=/root/.zsh_history
 HISTSIZE=50000
 HIST_STAMPS=yyyy-mm-dd
@@ -36,7 +36,7 @@ KEYBOARD_HACK=''
 KEYTIMEOUT=40
 LANG=C.UTF-8
 LESS=-R
-LINENO=24
+LINENO=23
 LINES=29
 LISTMAX=100
 LOGCHECK=60
@@ -49,12 +49,12 @@ MANPATH=''
 MENUSELECT=0
 MODULE_PATH=/usr/lib/zsh/5.7.1
 NULLCMD=cat
-OLDPWD=/root/Software/dotfiles
+OLDPWD=/root/Code
 OPTARG=args
 OPTIND=1
 OSTYPE=linux-musl
 PAGER=less
-PATH=/root/bin:/usr/local/bin:/root/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PATH=/root/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 PPID=7
 PROMPT=$'%(?:%{\C-[[01;32m%}➜ :%{\C-[[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 PROMPT2='%_> '
@@ -65,12 +65,12 @@ PS2='%_> '
 PS3='?# '
 PS4='+%N:%i> '
 PSVAR=''
-PWD=/root
-RANDOM=19624
+PWD=/root/Code/dotfiles
+RANDOM=5937
 READNULLCMD=more
 SAVEHIST=10000
 SCREEN_NO=''
-SECONDS=3630
+SECONDS=514
 SHELL=/bin/zsh
 SHLVL=1
 SHORT_HOST=LPhoneXSMax
@@ -81,7 +81,7 @@ TMPPREFIX=/tmp/zsh
 TRY_BLOCK_ERROR=-1
 TRY_BLOCK_INTERRUPT=-1
 TTY=/dev/pts/0
-TTYIDLE=1589638334
+TTYIDLE=1590893719
 UID=0
 UPDATE_ZSH_DAYS=1
 USER=root
@@ -113,13 +113,15 @@ ZSH_THEME_TERM_TAB_TITLE_IDLE='%15<..<%~%<<'
 ZSH_THEME_TERM_TITLE_IDLE='%n@%m: %~'
 ZSH_VERSION=5.7.1
 _=set
-__savecursor=0
+__savecursor=3
 __searching=up-line-or-beginning-search
+_cmd_variant=( [rm]=unix )
 _comp_dumpfile=/root/.zcompdump
 _comp_options
 _comp_setup
 _compautos
 _comps
+_git_third_party_commands=(  )
 _lastcomp
 _patcomps
 _postpatcomps
@@ -152,7 +154,7 @@ fg
 fg_bold
 fg_no_bold
 fignore=(  )
-fpath=( /root/.oh-my-zsh/plugins/git /root/.oh-my-zsh/functions /root/.oh-my-zsh/completions /root/.oh-my-zsh/plugins/git /root/.oh-my-zsh/functions /root/.oh-my-zsh/completions /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions /usr/share/zsh/5.7.1/functions/Calendar /usr/share/zsh/5.7.1/functions/Chpwd /usr/share/zsh/5.7.1/functions/Completion /usr/share/zsh/5.7.1/functions/Completion/AIX /usr/share/zsh/5.7.1/functions/Completion/BSD /usr/share/zsh/5.7.1/functions/Completion/Base /usr/share/zsh/5.7.1/functions/Completion/Cygwin /usr/share/zsh/5.7.1/functions/Completion/Darwin /usr/share/zsh/5.7.1/functions/Completion/Debian /usr/share/zsh/5.7.1/functions/Completion/Linux /usr/share/zsh/5.7.1/functions/Completion/Mandriva /usr/share/zsh/5.7.1/functions/Completion/Redhat /usr/share/zsh/5.7.1/functions/Completion/Solaris /usr/share/zsh/5.7.1/functions/Completion/Unix /usr/share/zsh/5.7.1/functions/Completion/X /usr/share/zsh/5.7.1/functions/Completion/Zsh /usr/share/zsh/5.7.1/functions/Completion/openSUSE /usr/share/zsh/5.7.1/functions/Exceptions /usr/share/zsh/5.7.1/functions/MIME /usr/share/zsh/5.7.1/functions/Math /usr/share/zsh/5.7.1/functions/Misc /usr/share/zsh/5.7.1/functions/Newuser /usr/share/zsh/5.7.1/functions/Prompts /usr/share/zsh/5.7.1/functions/TCP /usr/share/zsh/5.7.1/functions/VCS_Info /usr/share/zsh/5.7.1/functions/VCS_Info/Backends /usr/share/zsh/5.7.1/functions/Zftp /usr/share/zsh/5.7.1/functions/Zle )
+fpath=( /root/.oh-my-zsh/plugins/git /root/.oh-my-zsh/functions /root/.oh-my-zsh/completions /usr/local/share/zsh/site-functions /usr/share/zsh/site-functions /usr/share/zsh/5.7.1/functions/Calendar /usr/share/zsh/5.7.1/functions/Chpwd /usr/share/zsh/5.7.1/functions/Completion /usr/share/zsh/5.7.1/functions/Completion/AIX /usr/share/zsh/5.7.1/functions/Completion/BSD /usr/share/zsh/5.7.1/functions/Completion/Base /usr/share/zsh/5.7.1/functions/Completion/Cygwin /usr/share/zsh/5.7.1/functions/Completion/Darwin /usr/share/zsh/5.7.1/functions/Completion/Debian /usr/share/zsh/5.7.1/functions/Completion/Linux /usr/share/zsh/5.7.1/functions/Completion/Mandriva /usr/share/zsh/5.7.1/functions/Completion/Redhat /usr/share/zsh/5.7.1/functions/Completion/Solaris /usr/share/zsh/5.7.1/functions/Completion/Unix /usr/share/zsh/5.7.1/functions/Completion/X /usr/share/zsh/5.7.1/functions/Completion/Zsh /usr/share/zsh/5.7.1/functions/Completion/openSUSE /usr/share/zsh/5.7.1/functions/Exceptions /usr/share/zsh/5.7.1/functions/MIME /usr/share/zsh/5.7.1/functions/Math /usr/share/zsh/5.7.1/functions/Misc /usr/share/zsh/5.7.1/functions/Newuser /usr/share/zsh/5.7.1/functions/Prompts /usr/share/zsh/5.7.1/functions/TCP /usr/share/zsh/5.7.1/functions/VCS_Info /usr/share/zsh/5.7.1/functions/VCS_Info/Backends /usr/share/zsh/5.7.1/functions/Zftp /usr/share/zsh/5.7.1/functions/Zle )
 funcfiletrace
 funcsourcetrace
 funcstack
@@ -176,7 +178,7 @@ nameddirs
 options
 parameters
 patchars
-path=( /root/bin /usr/local/bin /root/bin /usr/local/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin )
+path=( /root/bin /usr/local/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin )
 pipestatus=( 0 )
 plugin=git
 plugins=( git )
