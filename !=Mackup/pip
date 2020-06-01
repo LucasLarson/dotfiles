@@ -9,7 +9,7 @@ astroid                2.4.1
 async-timeout          3.0.1
 asyncio                3.4.3
 attrs                  19.3.0
-autopep8               1.5.2
+autopep8               1.5.3
 beautifulsoup4         4.9.1
 cchardet               2.1.6
 certifi                2020.4.5.1
