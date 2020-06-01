@@ -17,7 +17,7 @@ cffi                   1.14.0
 chardet                3.0.4
 click                  7.1.2
 click-option-group     0.4.0
-cpplint                1.4.5
+cpplint                1.5.0
 cycler                 0.10.0
 decorator              4.4.2
 deepcode               1.0.13
