@@ -1,4 +1,4 @@
-# Mackup
+# dotfiles
 
 My own private Mackup built after [Laurent Raufaste](http://glop.org)’s&nbsp;[mackup](https://github.com/lra/mackup).
 
