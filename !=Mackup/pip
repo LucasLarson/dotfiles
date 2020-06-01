@@ -29,7 +29,7 @@ flake8                 3.8.2
 funcy                  1.14
 future                 0.18.2
 idna                   2.9
-imagecodecs            2020.2.18
+imagecodecs            2020.5.30
 imageio                2.8.0
 isort                  4.3.21
 jedi                   0.17.0
