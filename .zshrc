@@ -134,6 +134,9 @@ alias ohmyzsh="~/.oh-my-zsh"
 alias zshconfig="vim ~/.zshrc"
 alias zshcustom="$ZSH_CUSTOM"
 
+export DOTFILES="$HOME/Dropbox/Mackup"
+alias dotfiles="$DOTFILES"
+
 # https://github.com/jeefberkey/dotfiles/blob/2ded1c3a813957909687a8ddce8a9befcc6b51d1/.zshrc#L48-L61
 alias atom-beta="atom-nightly"
 alias apm-beta="apm-nightly"
