@@ -85,7 +85,7 @@
 [rerere]
 	# Git remembers your partial merge choices and replays them next time
 	# via https://stackoverflow.com/a/28156806
-	autoupdate = true
+	autoUpdate = true
 	enabled = true
 
 [tag]
