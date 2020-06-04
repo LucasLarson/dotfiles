@@ -5,6 +5,7 @@ alias apm-beta="apm-nightly"
 alias atom="atom-nightly"
 alias apm="apm-nightly"
 
+# Git
 alias gcm="git commit --message"
 alias gfgs="git fetch && git status"
 alias gti="git"
