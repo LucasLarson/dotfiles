@@ -1,3 +1,6 @@
+# aliases.zsh
+# for all active aliases, run `alias`
+
 # Atom
 # https://github.com/jeefberkey/dotfiles/blob/2ded1c3a813957909687a8ddce8a9befcc6b51d1/.zshrc#L48-L61
 alias atom-beta="atom-nightly"
