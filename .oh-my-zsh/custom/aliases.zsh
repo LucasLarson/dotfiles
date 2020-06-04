@@ -13,3 +13,8 @@ alias unixtime="date +%s" # via @Naresh https://stackoverflow.com/a/12312982
 alias vim="nvim"
 alias whcih="which"
 alias whihc="which"
+
+# Zsh
+alias ohmyzsh="~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+alias zshcustom="$ZSH_CUSTOM" # $ZSH_CUSTOM at $HOME/.oh-my-zsh/custom at init
