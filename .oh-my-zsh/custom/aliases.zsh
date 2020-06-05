@@ -18,6 +18,7 @@ alias gu="git fetch && git submodule update --init --recursive && git status"
 alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status"
 alias dotfiles="$DOTFILES" # where $DOTFILES → "$HOME/Dropbox/Mackup"
 
+# shell
 alias unixtime="date +%s" # via @Naresh https://stackoverflow.com/a/12312982
 alias vim="nvim"
 alias whcih="which"
