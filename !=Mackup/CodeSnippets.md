@@ -77,7 +77,7 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `brew cask upgrade && #` [via](https://github.com/hisaac/hisaac.net/blob/8c63d51119fe2a0f05fa6c1c2a404d12256b0594/source/_posts/2018/2018-02-12-update-all-the-things.md#readme) `\`<br/>
 `brew doctor --debug --verbose && \`<br/>
 `brew cleanup --debug --verbose && #` [via](https://stackoverflow.com/a/41030599) `\`<br/>
-`brew install mackup --devel && #` 0.8.28 [2020-02-26](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br/>
+`brew install mackup --head && #` 0.8.28 [2020-02-26](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br/>
 `mackup backup && # || mackup backup --force \`<br/>
 `upgrade_oh_my_zsh && #` [via](https://github.com/robbyrussell/oh-my-zsh/blob/17f4cfca99398cb5511557b8515a17bf1bf2948a/README.md#manual-updates) `\`<br/>
 `git clone --recurse-submodules --depth 1 --branch master --verbose --progress #` [via](https://github.com/hisaac/Tiime/blob/ff1a39d6765d8ae5c9724ca84d5c680dff4c602e/README.md#bootstrapping-instructions), [via](https://stackoverflow.com/a/50028481) `\`<br/>
@@ -107,11 +107,11 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `pipenv install --dev && #` [via](https://stackoverflow.com/a/49867443) `\`<br/>
 `rustup update && #` 1.43.1 [2020-05-07](https://github.com/rust-lang/rust/releases) `\`<br/>
 `source ~/.zsh && \`<br/>
-`brew install carthage --devel && #` 0.34.0 [2019-10-21](https://github.com/Carthage/Carthage/releases) `\`<br/>
+`brew install carthage --head && #` 0.34.0 [2019-10-21](https://github.com/Carthage/Carthage/releases) `\`<br/>
 `carthage update --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
-`brew install swiftgen --devel && #`  6.1.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
+`brew install swiftgen --head && #`  6.1.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
 `swiftgen && \`<br/>
-`brew install swiftlint --devel && #` 0.39.1 [2020-02-11](https://github.com/realm/SwiftLint/releases) `\`<br/>
+`brew install swiftlint --head && #` 0.39.1 [2020-02-11](https://github.com/realm/SwiftLint/releases) `\`<br/>
 `swiftlint autocorrect && \`<br/>
 `# git add . && git add -u || git add -A && #` [via](https://stackoverflow.com/a/15011313) `\`<br/>
 `git gc && \`<br/>
