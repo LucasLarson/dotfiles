@@ -91,16 +91,20 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+# Editor
+# Set preferred editor if it is available
+if which nvim > /dev/null; then
+  export EDITOR="nvim"
+elif which vim > /dev/null; then
+  export EDITOR="vim"
+elif which vi > /dev/null; then
+  export EDITOR="vi"
+else
+  export EDITOR="nano"
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
