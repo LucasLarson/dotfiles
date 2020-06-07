@@ -16,6 +16,7 @@ COLUMNS=80
 COMPLETION_WAITING_DOTS=true
 CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
 CPUTYPE=x86_64
+DEFAULT_COLOR=0
 DISABLE_UPDATE_PROMPT=true
 EGID=20
 EUID=501
