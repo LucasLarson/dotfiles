@@ -1088,6 +1088,7 @@ dis_galiases
 dis_patchars
 dis_reswords
 dis_saliases
+epochtime
 fg
 fg_bold
 fg_no_bold
