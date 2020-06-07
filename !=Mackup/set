@@ -1111,7 +1111,7 @@ nameddirs
 options
 parameters
 patchars
-path=( /Users/LucasLarson/.rbenv/shims /Users/LucasLarson/.pyenv/shims /Users/LucasLarson/.npm-packages/bin /Users/LucasLarson/.cargo/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin /Library/TeX/texbin /usr/local/MacGPG2/bin /Library/Apple/usr/bin /Users/LucasLarson/Code/Flutter/bin )
+path=( /Users/LucasLarson/.rbenv/shims /Users/LucasLarson/.pyenv/shims /Users/LucasLarson/.npm-packages/bin /usr/local/sbin /Users/LucasLarson/.cargo/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin /Library/TeX/texbin /usr/local/MacGPG2/bin /Library/Apple/usr/bin /Users/LucasLarson/Code/Flutter/bin )
 pipestatus=( 0 )
 plugin=git
 plugins=( git )
