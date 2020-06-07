@@ -1,0 +1,60 @@
+<application>
+  <component name="NodeJsLocalInterpreters">
+    <local-interpreter path="/usr/local/bin/node" />
+    <local-interpreter path="/usr/local/Cellar/node/13.8.0/bin/node" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DocumentationAutoUpdateEnabled" value="true" />
+    <property name="ExpandBeforeRunStepsPanel" value="true" />
+    <property name="ExpandRunDashboardTypesPanel" value="false" />
+    <property name="PyCharm.InitialConfiguration" value="true" />
+    <property name="PyCharm.InitialConfiguration.V2" value="true" />
+    <property name="PyCharm.InitialConfiguration.V3" value="true" />
+    <property name="PyCharm.InitialConfiguration.V4" value="true" />
+    <property name="PyCharm.InitialConfiguration.V5" value="true" />
+    <property name="PyCharm.InitialConfiguration.V6" value="true" />
+    <property name="PyCharm.InitialConfiguration.V7" value="true" />
+    <property name="PyCharm.initialConfigurationShown" value="true" />
+    <property name="SettingsSearchHistory" value="interpreter&#10;fold" />
+    <property name="ShowDocumentationInToolWindow" value="false" />
+    <property name="UITheme.relaunch" value="true" />
+    <property name="appcds.runOnSecondStart" value="PY-201.7223.92-6409b424b75ad1895f81f08b551dcf223d599570e77d32e256cb274d43305f13" />
+    <property name="completion.ml.perform.experiment" value="true" />
+    <property name="completion.stats.experiment.salt" value="dd66e3db" />
+    <property name="completion.stats.experiment.version" value="7" />
+    <property name="completion.stats.status.updated.ts" value="1585855186923" />
+    <property name="evlsprt3.201" value="14" />
+    <property name="evlsprt3.PY-201.4865.17" value="14" />
+    <property name="evlsprt3.PY-201.6668.28" value="14" />
+    <property name="exception.accepted.notices" value="58c618e4" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/.pyenv/shims/python" />
+    <property name="file.gist.reindex.count" value="22161" />
+    <property name="fileTypeChangedCounter" value="2" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.pyenv/shims/python" />
+    <property name="quick.doc.font.size.v3" value="X_SMALL" />
+    <property name="stats.collector.latest.sending.timestamp" value="1585502999578" />
+    <property name="stats.collector.today.sent.data.size" value="800" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+    <property name="ts.lib.d.ts.version" value="3.8.2" />
+  </component>
+  <component name="PyTestFrameworkService">
+    <option name="SDK_TO_PYTEST">
+      <map>
+        <entry key="$USER_HOME$/.pyenv/shims/python" value="false" />
+        <entry key="$USER_HOME$/Code/Tetris-deep-Q-learning-pytorch/venv/bin/python" value="false" />
+      </map>
+    </option>
+    <option name="SDK_TO_NOSETEST">
+      <map>
+        <entry key="$USER_HOME$/.pyenv/shims/python" value="false" />
+        <entry key="$USER_HOME$/Code/Tetris-deep-Q-learning-pytorch/venv/bin/python" value="false" />
+      </map>
+    </option>
+    <option name="SDK_TO_TRIALTEST">
+      <map>
+        <entry key="$USER_HOME$/.pyenv/shims/python" value="false" />
+        <entry key="$USER_HOME$/Code/Tetris-deep-Q-learning-pytorch/venv/bin/python" value="false" />
+      </map>
+    </option>
+  </component>
+</application>

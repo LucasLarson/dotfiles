@@ -1,0 +1,50 @@
+<application>
+  <component name="DimensionService">
+    <location key="find.popup.0.0.2880.1800@192dpi" x="810" y="190" />
+    <size key="find.popup.0.0.2880.1800@192dpi" width="1200" height="1464" />
+    <size key="GridCell.Tab.0.left.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.0.center.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.0.right.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.0.bottom.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.1.left.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.1.center.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.1.right.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.1.bottom.0.0.2880.1800@192dpi" width="2736" height="552" />
+  </component>
+  <component name="WindowManager">
+    <frame x="0" y="23" width="1410" height="877" />
+    <layout>
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+    </layout>
+  </component>
+  <component name="WindowStateApplicationService">
+    <state x="306" y="51" key="#Plugins" timestamp="1587156807000">
+      <screen x="0" y="23" width="1411" height="877" />
+    </state>
+    <state x="306" y="51" key="#Plugins/0.23.1411.877" timestamp="1587156807000" />
+    <state x="305" y="92" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581542743176">
+      <screen x="0" y="23" width="1411" height="877" />
+    </state>
+    <state x="305" y="92" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1411.877" timestamp="1581542743176" />
+    <state x="843" y="732" width="400" height="170" key="ProcessPopupWindow" timestamp="1587610256785">
+      <screen x="0" y="23" width="1410" height="877" />
+    </state>
+    <state width="400" height="170" key="ProcessPopupWindow/0.23.1410.877" timestamp="1587610256785" />
+    <state x="843" y="732" width="400" height="170" key="ProcessPopupWindow/0.23.1411.877" timestamp="1587157606797" />
+    <state x="207" y="42" key="SettingsEditor" timestamp="1585503371617">
+      <screen x="0" y="23" width="1411" height="877" />
+    </state>
+    <state x="207" y="42" key="SettingsEditor/0.23.1411.877" timestamp="1585503371617" />
+    <state x="704" y="403" key="WELCOME_SCREEN" timestamp="1587610605388">
+      <screen x="0" y="23" width="1410" height="877" />
+    </state>
+    <state x="704" y="403" key="WELCOME_SCREEN/0.23.1410.877" timestamp="1587610605388" />
+    <state x="705" y="403" key="WELCOME_SCREEN/0.23.1411.877" timestamp="1587156817151" />
+  </component>
+</application>

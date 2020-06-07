@@ -1,0 +1,3 @@
+runfile('/Users/LucasLarson/Code/Tetris-deep-Q-learning-pytorch/test.py', wdir='/Users/LucasLarson/Code/Tetris-deep-Q-learning-pytorch')
+-. . -..- - / . -. - .-. -.--
+runfile('/Users/LucasLarson/Code/Tetris-deep-Q-learning-pytorch/train.py', wdir='/Users/LucasLarson/Code/Tetris-deep-Q-learning-pytorch')
