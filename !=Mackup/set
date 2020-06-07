@@ -59,6 +59,7 @@ MACHTYPE=x86_64
 MAILCHECK=60
 MAILPATH=''
 MANPATH=/Users/LucasLarson/.npm-packages/share/man:/Users/LucasLarson/.npm-packages/share/man:/usr/local/share/man:/usr/share/man:/Library/TeX/texbin/man:/usr/local/MacGPG2/share/man:/Library/Apple/usr/share/man:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man
+MENUSELECT=0
 MODULE_PATH=/usr/local/Cellar/zsh/5.8/lib
 NPM_PACKAGES=/Users/LucasLarson/.npm-packages
 NULLCMD=cat
