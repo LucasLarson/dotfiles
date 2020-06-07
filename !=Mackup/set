@@ -1135,6 +1135,7 @@ signals=( EXIT HUP INT QUIT ILL TRAP ABRT EMT FPE KILL BUS SEGV SYS PIPE ALRM TE
 status=0
 termcap
 terminfo
+token=set
 userdirs
 usergroups
 watch=(  )
