@@ -372,7 +372,7 @@ PS2='%_> '
 PS3='?# '
 PS4='+%N:%i> '
 PSVAR=''
-PWD='/Users/LucasLarson/Dropbox/Mackup/|=Mackup'
+PWD=
 PYENV_SHELL=zsh
 RANDOM=29111
 RBENV_SHELL=zsh
