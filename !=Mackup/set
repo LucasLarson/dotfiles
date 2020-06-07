@@ -878,6 +878,7 @@ __p9k_zd=/Users/LucasLarson
 __p9k_zd_u='~'
 __p9k_zshrc=/Users/LucasLarson/Dropbox/Mackup/.zshrc
 __p9k_zshrc_u='~/.zshrc'
+__savecursor=5
 _comp_assocs=( '' )
 _comp_dumpfile=/Users/LucasLarson/.zcompdump
 _comp_options
