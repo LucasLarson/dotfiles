@@ -1089,6 +1089,7 @@ dis_patchars
 dis_reswords
 dis_saliases
 epochtime
+errnos
 fg
 fg_bold
 fg_no_bold
