@@ -160,7 +160,7 @@ for example, locate all JPEG files<br/>
 `<<<${(F)path}` # [via](https://codegolf.stackexchange.com/a/96471)
 
 #### Linux
-`mkdir -p ~/Code/dotfiles && cd ~/Code/dotfiles && printf 'PATH\n' > \$PATH && date '+%Y-%m-%d' >> \$PATH && printf 'automagically generated' >> \$PATH && printf '\n———————————————————————\n' >> \$PATH && <<<${(F)path} >> \$PATH && git fetch && git submodule update --init --recursive && git status && git diff \$PATH  && printf '\n\n✅ done!\n\n'`
+`PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n' > PATH && date '+%Y-%m-%d' >> PATH && printf 'automagically generated' >> PATH && printf '\n———————————————————————\n' >> PATH && <<<${(F)path} >> PATH && git fetch && git submodule update --init --recursive && git status && git diff PATH && printf '\n\n✅ done!\n\n' && PathSave=0`
 
 ### sandbox
 If you need to have ruby first in your PATH run:<br/>
