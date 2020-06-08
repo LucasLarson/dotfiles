@@ -93,7 +93,6 @@ WATCHFMT='%n has %a %l from %m.'
 WORDCHARS=''
 ZLS_COLORS=''
 ZSH=/root/.oh-my-zsh
-ZSHCUSTOM=/root/.oh-my-zsh/custom
 ZSH_ARGZERO=-zsh
 ZSH_CACHE_DIR=/root/.oh-my-zsh/cache
 ZSH_COMPDUMP=/root/.zcompdump
