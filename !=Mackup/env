@@ -2,7 +2,7 @@
 $ env
 # via https://cyberciti.biz/faq/linux-list-all-environment-variables-env-command
 
-__CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0
+__CF_USER_TEXT_ENCODING=0x0:0:0
 _=/usr/bin/env
 ANDROID_SDK_ROOT=/Users/LucasLarson/Library/Android/sdk
 COLORFGBG=15;0
