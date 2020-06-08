@@ -2386,6 +2386,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>oopsies</string>
+		<key>shortcut</key>
+		<string>oopsies</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>⌥</string>
 		<key>shortcut</key>
 		<string>optionkey</string>
