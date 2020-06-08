@@ -48,6 +48,12 @@
       - [macOS](#macos-1)
   - [Xcode](#xcode)
     - [signing](#signing)
+  - [housekeeping](#housekeeping)
+    - [Homebrew](#homebrew)
+    - [npm](#npm)
+    - [RubyGems](#rubygems)
+    - [Flutter](#flutter)
+    - [Xcode and JetBrains](#xcode-and-jetbrains)
   - [delete](#delete)
     - [with confirmation first](#with-confirmation-first)
     - [without confirmation](#without-confirmation)
@@ -56,14 +62,6 @@
     - [purge memory cache](#purge-memory-cache)
 
 <!-- /TOC -->
-<!-- @TODO
-   brew doctor
-&& brew cask doctor
-&& brew cleanup
-&& npm doctor
-&& gem cleanup
-&& ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose
--->
 
 ## copy, paste, return
 ```bash
@@ -75,8 +73,6 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `brew update --debug --verbose && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/launchagents.md#periodic-homebrew-update-and-upgrade)`,` [via](https://stackoverflow.com/a/47664603) `\`<br/>
 `brew upgrade && \`<br/>
 `brew cask upgrade && #` [via](https://github.com/hisaac/hisaac.net/blob/8c63d51119fe2a0f05fa6c1c2a404d12256b0594/source/_posts/2018/2018-02-12-update-all-the-things.md#readme) `\`<br/>
-`brew doctor --debug --verbose && \`<br/>
-`brew cleanup --debug --verbose && #` [via](https://stackoverflow.com/a/41030599) `\`<br/>
 `brew install mackup --head && #` 0.8.28 [2020-02-26](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br/>
 `mackup backup && # || mackup backup --force \`<br/>
 `upgrade_oh_my_zsh && #` [via](https://github.com/robbyrussell/oh-my-zsh/blob/17f4cfca99398cb5511557b8515a17bf1bf2948a/README.md#manual-updates) `\`<br/>
@@ -89,7 +85,6 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `gem update && \`<br/>
 `gem install bundler --pre && #`  2.1.4 [2020-01-05](https://rubygems.org/gems/bundler/versions) `\`<br/>
 `gem install cocoapods --pre && #`  1.9.1 [2020-03-09](https://rubygems.org/gems/cocoapods/versions) `\`<br/>
-`gem cleanup && \`<br/>
 `bundle update && #` [via](https://github.com/ffi/ffi/issues/651#issuecomment-513835103) `\`<br/>
 `bundle install --verbose && \`<br/>
 `bundle exec pod install --verbose && \`<br/>
@@ -115,8 +110,6 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `swiftlint autocorrect && \`<br/>
 `# git add . && git add -u || git add -A && #` [via](https://stackoverflow.com/a/15011313) `\`<br/>
 `git gc && \`<br/>
-`mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && \`<br/>
-`# npm doctor #` creates empty node_modules folders && `\`<br/>
 `# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br/>
 `printf '\n\n✅ done!\n\n' && #` [via](https://stackoverflow.com/a/30762087) `\`<br/>
 `exec zsh #` note successful finish before restarting the shell
@@ -283,6 +276,25 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 `PRODUCT_NAME = $(PROJECT_NAME);`<br/>
 `DEVELOPMENT_TEAM = Z25963JBNP;`<br/>
 `DevelopmentTeam = Z25963JBNP;`
+
+## housekeeping
+### Homebrew
+`brew doctor --debug --verbose && \`<br/>
+`brew cask doctor && \`<br/>
+`brew cleanup --debug --verbose && #` [via](https://stackoverflow.com/a/41030599) `\`<br/>
+`brew cask audit --strict --token-conflicts`
+
+### npm
+`npm doctor #` creates empty “node_modules” folders
+
+### RubyGems
+`gem cleanup`
+
+### Flutter
+`cd ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose`
+
+### Xcode and JetBrains
+`trashXcodeJetBrains=-1 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && ls -lah && trashXcodeJetBrains=0`
 
 ## delete
 ### with confirmation first
