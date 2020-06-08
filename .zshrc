@@ -91,6 +91,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Editor
 # Set preferred editor if it is available
+# https://stackoverflow.com/a/14755066
 if which nvim > /dev/null; then
   export EDITOR="nvim"
 elif which vim > /dev/null; then
