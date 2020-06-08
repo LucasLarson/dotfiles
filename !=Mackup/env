@@ -9,6 +9,7 @@ COLORFGBG=15;0
 COLORTERM=truecolor
 CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
 DOTFILES=/Users/LucasLarson/Dropbox/Mackup
+EDITOR=nvim
 HOME=/Users/LucasLarson
 ITERM_PROFILE=Default
 ITERM_SESSION_ID=
