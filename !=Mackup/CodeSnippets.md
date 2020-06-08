@@ -9,6 +9,7 @@
         - [lists](#lists)
           - [applications](#applications)
         - [Atom packages](#atom-packages)
+        - [$MANPATH](#manpath)
         - [pip packages](#pip-packages)
   - [search](#search)
     - [`grep`](#grep)
@@ -129,6 +130,10 @@ saveApplications=-1 && mkdir -p $DOTFILES/\!=Mackup && mkdir -p /Applications &&
 ##### Atom packages
 ```bash
 apm list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'Atom extensions ' > ~/Dropbox/Mackup/\!=Mackup/Atom && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/Atom && printf '———————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/Atom && apm list >> ~/Dropbox/Mackup/\!=Mackup/Atom && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/Atom && printf '\n\n✅ done!\n\n'
+```
+##### $MANPATH
+```bash
+saveMANPATH=-1 && mkdir -p $DOTFILES/\!=Mackup && filename=$DOTFILES/\!=Mackup/MANPATH && touch $filename && printf '# $MANPATH’s contents\n# ' > $filename && date '+%Y-%m-%d' >> $filename && printf '# ———————————————————————\n' >> $filename && <<<${(F)manpath} >> $filename && cd $DOTFILES && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff $filename && filename='' && saveMANPATH=$filename && printf '\n\n\xe2'$filename'\x9c'$saveMANPATH'\x85 done!\n\n'
 ```
 ##### pip packages
 ```bash
