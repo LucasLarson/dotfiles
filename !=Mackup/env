@@ -22,6 +22,7 @@ LSCOLORS=Gxfxcxdxbxegedabagacad
 MANPATH=/Users/LucasLarson/.npm-packages/share/man:/Users/LucasLarson/.npm-packages/share/man:/usr/local/share/man:/usr/share/man:/usr/local/MacGPG2/share/man:/Library/Apple/usr/share/man:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/share/man:/Applications/Xcode.app/Contents/Developer/usr/share/man:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/share/man
 OLDPWD=
 P9K_SSH=0
+P9K_TTY=new
 PAGER=less
 PATH=/Users/LucasLarson/.rbenv/shims:/Users/LucasLarson/.pyenv/shims:/Users/LucasLarson/.npm-packages/bin:/Users/LucasLarson/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/Users/LucasLarson/Code/Flutter/bin
 PWD=
