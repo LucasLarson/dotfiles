@@ -179,7 +179,7 @@ nameddirs
 options
 parameters
 patchars
-path=( /root/bin /usr/local/bin /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin )
+path=( /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin )
 pipestatus=( 0 )
 plugin=git
 plugins=( git )
