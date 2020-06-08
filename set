@@ -25,7 +25,7 @@ FX
 GID=0
 GPG_TTY=/dev/pts/0
 HISTCHARS='!^#'
-HISTCMD=3345
+HISTCMD=
 HISTFILE=/root/.zsh_history
 HISTSIZE=50000
 HIST_STAMPS=yyyy-mm-dd
