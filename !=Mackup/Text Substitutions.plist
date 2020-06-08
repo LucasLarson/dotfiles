@@ -1114,6 +1114,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>😬</string>
+		<key>shortcut</key>
+		<string>grimace</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>≥</string>
 		<key>shortcut</key>
 		<string>gte</string>
