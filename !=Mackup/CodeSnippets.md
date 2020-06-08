@@ -66,7 +66,7 @@
 
 ## copy, paste, return
 ```bash
-brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && printf '\n\n✅ done!\n\n' && exec zsh
+brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && exec zsh
 ```
 ### detail
 `xcode-select --install && \`<br/>
@@ -112,7 +112,7 @@ brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavaila
 `# git add . && git add -u || git add -A && #` [via](https://stackoverflow.com/a/15011313) `\`<br/>
 `git gc && \`<br/>
 `# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br/>
-`printf '\n\n✅ done!\n\n' && #` [via](https://stackoverflow.com/a/30762087) `\`<br/>
+`printf '\n\n\xe2\x9c\x85 done\x21\n\n' && #` [via](https://stackoverflow.com/a/30762087), [via](https://stackoverflow.com/a/602924) `\`<br/>
 `exec zsh #` note successful finish before restarting the shell
 
 ## Mackup
@@ -129,7 +129,7 @@ saveApplications=-1 && mkdir -p $DOTFILES/\!=Mackup && mkdir -p /Applications &&
 ```
 ##### Atom packages
 ```bash
-apm list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'Atom extensions ' > ~/Dropbox/Mackup/\!=Mackup/Atom && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/Atom && printf '———————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/Atom && apm list >> ~/Dropbox/Mackup/\!=Mackup/Atom && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/Atom && printf '\n\n✅ done!\n\n'
+apm list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'Atom extensions ' > ~/Dropbox/Mackup/\!=Mackup/Atom && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/Atom && printf '———————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/Atom && apm list >> ~/Dropbox/Mackup/\!=Mackup/Atom && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/Atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 ##### $MANPATH
 ```bash
@@ -137,7 +137,7 @@ saveMANPATH=-1 && mkdir -p $DOTFILES/\!=Mackup && filename=$DOTFILES/\!=Mackup/M
 ```
 ##### pip packages
 ```bash
-pip list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'pip packages installed ' > ~/Dropbox/Mackup/\!=Mackup/pip && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/pip && printf '—————————————————————————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/pip && pip list >> ~/Dropbox/Mackup/\!=Mackup/pip && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n✅ done!\n\n'
+pip list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'pip packages installed ' > ~/Dropbox/Mackup/\!=Mackup/pip && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/pip && printf '—————————————————————————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/pip && pip list >> ~/Dropbox/Mackup/\!=Mackup/pip && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 ## search
 ### `grep`
@@ -158,8 +158,9 @@ for example, locate all JPEG files<br/>
 `<<<${(F)path}` # [via](https://codegolf.stackexchange.com/a/96471)
 
 #### Linux
-`PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n' > PATH && date '+%Y-%m-%d' >> PATH && printf 'automagically generated' >> PATH && printf '\n———————————————————————\n' >> PATH && <<<${(F)path} >> PATH && git fetch && git submodule update --init --recursive && git status && git diff PATH && printf '\n\n✅ done!\n\n' && PathSave=0`
-
+```bash
+PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n' > PATH && date '+%Y-%m-%d' >> PATH && printf 'automagically generated' >> PATH && printf '\n———————————————————————\n' >> PATH && <<<${(F)path} >> PATH && git fetch && git submodule update --init --recursive && git status && git diff PATH && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && PathSave=0
+```
 ### sandbox
 If you need to have ruby first in your PATH run:<br/>
 `echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc`
