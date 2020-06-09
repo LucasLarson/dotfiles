@@ -8,10 +8,6 @@ alias apm-beta="apm-nightly"
 alias atom="atom-nightly"
 alias apm="apm-nightly"
 
-# editor
-alias edit="editor"
-alias editor="$EDITOR" # see ~/.zshrc
-
 # Git
 alias gcm="git commit --message"
 alias gfgs="git fetch && git status"
