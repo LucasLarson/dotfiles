@@ -101,6 +101,9 @@ elif which vi > /dev/null; then
 else
   export EDITOR="nano"
 fi
+alias edit="editor"
+alias editor="$EDITOR" # see ~/.zshrc
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
