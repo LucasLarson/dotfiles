@@ -1,0 +1,27 @@
+{
+  "textColor" : {
+    "hexValue" : "#EEE8D5",
+    "version" : 3,
+    "alpha" : 0.84999999999999998
+  },
+  "deletedColor" : {
+    "alpha" : 0.34999999999999998,
+    "hexValue" : "#DC322F",
+    "version" : 3
+  },
+  "backgroundColor" : {
+    "hexValue" : "#002B36",
+    "alpha" : 1,
+    "version" : 3
+  },
+  "addedColor" : {
+    "hexValue" : "#859900",
+    "version" : 3,
+    "alpha" : 0.25
+  },
+  "fontSize" : 11,
+  "identifier" : "207B0165-A852-47ED-86DA-CA4442366A5F",
+  "version" : 4,
+  "name" : "Solarized (Dark)",
+  "fontName" : "Menlo-Regular"
+}

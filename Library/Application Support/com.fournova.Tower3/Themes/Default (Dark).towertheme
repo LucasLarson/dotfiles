@@ -1,0 +1,27 @@
+{
+  "fontSize" : 12,
+  "version" : 4,
+  "name" : "Default (Dark)",
+  "backgroundColor" : {
+    "alpha" : 1,
+    "hexValue" : "#1D1E1E",
+    "version" : 3
+  },
+  "textColor" : {
+    "alpha" : 0.5,
+    "hexValue" : "#FFFFFF",
+    "version" : 3
+  },
+  "addedColor" : {
+    "version" : 3,
+    "alpha" : 0.14999999999999999,
+    "hexValue" : "#62DA38"
+  },
+  "identifier" : "10B401DF-046A-4B4B-B292-CE54F817049B",
+  "deletedColor" : {
+    "alpha" : 0.14999999999999999,
+    "hexValue" : "#FF3A2F",
+    "version" : 3
+  },
+  "fontName" : "FiraCodeNerdFontComplete-Regular"
+}

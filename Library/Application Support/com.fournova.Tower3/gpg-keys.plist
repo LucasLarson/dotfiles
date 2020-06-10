@@ -58,5 +58,13 @@
 		<key>username</key>
 		<string>Lucas Larson</string>
 	</dict>
+	<dict>
+		<key>email</key>
+		<string>lucaslarson@riseup.net</string>
+		<key>fingerprint</key>
+		<string>6424902999F6F6758BC154DDABE1035BE17763EF</string>
+		<key>username</key>
+		<string>Lucas Larson</string>
+	</dict>
 </array>
 </plist>
