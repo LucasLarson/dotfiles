@@ -45,6 +45,7 @@
     addKnownWords: true
     knownWords: [
       "kbd"
+      "br"
       "Mackup"
     ]
     locales: [
