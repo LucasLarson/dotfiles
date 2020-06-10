@@ -18,4 +18,7 @@
     "deepcode.url": "https://www.deepcode.ai",
     "deepcode.token": "72ea14e95f81b5db780bec3e887dfbed91fcc84342d3c1cf96bd0d108d158a74",
     "codespaces.accountProvider": "Microsoft",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "html.format.endWithNewline": true
 }
