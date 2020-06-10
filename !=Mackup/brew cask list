@@ -1,0 +1,27 @@
+brew cask list
+—————————————
+adobe-digital-editions
+android-sdk
+funter
+google-earth-pro
+handbrake
+keybase
+oclint
+osxfuse
+qlcolorcode
+qlimagesize
+qlmarkdown
+qlstephen
+qlvideo
+qtspim
+quicklook-json
+quicklookase
+rectangle
+scout
+signal
+sublime-text
+suspicious-package
+telegram
+vmware-horizon-client
+webpquicklook
+webtorrent

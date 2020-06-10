@@ -9,6 +9,8 @@
         - [lists](#lists)
           - [applications](#applications)
         - [Atom packages](#atom-packages)
+        - [Homebrew](#homebrew)
+          - [Cask](#cask)
         - [$MANPATH](#manpath)
         - [pip packages](#pip-packages)
   - [search](#search)
@@ -50,7 +52,7 @@
   - [Xcode](#xcode)
     - [signing](#signing)
   - [housekeeping](#housekeeping)
-    - [Homebrew](#homebrew)
+    - [Homebrew](#homebrew-1)
     - [npm](#npm)
     - [RubyGems](#rubygems)
     - [Flutter](#flutter)
@@ -130,6 +132,14 @@ saveApplications=-1 && mkdir -p $DOTFILES/\!=Mackup && mkdir -p /Applications &&
 ##### Atom packages
 ```bash
 apm list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'Atom extensions ' > ~/Dropbox/Mackup/\!=Mackup/Atom && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/Atom && printf '———————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/Atom && apm list >> ~/Dropbox/Mackup/\!=Mackup/Atom && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/Atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+```
+##### Homebrew
+```bash
+listBrew=$DOTFILES/!=Mackup/brew\ list\ --verbose && touch $listBrew && printf 'brew list --verbose\n———————————————————\n' > $listBrew && brew list --verbose >> $listBrew && listBrew='' && printf '\n\n\xe2'$listBrew'\x9c\x85 done\x21\n\n'
+```
+###### Cask
+```bash
+listBrewCask=$DOTFILES/!=Mackup/brew\ cask\ list && touch $listBrewCask && printf 'brew cask list\n—————————————\n' > $listBrewCask && brew cask list >> $listBrewCask && listBrewCask='' && printf '\n\n\xe2'$listBrewCask'\x9c\x85 done\x21\n\n'
 ```
 ##### $MANPATH
 ```bash
