@@ -16,5 +16,6 @@
     "vsonline.accountProvider": "Microsoft",
     "cmake.configureOnOpen": true,
     "deepcode.url": "https://www.deepcode.ai",
-    "deepcode.token": ""
+    "deepcode.token": "",
+    "codespaces.accountProvider": "Microsoft",
 }
