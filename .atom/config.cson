@@ -48,6 +48,7 @@
       "br"
       "Mackup"
       "rbenv"
+      "zshrc"
     ]
     locales: [
       "en-US"
