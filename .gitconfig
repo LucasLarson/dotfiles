@@ -69,7 +69,7 @@
 	textconv = "iconv -f utf-16 -t utf-8"
 
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /usr/local/bin/gpg2
 
 [mergetool]
 	keepBackup = true
