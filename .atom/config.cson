@@ -47,6 +47,7 @@
       "kbd"
       "br"
       "Mackup"
+      "rbenv"
     ]
     locales: [
       "en-US"
