@@ -69,7 +69,7 @@ MODULE_PATH=/usr/local/Cellar/zsh/5.8/lib
 NPM_PACKAGES=/Users/LucasLarson/.npm-packages
 NULLCMD=cat
 OLDPWD=/Users/LucasLarson/Dropbox/Mackup
-OPTARG=args
+OPTARG='' # previously `OPTARG=args`
 OPTIND=1
 OS=OSX
 OSTYPE=darwin19.3.0
