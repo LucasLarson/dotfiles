@@ -2080,6 +2080,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⋅</string>
+		<key>shortcut</key>
+		<string>mathdot</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>☤</string>
 		<key>shortcut</key>
 		<string>medicalstaff</string>
@@ -2089,6 +2095,12 @@
 		<string>Kevin</string>
 		<key>shortcut</key>
 		<string>mevib</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⋅</string>
+		<key>shortcut</key>
+		<string>middot</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -3115,6 +3127,12 @@
 		<string>it</string>
 		<key>shortcut</key>
 		<string>ti</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⋅</string>
+		<key>shortcut</key>
+		<string>timesdot</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
