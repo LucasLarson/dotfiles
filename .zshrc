@@ -116,6 +116,12 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="/usr/local/sbin:$PATH"
 
 
+# grep
+# use latest via Homebrew but without the `g` prefix
+# https://github.com/Homebrew/homebrew-core/blob/ba7a70f2947b72566720801afee56cb862fcd783/Formula/grep.rb#L43-L46
+PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+
 # npm without sudo
 # https://github.com/sindresorhus/guides/blob/285270f06e117c7e0a6b6e51eca6e488d9d7c44d/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES="${HOME}/.npm-packages"
