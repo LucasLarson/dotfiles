@@ -81,7 +81,7 @@ P9K_SSH=0
 P9K_TTY=old
 P9K_VISUAL_IDENTIFIER=
 PAGER=less
-tied path PATH=/Users/LucasLarson/.rbenv/shims:/Users/LucasLarson/.pyenv/shims:/Users/LucasLarson/.npm-packages/bin:/usr/local/sbin:/Users/LucasLarson/.rbenv/shims:/Users/LucasLarson/.pyenv/shims:/Users/LucasLarson/.npm-packages/bin:/usr/local/sbin:/Users/LucasLarson/.rbenv/shims:/Users/LucasLarson/.pyenv/shims:/Users/LucasLarson/.npm-packages/bin:/usr/local/sbin:/Users/LucasLarson/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/Users/LucasLarson/Code/Flutter/bin:/Users/LucasLarson/Code/Flutter/bin:/Users/LucasLarson/Code/Flutter/bin
+tied path PATH=/Users/LucasLarson/.rbenv/shims:/Users/LucasLarson/.pyenv/shims:/Users/LucasLarson/.npm-packages/bin:/usr/local/opt/grep/libexec/gnubin:/usr/local/sbin:/Users/LucasLarson/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/Users/LucasLarson/Code/Flutter/bin
 POWERLEVEL9K_ANACONDA_FOREGROUND=37
 POWERLEVEL9K_ANACONDA_LEFT_DELIMITER=''
 POWERLEVEL9K_ANACONDA_RIGHT_DELIMITER=''
@@ -1126,7 +1126,7 @@ association nameddirs
 association options
 association readonly parameters
 array readonly patchars
-array tied PATH path=( /Users/LucasLarson/.rbenv/shims /Users/LucasLarson/.pyenv/shims /Users/LucasLarson/.npm-packages/bin /usr/local/sbin /Users/LucasLarson/.rbenv/shims /Users/LucasLarson/.pyenv/shims /Users/LucasLarson/.npm-packages/bin /usr/local/sbin /Users/LucasLarson/.rbenv/shims /Users/LucasLarson/.pyenv/shims /Users/LucasLarson/.npm-packages/bin /usr/local/sbin /Users/LucasLarson/.cargo/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin /Library/TeX/texbin /usr/local/MacGPG2/bin /Library/Apple/usr/bin /Users/LucasLarson/Code/Flutter/bin /Users/LucasLarson/Code/Flutter/bin /Users/LucasLarson/Code/Flutter/bin )
+array tied PATH path=( /Users/LucasLarson/.rbenv/shims /Users/LucasLarson/.pyenv/shims /Users/LucasLarson/.npm-packages/bin /usr/local/opt/grep/libexec/gnubin /usr/local/sbin /Users/LucasLarson/.cargo/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin /Library/TeX/texbin /usr/local/MacGPG2/bin /Library/Apple/usr/bin /Users/LucasLarson/Code/Flutter/bin )
 array pipestatus=( 0 )
 plugin=git
 array plugins=( git )
