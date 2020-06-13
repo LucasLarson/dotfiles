@@ -59,7 +59,7 @@ OPTARG=''
 integer 10 OPTIND=1
 OSTYPE=linux-musl
 PAGER=less
-tied path PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+tied path PATH=/Users/LucasLarson/.rbenv/shims:/Users/LucasLarson/.pyenv/shims:/Users/LucasLarson/.npm-packages/bin:/usr/local/opt/grep/libexec/gnubin:/usr/local/sbin:/Users/LucasLarson/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:/Library/Apple/usr/bin:/Users/LucasLarson/Code/Flutter/bin
 integer 10 readonly PPID=6
 PROMPT=$'%(?:%{\C-[[01;32m%}➜ :%{\C-[[01;31m%}➜ ) %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
 PROMPT2='%_> '
@@ -181,7 +181,7 @@ association nameddirs
 association options
 association readonly parameters
 array readonly patchars
-array tied PATH path=( /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin )
+array tied PATH path=( /Users/LucasLarson/.rbenv/shims /Users/LucasLarson/.pyenv/shims /Users/LucasLarson/.npm-packages/bin /usr/local/opt/grep/libexec/gnubin /usr/local/sbin /Users/LucasLarson/.cargo/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin /Library/TeX/texbin /usr/local/MacGPG2/bin /Library/Apple/usr/bin /Users/LucasLarson/Code/Flutter/bin )
 array pipestatus=( 0 )
 plugin=git
 array plugins=( git )
