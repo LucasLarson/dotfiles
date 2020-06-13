@@ -50,6 +50,7 @@ gnutls
 go
 gradle
 graphite2
+grep
 guetzli
 harfbuzz
 highlight
