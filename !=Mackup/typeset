@@ -5,7 +5,7 @@ $ typeset > $DOTFILES/\!=Mackup/typeset
 __savecursor=0
 __searching=up-line-or-beginning-search
 _=typeset
-_comp_dumpfile=/root/.zcompdump
+_comp_dumpfile=/Users/LucasLarson/.zcompdump
 _comp_setup
 0=zsh
 array _comp_options
