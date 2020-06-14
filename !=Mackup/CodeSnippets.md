@@ -311,7 +311,7 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 `cd ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose`
 
 ### Xcode and JetBrains
-`trashXcodeJetBrains=-1 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && ls -lah && trashXcodeJetBrains=0`
+`trashXcodeJetBrains=-1 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && trashXcodeJetBrains=0`
 
 ## delete
 ### with confirmation first
