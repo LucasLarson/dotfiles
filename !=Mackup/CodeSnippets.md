@@ -20,7 +20,6 @@
   - [entries](#entries)
     - [macOS](#macos)
     - [Linux](#linux)
-  - [sandbox](#sandbox)
 - [text editing](#text-editing)
   - [export output](#export-output)
 - [make invisible](#make-invisible)
@@ -172,17 +171,6 @@ for example, locate all JPEG files<br/>
 ```bash
 PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n' > PATH && date '+%Y-%m-%d' >> PATH && printf 'automagically generated' >> PATH && printf '\n———————————————————————\n' >> PATH && <<<${(F)path} >> PATH && git fetch && git submodule update --init --recursive && git status && git diff PATH && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && PathSave=0
 ```
-### sandbox
-If you need to have ruby first in your PATH run:<br/>
-`echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc`
-
-For compilers to find ruby you may need to set:<br/>
-`export LDFLAGS="-L/usr/local/opt/ruby/lib"`<br/>
-`export CPPFLAGS="-I/usr/local/opt/ruby/include"`
-
-For pkg-config to find ruby you may need to set:<br/>
-`export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"`
-
 ## text editing
 ### export output
 `printf 'First Name\n' > ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
