@@ -103,7 +103,7 @@ update=-1 && brew update && brew upgrade && brew cask upgrade && xcrun simctl de
 `pip install --upgrade $(pip freeze | cut -d '=' -f 1) && #` [via](https://web.archive.org/web/20200508173219id_/coderwall.com/p/quwaxa/update-all-installed-python-packages-with-pip#comment_29830) `\`<br/>
 `pipenv shell &&` # [via](https://github.com/pypa/pipenv/blob/bfbe1304f63372a0eb7c1531590b51195db453ea/pipenv/core.py?instructions_while_running_pipenv_install#L1282) `\`<br/>
 `pipenv install --dev && #` [via](https://stackoverflow.com/a/49867443) `\`<br/>
-`rustup update && #` 1.43.1 [2020-05-07](https://github.com/rust-lang/rust/releases) `\`<br/>
+`rustup update && #` 1.44.0 [2020-06-04](https://github.com/rust-lang/rust/releases) `\`<br/>
 `source ~/.zsh && \`<br/>
 `brew install carthage --head && #` 0.34.0 [2019-10-21](https://github.com/Carthage/Carthage/releases) `\`<br/>
 `carthage update --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
