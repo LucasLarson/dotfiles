@@ -68,7 +68,7 @@
 
 ## copy, paste, return
 ```bash
-update=-1 && brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && printf '\n\n\xe2'$update'\x9c\x85 done\x21\n\n' && exec zsh
+update=-1 && brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && printf '\n\n\xe2'$update'\x9c\x85 done\x21\n\n' && exec zsh
 ```
 ### detail
 `xcode-select --install && \`<br/>
@@ -96,7 +96,7 @@ update=-1 && brew update && brew upgrade && brew cask upgrade && xcrun simctl de
 `pod update && #` [via](https://web.archive.org/web/20190719112335id_/https:/guides.cocoapods.org/using/pod-install-vs-update.html#pod-update) `\`<br/>
 `rbenv rehash && pyenv rehash && \`<br/>
 `python -m pip install --upgrade pip` && # 20.1.1 [2020-05-19](https://pip.pypa.io/en/stable/news/#id1) [via](https://opensource.com/article/19/5/python-3-default-mac#comment-180271), [via](https://github.com/pypa/pip/blob/52309f98d10d8feec6d319d714b0d2e5612eaa47/src/pip/_internal/self_outdated_check.py#L233-L236) `\`<br/>
-`pip list --outdated --format=freeze \`<br/>
+`pip list --outdated --format freeze \`<br/>
     `| grep -v '^\-e' \`<br/>
     `| cut -d = -f 1 \`<br/>
     `| xargs -n1 pip install --upgrade && #` [via](https://stackoverflow.com/revisions/3452888/14) `\`<br/>
