@@ -87,7 +87,7 @@ update=-1 && brew update && brew upgrade && brew cask upgrade && xcrun simctl de
 `gem update --system && #`  3.1.4 [2020-06-03](https://blog.rubygems.org) `\`<br/>
 `gem update && \`<br/>
 `gem install bundler --pre && #`  2.1.4 [2020-01-05](https://rubygems.org/gems/bundler/versions) `\`<br/>
-`gem install cocoapods --pre && #`  1.9.1 [2020-03-09](https://rubygems.org/gems/cocoapods/versions) `\`<br/>
+`gem install cocoapods --pre && #`  1.9.3 [2020-05-29](https://rubygems.org/gems/cocoapods/versions) `\`<br/>
 `bundle update && #` [via](https://github.com/ffi/ffi/issues/651#issuecomment-513835103) `\`<br/>
 `bundle install --verbose && \`<br/>
 `bundle exec pod install --verbose && \`<br/>
