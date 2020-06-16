@@ -68,7 +68,7 @@
 
 ## copy, paste, return
 ```bash
-update=-1 && brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && printf '\n\n\xe2'$update'\x9c\x85 done\x21\n\n' && exec zsh
+update=-1 && brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && python -m pip install --upgrade pip && printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && printf '\n\n\xe2'$update'\x9c\x85 done\x21\n\n' && exec zsh
 ```
 ### detail
 `xcode-select --install && \`<br/>
