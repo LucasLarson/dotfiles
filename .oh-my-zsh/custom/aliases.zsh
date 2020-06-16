@@ -19,7 +19,9 @@ alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule upd
 alias dotfiles="$DOTFILES" # where $DOTFILES → "$HOME/Dropbox/Mackup"
 
 # Python
-alias python="python3"
+# alias python="python3" # await WebKit, Chromium to call python2 or to use
+                         # python3, but even with this disabled, pyenv is set
+			 # to use python3 when calling `python`
 alias pip="pip3"
 
 # shell
