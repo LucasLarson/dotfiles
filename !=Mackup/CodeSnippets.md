@@ -107,7 +107,7 @@ update=-1 && brew update && brew upgrade && brew cask upgrade && xcrun simctl de
 `source ~/.zsh && \`<br/>
 `brew install carthage --head && #` 0.35.0 [2019-10-21](https://github.com/Carthage/Carthage/releases) `\`<br/>
 `carthage update --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
-`brew install swiftgen --head && #`  6.1.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
+`brew install swiftgen --head && #`  6.2.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
 `swiftgen && \`<br/>
 `brew install swiftlint --head && #` 0.39.2 [2020-04-03](https://github.com/realm/SwiftLint/releases) `\`<br/>
 `swiftlint autocorrect && \`<br/>
