@@ -105,7 +105,7 @@ update=-1 && brew update && brew upgrade && brew cask upgrade && xcrun simctl de
 `pipenv install --dev && #` [via](https://stackoverflow.com/a/49867443) `\`<br/>
 `rustup update && #` 1.44.1 [2020-06-18](https://github.com/rust-lang/rust/releases) `\`<br/>
 `source ~/.zsh && \`<br/>
-`brew install carthage --head && #` 0.34.0 [2019-10-21](https://github.com/Carthage/Carthage/releases) `\`<br/>
+`brew install carthage --head && #` 0.35.0 [2019-10-21](https://github.com/Carthage/Carthage/releases) `\`<br/>
 `carthage update --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
 `brew install swiftgen --head && #`  6.1.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
 `swiftgen && \`<br/>
