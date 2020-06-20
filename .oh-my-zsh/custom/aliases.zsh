@@ -21,7 +21,7 @@ alias gu="git fetch && git submodule update --init --recursive && git status"
 # Python
 # alias python="python3" # await WebKit, Chromium to call python2 or to use
                          # python3, but even with this disabled, pyenv is set
-			 # to use python3 when calling `python`
+                         # to use python3 when calling `python`
 alias pip="pip3"
 
 # shell
