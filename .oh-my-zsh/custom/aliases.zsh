@@ -32,4 +32,4 @@ alias whihc="which"
 # Zsh
 alias ohmyzsh="~/.oh-my-zsh"
 alias zshconfig="edit ~/.zshrc" # see ~/.zshrc for `edit`
-alias zshcustom="$ZSH_CUSTOM" # $ZSH_CUSTOM at $HOME/.oh-my-zsh/custom at init
+alias zshcustom="$ZSH_CUSTOM"
