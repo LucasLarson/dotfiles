@@ -101,7 +101,7 @@ elif which vi > /dev/null; then
 else
   export EDITOR="nano"
 fi
-alias editor="$EDITOR" # see ~/.zshrc
+alias editor="$EDITOR"
 alias edit="editor"
 
 
