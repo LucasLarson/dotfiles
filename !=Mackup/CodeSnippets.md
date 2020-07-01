@@ -194,7 +194,7 @@ remove bogus entries from Finder’s “Open With” menu ([via](https://githu
 `find /path/to/your/wordpress -type f -exec chmod 644 {} \; #` [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
 
 #### date modified modify
-`touch -t 2003040500 file.txt` \# date modified → 2020-03-04 5:00am
+`touch -t 2003040500 file.txt` # date modified → 2020-03-04 5:00am
 
 ### flags for C, C++
 `-Wall -Wextra -pedantic`<br/>
