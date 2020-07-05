@@ -1846,6 +1846,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>knowledgeable</string>
+		<key>shortcut</key>
+		<string>knowledgable</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Lucas</string>
 		<key>shortcut</key>
 		<string>l6fad</string>
