@@ -41,6 +41,8 @@
   - [`editor`](#editor)
   - [rename files](#rename-files)
   - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
+- [Numbers](#numbers)
+  - [Affixes](#affixes)
 - [SSH](#ssh)
   - [`ls` on Windows](#ls-on-windows)
 - [wget](#wget)
@@ -254,7 +256,16 @@ Vim<br/>
 Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 `git config --global core.editor "atom --wait"`
 
-### rename files
+## Numbers
+### Affixes
+| Definition  | Prefix | Suffix           |
+| ----------- | ------ |----------------- |
+| binary      | `0b`𝑛  | 𝑛<sub>`2`</sub>  |
+| octal       | `0o`𝑛  | 𝑛<sub>`8`</sub>  |
+| decimal     | `0d`𝑛  | 𝑛<sub>`10`</sub> |
+| hexadecimal | `0x`𝑛  | 𝑛<sub>`16`</sub> |
+
+## rename files
 `brew install --upgrade rename && #` [via](https://stackoverflow.com/a/31694356) `\`<br/>
 `rename -nvs searchword replaceword *`
 
