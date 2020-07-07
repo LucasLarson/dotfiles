@@ -9,15 +9,15 @@ alias atom="atom-nightly"
 alias apm="apm-nightly"
 
 # dotfiles
-alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch --all --verbose && git submodule update --init --recursive && git status"
+alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch --all && git submodule update --init --recursive && git status"
 alias dotfiles="$DOTFILES" # where $DOTFILES → "$HOME/Dropbox/Mackup"
 
 # Git
 alias gcm="git commit --message"
-alias gfgs="git fetch --all --verbose && git status"
+alias gfgs="git fetch --all && git status"
 alias gtake="git checkout -b"
 alias gti="git"
-alias gu="git fetch --all --verbose && git submodule update --init --recursive && git status"
+alias gu="git fetch --all && git submodule update --init --recursive && git status"
 
 # Python
 # alias python="python3" # await WebKit, Chromium to call python2 or to use
