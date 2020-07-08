@@ -958,6 +958,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>executable</string>
+		<key>shortcut</key>
+		<string>executeable</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>🙄</string>
 		<key>shortcut</key>
 		<string>eyeroll</string>
