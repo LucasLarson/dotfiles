@@ -38,7 +38,9 @@
   - [`commit`](#commit)
     - [with subject *and* body](#with-subject-and-body)
     - [in the past](#in-the-past)
-  - [`editor`](#editor)
+  - [`config`](#config)
+    - [editor](#editor)
+  - [`tag`](#tag)
   - [rename files](#rename-files)
   - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
 - [Numbers](#numbers)
@@ -246,15 +248,16 @@ more detailed `git diff` and how I once found an LF‑to‑CRLF‑only differen
 to backdate a commit:<br/>
 `GIT_TIME='`**2000-01-02T15:04:05 -0500**`' GIT_AUTHOR_DATE=$GIT_TIME GIT_COMMITTER_DATE=$GIT_TIME git commit -m 'add modifications made at 3:04:05pm EST on January 2, 2000' #` [via](https://stackoverflow.com/questions/3895453/how-do-i-make-a-git-commit-in-the-past#comment97787061_3896112)
 
-### `tag`
-`git tag v𝑖.𝑗.𝑘 #` where 𝑖, 𝑗, and 𝑘 are non-negative integers representing [<abbr title="semantic versioning">semver</abbr>](https://github.com/semver/semver/blob/8b2e8eec394948632957639dfa99fc7ec6286911/semver.md#summary) major, minor, and patch releases<br/>
-`git push origin v𝑖.𝑗.𝑘 #` push the unannotated tag [via](https://stackoverflow.com/a/5195913)
-
-### `editor`
+### `config`
+#### editor
 Vim<br/>
 `git config --global core.editor /usr/local/bin/vim`<br/>
 Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 `git config --global core.editor "atom --wait"`
+
+### `tag`
+`git tag v𝑖.𝑗.𝑘 #` where 𝑖, 𝑗, and 𝑘 are non-negative integers representing [<abbr title="semantic versioning">semver</abbr>](https://github.com/semver/semver/blob/8b2e8eec394948632957639dfa99fc7ec6286911/semver.md#summary) major, minor, and patch releases<br/>
+`git push origin v𝑖.𝑗.𝑘 #` push the unannotated tag [via](https://stackoverflow.com/a/5195913)
 
 ## Numbers
 ### Affixes
