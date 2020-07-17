@@ -30,6 +30,7 @@ excluded_words:
   - LucasLarson
   - Mackup
   - typoci
+  - uncommenting
 
 # Would you like filenames to also be spellchecked?
 spellcheck_filenames: false
