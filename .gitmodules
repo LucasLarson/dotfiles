@@ -1,3 +1,6 @@
 [submodule ".oh-my-zsh/custom/themes/powerlevel10k"]
 	path = .oh-my-zsh/custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle
+	url = https://github.com/textmate/java.tmbundle
