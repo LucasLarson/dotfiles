@@ -3414,6 +3414,12 @@
 		<key>phrase</key>
 		<string>which</string>
 		<key>shortcut</key>
+		<string>whcih</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>which</string>
+		<key>shortcut</key>
 		<string>whihc</string>
 	</dict>
 	<dict>
@@ -3433,6 +3439,12 @@
 		<string>whose</string>
 		<key>shortcut</key>
 		<string>whose</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>which</string>
+		<key>shortcut</key>
+		<string>wihch</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
