@@ -29,6 +29,7 @@ alias pip="pip3"
 alias unixtime="date +%s" # via @Naresh https://stackoverflow.com/a/12312982
 alias whcih="which"
 alias whihc="which"
+alias wihch="which"
 
 # Zsh
 alias ohmyzsh="~/.oh-my-zsh"
