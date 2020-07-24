@@ -54,7 +54,6 @@
     - [macOS](#macos-1)
 - [Xcode](#xcode)
   - [signing](#signing)
-  - [dependencies](#dependencies)
 - [housekeeping](#housekeeping)
   - [Homebrew](#homebrew-1)
   - [npm](#npm)
