@@ -131,7 +131,7 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 ###### applications
 Track changes to which applications are installed without syncing them. The instructions are bash-compatible and refer to this document for instructions on regenerating the list.
 ```bash
-saveApplications=-1 && mkdir -p $DOTFILES/\!=Mackup && mkdir -p /Applications && cd /Applications && filename=$DOTFILES/\!=Mackup/:Applications && touch $filename && pwd > $filename && date '+%Y-%m-%d' >> $filename && printf '—————————————\n' >> $filename && ls -F1 >> $filename && cd $DOTFILES && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff $filename && unset filename && saveApplications=$filename && printf '\n\n\xe2'$filename'\x9c'$saveApplications'\x85 done!\n\n'
+saveApplications=-1 && mkdir -p $DOTFILES/\!=Mackup && mkdir -p /Applications && cd /Applications && filename=$DOTFILES/\!=Mackup/:Applications && touch $filename && pwd > $filename && date '+%Y-%m-%d' >> $filename && printf '—————————————\n' >> $filename && ls -F1 >> $filename && cd $DOTFILES && mackup backup && git fetch --all && git submodule update --init --recursive && git status && git diff $filename && unset filename && saveApplications=$filename && printf '\n\n\xe2'$filename'\x9c'$saveApplications'\x85 done!\n\n'
 ```
 ##### Atom packages
 ```bash
