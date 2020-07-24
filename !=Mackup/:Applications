@@ -72,8 +72,12 @@ Malwarebytes.app/
 Microsoft Edge Canary.app/
 Microsoft Edge.app@
 Microsoft Excel.app/
+Microsoft OneNote.app/
+Microsoft Outlook.app/
+Microsoft PowerPoint.app/
 Microsoft Remote Desktop Beta.app/
 Microsoft Remote Desktop.app@
+Microsoft Teams.app/
 Microsoft Word.app/
 MusicBrainz Picard.app/
 MusicBrainz.app@
@@ -83,12 +87,15 @@ Numbers.app/
 ODADrawingsExplorer.app/
 OmniDiskSweeper.app/
 OneDrive.app/
+OneNote.app@
 Opera Developer.app/
 Opera.app@
+Outlook.app@
 OverSight.app/
 PacketLogger.app/
 Pages.app/
 PhoneView.app/
+PowerPoint.app@
 Protocol.app/
 QtSpim.app/
 QuickBooks.app/
@@ -109,6 +116,7 @@ Spotify.app/
 Sublime Text.app/
 Sublime.app@
 Suspicious Package.app/
+Teams.app@
 Telegram.app/
 TextMate.app/
 Tor Browser.app/
