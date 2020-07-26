@@ -181,7 +181,10 @@ PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n'
 `printf "Last Name\n" `**>>**` ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
 
 ## make invisible
-`chflags hidden example.txt`
+`chflags -hvv hidden example.txt`<br/>
+`-h` for symbolic links, if applicable, but not their targets<br/>
+`-v`₁ for verbose<br/>
+`-v`₂ for printing the old and new flags in octal to `stdout`
 
 ## create an alias
 `ln -s file shortcut #` [via](https://www.reddit.com/r/programming/comments/1qt0z/ln_s_d1_d2_am_i_the_only_person_who_gets_this_the/c1qtge/)<br/>
