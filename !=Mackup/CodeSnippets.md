@@ -183,7 +183,7 @@ PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n'
 ## make invisible
 `chflags -hvv hidden example.txt`<br/>
 `-h` for symbolic links, if applicable, but not their targets<br/>
-`-v`₁ for verbose<br/>
+`-v`₁ for verbose<br/>
 `-v`₂ for printing the old and new flags in octal to `stdout`
 
 ## create an alias
