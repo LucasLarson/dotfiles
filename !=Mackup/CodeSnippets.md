@@ -310,10 +310,12 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 `brew cask audit --strict --token-conflicts`
 
 ### npm
-`npm doctor #` creates empty “node_modules” folders
+`npm doctor && # ` creates empty `node_modules` directories `\`<br/>
+`find node_modules -empty -type d -delete #` deletes them [via](https://web.archive.org/web/20190320151645id_/cyberciti.biz/faq/howto-find-delete-empty-directories-files-in-unix-linux/)
+
 
 ### RubyGems
-`gem cleanup`
+`gem cleanup --verbose`
 
 ### Flutter
 `cd ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose`
