@@ -13,7 +13,7 @@ alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch --all && git submodu
 alias dotfiles="$DOTFILES" # where $DOTFILES → "$HOME/Dropbox/Mackup"
 
 # Git
-alias gcm="git commit --message"
+alias gcm="git commit --gpg-sign --message"
 alias gfgs="git fetch --all && git status"
 alias gtake="git checkout -b"
 alias gti="git"
