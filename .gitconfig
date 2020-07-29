@@ -71,6 +71,9 @@
 [gpg]
 	program = /usr/local/bin/gpg2
 
+[init]
+	defaultBranch = main
+
 [mergetool]
 	keepBackup = true
 
