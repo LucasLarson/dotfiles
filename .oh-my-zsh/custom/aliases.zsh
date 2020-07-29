@@ -18,6 +18,7 @@ alias gfgs="git fetch --all && git status"
 alias gtake="git checkout -b"
 alias gti="git"
 alias gu="git fetch --all && git submodule update --init --recursive --remote && git status"
+alias gunstage="git reset HEAD --"
 
 # Python
 # alias python="python3" # await WebKit, Chromium to call python2 or to use
