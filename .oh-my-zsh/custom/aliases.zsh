@@ -15,6 +15,7 @@ alias dotfiles="$DOTFILES" # where $DOTFILES → "$HOME/Dropbox/Mackup"
 # Git
 alias gcm="git commit --gpg-sign --message"
 alias gfgs="git fetch --all && git status"
+alias gmv="git move"
 alias gtake="git checkout -b"
 alias gti="git"
 alias gu="git pull --all && git fetch --all && git submodule update --init --recursive --remote && git status"
