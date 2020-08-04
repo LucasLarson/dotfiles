@@ -139,6 +139,13 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 export DOTFILES="$HOME/Dropbox/Mackup" # ∃ also alias dotfiles thereto
 
+# customize Oh My Zsh completion dots
+# https://git.io/completion-dots-in-.zshrc
+expand-or-complete-with-dots() {
+  print -Pn "%F{red}...%f"
+  zle expand-or-complete
+  zle redisplay
+}
 
 
 # pyenv
