@@ -18,7 +18,7 @@ alias gfgs="git fetch --all && git status"
 alias gmv="git mv"
 alias gtake="git checkout -b"
 alias gti="git"
-alias gu="git pull --all && git fetch --all && git submodule update --init --recursive --remote && git status"
+alias gu="git fetch --all && git submodule update --init --recursive --remote && git status"
 alias gunstage="git reset HEAD --"
 
 # Python
