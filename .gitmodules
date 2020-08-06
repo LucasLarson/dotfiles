@@ -4,3 +4,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle
 	url = https://github.com/textmate/java.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle
+	url = https://github.com/textmate/Linter.tmbundle
