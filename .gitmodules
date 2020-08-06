@@ -7,3 +7,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle
 	url = https://github.com/textmate/Linter.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle
+	url = https://github.com/textmate/bundle-support.tmbundle
