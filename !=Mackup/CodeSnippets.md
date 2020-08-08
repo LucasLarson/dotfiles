@@ -47,6 +47,7 @@
 - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
 - [SSH](#ssh)
   - [`ls` on Windows](#ls-on-windows)
+- [variables](#variables)
 - [wget](#wget)
 - [WiFi](#wifi)
   - [password](#password)
@@ -283,6 +284,10 @@ if your example.csv has too many rows ([via](https://archive.today/2019.11.14-16
 
 #### `ls` on Windows
 `dir` # [via](https://stackoverflow.com/a/58740114)
+
+## variables
+`$PWD` # the name of the current directory and its entire path
+`${PWD##*/}` # [via](https://stackoverflow.com/a/1371283) the name of only the current directory
 
 ## wget
 `wgetserver=`'**example.com**' `&& \`<br/>
