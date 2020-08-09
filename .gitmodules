@@ -22,3 +22,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle
 	url = https://github.com/textmate/python.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Git.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Git.tmbundle
+	url = https://github.com/textmate/git.tmbundle
