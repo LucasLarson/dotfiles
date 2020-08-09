@@ -22,6 +22,7 @@
     - [Linux](#linux)
 - [text editing](#text-editing)
   - [export output](#export-output)
+    - [sort](#sort)
 - [make invisible](#make-invisible)
 - [create an alias](#create-an-alias)
 - [launch services](#launch-services)
@@ -180,6 +181,10 @@ PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n'
 `printf 'First Name\n' > ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
 `printf 'Other First Name\n' `**>**` ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
 `printf "Last Name\n" `**>>**` ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
+
+#### sort
+`env > example.txt` # save an unordered list of `env` variables<br/>
+`env | sort > example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
 
 ## make invisible
 `chflags -hvv hidden example.txt`<br/>
