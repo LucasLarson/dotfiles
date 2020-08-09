@@ -89,20 +89,23 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+
 # Editor
 # Set preferred editor if it is available
 # https://stackoverflow.com/a/14755066
 if which nvim > /dev/null; then
-  export EDITOR="nvim"
+  EDITOR="nvim"
 elif which vim > /dev/null; then
-  export EDITOR="vim"
+  EDITOR="vim"
 elif which vi > /dev/null; then
-  export EDITOR="vi"
+  EDITOR="vi"
 else
-  export EDITOR="nano"
+  EDITOR="nano"
 fi
+export EDITOR
 alias editor="$EDITOR"
 alias edit="editor"
+
 
 
 # Compilation flags
