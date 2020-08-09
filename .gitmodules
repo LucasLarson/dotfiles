@@ -13,3 +13,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Markdown.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Markdown.tmbundle
 	url = https://github.com/textmate/markdown.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/JavaScript.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/JavaScript.tmbundle
+	url = https://github.com/textmate/javascript.tmbundle
