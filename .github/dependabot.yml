@@ -24,7 +24,7 @@ updates:
     schedule:
       interval: "daily"
 
-  # Maintain dependencies for Doker
+  # Maintain dependencies for Docker
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
