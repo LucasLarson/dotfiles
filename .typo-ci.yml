@@ -27,14 +27,31 @@ excluded_files:
 
 # Any typos we should ignore?
 excluded_words:
-  - gmv
-  - loteoo
   - LucasLarson
   - Mackup
-  - pedrosanta
-  - tmbundle
   - typoci
   - uncommenting
+
+  # Clang, GCC
+  - fcaret
+  - fdiagnostics
+  - fno
+  - fshow
+  - fstandalone
+  - ftime
+  - lstdc
+  - pthread
+  - Wextra
+
+  # Git
+  - gmv # homemade alias to `git mv`
+
+  # JetBrains
+  - iml
+  - ipr
+
+  # TextMate
+  - tmbundle
 
 # Would you like filenames to also be spellchecked?
 spellcheck_filenames: false
