@@ -34,14 +34,30 @@ excluded_words:
   - uncommenting
 
   # Clang, GCC
+  - cbp
+  - cstring
+  - dylib
   - fcaret
   - fdiagnostics
+  - fdiagnostics-fixit-info
+  - fdiagnostics-parseable-fixits
+  - fgnat
+  - fgnu
+  - fident
   - fno
   - fshow
   - fstandalone
   - ftime
+  - ftrapv
+  - gch
+  - ifndef
+  - lai
+  - latomic
   - lstdc
+  - pch
   - pthread
+  - slo
+  - smod
   - Wextra
 
   # Git
