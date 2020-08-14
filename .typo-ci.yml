@@ -63,6 +63,10 @@ excluded_words:
   # Git
   - gmv # homemade alias to `git mv`
 
+  # GitHub funding
+  - Liberapay
+  - Otechie
+
   # JetBrains
   - iml
   - ipr
