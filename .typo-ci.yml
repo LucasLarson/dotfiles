@@ -58,6 +58,7 @@ excluded_words:
   - pthread
   - slo
   - smod
+  - strnlen
   - Wextra
 
   # Git
