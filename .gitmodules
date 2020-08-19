@@ -28,3 +28,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/JavaScript jQuery.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/JavaScript jQuery.tmbundle
 	url = https://github.com/textmate/javascript-jquery.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Objective-C.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Objective-C.tmbundle
+	url = https://github.com/textmate/objective-c.tmbundle
