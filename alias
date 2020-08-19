@@ -14,6 +14,7 @@
 9='cd -9'
 _='sudo '
 afind='ack -il'
+edit=nvim
 g=git
 ga='git add'
 gaa='git add --all'
@@ -187,4 +188,4 @@ python=python3
 rd=rmdir
 run-help=man
 which-command=whence
-zshconfig='vim ~/.zshrc'
+zshconfig='edit ~/.zshrc'
