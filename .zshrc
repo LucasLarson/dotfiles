@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -68,6 +70,10 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
+# https://unix.stackexchange.com/a/273863
+export HISTSIZE=2147483647
+export SAVEHIST=$HISTSIZE
+
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -89,26 +95,35 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+
 # Editor
 # Set preferred editor if it is available
 # https://stackoverflow.com/a/14755066
 if which nvim > /dev/null; then
-  export EDITOR="nvim"
+  EDITOR="nvim"
 elif which vim > /dev/null; then
-  export EDITOR="vim"
+  EDITOR="vim"
 elif which vi > /dev/null; then
-  export EDITOR="vi"
+  EDITOR="vi"
 else
-  export EDITOR="nano"
+  EDITOR="nano"
 fi
+export EDITOR
 alias editor="$EDITOR"
 alias edit="editor"
+
 
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+# GPG signing with macOS-compatible Linux
+# https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key-2
+# https://reddit.com/comments/dk53ow/_/f50146x
+export GPG_TTY=$TTY
 
 
 # Homebrew
@@ -139,6 +154,13 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 export DOTFILES="$HOME/Dropbox/Mackup" # ∃ also alias dotfiles thereto
 
+# customize Oh My Zsh completion dots
+# https://git.io/completion-dots-in-.zshrc
+expand-or-complete-with-dots() {
+  print -Pn "%F{red}...%f"
+  zle expand-or-complete
+  zle redisplay
+}
 
 
 # pyenv
