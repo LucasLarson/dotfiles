@@ -70,6 +70,10 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
+# https://unix.stackexchange.com/a/273863
+export HISTSIZE=2147483647
+export SAVEHIST=$HISTSIZE
+
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
