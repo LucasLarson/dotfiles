@@ -184,8 +184,8 @@ PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n'
 ## text editing
 ### export output
 `printf 'First Name\n' > ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
-`printf 'Other First Name\n' `**>**` ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
-`printf "Last Name\n" `**>>**` ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
+`printf 'Other First Name\n'` **>** `ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
+`printf "Last Name\n"` **>>** `ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
 
 #### sort
 `env > example.txt` # save an unordered list of `env` variables<br/>
