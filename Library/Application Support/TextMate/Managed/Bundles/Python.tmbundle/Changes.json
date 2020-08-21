@@ -1,1 +1,0 @@
-{"commits":[{"commit":"2e6fe8bcd8251454ff7507692fdf6342316d27ef","date":"2020-05-06T14:32:51+02:00","author":"Freek Dijkstra","summary":"Import escape from html instead of cgi","body":"cgi.escape was deprecated in Python 3.2 and removed from Python 3.8. Keep using cgi for anything below 3.0 of Python."}],"name":"Python"}

@@ -958,6 +958,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>executable</string>
+		<key>shortcut</key>
+		<string>executeable</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>🙄</string>
 		<key>shortcut</key>
 		<string>eyeroll</string>
@@ -1843,6 +1849,12 @@
 		<string>kk</string>
 		<key>shortcut</key>
 		<string>kk</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>knowledgeable</string>
+		<key>shortcut</key>
+		<string>knowledgable</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -3402,6 +3414,12 @@
 		<key>phrase</key>
 		<string>which</string>
 		<key>shortcut</key>
+		<string>whcih</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>which</string>
+		<key>shortcut</key>
 		<string>whihc</string>
 	</dict>
 	<dict>
@@ -3421,6 +3439,12 @@
 		<string>whose</string>
 		<key>shortcut</key>
 		<string>whose</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>which</string>
+		<key>shortcut</key>
+		<string>wihch</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
