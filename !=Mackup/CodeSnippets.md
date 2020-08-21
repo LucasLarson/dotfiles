@@ -280,14 +280,14 @@ Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 `brew install --upgrade rename && #` [via](https://stackoverflow.com/a/31694356) `\`<br/>
 `rename -nvs searchword replaceword *`
 
-### split enormous files into something manageable
+## split enormous files into something manageable
 if your example.csv has too many rows ([via](https://web.archive.org/web/20181210131347/domains-index.com/best-way-view-edit-large-csv-files/#post-12141))<br/>
 `split -l 2000 example.csv; for i in *; do mv "$i" "$i.csv"; done`
 
 ## SSH
 `ssh username@example.com`
 
-#### `ls` on Windows
+### `ls` on Windows
 `dir` # [via](https://stackoverflow.com/a/58740114)
 
 ## variables
