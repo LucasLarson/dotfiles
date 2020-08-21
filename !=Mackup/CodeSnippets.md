@@ -281,7 +281,7 @@ Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 `rename -nvs searchword replaceword *`
 
 ### split enormous files into something manageable
-if your example.csv has too many rows ([via](https://archive.today/2019.11.14-162132/https:/domains-index.com/best-way-view-edit-large-csv-files/#24%25))<br/>
+if your example.csv has too many rows ([via](https://web.archive.org/web/20181210131347/domains-index.com/best-way-view-edit-large-csv-files/#post-12141))<br/>
 `split -l 2000 example.csv; for i in *; do mv "$i" "$i.csv"; done`
 
 ## SSH
