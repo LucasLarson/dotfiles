@@ -9,15 +9,18 @@ alias atom="atom-nightly"
 alias apm="apm-nightly"
 
 # dotfiles
-alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status"
+alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch --all && git submodule update --init --recursive --remote && git status"
 alias dotfiles="$DOTFILES" # where $DOTFILES → "$HOME/Dropbox/Mackup"
 
 # Git
-alias gcm="git commit --message"
-alias gfgs="git fetch && git status"
+alias gc="git commit --verbose --gpg-sign"
+alias gcm="git commit --verbose --gpg-sign --message"
+alias gfgs="git fetch --all && git status"
+alias gmv="git mv"
 alias gtake="git checkout -b"
 alias gti="git"
-alias gu="git fetch && git submodule update --init --recursive && git status"
+alias gu="git fetch --all && git submodule update --init --recursive --remote && git status"
+alias gunstage="git reset HEAD --"
 
 # Python
 # alias python="python3" # await WebKit, Chromium to call python2 or to use
@@ -27,8 +30,10 @@ alias pip="pip3"
 
 # shell
 alias unixtime="date +%s" # via @Naresh https://stackoverflow.com/a/12312982
+alias which="which -a"
 alias whcih="which"
 alias whihc="which"
+alias wihch="which"
 
 # Zsh
 alias ohmyzsh="~/.oh-my-zsh"
