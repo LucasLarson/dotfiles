@@ -120,6 +120,12 @@ alias edit="editor"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
+# GPG signing with macOS-compatible Linux
+# https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key-2
+# https://reddit.com/comments/dk53ow/_/f50146x
+export GPG_TTY=$TTY
+
+
 # Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f2621298c879aa205754ae01d5417572d9/Library/Homebrew/diagnostic.rb#L432-L435
 export PATH="/usr/local/sbin:$PATH"
