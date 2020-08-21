@@ -22,6 +22,7 @@
     - [Linux](#linux)
 - [text editing](#text-editing)
   - [export output](#export-output)
+    - [sort](#sort)
 - [make invisible](#make-invisible)
 - [create an alias](#create-an-alias)
 - [launch services](#launch-services)
@@ -38,11 +39,16 @@
   - [`commit`](#commit)
     - [with subject *and* body](#with-subject-and-body)
     - [in the past](#in-the-past)
-  - [`editor`](#editor)
-  - [rename files](#rename-files)
-  - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
+  - [`config`](#config)
+    - [editor](#editor)
+  - [`tag`](#tag)
+- [Numbers](#numbers)
+  - [Affixes](#affixes)
+- [rename files](#rename-files)
+- [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
 - [SSH](#ssh)
   - [`ls` on Windows](#ls-on-windows)
+- [variables](#variables)
 - [wget](#wget)
 - [WiFi](#wifi)
   - [password](#password)
@@ -50,13 +56,12 @@
     - [macOS](#macos-1)
 - [Xcode](#xcode)
   - [signing](#signing)
-  - [dependencies](#dependencies)
 - [housekeeping](#housekeeping)
   - [Homebrew](#homebrew-1)
   - [npm](#npm)
   - [RubyGems](#rubygems)
   - [Flutter](#flutter)
-  - [Xcode and JetBrains](#xcode-and-jetbrains)
+  - [Xcode, JetBrains, Carthage](#xcode-jetbrains-carthage)
 - [delete](#delete)
   - [with confirmation first](#with-confirmation-first)
   - [without confirmation](#without-confirmation)
@@ -68,17 +73,17 @@
 
 ## copy, paste, return
 ```bash
-update=-1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && (ping -q -i1 -c1 one.one.one.one &> /dev/null && ping -q -i1 -c1 8.8.8.8 &> /dev/null) || (echo 'No internet connection was detected.\nAborting update.' && return $update) && brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && upgrade_oh_my_zsh && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && printf '\n\xf0\x9f\x90\x8d verifying Python’s packager is up-to-date...\n' && python -m pip install --upgrade pip && printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && printf '\n\n\xe2'$update'\x9c\x85 done\x21\n\n' && exec zsh
+update=-1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && sleep 1.0 && printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && (ping -q -i1 -c1 one.one.one.one &> /dev/null && ping -q -i1 -c1 8.8.8.8 &> /dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update) && printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && omz update && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up-to-date...\n' && python -m pip install --upgrade pip && printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && printf '\n\n\xe2'$update'\x9c\x85 done\x21\n\n' && exec zsh
 ```
 ### detail
-`xcode-select --install && \`<br/>
+`xcode-select --switch /Applications/Xcode.app || xcode-select --install && \`<br/>
 `xcrun simctl delete unavailable && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/d7406c3bb347af9fb1734885ed571117a5dbf90a/README.md#remove-all-unavailable-simulators) `\`<br/>
 `brew update --debug --verbose && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/launchagents.md#periodic-homebrew-update-and-upgrade)`,` [via](https://stackoverflow.com/a/47664603) `\`<br/>
 `brew upgrade && \`<br/>
 `brew cask upgrade && #` [via](https://github.com/hisaac/hisaac.net/blob/8c63d51119fe2a0f05fa6c1c2a404d12256b0594/source/_posts/2018/2018-02-12-update-all-the-things.md#readme) `\`<br/>
 `brew install mackup --head && #` 0.8.29 [2020-06-06](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br/>
 `mackup backup && # || mackup backup --force \`<br/>
-`upgrade_oh_my_zsh && #` [via](https://github.com/robbyrussell/oh-my-zsh/blob/17f4cfca99398cb5511557b8515a17bf1bf2948a/README.md#manual-updates) `\`<br/>
+`omz update && #` [via](https://github.com/ohmyzsh/ohmyzsh/blob/3935ccc/lib/functions.zsh#L9-L12) `\`<br/>
 `git clone --recurse-submodules --depth 1 --branch main --verbose --progress #` [via](https://github.com/hisaac/Tiime/blob/ff1a39d6765d8ae5c9724ca84d5c680dff4c602e/README.md#bootstrapping-instructions), [via](https://stackoverflow.com/a/50028481) `\`<br/>
 `git submodule update --init --recursive && #` [via](https://stackoverflow.com/a/10168693) `\`<br/>
 `npm install npm --global && #` [via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L51-L52), [via](https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties) `\`<br/>
@@ -127,7 +132,7 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 ###### applications
 Track changes to which applications are installed without syncing them. The instructions are bash-compatible and refer to this document for instructions on regenerating the list.
 ```bash
-saveApplications=-1 && mkdir -p $DOTFILES/\!=Mackup && mkdir -p /Applications && cd /Applications && filename=$DOTFILES/\!=Mackup/:Applications && touch $filename && pwd > $filename && date '+%Y-%m-%d' >> $filename && printf '—————————————\n' >> $filename && ls -F1 >> $filename && cd $DOTFILES && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff $filename && filename='' && saveApplications=$filename && printf '\n\n\xe2'$filename'\x9c'$saveApplications'\x85 done!\n\n'
+saveApplications=-1 && mkdir -p $DOTFILES/\!=Mackup && mkdir -p /Applications && cd /Applications && filename=$DOTFILES/\!=Mackup/:Applications && touch $filename && pwd > $filename && date '+%Y-%m-%d' >> $filename && printf '—————————————\n' >> $filename && ls -F1 >> $filename && cd $DOTFILES && mackup backup && git fetch --all && git submodule update --init --recursive --remote && git diff $filename && unset filename && saveApplications=$filename && printf '\n\n\xe2'$filename'\x9c'$saveApplications'\x85 done!\n\n'
 ```
 ##### Atom packages
 ```bash
@@ -177,8 +182,15 @@ PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n'
 `printf 'Other First Name\n' `**>**` ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
 `printf "Last Name\n" `**>>**` ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
 
+#### sort
+`env > example.txt` # save an unordered list of `env` variables<br/>
+`env | sort > example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
+
 ## make invisible
-`chflags hidden example.txt`
+`chflags -hvv hidden example.txt`<br/>
+`-h` for symbolic links, if applicable, but not their targets<br/>
+`-v`₁ for verbose<br/>
+`-v`₂ for printing the old and new flags in octal to `stdout`
 
 ## create an alias
 `ln -s file shortcut #` [via](https://www.reddit.com/r/programming/comments/1qt0z/ln_s_d1_d2_am_i_the_only_person_who_gets_this_the/c1qtge/)<br/>
@@ -244,22 +256,32 @@ more detailed `git diff` and how I once found an LF‑to‑CRLF‑only differen
 to backdate a commit:<br/>
 `GIT_TIME='`**2000-01-02T15:04:05 -0500**`' GIT_AUTHOR_DATE=$GIT_TIME GIT_COMMITTER_DATE=$GIT_TIME git commit -m 'add modifications made at 3:04:05pm EST on January 2, 2000' #` [via](https://stackoverflow.com/questions/3895453/how-do-i-make-a-git-commit-in-the-past#comment97787061_3896112)
 
-### `tag`
-`git tag v𝑖.𝑗.𝑘 #` where 𝑖, 𝑗, and 𝑘 are non-negative integers representing [<abbr title="semantic versioning">semver</abbr>](https://github.com/semver/semver/blob/8b2e8eec394948632957639dfa99fc7ec6286911/semver.md#summary) major, minor, and patch releases<br/>
-`git push origin v𝑖.𝑗.𝑘 #` push the unannotated tag [via](https://stackoverflow.com/a/5195913)
-
-### `editor`
+### `config`
+#### editor
 Vim<br/>
 `git config --global core.editor /usr/local/bin/vim`<br/>
 Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 `git config --global core.editor "atom --wait"`
 
-### rename files
+### `tag`
+`git tag v𝑖.𝑗.𝑘 #` where 𝑖, 𝑗, and 𝑘 are non-negative integers representing [<abbr title="semantic versioning">semver</abbr>](https://github.com/semver/semver/blob/8b2e8eec394948632957639dfa99fc7ec6286911/semver.md#summary) major, minor, and patch releases<br/>
+`git push origin v𝑖.𝑗.𝑘 #` push the unannotated tag [via](https://stackoverflow.com/a/5195913)
+
+## Numbers
+### Affixes
+| Definition  | Prefix | Suffix           |
+| ----------- | ------ |----------------- |
+| binary      | `0b`𝑛  | 𝑛<sub>`2`</sub>  |
+| octal       | `0o`𝑛  | 𝑛<sub>`8`</sub>  |
+| decimal     | `0d`𝑛  | 𝑛<sub>`10`</sub> |
+| hexadecimal | `0x`𝑛  | 𝑛<sub>`16`</sub> |
+
+## rename files
 `brew install --upgrade rename && #` [via](https://stackoverflow.com/a/31694356) `\`<br/>
 `rename -nvs searchword replaceword *`
 
 ### split enormous files into something manageable
-if your example.csv has too many rows ([via](https://web.archive.org/web/20181210131347/domains-index.com/best-way-view-edit-large-csv-files/#post-12141))<br/>
+if your example.csv has too many rows ([via](https://archive.today/2019.11.14-162132/https:/domains-index.com/best-way-view-edit-large-csv-files/#24%25))<br/>
 `split -l 2000 example.csv; for i in *; do mv "$i" "$i.csv"; done`
 
 ## SSH
@@ -267,6 +289,10 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 #### `ls` on Windows
 `dir` # [via](https://stackoverflow.com/a/58740114)
+
+## variables
+`$PWD` # the name of the current directory and its entire path
+`${PWD##*/}` # [via](https://stackoverflow.com/a/1371283) the name of only the current directory
 
 ## wget
 `wgetserver=`'**example.com**' `&& \`<br/>
@@ -294,16 +320,18 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 `brew cask audit --strict --token-conflicts`
 
 ### npm
-`npm doctor #` creates empty “node_modules” folders
+`npm doctor && # ` creates empty `node_modules` directories `\`<br/>
+`find node_modules -empty -type d -delete #` deletes them [via](https://web.archive.org/web/20190320151645id_/cyberciti.biz/faq/howto-find-delete-empty-directories-files-in-unix-linux/)
+
 
 ### RubyGems
-`gem cleanup`
+`gem cleanup --verbose`
 
 ### Flutter
 `cd ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose`
 
-### Xcode and JetBrains
-`trashXcodeJetBrains=-1 && sleep 0.25 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && unset trashXcodeJetBrains && printf '\n\n\xf0'$trashXcodeJetBrains'\x9f'$trashXcodeJetBrains'\x9a'$trashXcodeJetBrains'\xae data successfully trashed\n\n'`
+### Xcode, JetBrains, Carthage
+`trashDeveloper=-1 && sleep 0.25 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Developer/Xcode/UserData/IB\ Support && mv ~/Library/Developer/Xcode/UserData/IB\ Support ~/.Trash/Xcode⁄UserData⁄IB\ Support-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && mkdir -p ~/Library/Caches/org.carthage.CarthageKit/DerivedData && mv ~/Library/Caches/org.carthage.CarthageKit/DerivedData ~/.Trash/Carthage-$RANDOM && unset trashDeveloper && printf '\n\n\xf0'$trashDeveloper'\x9f'$trashDeveloper'\x9a'$trashDeveloper'\xae data successfully trashed\n\n'`
 
 ## delete
 ### with confirmation first
