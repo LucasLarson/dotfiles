@@ -1,5 +1,5 @@
 /Applications
-2020-06-13
+2020-07-24
 —————————————
 1Password 7.app/
 1Password.app@
@@ -29,6 +29,7 @@ Cocktail.app/
 CocoaPods.app/
 Comment Wrapper.app/
 CopyClip.app/
+Cyph.app/
 DB Browser for SQLite.app/
 Dropbox.app/
 Duplicate File Finder.app/
@@ -43,7 +44,8 @@ FirefoxNightly.app/
 Flux.app/
 FontBook.app@
 FontTools/
-Funter.app/
+Funter 5.app/
+Funter.app@
 GPG Keychain.app/
 GitHub Desktop.app/
 GitKraken.app/
@@ -64,26 +66,36 @@ JOSM.app/
 JetBrains Toolbox.app/
 Keka.app/
 Keybase.app/
+Keynote.app/
 KnockKnock.app/
 Malwarebytes.app/
 Microsoft Edge Canary.app/
 Microsoft Edge.app@
 Microsoft Excel.app/
+Microsoft OneNote.app/
+Microsoft Outlook.app/
+Microsoft PowerPoint.app/
 Microsoft Remote Desktop Beta.app/
 Microsoft Remote Desktop.app@
+Microsoft Teams.app/
 Microsoft Word.app/
 MusicBrainz Picard.app/
 MusicBrainz.app@
 MusicManager.app/
 Nova.app/
+Numbers.app/
 ODADrawingsExplorer.app/
 OmniDiskSweeper.app/
 OneDrive.app/
+OneNote.app@
 Opera Developer.app/
 Opera.app@
+Outlook.app@
 OverSight.app/
 PacketLogger.app/
+Pages.app/
 PhoneView.app/
+PowerPoint.app@
 Protocol.app/
 QtSpim.app/
 QuickBooks.app/
@@ -104,6 +116,7 @@ Spotify.app/
 Sublime Text.app/
 Sublime.app@
 Suspicious Package.app/
+Teams.app@
 Telegram.app/
 TextMate.app/
 Tor Browser.app/
@@ -129,12 +142,13 @@ WebKit.app/
 WebTorrent.app/
 Word.app@
 WorkSpaces.app/
-Xcode-beta.app@
-Xcode.app/
+Xcode-beta.app/
+Xcode.app@
 digi.me.app/
 digiKam/
 digikam.app@
 digime.app@
+iMovie.app/
 iTerm.app/
 iTunes.app@
 pCloud Drive.app/

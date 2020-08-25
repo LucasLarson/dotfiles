@@ -1,2 +1,0 @@
-stash@{0}: On master: boogy
-stash@{1}: On master: oogity
