@@ -300,8 +300,8 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 `${PWD##*/}` # [via](https://stackoverflow.com/a/1371283) the name of only the current directory
 
 ## wget
-`wgetserver=`'**example.com**' `&& \`<br/>
-`wget --mirror --continue --verbose --append-output=$wgetserver.log --execute robots=off --restrict-file-names=nocontrol --timestamping --show-progress http://$wgetserver`
+`wgetserver=`'**example.com**' `&& \`<br/>
+`wget --mirror --continue --verbose --append-output=$wgetserver.log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --show-progress http://$wgetserver && unset wgetserver || unset wgetserver`
 
 ## WiFi
 ### password
