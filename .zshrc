@@ -171,7 +171,7 @@ fi
 # C, C++ headers
 # https://apple.stackexchange.com/a/372600
 if command -v xcrun > /dev/null 2>&1; then
-  CPATH=`xcrun --show-sdk-path`/usr/include
+  CPATH=$(xcrun --show-sdk-path)/usr/include
   export CPATH
 fi
 
