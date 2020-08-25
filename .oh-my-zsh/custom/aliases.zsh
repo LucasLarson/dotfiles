@@ -33,6 +33,7 @@ alias unixtime="date +%s" # via @Naresh https://stackoverflow.com/a/12312982
 alias which="which -a"
 alias whcih="which"
 alias whihc="which"
+alias whuch="which"
 alias wihch="which"
 
 # Zsh
