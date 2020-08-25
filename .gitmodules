@@ -34,3 +34,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Rust.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Rust.tmbundle
 	url = https://github.com/carols10cents/rust.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle
+	url = https://github.com/textmate/swift.tmbundle
