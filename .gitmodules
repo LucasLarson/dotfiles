@@ -1,33 +1,36 @@
 [submodule ".oh-my-zsh/custom/themes/powerlevel10k"]
 	path = .oh-my-zsh/custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k
-[submodule "Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle
-	url = https://github.com/textmate/java.tmbundle
-[submodule "Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle
-	url = https://github.com/textmate/Linter.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle
 	url = https://github.com/textmate/bundle-support.tmbundle
-[submodule "Library/Application Support/TextMate/Managed/Bundles/Markdown.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Markdown.tmbundle
-	url = https://github.com/textmate/markdown.tmbundle
-[submodule "Library/Application Support/TextMate/Managed/Bundles/JavaScript.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/JavaScript.tmbundle
-	url = https://github.com/textmate/javascript.tmbundle
-[submodule "Library/Application Support/TextMate/Managed/Bundles/LaTeX.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/LaTeX.tmbundle
-	url = https://github.com/textmate/LaTeX.tmbundle
-[submodule "Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle
-	url = https://github.com/textmate/python.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Git.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Git.tmbundle
 	url = https://github.com/textmate/git.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle
+	url = https://github.com/textmate/java.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/JavaScript.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/JavaScript.tmbundle
+	url = https://github.com/textmate/javascript.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/JavaScript jQuery.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/JavaScript jQuery.tmbundle
 	url = https://github.com/textmate/javascript-jquery.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/LaTeX.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/LaTeX.tmbundle
+	url = https://github.com/textmate/LaTeX.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle
+	url = https://github.com/textmate/Linter.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Markdown.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Markdown.tmbundle
+	url = https://github.com/textmate/markdown.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Objective-C.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Objective-C.tmbundle
 	url = https://github.com/textmate/objective-c.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle
+	url = https://github.com/textmate/python.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Rust.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Rust.tmbundle
+	url = https://github.com/carols10cents/rust.tmbundle
