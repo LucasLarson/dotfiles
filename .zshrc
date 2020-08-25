@@ -98,11 +98,12 @@ source $ZSH/oh-my-zsh.sh
 # Editor
 # Set preferred editor if it is available
 # https://stackoverflow.com/a/14755066
-if which nvim > /dev/null; then
+# https://github.com/wililupy/snapd/commit/0573e7b34914c9e9fed9e2a84687106438dda19c
+if command -v nvim > /dev/null 2>&1; then
   EDITOR="nvim"
-elif which vim > /dev/null; then
+elif command -v vim > /dev/null 2>&1; then
   EDITOR="vim"
-elif which vi > /dev/null; then
+elif command -v vi > /dev/null 2>&1; then
   EDITOR="vi"
 else
   EDITOR="nano"
