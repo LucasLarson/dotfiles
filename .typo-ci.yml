@@ -28,14 +28,20 @@ excluded_files:
 # Any typos we should ignore?
 excluded_words:
   - Biffle
+  - Crashlytics
   - LucasLarson
   - Mackup
+  - omz
+  - rustup
   - typoci
   - uncommenting
 
   # Clang, GCC
   - cbp
+  - climits
   - cstring
+  - ctor
+  - dtor
   - dylib
   - fcaret
   - fdiagnostics
@@ -50,16 +56,27 @@ excluded_words:
   - ftime
   - ftrapv
   - gch
+  - gcno
   - ifndef
   - lai
   - latomic
+  - llu
   - lstdc
   - pch
   - pthread
   - slo
   - smod
   - strnlen
+  - unsequenced
+  - Wcall
+  - Wdefaulted
+  - Weffc
   - Wextra
+  - Wmemset
+  - Wno
+  - Woverriding
+  - Wreturn
+  - Wsizeof
 
   # Git
   - gmv # homemade alias to `git mv`
@@ -71,9 +88,35 @@ excluded_words:
   # JetBrains
   - iml
   - ipr
+  - iws
+  - mpeltonen
+  - replstate
+  - sbt-idea
+
+  # macOS
+  - donotpresent
+  - icns
 
   # TextMate
   - tmbundle
+
+  # Xcode
+  - pbxproj
+  - pbxuser
+  - xccheckout
+  - xcrun
+  - xcscmblueprint
+  - xcsettings
+  - xcshareddata
+  - xcuserdata
+  - xcworkspacedata
+
+  # Zsh
+  - MichaelAquilina
+  - robbyrussell
+  - zdharma
+  - zshelldoc
+  - Zunit
 
 # Would you like filenames to also be spellchecked?
 spellcheck_filenames: false
