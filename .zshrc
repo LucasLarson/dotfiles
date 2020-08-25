@@ -73,7 +73,7 @@ HIST_STAMPS="yyyy-mm-dd"
 export HISTSIZE=2147483647
 export SAVEHIST=$HISTSIZE
 
-# Would you like to use another custom folder than $ZSH/custom?
+# Use a custom folder other than $ZSH/custom
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
