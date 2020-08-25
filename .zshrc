@@ -1,8 +1,7 @@
 #!/usr/bin/env zsh
 
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# Powerlevel10k instant prompt
+# https://github.com/romkatv/powerlevel10k/blob/d394a4e038e494354cbdb68aeaebc05e7d0788fa/README.md#how-do-i-enable-instant-prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -99,11 +98,12 @@ source $ZSH/oh-my-zsh.sh
 # Editor
 # Set preferred editor if it is available
 # https://stackoverflow.com/a/14755066
-if which nvim > /dev/null; then
+# https://github.com/wililupy/snapd/commit/0573e7b34914c9e9fed9e2a84687106438dda19c
+if command -v nvim > /dev/null 2>&1; then
   EDITOR="nvim"
-elif which vim > /dev/null; then
+elif command -v vim > /dev/null 2>&1; then
   EDITOR="vim"
-elif which vi > /dev/null; then
+elif command -v vi > /dev/null 2>&1; then
   EDITOR="vi"
 else
   EDITOR="nano"
@@ -164,14 +164,17 @@ expand-or-complete-with-dots() {
 
 
 # pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
+if command -v pyenv > /dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
 
 # C, C++ headers
 # https://apple.stackexchange.com/a/372600
-export CPATH=`xcrun --show-sdk-path`/usr/include
+if command -v xcrun > /dev/null 2>&1; then
+  CPATH=$(xcrun --show-sdk-path)/usr/include
+  export CPATH
+fi
 
 
 # Flutter
@@ -183,7 +186,10 @@ export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
 # rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if command -v rbenv > /dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
