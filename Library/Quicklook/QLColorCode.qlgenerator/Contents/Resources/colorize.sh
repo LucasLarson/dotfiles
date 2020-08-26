@@ -38,6 +38,9 @@ case ${target} in
     *.graffle | *.ps )
         exit 1
         ;;
+    *.iml )
+        lang=xml
+        ;; 
     *.d )
         lang=make
         ;;
@@ -52,11 +55,6 @@ case ${target} in
         ;;
     *.java )
         lang=java
-        plugin=(--plug-in java_library)
-        ;;
-    *.class )
-        lang=java
-        reader=(/usr/local/bin/jad -ff -dead -noctor -p -t ${target})
         plugin=(--plug-in java_library)
         ;;
     *.pde | *.ino )
