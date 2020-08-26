@@ -23,7 +23,7 @@ function gu () {
   if [ -n "$1" ]; then
     cd ~/Code/"$1" || return
   fi
-  git fetch --all
+  git fetch --all --verbose
   git submodule update --init --recursive --remote
   git status
 }
