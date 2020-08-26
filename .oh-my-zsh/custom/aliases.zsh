@@ -16,7 +16,7 @@ alias dotfiles="$DOTFILES" # where $DOTFILES → "$HOME/Dropbox/Mackup"
 alias gc="git commit --verbose --gpg-sign"
 alias gcm="git commit --verbose --gpg-sign --message"
 alias gfgs="git fetch --all && git status"
-alias gmv="git mv"
+alias gmv="git mv --verbose"
 alias gtake="git checkout -b"
 alias gti="git"
 function gu () {
