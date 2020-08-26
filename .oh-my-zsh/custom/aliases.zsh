@@ -19,7 +19,14 @@ alias gfgs="git fetch --all && git status"
 alias gmv="git mv"
 alias gtake="git checkout -b"
 alias gti="git"
-alias gu="git fetch --all && git submodule update --init --recursive --remote && git status"
+function gu () {
+  if [[ $1 ]]; then
+    cd ~/Code/"$1" || return
+  fi
+  git fetch --all
+  git submodule update --init --recursive --remote
+  git status
+}
 alias gunstage="git reset HEAD --"
 
 # Python
