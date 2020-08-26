@@ -36,6 +36,8 @@ alias gunstage="git reset HEAD --"
 alias pip="pip3"
 
 # shell
+alias cp="cp -i"
+alias mv="mv -i" # https://unix.stackexchange.com/a/30950
 alias unixtime="date +%s" # via @Naresh https://stackoverflow.com/a/12312982
 alias which="which -a"
 alias whcih="which"
