@@ -109,7 +109,7 @@ else
   EDITOR="nano"
 fi
 export EDITOR
-alias editor="$EDITOR"
+alias editor='$EDITOR'
 alias edit="editor"
 
 
