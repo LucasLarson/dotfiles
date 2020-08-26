@@ -19,7 +19,14 @@ alias gfgs="git fetch --all && git status"
 alias gmv="git mv"
 alias gtake="git checkout -b"
 alias gti="git"
-alias gu="git fetch --all && git submodule update --init --recursive --remote && git status"
+function gu () {
+  if [[ $1 ]]; then
+    cd ~/Code/"$1" || return
+  fi
+  git fetch --all
+  git submodule update --init --recursive --remote
+  git status
+}
 alias gunstage="git reset HEAD --"
 
 # Python
@@ -29,6 +36,8 @@ alias gunstage="git reset HEAD --"
 alias pip="pip3"
 
 # shell
+alias cp="cp -i"
+alias mv="mv -i" # https://unix.stackexchange.com/a/30950
 alias unixtime="date +%s" # via @Naresh https://stackoverflow.com/a/12312982
 alias which="which -a"
 alias whcih="which"
