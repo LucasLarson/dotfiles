@@ -73,7 +73,12 @@
 
 ## copy, paste, return
 ```bash
-update=-1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && sleep 1.0 && printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && (ping -q -i1 -c1 one.one.one.one &> /dev/null && ping -q -i1 -c1 8.8.8.8 &> /dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update) && printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && omz update && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up-to-date...\n' && python -m pip install --upgrade pip && printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && printf '\n\n\xe2'$update'\x9c\x85 done\x21\n\n' && exec zsh
+update=-1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && sleep 1.0 && \
+printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && (ping -q -i1 -c1 one.one.one.one &> /dev/null && ping -q -i1 -c1 8.8.8.8 &> /dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update) && \
+printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && omz update && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && \
+printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up-to-date...\n' && python -m pip install --upgrade pip && \
+printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && \
+printf '\n\n\xe2'$update'\x9c\x85 done\x21\n\n' && exec zsh
 ```
 ### detail
 `xcode-select --switch /Applications/Xcode.app || xcode-select --install && \`<br/>
@@ -179,8 +184,8 @@ PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n'
 ## text editing
 ### export output
 `printf 'First Name\n' > ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
-`printf 'Other First Name\n' `**>**` ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
-`printf "Last Name\n" `**>>**` ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
+`printf 'Other First Name\n'` **>** `ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
+`printf "Last Name\n"` **>>** `ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
 
 #### sort
 `env > example.txt` # save an unordered list of `env` variables<br/>
@@ -213,8 +218,8 @@ remove bogus entries from Finder’s “Open With” menu ([via](https://githu
 `#ifdef __APPLE__`<br/>
     `-Weverything <!--` do not use ([via](https://web.archive.org/web/20190926015534id_/quuxplusone.github.io/blog/2018/12/06/dont-use-weverything/#for-example-if-you-want-to-see-a)) `-->`<br/>
 `#endif`<br/>
-`-Woverriding-method-mismatch -Weffc++ -Wcall-to-pure-virtual-from-ctor-dtor -Wmemset-transposed-args -Wreturn-std-move -Wsizeof-pointer-div -Wdefaulted-function-deleted` # [via](https://archive.is/2019.06.25-171347/https:/github.com/jonreid/XcodeWarnings/issues/8#19%25)<br/>
-`-lstdc++ #` [via](https://web.archive.org/web/20200517174238id_/unspecified.wordpress.com/2009/03/15/linking-c-code-with-gcc/amp/#post-consent-ui) but this might – or might not – be helpful on macOS using gcc or g++
+`-Woverriding-method-mismatch -Weffc++ -Wcall-to-pure-virtual-from-ctor-dtor -Wmemset-transposed-args -Wreturn-std-move -Wsizeof-pointer-div -Wdefaulted-function-deleted` # [via](https://github.com/jonreid/XcodeWarnings/issues/8#partial-discussion-header)<br/>
+`-lstdc++ #` [via](https://web.archive.org/web/20200517174250id_/unspecified.wordpress.com/2009/03/15/linking-c-code-with-gcc/#post-54) but this might – or might not – be helpful on macOS using gcc or g++
 
 #### C++ features before wide support
 for example, C++17’s `<filesystem>`<br/>
@@ -281,13 +286,13 @@ Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 `rename -nvs searchword replaceword *`
 
 ## split enormous files into something manageable
-if your example.csv has too many rows ([via](https://archive.today/2019.11.14-162132/https:/domains-index.com/best-way-view-edit-large-csv-files/#24%25))<br/>
+if your example.csv has too many rows ([via](https://web.archive.org/web/20181210131347/domains-index.com/best-way-view-edit-large-csv-files/#post-12141))<br/>
 `split -l 2000 example.csv; for i in *; do mv "$i" "$i.csv"; done`
 
 ## SSH
 `ssh username@example.com`
 
-#### `ls` on Windows
+### `ls` on Windows
 `dir` # [via](https://stackoverflow.com/a/58740114)
 
 ## variables
