@@ -20,7 +20,7 @@ alias gmv="git mv"
 alias gtake="git checkout -b"
 alias gti="git"
 function gu () {
-  if [[ $1 ]]; then
+  if [ -n "$1" ]; then
     cd ~/Code/"$1" || return
   fi
   git fetch --all
