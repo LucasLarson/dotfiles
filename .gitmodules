@@ -37,3 +37,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle
 	url = https://github.com/textmate/swift.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/C.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/C.tmbundle
+	url = https://github.com/textmate/c.tmbundle
