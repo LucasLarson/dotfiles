@@ -109,6 +109,7 @@ else
   EDITOR="nano"
 fi
 export EDITOR
+# https://github.com/koalaman/shellcheck/wiki/SC2139/db553bf16fcb86b2cdc77b835e75b9121eacc429#this-expands-when-defined-not-when-used-consider-escaping
 alias editor='$EDITOR'
 alias edit="editor"
 
