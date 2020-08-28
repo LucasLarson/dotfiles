@@ -61,3 +61,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Xcode.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Xcode.tmbundle
 	url = https://github.com/textmate/xcode.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/XML.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/XML.tmbundle
+	url = https://github.com/textmate/xml.tmbundle
