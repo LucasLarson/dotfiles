@@ -38,5 +38,13 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+## SourceTree ##
+*-lock.*
+*.pbxuser
+*.xcuserstate
+Cartfile.resolved
+Gemfile.lock
+Podfile.lock
+
 ## Vim ##
 *.swp
