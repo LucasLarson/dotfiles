@@ -55,3 +55,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/TextMate.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/TextMate.tmbundle
 	url = https://github.com/textmate/textmate.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Text.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Text.tmbundle
+	url = https://github.com/textmate/text.tmbundle
