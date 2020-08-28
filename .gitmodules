@@ -43,3 +43,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/reStructuredText.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/reStructuredText.tmbundle
 	url = https://github.com/textmate/restructuredtext.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/YAML.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/YAML.tmbundle
+	url = https://github.com/textmate/yaml.tmbundle
