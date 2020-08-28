@@ -9,6 +9,7 @@
 #
 # https://github.com/github/gitignore/raw/320a610b9ffba3ff28166370b6dd9f73096e34b7/Global/macOS.gitignore
 
+### macOS ###
 # General
 .DS_Store
 .AppleDouble
