@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>code</key>
-	<string>f321429b493820712a93b5119754fbc7</string>
+	<string>dd65576c48379ec07c0b2663598e72b0</string>
 	<key>email</key>
 	<string>Lucas.Larson86@myhunter.cuny.edu</string>
 	<key>expiration_date</key>
@@ -11,7 +11,7 @@
 	<key>license_code</key>
 	<string>TOWR-****-****-****-JULI</string>
 	<key>machine</key>
-	<string>b201842698c8d5fb290b2e079b18d1b2</string>
+	<string>e5a82c57fa42e9aa48534c9a63988f0f</string>
 	<key>plan</key>
 	<string>Tower Student</string>
 	<key>plan_features</key>
@@ -23,12 +23,12 @@
 	<key>product</key>
 	<string>tower</string>
 	<key>revoked</key>
-	<string>true</string>
+	<string>false</string>
 	<key>type</key>
 	<string>LICENSE</string>
 	<key>user</key>
 	<string>106f8b69549b16297ac0b9a4adb06f72</string>
 	<key>uuid</key>
-	<string>884c3662-b0b0-4e62-92f2-e5109be41b13</string>
+	<string>c8c263e9-6d68-4c91-94ab-55dddc7c987a</string>
 </dict>
 </plist>
