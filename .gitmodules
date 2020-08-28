@@ -76,3 +76,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Apache.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Apache.tmbundle
 	url = https://github.com/textmate/apache.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Make.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Make.tmbundle
+	url = https://github.com/textmate/make.tmbundle
