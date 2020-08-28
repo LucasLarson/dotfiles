@@ -48,5 +48,8 @@ Cartfile.resolved
 Gemfile.lock
 Podfile.lock
 
+## Subversion ##
+*.svn
+
 ## Vim ##
 *.swp
