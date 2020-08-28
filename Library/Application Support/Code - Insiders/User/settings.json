@@ -20,5 +20,6 @@
     "codespaces.accountProvider": "Microsoft",
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
-    "html.format.endWithNewline": true
+    "html.format.endWithNewline": true,
+    "editor.renderControlCharacters": true
 }
