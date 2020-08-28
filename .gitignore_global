@@ -39,4 +39,4 @@ Temporary Items
 .apdisk
 
 # Vim’s swap files
-.swp
+*.swp
