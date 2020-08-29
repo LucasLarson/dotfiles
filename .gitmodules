@@ -103,3 +103,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/R.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/R.tmbundle
 	url = https://github.com/textmate/r.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Property List.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Property List.tmbundle
+	url = https://github.com/textmate/property-list.tmbundle
