@@ -94,3 +94,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/SCM.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/SCM.tmbundle
 	url = https://github.com/textmate/scm.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/SCM Diff Gutter.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/SCM Diff Gutter.tmbundle
+	url = https://github.com/textmate/scm-diff-gutter.tmbundle
