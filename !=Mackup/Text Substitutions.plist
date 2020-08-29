@@ -2332,6 +2332,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>misogynistic</string>
+		<key>shortcut</key>
+		<string>mysogenistic</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>misogyny</string>
 		<key>shortcut</key>
 		<string>mysogyny</string>
