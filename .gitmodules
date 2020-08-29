@@ -100,3 +100,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Ruby.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Ruby.tmbundle
 	url = https://github.com/textmate/ruby.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/R.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/R.tmbundle
+	url = https://github.com/textmate/r.tmbundle
