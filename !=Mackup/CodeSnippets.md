@@ -145,15 +145,15 @@ apm list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'Atom extensions ' > ~
 ```
 ##### Homebrew
 ```bash
-listBrew=$DOTFILES/!=Mackup/brew\ list\ --verbose && touch $listBrew && printf 'brew list --verbose\n———————————————————\n' > $listBrew && brew list --verbose >> $listBrew && listBrew='' && printf '\n\n\xe2'$listBrew'\x9c\x85 done\x21\n\n'
+listBrew=$DOTFILES/!=Mackup/brew\ list\ --verbose && touch $listBrew && printf 'brew list --verbose\n———————————————————\n' > $listBrew && brew list --verbose >> $listBrew && unset listBrew && printf '\n\n\xe2'$listBrew'\x9c\x85 done\x21\n\n'
 ```
 ###### Cask
 ```bash
-listBrewCask=$DOTFILES/!=Mackup/brew\ cask\ list && touch $listBrewCask && printf 'brew cask list\n—————————————\n' > $listBrewCask && brew cask list >> $listBrewCask && listBrewCask='' && printf '\n\n\xe2'$listBrewCask'\x9c\x85 done\x21\n\n'
+listBrewCask=$DOTFILES/!=Mackup/brew\ cask\ list && touch $listBrewCask && printf 'brew cask list\n—————————————\n' > $listBrewCask && brew cask list >> $listBrewCask && unset listBrewCask && printf '\n\n\xe2'$listBrewCask'\x9c\x85 done\x21\n\n'
 ```
 ##### $MANPATH
 ```bash
-saveMANPATH=-1 && mkdir -p $DOTFILES/\!=Mackup && filename=$DOTFILES/\!=Mackup/MANPATH && touch $filename && printf '# $MANPATH’s contents\n# ' > $filename && date '+%Y-%m-%d' >> $filename && printf '# ———————————————————————\n' >> $filename && <<<${(F)manpath} >> $filename && cd $DOTFILES && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff $filename && filename='' && saveMANPATH=$filename && printf '\n\n\xe2'$filename'\x9c'$saveMANPATH'\x85 done!\n\n'
+saveMANPATH=-1 && mkdir -p $DOTFILES/\!=Mackup && filename=$DOTFILES/\!=Mackup/MANPATH && touch $filename && printf '# $MANPATH’s contents\n# ' > $filename && date '+%Y-%m-%d' >> $filename && printf '# ———————————————————————\n' >> $filename && <<<${(F)manpath} >> $filename && cd $DOTFILES && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff $filename && unset filename && saveMANPATH=$filename && printf '\n\n\xe2'$filename'\x9c'$saveMANPATH'\x85 done!\n\n'
 ```
 ##### pip packages
 ```bash
