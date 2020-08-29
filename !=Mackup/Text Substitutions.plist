@@ -2176,6 +2176,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Morningside</string>
+		<key>shortcut</key>
+		<string>Monrinside</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Montana</string>
 		<key>shortcut</key>
 		<string>montaba</string>
@@ -2269,6 +2275,12 @@
 		<string>Morningside Park</string>
 		<key>shortcut</key>
 		<string>morningsidepark</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>Morningside</string>
+		<key>shortcut</key>
+		<string>Morninside</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
