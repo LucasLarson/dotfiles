@@ -85,3 +85,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Shell Script.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Shell Script.tmbundle
 	url = https://github.com/textmate/shellscript.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Source.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Source.tmbundle
+	url = https://github.com/textmate/source.tmbundle
