@@ -138,6 +138,11 @@ export PATH="/usr/local/sbin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 
+# make
+# use latest via Homebrew but without the `g` prefix
+PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+
+
 # npm without sudo
 # https://github.com/sindresorhus/guides/blob/285270f06e117c7e0a6b6e51eca6e488d9d7c44d/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES="${HOME}/.npm-packages"
