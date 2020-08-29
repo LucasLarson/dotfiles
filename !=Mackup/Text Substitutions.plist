@@ -184,6 +184,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>¾</string>
+		<key>shortcut</key>
+		<string>3/4vulgar</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>⅗</string>
 		<key>shortcut</key>
 		<string>3/5</string>
@@ -3343,6 +3349,18 @@
 		<string>⅒</string>
 		<key>shortcut</key>
 		<string>vulg110</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>¾</string>
+		<key>shortcut</key>
+		<string>vulgar3/4</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>¾</string>
+		<key>shortcut</key>
+		<string>vulgar34</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
