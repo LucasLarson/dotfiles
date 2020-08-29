@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-if [[ $1 == "which" ]]; then
-  echo "rbenv: $2: command not found"
-  exit 127
-fi
