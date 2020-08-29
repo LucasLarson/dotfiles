@@ -91,3 +91,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/SSH Config.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/SSH Config.tmbundle
 	url = https://github.com/textmate/ssh-config.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/SCM.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/SCM.tmbundle
+	url = https://github.com/textmate/scm.tmbundle
