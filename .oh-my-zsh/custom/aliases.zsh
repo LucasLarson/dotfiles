@@ -26,7 +26,17 @@ gu () {
   git submodule update --init --recursive --remote
   git status
 }
-alias gunstage="git reset HEAD --"
+gunstage () {
+  if [ $# -eq 0 ]; then
+    git restore --staged --progress .
+  else
+    arguments=()
+    for index in "$@"; do
+      git restore --staged --progress "${index[@]}"
+      arguments+=("$index")
+    done
+  fi
+}
 
 # Python
 # alias python="python3" # await WebKit, Chromium to call python2 or to use
