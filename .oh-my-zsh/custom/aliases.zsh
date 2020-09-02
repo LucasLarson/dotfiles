@@ -22,9 +22,13 @@ gu () {
   if [ -n "$1" ]; then
     cd ~/Code/"$1" || cd .
   fi
-  git fetch --all --verbose
-  git submodule update --init --recursive --remote
-  git status
+
+  # https://stackoverflow.com/a/53809163
+  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    git fetch --all --verbose
+    git submodule update --init --recursive --remote
+    git status
+  fi
 }
 gunstage () {
   if [ $# -eq 0 ]; then
