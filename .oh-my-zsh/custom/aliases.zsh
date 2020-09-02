@@ -18,7 +18,7 @@ alias gfgs="git fetch --all && git status"
 alias gmv="git mv --verbose"
 alias gtake="git checkout -b"
 alias gti="git"
-function gu () {
+gu () {
   if [ -n "$1" ]; then
     cd ~/Code/"$1" || return
   fi
