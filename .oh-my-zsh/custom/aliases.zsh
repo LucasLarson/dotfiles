@@ -20,7 +20,7 @@ alias gtake="git checkout -b"
 alias gti="git"
 gu () {
   if [ -n "$1" ]; then
-    cd ~/Code/"$1" || return
+    cd ~/Code/"$1" || cd .
   fi
   git fetch --all --verbose
   git submodule update --init --recursive --remote
