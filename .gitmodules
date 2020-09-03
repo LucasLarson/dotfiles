@@ -109,3 +109,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/AppleScript.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/AppleScript.tmbundle
 	url = https://github.com/textmate/applescript.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Diff.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Diff.tmbundle
+	url = https://github.com/textmate/diff.tmbundle
