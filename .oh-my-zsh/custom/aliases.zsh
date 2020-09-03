@@ -9,7 +9,7 @@ alias atom="atom-nightly"
 alias apm="apm-nightly"
 
 # dotfiles
-alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch --all --verbose && git submodule update --init --recursive --remote && git status"
+alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch --all --verbose && git submodule update --init --recursive && git status"
 
 # Git
 alias gc="git commit --verbose --gpg-sign"
@@ -26,7 +26,7 @@ gu () {
   # https://stackoverflow.com/a/53809163
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     git fetch --all --verbose
-    git submodule update --init --recursive --remote
+    git submodule update --init --recursive
     git status
   fi
 }
