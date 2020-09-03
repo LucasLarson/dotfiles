@@ -112,3 +112,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Diff.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Diff.tmbundle
 	url = https://github.com/textmate/diff.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/CSS.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/CSS.tmbundle
+	url = https://github.com/textmate/css.tmbundle
