@@ -80,7 +80,7 @@ excluded_words:
   - Wsizeof
 
   # Git
-  - gmv # homemade alias to `git mv`
+  - gmv  # homemade alias to `git mv`
 
   # GitHub funding
   - Liberapay
