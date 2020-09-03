@@ -118,3 +118,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Greasemonkey.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Greasemonkey.tmbundle
 	url = https://github.com/textmate/greasemonkey.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Go.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Go.tmbundle
+	url = https://github.com/syscrusher/golang.tmbundle
