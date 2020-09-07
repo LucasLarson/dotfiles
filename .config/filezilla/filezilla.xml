@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<FileZilla3 version="3.46.0" platform="mac">
+<FileZilla3 version="3.50.0" platform="mac">
 	<Settings>
 		<Setting name="Use Pasv mode">1</Setting>
 		<Setting name="Limit local ports">0</Setting>
@@ -60,139 +60,10 @@
 		<Setting name="Concurrent download limit">0</Setting>
 		<Setting name="Concurrent upload limit">0</Setting>
 		<Setting name="Update Check">1</Setting>
-		<Setting name="Update Check Interval">7</Setting>
-		<Setting name="Last automatic update check">2019-12-14 20:35:44</Setting>
-		<Setting name="Last automatic update version">3.40.0</Setting>
-		<Setting name="Update Check New Version">nightly 2019-12-14 https://filezilla-project.org/nightlies/2019-12-14/x86_64-apple-darwin18.2.0/FileZilla3.app.tar.bz2 10596080 sha512 6fcf6452fe8b425d21907642fb5947b1d7235e2469938c83ba0deba9832b6884e704b5cc39477bdd61f8a5634aa55f2ea0ef73bf4e05800dabda981d81b21e84 sig:TnhC6CKrGPD6yDYBTMCor9c/fT74autMkHctpnPukf4zEJSeEH/upFcWs/nh6LAjE1AHE3SOppeMMH0WrUFnAw
-release 3.46.0 https://dl4.cdn.filezilla-project.org/FileZilla_3.46.0_macosx-x86.app.tar.bz2 10378812 sha512 76ebd0147f8ceec431cf7cfd43e63a9dc5e43f94e49a8722b38185908fe584ddc06f076cecd6689e95a606af7db307910257b2c756a819f19309114773f5fa1e sig:gKWjQo8UOh5JP8OE5DIqnYI/yMIfBPDxORaeiN1gFhRK/khshahmKZNnopmw7A0QR5CwEb2PqJ2dys0XWvy7Aw
-
-3.46.0 (2019-11-26)
-
-- Fixed a rare crash if closing FileZilla the very same moment a connection or transfer requests user attention
-
-3.46.0-rc1 (2019-11-15)
-
-+ Show an error message in the local directory listing if the user lacks permission to show the directory
-- Local filelist status bar is now reset if accessing a local directory fails
-- macOS: Work around an a bug in macOS 10.15 (Catalina) where closing a dialog shown from a timer can result in temporary freezes
-- Refactored speed-limiting code
-- Building and running FileZilla now depends on libfilezilla &gt;= 0.19.1 (https://lib.filezilla-project.org/)
-
-3.45.1 (2019-09-25)
-
-- Fixed sorting issues in the directory trees
-
-3.45.0 (2019-09-24)
-
-- Updated translations
-
-3.45.0-rc1 (2019-09-16)
-
-+ If checking for updates cannot be performed for a prolonged time, users are warned about using an outdated version
-- Performance improvements if expanding or refreshing a directory with thousands of direct subdirectories in the directory trees
-- Fixed prefix search in Site Manager
-- macOS: Fix password pasting using Cmd+V
-- Minor performance improvements deleting many thousands of files
-
-3.44.2 (2019-08-15)
-
-- MSW: Fixed a crash if using predefined sites through fzdefaults.xml
-- Fixes to protocol selection glitches in the Site Manager
-- Increase maximum length of response lines when using FTP
-
-3.44.1 (2019-08-09)
-
-- Fixed a regression introduced in 3.44.0-rc1 breaking support for insecure servers
-
-3.44.0 (2019-08-09)
-
-- Fixed export in context menu of Site Manager to handle multiple selected items
-
-3.44.0-rc1 (2019-08-02)
-
-+ Multiple items can now be selected in the Site Manager
-+ Pressing F3 in the Site Manager opens a search dialog
-+ Add a reminder to the message log to switch to FTP over TLS each time a plain FTP connection is used
-- Fix loading of confirmed, known insecure hosts
-- Building and running FileZilla now depends on libfilezilla &gt;= 0.18.0 (https://lib.filezilla-project.org/)
-
-3.43.0 (2019-06-27)
-
-! Filenames containing double-quotation marks were not escaped correctly when selected for opening/editing. Depending on the associated program, parts of the filename could be interpreted as commands.
-- Added a second layer of authentication to the update mechanism
-
-3.43.0-rc2 (2019-06-21)
-
-- Rebuilt against libfilezilla 0.17.1
-
-3.43.0-rc1 (2019-06-19)
-
-- macOS: Minimum required macOS version has been increased to 10.11 (El Capitan)
-- *nix: Official Linux binaries are now built for Debian 10 (Buster)
-- Building FileZilla now requires a C++17 compiler
-- Building and running FileZilla now depends on libfilezilla &gt;= 0.17.0 (https://lib.filezilla-project.org/)
-- When using SFTP, fix fallback to password authentication on a server refusing a password-protected key
-- Fix HTTP proxy support
-- *nix: Improve resolution of program icon
-
-3.42.1 (2019-05-08)
-
-- OS X: Fix a compatibility issue with macOS 10.13
-
-3.42.0 (2019-05-06)
-
-- Fixed a potential crash if the first-launch welcome dialog is shown at an inopportune moment
-- Fixed display of subject and issuer details in the certificate verification dialogs with some certificates
-- Official binaries are now built againt GnuTLS 3.6.7, minimum required GnuTLS version to build FileZilla is now 3.5.7
-
-3.42.0-rc1 (2019-04-26)
-
-- Switching from using a master password to not saving passwords at all no longer requires entering the master password
-- *nix: Fixed support for internationalized domain names on systems having AI_IDN when using SFTP
-- Fixed an assertion after importing a manipulated queue file
-- When importing sites, any imported passwords are now immediately protected/deleted depending on the password protection settings
-- The ability to import Sitem Manager entries from antique FileZilla 2, last updated over a dozen years ago, has been removed
-
-3.42.0-beta1 (2019-04-21)
-
-- Building and running FileZilla now depends on libfilezilla &gt;= 0.16.0 (https://lib.filezilla-project.org/)
-- Limit the maximum length of site, bookmark and filter names to prevent display issues and crashes due to some operating systems badly handling long texts
-- When displaying message boxes, insert zero-width spaces into long unbroken words to prevent display issues and crashes due to some operating systems badly handling long texts
-- Fix crash in the external IP address resolver
-- Fix some assertions if a server sends bad file sizes
-- Large refactoring of the socket code
-- The thread pool from libfilezilla is now used for all worker threads
-
-3.41.2 (2019-03-18)
-
-! Backport a security fix from PuTTY 0.71 affecting SFTP connections: Fix an integer overflow in the RSA key exchange preceeding host key verification
-
-3.41.1 (2019-03-06)
-
-- Fix a regression introduced in 3.41.1 with slow FTP servers needlessly waiting for a bidirectional shutdown of the data connection during downloads
-
-3.41.0 (2019-03-06)
-
-- MSW: Fix an issue with failing uploads due to the operating system not gracefully closing TCP connections contrary to the documented behavior
-- MSW: Fix compilation flags for wxWidgets to no longer include useless XP compatibility
-
-3.41.0-rc1 (2019-02-26)
-
-- Fixed crash if adding a bookmark with the current connection not yet having a Site Manager entry
-- Fixed a rare crash if closing FileZilla while a recursive chmod operation is still in progress
-- Fixed a rare crash if starting directory comparison on an empty directory without logical parent
-- Fixed a rare crash on changing the file list sort order when the focused item index has previously become invalid
-- Restrict the maximum length of regular expressions in filter conditions due to bugs in some implementations of the C++ Standard Library causing crashes
-- OS X: Fixed crash if the path of a file dropped on FileZilla cannot be obtained
-- Fixed order in which directories helper tools and data files are searched for
-- Fixed a rare crash if closing tab during an ongoing recursive directory deletion
-</Setting>
-		<Setting name="Update Check Check Beta">0</Setting>
 		<Setting name="Show debug menu">0</Setting>
 		<Setting name="File exists action download">0</Setting>
 		<Setting name="File exists action upload">0</Setting>
 		<Setting name="Allow ascii resume">0</Setting>
-		<Setting name="Greeting version">3.46.0</Setting>
 		<Setting name="Greeting resources" />
 		<Setting name="Onetime Dialogs" />
 		<Setting name="Show Tree Local">1</Setting>
@@ -277,7 +148,20 @@ release 3.46.0 https://dl4.cdn.filezilla-project.org/FileZilla_3.46.0_macosx-x86
 			<EncodingType>Auto</EncodingType>
 			<BypassProxy>0</BypassProxy>
 		</LastServer>
-		<Setting name="Tab data">
+		<Setting name="File associations (v2)" platform="mac"></Setting>
+		<Setting name="File doubleclick action">0</Setting>
+		<Setting name="Dir doubleclick action">0</Setting>
+		<Setting name="Startup action">0</Setting>
+		<Setting name="Highest shown overlay id">0</Setting>
+		<Setting name="Greeting version">3.50.0</Setting>
+		<Setting name="Last automatic update version">3.50.0</Setting>
+		<Setting name="Update Check Interval">1</Setting>
+		<Setting name="Update Check Check Beta">1</Setting>
+		<Setting name="Last automatic update check">2020-09-07 20:11:01</Setting>
+		<Setting name="Update Check New Version" platform="mac">nightly 2020-09-06 https://filezilla-project.org/nightlies/2020-09-06/x86_64-apple-darwin18.2.0/FileZilla3.app.tar.bz2 12834073 sha512 ebc1b7bbc3a8f032da49429cb1b205a5777d0ad8875c7e17cf5f94ed6812491b46cc956deee03e662286fe91ddb8411d674cc312a55591ffad319a1b47b09464 sig:X6RREt4nE3KrPI/aSrtKm5HYWFEZ9REy5r2pLbLji8+Av8qKWc4Nf9b2kfq4ooL2Sr0rJvMcFUzB/6e4D6pADw
+release 3.50.0 https://dl1.cdn.filezilla-project.org/FileZilla_3.50.0_macosx-x86.app.tar.bz2 13844514 sha512 ad182bc7e6a61d9178c847ad3cb9d92145209591c25cec9c20c1b3a948b6c24bbfc04c62db38ec6226eeafc9997b7465225c82a82aa7f15aa5169eb5cb45e25c sig:+HxuJESFAMkzTQbcd777oKX7JOKshwIryszneVsGR0yPaIqO2YGknJr5pN7asTzWuJdIJYvZw35DPdsbV8jhBA
+</Setting>
+		<Setting name="Tab data" sensitive="1">
 			<Tabs>
 				<Tab selected="1">
 					<Host>ftp.gaystay.co</Host>
@@ -287,13 +171,10 @@ release 3.46.0 https://dl4.cdn.filezilla-project.org/FileZilla_3.46.0_macosx-x86
 					<User>gaysta5</User>
 					<Pass encoding="base64" />
 					<Logontype>1</Logontype>
-					<TimezoneOffset>0</TimezoneOffset>
-					<PasvMode>MODE_DEFAULT</PasvMode>
-					<MaximumMultipleConnections>0</MaximumMultipleConnections>
 					<EncodingType>Auto</EncodingType>
 					<BypassProxy>0</BypassProxy>
 					<Name>New site</Name>
-					<Site>0/New site</Site>
+					<Site></Site>
 					<RemotePath></RemotePath>
 					<LocalPath>/Users/LucasLarson/</LocalPath>
 				</Tab>
