@@ -124,3 +124,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/CMake.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/CMake.tmbundle
 	url = https://github.com/textmate/cmake.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Mediawiki.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Mediawiki.tmbundle
+	url = https://github.com/textmate/mediawiki.tmbundle
