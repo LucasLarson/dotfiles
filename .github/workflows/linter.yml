@@ -16,8 +16,7 @@ name: Lint Code Base
 #############################
 on:
   push:
-    # branches-ignore: [main]
-    # uncomment to run only on non-`main` branches
+    branches-ignore:  # [main]
   pull_request:
     branches: [main]
 
