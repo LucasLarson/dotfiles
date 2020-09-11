@@ -127,3 +127,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Mediawiki.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Mediawiki.tmbundle
 	url = https://github.com/textmate/mediawiki.tmbundle
+[submodule ".oh-my-zsh/custom/plugins/gunstage"]
+	path = .oh-my-zsh/custom/plugins/gunstage
+	url = https://github.com/LucasLarson/gunstage
