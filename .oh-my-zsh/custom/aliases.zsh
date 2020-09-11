@@ -16,6 +16,9 @@ alias gc="git commit --verbose --gpg-sign"
 alias gcm="git commit --verbose --gpg-sign --message"
 alias gfgs="git fetch --all && git status"
 alias gmv="git mv --verbose"
+if command -v gpg2 > /dev/null 2>&1; then
+  alias gpg="gpg2"
+fi
 alias gtake="git checkout -b"
 alias gti="git"
 gu () {
