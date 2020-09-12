@@ -53,4 +53,3 @@ alias wihch="which"
 # Zsh
 alias ohmyzsh="~/.oh-my-zsh"
 alias zshconfig="edit ~/.zshrc" # see ~/.zshrc for `edit`
-alias zshcustom="$ZSH_CUSTOM"
