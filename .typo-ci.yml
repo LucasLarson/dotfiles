@@ -81,6 +81,7 @@ excluded_words:
 
   # Git
   - gmv  # homemade alias to `git mv`
+  - osxkeychain
 
   # GitHub funding
   - Liberapay
