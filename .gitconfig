@@ -1,7 +1,9 @@
 [user]
 	email = LucasLarson@riseup.net
 	name = Lucas Larson
-	signingkey = AA4FB0D44C2AA5C90B91861DF09A4FB0FE301234
+
+	# signingKey
+	# use `git config --system user.signingKey 𝑥`
 
 [core]
 	# macOS and Linux only per
