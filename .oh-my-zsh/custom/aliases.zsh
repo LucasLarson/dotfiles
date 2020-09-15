@@ -36,10 +36,9 @@ gu () {
 }
 
 # Python
-# alias python="python3" # await WebKit, Chromium to call python2 or to use
-                         # python3, but even with this disabled, pyenv is set
-                         # to use python3 when calling `python`
+alias python="python3"
 alias pip="pip3"
+
 
 # shell
 alias cp="cp -r -i"
