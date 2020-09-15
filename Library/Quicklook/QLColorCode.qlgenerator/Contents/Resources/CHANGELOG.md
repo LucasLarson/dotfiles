@@ -7,9 +7,60 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+- NOTHING
+
+## [3.1.1] — 2020-09-09
+
+### Fixed
+
+- `java` support.
+- `C++` support.
+- `Objective-C++` support.
+- Others took [here](https://github.com/meissnem/QLColorCode/blob/master/Info.plist).
+
+## [3.1.0] — 2020-09-09
+
+### Added
+
+- `kts` (kotlin) support.
+- `xsh` support.
+- `pyc` support (decompilation with `uncompyle6` [has to be in `/usr/local/bin`])
+- `rst` support.
+- `perl` support.
+- `bats` (Bash Automated Testing System) support.
+
+### Fixed
+
+- `fish` support. 
+- `bat` (Windows Batch) support.
+- `diff` support.
+- `bash` support.
+
+## [3.0.3] — 2020-09-09
+
+### Fixed
+
+- `xquery` support for forgotten extensions (thanks leo@leostuder.ch).
+
+## [3.0.2] — 2020-09-08
+
+### Added
+
+- `xsd`/`xquery`/`xml`/`xsl` support.
+
 ### Changed
 
-- CHANGELOG follow "Keep a Changelog".
+- Minimum rendering size is now `9`.
+
+## [3.0.1] — 2020-09-04
+
+### Added
+
+- `bazel` support.
+
+### Changed
+
+- `CHANGELOG.md` follows "Keep a Changelog".
 
 ### Removed
 
