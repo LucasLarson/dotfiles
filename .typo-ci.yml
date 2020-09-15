@@ -31,13 +31,26 @@ excluded_files:
 # Known spellings to ignore
 excluded_words:
   - Biffle
+  - calibreapp
   - Crashlytics
+  - ffs
+  - ibiqlik  # ibiqlik/action-yamllint
   - LucasLarson
   - Mackup
   - omz
+  - peter-evans  # peter-evans/create-pull-request
   - rustup
+  - sobolevn  # sobolevn/misspell-fixer-action
   - typoci
   - uncommenting
+
+  # AsciiDoc
+  - adoc
+
+  # CSS
+  - webtv
+  - konqueror
+  - freebsd
 
   # Clang, GCC
   - cbp
@@ -83,9 +96,15 @@ excluded_words:
 
   # Git
   - gmv  # homemade alias to `git mv`
+  - gunstage
   - osxkeychain
+  - unstage
+  - unstagers
+  - unstaging
 
-  # GitHub funding
+  # GitHub
+  - gitsubmodule
+  - gomod
   - Liberapay
   - Otechie
 
@@ -100,6 +119,9 @@ excluded_words:
   # macOS
   - donotpresent
   - icns
+
+  # shell
+  - euo
 
   # TextMate
   - tmbundle
@@ -116,11 +138,17 @@ excluded_words:
   - xcworkspacedata
 
   # Zsh
-  - MichaelAquilina
-  - robbyrussell
+  - MichaelAquilina  # https://gitignore.io/api/zsh
+  - robbyrussell  # https://gitignore.io/api/zsh
+  - venv
+  - zcalc
+  - zcompdump
   - zdharma
+  - zrecompile
+  - zsdoc
   - zshelldoc
   - Zunit
+  - zwc
 
 
 # Filename spellchecking
