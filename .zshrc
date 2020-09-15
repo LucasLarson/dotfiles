@@ -138,7 +138,7 @@ export GPG_TTY=$TTY
 
 # Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f2621298c879aa205754ae01d5417572d9/Library/Homebrew/diagnostic.rb#L432-L435
-export PATH="/usr/local/sbin:$PATH"
+[[ -d /usr/local/sbin ]] && PATH="/usr/local/sbin:$PATH"
 
 
 # grep
