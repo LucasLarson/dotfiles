@@ -9,7 +9,8 @@ dictionaries:
   - en_GB
   - fr
 
-# Any files/folders we should ignore?
+
+# Files and folders to ignore
 excluded_files:
   - "esperanto/*"
   - "vendor/**/*"
@@ -26,7 +27,8 @@ excluded_files:
   - "Gemfile.lock"
   - ".typo-ci.yml"
 
-# Any typos we should ignore?
+
+# Known spellings to ignore
 excluded_words:
   - Biffle
   - Crashlytics
@@ -120,5 +122,6 @@ excluded_words:
   - zshelldoc
   - Zunit
 
-# Would you like filenames to also be spellchecked?
+
+# Filename spellchecking
 spellcheck_filenames: false
