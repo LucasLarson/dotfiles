@@ -14,6 +14,7 @@ alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch --all --verbose && g
 # Git
 alias gc="git commit --verbose --gpg-sign"
 alias gcm="git commit --verbose --gpg-sign --message"
+alias gco="git checkout --progress"
 alias gfgs="git fetch --all --verbose && git status"
 alias gmv="git mv --verbose"
 if command -v gpg2 > /dev/null 2>&1; then
