@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/anthonygelibert/QLColorCode.svg?branch=master)](https://travis-ci.org/anthonygelibert/QLColorCode)
 
-**Original project:** <https://code.google.com/archive/p/qlcolorcode/>
+**Original project:** <http://code.google.com/p/qlcolorcode/>
 
 This is a Quick Look plug-in that renders source code with syntax highlighting,
 using the [Highlight library](http://www.andre-simon.de).

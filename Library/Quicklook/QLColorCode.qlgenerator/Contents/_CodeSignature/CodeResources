@@ -4,9 +4,9 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Resources/CHANGELOG</key>
+		<key>Resources/CHANGELOG.md</key>
 		<data>
-		09eHsyHMaqGlyyawbP/fS74oins=
+		ADcwF1d2sDNzvmFsLHOz3lF9r/U=
 		</data>
 		<key>Resources/COPYING</key>
 		<data>
@@ -14,20 +14,20 @@
 		</data>
 		<key>Resources/README.md</key>
 		<data>
-		pp+DXx1/z7oWj58+nXy+i+KLyXI=
+		ghuTj8T/yw5KXXHySx/yyTdQMNE=
 		</data>
 		<key>Resources/colorize.sh</key>
 		<data>
-		W74m4jkLZo+2dX86NiqWtuKziFI=
+		ms9r/6KvAFi/suqPGKbPpwTELPU=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Resources/CHANGELOG</key>
+		<key>Resources/CHANGELOG.md</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			oi8nIjW7NRj/1cLx4GQT0KFJObdKitTe1DGZDl7gQWw=
+			CJxkuQRyAtIR/YUuGJSSGp2PAjDM+w3V3g3Q21ATj1o=
 			</data>
 		</dict>
 		<key>Resources/COPYING</key>
@@ -41,14 +41,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NmaY8F2uc1+4NI7RaSioLi68COEC05S25lDtNKnlEgg=
+			iMeGFQqYnPXs3bDt4HsHSqyCmfJMPRWmlhsGz4lb5KA=
 			</data>
 		</dict>
 		<key>Resources/colorize.sh</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			P+YSzAEA9/tYJ6CHXKzE9iJJugnXJ4eNKfcphtm+7V0=
+			MtAiJTibzKEc5Ebp7nN0Xi0bAhdtXGAI7IuIz1M3GVw=
 			</data>
 		</dict>
 	</dict>

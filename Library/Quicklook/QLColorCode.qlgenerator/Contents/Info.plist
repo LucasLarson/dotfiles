@@ -27,6 +27,7 @@
 				<string>com.apple.property-list</string>
 				<string>org.tug.tex</string>
 				<string>com.sun.java-class</string>
+				<string>com.sun.java-source</string>
 				<string>org.vim.vim-script</string>
 				<string>org.tug.lua</string>
 				<string>public.tex</string>
@@ -35,10 +36,21 @@
 				<string>public.c-header</string>
 				<string>public.objective-c-source</string>
 				<string>public.c-source</string>
+				<string>public.c-plus-plus-source</string>
+				<string>public.c-plus-plus-header</string>
+				<string>public.objective-c-plus-plus-source</string>
+				<string>public.assembly-source</string>
+				<string>com.apple.rez-source</string>
+				<string>public.mig-source</string>
+				<string>public.swift-source</string>
+				<string>public.pascal-source</string>
+				<string>com.apple.symbol-export</string>
 				<string>public.csh-script</string>
 				<string>public.zsh-script</string>
+				<string>com.apple.terminal.shell-script</string>
+				<string>com.apple.terminal.session</string>
+				<string>com.apple.terminal.settings</string>
 				<string>public.python-script</string>
-				<string>com.apple.property-list</string>
 				<string>com.apple.xcode.strings-text</string>
 				<string>dyn.ah62d4rv4ge81g6pq</string>
 				<string>dyn.ah62d4rv4ge8007a</string>
@@ -53,6 +65,31 @@
 				<string>dyn.ah62d4rv4ge80g6u</string>
 				<string>dyn.ah62d4rv4ge80g3xh</string>
 				<string>dyn.ah62d4rv4ge81q7pf</string>
+				<string>dyn.ah62d4rv4ge81a6xtsbw1e7dmqz3u</string>
+				<string>dyn.ah62d4rv4ge80e2p4qz0a</string>
+				<string>dyn.ah62d4rv4ge80e8xq</string>
+				<string>dyn.ah62d4rv4ge81u65e</string>
+				<string>dyn.ah62d4rv4ge81u6pzqz3hw</string>
+				<string>org.vim.xsl-file</string>
+				<string>dyn.ah62d4rv4ge81u7k</string>
+				<string>dyn.ah62d4rv4ge81u6pr</string>
+				<string>dyn.ah62d4rv4ge81u6k</string>
+				<string>dyn.ah62d4rv4ge8007dx</string>
+				<string>dyn.ah62d4rv4ge80e2py</string>
+				<string>dyn.ah62d4rv4ge80q4pxra</string>
+				<string>dyn.ah62d4rv4ge81u65k</string>
+				<string>dyn.ah62d4rv4ge81a8pd</string>
+				<string>dyn.ah62d4rv4ge81e65y</string>
+				<string>public.perl-script</string>
+				<string>dyn.ah62d4rv4ge80e2pysq</string>
+				<string>public.patch-file</string>
+				<string>public.bash-script</string>
+				<string>com.apple.xcode.bash-script</string>
+				<string>com.apple.xcode.csh-script</string>
+				<string>com.apple.xcode.ksh-script</string>
+				<string>com.apple.xcode.tcsh-script</string>
+				<string>com.apple.xcode.yacc-source</string>
+				<string>com.apple.xcode.zsh-script</string>
 			</array>
 		</dict>
 	</array>
@@ -65,13 +102,13 @@
 	<key>CFBundleName</key>
 	<string>QLColorCode</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.0.1+dev1</string>
+	<string>3.1.1</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>3.0.1+dev1</string>
+	<string>3.1.1</string>
 	<key>CFPlugInDynamicRegisterFunction</key>
 	<string></string>
 	<key>CFPlugInDynamicRegistration</key>
@@ -93,7 +130,7 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>12A8189h</string>
+	<string>12A8189n</string>
 	<key>DTPlatformName</key>
 	<string>macosx</string>
 	<key>DTPlatformVersion</key>
@@ -105,7 +142,7 @@
 	<key>DTXcode</key>
 	<string>1200</string>
 	<key>DTXcodeBuild</key>
-	<string>12A8189h</string>
+	<string>12A8189n</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.15</string>
 	<key>QLNeedsToBeRunInMainThread</key>
@@ -117,7 +154,7 @@
 	<key>QLSupportsConcurrentRequests</key>
 	<true/>
 	<key>QLThumbnailMinimumSize</key>
-	<real>17</real>
+	<real>9</real>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict>
@@ -342,6 +379,7 @@
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.script</string>
+				<string>public.patch-file</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Diff File</string>
@@ -428,6 +466,7 @@
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
+				<string>dyn.ah62d4rv4ge80e2py</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>DOS Batch Source File</string>
@@ -972,6 +1011,7 @@
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
+				<string>dyn.ah62d4rv4ge80q4pxra</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Fish source files</string>
@@ -982,6 +1022,23 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>fish</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>dyn.ah62d4rv4ge81u65k</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>XSH source files</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.xsh.source</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>xsh</string>
 				</array>
 			</dict>
 		</dict>
@@ -1041,6 +1098,8 @@
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.source-code</string>
+				<string>dyn.ah62d4rv4ge80e2pysq</string>
+				<string>public.bash-script</string>
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Shell script</string>
@@ -1051,6 +1110,8 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>bashrc</string>
+					<string>bats</string>
+					<string>bash</string>
 				</array>
 			</dict>
 		</dict>
@@ -1102,6 +1163,23 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>kmt</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>dyn.ah62d4rv4ge8007dx</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Kotlin source files</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.kotlin.source</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>kts</string>
 				</array>
 			</dict>
 		</dict>
@@ -1240,6 +1318,54 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>vue</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>dyn.ah62d4rv4ge80e2p4qz0a</string>
+				<string>dyn.ah62d4rv4ge80e8xq</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Bazel Source File</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.bazel.source</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>bazel</string>
+					<string>bzl</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>dyn.ah62d4rv4ge81u65e</string>
+				<string>dyn.ah62d4rv4ge81u6pzqz3hw</string>
+				<string>org.vim.xsl-file</string>
+				<string>public.xml</string>
+				<string>dyn.ah62d4rv4ge81u7k</string>
+				<string>dyn.ah62d4rv4ge81u6pr</string>
+				<string>dyn.ah62d4rv4ge81u6k</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>XSD/XQuery/XSL/XML Source File</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.xml-tools.source</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>xsd</string>
+					<string>xquery</string>
+					<string>xml</string>
+					<string>xsl</string>
+					<string>xu</string>
+					<string>xqm</string>
+					<string>xq</string>
 				</array>
 			</dict>
 		</dict>
