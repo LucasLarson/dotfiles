@@ -90,6 +90,7 @@ export SAVEHIST=$HISTSIZE
 plugins=(
   git
   gunstage
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -127,6 +128,7 @@ alias edit="editor"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
+
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
@@ -160,6 +162,7 @@ unset MANPATH # delete if you already modified MANPATH elsewhere
 if [[ $manpath ]]; then
   export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 fi
+
 
 # RVM and rbenv are incompatible and shell references to RVM have to be removed
 # https://github.com/rbenv/rbenv/blob/577f04653df2289f492d4cd9ea3e9d441281f317/README.md#installation
