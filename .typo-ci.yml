@@ -38,7 +38,7 @@ excluded_words:
   - ibiqlik  # ibiqlik/action-yamllint
   - LucasLarson
   - Mackup
-  - omz
+  - omz  # ohmyzsh
   - peter-evans  # peter-evans/create-pull-request
   - rustup
   - sobolevn  # sobolevn/misspell-fixer-action
