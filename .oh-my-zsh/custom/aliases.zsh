@@ -9,7 +9,8 @@ alias atom="atom-nightly"
 alias apm="apm-nightly"
 
 # dotfiles
-alias mu="cd ~/Dropbox/Mackup && mackup backup && git fetch --all --verbose && git submodule update --init --recursive && git status"
+alias mu="cd ~/Dropbox/Mackup && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status"
+
 
 # Git
 alias gc="git commit --verbose --gpg-sign"
