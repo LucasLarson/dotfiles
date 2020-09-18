@@ -36,6 +36,10 @@ gu () {
   fi
 }
 
+# https://github.com/tarunsk/dotfiles/blob/5b31fd648bcfe4de54e27388a1e1e733fca80ab9/.always_forget.txt#L1957
+alias gvc="git verify-commit HEAD"
+
+
 # Python
 alias python="python3"
 alias pip="pip3"
