@@ -33,6 +33,7 @@ excluded_words:
   - Biffle
   - calibreapp
   - Crashlytics
+  - csharp  # CodeQL Analysis
   - ffs
   - ibiqlik  # ibiqlik/action-yamllint
   - LucasLarson
