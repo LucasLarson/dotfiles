@@ -133,3 +133,6 @@
 [submodule ".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
 	path = .oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "Library/Application Support/TextMate/Managed/Bundles/CTags.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/CTags.tmbundle
+	url = https://github.com/textmate/ctags.tmbundle
