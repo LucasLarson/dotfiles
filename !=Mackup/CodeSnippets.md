@@ -14,6 +14,9 @@
         - [Cask](#cask)
       - [$MANPATH](#manpath)
       - [pip packages](#pip-packages)
+- [apk](#apk)
+  - [add](#add)
+    - [testing](#testing)
 - [search](#search)
   - [`grep`](#grep)
   - [locate all](#locate-all)
@@ -179,6 +182,16 @@ saveMANPATH=-1 && mkdir -p $DOTFILES/\!=Mackup && filename=$DOTFILES/\!=Mackup/M
 ```bash
 pip list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'pip packages installed ' > ~/Dropbox/Mackup/\!=Mackup/pip && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/pip && printf '—————————————————————————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/pip && pip list >> ~/Dropbox/Mackup/\!=Mackup/pip && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
+
+## apk
+
+### add
+
+#### testing
+
+`apk add foo #` unavailable? `\`<br/>
+`#` then try `\`<br/>
+`apk add foo@testing #` [via](https://stackoverrun.com/ja/q/12834672)
 
 ## search
 
