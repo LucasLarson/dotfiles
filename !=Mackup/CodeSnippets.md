@@ -33,7 +33,8 @@
   - [reset](#reset)
   - [repair website disk permissions](#repair-website-disk-permissions)
     - [date modified modify](#date-modified-modify)
-  - [flags for C, C++](#flags-for-c-c)
+- [C, C++](#c-c)
+  - [flags](#flags)
     - [C++ features before wide support](#c-features-before-wide-support)
   - [run `cpplint` recursively](#run-cpplint-recursively)
   - [run `cppcheck` recursively](#run-cppcheck-recursively)
@@ -265,6 +266,9 @@ remove bogus entries from Finder’s “Open With” menu ([via](https://githu
 
 `touch -t 2003040500 file.txt` # date modified → 2020-03-04 5:00am
 
+## C, C++
+
+### flags
 
 `-Wall -Wextra -pedantic`<br/>
 `#ifdef __APPLE__`<br/>
