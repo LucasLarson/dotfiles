@@ -35,6 +35,7 @@
     - [date modified modify](#date-modified-modify)
   - [flags for C, C++](#flags-for-c-c)
     - [C++ features before wide support](#c-features-before-wide-support)
+  - [run `cpplint` recursively](#run-cpplint-recursively)
 - [Gatekeeper](#gatekeeper)
 - [Git](#git)
   - [`init` via GitHub](#init-via-github)
@@ -275,6 +276,10 @@ remove bogus entries from Finder’s “Open With” menu ([via](https://githu
 
 for example, C++17’s `<filesystem>`<br/>
 `-lstdc++fs`
+
+### run `cpplint` recursively
+
+`cpplint --verbose=0 --linelength=79 --recursive --extensions=c++,cc,cp,cpp,cxx,h,h++,hh,hp,hpp,hxx . >> cpplint.txt`
 
 ## Gatekeeper
 
