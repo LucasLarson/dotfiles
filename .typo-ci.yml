@@ -54,12 +54,16 @@ excluded_words:
   - freebsd
 
   # Clang, GCC
+  - argc
+  - argv
   - cbp
   - climits
   - cstring
   - ctor
   - dtor
   - dylib
+  - envc
+  - envp
   - fcaret
   - fdiagnostics
   - fdiagnostics-fixit-info
