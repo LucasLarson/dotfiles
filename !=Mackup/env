@@ -10,6 +10,7 @@ CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Devel
 DISPLAY=/private/tmp/com.apple.launchd.zJX1YAEfUf/org.macosforge.xquartz:0
 DOTFILES=/Users/LucasLarson/Dropbox/Mackup
 EDITOR=nvim
+GPG_TTY=/dev/ttys000
 HOME=/Users/LucasLarson
 ITERM_PROFILE=Default
 ITERM_SESSION_ID=
