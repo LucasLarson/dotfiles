@@ -90,7 +90,7 @@ printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && 
 printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && omz update && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && \
 printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up to date...\n' && python -m pip install --upgrade pip && \
 printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && \
-printf '\n\n\xe2'$update'\x9c\x85 done\x21\n\n' && exec zsh
+printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec zsh
 ```
 
 ### detail
@@ -138,7 +138,7 @@ printf '\n\n\xe2'$update'\x9c\x85 done\x21\n\n' && exec zsh
 `# git add . && git add -u || git add -A && #` [via](https://stackoverflow.com/a/15011313) `\`<br/>
 `git gc && \`<br/>
 `# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br/>
-`printf '\n\n\xe2\x9c\x85 done\x21\n\n' && #` [via](https://stackoverflow.com/a/30762087), [via](https://stackoverflow.com/a/602924) `\`<br/>
+`printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && #` [via](https://stackoverflow.com/a/30762087), [via](https://stackoverflow.com/a/602924), [via](https://github.com/koalaman/shellcheck/wiki/SC2059/0c9cfe7e8811d3cafae8df60f41849ef7d17e296#problematic-code) `\`<br/>
 `exec zsh #` note successful finish before restarting the shell
 
 ## Mackup
@@ -157,37 +157,37 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 Track changes to which applications are installed without syncing them. The instructions are bash-compatible and refer to this document for instructions on regenerating the list.
 
 ```bash
-saveApplications=-1 && mkdir -p $DOTFILES/\!=Mackup && mkdir -p /Applications && cd /Applications && filename=$DOTFILES/\!=Mackup/:Applications && touch $filename && pwd > $filename && date '+%Y-%m-%d' >> $filename && printf '—————————————\n' >> $filename && ls -F1 >> $filename && cd $DOTFILES && mackup backup && git fetch --all && git submodule update --init --recursive --remote && git diff $filename && unset filename && saveApplications=$filename && printf '\n\n\xe2'$filename'\x9c'$saveApplications'\x85 done!\n\n'
+saveApplications=-1 && mkdir -p "$DOTFILES"/\!=Mackup && mkdir -p /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
 ```
 
 ##### Atom packages
 
 ```bash
-apm list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'Atom extensions ' > ~/Dropbox/Mackup/\!=Mackup/Atom && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/Atom && printf '———————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/Atom && apm list >> ~/Dropbox/Mackup/\!=Mackup/Atom && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/Atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+apm list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'Atom extensions ' > "$DOTFILES"/\!=Mackup/atom && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/atom && printf '———————————————\n' >> "$DOTFILES"/\!=Mackup/atom && apm list >> "$DOTFILES"/Mackup/\!=Mackup/atom && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 
 ##### Homebrew
 
 ```bash
-listBrew=$DOTFILES/!=Mackup/brew\ list\ --verbose && touch $listBrew && printf 'brew list --verbose\n———————————————————\n' > $listBrew && brew list --verbose >> $listBrew && unset listBrew && printf '\n\n\xe2'$listBrew'\x9c\x85 done\x21\n\n'
+listBrew="$DOTFILES"/!=Mackup/brew\ list\ --verbose && touch "$listBrew" && printf 'brew list --verbose\n———————————————————\n' > "$listBrew" && brew list --verbose >> "$listBrew" && unset listBrew && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrew"
 ```
 
 ###### Cask
 
 ```bash
-listBrewCask=$DOTFILES/!=Mackup/brew\ cask\ list && touch $listBrewCask && printf 'brew cask list\n—————————————\n' > $listBrewCask && brew cask list >> $listBrewCask && unset listBrewCask && printf '\n\n\xe2'$listBrewCask'\x9c\x85 done\x21\n\n'
+listBrewCask="$DOTFILES"/!=Mackup/brew\ cask\ list && touch "$listBrewCask" && printf 'brew cask list\n—————————————\n' > "$listBrewCask" && brew cask list >> "$listBrewCask" && unset listBrewCask && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrewCask"
 ```
 
 ##### $MANPATH
 
 ```bash
-saveMANPATH=-1 && mkdir -p $DOTFILES/\!=Mackup && filename=$DOTFILES/\!=Mackup/MANPATH && touch $filename && printf '# $MANPATH’s contents\n# ' > $filename && date '+%Y-%m-%d' >> $filename && printf '# ———————————————————————\n' >> $filename && <<<${(F)manpath} >> $filename && cd $DOTFILES && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff $filename && unset filename && saveMANPATH=$filename && printf '\n\n\xe2'$filename'\x9c'$saveMANPATH'\x85 done!\n\n'
+saveManpath=-1 && mkdir -p "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
 ```
 
 ##### pip packages
 
 ```bash
-pip list && mkdir -p ~/Dropbox/Mackup/\!=Mackup && printf 'pip packages installed ' > ~/Dropbox/Mackup/\!=Mackup/pip && date '+%Y-%m-%d' >> ~/Dropbox/Mackup/\!=Mackup/pip && printf '—————————————————————————————————\n' >> ~/Dropbox/Mackup/\!=Mackup/pip && pip list >> ~/Dropbox/Mackup/\!=Mackup/pip && cd ~/Dropbox/Mackup && mackup backup && git fetch && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' > "$DOTFILES"/\!=Mackup/pip && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/\!=Mackup/pip && pip list >> "$DOTFILES"/\!=Mackup/pip && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 
 ## apk
@@ -226,7 +226,7 @@ for example, locate all JPEG files<br/>
 #### Linux
 
 ```bash
-PathSave=-1 && mkdir -p ~/Code/Dotfiles && cd ~/Code/Dotfiles && printf 'PATH\n' > PATH && date '+%Y-%m-%d' >> PATH && printf 'automagically generated' >> PATH && printf '\n———————————————————————\n' >> PATH && <<<${(F)path} >> PATH && git fetch && git submodule update --init --recursive && git status && git diff PATH && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && PathSave=0
+pathSave=-1 && mkdir -p "$DOTFILES"/\!=Mackup && cd "$DOTFILES"/\!=Mackup && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
 ```
 
 ## text editing
