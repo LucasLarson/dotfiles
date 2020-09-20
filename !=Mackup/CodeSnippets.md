@@ -36,6 +36,7 @@
   - [flags for C, C++](#flags-for-c-c)
     - [C++ features before wide support](#c-features-before-wide-support)
   - [run `cpplint` recursively](#run-cpplint-recursively)
+  - [run `cppcheck` recursively](#run-cppcheck-recursively)
 - [Gatekeeper](#gatekeeper)
 - [Git](#git)
   - [`init` via GitHub](#init-via-github)
@@ -280,6 +281,10 @@ for example, C++17’s `<filesystem>`<br/>
 ### run `cpplint` recursively
 
 `cpplint --verbose=0 --linelength=79 --recursive --extensions=c++,cc,cp,cpp,cxx,h,h++,hh,hp,hpp,hxx . >> cpplint.txt`
+
+### run `cppcheck` recursively
+
+`cppcheck --force -I $CPATH . >> cppcheck.txt`
 
 ## Gatekeeper
 
