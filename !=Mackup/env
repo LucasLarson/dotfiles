@@ -7,6 +7,7 @@ COLORFGBG=15;0
 COLORTERM=truecolor
 COMMAND_MODE=unix2003
 CPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
+DISPLAY=/private/tmp/com.apple.launchd.zJX1YAEfUf/org.macosforge.xquartz:0
 DOTFILES=/Users/LucasLarson/Dropbox/Mackup
 EDITOR=nvim
 HOME=/Users/LucasLarson
