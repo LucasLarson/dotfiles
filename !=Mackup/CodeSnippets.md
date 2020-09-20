@@ -36,6 +36,7 @@
 - [C, C++](#c-c)
   - [flags](#flags)
     - [C++ features before wide support](#c-features-before-wide-support)
+  - [apply `clang-format` recursively](#apply-clang-format-recursively)
   - [run `cpplint` recursively](#run-cpplint-recursively)
   - [run `cppcheck` recursively](#run-cppcheck-recursively)
   - [compile all files of type .𝑥 in a directory](#compile-all-files-of-type-𝑥-in-a-directory)
@@ -285,6 +286,11 @@ remove bogus entries from Finder’s “Open With” menu ([via](https://githu
 
 for example, C++17’s `<filesystem>`<br/>
 `-lstdc++fs`
+
+### apply `clang-format` recursively
+
+[via](https://stackoverflow.com/a/36046965)<br/>
+`clangformat=-1 && find . -iname '*\.c' -or -iname '*\.c++' -or -iname '*\.cc' -or -iname '*\.cp' -or -iname '*\.cpp' -or -iname '*\.cxx' -or -iname '*\.h' -or -iname '*\.h++' -or -iname '*\.hh' -or -iname '*\.hp' -or -iname '*\.hpp' -or -iname '*\.hxx' -or -iname '*\.i' -or -iname '*\.ii' -or -iname '*\.m' -or -iname '*\.mi' -or -iname '*\.mii' -or -iname '*\.mm' -or -iname '*\.tcc' | xargs clang-format -i -style="{IndentWidth: 4}" --verbose && unset clangformat && printf '\n\n\xe2'$clangformat'\x9c\x85 done\x21\n\n'`
 
 ### run `cpplint` recursively
 
