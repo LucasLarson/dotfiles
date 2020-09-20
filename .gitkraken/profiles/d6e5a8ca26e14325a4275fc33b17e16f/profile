@@ -2,11 +2,11 @@
   "tabInfo": {
     "tabs": [
       {
-        "id": "17629e5a-034b-4d3b-9df3-7869cd333add",
+        "id": "ff7aa402-8c01-410a-a22d-08414d577ea1",
         "type": "NEW"
       }
     ],
-    "selectedTabId": "17629e5a-034b-4d3b-9df3-7869cd333add"
+    "selectedTabId": "ff7aa402-8c01-410a-a22d-08414d577ea1"
   },
   "profileIcon": "gravatar",
   "profileName": "Default Profile",
@@ -37,5 +37,13 @@
       "url": "dev.azure.com/lucaslarson",
       "username": null
     }
+  },
+  "layout": {
+    "RefPanel": {
+      "open": false
+    }
+  },
+  "fileNodeList": {
+    "viewMode": "tree_view"
   }
 }

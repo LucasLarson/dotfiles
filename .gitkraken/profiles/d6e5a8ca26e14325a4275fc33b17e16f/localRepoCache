@@ -1,5 +1,6 @@
 {
   "localRepoCache": [
+    "/Users/LucasLarson/.oh-my-zsh/.git",
     "/Users/LucasLarson/Dropbox/Mackup/.git",
     "/Users/LucasLarson/Library/Application Support/.git",
     "/Users/LucasLarson/Library/Preferences/.git",
@@ -9,7 +10,6 @@
     "/Users/LucasLarson/Code/bonvortaro/.git",
     "/Users/LucasLarson/Code/Catch2/.git",
     "/Users/LucasLarson/Code/Awesome-ML/.git",
-    "/Users/LucasLarson/Code/awesome-bookmarklets/.git",
     "/Users/LucasLarson/Code/AppIcons/.git",
     "/Users/LucasLarson/Code/OSMLab/.git",
     "/Users/LucasLarson/Code/Fallback/.git"
