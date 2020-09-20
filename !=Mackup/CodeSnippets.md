@@ -38,6 +38,10 @@
     - [C++ features before wide support](#c-features-before-wide-support)
   - [run `cpplint` recursively](#run-cpplint-recursively)
   - [run `cppcheck` recursively](#run-cppcheck-recursively)
+  - [compile all files of type .𝑥 in a directory](#compile-all-files-of-type-𝑥-in-a-directory)
+    - [C](#c)
+    - [C++](#c)
+    - [Clang](#clang)
 - [Gatekeeper](#gatekeeper)
 - [Git](#git)
   - [`init` via GitHub](#init-via-github)
@@ -289,6 +293,21 @@ for example, C++17’s `<filesystem>`<br/>
 ### run `cppcheck` recursively
 
 `cppcheck --force -I $CPATH . >> cppcheck.txt`
+
+### compile all files of type .𝑥 in a directory
+
+#### C
+
+[via](https://stackoverflow.com/q/33662375)<br/>
+`gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic $(find . -type f -regex '.*\.c')`
+
+#### C++
+
+`g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ $(find . -iname '*\.cpp')`
+
+#### Clang
+
+`clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps $(find . -iname '*\.cpp')`
 
 ## Gatekeeper
 
