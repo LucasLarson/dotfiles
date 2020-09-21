@@ -197,9 +197,7 @@ expand-or-complete-with-dots () {
 
 
 # pyenv
-if command -v pyenv > /dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
 
 
 # C, C++ headers
