@@ -154,3 +154,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Mail.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Mail.tmbundle
 	url = https://github.com/textmate/mail.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Lua.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Lua.tmbundle
+	url = https://github.com/textmate/lua.tmbundle
