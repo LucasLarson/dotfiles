@@ -170,8 +170,19 @@ fi
 # export PATH="$PATH:$HOME/.rvm/bin"
 
 
-
-export DOTFILES="$HOME/Dropbox/Mackup" # ∃ also alias dotfiles thereto
+# dotfiles
+# set to where they are syncing if it exists, or else use the default: $HOME
+# https://github.com/ohmyzsh/ohmyzsh/blob/5ffc0d036c587741fd25092e7809dad2b00b3677/oh-my-zsh.sh#L20-L24
+# https://gnu.org/software/bash/manual/bash#Bash-Conditional-Expressions
+# https://stackoverflow.com/a/13408590
+if [ -z "$DOTFILES" ] || [ -e "$HOME/Dropbox/Mackup" ]; then
+  export DOTFILES="$HOME/Dropbox/Mackup"
+else
+  export DOTFILES="$HOME"
+fi
+if [ -d "$HOME/Code/ Template" ] || [ -d "$HOME/Code/Template" ]; then
+  export TEMPLATE="$HOME/Code/ Template"
+fi
 
 # customize Oh My Zsh completion dots
 # https://git.io/completion-dots-in-.zshrc
