@@ -75,8 +75,6 @@
   - [Flutter](#flutter)
   - [Xcode, JetBrains, Carthage](#xcode-jetbrains-carthage)
 - [delete](#delete)
-  - [with confirmation first](#with-confirmation-first)
-  - [without confirmation](#without-confirmation)
   - [empty directories](#empty-directories)
   - [compare two folders](#compare-two-folders)
   - [purge memory cache](#purge-memory-cache)
@@ -462,15 +460,8 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## delete
 
-### with confirmation first
-`rm -i /ExampleDirectoryFullOfImportantDocuments`<br/>
-`rm -i /ExampleTrashDocument.txt # -i` stands for <u>i</u>nteractive
-
-
-### without confirmation
-`rm -rf /ExampleDirectoryFullOfImportantDocuments` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br/>
-`rm     /ExampleTrashDocument.txt`
-
+`rm -ri /directory #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br/>
+`rm  -i /document.txt # -i` stands for <u>i</u>nteractive
 
 ### empty directories
 
