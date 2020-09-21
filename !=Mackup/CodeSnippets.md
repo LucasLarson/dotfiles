@@ -30,6 +30,7 @@
 - [text editing](#text-editing)
   - [export output](#export-output)
     - [sort](#sort)
+  - [EOL and EOF encoding](#eol-and-eof-encoding)
 - [make invisible](#make-invisible)
 - [create an alias](#create-an-alias)
 - [launch services](#launch-services)
@@ -252,6 +253,11 @@ pathSave=-1 && mkdir -p "$DOTFILES"/\!=Mackup && cd "$DOTFILES"/\!=Mackup && pri
 
 `env > example.txt` # save an unordered list of `env` variables<br/>
 `env | sort > example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
+
+### EOL and EOF encoding
+
+find `(?<![\r\n])$(?![\r\n])` # [via](https://stackoverflow.com/a/34958727)<br/>
+replace `\r\n`
 
 ## make invisible
 
