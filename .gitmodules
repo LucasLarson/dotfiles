@@ -157,3 +157,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Lua.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Lua.tmbundle
 	url = https://github.com/textmate/lua.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/JavaDoc.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/JavaDoc.tmbundle
+	url = https://github.com/textmate/javadoc.tmbundle
