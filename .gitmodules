@@ -163,3 +163,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/JSON.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/JSON.tmbundle
 	url = https://github.com/textmate/json.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Ini.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Ini.tmbundle
+	url = https://github.com/textmate/ini.tmbundle
