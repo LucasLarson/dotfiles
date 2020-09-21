@@ -149,8 +149,7 @@ export GPG_TTY=$TTY
 # grep
 # use latest via Homebrew but without the `g` prefix
 # https://github.com/Homebrew/homebrew-core/blob/ba7a70f2947b72566720801afee56cb862fcd783/Formula/grep.rb#L43-L46
-PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-
+[[ -d /usr/local/opt/grep/libexec/gnubin ]] && PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # make
 # use latest via Homebrew but without the `g` prefix
