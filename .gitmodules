@@ -145,3 +145,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Ninja.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Ninja.tmbundle
 	url = https://github.com/textmate/ninja.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Math.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Math.tmbundle
+	url = https://github.com/textmate/math.tmbundle
