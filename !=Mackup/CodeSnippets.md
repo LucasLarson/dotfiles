@@ -17,6 +17,9 @@
 - [apk](#apk)
   - [add](#add-1)
     - [testing](#testing)
+- [list everything recursively in a directory](#list-everything-recursively-in-a-directory)
+  - [with full paths](#with-full-paths)
+    - [and metadata](#and-metadata)
 - [search](#search)
   - [`grep`](#grep)
   - [locate all](#locate-all)
@@ -198,6 +201,15 @@ pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' >
 `apk add foo #` unavailable? `\`<br/>
 `#` then try `\`<br/>
 `apk add foo@testing #` [via](https://stackoverrun.com/ja/q/12834672)
+
+## list everything recursively in a directory
+
+### with full paths
+
+`find .` # [via](https://www.cyberciti.biz/faq/how-to-list-directories-in-linux-unix-recursively/)
+
+#### and metadata
+`find . -ls`
 
 ## search
 
