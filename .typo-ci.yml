@@ -38,12 +38,14 @@ excluded_words:
   - ibiqlik  # ibiqlik/action-yamllint
   - LucasLarson
   - Mackup
+  - nixCraft  # Vivek Gite, cyberciti.biz
   - omz  # ohmyzsh
   - peter-evans  # peter-evans/create-pull-request
   - rustup
   - sobolevn  # sobolevn/misspell-fixer-action
   - typoci
   - uncommenting
+  - VivekGite  # nixCraft, cyberciti.biz
 
   # AsciiDoc
   - adoc
