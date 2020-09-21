@@ -166,3 +166,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Ini.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Ini.tmbundle
 	url = https://github.com/textmate/ini.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Hyperlink Helper.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Hyperlink Helper.tmbundle
+	url = https://github.com/textmate/hyperlink-helper.tmbundle
