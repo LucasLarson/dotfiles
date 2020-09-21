@@ -131,7 +131,7 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec zsh
 `rustup update && #` 1.44.1 [2020-06-18](https://github.com/rust-lang/rust/releases) `\`<br/>
 `source ~/.zsh && \`<br/>
 `brew install carthage --head && #` 0.36.0 [2020-09-18](https://github.com/Carthage/Carthage/releases) `\`<br/>
-`carthage update --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
+`carthage update --verbose --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
 `brew install swiftgen --head && #`  6.2.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
 `swiftgen && \`<br/>
 `brew install swiftlint --head && #` 0.39.2 [2020-04-03](https://github.com/realm/SwiftLint/releases) `\`<br/>
