@@ -12,7 +12,7 @@
       - [Atom packages](#atom-packages)
       - [Homebrew](#homebrew)
         - [Cask](#cask)
-      - [$MANPATH](#manpath)
+      - [`$manpath`](#manpath)
       - [pip packages](#pip-packages)
 - [apk](#apk)
   - [add](#add)
@@ -20,7 +20,7 @@
 - [search](#search)
   - [`grep`](#grep)
   - [locate all](#locate-all)
-- [`$PATH`](#path)
+- [`$path`](#path)
   - [entries](#entries)
     - [macOS](#macos)
     - [Linux](#linux)
@@ -177,7 +177,7 @@ listBrew="$DOTFILES"/!=Mackup/brew\ list\ --verbose && touch "$listBrew" && prin
 listBrewCask="$DOTFILES"/!=Mackup/brew\ cask\ list && touch "$listBrewCask" && printf 'brew cask list\n—————————————\n' > "$listBrewCask" && brew cask list >> "$listBrewCask" && unset listBrewCask && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrewCask"
 ```
 
-##### $MANPATH
+##### `$manpath`
 
 ```zsh
 saveManpath=-1 && mkdir -p "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
@@ -214,7 +214,7 @@ search for the word “example” inside the current directory which is “.”
 for example, locate all JPEG files<br/>
 `locate -i *.jpg #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#search-via-locate); see also [§ grep](#grep)
 
-## `$PATH`
+## `$path`
 
 ### entries
 
