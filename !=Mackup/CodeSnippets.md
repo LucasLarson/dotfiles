@@ -15,7 +15,7 @@
       - [`$manpath`](#manpath)
       - [pip packages](#pip-packages)
 - [apk](#apk)
-  - [add](#add)
+  - [add](#add-1)
     - [testing](#testing)
 - [search](#search)
   - [`grep`](#grep)
