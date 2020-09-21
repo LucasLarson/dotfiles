@@ -153,7 +153,8 @@ export GPG_TTY=$TTY
 
 # make
 # use latest via Homebrew but without the `g` prefix
-PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+# https://github.com/Homebrew/homebrew-core/blob/9591758fd8a565abf98d13ffd87c66e5e12ad579/Formula/make.rb#L37-L41
+[[ -d /usr/local/opt/make/libexec/gnubin ]] && PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 
 # npm without sudo
