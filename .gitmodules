@@ -151,3 +151,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Markdown (GitHub).tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Markdown (GitHub).tmbundle
 	url = https://github.com/textmate/GitHub-Markdown.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/Mail.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/Mail.tmbundle
+	url = https://github.com/textmate/mail.tmbundle
