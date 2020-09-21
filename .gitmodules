@@ -160,3 +160,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/JavaDoc.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/JavaDoc.tmbundle
 	url = https://github.com/textmate/javadoc.tmbundle
+[submodule "Library/Application Support/TextMate/Managed/Bundles/JSON.tmbundle"]
+	path = Library/Application Support/TextMate/Managed/Bundles/JSON.tmbundle
+	url = https://github.com/textmate/json.tmbundle
