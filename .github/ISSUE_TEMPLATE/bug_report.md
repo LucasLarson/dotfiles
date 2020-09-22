@@ -25,13 +25,13 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
  - OS: [like iOS]
- - Browser [like chrome, safari]
+ - Browser [like Chrome, Safari]
  - Version [like 22]
 
 **Smartphone (please complete the following information):**
  - Device: [like iPhone6]
  - OS: [like iOS8.1]
- - Browser [like stock browser, safari]
+ - Browser [like stock browser, Safari]
  - Version [like 22]
 
 **Additional context**
