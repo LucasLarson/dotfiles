@@ -139,9 +139,6 @@
 [submodule ".oh-my-zsh/custom/plugins/zsh-completions"]
 	path = .oh-my-zsh/custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
-[submodule "/Users/LucasLarson/Dropbox/Mackup/.oh-my-zsh/custom/plugins/zsh-completions"]
-	path = /Users/LucasLarson/Dropbox/Mackup/.oh-my-zsh/custom/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Ninja.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Ninja.tmbundle
 	url = https://github.com/textmate/ninja.tmbundle
