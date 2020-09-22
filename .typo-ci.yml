@@ -34,6 +34,7 @@ excluded_words:
   - calibreapp
   - Crashlytics
   - csharp  # CodeQL Analysis
+  - cyberciti  # cyberciti.biz
   - ffs
   - ibiqlik  # ibiqlik/action-yamllint
   - LucasLarson
