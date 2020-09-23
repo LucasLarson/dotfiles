@@ -15,7 +15,13 @@ alias mu="cd ~/Dropbox/Mackup && mackup backup --root && git fetch --all --verbo
 
 
 # Git
+
+# git add --patch
+# `gap` overrides `git apply` ohmyzsh/ohmyzsh@ed85147
 alias gap="git add --patch --verbose"
+# `gapa` warning beginning 2020-09 but not worth keeping forever
+alias gapa="printf '\xe2\x9a\xa0\xef\xb8\x8f  using \x60gap\x60\n\n' && gap"
+
 alias gc="git commit --verbose --gpg-sign"
 alias gcm="git commit --verbose --gpg-sign --message"
 alias gco="git checkout --progress"
