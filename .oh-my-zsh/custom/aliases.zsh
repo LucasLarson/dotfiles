@@ -20,6 +20,7 @@ alias gc="git commit --verbose --gpg-sign"
 alias gcm="git commit --verbose --gpg-sign --message"
 alias gco="git checkout --progress"
 alias gfgs="git fetch --all --verbose && git status"
+alias ggc="git fetch --prune --prune-tags --verbose && git gc --aggressive --prune=now"
 alias gmv="git mv --verbose"
 if command -v gpg2 > /dev/null 2>&1; then
   alias gpg="gpg2"
