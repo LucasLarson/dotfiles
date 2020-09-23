@@ -30,13 +30,16 @@ excluded_files:
 
 # Known spellings to ignore
 excluded_words:
+  - Algis  # guillaumealgis/XcodeWarningsAsXcconfig
   - Biffle
   - calibreapp
   - Crashlytics
   - csharp  # CodeQL Analysis
   - cyberciti  # cyberciti.biz
   - ffs
+  - guillaumealgis  # guillaumealgis/XcodeWarningsAsXcconfig
   - ibiqlik  # ibiqlik/action-yamllint
+  - jonreid  # jonreid/XcodeWarnings
   - LucasLarson
   - Mackup
   - nixCraft  # Vivek Gite, cyberciti.biz
@@ -61,6 +64,7 @@ excluded_words:
   - argv
   - cbp
   - climits
+  - cplusplus
   - cstring
   - ctor
   - dtor
@@ -135,9 +139,20 @@ excluded_words:
   - tmbundle
 
   # Xcode
+  - bcmp
+  - bcopy
+  - bzero
+  - dealloc
+  - ivars
+  - mpi
+  - optin
   - pbxproj
   - pbxuser
+  - valist
+  - vfork
   - xccheckout
+  - xcconfig
+  - xclang
   - xcrun
   - xcscmblueprint
   - xcsettings
