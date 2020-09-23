@@ -1,6 +1,6 @@
-// XcodeWarnings by Jon Reid (@jonreid) https://github.com/jonreid/XcodeWarnings
+ // XcodeWarnings by Jon Reid (@jonreid) https://github.com/jonreid/XcodeWarnings
 
-// XcodeWarningsAsXcconfig by Guillaume Algis (@guillaumealgis) https://github.com/guillaumealgis/XcodeWarningsAsXcconfig
+ // XcodeWarningsAsXcconfig by Guillaume Algis (@guillaumealgis) https://github.com/guillaumealgis/XcodeWarningsAsXcconfig
 
 // Apple Clang - Address Sanitizer
 CLANG_ADDRESS_SANITIZER_CONTAINER_OVERFLOW = YES
@@ -31,6 +31,7 @@ CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES
 // Apple Clang - Warning Policies
 // GCC_TREAT_WARNINGS_AS_ERRORS = YES
 GCC_WARN_PEDANTIC = YES
+GCC_WARN_INHIBIT_ALL_WARNINGS = NO
 
 // Apple Clang - Warnings - All languages
 CLANG_WARN_ASSIGN_ENUM = YES
