@@ -30,6 +30,7 @@ excluded_files:
 
 # Known spellings to ignore
 excluded_words:
+  - Affero  # GNU Affero Public License
   - Algis  # guillaumealgis/XcodeWarningsAsXcconfig
   - Biffle
   - calibreapp
