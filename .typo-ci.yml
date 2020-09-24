@@ -86,6 +86,7 @@ excluded_words:
   - ftrapv
   - gch
   - gcno
+  - gkd
   - ifndef
   - lai
   - latomic
