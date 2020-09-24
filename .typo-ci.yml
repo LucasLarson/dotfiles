@@ -120,7 +120,9 @@ excluded_words:
   - gitsubmodule
   - gomod
   - Liberapay
+  - ossar
   - Otechie
+  - sarif  # OSSAR
 
   # JetBrains
   - iml
