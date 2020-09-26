@@ -93,8 +93,14 @@ fi
 plugins=(
   git
   gunstage
-  zsh-syntax-highlighting
 )
+if [[ "$(uname)" = Darwin ]]; then
+  plugins=(
+    $plugins
+    zsh-syntax-highlighting
+  )
+fi
+
 
 source $ZSH/oh-my-zsh.sh
 
