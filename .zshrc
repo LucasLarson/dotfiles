@@ -175,6 +175,13 @@ expand-or-complete-with-dots () {
   zle redisplay
 }
 
+# include hidden files in tab completion
+# https://unix.stackexchange.com/a/366137
+setopt globdots
+# but hide `./` and `../`
+# https://unix.stackexchange.com/q/308315#comment893697_308322
+zstyle ':completion:*' special-dirs false
+
 
 # pyenv
 command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
