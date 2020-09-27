@@ -97,6 +97,7 @@ excluded_words:
   - slo
   - smod
   - strnlen
+  - symvers  # github/gitignore@a080e36
   - unsequenced
   - Wcall
   - Wdefaulted
