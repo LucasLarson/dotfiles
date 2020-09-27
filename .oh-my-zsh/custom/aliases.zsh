@@ -41,7 +41,11 @@ gu () {
   # https://stackoverflow.com/a/53809163
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     git fetch --all --verbose
+
+    # `git submodule update` with `--remote` appears to slow Git to a crawl
+    # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
     git submodule update --init --recursive
+
     git status
   fi
 }
