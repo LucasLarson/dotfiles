@@ -1,0 +1,68 @@
+"*":
+  "atom-beautify":
+    c: {}
+    general:
+      _analyticsUserId: "cf34e041-58cb-4a93-aa33-9ac69f68089e"
+    objectivec:
+      configPath: "~/.atom/packages/atom-beautify/uncrustify.cfg"
+  "autocomplete-plus":
+    autoActivationDelay: 100
+  autosave:
+    enabled: true
+  core:
+    closeDeletedFileTabs: true
+    debugLSP: true
+    disabledPackages: [
+      "whitespace"
+    ]
+    projectHome: "/Users/LucasLarson/Code"
+    telemetryConsent: "limited"
+  deepcode:
+    sessionToken: "12e4cd3a51b39678a0b8f78fd5a4a76267619b6efb00e84f6db9de1c060a90e3"
+  editor:
+    fontFamily: "Fira Code, JetBrains Mono, Dank, Dank Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 15
+    preferredLineLength: 79
+    showIndentGuide: true
+    showInvisibles: true
+    softWrap: true
+    tabLength: 4
+  "exception-reporting":
+    userId: "211d116f-e19e-4563-a558-477e75bb795f"
+  "find-and-replace":
+    autocompleteSearches: true
+    enablePCRE2: true
+    liveSearchMinimumCharacters: 2
+    scrollToResultOnLiveSearch: true
+    useRipgrep: true
+  "gitlab-integration":
+    token: "MGH-pQyz3rMrsU1Egyth"
+  "linter-ui-default":
+    panelHeight: 193
+    showPanel: true
+  "markdown-preview":
+    useGitHubStyle: true
+  "spell-check":
+    addKnownWords: true
+    knownWords: [
+      "kbd"
+      "br"
+      "Mackup"
+      "rbenv"
+      "zshrc"
+    ]
+    locales: [
+      "en-US"
+      "fr-FR"
+      "eo-EO"
+      "es-MX"
+      "ht-HT"
+    ]
+    useLocales: false
+  "split-diff":
+    ignoreWhitespace: true
+  welcome:
+    showOnStartup: false
+".git-commit.text":
+  editor:
+    preferredLineLength: 72

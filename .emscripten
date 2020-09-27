@@ -1,0 +1,7 @@
+NODE_JS = '/Users/LucasLarson/Code/emsdk/node/12.9.1_64bit/bin/node'
+LLVM_ROOT = '/Users/LucasLarson/Code/emsdk/upstream/bin'
+BINARYEN_ROOT = '/Users/LucasLarson/Code/emsdk/upstream'
+EMSCRIPTEN_ROOT = '/Users/LucasLarson/Code/emsdk/upstream/emscripten'
+TEMP_DIR = '/var/folders/64/l35_w51s78jc1hzw5nr5jvj40000gn/T'
+COMPILER_ENGINE = NODE_JS
+JS_ENGINES = [NODE_JS]

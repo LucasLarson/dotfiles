@@ -1,0 +1,497 @@
+# Code snippets
+
+<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [copy, paste, return](#copy-paste-return)
+  - [detail](#detail)
+- [Mackup](#mackup)
+  - [add](#add)
+    - [manual](#manual)
+      - [lists](#lists)
+        - [applications](#applications)
+      - [Atom packages](#atom-packages)
+      - [Homebrew](#homebrew)
+        - [Cask](#cask)
+      - [`$manpath`](#manpath)
+      - [pip packages](#pip-packages)
+- [apk](#apk)
+  - [add](#add-1)
+    - [testing](#testing)
+- [list everything recursively in a directory](#list-everything-recursively-in-a-directory)
+  - [with full paths](#with-full-paths)
+    - [and metadata](#and-metadata)
+- [search](#search)
+  - [`grep`](#grep)
+  - [locate all](#locate-all)
+- [`$path`](#path)
+  - [entries](#entries)
+    - [macOS](#macos)
+    - [Linux](#linux)
+- [text editing](#text-editing)
+  - [export output](#export-output)
+    - [sort](#sort)
+  - [EOL and EOF encoding](#eol-and-eof-encoding)
+- [make invisible](#make-invisible)
+- [create an alias](#create-an-alias)
+- [launch services](#launch-services)
+  - [reset](#reset)
+  - [repair website disk permissions](#repair-website-disk-permissions)
+    - [date modified modify](#date-modified-modify)
+- [C, C++](#c-c)
+  - [flags](#flags)
+    - [C++ features before wide support](#c-features-before-wide-support)
+  - [apply `clang-format` recursively](#apply-clang-format-recursively)
+  - [run `cpplint` recursively](#run-cpplint-recursively)
+  - [run `cppcheck` recursively](#run-cppcheck-recursively)
+  - [compile all files of type .𝑥 in a directory](#compile-all-files-of-type-𝑥-in-a-directory)
+    - [C](#c)
+    - [C++](#c)
+    - [Clang](#clang)
+- [Gatekeeper](#gatekeeper)
+- [Git](#git)
+  - [`init` via GitHub](#init-via-github)
+  - [`add`](#add)
+  - [`diff`](#diff)
+  - [`commit`](#commit)
+    - [with subject *and* body](#with-subject-and-body)
+    - [in the past](#in-the-past)
+  - [`config`](#config)
+    - [editor](#editor)
+  - [`tag`](#tag)
+- [Numbers](#numbers)
+  - [Affixes](#affixes)
+- [rename files](#rename-files)
+- [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
+- [SSH](#ssh)
+  - [`ls` on Windows](#ls-on-windows)
+- [variables](#variables)
+- [wget](#wget)
+- [WiFi](#wifi)
+  - [password](#password)
+    - [Windows](#windows)
+    - [macOS](#macos-1)
+- [Xcode](#xcode)
+  - [signing](#signing)
+- [housekeeping](#housekeeping)
+  - [Homebrew](#homebrew-1)
+  - [npm](#npm)
+  - [RubyGems](#rubygems)
+  - [Flutter](#flutter)
+  - [Xcode, JetBrains, Carthage](#xcode-jetbrains-carthage)
+- [delete](#delete)
+  - [empty directories](#empty-directories)
+  - [compare two folders](#compare-two-folders)
+  - [purge memory cache](#purge-memory-cache)
+
+<!-- /TOC -->
+
+## copy, paste, return
+
+```bash
+update=-1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && sleep 1.0 && \
+printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && (ping -q -i1 -c1 one.one.one.one &> /dev/null && ping -q -i1 -c1 8.8.8.8 &> /dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update) && \
+printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && brew upgrade && brew cask upgrade && xcrun simctl delete unavailable && omz update && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && \
+printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up to date...\n' && python -m pip install --upgrade pip && \
+printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && \
+printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec zsh
+```
+
+### detail
+
+`xcode-select --switch /Applications/Xcode.app || xcode-select --switch /Applications/Xcode-beta.app || xcode-select --install && \`<br/>
+`xcrun simctl delete unavailable && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/d7406c3bb347af9fb1734885ed571117a5dbf90a/README.md#remove-all-unavailable-simulators) `\`<br/>
+`brew update --debug --verbose && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/launchagents.md#periodic-homebrew-update-and-upgrade)`,` [via](https://stackoverflow.com/a/47664603) `\`<br/>
+`brew upgrade && \`<br/>
+`brew cask upgrade && #` [via](https://github.com/hisaac/hisaac.net/blob/8c63d51119fe2a0f05fa6c1c2a404d12256b0594/source/_posts/2018/2018-02-12-update-all-the-things.md#readme) `\`<br/>
+`brew install mackup --head && #` 0.8.29 [2020-06-06](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br/>
+`mackup backup && # || mackup backup --force \`<br/>
+`omz update && #` [via](https://github.com/ohmyzsh/ohmyzsh/blob/3935ccc/lib/functions.zsh#L9-L12) `\`<br/>
+`git clone --recurse-submodules --depth 1 --branch main --verbose --progress #` [via](https://github.com/hisaac/Tiime/blob/ff1a39d6765d8ae5c9724ca84d5c680dff4c602e/README.md#bootstrapping-instructions), [via](https://stackoverflow.com/a/50028481) `\`<br/>
+`git submodule update --init --recursive && #` [via](https://stackoverflow.com/a/10168693) `\`<br/>
+`npm install npm --global && #` [via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L51-L52), [via](https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties) `\`<br/>
+`npm update --global --verbose && #` 6.14.5 [2020-05-04](https://www.npmjs.com/package/npm?activeTab=versions#versions) `\`<br/>
+`apm upgrade --no-confirm && #` via npm analogy `\`<br/>
+`gem update --system && #`  3.1.4 [2020-06-03](https://blog.rubygems.org) `\`<br/>
+`gem update && \`<br/>
+`gem install bundler --pre && #`  2.1.4 [2020-01-05](https://rubygems.org/gems/bundler/versions) `\`<br/>
+`gem install cocoapods --pre && #`  1.9.3 [2020-05-29](https://rubygems.org/gems/cocoapods/versions) `\`<br/>
+`bundle update && #` [via](https://github.com/ffi/ffi/issues/651#issuecomment-513835103) `\`<br/>
+`bundle install --verbose && \`<br/>
+`bundle exec pod install --verbose && \`<br/>
+`pod repo update && pod repo update && \`<br/>
+`pod install && \`<br/>
+`pod update && #` [via](https://web.archive.org/web/20190719112335id_/https:/guides.cocoapods.org/using/pod-install-vs-update.html#pod-update) `\`<br/>
+`rbenv rehash && pyenv rehash && \`<br/>
+`python -m pip install --upgrade pip` && # 20.1.1 [2020-05-19](https://pip.pypa.io/en/stable/news/#id1) [via](https://opensource.com/article/19/5/python-3-default-mac#comment-180271), [via](https://github.com/pypa/pip/blob/52309f98d10d8feec6d319d714b0d2e5612eaa47/src/pip/_internal/self_outdated_check.py#L233-L236) `\`<br/>
+`pip list --outdated --format freeze \`<br/>
+    `| grep -v '^\-e' \`<br/>
+    `| cut -d = -f 1 \`<br/>
+    `| xargs -n1 pip install --upgrade && #` [via](https://stackoverflow.com/revisions/3452888/14) `\`<br/>
+`pip install --upgrade $(pip freeze | cut -d '=' -f 1) && #` [via](https://web.archive.org/web/20200508173219id_/coderwall.com/p/quwaxa/update-all-installed-python-packages-with-pip#comment_29830) `\`<br/>
+`pipenv shell &&` # [via](https://github.com/pypa/pipenv/blob/bfbe1304f63372a0eb7c1531590b51195db453ea/pipenv/core.py?instructions_while_running_pipenv_install#L1282) `\`<br/>
+`pipenv install --dev && #` [via](https://stackoverflow.com/a/49867443) `\`<br/>
+`rustup update && #` 1.44.1 [2020-06-18](https://github.com/rust-lang/rust/releases) `\`<br/>
+`source ~/.zsh && \`<br/>
+`brew install carthage --head && #` 0.36.0 [2020-09-18](https://github.com/Carthage/Carthage/releases) `\`<br/>
+`carthage update --verbose --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
+`brew install swiftgen --head && #`  6.2.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
+`swiftgen && \`<br/>
+`brew install swiftlint --head && #` 0.39.2 [2020-04-03](https://github.com/realm/SwiftLint/releases) `\`<br/>
+`swiftlint autocorrect && \`<br/>
+`# git add . && git add -u || git add -A && #` [via](https://stackoverflow.com/a/15011313) `\`<br/>
+`git gc && \`<br/>
+`# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br/>
+`printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && #` [via](https://stackoverflow.com/a/30762087), [via](https://stackoverflow.com/a/602924), [via](https://github.com/koalaman/shellcheck/wiki/SC2059/0c9cfe7e8811d3cafae8df60f41849ef7d17e296#problematic-code) `\`<br/>
+`exec zsh #` note successful finish before restarting the shell
+
+## Mackup
+
+### add
+
+#### manual
+
+to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/mackup) might’ve but hasn’t
+`add='`**~/Desktop/example.txt**`' && cp ~/$add ~/Dropbox/Mackup/$add && mv ~/$add ~/.Trash && ln -s ~/Dropbox/Mackup/$add ~/$add`
+
+##### lists
+
+###### applications
+
+Track changes to which applications are installed without syncing them. The instructions are bash-compatible and refer to this document for instructions on regenerating the list.
+
+```bash
+saveApplications=-1 && mkdir -p "$DOTFILES"/\!=Mackup && mkdir -p /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
+```
+
+##### Atom packages
+
+```bash
+apm list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'Atom extensions ' > "$DOTFILES"/\!=Mackup/atom && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/atom && printf '———————————————\n' >> "$DOTFILES"/\!=Mackup/atom && apm list >> "$DOTFILES"/Mackup/\!=Mackup/atom && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+```
+
+##### Homebrew
+
+```bash
+listBrew="$DOTFILES"/!=Mackup/brew\ list\ --verbose && touch "$listBrew" && printf 'brew list --verbose\n———————————————————\n' > "$listBrew" && brew list --verbose >> "$listBrew" && unset listBrew && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrew"
+```
+
+###### Cask
+
+```bash
+listBrewCask="$DOTFILES"/!=Mackup/brew\ cask\ list && touch "$listBrewCask" && printf 'brew cask list\n—————————————\n' > "$listBrewCask" && brew cask list >> "$listBrewCask" && unset listBrewCask && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrewCask"
+```
+
+##### `$manpath`
+
+```zsh
+saveManpath=-1 && mkdir -p "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
+```
+
+##### pip packages
+
+```bash
+pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' > "$DOTFILES"/\!=Mackup/pip && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/\!=Mackup/pip && pip list >> "$DOTFILES"/\!=Mackup/pip && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+```
+
+## apk
+
+### add
+
+#### testing
+
+`apk add foo #` unavailable? `\`<br/>
+`#` then try `\`<br/>
+`apk add foo@testing #` [via](https://stackoverrun.com/ja/q/12834672)
+
+## list everything recursively in a directory
+
+### with full paths
+
+`find .` # [via](https://www.cyberciti.biz/faq/how-to-list-directories-in-linux-unix-recursively/)
+
+#### and metadata
+`find . -ls`
+
+## search
+
+### `grep`
+
+search for the word “example” inside the current directory which is “.”<br/>
+`grep -inr 'example' .`<br/>
+`-i` means case-<u>i</u>nsensitive<br/>
+`-n` means show line <u>n</u>umbers<br/>
+`-r` means <u>r</u>ecursively or in a scope bigger than a file which is the dot
+
+### locate all
+
+for example, locate all JPEG files<br/>
+`locate -i *.jpg #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#search-via-locate); see also [§ grep](#grep)
+
+## `$path`
+
+### entries
+
+#### macOS
+
+`<<<${(F)path}` # [via](https://codegolf.stackexchange.com/a/96471)
+
+#### Linux
+
+```zsh
+pathSave=-1 && mkdir -p "$DOTFILES"/\!=Mackup && cd "$DOTFILES"/\!=Mackup && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
+```
+
+## text editing
+
+### export output
+
+`printf 'First Name\n' > ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
+`printf 'Other First Name\n'` **>** `ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
+`printf "Last Name\n"` **>>** `ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
+
+#### sort
+
+`env > example.txt` # save an unordered list of `env` variables<br/>
+`env | sort > example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
+
+### EOL and EOF encoding
+
+find `(?<![\r\n])$(?![\r\n])` # [via](https://stackoverflow.com/a/34958727)<br/>
+replace `\r\n`
+
+## make invisible
+
+`chflags -hvv hidden example.txt`<br/>
+`-h` for symbolic links, if applicable, but not their targets<br/>
+`-v`₁ for verbose<br/>
+`-v`₂ for printing the old and new flags in octal to `stdout`
+
+## create an alias
+
+`ln -s file shortcut #` [via](https://reddit.com/comments/1qt0z/_/c1qtge/)<br/>
+(just like `cp existing new`)
+
+## launch services
+
+### reset
+
+remove bogus entries from Finder’s “Open With” menu ([via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L69-L70))<br/>
+`/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -seed -r -domain local -domain system -domain user && killall Finder`
+
+### repair website disk permissions
+
+`find /path/to/your/wordpress -type d -exec chmod 755 {} \; && \`<br/>
+`find /path/to/your/wordpress -type f -exec chmod 644 {} \; #` [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
+
+#### date modified modify
+
+`touch -t 2003040500 file.txt` # date modified → 2020-03-04 5:00am
+
+## C, C++
+
+### flags
+
+`-Wall -Wextra -pedantic`<br/>
+`#ifdef __APPLE__`<br/>
+    `-Weverything <!--` do not use ([via](https://web.archive.org/web/20190926015534id_/quuxplusone.github.io/blog/2018/12/06/dont-use-weverything/#for-example-if-you-want-to-see-a)) `-->`<br/>
+`#endif`<br/>
+`-Woverriding-method-mismatch -Weffc++ -Wcall-to-pure-virtual-from-ctor-dtor -Wmemset-transposed-args -Wreturn-std-move -Wsizeof-pointer-div -Wdefaulted-function-deleted` # [via](https://github.com/jonreid/XcodeWarnings/issues/8#partial-discussion-header)<br/>
+`-lstdc++ #` [via](https://web.archive.org/web/20200517174250id_/unspecified.wordpress.com/2009/03/15/linking-c-code-with-gcc/#post-54) but this might – or might not – be helpful on macOS using gcc or g++
+
+#### C++ features before wide support
+
+for example, C++17’s `<filesystem>`<br/>
+`-lstdc++fs`
+
+### apply `clang-format` recursively
+
+[via](https://stackoverflow.com/a/36046965)<br/>
+`clangformat=-1 && find . -iname '*\.c' -or -iname '*\.c++' -or -iname '*\.cc' -or -iname '*\.cp' -or -iname '*\.cpp' -or -iname '*\.cxx' -or -iname '*\.h' -or -iname '*\.h++' -or -iname '*\.hh' -or -iname '*\.hp' -or -iname '*\.hpp' -or -iname '*\.hxx' -or -iname '*\.i' -or -iname '*\.ii' -or -iname '*\.m' -or -iname '*\.mi' -or -iname '*\.mii' -or -iname '*\.mm' -or -iname '*\.tcc' | xargs clang-format -i -style="{IndentWidth: 4}" --verbose && unset clangformat && printf '\n\n\xe2'$clangformat'\x9c\x85 done\x21\n\n'`
+
+### run `cpplint` recursively
+
+`cpplint --verbose=0 --linelength=79 --recursive --extensions=c++,cc,cp,cpp,cxx,h,h++,hh,hp,hpp,hxx . >> cpplint.txt`
+
+### run `cppcheck` recursively
+
+`cppcheck --force -I $CPATH . >> cppcheck.txt`
+
+### compile all files of type .𝑥 in a directory
+
+#### C
+
+[via](https://stackoverflow.com/q/33662375)<br/>
+`gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic $(find . -type f -regex '.*\.c')`
+
+#### C++
+
+`g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ $(find . -iname '*\.cpp')`
+
+#### Clang
+
+`clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps $(find . -iname '*\.cpp')`
+
+## Gatekeeper
+
+do not disable it, because that would allow you to install any software, even if unsigned, even if malicious:<br/>
+`sudo spctl --master-disable #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/bd25a136655e63fcb7f3462a8dc7105f30093e54/README.md#manage-gatekeeper)
+
+## Git
+
+### `init` via GitHub
+
+`git push --set-upstream git@github.com:LucasLarson/$(git rev-parse --show-toplevel | xargs basename).git $(git rev-parse --abbrev-ref HEAD)`
+
+### `add`
+
+[via](https://stackoverflow.com/a/15011313)
+<table>
+<tr class="odd">
+<td><p>Modified files only</p></td>
+<td><code>git add -u</code></td>
+</tr>
+<tr class="even">
+<td><p>Everything, without deleted Files</p></td>
+<td><code>git add .</code></td>
+</tr>
+<tr class="odd">
+<td><p><strong>Everything</strong></p></td>
+<td><code>git add -A</code></td>
+</tr>
+</table>
+
+### `diff`
+
+more detailed `git diff` and how I once found an LF‑to‑CRLF‑only difference<br/>
+`git diff --raw`
+
+### `commit`
+
+#### with subject *and* body
+
+`git commit -m 'subject' -m 'body' #` [via](https://stackoverflow.com/a/40506149)
+
+#### in the past
+
+to backdate a commit:<br/>
+`GIT_TIME='`**2000-01-02T15:04:05 -0500**`' GIT_AUTHOR_DATE=$GIT_TIME GIT_COMMITTER_DATE=$GIT_TIME git commit -m 'add modifications made at 3:04:05pm EST on January 2, 2000' #` [via](https://stackoverflow.com/questions/3895453/how-do-i-make-a-git-commit-in-the-past#comment97787061_3896112)
+
+### `config`
+
+#### editor
+
+Vim<br/>
+`git config --global core.editor /usr/local/bin/vim`<br/>
+Atom [via](https://stackoverflow.com/a/31389989 )<br/>
+`git config --global core.editor "atom --wait"`
+
+### `tag`
+
+`git tag v𝑖.𝑗.𝑘 #` where 𝑖, 𝑗, and 𝑘 are non-negative integers representing [<abbr title="semantic versioning">semver</abbr>](https://github.com/semver/semver/blob/8b2e8eec394948632957639dfa99fc7ec6286911/semver.md#summary) major, minor, and patch releases<br/>
+`git push origin v𝑖.𝑗.𝑘 #` push the unannotated tag [via](https://stackoverflow.com/a/5195913)
+
+## Numbers
+
+### Affixes
+
+| Definition  | Prefix | Suffix           |
+| ----------- | ------ |----------------- |
+| binary      | `0b`𝑛  | 𝑛<sub>`2`</sub>  |
+| octal       | `0o`𝑛  | 𝑛<sub>`8`</sub>  |
+| decimal     | `0d`𝑛  | 𝑛<sub>`10`</sub> |
+| hexadecimal | `0x`𝑛  | 𝑛<sub>`16`</sub> |
+
+## rename files
+
+`brew install --upgrade rename && #` [via](https://stackoverflow.com/a/31694356) `\`<br/>
+`rename -nvs searchword replaceword *`
+
+## split enormous files into something manageable
+
+if your example.csv has too many rows ([via](https://web.archive.org/web/20181210131347/domains-index.com/best-way-view-edit-large-csv-files/#post-12141))<br/>
+`split -l 2000 example.csv; for i in *; do mv "$i" "$i.csv"; done`
+
+## SSH
+
+`ssh username@example.com`
+
+### `ls` on Windows
+
+`dir` # [via](https://stackoverflow.com/a/58740114)
+
+## variables
+
+`$PWD` # the name of the current directory and its entire path
+`${PWD##*/}` # [via](https://stackoverflow.com/a/1371283) the name of only the current directory
+
+## wget
+
+`wgetserver=`'**example.com**' `&& \`<br/>
+`wget --mirror --continue --verbose --append-output=$wgetserver.log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --show-progress http://$wgetserver && unset wgetserver || unset wgetserver`
+
+## WiFi
+
+### password
+
+#### Windows
+
+`netsh wlan show profile WiFi-name key=clear #` [via](https://reddit.com/r/LifeProTips/comments/d5vknk/lpt_if_you_ever_forget_your_wifi_password_or_you/)
+
+#### macOS
+
+`security find-generic-password -wa ExampleNetwork #` [via](https://www.labnol.org/software/find-wi-fi-network-password/28949/)
+
+## Xcode
+
+### signing
+
+`PRODUCT_BUNDLE_IDENTIFIER = net.LucasLarson.$(PRODUCT_NAME:rfc1034identifier);`<br/>
+`PRODUCT_NAME = $(PROJECT_NAME);`<br/>
+`DEVELOPMENT_TEAM = Z25963JBNP;`<br/>
+`DevelopmentTeam = Z25963JBNP;`
+
+## housekeeping
+
+### Homebrew
+
+`brew doctor --debug --verbose && \`<br/>
+`brew cask doctor && \`<br/>
+`brew cleanup --debug --verbose && #` [via](https://stackoverflow.com/a/41030599) `\`<br/>
+`brew cask audit --strict --token-conflicts`
+
+### npm
+
+`npm doctor && # ` creates empty `node_modules` directories `\`<br/>
+`find node_modules -empty -type d -delete #` deletes them [via](https://web.archive.org/web/20190320151645id_/cyberciti.biz/faq/howto-find-delete-empty-directories-files-in-unix-linux/)
+
+### RubyGems
+
+`gem cleanup --verbose`
+
+### Flutter
+
+`cd ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose`
+
+### Xcode, JetBrains, Carthage
+
+`trashDeveloper=-1 && sleep 0.25 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Developer/Xcode/UserData/IB\ Support && mv ~/Library/Developer/Xcode/UserData/IB\ Support ~/.Trash/Xcode⁄UserData⁄IB\ Support-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && mkdir -p ~/Library/Caches/org.carthage.CarthageKit/DerivedData && mv ~/Library/Caches/org.carthage.CarthageKit/DerivedData ~/.Trash/Carthage-$RANDOM && unset trashDeveloper && printf '\n\n\xf0'$trashDeveloper'\x9f'$trashDeveloper'\x9a'$trashDeveloper'\xae data successfully trashed\n\n'`
+
+## delete
+
+`rm -ri /directory #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br/>
+`rm  -i /document.txt # -i` stands for <u>i</u>nteractive
+
+### empty directories
+
+make a list of empty folders inside and beneath current directory **`.`** ([via](https://unix.stackexchange.com/a/46326))<br/>
+`find . -type d -empty -print`<br/>
+if satisfied with the results being lost and gone forever, execute:<br/>
+<span title="You were warned: don’t do this!">`find . -type d -empty -delete`</span>
+
+### compare two folders
+
+`diff -qr /path/to/folder1 /path/to/folder2` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#compare-two-folders)
+
+### purge memory cache
+
+`sudo purge` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#purge-memory-cache)
