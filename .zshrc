@@ -204,7 +204,8 @@ fi
 # Flutter
 # https://github.com/flutter/website/blob/e5f725c7ff39d2cb5356f2ccd998e560c4060a4a/src/docs/get-started/install/_path-mac.md#user-content-update-your-path
 export PATH="$PATH:$HOME/Code/Flutter/bin"
-export ANDROID_SDK_ROOT="$HOME/Library/Android/sdk"
+# if it’s a directory then refer to it as `$ANDROID_SDK_ROOT`
+[[ -d $HOME/Library/Android/sdk ]] && export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 
 
 # rbenv
