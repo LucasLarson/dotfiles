@@ -143,6 +143,26 @@ excluded_words:
   # TextMate
   - tmbundle
 
+  # Visual Studio
+  # https://github.com/github/gitignore/blob/218a9/VisualStudio.gitignore
+  - aps
+  - ipch
+  - ncb
+  - ogs  # [Ll]ogs/
+  - opensdf
+  - scc
+  - sdf
+  - svclog
+  - tli
+
+  # Windows
+  # https://github.com/toptal/gitignore/blob/78659/templates/Windows.gitignore
+  - ekstop  # [Dd]esktop.ini
+  - lnk
+  - msix
+  - msm
+  - msp
+
   # Xcode
   - bcmp
   - bcopy
