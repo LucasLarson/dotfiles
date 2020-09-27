@@ -21,7 +21,7 @@
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to change)
 
-### Checklist:
+### Checklist
 <!-- Put an `x` in only the boxes [x] that apply. -->
 <!-- If you’re unsure about any of these, don’t hesitate to ask. -->
 <!-- We’re here to help! -->
