@@ -29,8 +29,8 @@ If applicable, add screenshots to help explain your problem.
  - Version [like 22]
 
 **Smartphone (please complete the following information):**
- - Device: [like iPhone6]
- - OS: [like iOS8.1]
+ - Device: [like iPhone 6]
+ - OS: [like iOS 8.1]
  - Browser [like stock browser, Safari]
  - Version [like 22]
 
