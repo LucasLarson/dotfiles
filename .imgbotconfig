@@ -1,5 +1,6 @@
 { // https://web.archive.org/web/20200523231457id_/imgbot.net/docs/#configuration
     "ignoredFiles": [
         "*.svg",
-    ]
+    ],
+    "aggressiveCompression": "true", // true|false
 }
