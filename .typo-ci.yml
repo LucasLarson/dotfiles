@@ -112,6 +112,7 @@ excluded_words:
   # Git
   - gmv  # homemade alias to `git mv`
   - gunstage
+  - lsi  # Jekyll’s latent semantic indexing
   - osxkeychain
   - unstage
   - unstagers
