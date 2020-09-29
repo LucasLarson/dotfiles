@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # aliases.zsh
 # for all active aliases, run `alias`
 
