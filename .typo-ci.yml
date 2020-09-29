@@ -40,6 +40,7 @@ excluded_words:
   - ffs
   - guillaumealgis  # guillaumealgis/XcodeWarningsAsXcconfig
   - ibiqlik  # ibiqlik/action-yamllint
+  - imgbotconfig  # dabutvin/Imgbot
   - jonreid  # jonreid/XcodeWarnings
   - LucasLarson
   - Mackup
