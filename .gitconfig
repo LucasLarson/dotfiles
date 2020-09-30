@@ -28,7 +28,7 @@
 	# https://chromium.googlesource.com/chromium/src/+/11eee6b8a94a04b1a2741d96dd27a25caf00a8fe/docs/mac_build_instructions.md#get-the-code
 	precomposeUnicode = true
 
-	# better diffs via the guy from whom I learned to alias `apm-beta`
+	# better diffs via the person from whom I learned to alias `apm-beta`
 	# https://github.com/jeefberkey/dotfiles/blob/b3513ad3966ef0d881662a18306bfed19796036f/.gitconfig#L11
 	pager = diff-so-fancy | less --tabs=4 -RFX
 
