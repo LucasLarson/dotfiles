@@ -13,7 +13,7 @@ alias apm="apm-nightly"
 
 
 # dotfiles
-alias mu="cd ~/Dropbox/Mackup && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status"
+alias mu="cd ${DOTFILES:-$HOME/Dropbox/Mackup} && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status"
 
 
 # Git
