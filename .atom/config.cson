@@ -1,4 +1,7 @@
 "*":
+  "asciidoc-preview":
+    compatMode: true
+    scrollMode: false
   "atom-beautify":
     c: {}
     general:
