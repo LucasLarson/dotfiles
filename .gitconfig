@@ -81,6 +81,9 @@
 	# `gpg2` aliases to `gpg`
 	program = gpg
 
+[i18n]
+	commitEncoding = utf-8
+
 [init]
 	defaultBranch = main
 
