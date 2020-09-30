@@ -23,7 +23,7 @@
   deepcode:
     sessionToken: ""
   editor:
-    fontFamily: "Fira Code, JetBrains Mono, Dank, Dank Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontFamily: "MesloLGS NF, Fira Code, JetBrains Mono, Dank, Dank Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
     fontSize: 15
     preferredLineLength: 79
     showIndentGuide: true
