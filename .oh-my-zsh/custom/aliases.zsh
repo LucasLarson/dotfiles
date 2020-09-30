@@ -34,6 +34,10 @@ alias gmv="git mv --verbose"
 if command -v gpg2 > /dev/null 2>&1; then
   alias gpg="gpg2"
 fi
+
+# git pull
+alias gpull="git pull --rebase --autostash --verbose" # ohmyzsh/ohmyzsh@3d2542
+
 alias gtake="git checkout -b"
 alias gti="git"
 gu () {
