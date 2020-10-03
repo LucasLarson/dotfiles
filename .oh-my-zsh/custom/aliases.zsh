@@ -64,7 +64,17 @@ alias pip="pip3"
 
 
 # shell
-alias cp="cp -r -i"
+cp () {
+  if [[ -n $2 ]]; then
+    # prefix the arguments with `--` for safety
+    # https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
+    cp -r -i -- "$1" "$2"
+  else
+    # if there is no second argument,
+    # then copy to the current directory
+    cp -r -i -- "$1" "$PWD"
+  fi
+}
 alias mv="mv -v -i" # https://unix.stackexchange.com/a/30950
 alias unixtime="date +%s" # via @Naresh https://stackoverflow.com/a/12312982
 alias which="which -a"
