@@ -136,6 +136,9 @@ excluded_words:
   - replstate
   - sbt-idea
 
+  # Linux
+  - nfs  # github/gitignore@4f7062e
+
   # macOS
   - donotpresent
   - icns
