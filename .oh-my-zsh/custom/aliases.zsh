@@ -65,15 +65,15 @@ alias pip="pip3"
 
 
 # shell
-cp () {
+# https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
+alias cp="cp -r -i --"
+cy () {
   if [[ -n $2 ]]; then
-    # prefix the arguments with `--` for safety
-    # https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
-    cp -r -i -- "$1" "$2"
+    cp "$1" "$2"
   else
     # if there is no second argument,
     # then copy to the current directory
-    cp -r -i -- "$1" "$PWD"
+    cp "$1" "$PWD"
   fi
 }
 alias mv="mv -v -i" # https://unix.stackexchange.com/a/30950
