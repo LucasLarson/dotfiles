@@ -1,1 +1,74 @@
-[{"Teams":[{"memberships":[{"membershipId":"328AUL643W","membershipProductId":"ad19","name":"Apple Developer Program","status":"active","platform":"ios"},{"membershipId":"328AUL643W","membershipProductId":"ad19","name":"Apple Developer Program","status":"active","platform":"mac"},{"membershipId":"328AUL643W","membershipProductId":"ad19","name":"Apple Developer Program","status":"active","platform":"safari"},{"membershipId":"7TF7TPDWP2","membershipProductId":"fp22","name":"Xcode Free Provisioning Program","status":"activeNeverExpire","platform":"ios"}],"currentTeamMember":{"teamMemberId":"KRUT9CEKSH","roles":["AGENT","TEAM_ADMIN","MAC_PROGRAM_TEAM_ADMIN","XCODE_FREE_USER"],"firstName":"Lucas","lastName":"Larson","email":"Lucas@LucasLarson.net","PersonId":"128892563"},"teamAgent":{"teamMemberId":"KRUT9CEKSH","roles":null,"firstName":"Lucas","lastName":"Larson","email":"Lucas@LucasLarson.net","PersonId":"128892563"},"name":"Lucas Larson","status":"active","teamId":"Z25963JBNP","type":"Individual","IsFree":false}],"personId":"128892563","developerId":"G6FBQ339CU","developerStatus":"active","email":"Lucas@LucasLarson.net","firstName":"Lucas","lastName":"Larson","username":"Lucas@LucasLarson.net","PassItemId":"33df25da-6a0d-4074-89a0-895735027e48","AppSpecificPassItemId":null,"Description":"Lucas Larson"}]
+[
+  {
+    "Teams": [
+      {
+        "memberships": [
+          {
+            "membershipId": "328AUL643W",
+            "membershipProductId": "ad19",
+            "name": "Apple Developer Program",
+            "status": "active",
+            "platform": "ios"
+          },
+          {
+            "membershipId": "328AUL643W",
+            "membershipProductId": "ad19",
+            "name": "Apple Developer Program",
+            "status": "active",
+            "platform": "mac"
+          },
+          {
+            "membershipId": "328AUL643W",
+            "membershipProductId": "ad19",
+            "name": "Apple Developer Program",
+            "status": "active",
+            "platform": "safari"
+          },
+          {
+            "membershipId": "7TF7TPDWP2",
+            "membershipProductId": "fp22",
+            "name": "Xcode Free Provisioning Program",
+            "status": "activeNeverExpire",
+            "platform": "ios"
+          }
+        ],
+        "currentTeamMember": {
+          "teamMemberId": "KRUT9CEKSH",
+          "roles": [
+            "AGENT",
+            "TEAM_ADMIN",
+            "MAC_PROGRAM_TEAM_ADMIN",
+            "XCODE_FREE_USER"
+          ],
+          "firstName": "Lucas",
+          "lastName": "Larson",
+          "email": "Lucas@LucasLarson.net",
+          "PersonId": "128892563"
+        },
+        "teamAgent": {
+          "teamMemberId": "KRUT9CEKSH",
+          "roles": null,
+          "firstName": "Lucas",
+          "lastName": "Larson",
+          "email": "Lucas@LucasLarson.net",
+          "PersonId": "128892563"
+        },
+        "name": "Lucas Larson",
+        "status": "active",
+        "teamId": "Z25963JBNP",
+        "type": "Individual",
+        "IsFree": false
+      }
+    ],
+    "personId": "128892563",
+    "developerId": "G6FBQ339CU",
+    "developerStatus": "active",
+    "email": "Lucas@LucasLarson.net",
+    "firstName": "Lucas",
+    "lastName": "Larson",
+    "username": "Lucas@LucasLarson.net",
+    "PassItemId": "33df25da-6a0d-4074-89a0-895735027e48",
+    "AppSpecificPassItemId": null,
+    "Description": "Lucas Larson"
+  }
+]
