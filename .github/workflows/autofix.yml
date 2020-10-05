@@ -23,7 +23,8 @@ jobs:
         # https://mywiki.wooledge.org/BashPitfalls?rev=524#line-2-7
         # and close each file with a newline
         run: >
-          for file in **/{.[^.],}*.json; do
+          shopt -s dotglob
+          for file in **/*.json; do
             jsonlint --in-place "$file"
             printf '\n' >> "$file"
           done
