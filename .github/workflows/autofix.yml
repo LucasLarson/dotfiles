@@ -18,15 +18,14 @@ jobs:
         run: |
           sudo npm install jsonlint -g
       - name: Lint
-        # find all visible, invisible JSON files and apply `jsonlint`
-        # https://stackoverflow.com/a/4349234
-        # https://mywiki.wooledge.org/BashPitfalls?rev=524#line-2-7
-        # and close each file with a newline
         run: >
-          shopt -s dotglob
-          for file in ./**/*.json; do
-            jsonlint --in-place "$file"
-            printf '\n' >> "$file"
+          find ./ -type f -name '*.json' -print -exec
+          jsonlint --in-place "{}" \;
+      - name: Newline
+        run: >
+          https://unix.stackexchange.com/q/31947#comment938219_161853
+          find . -name \*.json | while read file; do
+            tail -n1 $file | read -r _ || echo >> $file;
           done
       - uses: peter-evans/create-pull-request@v3
         with:
