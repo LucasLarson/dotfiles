@@ -128,6 +128,11 @@ excluded_words:
   - Otechie
   - sarif  # OSSAR
 
+  # Gitpod
+  - bastet  # gitpod-io/gitpod
+  - runtimes
+  - tetris
+
   # JetBrains
   - iml
   - ipr
