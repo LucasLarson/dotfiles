@@ -18,9 +18,13 @@ jobs:
         run: |
           sudo npm install jsonlint -g
       - name: Lint
+        # find all visible, invisible JSON files and apply `jsonlint`
+        # https://stackoverflow.com/a/4349234
+        # https://mywiki.wooledge.org/BashPitfalls?rev=524#line-2-7
         run: >
-          find ./ -type f -name '*.json' -print -exec
-          jsonlint --in-place "{}" \;
+          for file in **/{.[^.],}*.json; do
+            jsonlint --in-place "$file"
+          done
       - uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "[autofix] Format JSON content"
