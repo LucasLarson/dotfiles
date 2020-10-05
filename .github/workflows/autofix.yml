@@ -24,7 +24,7 @@ jobs:
         # and close each file with a newline
         run: >
           shopt -s dotglob
-          for file in **/*.json; do
+          for file in ./**/*.json; do
             jsonlint --in-place "$file"
             printf '\n' >> "$file"
           done
