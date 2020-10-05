@@ -21,9 +21,11 @@ jobs:
         # find all visible, invisible JSON files and apply `jsonlint`
         # https://stackoverflow.com/a/4349234
         # https://mywiki.wooledge.org/BashPitfalls?rev=524#line-2-7
+        # and close each file with a newline
         run: >
           for file in **/{.[^.],}*.json; do
             jsonlint --in-place "$file"
+            printf '\n' >> "$file"
           done
       - uses: peter-evans/create-pull-request@v3
         with:
