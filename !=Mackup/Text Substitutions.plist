@@ -1582,6 +1582,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>𝑐𝑜𝑢𝑙𝑑</string>
+		<key>shortcut</key>
+		<string>italiccould</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>𝑑</string>
 		<key>shortcut</key>
 		<string>italicd</string>
