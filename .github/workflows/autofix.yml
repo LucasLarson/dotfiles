@@ -24,8 +24,8 @@ jobs:
       - name: Newline
         # https://unix.stackexchange.com/q/31947#comment938219_161853
         run: >
-          find . -name \*.json | while read file; do
-            tail -n1 $file | read -r _ || echo >> $file;
+          for file in **/*.json; do
+            tail -n1 "$file" | read -r _ || echo >> "$file"
           done
       - uses: peter-evans/create-pull-request@v3
         with:
