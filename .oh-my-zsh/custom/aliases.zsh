@@ -87,8 +87,6 @@ alias wihch="which"
 
 # Zsh
 alias aliases="edit $ZSH_CUSTOM/aliases.zsh; source ~/.zshrc && exec zsh"
-alias zshaliases="aliases"
-alias zshalias="zshaliases"
 alias ohmyzsh="cd ${ZSH:-$HOME/.oh-my-zsh}"
 alias zshconfig="edit ~/.zshrc; source ~/.zshrc && exec zsh" # see ~/.zshrc for `edit`
 alias zshrc="zshconfig"
