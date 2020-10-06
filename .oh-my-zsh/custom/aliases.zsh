@@ -18,13 +18,7 @@ alias mux="cd ${DOTFILES:-$HOME/Dropbox/Mackup} && find . -type f -iname '.DS_St
 
 
 # Git
-
-# git add --patch
-# `gap` overrides `git apply` ohmyzsh/ohmyzsh@ed85147
-alias gap="git add --patch --verbose"
-# `gapa` warning beginning 2020-09 but not worth keeping forever
-alias gapa="printf '\xe2\x9a\xa0\xef\xb8\x8f  using \x60gap\x60\n\n' && gap"
-
+alias gap="git add --patch --verbose" # override `git apply` alias
 alias gca="git commit --amend --verbose --gpg-sign"
 alias gc="git commit --verbose --gpg-sign"
 alias gcm="git commit --verbose --gpg-sign --message"
