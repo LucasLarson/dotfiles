@@ -20,7 +20,7 @@ jobs:
       - name: Lint
         run: >
           find ./ -type f -name '*.json' -print -exec
-          jsonlint --in-place --insert-final-newline "{}" \;
+          jsonlint-newline-fork --in-place --insert-final-newline "{}" \;
       - uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "[autofix] Format JSON content"
