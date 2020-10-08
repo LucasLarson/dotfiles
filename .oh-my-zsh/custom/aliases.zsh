@@ -23,6 +23,23 @@ alias gca="git commit --amend --verbose --gpg-sign"
 alias gc="git commit --verbose --gpg-sign"
 alias gcm="git commit --verbose --gpg-sign --message"
 alias gco="git checkout --progress"
+
+# `git checkout` the default branch
+# place the function inside `{()}` to prevent the leaking of variable data
+# https://stackoverflow.com/a/37675401
+gcom () {(
+  if [[ -n "$(git branch --list main)" ]]; then
+    main_branch=main
+  elif [[ -n "$(git branch --list master)" ]]; then
+    main_branch=master
+  else
+    printf 'unable to detect a \x60main\x60 or \x60master\x60 branch in '
+    printf 'this repository\n'
+    return 1
+  fi
+  git checkout --progress $main_branch
+)}
+
 alias gfgs="git fetch --all --verbose && git status"
 alias ggc="git fetch --prune --prune-tags --verbose && git gc --aggressive --prune=now"
 alias gmv="git mv --verbose"
