@@ -37,7 +37,7 @@ excluded_words:
   - Crashlytics
   - csharp  # CodeQL Analysis
   - cyberciti  # cyberciti.biz
-  - esolangs
+  - esolang
   - ffs
   - guillaumealgis  # guillaumealgis/XcodeWarningsAsXcconfig
   - ibiqlik  # ibiqlik/action-yamllint
