@@ -53,3 +53,7 @@ Podfile.lock
 
 ## Vim ##
 *.swp
+
+## keys ##
+*.key
+*.pem
