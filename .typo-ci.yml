@@ -135,6 +135,9 @@ excluded_words:
   - runtimes
   - tetris
 
+  # Google
+  - gtag
+
   # JetBrains
   - iml
   - ipr
