@@ -136,7 +136,7 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec zsh
 `carthage update --verbose --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
 `brew install swiftgen --head && #`  6.2.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
 `swiftgen && \`<br/>
-`brew install swiftlint --head && #` 0.39.2 [2020-04-03](https://github.com/realm/SwiftLint/releases) `\`<br/>
+`brew install swiftlint --head && #` 0.40.3 [2020-09-22](https://github.com/realm/SwiftLint/releases) `\`<br/>
 `swiftlint autocorrect && \`<br/>
 `# git add . && git add -u || git add -A && #` [via](https://stackoverflow.com/a/15011313) `\`<br/>
 `git gc && \`<br/>
