@@ -45,7 +45,7 @@ pip install --upgrade $(pip freeze | cut -d '=' -f 1)
 pyenv rehash
 
 
-source ~/.zshrc
+source ~/.zshrc && rehash
 
 
 unset update
