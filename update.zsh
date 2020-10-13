@@ -41,6 +41,8 @@ python -m pip install --upgrade pip
 
 printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n'
 pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade
+
+printf '\n\xf0\x9f\x90\x8d upgrading all Python packages...\n'
 pip install --upgrade $(pip freeze | cut -d '=' -f 1)
 pyenv rehash
 
