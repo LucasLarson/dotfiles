@@ -12,7 +12,7 @@ sleep 0.5
 printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n'
 brew update
 brew upgrade
-brew cask upgrade
+brew upgrade --cask
 
 
 xcrun simctl delete unavailable
