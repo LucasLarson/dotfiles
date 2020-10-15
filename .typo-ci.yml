@@ -46,6 +46,7 @@ excluded_words:
   - LucasLarson
   - Mackup
   - nixCraft  # Vivek Gite, cyberciti.biz
+  - noninfringement  # GNU General Public License
   - omz  # ohmyzsh
   - peter-evans  # peter-evans/create-pull-request
   - rustup
