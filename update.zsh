@@ -36,7 +36,7 @@ gem update
 rbenv rehash
 
 
-printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up-to-date...\n'
+printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up to date...\n'
 python -m pip install --upgrade pip
 
 printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n'
