@@ -173,7 +173,7 @@ if [ -d "$HOME/Code/ Template" ] || [ -d "$HOME/Code/Template" ]; then
   export TEMPLATE="$HOME/Code/ Template"
 fi
 
-# customize Oh My Zsh completion dots
+# completion dots
 # https://git.io/completion-dots-in-.zshrc
 expand-or-complete-with-dots () {
   print -Pn "%F{red}...%f"
