@@ -220,5 +220,12 @@ fi
 command -v rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 
 
+# avoid `$PATH` duplicates
+# https://github.com/mcornella/dotfiles/blob/e62b0d4c4f18a0373d8a7a1b4ddaa2e21b7f1ffd/zshenv#L63-L67
+[[ -n $ZSH_VERSION ]] && typeset -U path
+# export PATH for other sessions
+export PATH
+
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
