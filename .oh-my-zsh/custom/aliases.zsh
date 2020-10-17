@@ -66,6 +66,13 @@ gu () {
     # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
     git submodule update --init --recursive
 
+    # delete `.DS_Store` files recursively
+    find . -type f -name '.DS_Store' -delete
+
+    # delete empty directories, except within `.git/`, recursively
+    # https://stackoverflow.com/q/4210042#comment38334264_4210072
+    find . -type d -empty -not -path './.git/*' -delete
+
     git status
   fi
 }
