@@ -6,11 +6,16 @@ on:
   # on push to default branch.
   pull_request:
     paths:
-      - '**.jpg'
-      - '**.jpeg'
-      - '**.png'
-      - '**.webp'
       - '**.gif'
+      - '**.GIF'
+      - '**.jpeg'
+      - '**.JPEG'
+      - '**.jpg'
+      - '**.JPG'
+      - '**.png'
+      - '**.PNG'
+      - '**.webp'
+      - '**.WEBP'
 
 jobs:
 
