@@ -31,7 +31,7 @@ jobs:
             action](https://github.com/${{ github.repository
             }}/blob/${{ github.base_ref }}/.github/workflows/autofix.yml).
           labels: CI/CD
-          branch: format-json
+          branch: format-json-${{ github.run_id }}
 
   typos:
     name: Fix typos and create a PR
@@ -50,7 +50,7 @@ jobs:
             action](https://github.com/${{ github.repository
             }}/blob/${{ github.base_ref }}/.github/workflows/autofix.yml).
           labels: CI/CD, documentation
-          branch: autofix-typo
+          branch: autofix-typo-${{ github.run_id }}
 
   images:
     name: Optimize images
@@ -78,4 +78,4 @@ jobs:
             %0A$
             {{ steps.image_actions.outputs.markdown }}
           labels: CI/CD, documentation
-          branch: optimize-images
+          branch: optimize-images-${{ github.run_id }}
