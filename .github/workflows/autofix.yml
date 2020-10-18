@@ -61,6 +61,9 @@ jobs:
         id: image_actions
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          jpegQuality: '100'
+          pngQuality: '100'
+          webpQuality: '100'
           compressOnly: true
       - uses: peter-evans/create-pull-request@v3.4.1
         with:
