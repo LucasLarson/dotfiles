@@ -25,14 +25,14 @@ If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
 - OS: [like iOS]
-- Browser [like Chrome, Safari]
-- Version [like 22]
+- Browser: [like Chrome, Safari]
+- Version: [like 22]
 
 **Smartphone (please complete the following information):**
 - Device: [like iPhone 6]
 - OS: [like iOS 8.1]
-- Browser [like stock browser, Safari]
-- Version [like 22]
+- Browser: [like stock browser, Safari]
+- Version: [like 22]
 
 **Additional context**
 Add any other context about the problem here.
