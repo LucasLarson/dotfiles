@@ -52,6 +52,7 @@ fi
 # git pull after @ohmyzsh `gupav` ohmyzsh/ohmyzsh@3d2542f
 alias gpull="git pull --rebase --autostash --verbose && git status"
 
+alias gsu="git submodule update --init --recursive --remote"
 alias gtake="git checkout -b"
 alias gti="git"
 gu () {
