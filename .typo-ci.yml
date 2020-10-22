@@ -115,10 +115,16 @@ excluded_words:
   - Wsizeof
 
   # Git
+  - autocrlf
+  - gitconfig
   - gmv  # homemade alias to `git mv`
+  - gpgsign
   - gunstage  # `🔫  `git unstage` as a service https://git.io/gunstage
+  - lfs
   - lsi  # Jekyll’s latent semantic indexing
   - osxkeychain
+  - precompose
+  - textconv
   - unstage
   - unstagers
   - unstaging
@@ -153,6 +159,7 @@ excluded_words:
   # macOS
   - donotpresent
   - icns
+  - plutil
 
   # shell
   - euo
