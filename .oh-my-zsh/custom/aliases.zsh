@@ -30,15 +30,15 @@ alias gco="git checkout --progress"
 # https://stackoverflow.com/a/37675401
 gcom () {(
   if [[ -n "$(git branch --list main)" ]]; then
-    main_branch=main
+    defaultBranch=main
   elif [[ -n "$(git branch --list master)" ]]; then
-    main_branch=master
+    defaultBranch=master
   else
     printf 'unable to detect a \x60main\x60 or \x60master\x60 branch in '
     printf 'this repository\n'
     return 1
   fi
-  git checkout --progress $main_branch
+  git checkout --progress $defaultBranch
 )}
 
 alias gfgs="git fetch --all --verbose && git status"
