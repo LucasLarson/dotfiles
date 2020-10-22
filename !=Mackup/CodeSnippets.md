@@ -60,6 +60,8 @@
   - [`tag`](#tag)
 - [Numbers](#numbers)
   - [Affixes](#affixes)
+- [Operating system](#operating-system)
+  - [Identify](#identify)
 - [rename files](#rename-files)
 - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
 - [SSH](#ssh)
@@ -400,6 +402,17 @@ Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 | octal       | `0o`𝑛  | 𝑛<sub>`8`</sub>  |
 | decimal     | `0d`𝑛  | 𝑛<sub>`10`</sub> |
 | hexadecimal | `0x`𝑛  | 𝑛<sub>`16`</sub> |
+
+## Operating system
+
+### Identify
+
+```zsh
+command -v uname       > /dev/null 2>&1 && uname -a       && \
+command -v sw_vers     > /dev/null 2>&1 && sw_vers        && \
+command -v lsb_release > /dev/null 2>&1 && lsb_release -a && \
+[[ -r /etc/os-release ]] && cat /etc/os-release
+```
 
 ## rename files
 
