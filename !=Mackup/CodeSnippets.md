@@ -462,7 +462,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 ### npm
 
 `npm doctor && # ` creates empty `node_modules` directories `\`<br/>
-`find node_modules -empty -type d -delete #` deletes them [via](https://archive.vn/2020.09.12-073111/https://www.cyberciti.biz/faq/howto-find-delete-empty-directories-files-in-unix-linux/#16%)
+`find node_modules -empty -type d -delete #` deletes them [via](https://archive.today/2020.09.12-073111/https://www.cyberciti.biz/faq/howto-find-delete-empty-directories-files-in-unix-linux/#16%)
 
 ### RubyGems
 
