@@ -75,7 +75,6 @@ jobs:
             }}/actions/runs/${{ github.run_id }}) as defined by [workflow
             action](https://github.com/${{ github.repository
             }}/blob/${{ github.base_ref }}/.github/workflows/autofix.yml).
-            %0A$
-            {{ steps.calibre.outputs.markdown }}
+            %0A${{ steps.calibre.outputs.markdown }}
           labels: CI/CD, documentation
           branch: optimize-images-${{ github.run_id }}
