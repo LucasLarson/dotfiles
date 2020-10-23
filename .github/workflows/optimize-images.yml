@@ -31,3 +31,16 @@ jobs:
           jpegQuality: '100'
           pngQuality: '100'
           webpQuality: '100'
+      - uses: peter-evans/create-pull-request@v3.4.1
+        with:
+          commit-message: "[autofix] Optimize images"
+          title: "[autofix] Optimize images"
+          body: >
+            [Auto-generated on run
+            #${{ github.run_id }}](https://github.com/${{ github.repository
+            }}/actions/runs/${{ github.run_id }}) as defined by [workflow
+            action](https://github.com/${{ github.repository
+            }}/blob/${{ github.base_ref }}/.github/workflows/autofix.yml).
+            %0A${{ steps.calibre.outputs.markdown }}
+          labels: CI/CD, documentation
+          branch: optimize-images-${{ github.run_id }}
