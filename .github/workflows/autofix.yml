@@ -1,6 +1,6 @@
 ---
 name: Autofix
-"on":
+on:
   push:
     # target only the default branch to avoid auto-fixing recursion
     branches:
