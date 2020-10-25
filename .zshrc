@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Powerlevel10k instant prompt
-# https://github.com/romkatv/powerlevel10k/blob/d394a4e038e494354cbdb68aeaebc05e7d0788fa/README.md#how-do-i-enable-instant-prompt
+# https://github.com/romkatv/powerlevel10k/blob/d394a4e/README.md#how-do-i-enable-instant-prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
@@ -17,7 +17,7 @@ export ZSH=$HOME/.oh-my-zsh
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # powerlevel10k
-# https://github.com/romkatv/powerlevel10k/blob/48c6ff4701eaf1a3c3570b01c09c30e6ed912a56/README.md#oh-my-zsh
+# https://github.com/romkatv/powerlevel10k/blob/48c6ff4/README.md#oh-my-zsh
 # ZSH_THEME
 if [[ "$(uname)" == Darwin && -d $ZSH/custom/themes/powerlevel10k ]]; then
   ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -128,23 +128,23 @@ export GPG_TTY=$tty
 
 
 # Homebrew
-# https://github.com/Homebrew/brew/blob/a5b6c5f2621298c879aa205754ae01d5417572d9/Library/Homebrew/diagnostic.rb#L432-L435
+# https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
 [[ -d /usr/local/sbin ]] && PATH="/usr/local/sbin:$PATH"
 
 
 # grep
 # use latest via Homebrew but without the `g` prefix
-# https://github.com/Homebrew/homebrew-core/blob/ba7a70f2947b72566720801afee56cb862fcd783/Formula/grep.rb#L43-L46
+# https://github.com/Homebrew/homebrew-core/blob/ba7a70f/Formula/grep.rb#L43-L46
 [[ -d /usr/local/opt/grep/libexec/gnubin ]] && PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # make
 # use latest via Homebrew but without the `g` prefix
-# https://github.com/Homebrew/homebrew-core/blob/9591758fd8a565abf98d13ffd87c66e5e12ad579/Formula/make.rb#L37-L41
+# https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
 [[ -d /usr/local/opt/make/libexec/gnubin ]] && PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 
 # npm without sudo
-# https://github.com/sindresorhus/guides/blob/285270f06e117c7e0a6b6e51eca6e488d9d7c44d/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
+# https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH # delete if you already modified MANPATH elsewhere
@@ -154,14 +154,14 @@ fi
 
 
 # RVM and rbenv are incompatible and shell references to RVM have to be removed
-# https://github.com/rbenv/rbenv/blob/577f04653df2289f492d4cd9ea3e9d441281f317/README.md#installation
+# https://github.com/rbenv/rbenv/blob/577f046/README.md#installation
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 # export PATH="$PATH:$HOME/.rvm/bin"
 
 
 # dotfiles
 # set to where they are syncing if it exists, or else use the default: $HOME
-# https://github.com/ohmyzsh/ohmyzsh/blob/5ffc0d036c587741fd25092e7809dad2b00b3677/oh-my-zsh.sh#L20-L24
+# https://github.com/ohmyzsh/ohmyzsh/blob/5ffc0d0/oh-my-zsh.sh#L20-L24
 # https://gnu.org/software/bash/manual/bash#Bash-Conditional-Expressions
 # https://stackoverflow.com/a/13408590
 if [ -z "$DOTFILES" ] || [ -e "$HOME/Dropbox/dotfiles" ]; then
@@ -202,7 +202,7 @@ fi
 
 
 # Flutter
-# https://github.com/flutter/website/blob/e5f725c7ff39d2cb5356f2ccd998e560c4060a4a/src/docs/get-started/install/_path-mac.md#user-content-update-your-path
+# https://github.com/flutter/website/blob/e5f725c/src/docs/get-started/install/_path-mac.md#user-content-update-your-path
 # if `~/Code/Flutter/bin/flutter`’s an executable
 # and `flutter`’s not in the PATH, then add it
 if [[ -x $HOME/Code/Flutter/bin/flutter ]]; then
@@ -221,7 +221,7 @@ command -v rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 
 
 # avoid `$PATH` duplicates
-# https://github.com/mcornella/dotfiles/blob/e62b0d4c4f18a0373d8a7a1b4ddaa2e21b7f1ffd/zshenv#L63-L67
+# https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
 [[ -n $ZSH_VERSION ]] && typeset -U path
 # export PATH for other sessions
 export PATH
