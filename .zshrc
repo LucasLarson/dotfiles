@@ -164,8 +164,8 @@ fi
 # https://github.com/ohmyzsh/ohmyzsh/blob/5ffc0d036c587741fd25092e7809dad2b00b3677/oh-my-zsh.sh#L20-L24
 # https://gnu.org/software/bash/manual/bash#Bash-Conditional-Expressions
 # https://stackoverflow.com/a/13408590
-if [ -z "$DOTFILES" ] || [ -e "$HOME/Dropbox/Mackup" ]; then
-  export DOTFILES="$HOME/Dropbox/Mackup"
+if [ -z "$DOTFILES" ] || [ -e "$HOME/Dropbox/dotfiles" ]; then
+  export DOTFILES="$HOME/Dropbox/dotfiles"
 else
   export DOTFILES="$HOME"
 fi
