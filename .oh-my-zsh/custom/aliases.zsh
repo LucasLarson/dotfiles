@@ -14,8 +14,8 @@ alias apm="apm-nightly"
 
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
-alias mu="cd ${DOTFILES:-$HOME/Dropbox/Mackup} && find . -type f -name '.DS_Store' -delete && find . -type d -empty -not -path './.git/*' -delete && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status"
-alias mux="cd ${DOTFILES:-$HOME/Dropbox/Mackup} && find . -type f -name '.DS_Store' -print -delete && find . -type d -empty -not -path './.git/*' -print -delete && mackup backup --force --root --verbose && git fetch --all --verbose && git submodule update --init --recursive --remote && git status --verbose"
+alias mu="cd ${DOTFILES:-$HOME/Dropbox/dotfiles} && find . -type f -name '.DS_Store' -delete && find . -type d -empty -not -path './.git/*' -delete && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status"
+alias mux="cd ${DOTFILES:-$HOME/Dropbox/dotfiles} && find . -type f -name '.DS_Store' -print -delete && find . -type d -empty -not -path './.git/*' -print -delete && mackup backup --force --root --verbose && git fetch --all --verbose && git submodule update --init --recursive --remote && git status --verbose"
 
 
 # Git
