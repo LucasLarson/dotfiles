@@ -29,9 +29,9 @@ alias gco="git checkout --progress"
 # place the function inside `{()}` to prevent the leaking of variable data
 # https://stackoverflow.com/a/37675401
 gcom () {(
-  if [[ -n "$(git branch --list main)" ]]; then
+  if [ -n "$(git branch --list main)" ]; then
     defaultBranch=main
-  elif [[ -n "$(git branch --list master)" ]]; then
+  elif [ -n "$(git branch --list master)" ]; then
     defaultBranch=master
   else
     printf 'unable to detect a \x60main\x60 or \x60master\x60 branch in '
