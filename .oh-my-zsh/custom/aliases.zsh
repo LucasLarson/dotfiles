@@ -5,7 +5,7 @@
 
 
 # Atom
-# https://github.com/jeefberkey/dotfiles/blob/2ded1c3a813957909687a8ddce8a9befcc6b51d1/.zshrc#L48-L61
+# https://github.com/jeefberkey/dotfiles/blob/2ded1c3/.zshrc#L48-L61
 alias atom-beta="atom-nightly"
 alias apm-beta="apm-nightly"
 alias atom="atom-nightly"
@@ -79,7 +79,7 @@ gu () {
   fi
 }
 
-# https://github.com/tarunsk/dotfiles/blob/5b31fd648bcfe4de54e27388a1e1e733fca80ab9/.always_forget.txt#L1957
+# https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
 alias gvc="git verify-commit HEAD"
 
 
