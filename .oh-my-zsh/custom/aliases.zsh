@@ -52,6 +52,9 @@ fi
 # git pull after @ohmyzsh `gupav` ohmyzsh/ohmyzsh@3d2542f
 alias gpull="git pull --rebase --autostash --verbose && git status"
 
+# git push after @ohmyzsh `gpsup` ohmyzsh/ohmyzsh@ae21102
+alias gpv='git push --verbose --set-upstream origin "$(git_current_branch)"'
+
 alias gsu="git submodule update --init --recursive --remote"
 alias gtake="git checkout -b"
 alias gti="git"
