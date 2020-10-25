@@ -22,6 +22,7 @@ alias mux="cd ${DOTFILES:-$HOME/Dropbox/dotfiles} && find . -type f -name '.DS_S
 alias gap="git add --patch --verbose" # override `git apply` alias
 alias gca="git commit --amend --verbose --gpg-sign"
 alias gc="git commit --verbose --gpg-sign"
+alias gcl="git clone --verbose --progress --recursive --recurse-submodules"
 alias gcm="git commit --verbose --gpg-sign --message"
 alias gco="git checkout --progress"
 
