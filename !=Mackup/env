@@ -1,6 +1,6 @@
 # the output of
 # $ env|sort
-# via https://cyberciti.biz/faq/linux-list-all-environment-variables-env-command
+# https://cyberciti.biz/faq/linux-list-all-environment-variables-env-command
 
 ANDROID_SDK_ROOT=/Users/LucasLarson/Library/Android/sdk
 COLORFGBG=15;0
