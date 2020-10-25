@@ -1,8 +1,0 @@
-[2020-01-03T02:55:12.248Z] Pull master: started.
-[2020-01-03T02:55:12.266Z] Fetch remote origin: started
-[2020-01-03T02:55:12.501Z] Fetch remote origin: finished gk-log://duration?t=235
-[2020-01-03T02:55:12.551Z] Merge origin/master into master: started.
-[2020-01-03T02:55:23.288Z] Merge origin/master into master: finished. gk-log://duration?t=10737
-[2020-01-03T02:55:23.314Z] Pull master: finished. gk-log://duration?t=11066
-[2020-05-26T16:20:12.032Z] Verify and save URL and credentials for Azure DevOps: started.
-[2020-05-26T16:20:14.842Z] Verify and save URL and credentials for Azure DevOps: finished. gk-log://duration?t=2810
