@@ -106,7 +106,7 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec zsh
 `brew upgrade && \`<br/>
 `brew upgrade --cask && #` [via](https://github.com/hisaac/hisaac.net/blob/8c63d51119fe2a0f05fa6c1c2a404d12256b0594/source/_posts/2018/2018-02-12-update-all-the-things.md#readme), [via](https://github.com/Homebrew/homebrew-cask/pull/88681) `\`<br/>
 `brew install mackup --head && #` 0.8.29 [2020-06-06](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br/>
-`mackup backup && # || mackup backup --force \`<br/>
+`mackup backup --force --root \`<br/>
 `omz update && #` [via](https://github.com/ohmyzsh/ohmyzsh/blob/3935ccc/lib/functions.zsh#L9-L12) `\`<br/>
 `git clone --recurse-submodules --depth 1 --branch main --verbose --progress #` [via](https://github.com/hisaac/Tiime/blob/ff1a39d6765d8ae5c9724ca84d5c680dff4c602e/README.md#bootstrapping-instructions), [via](https://stackoverflow.com/a/50028481) `\`<br/>
 `git submodule update --init --recursive && #` [via](https://stackoverflow.com/a/10168693) `\`<br/>
@@ -162,13 +162,13 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 Track changes to which applications are installed without syncing them. The instructions are bash-compatible and refer to this document for instructions on regenerating the list.
 
 ```zsh
-saveApplications=-1 && mkdir -p "$DOTFILES"/\!=Mackup && mkdir -p /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
+saveApplications=-1 && mkdir -p "$DOTFILES"/\!=Mackup && mkdir -p /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
 ```
 
 ##### Atom packages
 
 ```zsh
-apm list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'Atom extensions ' > "$DOTFILES"/\!=Mackup/atom && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/atom && printf '———————————————\n' >> "$DOTFILES"/\!=Mackup/atom && apm list >> "$DOTFILES"/Mackup/\!=Mackup/atom && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+apm list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'Atom extensions ' > "$DOTFILES"/\!=Mackup/atom && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/atom && printf '———————————————\n' >> "$DOTFILES"/\!=Mackup/atom && apm list >> "$DOTFILES"/Mackup/\!=Mackup/atom && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 
 ##### Homebrew
@@ -186,13 +186,13 @@ listBrewCask="$DOTFILES"/!=Mackup/brew\ cask\ list && touch "$listBrewCask" && p
 ##### `$manpath`
 
 ```zsh
-saveManpath=-1 && mkdir -p "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
+saveManpath=-1 && mkdir -p "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
 ```
 
 ##### pip packages
 
 ```zsh
-pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' > "$DOTFILES"/\!=Mackup/pip && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/\!=Mackup/pip && pip list >> "$DOTFILES"/\!=Mackup/pip && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' > "$DOTFILES"/\!=Mackup/pip && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/\!=Mackup/pip && pip list >> "$DOTFILES"/\!=Mackup/pip && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 
 ## apk
