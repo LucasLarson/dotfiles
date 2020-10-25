@@ -152,8 +152,10 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec zsh
 
 #### manual
 
+<!--
 to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/mackup) might’ve but hasn’t
 `add='`**~/Desktop/example.txt**`' && cp ~/$add ~/Dropbox/Mackup/$add && mv ~/$add ~/.Trash && ln -s ~/Dropbox/Mackup/$add ~/$add`
+-->
 
 ##### lists
 
