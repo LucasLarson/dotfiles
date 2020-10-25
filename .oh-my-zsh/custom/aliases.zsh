@@ -29,7 +29,11 @@ alias gco="git checkout --progress"
 # place the function inside `{()}` to prevent the leaking of variable data
 # https://stackoverflow.com/a/37675401
 gcom () {(
-  if [ -n "$(git branch --list main)" ]; then
+  # check if there’s a `remote` with a default branch name
+  # https://stackoverflow.com/a/44750379
+  if git symbolic-ref refs/remotes/origin/HEAD > /dev/null 2>&1; then
+    defaultBranch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+  elif [ -n "$(git branch --list main)" ]; then
     defaultBranch=main
   elif [ -n "$(git branch --list master)" ]; then
     defaultBranch=master
