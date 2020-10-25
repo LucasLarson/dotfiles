@@ -203,8 +203,8 @@ pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' >
 
 #### testing
 
-`apk add foo #` unavailable? `\`<br/>
-`#` then try `\`<br/>
+`apk add foo #` unavailable? `\`<br/>
+`#` then try `\`<br/>
 `apk add foo@testing #` [via](https://web.archive.org/web/20201014175951id_/stackoverrun.com/ja/q/12834672#text_a46821207)
 
 ## list everything recursively in a directory
