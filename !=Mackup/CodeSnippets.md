@@ -416,7 +416,7 @@ Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 `command -v lsb_release > /dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`
 `  printf '\n\x60lsb_release --all\x60:\n%s\n\n' "$(lsb_release --all)"; \`
 `[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`
-`  printf '\x60cat /etc/release\x60:\n%s\n\n' "$(cat /etc/os-release)"`
+`  printf '\x60cat /etc/os-release\x60:\n%s\n\n' "$(cat /etc/os-release)"`
 
 ## rename files
 
