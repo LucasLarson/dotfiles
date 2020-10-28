@@ -51,9 +51,6 @@ alias ggc="git fetch --prune --prune-tags --verbose && git gc --aggressive --pru
 alias ginit="git init"
 alias glog="git log"
 alias gmv="git mv --verbose"
-if command -v gpg2 > /dev/null 2>&1; then
-  alias gpg="gpg2"
-fi
 
 # git pull after @ohmyzsh `gupav` ohmyzsh/ohmyzsh@3d2542f
 alias gpull="git pull --rebase --autostash --verbose && git status"
@@ -90,6 +87,12 @@ gu () {
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
 alias gvc="git verify-commit HEAD"
+
+
+# GPG
+if command -v gpg2 > /dev/null 2>&1; then
+  alias gpg="gpg2"
+fi
 
 
 # Python
