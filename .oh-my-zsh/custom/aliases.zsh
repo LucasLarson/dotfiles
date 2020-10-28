@@ -104,7 +104,7 @@ alias pip="pip3"
 # https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp="cp -r -i --"
 cy () {
-  if [[ -n $2 ]]; then
+  if [ -n $2 ]; then
     cp "$1" "$2"
   else
     # if there is no second argument,
