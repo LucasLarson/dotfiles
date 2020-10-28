@@ -49,6 +49,7 @@ gcom () {(
 alias gfgs="git fetch --all --verbose && git status"
 alias ggc="git fetch --prune --prune-tags --verbose && git gc --aggressive --prune=now"
 alias ginit="git init"
+alias glog="git log"
 alias gmv="git mv --verbose"
 if command -v gpg2 > /dev/null 2>&1; then
   alias gpg="gpg2"
