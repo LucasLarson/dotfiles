@@ -78,7 +78,8 @@
   required = true
 
 [gpg]
-  # `gpg2` aliases to `gpg`
+  # `gpg` is an alias to `gpg2` on devices where possible
+  # https://github.com/ustasb/dotfiles/commit/da93f0f
   program = gpg
 
 [i18n]
