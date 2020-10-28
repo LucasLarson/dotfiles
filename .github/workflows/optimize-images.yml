@@ -7,14 +7,14 @@ on:
   pull_request:
     paths:
       - '**.gif'
-      - '**.GIF'
       - '**.jpeg'
-      - '**.JPEG'
       - '**.jpg'
-      - '**.JPG'
       - '**.png'
-      - '**.PNG'
       - '**.webp'
+      - '**.GIF'
+      - '**.JPEG'
+      - '**.JPG'
+      - '**.PNG'
       - '**.WEBP'
 
 jobs:
