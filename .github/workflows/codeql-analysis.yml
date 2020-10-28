@@ -8,11 +8,10 @@
 #     # The branches below must be a subset of the branches above
 #     branches:
 #   schedule:
-#     # Tuesdays at 1:00pm UTC
+#     # Tuesdays at 1pm UTC
 #     - cron: '0 13 * * 2'
 #
 # jobs:
-#   # CodeQL-Build:
 #   analyze:
 #     name: Analyze
 #     runs-on: ubuntu-latest
@@ -20,12 +19,11 @@
 #     strategy:
 #       fail-fast: false
 #       matrix:
-#       # Override automatic language detection by changing the below list
-#       # Supported options are ['csharp', 'cpp', 'go', 'java',
-#       # 'javascript', 'python']
-#       # language: ['csharp', 'cpp', 'go', 'java', 'javascript', 'python']
-#       # Learn more...
-#       # https://git.io/overriding-automatic-language-detection
+#         # Override automatic language detection by changing the below list
+#         # Supported options are ['csharp', 'cpp', 'go', 'java',
+#         # 'javascript', 'python']
+#         # https://git.io/overriding-automatic-language-detection
+#         # language: ['csharp', 'cpp', 'go', 'java', 'javascript', 'python']
 #
 #     steps:
 #       - name: Checkout repository
@@ -43,14 +41,14 @@
 #       # Initializes the CodeQL tools for scanning.
 #       - name: Initialize CodeQL
 #         uses: github/codeql-action/init@v1
+#         # Override language selection by uncommenting this and choosing
+#         # your languages
 #         with:
 #           languages: ${{ matrix.language }}
 #           # If you wish to specify custom queries, you can do so here or in
-#           # a config file.
-#           # By default, queries listed here will override any specified in
-#           # a config file.
-#           # Prefix the list here with "+" to use these queries and those in
-#           # the config file.
+#           # a config file. By default, queries listed here will override any
+#           # specified in a config file. Prefix the list here with "+" to use
+#           # these queries and those in the config file.
 #           # queries: ./path/to/local/query, your-org/your-repo/queries@main
 #
 #       # Autobuild attempts to build any compiled language (C, C++, C#, Java)
