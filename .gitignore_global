@@ -51,6 +51,15 @@ Podfile.lock
 ## Subversion ##
 *.svn
 
+## UpdraftPlus ##
+upgrade/
+cache/
+updraft/
+backup*/
+*backups/
+*.sql
+*.log
+
 ## Vim ##
 *.swp
 
