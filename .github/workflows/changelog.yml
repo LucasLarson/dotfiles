@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 ---
->>>>>>> checklinks
 name: Changelog
 
 on:
@@ -34,8 +31,10 @@ jobs:
           #        awk -F / '{print $2}' | \
           #        sed -e "s/:refs//")
           #  shell: bash
+
           # - run: echo "$REPOSITORY_NAME"
           # shell: bash
+
           gem install github_changelog_generator
           github_changelog_generator \
           -u ${{ github.repository_owner }} \
