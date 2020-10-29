@@ -34,8 +34,6 @@ jobs:
 
           # - run: echo "$REPOSITORY_NAME"
           # shell: bash
-
-             |
           gem install github_changelog_generator
           github_changelog_generator \
           -u ${{ github.repository_owner }} \
