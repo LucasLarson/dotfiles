@@ -24,24 +24,26 @@ jobs:
           ${{ runner.os }}-gem-
     - name: Create local changes
       run: |
-        
+
         # https://github.community/t/repository-name-in-environment-variable/16856/4
         # - run: echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | sed -e "s/:refs//")
         #  shell: bash
 
-        # - run: echo "$REPOSITORY_NAME"
-        # shell: bash
-
-           |
-        gem install github_changelog_generator
-        github_changelog_generator -u ${{ github.repository_owner }} -p dotfiles -t ${{ secrets.GITHUB_TOKEN }} --exclude-labels duplicate,question,invalid,wontfix,nodoc
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Actions"
-        git commit -m "[ci skip] Updating changelog" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+          # - run: echo "$REPOSITORY_NAME"
+          # shell: bash
+          gem install github_changelog_generator
+          github_changelog_generator \
+          -u ${{ github.repository_owner }} \
+          -p dotfiles \
+          -t ${{ secrets.GITHUB_TOKEN }} \
+          --exclude-labels duplicate,question,invalid,wontfix,nodoc
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          git commit -m "[ci skip] Updating changelog" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
