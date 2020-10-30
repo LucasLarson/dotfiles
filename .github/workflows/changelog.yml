@@ -43,8 +43,8 @@ jobs:
           --exclude-labels duplicate,question,invalid,wontfix,nodoc
       - name: Commit files
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.email "action@github.com" \
+          git config --local user.name "GitHub Actions" \
           git commit -m "[ci skip] Updating changelog" -a
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
