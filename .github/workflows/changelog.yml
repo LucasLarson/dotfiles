@@ -45,7 +45,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com" \
           git config --local user.name "GitHub Actions" \
-          git commit -m "[ci skip] Updating changelog" -a
+          git add --all \
+          git commit --message "[ci skip] Updating changelog"
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
