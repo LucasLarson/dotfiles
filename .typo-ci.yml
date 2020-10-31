@@ -43,14 +43,17 @@ excluded_words:
   - ibiqlik  # ibiqlik/action-yamllint
   - imgbotconfig  # dabutvin/Imgbot
   - jonreid  # jonreid/XcodeWarnings
+  - ksh  # Korn shell
   - LucasLarson
   - Mackup
+  - minutiæ  # performatively pedantic minutiae
   - nixCraft  # Vivek Gite, cyberciti.biz
   - noninfringement  # GNU General Public License
   - omz  # ohmyzsh
   - peter-evans  # peter-evans/create-pull-request
   - rustup
   - sobolevn  # sobolevn/misspell-fixer-action
+  - timey  # git --version < 2.23 is old-timey
   - typoci
   - uncommenting
   - VivekGite  # nixCraft, cyberciti.biz
@@ -224,6 +227,7 @@ excluded_words:
   - zdharma
   - zrecompile
   - zsdoc
+  - zsh
   - zshelldoc
   - Zunit
   - zwc
