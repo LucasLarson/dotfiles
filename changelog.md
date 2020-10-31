@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `aa6d40b` to `5e2422d` [\#118](https://github.com/LucasLarson/dotfiles/pull/118) ([dependabot[bot]](https://github.com/apps/dependabot))
 - move commented CodeQL analysis into autofix multifarious workflow [\#117](https://github.com/LucasLarson/dotfiles/pull/117) ([LucasLarson](https://github.com/LucasLarson))
 - repair changelog generator [\#116](https://github.com/LucasLarson/dotfiles/pull/116) ([LucasLarson](https://github.com/LucasLarson))
 - Bump gaurav-nelson/github-action-markdown-link-check from 1.0.7 to 1.0.8 [\#115](https://github.com/LucasLarson/dotfiles/pull/115) ([dependabot[bot]](https://github.com/apps/dependabot))
