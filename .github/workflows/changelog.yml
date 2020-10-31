@@ -40,7 +40,8 @@ jobs:
           -u ${{ github.repository_owner }} \
           -p dotfiles \
           -t ${{ secrets.GITHUB_TOKEN }} \
-          --exclude-labels duplicate,question,invalid,wontfix,nodoc
+          --exclude-labels duplicate,question,invalid,wontfix,nodoc \
+          --output changelog.md
       - name: Commit files
         run: |
           git config --local user.email "action@github.com" && \
