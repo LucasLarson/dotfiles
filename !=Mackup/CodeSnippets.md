@@ -90,7 +90,7 @@
 ## copy, paste, return
 
 ```zsh
-update=-1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && sleep 1.0 && \
+update=1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && sleep 1.0 && \
 printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && (ping -q -i1 -c1 one.one.one.one &> /dev/null && ping -q -i1 -c1 8.8.8.8 &> /dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update) && \
 printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && brew upgrade && brew upgrade --cask && xcrun simctl delete unavailable && omz update && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && \
 printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up to date...\n' && python -m pip install --upgrade pip && \
@@ -164,7 +164,7 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 Track changes to which applications are installed without syncing them. The instructions are bash-compatible and refer to this document for instructions on regenerating the list.
 
 ```zsh
-saveApplications=-1 && mkdir -p "$DOTFILES"/\!=Mackup && mkdir -p /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
+saveApplications=1 && mkdir -p "$DOTFILES"/\!=Mackup && mkdir -p /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
 ```
 
 ##### Atom packages
@@ -188,7 +188,7 @@ listBrewCask="$DOTFILES"/!=Mackup/brew\ cask\ list && touch "$listBrewCask" && p
 ##### `$manpath`
 
 ```zsh
-saveManpath=-1 && mkdir -p "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
+saveManpath=1 && mkdir -p "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
 ```
 
 ##### pip packages
@@ -242,7 +242,7 @@ for example, locate all JPEG files<br/>
 #### Linux
 
 ```zsh
-pathSave=-1 && mkdir -p "$DOTFILES"/\!=Mackup && cd "$DOTFILES"/\!=Mackup && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
+pathSave=1 && mkdir -p "$DOTFILES"/\!=Mackup && cd "$DOTFILES"/\!=Mackup && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
 ```
 
 ## text editing
@@ -310,7 +310,7 @@ for example, C++17’s `<filesystem>`<br/>
 ### apply `clang-format` recursively
 
 [via](https://stackoverflow.com/a/36046965)<br/>
-`clangformat=-1 && find . -iname '*\.c' -or -iname '*\.c++' -or -iname '*\.cc' -or -iname '*\.cp' -or -iname '*\.cpp' -or -iname '*\.cxx' -or -iname '*\.h' -or -iname '*\.h++' -or -iname '*\.hh' -or -iname '*\.hp' -or -iname '*\.hpp' -or -iname '*\.hxx' -or -iname '*\.i' -or -iname '*\.ii' -or -iname '*\.m' -or -iname '*\.mi' -or -iname '*\.mii' -or -iname '*\.mm' -or -iname '*\.tcc' | xargs clang-format -i -style="{IndentWidth: 4}" --verbose && unset clangformat && printf '\n\n\xe2'$clangformat'\x9c\x85 done\x21\n\n'`
+`clangformat=1 && find . -iname '*\.c' -or -iname '*\.c++' -or -iname '*\.cc' -or -iname '*\.cp' -or -iname '*\.cpp' -or -iname '*\.cxx' -or -iname '*\.h' -or -iname '*\.h++' -or -iname '*\.hh' -or -iname '*\.hp' -or -iname '*\.hpp' -or -iname '*\.hxx' -or -iname '*\.i' -or -iname '*\.ii' -or -iname '*\.m' -or -iname '*\.mi' -or -iname '*\.mii' -or -iname '*\.mm' -or -iname '*\.tcc' | xargs clang-format -i -style="{IndentWidth: 4}" --verbose && unset clangformat && printf '\n\n\xe2'$clangformat'\x9c\x85 done\x21\n\n'`
 
 ### run `cpplint` recursively
 
@@ -491,7 +491,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ### Xcode, JetBrains, Carthage
 
-`trashDeveloper=-1 && sleep 0.25 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Developer/Xcode/UserData/IB\ Support && mv ~/Library/Developer/Xcode/UserData/IB\ Support ~/.Trash/Xcode⁄UserData⁄IB\ Support-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && mkdir -p ~/Library/Caches/org.carthage.CarthageKit/DerivedData && mv ~/Library/Caches/org.carthage.CarthageKit/DerivedData ~/.Trash/Carthage-$RANDOM && unset trashDeveloper && printf '\n\n\xf0'$trashDeveloper'\x9f'$trashDeveloper'\x9a'$trashDeveloper'\xae data successfully trashed\n\n'`
+`trashDeveloper=1 && sleep 0.25 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Developer/Xcode/UserData/IB\ Support && mv ~/Library/Developer/Xcode/UserData/IB\ Support ~/.Trash/Xcode⁄UserData⁄IB\ Support-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && mkdir -p ~/Library/Caches/org.carthage.CarthageKit/DerivedData && mv ~/Library/Caches/org.carthage.CarthageKit/DerivedData ~/.Trash/Carthage-$RANDOM && unset trashDeveloper && printf '\n\n\xf0'$trashDeveloper'\x9f'$trashDeveloper'\x9a'$trashDeveloper'\xae data successfully trashed\n\n'`
 
 ## delete
 
