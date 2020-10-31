@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 update=1
-clear
+clear && clear
 
 if [[ Darwin == "$(uname)" ]]; then
 
