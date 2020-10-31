@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/plugins/gunstage from `3f287df` to `e27fce3` [\#120](https://github.com/LucasLarson/dotfiles/pull/120) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `aa6d40b` to `5e2422d` [\#118](https://github.com/LucasLarson/dotfiles/pull/118) ([dependabot[bot]](https://github.com/apps/dependabot))
 - move commented CodeQL analysis into autofix multifarious workflow [\#117](https://github.com/LucasLarson/dotfiles/pull/117) ([LucasLarson](https://github.com/LucasLarson))
 - repair changelog generator [\#116](https://github.com/LucasLarson/dotfiles/pull/116) ([LucasLarson](https://github.com/LucasLarson))
@@ -89,7 +90,6 @@
 - Update actions/checkout requirement to v2.3.3 [\#62](https://github.com/LucasLarson/dotfiles/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump gaurav-nelson/github-action-markdown-link-check from v1.0.7 to 1.0.7 [\#61](https://github.com/LucasLarson/dotfiles/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `12cef82` to `afb854d` [\#54](https://github.com/LucasLarson/dotfiles/pull/54) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.1](https://github.com/LucasLarson/dotfiles/tree/v0.4.1) (2020-09-23)
 
@@ -102,6 +102,7 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `f14b58e` to `3b77282` [\#57](https://github.com/LucasLarson/dotfiles/pull/57) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `cf9f502` to `945a464` [\#56](https://github.com/LucasLarson/dotfiles/pull/56) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `afb854d` to `f14b58e` [\#55](https://github.com/LucasLarson/dotfiles/pull/55) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `12cef82` to `afb854d` [\#54](https://github.com/LucasLarson/dotfiles/pull/54) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `6221309` to `12cef82` [\#52](https://github.com/LucasLarson/dotfiles/pull/52) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/C.tmbundle from `60daf83` to `cc68c3b` [\#50](https://github.com/LucasLarson/dotfiles/pull/50) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `6c8c6ee` to `6221309` [\#49](https://github.com/LucasLarson/dotfiles/pull/49) ([dependabot[bot]](https://github.com/apps/dependabot))
