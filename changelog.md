@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- \[autofix\] Format JSON content [\#121](https://github.com/LucasLarson/dotfiles/pull/121) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `3f287df` to `e27fce3` [\#120](https://github.com/LucasLarson/dotfiles/pull/120) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `aa6d40b` to `5e2422d` [\#118](https://github.com/LucasLarson/dotfiles/pull/118) ([dependabot[bot]](https://github.com/apps/dependabot))
 - move commented CodeQL analysis into autofix multifarious workflow [\#117](https://github.com/LucasLarson/dotfiles/pull/117) ([LucasLarson](https://github.com/LucasLarson))
