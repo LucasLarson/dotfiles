@@ -60,6 +60,8 @@
   - [`tag`](#tag)
 - [Numbers](#numbers)
   - [Affixes](#affixes)
+- [Operating system](#operating-system)
+  - [Identify](#identify)
 - [rename files](#rename-files)
 - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
 - [SSH](#ssh)
@@ -87,12 +89,12 @@
 
 ## copy, paste, return
 
-```bash
-update=-1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && sleep 1.0 && \
+```zsh
+update=1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && sleep 1.0 && \
 printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && (ping -q -i1 -c1 one.one.one.one &> /dev/null && ping -q -i1 -c1 8.8.8.8 &> /dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update) && \
 printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && brew upgrade && brew upgrade --cask && xcrun simctl delete unavailable && omz update && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && \
 printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up to date...\n' && python -m pip install --upgrade pip && \
-printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && unset update && \
+printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install --upgrade && pip install --upgrade $(pip freeze | cut -d '=' -f 1) && pyenv rehash && source ~/.zshrc && rehash && unset update && \
 printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec zsh
 ```
 
@@ -104,7 +106,7 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec zsh
 `brew upgrade && \`<br/>
 `brew upgrade --cask && #` [via](https://github.com/hisaac/hisaac.net/blob/8c63d51119fe2a0f05fa6c1c2a404d12256b0594/source/_posts/2018/2018-02-12-update-all-the-things.md#readme), [via](https://github.com/Homebrew/homebrew-cask/pull/88681) `\`<br/>
 `brew install mackup --head && #` 0.8.29 [2020-06-06](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br/>
-`mackup backup && # || mackup backup --force \`<br/>
+`mackup backup --force --root \`<br/>
 `omz update && #` [via](https://github.com/ohmyzsh/ohmyzsh/blob/3935ccc/lib/functions.zsh#L9-L12) `\`<br/>
 `git clone --recurse-submodules --depth 1 --branch main --verbose --progress #` [via](https://github.com/hisaac/Tiime/blob/ff1a39d6765d8ae5c9724ca84d5c680dff4c602e/README.md#bootstrapping-instructions), [via](https://stackoverflow.com/a/50028481) `\`<br/>
 `git submodule update --init --recursive && #` [via](https://stackoverflow.com/a/10168693) `\`<br/>
@@ -136,7 +138,7 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec zsh
 `carthage update --verbose --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
 `brew install swiftgen --head && #`  6.2.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
 `swiftgen && \`<br/>
-`brew install swiftlint --head && #` 0.39.2 [2020-04-03](https://github.com/realm/SwiftLint/releases) `\`<br/>
+`brew install swiftlint --head && #` 0.40.3 [2020-09-22](https://github.com/realm/SwiftLint/releases) `\`<br/>
 `swiftlint autocorrect && \`<br/>
 `# git add . && git add -u || git add -A && #` [via](https://stackoverflow.com/a/15011313) `\`<br/>
 `git gc && \`<br/>
@@ -150,8 +152,10 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec zsh
 
 #### manual
 
+<!--
 to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/mackup) might’ve but hasn’t
 `add='`**~/Desktop/example.txt**`' && cp ~/$add ~/Dropbox/Mackup/$add && mv ~/$add ~/.Trash && ln -s ~/Dropbox/Mackup/$add ~/$add`
+-->
 
 ##### lists
 
@@ -159,38 +163,38 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 
 Track changes to which applications are installed without syncing them. The instructions are bash-compatible and refer to this document for instructions on regenerating the list.
 
-```bash
-saveApplications=-1 && mkdir -p "$DOTFILES"/\!=Mackup && mkdir -p /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
+```zsh
+saveApplications=1 && mkdir -p "$DOTFILES"/\!=Mackup && mkdir -p /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
 ```
 
 ##### Atom packages
 
-```bash
-apm list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'Atom extensions ' > "$DOTFILES"/\!=Mackup/atom && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/atom && printf '———————————————\n' >> "$DOTFILES"/\!=Mackup/atom && apm list >> "$DOTFILES"/Mackup/\!=Mackup/atom && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+```zsh
+apm list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'Atom extensions ' > "$DOTFILES"/\!=Mackup/atom && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/atom && printf '———————————————\n' >> "$DOTFILES"/\!=Mackup/atom && apm list >> "$DOTFILES"/Mackup/\!=Mackup/atom && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 
 ##### Homebrew
 
-```bash
+```zsh
 listBrew="$DOTFILES"/!=Mackup/brew\ list\ --verbose && touch "$listBrew" && printf 'brew list --verbose\n———————————————————\n' > "$listBrew" && brew list --verbose >> "$listBrew" && unset listBrew && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrew"
 ```
 
 ###### Cask
 
-```bash
+```zsh
 listBrewCask="$DOTFILES"/!=Mackup/brew\ cask\ list && touch "$listBrewCask" && printf 'brew cask list\n—————————————\n' > "$listBrewCask" && brew cask list >> "$listBrewCask" && unset listBrewCask && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrewCask"
 ```
 
 ##### `$manpath`
 
 ```zsh
-saveManpath=-1 && mkdir -p "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
+saveManpath=1 && mkdir -p "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
 ```
 
 ##### pip packages
 
-```bash
-pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' > "$DOTFILES"/\!=Mackup/pip && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/\!=Mackup/pip && pip list >> "$DOTFILES"/\!=Mackup/pip && cd "$DOTFILES" && mackup backup --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+```zsh
+pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' > "$DOTFILES"/\!=Mackup/pip && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/\!=Mackup/pip && pip list >> "$DOTFILES"/\!=Mackup/pip && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 
 ## apk
@@ -199,9 +203,9 @@ pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' >
 
 #### testing
 
-`apk add foo #` unavailable? `\`<br/>
-`#` then try `\`<br/>
-`apk add foo@testing #` [via](https://stackoverrun.com/ja/q/12834672)
+`apk add foo #` unavailable? `\`<br/>
+`#` then try `\`<br/>
+`apk add foo@testing #` [via](https://web.archive.org/web/20201014175951id_/stackoverrun.com/ja/q/12834672#text_a46821207)
 
 ## list everything recursively in a directory
 
@@ -238,7 +242,7 @@ for example, locate all JPEG files<br/>
 #### Linux
 
 ```zsh
-pathSave=-1 && mkdir -p "$DOTFILES"/\!=Mackup && cd "$DOTFILES"/\!=Mackup && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
+pathSave=1 && mkdir -p "$DOTFILES"/\!=Mackup && cd "$DOTFILES"/\!=Mackup && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
 ```
 
 ## text editing
@@ -306,7 +310,7 @@ for example, C++17’s `<filesystem>`<br/>
 ### apply `clang-format` recursively
 
 [via](https://stackoverflow.com/a/36046965)<br/>
-`clangformat=-1 && find . -iname '*\.c' -or -iname '*\.c++' -or -iname '*\.cc' -or -iname '*\.cp' -or -iname '*\.cpp' -or -iname '*\.cxx' -or -iname '*\.h' -or -iname '*\.h++' -or -iname '*\.hh' -or -iname '*\.hp' -or -iname '*\.hpp' -or -iname '*\.hxx' -or -iname '*\.i' -or -iname '*\.ii' -or -iname '*\.m' -or -iname '*\.mi' -or -iname '*\.mii' -or -iname '*\.mm' -or -iname '*\.tcc' | xargs clang-format -i -style="{IndentWidth: 4}" --verbose && unset clangformat && printf '\n\n\xe2'$clangformat'\x9c\x85 done\x21\n\n'`
+`clangformat=1 && find . -iname '*\.c' -or -iname '*\.c++' -or -iname '*\.cc' -or -iname '*\.cp' -or -iname '*\.cpp' -or -iname '*\.cxx' -or -iname '*\.h' -or -iname '*\.h++' -or -iname '*\.hh' -or -iname '*\.hp' -or -iname '*\.hpp' -or -iname '*\.hxx' -or -iname '*\.i' -or -iname '*\.ii' -or -iname '*\.m' -or -iname '*\.mi' -or -iname '*\.mii' -or -iname '*\.mm' -or -iname '*\.tcc' | xargs clang-format -i -style="{IndentWidth: 4}" --verbose && unset clangformat && printf '\n\n\xe2'$clangformat'\x9c\x85 done\x21\n\n'`
 
 ### run `cpplint` recursively
 
@@ -401,6 +405,19 @@ Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 | decimal     | `0d`𝑛  | 𝑛<sub>`10`</sub> |
 | hexadecimal | `0x`𝑛  | 𝑛<sub>`16`</sub> |
 
+## Operating system
+
+### Identify
+
+`command -v uname > /dev/null 2>&1 && \`
+`  printf '\n\x60uname -a\x60:\n%s\n\n' "$(uname -a)"; \`
+`command -v sw_vers > /dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`
+`  printf '\n\x60sw_vers\x60:\n%s\n\n' "$(sw_vers)"; \`
+`command -v lsb_release > /dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`
+`  printf '\n\x60lsb_release --all\x60:\n%s\n\n' "$(lsb_release --all)"; \`
+`[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`
+`  printf '\x60cat /etc/os-release\x60:\n%s\n\n' "$(cat /etc/os-release)"`
+
 ## rename files
 
 `brew install --upgrade rename && #` [via](https://stackoverflow.com/a/31694356) `\`<br/>
@@ -426,8 +443,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## wget
 
-`wgetserver=`'**example.com**' `&& \`<br/>
-`wget --mirror --continue --verbose --append-output=$wgetserver.log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --show-progress http://$wgetserver && unset wgetserver || unset wgetserver`
+`wgetserver=`'**example.com**' `&& (wget --mirror --continue --verbose --append-output=$wgetserver.log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --show-progress http://$wgetserver || wget --continue  http://$wgetserver) && unset wgetserver || unset wgetserver`
 
 ## WiFi
 
@@ -462,7 +478,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 ### npm
 
 `npm doctor && # ` creates empty `node_modules` directories `\`<br/>
-`find node_modules -empty -type d -delete #` deletes them [via](https://web.archive.org/web/20190320151645id_/cyberciti.biz/faq/howto-find-delete-empty-directories-files-in-unix-linux/)
+`find node_modules -empty -type d -delete #` deletes them [via](https://perma.cc/YNL2-FY3Z)
 
 ### RubyGems
 
@@ -474,7 +490,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ### Xcode, JetBrains, Carthage
 
-`trashDeveloper=-1 && sleep 0.25 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Developer/Xcode/UserData/IB\ Support && mv ~/Library/Developer/Xcode/UserData/IB\ Support ~/.Trash/Xcode⁄UserData⁄IB\ Support-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && mkdir -p ~/Library/Caches/org.carthage.CarthageKit/DerivedData && mv ~/Library/Caches/org.carthage.CarthageKit/DerivedData ~/.Trash/Carthage-$RANDOM && unset trashDeveloper && printf '\n\n\xf0'$trashDeveloper'\x9f'$trashDeveloper'\x9a'$trashDeveloper'\xae data successfully trashed\n\n'`
+`trashDeveloper=1 && sleep 0.25 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Developer/Xcode/UserData/IB\ Support && mv ~/Library/Developer/Xcode/UserData/IB\ Support ~/.Trash/Xcode⁄UserData⁄IB\ Support-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && mkdir -p ~/Library/Caches/org.carthage.CarthageKit/DerivedData && mv ~/Library/Caches/org.carthage.CarthageKit/DerivedData ~/.Trash/Carthage-$RANDOM && unset trashDeveloper && printf '\n\n\xf0'$trashDeveloper'\x9f'$trashDeveloper'\x9a'$trashDeveloper'\xae data successfully trashed\n\n'`
 
 ## delete
 

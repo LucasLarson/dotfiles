@@ -1,6 +1,0 @@
-[2020-05-26T18:03:32.575Z] Push master: started.
-[2020-05-26T18:03:32.912Z] pre-push hook started.
-[2020-05-26T18:03:34.915Z] pre-push hook finished. gk-log://duration?t=2003 gk-log://log-link?type=RAW_TEXT&file=repos%2FMackup-d7d9ae01%2Fhooks%2Fpre-push%2F1590516212972.2d0f9bf2&linktext=View%20hook%20log&loglabel=Hook%3A%20pre-push
-[2020-05-26T18:03:38.763Z] Push master: finished. gk-log://duration?t=6188
-[2020-05-27T01:26:08.415Z] Fetch all remotes: started.
-[2020-05-27T01:26:08.465Z] Fetch all remotes: finished. gk-log://duration?t=50
