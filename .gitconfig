@@ -16,20 +16,20 @@
 
   excludesfile = ~/.gitignore_global
 
-  # aggressive but slow repo compression via
-  # https://stackoverflow.com/a/28156806 and
+  # aggressive but slow repo compression
+  # https://stackoverflow.com/a/28156806
   # https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression
   compression = 9
   looseCompression = 9
 
   ignoreCase = false
 
-  # ensure Unicode filenames aren’t mangled by HFS via
-  # https://chromium.googlesource.com/chromium/src/+/11eee6b8a94a04b1a2741d96dd27a25caf00a8fe/docs/mac_build_instructions.md#get-the-code
+  # ensure Unicode filenames aren’t mangled by HFS
+  # https://chromium.googlesource.com/chromium/src/+/11eee6b/docs/mac_build_instructions.md#get-the-code
   precomposeUnicode = true
 
   # better diffs via the person from whom I learned to alias `apm-beta`
-  # https://github.com/jeefberkey/dotfiles/blob/b3513ad3966ef0d881662a18306bfed19796036f/.gitconfig#L11
+  # https://github.com/jeefberkey/dotfiles/blob/b3513ad/.gitconfig#L11
   pager = diff-so-fancy | less --tabs=4 -RFX
 
 [color]
@@ -62,12 +62,12 @@
   helper = "!f() { if [ \"$(uname -s)\" = Linux ]; then git credential-cache --timeout 7889238 \"$@\"; else git credential-osxkeychain \"$@\"; fi; };f"
 
 [diff "plist"]
-  # permit 𝚐𝚒𝚝 𝚍𝚒𝚏𝚏 even in binary 𝚙𝚕𝚒𝚜𝚝s via
+  # permit 𝚐𝚒𝚝 𝚍𝚒𝚏𝚏 even in binary 𝚙𝚕𝚒𝚜𝚝s
   # https://www.programming-books.io/essential/git/diff-utf-16-encoded-text-and-binary-plist-files-b4b8d7c85497429ea2c7a18cca6a1c53
   textconv = plutil -convert xml1 -o -
 
 [diff "utf16"]
-  # macOS strings files via
+  # macOS strings files
   # https://www.programming-books.io/essential/git/diff-utf-16-encoded-text-and-binary-plist-files-b4b8d7c85497429ea2c7a18cca6a1c53
   textconv = "iconv -f utf-16 -t utf-8"
 
@@ -78,7 +78,8 @@
   required = true
 
 [gpg]
-  # `gpg2` aliases to `gpg`
+  # `gpg` is an alias to `gpg2` where possible
+  # https://github.com/ustasb/dotfiles/commit/da93f0f
   program = gpg
 
 [i18n]
@@ -91,7 +92,7 @@
   keepBackup = true
 
 [pack]
-  # slow, aggressive compression via
+  # slow, aggressive compression
   # https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression
   compression = 9
 
@@ -100,7 +101,7 @@
 
 [rerere]
   # Git remembers your partial merge choices and replays them next time
-  # via https://stackoverflow.com/a/28156806
+  # https://stackoverflow.com/a/28156806
   autoUpdate = true
   enabled = true
 

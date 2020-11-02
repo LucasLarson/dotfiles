@@ -1,0 +1,32 @@
+<application>
+  <component name="RecentProjectsManager">
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$/Code/Fallback">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1VBSH9j96bRV8cu1wyK3QuwiMc9">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="WS-201.7846.30" />
+              <option name="buildTimestamp" value="1589877571618" />
+              <frame x="0" y="23" width="1407" height="877" />
+              <option name="productionCode" value="WS" />
+              <option name="projectOpenTimestamp" value="1590349784633" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Code/LucasLarson.net">
+          <value>
+            <RecentProjectMetaInfo frameTitle="LucasLarson.net" projectWorkspaceId="1gjuyCWzJ3rJJIVmTmXdnRhIgz0">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="WS-201.7846.30" />
+              <option name="buildTimestamp" value="1589877571618" />
+              <frame x="0" y="25" width="1407" height="877" />
+              <option name="productionCode" value="WS" />
+              <option name="projectOpenTimestamp" value="1590349844084" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</application>
