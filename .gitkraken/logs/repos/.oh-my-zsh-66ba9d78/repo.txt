@@ -1,6 +1,0 @@
-[2020-09-01T13:54:38.978Z] Unstage custom/example.zsh: started.
-[2020-09-01T13:54:39.217Z] Unstage custom/example.zsh: finished. gk-log://duration?t=239
-[2020-09-01T13:54:40.497Z] Unstage custom/plugins/example/example.plugin.zsh: started.
-[2020-09-01T13:54:40.694Z] Unstage custom/plugins/example/example.plugin.zsh: finished. gk-log://duration?t=197
-[2020-09-01T13:54:43.227Z] Unstage custom/themes/example.zsh-theme: started.
-[2020-09-01T13:54:43.419Z] Unstage custom/themes/example.zsh-theme: finished. gk-log://duration?t=192

@@ -1,0 +1,21 @@
+<application>
+  <component name="NodeJsLocalInterpreters">
+    <local-interpreter path="/usr/local/bin/node" />
+    <local-interpreter path="/usr/local/Cellar/node/13.4.0/bin/node" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GeneralSettings.initiallyConfigured" value="true" />
+    <property name="WebStorm.disableSafeWrite" value="true" />
+    <property name="WebStorm.initialConfigurationShown" value="true" />
+    <property name="appcds.runOnSecondStart" value="WS-203.5251.27-34058caa9b1f27000d4b9b2dfa02431e7d6cb1a0f075b70eb255df1edd10521c" />
+    <property name="ask.about.ctrl.y.shortcut" value="true" />
+    <property name="evlsprt3.193" value="16" />
+    <property name="evlsprt3.201" value="17" />
+    <property name="evlsprt3.WS-203.5251.27" value="12" />
+    <property name="file.gist.reindex.count" value="186" />
+    <property name="ide.memory.adjusted" value="true" />
+    <property name="shared.index.infrastructure.prop" value="4" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+    <property name="ts.lib.d.ts.version" value="4.0.3" />
+  </component>
+</application>

@@ -2386,6 +2386,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>noninfringement</string>
+		<key>shortcut</key>
+		<string>noninfringement</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>≠</string>
 		<key>shortcut</key>
 		<string>notequal</string>
