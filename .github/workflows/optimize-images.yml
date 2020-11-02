@@ -6,19 +6,41 @@ on:
   # on push to default branch.
   pull_request:
     paths:
-      - '**.jpg'
+      - '**.gif'
       - '**.jpeg'
+      - '**.jpg'
       - '**.png'
       - '**.webp'
-      - '**.gif'
+      - '**.GIF'
+      - '**.JPEG'
+      - '**.JPG'
+      - '**.PNG'
+      - '**.WEBP'
 
 jobs:
 
   optimize-images:
-    name: calibreapp/image-actions
+    name: Optimize images
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.3
       - uses: calibreapp/image-actions@1.1.0
+        id: image_actions
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          jpegQuality: '100'
+          pngQuality: '100'
+          webpQuality: '100'
+      - uses: peter-evans/create-pull-request@v3.4.1
+        with:
+          commit-message: "[autofix] Optimize images"
+          title: "[autofix] Optimize images"
+          body: >
+            [Auto-generated on run
+            #${{ github.run_id }}](https://github.com/${{ github.repository
+            }}/actions/runs/${{ github.run_id }}) as defined by [workflow
+            action](https://github.com/${{ github.repository
+            }}/blob/${{ github.base_ref }}/.github/workflows/autofix.yml).
+            %0A${{ steps.calibre.outputs.markdown }}
+          labels: CI/CD, documentation
+          branch: optimize-images-${{ github.run_id }}

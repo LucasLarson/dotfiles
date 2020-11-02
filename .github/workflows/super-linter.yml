@@ -18,7 +18,7 @@ on:
   push:
     branches-ignore:  # [main]
   pull_request:
-    branches:  # [main]
+    # branches: [main]
 
 ###############
 # Set the Job #
@@ -44,7 +44,7 @@ jobs:
       # Run Linter against code base #
       ################################
       - name: Lint Code Base
-        uses: github/super-linter@v3.12.0
+        uses: github/super-linter@v3.13.2
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
