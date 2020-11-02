@@ -80,10 +80,7 @@ export HISTSIZE=2147483647
 export SAVEHIST=$HISTSIZE
 
 # Use a custom folder other than $ZSH/custom
-# set to $DOTFILES for easier submodule additions
-if [[ $DOTFILES/.oh-my-zsh/custom -ef $ZSH/custom ]]; then
-  ZSH_CUSTOM=$DOTFILES/.oh-my-zsh/custom
-fi
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
