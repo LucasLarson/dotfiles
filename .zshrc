@@ -120,7 +120,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 
 # GPG signing with macOS-compatible Linux
-# https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key-2
+# https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key
 # https://reddit.com/comments/dk53ow/_/f50146x
 export GPG_TTY=$tty
 
