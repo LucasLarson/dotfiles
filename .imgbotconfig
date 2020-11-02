@@ -5,5 +5,5 @@
   ],
   "aggressiveCompression": "true", // true|false
   "compressWiki": "true", // true|false
-  "minKBReduced": 10 // delay PRs size reduction ≥ threshold (default 10)
+  "minKBReduced": 1 // delay PRs size reduction ≥ threshold (default 10)
 }

@@ -1,5 +1,0 @@
-[Sat Dec 28 2019 17:45:36 GMT-0500 (Eastern Standard Time)] Checkout Failed: failed to resolve path '/Users/LucasLarson/Code/Fallback/js/Lettering.js/.git': No such file or directory
-[Sat Dec 28 2019 18:13:48 GMT-0500 (Eastern Standard Time)] An Error Occurred: attempt to add submodule 'js/Lettering.js' that already exists
-[Sat Dec 28 2019 18:14:16 GMT-0500 (Eastern Standard Time)] Updating file contents failed: EISDIR: illegal operation on a directory, read
-[Thu Jan 02 2020 21:46:28 GMT-0500 (Eastern Standard Time)] Fetching pull requests failed: Must have an open repo
-[Thu Jan 02 2020 22:04:44 GMT-0500 (Eastern Standard Time)] Pull Failed:
