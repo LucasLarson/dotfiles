@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update github/super-linter action to v3.13.3 [\#126](https://github.com/LucasLarson/dotfiles/pull/126) ([renovate[bot]](https://github.com/apps/renovate))
 - make `wget` work on Alpine Linux and macOS [\#124](https://github.com/LucasLarson/dotfiles/pull/124) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `e27fce3` to `b6ba688` [\#123](https://github.com/LucasLarson/dotfiles/pull/123) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `5e2422d` to `d7861fc` [\#122](https://github.com/LucasLarson/dotfiles/pull/122) ([dependabot[bot]](https://github.com/apps/dependabot))
