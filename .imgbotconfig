@@ -1,9 +1,9 @@
 { // https://web.archive.org/web/20200523231457id_/imgbot.net/docs/#configuration
   "schedule": "daily", // daily|weekly|monthly
   "ignoredFiles": [
-    "*.svg",
+    "*.svg", // ignore by extension
   ],
   "aggressiveCompression": "true", // true|false
   "compressWiki": "true", // true|false
-  "minKBReduced": 10 // delay PRs size reduction ≥ threshold (default 10)
+  "minKBReduced": 1 // delay PRs size reduction ≥ threshold (default 10)
 }
