@@ -25,16 +25,6 @@ jobs:
             ${{ runner.os }}-gem-
       - name: Create local changes
         run: |
-          # https://github.community/t/repository-name-in-environment-variable/16856/4
-          # - run: echo ::set-env \
-          #        name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | \
-          #        awk -F / '{print $2}' | \
-          #        sed -e "s/:refs//")
-          #  shell: bash
-
-          # - run: echo "$REPOSITORY_NAME"
-          # shell: bash
-
           gem install github_changelog_generator
           github_changelog_generator \
           -u ${{ github.repository_owner }} \
