@@ -164,6 +164,7 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `be66f21` to `e0ed693` [\#13](https://github.com/LucasLarson/dotfiles/pull/13) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a88e11f` to `be66f21` [\#12](https://github.com/LucasLarson/dotfiles/pull/12) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `ae32fd5` to `a88e11f` [\#11](https://github.com/LucasLarson/dotfiles/pull/11) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `1be10eb` to `ae32fd5` [\#10](https://github.com/LucasLarson/dotfiles/pull/10) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `8854cb6` to `1be10eb` [\#9](https://github.com/LucasLarson/dotfiles/pull/9) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `eda706c` to `8854cb6` [\#7](https://github.com/LucasLarson/dotfiles/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `5e5d3f5` to `eda706c` [\#6](https://github.com/LucasLarson/dotfiles/pull/6) ([dependabot[bot]](https://github.com/apps/dependabot))
