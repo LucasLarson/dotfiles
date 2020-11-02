@@ -37,25 +37,30 @@ excluded_words:
   - Crashlytics
   - csharp  # CodeQL Analysis
   - cyberciti  # cyberciti.biz
-  - esolangs
+  - esolang
   - ffs
   - guillaumealgis  # guillaumealgis/XcodeWarningsAsXcconfig
   - ibiqlik  # ibiqlik/action-yamllint
   - imgbotconfig  # dabutvin/Imgbot
   - jonreid  # jonreid/XcodeWarnings
+  - ksh  # Korn shell
   - LucasLarson
   - Mackup
+  - minutiæ  # performatively pedantic minutiae
   - nixCraft  # Vivek Gite, cyberciti.biz
+  - noninfringement  # GNU General Public License
   - omz  # ohmyzsh
   - peter-evans  # peter-evans/create-pull-request
   - rustup
   - sobolevn  # sobolevn/misspell-fixer-action
+  - timey  # git --version < 2.23 is old-timey
   - typoci
   - uncommenting
   - VivekGite  # nixCraft, cyberciti.biz
 
   # AsciiDoc
   - adoc
+  - toclevels
 
   # CSS
   - webtv
@@ -103,6 +108,7 @@ excluded_words:
   - unsequenced
   - Wcall
   - Wdefaulted
+  - webfont
   - Weffc
   - Wextra
   - Wmemset
@@ -111,11 +117,23 @@ excluded_words:
   - Wreturn
   - Wsizeof
 
+  # DeepSource
+  - gofmt
+  - isort
+  - standardjs
+  - standardrb
+
   # Git
+  - autocrlf
+  - gitconfig
   - gmv  # homemade alias to `git mv`
+  - gpgsign
   - gunstage  # `🔫  `git unstage` as a service https://git.io/gunstage
+  - lfs
   - lsi  # Jekyll’s latent semantic indexing
   - osxkeychain
+  - precompose
+  - textconv
   - unstage
   - unstagers
   - unstaging
@@ -127,6 +145,14 @@ excluded_words:
   - ossar
   - Otechie
   - sarif  # OSSAR
+
+  # Gitpod
+  - bastet  # gitpod-io/gitpod
+  - runtimes
+  - tetris
+
+  # Google
+  - gtag
 
   # JetBrains
   - iml
@@ -142,6 +168,7 @@ excluded_words:
   # macOS
   - donotpresent
   - icns
+  - plutil
 
   # shell
   - euo
@@ -200,6 +227,7 @@ excluded_words:
   - zdharma
   - zrecompile
   - zsdoc
+  - zsh
   - zshelldoc
   - Zunit
   - zwc

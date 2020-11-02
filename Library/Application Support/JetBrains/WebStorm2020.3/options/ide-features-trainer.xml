@@ -1,0 +1,11 @@
+<application>
+  <component name="GroupManager">
+    <expandedByName>
+      <entry name="Tutorials" expanded="true" />
+      <entry name="Projects" expanded="true" />
+    </expandedByName>
+  </component>
+  <component name="LangManager">
+    <option name="languageName" value="JavaScript" />
+  </component>
+</application>
