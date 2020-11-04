@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 4
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     steps:
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
       - name: Set up Ruby
         uses: actions/setup-ruby@v1.1.2
         with:
