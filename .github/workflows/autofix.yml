@@ -12,7 +12,7 @@ jobs:
     name: Format JSON files and create a PR
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
       - name: Install linter
         run: |
           sudo npm install jsonlint-newline-fork -g
@@ -37,7 +37,7 @@ jobs:
     name: Fix typos and create a PR
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
       - uses: sobolevn/misspell-fixer-action@0.1.0
       - uses: peter-evans/create-pull-request@v3.4.1
         with:
@@ -56,7 +56,7 @@ jobs:
     name: Optimize images
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2.3.4
       - uses: calibreapp/image-actions@1.1.0
         id: calibre
         with:
@@ -93,7 +93,7 @@ jobs:
 #
 #     steps:
 #       - name: Checkout repository
-#         uses: actions/checkout@v2.3.3
+#         uses: actions/checkout@v2.3.4
 #         with:
 #           # We must fetch at least the immediate parents so that if this is
 #           # a pull request then we can checkout the head.
