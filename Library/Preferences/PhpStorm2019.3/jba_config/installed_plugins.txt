@@ -1,4 +1,0 @@
-com.intellij.ideolog
-org.editorconfig.editorconfigjetbrains
-com.wix.eslint
-org.wavescale.sourcesync
