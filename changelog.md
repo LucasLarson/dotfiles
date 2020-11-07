@@ -6,6 +6,10 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `d7861fc` to `2fc7257` [\#136](https://github.com/LucasLarson/dotfiles/pull/136) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/plugins/gunstage from `4c8e591` to `c62f44b` [\#135](https://github.com/LucasLarson/dotfiles/pull/135) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update actions/cache action to v2.1.3 [\#134](https://github.com/LucasLarson/dotfiles/pull/134) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump .oh-my-zsh/custom/plugins/gunstage from `d7963dc` to `4c8e591` [\#133](https://github.com/LucasLarson/dotfiles/pull/133) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update github/super-linter action to v3.13.5 [\#130](https://github.com/LucasLarson/dotfiles/pull/130) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/checkout action to v2.3.4 [\#129](https://github.com/LucasLarson/dotfiles/pull/129) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `b183bde` to `d7963dc` [\#128](https://github.com/LucasLarson/dotfiles/pull/128) ([dependabot[bot]](https://github.com/apps/dependabot))
