@@ -1,9 +1,8 @@
 ---
 name: Optimize images
 on:
-  # push:
-  # XXX Wait for https://github.com/calibreapp/image-actions/pull/30 to trigger
-  # on push to default branch.
+  # This action only runs for pushes to PRs
+  # https://github.com/calibreapp/image-actions/blob/6f4a17f/entrypoint.js#L28
   pull_request:
     paths:
       - '**.gif'
@@ -19,7 +18,7 @@ on:
 
 jobs:
 
-  optimize-images:
+  images:
     name: Optimize images
     runs-on: ubuntu-latest
     steps:
