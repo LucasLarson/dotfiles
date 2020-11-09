@@ -47,7 +47,16 @@ gcom () {(
 )}
 
 alias gfgs="git fetch --all --verbose && git status"
-alias ggc="git fetch --prune --prune-tags --verbose && git gc --aggressive --prune=now"
+
+ggc () {(
+  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    git fetch --prune --prune-tags --verbose
+    git gc --aggressive --prune=now
+  else
+    return 1
+  fi
+)}
+
 alias ginit="git init"
 alias glog="git log"
 alias gmv="git mv --verbose"
