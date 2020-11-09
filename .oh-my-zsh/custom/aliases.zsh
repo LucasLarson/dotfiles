@@ -172,6 +172,34 @@ cy () {
     cp "$1" "$PWD"
   fi
 }
+
+garbage () {(
+  # if `garbage -v` or `garbage --verbose`,
+  # then use `-print` during `-delete`
+  if [ "$1" = -v ] || [ "$1" = --verbose ]; then
+    verbose=-print
+  fi
+
+    # delete `.DS_Store` files recursively
+    find . -type f \
+        -name '.DS_Store' \
+        $verbose -delete
+
+    # delete empty, zero-length files except those
+    # with specific names
+    find . -type f -empty \
+        -not -path '*.gitkeep' -and \
+        -not -path '*.lock' \
+        $verbose -delete
+
+    # delete empty directories, except within `.git/`, recursively \
+    # https://stackoverflow.com/q/4210042#comment38334264_4210072 \
+    find . -type d -empty \
+        -not -path './.git/*' -and \
+        -not -path 'acme-challenge' \
+        $verbose -delete
+)}
+
 alias mv="mv -v -i" # https://unix.stackexchange.com/a/30950
 alias unixtime="date +%s" # https://stackoverflow.com/a/12312982
 alias which="which -a"
