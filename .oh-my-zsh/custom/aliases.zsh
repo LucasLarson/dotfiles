@@ -60,6 +60,38 @@ ggc () {(
 alias ginit="git init"
 alias glog="git log"
 
+# return the name of the repository’s default branch
+# ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
+git_default_branch () {(
+  # run only from within a git repository
+  # https://stackoverflow.com/a/53809163
+  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+
+    # check if there’s a `remote` with a default branch and use that name
+    # https://stackoverflow.com/a/44750379
+    if git symbolic-ref refs/remotes/origin/HEAD > /dev/null 2>&1; then
+      default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+
+    # check for `main`, which, if it exists, is most likely to be default
+    elif [ -n "$(git branch --list main)" ]; then
+      default_branch=main
+
+    # check for `master`
+    elif [ -n "$(git branch --list master)" ]; then
+      default_branch=master
+    else
+      printf 'unable to detect a \x60main\x60 or \x60master\x60 branch in '
+      printf 'this repository\n'
+      return 1
+    fi
+  else
+    printf 'git_default_branch must be called from within a Git repository\n'
+    return 1
+  fi
+  printf "$default_branch"
+)}
+
+
 # git merge main
 gmm () {(
   # check if there’s a `remote` with a default branch name
