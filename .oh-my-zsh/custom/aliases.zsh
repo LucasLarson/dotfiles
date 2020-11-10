@@ -196,7 +196,7 @@ garbage () {(
     # https://stackoverflow.com/q/4210042#comment38334264_4210072 \
     find . -type d -empty \
         -not -path './.git/*' -and \
-        -not -path 'acme-challenge' \
+        -not -path './.well-known/*' \
         $verbose -delete
 )}
 
