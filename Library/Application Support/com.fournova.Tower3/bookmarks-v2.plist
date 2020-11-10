@@ -6,20 +6,6 @@
 	<array>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/oconnor.nyc/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>oconnor.nyc</string>
-			<key>repositoryIdentifier</key>
-			<string>23992F54-DD1E-4654-9DE4-B77E720A87A9</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/__PRETTY_FUNCTION__/</string>
 			<key>lastOpenedDate</key>
 			<real>1591821988.3248839</real>
@@ -34,17 +20,17 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/accumulators/</string>
+			<string>file:///Users/LucasLarson/.oh-my-zsh/</string>
 			<key>lastOpenedDate</key>
-			<real>1591821996.727289</real>
+			<real>1598968221.710144</real>
 			<key>name</key>
-			<string>accumulators</string>
+			<string>.oh-my-zsh</string>
 			<key>repositoryIdentifier</key>
-			<string>401A9450-911A-46F3-BC93-5510C597F90E</string>
+			<string>171A3B7C-4CA5-4151-8436-58D9F9579AFF</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -59,20 +45,6 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/algorithm/</string>
-			<key>lastOpenedDate</key>
-			<real>1591822002.2516379</real>
-			<key>name</key>
-			<string>algorithm</string>
-			<key>repositoryIdentifier</key>
-			<string>DE44FF43-3A4C-4927-85DB-FAA1AA9E6E33</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -146,20 +118,6 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/align/</string>
-			<key>lastOpenedDate</key>
-			<real>1591822067.1408639</real>
-			<key>name</key>
-			<string>align</string>
-			<key>repositoryIdentifier</key>
-			<string>EBEB77E7-7160-46A4-92E5-CF5457968384</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/AltStore/Dependencies/AltSign/</string>
 			<key>lastOpenedDate</key>
 			<real>1591822071.803303</real>
@@ -188,17 +146,17 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/any/</string>
+			<string>file:///Users/LucasLarson/Code/AppIcons/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581103887.6098251</real>
 			<key>name</key>
-			<string>any</string>
+			<string>AppIcons</string>
 			<key>repositoryIdentifier</key>
-			<string>FA0B2778-7464-4898-BC30-AAE4839A285B</string>
+			<string>5AFA1A51-D37E-4677-8D72-FF90B8DF2ABF</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -216,17 +174,31 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/array/</string>
+			<string>file:///Users/LucasLarson/Library/Application%20Support/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1584645510.5364599</real>
 			<key>name</key>
-			<string>array</string>
+			<string>Application Support</string>
 			<key>repositoryIdentifier</key>
-			<string>E1282CE6-BAB7-4DDF-8C97-72DAF69A852F</string>
+			<string>BCA13364-994F-490E-851A-7EEAAF308273</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/AppTrap/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>AppTrap</string>
+			<key>repositoryIdentifier</key>
+			<string>E43D6BA7-A6F1-41BA-A2F2-25511532261D</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -244,48 +216,6 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/asio/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>asio</string>
-			<key>repositoryIdentifier</key>
-			<string>5B7E44E8-8C6C-4390-93F6-A1E18C7CD8B4</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/assert/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>assert</string>
-			<key>repositoryIdentifier</key>
-			<string>03D4F7D7-ED5B-484F-A6DF-76B745371C77</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/assign/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>assign</string>
-			<key>repositoryIdentifier</key>
-			<string>DB96DA37-6BA6-4981-947B-02DA632D9FB4</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/AStyle/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -300,31 +230,17 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/atomic/</string>
+			<string>file:///Users/LucasLarson/Code/Awesome-ML/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1581103941.867677</real>
 			<key>name</key>
-			<string>atomic</string>
+			<string>Awesome-ML</string>
 			<key>repositoryIdentifier</key>
-			<string>2BA7A97B-1A08-4C91-B30B-0EFF0E6ED6A1</string>
+			<string>CCFB13FF-C4DF-4CB4-9C47-C44E9412134D</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/tools/auto_index/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>auto_index</string>
-			<key>repositoryIdentifier</key>
-			<string>0254E29D-C437-4EC4-9851-BD2E2C443108</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -335,6 +251,34 @@
 			<string>awesome-v</string>
 			<key>repositoryIdentifier</key>
 			<string>0639363F-F635-49F5-A76C-8FA3E4E4D51F</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Sift/AwesomeCache/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>AwesomeCache</string>
+			<key>repositoryIdentifier</key>
+			<string>76BCB1C6-54D4-47AD-8F6C-268268D8C623</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/bbedit-pbxproj-language-module/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>bbedit-pbxproj-language-module</string>
+			<key>repositoryIdentifier</key>
+			<string>60FEDDA6-5863-475D-BC19-900DF8168AF1</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -370,59 +314,17 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/tools/bcp/</string>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/bjhstudios-iOSCustomKeyboard/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>bcp</string>
+			<string>bjhstudios-iOSCustomKeyboard</string>
 			<key>repositoryIdentifier</key>
-			<string>73C18983-3189-44D8-BE94-4392296C52A2</string>
+			<string>9C9575DD-9ADA-4FD0-940A-B380F7D4F071</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/beast/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>beast</string>
-			<key>repositoryIdentifier</key>
-			<string>0171C718-26C4-4CAA-9B49-43F4A478C5D0</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/bimap/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>bimap</string>
-			<key>repositoryIdentifier</key>
-			<string>6E6F843E-5818-40F7-956D-C7F72EE9D513</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/bind/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>bind</string>
-			<key>repositoryIdentifier</key>
-			<string>FD851A6F-488C-44AA-AD64-9C4255C13D27</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -447,6 +349,20 @@
 			<string>BoltsSwift</string>
 			<key>repositoryIdentifier</key>
 			<string>220C3CC4-E4BB-4E65-83C0-3336C1F79BF4</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/bonvortaro/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>bonvortaro</string>
+			<key>repositoryIdentifier</key>
+			<string>2E51CE0F-9F62-443B-9E4D-2E59B52C08E7</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -510,73 +426,31 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/tools/boost_install/</string>
+			<string>file:///Users/LucasLarson/Code/BranchesApp/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>boost_install</string>
+			<string>branchesapp</string>
 			<key>repositoryIdentifier</key>
-			<string>AC85F778-46B7-4763-8377-745381E81383</string>
+			<string>C51576FF-9197-43D5-B738-C3441AA93A46</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/tools/boostbook/</string>
+			<string>file:///Users/LucasLarson/Code/Brave/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1589055405.031245</real>
 			<key>name</key>
-			<string>boostbook</string>
+			<string>Brave</string>
 			<key>repositoryIdentifier</key>
-			<string>9E825F6A-0341-4F79-BBDB-4F508038D6FA</string>
+			<string>B4002876-A88E-429D-94A0-6388616BC225</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/tools/boostdep/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>boostdep</string>
-			<key>repositoryIdentifier</key>
-			<string>81CA8EF0-3CF5-4F4D-A2F8-66925B0AB8A9</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/BST-Roster/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>BST-Roster</string>
-			<key>repositoryIdentifier</key>
-			<string>65B7433E-1076-4FA5-ADBC-07D428C0B449</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/tools/build/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>build</string>
-			<key>repositoryIdentifier</key>
-			<string>D0774B15-0DBD-4B51-9B14-B78CE33ED537</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -622,20 +496,6 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/C++STL/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>C++STL</string>
-			<key>repositoryIdentifier</key>
-			<string>813ADC04-D74E-45DD-93CE-6F1A25D3F6AF</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Cafe/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -647,20 +507,6 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Calculator/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Calculator</string>
-			<key>repositoryIdentifier</key>
-			<string>3C8AC2C3-36F2-4156-9D84-867792C18BCA</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -678,73 +524,87 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/callable_traits/</string>
+			<string>file:///Users/LucasLarson/Code/CalFaq/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>callable_traits</string>
+			<string>CalFaq</string>
 			<key>repositoryIdentifier</key>
-			<string>80A485AC-0C41-4296-A8B6-C630C0F7BF1B</string>
+			<string>B0F5AC55-7F16-437D-87B1-C3DE7295C6BA</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/tools/check_build/</string>
+			<string>file:///Users/LucasLarson/Code/Catch2/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1582650342.79842</real>
 			<key>name</key>
-			<string>check_build</string>
+			<string>Catch2</string>
 			<key>repositoryIdentifier</key>
-			<string>2D4708B2-9510-49E1-B407-52BC7A94DCC0</string>
+			<string>12DA6127-BE34-4043-832D-C9868B772DA0</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/chrono/</string>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/cemolcay-KeyboardLayoutEngine/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>chrono</string>
+			<string>cemolcay-KeyboardLayoutEngine</string>
 			<key>repositoryIdentifier</key>
-			<string>95029518-659E-49AA-992F-BB29BB364739</string>
+			<string>3FFA686D-2464-4C92-85B0-C14C9D93797E</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/circular_buffer/</string>
+			<string>file:///Users/LucasLarson/Code/CFunctions/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>circular_buffer</string>
+			<string>CFunctions</string>
 			<key>repositoryIdentifier</key>
-			<string>309DFCC0-31B0-452D-9B6E-F3D2B105685E</string>
+			<string>D0CBD1BE-7EFE-4E81-8E7A-73E6E0F1304C</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/tools/cmake/</string>
+			<string>file:///Users/LucasLarson/Code/CleanStore/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>cmake</string>
+			<string>CleanStore</string>
 			<key>repositoryIdentifier</key>
-			<string>45C229A8-F29D-4F24-B162-A7F5BEA15967</string>
+			<string>F1749F59-173F-4CC6-8D51-35864E49BB4C</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ClipboardViewer/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>ClipboardViewer</string>
+			<key>repositoryIdentifier</key>
+			<string>9A6792C7-DA5B-41E6-87FD-5C61589E9D98</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -776,157 +636,31 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/compatibility/</string>
+			<string>file:///Users/LucasLarson/Code/Completionist/</string>
 			<key>lastOpenedDate</key>
-			<real>0.0</real>
+			<real>1586364221.4077868</real>
 			<key>name</key>
-			<string>compatibility</string>
+			<string>Completionist</string>
 			<key>repositoryIdentifier</key>
-			<string>DBD4C62A-7521-46A7-96AD-A352209D731A</string>
+			<string>61DD7274-D45F-4AF7-8127-42C5C33C8F27</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/compute/</string>
+			<string>file:///Users/LucasLarson/Code/Content-Security-Policy/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>compute</string>
+			<string>Content-Security-Policy</string>
 			<key>repositoryIdentifier</key>
-			<string>A710FB4B-6094-433D-8182-0A76096D4971</string>
+			<string>6DCDE013-76F8-41AC-9D3B-3A5F7BA5744A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/concept_check/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>concept_check</string>
-			<key>repositoryIdentifier</key>
-			<string>57B0E58C-CD24-41F0-AFBB-F9E8A413D398</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/config/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>config</string>
-			<key>repositoryIdentifier</key>
-			<string>CED86ADF-0E90-475E-BEA3-41DDC9DE0A5A</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/container/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>container</string>
-			<key>repositoryIdentifier</key>
-			<string>664C68DF-DC99-4B34-8CB4-6115F26CA504</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/container_hash/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>container_hash</string>
-			<key>repositoryIdentifier</key>
-			<string>30A09C76-9F38-41FC-86C4-C2396A376F82</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/context/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>context</string>
-			<key>repositoryIdentifier</key>
-			<string>2308FDF4-90A4-456B-A4A4-0609EF3FD9DA</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/contract/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>contract</string>
-			<key>repositoryIdentifier</key>
-			<string>20EB7BF8-473A-4CF0-89F1-804E177A6E7D</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/numeric/conversion/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>conversion</string>
-			<key>repositoryIdentifier</key>
-			<string>0F2C5E44-483C-4F78-85F9-F040D6939013</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/conversion/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>conversion</string>
-			<key>repositoryIdentifier</key>
-			<string>B4EA7590-DBC6-409F-9611-AA40E717843F</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/convert/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>convert</string>
-			<key>repositoryIdentifier</key>
-			<string>8C713EE3-8DE2-4C99-82AC-F2EBC82B1F73</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -944,20 +678,6 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/core/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>core</string>
-			<key>repositoryIdentifier</key>
-			<string>F1B64BEB-6AA6-4008-BD95-F0D56B1D83BE</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/coreutils/</string>
 			<key>lastOpenedDate</key>
 			<real>1591822189.3802481</real>
@@ -969,34 +689,6 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/coroutine/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>coroutine</string>
-			<key>repositoryIdentifier</key>
-			<string>4DE767F7-2F71-4FDE-9AF6-4B4404C51BB9</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/coroutine2/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>coroutine2</string>
-			<key>repositoryIdentifier</key>
-			<string>50D0B223-77C5-43F3-A46B-87E2583CD2D6</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -1021,6 +713,34 @@
 			<string>CppDataStructureCheatSheet</string>
 			<key>repositoryIdentifier</key>
 			<string>87B6B72C-2004-4F62-B094-91A5A538EE80</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/CppFunctions/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>CppFunctions</string>
+			<key>repositoryIdentifier</key>
+			<string>BAFEB4A6-3F6A-4FBD-8698-ED17CA59353A</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/cpplint/</string>
+			<key>lastOpenedDate</key>
+			<real>1581103987.8461928</real>
+			<key>name</key>
+			<string>cpplint</string>
+			<key>repositoryIdentifier</key>
+			<string>04324DFC-3DC0-4809-94EF-1A1A40A6F064</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1070,6 +790,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/CPPsandbox/</string>
+			<key>lastOpenedDate</key>
+			<real>1583890372.12992</real>
+			<key>name</key>
+			<string>CppSandbox</string>
+			<key>repositoryIdentifier</key>
+			<string>B930ED94-72BE-4AE7-ADA1-F7FED8216DDE</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/CraftingInterpreters/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -1084,20 +818,6 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/crc/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>crc</string>
-			<key>repositoryIdentifier</key>
-			<string>47DFD94F-4E48-432A-8169-F5168B63B83C</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/CSCI235final/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -1105,6 +825,20 @@
 			<string>CSCI235final</string>
 			<key>repositoryIdentifier</key>
 			<string>0DF6AD60-BE46-4D89-A09A-B00F108F4A4A</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/custom-content-type-manager/</string>
+			<key>lastOpenedDate</key>
+			<real>1581104086.4664059</real>
+			<key>name</key>
+			<string>custom-content-type-manager</string>
+			<key>repositoryIdentifier</key>
+			<string>2A01A210-A26A-441F-8926-CC4B6FEA8505</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1123,20 +857,6 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/date_time/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>date_time</string>
-			<key>repositoryIdentifier</key>
-			<string>8751543C-C4E8-4ABA-A3D2-487139447C1E</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -1168,20 +888,6 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/detail/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>detail</string>
-			<key>repositoryIdentifier</key>
-			<string>CF5DA671-FFDE-47DB-90D1-6549604249D8</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Dictum/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -1196,45 +902,59 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/dll/</string>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/Donohue-CustomKeyboard/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>dll</string>
+			<string>Donohue-CustomKeyboard</string>
 			<key>repositoryIdentifier</key>
-			<string>07FA5F9F-6D84-4F94-A9BD-446717BB0CCB</string>
+			<string>74E6287E-025C-452A-A32C-317B592FE367</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/tools/docca/</string>
+			<string>file:///Users/LucasLarson/Code/DTFoundation/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>docca</string>
+			<string>DTFoundation</string>
 			<key>repositoryIdentifier</key>
-			<string>FF16F0C7-60ED-4E68-A651-B1877D8A5FC9</string>
+			<string>E97E156C-F723-4622-B4EF-70CDAF4E5B4A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/dynamic_bitset/</string>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/Sparkle/ed25519/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>dynamic_bitset</string>
+			<string>ed25519</string>
 			<key>repositoryIdentifier</key>
-			<string>B2881D02-6D8E-4A2C-A832-484D5160A8C7</string>
+			<string>3CF0651C-2150-4795-98E9-A85475094DCC</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/editor-layer-index/</string>
+			<key>lastOpenedDate</key>
+			<real>1580689034.196769</real>
+			<key>name</key>
+			<string>editor-layer-index</string>
+			<key>repositoryIdentifier</key>
+			<string>91681B38-E826-46CD-AC17-C76C1FEFC430</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -1252,59 +972,45 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/endian/</string>
+			<string>file:///Users/LucasLarson/Code/Fallback/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>endian</string>
+			<string>Fallback</string>
 			<key>repositoryIdentifier</key>
-			<string>8FA84C40-3B72-4201-A38F-24FEF05205AE</string>
+			<string>C8720F7C-41AF-4D7A-905D-F8D467C47A4D</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/exception/</string>
+			<string>file:///Users/LucasLarson/Code/ffffallback/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>exception</string>
+			<string>ffffallback</string>
 			<key>repositoryIdentifier</key>
-			<string>A8352154-AFBB-4649-AAB9-DFA672DEEBC8</string>
+			<string>21FD2E0A-4509-46A8-B78C-AC8A2DE875F4</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/fiber/</string>
+			<string>file:///Users/LucasLarson/Code/Firefox/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>fiber</string>
+			<string>Firefox</string>
 			<key>repositoryIdentifier</key>
-			<string>6862A45C-FFD2-4A27-8140-9F9908DE53A4</string>
+			<string>3543D19B-9D2F-43BF-949D-138563540C9A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/filesystem/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>filesystem</string>
-			<key>repositoryIdentifier</key>
-			<string>2628EDF1-E82E-4AC9-BBC4-3E31D669BC6C</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -1336,48 +1042,6 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/flyweight/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>flyweight</string>
-			<key>repositoryIdentifier</key>
-			<string>90FBB013-8A70-455A-96C4-E5D8ED11A45C</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/foreach/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>foreach</string>
-			<key>repositoryIdentifier</key>
-			<string>0CE912E0-03D8-428B-81FA-80C1F2C8A938</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Boost/libs/format/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>format</string>
-			<key>repositoryIdentifier</key>
-			<string>E3FB91AB-2777-4342-8675-0D8B11FA0C26</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/UncrustifyX/UncrustifyX/Frameworks/Fragaria/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -1385,6 +1049,20 @@
 			<string>Fragaria</string>
 			<key>repositoryIdentifier</key>
 			<string>B14F169C-DAB2-45D3-ADCE-A84D26F80047</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/freshOS-KeyboardLayoutGuide/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>freshOS-KeyboardLayoutGuide</string>
+			<key>repositoryIdentifier</key>
+			<string>43332A65-010E-4430-97E0-D3B9C18C29B0</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1518,6 +1196,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/git-big-lfs-hook/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>git-big-lfs-hook</string>
+			<key>repositoryIdentifier</key>
+			<string>DADA3FCA-B128-42B7-BDB0-D88AE20E2BBE</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Glance/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -1539,6 +1231,20 @@
 			<string>gnulib</string>
 			<key>repositoryIdentifier</key>
 			<string>F9DE09AC-F284-4BDB-A6FB-343DFDC61FB2</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/GoMap/</string>
+			<key>lastOpenedDate</key>
+			<real>1582076193.9491529</real>
+			<key>name</key>
+			<string>GoMap</string>
+			<key>repositoryIdentifier</key>
+			<string>1DBD9CBC-AF38-407A-9EEE-81BC9D3E728B</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1588,6 +1294,48 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/guetzli/guetzli/</string>
+			<key>lastOpenedDate</key>
+			<real>1581104157.8421512</real>
+			<key>name</key>
+			<string>guetzli</string>
+			<key>repositoryIdentifier</key>
+			<string>2DBBF237-0FDB-4497-B839-CCD78737ED0F</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/gunstageTrash/</string>
+			<key>lastOpenedDate</key>
+			<real>1604070925.285712</real>
+			<key>name</key>
+			<string>gunstageTrash</string>
+			<key>repositoryIdentifier</key>
+			<string>8A3F496A-5645-4E86-8835-4836E7F3AF84</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Tiime/Tiime/Supporting%20Files/Fonts/Hack/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Hack</string>
+			<key>repositoryIdentifier</key>
+			<string>1EF7DE88-19B6-47C5-BD51-910A3ACB5A9C</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/hana/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -1623,6 +1371,20 @@
 			<string>heap</string>
 			<key>repositoryIdentifier</key>
 			<string>F653DB76-EFD1-4B96-97CC-62170FA72623</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/hello-github-actions/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>hello-github-actions</string>
+			<key>repositoryIdentifier</key>
+			<string>21C4A513-15CA-4463-B6D2-B002A49A2A35</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1756,6 +1518,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/HTML5test/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>HTML5test</string>
+			<key>repositoryIdentifier</key>
+			<string>953757BF-31FA-4C77-88E5-A4F670459DA4</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/HTTPS4All/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -1763,6 +1539,20 @@
 			<string>HTTPS4All</string>
 			<key>repositoryIdentifier</key>
 			<string>78E22BFC-742A-4235-B42F-A0509AE5D56F</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Tiime/Tiime/Supporting%20Files/Fonts/iA%20Fonts/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>iA Fonts</string>
+			<key>repositoryIdentifier</key>
+			<string>5977D3A0-D4AC-45FB-8ADE-70543D45C23A</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1798,6 +1588,34 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>ImageOptim</string>
+			<key>repositoryIdentifier</key>
+			<string>7B67F75E-A8CD-43EF-9C12-2D4AD9ACFCC6</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Imagery/</string>
+			<key>lastOpenedDate</key>
+			<real>1584044045.953274</real>
+			<key>name</key>
+			<string>Imagery</string>
+			<key>repositoryIdentifier</key>
+			<string>9E6574CE-F4AA-4017-98CC-E32154C86111</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/LibTerm/InputAssistant/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -1819,6 +1637,20 @@
 			<string>InputAssistant</string>
 			<key>repositoryIdentifier</key>
 			<string>73B92D62-D6E4-4078-8AEA-F742B73B6618</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Pisth/InputAssistant/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>InputAssistant</string>
+			<key>repositoryIdentifier</key>
+			<string>C24B906F-B137-47AE-90C0-46170861D2C0</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -1966,6 +1798,34 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/ios-decal-hw2/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>ios-decal-hw2</string>
+			<key>repositoryIdentifier</key>
+			<string>BE2E21FF-058A-4B68-9CB9-35181FA8E120</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/iOSAppsInfo/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>iOSAppsInfo</string>
+			<key>repositoryIdentifier</key>
+			<string>0C94E303-E6CD-4637-A045-B2E68D3126BB</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/iOSSwiftOpenGL/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -1994,6 +1854,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/IPA-Keyboard-iOS/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>IPA-Keyboard-iOS</string>
+			<key>repositoryIdentifier</key>
+			<string>D996E341-AD73-4081-8122-9D4B060D8639</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/%20Keyboards/ISEmojiView/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2001,6 +1875,20 @@
 			<string>ISEmojiView</string>
 			<key>repositoryIdentifier</key>
 			<string>8FEB49AD-FE7B-4409-A1D1-37A571EE9C2C</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/iSH/</string>
+			<key>lastOpenedDate</key>
+			<real>1581104389.549993</real>
+			<key>name</key>
+			<string>iSH</string>
+			<key>repositoryIdentifier</key>
+			<string>D167A43D-40E6-4147-9AB3-7BA8CD51C24E</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -2050,6 +1938,34 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/jetpack/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>jetpack</string>
+			<key>repositoryIdentifier</key>
+			<string>5B249652-7CD1-4461-A358-6DDD0A2E80DA</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Klavye/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Klavye</string>
+			<key>repositoryIdentifier</key>
+			<string>FD05D69F-6AF1-4DA1-AC29-42E131278367</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/lambda/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2064,13 +1980,13 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/AltStore/Dependencies/AltSign/Dependencies/ldid/</string>
+			<string>file:///Users/LucasLarson/Code/Tiime/Tiime/Supporting%20Files/Fonts/LCD/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>ldid</string>
+			<string>LCD</string>
 			<key>repositoryIdentifier</key>
-			<string>EE150BC7-5087-43D7-BB5C-66E4A65586D2</string>
+			<string>165E9A2A-F6C2-439C-B7CA-FD55963C46F8</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -2078,13 +1994,13 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Leap.se/</string>
+			<string>file:///Users/LucasLarson/Code/AltStore/Dependencies/AltSign/Dependencies/ldid/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>Leap.se</string>
+			<string>ldid</string>
 			<key>repositoryIdentifier</key>
-			<string>43C42D28-B2BD-4E95-9D38-2CF414814793</string>
+			<string>EE150BC7-5087-43D7-BB5C-66E4A65586D2</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -2106,6 +2022,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Leap.se/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Leap.se</string>
+			<key>repositoryIdentifier</key>
+			<string>43C42D28-B2BD-4E95-9D38-2CF414814793</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/lexical_cast/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2113,6 +2043,48 @@
 			<string>lexical_cast</string>
 			<key>repositoryIdentifier</key>
 			<string>74DF4110-6843-4AA8-A773-9761E6023598</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/pngquant/src/lib/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>lib</string>
+			<key>repositoryIdentifier</key>
+			<string>EEB819C8-BB8B-4213-9906-1AA668877924</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/iSH/app/terminal/libapps/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>libapps</string>
+			<key>repositoryIdentifier</key>
+			<string>2CE57191-51D2-43BE-A34E-591D74970B06</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ffi/ext/ffi_c/libffi/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>libffi</string>
+			<key>repositoryIdentifier</key>
+			<string>E20BB221-FFF1-4700-A804-96702BC526E6</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -2274,6 +2246,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/LinkKeyboard/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>LinkKeyboard</string>
+			<key>repositoryIdentifier</key>
+			<string>B645312D-2224-4B25-8411-B963B6B31474</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/tools/litre/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2327,6 +2313,20 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/location-history-json-converter/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>location-history-json-converter</string>
+			<key>repositoryIdentifier</key>
+			<string>2CE6E60B-98F0-456F-822E-B6DCDFAF39A9</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -2386,6 +2386,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/LucasLarson.github.io/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>LucasLarson.github.io</string>
+			<key>repositoryIdentifier</key>
+			<string>E701F5B8-1690-48F6-87AD-D61E144B076A</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/LucasLarson.net/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2393,6 +2407,48 @@
 			<string>LucasLarson.net</string>
 			<key>repositoryIdentifier</key>
 			<string>721E2CFA-783C-422B-8E62-5636B99EF3E7</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/mac-keyboard-Esperanto/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Mac-Keyboard-Esperanto</string>
+			<key>repositoryIdentifier</key>
+			<string>4021C3F8-B82A-4150-AEF5-C5AEE406413B</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Dropbox/Mackup/</string>
+			<key>lastOpenedDate</key>
+			<real>1593197645.6439331</real>
+			<key>name</key>
+			<string>Mackup</string>
+			<key>repositoryIdentifier</key>
+			<string>DD2BE074-1015-4A6B-AA33-FDCDB71ECFA5</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Mackup/</string>
+			<key>lastOpenedDate</key>
+			<real>1581452144.9118581</real>
+			<key>name</key>
+			<string>Mackup</string>
+			<key>repositoryIdentifier</key>
+			<string>B5D6B1DB-AB32-4BFB-9668-6A63848787DD</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -2421,6 +2477,20 @@
 			<string>MagicalRecord</string>
 			<key>repositoryIdentifier</key>
 			<string>5380280C-3746-4548-8216-C76A8821B8A2</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Mailto/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Mailto</string>
+			<key>repositoryIdentifier</key>
+			<string>40223C1F-ADF5-4418-9DA7-6744140B6E66</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -2512,6 +2582,34 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/MetricTime/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>MetricTime</string>
+			<key>repositoryIdentifier</key>
+			<string>794D8ED8-D6D8-4D42-9BB8-5FA33CD7FDA7</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/MetricTime_/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>MetricTime_</string>
+			<key>repositoryIdentifier</key>
+			<string>30F40FC8-A717-482E-AFF6-ECEFAE296395</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/minivmac4ios/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2533,6 +2631,20 @@
 			<string>mmenu</string>
 			<key>repositoryIdentifier</key>
 			<string>5C33D081-3E8C-402C-9424-765CC6ECE739</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/MongolianIPAKeyboardContainer/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>MongolianIPAKeyboardContainer</string>
+			<key>repositoryIdentifier</key>
+			<string>7FE0E627-5899-405F-BF09-506E30B9C4AC</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -2680,6 +2792,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/branchesapp/public/alandipert/ncsa-mosaic/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>ncsa-mosaic</string>
+			<key>repositoryIdentifier</key>
+			<string>30327884-8D3D-4C06-9E58-0C70AC54A9B5</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/netscape-bookmark-tree/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2792,6 +2918,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/no-future-posts/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>no-future-posts</string>
+			<key>repositoryIdentifier</key>
+			<string>5F2F42F9-E1A8-4085-9EC8-D799CE5B89A1</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/nowide/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2848,6 +2988,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/oconnor.nyc/</string>
+			<key>lastOpenedDate</key>
+			<real>1596650049.309433</real>
+			<key>name</key>
+			<string>oconnor.nyc</string>
+			<key>repositoryIdentifier</key>
+			<string>23992F54-DD1E-4654-9DE4-B77E720A87A9</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/ohshitgit/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2862,13 +3016,41 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/AltStore/Dependencies/AltSign/Dependencies/OpenSSL/</string>
+			<string>file:///Users/LucasLarson/Code/Onion/</string>
+			<key>lastOpenedDate</key>
+			<real>1581114443.136755</real>
+			<key>name</key>
+			<string>Onion</string>
+			<key>repositoryIdentifier</key>
+			<string>4CE96BFA-48DB-4A4D-9173-6AA509F10C37</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/OpenCCTV/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
 			<key>name</key>
-			<string>OpenSSL</string>
+			<string>OpenCCTV</string>
 			<key>repositoryIdentifier</key>
-			<string>122E1587-2C80-448D-B5F2-0DCF649514DB</string>
+			<string>E3D1701B-47AA-40E4-B967-DE2C448FA7A1</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/OpenGL-Metal/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>OpenGL-Metal</string>
+			<key>repositoryIdentifier</key>
+			<string>24058AA4-7A93-499B-ADCF-3BDBC127A269</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -2890,6 +3072,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/AltStore/Dependencies/AltSign/Dependencies/OpenSSL/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>OpenSSL</string>
+			<key>repositoryIdentifier</key>
+			<string>122E1587-2C80-448D-B5F2-0DCF649514DB</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/optional/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2904,6 +3100,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/gifsicle/orig/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>orig</string>
+			<key>repositoryIdentifier</key>
+			<string>DFC30533-404F-4F2D-81EA-852DB4A39A28</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/OSM-Completionist/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -2911,6 +3121,34 @@
 			<string>OSM-Completionist</string>
 			<key>repositoryIdentifier</key>
 			<string>69A452DE-C633-45D5-BEF2-2E3A450A3A53</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/OsmAnd/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>OsmAnd</string>
+			<key>repositoryIdentifier</key>
+			<string>F637DE5B-FF32-4AB8-99C4-57694F4C4523</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/osmlab/</string>
+			<key>lastOpenedDate</key>
+			<real>1580999596.2989359</real>
+			<key>name</key>
+			<string>OSMLab</string>
+			<key>repositoryIdentifier</key>
+			<string>ED16275D-ED4A-44A6-BA64-54696FB59627</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -2929,6 +3167,20 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/oxipng/oxipng/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>oxipng</string>
+			<key>repositoryIdentifier</key>
+			<string>EC2624CF-1884-408E-93E9-ECE6DBB437FC</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -2988,6 +3240,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Pisth/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Pisth</string>
+			<key>repositoryIdentifier</key>
+			<string>A354AB8D-DC46-43A5-A33B-3B15AC6A9AD9</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/poly_collection/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -3030,6 +3296,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/PoshReVo/</string>
+			<key>lastOpenedDate</key>
+			<real>1580320357.5876689</real>
+			<key>name</key>
+			<string>PoshReVo</string>
+			<key>repositoryIdentifier</key>
+			<string>D04EF87E-6842-4E90-A5DA-FBA937A5EA17</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Powerline/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -3055,6 +3335,20 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Library/Preferences/</string>
+			<key>lastOpenedDate</key>
+			<real>1585232651.9794521</real>
+			<key>name</key>
+			<string>Preferences</string>
+			<key>repositoryIdentifier</key>
+			<string>05043863-8F97-4B24-8CF3-A0B55D225467</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -3163,6 +3457,20 @@
 			<string>python</string>
 			<key>repositoryIdentifier</key>
 			<string>0D333BCC-01C9-4705-B839-B27E37887AF2</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/python-random-quote/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>python-random-quote</string>
+			<key>repositoryIdentifier</key>
+			<string>4DB72E26-44C9-4B3E-8F81-57DFA8C6AF4F</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -3450,6 +3758,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Semester/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Semester</string>
+			<key>repositoryIdentifier</key>
+			<string>F1DCEB5E-AF92-4E1E-813E-AE70AD161983</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/serialization/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -3464,6 +3786,34 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ShowAnchors/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>ShowAnchors</string>
+			<key>repositoryIdentifier</key>
+			<string>2B1C02C4-A5F7-48B2-B920-57D2195DB7CA</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Sift/</string>
+			<key>lastOpenedDate</key>
+			<real>1579723999.5807981</real>
+			<key>name</key>
+			<string>Sift</string>
+			<key>repositoryIdentifier</key>
+			<string>F6EC3D9B-06B7-4499-9235-2F116EE023E6</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/signals2/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -3475,6 +3825,48 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/SimpleKeyboard/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>SimpleKeyboard</string>
+			<key>repositoryIdentifier</key>
+			<string>664BB9A8-3328-4FAD-BC59-2083C7000C14</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/Slidden/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Slidden</string>
+			<key>repositoryIdentifier</key>
+			<string>FBA6BC02-F0AE-4EB9-812A-42E46E5CD05A</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Slideshow/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Slideshow</string>
+			<key>repositoryIdentifier</key>
+			<string>A1FB3DC9-F703-4892-8FBD-3B96AAEB4B2A</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -3548,6 +3940,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/Sparkle/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Sparkle</string>
+			<key>repositoryIdentifier</key>
+			<string>D1A87428-D801-4240-9FD1-34559F5DEAA3</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/spirit/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -3559,6 +3965,62 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/pngquant/src/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>src</string>
+			<key>repositoryIdentifier</key>
+			<string>25F9D4B9-BA1F-45B8-8FB6-DDC7FD1D2ACD</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/jpegoptim/src/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>src</string>
+			<key>repositoryIdentifier</key>
+			<string>1C638768-C00B-4A27-9745-62F1F467B63B</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/libjpeg/src/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>src</string>
+			<key>repositoryIdentifier</key>
+			<string>8F91ED82-A805-4FFC-8BCB-74FEC92796C2</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/ImageOptim/svgcleaner/src/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>src</string>
+			<key>repositoryIdentifier</key>
+			<string>F0D7206B-41F1-403D-B5F7-DEF01D3A01E2</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -3643,6 +4105,34 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Swift_Playgrounds_Author_Template_for_Xcode_11.3/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Swift_Playgrounds_Author_Template_for_Xcode_11.3</string>
+			<key>repositoryIdentifier</key>
+			<string>5DD1D323-E078-42DA-9530-4E92209E0878</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Swift-30-Projects/</string>
+			<key>lastOpenedDate</key>
+			<real>1581114516.4678822</real>
+			<key>name</key>
+			<string>Swift-30-Projects</string>
+			<key>repositoryIdentifier</key>
+			<string>42C114DF-59C4-4A9E-B1E1-4F0EB83B5F8A</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -3786,6 +4276,62 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/Tasty%20In%CC%83upiaq/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Tasty Iñupiaq</string>
+			<key>repositoryIdentifier</key>
+			<string>C8F2A53B-E137-475E-85CA-6D592E21DEAD</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/tasty-faux-testing-keyboard/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>tasty-faux-testing-keyboard</string>
+			<key>repositoryIdentifier</key>
+			<string>7971D493-FCB9-4B8D-ADDA-DD652CBA8042</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/tasty-imitation-keyboard/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>tasty-imitation-keyboard</string>
+			<key>repositoryIdentifier</key>
+			<string>FE68D8E1-72EF-4EEE-8C0E-51F6E598C879</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/tasty-imitation-keyboard%20(ChatterCommerce)/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>tasty-imitation-keyboard (ChatterCommerce)</string>
+			<key>repositoryIdentifier</key>
+			<string>EB5AEDED-2809-4FB4-8BAD-004B13729F35</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/test/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -3891,6 +4437,20 @@
 			<string>Tidy</string>
 			<key>repositoryIdentifier</key>
 			<string>EEBE49F2-FC59-41BE-A91D-D5F11A81F9D2</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Tiime/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Tiime</string>
+			<key>repositoryIdentifier</key>
+			<string>273CC1DD-919B-4CD2-80ED-524492E79F82</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -4010,6 +4570,34 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/TypeStyle/</string>
+			<key>lastOpenedDate</key>
+			<real>1584644957.0455251</real>
+			<key>name</key>
+			<string>TypeStyle</string>
+			<key>repositoryIdentifier</key>
+			<string>E719709D-CC0A-4B09-A7AA-A3F0CD56D73E</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/%20Keyboards/Typist/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Typist</string>
+			<key>repositoryIdentifier</key>
+			<string>FBBBB7A3-3762-4BFE-9845-0B4A535903C3</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/numeric/ublas/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -4105,6 +4693,20 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Unwrap/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Unwrap</string>
+			<key>repositoryIdentifier</key>
+			<string>C15F10E0-7EFB-4BBE-96B0-81669D41E419</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -4234,6 +4836,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/vortaro/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>vortaro</string>
+			<key>repositoryIdentifier</key>
+			<string>33AB595E-D622-4238-9C4F-73423B45622D</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/wave/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -4245,6 +4861,20 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Wayback%20Machine/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>Wayback Machine</string>
+			<key>repositoryIdentifier</key>
+			<string>51455F77-39D8-4FBC-957D-8635E147778E</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -4276,6 +4906,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/whats-new-in-swift-5-2/</string>
+			<key>lastOpenedDate</key>
+			<real>0.0</real>
+			<key>name</key>
+			<string>whats-new-in-swift-5-2</string>
+			<key>repositoryIdentifier</key>
+			<string>E5302EB7-45C7-42EC-895A-E8FEA6DB6C03</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/Boost/libs/winapi/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -4287,6 +4931,20 @@
 			<integer>2</integer>
 			<key>valid</key>
 			<false/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/XCAssets/</string>
+			<key>lastOpenedDate</key>
+			<real>1581114581.2870779</real>
+			<key>name</key>
+			<string>XCAssets</string>
+			<key>repositoryIdentifier</key>
+			<string>19C852A1-2D81-4885-A9C4-F6E078E4B1DB</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>fileURL</key>
@@ -4444,6 +5102,20 @@
 		</dict>
 		<dict>
 			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/XcodeWarnings/</string>
+			<key>lastOpenedDate</key>
+			<real>1580999604.5549741</real>
+			<key>name</key>
+			<string>XcodeWarnings</string>
+			<key>repositoryIdentifier</key>
+			<string>5A24CF94-0F87-4C1F-83BA-11EC719F9163</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
 			<string>file:///Users/LucasLarson/Code/XcodeWarningsAsXcconfig/</string>
 			<key>lastOpenedDate</key>
 			<real>0.0</real>
@@ -4479,6 +5151,20 @@
 			<string>xFonts</string>
 			<key>repositoryIdentifier</key>
 			<string>32D197A9-AC7F-463E-94D8-C1B093195FAA</string>
+			<key>type</key>
+			<integer>2</integer>
+			<key>valid</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>fileURL</key>
+			<string>file:///Users/LucasLarson/Code/Xippy/</string>
+			<key>lastOpenedDate</key>
+			<real>1581114614.0971689</real>
+			<key>name</key>
+			<string>Xippy</string>
+			<key>repositoryIdentifier</key>
+			<string>B0D02575-C12B-448A-8E0F-64A0F364DF0E</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
@@ -4563,1462 +5249,6 @@
 			<string>ZipArchive</string>
 			<key>repositoryIdentifier</key>
 			<string>2EF62AEF-EA26-4E2A-8050-02B71EAE944D</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/.oh-my-zsh/</string>
-			<key>lastOpenedDate</key>
-			<real>1585508692.137181</real>
-			<key>name</key>
-			<string>.oh-my-zsh</string>
-			<key>repositoryIdentifier</key>
-			<string>171A3B7C-4CA5-4151-8436-58D9F9579AFF</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/AppIcons/</string>
-			<key>lastOpenedDate</key>
-			<real>1581103887.6098251</real>
-			<key>name</key>
-			<string>AppIcons</string>
-			<key>repositoryIdentifier</key>
-			<string>5AFA1A51-D37E-4677-8D72-FF90B8DF2ABF</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Library/Application%20Support/</string>
-			<key>lastOpenedDate</key>
-			<real>1584645510.5364599</real>
-			<key>name</key>
-			<string>Application Support</string>
-			<key>repositoryIdentifier</key>
-			<string>BCA13364-994F-490E-851A-7EEAAF308273</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/AppTrap/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>AppTrap</string>
-			<key>repositoryIdentifier</key>
-			<string>E43D6BA7-A6F1-41BA-A2F2-25511532261D</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Awesome-ML/</string>
-			<key>lastOpenedDate</key>
-			<real>1581103941.867677</real>
-			<key>name</key>
-			<string>Awesome-ML</string>
-			<key>repositoryIdentifier</key>
-			<string>CCFB13FF-C4DF-4CB4-9C47-C44E9412134D</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Sift/AwesomeCache/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>AwesomeCache</string>
-			<key>repositoryIdentifier</key>
-			<string>76BCB1C6-54D4-47AD-8F6C-268268D8C623</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/bbedit-pbxproj-language-module/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>bbedit-pbxproj-language-module</string>
-			<key>repositoryIdentifier</key>
-			<string>60FEDDA6-5863-475D-BC19-900DF8168AF1</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/bjhstudios-iOSCustomKeyboard/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>bjhstudios-iOSCustomKeyboard</string>
-			<key>repositoryIdentifier</key>
-			<string>9C9575DD-9ADA-4FD0-940A-B380F7D4F071</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/bonvortaro/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>bonvortaro</string>
-			<key>repositoryIdentifier</key>
-			<string>2E51CE0F-9F62-443B-9E4D-2E59B52C08E7</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/branchesapp/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>branchesapp</string>
-			<key>repositoryIdentifier</key>
-			<string>C51576FF-9197-43D5-B738-C3441AA93A46</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Brave/</string>
-			<key>lastOpenedDate</key>
-			<real>1589055405.031245</real>
-			<key>name</key>
-			<string>Brave</string>
-			<key>repositoryIdentifier</key>
-			<string>B4002876-A88E-429D-94A0-6388616BC225</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/CalFaq/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>CalFaq</string>
-			<key>repositoryIdentifier</key>
-			<string>B0F5AC55-7F16-437D-87B1-C3DE7295C6BA</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Catch2/</string>
-			<key>lastOpenedDate</key>
-			<real>1582650342.79842</real>
-			<key>name</key>
-			<string>Catch2</string>
-			<key>repositoryIdentifier</key>
-			<string>12DA6127-BE34-4043-832D-C9868B772DA0</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/cemolcay-KeyboardLayoutEngine/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>cemolcay-KeyboardLayoutEngine</string>
-			<key>repositoryIdentifier</key>
-			<string>3FFA686D-2464-4C92-85B0-C14C9D93797E</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/CFunctions/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>CFunctions</string>
-			<key>repositoryIdentifier</key>
-			<string>D0CBD1BE-7EFE-4E81-8E7A-73E6E0F1304C</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/CleanStore/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>CleanStore</string>
-			<key>repositoryIdentifier</key>
-			<string>F1749F59-173F-4CC6-8D51-35864E49BB4C</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ClipboardViewer/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>ClipboardViewer</string>
-			<key>repositoryIdentifier</key>
-			<string>9A6792C7-DA5B-41E6-87FD-5C61589E9D98</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Completionist/</string>
-			<key>lastOpenedDate</key>
-			<real>1586364221.4077868</real>
-			<key>name</key>
-			<string>Completionist</string>
-			<key>repositoryIdentifier</key>
-			<string>61DD7274-D45F-4AF7-8127-42C5C33C8F27</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Content-Security-Policy/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Content-Security-Policy</string>
-			<key>repositoryIdentifier</key>
-			<string>6DCDE013-76F8-41AC-9D3B-3A5F7BA5744A</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/CPP-struct/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>CPP-struct</string>
-			<key>repositoryIdentifier</key>
-			<string>0DF3B342-58C7-4CE9-B230-16D592478FCA</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/CppFunctions/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>CppFunctions</string>
-			<key>repositoryIdentifier</key>
-			<string>BAFEB4A6-3F6A-4FBD-8698-ED17CA59353A</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/cpplint/</string>
-			<key>lastOpenedDate</key>
-			<real>1581103987.8461928</real>
-			<key>name</key>
-			<string>cpplint</string>
-			<key>repositoryIdentifier</key>
-			<string>04324DFC-3DC0-4809-94EF-1A1A40A6F064</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/CPPsandbox/</string>
-			<key>lastOpenedDate</key>
-			<real>1583890372.12992</real>
-			<key>name</key>
-			<string>CppSandbox</string>
-			<key>repositoryIdentifier</key>
-			<string>B930ED94-72BE-4AE7-ADA1-F7FED8216DDE</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/custom-content-type-manager/</string>
-			<key>lastOpenedDate</key>
-			<real>1581104086.4664059</real>
-			<key>name</key>
-			<string>custom-content-type-manager</string>
-			<key>repositoryIdentifier</key>
-			<string>2A01A210-A26A-441F-8926-CC4B6FEA8505</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/Donohue-CustomKeyboard/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Donohue-CustomKeyboard</string>
-			<key>repositoryIdentifier</key>
-			<string>74E6287E-025C-452A-A32C-317B592FE367</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/DTFoundation/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>DTFoundation</string>
-			<key>repositoryIdentifier</key>
-			<string>E97E156C-F723-4622-B4EF-70CDAF4E5B4A</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/Sparkle/ed25519/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>ed25519</string>
-			<key>repositoryIdentifier</key>
-			<string>3CF0651C-2150-4795-98E9-A85475094DCC</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/editor-layer-index/</string>
-			<key>lastOpenedDate</key>
-			<real>1580689034.196769</real>
-			<key>name</key>
-			<string>editor-layer-index</string>
-			<key>repositoryIdentifier</key>
-			<string>91681B38-E826-46CD-AC17-C76C1FEFC430</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Fallback/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Fallback</string>
-			<key>repositoryIdentifier</key>
-			<string>C8720F7C-41AF-4D7A-905D-F8D467C47A4D</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ffffallback/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>ffffallback</string>
-			<key>repositoryIdentifier</key>
-			<string>21FD2E0A-4509-46A8-B78C-AC8A2DE875F4</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ffi/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>ffi</string>
-			<key>repositoryIdentifier</key>
-			<string>CCA0B9D4-894D-4BA8-9FAC-1F27CF243878</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ffi-compiler/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>ffi-compiler</string>
-			<key>repositoryIdentifier</key>
-			<string>554EB848-1276-4882-91D3-6703EB9F6382</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Firefox/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Firefox</string>
-			<key>repositoryIdentifier</key>
-			<string>3543D19B-9D2F-43BF-949D-138563540C9A</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/freshOS-KeyboardLayoutGuide/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>freshOS-KeyboardLayoutGuide</string>
-			<key>repositoryIdentifier</key>
-			<string>43332A65-010E-4430-97E0-D3B9C18C29B0</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/git-big-lfs-hook/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>git-big-lfs-hook</string>
-			<key>repositoryIdentifier</key>
-			<string>DADA3FCA-B128-42B7-BDB0-D88AE20E2BBE</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/GoMap/</string>
-			<key>lastOpenedDate</key>
-			<real>1582076193.9491529</real>
-			<key>name</key>
-			<string>GoMap</string>
-			<key>repositoryIdentifier</key>
-			<string>1DBD9CBC-AF38-407A-9EEE-81BC9D3E728B</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/guetzli/guetzli/</string>
-			<key>lastOpenedDate</key>
-			<real>1581104157.8421512</real>
-			<key>name</key>
-			<string>guetzli</string>
-			<key>repositoryIdentifier</key>
-			<string>2DBBF237-0FDB-4497-B839-CCD78737ED0F</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Tiime/Tiime/Supporting%20Files/Fonts/Hack/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Hack</string>
-			<key>repositoryIdentifier</key>
-			<string>1EF7DE88-19B6-47C5-BD51-910A3ACB5A9C</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/hello-github-actions/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>hello-github-actions</string>
-			<key>repositoryIdentifier</key>
-			<string>21C4A513-15CA-4463-B6D2-B002A49A2A35</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/HTML5test/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>HTML5test</string>
-			<key>repositoryIdentifier</key>
-			<string>953757BF-31FA-4C77-88E5-A4F670459DA4</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Tiime/Tiime/Supporting%20Files/Fonts/iA%20Fonts/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>iA Fonts</string>
-			<key>repositoryIdentifier</key>
-			<string>5977D3A0-D4AC-45FB-8ADE-70543D45C23A</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>ImageOptim</string>
-			<key>repositoryIdentifier</key>
-			<string>7B67F75E-A8CD-43EF-9C12-2D4AD9ACFCC6</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Imagery/</string>
-			<key>lastOpenedDate</key>
-			<real>1584044045.953274</real>
-			<key>name</key>
-			<string>Imagery</string>
-			<key>repositoryIdentifier</key>
-			<string>9E6574CE-F4AA-4017-98CC-E32154C86111</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Pisth/InputAssistant/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>InputAssistant</string>
-			<key>repositoryIdentifier</key>
-			<string>C24B906F-B137-47AE-90C0-46170861D2C0</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/ios-decal-hw2/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>ios-decal-hw2</string>
-			<key>repositoryIdentifier</key>
-			<string>BE2E21FF-058A-4B68-9CB9-35181FA8E120</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/iOSAppsInfo/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>iOSAppsInfo</string>
-			<key>repositoryIdentifier</key>
-			<string>0C94E303-E6CD-4637-A045-B2E68D3126BB</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/IPA-Keyboard-iOS/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>IPA-Keyboard-iOS</string>
-			<key>repositoryIdentifier</key>
-			<string>D996E341-AD73-4081-8122-9D4B060D8639</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/iSH/</string>
-			<key>lastOpenedDate</key>
-			<real>1581104389.549993</real>
-			<key>name</key>
-			<string>iSH</string>
-			<key>repositoryIdentifier</key>
-			<string>D167A43D-40E6-4147-9AB3-7BA8CD51C24E</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/jetpack/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>jetpack</string>
-			<key>repositoryIdentifier</key>
-			<string>5B249652-7CD1-4461-A358-6DDD0A2E80DA</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Klavye/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Klavye</string>
-			<key>repositoryIdentifier</key>
-			<string>FD05D69F-6AF1-4DA1-AC29-42E131278367</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Tiime/Tiime/Supporting%20Files/Fonts/LCD/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>LCD</string>
-			<key>repositoryIdentifier</key>
-			<string>165E9A2A-F6C2-439C-B7CA-FD55963C46F8</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/pngquant/src/lib/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>lib</string>
-			<key>repositoryIdentifier</key>
-			<string>EEB819C8-BB8B-4213-9906-1AA668877924</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/iSH/app/terminal/libapps/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>libapps</string>
-			<key>repositoryIdentifier</key>
-			<string>2CE57191-51D2-43BE-A34E-591D74970B06</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ffi/ext/ffi_c/libffi/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>libffi</string>
-			<key>repositoryIdentifier</key>
-			<string>E20BB221-FFF1-4700-A804-96702BC526E6</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/LinkKeyboard/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>LinkKeyboard</string>
-			<key>repositoryIdentifier</key>
-			<string>B645312D-2224-4B25-8411-B963B6B31474</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/location-history-json-converter/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>location-history-json-converter</string>
-			<key>repositoryIdentifier</key>
-			<string>2CE6E60B-98F0-456F-822E-B6DCDFAF39A9</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/LucasLarson.github.io/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>LucasLarson.github.io</string>
-			<key>repositoryIdentifier</key>
-			<string>E701F5B8-1690-48F6-87AD-D61E144B076A</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/mac-keyboard-Esperanto/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Mac-Keyboard-Esperanto</string>
-			<key>repositoryIdentifier</key>
-			<string>4021C3F8-B82A-4150-AEF5-C5AEE406413B</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Dropbox/Mackup/</string>
-			<key>lastOpenedDate</key>
-			<real>1593197645.6439331</real>
-			<key>name</key>
-			<string>Mackup</string>
-			<key>repositoryIdentifier</key>
-			<string>DD2BE074-1015-4A6B-AA33-FDCDB71ECFA5</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Mackup/</string>
-			<key>lastOpenedDate</key>
-			<real>1581452144.9118581</real>
-			<key>name</key>
-			<string>Mackup</string>
-			<key>repositoryIdentifier</key>
-			<string>B5D6B1DB-AB32-4BFB-9668-6A63848787DD</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Mailto/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Mailto</string>
-			<key>repositoryIdentifier</key>
-			<string>40223C1F-ADF5-4418-9DA7-6744140B6E66</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/MetricTime/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>MetricTime</string>
-			<key>repositoryIdentifier</key>
-			<string>794D8ED8-D6D8-4D42-9BB8-5FA33CD7FDA7</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/MetricTime_/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>MetricTime_</string>
-			<key>repositoryIdentifier</key>
-			<string>30F40FC8-A717-482E-AFF6-ECEFAE296395</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/MongolianIPAKeyboardContainer/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>MongolianIPAKeyboardContainer</string>
-			<key>repositoryIdentifier</key>
-			<string>7FE0E627-5899-405F-BF09-506E30B9C4AC</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/branchesapp/public/alandipert/ncsa-mosaic/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>ncsa-mosaic</string>
-			<key>repositoryIdentifier</key>
-			<string>30327884-8D3D-4C06-9E58-0C70AC54A9B5</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/no-future-posts/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>no-future-posts</string>
-			<key>repositoryIdentifier</key>
-			<string>5F2F42F9-E1A8-4085-9EC8-D799CE5B89A1</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Onion/</string>
-			<key>lastOpenedDate</key>
-			<real>1581114443.136755</real>
-			<key>name</key>
-			<string>Onion</string>
-			<key>repositoryIdentifier</key>
-			<string>4CE96BFA-48DB-4A4D-9173-6AA509F10C37</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/OpenCCTV/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>OpenCCTV</string>
-			<key>repositoryIdentifier</key>
-			<string>E3D1701B-47AA-40E4-B967-DE2C448FA7A1</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/OpenGL-Metal/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>OpenGL-Metal</string>
-			<key>repositoryIdentifier</key>
-			<string>24058AA4-7A93-499B-ADCF-3BDBC127A269</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/gifsicle/orig/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>orig</string>
-			<key>repositoryIdentifier</key>
-			<string>DFC30533-404F-4F2D-81EA-852DB4A39A28</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/OsmAnd/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>OsmAnd</string>
-			<key>repositoryIdentifier</key>
-			<string>F637DE5B-FF32-4AB8-99C4-57694F4C4523</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/osmlab/</string>
-			<key>lastOpenedDate</key>
-			<real>1580999596.2989359</real>
-			<key>name</key>
-			<string>OSMLab</string>
-			<key>repositoryIdentifier</key>
-			<string>ED16275D-ED4A-44A6-BA64-54696FB59627</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/oxipng/oxipng/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>oxipng</string>
-			<key>repositoryIdentifier</key>
-			<string>EC2624CF-1884-408E-93E9-ECE6DBB437FC</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Pisth/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Pisth</string>
-			<key>repositoryIdentifier</key>
-			<string>A354AB8D-DC46-43A5-A33B-3B15AC6A9AD9</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/PoshReVo/</string>
-			<key>lastOpenedDate</key>
-			<real>1580320357.5876689</real>
-			<key>name</key>
-			<string>PoshReVo</string>
-			<key>repositoryIdentifier</key>
-			<string>D04EF87E-6842-4E90-A5DA-FBA937A5EA17</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Library/Preferences/</string>
-			<key>lastOpenedDate</key>
-			<real>1585232651.9794521</real>
-			<key>name</key>
-			<string>Preferences</string>
-			<key>repositoryIdentifier</key>
-			<string>05043863-8F97-4B24-8CF3-A0B55D225467</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/python-random-quote/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>python-random-quote</string>
-			<key>repositoryIdentifier</key>
-			<string>4DB72E26-44C9-4B3E-8F81-57DFA8C6AF4F</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Semester/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Semester</string>
-			<key>repositoryIdentifier</key>
-			<string>F1DCEB5E-AF92-4E1E-813E-AE70AD161983</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ShowAnchors/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>ShowAnchors</string>
-			<key>repositoryIdentifier</key>
-			<string>2B1C02C4-A5F7-48B2-B920-57D2195DB7CA</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Sift/</string>
-			<key>lastOpenedDate</key>
-			<real>1579723999.5807981</real>
-			<key>name</key>
-			<string>Sift</string>
-			<key>repositoryIdentifier</key>
-			<string>F6EC3D9B-06B7-4499-9235-2F116EE023E6</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/SimpleKeyboard/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>SimpleKeyboard</string>
-			<key>repositoryIdentifier</key>
-			<string>664BB9A8-3328-4FAD-BC59-2083C7000C14</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/Slidden/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Slidden</string>
-			<key>repositoryIdentifier</key>
-			<string>FBA6BC02-F0AE-4EB9-812A-42E46E5CD05A</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Slideshow/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Slideshow</string>
-			<key>repositoryIdentifier</key>
-			<string>A1FB3DC9-F703-4892-8FBD-3B96AAEB4B2A</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/Sparkle/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Sparkle</string>
-			<key>repositoryIdentifier</key>
-			<string>D1A87428-D801-4240-9FD1-34559F5DEAA3</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/pngquant/src/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>src</string>
-			<key>repositoryIdentifier</key>
-			<string>25F9D4B9-BA1F-45B8-8FB6-DDC7FD1D2ACD</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/jpegoptim/src/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>src</string>
-			<key>repositoryIdentifier</key>
-			<string>1C638768-C00B-4A27-9745-62F1F467B63B</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/libjpeg/src/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>src</string>
-			<key>repositoryIdentifier</key>
-			<string>8F91ED82-A805-4FFC-8BCB-74FEC92796C2</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/ImageOptim/svgcleaner/src/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>src</string>
-			<key>repositoryIdentifier</key>
-			<string>F0D7206B-41F1-403D-B5F7-DEF01D3A01E2</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Swift_Playgrounds_Author_Template_for_Xcode_11.3/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Swift_Playgrounds_Author_Template_for_Xcode_11.3</string>
-			<key>repositoryIdentifier</key>
-			<string>5DD1D323-E078-42DA-9530-4E92209E0878</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Swift-30-Projects/</string>
-			<key>lastOpenedDate</key>
-			<real>1581114516.4678822</real>
-			<key>name</key>
-			<string>Swift-30-Projects</string>
-			<key>repositoryIdentifier</key>
-			<string>42C114DF-59C4-4A9E-B1E1-4F0EB83B5F8A</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/Tasty%20In%CC%83upiaq/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Tasty Iñupiaq</string>
-			<key>repositoryIdentifier</key>
-			<string>C8F2A53B-E137-475E-85CA-6D592E21DEAD</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/tasty-faux-testing-keyboard/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>tasty-faux-testing-keyboard</string>
-			<key>repositoryIdentifier</key>
-			<string>7971D493-FCB9-4B8D-ADDA-DD652CBA8042</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/tasty-imitation-keyboard/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>tasty-imitation-keyboard</string>
-			<key>repositoryIdentifier</key>
-			<string>FE68D8E1-72EF-4EEE-8C0E-51F6E598C879</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/tasty-imitation-keyboard%20(ChatterCommerce)/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>tasty-imitation-keyboard (ChatterCommerce)</string>
-			<key>repositoryIdentifier</key>
-			<string>EB5AEDED-2809-4FB4-8BAD-004B13729F35</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Tiime/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Tiime</string>
-			<key>repositoryIdentifier</key>
-			<string>273CC1DD-919B-4CD2-80ED-524492E79F82</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/TypeStyle/</string>
-			<key>lastOpenedDate</key>
-			<real>1584644957.0455251</real>
-			<key>name</key>
-			<string>TypeStyle</string>
-			<key>repositoryIdentifier</key>
-			<string>E719709D-CC0A-4B09-A7AA-A3F0CD56D73E</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/%20Keyboards/Typist/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Typist</string>
-			<key>repositoryIdentifier</key>
-			<string>FBBBB7A3-3762-4BFE-9845-0B4A535903C3</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Unwrap/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Unwrap</string>
-			<key>repositoryIdentifier</key>
-			<string>C15F10E0-7EFB-4BBE-96B0-81669D41E419</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/vortaro/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>vortaro</string>
-			<key>repositoryIdentifier</key>
-			<string>33AB595E-D622-4238-9C4F-73423B45622D</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Wayback%20Machine/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>Wayback Machine</string>
-			<key>repositoryIdentifier</key>
-			<string>51455F77-39D8-4FBC-957D-8635E147778E</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/whats-new-in-swift-5-2/</string>
-			<key>lastOpenedDate</key>
-			<real>0.0</real>
-			<key>name</key>
-			<string>whats-new-in-swift-5-2</string>
-			<key>repositoryIdentifier</key>
-			<string>E5302EB7-45C7-42EC-895A-E8FEA6DB6C03</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/XCAssets/</string>
-			<key>lastOpenedDate</key>
-			<real>1581114581.2870779</real>
-			<key>name</key>
-			<string>XCAssets</string>
-			<key>repositoryIdentifier</key>
-			<string>19C852A1-2D81-4885-A9C4-F6E078E4B1DB</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/XcodeWarnings/</string>
-			<key>lastOpenedDate</key>
-			<real>1580999604.5549741</real>
-			<key>name</key>
-			<string>XcodeWarnings</string>
-			<key>repositoryIdentifier</key>
-			<string>5A24CF94-0F87-4C1F-83BA-11EC719F9163</string>
-			<key>type</key>
-			<integer>2</integer>
-			<key>valid</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>fileURL</key>
-			<string>file:///Users/LucasLarson/Code/Xippy/</string>
-			<key>lastOpenedDate</key>
-			<real>1581114614.0971689</real>
-			<key>name</key>
-			<string>Xippy</string>
-			<key>repositoryIdentifier</key>
-			<string>B0D02575-C12B-448A-8E0F-64A0F364DF0E</string>
 			<key>type</key>
 			<integer>2</integer>
 			<key>valid</key>
