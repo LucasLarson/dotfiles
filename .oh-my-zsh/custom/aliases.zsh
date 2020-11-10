@@ -33,17 +33,17 @@ gcom () {(
   # check if there’s a `remote` with a default branch name
   # https://stackoverflow.com/a/44750379
   if git symbolic-ref refs/remotes/origin/HEAD > /dev/null 2>&1; then
-    defaultBranch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+    default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
   elif [ -n "$(git branch --list main)" ]; then
-    defaultBranch=main
+    default_branch=main
   elif [ -n "$(git branch --list master)" ]; then
-    defaultBranch=master
+    default_branch=master
   else
     printf 'unable to detect a \x60main\x60 or \x60master\x60 branch in '
     printf 'this repository\n'
     return 1
   fi
-  git checkout --progress $defaultBranch
+  git checkout --progress $default_branch
 )}
 
 alias gfgs="git fetch --all --verbose && git status"
@@ -97,17 +97,17 @@ gmm () {(
   # check if there’s a `remote` with a default branch name
   # https://stackoverflow.com/a/44750379
   if git symbolic-ref refs/remotes/origin/HEAD > /dev/null 2>&1; then
-    defaultBranch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+    default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
   elif [ -n "$(git branch --list main)" ]; then
-    defaultBranch=main
+    default_branch=main
   elif [ -n "$(git branch --list master)" ]; then
-    defaultBranch=master
+    default_branch=master
   else
     printf 'unable to detect a \x60main\x60 or \x60master\x60 branch in '
     printf 'this repository\n'
     return 1
   fi
-  GIT_MERGE_VERBOSITY=5 git merge --verbose --progress --strategy-option patience $defaultBranch
+  GIT_MERGE_VERBOSITY=5 git merge --verbose --progress --strategy-option patience $default_branch
 )}
 
 alias gmv="git mv --verbose"
