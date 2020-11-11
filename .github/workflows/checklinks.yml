@@ -1,6 +1,4 @@
 ---
-name: Validate links
-
 on:
   push:
     branches-ignore:
@@ -8,9 +6,11 @@ on:
 
 jobs:
   build:
+    name: Validate links
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      uses: ad-m/report-link-action@sha256:57d657e6b5f59cd95e3ce38a08241f2a81bbe533
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Validate links
+        uses: ad-m/report-link-action@sha256:57d657e
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
