@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Validate links
-        uses: ad-m/report-link-action@sha256:57d657e6b5f59cd95e3ce38a08241f2a81bbe533
+        uses: ad-m/report-link-action@57d657e6b5f59cd95e3ce38a08241f2a81bbe533
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
