@@ -16,16 +16,14 @@ alias apm="apm-nightly"
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 alias mu=" \
     cd ${DOTFILES:-$HOME/Dropbox/dotfiles} && \
-    find . -type f -name '.DS_Store' -delete && \
-    find . -type d -empty -not -path './.git/*' -delete && \
+    garbage && \
     mackup backup --force --root && \
     git fetch --all && \
     git submodule update --init --recursive && \
     git status"
 alias mux=" \
     cd ${DOTFILES:-$HOME/Dropbox/dotfiles} && \
-    find . -type f -name '.DS_Store' -print -delete && \
-    find . -type d -empty -not -path './.git/*' -print -delete && \
+    garbage --verbose && \
     mackup backup --force --root --verbose && \
     git fetch --all --verbose && \
     git submodule update --init --recursive --remote && \
@@ -148,12 +146,8 @@ gu () {
     # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
     git submodule update --init --recursive
 
-    # delete `.DS_Store` files recursively
-    find . -type f -name '.DS_Store' -delete
 
-    # delete empty directories, except within `.git/`, recursively
-    # https://stackoverflow.com/q/4210042#comment38334264_4210072
-    find . -type d -empty -not -path './.git/*' -delete
+    garbage
 
     git status
   fi
