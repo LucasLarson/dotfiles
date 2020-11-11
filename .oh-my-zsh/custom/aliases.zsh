@@ -42,20 +42,7 @@ alias gco="git checkout --progress"
 # place the function inside `{()}` to prevent the leaking of variable data
 # https://stackoverflow.com/a/37675401
 gcom () {(
-  # check if there’s a `remote` with a default branch name
-  # https://stackoverflow.com/a/44750379
-  if git symbolic-ref refs/remotes/origin/HEAD > /dev/null 2>&1; then
-    default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
-  elif [ -n "$(git branch --list main)" ]; then
-    default_branch=main
-  elif [ -n "$(git branch --list master)" ]; then
-    default_branch=master
-  else
-    printf 'unable to detect a \x60main\x60 or \x60master\x60 branch in '
-    printf 'this repository\n'
-    return 1
-  fi
-  git checkout --progress $default_branch
+  git checkout --progress "$(git_default_branch)"
 )}
 
 alias gfgs="git fetch --all --verbose && git status"
@@ -106,20 +93,7 @@ alias gdb="git_default_branch"
 
 # git merge main
 gmm () {(
-  # check if there’s a `remote` with a default branch name
-  # https://stackoverflow.com/a/44750379
-  if git symbolic-ref refs/remotes/origin/HEAD > /dev/null 2>&1; then
-    default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
-  elif [ -n "$(git branch --list main)" ]; then
-    default_branch=main
-  elif [ -n "$(git branch --list master)" ]; then
-    default_branch=master
-  else
-    printf 'unable to detect a \x60main\x60 or \x60master\x60 branch in '
-    printf 'this repository\n'
-    return 1
-  fi
-  GIT_MERGE_VERBOSITY=5 git merge --verbose --progress --strategy-option patience $default_branch
+  GIT_MERGE_VERBOSITY=5 git merge --verbose --progress --strategy-option patience "$(git_default_branch)"
 )}
 
 alias gmv="git mv --verbose"
