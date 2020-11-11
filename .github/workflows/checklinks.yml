@@ -1,16 +1,16 @@
 ---
-name: Check Markdown links
+name: Validate links
 
 on:
   push:
-    branches:
+    branches-ignore:
       - main
+
 jobs:
-  markdown-link-check:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: gaurav-nelson/github-action-markdown-link-check@1.0.8
-        with:
-          use-verbose-mode: 'yes'
-          base-branch: 'main'
+    - uses: actions/checkout@v2
+      uses: ad-m/report-link-action@sha256:57d657e6b5f59cd95e3ce38a08241f2a81bbe533
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
