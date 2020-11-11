@@ -103,7 +103,6 @@ git_default_branch () {(
   printf "$default_branch"
 )}
 
-
 # git merge main
 gmm () {(
   # check if there’s a `remote` with a default branch name
@@ -185,24 +184,24 @@ garbage () {(
     verbose=-print
   fi
 
-    # delete `.DS_Store` files recursively
-    find . -type f \
-        -name '.DS_Store' \
-        $verbose -delete
+  # delete `.DS_Store` files recursively
+  find . -type f \
+      -name '.DS_Store' \
+      $verbose -delete
 
-    # delete empty, zero-length files except those
-    # with specific names
-    find . -type f -empty \
-        -not -path '*.gitkeep' -and \
-        -not -path '*.lock' \
-        $verbose -delete
+  # delete empty, zero-length files except those
+  # with specific names
+  find . -type f -empty \
+      -not -path '*.gitkeep' -and \
+      -not -path '*.lock' \
+      $verbose -delete
 
-    # delete empty directories, except within `.git/`, recursively \
-    # https://stackoverflow.com/q/4210042#comment38334264_4210072 \
-    find . -type d -empty \
-        -not -path './.git/*' -and \
-        -not -path './.well-known/*' \
-        $verbose -delete
+  # delete empty directories, except within `.git/`, recursively \
+  # https://stackoverflow.com/q/4210042#comment38334264_4210072 \
+  find . -type d -empty \
+      -not -path './.git/*' -and \
+      -not -path './.well-known/*' \
+      $verbose -delete
 )}
 
 alias mv="mv -v -i" # https://unix.stackexchange.com/a/30950
