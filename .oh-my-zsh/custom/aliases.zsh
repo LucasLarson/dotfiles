@@ -226,6 +226,6 @@ alias wihch="which"
 # Zsh
 alias aliases="edit $ZSH_CUSTOM/aliases.zsh; . ~/.zshrc && exec zsh"
 alias ohmyzsh="cd ${ZSH:-$HOME/.oh-my-zsh}"
-alias zshconfig="edit ~/.zshrc; . ~/.zshrc && exec zsh" # see ~/.zshrc for `edit`
+alias zshconfig="edit ~/.zshrc; . ~/.zshrc && exec zsh"
 alias zshenv="edit ~/.zshenv; . ~/.zshrc && exec zsh"
 alias zshrc="zshconfig"
