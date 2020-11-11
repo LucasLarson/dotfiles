@@ -102,6 +102,7 @@ git_default_branch () {(
   fi
   printf "$default_branch"
 )}
+alias gdb="git_default_branch"
 
 # git merge main
 gmm () {(
