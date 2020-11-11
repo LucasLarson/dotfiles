@@ -135,6 +135,7 @@ alias gtake="git checkout -b"
 alias gti="git"
 
 gu () {
+  # run only from within a git repository
   # https://stackoverflow.com/a/53809163
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     git fetch --all --verbose
