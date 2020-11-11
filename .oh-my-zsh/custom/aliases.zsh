@@ -19,7 +19,7 @@ alias mu=" \
     find . -type f -name '.DS_Store' -delete && \
     find . -type d -empty -not -path './.git/*' -delete && \
     mackup backup --force --root && \
-    git fetch --all --verbose && \
+    git fetch --all && \
     git submodule update --init --recursive && \
     git status"
 alias mux=" \
