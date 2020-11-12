@@ -80,8 +80,8 @@ git_default_branch () {(
     elif [ -n "$(git branch --list master)" ]; then
       default_branch=master
     else
-      printf 'unable to detect a \x60main\x60 or \x60master\x60 branch in '
-      printf 'this repository\n'
+      printf 'unable to detect a \x60main\x60, \x60master\x60, or default '
+      printf 'branch in this repository\n'
       return 1
     fi
   else
