@@ -75,7 +75,7 @@ git_default_branch () {(
     elif [ -n "$(git branch --list main)" ]; then
       default_branch=main
 
-    # check for `master`
+    # check for a branch called `master`
     elif [ -n "$(git branch --list master)" ]; then
       default_branch=master
     else
