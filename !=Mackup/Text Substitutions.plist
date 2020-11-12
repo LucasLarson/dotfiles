@@ -418,6 +418,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⚡️</string>
+		<key>shortcut</key>
+		<string>bolt</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>boyf</string>
 		<key>shortcut</key>
 		<string>boyf</string>
@@ -1945,6 +1951,12 @@
 		<string>Lucas</string>
 		<key>shortcut</key>
 		<string>licas</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⚡️</string>
+		<key>shortcut</key>
+		<string>lightening</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
