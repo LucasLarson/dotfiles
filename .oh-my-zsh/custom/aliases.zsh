@@ -173,6 +173,7 @@ garbage () {(
   # with specific names
   find . -type f -empty \
       -not -path '*.gitkeep' -and \
+      -not -path '*.hushlogin' -and \
       -not -path '*.lock' \
       $verbose -delete
 
