@@ -128,15 +128,11 @@ excluded_words:
   - gitconfig
   - gmv  # homemade alias to `git mv`
   - gpgsign
-  - gunstage  # `🔫  `git unstage` as a service https://git.io/gunstage
   - lfs
   - lsi  # Jekyll’s latent semantic indexing
   - osxkeychain
   - precompose
   - textconv
-  - unstage
-  - unstagers
-  - unstaging
 
   # GitHub
   - gitsubmodule
@@ -153,6 +149,13 @@ excluded_words:
 
   # Google
   - gtag
+
+  # gunstage
+  - gunstage  # `🔫  `git unstage` as a service https://git.io/gunstage
+  - unstage
+  - unstagers
+  - unstaging
+  - xab  # misanalysis of gunstage’s `printf '\xf0\x9f\x94\xab'`
 
   # JetBrains
   - iml
