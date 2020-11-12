@@ -170,8 +170,9 @@ garbage () {(
       $verbose -delete
 
   # delete empty, zero-length files except those
-  # with specific names
+  # with specific names or within `.git/` directories
   find . -type f -empty \
+      -not -path './.git/*' -and \
       -not -path '*.gitkeep' -and \
       -not -path '*.hushlogin' -and \
       -not -path '*.lock' \
