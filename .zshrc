@@ -3,7 +3,7 @@
 # Powerlevel10k instant prompt
 # https://github.com/romkatv/powerlevel10k/blob/d394a4e/README.md#how-do-i-enable-instant-prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  . "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # If you come from bash you might have to change your $PATH.
@@ -99,7 +99,7 @@ if [[ Darwin == "$(uname)" ]]; then
 fi
 
 
-source $ZSH/oh-my-zsh.sh
+. $ZSH/oh-my-zsh.sh
 
 
 
@@ -116,7 +116,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # iTerm
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
 
 
 # GPG signing with macOS-compatible Linux
@@ -226,4 +226,4 @@ export PATH
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || . ~/.p10k.zsh
