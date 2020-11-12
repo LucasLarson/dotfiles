@@ -66,7 +66,8 @@ git_default_branch () {(
   # https://stackoverflow.com/a/53809163
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
 
-    # check if there’s a `remote` with a default branch and use that name
+    # check if there’s a `remote` with a default branch and
+    # if so, then use that name for `default_branch`
     # https://stackoverflow.com/a/44750379
     if git symbolic-ref refs/remotes/origin/HEAD > /dev/null 2>&1; then
       default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
