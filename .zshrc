@@ -2,7 +2,7 @@
 
 # Powerlevel10k instant prompt
 # https://github.com/romkatv/powerlevel10k/blob/d394a4e/README.md#how-do-i-enable-instant-prompt
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+if [ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]; then
   . "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
@@ -19,7 +19,7 @@ export ZSH=$HOME/.oh-my-zsh
 # powerlevel10k
 # https://github.com/romkatv/powerlevel10k/blob/48c6ff4/README.md#oh-my-zsh
 # ZSH_THEME
-if [[ "$(uname)" == Darwin && -d $ZSH/custom/themes/powerlevel10k ]]; then
+if [ "$(uname)" == Darwin && -d $ZSH/custom/themes/powerlevel10k ]; then
   ZSH_THEME="powerlevel10k/powerlevel10k"
 else
   ZSH_THEME="robbyrussell"
@@ -91,7 +91,7 @@ plugins=(
   git
   gunstage
 )
-if [[ Darwin == "$(uname)" ]]; then
+if [ Darwin == "$(uname)" ]; then
   plugins=(
     $plugins
     zsh-syntax-highlighting
@@ -127,18 +127,18 @@ export GPG_TTY=$(tty)
 
 # Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
-[[ -d /usr/local/sbin ]] && PATH="/usr/local/sbin:$PATH"
+[ -d /usr/local/sbin ] && PATH="/usr/local/sbin:$PATH"
 
 
 # grep
 # use latest via Homebrew but without the `g` prefix
 # https://github.com/Homebrew/homebrew-core/blob/ba7a70f/Formula/grep.rb#L43-L46
-[[ -d /usr/local/opt/grep/libexec/gnubin ]] && PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+[ -d /usr/local/opt/grep/libexec/gnubin ] && PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
 # make
 # use latest via Homebrew but without the `g` prefix
 # https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
-[[ -d /usr/local/opt/make/libexec/gnubin ]] && PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+[ -d /usr/local/opt/make/libexec/gnubin ] && PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
 
 # npm without sudo
@@ -146,7 +146,7 @@ export GPG_TTY=$(tty)
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="$NPM_PACKAGES/bin:$PATH"
 unset MANPATH # delete if you already modified MANPATH elsewhere
-if [[ $manpath ]]; then
+if [ $manpath ]; then
   export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 fi
 
@@ -203,13 +203,13 @@ fi
 # https://github.com/flutter/website/blob/e5f725c/src/docs/get-started/install/_path-mac.md#user-content-update-your-path
 # if `~/Code/Flutter/bin/flutter`’s an executable
 # and `flutter`’s not in the PATH, then add it
-if [[ -x $HOME/Code/Flutter/bin/flutter ]]; then
+if [ -x $HOME/Code/Flutter/bin/flutter ]; then
   if ! command -v flutter > /dev/null 2>&1; then
     PATH=$PATH:$HOME/Code/Flutter/bin
   fi
 fi
 # if it’s a directory then refer to it as `$ANDROID_SDK_ROOT`
-[[ -d $HOME/Library/Android/sdk ]] && export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+[ -d $HOME/Library/Android/sdk ] && export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 
 
 # rbenv
@@ -220,10 +220,10 @@ command -v rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
 
 # avoid `$PATH` duplicates
 # https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
-[[ -n $ZSH_VERSION ]] && typeset -U path
+[ -n $ZSH_VERSION ] && typeset -U path
 # export PATH for other sessions
 export PATH
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || . ~/.p10k.zsh
+[ ! -f ~/.p10k.zsh ] || . ~/.p10k.zsh
