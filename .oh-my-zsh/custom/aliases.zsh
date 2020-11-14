@@ -58,6 +58,11 @@ ggc () {(
   fi
 )}
 
+# initial commit’s hash
+# https://stackoverflow.com/a/1007545
+# https://stackoverflow.com/q/1006775#comment23686803_1007545
+alias gic="git rev-list --topo-order --parents HEAD | egrep '^[a-f0-9]{40}$'"
+
 alias ginit="git init"
 alias glog="git log"
 
