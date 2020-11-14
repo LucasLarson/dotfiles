@@ -176,7 +176,7 @@ apm list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'Atom extensions ' > "$DOTF
 ##### Homebrew
 
 ```zsh
-listBrew="$DOTFILES"/!=Mackup/brew\ list\ --verbose && touch "$listBrew" && printf 'brew list --verbose\n———————————————————\n' > "$listBrew" && brew list --verbose >> "$listBrew" && unset listBrew && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrew"
+listBrew="$DOTFILES/!=Mackup/brew list --formula --verbose" && touch "$listBrew" && printf 'brew list --formula --verbose\n' > "$listBrew" && date '+%Y-%m-%d' >> "$listBrew" && printf '—————————————————————————————\n' >> "$listBrew" && brew list --formula --verbose >> "$listBrew" && unset listBrew && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrew"
 ```
 
 ###### Cask
