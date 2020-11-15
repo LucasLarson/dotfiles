@@ -63,6 +63,7 @@
 - [Operating system](#operating-system)
   - [Identify](#identify)
 - [rename files](#rename-files)
+  - [remove spaces from filenames recursively](#remove-spaces-from-filenames-recursively)
 - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
 - [SSH](#ssh)
   - [`ls` on Windows](#ls-on-windows)
@@ -506,7 +507,7 @@ if satisfied with the results being lost and gone forever, execute:<br/>
 
 ### compare two folders
 
-`diff -qr /path/to/folder1 /path/to/folder2` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#compare-two-folders)
+`diff --recursive /path/to/folder1 /path/to/folder2` # [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#compare-two-folders)
 
 ### purge memory cache
 
