@@ -2,6 +2,7 @@
   "asciidoc-preview":
     compatMode: true
     scrollMode: false
+    skipFrontMatter: true
   "atom-beautify":
     c: {}
     general:
