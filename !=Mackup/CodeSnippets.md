@@ -410,14 +410,14 @@ Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 
 ### Identify
 
-`command -v uname > /dev/null 2>&1 && \`
-`  printf '\n\x60uname -a\x60:\n%s\n\n' "$(uname -a)"; \`
-`command -v sw_vers > /dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`
-`  printf '\n\x60sw_vers\x60:\n%s\n\n' "$(sw_vers)"; \`
-`command -v lsb_release > /dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`
-`  printf '\n\x60lsb_release --all\x60:\n%s\n\n' "$(lsb_release --all)"; \`
-`[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`
-`  printf '\x60cat /etc/os-release\x60:\n%s\n\n' "$(cat /etc/os-release)"`
+`command -v uname > /dev/null 2>&1 && \`<br/>
+`printf '\n\x60uname -a\x60:\n%s\n\n' "$(uname -a)"; \`<br/>
+`command -v sw_vers > /dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`<br/>
+`printf '\n\x60sw_vers\x60:\n%s\n\n' "$(sw_vers)"; \`<br/>
+`command -v lsb_release > /dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`<br/>
+`printf '\n\x60lsb_release --all\x60:\n%s\n\n' "$(lsb_release --all)"; \`<br/>
+`[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`<br/>
+`printf '\x60cat /etc/os-release\x60:\n%s\n\n' "$(cat /etc/os-release)"`
 
 ## rename files
 
