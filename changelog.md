@@ -6,6 +6,8 @@
 
 **Merged pull requests:**
 
+- \[autofix\] Format JSON content [\#150](https://github.com/LucasLarson/dotfiles/pull/150) ([github-actions[bot]](https://github.com/apps/github-actions))
+- repair spacing in identifying device operating system [\#149](https://github.com/LucasLarson/dotfiles/pull/149) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `feaf120` to `09be56b` [\#148](https://github.com/LucasLarson/dotfiles/pull/148) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `aa2d2c7` to `57f545b` [\#147](https://github.com/LucasLarson/dotfiles/pull/147) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace @gaurav-nelson and @ad-m nothing for link-status validation [\#145](https://github.com/LucasLarson/dotfiles/pull/145) ([LucasLarson](https://github.com/LucasLarson))
@@ -132,6 +134,7 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `3b2f474` to `6c8c6ee` [\#48](https://github.com/LucasLarson/dotfiles/pull/48) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a3727dc` to `3b2f474` [\#47](https://github.com/LucasLarson/dotfiles/pull/47) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `c1db392` to `a3727dc` [\#45](https://github.com/LucasLarson/dotfiles/pull/45) ([dependabot[bot]](https://github.com/apps/dependabot))
+- bump .oh-my-zsh/custom/themes/powerlevel10k from `f2bf019` to `c1db392` [\#44](https://github.com/LucasLarson/dotfiles/pull/44) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7eb501c` to `f2bf019` [\#43](https://github.com/LucasLarson/dotfiles/pull/43) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.0](https://github.com/LucasLarson/dotfiles/tree/v0.4.0) (2020-08-26)
@@ -146,7 +149,6 @@
 
 **Merged pull requests:**
 
-- bump .oh-my-zsh/custom/themes/powerlevel10k from `f2bf019` to `c1db392` [\#44](https://github.com/LucasLarson/dotfiles/pull/44) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `6279aa5` to `7eb501c` [\#42](https://github.com/LucasLarson/dotfiles/pull/42) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `dca8774` to `6279aa5` [\#40](https://github.com/LucasLarson/dotfiles/pull/40) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7114902` to `dca8774` [\#38](https://github.com/LucasLarson/dotfiles/pull/38) ([dependabot[bot]](https://github.com/apps/dependabot))
