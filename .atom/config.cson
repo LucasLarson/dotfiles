@@ -3,6 +3,7 @@
     compatMode: true
     scrollMode: false
     skipFrontMatter: true
+    tocType: "macro"
   "atom-beautify":
     c: {}
     general:
