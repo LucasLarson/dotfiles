@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `feaf120` to `09be56b` [\#148](https://github.com/LucasLarson/dotfiles/pull/148) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `aa2d2c7` to `57f545b` [\#147](https://github.com/LucasLarson/dotfiles/pull/147) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace @gaurav-nelson and @ad-m nothing for link-status validation [\#145](https://github.com/LucasLarson/dotfiles/pull/145) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e2db860` to `feaf120` [\#144](https://github.com/LucasLarson/dotfiles/pull/144) ([dependabot[bot]](https://github.com/apps/dependabot))
