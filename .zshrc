@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # Powerlevel10k instant prompt
-# https://github.com/romkatv/powerlevel10k/blob/d394a4e/README.md#how-do-i-enable-instant-prompt
+# https://github.com/romkatv/powerlevel10k/tree/d394a4e#how-do-i-enable-instant-prompt
 if [ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]; then
   . "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
