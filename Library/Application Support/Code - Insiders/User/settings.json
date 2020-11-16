@@ -22,5 +22,6 @@
   "files.trimFinalNewlines": true,
   "html.format.endWithNewline": true,
   "deepcode.uploadApproved": true,
-  "editor.renderControlCharacters": true
+  "editor.renderControlCharacters": true,
+  "deepcode.yesWelcomeNotification": false
 }
