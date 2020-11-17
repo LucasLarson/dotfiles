@@ -424,7 +424,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 ## split enormous files into something manageable
 
 if your example.csv has too many rows ([via](https://web.archive.org/web/20181210131347/domains-index.com/best-way-view-edit-large-csv-files/#post-12141))<br/>
-`split --lines 2000 example.csv; for i in *; do mv "$i" "$i.csv"; done`
+`split --lines 2000 example.csv; for i in * ; do mv "$i" "$i.csv"; done`
 
 ## SSH
 
