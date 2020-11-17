@@ -44,6 +44,7 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `74c6e18` to `2ea3356` [\#110](https://github.com/LucasLarson/dotfiles/pull/110) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `49d5617` to `74c6e18` [\#109](https://github.com/LucasLarson/dotfiles/pull/109) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `68c89ec` to `49d5617` [\#108](https://github.com/LucasLarson/dotfiles/pull/108) ([dependabot[bot]](https://github.com/apps/dependabot))
+- \[autofix\] Format JSON content [\#107](https://github.com/LucasLarson/dotfiles/pull/107) ([github-actions[bot]](https://github.com/apps/github-actions))
 - \[autofix\] Format JSON content [\#106](https://github.com/LucasLarson/dotfiles/pull/106) ([github-actions[bot]](https://github.com/apps/github-actions))
 
 ## [v0.5.0](https://github.com/LucasLarson/dotfiles/tree/v0.5.0) (2020-10-25)
@@ -56,7 +57,6 @@
 
 **Merged pull requests:**
 
-- \[autofix\] Format JSON content [\#107](https://github.com/LucasLarson/dotfiles/pull/107) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `a02fabd` to `3f287df` [\#105](https://github.com/LucasLarson/dotfiles/pull/105) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `de0e022` to `68c89ec` [\#104](https://github.com/LucasLarson/dotfiles/pull/104) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace tabs with two spaces for `editorconfig-checker` compliance [\#103](https://github.com/LucasLarson/dotfiles/pull/103) ([LucasLarson](https://github.com/LucasLarson))
@@ -92,6 +92,7 @@
 - \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair autofix for JSON [\#75](https://github.com/LucasLarson/dotfiles/pull/75) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `ecffcba` to `6b68ebd` [\#73](https://github.com/LucasLarson/dotfiles/pull/73) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump gaurav-nelson/github-action-markdown-link-check from v1.0.7 to 1.0.7 [\#61](https://github.com/LucasLarson/dotfiles/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.2](https://github.com/LucasLarson/dotfiles/tree/v0.4.2) (2020-10-03)
 
@@ -114,7 +115,6 @@
 - copyedit boilerplate text [\#65](https://github.com/LucasLarson/dotfiles/pull/65) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `0897849` to `b14876e` [\#64](https://github.com/LucasLarson/dotfiles/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/checkout requirement to v2.3.3 [\#62](https://github.com/LucasLarson/dotfiles/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump gaurav-nelson/github-action-markdown-link-check from v1.0.7 to 1.0.7 [\#61](https://github.com/LucasLarson/dotfiles/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.1](https://github.com/LucasLarson/dotfiles/tree/v0.4.1) (2020-09-23)
@@ -137,7 +137,6 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `c1db392` to `a3727dc` [\#45](https://github.com/LucasLarson/dotfiles/pull/45) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `f2bf019` to `c1db392` [\#44](https://github.com/LucasLarson/dotfiles/pull/44) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7eb501c` to `f2bf019` [\#43](https://github.com/LucasLarson/dotfiles/pull/43) ([dependabot[bot]](https://github.com/apps/dependabot))
-- bump .oh-my-zsh/custom/themes/powerlevel10k from `6279aa5` to `7eb501c` [\#42](https://github.com/LucasLarson/dotfiles/pull/42) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.0](https://github.com/LucasLarson/dotfiles/tree/v0.4.0) (2020-08-26)
 
@@ -151,6 +150,7 @@
 
 **Merged pull requests:**
 
+- bump .oh-my-zsh/custom/themes/powerlevel10k from `6279aa5` to `7eb501c` [\#42](https://github.com/LucasLarson/dotfiles/pull/42) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `dca8774` to `6279aa5` [\#40](https://github.com/LucasLarson/dotfiles/pull/40) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7114902` to `dca8774` [\#38](https://github.com/LucasLarson/dotfiles/pull/38) ([dependabot[bot]](https://github.com/apps/dependabot))
 - add Markdown link checker action [\#37](https://github.com/LucasLarson/dotfiles/pull/37) ([LucasLarson](https://github.com/LucasLarson))
