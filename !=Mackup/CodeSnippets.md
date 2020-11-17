@@ -223,10 +223,7 @@ pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' >
 ### `grep`
 
 search for the word “example” inside the current directory which is “.”<br/>
-`grep -inr 'example' .`<br/>
-`-i` means case-<u>i</u>nsensitive<br/>
-`-n` means show line <u>n</u>umbers<br/>
-`-r` means <u>r</u>ecursively or in a scope bigger than a file which is the dot
+`grep --ignore-case --line-number --recursive 'example' .`
 
 ### locate all
 
