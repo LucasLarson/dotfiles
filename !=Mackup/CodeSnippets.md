@@ -165,13 +165,13 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 Track changes to which applications are installed without syncing them. The instructions are bash-compatible and refer to this document for instructions on regenerating the list.
 
 ```zsh
-saveApplications=1 && mkdir -p "$DOTFILES"/\!=Mackup && mkdir -p /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
+saveApplications=1 && mkdir --parents "$DOTFILES"/\!=Mackup && mkdir --parents /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
 ```
 
 ##### Atom packages
 
 ```zsh
-apm list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'Atom extensions ' > "$DOTFILES"/\!=Mackup/atom && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/atom && printf '———————————————\n' >> "$DOTFILES"/\!=Mackup/atom && apm list >> "$DOTFILES"/Mackup/\!=Mackup/atom && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+apm list && mkdir --parents "$DOTFILES"/\!=Mackup && printf 'Atom extensions ' > "$DOTFILES"/\!=Mackup/atom && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/atom && printf '———————————————\n' >> "$DOTFILES"/\!=Mackup/atom && apm list >> "$DOTFILES"/Mackup/\!=Mackup/atom && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 
 ##### Homebrew
@@ -189,13 +189,13 @@ listBrewCask="$DOTFILES"/!=Mackup/brew\ cask\ list && touch "$listBrewCask" && p
 ##### `$manpath`
 
 ```zsh
-saveManpath=1 && mkdir -p "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
+saveManpath=1 && mkdir --parents "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
 ```
 
 ##### pip packages
 
 ```zsh
-pip list && mkdir -p "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' > "$DOTFILES"/\!=Mackup/pip && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/\!=Mackup/pip && pip list >> "$DOTFILES"/\!=Mackup/pip && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+pip list && mkdir --parents "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' > "$DOTFILES"/\!=Mackup/pip && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/\!=Mackup/pip && pip list >> "$DOTFILES"/\!=Mackup/pip && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 
 ## apk
@@ -240,7 +240,7 @@ for example, locate all JPEG files<br/>
 #### Linux
 
 ```zsh
-pathSave=1 && mkdir -p "$DOTFILES"/\!=Mackup && cd "$DOTFILES"/\!=Mackup && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
+pathSave=1 && mkdir --parents "$DOTFILES"/\!=Mackup && cd "$DOTFILES"/\!=Mackup && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
 ```
 
 ## text editing
@@ -488,7 +488,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ### Xcode, JetBrains, Carthage
 
-`trashDeveloper=1 && sleep 0.25 && mkdir -p ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir -p ~/Library/Developer/Xcode/UserData/IB\ Support && mv ~/Library/Developer/Xcode/UserData/IB\ Support ~/.Trash/Xcode⁄UserData⁄IB\ Support-$RANDOM && mkdir -p ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && mkdir -p ~/Library/Caches/org.carthage.CarthageKit/DerivedData && mv ~/Library/Caches/org.carthage.CarthageKit/DerivedData ~/.Trash/Carthage-$RANDOM && unset trashDeveloper && printf '\n\n\xf0'$trashDeveloper'\x9f'$trashDeveloper'\x9a'$trashDeveloper'\xae data successfully trashed\n\n'`
+`trashDeveloper=1 && sleep 0.25 && mkdir --parents ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir --parents ~/Library/Developer/Xcode/UserData/IB\ Support && mv ~/Library/Developer/Xcode/UserData/IB\ Support ~/.Trash/Xcode⁄UserData⁄IB\ Support-$RANDOM && mkdir --parents ~/Library/Caches/JetBrains && mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && mkdir --parents ~/Library/Caches/org.carthage.CarthageKit/DerivedData && mv ~/Library/Caches/org.carthage.CarthageKit/DerivedData ~/.Trash/Carthage-$RANDOM && unset trashDeveloper && printf '\n\n\xf0'$trashDeveloper'\x9f'$trashDeveloper'\x9a'$trashDeveloper'\xae data successfully trashed\n\n'`
 
 ## delete
 
