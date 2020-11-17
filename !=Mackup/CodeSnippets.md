@@ -145,7 +145,8 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec ${SHELL##*/} --login
 `# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br/>
 `. ~/.${SHELL##*/}rc && \`<br/>
 `printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && #` [via](https://stackoverflow.com/a/30762087), [via](https://stackoverflow.com/a/602924), [via](https://github.com/koalaman/shellcheck/wiki/SC2059/0c9cfe7e8811d3cafae8df60f41849ef7d17e296#problematic-code) `\`<br/>
-`exec ${SHELL##*/} --login #` [via](https://github.com/mathiasbynens/dotfiles/commit/cb8843bea74f1d223ea2967c7a891ca76c9e54e9#diff-ec67f41a7a08f67e6d486db809809f700007e2d58895d67e842ff21123adaee4R145-R146); note successful finish before restarting the shell
+`#` note successful finish before restarting the shell `\`<br/>
+`exec ${SHELL##*/} --login #` [via](https://github.com/mathiasbynens/dotfiles/commit/cb8843bea74f1d223ea2967c7a891ca76c9e54e9#diff-ec67f41a7a08f67e6d486db809809f700007e2d58895d67e842ff21123adaee4R145-R146)
 
 ## Mackup
 
