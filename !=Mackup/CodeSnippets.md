@@ -155,7 +155,7 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec ${SHELL##*/} --login
 
 <!--
 to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/mackup) might’ve but hasn’t
-`add='`**~/Desktop/example.txt**`' && cp ~/$add ~/Dropbox/Mackup/$add && mv ~/$add ~/.Trash && ln --symbolic ~/Dropbox/Mackup/$add ~/$add`
+`add='`**~/Desktop/example.txt**`' && cp ~/$add $DOTFILES/$add && mv ~/$add ~/.Trash && ln --symbolic $DOTFILES/$add ~/$add`
 -->
 
 ##### lists
