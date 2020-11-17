@@ -419,7 +419,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 ## rename files
 
 `brew install --upgrade rename && #` [via](https://stackoverflow.com/a/31694356) `\`<br/>
-`rename -nvs searchword replaceword *`
+`rename --dry-run --verbose --subst searchword replaceword *`
 
 ## split enormous files into something manageable
 
