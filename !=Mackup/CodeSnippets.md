@@ -162,7 +162,7 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 
 ###### applications
 
-Track changes to which applications are installed without syncing them. The instructions are bash-compatible and refer to this document for instructions on regenerating the list.
+Track changes to which applications are installed without syncing them. The instructions are Bash-compatible and refer to this document for instructions on regenerating the list.
 
 ```zsh
 saveApplications=1 && mkdir --parents "$DOTFILES"/\!=Mackup && mkdir --parents /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
