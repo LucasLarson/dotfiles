@@ -408,7 +408,7 @@ Atom [via](https://stackoverflow.com/a/31389989 )<br/>
 ### Identify
 
 `command -v uname > /dev/null 2>&1 && \`<br/>
-`printf '\n\x60uname -a\x60:\n%s\n\n' "$(uname -a)"; \`<br/>
+`printf '\n\x60uname --all\x60:\n%s\n\n' "$(uname --all)"; \`<br/>
 `command -v sw_vers > /dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`<br/>
 `printf '\n\x60sw_vers\x60:\n%s\n\n' "$(sw_vers)"; \`<br/>
 `command -v lsb_release > /dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`<br/>
