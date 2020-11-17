@@ -28,7 +28,7 @@ jobs:
           gem install github_changelog_generator
           github_changelog_generator \
           -u ${{ github.repository_owner }} \
-          -p dotfiles \
+          -p "$(git rev-parse --show-toplevel | xargs basename)" \
           -t ${{ secrets.GITHUB_TOKEN }} \
           --exclude-labels duplicate,question,invalid,wontfix,nodoc \
           --output changelog.md
