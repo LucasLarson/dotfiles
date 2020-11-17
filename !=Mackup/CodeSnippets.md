@@ -141,7 +141,6 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec ${SHELL##*/} --login
 `swiftgen && \`<br/>
 `brew install swiftlint --head && #` 0.40.3 [2020-09-22](https://github.com/realm/SwiftLint/releases) `\`<br/>
 `swiftlint autocorrect && \`<br/>
-`# git add . && git add -u || git add -A && #` [via](https://stackoverflow.com/a/15011313) `\`<br/>
 `git gc && \`<br/>
 `# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br/>
 `. ~/.${SHELL##*/}rc && \`<br/>
