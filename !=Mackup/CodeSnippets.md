@@ -63,7 +63,6 @@
 - [Operating system](#operating-system)
   - [Identify](#identify)
 - [rename files](#rename-files)
-  - [remove spaces from filenames recursively](#remove-spaces-from-filenames-recursively)
 - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
 - [SSH](#ssh)
   - [`ls` on Windows](#ls-on-windows)
