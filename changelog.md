@@ -115,20 +115,24 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `71b39f0` to `42aa719` [\#69](https://github.com/LucasLarson/dotfiles/pull/69) ([dependabot[bot]](https://github.com/apps/dependabot))
 - add Android SDK to $PATH only if it exists [\#66](https://github.com/LucasLarson/dotfiles/pull/66) ([LucasLarson](https://github.com/LucasLarson))
 - copyedit boilerplate text [\#65](https://github.com/LucasLarson/dotfiles/pull/65) ([LucasLarson](https://github.com/LucasLarson))
+- Bump .oh-my-zsh/custom/plugins/gunstage from `0897849` to `b14876e` [\#64](https://github.com/LucasLarson/dotfiles/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/checkout requirement to v2.3.3 [\#62](https://github.com/LucasLarson/dotfiles/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump gaurav-nelson/github-action-markdown-link-check from v1.0.7 to 1.0.7 [\#61](https://github.com/LucasLarson/dotfiles/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `f14b58e` to `3b77282` [\#57](https://github.com/LucasLarson/dotfiles/pull/57) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.1](https://github.com/LucasLarson/dotfiles/tree/v0.4.1) (2020-09-23)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.4.0...v0.4.1)
 
+**Implemented enhancements:**
+
+- add @GitHub standard issue templates [\#41](https://github.com/LucasLarson/dotfiles/pull/41) ([LucasLarson](https://github.com/LucasLarson))
+
 **Merged pull requests:**
 
-- Bump .oh-my-zsh/custom/plugins/gunstage from `0897849` to `b14876e` [\#64](https://github.com/LucasLarson/dotfiles/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `945a464` to `0897849` [\#59](https://github.com/LucasLarson/dotfiles/pull/59) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `3b77282` to `71b39f0` [\#58](https://github.com/LucasLarson/dotfiles/pull/58) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `f14b58e` to `3b77282` [\#57](https://github.com/LucasLarson/dotfiles/pull/57) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `cf9f502` to `945a464` [\#56](https://github.com/LucasLarson/dotfiles/pull/56) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `afb854d` to `f14b58e` [\#55](https://github.com/LucasLarson/dotfiles/pull/55) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `12cef82` to `afb854d` [\#54](https://github.com/LucasLarson/dotfiles/pull/54) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -147,7 +151,6 @@
 
 **Implemented enhancements:**
 
-- add @GitHub standard issue templates [\#41](https://github.com/LucasLarson/dotfiles/pull/41) ([LucasLarson](https://github.com/LucasLarson))
 - add, remove @GitHub’s CodeQL [\#22](https://github.com/LucasLarson/dotfiles/pull/22) ([LucasLarson](https://github.com/LucasLarson))
 - add @GitHub Super-Linter [\#20](https://github.com/LucasLarson/dotfiles/pull/20) ([LucasLarson](https://github.com/LucasLarson))
 
