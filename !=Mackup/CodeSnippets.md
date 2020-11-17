@@ -384,7 +384,7 @@ to backdate a commit:<br/>
 
 Vim<br/>
 `git config --global core.editor /usr/local/bin/vim`<br/>
-Atom [via](https://stackoverflow.com/a/31389989 )<br/>
+Atom [via](https://stackoverflow.com/a/31389989)<br/>
 `git config --global core.editor "atom --wait"`
 
 ### `tag`
