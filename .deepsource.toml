@@ -12,7 +12,7 @@ name = "go"
 enabled = true
 
   [analyzers.meta]
-  import_paths = ['github.com/${{ github.repository_owner }}/"$(git rev-parse --show-toplevel | xargs basename)"']
+  import_paths = ['github.com/LucasLarson/"$(git rev-parse --show-toplevel | xargs basename)"']
 
 [[analyzers]]
 name = "test-coverage"
