@@ -85,10 +85,6 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.4.2...v0.4.3)
 
-**Implemented enhancements:**
-
-- add Rust Cargo bin to $PATH only if it exists \(fix \#68\) [\#71](https://github.com/LucasLarson/dotfiles/pull/71) ([LucasLarson](https://github.com/LucasLarson))
-
 **Fixed bugs:**
 
 - stackoverrun.com appears down [\#80](https://github.com/LucasLarson/dotfiles/issues/80)
@@ -104,6 +100,10 @@
 ## [v0.4.2](https://github.com/LucasLarson/dotfiles/tree/v0.4.2) (2020-10-03)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.4.1...v0.4.2)
+
+**Implemented enhancements:**
+
+- add Rust Cargo bin to $PATH only if it exists \(fix \#68\) [\#71](https://github.com/LucasLarson/dotfiles/pull/71) ([LucasLarson](https://github.com/LucasLarson))
 
 **Closed issues:**
 
