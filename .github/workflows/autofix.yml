@@ -31,7 +31,7 @@ jobs:
             action](https://github.com/${{ github.repository
             }}/blob/${{ github.base_ref }}/.github/workflows/autofix.yml).
           labels: CI/CD
-          branch: format-json-${{ github.run_id }}
+          branch: format-json
 
   typos:
     name: Fix typos and create a PR
@@ -50,7 +50,7 @@ jobs:
             action](https://github.com/${{ github.repository
             }}/blob/${{ github.base_ref }}/.github/workflows/autofix.yml).
           labels: CI/CD, documentation
-          branch: autofix-typo-${{ github.run_id }}
+          branch: autofix-typo
 
 #   analyze:
 #     name: Analyze
