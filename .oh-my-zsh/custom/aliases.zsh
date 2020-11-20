@@ -115,8 +115,8 @@ alias gpl="git pull --all --rebase --autostash --verbose && git status"
 alias gpull="gpl"
 
 # git push after @ohmyzsh `gpsup` ohmyzsh/ohmyzsh@ae21102
-alias gpv='git push --verbose --set-upstream origin "$(git_current_branch)"'
-alias gps="gpv"
+alias gps='git push --verbose --set-upstream origin "$(git_current_branch)"'
+alias gpv="gps"
 
 alias gsu="git submodule update --init --recursive --remote"
 alias gtake="git checkout -b"
