@@ -27,7 +27,7 @@ alias mux=" \
     mackup backup --force --root --verbose && \
     git fetch --all --verbose && \
     git submodule update --init --recursive --remote && \
-    git status --verbose"
+    git status"
 
 
 # Git
