@@ -111,7 +111,8 @@ gmm () {(
 alias gmv="git mv --verbose"
 
 # git pull after @ohmyzsh `gupav` ohmyzsh/ohmyzsh@3d2542f
-alias gpull="git pull --all --rebase --autostash --verbose && git status"
+alias gpl="git pull --all --rebase --autostash --verbose && git status"
+alias gpull="gpl"
 
 # git push after @ohmyzsh `gpsup` ohmyzsh/ohmyzsh@ae21102
 alias gpv='git push --verbose --set-upstream origin "$(git_current_branch)"'
