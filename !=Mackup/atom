@@ -1,5 +1,5 @@
-Atom extensions 2020-05-30
-———————————————
+Atom extensions 2020-11-21
+——————————————————————————
 [36mBuilt-in Atom Packages[39m (93)
 ├── atom-dark-syntax@0.29.1
 ├── atom-dark-ui@0.53.3
@@ -31,9 +31,9 @@ Atom extensions 2020-05-30
 ├── dev-live-reload@0.48.1
 ├── encoding-selector@0.23.9
 ├── exception-reporting@0.43.1
-├── find-and-replace@0.219.3
-├── fuzzy-finder@1.14.2
-├── github@0.34.2
+├── find-and-replace@0.219.7
+├── fuzzy-finder@1.14.3
+├── github@0.36.2
 ├── git-diff@1.3.9
 ├── go-to-line@0.33.0
 ├── grammar-selector@0.50.1
@@ -47,30 +47,30 @@ Atom extensions 2020-05-30
 ├── notifications@0.71.0
 ├── open-on-github@1.3.2
 ├── package-generator@1.3.0
-├── settings-view@0.261.4
+├── settings-view@0.261.6
 ├── snippets@1.5.1
-├── spell-check@0.76.1
+├── spell-check@0.76.2
 ├── status-bar@1.8.17
 ├── styleguide@0.49.12
 ├── symbols-view@0.118.4
 ├── tabs@0.110.0
 ├── timecop@0.36.2
-├── tree-view@0.228.0
+├── tree-view@0.228.2
 ├── update-package-dependencies@0.13.1
 ├── welcome@0.36.9
-├── whitespace@0.37.7 (disabled)
+├── whitespace@0.37.7
 ├── wrap-guide@0.41.0
 ├── language-c@0.60.19
 ├── language-clojure@0.22.8
 ├── language-coffee-script@0.50.0
 ├── language-csharp@1.1.0
 ├── language-css@0.44.4
-├── language-gfm@0.90.7
+├── language-gfm@0.90.8 (disabled)
 ├── language-git@0.19.1
 ├── language-go@0.47.2
 ├── language-html@0.53.1
 ├── language-hyperlink@0.17.1
-├── language-java@0.31.5
+├── language-java@0.32.0
 ├── language-javascript@0.134.1
 ├── language-json@1.0.5
 ├── language-less@0.34.3
@@ -78,9 +78,9 @@ Atom extensions 2020-05-30
 ├── language-mustache@0.14.5
 ├── language-objective-c@0.16.0
 ├── language-perl@0.38.1
-├── language-php@0.44.4
+├── language-php@0.44.7
 ├── language-property-list@0.9.1
-├── language-python@0.53.4
+├── language-python@0.53.5
 ├── language-ruby@0.72.23
 ├── language-ruby-on-rails@0.25.3
 ├── language-rust-bundled@0.1.0
@@ -91,29 +91,41 @@ Atom extensions 2020-05-30
 ├── language-text@0.7.4
 ├── language-todo@0.29.4
 ├── language-toml@0.20.0
-├── language-typescript@0.6.2
+├── language-typescript@0.6.3
 ├── language-xml@0.35.3
 └── language-yaml@0.32.0
 
-[36mCommunity Packages (24)[39m /Users/LucasLarson/.atom/packages
+[36mCommunity Packages (36)[39m /Users/LucasLarson/.atom/packages
+├── asciidoc-assistant@0.2.3
+├── asciidoc-image-helper@1.0.1
+├── asciidoc-preview@2.13.1
 ├── atom-beautify@0.33.4
+├── autocomplete-asciidoc@0.1.2
 ├── busy-signal@2.0.1
 ├── deepcode@2.0.1
-├── editorconfig@2.6.0
+├── editorconfig@2.6.1
+├── format-shell@2.2.1
 ├── gitlab-integration@0.4.8
+├── hex-view@1.0.1
 ├── ide-bash@1.0.11
-├── ide-python@1.5.0
+├── ide-python@1.6.2
 ├── ide-ruby@0.5.0
 ├── intentions@1.1.5
 ├── language-apache@1.8.0
+├── language-asciidoc@1.11.0
 ├── language-gitignore@0.3.0
 ├── language-ini@1.23.0
+├── language-markdown@0.37.0
 ├── language-swift@0.5.0
-├── linter@2.3.1
+├── linter@3.1.1
+├── linter-js-yaml@1.4.6
 ├── linter-markdown@5.2.11
+├── linter-markdownlint@2.0.2
 ├── linter-ruby@1.3.1
+├── linter-shellcheck@1.6.0
 ├── linter-swiftlint@1.3.1
-├── linter-ui-default@1.8.1
+├── linter-ui-default@2.1.4
+├── markdown-scroll-sync@2.1.2
 ├── markdown-writer@2.11.10
 ├── minimap-split-diff@0.3.7
 ├── rubocop-auto-correct@1.5.1
