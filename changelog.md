@@ -121,6 +121,7 @@
 - Update actions/checkout requirement to v2.3.3 [\#62](https://github.com/LucasLarson/dotfiles/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump gaurav-nelson/github-action-markdown-link-check from v1.0.7 to 1.0.7 [\#61](https://github.com/LucasLarson/dotfiles/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/plugins/gunstage from `945a464` to `0897849` [\#59](https://github.com/LucasLarson/dotfiles/pull/59) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.1](https://github.com/LucasLarson/dotfiles/tree/v0.4.1) (2020-09-23)
 
@@ -128,7 +129,6 @@
 
 **Merged pull requests:**
 
-- Bump .oh-my-zsh/custom/plugins/gunstage from `945a464` to `0897849` [\#59](https://github.com/LucasLarson/dotfiles/pull/59) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `3b77282` to `71b39f0` [\#58](https://github.com/LucasLarson/dotfiles/pull/58) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `f14b58e` to `3b77282` [\#57](https://github.com/LucasLarson/dotfiles/pull/57) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `cf9f502` to `945a464` [\#56](https://github.com/LucasLarson/dotfiles/pull/56) ([dependabot[bot]](https://github.com/apps/dependabot))
