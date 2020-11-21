@@ -174,7 +174,7 @@ On Alpine Linux, generate a list of installed packages with:<br/>
 ##### Atom packages
 
 ```zsh
-apm list && mkdir --parents "$DOTFILES"/\!=Mackup && printf 'Atom extensions ' > "$DOTFILES"/\!=Mackup/atom && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/atom && printf '———————————————\n' >> "$DOTFILES"/\!=Mackup/atom && apm list >> "$DOTFILES"/Mackup/\!=Mackup/atom && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/atom && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+apm list && mkdir --parents "$DOTFILES/!=Mackup" && printf 'Atom extensions ' > "$DOTFILES/!=Mackup/atom" && date '+%Y-%m-%d' >> "$DOTFILES/!=Mackup/atom" && printf '——————————————————————————\n' >> "$DOTFILES/!=Mackup/atom" && apm list >> "$DOTFILES/!=Mackup/atom" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$DOTFILES/!=Mackup/atom" && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 
 ##### Homebrew
