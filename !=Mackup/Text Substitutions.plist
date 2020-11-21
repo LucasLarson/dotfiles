@@ -2776,6 +2776,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>✨</string>
+		<key>shortcut</key>
+		<string>sparkles</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>√</string>
 		<key>shortcut</key>
 		<string>sqrt</string>
