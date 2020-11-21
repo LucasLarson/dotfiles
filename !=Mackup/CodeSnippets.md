@@ -168,6 +168,9 @@ Track changes to which applications are installed without syncing them. The inst
 saveApplications=1 && mkdir --parents "$DOTFILES"/\!=Mackup && mkdir --parents /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
 ```
 
+On Alpine Linux, generate a list of installed packages with:<br/>
+`apk -vv info|sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
+
 ##### Atom packages
 
 ```zsh
