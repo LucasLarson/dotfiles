@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/LucasLarson/dotfiles/tree/HEAD)
+## [v0.5.1](https://github.com/LucasLarson/dotfiles/tree/v0.5.1) (2020-11-23)
 
-[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.0...HEAD)
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.0...v0.5.1)
 
 **Merged pull requests:**
 
