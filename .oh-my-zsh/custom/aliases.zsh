@@ -139,8 +139,12 @@ gu () {
 }
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
-alias gvc="git verify-commit HEAD"
-
+# alias gvc="git verify-commit HEAD"
+gvc () {(
+  # if there is an argument (commit hash), use it
+  # otherwise check `HEAD`
+  git verify-commit "${1:-HEAD}"
+)}
 
 # GPG
 if command -v gpg2 > /dev/null 2>&1; then
