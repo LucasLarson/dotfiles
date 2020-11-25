@@ -162,15 +162,19 @@ alias pip="pip3"
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp="cp -r"
 
-cy () {
-  if [ -n $2 ]; then
-    cp "$1" "$2"
-  else
+cy () {(
+  # if within git repo, then auto-overwrite
+  if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    interactive="-i"
+  fi
+  if [ -z "$2" ]; then
     # if there is no second argument,
     # then copy to the current directory
-    cp "$1" "$PWD"
+    eval cp -r "$interactive -- $1 '$PWD'"
+  else
+    eval cp -r "$interactive -- $1 $2"
   fi
-}
+)}
 
 garbage () {(
   # if `garbage -v` or `garbage --verbose`,
