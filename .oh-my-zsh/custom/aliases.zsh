@@ -158,8 +158,10 @@ alias pip="pip3"
 
 
 # shell
-# https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
-alias cp="cp -r -i --"
+
+# http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
+alias cp="cp -r"
+
 cy () {
   if [ -n $2 ]; then
     cp "$1" "$2"
