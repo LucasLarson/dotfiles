@@ -14,7 +14,7 @@ apk update --verbose
 apk upgrade --verbose
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working
-# apk add mandoc man-pages less-doc
+apk add mandoc mandoc-doc man-pages less less-doc
 
 # apk add util-linux pciutils usbutils coreutils binutils findutils grep
 
