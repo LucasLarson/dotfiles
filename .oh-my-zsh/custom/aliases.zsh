@@ -31,7 +31,11 @@ alias mux=" \
 
 
 # Git
-alias gap="git add --patch --verbose" # override `git apply` alias
+git_add_patch () {
+  git add --patch --verbose "$@"
+  git status
+}
+alias gap="git_add_patch" # override Oh My Zsh’s `git apply` alias
 alias gc="git commit --verbose --gpg-sign"
 alias gca="git commit --amend --verbose --gpg-sign"
 alias gcl="git clone --verbose --progress --recursive --recurse-submodules"
