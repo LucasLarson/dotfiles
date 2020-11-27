@@ -198,7 +198,7 @@ garbage () {(
   find . -type f -size 0 \
       -not -path './.git/*' -and \
       -not -path '*.gitkeep' -and \
-      -not -path '*.hushlogin' -and \
+      -not -path '*hushlogin' -and \
       -not -path '*.lock' \
       $verbose -delete
 
