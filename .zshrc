@@ -19,7 +19,7 @@ export ZSH=$HOME/.oh-my-zsh
 # powerlevel10k
 # https://github.com/romkatv/powerlevel10k/blob/48c6ff4/README.md#oh-my-zsh
 # ZSH_THEME
-if [ "$(uname)" = Darwin && -d $ZSH/custom/themes/powerlevel10k ]; then
+if [ "$(uname)" = Darwin ] && [ -d $ZSH/custom/themes/powerlevel10k ]; then
   ZSH_THEME="powerlevel10k/powerlevel10k"
 else
   ZSH_THEME="robbyrussell"
@@ -185,6 +185,11 @@ setopt globdots
 # but hide `./` and `../`
 # https://unix.stackexchange.com/q/308315#comment893697_308322
 zstyle ':completion:*' special-dirs false
+
+
+# share all commands from everywhere
+# https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
+setopt share_history
 
 
 # pyenv
