@@ -49,14 +49,14 @@ gdm () {(
 )}
 alias gfgs="git fetch --all --verbose && git status"
 
-ggc () {(
+ggc () {
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
     git gc --aggressive --prune=now
   else
     return 1
   fi
-)}
+}
 
 # initial commit’s hash
 # https://stackoverflow.com/a/1007545
