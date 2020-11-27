@@ -213,6 +213,7 @@ garbage () {(
 )}
 
 alias mv="mv -v -i" # https://unix.stackexchange.com/a/30950
+alias pwd="pwd -P"
 alias unixtime="date +%s" # https://stackoverflow.com/a/12312982
 alias which="which -a"
 alias whcih="which"
