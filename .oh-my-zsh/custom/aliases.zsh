@@ -31,7 +31,11 @@ alias mux=" \
 
 
 # Git
-alias gap="git add --patch --verbose" # override `git apply` alias
+git_add_patch () {
+  git add --patch --verbose "$@"
+  git status
+}
+alias gap="git_add_patch" # override Oh My Zsh’s `git apply` alias
 alias gc="git commit --verbose --gpg-sign"
 alias gca="git commit --amend --verbose --gpg-sign"
 alias gcl="git clone --verbose --progress --recursive --recurse-submodules"
@@ -49,14 +53,14 @@ gdm () {(
 )}
 alias gfgs="git fetch --all --verbose && git status"
 
-ggc () {(
+ggc () {
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
     git gc --aggressive --prune=now
   else
     return 1
   fi
-)}
+}
 
 # initial commit’s hash
 # https://stackoverflow.com/a/1007545
@@ -98,15 +102,16 @@ git_default_branch () {(
   printf '%s' "$default_branch"
 )}
 alias gdb="git_default_branch"
+alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue"
 
 # git merge main
-gmm () {(
+gmm () {
   # set Git merge verbosity environment variable
   # 4 “shows all paths as they are processed” but
   # 5 is “show detailed debugging information”
   # https://github.com/progit/progit2/commit/aea93a7
   GIT_MERGE_VERBOSITY=4 git merge --verbose --progress --strategy-option patience "$(git_default_branch)"
-)}
+}
 
 alias gmv="git mv --verbose"
 
@@ -115,7 +120,7 @@ alias gpl="git pull --all --rebase --autostash --verbose && git status"
 alias gpull="gpl"
 
 # git push after @ohmyzsh `gpsup` ohmyzsh/ohmyzsh@ae21102
-alias gps='git push --verbose --set-upstream origin "$(git_current_branch)"'
+alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && git status'
 alias gpv="gps"
 
 alias gsu="git submodule update --init --recursive --remote"
@@ -139,8 +144,12 @@ gu () {
 }
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
-alias gvc="git verify-commit HEAD"
-
+# alias gvc="git verify-commit HEAD"
+gvc () {(
+  # if there is an argument (commit hash), use it
+  # otherwise check `HEAD`
+  git verify-commit "${1:-HEAD}"
+)}
 
 # GPG
 if command -v gpg2 > /dev/null 2>&1; then
@@ -154,17 +163,23 @@ alias pip="pip3"
 
 
 # shell
-# https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
-alias cp="cp -r -i --"
-cy () {
-  if [ -n $2 ]; then
-    cp "$1" "$2"
-  else
+
+# http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
+alias cp="cp -r"
+
+cy () {(
+  # if within git repo, then auto-overwrite
+  if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    interactive="-i"
+  fi
+  if [ -z "$2" ]; then
     # if there is no second argument,
     # then copy to the current directory
-    cp "$1" "$PWD"
+    eval cp -r "$interactive -- $1 '$PWD'"
+  else
+    eval cp -r "$interactive -- $1 $2"
   fi
-}
+)}
 
 garbage () {(
   # if `garbage -v` or `garbage --verbose`,
@@ -183,8 +198,10 @@ garbage () {(
   find . -type f -size 0 \
       -not -path './.git/*' -and \
       -not -path '*.gitkeep' -and \
-      -not -path '*.hushlogin' -and \
-      -not -path '*.lock' \
+      -not -path '*hushlogin' -and \
+      -not -path '*lock' -and \
+      -not -path '*LOCK' -and \
+      -not -path '*lockfile' \
       $verbose -delete
 
   # delete empty directories, except within `.git/`, recursively \
@@ -196,6 +213,7 @@ garbage () {(
 )}
 
 alias mv="mv -v -i" # https://unix.stackexchange.com/a/30950
+alias pwd="pwd -P"
 alias unixtime="date +%s" # https://stackoverflow.com/a/12312982
 alias which="which -a"
 alias whcih="which"
