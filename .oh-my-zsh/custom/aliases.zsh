@@ -200,7 +200,8 @@ garbage () {(
       -not -path '*.gitkeep' -and \
       -not -path '*hushlogin' -and \
       -not -path '*lock' -and \
-      -not -path '*LOCK' \
+      -not -path '*LOCK' -and \
+      -not -path '*lockfile' \
       $verbose -delete
 
   # delete empty directories, except within `.git/`, recursively \
