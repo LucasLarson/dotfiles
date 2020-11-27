@@ -11,7 +11,9 @@ printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >> /etc/
 
 # update
 apk update --verbose
-apk upgrade --verbose
+apk upgrade --verbose --verbose --progress
+
+apk add curl curl-doc python2 python2-doc python3 python3-doc
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working
 # apk add mandoc man-pages less-doc
@@ -23,3 +25,16 @@ apk upgrade --verbose
 #          cp /usr/share/zoneinfo/America/New_York /etc/localtime
 # printf 'America/New_York' > /etc/timezone
 # apk del tzdata
+
+# pip
+curl http://web.archive.org/web/20201031072740id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
+pip3 get-pip.py
+
+# update again
+apk update --verbose
+apk upgrade --verbose --verbose --progress
+
+# reload
+[ -e /etc/profile ]      && . /etc/profile
+[ -e ~/.${SHELL##*/}rc ] && . ~/.${SHELL##*/}rc
+exec ${SHELL##*/} --login
