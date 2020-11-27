@@ -105,13 +105,13 @@ alias gdb="git_default_branch"
 alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue"
 
 # git merge main
-gmm () {(
+gmm () {
   # set Git merge verbosity environment variable
   # 4 “shows all paths as they are processed” but
   # 5 is “show detailed debugging information”
   # https://github.com/progit/progit2/commit/aea93a7
   GIT_MERGE_VERBOSITY=4 git merge --verbose --progress --strategy-option patience "$(git_default_branch)"
-)}
+}
 
 alias gmv="git mv --verbose"
 
