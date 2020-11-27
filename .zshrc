@@ -187,6 +187,11 @@ setopt globdots
 zstyle ':completion:*' special-dirs false
 
 
+# share all commands from everywhere
+# https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
+setopt share_history
+
+
 # pyenv
 command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
 
