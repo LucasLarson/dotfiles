@@ -9,6 +9,10 @@ wget -qO- http://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/al
 printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n' > /etc/apk/repositories
 printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >> /etc/apk/repositories
 
+# update
+apk update --verbose
+apk upgrade --verbose
+
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working
 # apk add mandoc man-pages less-doc
 
