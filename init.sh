@@ -19,7 +19,8 @@ apk add mandoc mandoc-doc man-pages less less-doc
 apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc
 
 # time zone
-#   apk add tzdata
-#          cp /usr/share/zoneinfo/America/New_York /etc/localtime
+apk add tzdata
+cp /usr/share/zoneinfo/America/New_York /etc/localtime
+
 # printf 'America/New_York' > /etc/timezone
 # apk del tzdata
