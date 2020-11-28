@@ -43,11 +43,9 @@ alias gcm="git commit --verbose --gpg-sign --message"
 alias gco="git checkout --progress"
 
 # `git checkout` the default branch
-# place the function inside `{()}` to prevent the leaking of variable data
-# https://stackoverflow.com/a/37675401
-gcom () {(
+gcom () {
   git checkout --progress "$(git_default_branch)"
-)}
+}
 gdm () {(
   git diff "$(git_default_branch)"
 )}
