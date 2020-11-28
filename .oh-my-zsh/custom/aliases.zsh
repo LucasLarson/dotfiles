@@ -70,6 +70,8 @@ alias glog="git log"
 
 # return the name of the repository’s default branch
 # ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
+# place the function inside `{()}` to prevent the leaking of variable data
+# https://stackoverflow.com/a/37675401
 git_default_branch () {(
   # run only from within a git repository
   # https://stackoverflow.com/a/53809163
