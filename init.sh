@@ -10,8 +10,8 @@ printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n' > /etc/apk/re
 printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >> /etc/apk/repositories
 
 # update
-apk update --verbose
-apk upgrade --verbose --verbose --progress
+apk update --verbose --progress
+apk upgrade --verbose --progress
 
 apk add curl curl-doc python2 python2-doc python3 python3-doc
 
