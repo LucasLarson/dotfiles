@@ -21,6 +21,7 @@ apk add mandoc mandoc-doc man-pages less less-doc
 apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc
 
 # SSH
+# https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
 apk add openssh openssh-doc
 
 # time zone
