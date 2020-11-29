@@ -15,7 +15,7 @@ apk upgrade --verbose --progress
 
 apk add curl curl-doc python2 python2-doc python3 python3-doc
 
-# https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working
+# https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
 apk add mandoc mandoc-doc man-pages less less-doc
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Shell_.40_commandline
