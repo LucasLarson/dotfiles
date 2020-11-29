@@ -26,7 +26,7 @@ apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc co
 apk add openssh openssh-doc gnupg gnupg-doc
 
 # time zone
-apk add tzdata
+apk add tzdata tzdata-doc
 cp /usr/share/zoneinfo/America/New_York /etc/localtime
 
 # printf 'America/New_York' > /etc/timezone
