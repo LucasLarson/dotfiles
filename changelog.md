@@ -170,6 +170,7 @@
 
 - add @GitHub standard issue templates [\#41](https://github.com/LucasLarson/dotfiles/pull/41) ([LucasLarson](https://github.com/LucasLarson))
 - add, remove @GitHub’s CodeQL [\#22](https://github.com/LucasLarson/dotfiles/pull/22) ([LucasLarson](https://github.com/LucasLarson))
+- add @GitHub Super-Linter [\#20](https://github.com/LucasLarson/dotfiles/pull/20) ([LucasLarson](https://github.com/LucasLarson))
 
 **Merged pull requests:**
 
@@ -195,10 +196,6 @@
 ## [v0.3.0](https://github.com/LucasLarson/dotfiles/tree/v0.3.0) (2020-07-15)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.2.0...v0.3.0)
-
-**Implemented enhancements:**
-
-- add @GitHub Super-Linter [\#20](https://github.com/LucasLarson/dotfiles/pull/20) ([LucasLarson](https://github.com/LucasLarson))
 
 **Closed issues:**
 
