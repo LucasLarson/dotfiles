@@ -28,5 +28,4 @@ apk add openssh openssh-doc gnupg gnupg-doc
 # time zone
 apk add tzdata tzdata-doc
 cp /usr/share/zoneinfo/America/New_York /etc/localtime
-
-# printf 'America/New_York' > /etc/timezone
+printf 'America/New_York\n' > /etc/timezone
