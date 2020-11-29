@@ -22,7 +22,8 @@ apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc co
 
 # SSH
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
-apk add openssh openssh-doc
+# https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
+apk add openssh openssh-doc gnupg gnupg-doc
 
 # time zone
 apk add tzdata
