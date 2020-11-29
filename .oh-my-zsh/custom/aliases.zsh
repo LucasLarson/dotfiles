@@ -43,16 +43,13 @@ alias gcm="git commit --verbose --gpg-sign --message"
 alias gco="git checkout --progress"
 
 # `git checkout` the default branch
-# place the function inside `{()}` to prevent the leaking of variable data
-# https://stackoverflow.com/a/37675401
-gcom () {(
+gcom () {
   git checkout --progress "$(git_default_branch)"
-)}
-gdm () {(
+}
+gdm () {
   git diff "$(git_default_branch)"
-)}
+}
 alias gfgs="git fetch --all --verbose && git status"
-
 ggc () {
   if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
@@ -72,6 +69,8 @@ alias glog="git log"
 
 # return the name of the repository’s default branch
 # ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
+# place the function inside `{()}` to prevent the leaking of variable data
+# https://stackoverflow.com/a/37675401
 git_default_branch () {(
   # run only from within a git repository
   # https://stackoverflow.com/a/53809163
@@ -223,8 +222,8 @@ alias wihch="which"
 
 
 # Zsh
-alias aliases="edit $ZSH_CUSTOM/aliases.zsh; . ~/.zshrc && exec zsh"
+alias aliases="edit $ZSH_CUSTOM/aliases.zsh; . ~/.zshrc && exec zsh --login"
 alias ohmyzsh="cd ${ZSH:-$HOME/.oh-my-zsh}"
-alias zshconfig="edit ~/.zshrc; . ~/.zshrc && exec zsh"
-alias zshenv="edit ~/.zshenv; . ~/.zshrc && exec zsh"
+alias zshconfig="edit ~/.zshrc; . ~/.zshrc && exec zsh --login"
+alias zshenv="edit ~/.zshenv; . ~/.zshrc && exec zsh --login"
 alias zshrc="zshconfig"
