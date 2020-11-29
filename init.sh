@@ -6,8 +6,8 @@ wget -qO- http://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/al
 # For latest apk-tools, go to http://dl-cdn.alpinelinux.org/alpine/latest-stable/main/x86/
 
 # configure repositories
-printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n' > /etc/apk/repositories
-printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >> /etc/apk/repositories
+printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n' >/etc/apk/repositories
+printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >>/etc/apk/repositories
 
 # update
 apk update --verbose --progress
@@ -28,4 +28,4 @@ apk add openssh openssh-doc gnupg gnupg-doc
 # time zone
 apk add tzdata tzdata-doc
 cp /usr/share/zoneinfo/America/New_York /etc/localtime
-printf 'America/New_York\n' > /etc/timezone
+printf 'America/New_York\n' >/etc/timezone
