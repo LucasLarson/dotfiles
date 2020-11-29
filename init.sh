@@ -28,4 +28,3 @@ apk add tzdata
 cp /usr/share/zoneinfo/America/New_York /etc/localtime
 
 # printf 'America/New_York' > /etc/timezone
-# apk del tzdata
