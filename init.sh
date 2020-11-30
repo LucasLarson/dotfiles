@@ -29,5 +29,14 @@ apk add tzdata tzdata-doc
 cp /usr/share/zoneinfo/America/New_York /etc/localtime
 printf 'America/New_York\n' >/etc/timezone
 
-# python
+# python, pip
 apk add curl curl-doc python2 python2-doc python3 python3-doc
+if ! command -v pip >/dev/null 2>&1; then
+  curl http://web.archive.org/web/20201031072740id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
+  printf 'installing pip...\n'
+  python3 get-pip.py
+fi
+if [ -e get-pip.py ]; then
+  rm get-pip.py
+fi
+command -v pip >/dev/null 2>&1 && python3 -m pip install --upgrade pip
