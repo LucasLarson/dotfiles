@@ -13,8 +13,6 @@ printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >>/etc/a
 apk update --verbose --progress
 apk upgrade --verbose --progress
 
-apk add curl curl-doc python2 python2-doc python3 python3-doc
-
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
 apk add mandoc mandoc-doc man-pages less less-doc
 
@@ -30,3 +28,6 @@ apk add openssh openssh-doc gnupg gnupg-doc
 apk add tzdata tzdata-doc
 cp /usr/share/zoneinfo/America/New_York /etc/localtime
 printf 'America/New_York\n' >/etc/timezone
+
+# python
+apk add curl curl-doc python2 python2-doc python3 python3-doc
