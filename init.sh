@@ -40,3 +40,8 @@ if [ -e get-pip.py ]; then
   rm get-pip.py
 fi
 command -v pip >/dev/null 2>&1 && python3 -m pip install --upgrade pip
+
+# done
+printf 'initialization complete\n'
+printf 'restarting...\ndone!\n\n'
+exec ${SHELL##*/} -l || exit
