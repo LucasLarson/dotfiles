@@ -48,4 +48,5 @@ command -v pip >/dev/null 2>&1 && python3 -m pip install --upgrade pip
 # done
 printf 'initialization complete\n'
 printf 'restarting...\ndone!\n\n'
+sleep 1
 exec ${SHELL##*/} -l || exit
