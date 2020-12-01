@@ -51,6 +51,10 @@ command -v pip >/dev/null 2>&1 && python3 -m pip install --upgrade pip
 [ -e get-pip.py ] && rm get-pip.py
 find -- . -empty -delete
 
+# reload
+[ -e /etc/profile ] && . /etc/profile
+[ -e ~/.${SHELL##*/}rc ] && . ~/.${SHELL##*/}rc
+
 # done
 printf 'initialization complete\n'
 printf 'restarting...\ndone!\n\n'
