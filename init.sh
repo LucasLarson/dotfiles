@@ -24,6 +24,9 @@ apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc co
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
 apk add openssh openssh-doc gnupg gnupg-doc
 
+# git
+apk add git git-doc
+
 # time zone
 apk add tzdata tzdata-doc
 cp /usr/share/zoneinfo/America/New_York /etc/localtime
