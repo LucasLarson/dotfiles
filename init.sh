@@ -39,6 +39,10 @@ fi
 if [ -e get-pip.py ]; then
   rm get-pip.py
 fi
+
+# update everything again before close
+apk update --verbose --progress                
+apk upgrade --verbose --progress
 command -v pip >/dev/null 2>&1 && python3 -m pip install --upgrade pip
 
 # done
