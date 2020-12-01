@@ -19,7 +19,7 @@ export ZSH=$HOME/.oh-my-zsh
 # powerlevel10k
 # https://github.com/romkatv/powerlevel10k/blob/48c6ff4/README.md#oh-my-zsh
 # ZSH_THEME
-if [ "$(uname)" = Darwin && -d $ZSH/custom/themes/powerlevel10k ]; then
+if [ "$(uname)" = Darwin ] && [ -d $ZSH/custom/themes/powerlevel10k ]; then
   ZSH_THEME="powerlevel10k/powerlevel10k"
 else
   ZSH_THEME="robbyrussell"
@@ -187,13 +187,18 @@ setopt globdots
 zstyle ':completion:*' special-dirs false
 
 
+# share all commands from everywhere
+# https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
+setopt share_history
+
+
 # pyenv
-command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
+command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
 
 
 # C, C++ headers
 # https://apple.stackexchange.com/a/372600
-if command -v xcrun > /dev/null 2>&1; then
+if command -v xcrun >/dev/null 2>&1; then
   CPATH=$(xcrun --show-sdk-path)/usr/include
   export CPATH
 fi
@@ -204,7 +209,7 @@ fi
 # if `~/Code/Flutter/bin/flutter`’s an executable
 # and `flutter`’s not in the PATH, then add it
 if [ -x $HOME/Code/Flutter/bin/flutter ]; then
-  if ! command -v flutter > /dev/null 2>&1; then
+  if ! command -v flutter >/dev/null 2>&1; then
     PATH=$PATH:$HOME/Code/Flutter/bin
   fi
 fi
@@ -215,7 +220,7 @@ fi
 # rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # export PATH="$HOME/.rbenv/bin:$PATH"
-command -v rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
+command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
 
 # avoid `$PATH` duplicates
