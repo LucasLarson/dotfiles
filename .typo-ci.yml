@@ -37,6 +37,7 @@ excluded_words:
   - Crashlytics
   - csharp  # CodeQL Analysis
   - cyberciti  # cyberciti.biz
+  - dabutvin  # dabutvin/Imgbot
   - esolang
   - ffs
   - guillaumealgis  # guillaumealgis/XcodeWarningsAsXcconfig
@@ -46,6 +47,7 @@ excluded_words:
   - jsonlint
   - ksh  # Korn shell
   - LucasLarson
+  - lucaslarson
   - Mackup
   - markdownlint
   - minutiæ  # performatively pedantic minutiae
@@ -137,6 +139,7 @@ excluded_words:
   - textconv
 
   # GitHub
+  - Ater  # TalAter/open-source-templates
   - gitsubmodule
   - gomod
   - Liberapay
@@ -224,7 +227,7 @@ excluded_words:
   - xcworkspacedata
 
   # Zsh
-  - MichaelAquilina  # https://gitignore.io/api/zsh
+  - Aquilina  # https://gitignore.io/api/zsh
   - ohmyzsh
   - omz  # ohmyzsh
   - robbyrussell  # https://gitignore.io/api/zsh
