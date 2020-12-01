@@ -18,7 +18,7 @@ if [[ Darwin == "$(uname)" ]]; then
 
 printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n'
 sleep 0.5
-(ping -q -i1 -c1 one.one.one.one &> /dev/null && ping -q -i1 -c1 8.8.8.8 &> /dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update)
+(ping -q -i1 -c1 one.one.one.one &>/dev/null && ping -q -i1 -c1 8.8.8.8 &>/dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update)
 
 printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n'
 brew update
