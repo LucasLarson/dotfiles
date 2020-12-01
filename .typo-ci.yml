@@ -49,7 +49,6 @@ excluded_words:
   - minutiæ  # performatively pedantic minutiae
   - nixCraft  # Vivek Gite, cyberciti.biz
   - noninfringement  # GNU General Public License
-  - omz  # ohmyzsh
   - peter-evans  # peter-evans/create-pull-request
   - rustup
   - sobolevn  # sobolevn/misspell-fixer-action
@@ -223,6 +222,8 @@ excluded_words:
 
   # Zsh
   - MichaelAquilina  # https://gitignore.io/api/zsh
+  - ohmyzsh
+  - omz  # ohmyzsh
   - robbyrussell  # https://gitignore.io/api/zsh
   - venv
   - zcalc
