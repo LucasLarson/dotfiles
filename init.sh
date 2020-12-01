@@ -41,6 +41,7 @@ fi
 apk update --verbose --progress
 apk upgrade --verbose --progress
 apk fix --verbose --verbose --depends --progress
+apk verify --verbose --verbose --progress
 command -v pip >/dev/null 2>&1 && python3 -m pip install --upgrade pip
 
 # cleanup
