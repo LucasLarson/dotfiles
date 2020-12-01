@@ -23,7 +23,7 @@ alias mu=" \
     git status"
 alias mux=" \
     cd ${DOTFILES:-$HOME/Dropbox/dotfiles} && \
-    garbage --verbose && \
+    garbage && \
     mackup backup --force --root --verbose && \
     git fetch --all --verbose && \
     git submodule update --init --recursive --remote && \
