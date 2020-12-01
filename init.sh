@@ -36,14 +36,14 @@ if ! command -v pip >/dev/null 2>&1; then
   printf 'installing pip...\n'
   python3 get-pip.py
 fi
-if [ -e get-pip.py ]; then
-  rm get-pip.py
-fi
 
 # update everything again before close
 apk update --verbose --progress                
 apk upgrade --verbose --progress
 command -v pip >/dev/null 2>&1 && python3 -m pip install --upgrade pip
+
+# cleanup
+[ -e get-pip.py ] && rm get-pip.py
 
 # done
 printf 'initialization complete\n'
