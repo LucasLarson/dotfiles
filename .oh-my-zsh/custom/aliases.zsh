@@ -51,7 +51,7 @@ gdm () {
 }
 alias gfgs="git fetch --all --verbose && git status"
 ggc () {
-  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
     git gc --aggressive --prune=now
   else
@@ -74,12 +74,12 @@ alias glog="git log"
 git_default_branch () {(
   # run only from within a git repository
   # https://stackoverflow.com/a/53809163
-  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 
     # check if there’s a `remote` with a default branch and
     # if so, then use that name for `default_branch`
     # https://stackoverflow.com/a/44750379
-    if git symbolic-ref refs/remotes/origin/HEAD > /dev/null 2>&1; then
+    if git symbolic-ref refs/remotes/origin/HEAD >/dev/null 2>&1; then
       default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
 
     # check for `main`, which, if it exists, is most likely to be default
@@ -129,7 +129,7 @@ alias gti="git"
 gu () {
   # run only from within a git repository
   # https://stackoverflow.com/a/53809163
-  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git fetch --all --verbose
 
     # `git submodule update` with `--remote` appears to slow Git to a crawl
@@ -151,7 +151,7 @@ gvc () {(
 )}
 
 # GPG
-if command -v gpg2 > /dev/null 2>&1; then
+if command -v gpg2 >/dev/null 2>&1; then
   alias gpg="gpg2"
 fi
 
@@ -168,7 +168,7 @@ alias cp="cp -r"
 
 cy () {(
   # if within git repo, then auto-overwrite
-  if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     interactive="-i"
   fi
   if [ -z "$2" ]; then
@@ -219,7 +219,6 @@ alias whcih="which"
 alias whihc="which"
 alias whuch="which"
 alias wihch="which"
-
 
 # Zsh
 alias aliases="edit $ZSH_CUSTOM/aliases.zsh; . ~/.zshrc && exec zsh --login"
