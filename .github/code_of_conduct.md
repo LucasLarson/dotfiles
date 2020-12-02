@@ -33,24 +33,24 @@ diverse, inclusive, and healthy&nbsp;community.
 Examples of behavior that contributes to a positive environment for our
 community&nbsp;include:
 
-* Demonstrating empathy and kindness toward other&nbsp;people
-* Being respectful of differing opinions, viewpoints, and&nbsp;experiences
-* Giving and gracefully accepting constructive&nbsp;feedback
-* Accepting responsibility and apologizing to those affected by our mistakes,
+- Demonstrating empathy and kindness toward other&nbsp;people
+- Being respectful of differing opinions, viewpoints, and&nbsp;experiences
+- Giving and gracefully accepting constructive&nbsp;feedback
+- Accepting responsibility and apologizing to those affected by our mistakes,
   and learning from the&nbsp;experience
-* Focusing on what is best not just for us as individuals, but for the
+- Focusing on what is best not just for us as individuals, but for the
   overall&nbsp;community
 
 Examples of unacceptable behavior&nbsp;include:
 
-* The use of sexualized language or imagery, and sexual attention or advances
+- The use of sexualized language or imagery, and sexual attention or advances
   of any&nbsp;kind
-* Trolling, insulting or derogatory comments, and personal or
+- Trolling, insulting or derogatory comments, and personal or
   political&nbsp;attacks
-* Public or private&nbsp;harassment
-* Publishing others’ private information, such as a physical or email address,
+- Public or private&nbsp;harassment
+- Publishing others’ private information, such as a physical or email address,
   without their explicit&nbsp;permission
-* Other conduct which could reasonably be considered inappropriate in a
+- Other conduct which could reasonably be considered inappropriate in a
   professional&nbsp;setting
 
 ## Enforcement Responsibilities
