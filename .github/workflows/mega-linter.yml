@@ -77,7 +77,7 @@ jobs:
           DISABLE: >
             SPELL  # until it can detect `.typo-ci.yml`
           DISABLE_LINTERS: >
-            EDITORCONFIG_CHECKER  # until trailing spaces in `.csv` and `passwd` don’t fail
+            EDITORCONFIG_CHECKER  # avoid `.csv`, `passwd` trailing-space fail
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
