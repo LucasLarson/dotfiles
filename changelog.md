@@ -226,11 +226,7 @@
 
 ## [v0.1.0](https://github.com/LucasLarson/dotfiles/tree/v0.1.0) (2020-05-19)
 
-[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.0.1...v0.1.0)
-
-## [v0.0.1](https://github.com/LucasLarson/dotfiles/tree/v0.0.1) (2019-08-15)
-
-[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/3c4c02ab7d244eca88246c413514a4e72718145e...v0.0.1)
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/3c4c02ab7d244eca88246c413514a4e72718145e...v0.1.0)
 
 
 
