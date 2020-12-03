@@ -143,16 +143,24 @@ excluded_words:
   - textconv
 
   # GitHub
+  - autofix  # kdeldycke/meta-package-manager
   - Ater  # TalAter/open-source-templates
+  - dependabot
   - gitsubmodule
   - gomod
+  - issuehunt
   - liberapay
+  - nuget  # Dependabot
   - ossar
   - otechie
+  - patreon
   - sarif  # OSSAR
+  - shfmt
+  - tidelift
 
   # Gitpod
   - bastet  # gitpod-io/gitpod
+  - gitpod
   - runtimes
   - tetris
 
@@ -243,6 +251,7 @@ excluded_words:
   - zsdoc
   - zsh
   - zshelldoc
+  - zshenv
   - Zunit
   - zwc
 
