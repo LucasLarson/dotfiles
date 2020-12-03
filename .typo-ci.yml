@@ -52,6 +52,7 @@ excluded_words:
   - Mackup
   - markdownlint
   - minutiæ  # performatively pedantic minutiae
+  - minuti\u00e6  # performatively pedantic minutiae
   - nixCraft  # Vivek Gite, cyberciti.biz
   - noninfringement  # GNU General Public License
   - peter-evans  # peter-evans/create-pull-request
