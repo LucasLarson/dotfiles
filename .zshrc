@@ -193,12 +193,12 @@ setopt share_history
 
 
 # pyenv
-command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
+command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
 
 
 # C, C++ headers
 # https://apple.stackexchange.com/a/372600
-if command -v xcrun > /dev/null 2>&1; then
+if command -v xcrun >/dev/null 2>&1; then
   CPATH=$(xcrun --show-sdk-path)/usr/include
   export CPATH
 fi
@@ -209,7 +209,7 @@ fi
 # if `~/Code/Flutter/bin/flutter`’s an executable
 # and `flutter`’s not in the PATH, then add it
 if [ -x $HOME/Code/Flutter/bin/flutter ]; then
-  if ! command -v flutter > /dev/null 2>&1; then
+  if ! command -v flutter >/dev/null 2>&1; then
     PATH=$PATH:$HOME/Code/Flutter/bin
   fi
 fi
@@ -220,7 +220,7 @@ fi
 # rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # export PATH="$HOME/.rbenv/bin:$PATH"
-command -v rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
+command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
 
 # avoid `$PATH` duplicates
