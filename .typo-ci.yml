@@ -210,7 +210,7 @@ excluded_words:
 
   # Windows
   # https://github.com/toptal/gitignore/blob/78659/templates/Windows.gitignore
-  - ekstop  # [Dd]esktop.ini
+  - esktop  # [Dd]esktop.ini
   - lnk
   - msix
   - msm
