@@ -92,6 +92,7 @@ excluded_words:
   - fgnat
   - fgnu
   - fident
+  - fixit  # fdiagnostics-fixit-info
   - fno
   - fshow
   - fstandalone
@@ -105,6 +106,7 @@ excluded_words:
   - latomic
   - llu
   - lstdc
+  - parseable  # fdiagnostics-parseable-fixits
   - pch
   - pthread
   - slo
