@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- add mega-linter workflow action [\#167](https://github.com/LucasLarson/dotfiles/pull/167) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `31ede3c` to `2c3bcd8` [\#166](https://github.com/LucasLarson/dotfiles/pull/166) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle from `97d29d2` to `d31bae2` [\#165](https://github.com/LucasLarson/dotfiles/pull/165) ([dependabot[bot]](https://github.com/apps/dependabot))
 - repair Dependabot [\#164](https://github.com/LucasLarson/dotfiles/pull/164) ([LucasLarson](https://github.com/LucasLarson))
@@ -225,7 +226,11 @@
 
 ## [v0.1.0](https://github.com/LucasLarson/dotfiles/tree/v0.1.0) (2020-05-19)
 
-[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/3c4c02ab7d244eca88246c413514a4e72718145e...v0.1.0)
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.0.1...v0.1.0)
+
+## [v0.0.1](https://github.com/LucasLarson/dotfiles/tree/v0.0.1) (2019-08-15)
+
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/3c4c02ab7d244eca88246c413514a4e72718145e...v0.0.1)
 
 
 
