@@ -12,7 +12,7 @@
 
   # editor set conditionally
   # https://stackoverflow.com/a/14755066
-  editor = "if command -v nvim > /dev/null 2>&1; then EDITOR='nvim'; elif command -v vim > /dev/null 2>&1; then EDITOR='vim'; elif command -v vi > /dev/null 2>&1; then EDITOR='vi'; else EDITOR='nano'; fi; export EDITOR; $EDITOR"
+  editor = "if command -v nvim >/dev/null 2>&1; then EDITOR='nvim'; elif command -v vim >/dev/null 2>&1; then EDITOR='vim'; elif command -v vi >/dev/null 2>&1; then EDITOR='vi'; else EDITOR='nano'; fi; export EDITOR; $EDITOR"
 
   excludesfile = ~/.gitignore_global
 

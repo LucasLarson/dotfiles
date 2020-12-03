@@ -91,7 +91,7 @@
 
 ```zsh
 update=1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && sleep 1 && \
-printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && (ping -q -i1 -c1 one.one.one.one &> /dev/null && ping -q -i1 -c1 8.8.8.8 &> /dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update) && \
+printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && (ping -q -i1 -c1 one.one.one.one &>/dev/null && ping -q -i1 -c1 8.8.8.8 &>/dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update) && \
 printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && brew upgrade && brew upgrade --cask && xcrun simctl delete unavailable && omz update && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && \
 printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up to date...\n' && python -m pip install --upgrade pip && \
 printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep --invert-match '^\-e' | cut --delimiter = --fields 1 | xargs -n1 pip install --upgrade && \
@@ -410,11 +410,11 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 ### Identify
 
-`command -v uname > /dev/null 2>&1 && \`<br/>
+`command -v uname >/dev/null 2>&1 && \`<br/>
 `printf '\n\x60uname -a\x60:\n%s\n\n' "$(uname -a)"; \`<br/>
-`command -v sw_vers > /dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`<br/>
+`command -v sw_vers >/dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`<br/>
 `printf '\n\x60sw_vers\x60:\n%s\n\n' "$(sw_vers)"; \`<br/>
-`command -v lsb_release > /dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`<br/>
+`command -v lsb_release >/dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`<br/>
 `printf '\n\x60lsb_release --all\x60:\n%s\n\n' "$(lsb_release --all)"; \`<br/>
 `[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`<br/>
 `printf '\x60cat /etc/os-release\x60:\n%s\n\n' "$(cat /etc/os-release)"`
