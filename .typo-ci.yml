@@ -42,6 +42,7 @@ excluded_words:
   - ffs
   - guillaumealgis  # guillaumealgis/XcodeWarningsAsXcconfig
   - ibiqlik  # ibiqlik/action-yamllint
+  - Imgbot  # dabutvin/Imgbot
   - imgbotconfig  # dabutvin/Imgbot
   - jonreid  # jonreid/XcodeWarnings
   - jsonlint
