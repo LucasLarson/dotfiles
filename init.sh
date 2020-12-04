@@ -36,6 +36,7 @@ cp /usr/share/zoneinfo/America/New_York /etc/localtime
 printf 'America/New_York\n' >/etc/timezone
 
 # python, pip
+printf 'installing Python...\n'
 apk add curl curl-doc python2 python2-doc python3 python3-doc
 if ! command -v pip >/dev/null 2>&1; then
   curl http://web.archive.org/web/20201031072740id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
@@ -44,13 +45,19 @@ if ! command -v pip >/dev/null 2>&1; then
 fi
 
 # update, repair everything again before close
+printf 'updating...\n'
 apk update --verbose --progress
+printf 'upgrading...\n'
 apk upgrade --verbose --progress
+printf 'repairing and resolving dependencies...\n'
 apk fix --verbose --verbose --depends --progress
+printf 'verifying installations...\n'
 apk verify --verbose --verbose --progress
+printf 'updating Python\xe2\x80\x99s package manager...\n'
 command -v pip >/dev/null 2>&1 && python3 -m pip install --upgrade pip
 
 # cleanup
+printf '\n\ncleaning up temporary installation files...\n'
 [ -e get-pip.py ] && rm get-pip.py
 find -- . -empty -delete
 
