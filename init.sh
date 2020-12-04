@@ -65,10 +65,6 @@ printf '\n\ncleaning up temporary installation files...\n'
 [ -e get-pip.py ] && rm get-pip.py
 find -- . -empty -delete
 
-# reload
-[ -e /etc/profile ] && . /etc/profile
-[ -e ~/.${SHELL##*/}rc ] && . ~/.${SHELL##*/}rc
-
 # done
 printf 'initialization complete\n'
 printf 'restarting...\ndone!\n\n'
