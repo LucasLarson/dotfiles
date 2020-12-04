@@ -130,6 +130,12 @@ export GPG_TTY=$(tty)
 [ -d /usr/local/sbin ] && PATH="/usr/local/sbin:$PATH"
 
 
+# GNU Core Utils
+# for using Linux’s `date`, `cat`, `ln`
+# https://apple.stackexchange.com/a/135749
+[ -d /usr/local/opt/coreutils/libexec/gnubin ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+
 # grep
 # use latest via Homebrew but without the `g` prefix
 # https://github.com/Homebrew/homebrew-core/blob/ba7a70f/Formula/grep.rb#L43-L46
