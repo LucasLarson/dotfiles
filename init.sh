@@ -44,6 +44,10 @@ if ! command -v pip >/dev/null 2>&1; then
   python3 get-pip.py
 fi
 
+# zsh
+printf 'installing Zsh...\n'
+apk add zsh zsh-doc
+
 # update, repair everything again before close
 printf 'updating...\n'
 apk update --verbose --progress
