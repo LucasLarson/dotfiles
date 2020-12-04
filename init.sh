@@ -69,4 +69,4 @@ find -- . -empty -delete
 printf 'initialization complete\n'
 printf 'restarting...\ndone!\n\n'
 sleep 1
-exec ${SHELL##*/} -l || exit
+exec "${SHELL##*/}" -l || exit
