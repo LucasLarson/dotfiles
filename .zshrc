@@ -2,15 +2,15 @@
 
 # Powerlevel10k instant prompt
 # https://github.com/romkatv/powerlevel10k/tree/d394a4e#how-do-i-enable-instant-prompt
-if [ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]; then
-  . "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [ -r "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]; then
+  . "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from Bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# If you come from Bash you might have to change your PATH.
+# export PATH=${HOME}/bin:/usr/local/bin:${PATH}
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -19,7 +19,7 @@ export ZSH=$HOME/.oh-my-zsh
 # powerlevel10k
 # https://github.com/romkatv/powerlevel10k/blob/48c6ff4/README.md#oh-my-zsh
 # ZSH_THEME
-if [ "$(uname)" = Darwin ] && [ -d $ZSH/custom/themes/powerlevel10k ]; then
+if [ -d "${ZSH}/custom/themes/powerlevel10k" ]; then
   ZSH_THEME="powerlevel10k/powerlevel10k"
 else
   ZSH_THEME="robbyrussell"
@@ -27,7 +27,7 @@ fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
+# a theme from this variable instead of looking in $ZSH/themes
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -77,14 +77,14 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # https://unix.stackexchange.com/a/273863
 export HISTSIZE=2147483647
-export SAVEHIST=$HISTSIZE
+export SAVEHIST=${HISTSIZE}
 
-# Use a custom folder other than $ZSH/custom
+# Use a custom folder other than ${ZSH}/custom
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Standard plugins can be found in ${ZSH}/plugins
+# Custom plugins may be added to ${ZSH_CUSTOM}/plugins
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
@@ -99,13 +99,13 @@ if [ Darwin = "$(uname)" ]; then
 fi
 
 
-. $ZSH/oh-my-zsh.sh
+. "${ZSH}/oh-my-zsh.sh"
 
 
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# export MANPATH="/usr/local/man:${MANPATH}"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -127,40 +127,41 @@ export GPG_TTY=$(tty)
 
 # Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
-[ -d /usr/local/sbin ] && PATH="/usr/local/sbin:$PATH"
+[ -d /usr/local/sbin ] && PATH="/usr/local/sbin:${PATH}"
 
 
 # GNU Core Utils
 # for using Linux’s `date`, `cat`, `ln`
 # https://apple.stackexchange.com/a/135749
-[ -d /usr/local/opt/coreutils/libexec/gnubin ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+[ -d /usr/local/opt/coreutils/libexec/gnubin ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
 
 # grep
 # use latest via Homebrew but without the `g` prefix
 # https://github.com/Homebrew/homebrew-core/blob/ba7a70f/Formula/grep.rb#L43-L46
-[ -d /usr/local/opt/grep/libexec/gnubin ] && PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+[ -d /usr/local/opt/grep/libexec/gnubin ] && PATH="/usr/local/opt/grep/libexec/gnubin:${PATH}"
 
 # make
 # use latest via Homebrew but without the `g` prefix
 # https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
-[ -d /usr/local/opt/make/libexec/gnubin ] && PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+[ -d /usr/local/opt/make/libexec/gnubin ] && PATH="/usr/local/opt/make/libexec/gnubin:${PATH}"
 
 
 # npm without sudo
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES="${HOME}/.npm-packages"
-export PATH="$NPM_PACKAGES/bin:$PATH"
+export PATH="${NPM_PACKAGES}/bin:${PATH}"
 unset MANPATH # delete if you already modified MANPATH elsewhere
 if [ $manpath ]; then
-  export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+  export MANPATH="${NPM_PACKAGES}/share/man:$(manpath)"
 fi
 
 
 # RVM and rbenv are incompatible and shell references to RVM have to be removed
 # https://github.com/rbenv/rbenv/blob/577f046/README.md#installation
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
+# Add RVM to PATH for scripting
+# Make sure this is the last PATH variable change
+# export PATH="${PATH}:${HOME}/.rvm/bin"
 
 
 # dotfiles
@@ -168,13 +169,13 @@ fi
 # https://github.com/ohmyzsh/ohmyzsh/blob/5ffc0d0/oh-my-zsh.sh#L20-L24
 # https://gnu.org/software/bash/manual/bash#Bash-Conditional-Expressions
 # https://stackoverflow.com/a/13408590
-if [ -z "$DOTFILES" ] || [ -e "$HOME/Dropbox/dotfiles" ]; then
-  export DOTFILES="$HOME/Dropbox/dotfiles"
+if [ -z "${DOTFILES}" ] || [ -e "${HOME}/Dropbox/dotfiles" ]; then
+  export DOTFILES=${HOME}/Dropbox/dotfiles
 else
-  export DOTFILES="$HOME"
+  export DOTFILES="${HOME}"
 fi
-if [ -d "$HOME/Code/ Template" ] || [ -d "$HOME/Code/Template" ]; then
-  export TEMPLATE="$HOME/Code/ Template"
+if [ -d "${HOME}/Code/ Template" ] || [ -d "${HOME}/Code/Template" ]; then
+  export TEMPLATE="${HOME}/Code/ Template"
 fi
 
 # completion dots
@@ -214,24 +215,23 @@ fi
 # https://github.com/flutter/website/blob/e5f725c/src/docs/get-started/install/_path-mac.md#user-content-update-your-path
 # if `~/Code/Flutter/bin/flutter`’s an executable
 # and `flutter`’s not in the PATH, then add it
-if [ -x $HOME/Code/Flutter/bin/flutter ]; then
+if [ -x "${HOME}/Code/Flutter/bin/flutter" ]; then
   if ! command -v flutter >/dev/null 2>&1; then
-    PATH=$PATH:$HOME/Code/Flutter/bin
+    PATH=${PATH}:${HOME}/Code/Flutter/bin
   fi
 fi
-# if it’s a directory then refer to it as `$ANDROID_SDK_ROOT`
-[ -d $HOME/Library/Android/sdk ] && export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
-
+# if it’s a directory, then assign it the name `ANDROID_SDK_ROOT`
+[ -d "${HOME}/Library/Android/sdk" ] && export ANDROID_SDK_ROOT=${HOME}/Library/Android/sdk
 
 # rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
-# export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="${HOME}/.rbenv/bin:${PATH}"
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
 
 
 # avoid `$PATH` duplicates
 # https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
-[ -n $ZSH_VERSION ] && typeset -U path
+[ -n "${ZSH_VERSION}" ] && typeset -U path
 # export PATH for other sessions
 export PATH
 
