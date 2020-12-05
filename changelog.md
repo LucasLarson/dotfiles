@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.13.0 [\#173](https://github.com/LucasLarson/dotfiles/pull/173) ([renovate[bot]](https://github.com/apps/renovate))
 - Update github/super-linter action to v3.14.3 [\#172](https://github.com/LucasLarson/dotfiles/pull/172) ([renovate[bot]](https://github.com/apps/renovate))
 - Update github/super-linter action to v3.14.0 [\#169](https://github.com/LucasLarson/dotfiles/pull/169) ([renovate[bot]](https://github.com/apps/renovate))
 - add mega-linter workflow action [\#167](https://github.com/LucasLarson/dotfiles/pull/167) ([LucasLarson](https://github.com/LucasLarson))
@@ -214,9 +215,9 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `be66f21` to `e0ed693` [\#13](https://github.com/LucasLarson/dotfiles/pull/13) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a88e11f` to `be66f21` [\#12](https://github.com/LucasLarson/dotfiles/pull/12) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `ae32fd5` to `a88e11f` [\#11](https://github.com/LucasLarson/dotfiles/pull/11) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `1be10eb` to `ae32fd5` [\#10](https://github.com/LucasLarson/dotfiles/pull/10) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `8854cb6` to `1be10eb` [\#9](https://github.com/LucasLarson/dotfiles/pull/9) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `eda706c` to `8854cb6` [\#7](https://github.com/LucasLarson/dotfiles/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `5e5d3f5` to `eda706c` [\#6](https://github.com/LucasLarson/dotfiles/pull/6) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump powerlevel10k submodule to `5e5d3f5` from `3e17260` [\#5](https://github.com/LucasLarson/dotfiles/pull/5) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump mackup from 0.8.28 to 0.8.29 [\#4](https://github.com/LucasLarson/dotfiles/pull/4) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `c009153` to `3e17260` [\#3](https://github.com/LucasLarson/dotfiles/pull/3) ([dependabot[bot]](https://github.com/apps/dependabot))
