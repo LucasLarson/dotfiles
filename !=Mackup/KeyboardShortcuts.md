@@ -1,26 +1,26 @@
 # Keyboard Shortcuts
 <!-- TOC -->
 ## Table of contents
--   [Access](#access)
--   [Shortcuts](#shortcuts)
-    -   [Keys](#keys)
-    -   [All Applications](#all-applications)
-        -   [Standard](#standard)
-        -   [Custom](#custom)
-    -   [Brave](#brave)
-        -   [Custom](#custom-1)
--   [Status](#status)
+- [Access](#access)
+- [Shortcuts](#shortcuts)
+  - [Keys](#keys)
+  - [All Applications](#all-applications)
+    - [Standard](#standard)
+    - [Custom](#custom)
+  - [Brave](#brave)
+    - [Custom](#custom-1)
+- [Status](#status)
 
 ## Access
-1.  open <kbd>System Preferences.app</kbd>
-1.  select <kbd>Keyboard</kbd>
-1.  select the <kbd>Shortcuts</kbd> tab
-1.  select <kbd>App Shortcuts</kbd> from the left column
-1.  tap <kbd>+</kbd> to add a new one:
-    1.  set <kbd>Application:</kbd> to <kbd>All Applications</kbd>
-    1.  set <kbd>Menu Title:</kbd> to match exactly the menu entry targeted
-    1.  set <kbd>Keyboard Shortcut:</kbd> to your taste
-    1.  tap <kbd>Add</kbd>
+1. open <kbd>System Preferences.app</kbd>
+1. select <kbd>Keyboard</kbd>
+1. select the <kbd>Shortcuts</kbd> tab
+1. select <kbd>App Shortcuts</kbd> from the left column
+1. tap <kbd>+</kbd> to add a new one:
+    1. set <kbd>Application:</kbd> to <kbd>All Applications</kbd>
+    1. set <kbd>Menu Title:</kbd> to match exactly the menu entry targeted
+    1. set <kbd>Keyboard Shortcut:</kbd> to your taste
+    1. tap <kbd>Add</kbd>
 
 ## Shortcuts
 
