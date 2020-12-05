@@ -57,7 +57,7 @@ jobs:
       # Mega-Linter
       - name: Mega-Linter
         id: ml
-        uses: nvuillam/mega-linter@v4.12.0
+        uses: nvuillam/mega-linter@v4.13.0
         env:
           # Add custom env variables here or
           # define them in a file .mega-linter.yml at the repository root
