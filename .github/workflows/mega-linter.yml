@@ -74,8 +74,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           FILTER_REGEX_EXCLUDE: '(\.automation\/test\/)'
-          DISABLE: >
-            SPELL  # until it can detect `.typo-ci.yml`
+          # DISABLE: >
+          #  SPELL  # until it can detect `.typo-ci.yml`
           DISABLE_LINTERS: >
             EDITORCONFIG_CHECKER  # avoid `.csv`, `passwd` trailing-space fail
 
