@@ -6,7 +6,7 @@ if [ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]; 
   . "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
+# If you come from Bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -128,6 +128,12 @@ export GPG_TTY=$(tty)
 # Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
 [ -d /usr/local/sbin ] && PATH="/usr/local/sbin:$PATH"
+
+
+# GNU Core Utils
+# for using Linux’s `date`, `cat`, `ln`
+# https://apple.stackexchange.com/a/135749
+[ -d /usr/local/opt/coreutils/libexec/gnubin ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 
 # grep
