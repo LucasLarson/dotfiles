@@ -12,102 +12,132 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # Cargo
   - package-ecosystem: "cargo"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # Composer
   - package-ecosystem: "composer"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # Docker
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # Elm
   - package-ecosystem: "elm"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # git submodules
   - package-ecosystem: "gitsubmodule"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # Go modules
   - package-ecosystem: "gomod"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # Gradle
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # Maven
   - package-ecosystem: "maven"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # Mix
   - package-ecosystem: "mix"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # npm
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # NuGet
   - package-ecosystem: "nuget"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # pip
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
 
   # Terraform
   - package-ecosystem: "terraform"
     directory: "/"
     schedule:
       interval: "daily"
-    reviewers: "LucasLarson"
+    reviewers: [
+      LucasLarson,
+    ]
