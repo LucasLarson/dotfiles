@@ -15,14 +15,14 @@ alias apm="apm-nightly"
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 alias mu=" \
-    cd ${DOTFILES:-$HOME/Dropbox/dotfiles} && \
+    cd ${DOTFILES:-${HOME}/Dropbox/dotfiles} && \
     garbage && \
     mackup backup --force --root && \
     git fetch --all && \
     git submodule update --init --recursive && \
     git status"
 alias mux=" \
-    cd ${DOTFILES:-$HOME/Dropbox/dotfiles} && \
+    cd ${DOTFILES:-${HOME}/Dropbox/dotfiles} && \
     garbage && \
     mackup backup --force --root --verbose && \
     git fetch --all --verbose && \
@@ -98,7 +98,7 @@ git_default_branch () {(
     printf 'git_default_branch must be called from within a Git repository\n'
     return 1
   fi
-  printf '%s' "$default_branch"
+  printf '%s' "${default_branch}"
 )}
 alias gdb="git_default_branch"
 alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue"
@@ -174,9 +174,9 @@ cy () {(
   if [ -z "$2" ]; then
     # if there is no second argument,
     # then copy to the current directory
-    eval cp -r "$interactive -- $1 '$PWD'"
+    eval cp -r "${interactive} -- $1 '${PWD}'"
   else
-    eval cp -r "$interactive -- $1 $2"
+    eval cp -r "${interactive} -- $1 $2"
   fi
 )}
 
@@ -190,7 +190,7 @@ garbage () {(
   # delete `.DS_Store` files recursively
   find . -type f \
       -name '.DS_Store' \
-      $verbose -delete
+      ${verbose} -delete
 
   # delete empty, zero-length files except those
   # with specific names or within `.git/` directories
@@ -201,14 +201,14 @@ garbage () {(
       -not -path '*lock' -and \
       -not -path '*LOCK' -and \
       -not -path '*lockfile' \
-      $verbose -delete
+      ${verbose} -delete
 
   # delete empty directories, except within `.git/`, recursively \
   # https://stackoverflow.com/q/4210042#comment38334264_4210072 \
   find . -type d -size 0 \
       -not -path './.git/*' -and \
       -not -path './.well-known/*' \
-      $verbose -delete
+      ${verbose} -delete
 )}
 
 alias mv="mv -v -i" # https://unix.stackexchange.com/a/30950
@@ -221,8 +221,8 @@ alias whuch="which"
 alias wihch="which"
 
 # Zsh
-alias aliases="edit $ZSH_CUSTOM/aliases.zsh; . ~/.zshrc && exec zsh --login"
-alias ohmyzsh="cd ${ZSH:-$HOME/.oh-my-zsh}"
-alias zshconfig="edit ~/.zshrc; . ~/.zshrc && exec zsh --login"
-alias zshenv="edit ~/.zshenv; . ~/.zshrc && exec zsh --login"
-alias zshrc="zshconfig"
+alias aliases='edit ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}/custom/aliases.${SHELL##*/}; . ~/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
+alias ohmyzsh='cd ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}'
+alias zshconfig='edit ~/.${SHELL##*/}rc; . ~/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
+alias zshenv='edit ~/.${SHELL##*/}env; . ~/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
+alias zshrc='${SHELL##*/}config'
