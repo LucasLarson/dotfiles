@@ -221,8 +221,8 @@ alias whuch="which"
 alias wihch="which"
 
 # Zsh
-alias aliases='edit ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}/custom/aliases.${SHELL##*/}; . ~/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
+alias aliases='edit ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}/custom/aliases.${SHELL##*/}; . ${HOME}/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
 alias ohmyzsh='cd ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}'
-alias zshconfig='edit ~/.${SHELL##*/}rc; . ~/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
-alias zshenv='edit ~/.${SHELL##*/}env; . ~/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
+alias zshconfig='edit ${HOME}/.${SHELL##*/}rc; . ${HOME}/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
+alias zshenv='edit ${HOME}/.${SHELL##*/}env; . ${HOME}/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
 alias zshrc='${SHELL##*/}config'
