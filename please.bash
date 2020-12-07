@@ -6,15 +6,15 @@
 please () {
   cmd=$(fc -ln -1)
   cmd="sudo ${cmd#*  }"
-  printf '%s' "$cmd"
+  printf '%s' "${cmd}"
 
   # Append the sudo-ed command to this shell's history, so that the Up arrow
   # can be used to find it, rather than just the rr command. Weirdly this seems
   # to cause rr itself not to end up in the history, which is an unexpected
   # bonus:
-  history -s "$cmd"
+  history -s "${cmd}"
 
   # The quotes are needed to preserve any quotes in $cmd, and eval to parse
   # them:
-  eval "$cmd"
+  eval "${cmd}"
 }
