@@ -10,6 +10,8 @@
 
 **Merged pull requests:**
 
+- Update fkirc/skip-duplicate-actions action to v2.2.0 [\#180](https://github.com/LucasLarson/dotfiles/pull/180) ([renovate[bot]](https://github.com/apps/renovate))
+- Update nvuillam/mega-linter action to v4.14.1 [\#179](https://github.com/LucasLarson/dotfiles/pull/179) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.14.0 [\#178](https://github.com/LucasLarson/dotfiles/pull/178) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `57f545b` to `2ad6e04` [\#176](https://github.com/LucasLarson/dotfiles/pull/176) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `2c3bcd8` to `b90b362` [\#174](https://github.com/LucasLarson/dotfiles/pull/174) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -26,16 +28,13 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.1...v0.5.2)
 
-**Merged pull requests:**
-
-- Update peter-evans/create-pull-request action to v3.5.1 [\#160](https://github.com/LucasLarson/dotfiles/pull/160) ([renovate[bot]](https://github.com/apps/renovate))
-
 ## [v0.5.1](https://github.com/LucasLarson/dotfiles/tree/v0.5.1) (2020-11-23)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.0...v0.5.1)
 
 **Merged pull requests:**
 
+- Update peter-evans/create-pull-request action to v3.5.1 [\#160](https://github.com/LucasLarson/dotfiles/pull/160) ([renovate[bot]](https://github.com/apps/renovate))
 - add `git status` to `git push` alias [\#159](https://github.com/LucasLarson/dotfiles/pull/159) ([LucasLarson](https://github.com/LucasLarson))
 - allow `git verify-commit`’s alias to allow a commit hash as argument [\#158](https://github.com/LucasLarson/dotfiles/pull/158) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `04f75a1` to `31ede3c` [\#157](https://github.com/LucasLarson/dotfiles/pull/157) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -117,10 +116,6 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.4.2...v0.4.3)
 
-**Implemented enhancements:**
-
-- add Rust Cargo bin to $PATH only if it exists \(fix \#68\) [\#71](https://github.com/LucasLarson/dotfiles/pull/71) ([LucasLarson](https://github.com/LucasLarson))
-
 **Fixed bugs:**
 
 - stackoverrun.com appears down [\#80](https://github.com/LucasLarson/dotfiles/issues/80)
@@ -137,6 +132,10 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.4.1...v0.4.2)
 
+**Implemented enhancements:**
+
+- add Rust Cargo bin to $PATH only if it exists \(fix \#68\) [\#71](https://github.com/LucasLarson/dotfiles/pull/71) ([LucasLarson](https://github.com/LucasLarson))
+
 **Closed issues:**
 
 - verify `~/.cargo/bin` exists before adding to `$PATH` [\#68](https://github.com/LucasLarson/dotfiles/issues/68)
@@ -151,6 +150,7 @@
 - Bump .oh-my-zsh/custom/plugins/gunstage from `0897849` to `b14876e` [\#64](https://github.com/LucasLarson/dotfiles/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/checkout requirement to v2.3.3 [\#62](https://github.com/LucasLarson/dotfiles/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump gaurav-nelson/github-action-markdown-link-check from v1.0.7 to 1.0.7 [\#61](https://github.com/LucasLarson/dotfiles/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.1](https://github.com/LucasLarson/dotfiles/tree/v0.4.1) (2020-09-23)
 
@@ -158,7 +158,6 @@
 
 **Merged pull requests:**
 
-- Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `945a464` to `0897849` [\#59](https://github.com/LucasLarson/dotfiles/pull/59) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `3b77282` to `71b39f0` [\#58](https://github.com/LucasLarson/dotfiles/pull/58) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `f14b58e` to `3b77282` [\#57](https://github.com/LucasLarson/dotfiles/pull/57) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -198,6 +197,7 @@
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `c48b81e` to `7a0bf99` [\#31](https://github.com/LucasLarson/dotfiles/pull/31) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `03e6187` to `c48b81e` [\#30](https://github.com/LucasLarson/dotfiles/pull/30) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `422b7a9` to `03e6187` [\#29](https://github.com/LucasLarson/dotfiles/pull/29) ([dependabot[bot]](https://github.com/apps/dependabot))
+- bump .oh-my-zsh/custom/themes/powerlevel10k from `05ff662` to `422b7a9` [\#28](https://github.com/LucasLarson/dotfiles/pull/28) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `2ba87f4` to `05ff662` [\#27](https://github.com/LucasLarson/dotfiles/pull/27) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `88d5fb6` to `2ba87f4` [\#25](https://github.com/LucasLarson/dotfiles/pull/25) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7a114ad` to `88d5fb6` [\#24](https://github.com/LucasLarson/dotfiles/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -214,7 +214,6 @@
 
 **Merged pull requests:**
 
-- bump .oh-my-zsh/custom/themes/powerlevel10k from `05ff662` to `422b7a9` [\#28](https://github.com/LucasLarson/dotfiles/pull/28) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a28d450` to `4635fca` [\#19](https://github.com/LucasLarson/dotfiles/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `0c341b6` to `a28d450` [\#18](https://github.com/LucasLarson/dotfiles/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[ImgBot\] Optimize images [\#17](https://github.com/LucasLarson/dotfiles/pull/17) ([imgbot[bot]](https://github.com/apps/imgbot))
@@ -230,7 +229,6 @@
 - bump powerlevel10k submodule to `5e5d3f5` from `3e17260` [\#5](https://github.com/LucasLarson/dotfiles/pull/5) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump mackup from 0.8.28 to 0.8.29 [\#4](https://github.com/LucasLarson/dotfiles/pull/4) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `c009153` to `3e17260` [\#3](https://github.com/LucasLarson/dotfiles/pull/3) ([dependabot[bot]](https://github.com/apps/dependabot))
-- .gitconfig: add compression options [\#1](https://github.com/LucasLarson/dotfiles/pull/1) ([LucasLarson](https://github.com/LucasLarson))
 
 ## [v0.2.0](https://github.com/LucasLarson/dotfiles/tree/v0.2.0) (2020-05-22)
 
