@@ -6,7 +6,7 @@
 please () {
   cmd=$(fc -ln -1)
   cmd="sudo ${cmd#*  }"
-  echo "$cmd"
+  printf '%s' "$cmd"
 
   # Append the sudo-ed command to this shell's history, so that the Up arrow
   # can be used to find it, rather than just the rr command. Weirdly this seems
