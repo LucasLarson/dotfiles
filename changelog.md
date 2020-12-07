@@ -11,10 +11,10 @@
 **Merged pull requests:**
 
 - Update nvuillam/mega-linter action to v4.14.2 [\#182](https://github.com/LucasLarson/dotfiles/pull/182) ([renovate[bot]](https://github.com/apps/renovate))
+- add @meyerweb’s `please` function [\#181](https://github.com/LucasLarson/dotfiles/pull/181) ([LucasLarson](https://github.com/LucasLarson))
 - Update fkirc/skip-duplicate-actions action to v2.2.0 [\#180](https://github.com/LucasLarson/dotfiles/pull/180) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.14.1 [\#179](https://github.com/LucasLarson/dotfiles/pull/179) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.14.0 [\#178](https://github.com/LucasLarson/dotfiles/pull/178) ([renovate[bot]](https://github.com/apps/renovate))
-- Bump .oh-my-zsh/custom/plugins/gunstage from `57f545b` to `2ad6e04` [\#176](https://github.com/LucasLarson/dotfiles/pull/176) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `2c3bcd8` to `b90b362` [\#174](https://github.com/LucasLarson/dotfiles/pull/174) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.13.0 [\#173](https://github.com/LucasLarson/dotfiles/pull/173) ([renovate[bot]](https://github.com/apps/renovate))
 - Update github/super-linter action to v3.14.3 [\#172](https://github.com/LucasLarson/dotfiles/pull/172) ([renovate[bot]](https://github.com/apps/renovate))
@@ -54,6 +54,7 @@
 - Bump .oh-my-zsh/custom/plugins/gunstage from `aa2d2c7` to `57f545b` [\#147](https://github.com/LucasLarson/dotfiles/pull/147) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace @gaurav-nelson and @ad-m nothing for link-status validation [\#145](https://github.com/LucasLarson/dotfiles/pull/145) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e2db860` to `feaf120` [\#144](https://github.com/LucasLarson/dotfiles/pull/144) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `f6c24d2` to `e2db860` [\#143](https://github.com/LucasLarson/dotfiles/pull/143) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `ec14424` to `aa2d2c7` [\#142](https://github.com/LucasLarson/dotfiles/pull/142) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `2fc7257` to `f6c24d2` [\#141](https://github.com/LucasLarson/dotfiles/pull/141) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update ibiqlik/action-yamllint action to v3 [\#139](https://github.com/LucasLarson/dotfiles/pull/139) ([renovate[bot]](https://github.com/apps/renovate))
