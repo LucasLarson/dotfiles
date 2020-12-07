@@ -4,8 +4,15 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.2...HEAD)
 
+**Fixed bugs:**
+
+- hardcoded references to `edit` will break [\#177](https://github.com/LucasLarson/dotfiles/issues/177)
+
 **Merged pull requests:**
 
+- Update fkirc/skip-duplicate-actions action to v2.2.0 [\#180](https://github.com/LucasLarson/dotfiles/pull/180) ([renovate[bot]](https://github.com/apps/renovate))
+- Update nvuillam/mega-linter action to v4.14.1 [\#179](https://github.com/LucasLarson/dotfiles/pull/179) ([renovate[bot]](https://github.com/apps/renovate))
+- Update nvuillam/mega-linter action to v4.14.0 [\#178](https://github.com/LucasLarson/dotfiles/pull/178) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `57f545b` to `2ad6e04` [\#176](https://github.com/LucasLarson/dotfiles/pull/176) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `2c3bcd8` to `b90b362` [\#174](https://github.com/LucasLarson/dotfiles/pull/174) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.13.0 [\#173](https://github.com/LucasLarson/dotfiles/pull/173) ([renovate[bot]](https://github.com/apps/renovate))
@@ -21,16 +28,13 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.1...v0.5.2)
 
-**Merged pull requests:**
-
-- Update peter-evans/create-pull-request action to v3.5.1 [\#160](https://github.com/LucasLarson/dotfiles/pull/160) ([renovate[bot]](https://github.com/apps/renovate))
-
 ## [v0.5.1](https://github.com/LucasLarson/dotfiles/tree/v0.5.1) (2020-11-23)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.0...v0.5.1)
 
 **Merged pull requests:**
 
+- Update peter-evans/create-pull-request action to v3.5.1 [\#160](https://github.com/LucasLarson/dotfiles/pull/160) ([renovate[bot]](https://github.com/apps/renovate))
 - add `git status` to `git push` alias [\#159](https://github.com/LucasLarson/dotfiles/pull/159) ([LucasLarson](https://github.com/LucasLarson))
 - allow `git verify-commit`’s alias to allow a commit hash as argument [\#158](https://github.com/LucasLarson/dotfiles/pull/158) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `04f75a1` to `31ede3c` [\#157](https://github.com/LucasLarson/dotfiles/pull/157) ([dependabot[bot]](https://github.com/apps/dependabot))
