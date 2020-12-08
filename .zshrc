@@ -147,6 +147,11 @@ export GPG_TTY=$(tty)
 [ -d /usr/local/opt/make/libexec/gnubin ] && PATH="/usr/local/opt/make/libexec/gnubin:${PATH}"
 
 
+# Rust Cargo
+# if its `bin` is a directory, then add it to the $PATH
+[ -d "${HOME}/.cargo/bin" ] && export PATH="${HOME}/.cargo/bin:${PATH}"
+
+
 # npm without sudo
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES="${HOME}/.npm-packages"
