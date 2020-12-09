@@ -207,7 +207,7 @@ garbage () {(
 
   # delete empty directories, except within `.git/`, recursively \
   # https://stackoverflow.com/q/4210042#comment38334264_4210072 \
-  find . -type d -size 0 \
+  find -- . -type d -empty \
       -not -path './.git/*' -and \
       -not -path './.well-known/*' \
       ${verbose} -delete
