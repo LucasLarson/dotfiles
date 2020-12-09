@@ -136,10 +136,11 @@ gu () {
     # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
     git submodule update --init --recursive
 
-    garbage
-
     git status
   fi
+
+  garbage
+
 }
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
