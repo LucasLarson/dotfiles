@@ -1,1 +1,8 @@
-include /usr/local/Cellar/nano/*/share/nano/*
+# include /usr/local/Cellar/nano/*/share/nano/*
+
+# mcornella/dotfiles@ea50e2d
+set constantshow
+set smarthome
+set smooth
+set linenumbers
+unset historylog
