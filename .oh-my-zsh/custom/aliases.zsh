@@ -174,7 +174,7 @@ cy () {(
   if [ -z "$2" ]; then
     # if there is no second argument,
     # then copy to the current directory
-    eval cp -r "${interactive} -- $1 '${PWD}'"
+    eval cp -r "${interactive} -- $1 ${PWD}"
   else
     eval cp -r "${interactive} -- $1 $2"
   fi
