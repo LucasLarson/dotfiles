@@ -57,7 +57,7 @@ jobs:
       # Mega-Linter
       - name: Mega-Linter
         id: ml
-        uses: nvuillam/mega-linter@v4.14.1
+        uses: nvuillam/mega-linter@v4.14.2
         env:
           # Add custom env variables here or
           # define them in a file .mega-linter.yml at the repository root
@@ -106,7 +106,7 @@ jobs:
             env.APPLY_FIXES_EVENT == github.event_name
           ) &&
           env.APPLY_FIXES_MODE == 'pull_request'
-        uses: peter-evans/create-pull-request@v3.5.1
+        uses: peter-evans/create-pull-request@v3.5.2
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[Mega-Linter] Apply linters automatic fixes"

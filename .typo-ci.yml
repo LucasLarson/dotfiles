@@ -47,12 +47,12 @@ excluded_words:
   - jonreid  # jonreid/XcodeWarnings
   - jsonlint
   - ksh  # Korn shell
-  - LucasLarson
   - lucaslarson
+  - LucasLarson
   - Mackup
   - markdownlint
-  - minutiæ  # performatively pedantic minutiae
   - minuti\u00e6  # performatively pedantic minutiae
+  - minutiæ  # performatively pedantic minutiae
   - nixCraft  # Vivek Gite, cyberciti.biz
   - noninfringement  # GNU General Public License
   - peter-evans  # peter-evans/create-pull-request
@@ -69,9 +69,9 @@ excluded_words:
   - toclevels
 
   # CSS
-  - webtv
-  - konqueror
   - freebsd
+  - konqueror
+  - webtv
 
   # Clang, GCC
   - argc
@@ -143,8 +143,8 @@ excluded_words:
   - textconv
 
   # GitHub
-  - autofix  # kdeldycke/meta-package-manager
   - Ater  # TalAter/open-source-templates
+  - autofix  # kdeldycke/meta-package-manager
   - dependabot
   - gitsubmodule
   - gomod
