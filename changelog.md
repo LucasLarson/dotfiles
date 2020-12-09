@@ -7,6 +7,7 @@
 **Fixed bugs:**
 
 - hardcoded references to `edit` will break [\#177](https://github.com/LucasLarson/dotfiles/issues/177)
+- regression: `find -size 0` doesn’t find all empty directories [\#170](https://github.com/LucasLarson/dotfiles/issues/170)
 
 **Merged pull requests:**
 
@@ -48,7 +49,6 @@
 - test replacing LucasLarson with `${{ github.repository\_owner }}` in TOML file [\#155](https://github.com/LucasLarson/dotfiles/pull/155) ([LucasLarson](https://github.com/LucasLarson))
 - replace toml repository name programmatically [\#154](https://github.com/LucasLarson/dotfiles/pull/154) ([LucasLarson](https://github.com/LucasLarson))
 - Bump peter-evans/create-pull-request from v3.4.1 to v3.5.0 [\#153](https://github.com/LucasLarson/dotfiles/pull/153) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Update peter-evans/create-pull-request action to v3.5.0 [\#152](https://github.com/LucasLarson/dotfiles/pull/152) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `09be56b` to `7969eb3` [\#151](https://github.com/LucasLarson/dotfiles/pull/151) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[autofix\] Format JSON content [\#150](https://github.com/LucasLarson/dotfiles/pull/150) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair spacing in identifying device operating system [\#149](https://github.com/LucasLarson/dotfiles/pull/149) ([LucasLarson](https://github.com/LucasLarson))
@@ -116,6 +116,7 @@
 - Configure Renovate [\#88](https://github.com/LucasLarson/dotfiles/pull/88) ([renovate[bot]](https://github.com/apps/renovate))
 - bump @GitHub Super-Linter from v3.11.0 to v3.12.0 [\#86](https://github.com/LucasLarson/dotfiles/pull/86) ([LucasLarson](https://github.com/LucasLarson))
 - call `jsonlint-newline-fork` instead of `jsonlint` [\#85](https://github.com/LucasLarson/dotfiles/pull/85) ([LucasLarson](https://github.com/LucasLarson))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `060af91` to `9b981b8` [\#83](https://github.com/LucasLarson/dotfiles/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.3](https://github.com/LucasLarson/dotfiles/tree/v0.4.3) (2020-10-05)
 
@@ -127,7 +128,6 @@
 
 **Merged pull requests:**
 
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `060af91` to `9b981b8` [\#83](https://github.com/LucasLarson/dotfiles/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace `jsonlint` with `jsonlint-newline-fork` [\#82](https://github.com/LucasLarson/dotfiles/pull/82) ([LucasLarson](https://github.com/LucasLarson))
 - restore newline in JSON autofix [\#77](https://github.com/LucasLarson/dotfiles/pull/77) ([LucasLarson](https://github.com/LucasLarson))
 - \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
