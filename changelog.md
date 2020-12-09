@@ -116,7 +116,6 @@
 - Configure Renovate [\#88](https://github.com/LucasLarson/dotfiles/pull/88) ([renovate[bot]](https://github.com/apps/renovate))
 - bump @GitHub Super-Linter from v3.11.0 to v3.12.0 [\#86](https://github.com/LucasLarson/dotfiles/pull/86) ([LucasLarson](https://github.com/LucasLarson))
 - call `jsonlint-newline-fork` instead of `jsonlint` [\#85](https://github.com/LucasLarson/dotfiles/pull/85) ([LucasLarson](https://github.com/LucasLarson))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `060af91` to `9b981b8` [\#83](https://github.com/LucasLarson/dotfiles/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.3](https://github.com/LucasLarson/dotfiles/tree/v0.4.3) (2020-10-05)
 
@@ -128,6 +127,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `060af91` to `9b981b8` [\#83](https://github.com/LucasLarson/dotfiles/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace `jsonlint` with `jsonlint-newline-fork` [\#82](https://github.com/LucasLarson/dotfiles/pull/82) ([LucasLarson](https://github.com/LucasLarson))
 - restore newline in JSON autofix [\#77](https://github.com/LucasLarson/dotfiles/pull/77) ([LucasLarson](https://github.com/LucasLarson))
 - \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
@@ -207,6 +207,7 @@
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `2ba87f4` to `05ff662` [\#27](https://github.com/LucasLarson/dotfiles/pull/27) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `88d5fb6` to `2ba87f4` [\#25](https://github.com/LucasLarson/dotfiles/pull/25) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7a114ad` to `88d5fb6` [\#24](https://github.com/LucasLarson/dotfiles/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `620e69f` to `7a114ad` [\#23](https://github.com/LucasLarson/dotfiles/pull/23) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `4635fca` to `620e69f` [\#21](https://github.com/LucasLarson/dotfiles/pull/21) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.3.0](https://github.com/LucasLarson/dotfiles/tree/v0.3.0) (2020-07-15)
@@ -219,7 +220,6 @@
 
 **Merged pull requests:**
 
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `620e69f` to `7a114ad` [\#23](https://github.com/LucasLarson/dotfiles/pull/23) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a28d450` to `4635fca` [\#19](https://github.com/LucasLarson/dotfiles/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `0c341b6` to `a28d450` [\#18](https://github.com/LucasLarson/dotfiles/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[ImgBot\] Optimize images [\#17](https://github.com/LucasLarson/dotfiles/pull/17) ([imgbot[bot]](https://github.com/apps/imgbot))
