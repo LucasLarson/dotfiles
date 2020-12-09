@@ -136,14 +136,14 @@ gu () {
     # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
     git submodule update --init --recursive
 
-    garbage
-
     git status
   fi
+
+  garbage
+
 }
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
-# alias gvc="git verify-commit HEAD"
 gvc () {(
   # if there is an argument (commit hash), use it
   # otherwise check `HEAD`
@@ -174,9 +174,11 @@ cy () {(
   if [ -z "$2" ]; then
     # if there is no second argument,
     # then copy to the current directory
-    eval cp -r "${interactive} -- $1 '${PWD}'"
+    # -r to copy recursively
+    # -L to follow symbolic links
+    eval cp -r -L "${interactive} -- $1 ${PWD}"
   else
-    eval cp -r "${interactive} -- $1 $2"
+    eval cp -r -L "${interactive} -- $1 $2"
   fi
 )}
 
@@ -205,7 +207,7 @@ garbage () {(
 
   # delete empty directories, except within `.git/`, recursively \
   # https://stackoverflow.com/q/4210042#comment38334264_4210072 \
-  find . -type d -size 0 \
+  find -- . -type d -empty \
       -not -path './.git/*' -and \
       -not -path './.well-known/*' \
       ${verbose} -delete
@@ -221,6 +223,7 @@ alias whuch="which"
 alias wihch="which"
 
 # Zsh
+# https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 alias aliases='${EDITOR:-vi} ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}/custom/aliases.${SHELL##*/}; . ${HOME}/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
 alias ohmyzsh='cd ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}'
 alias zshconfig='${EDITOR:-vi} ${HOME}/.${SHELL##*/}rc; . ${HOME}/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
