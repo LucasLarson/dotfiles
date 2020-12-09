@@ -223,6 +223,7 @@ alias whuch="which"
 alias wihch="which"
 
 # Zsh
+# https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 alias aliases='${EDITOR:-vi} ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}/custom/aliases.${SHELL##*/}; . ${HOME}/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
 alias ohmyzsh='cd ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}'
 alias zshconfig='${EDITOR:-vi} ${HOME}/.${SHELL##*/}rc; . ${HOME}/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
