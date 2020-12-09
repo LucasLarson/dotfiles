@@ -7,6 +7,7 @@
 **Fixed bugs:**
 
 - hardcoded references to `edit` will break [\#177](https://github.com/LucasLarson/dotfiles/issues/177)
+- regression: `find -size 0` doesn’t find all empty directories [\#170](https://github.com/LucasLarson/dotfiles/issues/170)
 
 **Merged pull requests:**
 
@@ -48,7 +49,6 @@
 - test replacing LucasLarson with `${{ github.repository\_owner }}` in TOML file [\#155](https://github.com/LucasLarson/dotfiles/pull/155) ([LucasLarson](https://github.com/LucasLarson))
 - replace toml repository name programmatically [\#154](https://github.com/LucasLarson/dotfiles/pull/154) ([LucasLarson](https://github.com/LucasLarson))
 - Bump peter-evans/create-pull-request from v3.4.1 to v3.5.0 [\#153](https://github.com/LucasLarson/dotfiles/pull/153) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Update peter-evans/create-pull-request action to v3.5.0 [\#152](https://github.com/LucasLarson/dotfiles/pull/152) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `09be56b` to `7969eb3` [\#151](https://github.com/LucasLarson/dotfiles/pull/151) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[autofix\] Format JSON content [\#150](https://github.com/LucasLarson/dotfiles/pull/150) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair spacing in identifying device operating system [\#149](https://github.com/LucasLarson/dotfiles/pull/149) ([LucasLarson](https://github.com/LucasLarson))
@@ -207,6 +207,7 @@
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `2ba87f4` to `05ff662` [\#27](https://github.com/LucasLarson/dotfiles/pull/27) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `88d5fb6` to `2ba87f4` [\#25](https://github.com/LucasLarson/dotfiles/pull/25) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7a114ad` to `88d5fb6` [\#24](https://github.com/LucasLarson/dotfiles/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `620e69f` to `7a114ad` [\#23](https://github.com/LucasLarson/dotfiles/pull/23) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `4635fca` to `620e69f` [\#21](https://github.com/LucasLarson/dotfiles/pull/21) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.3.0](https://github.com/LucasLarson/dotfiles/tree/v0.3.0) (2020-07-15)
@@ -219,7 +220,6 @@
 
 **Merged pull requests:**
 
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `620e69f` to `7a114ad` [\#23](https://github.com/LucasLarson/dotfiles/pull/23) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a28d450` to `4635fca` [\#19](https://github.com/LucasLarson/dotfiles/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `0c341b6` to `a28d450` [\#18](https://github.com/LucasLarson/dotfiles/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[ImgBot\] Optimize images [\#17](https://github.com/LucasLarson/dotfiles/pull/17) ([imgbot[bot]](https://github.com/apps/imgbot))
