@@ -76,8 +76,7 @@ jobs:
           FILTER_REGEX_EXCLUDE: '(\.automation\/test\/)'
           # DISABLE: >
           #  SPELL  # until it can detect `.typo-ci.yml`
-          DISABLE_LINTERS: >
-            EDITORCONFIG_CHECKER  # avoid `.csv`, `passwd` trailing-space fail
+          DISABLE_LINTERS: EDITORCONFIG_CHECKER,MARKDOWN_LINK_CHECK
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
