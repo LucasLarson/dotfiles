@@ -174,9 +174,11 @@ cy () {(
   if [ -z "$2" ]; then
     # if there is no second argument,
     # then copy to the current directory
-    eval cp -r "${interactive} -- $1 ${PWD}"
+    # -r to copy recursively
+    # -L to follow symbolic links
+    eval cp -r -L "${interactive} -- $1 ${PWD}"
   else
-    eval cp -r "${interactive} -- $1 $2"
+    eval cp -r -L "${interactive} -- $1 $2"
   fi
 )}
 
