@@ -31,7 +31,10 @@ apk add make make-doc cmake cmake-doc
 apk add openssh openssh-doc gnupg gnupg-doc
 
 # git
-apk add git git-doc
+command -v git >/dev/null 2>&1 || (
+  printf '\ninstalling Git...\n'
+  apk add git git-doc
+)
 
 # time zone
 apk add tzdata tzdata-doc
