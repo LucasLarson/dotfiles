@@ -75,6 +75,12 @@ command -v pip >/dev/null 2>&1 && (
   python3 -m pip install --upgrade pip
 )
 
+# mackup
+command -v mackup >/dev/null 2>&1 || (
+  printf '\ninstalling mackup...\n'
+  pip install --upgrade mackup
+)
+
 # cleanup
 printf '\n\ncleaning up temporary installation files...\n'
 [ -e get-pip.py ] && rm get-pip.py
