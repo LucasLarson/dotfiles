@@ -68,13 +68,13 @@ command -v zsh >/dev/null 2>&1 || (
 )
 
 # update, repair everything again before close
-printf 'updating...\n'
+printf '\nupdating...\n'
 apk update --verbose --progress
-printf 'upgrading...\n'
+printf '\nupgrading...\n'
 apk upgrade --verbose --progress
-printf 'repairing and resolving dependencies...\n'
+printf '\nrepairing and resolving dependencies...\n'
 apk fix --verbose --verbose --depends --progress
-printf 'verifying installations...\n'
+printf '\nverifying installations...\n'
 apk verify --verbose --verbose --progress
 command -v pip >/dev/null 2>&1 && (
   printf '\nupdating Python\xe2\x80\x99s package manager...\n'
@@ -94,7 +94,7 @@ printf '\n\ncleaning up temporary installation files...\n'
 find -- . -empty -delete
 
 # done
-printf 'initialization complete\n'
-printf 'restarting...\ndone!\n\n'
+printf '\ninitialization complete\n'
+printf '\nrestarting...\ndone!\n\n'
 sleep 1
 exec "${SHELL##*/}" -l || exit
