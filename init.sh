@@ -89,6 +89,7 @@ command -v mackup >/dev/null 2>&1 || (
 
 # cleanup
 printf '\n\ncleaning up temporary installation files...\n'
+[ -e apk.static ] && rm apk.static
 [ -e get-pip.py ] && rm get-pip.py
 find -- . -empty -delete
 
