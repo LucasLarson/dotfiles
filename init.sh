@@ -17,7 +17,13 @@ apk update --verbose --progress
 apk upgrade --verbose --progress
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
-apk add mandoc mandoc-doc man-pages less less-doc
+(
+  command -v mandoc >/dev/null 2>&1 && \
+  command -v man-pages >/dev/null 2>&1
+) || (
+  printf '\ninstalling man pages...\n'
+  apk add mandoc mandoc-doc man-pages less less-doc
+)
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Shell_.40_commandline
 apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc
