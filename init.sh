@@ -70,8 +70,10 @@ printf 'repairing and resolving dependencies...\n'
 apk fix --verbose --verbose --depends --progress
 printf 'verifying installations...\n'
 apk verify --verbose --verbose --progress
-printf 'updating Python\xe2\x80\x99s package manager...\n'
-command -v pip >/dev/null 2>&1 && python3 -m pip install --upgrade pip
+command -v pip >/dev/null 2>&1 && (
+  printf '\nupdating Python\xe2\x80\x99s package manager...\n'
+  python3 -m pip install --upgrade pip
+)
 
 # cleanup
 printf '\n\ncleaning up temporary installation files...\n'
