@@ -56,8 +56,10 @@ command -v pip >/dev/null 2>&1 || (
 )
 
 # zsh
-printf 'installing Zsh...\n'
-apk add zsh zsh-doc
+command -v zsh >/dev/null 2>&1 || (
+  printf '\ninstalling Zsh...\n'
+  apk add zsh zsh-doc
+)
 
 # update, repair everything again before close
 printf 'updating...\n'
