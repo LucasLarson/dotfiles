@@ -49,6 +49,7 @@
 - test replacing LucasLarson with `${{ github.repository\_owner }}` in TOML file [\#155](https://github.com/LucasLarson/dotfiles/pull/155) ([LucasLarson](https://github.com/LucasLarson))
 - replace toml repository name programmatically [\#154](https://github.com/LucasLarson/dotfiles/pull/154) ([LucasLarson](https://github.com/LucasLarson))
 - Bump peter-evans/create-pull-request from v3.4.1 to v3.5.0 [\#153](https://github.com/LucasLarson/dotfiles/pull/153) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update peter-evans/create-pull-request action to v3.5.0 [\#152](https://github.com/LucasLarson/dotfiles/pull/152) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `09be56b` to `7969eb3` [\#151](https://github.com/LucasLarson/dotfiles/pull/151) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[autofix\] Format JSON content [\#150](https://github.com/LucasLarson/dotfiles/pull/150) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair spacing in identifying device operating system [\#149](https://github.com/LucasLarson/dotfiles/pull/149) ([LucasLarson](https://github.com/LucasLarson))
