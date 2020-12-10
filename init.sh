@@ -41,6 +41,12 @@ command -v git >/dev/null 2>&1 || (
   printf '\ninstalling Git...\n'
   apk add git git-doc
 )
+# [ $(git config user.name) = "Lucas Larson" ] || (
+#   printf 'configuring Git user settings...\n'
+#   git config --system user.name "Lucas Larson"
+#   git config --system user.email LucasLarson@riseup.net
+# )
+# ssh-add -l -E sha256
 
 # time zone
 command -v tzdata >/dev/null 2>&1 || (
