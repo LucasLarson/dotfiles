@@ -133,7 +133,7 @@ fi  # Linux
 omz update
 
 
-. ~/."${SHELL##*/}"rc && rehash
+. "${HOME}/.${SHELL##*/}rc" && rehash
 
 
 unset update
