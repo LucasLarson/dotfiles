@@ -17,12 +17,17 @@ apk update --verbose --progress
 apk upgrade --verbose --progress
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
-(
-  command -v mandoc >/dev/null 2>&1 && \
-  command -v man-pages >/dev/null 2>&1
-) || (
+command -v man-pages >/dev/null 2>&1 || (
   printf '\ninstalling man pages...\n'
-  apk add mandoc mandoc-doc man-pages less less-doc
+  apk add man-pages
+)
+command -v mandoc >/dev/null 2>&1 || (
+  printf '\ninstalling mandoc for man pages...\n'
+  apk add mandoc mandoc-doc
+)
+command -v less >/dev/null 2>&1 || (
+  printf '\ninstalling less to read man pages...\n'
+  apk add less less-doc
 )
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Shell_.40_commandline
