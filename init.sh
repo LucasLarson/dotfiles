@@ -49,7 +49,7 @@ command -v git >/dev/null 2>&1 || (
 
 # time zone
 command -v tzdata >/dev/null 2>&1 || (
-  printf '\ninstalling tzdata...\n'
+  printf '\nupdating time zone information...\n'
   apk add tzdata tzdata-doc
 )
 cp /usr/share/zoneinfo/America/New_York /etc/localtime
