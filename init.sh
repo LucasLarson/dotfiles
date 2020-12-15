@@ -69,6 +69,12 @@ command -v pip >/dev/null 2>&1 || (
   python3 get-pip.py
 )
 
+# mackup
+command -v mackup >/dev/null 2>&1 || (
+  printf '\ninstalling mackup...\n'
+  pip install --upgrade mackup
+)
+
 # zsh
 command -v zsh >/dev/null 2>&1 || (
   printf '\ninstalling Zsh...\n'
@@ -87,12 +93,6 @@ apk verify --verbose --verbose --progress
 command -v pip >/dev/null 2>&1 && (
   printf '\nupdating Python\xe2\x80\x99s package manager...\n'
   python3 -m pip install --upgrade pip
-)
-
-# mackup
-command -v mackup >/dev/null 2>&1 || (
-  printf '\ninstalling mackup...\n'
-  pip install --upgrade mackup
 )
 
 # cleanup
