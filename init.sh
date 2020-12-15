@@ -55,12 +55,14 @@ command -v git >/dev/null 2>&1 || (
 cp /usr/share/zoneinfo/America/New_York /etc/localtime
 printf 'America/New_York\n' >/etc/timezone
 
-# python, pip
+# python
 printf '\nchecking Python installation...\n'
 command -v python >/dev/null 2>&1 || (
   printf '\ninstalling Python...\n'
   apk add curl curl-doc python2 python2-doc python3 python3-doc
 )
+
+# pip
 command -v pip >/dev/null 2>&1 || (
   printf '\ninstalling pip...\n'
   curl http://web.archive.org/web/20201031072740id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
