@@ -56,6 +56,7 @@ cp /usr/share/zoneinfo/America/New_York /etc/localtime
 printf 'America/New_York\n' >/etc/timezone
 
 # python, pip
+printf '\nchecking Python installation...\n'
 command -v python >/dev/null 2>&1 || (
   printf '\ninstalling Python...\n'
   apk add curl curl-doc python2 python2-doc python3 python3-doc
