@@ -81,6 +81,12 @@ command -v zsh >/dev/null 2>&1 || (
   apk add zsh zsh-doc
 )
 
+# chsh
+# part of shadow on Alpine Linux
+command -v chsh >/dev/null 2>&1 || (
+  apk add shadow shadow-doc
+)
+
 # update, repair everything again before close
 printf '\nupdating...\n'
 apk update --verbose --progress
