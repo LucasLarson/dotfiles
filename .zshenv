@@ -1,1 +1,1 @@
-# .zshenv
+#!/usr/bin/env zsh
