@@ -48,7 +48,7 @@ command -v git >/dev/null 2>&1 || (
 )
 
 # time zone
-command -v tzdata >/dev/null 2>&1 || (
+[ -d /usr/share/zoneinfo ] || (
   printf '\nupdating time zone information...\n'
   apk add tzdata tzdata-doc
 )
