@@ -16,14 +16,14 @@ alias apm="apm-nightly"
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 alias mu=" \
     cd ${DOTFILES:-${HOME}/Dropbox/dotfiles} && \
-    garbage && \
+    cleanup && \
     mackup backup --force --root && \
     git fetch --all && \
     git submodule update --init --recursive && \
     git status"
 alias mux=" \
     cd ${DOTFILES:-${HOME}/Dropbox/dotfiles} && \
-    garbage && \
+    cleanup && \
     mackup backup --force --root --verbose && \
     git fetch --all --verbose && \
     git submodule update --init --recursive --remote && \
@@ -139,7 +139,7 @@ gu () {
     git status
   fi
 
-  garbage
+  cleanup
 
 }
 
@@ -182,8 +182,8 @@ cy () {(
   fi
 )}
 
-garbage () {(
-  # if `garbage -v` or `garbage --verbose`,
+cleanup () {(
+  # if `cleanup -v` or `cleanup --verbose`,
   # then use `-print` during `-delete`
   if [ "$1" = -v ] || [ "$1" = --verbose ]; then
     verbose=-print
