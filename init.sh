@@ -118,4 +118,4 @@ find -- . -empty -delete
 printf '\ninitialization complete\n'
 printf '\nrestarting...\ndone!\n\n'
 sleep 1
-exec "${SHELL##*/}" -l || exit
+exec "${0##*[-/]}" -l || exit
