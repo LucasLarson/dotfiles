@@ -13,8 +13,6 @@ sleep 1
 printf ' a Lucas Larson production\n\n'
 sleep 1
 
-
-
 # apk
 command -v apk >/dev/null 2>&1 || (
   # https://github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version/89019508ddd504e6f08af30d8c8da2d3a8691b76#wiki-body
