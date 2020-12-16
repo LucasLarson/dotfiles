@@ -1,5 +1,20 @@
 #!/usr/bin/env sh
 
+clear
+printf '   .\x5f\x5f       .\x5f\x5f  \x5f\x5f\n'
+printf '   \x7c\x5f\x5f\x7c \x5f\x5f\x5f\x5f \x7c\x5f\x5f\x7c\x2f  \x7c\x5f\n'
+printf '   \x7c  \x7c\x2f    \x5c\x7c  \x5c   \x5f\x5f\x5c\n'
+printf '   \x7c  \x7c   \x7c  \x5c  \x7c\x7c  \x7c\n'
+printf '   \x7c\x5f\x5f\x7c\x5f\x5f\x5f\x7c'
+printf '  \x2f\x5f\x5f\x7c\x7c\x5f\x5f\x7c\n'
+printf '           \x5c\x2f\n\n'
+printf ' Alpine Linux setup\n'
+sleep 1
+printf ' a Lucas Larson production\n\n'
+sleep 1
+
+
+
 # apk
 command -v apk >/dev/null 2>&1 || (
   # https://github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version/89019508ddd504e6f08af30d8c8da2d3a8691b76#wiki-body
