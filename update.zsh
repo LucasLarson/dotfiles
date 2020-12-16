@@ -3,7 +3,6 @@
 update=1
 clear && clear
 
-
 printf '                 .___       __\n'
 printf ' __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n'
 printf '\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n'
@@ -14,33 +13,28 @@ printf ' a Lucas Larson production\n\n'
 
 sleep 1.0
 
-
 # Homebrew
 if command -v brew >/dev/null 2>&1; then
   printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n'
   brew update
   brew upgrade
   brew upgrade --cask
-fi  # brew
-
+fi # brew
 
 # Xcode
 if command -v xcrun >/dev/null 2>&1; then
   xcrun simctl delete unavailable
-fi  # xcrun
-
+fi # xcrun
 
 # Rust
 if command -v rustup >/dev/null 2>&1; then
   rustup update
-fi  # rustup
-
+fi # rustup
 
 # Atom
 if command -v apm >/dev/null 2>&1; then
   apm upgrade --no-confirm
-fi  # apm
-
+fi # apm
 
 if [ Darwin = "$(uname)" ]; then
 
@@ -52,10 +46,8 @@ if [ Darwin = "$(uname)" ]; then
     printf 'No internet connection was detected.\nAborting update.\n' && return "${update}"
   )
 
-
   npm install npm --global
   npm update --global --verbose
-
 
   gem update --system
   gem update
@@ -91,8 +83,8 @@ elif [ Linux = "$(uname)" ]; then
     printf '\n\nNo internet connection was detected.\nAborting update.\n' && return "${update}"
   )
 
-  for (( i = 0; i < 1024; i++ )) do
-    if (( (i / 3) % 2 == 0 )); then
+  for ((i = 0; i < 1024; i++)); do
+    if (((i / 3) % 2 == 0)); then
       printf '.'
     else
       printf '\b'
@@ -118,7 +110,7 @@ elif [ Linux = "$(uname)" ]; then
     printf '\n\xf0\x9f\x8f\x94 apk verify...\n'
     apk verify --progress --verbose --verbose
     printf '\xf0\x9f\x8f\x94 apk verify complete...\n\n'
-  fi  # apk
+  fi # apk
 
   if command -v pip3 >/dev/null 2>&1; then
     printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up to date...\n'
@@ -126,18 +118,15 @@ elif [ Linux = "$(uname)" ]; then
 
     printf '\n\xf0\x9f\x90\x8d upgrading all Python packages...\n'
     pip3 install --upgrade $(pip3 freeze | cut --delimiter '=' --fields 1)
-  fi  # pip3
+  fi # pip3
 
-fi  # Linux
+fi # Linux
 
 omz update
 
-
 . "${HOME}/.${SHELL##*/}rc" && rehash
-
 
 unset update
 printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "${update}"
-
 
 exec "${SHELL##*/}" --login
