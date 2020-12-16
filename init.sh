@@ -30,7 +30,11 @@ apk update --verbose --progress
 apk upgrade --verbose --progress
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
-command -v man-pages >/dev/null 2>&1 || (
+# man-pages adds `man0`, `man2`, man4`, `man6` to `/usr/share/man/`
+[ -d /usr/share/man/man0 ] && \
+  [ -d /usr/share/man/man2 ] && \
+  [ -d /usr/share/man/man4 ] && \
+  [ -d /usr/share/man/man6 ] || (
   printf '\ninstalling man pages...\n'
   apk add man-pages
 )
