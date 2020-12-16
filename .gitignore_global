@@ -53,7 +53,7 @@ Podfile.lock
 
 ## UpdraftPlus ##
 upgrade/
-cache/
+*cache/
 updraft/
 backup*/
 *backups/
