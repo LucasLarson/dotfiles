@@ -149,11 +149,6 @@ gvc () {(
   git verify-commit "${1:-HEAD}"
 )}
 
-# GPG
-if command -v gpg2 >/dev/null 2>&1; then
-  alias gpg="gpg2"
-fi
-
 
 # Python
 alias python="python3"
