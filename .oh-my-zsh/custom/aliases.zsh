@@ -127,6 +127,8 @@ alias gtake="git checkout -b"
 alias gti="git"
 
 gu () {
+  cleanup
+
   # run only from within a git repository
   # https://stackoverflow.com/a/53809163
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -138,9 +140,6 @@ gu () {
 
     git status
   fi
-
-  cleanup
-
 }
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
@@ -149,11 +148,6 @@ gvc () {(
   # otherwise check `HEAD`
   git verify-commit "${1:-HEAD}"
 )}
-
-# GPG
-if command -v gpg2 >/dev/null 2>&1; then
-  alias gpg="gpg2"
-fi
 
 
 # Python
@@ -224,8 +218,8 @@ alias wihch="which"
 
 # Zsh
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
-alias aliases='${EDITOR:-vi} ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}/custom/aliases.${SHELL##*/}; . ${HOME}/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
-alias ohmyzsh='cd ${ZSH:-${HOME}/.oh-my-${SHELL##*/}}'
-alias zshconfig='${EDITOR:-vi} ${HOME}/.${SHELL##*/}rc; . ${HOME}/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
-alias zshenv='${EDITOR:-vi} ${HOME}/.${SHELL##*/}env; . ${HOME}/.${SHELL##*/}rc && exec ${SHELL##*/} --login'
-alias zshrc='${SHELL##*/}config'
+alias aliases='"${EDITOR:-vi}" "${ZSH:-${HOME}/.oh-my-${SHELL##*/}}/custom/aliases.${SHELL##*/}"; . "${HOME}/.${SHELL##*/}rc" && exec "${SHELL##*/}" --login'
+alias ohmyzsh='cd "${ZSH:-${HOME}/.oh-my-${SHELL##*/}}"'
+alias zshconfig='"${EDITOR:-vi}" "${HOME}/.${SHELL##*/}rc"; . "${HOME}/.${SHELL##*/}rc" && exec "${SHELL##*/}" --login'
+alias zshenv='"${EDITOR:-vi}" "${HOME}/.${SHELL##*/}env"; . "${HOME}/.${SHELL##*/}rc" && exec "${SHELL##*/}" --login'
+alias zshrc='"${SHELL##*/}config"'
