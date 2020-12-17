@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.2...HEAD)
 
+**Implemented enhancements:**
+
+- remove archival material from the version-control system [\#187](https://github.com/LucasLarson/dotfiles/issues/187)
+
 **Fixed bugs:**
 
 - hardcoded references to `edit` will break [\#177](https://github.com/LucasLarson/dotfiles/issues/177)
@@ -11,6 +15,7 @@
 
 **Merged pull requests:**
 
+- remove archival and example content \(fix \#187\) [\#193](https://github.com/LucasLarson/dotfiles/pull/193) ([LucasLarson](https://github.com/LucasLarson))
 - Update fkirc/skip-duplicate-actions action to v3.1.0 [\#192](https://github.com/LucasLarson/dotfiles/pull/192) ([renovate[bot]](https://github.com/apps/renovate))
 - Update stefanzweifel/git-auto-commit-action action to v4.8.0 [\#191](https://github.com/LucasLarson/dotfiles/pull/191) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.16.0 [\#188](https://github.com/LucasLarson/dotfiles/pull/188) ([renovate[bot]](https://github.com/apps/renovate))
