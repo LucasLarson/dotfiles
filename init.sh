@@ -112,7 +112,6 @@ command -v chsh >/dev/null 2>&1 || (
 # Oh My Zsh
 command -v omz >/dev/null 2>&1 || (
   printf 'installing Oh My Zsh...\n'
-  [ -d "${HOME}/.oh-my-zsh" ] && rm -rf "${HOME}/.oh-my-zsh"
   sh -c "$(wget http://web.archive.org/web/20201211072817id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
 )
 
