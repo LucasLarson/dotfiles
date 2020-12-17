@@ -25,7 +25,7 @@ printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n' >/etc/apk/rep
 printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >>/etc/apk/repositories
 
 # update
-printf '\nupdating Alpine Linux repository indeces...\n'
+printf '\nupdating Alpine Linux repositories...\n'
 apk update --verbose --progress
 apk upgrade --verbose --progress
 
