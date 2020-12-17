@@ -15,14 +15,14 @@ alias apm="apm-nightly"
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 alias mu=" \
-    cd ${DOTFILES:-${HOME}/Dropbox/dotfiles} && \
+    cd \"${DOTFILES:-${HOME}/Dropbox/dotfiles}\" && \
     cleanup && \
     mackup backup --force --root && \
     git fetch --all && \
     git submodule update --init --recursive && \
     git status"
 alias mux=" \
-    cd ${DOTFILES:-${HOME}/Dropbox/dotfiles} && \
+    cd \"${DOTFILES:-${HOME}/Dropbox/dotfiles}\" && \
     cleanup && \
     mackup backup --force --root --verbose && \
     git fetch --all --verbose && \
