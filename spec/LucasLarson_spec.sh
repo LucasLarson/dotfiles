@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 Describe "Sample specfile"
   Describe "hello()"
     hello() {
