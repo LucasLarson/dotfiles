@@ -60,7 +60,9 @@ apk add make make-doc cmake cmake-doc
   apk add openssh openssh-doc
 )
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
-apk add gnupg gnupg-doc
+[ -e /usr/bin/gpg2 ] || (
+  apk gnupg gnupg-doc
+)
 
 # git
 command -v git >/dev/null 2>&1 || (
