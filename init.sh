@@ -52,7 +52,10 @@ printf '\ninstalling Linux utilities...\n'
 apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc
 
 # make, cmake
-apk add make make-doc cmake cmake-doc
+( command -v make >/dev/null 2>&1 && command -v cmake >/dev/null 2>&1 ) || (
+  printf 'installing make and cmake...\n'
+  apk add make make-doc cmake cmake-doc
+)
 
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
