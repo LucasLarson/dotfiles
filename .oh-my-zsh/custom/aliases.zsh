@@ -66,7 +66,10 @@ ggc () {
 alias gic="git rev-list --topo-order --parents HEAD | egrep '^[a-f0-9]{40}$'"
 
 alias ginit="git init"
-alias glog="git log"
+
+# git log
+# https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
+alias glog="git log --graph --branches --remotes --tags --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order"
 
 # return the name of the repository’s default branch
 # ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
