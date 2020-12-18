@@ -154,16 +154,9 @@ gvc () {(
 )}
 
 
-# Python
-alias python="python3"
-alias pip="pip3"
-
-
 # shell
-
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp="cp -r"
-
 cy () {(
   # if within git repo, then auto-overwrite
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
