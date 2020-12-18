@@ -204,7 +204,9 @@ cleanup () {(
       ${verbose} -delete
 )}
 
-alias mv="mv -v -i" # https://unix.stackexchange.com/a/30950
+# https://unix.stackexchange.com/a/30950
+alias mv="mv -v -i"
+
 alias pwd="pwd -P"
 alias unixtime="date +%s" # https://stackoverflow.com/a/12312982
 alias which="which -a"
