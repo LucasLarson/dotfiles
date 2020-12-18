@@ -65,7 +65,7 @@ apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc co
 )
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
 [ -e /usr/bin/gpg2 ] || (
-  apk gnupg gnupg-doc
+  apk add gnupg gnupg-doc
 )
 
 # git
