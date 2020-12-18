@@ -51,6 +51,7 @@ gdm () {
 }
 alias gfgs="git fetch --all --verbose && git status"
 ggc () {
+  cleanup
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
     git gc --aggressive --prune=now
