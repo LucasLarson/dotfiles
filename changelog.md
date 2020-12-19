@@ -16,6 +16,7 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
 - remove archival and example content \(fix \#187\) [\#193](https://github.com/LucasLarson/dotfiles/pull/193) ([LucasLarson](https://github.com/LucasLarson))
 - Update fkirc/skip-duplicate-actions action to v3.1.0 [\#192](https://github.com/LucasLarson/dotfiles/pull/192) ([renovate[bot]](https://github.com/apps/renovate))
 - Update stefanzweifel/git-auto-commit-action action to v4.8.0 [\#191](https://github.com/LucasLarson/dotfiles/pull/191) ([renovate[bot]](https://github.com/apps/renovate))
@@ -146,6 +147,7 @@
 - restore newline in JSON autofix [\#77](https://github.com/LucasLarson/dotfiles/pull/77) ([LucasLarson](https://github.com/LucasLarson))
 - \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair autofix for JSON [\#75](https://github.com/LucasLarson/dotfiles/pull/75) ([LucasLarson](https://github.com/LucasLarson))
+- Bump .oh-my-zsh/custom/plugins/gunstage from `ecffcba` to `6b68ebd` [\#73](https://github.com/LucasLarson/dotfiles/pull/73) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.2](https://github.com/LucasLarson/dotfiles/tree/v0.4.2) (2020-10-03)
 
