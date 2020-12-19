@@ -180,28 +180,37 @@ cleanup () {(
     verbose=-print
   fi
 
-  # delete `.DS_Store` files recursively
-  find . -type f \
-      -name '.DS_Store' \
-      ${verbose} -delete
+  # delete thumbnail cache files
+  find -- . -type f \( \
+    -name '.DS_Store' -or \
+    -name 'Desktop.ini' -or \
+    -name 'desktop.ini' -or \
+    -name 'Thumbs.db' -or \
+    -name 'thumbs.db' \
+  \) \
+  $verbose -delete
 
-  # delete empty, zero-length files except those
-  # with specific names or within `.git/` directories
-  find . -type f -size 0 \
-      -not -path './.git/*' -and \
-      -not -path '*.gitkeep' -and \
-      -not -path '*hushlogin' -and \
-      -not -path '*lock' -and \
-      -not -path '*LOCK' -and \
-      -not -path '*lockfile' \
-      ${verbose} -delete
+  # delete empty, zero-length files
+  # except those with specific names
+  # or within `.git/` directories
+  find -- . -type f -size 0 \( \
+    -not -path '*/.git/*' -and \
+    -not -name '*.gitkeep' -and \
+    -not -name '*hushlogin' -and \
+    -not -name '*LOCK' -and \
+    -not -name '*lock' -and \
+    -not -name '*lockfile' \
+  \) \
+  $verbose -delete
 
-  # delete empty directories, except within `.git/`, recursively \
-  # https://stackoverflow.com/q/4210042#comment38334264_4210072 \
-  find -- . -type d -empty \
-      -not -path './.git/*' -and \
-      -not -path './.well-known/*' \
-      ${verbose} -delete
+  # delete empty directories recursively
+  # except those within `.git/` directories
+  # https://stackoverflow.com/q/4210042#comment38334264_4210072
+  find -- . -type d -empty \( \
+    -not -path '*/.git/*' -and \
+    -not -name '.well-known' \
+  \) \
+  $verbose -delete
 )}
 
 # https://unix.stackexchange.com/a/30950
@@ -221,4 +230,4 @@ alias aliases='"${EDITOR:-vi}" "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/aliase
 alias ohmyzsh='cd "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}"'
 alias zshconfig='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
 alias zshenv='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}env"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
-alias zshrc='"${0##*[-/]}config"'
+alias zshrc='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
