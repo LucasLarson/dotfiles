@@ -35,7 +35,7 @@ git_add_patch () {
   git add --patch --verbose "$@"
   git status
 }
-alias gap="git_add_patch" # override Oh My Zsh’s `git apply` alias
+alias gap="git_add_patch"
 alias gc="git commit --verbose --gpg-sign"
 alias gca="git commit --amend --verbose --gpg-sign"
 alias gcl="git clone --verbose --progress --recursive --recurse-submodules"
@@ -51,6 +51,7 @@ gdm () {
 }
 alias gfgs="git fetch --all --verbose && git status"
 ggc () {
+  cleanup
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
     git gc --aggressive --prune=now
@@ -65,7 +66,10 @@ ggc () {
 alias gic="git rev-list --topo-order --parents HEAD | egrep '^[a-f0-9]{40}$'"
 
 alias ginit="git init"
-alias glog="git log"
+
+# git log
+# https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
+alias glog="git log --graph --branches --remotes --tags --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order"
 
 # return the name of the repository’s default branch
 # ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
@@ -115,7 +119,7 @@ gmm () {
 alias gmv="git mv --verbose"
 
 # git pull after @ohmyzsh `gupav` ohmyzsh/ohmyzsh@3d2542f
-alias gpl="git pull --all --rebase --autostash --verbose && git status"
+alias gpl="git pull --all --rebase --autostash --ff-only --verbose && git status"
 alias gpull="gpl"
 
 # git push after @ohmyzsh `gpsup` ohmyzsh/ohmyzsh@ae21102
@@ -150,16 +154,9 @@ gvc () {(
 )}
 
 
-# Python
-alias python="python3"
-alias pip="pip3"
-
-
 # shell
-
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp="cp -r"
-
 cy () {(
   # if within git repo, then auto-overwrite
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -207,7 +204,9 @@ cleanup () {(
       ${verbose} -delete
 )}
 
-alias mv="mv -v -i" # https://unix.stackexchange.com/a/30950
+# https://unix.stackexchange.com/a/30950
+alias mv="mv -v -i"
+
 alias pwd="pwd -P"
 alias unixtime="date +%s" # https://stackoverflow.com/a/12312982
 alias which="which -a"
