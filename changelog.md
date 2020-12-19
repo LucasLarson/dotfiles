@@ -37,7 +37,9 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `31ede3c` to `2c3bcd8` [\#166](https://github.com/LucasLarson/dotfiles/pull/166) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle from `97d29d2` to `d31bae2` [\#165](https://github.com/LucasLarson/dotfiles/pull/165) ([dependabot[bot]](https://github.com/apps/dependabot))
 - repair Dependabot [\#164](https://github.com/LucasLarson/dotfiles/pull/164) ([LucasLarson](https://github.com/LucasLarson))
+- Alpine Linux 2nd attempt resurrection [\#163](https://github.com/LucasLarson/dotfiles/pull/163) ([LucasLarson](https://github.com/LucasLarson))
 - add out-of-the-box `.bashrc` file from new Ubuntu installation [\#162](https://github.com/LucasLarson/dotfiles/pull/162) ([LucasLarson](https://github.com/LucasLarson))
+- add initialization script for Alpine Linux [\#161](https://github.com/LucasLarson/dotfiles/pull/161) ([LucasLarson](https://github.com/LucasLarson))
 
 ## [v0.5.2](https://github.com/LucasLarson/dotfiles/tree/v0.5.2) (2020-11-25)
 
@@ -144,7 +146,6 @@
 - restore newline in JSON autofix [\#77](https://github.com/LucasLarson/dotfiles/pull/77) ([LucasLarson](https://github.com/LucasLarson))
 - \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair autofix for JSON [\#75](https://github.com/LucasLarson/dotfiles/pull/75) ([LucasLarson](https://github.com/LucasLarson))
-- Bump .oh-my-zsh/custom/plugins/gunstage from `ecffcba` to `6b68ebd` [\#73](https://github.com/LucasLarson/dotfiles/pull/73) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.2](https://github.com/LucasLarson/dotfiles/tree/v0.4.2) (2020-10-03)
 
