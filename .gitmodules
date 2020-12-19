@@ -163,3 +163,6 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Hyperlink Helper.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Hyperlink Helper.tmbundle
 	url = https://github.com/textmate/hyperlink-helper.tmbundle
+[submodule ".oh-my-zsh/custom/plugins/zsh-completions"]
+	path = .oh-my-zsh/custom/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
