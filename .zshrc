@@ -79,12 +79,12 @@ HIST_STAMPS="yyyy-mm-dd"
 export HISTSIZE=2147483647
 export SAVEHIST=${HISTSIZE}
 
-# Use a custom folder other than ${ZSH}/custom
+# Use a custom folder other than $ZSH/custom
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ${ZSH}/plugins
-# Custom plugins may be added to ${ZSH_CUSTOM}/plugins
+# Standard plugins can be found in $ZSH/plugins
+# Custom plugins may be added to $ZSH_CUSTOM/plugins
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
