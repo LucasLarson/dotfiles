@@ -230,7 +230,7 @@ alias mv="mv -v -i"
 
 alias pwd="pwd -P"
 alias unixtime="date +%s" # https://stackoverflow.com/a/12312982
-alias which="which -a"
+
 alias whcih="which"
 alias whihc="which"
 alias whuch="which"
