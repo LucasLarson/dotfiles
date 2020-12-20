@@ -124,7 +124,6 @@ alias gpl="git pull --all --rebase --autostash --ff-only --verbose && git status
 
 # git push after @ohmyzsh `gpsup` ohmyzsh/ohmyzsh@ae21102
 alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && git status'
-alias gpv="gps"
 
 alias grmr="git rm -r"
 alias grm="grmr"
