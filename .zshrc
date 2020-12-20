@@ -141,7 +141,7 @@ export VISUAL
 
 
 # iTerm
-test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
+[ -e "${HOME}/.iterm2_shell_integration.zsh" ] && . "${HOME}/.iterm2_shell_integration.zsh"
 
 
 # GPG signing with macOS-compatible Linux
