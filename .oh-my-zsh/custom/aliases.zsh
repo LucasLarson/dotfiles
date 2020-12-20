@@ -126,6 +126,9 @@ alias gpull="gpl"
 alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && git status'
 alias gpv="gps"
 
+alias grmr="git rm -r"
+alias grm="grmr"
+
 alias gsu="git submodule update --init --recursive --remote"
 alias gtake="git checkout -b"
 alias gti="git"
