@@ -227,7 +227,11 @@ alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
 alias mv="mv -v -i"
 
 alias pwd="pwd -P"
-alias unixtime="date +%s" # https://stackoverflow.com/a/12312982
+
+# Unix epoch seconds
+# https://stackoverflow.com/a/12312982
+# date -j +%s # for milliseconds
+alias unixtime="date +%s"
 
 alias whcih="which"
 alias whihc="which"
