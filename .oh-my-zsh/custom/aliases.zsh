@@ -105,6 +105,7 @@ git_default_branch () {(
   printf '%s' "${default_branch}"
 )}
 alias gdb="git_default_branch"
+alias gm="GIT_MERGE_VERBOSITY=4 git merge"
 alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue"
 
 # git merge main
@@ -120,11 +121,9 @@ alias gmv="git mv --verbose"
 
 # git pull after @ohmyzsh `gupav` ohmyzsh/ohmyzsh@3d2542f
 alias gpl="git pull --all --rebase --autostash --ff-only --verbose && git status"
-alias gpull="gpl"
 
 # git push after @ohmyzsh `gpsup` ohmyzsh/ohmyzsh@ae21102
 alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && git status'
-alias gpv="gps"
 
 alias grmr="git rm -r"
 alias grm="grmr"
@@ -222,12 +221,18 @@ fdf () {(
   find -- . -not -empty -type f -printf '%s\n' | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 sha512sum | sort | uniq -w32 --all-repeated=separate
 )}
 
+alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
+
 # https://unix.stackexchange.com/a/30950
 alias mv="mv -v -i"
 
 alias pwd="pwd -P"
-alias unixtime="date +%s" # https://stackoverflow.com/a/12312982
-alias which="which -a"
+
+# Unix epoch seconds
+# https://stackoverflow.com/a/12312982
+# date -j +%s # for milliseconds
+alias unixtime="date +%s"
+
 alias whcih="which"
 alias whihc="which"
 alias whuch="which"
