@@ -15,14 +15,14 @@ alias apm="apm-nightly"
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 alias mu=" \
-    cd ${DOTFILES:-${HOME}/Dropbox/dotfiles} && \
+    cd \"${DOTFILES:-${HOME}/Dropbox/dotfiles}\" && \
     cleanup && \
     mackup backup --force --root && \
     git fetch --all && \
     git submodule update --init --recursive && \
     git status"
 alias mux=" \
-    cd ${DOTFILES:-${HOME}/Dropbox/dotfiles} && \
+    cd \"${DOTFILES:-${HOME}/Dropbox/dotfiles}\" && \
     cleanup && \
     mackup backup --force --root --verbose && \
     git fetch --all --verbose && \
@@ -35,7 +35,7 @@ git_add_patch () {
   git add --patch --verbose "$@"
   git status
 }
-alias gap="git_add_patch" # override Oh My Zsh’s `git apply` alias
+alias gap="git_add_patch"
 alias gc="git commit --verbose --gpg-sign"
 alias gca="git commit --amend --verbose --gpg-sign"
 alias gcl="git clone --verbose --progress --recursive --recurse-submodules"
@@ -51,6 +51,7 @@ gdm () {
 }
 alias gfgs="git fetch --all --verbose && git status"
 ggc () {
+  cleanup
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
     git gc --aggressive --prune=now
@@ -65,7 +66,10 @@ ggc () {
 alias gic="git rev-list --topo-order --parents HEAD | egrep '^[a-f0-9]{40}$'"
 
 alias ginit="git init"
-alias glog="git log"
+
+# git log
+# https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
+alias glog="git log --graph --branches --remotes --tags --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order"
 
 # return the name of the repository’s default branch
 # ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
@@ -101,6 +105,7 @@ git_default_branch () {(
   printf '%s' "${default_branch}"
 )}
 alias gdb="git_default_branch"
+alias gm="GIT_MERGE_VERBOSITY=4 git merge"
 alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue"
 
 # git merge main
@@ -115,12 +120,13 @@ gmm () {
 alias gmv="git mv --verbose"
 
 # git pull after @ohmyzsh `gupav` ohmyzsh/ohmyzsh@3d2542f
-alias gpl="git pull --all --rebase --autostash --verbose && git status"
-alias gpull="gpl"
+alias gpl="git pull --all --rebase --autostash --ff-only --verbose && git status"
 
 # git push after @ohmyzsh `gpsup` ohmyzsh/ohmyzsh@ae21102
 alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && git status'
-alias gpv="gps"
+
+alias grmr="git rm -r"
+alias grm="grmr"
 
 alias gsu="git submodule update --init --recursive --remote"
 alias gtake="git checkout -b"
@@ -150,16 +156,9 @@ gvc () {(
 )}
 
 
-# Python
-alias python="python3"
-alias pip="pip3"
-
-
 # shell
-
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp="cp -r"
-
 cy () {(
   # if within git repo, then auto-overwrite
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -183,34 +182,57 @@ cleanup () {(
     verbose=-print
   fi
 
-  # delete `.DS_Store` files recursively
-  find . -type f \
-      -name '.DS_Store' \
-      ${verbose} -delete
+  # delete thumbnail cache files
+  find -- . -type f \( \
+    -name '.DS_Store' -or \
+    -name 'Desktop.ini' -or \
+    -name 'desktop.ini' -or \
+    -name 'Thumbs.db' -or \
+    -name 'thumbs.db' \
+  \) \
+  $verbose -delete
 
-  # delete empty, zero-length files except those
-  # with specific names or within `.git/` directories
-  find . -type f -size 0 \
-      -not -path './.git/*' -and \
-      -not -path '*.gitkeep' -and \
-      -not -path '*hushlogin' -and \
-      -not -path '*lock' -and \
-      -not -path '*LOCK' -and \
-      -not -path '*lockfile' \
-      ${verbose} -delete
+  # delete empty, zero-length files
+  # except those with specific names
+  # or within `.git/` directories
+  find -- . -type f -size 0 \( \
+    -not -path '*/.git/*' -and \
+    -not -name '*.gitkeep' -and \
+    -not -name '*hushlogin' -and \
+    -not -name '*LOCK' -and \
+    -not -name '*lock' -and \
+    -not -name '*lockfile' \
+  \) \
+  $verbose -delete
 
-  # delete empty directories, except within `.git/`, recursively \
-  # https://stackoverflow.com/q/4210042#comment38334264_4210072 \
-  find -- . -type d -empty \
-      -not -path './.git/*' -and \
-      -not -path './.well-known/*' \
-      ${verbose} -delete
+  # delete empty directories recursively
+  # except those within `.git/` directories
+  # https://stackoverflow.com/q/4210042#comment38334264_4210072
+  find -- . -type d -empty \( \
+    -not -path '*/.git/*' -and \
+    -not -name '.well-known' \
+  \) \
+  $verbose -delete
 )}
 
-alias mv="mv -v -i" # https://unix.stackexchange.com/a/30950
+# find duplicate files
+# https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
+fdf () {(
+  find -- . -not -empty -type f -printf '%s\n' | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 sha512sum | sort | uniq -w32 --all-repeated=separate
+)}
+
+alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
+
+# https://unix.stackexchange.com/a/30950
+alias mv="mv -v -i"
+
 alias pwd="pwd -P"
-alias unixtime="date +%s" # https://stackoverflow.com/a/12312982
-alias which="which -a"
+
+# Unix epoch seconds
+# https://stackoverflow.com/a/12312982
+# date -j +%s # for milliseconds
+alias unixtime="date +%s"
+
 alias whcih="which"
 alias whihc="which"
 alias whuch="which"
@@ -218,8 +240,8 @@ alias wihch="which"
 
 # Zsh
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
-alias aliases='"${EDITOR:-vi}" "${ZSH:-${HOME}/.oh-my-${SHELL##*/}}/custom/aliases.${SHELL##*/}"; . "${HOME}/.${SHELL##*/}rc" && exec "${SHELL##*/}" --login'
-alias ohmyzsh='cd "${ZSH:-${HOME}/.oh-my-${SHELL##*/}}"'
-alias zshconfig='"${EDITOR:-vi}" "${HOME}/.${SHELL##*/}rc"; . "${HOME}/.${SHELL##*/}rc" && exec "${SHELL##*/}" --login'
-alias zshenv='"${EDITOR:-vi}" "${HOME}/.${SHELL##*/}env"; . "${HOME}/.${SHELL##*/}rc" && exec "${SHELL##*/}" --login'
-alias zshrc='"${SHELL##*/}config"'
+alias aliases='"${EDITOR:-vi}" "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/aliases.${0##*[-/]}"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
+alias ohmyzsh='cd "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}"'
+alias zshconfig='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
+alias zshenv='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}env"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
+alias zshrc='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
