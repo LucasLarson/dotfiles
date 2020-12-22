@@ -92,8 +92,7 @@ plugins=(
   gunstage
 )
 if [ Darwin = "$(uname)" ]; then
-  plugins=(
-    $plugins
+  plugins+=(
     zsh-syntax-highlighting
   )
 fi
