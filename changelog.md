@@ -7,6 +7,7 @@
 **Implemented enhancements:**
 
 - remove archival material from the version-control system [\#187](https://github.com/LucasLarson/dotfiles/issues/187)
+- `${SHELL\#\#\*/}` depends on user configuration; `${0\#\#\*\[-/\]}` does not [\#186](https://github.com/LucasLarson/dotfiles/issues/186)
 
 **Fixed bugs:**
 
@@ -15,6 +16,8 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
+- Update fkirc/skip-duplicate-actions action to v3.2.0 [\#194](https://github.com/LucasLarson/dotfiles/pull/194) ([renovate[bot]](https://github.com/apps/renovate))
 - remove archival and example content \(fix \#187\) [\#193](https://github.com/LucasLarson/dotfiles/pull/193) ([LucasLarson](https://github.com/LucasLarson))
 - Update fkirc/skip-duplicate-actions action to v3.1.0 [\#192](https://github.com/LucasLarson/dotfiles/pull/192) ([renovate[bot]](https://github.com/apps/renovate))
 - Update stefanzweifel/git-auto-commit-action action to v4.8.0 [\#191](https://github.com/LucasLarson/dotfiles/pull/191) ([renovate[bot]](https://github.com/apps/renovate))
@@ -33,10 +36,9 @@
 - Update github/super-linter action to v3.14.3 [\#172](https://github.com/LucasLarson/dotfiles/pull/172) ([renovate[bot]](https://github.com/apps/renovate))
 - Update github/super-linter action to v3.14.0 [\#169](https://github.com/LucasLarson/dotfiles/pull/169) ([renovate[bot]](https://github.com/apps/renovate))
 - add mega-linter workflow action [\#167](https://github.com/LucasLarson/dotfiles/pull/167) ([LucasLarson](https://github.com/LucasLarson))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `31ede3c` to `2c3bcd8` [\#166](https://github.com/LucasLarson/dotfiles/pull/166) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle from `97d29d2` to `d31bae2` [\#165](https://github.com/LucasLarson/dotfiles/pull/165) ([dependabot[bot]](https://github.com/apps/dependabot))
-- repair Dependabot [\#164](https://github.com/LucasLarson/dotfiles/pull/164) ([LucasLarson](https://github.com/LucasLarson))
+- Alpine Linux 2nd attempt resurrection [\#163](https://github.com/LucasLarson/dotfiles/pull/163) ([LucasLarson](https://github.com/LucasLarson))
 - add out-of-the-box `.bashrc` file from new Ubuntu installation [\#162](https://github.com/LucasLarson/dotfiles/pull/162) ([LucasLarson](https://github.com/LucasLarson))
+- add initialization script for Alpine Linux [\#161](https://github.com/LucasLarson/dotfiles/pull/161) ([LucasLarson](https://github.com/LucasLarson))
 
 ## [v0.5.2](https://github.com/LucasLarson/dotfiles/tree/v0.5.2) (2020-11-25)
 
@@ -128,6 +130,7 @@
 - bump @GitHub Super-Linter from v3.11.0 to v3.12.0 [\#86](https://github.com/LucasLarson/dotfiles/pull/86) ([LucasLarson](https://github.com/LucasLarson))
 - call `jsonlint-newline-fork` instead of `jsonlint` [\#85](https://github.com/LucasLarson/dotfiles/pull/85) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `060af91` to `9b981b8` [\#83](https://github.com/LucasLarson/dotfiles/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
+- replace `jsonlint` with `jsonlint-newline-fork` [\#82](https://github.com/LucasLarson/dotfiles/pull/82) ([LucasLarson](https://github.com/LucasLarson))
 
 ## [v0.4.3](https://github.com/LucasLarson/dotfiles/tree/v0.4.3) (2020-10-05)
 
@@ -139,7 +142,6 @@
 
 **Merged pull requests:**
 
-- replace `jsonlint` with `jsonlint-newline-fork` [\#82](https://github.com/LucasLarson/dotfiles/pull/82) ([LucasLarson](https://github.com/LucasLarson))
 - restore newline in JSON autofix [\#77](https://github.com/LucasLarson/dotfiles/pull/77) ([LucasLarson](https://github.com/LucasLarson))
 - \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair autofix for JSON [\#75](https://github.com/LucasLarson/dotfiles/pull/75) ([LucasLarson](https://github.com/LucasLarson))
