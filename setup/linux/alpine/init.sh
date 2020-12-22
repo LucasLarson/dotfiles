@@ -132,7 +132,7 @@ apk upgrade --verbose --progress
 printf '\nrepairing and resolving dependencies...\n'
 apk fix --verbose --verbose --depends --progress
 printf '\nverifying installations...\n'
-apk verify --verbose --verbose --progress
+apk verify --verbose --verbose --progress && printf 'verified.\n'
 command -v pip >/dev/null 2>&1 && (
   printf '\nupdating Python\xe2\x80\x99s package manager...\n'
   python3 -m pip install --upgrade pip
