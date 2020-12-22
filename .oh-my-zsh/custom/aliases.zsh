@@ -238,7 +238,6 @@ alias whihc="which"
 alias whuch="which"
 alias wihch="which"
 
-# Zsh
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 alias aliases='"${EDITOR:-vi}" "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/aliases.${0##*[-/]}"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
 alias ohmyzsh='cd "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}"'
