@@ -206,8 +206,8 @@ cleanup () {(
   $verbose -delete
 
   # delete empty directories recursively
-  # except those within `.git/` directories
   # https://stackoverflow.com/q/4210042#comment38334264_4210072
+  # but skip Git-specific and `/.well-known/` directories
   find -- . -type d -empty \( \
     -not -path '*/.git/*' -and \
     -not -name '.well-known' \
