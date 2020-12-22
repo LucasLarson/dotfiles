@@ -74,6 +74,12 @@ command -v git >/dev/null 2>&1 || (
   apk add git git-doc
 )
 
+# git add --patch
+[ -x /usr/libexec/git-core/git-add--interactive ] || (
+  # https://stackoverflow.com/a/57632778
+  apk add git-perl
+)
+
 # time zone
 printf '\nupdating time zone information...\n'
 apk add --no-cache tzdata tzdata-doc
