@@ -150,4 +150,4 @@ sleep 0.5
 printf '\nrestarting...\n'
 sleep 1
 printf '\ndone!\n'
-exec "${0##*[-/]}" -l || exit
+exit
