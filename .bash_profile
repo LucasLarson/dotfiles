@@ -39,3 +39,9 @@ export HOMEBREW_GITHUB_API_TOKEN
 export HOMEBREW_GITHUB_API_TOKEN
 
 export HOMEBREW_GITHUB_API_TOKEN
+
+### Bashhub.com Installation.
+### This Should be at the EOF. https://bashhub.com/docs
+if [ -f ~/.bashhub/bashhub.sh ]; then
+    source ~/.bashhub/bashhub.sh
+fi
