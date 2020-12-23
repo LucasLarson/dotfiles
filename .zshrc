@@ -170,7 +170,8 @@ alias edit="editor"
 # GPG signing with macOS-compatible Linux
 # https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key
 # https://reddit.com/comments/dk53ow/_/f50146x
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 
 # Homebrew
