@@ -183,6 +183,9 @@ export GPG_TTY=$(tty)
 # https://apple.stackexchange.com/a/135749
 [ -d /usr/local/opt/coreutils/libexec/gnubin ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
+# GNU Find Utils
+# for `find`, `xargs`, `locate`
+[ -d /usr/local/opt/findutils/libexec/gnubin ] && PATH="/usr/local/opt/findutils/libexec/gnubin:${PATH}"
 
 # grep
 # use latest via Homebrew but without the `g` prefix
