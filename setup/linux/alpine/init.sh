@@ -139,7 +139,7 @@ command -v pip >/dev/null 2>&1 && (
 )
 
 # cleanup
-printf '\n\ncleaning up temporary installation files...\n'
+printf '\n\ncleaning up temporary installation files and housekeeping...\n'
 [ -e apk.static ] && rm apk.static
 [ -e get-pip.py ] && rm get-pip.py
 
