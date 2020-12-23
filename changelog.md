@@ -4,6 +4,11 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.2...HEAD)
 
+**Implemented enhancements:**
+
+- remove archival material from the version-control system [\#187](https://github.com/LucasLarson/dotfiles/issues/187)
+- `${SHELL\#\#\*/}` depends on user configuration; `${0\#\#\*\[-/\]}` does not [\#186](https://github.com/LucasLarson/dotfiles/issues/186)
+
 **Fixed bugs:**
 
 - hardcoded references to `edit` will break [\#177](https://github.com/LucasLarson/dotfiles/issues/177)
@@ -11,6 +16,11 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
+- Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
+- Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
+- Update fkirc/skip-duplicate-actions action to v3.2.0 [\#194](https://github.com/LucasLarson/dotfiles/pull/194) ([renovate[bot]](https://github.com/apps/renovate))
+- remove archival and example content \(fix \#187\) [\#193](https://github.com/LucasLarson/dotfiles/pull/193) ([LucasLarson](https://github.com/LucasLarson))
 - Update fkirc/skip-duplicate-actions action to v3.1.0 [\#192](https://github.com/LucasLarson/dotfiles/pull/192) ([renovate[bot]](https://github.com/apps/renovate))
 - Update stefanzweifel/git-auto-commit-action action to v4.8.0 [\#191](https://github.com/LucasLarson/dotfiles/pull/191) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.16.0 [\#188](https://github.com/LucasLarson/dotfiles/pull/188) ([renovate[bot]](https://github.com/apps/renovate))
@@ -28,10 +38,9 @@
 - Update github/super-linter action to v3.14.3 [\#172](https://github.com/LucasLarson/dotfiles/pull/172) ([renovate[bot]](https://github.com/apps/renovate))
 - Update github/super-linter action to v3.14.0 [\#169](https://github.com/LucasLarson/dotfiles/pull/169) ([renovate[bot]](https://github.com/apps/renovate))
 - add mega-linter workflow action [\#167](https://github.com/LucasLarson/dotfiles/pull/167) ([LucasLarson](https://github.com/LucasLarson))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `31ede3c` to `2c3bcd8` [\#166](https://github.com/LucasLarson/dotfiles/pull/166) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle from `97d29d2` to `d31bae2` [\#165](https://github.com/LucasLarson/dotfiles/pull/165) ([dependabot[bot]](https://github.com/apps/dependabot))
-- repair Dependabot [\#164](https://github.com/LucasLarson/dotfiles/pull/164) ([LucasLarson](https://github.com/LucasLarson))
+- Alpine Linux 2nd attempt resurrection [\#163](https://github.com/LucasLarson/dotfiles/pull/163) ([LucasLarson](https://github.com/LucasLarson))
 - add out-of-the-box `.bashrc` file from new Ubuntu installation [\#162](https://github.com/LucasLarson/dotfiles/pull/162) ([LucasLarson](https://github.com/LucasLarson))
+- add initialization script for Alpine Linux [\#161](https://github.com/LucasLarson/dotfiles/pull/161) ([LucasLarson](https://github.com/LucasLarson))
 
 ## [v0.5.2](https://github.com/LucasLarson/dotfiles/tree/v0.5.2) (2020-11-25)
 
