@@ -97,6 +97,11 @@ if [ Darwin = "$(uname)" ]; then
   )
 fi
 
+# trapd00r/LS_COLORS: .dircolors to override Oh My Zsh’s `ls -G` for coreutils
+# https://github.com/ohmyzsh/ohmyzsh/blob/d0d01c0/lib/theme-and-appearance.zsh
+# https://github.com/trapd00r/LS_COLORS/tree/6a4d29b#installation
+# https://github.com/paulirish/dotfiles/blob/ccccd07/.dircolors
+[ -e "${HOME}/.local/share/lscolors.sh" ] && . "${HOME}/.local/share/lscolors.sh"
 
 . "${ZSH}/oh-my-zsh.sh"
 
