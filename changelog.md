@@ -16,6 +16,8 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
+- Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.2.0 [\#194](https://github.com/LucasLarson/dotfiles/pull/194) ([renovate[bot]](https://github.com/apps/renovate))
 - remove archival and example content \(fix \#187\) [\#193](https://github.com/LucasLarson/dotfiles/pull/193) ([LucasLarson](https://github.com/LucasLarson))
@@ -199,6 +201,7 @@
 **Implemented enhancements:**
 
 - add @GitHub standard issue templates [\#41](https://github.com/LucasLarson/dotfiles/pull/41) ([LucasLarson](https://github.com/LucasLarson))
+- add, remove @GitHub’s CodeQL [\#22](https://github.com/LucasLarson/dotfiles/pull/22) ([LucasLarson](https://github.com/LucasLarson))
 - add @GitHub Super-Linter [\#20](https://github.com/LucasLarson/dotfiles/pull/20) ([LucasLarson](https://github.com/LucasLarson))
 
 **Merged pull requests:**
@@ -225,10 +228,6 @@
 ## [v0.3.0](https://github.com/LucasLarson/dotfiles/tree/v0.3.0) (2020-07-15)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.2.0...v0.3.0)
-
-**Implemented enhancements:**
-
-- add, remove @GitHub’s CodeQL [\#22](https://github.com/LucasLarson/dotfiles/pull/22) ([LucasLarson](https://github.com/LucasLarson))
 
 **Closed issues:**
 
