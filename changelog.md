@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/LucasLarson/dotfiles/tree/HEAD)
+
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.3...HEAD)
+
+**Merged pull requests:**
+
+- Update peter-evans/create-pull-request action to v3.6.0 [\#198](https://github.com/LucasLarson/dotfiles/pull/198) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v0.5.3](https://github.com/LucasLarson/dotfiles/tree/v0.5.3) (2020-12-23)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.2...v0.5.3)
@@ -170,7 +178,6 @@
 - Bump .oh-my-zsh/custom/plugins/gunstage from `0897849` to `b14876e` [\#64](https://github.com/LucasLarson/dotfiles/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/checkout requirement to v2.3.3 [\#62](https://github.com/LucasLarson/dotfiles/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump gaurav-nelson/github-action-markdown-link-check from v1.0.7 to 1.0.7 [\#61](https://github.com/LucasLarson/dotfiles/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.1](https://github.com/LucasLarson/dotfiles/tree/v0.4.1) (2020-09-23)
 
@@ -178,6 +185,7 @@
 
 **Merged pull requests:**
 
+- Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `945a464` to `0897849` [\#59](https://github.com/LucasLarson/dotfiles/pull/59) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `3b77282` to `71b39f0` [\#58](https://github.com/LucasLarson/dotfiles/pull/58) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `f14b58e` to `3b77282` [\#57](https://github.com/LucasLarson/dotfiles/pull/57) ([dependabot[bot]](https://github.com/apps/dependabot))
