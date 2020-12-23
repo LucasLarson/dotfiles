@@ -164,7 +164,7 @@ export GPG_TTY
 
 
 # GNU Core Utils
-# for using Linux’s `date`, `cat`, `ln`
+# for `date`, `cat`, `ln`
 # https://apple.stackexchange.com/a/135749
 [ -d /usr/local/opt/coreutils/libexec/gnubin ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
