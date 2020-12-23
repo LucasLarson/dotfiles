@@ -111,6 +111,12 @@ fi
 
 
 
+# MANPATH
+# export MANPATH="/usr/local/man:${MANPATH}"
+[ -z "${MANPATH}" ] && MANPATH="$(man -w)"
+export MANPATH
+
+
 # $EDITOR: access favorite with `edit`
 # Set preferred editor if it is available
 # https://stackoverflow.com/a/14755066
@@ -132,10 +138,6 @@ alias edit="editor"
 # https://unix.stackexchange.com/a/4861
 VISUAL="${EDITOR}"
 export VISUAL
-
-
-# export MANPATH="/usr/local/man:${MANPATH}"
-
 
 # $EDITOR: access favorite with `edit`
 # set preferred editor if it is available
@@ -208,10 +210,6 @@ export GPG_TTY
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES="${HOME}/.npm-packages"
 export PATH="${NPM_PACKAGES}/bin:${PATH}"
-unset MANPATH # delete if you already modified MANPATH elsewhere
-if [ $manpath ]; then
-  export MANPATH="${NPM_PACKAGES}/share/man:$(manpath)"
-fi
 
 
 # RVM and rbenv are incompatible and shell references to RVM have to be removed
