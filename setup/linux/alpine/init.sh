@@ -142,7 +142,38 @@ command -v pip >/dev/null 2>&1 && (
 printf '\n\ncleaning up temporary installation files...\n'
 [ -e apk.static ] && rm apk.static
 [ -e get-pip.py ] && rm get-pip.py
-find -- . -empty -delete
+
+# delete thumbnail cache files
+find -- . -type f \( \
+  -name '.DS_Store' -or \
+  -name 'Desktop.ini' -or \
+  -name 'desktop.ini' -or \
+  -name 'Thumbs.db' -or \
+  -name 'thumbs.db' \
+\) \
+-delete
+
+# delete empty, zero-length files
+# except those with specific names
+# or within `.git/` directories
+find -- . -type f -size 0 \( \
+  -not -path '*/.git/*' -and \
+  -not -name '*.gitkeep' -and \
+  -not -name '*hushlogin' -and \
+  -not -name '*LOCK' -and \
+  -not -name '*lock' -and \
+  -not -name '*lockfile' \
+\) \
+-delete
+
+# delete empty directories recursively
+# except those within `.git/` directories
+# https://stackoverflow.com/q/4210042#comment38334264_4210072
+find -- . -type d -empty \( \
+  -not -path '*/.git/*' -and \
+  -not -name '.well-known' \
+\) \
+-delete
 
 # done
 printf '\ninitialization complete\n'
