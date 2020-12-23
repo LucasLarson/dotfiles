@@ -16,6 +16,7 @@
 
 **Merged pull requests:**
 
+- Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.2.0 [\#194](https://github.com/LucasLarson/dotfiles/pull/194) ([renovate[bot]](https://github.com/apps/renovate))
 - remove archival and example content \(fix \#187\) [\#193](https://github.com/LucasLarson/dotfiles/pull/193) ([LucasLarson](https://github.com/LucasLarson))
@@ -98,7 +99,6 @@
 - add Contributor Covenant Code of Conduct for Pedants [\#112](https://github.com/LucasLarson/dotfiles/pull/112) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `2ea3356` to `aa6d40b` [\#111](https://github.com/LucasLarson/dotfiles/pull/111) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `74c6e18` to `2ea3356` [\#110](https://github.com/LucasLarson/dotfiles/pull/110) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `49d5617` to `74c6e18` [\#109](https://github.com/LucasLarson/dotfiles/pull/109) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `68c89ec` to `49d5617` [\#108](https://github.com/LucasLarson/dotfiles/pull/108) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.5.0](https://github.com/LucasLarson/dotfiles/tree/v0.5.0) (2020-10-25)
@@ -130,7 +130,6 @@
 - bump @GitHub Super-Linter from v3.11.0 to v3.12.0 [\#86](https://github.com/LucasLarson/dotfiles/pull/86) ([LucasLarson](https://github.com/LucasLarson))
 - call `jsonlint-newline-fork` instead of `jsonlint` [\#85](https://github.com/LucasLarson/dotfiles/pull/85) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `060af91` to `9b981b8` [\#83](https://github.com/LucasLarson/dotfiles/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
-- replace `jsonlint` with `jsonlint-newline-fork` [\#82](https://github.com/LucasLarson/dotfiles/pull/82) ([LucasLarson](https://github.com/LucasLarson))
 
 ## [v0.4.3](https://github.com/LucasLarson/dotfiles/tree/v0.4.3) (2020-10-05)
 
@@ -142,6 +141,7 @@
 
 **Merged pull requests:**
 
+- replace `jsonlint` with `jsonlint-newline-fork` [\#82](https://github.com/LucasLarson/dotfiles/pull/82) ([LucasLarson](https://github.com/LucasLarson))
 - restore newline in JSON autofix [\#77](https://github.com/LucasLarson/dotfiles/pull/77) ([LucasLarson](https://github.com/LucasLarson))
 - \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair autofix for JSON [\#75](https://github.com/LucasLarson/dotfiles/pull/75) ([LucasLarson](https://github.com/LucasLarson))
