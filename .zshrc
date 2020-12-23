@@ -10,7 +10,7 @@ fi
 # export PATH=${HOME}/bin:/usr/local/bin:${PATH}
 
 # Path to your oh-my-zsh installation.
-export ZSH=${HOME}/.oh-my-zsh
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -39,7 +39,7 @@ fi
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 DISABLE_UPDATE_PROMPT="true"
@@ -79,12 +79,12 @@ HIST_STAMPS="yyyy-mm-dd"
 export HISTSIZE=2147483647
 export SAVEHIST=${HISTSIZE}
 
-# Use a custom folder other than ${ZSH}/custom
+# Use a custom folder other than $ZSH/custom
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ${ZSH}/plugins
-# Custom plugins may be added to ${ZSH_CUSTOM}/plugins
+# Standard plugins can be found in $ZSH/plugins
+# Custom plugins may be added to $ZSH_CUSTOM/plugins
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
@@ -92,8 +92,7 @@ plugins=(
   gunstage
 )
 if [ Darwin = "$(uname)" ]; then
-  plugins=(
-    $plugins
+  plugins+=(
     zsh-syntax-highlighting
   )
 fi
@@ -132,6 +131,25 @@ export VISUAL
 
 # export MANPATH="/usr/local/man:${MANPATH}"
 
+
+# $EDITOR: access favorite with `edit`
+# set preferred editor if it is available
+# https://stackoverflow.com/a/14755066
+# https://github.com/wililupy/snapd/commit/0573e7b
+if command -v nvim >/dev/null 2>&1; then
+  EDITOR="nvim"
+elif command -v vim >/dev/null 2>&1; then
+  EDITOR="vim"
+elif command -v vi >/dev/null 2>&1; then
+  EDITOR="vi"
+else
+  EDITOR="nano"
+fi
+export EDITOR
+# https://github.com/koalaman/shellcheck/wiki/SC2139/db553bf16fcb86b2cdc77b835e75b9121eacc429#this-expands-when-defined-not-when-used-consider-escaping
+alias editor='$EDITOR'
+alias edit="editor"
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -141,7 +159,7 @@ export VISUAL
 
 
 # iTerm
-test -e "${HOME}/.iterm2_shell_integration.zsh" && . "${HOME}/.iterm2_shell_integration.zsh"
+[ -e "${HOME}/.iterm2_shell_integration.zsh" ] && . "${HOME}/.iterm2_shell_integration.zsh"
 
 
 # GPG signing with macOS-compatible Linux
@@ -223,6 +241,15 @@ setopt globdots
 # https://unix.stackexchange.com/q/308315#comment893697_308322
 zstyle ':completion:*' special-dirs false
 
+# zsh-completions
+# https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
+#
+# https://github.com/zsh-users/zsh-completions/tree/f68950a#oh-my-zsh
+if [ -d ${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/plugins/zsh-completions/src ]; then
+  FPATH="${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/plugins/zsh-completions/src:${FPATH}"
+  autoload -Uz compinit
+  compinit
+fi
 
 # share all commands from everywhere
 # https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
