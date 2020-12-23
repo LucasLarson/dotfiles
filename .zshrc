@@ -117,6 +117,10 @@ fi
 export MANPATH
 
 
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+
 # $EDITOR: access favorite with `edit`
 # Set preferred editor if it is available
 # https://stackoverflow.com/a/14755066
@@ -138,11 +142,6 @@ alias edit="editor"
 # https://unix.stackexchange.com/a/4861
 VISUAL="${EDITOR}"
 export VISUAL
-
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
