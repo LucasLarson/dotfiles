@@ -208,7 +208,6 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 # dotfiles
 # set to where they are syncing if it exists, or else use the default: $HOME
 # https://github.com/ohmyzsh/ohmyzsh/blob/5ffc0d0/oh-my-zsh.sh#L20-L24
-# https://gnu.org/software/bash/manual/bash#Bash-Conditional-Expressions
 # https://stackoverflow.com/a/13408590
 if [ -z "${DOTFILES}" ] || [ -e "${HOME}/Dropbox/dotfiles" ]; then
   export DOTFILES=${HOME}/Dropbox/dotfiles
