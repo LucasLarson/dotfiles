@@ -16,14 +16,14 @@ alias apm="apm-nightly"
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 alias mu=" \
   cd \"${DOTFILES:-${HOME}/Dropbox/dotfiles}\" && \
-  cleanup && \
+  (command -v cleanup >/dev/null 2>&1 && cleanup) && \
   mackup backup --force --root && \
   git fetch --all && \
   git submodule update --init --recursive && \
   git status"
 alias mux=" \
   cd \"${DOTFILES:-${HOME}/Dropbox/dotfiles}\" && \
-  cleanup && \
+  (command -v cleanup >/dev/null 2>&1 && cleanup) && \
   mackup backup --force --root --verbose && \
   git fetch --all --verbose && \
   git submodule update --init --recursive --remote && \
@@ -51,7 +51,7 @@ gdm () {
 }
 alias gfgs="git fetch --all --verbose && git status"
 ggc () {
-  cleanup
+  (command -v cleanup >/dev/null 2>&1 && cleanup)
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
     git gc --aggressive --prune=now
@@ -133,7 +133,7 @@ alias gtake="git checkout -b"
 alias gti="git"
 
 gu () {
-  cleanup
+  (command -v cleanup >/dev/null 2>&1 && cleanup)
 
   # run only from within a git repository
   # https://stackoverflow.com/a/53809163
