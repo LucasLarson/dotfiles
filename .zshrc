@@ -195,7 +195,7 @@ export GPG_TTY
 # npm without sudo
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES="${HOME}/.npm-packages"
-export PATH="${NPM_PACKAGES}/bin:${PATH}"
+[ -d "${NPM_PACKAGES}/bin" ] && PATH="${NPM_PACKAGES}/bin:${PATH}"
 
 
 # RVM and rbenv are incompatible and shell references to RVM have to be removed
