@@ -91,7 +91,7 @@ plugins=(
   git
   gunstage
 )
-if [ Darwin = "$(uname)" ]; then
+if [ "$(uname)" = Darwin ]; then
   plugins+=(
     zsh-syntax-highlighting
   )
