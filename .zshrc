@@ -249,7 +249,8 @@ setopt share_history
 
 
 # pyenv
-command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
+# https://git.io/init_-_--no-rehash
+command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init - --no-rehash "${SHELL##*[-/]}")"
 
 
 # C, C++ headers
@@ -274,8 +275,9 @@ fi
 
 # rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
+# https://git.io/init_-_--no-rehash
 # export PATH="${HOME}/.rbenv/bin:${PATH}"
-command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init -)"
+command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - --no-rehash "${SHELL##*[-/]}")"
 
 
 # avoid `$PATH` duplicates
