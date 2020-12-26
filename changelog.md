@@ -6,6 +6,8 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/plugins/zsh-syntax-highlighting from `1715f39` to `5eb4948` [\#202](https://github.com/LucasLarson/dotfiles/pull/202) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `e8afa80` to `d524164` [\#201](https://github.com/LucasLarson/dotfiles/pull/201) ([dependabot[bot]](https://github.com/apps/dependabot))
 - reactivate @Dependabot [\#200](https://github.com/LucasLarson/dotfiles/pull/200) ([LucasLarson](https://github.com/LucasLarson))
 - Update peter-evans/create-pull-request action to v3.6.0 [\#198](https://github.com/LucasLarson/dotfiles/pull/198) ([renovate[bot]](https://github.com/apps/renovate))
 
