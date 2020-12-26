@@ -500,8 +500,12 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 ### Xcode, JetBrains, Carthage
 
 ```zsh
-trashDeveloper=1 && sleep 0.25 && mkdir --parents ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir --parents ~/Library/Developer/Xcode/UserData/IB\ Support && mv ~/Library/Developer/Xcode/UserData/IB\ Support ~/.Trash/Xcode⁄UserData⁄IB\ Support-$RANDOM && mkdir --parents ~/Library/Caches/JetBrains && \
-mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && mkdir --parents ~/Library/Caches/org.carthage.CarthageKit/DerivedData && mv ~/Library/Caches/org.carthage.CarthageKit/DerivedData ~/.Trash/Carthage-$RANDOM && unset trashDeveloper && printf '\n\n\xf0\x9f%s\x9a\xae data successfully trashed\n\n' "$trashDeveloper"
+trashDeveloper=1 && sleep 0.25 && \
+mkdir --parents "${HOME}/Library/Developer/Xcode/DerivedData" && mv "${HOME}/Library/Developer/Xcode/DerivedData" "${HOME}/.Trash/Xcode-${RANDOM}" && \
+mkdir --parents "${HOME}/Library/Developer/Xcode/UserData/IB Support" && mv "${HOME}/Library/Developer/Xcode/UserData/IB Support" "${HOME}/.Trash/Xcode⁄UserData⁄IB Support-${RANDOM}" && \
+mkdir --parents "${HOME}/Library/Caches/JetBrains" && mv "${HOME}/Library/Caches/JetBrains" "${HOME}/.Trash/JetBrains-${RANDOM}" && \
+mkdir --parents "${HOME}/Library/Caches/org.carthage.CarthageKit/DerivedData" && mv "${HOME}/Library/Caches/org.carthage.CarthageKit/DerivedData" "${HOME}/.Trash/Carthage-${RANDOM}" && \
+unset trashDeveloper && printf '\n\n\xf0\x9f%s\x9a\xae data successfully trashed\n\n' "${trashDeveloper:-"$(printf '')"}"
 ```
 
 ## delete
