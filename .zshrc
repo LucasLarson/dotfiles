@@ -286,6 +286,9 @@ fi
 # export PATH="${HOME}/.rbenv/bin:${PATH}"
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - --no-rehash "${SHELL##*[-/]}")"
 
+# Radicle
+# https://github.com/radicle-dev/radicle-docs/blob/a0f08f4/docs/getting-started/doc1-1.md#configuring-your-system
+[ -d "${HOME}/.radicle/bin" ] && PATH="${HOME}/.radicle/bin:${PATH}"
 
 # avoid `$PATH` duplicates
 # https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
