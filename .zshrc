@@ -276,6 +276,10 @@ fi
 # if it’s a directory, then assign it the name `ANDROID_SDK_ROOT`
 [ -d "${HOME}/Library/Android/sdk" ] && export ANDROID_SDK_ROOT=${HOME}/Library/Android/sdk
 
+# pip
+# location of Python packages on Linux
+[ -d "${HOME}/.local/bin" ] && PATH="${HOME}/.local/bin:${PATH}"
+
 # rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # https://git.io/init_-_--no-rehash
