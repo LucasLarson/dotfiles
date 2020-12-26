@@ -182,6 +182,9 @@ export GPG_TTY
 # https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
 [ -d /usr/local/opt/make/libexec/gnubin ] && PATH="/usr/local/opt/make/libexec/gnubin:${PATH}"
 
+# sed
+# https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
+[ -d /usr/local/opt/gnu-sed/libexec/gnubin ] && PATH="/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}"
 
 # Rust Cargo
 # if its `bin` is a directory, then add it to the $PATH
