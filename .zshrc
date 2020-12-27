@@ -116,10 +116,8 @@ fi
 [ -z "${MANPATH}" ] && MANPATH="$(man -w)"
 export MANPATH
 
-
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
 
 # $EDITOR: access favorite with `edit`
 # Set preferred editor if it is available
@@ -146,10 +144,8 @@ export VISUAL
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-
 # iTerm
 [ -e "${HOME}/.iterm2_shell_integration.zsh" ] && . "${HOME}/.iterm2_shell_integration.zsh"
-
 
 # GPG signing with macOS-compatible Linux
 # https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key
@@ -157,11 +153,9 @@ export VISUAL
 GPG_TTY=$(tty)
 export GPG_TTY
 
-
 # Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
 [ -d /usr/local/sbin ] && PATH="/usr/local/sbin:${PATH}"
-
 
 # GNU Core Utils
 # for `date`, `cat`, `ln`
@@ -190,16 +184,13 @@ export GPG_TTY
 # if its `bin` is a directory, then add it to the $PATH
 [ -d "${HOME}/.cargo/bin" ] && export PATH="${HOME}/.cargo/bin:${PATH}"
 
-
 # Bashhub.com
 [ -e "${HOME}/.bashhub/bashhub.zsh" ] && . "${HOME}/.bashhub/bashhub.zsh"
-
 
 # npm without sudo
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES="${HOME}/.npm-packages"
 [ -d "${NPM_PACKAGES}/bin" ] && PATH="${NPM_PACKAGES}/bin:${PATH}"
-
 
 # RVM and rbenv are incompatible and shell references to RVM have to be removed
 # https://github.com/rbenv/rbenv/blob/577f046/README.md#installation
@@ -250,11 +241,9 @@ fi
 # https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
 setopt share_history
 
-
 # pyenv
 # https://git.io/init_-_--no-rehash
 command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init - --no-rehash "${SHELL##*[-/]}")"
-
 
 # C, C++ headers
 # https://apple.stackexchange.com/a/372600
@@ -262,7 +251,6 @@ if command -v xcrun >/dev/null 2>&1; then
   CPATH=$(xcrun --show-sdk-path)/usr/include
   export CPATH
 fi
-
 
 # Flutter
 # https://github.com/flutter/website/blob/e5f725c/src/docs/get-started/install/_path-mac.md#user-content-update-your-path
@@ -273,6 +261,8 @@ if [ -x "${HOME}/Code/Flutter/bin/flutter" ]; then
     PATH=${PATH}:${HOME}/Code/Flutter/bin
   fi
 fi
+
+# Android SDK
 # if it’s a directory, then assign it the name `ANDROID_SDK_ROOT`
 [ -d "${HOME}/Library/Android/sdk" ] && export ANDROID_SDK_ROOT=${HOME}/Library/Android/sdk
 
@@ -295,7 +285,6 @@ command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - --no-rehash "${SHELL##*
 [ -n "${ZSH_VERSION}" ] && typeset -U path
 # export PATH for other sessions
 export PATH
-
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [ ! -f "${HOME}/.p10k.zsh" ] || . "${HOME}/.p10k.zsh"
