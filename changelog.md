@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/plugins/zsh-completions from `2e009c7` to `44c5bce` [\#204](https://github.com/LucasLarson/dotfiles/pull/204) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.19.0 [\#203](https://github.com/LucasLarson/dotfiles/pull/203) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-syntax-highlighting from `1715f39` to `5eb4948` [\#202](https://github.com/LucasLarson/dotfiles/pull/202) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e8afa80` to `d524164` [\#201](https://github.com/LucasLarson/dotfiles/pull/201) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -25,10 +26,6 @@
 
 - hardcoded references to `edit` will break [\#177](https://github.com/LucasLarson/dotfiles/issues/177)
 - regression: `find -size 0` doesn’t find all empty directories [\#170](https://github.com/LucasLarson/dotfiles/issues/170)
-
-**Closed issues:**
-
-- verify `~/.cargo/bin` exists before adding to `$PATH` [\#68](https://github.com/LucasLarson/dotfiles/issues/68)
 
 **Merged pull requests:**
 
@@ -129,7 +126,6 @@
 **Merged pull requests:**
 
 - Bump .oh-my-zsh/custom/plugins/gunstage from `a02fabd` to `3f287df` [\#105](https://github.com/LucasLarson/dotfiles/pull/105) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `de0e022` to `68c89ec` [\#104](https://github.com/LucasLarson/dotfiles/pull/104) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace tabs with two spaces for `editorconfig-checker` compliance [\#103](https://github.com/LucasLarson/dotfiles/pull/103) ([LucasLarson](https://github.com/LucasLarson))
 - Update github/super-linter action to v3.13.2 [\#102](https://github.com/LucasLarson/dotfiles/pull/102) ([renovate[bot]](https://github.com/apps/renovate))
 - Update gaurav-nelson/github-action-markdown-link-check action to v1.0.8 [\#99](https://github.com/LucasLarson/dotfiles/pull/99) ([renovate[bot]](https://github.com/apps/renovate))
@@ -171,6 +167,10 @@
 **Implemented enhancements:**
 
 - add Rust Cargo bin to $PATH only if it exists \(fix \#68\) [\#71](https://github.com/LucasLarson/dotfiles/pull/71) ([LucasLarson](https://github.com/LucasLarson))
+
+**Closed issues:**
+
+- verify `~/.cargo/bin` exists before adding to `$PATH` [\#68](https://github.com/LucasLarson/dotfiles/issues/68)
 
 **Merged pull requests:**
 
