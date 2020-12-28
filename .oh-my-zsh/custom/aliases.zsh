@@ -107,8 +107,10 @@ git_default_branch () {(
   printf '%s' "${default_branch}"
 )}
 alias gdb="git_default_branch"
-alias gm="GIT_MERGE_VERBOSITY=4 git merge"
-alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue"
+
+# https://news.ycombinator.com/item?id=5512864
+alias gm="GIT_MERGE_VERBOSITY=4 git merge --strategy-option patience"
+alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue --strategy-option patience"
 
 # git merge main
 gmm () {
