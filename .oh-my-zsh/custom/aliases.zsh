@@ -232,6 +232,14 @@ alias mv="mv -v -i"
 
 alias pwd="pwd -P"
 
+# take
+# https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
+take () {
+  mkdir -p -v -- "$@" &&
+  printf 'cd: changed directory to \x27%s\x27\n' "${@:$#}" &&
+  cd -- "${@:$#}" || return 1
+}
+
 # Unix epoch seconds
 # https://stackoverflow.com/a/12312982
 # date -j +%s # for milliseconds
