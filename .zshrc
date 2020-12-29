@@ -281,9 +281,11 @@ command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - --no-rehash "${SHELL##*
 # https://github.com/radicle-dev/radicle-docs/blob/a0f08f4/docs/getting-started/doc1-1.md#configuring-your-system
 [ -d "${HOME}/.radicle/bin" ] && PATH="${HOME}/.radicle/bin:${PATH}"
 
-# avoid `$PATH` duplicates
+# automatically remove PATH duplicates
 # https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
-[ -n "${ZSH_VERSION}" ] && typeset -U path
+# https://github.com/zsh-users/zsh/blob/a9061cc/StartupFiles/zshrc#L56-L57
+# https://github.com/zsh-users/zsh/commit/db3f2d2
+[ -n "${ZSH_VERSION}" ] && typeset -U PATH path CDPATH cdpath FPATH fpath MANPATH manpath
 # export PATH for other sessions
 export PATH
 
