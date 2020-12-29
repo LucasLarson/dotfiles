@@ -259,7 +259,7 @@ fi
 # and `flutter`’s not in the PATH, then add it
 if [ -x "${HOME}/Code/Flutter/bin/flutter" ]; then
   if ! command -v flutter >/dev/null 2>&1; then
-    PATH=${PATH}:${HOME}/Code/Flutter/bin
+    PATH="${PATH}:${HOME}/Code/Flutter/bin"
   fi
 fi
 
