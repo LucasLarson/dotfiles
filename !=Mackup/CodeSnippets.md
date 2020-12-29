@@ -477,6 +477,9 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## housekeeping
 
+### Docker
+`docker system prune --all #` [via](https://news.ycombinator.com/item?id=25547876#25547876)
+
 ### Flutter
 
 `cd ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose`
