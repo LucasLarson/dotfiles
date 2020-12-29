@@ -477,6 +477,10 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## housekeeping
 
+### Flutter
+
+`cd ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose`
+
 ### Homebrew
 
 `brew doctor --debug --verbose && \`<br/>
@@ -492,10 +496,6 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 ### RubyGems
 
 `gem cleanup --verbose`
-
-### Flutter
-
-`cd ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose`
 
 ### Xcode, JetBrains, Carthage
 
