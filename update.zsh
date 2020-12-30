@@ -122,7 +122,7 @@ elif [ Linux = "$(uname)" ]; then
 
 fi # Linux
 
-omz update
+command -v omz >/dev/null 2>&1 && ( omz update )
 
 . "${HOME}/.${SHELL##*/}rc" && rehash
 
