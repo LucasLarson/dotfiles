@@ -107,8 +107,10 @@ git_default_branch () {(
   printf '%s' "${default_branch}"
 )}
 alias gdb="git_default_branch"
-alias gm="GIT_MERGE_VERBOSITY=4 git merge"
-alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue"
+
+# https://news.ycombinator.com/item?id=5512864
+alias gm="GIT_MERGE_VERBOSITY=4 git merge --strategy-option patience"
+alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue --strategy-option patience"
 
 # git merge main
 gmm () {
@@ -229,6 +231,14 @@ alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
 alias mv="mv -v -i"
 
 alias pwd="pwd -P"
+
+# take
+# https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
+take () {
+  mkdir -p -v -- "$@" &&
+  printf 'cd: changed directory to \x27%s\x27\n' "${@:$#}" &&
+  cd -- "${@:$#}" || return 1
+}
 
 # Unix epoch seconds
 # https://stackoverflow.com/a/12312982
