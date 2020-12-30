@@ -93,7 +93,7 @@
 update=1 && clear && printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n' &&
 printf '\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n' && sleep 1 && \
 printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n' && sleep 0.5 && (ping -q -i1 -c1 one.one.one.one &>/dev/null && ping -q -i1 -c1 8.8.8.8 &>/dev/null) || (printf 'No internet connection was detected.\nAborting update.\n' && return $update) && \
-printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && brew upgrade && brew upgrade --cask && xcrun simctl delete unavailable && omz update && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && \
+printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && brew upgrade && brew upgrade --cask && xcrun simctl delete unavailable && command -v omz >/dev/null 2>&1 && ( omz update ) && rustup update && npm install npm --global && npm update --global --verbose && apm upgrade --no-confirm && gem update --system && gem update && rbenv rehash && \
 printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up to date...\n' && python -m pip install --upgrade pip && \
 printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep --invert-match '^\-e' | cut --delimiter = --fields 1 | xargs -n1 pip install --upgrade && \
 printf '\n\xf0\x9f\x90\x8d upgrading all Python packages...\n' && pip install --upgrade $(pip freeze | cut --delimiter '=' --fields 1) && pyenv rehash && . ~/.${SHELL##*/}rc && rehash && unset update && \
@@ -477,6 +477,13 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## housekeeping
 
+### Docker
+`docker system prune --all #` [via](https://news.ycombinator.com/item?id=25547876#25547876)
+
+### Flutter
+
+`cd ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose`
+
 ### Homebrew
 
 `brew doctor --debug --verbose && \`<br/>
@@ -493,15 +500,15 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 `gem cleanup --verbose`
 
-### Flutter
-
-`cd ~/Code/Flutter && git pull && flutter upgrade && flutter precache && flutter doctor --verbose`
-
 ### Xcode, JetBrains, Carthage
 
 ```zsh
-trashDeveloper=1 && sleep 0.25 && mkdir --parents ~/Library/Developer/Xcode/DerivedData && mv ~/Library/Developer/Xcode/DerivedData ~/.Trash/Xcode-$RANDOM && mkdir --parents ~/Library/Developer/Xcode/UserData/IB\ Support && mv ~/Library/Developer/Xcode/UserData/IB\ Support ~/.Trash/Xcode⁄UserData⁄IB\ Support-$RANDOM && mkdir --parents ~/Library/Caches/JetBrains && \
-mv ~/Library/Caches/JetBrains ~/.Trash/JetBrains-$RANDOM && mkdir --parents ~/Library/Caches/org.carthage.CarthageKit/DerivedData && mv ~/Library/Caches/org.carthage.CarthageKit/DerivedData ~/.Trash/Carthage-$RANDOM && unset trashDeveloper && printf '\n\n\xf0\x9f%s\x9a\xae data successfully trashed\n\n' "$trashDeveloper"
+trashDeveloper=1 && sleep 0.25 && \
+mkdir --parents "${HOME}/Library/Developer/Xcode/DerivedData" && mv "${HOME}/Library/Developer/Xcode/DerivedData" "${HOME}/.Trash/Xcode-${RANDOM}" && \
+mkdir --parents "${HOME}/Library/Developer/Xcode/UserData/IB Support" && mv "${HOME}/Library/Developer/Xcode/UserData/IB Support" "${HOME}/.Trash/Xcode⁄UserData⁄IB Support-${RANDOM}" && \
+mkdir --parents "${HOME}/Library/Caches/JetBrains" && mv "${HOME}/Library/Caches/JetBrains" "${HOME}/.Trash/JetBrains-${RANDOM}" && \
+mkdir --parents "${HOME}/Library/Caches/org.carthage.CarthageKit/DerivedData" && mv "${HOME}/Library/Caches/org.carthage.CarthageKit/DerivedData" "${HOME}/.Trash/Carthage-${RANDOM}" && \
+unset trashDeveloper && printf '\n\n\xf0\x9f%s\x9a\xae data successfully trashed\n\n' "${trashDeveloper:-"$(printf '')"}"
 ```
 
 ## delete
