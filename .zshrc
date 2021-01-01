@@ -182,8 +182,8 @@ export GPG_TTY
 [ -d /usr/local/opt/gnu-sed/libexec/gnubin ] && PATH="/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}"
 
 # Rust Cargo
-# if its `bin` is a directory, then add it to the $PATH
-[ -d "${HOME}/.cargo/bin" ] && export PATH="${HOME}/.cargo/bin:${PATH}"
+# if its `bin` is a directory, then add it to `PATH`
+[ -d "${HOME}/.cargo/bin" ] && PATH="${HOME}/.cargo/bin:${PATH}"
 
 # Bashhub.com
 [ -e "${HOME}/.bashhub/bashhub.zsh" ] && . "${HOME}/.bashhub/bashhub.zsh"
