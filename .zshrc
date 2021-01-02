@@ -82,6 +82,8 @@ export SAVEHIST=${HISTSIZE}
 
 # Use a custom folder other than $ZSH/custom
 # ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=${ZSH}/custom
+ZSHCUSTOM=${ZSH_CUSTOM}
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins
@@ -199,7 +201,6 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 # Add RVM to PATH for scripting
 # Make sure this is the last PATH variable change
 # export PATH="${PATH}:${HOME}/.rvm/bin"
-
 
 # dotfiles
 # set to where they are syncing if it exists, or else use the default: $HOME
