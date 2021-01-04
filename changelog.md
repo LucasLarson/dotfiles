@@ -6,6 +6,9 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.21.0 [\#213](https://github.com/LucasLarson/dotfiles/pull/213) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mackup to v0.8.32 [\#212](https://github.com/LucasLarson/dotfiles/pull/212) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump .oh-my-zsh/custom/plugins/zsh-completions from `9def41a` to `244cbfc` [\#211](https://github.com/LucasLarson/dotfiles/pull/211) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update dependency mackup to v0.8.31 [\#210](https://github.com/LucasLarson/dotfiles/pull/210) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency mackup to v0.8.30 [\#209](https://github.com/LucasLarson/dotfiles/pull/209) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `44c5bce` to `9def41a` [\#207](https://github.com/LucasLarson/dotfiles/pull/207) ([dependabot[bot]](https://github.com/apps/dependabot))
