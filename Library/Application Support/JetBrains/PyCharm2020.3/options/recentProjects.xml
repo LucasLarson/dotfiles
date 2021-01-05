@@ -1,0 +1,92 @@
+<application>
+  <component name="RecentProjectsManager">
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$/Code/python-random-quote">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1XiyLn6K94JTyjMjrm3zaIZeKHj">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PY-201.6668.28" />
+              <option name="buildTimestamp" value="1585217743462" />
+              <option name="eap" value="true" />
+              <frame x="0" y="23" width="1410" height="877" />
+              <option name="productionCode" value="PY" />
+              <option name="projectOpenTimestamp" value="1585503374456" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Code/Tetris-deep-Q-learning-pytorch">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1ZoN4POapoqUMz7xjn1Qr9aoVzI">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PY-201.6668.115" />
+              <option name="buildTimestamp" value="1586256098345" />
+              <option name="productionCode" value="PY" />
+              <option name="projectOpenTimestamp" value="1587156767052" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Code/ImageCompare">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1agUpHMaaMmhHa08pbTo73MWCvS">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PY-201.6668.115" />
+              <option name="buildTimestamp" value="1586256086962" />
+              <option name="productionCode" value="PY" />
+              <option name="projectOpenTimestamp" value="1587609878332" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Code/Chromium/src/ios/build/tools">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1avJ5cW5bYrPsF52ma9fqjVX65G">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PY-201.6668.115" />
+              <option name="buildTimestamp" value="1586256086962" />
+              <option name="productionCode" value="PY" />
+              <option name="projectOpenTimestamp" value="1587609952236" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Code/AlgorithmsPython">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1bmlF2kAEjyEH0EELotHiNej0Qu">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PY-202.5103.19" />
+              <option name="buildTimestamp" value="1591246116242" />
+              <option name="eap" value="true" />
+              <option name="productionCode" value="PY" />
+              <option name="projectOpenTimestamp" value="1591796803080" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Code/Zookeeper">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1dKTDhrJ7OAYgbdCWXuRd9Akk8A">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PY-202.5103.19" />
+              <option name="buildTimestamp" value="1591246121576" />
+              <option name="eap" value="true" />
+              <option name="productionCode" value="PY" />
+              <option name="projectOpenTimestamp" value="1592173486239" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="$USER_HOME$/Code/cpplint">
+          <value>
+            <RecentProjectMetaInfo projectWorkspaceId="1Uj0TZizN3RKqYSumM2f5kXjiLh">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PY-203.4449.8" />
+              <option name="buildTimestamp" value="1601971420805" />
+              <option name="eap" value="true" />
+              <frame x="0" y="25" width="1410" height="877" />
+              <option name="productionCode" value="PY" />
+              <option name="projectOpenTimestamp" value="1603643205335" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastProjectLocation" value="$USER_HOME$/Code" />
+  </component>
+</application>

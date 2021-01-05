@@ -1,0 +1,17 @@
+<application>
+  <component name="CoursesStorage">
+    <courses>
+      <course>
+        <option name="courseMode" value="Study" />
+        <option name="description" value="This short code challenge can help the local zoo look after its denizens. You will create a tool for monitoring animals and their status.&lt;br/&gt;&lt;br/&gt;Learn more at &lt;a href=&quot;https://hyperskill.org&quot;&gt;https://hyperskill.org/projects/98&lt;/a&gt;" />
+        <option name="humanLanguage" value="English" />
+        <option name="id" value="98" />
+        <option name="location" value="$USER_HOME$/Code/Zookeeper" />
+        <option name="name" value="Zookeeper" />
+        <option name="programmingLanguage" value="Python" />
+        <option name="tasksTotal" value="4" />
+        <option name="type" value="Hyperskill" />
+      </course>
+    </courses>
+  </component>
+</application>

@@ -1,0 +1,1 @@
+pytest --doctest-modules --cov-report=term-missing:skip-covered --cov=.

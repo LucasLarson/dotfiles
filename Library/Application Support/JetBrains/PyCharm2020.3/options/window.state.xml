@@ -1,0 +1,40 @@
+<application>
+  <component name="DimensionService">
+    <location key="find.popup.0.0.2880.1800@192dpi" x="810" y="190" />
+    <size key="find.popup.0.0.2880.1800@192dpi" width="1200" height="1464" />
+    <size key="GridCell.Tab.0.left.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.0.center.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.0.right.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.0.bottom.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.1.left.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.1.center.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.1.right.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.1.bottom.0.0.2880.1800@192dpi" width="2736" height="552" />
+    <size key="GridCell.Tab.0.left.0.0.3072.1920@192dpi" width="1368" height="552" />
+    <size key="GridCell.Tab.0.center.0.0.3072.1920@192dpi" width="1368" height="552" />
+    <size key="GridCell.Tab.0.right.0.0.3072.1920@192dpi" width="1368" height="552" />
+    <size key="GridCell.Tab.0.bottom.0.0.3072.1920@192dpi" width="1368" height="552" />
+    <size key="GridCell.Tab.1.left.0.0.3072.1920@192dpi" width="1368" height="552" />
+    <size key="GridCell.Tab.1.center.0.0.3072.1920@192dpi" width="1368" height="552" />
+    <size key="GridCell.Tab.1.right.0.0.3072.1920@192dpi" width="1368" height="552" />
+    <size key="GridCell.Tab.1.bottom.0.0.3072.1920@192dpi" width="1368" height="552" />
+  </component>
+  <component name="WindowManager">
+    <frame x="0" y="25" width="1410" height="877" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+    </layout>
+  </component>
+  <component name="WindowStateApplicationService">
+    <state x="880" y="504" key="WELCOME_SCREEN" timestamp="1603643249927">
+      <screen x="0" y="25" width="1760" height="1095" />
+    </state>
+    <state x="880" y="504" key="WELCOME_SCREEN/0.25.1760.1095" timestamp="1603643249927" />
+  </component>
+</application>

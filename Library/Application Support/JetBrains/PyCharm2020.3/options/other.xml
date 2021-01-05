@@ -1,0 +1,95 @@
+<application>
+  <component name="EduSettings">
+    <option name="lastTimeChecked" value="1594314520338" />
+    <option name="shownCourseIds">
+      <set />
+    </option>
+    <option name="javaUiLibrary" value="JCEF" />
+  </component>
+  <component name="HyperskillSettings">
+    <option name="updateAutomatically" value="true" />
+    <HyperskillAccount>
+      <option name="accessToken" value="3CYSPBzDJRGC1Fkt0l2icRi7tS0zed" />
+      <option name="expiresIn" value="1592208621" />
+      <option name="refreshToken" value="ebI8pt8ICHt7IXyVtO2zySEzTZFN0s" />
+      <option name="email" value="Lucas.Larson86@myhunter.cuny.edu" />
+      <option name="fullname" value="User 37908668" />
+      <option name="hyperskillProjectId" value="98" />
+      <option name="id" value="37908668" />
+    </HyperskillAccount>
+  </component>
+  <component name="NodeJsLocalInterpreters">
+    <local-interpreter path="/usr/local/bin/node" />
+    <local-interpreter path="/usr/local/Cellar/node/13.8.0/bin/node" />
+  </component>
+  <component name="NotRoamableUiSettings">
+    <option name="ideAAType" value="Greyscale" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DocumentationAutoUpdateEnabled" value="true" />
+    <property name="Edu.CourseCreator.Enabled" value="true" />
+    <property name="Educational.conflictingPluginsDisabled" value="true" />
+    <property name="Educational.recentCoursesFilled" value="true" />
+    <property name="ExpandBeforeRunStepsPanel" value="true" />
+    <property name="ExpandRunDashboardTypesPanel" value="false" />
+    <property name="InstalledPluginsSearchHistory" value="edu" />
+    <property name="MarketplacePluginsSearchHistory" value="edu" />
+    <property name="PluginConfigurable.selectionTab" value="1" />
+    <property name="PyCharm.InitialConfiguration" value="true" />
+    <property name="PyCharm.InitialConfiguration.V2" value="true" />
+    <property name="PyCharm.InitialConfiguration.V3" value="true" />
+    <property name="PyCharm.InitialConfiguration.V4" value="true" />
+    <property name="PyCharm.InitialConfiguration.V5" value="true" />
+    <property name="PyCharm.InitialConfiguration.V6" value="true" />
+    <property name="PyCharm.InitialConfiguration.V7" value="true" />
+    <property name="PyCharm.initialConfigurationShown" value="true" />
+    <property name="SettingsSearchHistory" value="interpreter&#10;fold" />
+    <property name="ShowDocumentationInToolWindow" value="false" />
+    <property name="UITheme.relaunch" value="true" />
+    <property name="appcds.runOnSecondStart" value="PY-203.4449.8-f3d93062c9b68e45a8c400d73640300cd782d6fadd7236cb7ba1cf5a950482c7" />
+    <property name="com.jetbrains.edu.LAST_UPDATE" value="1592172667723" />
+    <property name="completion.ml.perform.experiment" value="true" />
+    <property name="completion.stats.experiment.salt" value="dd66e3db" />
+    <property name="completion.stats.experiment.version" value="7" />
+    <property name="completion.stats.status.updated.ts" value="1594314815056" />
+    <property name="evlsprt.PY-203.4449.8" value="175976ecb4a" />
+    <property name="evlsprt2.PY-203.4449.8" value="1756087d4d0" />
+    <property name="evlsprt3.201" value="14" />
+    <property name="evlsprt3.PY-201.4865.17" value="14" />
+    <property name="evlsprt3.PY-201.6668.28" value="14" />
+    <property name="evlsprt3.PY-202.5103.19" value="18" />
+    <property name="evlsprt3.PY-202.6109.24" value="15" />
+    <property name="evlsprt3.PY-203.4449.8" value="12" />
+    <property name="exception.accepted.notices" value="58c618e4" />
+    <property name="experimentalFeature.terminal.shell.command.handling" value="false" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/.pyenv/shims/python" />
+    <property name="file.gist.reindex.count" value="66761" />
+    <property name="fileTypeChangedCounter" value="5" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.pyenv/shims/python" />
+    <property name="quick.doc.font.size.v3" value="X_SMALL" />
+    <property name="stats.collector.latest.sending.timestamp" value="1585502999578" />
+    <property name="stats.collector.today.sent.data.size" value="800" />
+    <property name="tasks.pass.word.conversion.enforced" value="true" />
+    <property name="ts.lib.d.ts.version" value="4.0.3" />
+  </component>
+  <component name="PyTestFrameworkService">
+    <option name="SDK_TO_PYTEST">
+      <map>
+        <entry key="$USER_HOME$/.pyenv/shims/python" value="false" />
+        <entry key="$USER_HOME$/Code/Tetris-deep-Q-learning-pytorch/venv/bin/python" value="false" />
+      </map>
+    </option>
+    <option name="SDK_TO_NOSETEST">
+      <map>
+        <entry key="$USER_HOME$/.pyenv/shims/python" value="false" />
+        <entry key="$USER_HOME$/Code/Tetris-deep-Q-learning-pytorch/venv/bin/python" value="false" />
+      </map>
+    </option>
+    <option name="SDK_TO_TRIALTEST">
+      <map>
+        <entry key="$USER_HOME$/.pyenv/shims/python" value="false" />
+        <entry key="$USER_HOME$/Code/Tetris-deep-Q-learning-pytorch/venv/bin/python" value="false" />
+      </map>
+    </option>
+  </component>
+</application>

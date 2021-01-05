@@ -1,0 +1,171 @@
+<project version="4">
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="-1">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Zookeeper/task/zookeeper/zookeeper.py">
+          <provider selected="true" editor-type-id="StudyEditor">
+            <state>
+              <EduEditorState>
+                <MainEditorState relative-caret-position="54">
+                  <caret line="3" selection-start-line="3" selection-end-line="3" />
+                </MainEditorState>
+              </EduEditorState>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>\</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Zookeeper/task/zookeeper/zookeeper.py" />
+      </list>
+    </option>
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" />
+    <panes>
+      <pane id="Scope" />
+      <pane id="Course" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Zookeeper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Zookeeper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Zookeeper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Zookeeper" type="462c0819:PsiDirectoryNode" />
+              <item name="Zookeeper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Zookeeper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Zookeeper" type="462c0819:PsiDirectoryNode" />
+              <item name="Zookeeper" type="462c0819:PsiDirectoryNode" />
+              <item name="task" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Zookeeper" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Zookeeper" type="462c0819:PsiDirectoryNode" />
+              <item name="Zookeeper" type="462c0819:PsiDirectoryNode" />
+              <item name="task" type="462c0819:PsiDirectoryNode" />
+              <item name="zookeeper" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="TerminalArrangementManager">
+    <option name="myTabStates">
+      <TerminalTabState tabName="Local" currentWorkingDirectory="$PROJECT_DIR$/.." commandHistoryFileName="history-1" />
+    </option>
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Zookeeper_Rush_into_print_ - 2020.06.14 at 18h 46m 14s.xml">
+      <configuration name="Zookeeper/Rush into print." configurationId="ccruntests" />
+    </history-entry>
+    <history-entry file="Zookeeper_Rush_into_print_ - 2020.06.14 at 18h 47m 11s.xml">
+      <configuration name="Zookeeper/Rush into print." configurationId="ccruntests" />
+    </history-entry>
+    <history-entry file="Zookeeper_Rush_into_print_ - 2020.06.14 at 18h 47m 58s.xml">
+      <configuration name="Zookeeper/Rush into print." configurationId="ccruntests" />
+    </history-entry>
+    <history-entry file="Zookeeper_Rush_into_print_ - 2020.06.14 at 18h 49m 45s.xml">
+      <configuration name="Zookeeper/Rush into print." configurationId="ccruntests" />
+    </history-entry>
+    <history-entry file="Zookeeper_Rush_into_print_ - 2020.06.14 at 18h 54m 35s.xml">
+      <configuration name="Zookeeper/Rush into print." configurationId="ccruntests" />
+    </history-entry>
+    <history-entry file="Zookeeper_Rush_into_print_ - 2020.06.14 at 18h 54m 51s.xml">
+      <configuration name="Zookeeper/Rush into print." configurationId="ccruntests" />
+    </history-entry>
+    <history-entry file="Zookeeper_Rush_into_print_ - 2020.06.14 at 18h 54m 56s.xml">
+      <configuration name="Zookeeper/Rush into print." configurationId="ccruntests" />
+    </history-entry>
+    <history-entry file="Zookeeper_Rush_into_print_ - 2020.06.14 at 18h 55m 28s.xml">
+      <configuration name="Zookeeper/Rush into print." configurationId="ccruntests" />
+    </history-entry>
+    <history-entry file="Zookeeper_Rush_into_print_ - 2020.06.14 at 19h 01m 44s.xml">
+      <configuration name="Zookeeper/Rush into print." configurationId="ccruntests" />
+    </history-entry>
+    <history-entry file="Zookeeper_Rush_into_print_ - 2020.06.14 at 19h 02m 24s.xml">
+      <configuration name="Zookeeper/Rush into print." configurationId="ccruntests" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5059000" />
+  </component>
+  <component name="ToolWindowManager">
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25730994" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Commit" order="3" />
+      <window_info id="Pull Requests" order="4" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" visible="true" weight="0.39895013" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Problems View" order="4" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.39895013" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32939634" />
+      <window_info anchor="bottom" id="Services" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Internal Method Tracing" order="10" />
+      <window_info anchor="bottom" id="TypeScript" order="11" />
+      <window_info anchor="bottom" id="Flow" order="12" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" order="13" weight="0.32939634" />
+      <window_info anchor="bottom" id="Python Console" order="14" weight="0.32939634" />
+      <window_info anchor="bottom" id="Database Changes" order="15" show_stripe_button="false" />
+      <window_info anchor="right" id="Task" order="0" visible="true" weight="0.33918127" />
+      <window_info anchor="right" id="Database" order="1" />
+      <window_info anchor="right" id="SciView" order="2" weight="0.32967836" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Zookeeper/task/zookeeper/zookeeper.py">
+      <provider selected="true" editor-type-id="StudyEditor">
+        <state>
+          <EduEditorState>
+            <MainEditorState relative-caret-position="54">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            </MainEditorState>
+          </EduEditorState>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

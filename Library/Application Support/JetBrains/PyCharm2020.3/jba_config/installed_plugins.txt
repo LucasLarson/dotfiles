@@ -1,0 +1,6 @@
+com.jetbrains.php.framework
+com.paperetto.dash
+NodeJS
+com.jetbrains.intellij.datalore
+org.toml.lang
+com.jetbrains.edu
