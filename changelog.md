@@ -18,7 +18,6 @@
 - Update nvuillam/mega-linter action to v4.20.0 [\#205](https://github.com/LucasLarson/dotfiles/pull/205) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `2e009c7` to `44c5bce` [\#204](https://github.com/LucasLarson/dotfiles/pull/204) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.19.0 [\#203](https://github.com/LucasLarson/dotfiles/pull/203) ([renovate[bot]](https://github.com/apps/renovate))
-- Bump .oh-my-zsh/custom/plugins/zsh-syntax-highlighting from `1715f39` to `5eb4948` [\#202](https://github.com/LucasLarson/dotfiles/pull/202) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e8afa80` to `d524164` [\#201](https://github.com/LucasLarson/dotfiles/pull/201) ([dependabot[bot]](https://github.com/apps/dependabot))
 - reactivate @Dependabot [\#200](https://github.com/LucasLarson/dotfiles/pull/200) ([LucasLarson](https://github.com/LucasLarson))
 - Update peter-evans/create-pull-request action to v3.6.0 [\#198](https://github.com/LucasLarson/dotfiles/pull/198) ([renovate[bot]](https://github.com/apps/renovate))
@@ -39,6 +38,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/plugins/zsh-syntax-highlighting from `1715f39` to `5eb4948` [\#202](https://github.com/LucasLarson/dotfiles/pull/202) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
