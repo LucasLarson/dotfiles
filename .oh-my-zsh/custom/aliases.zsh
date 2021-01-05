@@ -164,18 +164,26 @@ gvc () {(
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp="cp -r"
 cy () {(
-  # if within git repo, then auto-overwrite
-  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    interactive="-i"
-  fi
-  if [ -z "$2" ]; then
-    # if there is no second argument,
-    # then copy to the current directory
-    # -r to copy recursively
-    # -L to follow symbolic links
-    eval cp -r -L "${interactive} -- $1 ${PWD}"
+  if [ -r "$1" ]; then
+    # if within git repo, then auto-overwrite
+    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      interactive="-i"
+    fi
+    if [ -z "$2" ]; then
+      # if there is no second argument,
+      # then copy to the current directory
+      # -r to copy recursively
+      # -L to follow symbolic links
+      eval cp -r -L "${interactive} -- $1 ${PWD}"
+    else
+      eval cp -r -L "${interactive} -- $1 $2"
+    fi
+  elif [ -e "$1" ]; then
+    printf '\x60%s\x60 is not readable and cannot be copied\n' "$1"
+    return 1
   else
-    eval cp -r -L "${interactive} -- $1 $2"
+    printf '\x60%s\x60 does not exist and cannot be copied\n' "$1"
+    return 2
   fi
 )}
 
