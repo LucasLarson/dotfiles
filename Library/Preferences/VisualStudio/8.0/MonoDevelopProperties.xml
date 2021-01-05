@@ -1,0 +1,27 @@
+﻿<MonoDevelopProperties version="2.0">
+  <Property key="/MonoDevelop/Ide/GlobalOptionsDialog-lastPanel" value="General" />
+  <Property key="Author.Copyright" value="" />
+  <Property key="Author.Email" value="lucaslarson@live.com" />
+  <Property key="Author.Name" value="Lucas Larson" />
+  <Property key="FavoriteRecentFiles" />
+  <Property key="MonoDevelop.Core.FirstRun" value="False" />
+  <Property key="MonoDevelop.Core.Gui.Dialogs.NewProjectDialog.DefaultPath" value="/Users/LucasLarson/Code" />
+  <Property key="MonoDevelop.Core.LastRunVersion" value="8.8.0.2120" />
+  <Property key="MonoDevelop.Ide.AddinUpdater.LastCheck" value="11/12/2020 19:58:14" />
+  <Property key="MonoDevelop.Ide.AddinUpdater.UpdateChannel" value="Beta" />
+  <Property key="MonoDevelop.Ide.UserInterfaceTheme" value="Dark" />
+  <Property key="Monodevelop.TaskList.ActiveView" value="MonoDevelop.Ide.Tasks.CommentTasksView" />
+  <Property key="Monodevelop.UserTasksHighPrioColor" value="rgb:0/0/0" />
+  <Property key="Monodevelop.UserTasksLowPrioColor" value="rgb:0/0/0" />
+  <Property key="Monodevelop.UserTasksNormalPrioColor" value="rgb:0/0/0" />
+  <Property key="SharpDevelop.Workbench.WorkbenchMemento">
+    <Property key="bounds" value="0, 25, 1692, 970" />
+    <Property key="fullscreen" value="False" />
+    <Property key="windowState" value="0" />
+  </Property>
+  <Property key="TextEditor.F#.Specific.BackgroundAnalysisScopeOption" value="ActiveFile" />
+  <Property key="TextEditor.F#.Specific.Closed File Diagnostic" value="False" />
+  <Property key="XS.TargetedNotifications.DismissedList" />
+  <Property key="Xamarin.Ide.GetToCode.PromptForKeyBindings" value="False" />
+  <Property key="Xamarin.Ide.GetToCode.PromptForSignIn" value="False" />
+</MonoDevelopProperties>
