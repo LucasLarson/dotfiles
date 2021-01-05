@@ -202,6 +202,7 @@ cleanup () {(
   find -- . -type f -size 0 \( \
     -not -path '*/.git/*' -and \
     -not -name '*.gitkeep' -and \
+    -not -name '*.keep' -and \
     -not -name '*hushlogin' -and \
     -not -name '*LOCK' -and \
     -not -name '*lock' -and \
