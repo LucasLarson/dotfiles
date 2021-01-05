@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- \[autofix\] Format JSON content [\#217](https://github.com/LucasLarson/dotfiles/pull/217) ([github-actions[bot]](https://github.com/apps/github-actions))
 - add scaffolding for `~/.zlogin` [\#216](https://github.com/LucasLarson/dotfiles/pull/216) ([LucasLarson](https://github.com/LucasLarson))
 - Bump actions/upload-artifact from v2.2.1 to v2.2.2 [\#215](https://github.com/LucasLarson/dotfiles/pull/215) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/upload-artifact action to v2.2.2 [\#214](https://github.com/LucasLarson/dotfiles/pull/214) ([renovate[bot]](https://github.com/apps/renovate))
