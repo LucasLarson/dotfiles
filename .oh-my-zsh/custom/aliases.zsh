@@ -223,7 +223,7 @@ cleanup () {(
 # find duplicate files
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 fdf () {(
-  find -- . -not -empty -type f -printf '%s\n' | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 sha512sum | sort | uniq -w32 --all-repeated=separate
+  find -- . -not -empty -type f -printf '%s\n' | sort --reverse --numeric-sort | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 sha512sum | sort | uniq -w32 --all-repeated=separate
 )}
 
 alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
