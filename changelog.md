@@ -6,6 +6,8 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.22.0 [\#220](https://github.com/LucasLarson/dotfiles/pull/220) ([renovate[bot]](https://github.com/apps/renovate))
+- \[autofix\] Typo [\#219](https://github.com/LucasLarson/dotfiles/pull/219) ([github-actions[bot]](https://github.com/apps/github-actions))
 - \[autofix\] Format JSON content [\#217](https://github.com/LucasLarson/dotfiles/pull/217) ([github-actions[bot]](https://github.com/apps/github-actions))
 - add scaffolding for `~/.zlogin` [\#216](https://github.com/LucasLarson/dotfiles/pull/216) ([LucasLarson](https://github.com/LucasLarson))
 - Bump actions/upload-artifact from v2.2.1 to v2.2.2 [\#215](https://github.com/LucasLarson/dotfiles/pull/215) ([dependabot[bot]](https://github.com/apps/dependabot))
