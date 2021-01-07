@@ -144,8 +144,8 @@ find -- . -type f \( \
   -name 'desktop.ini' -or \
   -name 'Thumbs.db' -or \
   -name 'thumbs.db' \
-\) \
--delete
+  \) \
+  -delete
 
 # delete empty, zero-length files
 # except those with specific names
@@ -157,8 +157,8 @@ find -- . -type f -size 0 \( \
   -not -name '*LOCK' -and \
   -not -name '*lock' -and \
   -not -name '*lockfile' \
-\) \
--delete
+  \) \
+  -delete
 
 # delete empty directories recursively
 # except those within `.git/` directories
@@ -166,8 +166,8 @@ find -- . -type f -size 0 \( \
 find -- . -type d -empty \( \
   -not -path '*/.git/*' -and \
   -not -name '.well-known' \
-\) \
--delete
+  \) \
+  -delete
 
 # done
 printf '\ninitialization complete\n'
