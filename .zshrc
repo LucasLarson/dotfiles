@@ -296,5 +296,11 @@ command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - --no-rehash "${SHELL##*
 # export PATH for other sessions
 export PATH
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[ ! -f "${HOME}/.p10k.zsh" ] || . "${HOME}/.p10k.zsh"
+# powerlevel10k prompt
+# customize prompt via `p10k configure` or edit `~/.p10k.zsh`
+# if the theme is powerlevel10k,
+[ powerlevel10k/powerlevel10k = "${ZSH_THEME}" ] &&
+# and there is a file at ~/.p10k.zsh,
+[ -f "${HOME}/.p10k.zsh" ] &&
+# then source it
+. "${HOME}/.p10k.zsh"
