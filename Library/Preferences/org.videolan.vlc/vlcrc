@@ -1,5 +1,5 @@
 ﻿###
-###  vlc 3.0.11
+###  vlc 3.0.11.1
 ###
 
 ###
@@ -169,7 +169,7 @@ macosx-interfacestyle=1
 #macosx-nativefullscreenmode=0
 
 # Display VLC status menu icon (boolean)
-#macosx-statusicon=1
+macosx-statusicon=0
 
 # Allow automatic icon changes (boolean)
 #macosx-icon-change=1
@@ -522,7 +522,7 @@ macosx-interfacestyle=1
 #sout-avi-subject=
 
 # Encoder (string)
-#sout-avi-encoder=VLC Media Player - 3.0.11 Vetinari
+#sout-avi-encoder=VLC Media Player - 3.0.11.1 Vetinari
 
 # Keywords (string)
 #sout-avi-keywords=
@@ -3885,7 +3885,7 @@ random=1
 #loop=0
 
 # Repeat current item (boolean)
-#repeat=0
+repeat=1
 
 # Play and exit (boolean)
 #play-and-exit=0
