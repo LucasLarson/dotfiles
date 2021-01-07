@@ -94,11 +94,9 @@ plugins+=(
   git
   gunstage
 )
-if [ "$(uname)" = Darwin ]; then
-  plugins+=(
-    zsh-syntax-highlighting
-  )
-fi
+[ "$(uname)" = Darwin ] && plugins+=(
+  zsh-syntax-highlighting
+)
 
 # trapd00r/LS_COLORS: .dircolors to override Oh My Zsh’s `ls -G` for coreutils
 # https://github.com/ohmyzsh/ohmyzsh/blob/d0d01c0/lib/theme-and-appearance.zsh
