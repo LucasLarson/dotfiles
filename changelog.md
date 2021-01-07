@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.22.1 [\#221](https://github.com/LucasLarson/dotfiles/pull/221) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.22.0 [\#220](https://github.com/LucasLarson/dotfiles/pull/220) ([renovate[bot]](https://github.com/apps/renovate))
 - \[autofix\] Typo [\#219](https://github.com/LucasLarson/dotfiles/pull/219) ([github-actions[bot]](https://github.com/apps/github-actions))
 - \[autofix\] Format JSON content [\#217](https://github.com/LucasLarson/dotfiles/pull/217) ([github-actions[bot]](https://github.com/apps/github-actions))
@@ -25,6 +26,7 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e8afa80` to `d524164` [\#201](https://github.com/LucasLarson/dotfiles/pull/201) ([dependabot[bot]](https://github.com/apps/dependabot))
 - reactivate @Dependabot [\#200](https://github.com/LucasLarson/dotfiles/pull/200) ([LucasLarson](https://github.com/LucasLarson))
 - Update peter-evans/create-pull-request action to v3.6.0 [\#198](https://github.com/LucasLarson/dotfiles/pull/198) ([renovate[bot]](https://github.com/apps/renovate))
+- Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v0.5.3](https://github.com/LucasLarson/dotfiles/tree/v0.5.3) (2020-12-23)
 
@@ -42,7 +44,6 @@
 
 **Merged pull requests:**
 
-- Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.2.0 [\#194](https://github.com/LucasLarson/dotfiles/pull/194) ([renovate[bot]](https://github.com/apps/renovate))
