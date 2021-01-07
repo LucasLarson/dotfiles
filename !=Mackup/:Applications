@@ -1,15 +1,11 @@
 /Applications
-2020-07-24
+2021-01-07
 —————————————
 1Password 7.app/
 1Password.app@
 AVXCAssets Generator.app/
 Adblock Plus.app/
-Adobe Acrobat@
 Adobe Acrobat DC/
-Adobe Acrobat.app@
-Adobe Digital Editions 4.5.app/
-Adobe Digital Editions.app@
 AlignmentForXcode.app/
 AltServer.app/
 AppStore.app@
@@ -19,10 +15,13 @@ Atom Beta.app@
 Atom Nightly.app@
 Atom.app/
 BBEdit.app/
+Beaker Browser.app/
+BitPay.app/
 Bootstrap Studio.app/
 Brave Browser Nightly.app/
 Brave.app@
 Chrome.app@
+Clack.app@
 CleanMyMac X.app/
 CleanMyMac.app@
 Cocktail.app/
@@ -31,12 +30,16 @@ Comment Wrapper.app/
 CopyClip.app/
 Cyph.app/
 DB Browser for SQLite.app/
+Developer/
+Developer.app/
+Docker.app/
 Dropbox.app/
 Duplicate File Finder.app/
 Eclipse.app/
 Edge.app@
 Excel.app@
 Find Any File.app/
+FindAny.app@
 FindAnyFile.app@
 FindMy.app@
 Firefox Nightly.app@
@@ -55,15 +58,18 @@ Google Chrome.app@
 Google Earth Pro.app/
 Google Earth.app@
 Google Music Manager.app@
-GraphicConverter 10.app/
+GraphicConverter 11.app/
 GraphicConverter.app@
 HandBrake.app/
 HappyCoding.app/
 Hex Fiend.app/
 ImageOptim.app/
+Inkscape.app/
 JOSM-Xmx.Info.plist*
 JOSM.app/
 JetBrains Toolbox.app/
+Karabiner-Elements.app/
+Karabiner-EventViewer.app/
 Keka.app/
 Keybase.app/
 Keynote.app/
@@ -82,7 +88,6 @@ Microsoft Word.app/
 MusicBrainz Picard.app/
 MusicBrainz.app@
 MusicManager.app/
-Nova.app/
 Numbers.app/
 ODADrawingsExplorer.app/
 OmniDiskSweeper.app/
@@ -100,6 +105,8 @@ Protocol.app/
 QtSpim.app/
 QuickBooks.app/
 QuickTime.app@
+Radicle Upstream.app/
+Radicle.app@
 Reality Converter.app/
 Rectangle.app/
 Remote Desktop.app/
@@ -110,9 +117,11 @@ Scout-App.app/
 Server.app/
 Signal.app/
 Soothe.app/
-Sourcetree-Beta.app@
+Sourcetree-Beta.app/
 Sourcetree.app/
 Spotify.app/
+Sublime Merge.app/
+Sublime Text 3.app/
 Sublime Text.app/
 Sublime.app@
 Suspicious Package.app/
@@ -126,6 +135,7 @@ Transmission.app/
 Transmit.app/
 Tunnelblick.app/
 TypeStyle.app/
+Unclack.app/
 Userscripts.app/
 Utilities/
 VLC.app/
@@ -134,23 +144,28 @@ VMware.app@
 VirtualBox.app/
 Visual Studio Code - Insiders.app/
 Visual Studio Code.app@
-Visual Studio.app@
-VisualStudio.app@
-Vivaldi.app/
+Visual Studio.app/
+Vivaldi Snapshot.app/
+Vivaldi.app@
 VoiceMemos.app@
 WebKit.app/
 WebTorrent.app/
 Word.app@
+WordPress.com.app/
 WorkSpaces.app/
-Xcode-beta.app/
-Xcode.app@
+Xamarin Profiler.app/
+Xcode-beta.app@
+Xcode.app/
 digi.me.app/
 digiKam/
 digikam.app@
 digime.app@
+eDEX-UI.app/
 iMovie.app/
 iTerm.app/
 iTunes.app@
+macOS Server.app@
+macintosh.js.app/
 pCloud Drive.app/
 pCloud.app@
 zoom.us.app/
