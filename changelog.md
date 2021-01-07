@@ -26,7 +26,6 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e8afa80` to `d524164` [\#201](https://github.com/LucasLarson/dotfiles/pull/201) ([dependabot[bot]](https://github.com/apps/dependabot))
 - reactivate @Dependabot [\#200](https://github.com/LucasLarson/dotfiles/pull/200) ([LucasLarson](https://github.com/LucasLarson))
 - Update peter-evans/create-pull-request action to v3.6.0 [\#198](https://github.com/LucasLarson/dotfiles/pull/198) ([renovate[bot]](https://github.com/apps/renovate))
-- Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v0.5.3](https://github.com/LucasLarson/dotfiles/tree/v0.5.3) (2020-12-23)
 
@@ -44,6 +43,7 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.2.0 [\#194](https://github.com/LucasLarson/dotfiles/pull/194) ([renovate[bot]](https://github.com/apps/renovate))
@@ -93,7 +93,6 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `09be56b` to `7969eb3` [\#151](https://github.com/LucasLarson/dotfiles/pull/151) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[autofix\] Format JSON content [\#150](https://github.com/LucasLarson/dotfiles/pull/150) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair spacing in identifying device operating system [\#149](https://github.com/LucasLarson/dotfiles/pull/149) ([LucasLarson](https://github.com/LucasLarson))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `feaf120` to `09be56b` [\#148](https://github.com/LucasLarson/dotfiles/pull/148) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `aa2d2c7` to `57f545b` [\#147](https://github.com/LucasLarson/dotfiles/pull/147) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace @gaurav-nelson and @ad-m nothing for link-status validation [\#145](https://github.com/LucasLarson/dotfiles/pull/145) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e2db860` to `feaf120` [\#144](https://github.com/LucasLarson/dotfiles/pull/144) ([dependabot[bot]](https://github.com/apps/dependabot))
