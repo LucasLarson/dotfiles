@@ -148,8 +148,8 @@ find -- . -type f \( \
   -delete
 
 # delete empty, zero-length files
-# except those with specific names
-# or within `.git/` directories
+# except those within `.git/` directories
+# or with specific names
 find -- . -type f -size 0 \( \
   -not -path '*/.git/*' -and \
   -not -name '*.gitkeep' -and \
@@ -161,7 +161,7 @@ find -- . -type f -size 0 \( \
   -delete
 
 # delete empty directories recursively
-# except those within `.git/` directories
+# but skip Git-specific and `/.well-known/` directories
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 find -- . -type d -empty \( \
   -not -path '*/.git/*' -and \
