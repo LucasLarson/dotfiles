@@ -201,12 +201,12 @@ cleanup () {(
     -name 'desktop.ini' -or \
     -name 'Thumbs.db' -or \
     -name 'thumbs.db' \
-  \) \
-  $verbose -delete
+    \) \
+    $verbose -delete
 
   # delete empty, zero-length files
-  # except those with specific names
-  # or within `.git/` directories
+  # except those within `.git/` directories
+  # or with specific names
   find -- . -type f -size 0 \( \
     -not -path '*/.git/*' -and \
     -not -name '*.gitkeep' -and \
@@ -215,17 +215,17 @@ cleanup () {(
     -not -name '*LOCK' -and \
     -not -name '*lock' -and \
     -not -name '*lockfile' \
-  \) \
-  $verbose -delete
+    \) \
+    $verbose -delete
 
   # delete empty directories recursively
-  # https://stackoverflow.com/q/4210042#comment38334264_4210072
   # but skip Git-specific and `/.well-known/` directories
+  # https://stackoverflow.com/q/4210042#comment38334264_4210072
   find -- . -type d -empty \( \
     -not -path '*/.git/*' -and \
     -not -name '.well-known' \
-  \) \
-  $verbose -delete
+    \) \
+    $verbose -delete
 )}
 
 # find duplicate files
