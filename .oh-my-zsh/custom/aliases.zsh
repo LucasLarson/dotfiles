@@ -211,6 +211,7 @@ cleanup () {(
     -not -path '*/.git/*' -and \
     -not -name '*.gitkeep' -and \
     -not -name '*.keep' -and \
+    -not -name '*empty*' -and \
     -not -name '*hushlogin' -and \
     -not -name '*LOCK' -and \
     -not -name '*lock' -and \
