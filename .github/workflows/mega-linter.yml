@@ -76,7 +76,7 @@ jobs:
           FILTER_REGEX_EXCLUDE: '(\.automation\/test\/)'
           DISABLE: >
             SPELL
-          DISABLE_LINTERS: EDITORCONFIG_CHECKER,MARKDOWN_LINK_CHECK
+          DISABLE_LINTERS: COPYPASTE,EDITORCONFIG_CHECKER,MARKDOWN_LINK_CHECK
 
       # Upload Mega-Linter artifacts
       - name: Archive production artifacts
