@@ -66,6 +66,7 @@
 - Update github/super-linter action to v3.14.3 [\#172](https://github.com/LucasLarson/dotfiles/pull/172) ([renovate[bot]](https://github.com/apps/renovate))
 - repair Markdown after Mega-Linter suggestions [\#171](https://github.com/LucasLarson/dotfiles/pull/171) ([LucasLarson](https://github.com/LucasLarson))
 - mega-linter conformance [\#168](https://github.com/LucasLarson/dotfiles/pull/168) ([LucasLarson](https://github.com/LucasLarson))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `31ede3c` to `2c3bcd8` [\#166](https://github.com/LucasLarson/dotfiles/pull/166) ([dependabot[bot]](https://github.com/apps/dependabot))
 - add out-of-the-box `.bashrc` file from new Ubuntu installation [\#162](https://github.com/LucasLarson/dotfiles/pull/162) ([LucasLarson](https://github.com/LucasLarson))
 - add initialization script for Alpine Linux [\#161](https://github.com/LucasLarson/dotfiles/pull/161) ([LucasLarson](https://github.com/LucasLarson))
 
@@ -272,11 +273,9 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `ae32fd5` to `a88e11f` [\#11](https://github.com/LucasLarson/dotfiles/pull/11) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `1be10eb` to `ae32fd5` [\#10](https://github.com/LucasLarson/dotfiles/pull/10) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `8854cb6` to `1be10eb` [\#9](https://github.com/LucasLarson/dotfiles/pull/9) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `eda706c` to `8854cb6` [\#7](https://github.com/LucasLarson/dotfiles/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `5e5d3f5` to `eda706c` [\#6](https://github.com/LucasLarson/dotfiles/pull/6) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump powerlevel10k submodule to `5e5d3f5` from `3e17260` [\#5](https://github.com/LucasLarson/dotfiles/pull/5) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump mackup from 0.8.28 to 0.8.29 [\#4](https://github.com/LucasLarson/dotfiles/pull/4) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `c009153` to `3e17260` [\#3](https://github.com/LucasLarson/dotfiles/pull/3) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.2.0](https://github.com/LucasLarson/dotfiles/tree/v0.2.0) (2020-05-22)
 
