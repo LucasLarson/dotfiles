@@ -562,24 +562,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>couldn’t</string>
-		<key>shortcut</key>
-		<string>couldn't</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>couldn’t</string>
-		<key>shortcut</key>
-		<string>couldn’t</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>couldn’t</string>
-		<key>shortcut</key>
-		<string>couldnt</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>COVID‑19</string>
 		<key>shortcut</key>
 		<string>covid</string>
