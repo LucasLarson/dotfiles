@@ -670,24 +670,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>didn’t</string>
-		<key>shortcut</key>
-		<string>didn't</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>didn’t</string>
-		<key>shortcut</key>
-		<string>didn’t</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>didn’t</string>
-		<key>shortcut</key>
-		<string>didnt</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>de minimis</string>
 		<key>shortcut</key>
 		<string>diminimis</string>
