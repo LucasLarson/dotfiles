@@ -6,6 +6,10 @@
 
 **Merged pull requests:**
 
+- Bump nvuillam/mega-linter from v4.22.1 to v4.23.0 [\#226](https://github.com/LucasLarson/dotfiles/pull/226) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump github/super-linter from v3.14.3 to v3.14.4 [\#225](https://github.com/LucasLarson/dotfiles/pull/225) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update nvuillam/mega-linter action to v4.23.0 [\#224](https://github.com/LucasLarson/dotfiles/pull/224) ([renovate[bot]](https://github.com/apps/renovate))
+- Update github/super-linter action to v3.14.4 [\#223](https://github.com/LucasLarson/dotfiles/pull/223) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `1c579ef` to `02dbf8b` [\#222](https://github.com/LucasLarson/dotfiles/pull/222) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.22.1 [\#221](https://github.com/LucasLarson/dotfiles/pull/221) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.22.0 [\#220](https://github.com/LucasLarson/dotfiles/pull/220) ([renovate[bot]](https://github.com/apps/renovate))
