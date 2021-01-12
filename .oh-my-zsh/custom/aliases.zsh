@@ -110,7 +110,7 @@ alias gdb="git_default_branch"
 
 # https://news.ycombinator.com/item?id=5512864
 alias gm="GIT_MERGE_VERBOSITY=4 git merge --strategy-option patience"
-alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue --strategy-option patience"
+alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue"
 
 # git merge main
 gmm () {
