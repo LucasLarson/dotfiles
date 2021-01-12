@@ -132,7 +132,11 @@ alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && g
 alias grmr="git rm -r"
 alias grm="grmr"
 
-alias gsu="git submodule update --init --recursive --remote"
+git_submodule_update () {(
+  git submodule update --init --recursive --remote $@ &&
+  git status
+)}
+alias gsu="git_submodule_update"
 alias gtake="git checkout -b"
 alias gti="git"
 
