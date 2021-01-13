@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/plugins/gunstage from `2ad6e04` to `9b12374` [\#228](https://github.com/LucasLarson/dotfiles/pull/228) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.23.1 [\#227](https://github.com/LucasLarson/dotfiles/pull/227) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump nvuillam/mega-linter from v4.22.1 to v4.23.0 [\#226](https://github.com/LucasLarson/dotfiles/pull/226) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump github/super-linter from v3.14.3 to v3.14.4 [\#225](https://github.com/LucasLarson/dotfiles/pull/225) ([dependabot[bot]](https://github.com/apps/dependabot))
