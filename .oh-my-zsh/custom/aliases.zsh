@@ -67,7 +67,7 @@ ggc () {
 # https://stackoverflow.com/q/1006775#comment23686803_1007545
 alias gic="git rev-list --topo-order --parents HEAD | egrep '^[a-f0-9]{40}$'"
 
-alias ginit="git init"
+alias ginit="git init && git status"
 
 # git log
 # https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
