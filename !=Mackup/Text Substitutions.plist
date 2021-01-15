@@ -1192,48 +1192,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>how’d</string>
-		<key>shortcut</key>
-		<string>how'd</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>how’s</string>
-		<key>shortcut</key>
-		<string>how's</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>how’d</string>
-		<key>shortcut</key>
-		<string>how’d</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>how’s</string>
-		<key>shortcut</key>
-		<string>how’s</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>how’d</string>
-		<key>shortcut</key>
-		<string>howd</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>how’re</string>
-		<key>shortcut</key>
-		<string>howre</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>how’s</string>
-		<key>shortcut</key>
-		<string>hows</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>thank</string>
 		<key>shortcut</key>
 		<string>htank</string>
