@@ -1,13 +1,73 @@
 <application>
   <component name="ActionsLocalSummary">
+    <e n="$SelectAll">
+      <i c="1" l="1610489735234" />
+    </e>
+    <e n="ActivateProjectToolWindow">
+      <i c="1" l="1610489768428" />
+    </e>
+    <e n="CloseContent">
+      <i c="1" l="1610489220073" />
+    </e>
     <e n="CloseProject">
-      <i c="1" l="1603643239478" />
+      <i c="2" l="1610495517904" />
+    </e>
+    <e n="Debug">
+      <i c="1" l="1610489807478" />
+    </e>
+    <e n="ExecuteInPyConsoleAction">
+      <i c="1" l="1610489705439" />
+    </e>
+    <e n="GotoDeclaration">
+      <i c="17" l="1610489828780" />
+    </e>
+    <e n="InspectCode">
+      <i c="1" l="1610489283974" />
+    </e>
+    <e n="Resume">
+      <i c="1" l="1610495332580" />
+    </e>
+    <e n="Run">
+      <i c="1" l="1610489673026" />
+    </e>
+    <e n="RunClass">
+      <i c="5" l="1610489618881" />
+    </e>
+    <e n="Tree-selectChild">
+      <i c="6" l="1610489580756" />
+    </e>
+    <e n="Tree-selectNext">
+      <i c="19" l="1610489582580" />
+    </e>
+    <e n="Tree-selectParent">
+      <i c="3" l="1610489186342" />
+    </e>
+    <e n="Tree-selectPrevious">
+      <i c="1" l="1610489185123" />
+    </e>
+    <e n="UsageView.Exclude">
+      <i c="5" l="1610489568318" />
+    </e>
+    <e n="WelcomeScreen.OpenDirectoryProject">
+      <i c="1" l="1610488760639" />
     </e>
     <e n="com.intellij.ide.plugins.PluginManagerMain$2">
       <i c="1" l="1603643198738" />
     </e>
+    <e n="com.intellij.notification.NotificationAction$Simple">
+      <i c="1" l="1610489197129" />
+    </e>
+    <e n="com.intellij.openapi.editor.impl.EditorMarkupModelImpl$StatusAction">
+      <i c="2" l="1610495346592" />
+    </e>
+    <e n="com.intellij.openapi.fileEditor.impl.tabActions.CloseTab">
+      <i c="27" l="1610495506955" />
+    </e>
     <e n="com.intellij.openapi.updateSettings.impl.UpdateChecker$showUpdateResult$5$1">
       <i c="1" l="1603642683730" />
+    </e>
+    <e n="com.intellij.openapi.wm.impl.ToolWindowHeader$HideAction">
+      <i c="1" l="1610489554776" />
     </e>
   </component>
 </application>

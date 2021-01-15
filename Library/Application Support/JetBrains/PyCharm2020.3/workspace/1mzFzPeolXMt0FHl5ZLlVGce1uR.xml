@@ -1,0 +1,339 @@
+<project version="4">
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/doc/configuration_merge_guide.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="doc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="doc" type="462c0819:PsiDirectoryNode" />
+              <item name=".mackup" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="mackup" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="snap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="fixtures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="fixtures" type="462c0819:PsiDirectoryNode" />
+              <item name=".dropbox" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="fixtures" type="462c0819:PsiDirectoryNode" />
+              <item name="Library" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="fixtures" type="462c0819:PsiDirectoryNode" />
+              <item name="Library" type="462c0819:PsiDirectoryNode" />
+              <item name="Application Support" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="fixtures" type="462c0819:PsiDirectoryNode" />
+              <item name="Library" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobile Documents" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mackup" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mackup" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="fixtures" type="462c0819:PsiDirectoryNode" />
+              <item name="Library" type="462c0819:PsiDirectoryNode" />
+              <item name="Mobile Documents" type="462c0819:PsiDirectoryNode" />
+              <item name="com~apple~CloudDocs" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Course" />
+    </panes>
+  </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_in_utils_test_py - 2021.01.12 at 17h 10m 21s.xml">
+      <configuration name="Unittests in utils_test.py" configurationId="tests" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2421000" />
+  </component>
+  <component name="ToolWindowManager">
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25730994" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Commit" order="3" />
+      <window_info id="Pull Requests" order="4" weight="0.32967836" />
+      <window_info id="Learn" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.32936507" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936507" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3994709" />
+      <window_info anchor="bottom" id="TODO" order="3" />
+      <window_info anchor="bottom" id="Problems View" order="3" visible="true" weight="0.32936507" />
+      <window_info anchor="bottom" id="Internal Method Tracing" order="4" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="File Transfer" order="4" />
+      <window_info anchor="bottom" id="Terminal" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TypeScript" order="6" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" order="6" />
+      <window_info anchor="bottom" id="Inspection Results" order="6" weight="0.32936507" />
+      <window_info anchor="bottom" id="Python Console" order="6" weight="0.32936507" />
+      <window_info anchor="bottom" id="Flow" order="6" />
+      <window_info anchor="bottom" id="Services" order="6" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="SciView" order="6" />
+    </layout>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="339" y="63" key="#Inspections" timestamp="1610489311808">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state x="339" y="63" key="#Inspections/0.25.1751.1095@0.25.1751.1095" timestamp="1610489311808" />
+    <state x="452" y="322" width="506" height="282" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1610489287852">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state x="452" y="322" width="506" height="282" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.25.1751.1095@0.25.1751.1095" timestamp="1610489287852" />
+    <state width="1368" height="274" key="GridCell.Tab.0.bottom" timestamp="1610495517919">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state width="1368" height="274" key="GridCell.Tab.0.bottom/0.25.1751.1095@0.25.1751.1095" timestamp="1610495517919" />
+    <state width="1368" height="274" key="GridCell.Tab.0.center" timestamp="1610495517918">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state width="1368" height="274" key="GridCell.Tab.0.center/0.25.1751.1095@0.25.1751.1095" timestamp="1610495517918" />
+    <state width="1368" height="274" key="GridCell.Tab.0.left" timestamp="1610495517917">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state width="1368" height="274" key="GridCell.Tab.0.left/0.25.1751.1095@0.25.1751.1095" timestamp="1610495517917" />
+    <state width="1368" height="274" key="GridCell.Tab.0.right" timestamp="1610495517918">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state width="1368" height="274" key="GridCell.Tab.0.right/0.25.1751.1095@0.25.1751.1095" timestamp="1610495517918" />
+    <state width="1368" height="274" key="GridCell.Tab.1.bottom" timestamp="1610495517921">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state width="1368" height="274" key="GridCell.Tab.1.bottom/0.25.1751.1095@0.25.1751.1095" timestamp="1610495517921" />
+    <state width="1368" height="274" key="GridCell.Tab.1.center" timestamp="1610495517920">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state width="1368" height="274" key="GridCell.Tab.1.center/0.25.1751.1095@0.25.1751.1095" timestamp="1610495517920" />
+    <state width="1368" height="274" key="GridCell.Tab.1.left" timestamp="1610495517920">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state width="1368" height="274" key="GridCell.Tab.1.left/0.25.1751.1095@0.25.1751.1095" timestamp="1610495517920" />
+    <state width="1368" height="274" key="GridCell.Tab.1.right" timestamp="1610495517921">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state width="1368" height="274" key="GridCell.Tab.1.right/0.25.1751.1095@0.25.1751.1095" timestamp="1610495517921" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/doc/develop.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/.mackup.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/.mackup/ssh.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/.mackup/my-own-files.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/.mackup/mackup.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/.mackup/gnupg.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mackup/applications/1password-4.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SECOND">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/snap/snapcraft.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/fixtures/.dropbox/host.db">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/fixtures/Library/Mobile Documents/com~apple~CloudDocs/_blank_.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/fixtures/mackup-apps_to_ignore.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/fixtures/mackup-engine-copy.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/config_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1206">
+          <caret line="89" column="37" selection-start-line="89" selection-start-column="37" selection-end-line="89" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/main_tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/utils_test.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.pyenv/versions/3.8.0/lib/python3.8/site-packages/docopt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="492" column="4" selection-start-line="492" selection-start-column="4" selection-end-line="492" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mackup/appsdb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="113" column="33" selection-start-line="113" selection-start-column="33" selection-end-line="113" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mackup/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.pyenv/versions/3.8.0/lib/python3.8/base64.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.pyenv/versions/3.8.0/lib/python3.8/os.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.pyenv/versions/3.8.0/lib/python3.8/platform.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.pyenv/versions/3.8.0/lib/python3.8/shutil.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.pyenv/versions/3.8.0/lib/python3.8/stat.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mackup/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mackup/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mackup/mackup.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mackup/constants.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mackup/application.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/configuration_merge_guide.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

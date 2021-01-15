@@ -85,6 +85,18 @@
             </RecentProjectMetaInfo>
           </value>
         </entry>
+        <entry key="$USER_HOME$/Code/Mackup">
+          <value>
+            <RecentProjectMetaInfo frameTitle="Mackup – configuration_merge_guide.md" projectWorkspaceId="1mzFzPeolXMt0FHl5ZLlVGce1uR">
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="PY-203.6682.179" />
+              <option name="buildTimestamp" value="1609343851492" />
+              <frame x="0" y="25" width="1410" height="877" />
+              <option name="productionCode" value="PY" />
+              <option name="projectOpenTimestamp" value="1610488776920" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
       </map>
     </option>
     <option name="lastProjectLocation" value="$USER_HOME$/Code" />

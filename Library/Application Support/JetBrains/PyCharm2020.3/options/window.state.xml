@@ -18,6 +18,14 @@
     <size key="GridCell.Tab.1.center.0.0.3072.1920@192dpi" width="1368" height="552" />
     <size key="GridCell.Tab.1.right.0.0.3072.1920@192dpi" width="1368" height="552" />
     <size key="GridCell.Tab.1.bottom.0.0.3072.1920@192dpi" width="1368" height="552" />
+    <size key="GridCell.Tab.0.left.0.0.3584.2240@192dpi" width="2736" height="548" />
+    <size key="GridCell.Tab.0.center.0.0.3584.2240@192dpi" width="2736" height="548" />
+    <size key="GridCell.Tab.0.right.0.0.3584.2240@192dpi" width="2736" height="548" />
+    <size key="GridCell.Tab.0.bottom.0.0.3584.2240@192dpi" width="2736" height="548" />
+    <size key="GridCell.Tab.1.left.0.0.3584.2240@192dpi" width="2736" height="548" />
+    <size key="GridCell.Tab.1.center.0.0.3584.2240@192dpi" width="2736" height="548" />
+    <size key="GridCell.Tab.1.right.0.0.3584.2240@192dpi" width="2736" height="548" />
+    <size key="GridCell.Tab.1.bottom.0.0.3584.2240@192dpi" width="2736" height="548" />
   </component>
   <component name="WindowManager">
     <frame x="0" y="25" width="1410" height="877" />
@@ -32,9 +40,14 @@
     </layout>
   </component>
   <component name="WindowStateApplicationService">
-    <state x="880" y="504" key="WELCOME_SCREEN" timestamp="1603643249927">
-      <screen x="0" y="25" width="1760" height="1095" />
+    <state x="213" y="674" width="300" height="195" key="ProcessPopupWindow" timestamp="1610489015343">
+      <screen x="0" y="25" width="1751" height="1095" />
     </state>
+    <state x="213" y="674" width="300" height="195" key="ProcessPopupWindow/0.25.1751.1095" timestamp="1610489015343" />
+    <state x="875" y="504" key="WELCOME_SCREEN" timestamp="1610495555326">
+      <screen x="0" y="25" width="1751" height="1095" />
+    </state>
+    <state x="875" y="504" key="WELCOME_SCREEN/0.25.1751.1095" timestamp="1610495555326" />
     <state x="880" y="504" key="WELCOME_SCREEN/0.25.1760.1095" timestamp="1603643249927" />
   </component>
 </application>
