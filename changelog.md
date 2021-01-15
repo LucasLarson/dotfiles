@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `68abcc8` to `7b0698d` [\#232](https://github.com/LucasLarson/dotfiles/pull/232) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.24.0 [\#231](https://github.com/LucasLarson/dotfiles/pull/231) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.23.3 [\#230](https://github.com/LucasLarson/dotfiles/pull/230) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `00232d1` to `68abcc8` [\#229](https://github.com/LucasLarson/dotfiles/pull/229) ([dependabot[bot]](https://github.com/apps/dependabot))
