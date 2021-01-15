@@ -140,7 +140,7 @@ alias gsu="git_submodule_update"
 alias gtake="git checkout -b"
 alias gti="git"
 
-gu () {
+gu () {(
   (command -v cleanup >/dev/null 2>&1 && cleanup)
 
   # run only from within a git repository
@@ -150,11 +150,13 @@ gu () {
 
     # `git submodule update` with `--remote` appears to slow Git to a crawl
     # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
-    git submodule update --init --recursive
-
+    if [ "$1" = --remote ] || [ "$1" = -r ]; then
+      remote="--remote"
+    fi
+    git submodule update --init --recursive ${remote}
     git status
   fi
-}
+)}
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
 gvc () {(
