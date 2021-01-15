@@ -1150,24 +1150,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>haven’t</string>
-		<key>shortcut</key>
-		<string>haven't</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>haven’t</string>
-		<key>shortcut</key>
-		<string>haven’t</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>haven’t</string>
-		<key>shortcut</key>
-		<string>havent</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>Hawaiʻi</string>
 		<key>shortcut</key>
 		<string>Hawai'i</string>
