@@ -227,6 +227,7 @@ cleanup () {(
   find -- . -type f -size 0 \( \
     -not -path '*/.git/*' -and \
     -not -name "$(printf 'Icon\x0d\x0a')" -and \
+    -not -name '*.dirstamp' -and \
     -not -name '*.gitkeep' -and \
     -not -name '*.keep' -and \
     -not -name '*empty*' -and \
