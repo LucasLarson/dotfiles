@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `7b0698d` to `d26bdcd` [\#235](https://github.com/LucasLarson/dotfiles/pull/235) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[autofix\] Format JSON content [\#233](https://github.com/LucasLarson/dotfiles/pull/233) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `68abcc8` to `7b0698d` [\#232](https://github.com/LucasLarson/dotfiles/pull/232) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.24.0 [\#231](https://github.com/LucasLarson/dotfiles/pull/231) ([renovate[bot]](https://github.com/apps/renovate))
@@ -183,7 +184,6 @@
 
 - replace `jsonlint` with `jsonlint-newline-fork` [\#82](https://github.com/LucasLarson/dotfiles/pull/82) ([LucasLarson](https://github.com/LucasLarson))
 - restore newline in JSON autofix [\#77](https://github.com/LucasLarson/dotfiles/pull/77) ([LucasLarson](https://github.com/LucasLarson))
-- \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair autofix for JSON [\#75](https://github.com/LucasLarson/dotfiles/pull/75) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `ecffcba` to `6b68ebd` [\#73](https://github.com/LucasLarson/dotfiles/pull/73) ([dependabot[bot]](https://github.com/apps/dependabot))
 
@@ -201,6 +201,7 @@
 
 **Merged pull requests:**
 
+- \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `42aa719` to `060af91` [\#72](https://github.com/LucasLarson/dotfiles/pull/72) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `b14876e` to `ecffcba` [\#70](https://github.com/LucasLarson/dotfiles/pull/70) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `71b39f0` to `42aa719` [\#69](https://github.com/LucasLarson/dotfiles/pull/69) ([dependabot[bot]](https://github.com/apps/dependabot))
