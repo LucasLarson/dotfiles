@@ -223,8 +223,9 @@ cleanup () {(
 
   # delete empty, zero-length files
   # except those within `.git/` directories
-  # or with specific names
-  find -- . -type f -size 0 \( \
+  # or with specific names and are writable
+  # https://stackoverflow.com/a/64863398
+  find -- . -type f -writable -size 0 \( \
     -not -path '*/.git/*' -and \
     -not -name "$(printf 'Icon\x0d\x0a')" -and \
     -not -name '*.dirstamp' -and \
