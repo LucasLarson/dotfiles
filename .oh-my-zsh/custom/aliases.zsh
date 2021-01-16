@@ -132,6 +132,17 @@ alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && g
 alias grmr="git rm -r"
 alias grm="grmr"
 
+git_restore () {(
+  IFS="$(printf '\n\t')"
+  files=(
+    "${@:-.}"
+  )
+  for file in "${files[@]}"; do
+    git checkout -- "${file}"
+  done && git status
+)}
+alias grs="git_restore"
+
 git_submodule_update () {(
   git submodule update --init --recursive --remote $@ &&
   git status
