@@ -57,7 +57,8 @@ export UPDATE_ZSH_DAYS=1
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+# This is an unhelpful, badly documented setting and should not be enabled.
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst awaiting completion.
 COMPLETION_WAITING_DOTS="true"
