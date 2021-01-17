@@ -81,6 +81,10 @@ HIST_STAMPS="yyyy-mm-dd"
 export HISTSIZE=2147483647
 export SAVEHIST=${HISTSIZE}
 
+# ~/.zcompdump override
+# https://github.com/ohmyzsh/ohmyzsh/commit/d2fe03d
+ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump" && export ZSH_COMPDUMP
+
 # Use a custom folder other than $ZSH/custom
 # ZSH_CUSTOM=/path/to/new-custom-folder
 ZSH_CUSTOM=${ZSH}/custom
