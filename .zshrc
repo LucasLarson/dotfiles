@@ -210,10 +210,12 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 # https://github.com/ohmyzsh/ohmyzsh/blob/5ffc0d0/oh-my-zsh.sh#L20-L24
 # https://stackoverflow.com/a/13408590
 if [ -z "${DOTFILES}" ] || [ -r "${HOME}/Dropbox/dotfiles" ]; then
-  export DOTFILES=${HOME}/Dropbox/dotfiles
+  DOTFILES=${HOME}/Dropbox/dotfiles
 else
-  export DOTFILES="${HOME}"
+  DOTFILES=${HOME}
 fi
+export DOTFILES
+
 if [ -d "${HOME}/Code/ Template" ] || [ -d "${HOME}/Code/Template" ]; then
   export TEMPLATE="${HOME}/Code/ Template"
 fi
