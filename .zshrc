@@ -141,7 +141,7 @@ else
 fi
 export EDITOR
 # https://github.com/koalaman/shellcheck/wiki/SC2139/db553bf16fcb86b2cdc77b835e75b9121eacc429#this-expands-when-defined-not-when-used-consider-escaping
-alias editor='$EDITOR'
+alias editor='${EDITOR}'
 alias edit="editor"
 # https://unix.stackexchange.com/a/4861
 VISUAL="${EDITOR}"
