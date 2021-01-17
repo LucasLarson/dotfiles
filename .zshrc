@@ -107,7 +107,7 @@ plugins+=(
 # https://github.com/ohmyzsh/ohmyzsh/blob/d0d01c0/lib/theme-and-appearance.zsh
 # https://github.com/trapd00r/LS_COLORS/tree/6a4d29b#installation
 # https://github.com/paulirish/dotfiles/blob/ccccd07/.dircolors
-[ -e "${HOME}/.local/share/lscolors.sh" ] && . "${HOME}/.local/share/lscolors.sh"
+[ -r "${HOME}/.local/share/lscolors.sh" ] && . "${HOME}/.local/share/lscolors.sh"
 
 . "${ZSH}/oh-my-zsh.sh"
 
@@ -151,7 +151,7 @@ export VISUAL
 # export ARCHFLAGS="-arch x86_64"
 
 # iTerm
-[ -e "${HOME}/.iterm2_shell_integration.zsh" ] && . "${HOME}/.iterm2_shell_integration.zsh"
+[ -r "${HOME}/.iterm2_shell_integration.zsh" ] && . "${HOME}/.iterm2_shell_integration.zsh"
 
 # GPG signing with macOS-compatible Linux
 # https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key
@@ -191,7 +191,7 @@ export GPG_TTY
 [ -d "${HOME}/.cargo/bin" ] && PATH="${HOME}/.cargo/bin:${PATH}"
 
 # Bashhub.com
-[ -e "${HOME}/.bashhub/bashhub.zsh" ] && . "${HOME}/.bashhub/bashhub.zsh"
+[ -r "${HOME}/.bashhub/bashhub.zsh" ] && . "${HOME}/.bashhub/bashhub.zsh"
 
 # npm without sudo
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
