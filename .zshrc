@@ -78,8 +78,8 @@ HIST_STAMPS="yyyy-mm-dd"
 
 # set maximum number of lines in history file
 # https://unix.stackexchange.com/a/273863
-export HISTSIZE=2147483647
-export SAVEHIST=${HISTSIZE}
+export HISTSIZE=$(( 2 ** 31 ))      # 2,147,483,648
+export SAVEHIST=$(( 2 * HISTSIZE )) # 4,294,967,296
 
 # ~/.zcompdump override
 # https://github.com/ohmyzsh/ohmyzsh/commit/d2fe03d
