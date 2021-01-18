@@ -1216,12 +1216,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>I’d</string>
-		<key>shortcut</key>
-		<string>id</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>⇔</string>
 		<key>shortcut</key>
 		<string>iff</string>
