@@ -2920,42 +2920,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>that’d</string>
-		<key>shortcut</key>
-		<string>that'd</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>that’s</string>
-		<key>shortcut</key>
-		<string>that's</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>that’d</string>
-		<key>shortcut</key>
-		<string>that’d</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>that’s</string>
-		<key>shortcut</key>
-		<string>that’s</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>that’d</string>
-		<key>shortcut</key>
-		<string>thatd</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>that’s</string>
-		<key>shortcut</key>
-		<string>thats</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>TheDailyBeast</string>
 		<key>shortcut</key>
 		<string>thedailybeast</string>
