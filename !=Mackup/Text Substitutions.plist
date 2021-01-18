@@ -1258,12 +1258,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>I’m</string>
-		<key>shortcut</key>
-		<string>im</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>imagine</string>
 		<key>shortcut</key>
 		<string>imahine</string>
