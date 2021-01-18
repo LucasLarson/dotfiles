@@ -724,42 +724,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>doesn’t</string>
-		<key>shortcut</key>
-		<string>doesn't</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>doesn’t</string>
-		<key>shortcut</key>
-		<string>doesn’t</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>doesn’t</string>
-		<key>shortcut</key>
-		<string>doesnt</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>don’t</string>
-		<key>shortcut</key>
-		<string>don't</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>don’t</string>
-		<key>shortcut</key>
-		<string>don’t</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>don’t</string>
-		<key>shortcut</key>
-		<string>dont</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>ı</string>
 		<key>shortcut</key>
 		<string>dotlessi</string>
