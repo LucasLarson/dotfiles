@@ -251,13 +251,6 @@ if [ -d ${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/plugins/zsh-completions/src ];
   compinit
 fi
 
-# auto cd options
-# https://github.com/TimButters/dotfiles/blob/3e03c81/zshrc#L46-L50
-# setopt autocd
-[ "$(uname)" = Darwin ] && cdpath+=(
-  "/"
-)
-
 # share all commands from everywhere
 # https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
 setopt share_history
