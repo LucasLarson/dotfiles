@@ -219,7 +219,7 @@ cleanup () {(
     -name 'Thumbs.db' -or \
     -name 'thumbs.db' \
     \) \
-    $verbose -delete
+    ${verbose} -delete
 
   # delete empty, zero-length files
   # except those within `.git/` directories
@@ -238,7 +238,7 @@ cleanup () {(
     -not -name '*lock' -and \
     -not -name '*lockfile' \
     \) \
-    $verbose -delete
+    ${verbose} -delete
 
   # delete empty directories recursively
   # but skip Git-specific and `/.well-known/` directories
@@ -247,7 +247,7 @@ cleanup () {(
     -not -path '*/.git/*' -and \
     -not -name '.well-known' \
     \) \
-    $verbose -delete
+    ${verbose} -delete
 )}
 
 # find duplicate files
