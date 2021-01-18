@@ -1222,6 +1222,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Ivory</string>
+		<key>shortcut</key>
+		<string>icory</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>⇔</string>
 		<key>shortcut</key>
 		<string>iff</string>
