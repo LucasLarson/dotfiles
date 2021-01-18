@@ -138,7 +138,7 @@ git_restore () {(
     "${@:-.}"
   )
   for file in "${files[@]}"; do
-    git checkout -- "${file}"
+    git checkout --progress -- "${file}"
   done && git status
 )}
 alias grs="git_restore"
