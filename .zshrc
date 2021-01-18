@@ -216,9 +216,15 @@ else
 fi
 export DOTFILES
 
-if [ -d "${HOME}/Code/ Template" ] || [ -d "${HOME}/Code/Template" ]; then
-  export TEMPLATE="${HOME}/Code/ Template"
+# Template repository
+if [ -d "${HOME}/Dropbox/Template" ]; then
+  TEMPLATE=${HOME}/Dropbox/Template
+elif [ -d "${HOME}/Code/ Template" ]; then
+  TEMPLATE=${HOME}/Code/ Template
+elif [ -d "${HOME}/Code/Template" ]; then
+  TEMPLATE=${HOME}/Code/Template
 fi
+export TEMPLATE
 
 # completion dots
 # https://git.io/completion-dots-in-.zshrc
