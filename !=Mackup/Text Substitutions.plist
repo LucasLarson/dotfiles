@@ -3178,24 +3178,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>what’s</string>
-		<key>shortcut</key>
-		<string>what's</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>what’s</string>
-		<key>shortcut</key>
-		<string>what’s</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>what’s</string>
-		<key>shortcut</key>
-		<string>whats</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>which</string>
 		<key>shortcut</key>
 		<string>whcih</string>
