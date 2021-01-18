@@ -1336,18 +1336,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>isn’t</string>
-		<key>shortcut</key>
-		<string>isn't</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>isn’t</string>
-		<key>shortcut</key>
-		<string>isnt</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>𝑎</string>
 		<key>shortcut</key>
 		<string>italica</string>
