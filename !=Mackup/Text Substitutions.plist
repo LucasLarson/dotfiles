@@ -2470,18 +2470,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>she’s</string>
-		<key>shortcut</key>
-		<string>she's</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>she’s</string>
-		<key>shortcut</key>
-		<string>shes</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>⇧</string>
 		<key>shortcut</key>
 		<string>shiftkey</string>
