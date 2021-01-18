@@ -104,7 +104,7 @@ git_default_branch () {(
     printf 'git_default_branch must be called from within a Git repository\n'
     return 1
   fi
-  printf '%s' "${default_branch}"
+  printf %s "${default_branch}"
 )}
 alias gdb="git_default_branch"
 
