@@ -724,6 +724,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>dotfiles</string>
+		<key>shortcut</key>
+		<string>dotfiles</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>ı</string>
 		<key>shortcut</key>
 		<string>dotlessi</string>
