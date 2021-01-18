@@ -10,7 +10,7 @@ fi
 # export PATH=${HOME}/bin:/usr/local/bin:${PATH}
 
 # Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
+export ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -83,7 +83,7 @@ export SAVEHIST=$(( 2 * HISTSIZE )) # 4,294,967,296
 
 # ~/.zcompdump override
 # https://github.com/ohmyzsh/ohmyzsh/commit/d2fe03d
-ZSH_COMPDUMP="${ZDOTDIR:-${HOME}}/.zcompdump" && export ZSH_COMPDUMP
+ZSH_COMPDUMP=${ZDOTDIR:-${HOME}}/.zcompdump && export ZSH_COMPDUMP
 
 # Use a custom folder other than $ZSH/custom
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -119,7 +119,7 @@ plugins+=(
 
 # MANPATH
 # export MANPATH="/usr/local/man:${MANPATH}"
-[ -z "${MANPATH}" ] && MANPATH="$(man -w)"
+[ -z "${MANPATH}" ] && MANPATH=$(man -w)
 export MANPATH
 
 # You may need to manually set your language environment
@@ -131,20 +131,20 @@ export MANPATH
 # https://github.com/wililupy/snapd/commit/0573e7b
 if command -v nvim >/dev/null 2>&1; then
   # https://unix.stackexchange.com/q/4859#comment5812_4861
-  EDITOR="$(command -v nvim)"
+  EDITOR=$(command -v nvim)
 elif command -v vim >/dev/null 2>&1; then
-  EDITOR="$(command -v vim)"
+  EDITOR=$(command -v vim)
 elif command -v vi >/dev/null 2>&1; then
-  EDITOR="$(command -v vi)"
+  EDITOR=$(command -v vi)
 else
-  EDITOR="$(command -v nano)"
+  EDITOR=$(command -v nano)
 fi
 export EDITOR
 # https://github.com/koalaman/shellcheck/wiki/SC2139/db553bf16fcb86b2cdc77b835e75b9121eacc429#this-expands-when-defined-not-when-used-consider-escaping
 alias editor='${EDITOR}'
 alias edit="editor"
 # https://unix.stackexchange.com/a/4861
-VISUAL="${EDITOR}"
+VISUAL=${EDITOR}
 export VISUAL
 
 # Compilation flags
@@ -161,43 +161,43 @@ export GPG_TTY
 
 # Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
-[ -d /usr/local/sbin ] && PATH="/usr/local/sbin:${PATH}"
+[ -d /usr/local/sbin ] && PATH=/usr/local/sbin:${PATH}
 
 # GNU Core Utils
 # for `date`, `cat`, `ln`
 # https://apple.stackexchange.com/a/135749
-[ -d /usr/local/opt/coreutils/libexec/gnubin ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+[ -d /usr/local/opt/coreutils/libexec/gnubin ] && PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
 
 # GNU Find Utils
 # for `find`, `xargs`, `locate`
-[ -d /usr/local/opt/findutils/libexec/gnubin ] && PATH="/usr/local/opt/findutils/libexec/gnubin:${PATH}"
+[ -d /usr/local/opt/findutils/libexec/gnubin ] && PATH=/usr/local/opt/findutils/libexec/gnubin:${PATH}
 
 # grep
 # use latest via Homebrew but without the `g` prefix
 # https://github.com/Homebrew/homebrew-core/blob/ba7a70f/Formula/grep.rb#L43-L46
-[ -d /usr/local/opt/grep/libexec/gnubin ] && PATH="/usr/local/opt/grep/libexec/gnubin:${PATH}"
+[ -d /usr/local/opt/grep/libexec/gnubin ] && PATH=/usr/local/opt/grep/libexec/gnubin:${PATH}
 
 # make
 # use latest via Homebrew but without the `g` prefix
 # https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
-[ -d /usr/local/opt/make/libexec/gnubin ] && PATH="/usr/local/opt/make/libexec/gnubin:${PATH}"
+[ -d /usr/local/opt/make/libexec/gnubin ] && PATH=/usr/local/opt/make/libexec/gnubin:${PATH}
 
 # sed
 # https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
-[ -d /usr/local/opt/gnu-sed/libexec/gnubin ] && PATH="/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}"
+[ -d /usr/local/opt/gnu-sed/libexec/gnubin ] && PATH=/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}
 
 # Rust Cargo
 # if its `bin` is a directory, then add it to `PATH`
-[ -d "${HOME}/.cargo/bin" ] && PATH="${HOME}/.cargo/bin:${PATH}"
+[ -d "${HOME}/.cargo/bin" ] && PATH=${HOME}/.cargo/bin:${PATH}
 
 # Bashhub.com
 [ -r "${HOME}/.bashhub/bashhub.zsh" ] && . "${HOME}/.bashhub/bashhub.zsh"
 
 # npm without sudo
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
-NPM_PACKAGES="${HOME}/.npm-packages"
-[ -d "${NPM_PACKAGES}/bin" ] && PATH="${PATH}:${NPM_PACKAGES}/bin"
-[ -d "${NPM_PACKAGES}/share/man" ] && MANPATH="${MANPATH}:${NPM_PACKAGES}/share/man"
+NPM_PACKAGES=${HOME}/.npm-packages
+[ -d "${NPM_PACKAGES}/bin" ] && PATH=${PATH}:${NPM_PACKAGES}/bin
+[ -d "${NPM_PACKAGES}/share/man" ] && MANPATH=${MANPATH}:${NPM_PACKAGES}/share/man
 
 # RVM and rbenv are incompatible and shell references to RVM have to be removed
 # https://github.com/rbenv/rbenv/blob/577f046/README.md#installation
@@ -245,8 +245,8 @@ zstyle ':completion:*' special-dirs false
 # https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
 #
 # https://github.com/zsh-users/zsh-completions/tree/f68950a#oh-my-zsh
-if [ -d ${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/plugins/zsh-completions/src ]; then
-  FPATH="${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/plugins/zsh-completions/src:${FPATH}"
+if [ -d "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/plugins/zsh-completions/src" ]; then
+  FPATH=${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/plugins/zsh-completions/src:${FPATH}
   autoload -Uz compinit
   compinit
 fi
@@ -272,7 +272,7 @@ fi
 # and `flutter`’s not in the PATH, then add it
 if [ -x "${HOME}/Code/Flutter/bin/flutter" ]; then
   if ! command -v flutter >/dev/null 2>&1; then
-    PATH="${PATH}:${HOME}/Code/Flutter/bin"
+    PATH=${PATH}:${HOME}/Code/Flutter/bin
   fi
 fi
 
@@ -282,17 +282,17 @@ fi
 
 # pip
 # location of Python packages on Linux
-[ -d "${HOME}/.local/bin" ] && PATH="${HOME}/.local/bin:${PATH}"
+[ -d "${HOME}/.local/bin" ] && PATH=${HOME}/.local/bin:${PATH}
 
 # rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # https://git.io/init_-_--no-rehash
-# export PATH="${HOME}/.rbenv/bin:${PATH}"
+# export PATH=${HOME}/.rbenv/bin:${PATH}
 command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - --no-rehash "${SHELL##*[-/]}")"
 
 # Radicle
 # https://github.com/radicle-dev/radicle-docs/blob/a0f08f4/docs/getting-started/doc1-1.md#configuring-your-system
-[ -d "${HOME}/.radicle/bin" ] && PATH="${HOME}/.radicle/bin:${PATH}"
+[ -d "${HOME}/.radicle/bin" ] && PATH=${HOME}/.radicle/bin:${PATH}
 
 # automatically remove PATH duplicates
 # https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
