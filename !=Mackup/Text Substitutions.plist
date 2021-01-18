@@ -3298,6 +3298,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>tszuj</string>
+		<key>shortcut</key>
+		<string>zshoozh</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>tszuj</string>
+		<key>shortcut</key>
+		<string>zshoozsh</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>zw​s</string>
 		<key>shortcut</key>
 		<string>zws</string>
