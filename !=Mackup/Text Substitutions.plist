@@ -94,6 +94,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>0w‍j</string>
+		<key>shortcut</key>
+		<string>0wj</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>½</string>
 		<key>shortcut</key>
 		<string>1/2</string>
@@ -3307,6 +3313,12 @@
 		<string>tszuj</string>
 		<key>shortcut</key>
 		<string>zshoozsh</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>zw‍j</string>
+		<key>shortcut</key>
+		<string>zwj</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
