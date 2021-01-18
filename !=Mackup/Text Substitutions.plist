@@ -1402,24 +1402,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>it’d</string>
-		<key>shortcut</key>
-		<string>it'd</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>it’s</string>
-		<key>shortcut</key>
-		<string>it's</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>it’s</string>
-		<key>shortcut</key>
-		<string>it’s</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>𝑎</string>
 		<key>shortcut</key>
 		<string>italica</string>
@@ -1615,12 +1597,6 @@
 		<string>𝑧</string>
 		<key>shortcut</key>
 		<string>italicz</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>it’d</string>
-		<key>shortcut</key>
-		<string>itd</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
