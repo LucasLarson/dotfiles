@@ -1234,12 +1234,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>I’dn’t’ve</string>
-		<key>shortcut</key>
-		<string>i’dn’t’ve</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>Ivory</string>
 		<key>shortcut</key>
 		<string>ibory</string>
