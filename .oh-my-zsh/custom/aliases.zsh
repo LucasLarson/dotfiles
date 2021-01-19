@@ -277,6 +277,8 @@ take () {
 # date -j +%s # for milliseconds
 alias unixtime="date +%s"
 
+alias all="which -a"
+
 # https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 alias aliases='"${EDITOR:-vi}" "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}/custom/aliases.${0##*[-/]}"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
