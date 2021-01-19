@@ -236,7 +236,8 @@ cleanup () {(
     -not -name '*hushlogin' -and \
     -not -name '*journal' -and \
     -not -name '*lock' -and \
-    -not -name '*lockfile' \
+    -not -name '*lockfile' -and \
+    -not -name '.sudo_as_admin_successful' \
     \) \
     ${verbose} -delete
 
