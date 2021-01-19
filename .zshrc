@@ -20,9 +20,9 @@ export ZSH=${HOME}/.oh-my-zsh
 # https://github.com/romkatv/powerlevel10k/blob/48c6ff4/README.md#oh-my-zsh
 # ZSH_THEME
 if [ -d "${ZSH}/custom/themes/powerlevel10k" ]; then
-  ZSH_THEME="powerlevel10k/powerlevel10k"
+  ZSH_THEME=powerlevel10k/powerlevel10k
 else
-  ZSH_THEME="robbyrussell"
+  ZSH_THEME=robbyrussell
 fi
 
 # Set list of themes to pick from when loading at random
@@ -32,41 +32,41 @@ fi
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# CASE_SENSITIVE=true
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE=true
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE=true
 
 # Uncomment the following line to automatically update without prompting.
-DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT=true
 
 # Uncomment the following line to change how often, in days, to autoupdate.
 export UPDATE_ZSH_DAYS=1
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+# DISABLE_LS_COLORS=true
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+# DISABLE_AUTO_TITLE=true
 
 # Uncomment the following line to enable command auto-correction.
 # This is an unhelpful, badly documented setting and should not be enabled.
-ENABLE_CORRECTION="false"
+ENABLE_CORRECTION=false
 
 # Uncomment the following line to display red dots whilst awaiting completion.
-COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS=true
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# DISABLE_UNTRACKED_FILES_DIRTY=true
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -74,7 +74,7 @@ COMPLETION_WAITING_DOTS="true"
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-HIST_STAMPS="yyyy-mm-dd"
+HIST_STAMPS=yyyy-mm-dd
 
 # set maximum number of lines in history file
 # https://unix.stackexchange.com/a/273863
@@ -118,7 +118,7 @@ plugins+=(
 
 
 # MANPATH
-# export MANPATH="/usr/local/man:${MANPATH}"
+# export MANPATH=/usr/local/man:${MANPATH}
 [ -z "${MANPATH}" ] && MANPATH=$(man -w)
 export MANPATH
 
@@ -142,7 +142,7 @@ fi
 export EDITOR
 # https://github.com/koalaman/shellcheck/wiki/SC2139/db553bf16fcb86b2cdc77b835e75b9121eacc429#this-expands-when-defined-not-when-used-consider-escaping
 alias editor='${EDITOR}'
-alias edit="editor"
+alias edit=editor
 # https://unix.stackexchange.com/a/4861
 VISUAL=${EDITOR}
 export VISUAL
@@ -203,7 +203,7 @@ NPM_PACKAGES=${HOME}/.npm-packages
 # https://github.com/rbenv/rbenv/blob/577f046/README.md#installation
 # Add RVM to PATH for scripting
 # Make sure this is the last PATH variable change
-# export PATH="${PATH}:${HOME}/.rvm/bin"
+# export PATH=${PATH}:${HOME}/.rvm/bin
 
 # dotfiles
 # set to where they are syncing if it exists, or else use the default: $HOME
