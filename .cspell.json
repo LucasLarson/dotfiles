@@ -1,6 +1,16 @@
 {
   "version": "0.1",
   "language": "en",
+  "dictionaries": [
+    "en_US",
+    "softwareTerms",
+    "html",
+    "css",
+    "cpp",
+    "bash",
+    "php"
+  ]
+  ,
   "words": [
     "Algis",
     "Aquilina",
