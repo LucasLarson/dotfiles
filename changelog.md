@@ -88,16 +88,13 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.1...v0.5.2)
 
-**Merged pull requests:**
-
-- Update peter-evans/create-pull-request action to v3.5.1 [\#160](https://github.com/LucasLarson/dotfiles/pull/160) ([renovate[bot]](https://github.com/apps/renovate))
-
 ## [v0.5.1](https://github.com/LucasLarson/dotfiles/tree/v0.5.1) (2020-11-23)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.0...v0.5.1)
 
 **Merged pull requests:**
 
+- Update peter-evans/create-pull-request action to v3.5.1 [\#160](https://github.com/LucasLarson/dotfiles/pull/160) ([renovate[bot]](https://github.com/apps/renovate))
 - add `git status` to `git push` alias [\#159](https://github.com/LucasLarson/dotfiles/pull/159) ([LucasLarson](https://github.com/LucasLarson))
 - allow `git verify-commit`’s alias to allow a commit hash as argument [\#158](https://github.com/LucasLarson/dotfiles/pull/158) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `04f75a1` to `31ede3c` [\#157](https://github.com/LucasLarson/dotfiles/pull/157) ([dependabot[bot]](https://github.com/apps/dependabot))
