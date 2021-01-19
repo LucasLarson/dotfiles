@@ -240,6 +240,9 @@ setopt globdots
 # but hide `./` and `../`
 # https://unix.stackexchange.com/q/308315#comment893697_308322
 zstyle ':completion:*' special-dirs false
+# https://github.com/TimButters/dotfiles/blob/3e03c81/zshrc#L46-L50
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format %F"{green}"%d%f
 
 # zsh-completions
 # https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
