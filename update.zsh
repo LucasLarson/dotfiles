@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+update () {(
 
 update=1
 clear && clear
@@ -130,3 +131,4 @@ unset update
 printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "${update}"
 
 exec "${SHELL##*/}" --login
+)}
