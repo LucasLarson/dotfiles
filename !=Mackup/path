@@ -3,10 +3,10 @@
 #
 /Users/LucasLarson/.rbenv/shims
 /Users/LucasLarson/.pyenv/shims
+/Users/LucasLarson/.cargo/bin
 /usr/local/opt/make/libexec/gnubin
 /usr/local/opt/grep/libexec/gnubin
 /usr/local/sbin
-/Users/LucasLarson/.cargo/bin
 /usr/local/bin
 /usr/bin
 /bin
