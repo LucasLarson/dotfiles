@@ -3,7 +3,6 @@
 #
 /Users/LucasLarson/.rbenv/shims
 /Users/LucasLarson/.pyenv/shims
-/Users/LucasLarson/.npm-packages/bin
 /usr/local/opt/make/libexec/gnubin
 /usr/local/opt/grep/libexec/gnubin
 /usr/local/sbin
@@ -16,4 +15,5 @@
 /Library/TeX/texbin
 /usr/local/MacGPG2/bin
 /Library/Apple/usr/bin
+/Users/LucasLarson/.npm-packages/bin
 /Users/LucasLarson/Code/Flutter/bin
