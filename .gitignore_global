@@ -42,6 +42,7 @@ Temporary Items
 
 ## SourceTree ##
 *-lock.*
+!package-lock.json
 *.pbxuser
 *.xcuserstate
 Cartfile.resolved
