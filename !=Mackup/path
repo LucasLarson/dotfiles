@@ -1,11 +1,15 @@
 # `<<<${(F)path}`
 # https://codegolf.stackexchange.com/a/96471
 #
+/Users/LucasLarson/.radicle/bin
 /Users/LucasLarson/.rbenv/shims
 /Users/LucasLarson/.pyenv/shims
 /Users/LucasLarson/.cargo/bin
+/usr/local/opt/gnu-sed/libexec/gnubin
 /usr/local/opt/make/libexec/gnubin
 /usr/local/opt/grep/libexec/gnubin
+/usr/local/opt/findutils/libexec/gnubin
+/usr/local/opt/coreutils/libexec/gnubin
 /usr/local/sbin
 /usr/local/bin
 /usr/bin
@@ -14,7 +18,11 @@
 /sbin
 /Library/TeX/texbin
 /usr/local/MacGPG2/bin
+/usr/local/share/dotnet
+/opt/X11/bin
 /Library/Apple/usr/bin
+/Library/Frameworks/Mono.framework/Versions/Current/Commands
 /Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh/custom/plugins/gunstage/bin
+/Users/LucasLarson/.bashhub/bin
 /Users/LucasLarson/.npm-packages/bin
 /Users/LucasLarson/Code/Flutter/bin
