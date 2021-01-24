@@ -28,7 +28,7 @@ ZSHCUSTOM=${ZSH_CUSTOM} && export ZSHCUSTOM
 # powerlevel10k
 # https://github.com/romkatv/powerlevel10k/blob/48c6ff4/README.md#oh-my-zsh
 # ZSH_THEME
-if [ -r "${ZSH_CUSTOM}/themes/powerlevel10k/powerlevel10k.zsh-theme" ] && [ $((LINES * COLUMNS)) -ge 2000 ]; then
+if [ -r "${ZSH_CUSTOM}/themes/powerlevel10k/powerlevel10k.zsh-theme" ] && [ $((LINES * COLUMNS)) -ge 1920 ]; then
   ZSH_THEME=powerlevel10k/powerlevel10k
 else
   ZSH_THEME=robbyrussell
