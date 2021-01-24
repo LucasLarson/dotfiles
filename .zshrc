@@ -15,6 +15,12 @@ DOTFILES=${HOME}/Dropbox/dotfiles && export DOTFILES
 # Path to your oh-my-zsh installation.
 export ZSH=${HOME}/.oh-my-zsh
 
+# Use a custom folder other than $ZSH/custom
+# ZSH_CUSTOM=/path/to/new-custom-folder
+# https://reddit.com/comments/g1a2qd/_/fneil10
+ZSH_CUSTOM=${DOTFILES}/.oh-my-zsh/custom && export ZSH_CUSTOM
+ZSHCUSTOM=${ZSH_CUSTOM} && export ZSHCUSTOM
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -22,7 +28,7 @@ export ZSH=${HOME}/.oh-my-zsh
 # powerlevel10k
 # https://github.com/romkatv/powerlevel10k/blob/48c6ff4/README.md#oh-my-zsh
 # ZSH_THEME
-if [ -r "${ZSH}/custom/themes/powerlevel10k/powerlevel10k.zsh-theme" ] && [ $((LINES * COLUMNS)) -ge 2000 ]; then
+if [ -r "${ZSH_CUSTOM}/themes/powerlevel10k/powerlevel10k.zsh-theme" ] && [ $((LINES * COLUMNS)) -ge 2000 ]; then
   ZSH_THEME=powerlevel10k/powerlevel10k
 else
   ZSH_THEME=robbyrussell
@@ -87,11 +93,6 @@ export SAVEHIST=$((2 * HISTSIZE)) # 4,294,967,296
 # ~/.zcompdump override
 # https://github.com/ohmyzsh/ohmyzsh/commit/d2fe03d
 ZSH_COMPDUMP=${ZDOTDIR:-${HOME}}/.zcompdump && export ZSH_COMPDUMP
-
-# Use a custom folder other than $ZSH/custom
-# ZSH_CUSTOM=/path/to/new-custom-folder
-ZSH_CUSTOM=${ZSH}/custom
-ZSHCUSTOM=${ZSH_CUSTOM}
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins
@@ -240,7 +241,7 @@ zstyle ':completion:*:descriptions' format %F"{green}"%d%f
 # https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
 #
 # https://github.com/zsh-users/zsh-completions/tree/f68950a#oh-my-zsh
-[ -d "${ZSH}/custom/plugins/zsh-completions/src" ] && FPATH=${FPATH}:${ZSH}/custom/plugins/zsh-completions/src
+[ -d "${ZSH_CUSTOM}/plugins/zsh-completions/src" ] && FPATH=${FPATH}:${ZSH_CUSTOM}/plugins/zsh-completions/src
 
 # share all commands from everywhere
 # https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
