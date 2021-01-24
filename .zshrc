@@ -6,6 +6,9 @@ if [[ -r "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" 
   source "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Dotfiles
+DOTFILES=${HOME}/Dropbox/dotfiles && export DOTFILES
+
 # If you come from Bash you might have to change your PATH.
 # export PATH=${HOME}/bin:/usr/local/bin:${PATH}
 
@@ -204,17 +207,6 @@ NPM_PACKAGES=${HOME}/.npm-packages
 # Add RVM to PATH for scripting
 # Make sure this is the last PATH variable change
 # export PATH=${PATH}:${HOME}/.rvm/bin
-
-# dotfiles
-# set to where they are syncing if it exists, or else use the default: $HOME
-# https://github.com/ohmyzsh/ohmyzsh/blob/5ffc0d0/oh-my-zsh.sh#L20-L24
-# https://stackoverflow.com/a/13408590
-if [ -z "${DOTFILES}" ] || [ -r "${HOME}/Dropbox/dotfiles" ]; then
-  DOTFILES=${HOME}/Dropbox/dotfiles
-else
-  DOTFILES=${HOME}
-fi
-export DOTFILES
 
 # Template repository
 if [ -d "${HOME}/Dropbox/Template" ]; then
