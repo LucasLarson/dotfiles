@@ -249,7 +249,12 @@ setopt share_history
 
 # pyenv
 # https://git.io/init_-_--no-rehash
-command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init - --no-rehash "${SHELL##*[-/]}")"
+# https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
+[ -d "${HOME}/.pyenv/shims" ] && PATH=${HOME}/.pyenv/shims:${PATH}
+pyenv () {
+  eval "$(command pyenv init - --no-rehash "${SHELL##*[-/]}")"
+  pyenv "$@"
+}
 
 # C, C++ headers
 # https://apple.stackexchange.com/a/372600
@@ -279,8 +284,12 @@ fi
 # rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # https://git.io/init_-_--no-rehash
-# export PATH=${HOME}/.rbenv/bin:${PATH}
-command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - --no-rehash "${SHELL##*[-/]}")"
+# https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
+[ -d "${HOME}/.rbenv/shims" ] && PATH=${HOME}/.rbenv/shims:${PATH}
+rbenv () {
+  eval "$(command rbenv init - --no-rehash "${SHELL##*[-/]}")"
+  rbenv "$@"
+}
 
 # Radicle
 # https://github.com/radicle-dev/radicle-docs/blob/a0f08f4/docs/getting-started/doc1-1.md#configuring-your-system
