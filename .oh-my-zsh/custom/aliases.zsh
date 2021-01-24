@@ -178,6 +178,26 @@ gvc () {(
 
 
 # shell
+cd_pwd_-P () {
+  cd_from=$(pwd)
+  cd_to=$(pwd -P)
+  if [ "${cd_from}" != "${cd_to}" ]
+  then
+    printf 'moving from \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_from}" && \
+    sleep 0.5
+    cd "${cd_to}" || (
+      printf 'unable to perform this operation\n' && return 1
+    )
+    printf '       into \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_to}" && \
+    sleep 0.5
+  else
+    printf 'already in unaliased directory '
+    printf '\xe2\x80\x98%s\xe2\x80\x99\n' "${cd_from}"
+  fi
+  unset cd_from cd_to
+}
+alias cdp='cd_pwd_-P'
+
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp="cp -r"
 cy () {(
@@ -262,8 +282,6 @@ alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
 
 # https://unix.stackexchange.com/a/30950
 alias mv="mv -v -i"
-
-alias pwd="pwd -P"
 
 # take
 # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
