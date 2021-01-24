@@ -165,30 +165,35 @@ export GPG_TTY
 
 # Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
-[ -d /usr/local/sbin ] && PATH=/usr/local/sbin:${PATH}
+if command -v brew >/dev/null 2>&1; then
+
+# https://github.com/driesvints/dotfiles/blob/388baf1/path.zsh#L17
+BREW_PREFIX="$(brew --prefix)"
+[ -d "${BREW_PREFIX}/sbin" ] && PATH=${BREW_PREFIX}/sbin:${PATH}
 
 # GNU Core Utils
 # for `date`, `cat`, `ln`
 # https://apple.stackexchange.com/a/135749
-[ -d /usr/local/opt/coreutils/libexec/gnubin ] && PATH=/usr/local/opt/coreutils/libexec/gnubin:${PATH}
+[ -d "${BREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}
 
 # GNU Find Utils
 # for `find`, `xargs`, `locate`
-[ -d /usr/local/opt/findutils/libexec/gnubin ] && PATH=/usr/local/opt/findutils/libexec/gnubin:${PATH}
+[ -d "${BREW_PREFIX}/opt/findutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/findutils/libexec/gnubin:${PATH}
 
 # grep
 # use latest via Homebrew but without the `g` prefix
 # https://github.com/Homebrew/homebrew-core/blob/ba7a70f/Formula/grep.rb#L43-L46
-[ -d /usr/local/opt/grep/libexec/gnubin ] && PATH=/usr/local/opt/grep/libexec/gnubin:${PATH}
+[ -d "${BREW_PREFIX}/opt/grep/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/grep/libexec/gnubin:${PATH}
 
 # make
 # use latest via Homebrew but without the `g` prefix
 # https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
-[ -d /usr/local/opt/make/libexec/gnubin ] && PATH=/usr/local/opt/make/libexec/gnubin:${PATH}
+[ -d "${BREW_PREFIX}/opt/make/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/make/libexec/gnubin:${PATH}
 
 # sed
 # https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
-[ -d /usr/local/opt/gnu-sed/libexec/gnubin ] && PATH=/usr/local/opt/gnu-sed/libexec/gnubin:${PATH}
+[ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}
+fi
 
 # Rust Cargo
 # if its `bin` is a directory, then add it to `PATH`
@@ -239,7 +244,6 @@ zstyle ':completion:*:descriptions' format %F"{green}"%d%f
 
 # zsh-completions
 # https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
-#
 # https://github.com/zsh-users/zsh-completions/tree/f68950a#oh-my-zsh
 [ -d "${ZSH_CUSTOM}/plugins/zsh-completions/src" ] && FPATH=${FPATH}:${ZSH_CUSTOM}/plugins/zsh-completions/src
 
