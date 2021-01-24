@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/LucasLarson/dotfiles/tree/HEAD)
+## [v0.5.4](https://github.com/LucasLarson/dotfiles/tree/v0.5.4) (2021-01-24)
 
-[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.3...HEAD)
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.3...v0.5.4)
 
 **Closed issues:**
 
@@ -193,6 +193,7 @@
 
 - replace `jsonlint` with `jsonlint-newline-fork` [\#82](https://github.com/LucasLarson/dotfiles/pull/82) ([LucasLarson](https://github.com/LucasLarson))
 - restore newline in JSON autofix [\#77](https://github.com/LucasLarson/dotfiles/pull/77) ([LucasLarson](https://github.com/LucasLarson))
+- \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair autofix for JSON [\#75](https://github.com/LucasLarson/dotfiles/pull/75) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `ecffcba` to `6b68ebd` [\#73](https://github.com/LucasLarson/dotfiles/pull/73) ([dependabot[bot]](https://github.com/apps/dependabot))
 
@@ -210,7 +211,6 @@
 
 **Merged pull requests:**
 
-- \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `42aa719` to `060af91` [\#72](https://github.com/LucasLarson/dotfiles/pull/72) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `b14876e` to `ecffcba` [\#70](https://github.com/LucasLarson/dotfiles/pull/70) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `71b39f0` to `42aa719` [\#69](https://github.com/LucasLarson/dotfiles/pull/69) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -235,7 +235,6 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `12cef82` to `afb854d` [\#54](https://github.com/LucasLarson/dotfiles/pull/54) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `6221309` to `12cef82` [\#52](https://github.com/LucasLarson/dotfiles/pull/52) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/C.tmbundle from `60daf83` to `cc68c3b` [\#50](https://github.com/LucasLarson/dotfiles/pull/50) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `6c8c6ee` to `6221309` [\#49](https://github.com/LucasLarson/dotfiles/pull/49) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `3b2f474` to `6c8c6ee` [\#48](https://github.com/LucasLarson/dotfiles/pull/48) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a3727dc` to `3b2f474` [\#47](https://github.com/LucasLarson/dotfiles/pull/47) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `c1db392` to `a3727dc` [\#45](https://github.com/LucasLarson/dotfiles/pull/45) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -254,6 +253,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `6c8c6ee` to `6221309` [\#49](https://github.com/LucasLarson/dotfiles/pull/49) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `6279aa5` to `7eb501c` [\#42](https://github.com/LucasLarson/dotfiles/pull/42) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `dca8774` to `6279aa5` [\#40](https://github.com/LucasLarson/dotfiles/pull/40) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7114902` to `dca8774` [\#38](https://github.com/LucasLarson/dotfiles/pull/38) ([dependabot[bot]](https://github.com/apps/dependabot))
