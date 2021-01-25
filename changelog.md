@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.4...HEAD)
 
+**Closed issues:**
+
+- is `PATH` `coreutils` constructed safely? [\#208](https://github.com/LucasLarson/dotfiles/issues/208)
+
 **Merged pull requests:**
 
 - Update nvuillam/mega-linter action to v4.26.0 [\#242](https://github.com/LucasLarson/dotfiles/pull/242) ([renovate[bot]](https://github.com/apps/renovate))
