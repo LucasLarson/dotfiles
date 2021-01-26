@@ -310,6 +310,7 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `eda706c` to `8854cb6` [\#7](https://github.com/LucasLarson/dotfiles/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `5e5d3f5` to `eda706c` [\#6](https://github.com/LucasLarson/dotfiles/pull/6) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump powerlevel10k submodule to `5e5d3f5` from `3e17260` [\#5](https://github.com/LucasLarson/dotfiles/pull/5) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump mackup from 0.8.28 to 0.8.29 [\#4](https://github.com/LucasLarson/dotfiles/pull/4) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `c009153` to `3e17260` [\#3](https://github.com/LucasLarson/dotfiles/pull/3) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.2.0](https://github.com/LucasLarson/dotfiles/tree/v0.2.0) (2020-05-22)
