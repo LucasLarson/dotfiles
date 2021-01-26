@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Update peter-evans/create-pull-request action to v3.7.0 [\#243](https://github.com/LucasLarson/dotfiles/pull/243) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.26.0 [\#242](https://github.com/LucasLarson/dotfiles/pull/242) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v0.5.4](https://github.com/LucasLarson/dotfiles/tree/v0.5.4) (2021-01-24)
