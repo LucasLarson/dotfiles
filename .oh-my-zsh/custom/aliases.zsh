@@ -254,6 +254,7 @@ cleanup () {(
     -not -name '*LOCK' -and \
     -not -name '*empty*' -and \
     -not -name '*hushlogin' -and \
+    -not -name '*ignore' -and \
     -not -name '*journal' -and \
     -not -name '*lock' -and \
     -not -name '*lockfile' -and \
