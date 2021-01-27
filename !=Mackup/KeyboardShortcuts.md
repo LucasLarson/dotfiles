@@ -26,7 +26,7 @@
 
 ### Keys
 | Name    | Glyph                      | Code                         |
-| ------- | -------------------------- | ---------------------------- |
+|---------|----------------------------|------------------------------|
 | Command | <kbd title=Command>⌘</kbd> | `<kbd title=Command>⌘</kbd>` |
 | Option  | <kbd title=Option>⌥</kbd>  | `<kbd title=Option>⌥</kbd>`  |
 | Control | <kbd title=Control>⌃</kbd> | `<kbd title=Control>⌃</kbd>` |
