@@ -496,9 +496,8 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 ### Homebrew
 
 `brew doctor --debug --verbose && \`<br/>
-`brew cask doctor && \`<br/>
 `brew cleanup --debug --verbose && #` [via](https://stackoverflow.com/a/41030599) `\`<br/>
-`brew cask audit --strict --token-conflicts`
+`brew audit cask --strict --token-conflicts`
 
 ### npm
 
