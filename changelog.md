@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `d26bdcd` to `b816abf` [\#246](https://github.com/LucasLarson/dotfiles/pull/246) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `2735a15` to `f6eb870` [\#245](https://github.com/LucasLarson/dotfiles/pull/245) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update peter-evans/create-pull-request action to v3.7.0 [\#243](https://github.com/LucasLarson/dotfiles/pull/243) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.26.0 [\#242](https://github.com/LucasLarson/dotfiles/pull/242) ([renovate[bot]](https://github.com/apps/renovate))
