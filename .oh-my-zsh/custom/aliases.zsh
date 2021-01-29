@@ -78,7 +78,7 @@ alias glog="git log --graph --branches --remotes --tags --format=format:'%Cgreen
 # ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
 # place the function inside `{()}` to prevent the leaking of variable data
 # https://stackoverflow.com/a/37675401
-git_default_branch () {(
+git_default_branch () {
   # run only from within a git repository
   # https://stackoverflow.com/a/53809163
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -106,7 +106,7 @@ git_default_branch () {(
     return 1
   fi
   printf %s "${default_branch}"
-)}
+}
 alias gdb="git_default_branch"
 
 # https://news.ycombinator.com/item?id=5512864
