@@ -142,7 +142,7 @@ git_restore () {(
 alias grs="git_restore"
 
 git_submodule_update () {(
-  git submodule update --init --recursive --remote $@ &&
+  git submodule update --init --recursive --remote "$@" &&
   git status
 )}
 alias gsu="git_submodule_update"
