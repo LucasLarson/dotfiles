@@ -135,10 +135,7 @@ alias grm="grmr"
 
 git_restore () {(
   IFS="$(printf '\n\t')"
-  files=(
-    "${@:-.}"
-  )
-  for file in "${files[@]}"; do
+  for file in "${@:-.}"; do
     git checkout --progress -- "${file}"
   done && git status
 )}
