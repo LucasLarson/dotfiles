@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Update github/super-linter action to v3.14.5 [\#249](https://github.com/LucasLarson/dotfiles/pull/249) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.26.1 [\#248](https://github.com/LucasLarson/dotfiles/pull/248) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `d26bdcd` to `b816abf` [\#246](https://github.com/LucasLarson/dotfiles/pull/246) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `2735a15` to `f6eb870` [\#245](https://github.com/LucasLarson/dotfiles/pull/245) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -105,7 +106,6 @@
 - mega-linter conformance [\#168](https://github.com/LucasLarson/dotfiles/pull/168) ([LucasLarson](https://github.com/LucasLarson))
 - add out-of-the-box `.bashrc` file from new Ubuntu installation [\#162](https://github.com/LucasLarson/dotfiles/pull/162) ([LucasLarson](https://github.com/LucasLarson))
 - add initialization script for Alpine Linux [\#161](https://github.com/LucasLarson/dotfiles/pull/161) ([LucasLarson](https://github.com/LucasLarson))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `04f75a1` to `31ede3c` [\#157](https://github.com/LucasLarson/dotfiles/pull/157) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.5.2](https://github.com/LucasLarson/dotfiles/tree/v0.5.2) (2020-11-25)
 
@@ -123,6 +123,7 @@
 
 - add `git status` to `git push` alias [\#159](https://github.com/LucasLarson/dotfiles/pull/159) ([LucasLarson](https://github.com/LucasLarson))
 - allow `git verify-commit`’s alias to allow a commit hash as argument [\#158](https://github.com/LucasLarson/dotfiles/pull/158) ([LucasLarson](https://github.com/LucasLarson))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `04f75a1` to `31ede3c` [\#157](https://github.com/LucasLarson/dotfiles/pull/157) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `7969eb3` to `04f75a1` [\#156](https://github.com/LucasLarson/dotfiles/pull/156) ([dependabot[bot]](https://github.com/apps/dependabot))
 - test replacing LucasLarson with `${{ github.repository\_owner }}` in TOML file [\#155](https://github.com/LucasLarson/dotfiles/pull/155) ([LucasLarson](https://github.com/LucasLarson))
 - replace toml repository name programmatically [\#154](https://github.com/LucasLarson/dotfiles/pull/154) ([LucasLarson](https://github.com/LucasLarson))
