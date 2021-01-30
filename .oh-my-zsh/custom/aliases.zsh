@@ -176,25 +176,25 @@ gvc () {(
 
 
 # shell
-cd_pwd_-P () {
+cd_pwd_P () {
   cd_from=$(pwd)
   cd_to=$(pwd -P)
   if [ "${cd_from}" != "${cd_to}" ]
   then
     printf 'moving from \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_from}" && \
-    sleep 0.5
+    sleep 0.2
     cd "${cd_to}" || (
       printf 'unable to perform this operation\n' && return 1
     )
     printf '       into \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_to}" && \
-    sleep 0.5
+    sleep 0.2
   else
     printf 'already in unaliased directory '
     printf '\xe2\x80\x98%s\xe2\x80\x99\n' "${cd_from}"
   fi
   unset cd_from cd_to
 }
-alias cdp='cd_pwd_-P'
+alias cdp='cd_pwd_P'
 
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp="cp -r"
