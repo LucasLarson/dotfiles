@@ -11,7 +11,6 @@ alias apm-beta="apm-nightly"
 alias atom="atom-nightly"
 alias apm="apm-nightly"
 
-
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 mu () {
@@ -30,7 +29,6 @@ mux () {
   git submodule update --init --recursive --remote &&
   git status
 }
-
 
 # Git
 git_add_patch () {
@@ -173,7 +171,6 @@ gvc () {(
   # otherwise check `HEAD`
   git verify-commit "${1:-HEAD}"
 )}
-
 
 # shell
 cd_pwd_P () {
