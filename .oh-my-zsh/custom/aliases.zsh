@@ -13,7 +13,7 @@ alias apm="apm-nightly"
 
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
-mu () {
+mu() {
   cd "${DOTFILES:-${HOME}/Dropbox/dotfiles}" &&
   (command -v cleanup >/dev/null 2>&1 && cleanup) &&
   mackup backup --force --root &&
@@ -21,7 +21,7 @@ mu () {
   git submodule update --init --recursive &&
   git status
 }
-mux () {
+mux() {
   cd "${DOTFILES:-${HOME}/Dropbox/dotfiles}" &&
   (command -v cleanup >/dev/null 2>&1 && cleanup) &&
   mackup backup --force --root --verbose &&
@@ -31,7 +31,7 @@ mux () {
 }
 
 # Git
-git_add_patch () {
+git_add_patch() {
   git add --patch --verbose -- "$@"
   git status
 }
@@ -43,14 +43,14 @@ alias gcm="git commit --verbose --gpg-sign --message"
 alias gco="git checkout --progress"
 
 # `git checkout` the default branch
-gcom () {
+gcom() {
   git checkout --progress "$(git_default_branch)"
 }
-gdm () {
+gdm() {
   git diff "$(git_default_branch)"
 }
 alias gfgs="git fetch --all --verbose && git status"
-ggc () {
+ggc() {
   (command -v cleanup >/dev/null 2>&1 && cleanup)
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
@@ -76,7 +76,7 @@ alias glog="git log --graph --branches --remotes --tags --format=format:'%Cgreen
 # ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
 # place the function inside `{()}` to prevent the leaking of variable data
 # https://stackoverflow.com/a/37675401
-git_default_branch () {
+git_default_branch() {
   # run only from within a git repository
   # https://stackoverflow.com/a/53809163
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -112,7 +112,7 @@ alias gm="GIT_MERGE_VERBOSITY=4 git merge --strategy-option patience"
 alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue"
 
 # git merge main
-gmm () {
+gmm() {
   # set Git merge verbosity environment variable
   # 4 “shows all paths as they are processed” but
   # 5 is “show detailed debugging information”
@@ -131,7 +131,7 @@ alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && g
 alias grmr="git rm -r"
 alias grm="grmr"
 
-git_restore () {(
+git_restore() {(
   IFS="$(printf '\n\t')"
   for file in "${@:-.}"; do
     git checkout --progress -- "${file}"
@@ -139,7 +139,7 @@ git_restore () {(
 )}
 alias grs="git_restore"
 
-git_submodule_update () {(
+git_submodule_update() {(
   git submodule update --init --recursive --remote -- "$@" &&
   git status
 )}
@@ -147,7 +147,7 @@ alias gsu="git_submodule_update"
 alias gtake="git checkout -b"
 alias gti="git"
 
-gu () {(
+gu() {(
   (command -v cleanup >/dev/null 2>&1 && cleanup)
 
   # run only from within a git repository
@@ -166,14 +166,14 @@ gu () {(
 )}
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
-gvc () {(
+gvc() {(
   # if there is an argument (commit hash), use it
   # otherwise check `HEAD`
   git verify-commit "${1:-HEAD}"
 )}
 
 # shell
-cd_pwd_P () {
+cd_pwd_P() {
   cd_from=$(pwd)
   cd_to=$(pwd -P)
   if [ "${cd_from}" != "${cd_to}" ]
@@ -195,7 +195,7 @@ alias cdp='cd_pwd_P'
 
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp="cp -r"
-cy () {(
+cy() {(
   if [ -r "$1" ]; then
     # if within git repo, then auto-overwrite
     if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -219,7 +219,7 @@ cy () {(
   fi
 )}
 
-cleanup () {(
+cleanup() {(
   # if `cleanup -v` or `cleanup --verbose`,
   # then use `-print` during `-delete`
   if [ "$1" = -v ] || [ "$1" = --verbose ]; then
@@ -269,7 +269,7 @@ cleanup () {(
 
 # find duplicate files
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
-fdf () {(
+fdf() {(
   set -Eeuxo pipefail
   find -- . -not -empty -type f -not -path '*/.git/*' -printf '%s\n' | sort --reverse --numeric-sort | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 sha256sum | sort | uniq -w32 --all-repeated=separate
 )}
@@ -281,7 +281,7 @@ alias mv="mv -v -i"
 
 # take
 # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
-take () {
+take() {
   mkdir -p -v -- "$@" &&
   printf 'cd: changed directory to \x27%s\x27\n' "${@:$#}" &&
   cd -- "${@:$#}" || return 1
