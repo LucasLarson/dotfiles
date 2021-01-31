@@ -122,12 +122,10 @@ plugins+=(
 
 
 # MANPATH
-set -x
 # if `MANPATH` is empty, then set it to `/usr/local/man`
 [ -z "${MANPATH}" ] && MANPATH=/usr/local/man:${MANPATH}
 # if `man -w` does not fail, then add its output to `MANPATH`
 [ "$(man -w >/dev/null 2>&1; printf %d $?)" -eq 0 ] && MANPATH=${MANPATH}:$(man -w)
-set +x
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -229,7 +227,7 @@ export TEMPLATE
 
 # completion dots
 # https://git.io/completion-dots-in-.zshrc
-expand-or-complete-with-dots () {
+expand-or-complete-with-dots() {
   print -Pn "%F{red}...%f"
   zle expand-or-complete
   zle redisplay
@@ -258,7 +256,7 @@ setopt share_history
 # https://git.io/init_-_--no-rehash
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
 [ -d "${HOME}/.pyenv/shims" ] && PATH=${HOME}/.pyenv/shims:${PATH}
-pyenv () {
+pyenv() {
   eval "$(command pyenv init - --no-rehash "${SHELL##*[-/]}")"
   pyenv "$@"
 }
@@ -293,7 +291,7 @@ fi
 # https://git.io/init_-_--no-rehash
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
 [ -d "${HOME}/.rbenv/shims" ] && PATH=${HOME}/.rbenv/shims:${PATH}
-rbenv () {
+rbenv() {
   eval "$(command rbenv init - --no-rehash "${SHELL##*[-/]}")"
   rbenv "$@"
 }
