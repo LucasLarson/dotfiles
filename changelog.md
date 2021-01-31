@@ -178,6 +178,7 @@
 
 **Merged pull requests:**
 
+- \[autofix\] Format JSON content [\#106](https://github.com/LucasLarson/dotfiles/pull/106) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `a02fabd` to `3f287df` [\#105](https://github.com/LucasLarson/dotfiles/pull/105) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `de0e022` to `68c89ec` [\#104](https://github.com/LucasLarson/dotfiles/pull/104) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace tabs with two spaces for `editorconfig-checker` compliance [\#103](https://github.com/LucasLarson/dotfiles/pull/103) ([LucasLarson](https://github.com/LucasLarson))
