@@ -3,6 +3,17 @@
 # aliases.zsh
 # for all active aliases, run `alias`
 
+# paste faster
+# https://git.io/pasteinit-pastefinish
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic
+}
+pastefinish() {
+  zle -N self-insert "${OLD_SELF_INSERT}"
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # Atom
 # https://github.com/jeefberkey/dotfiles/blob/2ded1c3/.zshrc#L48-L61
