@@ -6,10 +6,10 @@
 
 # Atom
 # https://github.com/jeefberkey/dotfiles/blob/2ded1c3/.zshrc#L48-L61
-alias atom-beta="atom-nightly"
-alias apm-beta="apm-nightly"
-alias atom="atom-nightly"
-alias apm="apm-nightly"
+alias atom-beta='atom-nightly'
+alias apm-beta='apm-nightly'
+alias atom='atom-nightly'
+alias apm='apm-nightly'
 
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
@@ -35,12 +35,12 @@ git_add_patch() {
   git add --patch --verbose -- "$@"
   git status
 }
-alias gap="git_add_patch"
-alias gc="git commit --verbose --gpg-sign"
-alias gca="git commit --amend --verbose --gpg-sign"
-alias gcl="git clone --verbose --progress --recursive --recurse-submodules"
-alias gcm="git commit --verbose --gpg-sign --message"
-alias gco="git checkout --progress"
+alias gap='git_add_patch'
+alias gc='git commit --verbose --gpg-sign'
+alias gca='git commit --amend --verbose --gpg-sign'
+alias gcl='git clone --verbose --progress --recursive --recurse-submodules'
+alias gcm='git commit --verbose --gpg-sign --message'
+alias gco='git checkout --progress'
 
 # `git checkout` the default branch
 gcom() {
@@ -49,7 +49,7 @@ gcom() {
 gdm() {
   git diff "$(git_default_branch)"
 }
-alias gfgs="git fetch --all --verbose && git status"
+alias gfgs='git fetch --all --verbose && git status'
 ggc() {
   (command -v cleanup >/dev/null 2>&1 && cleanup)
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -64,13 +64,13 @@ ggc() {
 # initial commit
 # https://stackoverflow.com/a/1007545
 # https://stackoverflow.com/q/1006775#comment23686803_1007545
-alias gic="git rev-list --topo-order --parents HEAD | egrep '^[a-f0-9]{40}$'"
-alias gcic="git rev-parse --is-inside-work-tree >/dev/null 2>&1 || git init && git commit --allow-empty --verbose --message $(printf '\x27\xe2\x9c\xa8 initial commit\x27') && git add . && git commit --verbose --message $(printf '\x27\xe2\x9c\xa8 initial commit\x27')"
-alias ginit="git init && git status"
+alias gic='git rev-list --topo-order --parents HEAD | egrep "^[a-f0-9]{40}$"'
+alias gcic='git rev-parse --is-inside-work-tree >/dev/null 2>&1 || git init && git commit --allow-empty --verbose --message $(printf \x27\xe2\x9c\xa8 initial commit\x27) && git add . && git commit --verbose --message $(printf \x27\xe2\x9c\xa8 initial commit\x27)'
+alias ginit='git init && git status'
 
 # git log
 # https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
-alias glog="git log --graph --branches --remotes --tags --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order"
+alias glog='git log --graph --branches --remotes --tags --format=format:"%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d" --date-order'
 
 # return the name of the repository’s default branch
 # ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
@@ -105,11 +105,11 @@ git_default_branch() {
   fi
   printf %s "${default_branch}"
 }
-alias gdb="git_default_branch"
+alias gdb='git_default_branch'
 
 # https://news.ycombinator.com/item?id=5512864
-alias gm="GIT_MERGE_VERBOSITY=4 git merge --strategy-option patience"
-alias gmc="GIT_MERGE_VERBOSITY=4 git merge --continue"
+alias gm='GIT_MERGE_VERBOSITY=4 git merge --strategy-option patience'
+alias gmc='GIT_MERGE_VERBOSITY=4 git merge --continue'
 
 # git merge main
 gmm() {
@@ -120,16 +120,16 @@ gmm() {
   GIT_MERGE_VERBOSITY=4 git merge --verbose --progress --strategy-option patience "$(git_default_branch)"
 }
 
-alias gmv="git mv --verbose"
+alias gmv='git mv --verbose'
 
 # git pull after @ohmyzsh `gupav` ohmyzsh/ohmyzsh@3d2542f
-alias gpl="git pull --all --rebase --autostash --ff-only --verbose && git status"
+alias gpl='git pull --all --rebase --autostash --ff-only --verbose && git status'
 
 # git push after @ohmyzsh `gpsup` ohmyzsh/ohmyzsh@ae21102
 alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && git status'
 
-alias grmr="git rm -r"
-alias grm="grmr"
+alias grmr='git rm -r'
+alias grm='grmr'
 
 git_restore() {(
   IFS="$(printf '\n\t')"
@@ -137,15 +137,15 @@ git_restore() {(
     git checkout --progress -- "${file}"
   done && git status
 )}
-alias grs="git_restore"
+alias grs='git_restore'
 
 git_submodule_update() {(
   git submodule update --init --recursive --remote -- "$@" &&
   git status
 )}
-alias gsu="git_submodule_update"
-alias gtake="git checkout -b"
-alias gti="git"
+alias gsu='git_submodule_update'
+alias gtake='git checkout -b'
+alias gti='git'
 
 gu() {(
   (command -v cleanup >/dev/null 2>&1 && cleanup)
@@ -194,7 +194,7 @@ cd_pwd_P() {
 alias cdp='cd_pwd_P'
 
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
-alias cp="cp -r"
+alias cp='cp -r'
 cy() {(
   if [ -r "$1" ]; then
     # if within git repo, then auto-overwrite
@@ -277,7 +277,7 @@ fdf() {(
 alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
 
 # https://unix.stackexchange.com/a/30950
-alias mv="mv -v -i"
+alias mv='mv -v -i'
 
 # take
 # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
@@ -290,9 +290,9 @@ take() {
 # Unix epoch seconds
 # https://stackoverflow.com/a/12312982
 # date -j +%s # for milliseconds
-alias unixtime="date +%s"
+alias unixtime='date +%s'
 
-alias all="which -a"
+alias all='which -a'
 
 # https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
