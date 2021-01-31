@@ -49,6 +49,8 @@ gcom() {
 gdm() {
   git diff "$(git_default_branch)"
 }
+alias gsd='gds'
+
 alias gfgs='git fetch --all --verbose && git status'
 ggc() {
   (command -v cleanup >/dev/null 2>&1 && cleanup)
