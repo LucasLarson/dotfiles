@@ -254,9 +254,9 @@ autoload -U compinit && compinit
 setopt SHARE_HISTORY
 
 # pyenv
+[ -d "${HOME}/.pyenv/shims" ] && PATH=${HOME}/.pyenv/shims:${PATH}
 # https://git.io/init_-_--no-rehash
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
-[ -d "${HOME}/.pyenv/shims" ] && PATH=${HOME}/.pyenv/shims:${PATH}
 pyenv() {
   eval "$(command pyenv init - --no-rehash "${SHELL##*[-/]}")"
   pyenv "$@"
