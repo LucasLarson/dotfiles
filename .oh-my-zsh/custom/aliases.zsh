@@ -145,7 +145,7 @@ alias grmr='git rm -r'
 alias grm='grmr'
 
 git_restore() {(
-  IFS="$(printf '\n\t')"
+  IFS=$(printf '\n\t')
   for file in "$@"; do
     git checkout --progress -- "${file}"
   done && git status
@@ -291,6 +291,12 @@ alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
 
 # https://unix.stackexchange.com/a/30950
 alias mv='mv -v -i'
+
+# https://github.com/mcornella/dotfiles/commit/ff4e527
+question_mark () {
+  printf '%s\n' "$?"
+}
+alias '?'='question_mark'
 
 # take
 # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
