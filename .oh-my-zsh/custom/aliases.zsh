@@ -315,9 +315,10 @@ alias all='which -a'
 
 # https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
-alias ','='. "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
-alias aliases='"${EDITOR:-vi}" "${ZSH_CUSTOM:-${DOTFILES}/.oh-my-${0##*[-/]}/custom}/aliases.${0##*[-/]}"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
+# http://zsh.sf.net/Doc/Release/Shell-Grammar.html#index-exec
+alias ','='. "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
+alias aliases='"${EDITOR:-vi}" "${ZSH_CUSTOM:-${DOTFILES}/.oh-my-${0##*[-/]}/custom}/aliases.${0##*[-/]}"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
 alias ohmyzsh='cd "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}"'
-alias zshconfig='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
-alias zshenv='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}env"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
-alias zshrc='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec "${0##*[-/]}" --login'
+alias zshconfig='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
+alias zshenv='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}env"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
+alias zshrc='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
