@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Update peter-evans/create-pull-request action to v3.8.0 [\#250](https://github.com/LucasLarson/dotfiles/pull/250) ([renovate[bot]](https://github.com/apps/renovate))
 - Update github/super-linter action to v3.14.5 [\#249](https://github.com/LucasLarson/dotfiles/pull/249) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.26.1 [\#248](https://github.com/LucasLarson/dotfiles/pull/248) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `d26bdcd` to `b816abf` [\#246](https://github.com/LucasLarson/dotfiles/pull/246) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -106,7 +107,6 @@
 - mega-linter conformance [\#168](https://github.com/LucasLarson/dotfiles/pull/168) ([LucasLarson](https://github.com/LucasLarson))
 - add out-of-the-box `.bashrc` file from new Ubuntu installation [\#162](https://github.com/LucasLarson/dotfiles/pull/162) ([LucasLarson](https://github.com/LucasLarson))
 - add initialization script for Alpine Linux [\#161](https://github.com/LucasLarson/dotfiles/pull/161) ([LucasLarson](https://github.com/LucasLarson))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `04f75a1` to `31ede3c` [\#157](https://github.com/LucasLarson/dotfiles/pull/157) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.5.2](https://github.com/LucasLarson/dotfiles/tree/v0.5.2) (2020-11-25)
 
@@ -124,6 +124,7 @@
 
 - add `git status` to `git push` alias [\#159](https://github.com/LucasLarson/dotfiles/pull/159) ([LucasLarson](https://github.com/LucasLarson))
 - allow `git verify-commit`’s alias to allow a commit hash as argument [\#158](https://github.com/LucasLarson/dotfiles/pull/158) ([LucasLarson](https://github.com/LucasLarson))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `04f75a1` to `31ede3c` [\#157](https://github.com/LucasLarson/dotfiles/pull/157) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `7969eb3` to `04f75a1` [\#156](https://github.com/LucasLarson/dotfiles/pull/156) ([dependabot[bot]](https://github.com/apps/dependabot))
 - test replacing LucasLarson with `${{ github.repository\_owner }}` in TOML file [\#155](https://github.com/LucasLarson/dotfiles/pull/155) ([LucasLarson](https://github.com/LucasLarson))
 - replace toml repository name programmatically [\#154](https://github.com/LucasLarson/dotfiles/pull/154) ([LucasLarson](https://github.com/LucasLarson))
@@ -267,7 +268,6 @@
 
 - add @GitHub standard issue templates [\#41](https://github.com/LucasLarson/dotfiles/pull/41) ([LucasLarson](https://github.com/LucasLarson))
 - add, remove @GitHub’s CodeQL [\#22](https://github.com/LucasLarson/dotfiles/pull/22) ([LucasLarson](https://github.com/LucasLarson))
-- add @GitHub Super-Linter [\#20](https://github.com/LucasLarson/dotfiles/pull/20) ([LucasLarson](https://github.com/LucasLarson))
 
 **Merged pull requests:**
 
@@ -289,11 +289,14 @@
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7a114ad` to `88d5fb6` [\#24](https://github.com/LucasLarson/dotfiles/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `620e69f` to `7a114ad` [\#23](https://github.com/LucasLarson/dotfiles/pull/23) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `4635fca` to `620e69f` [\#21](https://github.com/LucasLarson/dotfiles/pull/21) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `0c341b6` to `a28d450` [\#18](https://github.com/LucasLarson/dotfiles/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.3.0](https://github.com/LucasLarson/dotfiles/tree/v0.3.0) (2020-07-15)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.2.0...v0.3.0)
+
+**Implemented enhancements:**
+
+- add @GitHub Super-Linter [\#20](https://github.com/LucasLarson/dotfiles/pull/20) ([LucasLarson](https://github.com/LucasLarson))
 
 **Closed issues:**
 
@@ -302,6 +305,7 @@
 **Merged pull requests:**
 
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a28d450` to `4635fca` [\#19](https://github.com/LucasLarson/dotfiles/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `0c341b6` to `a28d450` [\#18](https://github.com/LucasLarson/dotfiles/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[ImgBot\] Optimize images [\#17](https://github.com/LucasLarson/dotfiles/pull/17) ([imgbot[bot]](https://github.com/apps/imgbot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e0ed693` to `0c341b6` [\#16](https://github.com/LucasLarson/dotfiles/pull/16) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Configure WhiteSource Bolt for GitHub [\#14](https://github.com/LucasLarson/dotfiles/pull/14) ([whitesource-bolt-for-github[bot]](https://github.com/apps/whitesource-bolt-for-github))
