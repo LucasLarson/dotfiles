@@ -104,7 +104,7 @@ plugins+=(
   gunstage
 )
 [ "$(uname)" = Darwin ] && plugins+=(
-  zsh-syntax-highlighting
+  fast-syntax-highlighting
 )
 
 # trapd00r/LS_COLORS: .dircolors to override Oh My Zsh’s `ls -G` for coreutils
