@@ -247,6 +247,7 @@ zstyle ':completion:*:descriptions' format %F"{green}"%d%f
 # https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
 # https://github.com/zsh-users/zsh-completions/tree/f68950a#oh-my-zsh
 [ -d "${ZSH_CUSTOM}/plugins/zsh-completions/src" ] && FPATH=${FPATH}:${ZSH_CUSTOM}/plugins/zsh-completions/src
+autoload -U compinit && compinit
 
 # share all commands from everywhere
 # https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
