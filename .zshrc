@@ -235,7 +235,7 @@ expand-or-complete-with-dots() {
 
 # include hidden files in tab completion
 # https://unix.stackexchange.com/a/366137
-setopt globdots
+setopt GLOB_DOTS
 # but hide `./` and `../`
 # https://unix.stackexchange.com/q/308315#comment893697_308322
 zstyle ':completion:*' special-dirs false
@@ -251,7 +251,7 @@ autoload -U compinit && compinit
 
 # share all commands from everywhere
 # https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
-setopt share_history
+setopt SHARE_HISTORY
 
 # pyenv
 # https://git.io/init_-_--no-rehash
