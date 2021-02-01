@@ -18,8 +18,15 @@ jobs:
           sudo npm install jsonlint-newline-fork -g
       - name: Lint
         run: >
-          find ./ -type f -name '*.json' -print -exec
-          jsonlint --in-place --insert-final-newline "{}" \;
+          find -- * -type f \( \(
+              -iname '*.json' -or
+              -iname '*.imgbotconfig' -or
+              -iname '*.whitesource'
+            \) -and
+            -not -path '*node_modules*' -and
+            -not -path '*vscode*'
+          \) -print -exec
+          jsonlint --in-place --insert-final-newline {} \;
       - uses: peter-evans/create-pull-request@v3.8.0
         with:
           commit-message: "[autofix] Format JSON content"
