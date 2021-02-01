@@ -97,7 +97,7 @@ printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n' && brew update && b
 printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up to date...\n' && python -m pip install --upgrade pip && \
 printf '\n\xf0\x9f\x90\x8d generating list of outdated Python packages...\n' && pip list --outdated --format freeze | grep --invert-match '^\-e' | cut --delimiter = --fields 1 | xargs -n1 pip install --upgrade && \
 printf '\n\xf0\x9f\x90\x8d upgrading all Python packages...\n' && pip install --upgrade $(pip freeze | cut --delimiter '=' --fields 1) && pyenv rehash && . ~/.${SHELL##*/}rc && rehash && unset update && \
-printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec ${SHELL##*/} --login
+printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec -l "${SHELL##*/}"
 ```
 
 ### detail
@@ -146,7 +146,7 @@ printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && exec ${SHELL##*/} --login
 `. ~/.${SHELL##*/}rc && \`<br/>
 `printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && #` [via](https://stackoverflow.com/a/30762087), [via](https://stackoverflow.com/a/602924), [via](https://github.com/koalaman/shellcheck/wiki/SC2059/0c9cfe7e8811d3cafae8df60f41849ef7d17e296#problematic-code) `\`<br/>
 `#` note successful finish before restarting the shell `\`<br/>
-`exec ${SHELL##*/} --login #` [via](https://github.com/mathiasbynens/dotfiles/commit/cb8843bea74f1d223ea2967c7a891ca76c9e54e9#diff-ec67f41a7a08f67e6d486db809809f700007e2d58895d67e842ff21123adaee4R145-R146)
+`exec -l "${SHELL##*/}" #` [via](https://github.com/mathiasbynens/dotfiles/commit/cb8843bea74f1d223ea2967c7a891ca76c9e54e9#diff-ec67f41a7a08f67e6d486db809809f700007e2d58895d67e842ff21123adaee4R145-R146)
 
 ## Mackup
 
