@@ -22,10 +22,10 @@ jobs:
               -iname '*.json' -or
               -iname '*.imgbotconfig' -or
               -iname '*.whitesource'
-            \) -and
+            ) -and
             -not -path '*node_modules*' -and
             -not -path '*vscode*'
-          \) -print -exec
+          ) -print -exec
           jsonlint --in-place --insert-final-newline {} \;
       - uses: peter-evans/create-pull-request@v3.8.0
         with:
