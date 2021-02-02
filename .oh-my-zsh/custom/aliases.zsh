@@ -47,8 +47,8 @@ git_add_patch() {
   git status
 }
 alias gap='git_add_patch'
-alias gc='git commit --verbose --gpg-sign'
-alias gca='git commit --amend --verbose --gpg-sign'
+alias gc='git commit --verbose --gpg-sign; git status'
+alias gca='git commit --amend --verbose --gpg-sign; git status'
 alias gcl='git clone --verbose --progress --recursive --recurse-submodules'
 alias gcm='git commit --verbose --gpg-sign --message'
 alias gco='git checkout --progress'
@@ -319,7 +319,7 @@ alias all='which -a'
 # http://zsh.sf.net/Doc/Release/Shell-Grammar.html#index-exec
 alias ','='. "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
 alias aliases='"${EDITOR:-vi}" "${ZSH_CUSTOM:-${DOTFILES}/.oh-my-${0##*[-/]}/custom}/aliases.${0##*[-/]}"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
-alias ohmyzsh='cd "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}"'
+alias ohmyzsh='cd "${ZSH:-${HOME}/.oh-my-${0##*[-/]}}" && git status'
 alias zshconfig='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
 alias zshenv='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}env"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
 alias zshrc='"${EDITOR:-vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
