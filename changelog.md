@@ -11,6 +11,7 @@
 **Merged pull requests:**
 
 - repair jsonlint workflow’s `find` syntax [\#253](https://github.com/LucasLarson/dotfiles/pull/253) ([LucasLarson](https://github.com/LucasLarson))
+- Bump .oh-my-zsh/custom/plugins/gunstage from `c39ed05` to `d47af9f` [\#252](https://github.com/LucasLarson/dotfiles/pull/252) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update peter-evans/create-pull-request action to v3.8.0 [\#250](https://github.com/LucasLarson/dotfiles/pull/250) ([renovate[bot]](https://github.com/apps/renovate))
 - Update github/super-linter action to v3.14.5 [\#249](https://github.com/LucasLarson/dotfiles/pull/249) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.26.1 [\#248](https://github.com/LucasLarson/dotfiles/pull/248) ([renovate[bot]](https://github.com/apps/renovate))
