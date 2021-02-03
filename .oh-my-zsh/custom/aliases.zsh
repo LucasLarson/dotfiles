@@ -268,7 +268,8 @@ cleanup() {(
     -not -name '.gitmodules' -and \
     -not -name '.keep' -and \
     -not -name '.sudo_as_admin_successful' -and \
-    -not -name '.watchmanconfig' \
+    -not -name '.watchmanconfig' -and \
+    -not -name 'favicon.*' \
     \) \
     ${verbose} -delete
 
