@@ -256,10 +256,6 @@ cleanup() {(
   find -- . -type f -writable -size 0 \( \
     -not -path '*/.git/*' -and \
     -not -name "$(printf 'Icon\x0d\x0a')" -and \
-    -not -name '*.dirstamp' -and \
-    -not -name '*.gitkeep' -and \
-    -not -name '*.gitmodules' -and \
-    -not -name '*.keep' -and \
     -not -name '*LOCK' -and \
     -not -name '*empty*' -and \
     -not -name '*hushlogin' -and \
@@ -267,6 +263,10 @@ cleanup() {(
     -not -name '*journal' -and \
     -not -name '*lock' -and \
     -not -name '*lockfile' -and \
+    -not -name '.dirstamp' -and \
+    -not -name '.gitkeep' -and \
+    -not -name '.gitmodules' -and \
+    -not -name '.keep' -and \
     -not -name '.sudo_as_admin_successful' \
     \) \
     ${verbose} -delete
