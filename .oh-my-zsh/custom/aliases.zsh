@@ -267,7 +267,8 @@ cleanup() {(
     -not -name '.gitkeep' -and \
     -not -name '.gitmodules' -and \
     -not -name '.keep' -and \
-    -not -name '.sudo_as_admin_successful' \
+    -not -name '.sudo_as_admin_successful' -and \
+    -not -name '.watchmanconfig' \
     \) \
     ${verbose} -delete
 
