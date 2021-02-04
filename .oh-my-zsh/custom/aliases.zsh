@@ -89,7 +89,7 @@ alias glog='git log --graph --branches --remotes --tags --format=format:"%Cgreen
 # ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
 # place the function inside `{()}` to prevent the leaking of variable data
 # https://stackoverflow.com/a/37675401
-git_default_branch() {
+git_default_branch() {(
   # check if there’s a `remote` with a default branch and
   # if so, then use that name for `default_branch`
   # https://stackoverflow.com/a/44750379
@@ -109,7 +109,7 @@ git_default_branch() {
     return 1
   fi
   printf %s "${default_branch}"
-}
+)}
 alias gdb='git_default_branch'
 
 # https://news.ycombinator.com/item?id=5512864
