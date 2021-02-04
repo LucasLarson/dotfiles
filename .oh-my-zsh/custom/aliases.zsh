@@ -90,30 +90,22 @@ alias glog='git log --graph --branches --remotes --tags --format=format:"%Cgreen
 # place the function inside `{()}` to prevent the leaking of variable data
 # https://stackoverflow.com/a/37675401
 git_default_branch() {
-  # run only from within a git repository
-  # https://stackoverflow.com/a/53809163
-  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  # check if there’s a `remote` with a default branch and
+  # if so, then use that name for `default_branch`
+  # https://stackoverflow.com/a/44750379
+  if git symbolic-ref refs/remotes/origin/HEAD >/dev/null 2>&1; then
+    default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
 
-    # check if there’s a `remote` with a default branch and
-    # if so, then use that name for `default_branch`
-    # https://stackoverflow.com/a/44750379
-    if git symbolic-ref refs/remotes/origin/HEAD >/dev/null 2>&1; then
-      default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+  # check for `main`, which, if it exists, is most likely to be default
+  elif [ -n "$(git branch --list main)" ]; then
+    default_branch=main
 
-    # check for `main`, which, if it exists, is most likely to be default
-    elif [ -n "$(git branch --list main)" ]; then
-      default_branch=main
-
-    # check for a branch called `master`
-    elif [ -n "$(git branch --list master)" ]; then
-      default_branch=master
-    else
-      printf 'unable to detect a \x60main\x60, \x60master\x60, or default '
-      printf 'branch in this repository\n'
-      return 1
-    fi
+  # check for a branch called `master`
+  elif [ -n "$(git branch --list master)" ]; then
+    default_branch=master
   else
-    printf 'this function must be called from within a Git repository\n'
+    printf 'unable to detect a \x60main\x60, \x60master\x60, or default '
+    printf 'branch in this repository\n'
     return 1
   fi
   printf %s "${default_branch}"
