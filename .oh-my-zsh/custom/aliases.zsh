@@ -261,6 +261,7 @@ cleanup() {(
     -not -name '.keep' -and \
     -not -name '.sudo_as_admin_successful' -and \
     -not -name '.watchmanconfig' -and \
+    -not -name '__init__.py' -and \
     -not -name 'favicon.*' \
     \) \
     ${verbose} -delete
