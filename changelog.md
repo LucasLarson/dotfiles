@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/plugins/zsh-completions from `b8cc3b9` to `6fe9995` [\#258](https://github.com/LucasLarson/dotfiles/pull/258) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/cache action to v2.1.4 [\#254](https://github.com/LucasLarson/dotfiles/pull/254) ([renovate[bot]](https://github.com/apps/renovate))
 - repair jsonlint workflow’s `find` syntax [\#253](https://github.com/LucasLarson/dotfiles/pull/253) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `c39ed05` to `d47af9f` [\#252](https://github.com/LucasLarson/dotfiles/pull/252) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -182,6 +183,7 @@
 
 **Merged pull requests:**
 
+- \[autofix\] Format JSON content [\#106](https://github.com/LucasLarson/dotfiles/pull/106) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `a02fabd` to `3f287df` [\#105](https://github.com/LucasLarson/dotfiles/pull/105) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `de0e022` to `68c89ec` [\#104](https://github.com/LucasLarson/dotfiles/pull/104) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace tabs with two spaces for `editorconfig-checker` compliance [\#103](https://github.com/LucasLarson/dotfiles/pull/103) ([LucasLarson](https://github.com/LucasLarson))
@@ -289,6 +291,7 @@
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `422b7a9` to `03e6187` [\#29](https://github.com/LucasLarson/dotfiles/pull/29) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `05ff662` to `422b7a9` [\#28](https://github.com/LucasLarson/dotfiles/pull/28) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `2ba87f4` to `05ff662` [\#27](https://github.com/LucasLarson/dotfiles/pull/27) ([dependabot[bot]](https://github.com/apps/dependabot))
+- bump .oh-my-zsh/custom/themes/powerlevel10k from `88d5fb6` to `2ba87f4` [\#25](https://github.com/LucasLarson/dotfiles/pull/25) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7a114ad` to `88d5fb6` [\#24](https://github.com/LucasLarson/dotfiles/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `620e69f` to `7a114ad` [\#23](https://github.com/LucasLarson/dotfiles/pull/23) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `4635fca` to `620e69f` [\#21](https://github.com/LucasLarson/dotfiles/pull/21) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -303,7 +306,6 @@
 
 **Merged pull requests:**
 
-- bump .oh-my-zsh/custom/themes/powerlevel10k from `88d5fb6` to `2ba87f4` [\#25](https://github.com/LucasLarson/dotfiles/pull/25) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a28d450` to `4635fca` [\#19](https://github.com/LucasLarson/dotfiles/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `0c341b6` to `a28d450` [\#18](https://github.com/LucasLarson/dotfiles/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[ImgBot\] Optimize images [\#17](https://github.com/LucasLarson/dotfiles/pull/17) ([imgbot[bot]](https://github.com/apps/imgbot))
