@@ -11,6 +11,7 @@
 **Merged pull requests:**
 
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `b8cc3b9` to `6fe9995` [\#258](https://github.com/LucasLarson/dotfiles/pull/258) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/plugins/gunstage from `d47af9f` to `ae301df` [\#257](https://github.com/LucasLarson/dotfiles/pull/257) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/cache action to v2.1.4 [\#254](https://github.com/LucasLarson/dotfiles/pull/254) ([renovate[bot]](https://github.com/apps/renovate))
 - repair jsonlint workflow’s `find` syntax [\#253](https://github.com/LucasLarson/dotfiles/pull/253) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `c39ed05` to `d47af9f` [\#252](https://github.com/LucasLarson/dotfiles/pull/252) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -183,7 +184,6 @@
 
 **Merged pull requests:**
 
-- \[autofix\] Format JSON content [\#106](https://github.com/LucasLarson/dotfiles/pull/106) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `a02fabd` to `3f287df` [\#105](https://github.com/LucasLarson/dotfiles/pull/105) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `de0e022` to `68c89ec` [\#104](https://github.com/LucasLarson/dotfiles/pull/104) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace tabs with two spaces for `editorconfig-checker` compliance [\#103](https://github.com/LucasLarson/dotfiles/pull/103) ([LucasLarson](https://github.com/LucasLarson))
