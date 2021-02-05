@@ -298,7 +298,7 @@ alias '?'='question_mark'
 # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
 take() {
   mkdir -p -v -- "$@" &&
-  printf 'cd: changed directory to \x27%s\x27\n' "${@:$#}" &&
+  printf 'cd: changed directory to \xe2\x80\x98%s\xe2\x80\x99\n' "${@:$#}" &&
   cd -- "${@:$#}" || return 1
 }
 
