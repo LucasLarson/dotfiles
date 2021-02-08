@@ -136,6 +136,7 @@ command -v pip >/dev/null 2>&1 && (
 printf '\n\ncleaning up temporary installation files and housekeeping...\n'
 [ -e apk.static ] && rm apk.static
 [ -e get-pip.py ] && rm get-pip.py
+[ -e /etc/motd ] && printf '' >/etc/motd
 
 # delete thumbnail cache files
 find -- . -type f \( \
