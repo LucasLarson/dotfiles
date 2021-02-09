@@ -89,7 +89,8 @@ command -v python >/dev/null 2>&1 || (
 
 # pip
 command -v pip >/dev/null 2>&1 || (
-  printf '\ninstalling pip...\n'
+  printf '\ninstalling pip...\n' && sleep 3
+  printf 'this may take a while...\n'
   curl http://web.archive.org/web/20201031072740id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
   python3 get-pip.py
 )
