@@ -49,7 +49,7 @@ command -v less >/dev/null 2>&1 || (
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Shell_.40_commandline
 printf '\ninstalling Linux utilities...\n'
-apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc
+apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc
 
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
@@ -84,7 +84,7 @@ printf 'America/New_York\n' >/etc/timezone
 printf '\nchecking Python installation...\n'
 command -v python >/dev/null 2>&1 || (
   printf '\ninstalling Python...\n'
-  apk add curl curl-doc python2 python2-doc python3 python3-doc
+  apk add python2 python2-doc python3 python3-doc
 )
 
 # pip
