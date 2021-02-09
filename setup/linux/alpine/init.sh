@@ -83,7 +83,7 @@ printf 'America/New_York\n' >/etc/timezone
 # python
 printf '\nchecking Python installation...\n'
 command -v python >/dev/null 2>&1 || (
-  printf '\ninstalling Python...\n'
+  printf '\ninstalling Python 2 and Python 3...\n'
   apk add python2 python2-doc python3 python3-doc
 )
 
