@@ -149,24 +149,34 @@ printf '' >/etc/motd
 find -- . -type f \( \
   -name '.DS_Store' -or \
   -name 'Desktop.ini' -or \
-  -name 'desktop.ini' -or \
   -name 'Thumbs.db' -or \
+  -name 'desktop.ini' -or \
   -name 'thumbs.db' \
   \) \
   -delete
 
-# delete empty, zero-length files
+# delete empty, writable, zero-length files
 # except those within `.git/` directories
-# or with specific names
-find -- . -type f -size 0 \( \
+# and those with specific names
+# https://stackoverflow.com/a/64863398
+find -- . -type f -writable -size 0 \( \
   -not -path '*/.git/*' -and \
-  -not -name '*.gitkeep' -and \
-  -not -name '*.keep' -and \
+  -not -name "$(printf 'Icon\x0d\x0a')" -and \
+  -not -name '*LOCK' -and \
   -not -name '*empty*' -and \
   -not -name '*hushlogin' -and \
-  -not -name '*LOCK' -and \
+  -not -name '*ignore' -and \
+  -not -name '*journal' -and \
   -not -name '*lock' -and \
-  -not -name '*lockfile' \
+  -not -name '*lockfile' -and \
+  -not -name '.dirstamp' -and \
+  -not -name '.gitkeep' -and \
+  -not -name '.gitmodules' -and \
+  -not -name '.keep' -and \
+  -not -name '.sudo_as_admin_successful' -and \
+  -not -name '.watchmanconfig' -and \
+  -not -name '__init__.py' -and \
+  -not -name 'favicon.*' \
   \) \
   -delete
 
