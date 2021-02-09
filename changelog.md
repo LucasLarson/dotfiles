@@ -16,6 +16,7 @@
 **Merged pull requests:**
 
 - add notice that installing pip is slow \(fix \#261\) [\#267](https://github.com/LucasLarson/dotfiles/pull/267) ([LucasLarson](https://github.com/LucasLarson))
+- Update actions/setup-ruby action to v1.1.3 [\#266](https://github.com/LucasLarson/dotfiles/pull/266) ([renovate[bot]](https://github.com/apps/renovate))
 - if there’s `/etc/motd`, clear its contents without newline \(fix \#262\) [\#265](https://github.com/LucasLarson/dotfiles/pull/265) ([LucasLarson](https://github.com/LucasLarson))
 - Update peter-evans/create-pull-request action to v3.8.1 [\#263](https://github.com/LucasLarson/dotfiles/pull/263) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `b8cc3b9` to `6fe9995` [\#258](https://github.com/LucasLarson/dotfiles/pull/258) ([dependabot[bot]](https://github.com/apps/dependabot))
