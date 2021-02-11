@@ -140,6 +140,7 @@ command -v pip >/dev/null 2>&1 && (
 printf '\n\ncleaning up temporary installation files and housekeeping...\n'
 [ -w apk.static ] && rm apk.static
 [ -w get-pip.py ] && rm get-pip.py
+[ -w setup ] && rm setup
 
 # message of the day
 [ -e /etc/motd.bak ] || cp /etc/motd /etc/motd.bak
