@@ -15,6 +15,7 @@
 
 **Merged pull requests:**
 
+- Update peter-evans/create-pull-request action to v3.8.2 [\#268](https://github.com/LucasLarson/dotfiles/pull/268) ([renovate[bot]](https://github.com/apps/renovate))
 - add notice that installing pip is slow \(fix \#261\) [\#267](https://github.com/LucasLarson/dotfiles/pull/267) ([LucasLarson](https://github.com/LucasLarson))
 - Update actions/setup-ruby action to v1.1.3 [\#266](https://github.com/LucasLarson/dotfiles/pull/266) ([renovate[bot]](https://github.com/apps/renovate))
 - if there’s `/etc/motd`, clear its contents without newline \(fix \#262\) [\#265](https://github.com/LucasLarson/dotfiles/pull/265) ([LucasLarson](https://github.com/LucasLarson))
