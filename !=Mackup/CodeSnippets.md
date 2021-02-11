@@ -13,6 +13,7 @@
       - [Homebrew](#homebrew)
         - [Cask](#cask)
       - [`$manpath`](#manpath)
+        - [man pages](#man-pages)
       - [pip packages](#pip-packages)
 - [apk](#apk)
   - [add](#add-1)
@@ -198,6 +199,21 @@ listBrewCask="$DOTFILES"/!=Mackup/brew\ cask\ list && touch "$listBrewCask" && p
 saveManpath=1 && mkdir --parents "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && \
 mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
 ```
+
+###### man pages
+
+Section description
+
+1. Executable programs or shell commands
+1. System calls (functions provided by the kernel)
+1. Library calls (functions within program libraries)
+1. Special files (usually found in `/dev`)
+1. File formats and conventions, `/etc/passwd` for example
+1. Games
+1. Miscellaneous (including macro packages and conventions)
+1. System administration commands (usually only for `root`)
+
+[via](https://web.archive.org/web/20200627082020id_/manpages.ubuntu.com/cgi-bin/search.py?q=man&titles=Title#distroAndSection)
 
 ##### pip packages
 
