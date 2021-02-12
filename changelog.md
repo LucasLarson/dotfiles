@@ -9,6 +9,10 @@
 - remove `motd` generally [\#262](https://github.com/LucasLarson/dotfiles/issues/262)
 - pip installation can be slow: let the user know [\#261](https://github.com/LucasLarson/dotfiles/issues/261)
 
+**Fixed bugs:**
+
+- restore @Dependabot file location to reactivate service [\#269](https://github.com/LucasLarson/dotfiles/pull/269) ([LucasLarson](https://github.com/LucasLarson))
+
 **Closed issues:**
 
 - is `PATH` `coreutils` constructed safely? [\#208](https://github.com/LucasLarson/dotfiles/issues/208)
