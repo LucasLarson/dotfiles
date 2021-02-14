@@ -161,7 +161,7 @@ find -- . -type f \( \
 # and those with specific names
 # https://stackoverflow.com/a/64863398
 find -- . -type f -writable -size 0 \( \
-  -not -path '*/.git/*' -and \
+  -not -path '*.git/*' -and \
   -not -name "$(printf 'Icon\x0d\x0a')" -and \
   -not -name '*LOCK' -and \
   -not -name '*empty*' -and \
@@ -185,7 +185,7 @@ find -- . -type f -writable -size 0 \( \
 # but skip Git-specific and `/.well-known/` directories
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 find -- . -type d -empty \( \
-  -not -path '*/.git/*' -and \
+  -not -path '*.git/*' -and \
   -not -name '.well-known' \
   \) \
   -delete
