@@ -246,7 +246,7 @@ cleanup() {(
   # or with specific names and are writable
   # https://stackoverflow.com/a/64863398
   find -- . -type f -writable -size 0 \( \
-    -not -path '*/.git/*' -and \
+    -not -path '*.git/*' -and \
     -not -name "$(printf 'Icon\x0d\x0a')" -and \
     -not -name '*LOCK' -and \
     -not -name '*empty*' -and \
@@ -270,7 +270,7 @@ cleanup() {(
   # but skip Git-specific and `/.well-known/` directories
   # https://stackoverflow.com/q/4210042#comment38334264_4210072
   find -- . -type d -empty \( \
-    -not -path '*/.git/*' -and \
+    -not -path '*.git/*' -and \
     -not -name '.well-known' \
     \) \
     ${verbose} -delete
@@ -280,7 +280,7 @@ cleanup() {(
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 fdf() {(
   set -Eeuxo pipefail
-  find -- . -not -empty -type f -not -path '*/.git/*' -printf '%s\n' | sort --reverse --numeric-sort | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 sha256sum | sort | uniq -w32 --all-repeated=separate
+  find -- . -not -empty -type f -not -path '*.git/*' -printf '%s\n' | sort --reverse --numeric-sort | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 sha256sum | sort | uniq -w32 --all-repeated=separate
 )}
 
 alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
