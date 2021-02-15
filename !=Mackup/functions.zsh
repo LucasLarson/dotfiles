@@ -1,3 +1,135 @@
+→chroma/-alias.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-autoload.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-autorandr.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-awk.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-docker.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-example.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-fast-theme.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-fpath_peq.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-git.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-grep.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-hub.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-ionice.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-lab.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-make.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-nice.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-nmcli.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-node.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-ogit.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-perl.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-precommand.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-printf.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-ruby.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-scp.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-sh.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-source.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-ssh.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-subcommand.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-subversion.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-vim.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-whatis.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-which.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/-zinit.ch () {
+	# undefined
+	builtin autoload -XUz
+}
+→chroma/main-chroma.ch () {
+	# undefined
+	builtin autoload -XUz
+}
 +vi-git-aheadbehind () {
 	local ahead behind
 	local -a gitstatus
@@ -135,6 +267,1011 @@
 		VCS_WORKDIR_DIRTY=false 
 	fi
 }
+-fast-highlight-check-path () {
+	(( _start_pos-__PBUFLEN >= 0 )) || {
+		[[ $1 != "noasync" ]] && print -r -- "- $_start_pos $_end_pos"
+		return 1
+	}
+	[[ $1 != "noasync" ]] && {
+		print -r -- ${sysparams[pid]}
+		print -r -- $__arg
+	}
+	: ${expanded_path:=${(Q)~__arg}}
+	[[ -n ${FAST_BLIST_PATTERNS[(k)${${(M)expanded_path:#/*}:-$PWD/$expanded_path}]} ]] && {
+		[[ $1 != "noasync" ]] && print -r -- "- $_start_pos $_end_pos"
+		return 1
+	}
+	[[ -z $expanded_path ]] && {
+		[[ $1 != "noasync" ]] && print -r -- "- $_start_pos $_end_pos"
+		return 1
+	}
+	[[ -d $expanded_path ]] && {
+		[[ $1 != "noasync" ]] && print -r -- "$_start_pos ${_end_pos}D" || __style=${FAST_THEME_NAME}path-to-dir 
+		return 0
+	}
+	[[ -e $expanded_path ]] && {
+		[[ $1 != "noasync" ]] && print -r -- "$_start_pos $_end_pos" || __style=${FAST_THEME_NAME}path 
+		return 0
+	}
+	[[ $active_command = "cd" ]] && for cdpath_dir in $cdpath
+	do
+		[[ -d $cdpath_dir/$expanded_path ]] && {
+			[[ $1 != "noasync" ]] && print -r -- "$_start_pos ${_end_pos}D" || __style=${FAST_THEME_NAME}path-to-dir 
+			return 0
+		}
+		[[ -e $cdpath_dir/$expanded_path ]] && {
+			[[ $1 != "noasync" ]] && print -r -- "$_start_pos $_end_pos" || __style=${FAST_THEME_NAME}path 
+			return 0
+		}
+	done
+	[[ $1 != "noasync" ]] && print -r -- "- $_start_pos $_end_pos"
+	return 1
+}
+-fast-highlight-check-path-handler () {
+	local IFS=$'\n' pid PCFD=$1 line stripped val 
+	integer idx
+	if read -r -u $PCFD pid
+	then
+		if read -r -u $PCFD val
+		then
+			if read -r -u $PCFD line
+			then
+				stripped=${${line#- }%D} 
+				FAST_HIGHLIGHT[cache-path-${(q)val}-${stripped%% *}-born-at]=$EPOCHSECONDS 
+				idx=${${FAST_HIGHLIGHT[path-queue]}[(I)$stripped]} 
+				(( idx > 0 )) && {
+					if [[ $line != -* ]]
+					then
+						FAST_HIGHLIGHT[cache-path-${(q)val}-${stripped%% *}]="1${(M)line%D}" 
+						region_highlight+=("${line%% *} ${${line##* }%D} ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}path${${(M)line%D}:+-to-dir}]}") 
+					else
+						FAST_HIGHLIGHT[cache-path-${(q)val}-${stripped%% *}]=0 
+					fi
+					val=${FAST_HIGHLIGHT[path-queue]} 
+					val[idx-1,idx+${#stripped}]="" 
+					FAST_HIGHLIGHT[path-queue]=$val 
+					[[ ${FAST_HIGHLIGHT[cache-path-${(q)val}-${stripped%% *}]%D} = 1 && ${#val} -le 27 ]] && zle -R
+				}
+			fi
+		fi
+		kill -9 $pid 2> /dev/null
+	fi
+	zle -F -w ${PCFD}
+	exec {PCFD}<&-
+}
+-fast-highlight-dollar-string () {
+	(( _start_pos-__PBUFLEN >= 0 )) || return 0
+	local i j k __style
+	local AA
+	integer c
+	for ((i = 3 ; i < _end_pos - _start_pos ; i += 1 )) do
+		(( j = i + _start_pos - 1 ))
+		(( k = j + 1 ))
+		case ${__arg[$i]} in
+			("\\") __style=${FAST_THEME_NAME}back-dollar-quoted-argument 
+				for ((c = i + 1 ; c <= _end_pos - _start_pos ; c += 1 )) do
+					[[ ${__arg[$c]} != ([0-9xXuUa-fA-F]) ]] && break
+				done
+				AA=$__arg[$i+1,$c-1] 
+				if [[ "$AA" == (#m)(#s)(x|X)[0-9a-fA-F](#c1,2) || "$AA" == (#m)(#s)[0-7](#c1,3) || "$AA" == (#m)(#s)u[0-9a-fA-F](#c1,4) || "$AA" == (#m)(#s)U[0-9a-fA-F](#c1,8) ]]
+				then
+					(( k += MEND ))
+					(( i += MEND ))
+				else
+					if (( __asize > i+1 )) && [[ $__arg[i+1] == [xXuU] ]]
+					then
+						__style=${FAST_THEME_NAME}unknown-token 
+					fi
+					(( k += 1 ))
+					(( i += 1 ))
+				fi ;;
+			(*) continue ;;
+		esac
+		(( __start=j-__PBUFLEN, __end=k-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[$__style]}") 
+	done
+}
+-fast-highlight-fill-option-variables () {
+	if [[ -o ignore_braces ]] || eval '[[ -o ignore_close_braces ]] 2>/dev/null'
+	then
+		FAST_HIGHLIGHT[right_brace_is_recognised_everywhere]=0 
+	else
+		FAST_HIGHLIGHT[right_brace_is_recognised_everywhere]=1 
+	fi
+	if [[ -o path_dirs ]]
+	then
+		FAST_HIGHLIGHT[path_dirs_was_set]=1 
+	else
+		FAST_HIGHLIGHT[path_dirs_was_set]=0 
+	fi
+	if [[ -o multi_func_def ]]
+	then
+		FAST_HIGHLIGHT[multi_func_def]=1 
+	else
+		FAST_HIGHLIGHT[multi_func_def]=0 
+	fi
+	if [[ -o interactive_comments ]]
+	then
+		FAST_HIGHLIGHT[ointeractive_comments]=1 
+	else
+		FAST_HIGHLIGHT[ointeractive_comments]=0 
+	fi
+}
+-fast-highlight-init () {
+	_FAST_COMPLEX_BRACKETS=() 
+	__fast_highlight_main__command_type_cache=() 
+}
+-fast-highlight-main-type () {
+	REPLY=$__fast_highlight_main__command_type_cache[(e)$1] 
+	[[ -z $REPLY ]] && {
+		if zmodload -e zsh/parameter
+		then
+			if (( $+aliases[(e)$1] ))
+			then
+				REPLY=alias 
+			elif (( ${+galiases[(e)$1]} ))
+			then
+				REPLY="global alias" 
+			elif (( $+functions[(e)$1] ))
+			then
+				REPLY=function 
+			elif (( $+builtins[(e)$1] ))
+			then
+				REPLY=builtin 
+			elif (( $+commands[(e)$1] ))
+			then
+				REPLY=command 
+			elif (( $+saliases[(e)${1##*.}] ))
+			then
+				REPLY='suffix alias' 
+			elif (( $reswords[(Ie)$1] ))
+			then
+				REPLY=reserved 
+			elif [[ $1 != */* || ${+ZSH_ARGZERO} = "1" ]] && ! builtin type -w -- $1 > /dev/null 2>&1
+			then
+				REPLY=none 
+			fi
+		fi
+		[[ -z $REPLY ]] && REPLY="${$(LC_ALL=C builtin type -w -- $1 2>/dev/null)##*: }" 
+		[[ $REPLY = "none" ]] && {
+			[[ -n ${FAST_BLIST_PATTERNS[(k)${${(M)1:#/*}:-$PWD/$1}]} ]] || {
+				[[ -d $1 ]] && REPLY="dirpath"  || {
+					for cdpath_dir in $cdpath
+					do
+						[[ -d $cdpath_dir/$1 ]] && {
+							REPLY="dirpath" 
+							break
+						}
+					done
+				}
+			}
+		}
+		__fast_highlight_main__command_type_cache[(e)$1]=$REPLY 
+	}
+}
+-fast-highlight-math-string () {
+	(( _start_pos-__PBUFLEN >= 0 )) || return 0
+	_mybuf=$__arg 
+	__idx=_start_pos 
+	while [[ $_mybuf = (#b)[^\$_a-zA-Z0-9]#((\$(#B)(+|)(#B)([a-zA-Z_:][a-zA-Z0-9_:]#|[0-9]##)(#b)(\[[^\]]##\])(#c0,1))|(\$[{](#B)(+|)(#b)(\([a-zA-Z0-9_:@%#]##\))(#c0,1)[a-zA-Z0-9_:#]##(\[[^\]]##\])(#c0,1)[}])|\$|[a-zA-Z_][a-zA-Z0-9_]#|[0-9]##)(*) ]]
+	do
+		__idx+=${mbegin[1]}-1 
+		_end_idx=__idx+${mend[1]}-${mbegin[1]}+1 
+		_mybuf=${match[7]} 
+		[[ ${match[1]} = [0-9]* ]] && __style=${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}mathnum]}  || {
+			[[ ${match[1]} = [a-zA-Z_]* ]] && {
+				[[ ${+parameters[${match[1]}]} = 1 || ${FAST_ASSIGNS_SEEN[${match[1]}]} = 1 ]] && __style=${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}mathvar]}  || __style=${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}matherr]} 
+			} || {
+				[[ ${match[1]} = "$"* ]] && {
+					match[1]=${match[1]//[\{\}+]/} 
+					if [[ ${match[1]} = "$" || ${FAST_ASSIGNS_SEEN[${match[1]:1}]} = 1 ]] || {
+							eval "[[ -n \${(P)\${match[1]:1}} ]]"
+						} 2>> /dev/null
+					then
+						__style=${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}back-or-dollar-double-quoted-argument]} 
+					else
+						__style=${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}matherr]} 
+					fi
+				}
+			}
+		}
+		[[ $__style != "none" && -n $__style ]] && (( __start=__idx-__PBUFLEN, __end=_end_idx-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end $__style") 
+		__idx=_end_idx 
+	done
+}
+-fast-highlight-process () {
+	emulate -L zsh
+	setopt extendedglob bareglobqual nonomatch typesetsilent
+	[[ $CONTEXT == "select" ]] && return 0
+	(( FAST_HIGHLIGHT[path_dirs_was_set] )) && setopt PATH_DIRS
+	(( FAST_HIGHLIGHT[ointeractive_comments] )) && local interactive_comments= 
+	local _start_pos=$3 _end_pos __start __end highlight_glob=1 __arg __style in_array_assignment=0 MATCH expanded_path braces_stack __buf=$1$2 _mybuf __workbuf cdpath_dir active_command alias_target _was_double_hyphen=0 __nul=$'\0' __tmp 
+	integer __arg_type=0 MBEGIN MEND in_redirection __len=${#__buf} __PBUFLEN=${#1} already_added offset __idx _end_idx this_word=1 next_word=0 __pos __asize __delimited=0 itmp iitmp 
+	local -a match mbegin mend __inputs __list
+	integer BIT_case_preamble=512 BIT_case_item=1024 BIT_case_nempty_item=2048 BIT_case_code=4096 
+	ZLAST_COMMANDS=() 
+	FAST_ASSIGNS_SEEN=() 
+	FAST_HIGHLIGHT[chroma-autoload-elements]="" 
+	FAST_HIGHLIGHT[chroma-fpath_peq-elements]="" 
+	FAST_HIGHLIGHT[chroma-zinit-ice-elements-svn]=0 
+	FAST_HIGHLIGHT[chroma-zinit-ice-elements-id-as]="" 
+	[[ -n $ZCALC_ACTIVE ]] && {
+		_start_pos=0 
+		_end_pos=__len 
+		__arg=$__buf 
+		-fast-highlight-math-string
+		return 0
+	}
+	local proc_buf=$__buf needle 
+	for __arg in ${interactive_comments-${(z)__buf}} ${interactive_comments+${(zZ+c+)__buf}}
+	do
+		(( in_redirection = in_redirection > 0 ? in_redirection - 1 : in_redirection ))
+		(( next_word = (in_redirection == 0) ? 2 : next_word ))
+		(( next_word = next_word | (this_word & (BIT_case_code|8192)) ))
+		[[ $__arg = '{' && $__delimited = 2 ]] && {
+			(( this_word = (this_word & ~2) | 1 ))
+			__delimited=0 
+		}
+		__asize=${#__arg} 
+		already_added=0 
+		__style=${FAST_THEME_NAME}unknown-token 
+		(( this_word & 1 )) && {
+			in_array_assignment=0 
+			[[ $__arg == 'noglob' ]] && highlight_glob=0 
+		}
+		if [[ $__arg == ';' ]]
+		then
+			braces_stack=${braces_stack#T} 
+			__delimited=0 
+			needle=$';\n' 
+			[[ $proc_buf = (#b)[^$needle]#([$needle]##)* ]] && offset=${mbegin[1]}-1 
+			(( _start_pos += offset ))
+			(( _end_pos = _start_pos + __asize ))
+			(( this_word & BIT_case_item )) || {
+				(( in_array_assignment )) && (( this_word = 2 | (this_word & BIT_case_code) )) || {
+					(( this_word = 1 | (this_word & BIT_case_code) ))
+					highlight_glob=1 
+				}
+			}
+			in_redirection=0 
+			[[ ${proc_buf[offset+1]} != $'\n' ]] && {
+				[[ ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}commandseparator]} != "none" ]] && (( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}commandseparator]}") 
+			}
+			proc_buf=${proc_buf[offset + __asize + 1,__len]} 
+			_start_pos=$_end_pos 
+			continue
+		else
+			offset=0 
+			if [[ $proc_buf = (#b)(#s)(([[:space:]]|\\[[:space:]])##)* ]]
+			then
+				offset=${mend[1]} 
+			fi
+			(( _start_pos += offset ))
+			(( _end_pos = _start_pos + __asize ))
+			__arg_type=${__FAST_HIGHLIGHT_TOKEN_TYPES[$__arg]} 
+		fi
+		(( this_word & 1 )) && ZLAST_COMMANDS+=($__arg) 
+		proc_buf=${proc_buf[offset + __asize + 1,__len]} 
+		if [[ -n ${interactive_comments+'set'} && $__arg == ${histchars[3]}* ]]
+		then
+			if (( this_word & 3 ))
+			then
+				__style=${FAST_THEME_NAME}comment 
+			else
+				__style=${FAST_THEME_NAME}unknown-token 
+			fi
+			(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[$__style]}") 
+			_start_pos=$_end_pos 
+			continue
+		fi
+		[[ $__arg == (<0-9>|)(\<|\>)* && $__arg != (\<|\>)$'\x28'* && $__arg != "<<<" ]] && in_redirection=2 
+		if (( ! in_redirection ))
+		then
+			(( this_word & 4 )) && [[ $__arg != -* ]] && (( this_word = this_word ^ 4 ))
+			if (( this_word & 4 ))
+			then
+				case $__arg in
+					('-'[Cgprtu]) (( this_word = this_word & ~1 ))
+						(( next_word = 8 | (this_word & BIT_case_code) )) ;;
+					('-'*) (( this_word = this_word & ~1 ))
+						(( next_word = next_word | 1 | 4 )) ;;
+				esac
+			elif (( this_word & 8 ))
+			then
+				(( next_word = next_word | 4 | 1 ))
+			elif (( this_word & 64 ))
+			then
+				[[ $__arg = -[pvV-]## && $active_command = "command" ]] && (( this_word = (this_word & ~1) | 2, next_word = (next_word | 65) & ~2 ))
+				[[ $__arg = -[cla-]## && $active_command = "exec" ]] && (( this_word = (this_word & ~1) | 2, next_word = (next_word | 65) & ~2 ))
+				[[ $__arg = \{[a-zA-Z_][a-zA-Z0-9_]#\} && $active_command = "exec" ]] && {
+					(( this_word = (this_word & ~1) | 2, next_word = (next_word | 65) & ~2 ))
+					(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}exec-descriptor]}") 
+					already_added=1 
+				}
+			fi
+		fi
+		(( this_word & 8192 )) && {
+			__list=(${(z@)${aliases[$active_command]:-${active_command##*/}}##[[:space:]]#(command|builtin|exec|noglob|nocorrect|pkexec)[[:space:]]#}) 
+			${${FAST_HIGHLIGHT[chroma-${__list[1]}]}%\%*} ${(M)FAST_HIGHLIGHT[chroma-${__list[1]}]%\%*} 0 "$__arg" $_start_pos $_end_pos 2> /dev/null && continue
+		}
+		(( this_word & 1 )) && {
+			(( !in_redirection )) && active_command=$__arg 
+			_mybuf=${${aliases[$active_command]:-${active_command##*/}}##[[:space:]]#(command|builtin|exec|noglob|nocorrect|pkexec)[[:space:]]#} 
+			[[ "$_mybuf" = (#b)(FPATH+(#c0,1)=)* ]] && _mybuf="${match[1]} ${(j: :)${(s,:,)${_mybuf#FPATH+(#c0,1)=}}}" 
+			[[ -n ${FAST_HIGHLIGHT[chroma-${_mybuf%% *}]} ]] && {
+				__list=(${(z@)_mybuf}) 
+				if (( ${#__list} > 1 )) || [[ $active_command != $_mybuf ]]
+				then
+					__style=${FAST_THEME_NAME}alias 
+					(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[$__style]}") 
+					${${FAST_HIGHLIGHT[chroma-${__list[1]}]}%\%*} ${(M)FAST_HIGHLIGHT[chroma-${__list[1]}]%\%*} 1 "${__list[1]}" "-100000" $_end_pos 2> /dev/null || (( this_word = next_word, next_word = 2 ))
+					for _mybuf in "${(@)__list[2,-1]}"
+					do
+						(( next_word = next_word | (this_word & (BIT_case_code|8192)) ))
+						${${FAST_HIGHLIGHT[chroma-${__list[1]}]}%\%*} ${(M)FAST_HIGHLIGHT[chroma-${__list[1]}]%\%*} 0 "$_mybuf" "-100000" $_end_pos 2> /dev/null || (( this_word = next_word, next_word = 2 ))
+					done
+					_start_pos=$_end_pos 
+					continue
+				else
+					${${FAST_HIGHLIGHT[chroma-${__list[1]}]}%\%*} ${(M)FAST_HIGHLIGHT[chroma-${__list[1]}]%\%*} 1 "$__arg" $_start_pos $_end_pos 2> /dev/null && continue
+				fi
+			} || (( 1 ))
+		}
+		expanded_path="" 
+		if (( this_word & 16 )) && [[ $__arg == 'always' ]]
+		then
+			__style=${FAST_THEME_NAME}reserved-word 
+			(( next_word = 1 | (this_word & BIT_case_code) ))
+		elif (( (this_word & 1) && (in_redirection == 0) )) || [[ $braces_stack = T* ]]
+		then
+			if (( __arg_type == 1 ))
+			then
+				__style=${FAST_THEME_NAME}precommand 
+				[[ $__arg = "command" || $__arg = "exec" ]] && (( next_word = next_word | 64 ))
+			elif [[ $__arg = (sudo|doas) ]]
+			then
+				__style=${FAST_THEME_NAME}precommand 
+				(( next_word = (next_word & ~2) | 4 | 1 ))
+			else
+				_mybuf=${${(Q)__arg}#\"} 
+				if (( ${+parameters} )) && [[ $_mybuf = (#b)(*)(*)\$([a-zA-Z_][a-zA-Z0-9_]#|[0-9]##)(*) || $_mybuf = (#b)(*)(*)\$\{([a-zA-Z_][a-zA-Z0-9_:-]#|[0-9]##)(*) ]] && (( ${+parameters[${match[3]%%:-*}]} ))
+				then
+					-fast-highlight-main-type ${match[1]}${match[2]}${(P)match[3]%%:-*}${match[4]#\}}
+				elif [[ $braces_stack = T* ]]
+				then
+					REPLY=none 
+				else
+					: ${expanded_path::=${~_mybuf}}
+					-fast-highlight-main-type $expanded_path
+				fi
+				case $REPLY in
+					(reserved) [[ $__arg = "[[" ]] && __style=${FAST_THEME_NAME}double-sq-bracket  || __style=${FAST_THEME_NAME}reserved-word 
+						if [[ $__arg == $'\x7b' ]]
+						then
+							braces_stack='Y'$braces_stack 
+						elif [[ $__arg == $'\x7d' && $braces_stack = Y* ]]
+						then
+							braces_stack=${braces_stack#Y} 
+							__style=${FAST_THEME_NAME}reserved-word 
+							(( next_word = next_word | 16 ))
+						elif [[ $__arg == "[[" ]]
+						then
+							braces_stack='A'$braces_stack 
+							_FAST_COMPLEX_BRACKETS+=($(( _start_pos-__PBUFLEN )) $(( _start_pos-__PBUFLEN + 1 ))) 
+						elif [[ $__arg == "for" ]]
+						then
+							(( next_word = next_word | 32 ))
+						elif [[ $__arg == "case" ]]
+						then
+							(( next_word = BIT_case_preamble ))
+						elif [[ $__arg = (typeset|declare|local|float|integer|export|readonly) ]]
+						then
+							braces_stack='T'$braces_stack 
+						fi ;;
+					('suffix alias') __style=${FAST_THEME_NAME}suffix-alias  ;;
+					('global alias') __style=${FAST_THEME_NAME}global-alias  ;;
+					(alias) if [[ $__arg = ?*'='* ]]
+						then
+							__style=${FAST_THEME_NAME}unknown-token 
+						else
+							__style=${FAST_THEME_NAME}alias 
+							(( ${+aliases} )) && alias_target=${aliases[$__arg]}  || alias_target="${"$(alias -- $__arg)"#*=}" 
+							[[ ${__FAST_HIGHLIGHT_TOKEN_TYPES[$alias_target]} = "1" && $__arg_type != "1" ]] && __FAST_HIGHLIGHT_TOKEN_TYPES[$__arg]="1" 
+						fi ;;
+					(builtin) [[ $__arg = "[" ]] && {
+							__style=${FAST_THEME_NAME}single-sq-bracket 
+							_FAST_COMPLEX_BRACKETS+=($(( _start_pos-__PBUFLEN ))) 
+						} || __style=${FAST_THEME_NAME}builtin 
+						[[ $__arg = (typeset|declare|local|float|integer|export|readonly) ]] && braces_stack='T'$braces_stack 
+						[[ $__arg = eval ]] && (( next_word = next_word | 256 )) ;;
+					(function) __style=${FAST_THEME_NAME}function  ;;
+					(command) __style=${FAST_THEME_NAME}command  ;;
+					(hashed) __style=${FAST_THEME_NAME}hashed-command  ;;
+					(dirpath) __style=${FAST_THEME_NAME}path-to-dir  ;;
+					(none) if [[ $__arg == [a-zA-Z_][a-zA-Z0-9_]#(|\[[^\]]#\])(|[^\]]#\])(|[+])=* || $__arg == [0-9]##(|[+])=* || ( $braces_stack = T* && ${__arg_type} != 3 ) ]]
+						then
+							__style=${FAST_THEME_NAME}assign 
+							FAST_ASSIGNS_SEEN[${__arg%%=*}]=1 
+							[[ $__arg = (#b)*=(\()*(\))* || $__arg = (#b)*=(\()* ]] && {
+								(( __start=_start_pos-__PBUFLEN+${mbegin[1]}-1, __end=__start+1, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}assign-array-bracket]}") 
+								_FAST_COMPLEX_BRACKETS+=($__start) 
+								(( mbegin[2] >= 1 )) && {
+									(( __start=_start_pos-__PBUFLEN+${mbegin[2]}-1, __end=__start+1, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}assign-array-bracket]}") 
+									_FAST_COMPLEX_BRACKETS+=($__start) 
+								} || in_array_assignment=1 
+							} || {
+								[[ ${braces_stack[1]} != 'T' ]] && (( next_word = (next_word | 1) & ~2 ))
+							}
+							local ctmp="\"" dtmp="'" 
+							itmp=${__arg[(i)$ctmp]}-1 iitmp=${__arg[(i)$dtmp]}-1 
+							integer jtmp=${__arg[(b:itmp+2:i)$ctmp]} jjtmp=${__arg[(b:iitmp+2:i)$dtmp]} 
+							(( itmp < iitmp && itmp <= __asize - 1 )) && (( jtmp > __asize && (jtmp = __asize), 1 > 0 )) && (( __start=_start_pos-__PBUFLEN+itmp, __end=_start_pos-__PBUFLEN+jtmp, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-quoted-argument]}")  && {
+								itmp=${__arg[(i)=]} 
+								__arg=${__arg[itmp,__asize]} 
+								(( _start_pos += itmp - 1 ))
+								-fast-highlight-string
+								(( _start_pos = _start_pos - itmp + 1, 1 > 0 ))
+							} || {
+								(( iitmp <= __asize - 1 )) && (( jjtmp > __asize && (jjtmp = __asize), 1 > 0 )) && (( __start=_start_pos-__PBUFLEN+iitmp, __end=_start_pos-__PBUFLEN+jjtmp, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}single-quoted-argument]}") 
+							} || {
+								itmp=${__arg[(i)=]} 
+								__arg=${__arg[itmp,__asize]} 
+								(( _start_pos += itmp - 1 ))
+								[[ ${__arg[2,4]} = '$((' ]] && {
+									-fast-highlight-math-string
+									(( __start=_start_pos-__PBUFLEN+2, __end=__start+2, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-paren]}") 
+									_FAST_COMPLEX_BRACKETS+=($__start $(( __start + 1 ))) 
+									(( jtmp = ${__arg[(I)\)\)]}-1, jtmp > 0 )) && {
+										(( __start=_start_pos-__PBUFLEN+jtmp, __end=__start+2, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-paren]}") 
+										_FAST_COMPLEX_BRACKETS+=($__start $(( __start + 1 ))) 
+									}
+								} || -fast-highlight-string
+								(( _start_pos = _start_pos - itmp + 1, 1 > 0 ))
+							}
+						elif [[ $__arg = ${histchars[1]}* && -n ${__arg[2]} ]]
+						then
+							__style=${FAST_THEME_NAME}history-expansion 
+						elif [[ $__arg == ${histchars[2]}* ]]
+						then
+							__style=${FAST_THEME_NAME}history-expansion 
+						elif (( __arg_type == 3 ))
+						then
+							(( this_word & 3 )) && __style=${FAST_THEME_NAME}commandseparator 
+						elif [[ $__arg[1,2] == '((' ]]
+						then
+							(( __start=_start_pos-__PBUFLEN, __end=__start+2, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-paren]}") 
+							already_added=1 
+							_FAST_COMPLEX_BRACKETS+=($__start $(( __start + 1 ))) 
+							-fast-highlight-math-string
+							[[ $__arg[-2,-1] == '))' ]] && {
+								(( __start=_end_pos-__PBUFLEN-2, __end=__start+2, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-paren]}") 
+								(( __delimited = __delimited ? 2 : __delimited ))
+								_FAST_COMPLEX_BRACKETS+=($__start $(( __start + 1 ))) 
+							}
+						elif [[ $__arg == '()' ]]
+						then
+							_FAST_COMPLEX_BRACKETS+=($(( _start_pos-__PBUFLEN )) $(( _start_pos-__PBUFLEN + 1 ))) 
+							__style=${FAST_THEME_NAME}reserved-word 
+						elif [[ $__arg == $'\x28' ]]
+						then
+							__style=${FAST_THEME_NAME}reserved-word 
+							braces_stack='R'$braces_stack 
+						elif [[ $__arg == $'\x29' ]]
+						then
+							[[ $braces_stack = R* ]] && {
+								braces_stack=${braces_stack#R} 
+								__style=${FAST_THEME_NAME}reserved-word 
+							}
+						elif (( this_word & 14 ))
+						then
+							__style=${FAST_THEME_NAME}default 
+						elif [[ $__arg = (';;'|';&'|';|') ]] && (( this_word & BIT_case_code ))
+						then
+							(( next_word = (next_word | BIT_case_item) & ~(BIT_case_code+3) ))
+							__style=${FAST_THEME_NAME}default 
+						elif [[ $__arg = \$\([^\(]* ]]
+						then
+							already_added=1 
+						fi ;;
+					(*) already_added=1  ;;
+				esac
+			fi
+		elif (( in_redirection + this_word & 14 ))
+		then
+			case $__arg in
+				(']]') [[ $braces_stack = A* ]] && {
+						__style=${FAST_THEME_NAME}double-sq-bracket 
+						(( __delimited = __delimited ? 2 : __delimited ))
+						_FAST_COMPLEX_BRACKETS+=($(( _start_pos-__PBUFLEN )) $(( _start_pos-__PBUFLEN+1 ))) 
+					} || {
+						[[ $braces_stack = *A* ]] && {
+							__style=${FAST_THEME_NAME}unknown-token 
+							_FAST_COMPLEX_BRACKETS+=($(( _start_pos-__PBUFLEN )) $(( _start_pos-__PBUFLEN+1 ))) 
+						} || __style=${FAST_THEME_NAME}default 
+					}
+					braces_stack=${braces_stack#A}  ;;
+				(']') __style=${FAST_THEME_NAME}single-sq-bracket 
+					_FAST_COMPLEX_BRACKETS+=($(( _start_pos-__PBUFLEN )))  ;;
+				($'\x28') __style=${FAST_THEME_NAME}reserved-word 
+					braces_stack='R'$braces_stack  ;;
+				($'\x29') if (( in_array_assignment ))
+					then
+						in_array_assignment=0 
+						(( next_word = next_word | 1 ))
+						(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}assign-array-bracket]}") 
+						already_added=1 
+						_FAST_COMPLEX_BRACKETS+=($__start) 
+					elif [[ $braces_stack = R* ]]
+					then
+						braces_stack=${braces_stack#R} 
+						__style=${FAST_THEME_NAME}reserved-word 
+					elif [[ $braces_stack = F* ]]
+					then
+						__style=${FAST_THEME_NAME}builtin 
+					fi ;;
+				($'\x28\x29') (( FAST_HIGHLIGHT[multi_func_def] )) && (( next_word = next_word | 1 ))
+					__style=${FAST_THEME_NAME}reserved-word 
+					_FAST_COMPLEX_BRACKETS+=($(( _start_pos-__PBUFLEN )) $(( _start_pos-__PBUFLEN + 1 ))) 
+					reply[-1]=() 
+					__fast_highlight_main__command_type_cache[$active_command]="function"  ;;
+				('--'*) [[ $__arg == "--" ]] && {
+						_was_double_hyphen=1 
+						__style=${FAST_THEME_NAME}double-hyphen-option 
+					} || {
+						(( !_was_double_hyphen )) && {
+							[[ "$__arg" = (#b)(--[a-zA-Z0-9_]##)=(*) ]] && {
+								(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-hyphen-option]}") 
+								(( __start=_start_pos-__PBUFLEN+1+mend[1], __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}optarg-${${${(M)match[2]:#<->}:+number}:-string}]}") 
+								already_added=1 
+							} || __style=${FAST_THEME_NAME}double-hyphen-option 
+						} || __style=${FAST_THEME_NAME}default 
+					} ;;
+				('-'*) (( !_was_double_hyphen )) && __style=${FAST_THEME_NAME}single-hyphen-option  || __style=${FAST_THEME_NAME}default  ;;
+				(\$\'*) (( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}dollar-quoted-argument]}") 
+					-fast-highlight-dollar-string
+					already_added=1  ;;
+				([\"\']* | [^\"\\]##([\\][\\])#\"* | [^\'\\]##([\\][\\])#\'*) if (( this_word & 256 )) && [[ $__arg = [\'\"]* ]]
+					then
+						(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}recursive-base]}") 
+						if [[ -n ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}secondary]} ]]
+						then
+							__idx=1 
+							_mybuf=$FAST_THEME_NAME 
+							FAST_THEME_NAME=${${${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}secondary]}:t:r}#(XDG|LOCAL|HOME|OPT):} 
+							(( ${+FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}default]} )) || source $FAST_WORK_DIR/secondary_theme.zsh
+						else
+							__idx=0 
+						fi
+						(( _start_pos-__PBUFLEN >= 0 )) && -fast-highlight-process "$PREBUFFER" "${${__arg%[\'\"]}#[\'\"]}" $(( _start_pos + 1 ))
+						(( __idx )) && FAST_THEME_NAME=$_mybuf 
+						already_added=1 
+					else
+						[[ $__arg = *([^\\][\#][\#]|"(#b)"|"(#B)"|"(#m)"|"(#c")* && $highlight_glob -ne 0 ]] && (( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}globbing-ext]}") 
+						itmp=0 __workbuf=$__arg __tmp="" cdpath_dir=$__arg 
+						while [[ $__workbuf = (#b)[^\"\'\\]#(([\"\'])|[\\](*))(*) ]]
+						do
+							[[ -n ${match[3]} ]] && {
+								itmp+=${mbegin[1]} 
+								[[ $__tmp = \' ]] && __workbuf=${match[3]}  || {
+									itmp+=1 
+									__workbuf=${match[3]:1} 
+								}
+							} || {
+								itmp+=${mbegin[1]} 
+								__workbuf=${match[4]} 
+								[[ ( ${match[1]} = \" && $__tmp != \' ) || ( ${match[1]} = \' && $__tmp != \" ) ]] && {
+									[[ $__tmp = [\"\'] ]] && {
+										(( __start=_start_pos-__PBUFLEN+iitmp-1, __end=_start_pos-__PBUFLEN+itmp, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}${${${__tmp#\'}:+double-quoted-argument}:-single-quoted-argument}]}") 
+										already_added=1 
+										[[ $__tmp = \" ]] && {
+											__arg=${cdpath_dir[iitmp+1,itmp-1]} 
+											(( _start_pos += iitmp - 1 + 1 ))
+											-fast-highlight-string
+											(( _start_pos = _start_pos - iitmp + 1 - 1 ))
+										}
+										__tmp= 
+									} || {
+										iitmp=itmp 
+										__tmp=${match[1]} 
+									}
+								}
+							}
+						done
+						[[ $__tmp = [\"\'] ]] && {
+							(( __start=_start_pos-__PBUFLEN+iitmp-1, __end=_start_pos-__PBUFLEN+__asize, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}${${${__tmp#\'}:+double-quoted-argument}:-single-quoted-argument}]}") 
+							already_added=1 
+							[[ $__tmp = \" ]] && {
+								__arg=${cdpath_dir[iitmp+1,__asize]} 
+								(( _start_pos += iitmp - 1 + 1 ))
+								-fast-highlight-string
+								(( _start_pos = _start_pos - iitmp + 1 - 1 ))
+							}
+						}
+					fi ;;
+				(\$\(\(*) already_added=1 
+					-fast-highlight-math-string
+					(( __start=_start_pos-__PBUFLEN+1, __end=__start+2, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-paren]}") 
+					_FAST_COMPLEX_BRACKETS+=($__start $(( __start + 1 ))) 
+					[[ $__arg[-2,-1] == '))' ]] && (( __start=_end_pos-__PBUFLEN-2, __end=__start+2, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-paren]}") 
+					_FAST_COMPLEX_BRACKETS+=($__start $(( __start + 1 )))  ;;
+				('`'*) (( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}back-quoted-argument]}") 
+					if [[ -n ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}secondary]} ]]
+					then
+						__idx=1 
+						_mybuf=$FAST_THEME_NAME 
+						FAST_THEME_NAME=${${${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}secondary]}:t:r}#(XDG|LOCAL|HOME|OPT):} 
+						(( ${+FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}default]} )) || source $FAST_WORK_DIR/secondary_theme.zsh
+					else
+						__idx=0 
+					fi
+					(( _start_pos-__PBUFLEN >= 0 )) && -fast-highlight-process "$PREBUFFER" "${${__arg%[\`]}#[\`]}" $(( _start_pos + 1 ))
+					(( __idx )) && FAST_THEME_NAME=$_mybuf 
+					already_added=1  ;;
+				('((') (( this_word & 32 )) && {
+						braces_stack='F'$braces_stack 
+						__style=${FAST_THEME_NAME}double-paren 
+						_FAST_COMPLEX_BRACKETS+=($(( _start_pos-__PBUFLEN )) $(( _start_pos-__PBUFLEN+1 ))) 
+						__delimited=1 
+					} ;;
+				('))') [[ $braces_stack = F* ]] && {
+						braces_stack=${braces_stack#F} 
+						__style=${FAST_THEME_NAME}double-paren 
+						_FAST_COMPLEX_BRACKETS+=($(( _start_pos-__PBUFLEN )) $(( _start_pos-__PBUFLEN+1 ))) 
+						(( __delimited = __delimited ? 2 : __delimited ))
+					} ;;
+				('<<<') (( next_word = (next_word | 128) & ~3 ))
+					[[ ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}here-string-tri]} != "none" ]] && (( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}here-string-tri]}") 
+					already_added=1  ;;
+				(*) if [[ $braces_stack = F* ]]
+					then
+						-fast-highlight-string
+						_mybuf=$__arg 
+						__idx=_start_pos 
+						while [[ $_mybuf = (#b)[^a-zA-Z\{\$]#([a-zA-Z][a-zA-Z0-9]#)(*) ]]
+						do
+							(( __start=__idx-__PBUFLEN+${mbegin[1]}-1, __end=__idx-__PBUFLEN+${mend[1]}+1-1, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}for-loop-variable]}") 
+							__idx+=${mend[1]} 
+							_mybuf=${match[2]} 
+						done
+						_mybuf=$__arg 
+						__idx=_start_pos 
+						while [[ $_mybuf = (#b)[^+\<\>=:\*\|\&\^\~-]#([+\<\>=:\*\|\&\^\~-]##)(*) ]]
+						do
+							(( __start=__idx-__PBUFLEN+${mbegin[1]}-1, __end=__idx-__PBUFLEN+${mend[1]}+1-1, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}for-loop-operator]}") 
+							__idx+=${mend[1]} 
+							_mybuf=${match[2]} 
+						done
+						_mybuf=$__arg 
+						__idx=_start_pos 
+						while [[ $_mybuf = (#b)[^0-9]#([0-9]##)(*) ]]
+						do
+							(( __start=__idx-__PBUFLEN+${mbegin[1]}-1, __end=__idx-__PBUFLEN+${mend[1]}+1-1, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}for-loop-number]}") 
+							__idx+=${mend[1]} 
+							_mybuf=${match[2]} 
+						done
+						if [[ $__arg = (#b)[^\;]#(\;)[\ ]# ]]
+						then
+							(( __start=_start_pos-__PBUFLEN+${mbegin[1]}-1, __end=_start_pos-__PBUFLEN+${mend[1]}+1-1, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}for-loop-separator]}") 
+						fi
+						already_added=1 
+					elif [[ $__arg = *([^\\][\#][\#]|"(#b)"|"(#B)"|"(#m)"|"(#c")* ]]
+					then
+						(( highlight_glob )) && __style=${FAST_THEME_NAME}globbing-ext  || __style=${FAST_THEME_NAME}default 
+					elif [[ $__arg = ([*?]*|*[^\\][*?]*) ]]
+					then
+						(( highlight_glob )) && __style=${FAST_THEME_NAME}globbing  || __style=${FAST_THEME_NAME}default 
+					elif [[ $__arg = \$* ]]
+					then
+						__style=${FAST_THEME_NAME}variable 
+					elif [[ $__arg = $'\x7d' && $braces_stack = Y* && ${FAST_HIGHLIGHT[right_brace_is_recognised_everywhere]} = "1" ]]
+					then
+						braces_stack=${braces_stack#Y} 
+						__style=${FAST_THEME_NAME}reserved-word 
+						(( next_word = next_word | 16 ))
+					elif [[ $__arg = (';;'|';&'|';|') ]] && (( this_word & BIT_case_code ))
+					then
+						(( next_word = (next_word | BIT_case_item) & ~(BIT_case_code+3) ))
+						__style=${FAST_THEME_NAME}default 
+					elif [[ $__arg = ${histchars[1]}* && -n ${__arg[2]} ]]
+					then
+						__style=${FAST_THEME_NAME}history-expansion 
+					elif (( __arg_type == 3 ))
+					then
+						__style=${FAST_THEME_NAME}commandseparator 
+					elif (( in_redirection == 2 ))
+					then
+						__style=${FAST_THEME_NAME}redirection 
+					elif (( ${+galiases[(e)$__arg]} ))
+					then
+						__style=${FAST_THEME_NAME}global-alias 
+					else
+						if [[ ${FAST_HIGHLIGHT[no_check_paths]} != 1 ]]
+						then
+							if [[ ${FAST_HIGHLIGHT[use_async]} != 1 ]]
+							then
+								if -fast-highlight-check-path noasync
+								then
+									(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[$__style]}") 
+									already_added=1 
+									[[ -n ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}path_pathseparator]} && ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}path]} != ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}path_pathseparator]} ]] && {
+										for ((__pos = _start_pos; __pos <= _end_pos; __pos++ )) do
+											[[ ${__buf[__pos]} == "/" ]] && (( __start=__pos-__PBUFLEN, __start >= 0 )) && reply+=("$(( __start - 1 )) $__start ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}path_pathseparator]}") 
+										done
+									}
+								else
+									__style=${FAST_THEME_NAME}default 
+								fi
+							else
+								if [[ -z ${FAST_HIGHLIGHT[cache-path-${(q)__arg}-${_start_pos}]} || $(( EPOCHSECONDS - FAST_HIGHLIGHT[cache-path-${(q)__arg}-${_start_pos}-born-at] )) -gt 8 ]]
+								then
+									if [[ $LASTWIDGET != *-or-beginning-search ]]
+									then
+										exec {PCFD}< <(-fast-highlight-check-path; sleep 5)
+										command sleep 0
+										FAST_HIGHLIGHT[path-queue]+=";$_start_pos $_end_pos;" 
+										is-at-least 5.0.6 && __pos=1  || __pos=0 
+										zle -F ${${__pos:#0}:+-w} $PCFD fast-highlight-check-path-handler
+										already_added=1 
+									else
+										__style=${FAST_THEME_NAME}default 
+									fi
+								elif [[ ${FAST_HIGHLIGHT[cache-path-${(q)__arg}-${_start_pos}]%D} -eq 1 ]]
+								then
+									(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}path${${(M)FAST_HIGHLIGHT[cache-path-${(q)__arg}-${_start_pos}]%D}:+-to-dir}]}") 
+									already_added=1 
+								else
+									__style=${FAST_THEME_NAME}default 
+								fi
+							fi
+						else
+							__style=${FAST_THEME_NAME}default 
+						fi
+					fi ;;
+			esac
+		elif (( this_word & 128 ))
+		then
+			(( next_word = (next_word | 2) & ~129 ))
+			[[ ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}here-string-text]} != "none" ]] && (( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}here-string-text]}") 
+			-fast-highlight-string ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}here-string-var]:#none}
+			already_added=1 
+		elif (( this_word & (BIT_case_preamble + BIT_case_item) ))
+		then
+			if (( this_word & BIT_case_preamble ))
+			then
+				[[ $__arg = "in" ]] && {
+					__style=${FAST_THEME_NAME}reserved-word 
+					(( next_word = BIT_case_item ))
+				} || {
+					__style=${FAST_THEME_NAME}case-input 
+					(( next_word = BIT_case_preamble ))
+				}
+			else
+				if (( this_word & BIT_case_nempty_item == 0 )) && [[ $__arg = "esac" ]]
+				then
+					(( next_word = 1 ))
+					__style=${FAST_THEME_NAME}reserved-word 
+				elif [[ $__arg = (\(*\)|\)|\() ]]
+				then
+					[[ $__arg = *\) ]] && (( next_word = BIT_case_code | 1 )) || (( next_word = BIT_case_item | BIT_case_nempty_item ))
+					_FAST_COMPLEX_BRACKETS+=($(( _start_pos-__PBUFLEN ))) 
+					(( ${#__arg} > 1 )) && {
+						_FAST_COMPLEX_BRACKETS+=($(( _start_pos+${#__arg}-1-__PBUFLEN ))) 
+						(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}case-parentheses]}") 
+						(( __start=_start_pos+1-__PBUFLEN, __end=_end_pos-1-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}case-condition]}") 
+						already_added=1 
+					} || {
+						__style=${FAST_THEME_NAME}case-parentheses 
+					}
+				else
+					(( next_word = BIT_case_item | BIT_case_nempty_item ))
+					__style=${FAST_THEME_NAME}case-condition 
+				fi
+			fi
+		fi
+		if [[ $__arg = (#b)*'#'(([0-9a-fA-F][0-9a-fA-F])([0-9a-fA-F][0-9a-fA-F])([0-9a-fA-F][0-9a-fA-F])|([0-9a-fA-F])([0-9a-fA-F])([0-9a-fA-F]))* || $__arg = (#b)*'rgb('(([0-9a-fA-F][0-9a-fA-F](#c0,1)),([0-9a-fA-F][0-9a-fA-F](#c0,1)),([0-9a-fA-F][0-9a-fA-F](#c0,1)))* ]]
+		then
+			if [[ -n $match[2] ]]
+			then
+				if [[ $match[2] = ?? || $match[3] = ?? || $match[4] = ?? ]]
+				then
+					(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end bg=#${(l:2::0:)match[2]}${(l:2::0:)match[3]}${(l:2::0:)match[4]}") 
+				else
+					(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end bg=#$match[2]$match[3]$match[4]") 
+				fi
+			else
+				(( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end bg=#$match[5]$match[6]$match[7]") 
+			fi
+			already_added=1 
+		fi
+		(( already_added == 0 )) && [[ ${FAST_HIGHLIGHT_STYLES[$__style]} != "none" ]] && (( __start=_start_pos-__PBUFLEN, __end=_end_pos-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[$__style]}") 
+		if (( (__arg_type == 3) && ((this_word & (BIT_case_preamble|BIT_case_item)) == 0) ))
+		then
+			if [[ $__arg == ';' ]] && (( in_array_assignment ))
+			then
+				(( next_word = 2 | (next_word & BIT_case_code) ))
+			elif [[ -n ${braces_stack[(r)A]} ]]
+			then
+				(( next_word = 2 | (next_word & BIT_case_code) ))
+			else
+				braces_stack=${braces_stack#T} 
+				(( next_word = 1 | (next_word & BIT_case_code) ))
+				highlight_glob=1 
+				[[ $__arg != ("||"|"&&") ]] && __delimited=0  || (( __delimited = __delimited == 2 ? 1 : __delimited ))
+			fi
+		elif (( ( (__arg_type == 1) || (__arg_type == 2) ) && (this_word & 1) ))
+		then
+			__delimited=1 
+			(( next_word = 1 | (next_word & (64 | BIT_case_code)) ))
+		elif [[ $__arg == "repeat" ]] && (( this_word & 1 ))
+		then
+			__delimited=1 
+			in_redirection=2 
+			(( this_word = 3 ))
+		fi
+		_start_pos=$_end_pos 
+		(( this_word = in_redirection == 0 ? next_word : this_word ))
+	done
+	[[ $3 != 0 ]] && return 0
+	_mybuf=${__buf[1,250]} __workbuf=$_mybuf __idx=0 __pos=0 __list=() 
+	while [[ $__workbuf = (#b)[^\(\)]#([\(\)])(*) ]]
+	do
+		if [[ ${match[1]} == \( ]]
+		then
+			__arg=${_mybuf[__idx+${mbegin[1]}-1,__idx+${mbegin[1]}-1+2]} 
+			[[ $__arg = '$('[^\(] ]] && __list+=($__pos) 
+			[[ $__arg = '$((' ]] && _mybuf[__idx+${mbegin[1]}-1]=x 
+			__pos+=1 
+		else
+			__pos=__pos-1 
+			[[ -z ${__list[(r)$__pos]} ]] && [[ $__pos -gt 0 ]] && _mybuf[__idx+${mbegin[1]}]=x 
+		fi
+		__idx+=${mbegin[2]}-1 
+		__workbuf=${match[2]} 
+	done
+	if [[ "$_mybuf" = *$__nul* ]]
+	then
+		__nul=$'\7' 
+	fi
+	__inputs=(${(ps:$__nul:)${(S)_mybuf//(#b)*\$\(([^\)]#)(\)|(#e))/${mbegin[1]};${mend[1]}${__nul}}%$__nul*}) 
+	if [[ "${__inputs[1]}" != "$_mybuf" && -n "${__inputs[1]}" ]]
+	then
+		if [[ -n ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}secondary]} ]]
+		then
+			__idx=1 
+			__tmp=$FAST_THEME_NAME 
+			FAST_THEME_NAME=${${${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}secondary]}:t:r}#(XDG|LOCAL|HOME|OPT):} 
+			(( ${+FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}default]} )) || source $FAST_WORK_DIR/secondary_theme.zsh
+		else
+			__idx=0 
+		fi
+		for _mybuf in $__inputs
+		do
+			(( __start=${_mybuf%%;*}-__PBUFLEN-1, __end=${_mybuf##*;}-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${__tmp}recursive-base]}") 
+			-fast-highlight-process "$PREBUFFER" "${__buf[${_mybuf%%;*},${_mybuf##*;}]}" $(( ${_mybuf%%;*} - 1 ))
+		done
+		(( __idx )) && FAST_THEME_NAME=$__tmp 
+	fi
+	return 0
+}
+-fast-highlight-string () {
+	(( _start_pos-__PBUFLEN >= 0 )) || return 0
+	_mybuf=$__arg 
+	__idx=_start_pos 
+	while [[ $_mybuf = (#b)[^\$\\]#((\$(#B)([#+^=~](#c1,2))(#c0,1)(#B)([a-zA-Z_:][a-zA-Z0-9_:]#|[0-9]##)(#b)(\[[^\]]#\])(#c0,1))|(\$[{](#B)([#+^=~](#c1,2))(#c0,1)(#b)(\([a-zA-Z0-9_:@%#]##\))(#c0,1)[a-zA-Z0-9_:#]##(\[[^\]]#\])(#c0,1)[}])|\$|[\\][\'\"\$]|[\\](*))(*) ]]
+	do
+		[[ -n ${match[7]} ]] && {
+			__idx+=${mbegin[1]}+1 
+			_mybuf=${match[7]:1} 
+		} || {
+			__idx+=${mbegin[1]}-1 
+			_end_idx=__idx+${mend[1]}-${mbegin[1]}+1 
+			_mybuf=${match[8]} 
+			(( __start=__idx-__PBUFLEN, __end=_end_idx-__PBUFLEN, __start >= 0 )) && reply+=("$__start $__end ${${1:+$1}:-${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}back-or-dollar-double-quoted-argument]}}") 
+			__idx=_end_idx 
+		}
+	done
+	return 0
+}
+-fast-highlight-string-process () {
+	emulate -LR zsh
+	setopt extendedglob warncreateglobal typesetsilent
+	local -A pos_to_level level_to_pos pair_map final_pairs
+	local input=$1$2 _mybuf=$1$2 __style __quoting 
+	integer __idx=0 __pair_idx __level=0 __start __end 
+	local -a match mbegin mend
+	pair_map=("(" ")" "{" "}" "[" "]") 
+	while [[ $_mybuf = (#b)([^"{}()[]\\\"'"]#)((["({[]})\"'"])|[\\](*))(*) ]]
+	do
+		if [[ -n ${match[4]} ]]
+		then
+			__idx+=${mbegin[2]} 
+			[[ $__quoting = \' ]] && _mybuf=${match[4]}  || {
+				_mybuf=${match[4]:1} 
+				(( ++ __idx ))
+			}
+		else
+			__idx+=${mbegin[2]} 
+			[[ -z $__quoting && -z ${_FAST_COMPLEX_BRACKETS[(r)$((__idx-${#PREBUFFER}-1))]} ]] && {
+				if [[ ${match[2]} = ["({["] ]]
+				then
+					pos_to_level[$__idx]=$(( ++__level )) 
+					level_to_pos[$__level]=$__idx 
+				elif [[ ${match[2]} = ["]})"] ]]
+				then
+					if (( __level > 0 ))
+					then
+						__pair_idx=${level_to_pos[$__level]} 
+						pos_to_level[$__idx]=$(( __level -- )) 
+						[[ ${pair_map[${input[__pair_idx]}]} = ${input[__idx]} ]] && {
+							final_pairs[$__idx]=$__pair_idx 
+							final_pairs[$__pair_idx]=$__idx 
+						}
+					else
+						pos_to_level[$__idx]=-1 
+					fi
+				fi
+			}
+			if [[ ${match[2]} = \" && $__quoting != \' ]]
+			then
+				[[ $__quoting = '"' ]] && __quoting=""  || __quoting='"' 
+			fi
+			if [[ ${match[2]} = \' && $__quoting != \" ]]
+			then
+				if [[ $__quoting = ("'"|"$'") ]]
+				then
+					__quoting="" 
+				else
+					if [[ $match[1] = *\$ ]]
+					then
+						__quoting="\$'" 
+					else
+						__quoting="'" 
+					fi
+				fi
+			fi
+			_mybuf=${match[5]} 
+		fi
+	done
+	for __idx in ${(k)pos_to_level}
+	do
+		(( ${+final_pairs[$__idx]} )) && __style=${FAST_THEME_NAME}bracket-level-$(( ( (pos_to_level[$__idx]-1) % 3 ) + 1 ))  || __style=${FAST_THEME_NAME}unknown-token 
+		(( __start=__idx-${#PREBUFFER}-1, __end=__idx-${#PREBUFFER}, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[$__style]}") 
+	done
+	if [[ $WIDGET != zle-line-finish ]]
+	then
+		__idx=$(( CURSOR + 1 )) 
+		if (( ${+pos_to_level[$__idx]} )) && (( ${+final_pairs[$__idx]} ))
+		then
+			(( __start=final_pairs[$__idx]-${#PREBUFFER}-1, __end=final_pairs[$__idx]-${#PREBUFFER}, __start >= 0 )) && reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}paired-bracket]}")  && reply+=("$CURSOR $__idx ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}paired-bracket]}") 
+		fi
+	fi
+	return 0
+}
+-fsh_sy_h_shappend () {
+	FSH_LIST+=("$(( $1 - 1 ));;$(( $2 ))") 
+}
+.fast-make-targets () {
+	# undefined
+	builtin autoload -XUz
+}
+.fast-read-ini-file () {
+	# undefined
+	builtin autoload -XUz
+}
+.fast-run-command () {
+	# undefined
+	builtin autoload -XUz
+}
+.fast-run-git-command () {
+	# undefined
+	builtin autoload -XUz
+}
+.fast-zts-read-all () {
+	# undefined
+	builtin autoload -XUz
+}
+/fshdbg () {
+	print -r -- "$@" >>| /tmp/reply
+}
 _SUSEconfig () {
 	# undefined
 	builtin autoload -XUz
@@ -209,7 +1346,7 @@ __bh_precmd_run_script () {
 	then
 		local command
 		command=$(head -n 1 "$BH_HOME_DIRECTORY/script.bh") 
-		trash "$BH_HOME_DIRECTORY/script.bh"
+		rm "$BH_HOME_DIRECTORY/script.bh"
 		eval "$command"
 	fi
 }
@@ -259,1203 +1396,12 @@ __bh_zsh_precmd () {
 	if [[ -e $BH_HOME_DIRECTORY/response.bh ]]
 	then
 		local COMMAND="`head -n 1 $BH_HOME_DIRECTORY/response.bh`" 
-		trash $BH_HOME_DIRECTORY/response.bh
+		rm $BH_HOME_DIRECTORY/response.bh
 		print -z $COMMAND
 	fi
 }
-__git () {
-	git ${__git_C_args:+"${__git_C_args[@]}"} ${__git_dir:+--git-dir="$__git_dir"} "$@" 2> /dev/null
-}
-__git_aliased_command () {
-	local cur=$1 last list word cmdline 
-	while [[ -n "$cur" ]]
-	do
-		if [[ "$list" == *" $cur "* ]]
-		then
-			return
-		fi
-		cmdline=$(__git config --get "alias.$cur") 
-		list=" $cur $list" 
-		last=$cur 
-		cur= 
-		for word in $cmdline
-		do
-			case "$word" in
-				(\!gitk | gitk) cur="gitk" 
-					break ;;
-				(\!*) : shell command alias ;;
-				(-*) : option ;;
-				(*=*) : setting env ;;
-				(git) : git itself ;;
-				(\(\)) : skip parens of shell function definition ;;
-				({) : skip start of shell helper function ;;
-				(:) : skip null command ;;
-				(\'*) : skip opening quote after sh -c ;;
-				(*) cur="$word" 
-					break ;;
-			esac
-		done
-	done
-	cur=$last 
-	if [[ "$cur" != "$1" ]]
-	then
-		echo "$cur"
-	fi
-}
-__git_checkout_default_dwim_mode () {
-	local last_option dwim_opt="--dwim" 
-	if [ "${GIT_COMPLETION_CHECKOUT_NO_GUESS-}" = "1" ]
-	then
-		dwim_opt="" 
-	fi
-	if [ -n "$(__git_find_on_cmdline "--no-track")" ]
-	then
-		dwim_opt="" 
-	fi
-	if [ "$(__git config --type=bool checkout.guess)" = "false" ]
-	then
-		dwim_opt="" 
-	fi
-	last_option="$(__git_find_last_on_cmdline "--guess --no-guess")" 
-	case "$last_option" in
-		(--guess) dwim_opt="--dwim"  ;;
-		(--no-guess) dwim_opt=""  ;;
-	esac
-	echo "$dwim_opt"
-}
-__git_complete () {
-	local wrapper="__git_wrap${2}" 
-	eval "$wrapper () { __git_func_wrap $2 ; }"
-	complete -o bashdefault -o default -o nospace -F $wrapper $1 2> /dev/null || complete -o default -o nospace -F $wrapper $1
-}
-__git_complete_command () {
-	emulate -L zsh
-	local command="$1" 
-	local completion_func="_git_${command//-/_}" 
-	if (( $+functions[$completion_func] ))
-	then
-		emulate ksh -c $completion_func
-		return 0
-	else
-		return 1
-	fi
-}
-__git_complete_common () {
-	local command="$1" 
-	case "$cur" in
-		(--*) __gitcomp_builtin "$command" ;;
-	esac
-}
-__git_complete_config_variable_name () {
-	local cur_="$cur" sfx 
-	while test $# != 0
-	do
-		case "$1" in
-			(--cur=*) cur_="${1##--cur=}"  ;;
-			(--sfx=*) sfx="${1##--sfx=}"  ;;
-			(*) return 1 ;;
-		esac
-		shift
-	done
-	case "$cur_" in
-		(branch.*.*) local pfx="${cur_%.*}." 
-			cur_="${cur_##*.}" 
-			__gitcomp "remote pushRemote merge mergeOptions rebase" "$pfx" "$cur_" "$sfx"
-			return ;;
-		(branch.*) local pfx="${cur%.*}." 
-			cur_="${cur#*.}" 
-			__gitcomp_direct "$(__git_heads "$pfx" "$cur_" ".")"
-			__gitcomp_nl_append $'autoSetupMerge\nautoSetupRebase\n' "$pfx" "$cur_" "$sfx"
-			return ;;
-		(guitool.*.*) local pfx="${cur_%.*}." 
-			cur_="${cur_##*.}" 
-			__gitcomp "
-			argPrompt cmd confirm needsFile noConsole noRescan
-			prompt revPrompt revUnmerged title
-			" "$pfx" "$cur_" "$sfx"
-			return ;;
-		(difftool.*.*) local pfx="${cur_%.*}." 
-			cur_="${cur_##*.}" 
-			__gitcomp "cmd path" "$pfx" "$cur_" "$sfx"
-			return ;;
-		(man.*.*) local pfx="${cur_%.*}." 
-			cur_="${cur_##*.}" 
-			__gitcomp "cmd path" "$pfx" "$cur_" "$sfx"
-			return ;;
-		(mergetool.*.*) local pfx="${cur_%.*}." 
-			cur_="${cur_##*.}" 
-			__gitcomp "cmd path trustExitCode" "$pfx" "$cur_" "$sfx"
-			return ;;
-		(pager.*) local pfx="${cur_%.*}." 
-			cur_="${cur_#*.}" 
-			__git_compute_all_commands
-			__gitcomp_nl "$__git_all_commands" "$pfx" "$cur_" "$sfx"
-			return ;;
-		(remote.*.*) local pfx="${cur_%.*}." 
-			cur_="${cur_##*.}" 
-			__gitcomp "
-			url proxy fetch push mirror skipDefaultUpdate
-			receivepack uploadpack tagOpt pushurl
-			" "$pfx" "$cur_" "$sfx"
-			return ;;
-		(remote.*) local pfx="${cur_%.*}." 
-			cur_="${cur_#*.}" 
-			__gitcomp_nl "$(__git_remotes)" "$pfx" "$cur_" "."
-			__gitcomp_nl_append "pushDefault" "$pfx" "$cur_" "$sfx"
-			return ;;
-		(url.*.*) local pfx="${cur_%.*}." 
-			cur_="${cur_##*.}" 
-			__gitcomp "insteadOf pushInsteadOf" "$pfx" "$cur_" "$sfx"
-			return ;;
-		(*.*) __git_compute_config_vars
-			__gitcomp "$__git_config_vars" "" "$cur_" "$sfx" ;;
-		(*) __git_compute_config_vars
-			__gitcomp "$(echo "$__git_config_vars" |
-				awk -F . '{
-					sections[$1] = 1
-				}
-				END {
-					for (s in sections)
-						print s "."
-				}
-				')" "" "$cur_" ;;
-	esac
-}
-__git_complete_config_variable_name_and_value () {
-	local cur_="$cur" 
-	while test $# != 0
-	do
-		case "$1" in
-			(--cur=*) cur_="${1##--cur=}"  ;;
-			(*) return 1 ;;
-		esac
-		shift
-	done
-	case "$cur_" in
-		(*=*) __git_complete_config_variable_value --varname="${cur_%%=*}" --cur="${cur_#*=}" ;;
-		(*) __git_complete_config_variable_name --cur="$cur_" --sfx='=' ;;
-	esac
-}
-__git_complete_config_variable_value () {
-	local varname="$prev" cur_="$cur" 
-	while test $# != 0
-	do
-		case "$1" in
-			(--varname=*) varname="${1##--varname=}"  ;;
-			(--cur=*) cur_="${1##--cur=}"  ;;
-			(*) return 1 ;;
-		esac
-		shift
-	done
-	if [ "${BASH_VERSINFO[0]:-0}" -ge 4 ]
-	then
-		varname="${varname,,}" 
-	else
-		varname="$(echo "$varname" |tr A-Z a-z)" 
-	fi
-	case "$varname" in
-		(branch.*.remote | branch.*.pushremote) __gitcomp_nl "$(__git_remotes)" "" "$cur_"
-			return ;;
-		(branch.*.merge) __git_complete_refs --cur="$cur_"
-			return ;;
-		(branch.*.rebase) __gitcomp "false true merges preserve interactive" "" "$cur_"
-			return ;;
-		(remote.pushdefault) __gitcomp_nl "$(__git_remotes)" "" "$cur_"
-			return ;;
-		(remote.*.fetch) local remote="${varname#remote.}" 
-			remote="${remote%.fetch}" 
-			if [ -z "$cur_" ]
-			then
-				__gitcomp_nl "refs/heads/" "" "" ""
-				return
-			fi
-			__gitcomp_nl "$(__git_refs_remotes "$remote")" "" "$cur_"
-			return ;;
-		(remote.*.push) local remote="${varname#remote.}" 
-			remote="${remote%.push}" 
-			__gitcomp_nl "$(__git for-each-ref \
-			--format='%(refname):%(refname)' refs/heads)" "" "$cur_"
-			return ;;
-		(pull.twohead | pull.octopus) __git_compute_merge_strategies
-			__gitcomp "$__git_merge_strategies" "" "$cur_"
-			return ;;
-		(color.pager) __gitcomp "false true" "" "$cur_"
-			return ;;
-		(color.*.*) __gitcomp "
-			normal black red green yellow blue magenta cyan white
-			bold dim ul blink reverse
-			" "" "$cur_"
-			return ;;
-		(color.*) __gitcomp "false true always never auto" "" "$cur_"
-			return ;;
-		(diff.submodule) __gitcomp "$__git_diff_submodule_formats" "" "$cur_"
-			return ;;
-		(help.format) __gitcomp "man info web html" "" "$cur_"
-			return ;;
-		(log.date) __gitcomp "$__git_log_date_formats" "" "$cur_"
-			return ;;
-		(sendemail.aliasfiletype) __gitcomp "mutt mailrc pine elm gnus" "" "$cur_"
-			return ;;
-		(sendemail.confirm) __gitcomp "$__git_send_email_confirm_options" "" "$cur_"
-			return ;;
-		(sendemail.suppresscc) __gitcomp "$__git_send_email_suppresscc_options" "" "$cur_"
-			return ;;
-		(sendemail.transferencoding) __gitcomp "7bit 8bit quoted-printable base64" "" "$cur_"
-			return ;;
-		(*.*) return ;;
-	esac
-}
-__git_complete_fetch_refspecs () {
-	local i remote="$1" pfx="${2-}" cur_="${3-$cur}" sfx="${4- }" 
-	__gitcomp_direct "$(
-		for i in $(__git_refs "$remote" "" "" "$cur_") ; do
-			echo "$pfx$i:$i$sfx"
-		done
-		)"
-}
-__git_complete_file () {
-	__git_complete_revlist_file
-}
-__git_complete_force_with_lease () {
-	local cur_=$1 
-	case "$cur_" in
-		(--*=)  ;;
-		(*:*) __git_complete_refs --cur="${cur_#*:}" ;;
-		(*) __git_complete_refs --cur="$cur_" ;;
-	esac
-}
-__git_complete_index_file () {
-	local dequoted_word pfx="" cur_ 
-	__git_dequote "$cur"
-	case "$dequoted_word" in
-		(?*/*) pfx="${dequoted_word%/*}/" 
-			cur_="${dequoted_word##*/}"  ;;
-		(*) cur_="$dequoted_word"  ;;
-	esac
-	__gitcomp_file_direct "$(__git_index_files "$1" "$pfx" "$cur_")"
-}
-__git_complete_refs () {
-	local remote= dwim= pfx= cur_="$cur" sfx=" " mode="refs" 
-	while test $# != 0
-	do
-		case "$1" in
-			(--remote=*) remote="${1##--remote=}"  ;;
-			(--dwim) dwim="yes"  ;;
-			(--track) dwim="yes"  ;;
-			(--pfx=*) pfx="${1##--pfx=}"  ;;
-			(--cur=*) cur_="${1##--cur=}"  ;;
-			(--sfx=*) sfx="${1##--sfx=}"  ;;
-			(--mode=*) mode="${1##--mode=}"  ;;
-			(*) return 1 ;;
-		esac
-		shift
-	done
-	case "$mode" in
-		(refs) __gitcomp_direct "$(__git_refs "$remote" "" "$pfx" "$cur_" "$sfx")" ;;
-		(heads) __gitcomp_direct "$(__git_heads "$pfx" "$cur_" "$sfx")" ;;
-		(remote-heads) __gitcomp_direct "$(__git_remote_heads "$pfx" "$cur_" "$sfx")" ;;
-		(*) return 1 ;;
-	esac
-	if [ "$dwim" = "yes" ]
-	then
-		__gitcomp_direct_append "$(__git_dwim_remote_heads "$pfx" "$cur_" "$sfx")"
-	fi
-}
-__git_complete_remote_or_refspec () {
-	local cur_="$cur" cmd="${words[1]}" 
-	local i c=2 remote="" pfx="" lhs=1 no_complete_refspec=0 
-	if [ "$cmd" = "remote" ]
-	then
-		((c++))
-	fi
-	while [ $c -lt $cword ]
-	do
-		i="${words[c]}" 
-		case "$i" in
-			(--mirror) [ "$cmd" = "push" ] && no_complete_refspec=1  ;;
-			(-d | --delete) [ "$cmd" = "push" ] && lhs=0  ;;
-			(--all) case "$cmd" in
-					(push) no_complete_refspec=1  ;;
-					(fetch) return ;;
-					(*)  ;;
-				esac ;;
-			(--multiple) no_complete_refspec=1 
-				break ;;
-			(-*)  ;;
-			(*) remote="$i" 
-				break ;;
-		esac
-		((c++))
-	done
-	if [ -z "$remote" ]
-	then
-		__gitcomp_nl "$(__git_remotes)"
-		return
-	fi
-	if [ $no_complete_refspec = 1 ]
-	then
-		return
-	fi
-	[ "$remote" = "." ] && remote= 
-	case "$cur_" in
-		(*:*) case "$COMP_WORDBREAKS" in
-				(*:*) : great ;;
-				(*) pfx="${cur_%%:*}:"  ;;
-			esac
-			cur_="${cur_#*:}" 
-			lhs=0  ;;
-		(+*) pfx="+" 
-			cur_="${cur_#+}"  ;;
-	esac
-	case "$cmd" in
-		(fetch) if [ $lhs = 1 ]
-			then
-				__git_complete_fetch_refspecs "$remote" "$pfx" "$cur_"
-			else
-				__git_complete_refs --pfx="$pfx" --cur="$cur_"
-			fi ;;
-		(pull | remote) if [ $lhs = 1 ]
-			then
-				__git_complete_refs --remote="$remote" --pfx="$pfx" --cur="$cur_"
-			else
-				__git_complete_refs --pfx="$pfx" --cur="$cur_"
-			fi ;;
-		(push) if [ $lhs = 1 ]
-			then
-				__git_complete_refs --pfx="$pfx" --cur="$cur_"
-			else
-				__git_complete_refs --remote="$remote" --pfx="$pfx" --cur="$cur_"
-			fi ;;
-	esac
-}
-__git_complete_revlist () {
-	__git_complete_revlist_file
-}
-__git_complete_revlist_file () {
-	local dequoted_word pfx ls ref cur_="$cur" 
-	case "$cur_" in
-		(*..?*:*) return ;;
-		(?*:*) ref="${cur_%%:*}" 
-			cur_="${cur_#*:}" 
-			__git_dequote "$cur_"
-			case "$dequoted_word" in
-				(?*/*) pfx="${dequoted_word%/*}" 
-					cur_="${dequoted_word##*/}" 
-					ls="$ref:$pfx" 
-					pfx="$pfx/"  ;;
-				(*) cur_="$dequoted_word" 
-					ls="$ref"  ;;
-			esac
-			case "$COMP_WORDBREAKS" in
-				(*:*) : great ;;
-				(*) pfx="$ref:$pfx"  ;;
-			esac
-			__gitcomp_file "$(__git ls-tree "$ls" \
-				| sed 's/^.*	//
-				       s/$//')" "$pfx" "$cur_" ;;
-		(*...*) pfx="${cur_%...*}..." 
-			cur_="${cur_#*...}" 
-			__git_complete_refs --pfx="$pfx" --cur="$cur_" ;;
-		(*..*) pfx="${cur_%..*}.." 
-			cur_="${cur_#*..}" 
-			__git_complete_refs --pfx="$pfx" --cur="$cur_" ;;
-		(*) __git_complete_refs ;;
-	esac
-}
-__git_complete_strategy () {
-	__git_compute_merge_strategies
-	case "$prev" in
-		(-s | --strategy) __gitcomp "$__git_merge_strategies"
-			return 0 ;;
-		(-X) __gitcomp "$__git_merge_strategy_options"
-			return 0 ;;
-	esac
-	case "$cur" in
-		(--strategy=*) __gitcomp "$__git_merge_strategies" "" "${cur##--strategy=}"
-			return 0 ;;
-		(--strategy-option=*) __gitcomp "$__git_merge_strategy_options" "" "${cur##--strategy-option=}"
-			return 0 ;;
-	esac
-	return 1
-}
-__git_complete_symbol () {
-	local tags=tags pfx="" cur_="${cur-}" sfx=" " 
-	while test $# != 0
-	do
-		case "$1" in
-			(--tags=*) tags="${1##--tags=}"  ;;
-			(--pfx=*) pfx="${1##--pfx=}"  ;;
-			(--cur=*) cur_="${1##--cur=}"  ;;
-			(--sfx=*) sfx="${1##--sfx=}"  ;;
-			(*) return 1 ;;
-		esac
-		shift
-	done
-	if test -r "$tags"
-	then
-		__gitcomp_direct "$(__git_match_ctag "$cur_" "$tags" "$pfx" "$sfx")"
-	fi
-}
-__git_complete_worktree_paths () {
-	local IFS=$'\n' 
-	__gitcomp_nl "$(git worktree list --porcelain |
-		# Skip the first entry: it's the path of the main worktree,
-		# which can't be moved, removed, locked, etc.
-		sed -n -e '2,$ s/^worktree //p')"
-}
-__git_compute_all_commands () {
-	test -n "$__git_all_commands" || __git_all_commands=$(__git --list-cmds=main,others,alias,nohelpers) 
-}
-__git_compute_config_vars () {
-	test -n "$__git_config_vars" || __git_config_vars="$(git help --config-for-completion | sort -u)" 
-}
-__git_compute_merge_strategies () {
-	test -n "$__git_merge_strategies" || __git_merge_strategies=$(__git_list_merge_strategies) 
-}
-__git_config_get_set_variables () {
-	local prevword word config_file= c=$cword 
-	while [ $c -gt 1 ]
-	do
-		word="${words[c]}" 
-		case "$word" in
-			(--system | --global | --local | --file=*) config_file="$word" 
-				break ;;
-			(-f | --file) config_file="$word $prevword" 
-				break ;;
-		esac
-		prevword=$word 
-		c=$((--c)) 
-	done
-	__git config $config_file --name-only --list
-}
-__git_count_arguments () {
-	local word i c=0 
-	for ((i=1; i < ${#words[@]}; i++)) do
-		word="${words[i]}" 
-		case "$word" in
-			(--) ((c = 0)) ;;
-			("$1") ((c = 0)) ;;
-			(?*) ((c++)) ;;
-		esac
-	done
-	printf "%d" $c
-}
-__git_dequote () {
-	local rest="$1" len ch 
-	dequoted_word="" 
-	while test -n "$rest"
-	do
-		len=${#dequoted_word} 
-		dequoted_word="$dequoted_word${rest%%[\\\'\"]*}" 
-		rest="${rest:$((${#dequoted_word}-$len))}" 
-		case "${rest:0:1}" in
-			(\\) ch="${rest:1:1}" 
-				case "$ch" in
-					($'\n')  ;;
-					(*) dequoted_word="$dequoted_word$ch"  ;;
-				esac
-				rest="${rest:2}"  ;;
-			(\') rest="${rest:1}" 
-				len=${#dequoted_word} 
-				dequoted_word="$dequoted_word${rest%%\'*}" 
-				rest="${rest:$((${#dequoted_word}-$len+1))}"  ;;
-			(\") rest="${rest:1}" 
-				while test -n "$rest"
-				do
-					len=${#dequoted_word} 
-					dequoted_word="$dequoted_word${rest%%[\\\"]*}" 
-					rest="${rest:$((${#dequoted_word}-$len))}" 
-					case "${rest:0:1}" in
-						(\\) ch="${rest:1:1}" 
-							case "$ch" in
-								(\" | \\ | \$ | \`) dequoted_word="$dequoted_word$ch"  ;;
-								($'\n')  ;;
-								(*) dequoted_word="$dequoted_word\\$ch"  ;;
-							esac
-							rest="${rest:2}"  ;;
-						(\") rest="${rest:1}" 
-							break ;;
-					esac
-				done ;;
-		esac
-	done
-}
-__git_dwim_remote_heads () {
-	local pfx="${1-}" cur_="${2-}" sfx="${3-}" 
-	local fer_pfx="${pfx//\%/%%}" 
-	__git for-each-ref --format="$fer_pfx%(refname:strip=3)$sfx" --sort="refname:strip=3" "refs/remotes/*/$cur_*" "refs/remotes/*/$cur_*/**" | uniq -u
-}
-__git_find_last_on_cmdline () {
-	local word c=$cword show_idx 
-	while test $# -gt 1
-	do
-		case "$1" in
-			(--show-idx) show_idx=y  ;;
-			(*) return 1 ;;
-		esac
-		shift
-	done
-	local wordlist="$1" 
-	while [ $c -gt 1 ]
-	do
-		((c--))
-		for word in $wordlist
-		do
-			if [ "$word" = "${words[c]}" ]
-			then
-				if [ -n "$show_idx" ]
-				then
-					echo "$c $word"
-				else
-					echo "$word"
-				fi
-				return
-			fi
-		done
-	done
-}
-__git_find_on_cmdline () {
-	local word c=1 show_idx 
-	while test $# -gt 1
-	do
-		case "$1" in
-			(--show-idx) show_idx=y  ;;
-			(*) return 1 ;;
-		esac
-		shift
-	done
-	local wordlist="$1" 
-	while [ $c -lt $cword ]
-	do
-		for word in $wordlist
-		do
-			if [ "$word" = "${words[c]}" ]
-			then
-				if [ -n "${show_idx-}" ]
-				then
-					echo "$c $word"
-				else
-					echo "$word"
-				fi
-				return
-			fi
-		done
-		((c++))
-	done
-}
-__git_find_repo_path () {
-	if [ -n "${__git_repo_path-}" ]
-	then
-		return
-	fi
-	if [ -n "${__git_C_args-}" ]
-	then
-		__git_repo_path="$(git "${__git_C_args[@]}" \
-			${__git_dir:+--git-dir="$__git_dir"} \
-			rev-parse --absolute-git-dir 2>/dev/null)" 
-	elif [ -n "${__git_dir-}" ]
-	then
-		test -d "$__git_dir" && __git_repo_path="$__git_dir" 
-	elif [ -n "${GIT_DIR-}" ]
-	then
-		test -d "${GIT_DIR-}" && __git_repo_path="$GIT_DIR" 
-	elif [ -d .git ]
-	then
-		__git_repo_path=.git 
-	else
-		__git_repo_path="$(git rev-parse --git-dir 2>/dev/null)" 
-	fi
-}
-__git_func_wrap () {
-	local cur words cword prev
-	_get_comp_words_by_ref -n =: cur words cword prev
-	$1
-}
-__git_get_config_variables () {
-	local section="$1" i IFS=$'\n' 
-	for i in $(__git config --name-only --get-regexp "^$section\..*")
-	do
-		echo "${i#$section.}"
-	done
-}
-__git_get_option_value () {
-	local c short_opt long_opt val
-	local result= values config_key word 
-	short_opt="$1" 
-	long_opt="$2" 
-	values="$3" 
-	config_key="$4" 
-	((c = $cword - 1))
-	while [ $c -ge 0 ]
-	do
-		word="${words[c]}" 
-		for val in $values
-		do
-			if [ "$short_opt$val" = "$word" ] || [ "$long_opt$val" = "$word" ]
-			then
-				result="$val" 
-				break 2
-			fi
-		done
-		((c--))
-	done
-	if [ -n "$config_key" ] && [ -z "$result" ]
-	then
-		result="$(__git config "$config_key")" 
-	fi
-	echo "$result"
-}
-__git_has_doubledash () {
-	local c=1 
-	while [ $c -lt $cword ]
-	do
-		if [ "--" = "${words[c]}" ]
-		then
-			return 0
-		fi
-		((c++))
-	done
-	return 1
-}
-__git_heads () {
-	local pfx="${1-}" cur_="${2-}" sfx="${3-}" 
-	__git for-each-ref --format="${pfx//\%/%%}%(refname:strip=2)$sfx" "refs/heads/$cur_*" "refs/heads/$cur_*/**"
-}
-__git_index_files () {
-	local root="$2" match="$3" 
-	__git_ls_files_helper "$root" "$1" "${match:-?}" | awk -F / -v pfx="${2//\\/\\\\}" '{
-		paths[$1] = 1
-	}
-	END {
-		for (p in paths) {
-			if (substr(p, 1, 1) != "\"") {
-				# No special characters, easy!
-				print pfx p
-				continue
-			}
-
-			# The path is quoted.
-			p = dequote(p)
-			if (p == "")
-				continue
-
-			# Even when a directory name itself does not contain
-			# any special characters, it will still be quoted if
-			# any of its (stripped) trailing path components do.
-			# Because of this we may have seen the same directory
-			# both quoted and unquoted.
-			if (p in paths)
-				# We have seen the same directory unquoted,
-				# skip it.
-				continue
-			else
-				print pfx p
-		}
-	}
-	function dequote(p,    bs_idx, out, esc, esc_idx, dec) {
-		# Skip opening double quote.
-		p = substr(p, 2)
-
-		# Interpret backslash escape sequences.
-		while ((bs_idx = index(p, "\\")) != 0) {
-			out = out substr(p, 1, bs_idx - 1)
-			esc = substr(p, bs_idx + 1, 1)
-			p = substr(p, bs_idx + 2)
-
-			if ((esc_idx = index("abtvfr\"\\", esc)) != 0) {
-				# C-style one-character escape sequence.
-				out = out substr("\a\b\t\v\f\r\"\\",
-						 esc_idx, 1)
-			} else if (esc == "n") {
-				# Uh-oh, a newline character.
-				# We cannot reliably put a pathname
-				# containing a newline into COMPREPLY,
-				# and the newline would create a mess.
-				# Skip this path.
-				return ""
-			} else {
-				# Must be a \nnn octal value, then.
-				dec = esc             * 64 + \
-				      substr(p, 1, 1) * 8  + \
-				      substr(p, 2, 1)
-				out = out sprintf("%c", dec)
-				p = substr(p, 3)
-			}
-		}
-		# Drop closing double quote, if there is one.
-		# (There is not any if this is a directory, as it was
-		# already stripped with the trailing path components.)
-		if (substr(p, length(p), 1) == "\"")
-			out = out substr(p, 1, length(p) - 1)
-		else
-			out = out p
-
-		return out
-	}'
-}
-__git_is_configured_remote () {
-	local remote
-	for remote in $(__git_remotes)
-	do
-		if [ "$remote" = "$1" ]
-		then
-			return 0
-		fi
-	done
-	return 1
-}
-__git_list_merge_strategies () {
-	LANG=C LC_ALL=C git merge -s help 2>&1 | sed -n -e '/[Aa]vailable strategies are: /,/^$/{
-		s/\.$//
-		s/.*://
-		s/^[ 	]*//
-		s/[ 	]*$//
-		p
-	}'
-}
-__git_ls_files_helper () {
-	if [ "$2" == "--committable" ]
-	then
-		__git -C "$1" -c core.quotePath=false diff-index --name-only --relative HEAD -- "${3//\\/\\\\}*"
-	else
-		__git -C "$1" -c core.quotePath=false ls-files --exclude-standard $2 -- "${3//\\/\\\\}*"
-	fi
-}
-__git_main () {
-	local i c=1 command __git_dir __git_repo_path 
-	local __git_C_args C_args_count=0 
-	while [ $c -lt $cword ]
-	do
-		i="${words[c]}" 
-		case "$i" in
-			(--git-dir=*) __git_dir="${i#--git-dir=}"  ;;
-			(--git-dir) ((c++))
-				__git_dir="${words[c]}"  ;;
-			(--bare) __git_dir="."  ;;
-			(--help) command="help" 
-				break ;;
-			(-c | --work-tree | --namespace) ((c++)) ;;
-			(-C) __git_C_args[C_args_count++]=-C 
-				((c++))
-				__git_C_args[C_args_count++]="${words[c]}"  ;;
-			(-*)  ;;
-			(*) command="$i" 
-				break ;;
-		esac
-		((c++))
-	done
-	if [ -z "${command-}" ]
-	then
-		case "$prev" in
-			(--git-dir | -C | --work-tree) return ;;
-			(-c) __git_complete_config_variable_name_and_value
-				return ;;
-			(--namespace) return ;;
-		esac
-		case "$cur" in
-			(--*) __gitcomp "
-			--paginate
-			--no-pager
-			--git-dir=
-			--bare
-			--version
-			--exec-path
-			--exec-path=
-			--html-path
-			--man-path
-			--info-path
-			--work-tree=
-			--namespace=
-			--no-replace-objects
-			--help
-			" ;;
-			(*) if test -n "${GIT_TESTING_PORCELAIN_COMMAND_LIST-}"
-				then
-					__gitcomp "$GIT_TESTING_PORCELAIN_COMMAND_LIST"
-				else
-					__gitcomp "$(__git --list-cmds=list-mainporcelain,others,nohelpers,alias,list-complete,config)"
-				fi ;;
-		esac
-		return
-	fi
-	__git_complete_command "$command" && return
-	local expansion=$(__git_aliased_command "$command") 
-	if [ -n "$expansion" ]
-	then
-		words[1]=$expansion 
-		__git_complete_command "$expansion"
-	fi
-}
-__git_match_ctag () {
-	awk -v pfx="${3-}" -v sfx="${4-}" "
-		/^${1//\//\\/}/ { print pfx \$1 sfx }
-		" "$2"
-}
-__git_pretty_aliases () {
-	__git_get_config_variables "pretty"
-}
 __git_prompt_git () {
 	GIT_OPTIONAL_LOCKS=0 command git "$@"
-}
-__git_reassemble_comp_words_by_ref () {
-	local exclude i j first
-	exclude="${1//[^$COMP_WORDBREAKS]}" 
-	cword_=$COMP_CWORD 
-	if [ -z "$exclude" ]
-	then
-		words_=("${COMP_WORDS[@]}") 
-		return
-	fi
-	for ((i=0, j=0; i < ${#COMP_WORDS[@]}; i++, j++)) do
-		first=t 
-		while [ $i -gt 0 ] && [ -n "${COMP_WORDS[$i]}" ] && [ "${COMP_WORDS[$i]//[^$exclude]}" = "${COMP_WORDS[$i]}" ]
-		do
-			if [ $j -ge 2 ] && [ -n "$first" ]
-			then
-				((j--))
-			fi
-			first= 
-			words_[$j]=${words_[j]}${COMP_WORDS[i]} 
-			if [ $i = $COMP_CWORD ]
-			then
-				cword_=$j 
-			fi
-			if (($i < ${#COMP_WORDS[@]} - 1))
-			then
-				((i++))
-			else
-				return
-			fi
-		done
-		words_[$j]=${words_[j]}${COMP_WORDS[i]} 
-		if [ $i = $COMP_CWORD ]
-		then
-			cword_=$j 
-		fi
-	done
-}
-__git_refs () {
-	local i hash dir track="${2-}" 
-	local list_refs_from=path remote="${1-}" 
-	local format refs
-	local pfx="${3-}" cur_="${4-$cur}" sfx="${5-}" 
-	local match="${4-}" 
-	local fer_pfx="${pfx//\%/%%}" 
-	__git_find_repo_path
-	dir="$__git_repo_path" 
-	if [ -z "$remote" ]
-	then
-		if [ -z "$dir" ]
-		then
-			return
-		fi
-	else
-		if __git_is_configured_remote "$remote"
-		then
-			list_refs_from=remote 
-		elif [ -d "$remote/.git" ]
-		then
-			dir="$remote/.git" 
-		elif [ -d "$remote" ]
-		then
-			dir="$remote" 
-		else
-			list_refs_from=url 
-		fi
-	fi
-	if [ "$list_refs_from" = path ]
-	then
-		if [[ "$cur_" == ^* ]]
-		then
-			pfx="$pfx^" 
-			fer_pfx="$fer_pfx^" 
-			cur_=${cur_#^} 
-			match=${match#^} 
-		fi
-		case "$cur_" in
-			(refs | refs/*) format="refname" 
-				refs=("$match*" "$match*/**") 
-				track=""  ;;
-			(*) for i in HEAD FETCH_HEAD ORIG_HEAD MERGE_HEAD REBASE_HEAD
-				do
-					case "$i" in
-						($match*) if [ -e "$dir/$i" ]
-							then
-								echo "$pfx$i$sfx"
-							fi ;;
-					esac
-				done
-				format="refname:strip=2" 
-				refs=("refs/tags/$match*" "refs/tags/$match*/**" "refs/heads/$match*" "refs/heads/$match*/**" "refs/remotes/$match*" "refs/remotes/$match*/**")  ;;
-		esac
-		__git_dir="$dir" __git for-each-ref --format="$fer_pfx%($format)$sfx" "${refs[@]}"
-		if [ -n "$track" ]
-		then
-			__git_dwim_remote_heads "$pfx" "$match" "$sfx"
-		fi
-		return
-	fi
-	case "$cur_" in
-		(refs | refs/*) __git ls-remote "$remote" "$match*" | while read -r hash i
-			do
-				case "$i" in
-					(*^{})  ;;
-					(*) echo "$pfx$i$sfx" ;;
-				esac
-			done ;;
-		(*) if [ "$list_refs_from" = remote ]
-			then
-				case "HEAD" in
-					($match*) echo "${pfx}HEAD$sfx" ;;
-				esac
-				__git for-each-ref --format="$fer_pfx%(refname:strip=3)$sfx" "refs/remotes/$remote/$match*" "refs/remotes/$remote/$match*/**"
-			else
-				local query_symref
-				case "HEAD" in
-					($match*) query_symref="HEAD"  ;;
-				esac
-				__git ls-remote "$remote" $query_symref "refs/tags/$match*" "refs/heads/$match*" "refs/remotes/$match*" | while read -r hash i
-				do
-					case "$i" in
-						(*^{})  ;;
-						(refs/*) echo "$pfx${i#refs/*/}$sfx" ;;
-						(*) echo "$pfx$i$sfx" ;;
-					esac
-				done
-			fi ;;
-	esac
-}
-__git_refs2 () {
-	local i
-	for i in $(__git_refs "$1")
-	do
-		echo "$i:$i"
-	done
-}
-__git_refs_remotes () {
-	local i hash
-	__git ls-remote "$1" 'refs/heads/*' | while read -r hash i
-	do
-		echo "$i:refs/remotes/$1/${i#refs/heads/}"
-	done
-}
-__git_remote_heads () {
-	local pfx="${1-}" cur_="${2-}" sfx="${3-}" 
-	__git for-each-ref --format="${pfx//\%/%%}%(refname:strip=2)$sfx" "refs/remotes/$cur_*" "refs/remotes/$cur_*/**"
-}
-__git_remotes () {
-	__git_find_repo_path
-	test -d "$__git_repo_path/remotes" && ls -1 "$__git_repo_path/remotes"
-	__git remote
-}
-__git_support_parseopt_helper () {
-	test -n "$__git_cmds_with_parseopt_helper" || __git_cmds_with_parseopt_helper="$(__git --list-cmds=parseopt)" 
-	case " $__git_cmds_with_parseopt_helper " in
-		(*" $1 "*) return 0 ;;
-		(*) return 1 ;;
-	esac
-}
-__git_tags () {
-	local pfx="${1-}" cur_="${2-}" sfx="${3-}" 
-	__git for-each-ref --format="${pfx//\%/%%}%(refname:strip=2)$sfx" "refs/tags/$cur_*" "refs/tags/$cur_*/**"
-}
-__git_wrap__git_main () {
-	__git_func_wrap __git_main
-}
-__git_wrap__gitk_main () {
-	__git_func_wrap __gitk_main
-}
-__git_zsh_bash_func () {
-	emulate -L ksh
-	local command=$1 
-	__git_complete_command "$command" && return
-	local expansion=$(__git_aliased_command "$command") 
-	if [ -n "$expansion" ]
-	then
-		words[1]=$expansion 
-		__git_complete_command "$expansion"
-	fi
-}
-__git_zsh_cmd_alias () {
-	local -a list
-	list=(${${(0)"$(git config -z --get-regexp '^alias\.*')"}#alias.}) 
-	list=(${(f)"$(printf "%s:alias for '%s'\n" ${(f@)list})"}) 
-	_describe -t alias-commands 'aliases' list && _ret=0 
-}
-__git_zsh_cmd_all () {
-	local -a list
-	emulate ksh -c __git_compute_all_commands
-	list=(${=__git_all_commands}) 
-	_describe -t all-commands 'all commands' list && _ret=0 
-}
-__git_zsh_cmd_common () {
-	local -a list
-	list=(add:'add file contents to the index' bisect:'find by binary search the change that introduced a bug' branch:'list, create, or delete branches' checkout:'checkout a branch or paths to the working tree' clone:'clone a repository into a new directory' commit:'record changes to the repository' diff:'show changes between commits, commit and working tree, etc' fetch:'download objects and refs from another repository' grep:'print lines matching a pattern' init:'create an empty Git repository or reinitialize an existing one' log:'show commit logs' merge:'join two or more development histories together' mv:'move or rename a file, a directory, or a symlink' pull:'fetch from and merge with another repository or a local branch' push:'update remote refs along with associated objects' rebase:'forward-port local commits to the updated upstream head' reset:'reset current HEAD to the specified state' restore:'restore working tree files' rm:'remove files from the working tree and from the index' show:'show various types of objects' status:'show the working tree status' switch:'switch branches' tag:'create, list, delete or verify a tag object signed with GPG') 
-	_describe -t common-commands 'common commands' list && _ret=0 
-}
-__git_zsh_main () {
-	local curcontext="$curcontext" state state_descr line 
-	typeset -A opt_args
-	local -a orig_words
-	orig_words=(${words[@]}) 
-	_arguments -C '(-p --paginate --no-pager)'{-p,--paginate}'[pipe all output into ''less'']' '(-p --paginate)--no-pager[do not pipe git output into a pager]' '--git-dir=-[set the path to the repository]: :_directories' '--bare[treat the repository as a bare repository]' '(- :)--version[prints the git suite version]' '--exec-path=-[path to where your core git programs are installed]:: :_directories' '--html-path[print the path where git''s HTML documentation is installed]' '--info-path[print the path where the Info files are installed]' '--man-path[print the manpath (see `man(1)`) for the man pages]' '--work-tree=-[set the path to the working tree]: :_directories' '--namespace=-[set the git namespace]' '--no-replace-objects[do not use replacement refs to replace git objects]' '(- :)--help[prints the synopsis and a list of the most commonly used commands]: :->arg' '(-): :->command' '(-)*:: :->arg' && return
-	case $state in
-		(command) _tags common-commands alias-commands all-commands
-			while _tags
-			do
-				_requested common-commands && __git_zsh_cmd_common
-				_requested alias-commands && __git_zsh_cmd_alias
-				_requested all-commands && __git_zsh_cmd_all
-				let _ret || break
-			done ;;
-		(arg) local command="${words[1]}" __git_dir 
-			if (( $+opt_args[--bare] ))
-			then
-				__git_dir='.' 
-			else
-				__git_dir=${opt_args[--git-dir]} 
-			fi
-			(( $+opt_args[--help] )) && command='help' 
-			words=(${orig_words[@]}) 
-			__git_zsh_bash_func $command ;;
-	esac
-}
-__gitcomp () {
-	emulate -L zsh
-	local cur_="${3-$cur}" 
-	case "$cur_" in
-		(--*=)  ;;
-		(--no-*) local c IFS=$' \t\n' 
-			local -a array
-			for c in ${=1}
-			do
-				if [[ $c == "--" ]]
-				then
-					continue
-				fi
-				c="$c${4-}" 
-				case $c in
-					(--*= | *.)  ;;
-					(*) c="$c "  ;;
-				esac
-				array+=("$c") 
-			done
-			compset -P '*[=:]'
-			compadd -Q -S '' -p "${2-}" -a -- array && _ret=0  ;;
-		(*) local c IFS=$' \t\n' 
-			local -a array
-			for c in ${=1}
-			do
-				if [[ $c == "--" ]]
-				then
-					c="--no-...${4-}" 
-					array+=("$c ") 
-					break
-				fi
-				c="$c${4-}" 
-				case $c in
-					(--*= | *.)  ;;
-					(*) c="$c "  ;;
-				esac
-				array+=("$c") 
-			done
-			compset -P '*[=:]'
-			compadd -Q -S '' -p "${2-}" -a -- array && _ret=0  ;;
-	esac
-}
-__gitcomp_builtin () {
-	local cmd="$1" 
-	local incl="${2-}" 
-	local excl="${3-}" 
-	local var=__gitcomp_builtin_"${cmd/-/_}" 
-	local options
-	eval "options=\${$var-}"
-	if [ -z "$options" ]
-	then
-		local completion_helper
-		if [ "$GIT_COMPLETION_SHOW_ALL" = "1" ]
-		then
-			completion_helper="--git-completion-helper-all" 
-		else
-			completion_helper="--git-completion-helper" 
-		fi
-		options=" $incl $(__git ${cmd/_/ } $completion_helper) "  || return
-		for i in $excl
-		do
-			options="${options/ $i / }" 
-		done
-		eval "$var=\"$options\""
-	fi
-	__gitcomp "$options"
-}
-__gitcomp_direct () {
-	emulate -L zsh
-	compset -P '*[=:]'
-	compadd -Q -S '' -- ${(f)1} && _ret=0 
-}
-__gitcomp_direct_append () {
-	__gitcomp_direct "$@"
-}
-__gitcomp_file () {
-	emulate -L zsh
-	compset -P '*[=:]'
-	compadd -f -p "${2-}" -- ${(f)1} && _ret=0 
-}
-__gitcomp_file_direct () {
-	__gitcomp_file "$1" ""
-}
-__gitcomp_nl () {
-	emulate -L zsh
-	compset -P '*[=:]'
-	compadd -Q -S "${4- }" -p "${2-}" -- ${(f)1} && _ret=0 
-}
-__gitcomp_nl_append () {
-	__gitcomp_nl "$@"
-}
-__gitcompadd () {
-	COMPREPLY=() 
-	__gitcompappend "$@"
-}
-__gitcompappend () {
-	local x i=${#COMPREPLY[@]} 
-	for x in $1
-	do
-		if [[ "$x" == "$3"* ]]
-		then
-			COMPREPLY[i++]="$2$x$4" 
-		fi
-	done
-}
-__gitdir () {
-	if [ -z "${1-}" ]
-	then
-		__git_find_repo_path || return 1
-		echo "$__git_repo_path"
-	elif [ -d "$1/.git" ]
-	then
-		echo "$1/.git"
-	else
-		echo "$1"
-	fi
-}
-__gitk_main () {
-	__git_has_doubledash && return
-	local __git_repo_path
-	__git_find_repo_path
-	local merge="" 
-	if [ -f "$__git_repo_path/MERGE_HEAD" ]
-	then
-		merge="--merge" 
-	fi
-	case "$cur" in
-		(--*) __gitcomp "
-			$__git_log_common_options
-			$__git_log_gitk_options
-			$merge
-			"
-			return ;;
-	esac
-	__git_complete_revlist
 }
 _a2ps () {
 	# undefined
@@ -1502,6 +1448,10 @@ _add-zle-hook-widget () {
 	builtin autoload -XUz
 }
 _add-zsh-hook () {
+	# undefined
+	builtin autoload -XUz
+}
+_afew () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -1631,6 +1581,10 @@ _analyseplugin () {
 	# undefined
 	builtin autoload -XUz
 }
+_android () {
+	# undefined
+	builtin autoload -XUz
+}
 _ansible () {
 	# undefined
 	builtin autoload -XUz
@@ -1683,449 +1637,17 @@ _arch_namespace () {
 	# undefined
 	builtin autoload -XUz
 }
+_archlinux-java () {
+	# undefined
+	builtin autoload -XUz
+}
 _arg_compile () {
 	# undefined
 	builtin autoload -XUz
 }
 _arguments () {
-	local long cmd="$words[1]" descr odescr mesg subopts opt opt2 usecc autod 
-	local oldcontext="$curcontext" hasopts rawret optarg singopt alwopt 
-	local setnormarg start rest
-	local -a match mbegin mend
-	subopts=() 
-	singopt=() 
-	while [[ "$1" = -([AMO]*|[CRSWnsw]) ]]
-	do
-		case "$1" in
-			(-C) usecc=yes 
-				shift ;;
-			(-O) subopts=("${(@P)2}") 
-				shift 2 ;;
-			(-O*) subopts=("${(@P)${1[3,-1]}}") 
-				shift ;;
-			(-R) rawret=yes 
-				shift ;;
-			(-n) setnormarg=yes 
-				NORMARG=-1 
-				shift ;;
-			(-w) optarg=yes 
-				shift ;;
-			(-W) alwopt=arg 
-				shift ;;
-			(-[Ss]) singopt+=($1) 
-				shift ;;
-			(-[AM]) singopt+=($1 $2) 
-				shift 2 ;;
-			(-[AM]*) singopt+=($1) 
-				shift ;;
-		esac
-	done
-	[[ $1 = ':' ]] && shift
-	singopt+=(':') 
-	[[ "$PREFIX" = [-+] ]] && alwopt=arg 
-	long=$argv[(I)--] 
-	if (( long ))
-	then
-		local name tmp tmpargv
-		tmpargv=("${(@)argv[1,long-1]}") 
-		name=${~words[1]}  2> /dev/null
-		[[ "$name" = [^/]*/* ]] && name="$PWD/$name" 
-		name="_args_cache_${name}" 
-		name="${name//[^a-zA-Z0-9_]/_}" 
-		if (( ! ${(P)+name} ))
-		then
-			local iopts sopts lflag pattern tmpo dir cur cache
-			typeset -Ua lopts
-			cache=() 
-			set -- "${(@)argv[long+1,-1]}"
-			iopts=() 
-			sopts=() 
-			while [[ "$1" = -[lis]* ]]
-			do
-				if [[ "$1" = -l ]]
-				then
-					lflag='-l' 
-					shift
-					continue
-				fi
-				if [[ "$1" = -??* ]]
-				then
-					tmp="${1[3,-1]}" 
-					cur=1 
-				else
-					tmp="$2" 
-					cur=2 
-				fi
-				if [[ "$tmp[1]" = '(' ]]
-				then
-					tmp=(${=tmp[2,-2]}) 
-				else
-					tmp=("${(@P)tmp}") 
-				fi
-				if [[ "$1" = -i* ]]
-				then
-					iopts+=("$tmp[@]") 
-				else
-					sopts+=("$tmp[@]") 
-				fi
-				shift cur
-			done
-			tmp=() 
-			_call_program $lflag options ${~words[1]} --help 2>&1 | while IFS= read -r opt
-			do
-				if (( ${#tmp} ))
-				then
-					if [[ $opt = [[:space:]][[:space:]][[:space:]]*[[:alpha:]]* ]]
-					then
-						opt=${opt##[[:space:]]##} 
-						lopts+=("${^tmp[@]}":${${${opt//:/-}//\[/(}//\]/)}) 
-						tmp=() 
-						continue
-					else
-						lopts+=("${^tmp[@]}":) 
-						tmp=() 
-					fi
-				fi
-				while [[ $opt = [,[:space:]]#(#b)(-[^,[:space:]]#)(*) ]]
-				do
-					start=${match[1]} 
-					rest=${match[2]} 
-					if [[ -z ${tmp[(r)${start%%[^a-zA-Z0-9_-]#}]} ]]
-					then
-						if [[ $start = (#b)(*)\[(*)\](*) ]]
-						then
-							tmp+=("${match[1]}${match[2]}${match[3]}" "${match[1]}${match[3]}") 
-						else
-							tmp+=($start) 
-						fi
-					fi
-					opt=$rest 
-				done
-				opt=${opt## [^[:space:]]##  } 
-				opt=${opt##[[:space:]]##} 
-				if [[ -n $opt ]]
-				then
-					lopts+=("${^tmp[@]}":${${${opt//:/-}//\[/(}//\]/)}) 
-					tmp=() 
-				fi
-			done
-			if (( ${#tmp} ))
-			then
-				lopts+=("${^tmp[@]}":) 
-			fi
-			tmp=() 
-			for opt in "${(@)${(@)lopts:#--}%%[\[:=]*}"
-			do
-				let "$tmpargv[(I)(|\([^\)]#\))(|\*)${opt}(|[-+]|=(|-))(|\[*\])(|:*)]" || tmp+=("$lopts[(r)$opt(|[\[:=]*)]") 
-			done
-			lopts=("$tmp[@]") 
-			while (( $#iopts ))
-			do
-				lopts=(${lopts:#$~iopts[1](|[\[:=]*)}) 
-				shift iopts
-			done
-			while (( $#sopts ))
-			do
-				lopts+=(${lopts/$~sopts[1]/$sopts[2]}) 
-				shift 2 sopts
-			done
-			argv+=('*=FILE*:file:_files' '*=(DIR|PATH)*:directory:_files -/' '*=*:=: ' '*: :  ') 
-			while (( $# ))
-			do
-				pattern="${${${(M)1#*[^\\]:}[1,-2]}//\\\\:/:}" 
-				descr="${1#${pattern}}" 
-				if [[ "$pattern" = *\(-\) ]]
-				then
-					pattern="$pattern[1,-4]" 
-					dir=- 
-				else
-					dir= 
-				fi
-				shift
-				tmp=("${(@M)lopts:##$~pattern:*}") 
-				lopts=("${(@)lopts:##$~pattern:*}") 
-				(( $#tmp )) || continue
-				opt='' 
-				tmp=("${(@)tmp%:}") 
-				tmpo=("${(@M)tmp:#[^:]##\[\=*}") 
-				if (( $#tmpo ))
-				then
-					tmp=("${(@)tmp:#[^:]##\[\=*}") 
-					for opt in "$tmpo[@]"
-					do
-						if [[ $opt = (#b)(*):([^:]#) ]]
-						then
-							opt=$match[1] 
-							odescr="[${match[2]}]" 
-						else
-							odescr= 
-						fi
-						if [[ $opt = (#b)(*)\[\=* ]]
-						then
-							opt2=${${match[1]}//[^a-zA-Z0-9_-]}=-${dir}${odescr} 
-						else
-							opt2=${${opt}//[^a-zA-Z0-9_-]}=${dir}${odescr} 
-						fi
-						if [[ "$descr" = :\=* ]]
-						then
-							cache+=("${opt2}::${(L)${opt%\]}#*\=}: ") 
-						elif [[ "$descr" = ::* ]]
-						then
-							cache+=("${opt2}${descr}") 
-						else
-							cache+=("${opt2}:${descr}") 
-						fi
-					done
-				fi
-				tmpo=("${(@M)tmp:#[^:]##\=*}") 
-				if (( $#tmpo ))
-				then
-					tmp=("${(@)tmp:#[^:]##\=*}") 
-					for opt in "$tmpo[@]"
-					do
-						if [[ $opt = (#b)(*):([^:]#) ]]
-						then
-							opt=$match[1] 
-							odescr="[${match[2]}]" 
-						else
-							odescr= 
-						fi
-						opt2="${${opt%%\=*}//[^a-zA-Z0-9_-]}=${dir}${odescr}" 
-						if [[ "$descr" = :\=* ]]
-						then
-							cache+=("${opt2}:${(L)${opt%\]}#*\=}: ") 
-						else
-							cache+=("${opt2}${descr}") 
-						fi
-					done
-				fi
-				if (( $#tmp ))
-				then
-					tmp=("${(@)^${(@)tmp:#^*:*}//:/[}]" "${(@)${(@)tmp:#*:*}//[^a-zA-Z0-9_-]}") 
-					if [[ -n "$descr" && "$descr" != ': :  ' ]]
-					then
-						cache+=("${(@)^tmp}${descr}") 
-					else
-						cache+=("$tmp[@]") 
-					fi
-				fi
-			done
-			set -A "$name" "${(@)cache:# #}"
-		fi
-		set -- "$tmpargv[@]" "${(@P)name}"
-	fi
-	zstyle -s ":completion:${curcontext}:options" auto-description autod
-	if (( $# )) && comparguments -i "$autod" "$singopt[@]" "$@"
-	then
-		local action noargs aret expl local tried ret=1 
-		local next direct odirect equal single matcher matched ws tmp1 tmp2 tmp3
-		local opts subc tc prefix suffix descrs actions subcs anum
-		local origpre="$PREFIX" origipre="$IPREFIX" nm="$compstate[nmatches]" 
-		if comparguments -D descrs actions subcs
-		then
-			if comparguments -O next direct odirect equal
-			then
-				opts=yes 
-				_tags "$subcs[@]" options
-			else
-				_tags "$subcs[@]"
-			fi
-		else
-			if comparguments -a
-			then
-				noargs='no more arguments' 
-			else
-				noargs='no arguments' 
-			fi
-			if comparguments -O next direct odirect equal
-			then
-				opts=yes 
-				_tags options
-			elif [[ $? -eq 2 ]]
-			then
-				compadd -Q - "${PREFIX}${SUFFIX}"
-				return 0
-			else
-				_message "$noargs"
-				return 1
-			fi
-		fi
-		comparguments -M matcher
-		context=() 
-		state=() 
-		state_descr=() 
-		while true
-		do
-			while _tags
-			do
-				anum=1 
-				if [[ -z "$tried" ]]
-				then
-					while [[ anum -le $#descrs ]]
-					do
-						action="$actions[anum]" 
-						descr="$descrs[anum]" 
-						subc="$subcs[anum++]" 
-						if [[ $subc = argument* && -n $setnormarg ]]
-						then
-							comparguments -n NORMARG
-						fi
-						if [[ -n "$matched" ]] || _requested "$subc"
-						then
-							curcontext="${oldcontext%:*}:$subc" 
-							_description "$subc" expl "$descr"
-							if [[ "$action" = \=\ * ]]
-							then
-								action="$action[3,-1]" 
-								words=("$subc" "$words[@]") 
-								(( CURRENT++ ))
-							fi
-							if [[ "$action" = -\>* ]]
-							then
-								action="${${action[3,-1]##[ 	]#}%%[ 	]#}" 
-								if (( ! $state[(I)$action] ))
-								then
-									comparguments -W line opt_args
-									state+=("$action") 
-									state_descr+=("$descr") 
-									if [[ -n "$usecc" ]]
-									then
-										curcontext="${oldcontext%:*}:$subc" 
-									else
-										context+=("$subc") 
-									fi
-									compstate[restore]='' 
-									aret=yes 
-								fi
-							else
-								if [[ -z "$local" ]]
-								then
-									local line
-									typeset -A opt_args
-									local=yes 
-								fi
-								comparguments -W line opt_args
-								if [[ "$action" = \ # ]]
-								then
-									_message -e "$subc" "$descr"
-									mesg=yes 
-									tried=yes 
-									alwopt=${alwopt:-yes} 
-								elif [[ "$action" = \(\(*\)\) ]]
-								then
-									eval ws\=\( "${action[3,-3]}" \)
-									_describe -t "$subc" "$descr" ws -M "$matcher" "$subopts[@]" || alwopt=${alwopt:-yes} 
-									tried=yes 
-								elif [[ "$action" = \(*\) ]]
-								then
-									eval ws\=\( "${action[2,-2]}" \)
-									_all_labels "$subc" expl "$descr" compadd "$subopts[@]" -a - ws || alwopt=${alwopt:-yes} 
-									tried=yes 
-								elif [[ "$action" = \{*\} ]]
-								then
-									while _next_label "$subc" expl "$descr"
-									do
-										eval "$action[2,-2]" && ret=0 
-									done
-									(( ret )) && alwopt=${alwopt:-yes} 
-									tried=yes 
-								elif [[ "$action" = \ * ]]
-								then
-									eval "action=( $action )"
-									while _next_label "$subc" expl "$descr"
-									do
-										"$action[@]" && ret=0 
-									done
-									(( ret )) && alwopt=${alwopt:-yes} 
-									tried=yes 
-								else
-									eval "action=( $action )"
-									while _next_label "$subc" expl "$descr"
-									do
-										"$action[1]" "$subopts[@]" "$expl[@]" "${(@)action[2,-1]}" && ret=0 
-									done
-									(( ret )) && alwopt=${alwopt:-yes} 
-									tried=yes 
-								fi
-							fi
-						fi
-					done
-				fi
-				if _requested options && [[ -z "$hasopts" && -z "$matched" && ( -z "$aret" || "$PREFIX" = "$origpre" ) ]] && {
-						! zstyle -T ":completion:${oldcontext%:*}:options" prefix-needed || [[ "$origpre" = [-+]* || -z "$aret$mesg$tried" ]]
-					}
-				then
-					local prevpre="$PREFIX" previpre="$IPREFIX" prevcontext="$curcontext" 
-					curcontext="${oldcontext%:*}:options" 
-					hasopts=yes 
-					PREFIX="$origpre" 
-					IPREFIX="$origipre" 
-					if [[ -z "$alwopt" || -z "$tried" || "$alwopt" = arg ]] && comparguments -s single
-					then
-						if [[ "$single" = direct ]]
-						then
-							_all_labels options expl option compadd -QS '' - "${PREFIX}${SUFFIX}"
-						elif [[ -z "$optarg" && "$single" = next ]]
-						then
-							_all_labels options expl option compadd -Q - "${PREFIX}${SUFFIX}"
-						elif [[ "$single" = equal ]]
-						then
-							_all_labels options expl option compadd -QqS= - "${PREFIX}${SUFFIX}"
-						else
-							tmp1=("$next[@]" "$direct[@]" "$odirect[@]" "$equal[@]") 
-							[[ "$PREFIX" = [-+]* ]] && tmp1=("${(@M)tmp1:#${PREFIX[1]}*}") 
-							[[ "$single" = next ]] && tmp1=("${(@)tmp1:#[-+]${PREFIX[-1]}((#e)|:*)}") 
-							[[ "$PREFIX" != --* ]] && tmp1=("${(@)tmp1:#--*}") 
-							tmp3=("${(M@)tmp1:#[-+]?[^:]*}") 
-							tmp1=("${(M@)tmp1:#[-+]?(|:*)}") 
-							tmp2=("${PREFIX}${(@M)^${(@)${(@)tmp1%%:*}#[-+]}:#?}") 
-							_describe -O option tmp1 tmp2 -Q -S '' -- tmp3 -Q
-							[[ -n "$optarg" && "$single" = next && nm -eq $compstate[nmatches] ]] && _all_labels options expl option compadd -Q - "${PREFIX}${SUFFIX}"
-						fi
-						single=yes 
-					else
-						next+=("$odirect[@]") 
-						_describe -O option next -Q -M "$matcher" -- direct -QS '' -M "$matcher" -- equal -QqS= -M "$matcher"
-					fi
-					PREFIX="$prevpre" 
-					IPREFIX="$previpre" 
-					curcontext="$prevcontext" 
-				fi
-				[[ -n "$tried" && "${${alwopt:+$origpre}:-$PREFIX}" != [-+]* ]] && break
-			done
-			if [[ -n "$opts" && -z "$aret" && -z "$matched" && ( -z "$tried" || -n "$alwopt" ) && nm -eq compstate[nmatches] ]]
-			then
-				PREFIX="$origpre" 
-				IPREFIX="$origipre" 
-				prefix="${PREFIX#*\=}" 
-				suffix="$SUFFIX" 
-				PREFIX="${PREFIX%%\=*}" 
-				SUFFIX='' 
-				compadd -M "$matcher" -D equal - "${(@)equal%%:*}"
-				if [[ $#equal -eq 1 ]]
-				then
-					PREFIX="$prefix" 
-					SUFFIX="$suffix" 
-					IPREFIX="${IPREFIX}${equal[1]%%:*}=" 
-					matched=yes 
-					comparguments -L "${equal[1]%%:*}" descrs actions subcs
-					_tags "$subcs[@]"
-					continue
-				fi
-			fi
-			break
-		done
-		[[ -z "$aret" || -z "$usecc" ]] && curcontext="$oldcontext" 
-		if [[ -n "$aret" ]]
-		then
-			[[ -n $rawret ]] && return 300
-		else
-			[[ -n "$noargs" && nm -eq "$compstate[nmatches]" ]] && _message "$noargs"
-		fi
-		[[ nm -ne "$compstate[nmatches]" ]]
-	else
-		return 1
-	fi
+	# undefined
+	builtin autoload -XUz
 }
 _arp () {
 	# undefined
@@ -2136,6 +1658,10 @@ _arping () {
 	builtin autoload -XUz
 }
 _arrays () {
+	# undefined
+	builtin autoload -XUz
+}
+_artisan () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2152,6 +1678,10 @@ _assign () {
 	builtin autoload -XUz
 }
 _at () {
+	# undefined
+	builtin autoload -XUz
+}
+_atach () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2280,11 +1810,19 @@ _bison () {
 	# undefined
 	builtin autoload -XUz
 }
+_bitcoin-cli () {
+	# undefined
+	builtin autoload -XUz
+}
 _bittorrent () {
 	# undefined
 	builtin autoload -XUz
 }
 _bogofilter () {
+	# undefined
+	builtin autoload -XUz
+}
+_bower () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2305,10 +1843,6 @@ _brctl () {
 	builtin autoload -XUz
 }
 _brew () {
-	# undefined
-	builtin autoload -XUz
-}
-_brew_cask () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2341,6 +1875,10 @@ _bug () {
 	builtin autoload -XUz
 }
 _builtin () {
+	# undefined
+	builtin autoload -XUz
+}
+_bundle () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2426,6 +1964,10 @@ _canonical_paths () {
 	# undefined
 	builtin autoload -XUz
 }
+_cap () {
+	# undefined
+	builtin autoload -XUz
+}
 _cargo () {
 	# undefined
 	builtin autoload -XUz
@@ -2434,7 +1976,15 @@ _carthage () {
 	# undefined
 	builtin autoload -XUz
 }
+_cask () {
+	# undefined
+	builtin autoload -XUz
+}
 _cat () {
+	# undefined
+	builtin autoload -XUz
+}
+_ccache () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2539,11 +2089,19 @@ _cdrecord () {
 	# undefined
 	builtin autoload -XUz
 }
+_cf () {
+	# undefined
+	builtin autoload -XUz
+}
 _chattr () {
 	# undefined
 	builtin autoload -XUz
 }
 _chcon () {
+	# undefined
+	builtin autoload -XUz
+}
+_cheat () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2559,7 +2117,15 @@ _chmod () {
 	# undefined
 	builtin autoload -XUz
 }
+_choc () {
+	# undefined
+	builtin autoload -XUz
+}
 _chown () {
+	# undefined
+	builtin autoload -XUz
+}
+_chromium () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2583,6 +2149,10 @@ _clay () {
 	# undefined
 	builtin autoload -XUz
 }
+_cmake () {
+	# undefined
+	builtin autoload -XUz
+}
 _cmdambivalent () {
 	# undefined
 	builtin autoload -XUz
@@ -2596,6 +2166,10 @@ _cmp () {
 	builtin autoload -XUz
 }
 _code () {
+	# undefined
+	builtin autoload -XUz
+}
+_coffee () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2787,11 +2361,23 @@ _compress () {
 	# undefined
 	builtin autoload -XUz
 }
+_conan () {
+	# undefined
+	builtin autoload -XUz
+}
+_concourse () {
+	# undefined
+	builtin autoload -XUz
+}
 _condition () {
 	# undefined
 	builtin autoload -XUz
 }
 _configure () {
+	# undefined
+	builtin autoload -XUz
+}
+_console () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2824,6 +2410,10 @@ _cpio () {
 	builtin autoload -XUz
 }
 _cplay () {
+	# undefined
+	builtin autoload -XUz
+}
+_cppcheck () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2892,6 +2482,10 @@ _cygserver () {
 	builtin autoload -XUz
 }
 _cygstart () {
+	# undefined
+	builtin autoload -XUz
+}
+_dad () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -2992,26 +2586,8 @@ _debuild () {
 	builtin autoload -XUz
 }
 _default () {
-	local ctl
-	if {
-			zstyle -s ":completion:${curcontext}:" use-compctl ctl || zmodload -e zsh/compctl
-		} && [[ "$ctl" != (no|false|0|off) ]]
-	then
-		local opt
-		opt=() 
-		[[ "$ctl" = *first* ]] && opt=(-T) 
-		[[ "$ctl" = *default* ]] && opt=("$opt[@]" -D) 
-		compcall "$opt[@]" || return 0
-	fi
-	_files "$@" && return 0
-	if [[ -o magicequalsubst && "$PREFIX" = *\=* ]]
-	then
-		compstate[parameter]="${PREFIX%%\=*}" 
-		compset -P 1 '*='
-		_value "$@"
-	else
-		return 1
-	fi
+	# undefined
+	builtin autoload -XUz
 }
 _defaults () {
 	# undefined
@@ -3129,11 +2705,23 @@ _df () {
 	# undefined
 	builtin autoload -XUz
 }
+_dget () {
+	# undefined
+	builtin autoload -XUz
+}
 _dhclient () {
 	# undefined
 	builtin autoload -XUz
 }
+_dhcpcd () {
+	# undefined
+	builtin autoload -XUz
+}
 _dhcpinfo () {
+	# undefined
+	builtin autoload -XUz
+}
+_diana () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -3186,82 +2774,8 @@ _disable () {
 	builtin autoload -XUz
 }
 _dispatch () {
-	local comp pat val name i ret=1 _compskip="$_compskip" 
-	local curcontext="$curcontext" service str noskip 
-	local -a match mbegin mend
-	if [[ "$1" = -s ]]
-	then
-		noskip=yes 
-		shift
-	fi
-	[[ -z "$noskip" ]] && _compskip= 
-	curcontext="${curcontext%:*:*}:${1}:" 
-	shift
-	if [[ "$_compskip" != (all|*patterns*) ]]
-	then
-		for str in "$@"
-		do
-			[[ -n "$str" ]] || continue
-			service="${_services[$str]:-$str}" 
-			for i in "${(@)_patcomps[(K)$str]}"
-			do
-				if [[ $i = (#b)"="([^=]#)"="(*) ]]
-				then
-					service=$match[1] 
-					i=$match[2] 
-				fi
-				eval "$i" && ret=0 
-				if [[ "$_compskip" = *patterns* ]]
-				then
-					break
-				elif [[ "$_compskip" = all ]]
-				then
-					_compskip='' 
-					return ret
-				fi
-			done
-		done
-	fi
-	ret=1 
-	for str in "$@"
-	do
-		[[ -n "$str" ]] || continue
-		str=${(Q)str} 
-		name="$str" 
-		comp="${_comps[$str]}" 
-		service="${_services[$str]:-$str}" 
-		[[ -z "$comp" ]] || break
-	done
-	if [[ -n "$comp" && "$name" != "${argv[-1]}" ]]
-	then
-		_compskip=patterns 
-		eval "$comp" && ret=0 
-		[[ "$_compskip" = (all|*patterns*) ]] && return ret
-	fi
-	if [[ "$_compskip" != (all|*patterns*) ]]
-	then
-		for str
-		do
-			[[ -n "$str" ]] || continue
-			service="${_services[$str]:-$str}" 
-			for i in "${(@)_postpatcomps[(K)$str]}"
-			do
-				_compskip=default 
-				eval "$i" && ret=0 
-				if [[ "$_compskip" = *patterns* ]]
-				then
-					break
-				elif [[ "$_compskip" = all ]]
-				then
-					_compskip='' 
-					return ret
-				fi
-			done
-		done
-	fi
-	[[ "$name" = "${argv[-1]}" && -n "$comp" && "$_compskip" != (all|*default*) ]] && service="${_services[$name]:-$name}"  && eval "$comp" && ret=0 
-	_compskip='' 
-	return ret
+	# undefined
+	builtin autoload -XUz
 }
 _django () {
 	# undefined
@@ -3296,6 +2810,14 @@ _dns_types () {
 	builtin autoload -XUz
 }
 _doas () {
+	# undefined
+	builtin autoload -XUz
+}
+_docker () {
+	# undefined
+	builtin autoload -XUz
+}
+_docpad () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -3336,6 +2858,10 @@ _dput () {
 	builtin autoload -XUz
 }
 _drill () {
+	# undefined
+	builtin autoload -XUz
+}
+_drush () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -3383,6 +2909,10 @@ _ecasound () {
 	# undefined
 	builtin autoload -XUz
 }
+_ecdsautil () {
+	# undefined
+	builtin autoload -XUz
+}
 _echotc () {
 	# undefined
 	builtin autoload -XUz
@@ -3411,6 +2941,10 @@ _emulate () {
 	# undefined
 	builtin autoload -XUz
 }
+_emulator () {
+	# undefined
+	builtin autoload -XUz
+}
 _enable () {
 	# undefined
 	builtin autoload -XUz
@@ -3424,6 +2958,10 @@ _entr () {
 	builtin autoload -XUz
 }
 _env () {
+	# undefined
+	builtin autoload -XUz
+}
+_envdir () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -3467,6 +3005,10 @@ _expand_word () {
 	# undefined
 	builtin autoload -XUz
 }
+_exportfs () {
+	# undefined
+	builtin autoload -XUz
+}
 _extensions () {
 	# undefined
 	builtin autoload -XUz
@@ -3475,7 +3017,19 @@ _external_pwds () {
 	# undefined
 	builtin autoload -XUz
 }
+_fab () {
+	# undefined
+	builtin autoload -XUz
+}
+_fail2ban-client () {
+	# undefined
+	builtin autoload -XUz
+}
 _fakeroot () {
+	# undefined
+	builtin autoload -XUz
+}
+_fast-theme () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -3507,6 +3061,10 @@ _fetchmail () {
 	# undefined
 	builtin autoload -XUz
 }
+_ffind () {
+	# undefined
+	builtin autoload -XUz
+}
 _ffmpeg () {
 	# undefined
 	builtin autoload -XUz
@@ -3532,147 +3090,8 @@ _file_systems () {
 	builtin autoload -XUz
 }
 _files () {
-	local -a match mbegin mend
-	local ret=1 
-	if _have_glob_qual $PREFIX
-	then
-		compset -p ${#match[1]}
-		compset -S '[^\)\|\~]#(|\))'
-		if [[ $_comp_caller_options[extendedglob] == on ]] && compset -P '\#'
-		then
-			_globflags && ret=0 
-		else
-			if [[ $_comp_caller_options[extendedglob] == on ]]
-			then
-				_describe -t globflags "glob flag" '(\#:introduce\ glob\ flag)' -Q -S '' && ret=0 
-			fi
-			_globquals && ret=0 
-		fi
-		return ret
-	elif [[ $_comp_caller_options[extendedglob] == on && $PREFIX = \(\#[^\)]# ]] && compset -P '\(\#'
-	then
-		_globflags && return
-	fi
-	local opts tmp glob pat pats expl tag i def descr end ign tried
-	local type sdef ignvars ignvar prepath oprefix rfiles rfile
-	zparseopts -a opts '/=tmp' 'f=tmp' 'g+:-=tmp' q n 1 2 P: S: r: R: W: x+: X+: M+: F: J+: V+: o+:
-	type="${(@j::M)${(@)tmp#-}#?}" 
-	if (( $tmp[(I)-g*] ))
-	then
-		glob="${${${(@)${(@M)tmp:#-g*}#-g}##[[:blank:]]#}%%[[:blank:]]#}" 
-		[[ "$glob" = *[^\\][[:blank:]]* ]] && glob="{${glob//(#b)([^\\])[[:blank:]]##/${match[1]},}}" 
-		[[ "$glob" = (#b)(*\()([^\|\~]##\)) && $match[2] != \#q* ]] && glob="${match[1]}#q${match[2]}" 
-	elif [[ $type = */* ]]
-	then
-		glob="*(#q-/)" 
-	fi
-	tmp=$opts[(I)-F] 
-	if (( tmp ))
-	then
-		ignvars=($=opts[tmp+1]) 
-		if [[ $ignvars = _comp_ignore ]]
-		then
-			ign=($_comp_ignore) 
-		elif [[ $ignvars = \(* ]]
-		then
-			ign=(${=ignvars[2,-2]}) 
-		else
-			ign=() 
-			for ignvar in $ignvars
-			do
-				ign+=(${(P)ignvar}) 
-			done
-			opts[tmp+1]=_comp_ignore 
-		fi
-	else
-		ign=() 
-	fi
-	if zstyle -a ":completion:${curcontext}:" file-patterns tmp
-	then
-		pats=() 
-		for i in ${tmp//\%p/${${glob:-\*}//:/\\:}}
-		do
-			if [[ $i = *[^\\]:* ]]
-			then
-				pats+=(" $i ") 
-			else
-				pats+=(" ${i}:files ") 
-			fi
-		done
-	elif zstyle -t ":completion:${curcontext}:" list-dirs-first
-	then
-		pats=(" *(-/):directories:directory ${${glob:-*}//:/\\:}(#q^-/):globbed-files" '*:all-files') 
-	else
-		pats=("${${glob:-*}//:/\\:}:globbed-files *(-/):directories" '*:all-files ') 
-	fi
-	tried=() 
-	for def in "$pats[@]"
-	do
-		eval "def=( ${${def//\\:/\\\\\\:}//(#b)([][()|*?^#~<>])/\\${match[1]}} )"
-		tmp="${(@M)def#*[^\\]:}" 
-		(( $tried[(I)${(q)tmp}] )) && continue
-		tried=("$tried[@]" "$tmp") 
-		for sdef in "$def[@]"
-		do
-			tag="${${sdef#*[^\\]:}%%:*}" 
-			pat="${${sdef%%:${tag}*}//\\:/:}" 
-			if [[ "$sdef" = *:${tag}:* ]]
-			then
-				descr="${(Q)sdef#*:${tag}:}" 
-			else
-				if (( $opts[(I)-X] ))
-				then
-					descr= 
-				else
-					descr=file 
-				fi
-				end=yes 
-			fi
-			_tags "$tag"
-			while _tags
-			do
-				_comp_ignore=() 
-				while _next_label "$tag" expl "$descr"
-				do
-					_comp_ignore=($_comp_ignore $ign) 
-					if [[ -n "$end" ]]
-					then
-						if _path_files -g "$pat" "$opts[@]" "$expl[@]"
-						then
-							ret=0 
-						elif [[ $PREFIX$SUFFIX != */* ]] && zstyle -a ":completion:${curcontext}:$tag" recursive-files rfiles
-						then
-							local subtree
-							for rfile in $rfiles
-							do
-								if [[ $PWD/ = ${~rfile} ]]
-								then
-									if [[ -z $subtree ]]
-									then
-										subtree=(**/*(/)) 
-									fi
-									for prepath in $subtree
-									do
-										oprefix=$PREFIX 
-										PREFIX=$prepath/$PREFIX 
-										_path_files -g "$pat" "$opts[@]" "$expl[@]" && ret=0 
-										PREFIX=$oprefix 
-									done
-									break
-								fi
-							done
-						fi
-					else
-						_path_files "$expl[@]" -g "$pat" "$opts[@]" && ret=0 
-					fi
-				done
-				(( ret )) || break
-			done
-			[[ "$pat" = '*' ]] && return ret
-		done
-		(( ret )) || return 0
-	done
-	return 1
+	# undefined
+	builtin autoload -XUz
 }
 _find () {
 	# undefined
@@ -3701,6 +3120,10 @@ _flac () {
 	# undefined
 	builtin autoload -XUz
 }
+_fleetctl () {
+	# undefined
+	builtin autoload -XUz
+}
 _flex () {
 	# undefined
 	builtin autoload -XUz
@@ -3713,6 +3136,10 @@ _flowadm () {
 	# undefined
 	builtin autoload -XUz
 }
+_flutter () {
+	# undefined
+	builtin autoload -XUz
+}
 _fmadm () {
 	# undefined
 	builtin autoload -XUz
@@ -3722,6 +3149,10 @@ _fmt () {
 	builtin autoload -XUz
 }
 _fold () {
+	# undefined
+	builtin autoload -XUz
+}
+_force () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -3773,6 +3204,14 @@ _fw_update () {
 	# undefined
 	builtin autoload -XUz
 }
+_fwupdmgr () {
+	# undefined
+	builtin autoload -XUz
+}
+_gas () {
+	# undefined
+	builtin autoload -XUz
+}
 _gcc () {
 	# undefined
 	builtin autoload -XUz
@@ -3800,26 +3239,6 @@ _generic () {
 _genisoimage () {
 	# undefined
 	builtin autoload -XUz
-}
-_get_comp_words_by_ref () {
-	local exclude cur_ words_ cword_
-	if [ "$1" = "-n" ]
-	then
-		exclude=$2 
-		shift 2
-	fi
-	__git_reassemble_comp_words_by_ref "$exclude"
-	cur_=${words_[cword_]} 
-	while [ $# -gt 0 ]
-	do
-		case "$1" in
-			(cur) cur=$cur_  ;;
-			(prev) prev=${words_[$cword_-1]}  ;;
-			(words) words=("${words_[@]}")  ;;
-			(cword) cword=$cword_  ;;
-		esac
-		shift
-	done
 }
 _getclip () {
 	# undefined
@@ -3849,968 +3268,51 @@ _gh () {
 	# undefined
 	builtin autoload -XUz
 }
+_ghc () {
+	# undefined
+	builtin autoload -XUz
+}
 _ghostscript () {
 	# undefined
 	builtin autoload -XUz
 }
+_gist () {
+	# undefined
+	builtin autoload -XUz
+}
 _git () {
-	local _ret=1 
-	local cur cword prev
-	cur=${words[CURRENT]} 
-	prev=${words[CURRENT-1]} 
-	let cword=CURRENT-1
-	if (( $+functions[__${service}_zsh_main] ))
-	then
-		__${service}_zsh_main
-	elif (( $+functions[__${service}_main] ))
-	then
-		emulate ksh -c __${service}_main
-	elif (( $+functions[_${service}] ))
-	then
-		emulate ksh -c _${service}
-	elif ((	$+functions[_${service//-/_}] ))
-	then
-		emulate ksh -c _${service//-/_}
-	fi
-	let _ret && _default && _ret=0 
-	return _ret
+	# undefined
+	builtin autoload -XUz
 }
 _git-buildpackage () {
 	# undefined
 	builtin autoload -XUz
 }
-_git_add () {
-	case "$cur" in
-		(--chmod=*) __gitcomp "+x -x" "" "${cur##--chmod=}"
-			return ;;
-		(--*) __gitcomp_builtin add
-			return ;;
-	esac
-	local complete_opt="--others --modified --directory --no-empty-directory" 
-	if test -n "$(__git_find_on_cmdline "-u --update")"
-	then
-		complete_opt="--modified" 
-	fi
-	__git_complete_index_file "$complete_opt"
+_git-flow () {
+	# undefined
+	builtin autoload -XUz
 }
-_git_am () {
-	__git_find_repo_path
-	if [ -d "$__git_repo_path"/rebase-apply ]
-	then
-		__gitcomp "$__git_am_inprogress_options"
-		return
-	fi
-	case "$cur" in
-		(--whitespace=*) __gitcomp "$__git_whitespacelist" "" "${cur##--whitespace=}"
-			return ;;
-		(--patch-format=*) __gitcomp "$__git_patchformat" "" "${cur##--patch-format=}"
-			return ;;
-		(--show-current-patch=*) __gitcomp "$__git_showcurrentpatch" "" "${cur##--show-current-patch=}"
-			return ;;
-		(--*) __gitcomp_builtin am "" "$__git_am_inprogress_options"
-			return ;;
-	esac
+_git-journal () {
+	# undefined
+	builtin autoload -XUz
 }
-_git_apply () {
-	case "$cur" in
-		(--whitespace=*) __gitcomp "$__git_whitespacelist" "" "${cur##--whitespace=}"
-			return ;;
-		(--*) __gitcomp_builtin apply
-			return ;;
-	esac
+_git-pulls () {
+	# undefined
+	builtin autoload -XUz
 }
-_git_archive () {
-	case "$cur" in
-		(--format=*) __gitcomp "$(git archive --list)" "" "${cur##--format=}"
-			return ;;
-		(--remote=*) __gitcomp_nl "$(__git_remotes)" "" "${cur##--remote=}"
-			return ;;
-		(--*) __gitcomp_builtin archive "--format= --list --verbose --prefix= --worktree-attributes"
-			return ;;
-	esac
-	__git_complete_file
+_git-revise () {
+	# undefined
+	builtin autoload -XUz
 }
-_git_bisect () {
-	__git_has_doubledash && return
-	local subcommands="start bad good skip reset visualize replay log run" 
-	local subcommand="$(__git_find_on_cmdline "$subcommands")" 
-	if [ -z "$subcommand" ]
-	then
-		__git_find_repo_path
-		if [ -f "$__git_repo_path"/BISECT_START ]
-		then
-			__gitcomp "$subcommands"
-		else
-			__gitcomp "replay start"
-		fi
-		return
-	fi
-	case "$subcommand" in
-		(bad | good | reset | skip | start) __git_complete_refs ;;
-		(*)  ;;
-	esac
-}
-_git_branch () {
-	local i c=1 only_local_ref="n" has_r="n" 
-	while [ $c -lt $cword ]
-	do
-		i="${words[c]}" 
-		case "$i" in
-			(-d | --delete | -m | --move) only_local_ref="y"  ;;
-			(-r | --remotes) has_r="y"  ;;
-		esac
-		((c++))
-	done
-	case "$cur" in
-		(--set-upstream-to=*) __git_complete_refs --cur="${cur##--set-upstream-to=}" ;;
-		(--*) __gitcomp_builtin branch ;;
-		(*) if [ $only_local_ref = "y" -a $has_r = "n" ]
-			then
-				__gitcomp_direct "$(__git_heads "" "$cur" " ")"
-			else
-				__git_complete_refs
-			fi ;;
-	esac
-}
-_git_bundle () {
-	local cmd="${words[2]}" 
-	case "$cword" in
-		(2) __gitcomp "create list-heads verify unbundle" ;;
-		(3)  ;;
-		(*) case "$cmd" in
-				(create) __git_complete_revlist ;;
-			esac ;;
-	esac
-}
-_git_checkout () {
-	__git_has_doubledash && return
-	local dwim_opt="$(__git_checkout_default_dwim_mode)" 
-	case "$prev" in
-		(-b | -B | --orphan) __git_complete_refs $dwim_opt --mode="heads"
-			return ;;
-		(*)  ;;
-	esac
-	case "$cur" in
-		(--conflict=*) __gitcomp "diff3 merge" "" "${cur##--conflict=}" ;;
-		(--*) __gitcomp_builtin checkout ;;
-		(*) if [ -n "$(__git_find_on_cmdline "-b -B -d --detach --orphan")" ]
-			then
-				__git_complete_refs --mode="refs"
-			elif [ -n "$(__git_find_on_cmdline "--track")" ]
-			then
-				__git_complete_refs --mode="remote-heads"
-			else
-				__git_complete_refs $dwim_opt --mode="refs"
-			fi ;;
-	esac
-}
-_git_cherry_pick () {
-	__git_find_repo_path
-	if [ -f "$__git_repo_path"/CHERRY_PICK_HEAD ]
-	then
-		__gitcomp "$__git_cherry_pick_inprogress_options"
-		return
-	fi
-	__git_complete_strategy && return
-	case "$cur" in
-		(--*) __gitcomp_builtin cherry-pick "" "$__git_cherry_pick_inprogress_options" ;;
-		(*) __git_complete_refs ;;
-	esac
-}
-_git_clean () {
-	case "$cur" in
-		(--*) __gitcomp_builtin clean
-			return ;;
-	esac
-	__git_complete_index_file "--others --directory"
-}
-_git_clone () {
-	case "$prev" in
-		(-c | --config) __git_complete_config_variable_name_and_value
-			return ;;
-	esac
-	case "$cur" in
-		(--config=*) __git_complete_config_variable_name_and_value --cur="${cur##--config=}"
-			return ;;
-		(--*) __gitcomp_builtin clone
-			return ;;
-	esac
-}
-_git_commit () {
-	case "$prev" in
-		(-c | -C) __git_complete_refs
-			return ;;
-	esac
-	case "$cur" in
-		(--cleanup=*) __gitcomp "default scissors strip verbatim whitespace
-			" "" "${cur##--cleanup=}"
-			return ;;
-		(--reuse-message=* | --reedit-message=* | --fixup=* | --squash=*) __git_complete_refs --cur="${cur#*=}"
-			return ;;
-		(--untracked-files=*) __gitcomp "$__git_untracked_file_modes" "" "${cur##--untracked-files=}"
-			return ;;
-		(--*) __gitcomp_builtin commit
-			return ;;
-	esac
-	if __git rev-parse --verify --quiet HEAD > /dev/null
-	then
-		__git_complete_index_file "--committable"
-	else
-		__git_complete_index_file "--cached"
-	fi
-}
-_git_config () {
-	case "$prev" in
-		(--get | --get-all | --unset | --unset-all) __gitcomp_nl "$(__git_config_get_set_variables)"
-			return ;;
-		(*.*) __git_complete_config_variable_value
-			return ;;
-	esac
-	case "$cur" in
-		(--*) __gitcomp_builtin config ;;
-		(*) __git_complete_config_variable_name ;;
-	esac
-}
-_git_describe () {
-	case "$cur" in
-		(--*) __gitcomp_builtin describe
-			return ;;
-	esac
-	__git_complete_refs
-}
-_git_diff () {
-	__git_has_doubledash && return
-	case "$cur" in
-		(--diff-algorithm=*) __gitcomp "$__git_diff_algorithms" "" "${cur##--diff-algorithm=}"
-			return ;;
-		(--submodule=*) __gitcomp "$__git_diff_submodule_formats" "" "${cur##--submodule=}"
-			return ;;
-		(--color-moved=*) __gitcomp "$__git_color_moved_opts" "" "${cur##--color-moved=}"
-			return ;;
-		(--color-moved-ws=*) __gitcomp "$__git_color_moved_ws_opts" "" "${cur##--color-moved-ws=}"
-			return ;;
-		(--*) __gitcomp "$__git_diff_difftool_options"
-			return ;;
-	esac
-	__git_complete_revlist_file
-}
-_git_difftool () {
-	__git_has_doubledash && return
-	case "$cur" in
-		(--tool=*) __gitcomp "$__git_mergetools_common kompare" "" "${cur##--tool=}"
-			return ;;
-		(--*) __gitcomp_builtin difftool "$__git_diff_difftool_options"
-			return ;;
-	esac
-	__git_complete_revlist_file
-}
-_git_fetch () {
-	case "$cur" in
-		(--recurse-submodules=*) __gitcomp "$__git_fetch_recurse_submodules" "" "${cur##--recurse-submodules=}"
-			return ;;
-		(--filter=*) __gitcomp "blob:none blob:limit= sparse:oid=" "" "${cur##--filter=}"
-			return ;;
-		(--*) __gitcomp_builtin fetch
-			return ;;
-	esac
-	__git_complete_remote_or_refspec
-}
-_git_format_patch () {
-	case "$cur" in
-		(--thread=*) __gitcomp "
-			deep shallow
-			" "" "${cur##--thread=}"
-			return ;;
-		(--base=* | --interdiff=* | --range-diff=*) __git_complete_refs --cur="${cur#--*=}"
-			return ;;
-		(--*) __gitcomp_builtin format-patch "$__git_format_patch_extra_options"
-			return ;;
-	esac
-	__git_complete_revlist
-}
-_git_fsck () {
-	case "$cur" in
-		(--*) __gitcomp_builtin fsck
-			return ;;
-	esac
-}
-_git_gitk () {
-	__gitk_main
-}
-_git_grep () {
-	__git_has_doubledash && return
-	case "$cur" in
-		(--*) __gitcomp_builtin grep
-			return ;;
-	esac
-	case "$cword,$prev" in
-		(2,* | *,-*) __git_complete_symbol && return ;;
-	esac
-	__git_complete_refs
-}
-_git_help () {
-	case "$cur" in
-		(--*) __gitcomp_builtin help
-			return ;;
-	esac
-	if test -n "$GIT_TESTING_ALL_COMMAND_LIST"
-	then
-		__gitcomp "$GIT_TESTING_ALL_COMMAND_LIST $(__git --list-cmds=alias,list-guide) gitk"
-	else
-		__gitcomp "$(__git --list-cmds=main,nohelpers,alias,list-guide) gitk"
-	fi
-}
-_git_init () {
-	case "$cur" in
-		(--shared=*) __gitcomp "
-			false true umask group all world everybody
-			" "" "${cur##--shared=}"
-			return ;;
-		(--*) __gitcomp_builtin init
-			return ;;
-	esac
-}
-_git_log () {
-	__git_has_doubledash && return
-	__git_find_repo_path
-	local merge="" 
-	if [ -f "$__git_repo_path/MERGE_HEAD" ]
-	then
-		merge="--merge" 
-	fi
-	case "$prev,$cur" in
-		(-L,:*:*) return ;;
-		(-L,:*) __git_complete_symbol --cur="${cur#:}" --sfx=":"
-			return ;;
-		(-G,* | -S,*) __git_complete_symbol
-			return ;;
-	esac
-	case "$cur" in
-		(--pretty=* | --format=*) __gitcomp "$__git_log_pretty_formats $(__git_pretty_aliases)
-			" "" "${cur#*=}"
-			return ;;
-		(--date=*) __gitcomp "$__git_log_date_formats" "" "${cur##--date=}"
-			return ;;
-		(--decorate=*) __gitcomp "full short no" "" "${cur##--decorate=}"
-			return ;;
-		(--diff-algorithm=*) __gitcomp "$__git_diff_algorithms" "" "${cur##--diff-algorithm=}"
-			return ;;
-		(--submodule=*) __gitcomp "$__git_diff_submodule_formats" "" "${cur##--submodule=}"
-			return ;;
-		(--no-walk=*) __gitcomp "sorted unsorted" "" "${cur##--no-walk=}"
-			return ;;
-		(--*) __gitcomp "
-			$__git_log_common_options
-			$__git_log_shortlog_options
-			$__git_log_gitk_options
-			--root --topo-order --date-order --reverse
-			--follow --full-diff
-			--abbrev-commit --no-abbrev-commit --abbrev=
-			--relative-date --date=
-			--pretty= --format= --oneline
-			--show-signature
-			--cherry-mark
-			--cherry-pick
-			--graph
-			--decorate --decorate= --no-decorate
-			--walk-reflogs
-			--no-walk --no-walk= --do-walk
-			--parents --children
-			--expand-tabs --expand-tabs= --no-expand-tabs
-			$merge
-			$__git_diff_common_options
-			--pickaxe-all --pickaxe-regex
-			"
-			return ;;
-		(-L:*:*) return ;;
-		(-L:*) __git_complete_symbol --cur="${cur#-L:}" --sfx=":"
-			return ;;
-		(-G*) __git_complete_symbol --pfx="-G" --cur="${cur#-G}"
-			return ;;
-		(-S*) __git_complete_symbol --pfx="-S" --cur="${cur#-S}"
-			return ;;
-	esac
-	__git_complete_revlist
+_git-wtf () {
+	# undefined
+	builtin autoload -XUz
 }
 _git_log_prettily () {
 	if ! [ -z $1 ]
 	then
 		git log --pretty=$1
 	fi
-}
-_git_ls_files () {
-	case "$cur" in
-		(--*) __gitcomp_builtin ls-files
-			return ;;
-	esac
-	__git_complete_index_file "--cached"
-}
-_git_ls_remote () {
-	case "$cur" in
-		(--*) __gitcomp_builtin ls-remote
-			return ;;
-	esac
-	__gitcomp_nl "$(__git_remotes)"
-}
-_git_ls_tree () {
-	case "$cur" in
-		(--*) __gitcomp_builtin ls-tree
-			return ;;
-	esac
-	__git_complete_file
-}
-_git_merge () {
-	__git_complete_strategy && return
-	case "$cur" in
-		(--*) __gitcomp_builtin merge
-			return ;;
-	esac
-	__git_complete_refs
-}
-_git_merge_base () {
-	case "$cur" in
-		(--*) __gitcomp_builtin merge-base
-			return ;;
-	esac
-	__git_complete_refs
-}
-_git_mergetool () {
-	case "$cur" in
-		(--tool=*) __gitcomp "$__git_mergetools_common tortoisemerge" "" "${cur##--tool=}"
-			return ;;
-		(--*) __gitcomp "--tool= --prompt --no-prompt --gui --no-gui"
-			return ;;
-	esac
-}
-_git_mv () {
-	case "$cur" in
-		(--*) __gitcomp_builtin mv
-			return ;;
-	esac
-	if [ $(__git_count_arguments "mv") -gt 0 ]
-	then
-		__git_complete_index_file "--cached --others --directory"
-	else
-		__git_complete_index_file "--cached"
-	fi
-}
-_git_notes () {
-	local subcommands='add append copy edit get-ref list merge prune remove show' 
-	local subcommand="$(__git_find_on_cmdline "$subcommands")" 
-	case "$subcommand,$cur" in
-		(,--*) __gitcomp_builtin notes ;;
-		(,*) case "$prev" in
-				(--ref) __git_complete_refs ;;
-				(*) __gitcomp "$subcommands --ref" ;;
-			esac ;;
-		(*,--reuse-message=* | *,--reedit-message=*) __git_complete_refs --cur="${cur#*=}" ;;
-		(*,--*) __gitcomp_builtin notes_$subcommand ;;
-		(prune,* | get-ref,*)  ;;
-		(*) case "$prev" in
-				(-m | -F)  ;;
-				(*) __git_complete_refs ;;
-			esac ;;
-	esac
-}
-_git_pull () {
-	__git_complete_strategy && return
-	case "$cur" in
-		(--recurse-submodules=*) __gitcomp "$__git_fetch_recurse_submodules" "" "${cur##--recurse-submodules=}"
-			return ;;
-		(--*) __gitcomp_builtin pull
-			return ;;
-	esac
-	__git_complete_remote_or_refspec
-}
-_git_push () {
-	case "$prev" in
-		(--repo) __gitcomp_nl "$(__git_remotes)"
-			return ;;
-		(--recurse-submodules) __gitcomp "$__git_push_recurse_submodules"
-			return ;;
-	esac
-	case "$cur" in
-		(--repo=*) __gitcomp_nl "$(__git_remotes)" "" "${cur##--repo=}"
-			return ;;
-		(--recurse-submodules=*) __gitcomp "$__git_push_recurse_submodules" "" "${cur##--recurse-submodules=}"
-			return ;;
-		(--force-with-lease=*) __git_complete_force_with_lease "${cur##--force-with-lease=}"
-			return ;;
-		(--*) __gitcomp_builtin push
-			return ;;
-	esac
-	__git_complete_remote_or_refspec
-}
-_git_range_diff () {
-	case "$cur" in
-		(--*) __gitcomp "
-			--creation-factor= --no-dual-color
-			$__git_diff_common_options
-		"
-			return ;;
-	esac
-	__git_complete_revlist
-}
-_git_rebase () {
-	__git_find_repo_path
-	if [ -f "$__git_repo_path"/rebase-merge/interactive ]
-	then
-		__gitcomp "$__git_rebase_interactive_inprogress_options"
-		return
-	elif [ -d "$__git_repo_path"/rebase-apply ] || [ -d "$__git_repo_path"/rebase-merge ]
-	then
-		__gitcomp "$__git_rebase_inprogress_options"
-		return
-	fi
-	__git_complete_strategy && return
-	case "$cur" in
-		(--whitespace=*) __gitcomp "$__git_whitespacelist" "" "${cur##--whitespace=}"
-			return ;;
-		(--onto=*) __git_complete_refs --cur="${cur##--onto=}"
-			return ;;
-		(--*) __gitcomp_builtin rebase "" "$__git_rebase_interactive_inprogress_options"
-			return ;;
-	esac
-	__git_complete_refs
-}
-_git_reflog () {
-	local subcommands="show delete expire" 
-	local subcommand="$(__git_find_on_cmdline "$subcommands")" 
-	if [ -z "$subcommand" ]
-	then
-		__gitcomp "$subcommands"
-	else
-		__git_complete_refs
-	fi
-}
-_git_remote () {
-	local subcommands="
-		add rename remove set-head set-branches
-		get-url set-url show prune update
-		" 
-	local subcommand="$(__git_find_on_cmdline "$subcommands")" 
-	if [ -z "$subcommand" ]
-	then
-		case "$cur" in
-			(--*) __gitcomp_builtin remote ;;
-			(*) __gitcomp "$subcommands" ;;
-		esac
-		return
-	fi
-	case "$subcommand,$cur" in
-		(add,--*) __gitcomp_builtin remote_add ;;
-		(add,*)  ;;
-		(set-head,--*) __gitcomp_builtin remote_set-head ;;
-		(set-branches,--*) __gitcomp_builtin remote_set-branches ;;
-		(set-head,* | set-branches,*) __git_complete_remote_or_refspec ;;
-		(update,--*) __gitcomp_builtin remote_update ;;
-		(update,*) __gitcomp "$(__git_remotes) $(__git_get_config_variables "remotes")" ;;
-		(set-url,--*) __gitcomp_builtin remote_set-url ;;
-		(get-url,--*) __gitcomp_builtin remote_get-url ;;
-		(prune,--*) __gitcomp_builtin remote_prune ;;
-		(*) __gitcomp_nl "$(__git_remotes)" ;;
-	esac
-}
-_git_replace () {
-	case "$cur" in
-		(--format=*) __gitcomp "short medium long" "" "${cur##--format=}"
-			return ;;
-		(--*) __gitcomp_builtin replace
-			return ;;
-	esac
-	__git_complete_refs
-}
-_git_rerere () {
-	local subcommands="clear forget diff remaining status gc" 
-	local subcommand="$(__git_find_on_cmdline "$subcommands")" 
-	if test -z "$subcommand"
-	then
-		__gitcomp "$subcommands"
-		return
-	fi
-}
-_git_reset () {
-	__git_has_doubledash && return
-	case "$cur" in
-		(--*) __gitcomp_builtin reset
-			return ;;
-	esac
-	__git_complete_refs
-}
-_git_restore () {
-	case "$prev" in
-		(-s) __git_complete_refs
-			return ;;
-	esac
-	case "$cur" in
-		(--conflict=*) __gitcomp "diff3 merge" "" "${cur##--conflict=}" ;;
-		(--source=*) __git_complete_refs --cur="${cur##--source=}" ;;
-		(--*) __gitcomp_builtin restore ;;
-	esac
-}
-_git_revert () {
-	__git_find_repo_path
-	if [ -f "$__git_repo_path"/REVERT_HEAD ]
-	then
-		__gitcomp "$__git_revert_inprogress_options"
-		return
-	fi
-	__git_complete_strategy && return
-	case "$cur" in
-		(--*) __gitcomp_builtin revert "" "$__git_revert_inprogress_options"
-			return ;;
-	esac
-	__git_complete_refs
-}
-_git_rm () {
-	case "$cur" in
-		(--*) __gitcomp_builtin rm
-			return ;;
-	esac
-	__git_complete_index_file "--cached"
-}
-_git_send_email () {
-	case "$prev" in
-		(--to | --cc | --bcc | --from) __gitcomp "$(__git send-email --dump-aliases)"
-			return ;;
-	esac
-	case "$cur" in
-		(--confirm=*) __gitcomp "
-			$__git_send_email_confirm_options
-			" "" "${cur##--confirm=}"
-			return ;;
-		(--suppress-cc=*) __gitcomp "
-			$__git_send_email_suppresscc_options
-			" "" "${cur##--suppress-cc=}"
-			return ;;
-		(--smtp-encryption=*) __gitcomp "ssl tls" "" "${cur##--smtp-encryption=}"
-			return ;;
-		(--thread=*) __gitcomp "
-			deep shallow
-			" "" "${cur##--thread=}"
-			return ;;
-		(--to=* | --cc=* | --bcc=* | --from=*) __gitcomp "$(__git send-email --dump-aliases)" "" "${cur#--*=}"
-			return ;;
-		(--*) __gitcomp_builtin send-email "--annotate --bcc --cc --cc-cmd --chain-reply-to
-			--compose --confirm= --dry-run --envelope-sender
-			--from --identity
-			--in-reply-to --no-chain-reply-to --no-signed-off-by-cc
-			--no-suppress-from --no-thread --quiet --reply-to
-			--signed-off-by-cc --smtp-pass --smtp-server
-			--smtp-server-port --smtp-encryption= --smtp-user
-			--subject --suppress-cc= --suppress-from --thread --to
-			--validate --no-validate
-			$__git_format_patch_extra_options"
-			return ;;
-	esac
-	__git_complete_revlist
-}
-_git_shortlog () {
-	__git_has_doubledash && return
-	case "$cur" in
-		(--*) __gitcomp "
-			$__git_log_common_options
-			$__git_log_shortlog_options
-			--numbered --summary --email
-			"
-			return ;;
-	esac
-	__git_complete_revlist
-}
-_git_show () {
-	__git_has_doubledash && return
-	case "$cur" in
-		(--pretty=* | --format=*) __gitcomp "$__git_log_pretty_formats $(__git_pretty_aliases)
-			" "" "${cur#*=}"
-			return ;;
-		(--diff-algorithm=*) __gitcomp "$__git_diff_algorithms" "" "${cur##--diff-algorithm=}"
-			return ;;
-		(--submodule=*) __gitcomp "$__git_diff_submodule_formats" "" "${cur##--submodule=}"
-			return ;;
-		(--color-moved=*) __gitcomp "$__git_color_moved_opts" "" "${cur##--color-moved=}"
-			return ;;
-		(--color-moved-ws=*) __gitcomp "$__git_color_moved_ws_opts" "" "${cur##--color-moved-ws=}"
-			return ;;
-		(--*) __gitcomp "--pretty= --format= --abbrev-commit --no-abbrev-commit
-			--oneline --show-signature
-			--expand-tabs --expand-tabs= --no-expand-tabs
-			$__git_diff_common_options
-			"
-			return ;;
-	esac
-	__git_complete_revlist_file
-}
-_git_show_branch () {
-	case "$cur" in
-		(--*) __gitcomp_builtin show-branch
-			return ;;
-	esac
-	__git_complete_revlist
-}
-_git_sparse_checkout () {
-	local subcommands="list init set disable" 
-	local subcommand="$(__git_find_on_cmdline "$subcommands")" 
-	if [ -z "$subcommand" ]
-	then
-		__gitcomp "$subcommands"
-		return
-	fi
-	case "$subcommand,$cur" in
-		(init,--*) __gitcomp "--cone" ;;
-		(set,--*) __gitcomp "--stdin" ;;
-		(*)  ;;
-	esac
-}
-_git_stage () {
-	_git_add
-}
-_git_stash () {
-	local save_opts='--all --keep-index --no-keep-index --quiet --patch --include-untracked' 
-	local subcommands='push list show apply clear drop pop create branch' 
-	local subcommand="$(__git_find_on_cmdline "$subcommands save")" 
-	if [ -z "$subcommand" -a -n "$(__git_find_on_cmdline "-p")" ]
-	then
-		subcommand="push" 
-	fi
-	if [ -z "$subcommand" ]
-	then
-		case "$cur" in
-			(--*) __gitcomp "$save_opts" ;;
-			(sa*) if [ -z "$(__git_find_on_cmdline "$save_opts")" ]
-				then
-					__gitcomp "save"
-				fi ;;
-			(*) if [ -z "$(__git_find_on_cmdline "$save_opts")" ]
-				then
-					__gitcomp "$subcommands"
-				fi ;;
-		esac
-	else
-		case "$subcommand,$cur" in
-			(push,--*) __gitcomp "$save_opts --message" ;;
-			(save,--*) __gitcomp "$save_opts" ;;
-			(apply,--* | pop,--*) __gitcomp "--index --quiet" ;;
-			(drop,--*) __gitcomp "--quiet" ;;
-			(list,--*) __gitcomp "--name-status --oneline --patch-with-stat" ;;
-			(show,--*) __gitcomp "$__git_diff_common_options" ;;
-			(branch,--*)  ;;
-			(branch,*) if [ $cword -eq 3 ]
-				then
-					__git_complete_refs
-				else
-					__gitcomp_nl "$(__git stash list \
-						| sed -n -e 's/:.*//p')"
-				fi ;;
-			(show,* | apply,* | drop,* | pop,*) __gitcomp_nl "$(__git stash list \
-					| sed -n -e 's/:.*//p')" ;;
-			(*)  ;;
-		esac
-	fi
-}
-_git_status () {
-	local complete_opt
-	local untracked_state
-	case "$cur" in
-		(--ignore-submodules=*) __gitcomp "none untracked dirty all" "" "${cur##--ignore-submodules=}"
-			return ;;
-		(--untracked-files=*) __gitcomp "$__git_untracked_file_modes" "" "${cur##--untracked-files=}"
-			return ;;
-		(--column=*) __gitcomp "
-			always never auto column row plain dense nodense
-			" "" "${cur##--column=}"
-			return ;;
-		(--*) __gitcomp_builtin status
-			return ;;
-	esac
-	untracked_state="$(__git_get_option_value "-u" "--untracked-files=" \
-		"$__git_untracked_file_modes" "status.showUntrackedFiles")" 
-	case "$untracked_state" in
-		(no) complete_opt=  ;;
-		(all | normal | *) complete_opt="--cached --directory --no-empty-directory --others" 
-			if [ -n "$(__git_find_on_cmdline "--ignored")" ]
-			then
-				complete_opt="$complete_opt --ignored --exclude=*" 
-			fi ;;
-	esac
-	__git_complete_index_file "$complete_opt"
-}
-_git_submodule () {
-	__git_has_doubledash && return
-	local subcommands="add status init deinit update set-branch set-url summary foreach sync absorbgitdirs" 
-	local subcommand="$(__git_find_on_cmdline "$subcommands")" 
-	if [ -z "$subcommand" ]
-	then
-		case "$cur" in
-			(--*) __gitcomp "--quiet" ;;
-			(*) __gitcomp "$subcommands" ;;
-		esac
-		return
-	fi
-	case "$subcommand,$cur" in
-		(add,--*) __gitcomp "--branch --force --name --reference --depth" ;;
-		(status,--*) __gitcomp "--cached --recursive" ;;
-		(deinit,--*) __gitcomp "--force --all" ;;
-		(update,--*) __gitcomp "
-			--init --remote --no-fetch
-			--recommend-shallow --no-recommend-shallow
-			--force --rebase --merge --reference --depth --recursive --jobs
-		" ;;
-		(set-branch,--*) __gitcomp "--default --branch" ;;
-		(summary,--*) __gitcomp "--cached --files --summary-limit" ;;
-		(foreach,--* | sync,--*) __gitcomp "--recursive" ;;
-		(*)  ;;
-	esac
-}
-_git_svn () {
-	local subcommands="
-		init fetch clone rebase dcommit log find-rev
-		set-tree commit-diff info create-ignore propget
-		proplist show-ignore show-externals branch tag blame
-		migrate mkdirs reset gc
-		" 
-	local subcommand="$(__git_find_on_cmdline "$subcommands")" 
-	if [ -z "$subcommand" ]
-	then
-		__gitcomp "$subcommands"
-	else
-		local remote_opts="--username= --config-dir= --no-auth-cache" 
-		local fc_opts="
-			--follow-parent --authors-file= --repack=
-			--no-metadata --use-svm-props --use-svnsync-props
-			--log-window-size= --no-checkout --quiet
-			--repack-flags --use-log-author --localtime
-			--add-author-from
-			--recursive
-			--ignore-paths= --include-paths= $remote_opts
-			" 
-		local init_opts="
-			--template= --shared= --trunk= --tags=
-			--branches= --stdlayout --minimize-url
-			--no-metadata --use-svm-props --use-svnsync-props
-			--rewrite-root= --prefix= $remote_opts
-			" 
-		local cmt_opts="
-			--edit --rmdir --find-copies-harder --copy-similarity=
-			" 
-		case "$subcommand,$cur" in
-			(fetch,--*) __gitcomp "--revision= --fetch-all $fc_opts" ;;
-			(clone,--*) __gitcomp "--revision= $fc_opts $init_opts" ;;
-			(init,--*) __gitcomp "$init_opts" ;;
-			(dcommit,--*) __gitcomp "
-				--merge --strategy= --verbose --dry-run
-				--fetch-all --no-rebase --commit-url
-				--revision --interactive $cmt_opts $fc_opts
-				" ;;
-			(set-tree,--*) __gitcomp "--stdin $cmt_opts $fc_opts" ;;
-			(create-ignore,--* | propget,--* | proplist,--* | show-ignore,--* | show-externals,--* | mkdirs,--*) __gitcomp "--revision=" ;;
-			(log,--*) __gitcomp "
-				--limit= --revision= --verbose --incremental
-				--oneline --show-commit --non-recursive
-				--authors-file= --color
-				" ;;
-			(rebase,--*) __gitcomp "
-				--merge --verbose --strategy= --local
-				--fetch-all --dry-run $fc_opts
-				" ;;
-			(commit-diff,--*) __gitcomp "--message= --file= --revision= $cmt_opts" ;;
-			(info,--*) __gitcomp "--url" ;;
-			(branch,--*) __gitcomp "--dry-run --message --tag" ;;
-			(tag,--*) __gitcomp "--dry-run --message" ;;
-			(blame,--*) __gitcomp "--git-format" ;;
-			(migrate,--*) __gitcomp "
-				--config-dir= --ignore-paths= --minimize
-				--no-auth-cache --username=
-				" ;;
-			(reset,--*) __gitcomp "--revision= --parent" ;;
-			(*)  ;;
-		esac
-	fi
-}
-_git_switch () {
-	local dwim_opt="$(__git_checkout_default_dwim_mode)" 
-	case "$prev" in
-		(-c | -C | --orphan) __git_complete_refs $dwim_opt --mode="heads"
-			return ;;
-		(*)  ;;
-	esac
-	case "$cur" in
-		(--conflict=*) __gitcomp "diff3 merge" "" "${cur##--conflict=}" ;;
-		(--*) __gitcomp_builtin switch ;;
-		(*) if [ -n "$(__git_find_on_cmdline "--orphan")" ]
-			then
-				return
-			fi
-			if [ -n "$(__git_find_on_cmdline "-c -C -d --detach")" ]
-			then
-				__git_complete_refs --mode="refs"
-			elif [ -n "$(__git_find_on_cmdline "--track")" ]
-			then
-				__git_complete_refs --mode="remote-heads"
-			else
-				__git_complete_refs $dwim_opt --mode="heads"
-			fi ;;
-	esac
-}
-_git_tag () {
-	local i c=1 f=0 
-	while [ $c -lt $cword ]
-	do
-		i="${words[c]}" 
-		case "$i" in
-			(-d | --delete | -v | --verify) __gitcomp_direct "$(__git_tags "" "$cur" " ")"
-				return ;;
-			(-f) f=1  ;;
-		esac
-		((c++))
-	done
-	case "$prev" in
-		(-m | -F)  ;;
-		(-* | tag) if [ $f = 1 ]
-			then
-				__gitcomp_direct "$(__git_tags "" "$cur" " ")"
-			fi ;;
-		(*) __git_complete_refs ;;
-	esac
-	case "$cur" in
-		(--*) __gitcomp_builtin tag ;;
-	esac
-}
-_git_whatchanged () {
-	_git_log
-}
-_git_worktree () {
-	local subcommands="add list lock move prune remove unlock" 
-	local subcommand subcommand_idx
-	subcommand="$(__git_find_on_cmdline --show-idx "$subcommands")" 
-	subcommand_idx="${subcommand% *}" 
-	subcommand="${subcommand#* }" 
-	case "$subcommand,$cur" in
-		(,*) __gitcomp "$subcommands" ;;
-		(*,--*) __gitcomp_builtin worktree_$subcommand ;;
-		(add,*) case "$prev" in
-				(-b | -B) __git_complete_refs ;;
-				(-*)  ;;
-				(*) if [ $cword -eq $((subcommand_idx+1)) ]
-					then
-						:
-					else
-						case "${words[cword-2]}" in
-							(-b | -B)  ;;
-							(*) __git_complete_refs ;;
-						esac
-					fi ;;
-			esac ;;
-		(lock,* | remove,* | unlock,*) __git_complete_worktree_paths ;;
-		(move,*) if [ $cword -eq $((subcommand_idx+1)) ]
-			then
-				__git_complete_worktree_paths
-			else
-				:
-			fi ;;
-	esac
-}
-_git_zsh () {
-	__gitcomp "v1.1"
 }
 _gitstatus_cleanup_POWERLEVEL9K-_p9k_ () {
 	emulate -L zsh -o no_aliases -o extended_glob -o typeset_silent
@@ -4989,6 +3491,10 @@ _gitstatus_process_response_p9k_ () {
 	done
 	return 0
 }
+_glances () {
+	# undefined
+	builtin autoload -XUz
+}
 _global () {
 	# undefined
 	builtin autoload -XUz
@@ -5029,11 +3535,23 @@ _go () {
 	# undefined
 	builtin autoload -XUz
 }
+_golang () {
+	# undefined
+	builtin autoload -XUz
+}
+_google () {
+	# undefined
+	builtin autoload -XUz
+}
 _gpasswd () {
 	# undefined
 	builtin autoload -XUz
 }
 _gpg () {
+	# undefined
+	builtin autoload -XUz
+}
+_gpgconf () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -5082,6 +3600,10 @@ _gsettings () {
 	builtin autoload -XUz
 }
 _gstat () {
+	# undefined
+	builtin autoload -XUz
+}
+_gtk-launch () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -5134,6 +3656,14 @@ _history_modifiers () {
 	# undefined
 	builtin autoload -XUz
 }
+_hledger () {
+	# undefined
+	builtin autoload -XUz
+}
+_homestead () {
+	# undefined
+	builtin autoload -XUz
+}
 _host () {
 	# undefined
 	builtin autoload -XUz
@@ -5150,7 +3680,15 @@ _htop () {
 	# undefined
 	builtin autoload -XUz
 }
+_httpie () {
+	# undefined
+	builtin autoload -XUz
+}
 _hwinfo () {
+	# undefined
+	builtin autoload -XUz
+}
+_ibus () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -5186,6 +3724,10 @@ _in_vared () {
 	# undefined
 	builtin autoload -XUz
 }
+_include-what-you-use () {
+	# undefined
+	builtin autoload -XUz
+}
 _inetadm () {
 	# undefined
 	builtin autoload -XUz
@@ -5203,6 +3745,10 @@ _install () {
 	builtin autoload -XUz
 }
 _invoke-rc.d () {
+	# undefined
+	builtin autoload -XUz
+}
+_inxi () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -5267,6 +3813,14 @@ _jexec () {
 	builtin autoload -XUz
 }
 _jls () {
+	# undefined
+	builtin autoload -XUz
+}
+_jmeter () {
+	# undefined
+	builtin autoload -XUz
+}
+_jmeter-plugins () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -5372,11 +3926,23 @@ _join () {
 	# undefined
 	builtin autoload -XUz
 }
+_jonas () {
+	# undefined
+	builtin autoload -XUz
+}
 _jot () {
 	# undefined
 	builtin autoload -XUz
 }
 _jq () {
+	# undefined
+	builtin autoload -XUz
+}
+_jrnl () {
+	# undefined
+	builtin autoload -XUz
+}
+_kak () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -5396,7 +3962,15 @@ _killall () {
 	# undefined
 	builtin autoload -XUz
 }
+_kitchen () {
+	# undefined
+	builtin autoload -XUz
+}
 _kld () {
+	# undefined
+	builtin autoload -XUz
+}
+_knife () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -5409,6 +3983,10 @@ _kpartx () {
 	builtin autoload -XUz
 }
 _kvno () {
+	# undefined
+	builtin autoload -XUz
+}
+_language_codes () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -5469,41 +4047,8 @@ _list () {
 	builtin autoload -XUz
 }
 _list_files () {
-	local stat f elt what dir
-	local -a stylevals
-	integer ok
-	listfiles=() 
-	listopts=() 
-	zstyle -a ":completion:${curcontext}:" file-list stylevals || return 1
-	case $WIDGETSTYLE in
-		(*complete*) what=insert  ;;
-		(*) what=list  ;;
-	esac
-	for elt in $stylevals
-	do
-		case $elt in
-			(*($what|all|true|1|yes)*=<->) (( ${(P)#1} <= ${elt##*=} )) && (( ok = 1 ))
-				break ;;
-			([^=]#($what|all|true|1|yes)[^=]#) (( ok = 1 ))
-				break ;;
-		esac
-	done
-	(( ok )) || return 1
-	zmodload -F zsh/stat b:zstat 2> /dev/null || return 1
-	dir=${2:+$2/} 
-	dir=${(Q)dir} 
-	for f in ${(PQ)1}
-	do
-		if [[ ! -e "$dir$f" ]]
-		then
-			listfiles+=("$dir$f") 
-			continue
-		fi
-		zstat -s -H stat -F "%b %e %H:%M" - "$dir$f" > /dev/null 2>&1
-		listfiles+=("$stat[mode] ${(l:3:)stat[nlink]} ${(r:8:)stat[uid]}  ${(r:8:)stat[gid]} ${(l:8:)stat[size]} $stat[mtime] $f") 
-	done
-	(( ${#listfiles} )) && listopts=(-d listfiles -l -o match) 
-	return 0
+	# undefined
+	builtin autoload -XUz
 }
 _lldb () {
 	# undefined
@@ -5598,6 +4143,10 @@ _lua () {
 	builtin autoload -XUz
 }
 _luarocks () {
+	# undefined
+	builtin autoload -XUz
+}
+_lunchy () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -5997,6 +4546,10 @@ _matlab () {
 	# undefined
 	builtin autoload -XUz
 }
+_mc () {
+	# undefined
+	builtin autoload -XUz
+}
 _md5sum () {
 	# undefined
 	builtin autoload -XUz
@@ -6045,11 +4598,23 @@ _mh () {
 	# undefined
 	builtin autoload -XUz
 }
+_middleman () {
+	# undefined
+	builtin autoload -XUz
+}
 _mii-tool () {
 	# undefined
 	builtin autoload -XUz
 }
 _mime_types () {
+	# undefined
+	builtin autoload -XUz
+}
+_mina () {
+	# undefined
+	builtin autoload -XUz
+}
+_mix () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -6133,6 +4698,10 @@ _mplayer () {
 	# undefined
 	builtin autoload -XUz
 }
+_mssh () {
+	# undefined
+	builtin autoload -XUz
+}
 _mt () {
 	# undefined
 	builtin autoload -XUz
@@ -6153,11 +4722,19 @@ _mupdf () {
 	# undefined
 	builtin autoload -XUz
 }
+_mussh () {
+	# undefined
+	builtin autoload -XUz
+}
 _mutt () {
 	# undefined
 	builtin autoload -XUz
 }
 _mv () {
+	# undefined
+	builtin autoload -XUz
+}
+_mvn () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -6174,6 +4751,14 @@ _mysql_utils () {
 	builtin autoload -XUz
 }
 _mysqldiff () {
+	# undefined
+	builtin autoload -XUz
+}
+_nano () {
+	# undefined
+	builtin autoload -XUz
+}
+_nanoc () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -6248,6 +4833,10 @@ _next_tags () {
 	# undefined
 	builtin autoload -XUz
 }
+_nftables () {
+	# undefined
+	builtin autoload -XUz
+}
 _nginx () {
 	# undefined
 	builtin autoload -XUz
@@ -6277,6 +4866,10 @@ _nm () {
 	builtin autoload -XUz
 }
 _nmap () {
+	# undefined
+	builtin autoload -XUz
+}
+_node () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -6317,6 +4910,10 @@ _nslookup () {
 	builtin autoload -XUz
 }
 _numfmt () {
+	# undefined
+	builtin autoload -XUz
+}
+_nvm () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -6908,6 +5505,10 @@ _open () {
 	# undefined
 	builtin autoload -XUz
 }
+_openssl () {
+	# undefined
+	builtin autoload -XUz
+}
 _openstack () {
 	# undefined
 	builtin autoload -XUz
@@ -6925,6 +5526,10 @@ _options_set () {
 	builtin autoload -XUz
 }
 _options_unset () {
+	# undefined
+	builtin autoload -XUz
+}
+_optirun () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -8952,7 +7557,7 @@ _p9k_init_params () {
 	_p9k_declare -s POWERLEVEL9K_IP_INTERFACE ""
 	: ${_POWERLEVEL9K_IP_INTERFACE:='.*'}
 	_p9k_segment_in_use ip || _POWERLEVEL9K_IP_INTERFACE= 
-	_p9k_declare -s POWERLEVEL9K_VPN_IP_INTERFACE "(gpd|wg|(.*tun))[0-9]*"
+	_p9k_declare -s POWERLEVEL9K_VPN_IP_INTERFACE "(gpd|wg|(.*tun)|tailscale)[0-9]*"
 	: ${_POWERLEVEL9K_VPN_IP_INTERFACE:='.*'}
 	_p9k_segment_in_use vpn_ip || _POWERLEVEL9K_VPN_IP_INTERFACE= 
 	_p9k_declare -b POWERLEVEL9K_VPN_IP_SHOW_ALL 0
@@ -11575,7 +10180,7 @@ _p9k_restore_state_impl () {
 	typeset -g _p9k_taskwarrior_data_sig='' 
 	typeset -g _POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_BACKGROUND='' 
 	typeset -g _POWERLEVEL9K_HOME_FOLDER_ABBREVIATION='~' 
-	typeset -g -A _p9k_git_slow=([/Users/LucasLarson/.oh-my-zsh]=0 ['/Users/LucasLarson/Code/ dotfiles']=1 ['/Users/LucasLarson/Code/ dotfiles/PaulIrish']=0 ['/Users/LucasLarson/Code/ dotfiles/TimButters']=0 ['/Users/LucasLarson/Code/ dotfiles/dotfile']=0 [/Users/LucasLarson/Code/BashHub]=0 [/Users/LucasLarson/Code/BashTrash]=0 [/Users/LucasLarson/Code/ConnectTheDots]=1 [/Users/LucasLarson/Code/ConnectTheDots/BillyWayneMcCann]=0 [/Users/LucasLarson/Code/ConnectTheDots/BrianUstas]=0 [/Users/LucasLarson/Code/ConnectTheDots/MarcCornellà]=0 [/Users/LucasLarson/Code/ConnectTheDots/MarcCornellà/ohmyzsh]=1 [/Users/LucasLarson/Code/ConnectTheDots/MarcoFerrari]=0 [/Users/LucasLarson/Code/Homebrew-brew]=1 [/Users/LucasLarson/Code/ShellScripting]=0 [/Users/LucasLarson/Code/bashtop]=1 [/Users/LucasLarson/Code/bashtop/test/libs/bats]=0 [/Users/LucasLarson/Code/gunstage]=0 [/Users/LucasLarson/Desktop/trash]=1 [/Users/LucasLarson/Dropbox/dotfiles]=1 ['/Users/LucasLarson/Library/Application Support']=1) 
+	typeset -g -A _p9k_git_slow=([/]='' [/Users]='' [/Users/LucasLarson]='' [/Users/LucasLarson/.oh-my-zsh]=1 [/Users/LucasLarson/Code]='' ['/Users/LucasLarson/Code/ dotfiles']=1 ['/Users/LucasLarson/Code/ dotfiles/LucasLarson']=1 ['/Users/LucasLarson/Code/ dotfiles/LucasLarson/.oh-my-zsh/custom/plugins/gunstage']=0 ['/Users/LucasLarson/Code/ dotfiles/LucasLarson/dotfiles']=1 [/Users/LucasLarson/Code/AltStore]=1 [/Users/LucasLarson/Code/BashAlgorithms]=0 [/Users/LucasLarson/Code/BashTrash]=0 [/Users/LucasLarson/Code/BashTrashTemp]=0 [/Users/LucasLarson/Code/BashTrashTempTemp]=1 [/Users/LucasLarson/Code/CenterForNonfiction.org]=1 [/Users/LucasLarson/Code/ConnectTheDots]='' [/Users/LucasLarson/Code/ConnectTheDots/FOSSilized_Daemon]=0 [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell]=1 [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects]='' [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/dotfiles]='' [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/dotfiles/files]='' [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/dotfiles/files/.vim]='' [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/dotfiles/files/.vim/pack]='' [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/dotfiles/files/.vim/pack/bundle]='' [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/dotfiles/files/.vim/pack/bundle/opt]='' [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/deoplete]=0 [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/ferret]=0 [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/nvim-lspconfig]=1 [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/pinnacle]=0 [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/scalpel]=0 [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/terminus]=0 [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/ultisnips]=0 [/Users/LucasLarson/Code/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/vim-docvim]=1 [/Users/LucasLarson/Code/ConnectTheDots/LarsKappert]=1 [/Users/LucasLarson/Code/ConnectTheDots/MarcCornellà]=1 [/Users/LucasLarson/Code/ConnectTheDots/MarcCornellà/ohmyzsh]=1 [/Users/LucasLarson/Code/ConnectTheDots/MarcoFerrari]=1 [/Users/LucasLarson/Code/ConnectTheDotsn’t]=1 [/Users/LucasLarson/Code/CppSandbox]=0 [/Users/LucasLarson/Code/Flutter]=1 [/Users/LucasLarson/Code/GPG_Suite]=1 [/Users/LucasLarson/Code/GitHubSlideshow]=0 [/Users/LucasLarson/Code/GoogleTest]=0 [/Users/LucasLarson/Code/HQ9]=0 [/Users/LucasLarson/Code/LucasLarson.github.io]=0 [/Users/LucasLarson/Code/LucasLarson.net]=1 [/Users/LucasLarson/Code/O’Connor.NYC]=1 [/Users/LucasLarson/Code/OhMyZsh]=1 [/Users/LucasLarson/Code/SwiftUIForBeginners]=1 [/Users/LucasLarson/Code/Tiime]=1 [/Users/LucasLarson/Code/UTM]=0 [/Users/LucasLarson/Code/UTM/Platform/Shared/HTerm/libapps]=0 [/Users/LucasLarson/Code/bash-algorithms]=0 [/Users/LucasLarson/Code/cf-temp-trash]=1 [/Users/LucasLarson/Code/cppcheck]=1 [/Users/LucasLarson/Code/cpplint]=0 [/Users/LucasLarson/Code/git]=1 [/Users/LucasLarson/Code/git-extra-commands]=0 [/Users/LucasLarson/Code/git-extras]=0 [/Users/LucasLarson/Code/git-swift]=1 [/Users/LucasLarson/Code/git-take]=0 [/Users/LucasLarson/Code/git/sha1collisiondetection]=0 [/Users/LucasLarson/Code/gtake]=0 [/Users/LucasLarson/Code/guetzli]=0 [/Users/LucasLarson/Code/gunstage]=0 [/Users/LucasLarson/Code/oconnor.nyc]=1 [/Users/LucasLarson/Code/safe]=0 [/Users/LucasLarson/Code/spinner]=0 [/Users/LucasLarson/Code/wget]=1 [/Users/LucasLarson/Code/wget-trash]=0 [/Users/LucasLarson/Code/wget/gnulib]=1 [/Users/LucasLarson/Desktop]='' [/Users/LucasLarson/Desktop/periodic]=0 [/Users/LucasLarson/Desktop/trash]=1 [/Users/LucasLarson/Desktop/trash/5]='' [/Users/LucasLarson/Desktop/trash/5/5]='' [/Users/LucasLarson/Desktop/trash/new]=1 [/Users/LucasLarson/Dropbox/dotfiles]=1 [/Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh/custom/plugins/gunstage]=0) 
 	typeset -g -a _POWERLEVEL9K_BATTERY_DISCONNECTED_STAGES=(          ) 
 	typeset -g -i _POWERLEVEL9K_VCS_COMMITS_AHEAD_MAX_NUM=-1 
 	typeset -g _POWERLEVEL9K_ASDF_PHP_FOREGROUND=99 
@@ -11604,7 +10209,7 @@ _p9k_restore_state_impl () {
 	typeset -g _POWERLEVEL9K_STATUS_ERROR_FOREGROUND=160 
 	typeset -g -i _POWERLEVEL9K_DISK_USAGE_CRITICAL_LEVEL=95 
 	typeset -g _POWERLEVEL9K_VIRTUALENV_SHOW_WITH_PYENV=false 
-	typeset -g -a _p9k_t=($'\n' $'%{\n%}' '' $'\n' '%b%K{236}%f${(pl.${$((_p9k__clm-_p9k__ind))/#-*/0}..─.)}%k%f${_p9k_t[$((1+!_p9k__ind))]}' '${${:-${_p9k__x::=0}${_p9k__y::=1024}${_p9k__p::=$_p9k__lprompt$_p9k__rprompt}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$((_p9k__clm-_p9k__x-_p9k__ind-1))}}+}' $'${${_p9k__clm::=$COLUMNS}+}${${COLUMNS::=1024}+}${${_p9k__keymap::=${KEYMAP:-$_p9k__keymap}}+}${${_p9k__zle_state::=${ZLE_STATE:-$_p9k__zle_state}}+}%b%k%f${${_p9k__ind::=${${ZLE_RPROMPT_INDENT:-1}/#-*/0}}+}%{\C-[]133;A\C-G%}${_p9k_t[${_p9k__empty_line_i:-4}]}%{${_p9k__ipe-${_p9k_t[${_p9k__ruler_i:-1}]:+\n${(Q)${:-"$\'\\\\033\'\\\\[A"}}}}%}${(e)_p9k_t[${_p9k__ruler_i:-5}]}' '%b%k%F{236}%b%K{236}%F{070} ' '<_p9k__w>%b%K{236}%F{070}' '<_p9k__w>%b%K{236}%F{070}%244F%b%K{236}%F{070} ' '<_p9k__w>%F{236}%b%K{236}%F{070} ' '%b%k%F{236}%b%K{236}%F{037} ' '<_p9k__w>%b%K{236}%F{037}' '<_p9k__w>%b%K{236}%F{037}%244F%b%K{236}%F{037} ' '<_p9k__w>%F{236}%b%K{236}%F{037} ' '%b%k%F{236}%b%K{236}%F{178} ' '<_p9k__w>%b%K{236}%F{178}' '<_p9k__w>%b%K{236}%F{178}%244F%b%K{236}%F{178} ' '<_p9k__w>%F{236}%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{180} ' '<_p9k__w>%b%K{236}%F{180}' '<_p9k__w>%b%K{236}%F{180}%244F%b%K{236}%F{180} ' '<_p9k__w>%F{236}%b%K{236}%F{180} ' '%b%k%F{236}%b%K{236}%F{178} ' '<_p9k__w>%b%K{236}%F{178}' '<_p9k__w>%b%K{236}%F{178}%244F%b%K{236}%F{178} ' '<_p9k__w>%F{236}%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{172} ' '<_p9k__w>%b%K{236}%F{172}' '<_p9k__w>%b%K{236}%F{172}%244F%b%K{236}%F{172} ' '<_p9k__w>%F{236}%b%K{236}%F{172} ' '%b%k%F{236}%b%K{236}%F{106} ' '<_p9k__w>%b%K{236}%F{106}' '<_p9k__w>%b%K{236}%F{106}%244F%b%K{236}%F{106} ' '<_p9k__w>%F{236}%b%K{236}%F{106} ' '%b%k%F{236}%b%K{236}%F{068} ' '<_p9k__w>%b%K{236}%F{068}' '<_p9k__w>%b%K{236}%F{068}%244F%b%K{236}%F{068} ' '<_p9k__w>%F{236}%b%K{236}%F{068} ' '%b%K{236}%F{255} ' '%b%K{236}%F{255}' '%b%K{236}<_p9k__ss>%b%K{236}%F{255} ' '%b%K{236}<_p9k__s>%b%K{236}%F{255} ' '%b%K{236}%F{031} ' '%b%K{236}%F{031}' '%b%K{236}<_p9k__ss>%b%K{236}%F{031} ' '%b%K{236}<_p9k__s>%b%K{236}%F{031} ' '%b%k%F{236}%b%K{236}%F{178} ' '<_p9k__w>%b%K{236}%F{178}' '<_p9k__w>%b%K{236}%F{178}%244F%b%K{236}%F{178} ' '<_p9k__w>%F{236}%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{072} ' '<_p9k__w>%b%K{236}%F{072}' '<_p9k__w>%b%K{236}%F{072}%244F%b%K{236}%F{072} ' '<_p9k__w>%F{236}%b%K{236}%F{072} ' '%b%k%F{236}%b%K{236}%F{034} ' '<_p9k__w>%b%K{236}%F{034}' '<_p9k__w>%b%K{236}%F{034}%244F%b%K{236}%F{034} ' '<_p9k__w>%F{236}%b%K{236}%F{034} ' '%b%k%F{236}%b%K{236}%F{178} ' '<_p9k__w>%b%K{236}%F{178}' '<_p9k__w>%b%K{236}%F{178}%244F%b%K{236}%F{178} ' '<_p9k__w>%F{236}%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{074} ' '<_p9k__w>%b%K{236}%F{074}' '<_p9k__w>%b%K{236}%F{074}%244F%b%K{236}%F{074} ' '<_p9k__w>%F{236}%b%K{236}%F{074} ' '%b%k%F{236}%b%K{236}%F{248} ' '<_p9k__w>%b%K{236}%F{248}' '<_p9k__w>%b%K{236}%F{248}%244F%b%K{236}%F{248} ' '<_p9k__w>%F{236}%b%K{236}%F{248} ' '%b%K{236}%F{031} ' '%b%K{236}%F{031}' '%b%K{236}<_p9k__ss>%b%K{236}%F{031} ' '%b%K{236}<_p9k__s>%b%K{236}%F{031} ' '%b%K{236}%F{000} ' '%b%K{236}%F{000}' '%b%K{236}<_p9k__ss>%b%K{236}%F{000} ' '%b%K{236}<_p9k__s>%b%K{236}%F{000} ' '%b%K{236}%F{000} ' '%b%K{236}%F{000}' '%b%K{236}<_p9k__ss>%b%K{236}%F{000} ' '%b%K{236}<_p9k__s>%b%K{236}%F{000} ' '%b%K{236}%F{178} ' '%b%K{236}%F{178}' '%b%K{236}<_p9k__ss>%b%K{236}%F{178} ' '%b%K{236}<_p9k__s>%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{160} ' '<_p9k__w>%b%K{236}%F{160}' '<_p9k__w>%b%K{236}%F{160}%244F%b%K{236}%F{160} ' '<_p9k__w>%F{236}%b%K{236}%F{160} ' '%b%k%F{236}%b%K{236}%F{160} ' '<_p9k__w>%b%K{236}%F{160}' '<_p9k__w>%b%K{236}%F{160}%244F%b%K{236}%F{160} ' '<_p9k__w>%F{236}%b%K{236}%F{160} ' '%b%K{236}%F{031} ' '%b%K{236}%F{031}' '%b%K{236}<_p9k__ss>%b%K{236}%F{031} ' '%b%K{236}<_p9k__s>%b%K{236}%F{031} ' '%b%K{236}%F{031} ' '%b%K{236}%F{031}' '%b%K{236}<_p9k__ss>%b%K{236}%F{031} ' '%b%K{236}<_p9k__s>%b%K{236}%F{031} ' '%b%K{236}%F{076} ' '%b%K{236}%F{076}' '%b%K{236}<_p9k__ss>%b%K{236}%F{076} ' '%b%K{236}<_p9k__s>%b%K{236}%F{076} ' '%b%k%F{236}%b%K{236}%F{070} ' '<_p9k__w>%b%K{236}%F{070}' '<_p9k__w>%b%K{236}%F{070}%244F%b%K{236}%F{070} ' '<_p9k__w>%F{236}%b%K{236}%F{070} ' '%b%K{236}%F{000} ' '%b%K{236}%F{000}' '%b%K{236}<_p9k__ss>%b%K{236}%F{000} ' '%b%K{236}<_p9k__s>%b%K{236}%F{000} ' '%b%K{236}%F{178} ' '%b%K{236}%F{178}' '%b%K{236}<_p9k__ss>%b%K{236}%F{178} ' '%b%K{236}<_p9k__s>%b%K{236}%F{178} ' '%b%K{236}%F{178} ' '%b%K{236}%F{178}' '%b%K{236}<_p9k__ss>%b%K{236}%F{178} ' '%b%K{236}<_p9k__s>%b%K{236}%F{178} ' '%b%K{236}%F{076} ' '%b%K{236}%F{076}' '%b%K{236}<_p9k__ss>%b%K{236}%F{076} ' '%b%K{236}<_p9k__s>%b%K{236}%F{076} ' '%b%K{236}%F{000} ' '%b%K{236}%F{000}' '%b%K{236}<_p9k__ss>%b%K{236}%F{000} ' '%b%K{236}<_p9k__s>%b%K{236}%F{000} ' '%b%K{236}%F{076} ' '%b%K{236}%F{076}' '%b%K{236}<_p9k__ss>%b%K{236}%F{076} ' '%b%K{236}<_p9k__s>%b%K{236}%F{076} ' '%b%K{236}%F{076} ' '%b%K{236}%F{076}' '%b%K{236}<_p9k__ss>%b%K{236}%F{076} ' '%b%K{236}<_p9k__s>%b%K{236}%F{076} ' '%b%K{236}%F{076} ' '%b%K{236}%F{076}' '%b%K{236}<_p9k__ss>%b%K{236}%F{076} ' '%b%K{236}<_p9k__s>%b%K{236}%F{076} ' '%b%K{236}%F{076} ' '%b%K{236}%F{076}' '%b%K{236}<_p9k__ss>%b%K{236}%F{076} ' '%b%K{236}<_p9k__s>%b%K{236}%F{076} ' '%b%k%F{236}%b%K{236}%F{160} ' '<_p9k__w>%b%K{236}%F{160}' '<_p9k__w>%b%K{236}%F{160}%244F%b%K{236}%F{160} ' '<_p9k__w>%F{236}%b%K{236}%F{160} ') 
+	typeset -g -a _p9k_t=($'\n' $'%{\n%}' '' $'\n' '%b%K{236}%f${(pl.${$((_p9k__clm-_p9k__ind))/#-*/0}..─.)}%k%f${_p9k_t[$((1+!_p9k__ind))]}' '${${:-${_p9k__x::=0}${_p9k__y::=1024}${_p9k__p::=$_p9k__lprompt$_p9k__rprompt}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$(((_p9k__x+_p9k__y)/2))}${_p9k__xy::=${${(%):-$_p9k__p%$_p9k__m(l./$_p9k__m;$_p9k__y./$_p9k__x;$_p9k__m)}##*/}}${_p9k__x::=${_p9k__xy%;*}}${_p9k__y::=${_p9k__xy#*;}}${_p9k__m::=$((_p9k__clm-_p9k__x-_p9k__ind-1))}}+}' $'${${_p9k__clm::=$COLUMNS}+}${${COLUMNS::=1024}+}${${_p9k__keymap::=${KEYMAP:-$_p9k__keymap}}+}${${_p9k__zle_state::=${ZLE_STATE:-$_p9k__zle_state}}+}%b%k%f${${_p9k__ind::=${${ZLE_RPROMPT_INDENT:-1}/#-*/0}}+}%{\C-[]133;A\C-G%}${_p9k_t[${_p9k__empty_line_i:-4}]}%{${_p9k__ipe-${_p9k_t[${_p9k__ruler_i:-1}]:+\n${(Q)${:-"$\'\\\\033\'\\\\[A"}}}}%}${(e)_p9k_t[${_p9k__ruler_i:-5}]}' '%b%k%F{236}%b%K{236}%F{070} ' '<_p9k__w>%b%K{236}%F{070}' '<_p9k__w>%b%K{236}%F{070}%244F%b%K{236}%F{070} ' '<_p9k__w>%F{236}%b%K{236}%F{070} ' '%b%k%F{236}%b%K{236}%F{037} ' '<_p9k__w>%b%K{236}%F{037}' '<_p9k__w>%b%K{236}%F{037}%244F%b%K{236}%F{037} ' '<_p9k__w>%F{236}%b%K{236}%F{037} ' '%b%k%F{236}%b%K{236}%F{178} ' '<_p9k__w>%b%K{236}%F{178}' '<_p9k__w>%b%K{236}%F{178}%244F%b%K{236}%F{178} ' '<_p9k__w>%F{236}%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{180} ' '<_p9k__w>%b%K{236}%F{180}' '<_p9k__w>%b%K{236}%F{180}%244F%b%K{236}%F{180} ' '<_p9k__w>%F{236}%b%K{236}%F{180} ' '%b%k%F{236}%b%K{236}%F{178} ' '<_p9k__w>%b%K{236}%F{178}' '<_p9k__w>%b%K{236}%F{178}%244F%b%K{236}%F{178} ' '<_p9k__w>%F{236}%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{172} ' '<_p9k__w>%b%K{236}%F{172}' '<_p9k__w>%b%K{236}%F{172}%244F%b%K{236}%F{172} ' '<_p9k__w>%F{236}%b%K{236}%F{172} ' '%b%k%F{236}%b%K{236}%F{106} ' '<_p9k__w>%b%K{236}%F{106}' '<_p9k__w>%b%K{236}%F{106}%244F%b%K{236}%F{106} ' '<_p9k__w>%F{236}%b%K{236}%F{106} ' '%b%k%F{236}%b%K{236}%F{068} ' '<_p9k__w>%b%K{236}%F{068}' '<_p9k__w>%b%K{236}%F{068}%244F%b%K{236}%F{068} ' '<_p9k__w>%F{236}%b%K{236}%F{068} ' '%b%K{236}%F{255} ' '%b%K{236}%F{255}' '%b%K{236}<_p9k__ss>%b%K{236}%F{255} ' '%b%K{236}<_p9k__s>%b%K{236}%F{255} ' '%b%K{236}%F{031} ' '%b%K{236}%F{031}' '%b%K{236}<_p9k__ss>%b%K{236}%F{031} ' '%b%K{236}<_p9k__s>%b%K{236}%F{031} ' '%b%k%F{236}%b%K{236}%F{178} ' '<_p9k__w>%b%K{236}%F{178}' '<_p9k__w>%b%K{236}%F{178}%244F%b%K{236}%F{178} ' '<_p9k__w>%F{236}%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{072} ' '<_p9k__w>%b%K{236}%F{072}' '<_p9k__w>%b%K{236}%F{072}%244F%b%K{236}%F{072} ' '<_p9k__w>%F{236}%b%K{236}%F{072} ' '%b%k%F{236}%b%K{236}%F{034} ' '<_p9k__w>%b%K{236}%F{034}' '<_p9k__w>%b%K{236}%F{034}%244F%b%K{236}%F{034} ' '<_p9k__w>%F{236}%b%K{236}%F{034} ' '%b%k%F{236}%b%K{236}%F{178} ' '<_p9k__w>%b%K{236}%F{178}' '<_p9k__w>%b%K{236}%F{178}%244F%b%K{236}%F{178} ' '<_p9k__w>%F{236}%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{074} ' '<_p9k__w>%b%K{236}%F{074}' '<_p9k__w>%b%K{236}%F{074}%244F%b%K{236}%F{074} ' '<_p9k__w>%F{236}%b%K{236}%F{074} ' '%b%K{236}%F{031} ' '%b%K{236}%F{031}' '%b%K{236}<_p9k__ss>%b%K{236}%F{031} ' '%b%K{236}<_p9k__s>%b%K{236}%F{031} ' '%b%K{236}%F{000} ' '%b%K{236}%F{000}' '%b%K{236}<_p9k__ss>%b%K{236}%F{000} ' '%b%K{236}<_p9k__s>%b%K{236}%F{000} ' '%b%K{236}%F{178} ' '%b%K{236}%F{178}' '%b%K{236}<_p9k__ss>%b%K{236}%F{178} ' '%b%K{236}<_p9k__s>%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{248} ' '<_p9k__w>%b%K{236}%F{248}' '<_p9k__w>%b%K{236}%F{248}%244F%b%K{236}%F{248} ' '<_p9k__w>%F{236}%b%K{236}%F{248} ' '%b%K{236}%F{178} ' '%b%K{236}%F{178}' '%b%K{236}<_p9k__ss>%b%K{236}%F{178} ' '%b%K{236}<_p9k__s>%b%K{236}%F{178} ' '%b%k%F{236}%b%K{236}%F{160} ' '<_p9k__w>%b%K{236}%F{160}' '<_p9k__w>%b%K{236}%F{160}%244F%b%K{236}%F{160} ' '<_p9k__w>%F{236}%b%K{236}%F{160} ' '%b%k%F{236}%b%K{236}%F{160} ' '<_p9k__w>%b%K{236}%F{160}' '<_p9k__w>%b%K{236}%F{160}%244F%b%K{236}%F{160} ' '<_p9k__w>%F{236}%b%K{236}%F{160} ' '%b%K{236}%F{076} ' '%b%K{236}%F{076}' '%b%K{236}<_p9k__ss>%b%K{236}%F{076} ' '%b%K{236}<_p9k__s>%b%K{236}%F{076} ' '%b%K{236}%F{076} ' '%b%K{236}%F{076}' '%b%K{236}<_p9k__ss>%b%K{236}%F{076} ' '%b%K{236}<_p9k__s>%b%K{236}%F{076} ' '%b%K{236}%F{076} ' '%b%K{236}%F{076}' '%b%K{236}<_p9k__ss>%b%K{236}%F{076} ' '%b%K{236}<_p9k__s>%b%K{236}%F{076} ' '%b%K{236}%F{000} ' '%b%K{236}%F{000}' '%b%K{236}<_p9k__ss>%b%K{236}%F{000} ' '%b%K{236}<_p9k__s>%b%K{236}%F{000} ' '%b%K{236}%F{031} ' '%b%K{236}%F{031}' '%b%K{236}<_p9k__ss>%b%K{236}%F{031} ' '%b%K{236}<_p9k__s>%b%K{236}%F{031} ' '%b%K{236}%F{076} ' '%b%K{236}%F{076}' '%b%K{236}<_p9k__ss>%b%K{236}%F{076} ' '%b%K{236}<_p9k__s>%b%K{236}%F{076} ' '%b%K{236}%F{031} ' '%b%K{236}%F{031}' '%b%K{236}<_p9k__ss>%b%K{236}%F{031} ' '%b%K{236}<_p9k__s>%b%K{236}%F{031} ' '%b%K{236}%F{031} ' '%b%K{236}%F{031}' '%b%K{236}<_p9k__ss>%b%K{236}%F{031} ' '%b%K{236}<_p9k__s>%b%K{236}%F{031} ' '%b%k%F{236}%b%K{236}%F{160} ' '<_p9k__w>%b%K{236}%F{160}' '<_p9k__w>%b%K{236}%F{160}%244F%b%K{236}%F{160} ' '<_p9k__w>%F{236}%b%K{236}%F{160} ' '%b%K{236}%F{000} ' '%b%K{236}%F{000}' '%b%K{236}<_p9k__ss>%b%K{236}%F{000} ' '%b%K{236}<_p9k__s>%b%K{236}%F{000} ' '%b%k%F{236}%b%K{236}%F{070} ' '<_p9k__w>%b%K{236}%F{070}' '<_p9k__w>%b%K{236}%F{070}%244F%b%K{236}%F{070} ' '<_p9k__w>%F{236}%b%K{236}%F{070} ' '%b%K{236}%F{031} ' '%b%K{236}%F{031}' '%b%K{236}<_p9k__ss>%b%K{236}%F{031} ' '%b%K{236}<_p9k__s>%b%K{236}%F{031} ') 
 	typeset -g _POWERLEVEL9K_PROXY_FOREGROUND=68 
 	typeset -g _POWERLEVEL9K_KUBECONTEXT_DEFAULT_CONTENT_EXPANSION='${P9K_KUBECONTEXT_CLOUD_CLUSTER:-${P9K_KUBECONTEXT_NAME}}${${:-/$P9K_KUBECONTEXT_NAMESPACE}:#/default}' 
 	typeset -g _POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX=%240F├─ 
@@ -11653,7 +10258,7 @@ _p9k_restore_state_impl () {
 	typeset -g _POWERLEVEL9K_PROMPT_CHAR_ERROR_VIOWR_FOREGROUND=196 
 	typeset -g _POWERLEVEL9K_AWS_DEFAULT_FOREGROUND=208 
 	typeset -g -F _p9k_taskwarrior_next_due=0.0000000000 
-	typeset -g -A _p9k_cache=([$'_p9k_cache_stat_get\C-@prompt_kubecontext\C-@meta\C-@/Users/LucasLarson/.kube/config']=$'\C-@md5: /Users/LucasLarson/.kube/config: No such file or directory\C-@\C-@\C-@\C-@\C-@\C-@\C-@\C-@\C-@\C-@0' [$'_p9k_color prompt_background_jobs\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_background_jobs\C-@FOREGROUND\C-@cyan']=037. [$'_p9k_color prompt_background_jobs\C-@VISUAL_IDENTIFIER_COLOR\C-@037']=037. [$'_p9k_color prompt_command_execution_time\C-@BACKGROUND\C-@red']=236. [$'_p9k_color prompt_command_execution_time\C-@FOREGROUND\C-@yellow1']=248. [$'_p9k_color prompt_command_execution_time\C-@VISUAL_IDENTIFIER_COLOR\C-@248']=248. [$'_p9k_color prompt_context_DEFAULT\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_context_DEFAULT\C-@FOREGROUND\C-@yellow']=180. [$'_p9k_color prompt_context_ROOT\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_context_ROOT\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_color prompt_dir_DEFAULT\C-@ANCHOR_FOREGROUND\C-@']=039. [$'_p9k_color prompt_dir_DEFAULT\C-@BACKGROUND\C-@blue']=236. [$'_p9k_color prompt_dir_DEFAULT\C-@FOREGROUND\C-@0']=031. [$'_p9k_color prompt_dir_DEFAULT\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_color prompt_dir_DEFAULT\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_color prompt_dir_DEFAULT_NOT_WRITABLE\C-@ANCHOR_FOREGROUND\C-@']=039. [$'_p9k_color prompt_dir_DEFAULT_NOT_WRITABLE\C-@BACKGROUND\C-@blue']=236. [$'_p9k_color prompt_dir_DEFAULT_NOT_WRITABLE\C-@FOREGROUND\C-@0']=031. [$'_p9k_color prompt_dir_DEFAULT_NOT_WRITABLE\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_color prompt_dir_DEFAULT_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_color prompt_dir_HOME\C-@ANCHOR_FOREGROUND\C-@']=039. [$'_p9k_color prompt_dir_HOME\C-@BACKGROUND\C-@blue']=236. [$'_p9k_color prompt_dir_HOME\C-@FOREGROUND\C-@0']=031. [$'_p9k_color prompt_dir_HOME\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_color prompt_dir_HOME\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_color prompt_dir_HOME_SUBFOLDER\C-@ANCHOR_FOREGROUND\C-@']=039. [$'_p9k_color prompt_dir_HOME_SUBFOLDER\C-@BACKGROUND\C-@blue']=236. [$'_p9k_color prompt_dir_HOME_SUBFOLDER\C-@FOREGROUND\C-@0']=031. [$'_p9k_color prompt_dir_HOME_SUBFOLDER\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_color prompt_dir_HOME_SUBFOLDER\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_color prompt_direnv\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_direnv\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_color prompt_direnv\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_color prompt_midnight_commander\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_midnight_commander\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_color prompt_midnight_commander\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_color prompt_nix_shell\C-@BACKGROUND\C-@4']=236. [$'_p9k_color prompt_nix_shell\C-@FOREGROUND\C-@0']=074. [$'_p9k_color prompt_nix_shell\C-@VISUAL_IDENTIFIER_COLOR\C-@074']=074. [$'_p9k_color prompt_nnn\C-@BACKGROUND\C-@6']=236. [$'_p9k_color prompt_nnn\C-@FOREGROUND\C-@0']=072. [$'_p9k_color prompt_nnn\C-@VISUAL_IDENTIFIER_COLOR\C-@072']=072. [$'_p9k_color prompt_os_icon\C-@BACKGROUND\C-@black']=236. [$'_p9k_color prompt_os_icon\C-@FOREGROUND\C-@white']=255. [$'_p9k_color prompt_ranger\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_ranger\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_color prompt_ranger\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_color prompt_ruler\C-@BACKGROUND\C-@']=236. [$'_p9k_color prompt_ruler\C-@FOREGROUND\C-@']=. [$'_p9k_color prompt_status_ERROR\C-@BACKGROUND\C-@red']=236. [$'_p9k_color prompt_status_ERROR\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_color prompt_status_ERROR\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_color prompt_status_ERROR_PIPE\C-@BACKGROUND\C-@red']=236. [$'_p9k_color prompt_status_ERROR_PIPE\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_color prompt_status_ERROR_PIPE\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_color prompt_status_ERROR_SIGNAL\C-@BACKGROUND\C-@red']=236. [$'_p9k_color prompt_status_ERROR_SIGNAL\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_color prompt_status_ERROR_SIGNAL\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_color prompt_status_OK\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_status_OK\C-@FOREGROUND\C-@green']=070. [$'_p9k_color prompt_status_OK\C-@VISUAL_IDENTIFIER_COLOR\C-@070']=070. [$'_p9k_color prompt_status_OK_PIPE\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_status_OK_PIPE\C-@FOREGROUND\C-@green']=070. [$'_p9k_color prompt_status_OK_PIPE\C-@VISUAL_IDENTIFIER_COLOR\C-@070']=070. [$'_p9k_color prompt_vcs_CLEAN\C-@BACKGROUND\C-@2']=236. [$'_p9k_color prompt_vcs_CLEAN\C-@FOREGROUND\C-@0']=076. [$'_p9k_color prompt_vcs_CLEAN\C-@VISUAL_IDENTIFIER_COLOR\C-@076']=076. [$'_p9k_color prompt_vcs_LOADING\C-@BACKGROUND\C-@8']=236. [$'_p9k_color prompt_vcs_LOADING\C-@FOREGROUND\C-@0']=000. [$'_p9k_color prompt_vcs_LOADING\C-@VISUAL_IDENTIFIER_COLOR\C-@000']=244. [$'_p9k_color prompt_vcs_MODIFIED\C-@BACKGROUND\C-@3']=236. [$'_p9k_color prompt_vcs_MODIFIED\C-@FOREGROUND\C-@0']=178. [$'_p9k_color prompt_vcs_MODIFIED\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=076. [$'_p9k_color prompt_vcs_UNTRACKED\C-@BACKGROUND\C-@2']=236. [$'_p9k_color prompt_vcs_UNTRACKED\C-@FOREGROUND\C-@0']=076. [$'_p9k_color prompt_vcs_UNTRACKED\C-@VISUAL_IDENTIFIER_COLOR\C-@076']=076. [$'_p9k_color prompt_vi_mode_NORMAL\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_vi_mode_NORMAL\C-@FOREGROUND\C-@white']=106. [$'_p9k_color prompt_vi_mode_OVERWRITE\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_vi_mode_OVERWRITE\C-@FOREGROUND\C-@blue']=172. [$'_p9k_color prompt_vi_mode_VISUAL\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_vi_mode_VISUAL\C-@FOREGROUND\C-@white']=068. [$'_p9k_color prompt_vim_shell\C-@BACKGROUND\C-@green']=236. [$'_p9k_color prompt_vim_shell\C-@FOREGROUND\C-@0']=034. [$'_p9k_color prompt_vim_shell\C-@VISUAL_IDENTIFIER_COLOR\C-@034']=034. [$'_p9k_get_icon \C-@LEFT_SEGMENT_END_SEPARATOR']=' .' [$'_p9k_get_icon \C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon \C-@RULER_CHAR']=─. [$'_p9k_get_icon \C-@VCS_BRANCH_ICON']=' .' [$'_p9k_get_icon \C-@VCS_STAGED_ICON']=. [$'_p9k_get_icon \C-@VCS_UNSTAGED_ICON']=. [$'_p9k_get_icon prompt_background_jobs\C-@BACKGROUND_JOBS_ICON']=. [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_background_jobs\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_command_execution_time\C-@EXECUTION_TIME_ICON']=. [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_command_execution_time\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_context_DEFAULT\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_context_ROOT\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT\C-@\C-A']=. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@FOLDER_ICON']=. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LOCK_ICON']=. [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_ETC\C-@ETC_ICON']=. [$'_p9k_get_icon prompt_dir_HOME\C-@\C-A']=. [$'_p9k_get_icon prompt_dir_HOME\C-@HOME_ICON']=. [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_dir_HOME\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@\C-A']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@HOME_SUB_ICON']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_direnv\C-@DIRENV_ICON']=▼. [$'_p9k_get_icon prompt_direnv\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_direnv\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_direnv\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_direnv\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_direnv\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_direnv\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_direnv\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_direnv\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_empty_line\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_midnight_commander\C-@MIDNIGHT_COMMANDER_ICON']=mc. [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_midnight_commander\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_nix_shell\C-@NIX_SHELL_ICON']=. [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_nix_shell\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_nnn\C-@NNN_ICON']=nnn. [$'_p9k_get_icon prompt_nnn\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nnn\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nnn\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_nnn\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_nnn\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nnn\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_nnn\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_nnn\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_os_icon\C-@APPLE_ICON']=. [$'_p9k_get_icon prompt_os_icon\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_os_icon\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_os_icon\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_os_icon\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_os_icon\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_os_icon\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_os_icon\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_ranger\C-@RANGER_ICON']=. [$'_p9k_get_icon prompt_ranger\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_ranger\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_ranger\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_ranger\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_ranger\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_ranger\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_ranger\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_ranger\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR\C-@CARRIAGE_RETURN_ICON']=↵. [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_status_ERROR\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@CARRIAGE_RETURN_ICON']=↵. [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@CARRIAGE_RETURN_ICON']=↵. [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK\C-@OK_ICON']=. [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_status_OK\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK_PIPE\C-@OK_ICON']=. [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_status_OK_PIPE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@VCS_GIT_GITHUB_ICON']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@VCS_GIT_GITLAB_ICON']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@VCS_GIT_ICON']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vcs_LOADING\C-@VCS_GIT_GITHUB_ICON']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@VCS_GIT_GITLAB_ICON']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@VCS_GIT_ICON']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@VCS_LOADING_ICON']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@VCS_GIT_GITHUB_ICON']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@VCS_GIT_GITLAB_ICON']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@VCS_GIT_ICON']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@VCS_GIT_GITHUB_ICON']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@VCS_GIT_GITLAB_ICON']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@VCS_GIT_ICON']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vim_shell\C-@VIM_ICON']=. [$'_p9k_get_icon prompt_vim_shell\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_left_prompt_segment\C-@prompt_dir_DEFAULT\C-@blue\C-@0\C-@\C-A\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=96}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+98}}${_p9k__n:=99}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{031\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_dir_DEFAULT_NOT_WRITABLE\C-@blue\C-@0\C-@LOCK_ICON\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=100}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+102}}${_p9k__n:=103}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{031\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_dir_HOME\C-@blue\C-@0\C-@\C-A\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=44}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+46}}${_p9k__n:=47}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{031\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_dir_HOME_SUBFOLDER\C-@blue\C-@0\C-@\C-A\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=72}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+74}}${_p9k__n:=75}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{031\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_os_icon\C-@black\C-@white\C-@\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=40}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+42}}${_p9k__n:=43}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1los_icon+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__c}%b%K{236\\}%F{255\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_vcs_CLEAN\C-@2\C-@0\C-@VCS_GIT_GITHUB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=104}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+106}}${_p9k__n:=107}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{076\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_CLEAN\C-@2\C-@0\C-@VCS_GIT_GITLAB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=136}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+138}}${_p9k__n:=139}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{076\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_CLEAN\C-@2\C-@0\C-@VCS_GIT_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=124}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+126}}${_p9k__n:=127}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{076\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_LOADING\C-@8\C-@0\C-@VCS_GIT_GITHUB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=80}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+82}}${_p9k__n:=83}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(0)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}%b%K{236\\}%F{244\\}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{000\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_LOADING\C-@8\C-@0\C-@VCS_GIT_GITLAB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=112}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+114}}${_p9k__n:=115}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(0)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}%b%K{236\\}%F{244\\}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{000\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_LOADING\C-@8\C-@0\C-@VCS_GIT_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=128}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+130}}${_p9k__n:=131}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(0)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}%b%K{236\\}%F{244\\}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{000\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_LOADING\C-@8\C-@0\C-@VCS_LOADING_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=76}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+78}}${_p9k__n:=79}${P9K_VISUAL_IDENTIFIER::=}${_p9k__c::="${$((my_git_formatter(0)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__c}%b%K{236\\}%F{000\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_MODIFIED\C-@3\C-@0\C-@VCS_GIT_GITHUB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=84}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+86}}${_p9k__n:=87}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}%b%K{236\\}%F{076\\}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{178\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_MODIFIED\C-@3\C-@0\C-@VCS_GIT_GITLAB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=116}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+118}}${_p9k__n:=119}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}%b%K{236\\}%F{076\\}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{178\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_MODIFIED\C-@3\C-@0\C-@VCS_GIT_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=120}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+122}}${_p9k__n:=123}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}%b%K{236\\}%F{076\\}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{178\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_UNTRACKED\C-@2\C-@0\C-@VCS_GIT_GITHUB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=144}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+146}}${_p9k__n:=147}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{076\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_UNTRACKED\C-@2\C-@0\C-@VCS_GIT_GITLAB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=132}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+134}}${_p9k__n:=135}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{076\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_UNTRACKED\C-@2\C-@0\C-@VCS_GIT_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=140}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+142}}${_p9k__n:=143}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{076\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_param \C-@LEFT_SEGMENT_END_SEPARATOR\C-@ ']=' .' [$'_p9k_param \C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param \C-@RULER_CHAR\C-@\\u2500']='\u2500.' [$'_p9k_param \C-@VCS_BRANCH_ICON\C-@\\uF126 ']='\uF126 .' [$'_p9k_param \C-@VCS_STAGED_ICON\C-@\\uF055']='\uF055.' [$'_p9k_param \C-@VCS_UNSTAGED_ICON\C-@\\uF06A']='\uF06A.' [$'_p9k_param prompt_background_jobs\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_background_jobs\C-@BACKGROUND_JOBS_ICON\C-@\\uF013']='\uF013.' [$'_p9k_param prompt_background_jobs\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_background_jobs\C-@FOREGROUND\C-@cyan']=37. [$'_p9k_param prompt_background_jobs\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_background_jobs\C-@PREFIX\C-@']=. [$'_p9k_param prompt_background_jobs\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_background_jobs\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_background_jobs\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_background_jobs\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_background_jobs\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_background_jobs\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_background_jobs\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_background_jobs\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_background_jobs\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_background_jobs\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_background_jobs\C-@VISUAL_IDENTIFIER_COLOR\C-@037']=037. [$'_p9k_param prompt_background_jobs\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_background_jobs\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_command_execution_time\C-@BACKGROUND\C-@red']=236. [$'_p9k_param prompt_command_execution_time\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_command_execution_time\C-@EXECUTION_TIME_ICON\C-@\\uF252']='\uF252.' [$'_p9k_param prompt_command_execution_time\C-@FOREGROUND\C-@yellow1']=248. [$'_p9k_param prompt_command_execution_time\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_command_execution_time\C-@PREFIX\C-@']=. [$'_p9k_param prompt_command_execution_time\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_command_execution_time\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_command_execution_time\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_command_execution_time\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_command_execution_time\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_command_execution_time\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_command_execution_time\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_command_execution_time\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_command_execution_time\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_command_execution_time\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_command_execution_time\C-@VISUAL_IDENTIFIER_COLOR\C-@248']=248. [$'_p9k_param prompt_command_execution_time\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_command_execution_time\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_DEFAULT\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_context_DEFAULT\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']=. [$'_p9k_param prompt_context_DEFAULT\C-@FOREGROUND\C-@yellow']=180. [$'_p9k_param prompt_context_DEFAULT\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_context_DEFAULT\C-@PREFIX\C-@']=. [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_context_DEFAULT\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_context_DEFAULT\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_context_DEFAULT\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_context_DEFAULT\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=. [$'_p9k_param prompt_context_DEFAULT\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_ROOT\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_context_ROOT\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_context_ROOT\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_param prompt_context_ROOT\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_context_ROOT\C-@PREFIX\C-@']=. [$'_p9k_param prompt_context_ROOT\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_ROOT\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_context_ROOT\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_context_ROOT\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_ROOT\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_context_ROOT\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_context_ROOT\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_context_ROOT\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_context_ROOT\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_context_ROOT\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_context_ROOT\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT\C-@ANCHOR_BOLD\C-@']=true. [$'_p9k_param prompt_dir_DEFAULT\C-@ANCHOR_FOREGROUND\C-@']=39. [$'_p9k_param prompt_dir_DEFAULT\C-@BACKGROUND\C-@blue']=236. [$'_p9k_param prompt_dir_DEFAULT\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_dir_DEFAULT\C-@FOLDER_ICON\C-@\\uF115']='\uF115.' [$'_p9k_param prompt_dir_DEFAULT\C-@FOREGROUND\C-@0']=31. [$'_p9k_param prompt_dir_DEFAULT\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_dir_DEFAULT\C-@PATH_HIGHLIGHT_BOLD\C-@']=. [$'_p9k_param prompt_dir_DEFAULT\C-@PATH_SEPARATOR\C-@/']=/. [$'_p9k_param prompt_dir_DEFAULT\C-@PREFIX\C-@']=. [$'_p9k_param prompt_dir_DEFAULT\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_dir_DEFAULT\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_param prompt_dir_DEFAULT\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_dir_DEFAULT\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_dir_DEFAULT\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_param prompt_dir_DEFAULT\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_dir_DEFAULT\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@ANCHOR_BOLD\C-@']=true. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@ANCHOR_FOREGROUND\C-@']=39. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@BACKGROUND\C-@blue']=236. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@FOREGROUND\C-@0']=31. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LOCK_ICON\C-@\\UF023']='\UF023.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@PATH_HIGHLIGHT_BOLD\C-@']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@PATH_SEPARATOR\C-@/']=/. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@PREFIX\C-@']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_ETC\C-@ETC_ICON\C-@\\uF013']='\uF013.' [$'_p9k_param prompt_dir_HOME\C-@ANCHOR_BOLD\C-@']=true. [$'_p9k_param prompt_dir_HOME\C-@ANCHOR_FOREGROUND\C-@']=39. [$'_p9k_param prompt_dir_HOME\C-@BACKGROUND\C-@blue']=236. [$'_p9k_param prompt_dir_HOME\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_dir_HOME\C-@FOREGROUND\C-@0']=31. [$'_p9k_param prompt_dir_HOME\C-@HOME_ICON\C-@\\uF015']='\uF015.' [$'_p9k_param prompt_dir_HOME\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_dir_HOME\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_dir_HOME\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_dir_HOME\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_dir_HOME\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_dir_HOME\C-@PATH_HIGHLIGHT_BOLD\C-@']=. [$'_p9k_param prompt_dir_HOME\C-@PATH_SEPARATOR\C-@/']=/. [$'_p9k_param prompt_dir_HOME\C-@PREFIX\C-@']=. [$'_p9k_param prompt_dir_HOME\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_dir_HOME\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_param prompt_dir_HOME\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_dir_HOME\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_dir_HOME\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_param prompt_dir_HOME\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_dir_HOME\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@ANCHOR_BOLD\C-@']=true. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@ANCHOR_FOREGROUND\C-@']=39. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@BACKGROUND\C-@blue']=236. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@FOREGROUND\C-@0']=31. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@HOME_SUB_ICON\C-@\\uF07C']='\uF07C.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@PATH_HIGHLIGHT_BOLD\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@PATH_SEPARATOR\C-@/']=/. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@PREFIX\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_direnv\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_direnv\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_direnv\C-@DIRENV_ICON\C-@\\u25BC']='\u25BC.' [$'_p9k_param prompt_direnv\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_param prompt_direnv\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_direnv\C-@PREFIX\C-@']=. [$'_p9k_param prompt_direnv\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_direnv\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_direnv\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_direnv\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_direnv\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_direnv\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_direnv\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_direnv\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_direnv\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_direnv\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_direnv\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_param prompt_direnv\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_direnv\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_empty_line\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_midnight_commander\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_midnight_commander\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_midnight_commander\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_param prompt_midnight_commander\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_midnight_commander\C-@MIDNIGHT_COMMANDER_ICON\C-@mc']=mc. [$'_p9k_param prompt_midnight_commander\C-@PREFIX\C-@']=. [$'_p9k_param prompt_midnight_commander\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_midnight_commander\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_midnight_commander\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_midnight_commander\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_midnight_commander\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_midnight_commander\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_midnight_commander\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_midnight_commander\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_midnight_commander\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_midnight_commander\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_midnight_commander\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_param prompt_midnight_commander\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_midnight_commander\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nix_shell\C-@BACKGROUND\C-@4']=236. [$'_p9k_param prompt_nix_shell\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_nix_shell\C-@FOREGROUND\C-@0']=74. [$'_p9k_param prompt_nix_shell\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_nix_shell\C-@NIX_SHELL_ICON\C-@\\uF313']='\uF313.' [$'_p9k_param prompt_nix_shell\C-@PREFIX\C-@']=. [$'_p9k_param prompt_nix_shell\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nix_shell\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nix_shell\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_nix_shell\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_nix_shell\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nix_shell\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_nix_shell\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_nix_shell\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_nix_shell\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_nix_shell\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_nix_shell\C-@VISUAL_IDENTIFIER_COLOR\C-@074']=074. [$'_p9k_param prompt_nix_shell\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_nix_shell\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nnn\C-@BACKGROUND\C-@6']=236. [$'_p9k_param prompt_nnn\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_nnn\C-@FOREGROUND\C-@0']=72. [$'_p9k_param prompt_nnn\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_nnn\C-@NNN_ICON\C-@nnn']=nnn. [$'_p9k_param prompt_nnn\C-@PREFIX\C-@']=. [$'_p9k_param prompt_nnn\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nnn\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nnn\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_nnn\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_nnn\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nnn\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_nnn\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_nnn\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_nnn\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_nnn\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_nnn\C-@VISUAL_IDENTIFIER_COLOR\C-@072']=072. [$'_p9k_param prompt_nnn\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_nnn\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_os_icon\C-@APPLE_ICON\C-@\\uF179']='\uF179.' [$'_p9k_param prompt_os_icon\C-@BACKGROUND\C-@black']=236. [$'_p9k_param prompt_os_icon\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_os_icon\C-@FOREGROUND\C-@white']=255. [$'_p9k_param prompt_os_icon\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_os_icon\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_os_icon\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_os_icon\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_os_icon\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_os_icon\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_os_icon\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_os_icon\C-@PREFIX\C-@']=. [$'_p9k_param prompt_os_icon\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_os_icon\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_os_icon\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_os_icon\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_os_icon\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_ranger\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_ranger\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_ranger\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_param prompt_ranger\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_ranger\C-@PREFIX\C-@']=. [$'_p9k_param prompt_ranger\C-@RANGER_ICON\C-@\\uF00b']='\uF00b.' [$'_p9k_param prompt_ranger\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_ranger\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_ranger\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_ranger\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_ranger\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_ranger\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_ranger\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_ranger\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_ranger\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_ranger\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_ranger\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_param prompt_ranger\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_ranger\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_ruler\C-@BACKGROUND\C-@']=236. [$'_p9k_param prompt_ruler\C-@FOREGROUND\C-@']=. [$'_p9k_param prompt_status_ERROR\C-@BACKGROUND\C-@red']=236. [$'_p9k_param prompt_status_ERROR\C-@CARRIAGE_RETURN_ICON\C-@\\u21B5']='\u21B5.' [$'_p9k_param prompt_status_ERROR\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_status_ERROR\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_param prompt_status_ERROR\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_status_ERROR\C-@PREFIX\C-@']=. [$'_p9k_param prompt_status_ERROR\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_status_ERROR\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_status_ERROR\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_status_ERROR\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_status_ERROR\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_status_ERROR\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_status_ERROR\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_status_ERROR\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_param prompt_status_ERROR\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=✘. [$'_p9k_param prompt_status_ERROR\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_PIPE\C-@BACKGROUND\C-@red']=236. [$'_p9k_param prompt_status_ERROR_PIPE\C-@CARRIAGE_RETURN_ICON\C-@\\u21B5']='\u21B5.' [$'_p9k_param prompt_status_ERROR_PIPE\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_status_ERROR_PIPE\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_param prompt_status_ERROR_PIPE\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_status_ERROR_PIPE\C-@PREFIX\C-@']=. [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_status_ERROR_PIPE\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_status_ERROR_PIPE\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_status_ERROR_PIPE\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_status_ERROR_PIPE\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_param prompt_status_ERROR_PIPE\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=✘. [$'_p9k_param prompt_status_ERROR_PIPE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@BACKGROUND\C-@red']=236. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@CARRIAGE_RETURN_ICON\C-@\\u21B5']='\u21B5.' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@PREFIX\C-@']=. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=✘. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_status_OK\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_status_OK\C-@FOREGROUND\C-@green']=70. [$'_p9k_param prompt_status_OK\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_status_OK\C-@OK_ICON\C-@\\uF00C']='\uF00C.' [$'_p9k_param prompt_status_OK\C-@PREFIX\C-@']=. [$'_p9k_param prompt_status_OK\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_status_OK\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_status_OK\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_status_OK\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_status_OK\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_status_OK\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_status_OK\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_status_OK\C-@VISUAL_IDENTIFIER_COLOR\C-@070']=070. [$'_p9k_param prompt_status_OK\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=✔. [$'_p9k_param prompt_status_OK\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK_PIPE\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_status_OK_PIPE\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_status_OK_PIPE\C-@FOREGROUND\C-@green']=70. [$'_p9k_param prompt_status_OK_PIPE\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_status_OK_PIPE\C-@OK_ICON\C-@\\uF00C']='\uF00C.' [$'_p9k_param prompt_status_OK_PIPE\C-@PREFIX\C-@']=. [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_status_OK_PIPE\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_status_OK_PIPE\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_status_OK_PIPE\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_status_OK_PIPE\C-@VISUAL_IDENTIFIER_COLOR\C-@070']=070. [$'_p9k_param prompt_status_OK_PIPE\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=✔. [$'_p9k_param prompt_status_OK_PIPE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_CLEAN\C-@BACKGROUND\C-@2']=236. [$'_p9k_param prompt_vcs_CLEAN\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_CLEAN\C-@CONTENT_EXPANSION\C-@x']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_CLEAN\C-@FOREGROUND\C-@0']=76. [$'_p9k_param prompt_vcs_CLEAN\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_vcs_CLEAN\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vcs_CLEAN\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vcs_CLEAN\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vcs_CLEAN\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vcs_CLEAN\C-@VCS_GIT_GITHUB_ICON\C-@\\uF113']='\uF113.' [$'_p9k_param prompt_vcs_CLEAN\C-@VCS_GIT_GITLAB_ICON\C-@\\uF296']='\uF296.' [$'_p9k_param prompt_vcs_CLEAN\C-@VCS_GIT_ICON\C-@\\uF1D3']='\uF1D3.' [$'_p9k_param prompt_vcs_CLEAN\C-@VISUAL_IDENTIFIER_COLOR\C-@076']=76. [$'_p9k_param prompt_vcs_CLEAN\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vcs_CLEAN\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_CONFLICTED\C-@CONTENT_EXPANSION\C-@x']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_LOADING\C-@BACKGROUND\C-@8']=236. [$'_p9k_param prompt_vcs_LOADING\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${$((my_git_formatter(0)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_LOADING\C-@CONTENT_EXPANSION\C-@x']='${$((my_git_formatter(0)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_LOADING\C-@FOREGROUND\C-@0']=0. [$'_p9k_param prompt_vcs_LOADING\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_vcs_LOADING\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vcs_LOADING\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vcs_LOADING\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vcs_LOADING\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vcs_LOADING\C-@VCS_GIT_GITHUB_ICON\C-@\\uF113']='\uF113.' [$'_p9k_param prompt_vcs_LOADING\C-@VCS_GIT_GITLAB_ICON\C-@\\uF296']='\uF296.' [$'_p9k_param prompt_vcs_LOADING\C-@VCS_GIT_ICON\C-@\\uF1D3']='\uF1D3.' [$'_p9k_param prompt_vcs_LOADING\C-@VCS_LOADING_ICON']=. [$'_p9k_param prompt_vcs_LOADING\C-@VISUAL_IDENTIFIER_COLOR\C-@000']=244. [$'_p9k_param prompt_vcs_LOADING\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vcs_LOADING\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_MODIFIED\C-@BACKGROUND\C-@3']=236. [$'_p9k_param prompt_vcs_MODIFIED\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_MODIFIED\C-@CONTENT_EXPANSION\C-@x']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_MODIFIED\C-@FOREGROUND\C-@0']=178. [$'_p9k_param prompt_vcs_MODIFIED\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_vcs_MODIFIED\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vcs_MODIFIED\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vcs_MODIFIED\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vcs_MODIFIED\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vcs_MODIFIED\C-@VCS_GIT_GITHUB_ICON\C-@\\uF113']='\uF113.' [$'_p9k_param prompt_vcs_MODIFIED\C-@VCS_GIT_GITLAB_ICON\C-@\\uF296']='\uF296.' [$'_p9k_param prompt_vcs_MODIFIED\C-@VCS_GIT_ICON\C-@\\uF1D3']='\uF1D3.' [$'_p9k_param prompt_vcs_MODIFIED\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=76. [$'_p9k_param prompt_vcs_MODIFIED\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vcs_MODIFIED\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_UNTRACKED\C-@BACKGROUND\C-@2']=236. [$'_p9k_param prompt_vcs_UNTRACKED\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@CONTENT_EXPANSION\C-@x']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@FOREGROUND\C-@0']=76. [$'_p9k_param prompt_vcs_UNTRACKED\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vcs_UNTRACKED\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vcs_UNTRACKED\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vcs_UNTRACKED\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vcs_UNTRACKED\C-@VCS_GIT_GITHUB_ICON\C-@\\uF113']='\uF113.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@VCS_GIT_GITLAB_ICON\C-@\\uF296']='\uF296.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@VCS_GIT_ICON\C-@\\uF1D3']='\uF1D3.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@VISUAL_IDENTIFIER_COLOR\C-@076']=76. [$'_p9k_param prompt_vcs_UNTRACKED\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_NORMAL\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_vi_mode_NORMAL\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_vi_mode_NORMAL\C-@FOREGROUND\C-@white']=106. [$'_p9k_param prompt_vi_mode_NORMAL\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vi_mode_NORMAL\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_vi_mode_NORMAL\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vi_mode_NORMAL\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vi_mode_NORMAL\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vi_mode_NORMAL\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vi_mode_NORMAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@FOREGROUND\C-@blue']=172. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_VISUAL\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_vi_mode_VISUAL\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_vi_mode_VISUAL\C-@FOREGROUND\C-@white']=68. [$'_p9k_param prompt_vi_mode_VISUAL\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vi_mode_VISUAL\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_vi_mode_VISUAL\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vi_mode_VISUAL\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vi_mode_VISUAL\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vi_mode_VISUAL\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vi_mode_VISUAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vim_shell\C-@BACKGROUND\C-@green']=236. [$'_p9k_param prompt_vim_shell\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_vim_shell\C-@FOREGROUND\C-@0']=34. [$'_p9k_param prompt_vim_shell\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vim_shell\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vim_shell\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vim_shell\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vim_shell\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_vim_shell\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vim_shell\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vim_shell\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_vim_shell\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_vim_shell\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vim_shell\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vim_shell\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vim_shell\C-@VIM_ICON\C-@\\uE62B']='\uE62B.' [$'_p9k_param prompt_vim_shell\C-@VISUAL_IDENTIFIER_COLOR\C-@034']=034. [$'_p9k_param prompt_vim_shell\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vim_shell\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_right_prompt_segment\C-@prompt_background_jobs\C-@0\C-@cyan\C-@BACKGROUND_JOBS_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=12}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+14}}${_p9k__n:=15}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rbackground_jobs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{037\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{037\\} %b%K{236\\}%F{037\\}}${_p9k__sss::=%b%K{236\\}%F{037\\} }${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_command_execution_time\C-@red\C-@yellow1\C-@EXECUTION_TIME_ICON\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=68}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+70}}${_p9k__n:=71}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rcommand_execution_time+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{248\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{248\\} %b%K{236\\}%F{248\\}}${_p9k__sss::=%b%K{236\\}%F{248\\} }${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_context_DEFAULT\C-@0\C-@yellow\C-@\C-@29']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=20}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+22}}${_p9k__n:=23}${_p9k__c::=}${_p9k__e::=${${_p9k__1rcontext+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{180\\}${${:-${_p9k__w::=%b%K{236\\}%F{180\\} %b%K{236\\}%F{180\\}}${_p9k__sss::=%b%K{236\\}%F{180\\} }${_p9k__i::=29}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_context_ROOT\C-@0\C-@yellow\C-@\C-@29']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=24}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+26}}${_p9k__n:=27}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rcontext+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{178\\}${${:-${_p9k__w::=%b%K{236\\}%F{178\\} %b%K{236\\}%F{178\\}}${_p9k__sss::=%b%K{236\\}%F{178\\} }${_p9k__i::=29}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_direnv\C-@0\C-@yellow\C-@DIRENV_ICON\C-@4']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=16}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+18}}${_p9k__n:=19}${_p9k__v::=▼}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rdirenv+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{178\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{178\\} %b%K{236\\}%F{178\\}}${_p9k__sss::=%b%K{236\\}%F{178\\} }${_p9k__i::=4}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_midnight_commander\C-@0\C-@yellow\C-@MIDNIGHT_COMMANDER_ICON\C-@34']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=60}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+62}}${_p9k__n:=63}${_p9k__v::=mc}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rmidnight_commander+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{178\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{178\\} %b%K{236\\}%F{178\\}}${_p9k__sss::=%b%K{236\\}%F{178\\} }${_p9k__i::=34}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_nix_shell\C-@4\C-@0\C-@NIX_SHELL_ICON\C-@35']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=64}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+66}}${_p9k__n:=67}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rnix_shell+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{074\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{074\\} %b%K{236\\}%F{074\\}}${_p9k__sss::=%b%K{236\\}%F{074\\} }${_p9k__i::=35}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_nnn\C-@6\C-@0\C-@NNN_ICON\C-@32']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=52}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+54}}${_p9k__n:=55}${_p9k__v::=nnn}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rnnn+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{072\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{072\\} %b%K{236\\}%F{072\\}}${_p9k__sss::=%b%K{236\\}%F{072\\} }${_p9k__i::=32}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_ranger\C-@0\C-@yellow\C-@RANGER_ICON\C-@31']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=48}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+50}}${_p9k__n:=51}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rranger+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{178\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{178\\} %b%K{236\\}%F{178\\}}${_p9k__sss::=%b%K{236\\}%F{178\\} }${_p9k__i::=31}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=92}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+94}}${_p9k__n:=95}${_p9k__v::="✘"}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{160\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{160\\} %b%K{236\\}%F{160\\}}${_p9k__sss::=%b%K{236\\}%F{160\\} }${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_status_ERROR_PIPE\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=148}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+150}}${_p9k__n:=151}${_p9k__v::="✘"}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{160\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{160\\} %b%K{236\\}%F{160\\}}${_p9k__sss::=%b%K{236\\}%F{160\\} }${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_status_ERROR_SIGNAL\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=88}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+90}}${_p9k__n:=91}${_p9k__v::="✘"}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{160\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{160\\} %b%K{236\\}%F{160\\}}${_p9k__sss::=%b%K{236\\}%F{160\\} }${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_status_OK\C-@0\C-@green\C-@OK_ICON\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=8}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+10}}${_p9k__n:=11}${_p9k__v::="✔"}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{070\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{070\\} %b%K{236\\}%F{070\\}}${_p9k__sss::=%b%K{236\\}%F{070\\} }${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_status_OK_PIPE\C-@0\C-@green\C-@OK_ICON\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=108}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+110}}${_p9k__n:=111}${_p9k__v::="✔"}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{070\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{070\\} %b%K{236\\}%F{070\\}}${_p9k__sss::=%b%K{236\\}%F{070\\} }${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_vi_mode_NORMAL\C-@0\C-@white\C-@\C-@36']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=32}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+34}}${_p9k__n:=35}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rvi_mode+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{106\\}${${:-${_p9k__w::=%b%K{236\\}%F{106\\} %b%K{236\\}%F{106\\}}${_p9k__sss::=%b%K{236\\}%F{106\\} }${_p9k__i::=36}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_vi_mode_OVERWRITE\C-@0\C-@blue\C-@\C-@36']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=28}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+30}}${_p9k__n:=31}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rvi_mode+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{172\\}${${:-${_p9k__w::=%b%K{236\\}%F{172\\} %b%K{236\\}%F{172\\}}${_p9k__sss::=%b%K{236\\}%F{172\\} }${_p9k__i::=36}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_vi_mode_VISUAL\C-@0\C-@white\C-@\C-@36']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=36}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+38}}${_p9k__n:=39}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rvi_mode+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{068\\}${${:-${_p9k__w::=%b%K{236\\}%F{068\\} %b%K{236\\}%F{068\\}}${_p9k__sss::=%b%K{236\\}%F{068\\} }${_p9k__i::=36}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_vim_shell\C-@green\C-@0\C-@VIM_ICON\C-@33']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=56}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+58}}${_p9k__n:=59}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rvim_shell+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{034\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{034\\} %b%K{236\\}%F{034\\}}${_p9k__sss::=%b%K{236\\}%F{034\\} }${_p9k__i::=33}${_p9k__bg::=236}}+}}\C-@00' [$'prompt_status\C-@0\C-@0\C-@0']=$'prompt_status_OK\C-@0\C-@green\C-@OK_ICON\C-@0\C-@\C-@0' [$'prompt_status\C-@0\C-@0']=$'prompt_status_OK\C-@0\C-@green\C-@OK_ICON\C-@0\C-@\C-@0' [$'prompt_status\C-@0\C-@1\C-@0']=$'prompt_status_OK_PIPE\C-@0\C-@green\C-@OK_ICON\C-@0\C-@\C-@1|00' [$'prompt_status\C-@1\C-@1']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@10' [$'prompt_status\C-@127\C-@127']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@1270' [$'prompt_status\C-@128\C-@128']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@1280' [$'prompt_status\C-@130\C-@130']=$'prompt_status_ERROR_SIGNAL\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@INT0' [$'prompt_status\C-@2\C-@2']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@20') 
+	typeset -g -A _p9k_cache=([$'_p9k_cache_stat_get\C-@prompt_kubecontext\C-@meta\C-@/Users/LucasLarson/.kube/config']=$'\C-@md5: /Users/LucasLarson/.kube/config: No such file or directory\C-@\C-@\C-@\C-@\C-@\C-@\C-@\C-@\C-@\C-@0' [$'_p9k_color prompt_background_jobs\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_background_jobs\C-@FOREGROUND\C-@cyan']=037. [$'_p9k_color prompt_background_jobs\C-@VISUAL_IDENTIFIER_COLOR\C-@037']=037. [$'_p9k_color prompt_command_execution_time\C-@BACKGROUND\C-@red']=236. [$'_p9k_color prompt_command_execution_time\C-@FOREGROUND\C-@yellow1']=248. [$'_p9k_color prompt_command_execution_time\C-@VISUAL_IDENTIFIER_COLOR\C-@248']=248. [$'_p9k_color prompt_context_DEFAULT\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_context_DEFAULT\C-@FOREGROUND\C-@yellow']=180. [$'_p9k_color prompt_context_ROOT\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_context_ROOT\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_color prompt_dir_DEFAULT\C-@ANCHOR_FOREGROUND\C-@']=039. [$'_p9k_color prompt_dir_DEFAULT\C-@BACKGROUND\C-@blue']=236. [$'_p9k_color prompt_dir_DEFAULT\C-@FOREGROUND\C-@0']=031. [$'_p9k_color prompt_dir_DEFAULT\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_color prompt_dir_DEFAULT\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_color prompt_dir_DEFAULT_NOT_WRITABLE\C-@ANCHOR_FOREGROUND\C-@']=039. [$'_p9k_color prompt_dir_DEFAULT_NOT_WRITABLE\C-@BACKGROUND\C-@blue']=236. [$'_p9k_color prompt_dir_DEFAULT_NOT_WRITABLE\C-@FOREGROUND\C-@0']=031. [$'_p9k_color prompt_dir_DEFAULT_NOT_WRITABLE\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_color prompt_dir_DEFAULT_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_color prompt_dir_ETC_NOT_WRITABLE\C-@ANCHOR_FOREGROUND\C-@']=039. [$'_p9k_color prompt_dir_ETC_NOT_WRITABLE\C-@BACKGROUND\C-@blue']=236. [$'_p9k_color prompt_dir_ETC_NOT_WRITABLE\C-@FOREGROUND\C-@0']=031. [$'_p9k_color prompt_dir_ETC_NOT_WRITABLE\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_color prompt_dir_ETC_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_color prompt_dir_HOME\C-@ANCHOR_FOREGROUND\C-@']=039. [$'_p9k_color prompt_dir_HOME\C-@BACKGROUND\C-@blue']=236. [$'_p9k_color prompt_dir_HOME\C-@FOREGROUND\C-@0']=031. [$'_p9k_color prompt_dir_HOME\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_color prompt_dir_HOME\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_color prompt_dir_HOME_SUBFOLDER\C-@ANCHOR_FOREGROUND\C-@']=039. [$'_p9k_color prompt_dir_HOME_SUBFOLDER\C-@BACKGROUND\C-@blue']=236. [$'_p9k_color prompt_dir_HOME_SUBFOLDER\C-@FOREGROUND\C-@0']=031. [$'_p9k_color prompt_dir_HOME_SUBFOLDER\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_color prompt_dir_HOME_SUBFOLDER\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_color prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@ANCHOR_FOREGROUND\C-@']=039. [$'_p9k_color prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@BACKGROUND\C-@blue']=236. [$'_p9k_color prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@FOREGROUND\C-@0']=031. [$'_p9k_color prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_color prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_color prompt_direnv\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_direnv\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_color prompt_direnv\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_color prompt_midnight_commander\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_midnight_commander\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_color prompt_midnight_commander\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_color prompt_nix_shell\C-@BACKGROUND\C-@4']=236. [$'_p9k_color prompt_nix_shell\C-@FOREGROUND\C-@0']=074. [$'_p9k_color prompt_nix_shell\C-@VISUAL_IDENTIFIER_COLOR\C-@074']=074. [$'_p9k_color prompt_nnn\C-@BACKGROUND\C-@6']=236. [$'_p9k_color prompt_nnn\C-@FOREGROUND\C-@0']=072. [$'_p9k_color prompt_nnn\C-@VISUAL_IDENTIFIER_COLOR\C-@072']=072. [$'_p9k_color prompt_os_icon\C-@BACKGROUND\C-@black']=236. [$'_p9k_color prompt_os_icon\C-@FOREGROUND\C-@white']=255. [$'_p9k_color prompt_ranger\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_ranger\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_color prompt_ranger\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_color prompt_ruler\C-@BACKGROUND\C-@']=236. [$'_p9k_color prompt_ruler\C-@FOREGROUND\C-@']=. [$'_p9k_color prompt_status_ERROR\C-@BACKGROUND\C-@red']=236. [$'_p9k_color prompt_status_ERROR\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_color prompt_status_ERROR\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_color prompt_status_ERROR_PIPE\C-@BACKGROUND\C-@red']=236. [$'_p9k_color prompt_status_ERROR_PIPE\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_color prompt_status_ERROR_PIPE\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_color prompt_status_ERROR_SIGNAL\C-@BACKGROUND\C-@red']=236. [$'_p9k_color prompt_status_ERROR_SIGNAL\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_color prompt_status_ERROR_SIGNAL\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_color prompt_status_OK\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_status_OK\C-@FOREGROUND\C-@green']=070. [$'_p9k_color prompt_status_OK\C-@VISUAL_IDENTIFIER_COLOR\C-@070']=070. [$'_p9k_color prompt_status_OK_PIPE\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_status_OK_PIPE\C-@FOREGROUND\C-@green']=070. [$'_p9k_color prompt_status_OK_PIPE\C-@VISUAL_IDENTIFIER_COLOR\C-@070']=070. [$'_p9k_color prompt_vcs_CLEAN\C-@BACKGROUND\C-@2']=236. [$'_p9k_color prompt_vcs_CLEAN\C-@FOREGROUND\C-@0']=076. [$'_p9k_color prompt_vcs_CLEAN\C-@VISUAL_IDENTIFIER_COLOR\C-@076']=076. [$'_p9k_color prompt_vcs_LOADING\C-@BACKGROUND\C-@8']=236. [$'_p9k_color prompt_vcs_LOADING\C-@FOREGROUND\C-@0']=000. [$'_p9k_color prompt_vcs_LOADING\C-@VISUAL_IDENTIFIER_COLOR\C-@000']=244. [$'_p9k_color prompt_vcs_MODIFIED\C-@BACKGROUND\C-@3']=236. [$'_p9k_color prompt_vcs_MODIFIED\C-@FOREGROUND\C-@0']=178. [$'_p9k_color prompt_vcs_MODIFIED\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=076. [$'_p9k_color prompt_vcs_UNTRACKED\C-@BACKGROUND\C-@2']=236. [$'_p9k_color prompt_vcs_UNTRACKED\C-@FOREGROUND\C-@0']=076. [$'_p9k_color prompt_vcs_UNTRACKED\C-@VISUAL_IDENTIFIER_COLOR\C-@076']=076. [$'_p9k_color prompt_vi_mode_NORMAL\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_vi_mode_NORMAL\C-@FOREGROUND\C-@white']=106. [$'_p9k_color prompt_vi_mode_OVERWRITE\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_vi_mode_OVERWRITE\C-@FOREGROUND\C-@blue']=172. [$'_p9k_color prompt_vi_mode_VISUAL\C-@BACKGROUND\C-@0']=236. [$'_p9k_color prompt_vi_mode_VISUAL\C-@FOREGROUND\C-@white']=068. [$'_p9k_color prompt_vim_shell\C-@BACKGROUND\C-@green']=236. [$'_p9k_color prompt_vim_shell\C-@FOREGROUND\C-@0']=034. [$'_p9k_color prompt_vim_shell\C-@VISUAL_IDENTIFIER_COLOR\C-@034']=034. [$'_p9k_get_icon \C-@LEFT_SEGMENT_END_SEPARATOR']=' .' [$'_p9k_get_icon \C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon \C-@RULER_CHAR']=─. [$'_p9k_get_icon \C-@VCS_BRANCH_ICON']=' .' [$'_p9k_get_icon \C-@VCS_STAGED_ICON']=. [$'_p9k_get_icon \C-@VCS_UNSTAGED_ICON']=. [$'_p9k_get_icon prompt_background_jobs\C-@BACKGROUND_JOBS_ICON']=. [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_background_jobs\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_background_jobs\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_command_execution_time\C-@EXECUTION_TIME_ICON']=. [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_command_execution_time\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_command_execution_time\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_context_DEFAULT\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_context_DEFAULT\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_context_ROOT\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_context_ROOT\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT\C-@\C-A']=. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@FOLDER_ICON']=. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_dir_DEFAULT\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@LOCK_ICON']=. [$'_p9k_get_icon prompt_dir_DEFAULT_NOT_WRITABLE\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_ETC\C-@ETC_ICON']=. [$'_p9k_get_icon prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_dir_ETC_NOT_WRITABLE\C-@LOCK_ICON']=. [$'_p9k_get_icon prompt_dir_ETC_NOT_WRITABLE\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME\C-@\C-A']=. [$'_p9k_get_icon prompt_dir_HOME\C-@HOME_ICON']=. [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_dir_HOME\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_dir_HOME\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@\C-A']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@HOME_SUB_ICON']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LOCK_ICON']=. [$'_p9k_get_icon prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_direnv\C-@DIRENV_ICON']=▼. [$'_p9k_get_icon prompt_direnv\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_direnv\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_direnv\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_direnv\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_direnv\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_direnv\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_direnv\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_direnv\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_empty_line\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_midnight_commander\C-@MIDNIGHT_COMMANDER_ICON']=mc. [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_midnight_commander\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_midnight_commander\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_nix_shell\C-@NIX_SHELL_ICON']=. [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_nix_shell\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_nix_shell\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_nnn\C-@NNN_ICON']=nnn. [$'_p9k_get_icon prompt_nnn\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nnn\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nnn\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_nnn\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_nnn\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_nnn\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_nnn\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_nnn\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_os_icon\C-@APPLE_ICON']=. [$'_p9k_get_icon prompt_os_icon\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_os_icon\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_os_icon\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_os_icon\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_os_icon\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_os_icon\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_os_icon\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_ranger\C-@RANGER_ICON']=. [$'_p9k_get_icon prompt_ranger\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_ranger\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_ranger\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_ranger\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_ranger\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_ranger\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_ranger\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_ranger\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR\C-@CARRIAGE_RETURN_ICON']=↵. [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_status_ERROR\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_status_ERROR\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@CARRIAGE_RETURN_ICON']=↵. [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_status_ERROR_PIPE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@CARRIAGE_RETURN_ICON']=↵. [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_status_ERROR_SIGNAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK\C-@OK_ICON']=. [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_status_OK\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_status_OK\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK_PIPE\C-@OK_ICON']=. [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_status_OK_PIPE\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_status_OK_PIPE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@VCS_GIT_GITHUB_ICON']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@VCS_GIT_ICON']=. [$'_p9k_get_icon prompt_vcs_CLEAN\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vcs_LOADING\C-@VCS_GIT_GITHUB_ICON']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@VCS_GIT_ICON']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@VCS_LOADING_ICON']=. [$'_p9k_get_icon prompt_vcs_LOADING\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@VCS_GIT_GITHUB_ICON']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@VCS_GIT_ICON']=. [$'_p9k_get_icon prompt_vcs_MODIFIED\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@LEFT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@VCS_GIT_GITHUB_ICON']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@VCS_GIT_ICON']=. [$'_p9k_get_icon prompt_vcs_UNTRACKED\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vi_mode_NORMAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vi_mode_OVERWRITE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vi_mode_VISUAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_LEFT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_MIDDLE_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@']=. [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL']=. [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_RIGHT_WHITESPACE\C-@ ']=' .' [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_SEGMENT_SEPARATOR']=. [$'_p9k_get_icon prompt_vim_shell\C-@RIGHT_SUBSEGMENT_SEPARATOR']=%244F. [$'_p9k_get_icon prompt_vim_shell\C-@VIM_ICON']=. [$'_p9k_get_icon prompt_vim_shell\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@ ']=' .' [$'_p9k_left_prompt_segment\C-@prompt_dir_DEFAULT\C-@blue\C-@0\C-@\C-A\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=124}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+126}}${_p9k__n:=127}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{031\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_dir_DEFAULT_NOT_WRITABLE\C-@blue\C-@0\C-@LOCK_ICON\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=120}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+122}}${_p9k__n:=123}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{031\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_dir_ETC_NOT_WRITABLE\C-@blue\C-@0\C-@LOCK_ICON\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=112}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+114}}${_p9k__n:=115}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{031\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_dir_HOME\C-@blue\C-@0\C-@\C-A\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=44}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+46}}${_p9k__n:=47}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{031\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_dir_HOME_SUBFOLDER\C-@blue\C-@0\C-@\C-A\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=68}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+70}}${_p9k__n:=71}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{031\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@blue\C-@0\C-@LOCK_ICON\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=140}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+142}}${_p9k__n:=143}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1ldir+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{031\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_os_icon\C-@black\C-@white\C-@\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=40}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+42}}${_p9k__n:=43}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1los_icon+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__c}%b%K{236\\}%F{255\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_left_prompt_segment\C-@prompt_vcs_CLEAN\C-@2\C-@0\C-@VCS_GIT_GITHUB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=104}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+106}}${_p9k__n:=107}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{076\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_CLEAN\C-@2\C-@0\C-@VCS_GIT_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=96}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+98}}${_p9k__n:=99}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{076\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_LOADING\C-@8\C-@0\C-@VCS_GIT_GITHUB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=72}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+74}}${_p9k__n:=75}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(0)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}%b%K{236\\}%F{244\\}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{000\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_LOADING\C-@8\C-@0\C-@VCS_GIT_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=108}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+110}}${_p9k__n:=111}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(0)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}%b%K{236\\}%F{244\\}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{000\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_LOADING\C-@8\C-@0\C-@VCS_LOADING_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=132}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+134}}${_p9k__n:=135}${P9K_VISUAL_IDENTIFIER::=}${_p9k__c::="${$((my_git_formatter(0)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__c}%b%K{236\\}%F{000\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_MODIFIED\C-@3\C-@0\C-@VCS_GIT_GITHUB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=76}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+78}}${_p9k__n:=79}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}%b%K{236\\}%F{076\\}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{178\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_MODIFIED\C-@3\C-@0\C-@VCS_GIT_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=84}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+86}}${_p9k__n:=87}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}%b%K{236\\}%F{076\\}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{178\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_UNTRACKED\C-@2\C-@0\C-@VCS_GIT_GITHUB_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=100}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+102}}${_p9k__n:=103}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{076\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_left_prompt_segment\C-@prompt_vcs_UNTRACKED\C-@2\C-@0\C-@VCS_GIT_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=116}}${_p9k__n:=${${(M)${:-x236}:#x($_p9k__bg|${_p9k__bg:-0})}:+118}}${_p9k__n:=119}${P9K_VISUAL_IDENTIFIER::=}${_p9k__v::=}${_p9k__c::="${$((my_git_formatter(1)))+${my_git_format}}"}${_p9k__e::=${${_p9k__1lvcs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${${_p9k_t[$_p9k__n]/<_p9k__ss>/$_p9k__ss}/<_p9k__s>/$_p9k__s}${_p9k__v}${${(M)_p9k__e:#11}:+ }${_p9k__c}%b%K{236\\}%F{076\\} ${${:-${_p9k__s::=%F{236\\}}${_p9k__ss::=%244F}${_p9k__sss::=%F{236\\}}${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@10' [$'_p9k_param \C-@LEFT_SEGMENT_END_SEPARATOR\C-@ ']=' .' [$'_p9k_param \C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param \C-@RULER_CHAR\C-@\\u2500']='\u2500.' [$'_p9k_param \C-@VCS_BRANCH_ICON\C-@\\uF126 ']='\uF126 .' [$'_p9k_param \C-@VCS_STAGED_ICON\C-@\\uF055']='\uF055.' [$'_p9k_param \C-@VCS_UNSTAGED_ICON\C-@\\uF06A']='\uF06A.' [$'_p9k_param prompt_background_jobs\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_background_jobs\C-@BACKGROUND_JOBS_ICON\C-@\\uF013']='\uF013.' [$'_p9k_param prompt_background_jobs\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_background_jobs\C-@FOREGROUND\C-@cyan']=37. [$'_p9k_param prompt_background_jobs\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_background_jobs\C-@PREFIX\C-@']=. [$'_p9k_param prompt_background_jobs\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_background_jobs\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_background_jobs\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_background_jobs\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_background_jobs\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_background_jobs\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_background_jobs\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_background_jobs\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_background_jobs\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_background_jobs\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_background_jobs\C-@VISUAL_IDENTIFIER_COLOR\C-@037']=037. [$'_p9k_param prompt_background_jobs\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_background_jobs\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_command_execution_time\C-@BACKGROUND\C-@red']=236. [$'_p9k_param prompt_command_execution_time\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_command_execution_time\C-@EXECUTION_TIME_ICON\C-@\\uF252']='\uF252.' [$'_p9k_param prompt_command_execution_time\C-@FOREGROUND\C-@yellow1']=248. [$'_p9k_param prompt_command_execution_time\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_command_execution_time\C-@PREFIX\C-@']=. [$'_p9k_param prompt_command_execution_time\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_command_execution_time\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_command_execution_time\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_command_execution_time\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_command_execution_time\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_command_execution_time\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_command_execution_time\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_command_execution_time\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_command_execution_time\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_command_execution_time\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_command_execution_time\C-@VISUAL_IDENTIFIER_COLOR\C-@248']=248. [$'_p9k_param prompt_command_execution_time\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_command_execution_time\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_DEFAULT\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_context_DEFAULT\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']=. [$'_p9k_param prompt_context_DEFAULT\C-@FOREGROUND\C-@yellow']=180. [$'_p9k_param prompt_context_DEFAULT\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_context_DEFAULT\C-@PREFIX\C-@']=. [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_context_DEFAULT\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_context_DEFAULT\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_context_DEFAULT\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_context_DEFAULT\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_context_DEFAULT\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=. [$'_p9k_param prompt_context_DEFAULT\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_ROOT\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_context_ROOT\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_context_ROOT\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_param prompt_context_ROOT\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_context_ROOT\C-@PREFIX\C-@']=. [$'_p9k_param prompt_context_ROOT\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_ROOT\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_context_ROOT\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_context_ROOT\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_context_ROOT\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_context_ROOT\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_context_ROOT\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_context_ROOT\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_context_ROOT\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_context_ROOT\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_context_ROOT\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT\C-@ANCHOR_BOLD\C-@']=true. [$'_p9k_param prompt_dir_DEFAULT\C-@ANCHOR_FOREGROUND\C-@']=39. [$'_p9k_param prompt_dir_DEFAULT\C-@BACKGROUND\C-@blue']=236. [$'_p9k_param prompt_dir_DEFAULT\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_dir_DEFAULT\C-@FOLDER_ICON\C-@\\uF115']='\uF115.' [$'_p9k_param prompt_dir_DEFAULT\C-@FOREGROUND\C-@0']=31. [$'_p9k_param prompt_dir_DEFAULT\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_dir_DEFAULT\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_dir_DEFAULT\C-@PATH_HIGHLIGHT_BOLD\C-@']=. [$'_p9k_param prompt_dir_DEFAULT\C-@PATH_SEPARATOR\C-@/']=/. [$'_p9k_param prompt_dir_DEFAULT\C-@PREFIX\C-@']=. [$'_p9k_param prompt_dir_DEFAULT\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_dir_DEFAULT\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_param prompt_dir_DEFAULT\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_dir_DEFAULT\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_dir_DEFAULT\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_param prompt_dir_DEFAULT\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_dir_DEFAULT\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@ANCHOR_BOLD\C-@']=true. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@ANCHOR_FOREGROUND\C-@']=39. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@BACKGROUND\C-@blue']=236. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@FOREGROUND\C-@0']=31. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@LOCK_ICON\C-@\\UF023']='\UF023.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@PATH_HIGHLIGHT_BOLD\C-@']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@PATH_SEPARATOR\C-@/']=/. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@PREFIX\C-@']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_dir_DEFAULT_NOT_WRITABLE\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_ETC\C-@ETC_ICON\C-@\\uF013']='\uF013.' [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@ANCHOR_BOLD\C-@']=true. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@ANCHOR_FOREGROUND\C-@']=39. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@BACKGROUND\C-@blue']=236. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@FOREGROUND\C-@0']=31. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@LOCK_ICON\C-@\\UF023']='\UF023.' [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@PATH_HIGHLIGHT_BOLD\C-@']=. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@PATH_SEPARATOR\C-@/']=/. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@PREFIX\C-@']=. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_dir_ETC_NOT_WRITABLE\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME\C-@ANCHOR_BOLD\C-@']=true. [$'_p9k_param prompt_dir_HOME\C-@ANCHOR_FOREGROUND\C-@']=39. [$'_p9k_param prompt_dir_HOME\C-@BACKGROUND\C-@blue']=236. [$'_p9k_param prompt_dir_HOME\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_dir_HOME\C-@FOREGROUND\C-@0']=31. [$'_p9k_param prompt_dir_HOME\C-@HOME_ICON\C-@\\uF015']='\uF015.' [$'_p9k_param prompt_dir_HOME\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_dir_HOME\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_dir_HOME\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_dir_HOME\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_dir_HOME\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_dir_HOME\C-@PATH_HIGHLIGHT_BOLD\C-@']=. [$'_p9k_param prompt_dir_HOME\C-@PATH_SEPARATOR\C-@/']=/. [$'_p9k_param prompt_dir_HOME\C-@PREFIX\C-@']=. [$'_p9k_param prompt_dir_HOME\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_dir_HOME\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_param prompt_dir_HOME\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_dir_HOME\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_dir_HOME\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_param prompt_dir_HOME\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_dir_HOME\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@ANCHOR_BOLD\C-@']=true. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@ANCHOR_FOREGROUND\C-@']=39. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@BACKGROUND\C-@blue']=236. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@FOREGROUND\C-@0']=31. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@HOME_SUB_ICON\C-@\\uF07C']='\uF07C.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@PATH_HIGHLIGHT_BOLD\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@PATH_SEPARATOR\C-@/']=/. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@PREFIX\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@ANCHOR_BOLD\C-@']=true. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@ANCHOR_FOREGROUND\C-@']=39. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@BACKGROUND\C-@blue']=236. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@FOREGROUND\C-@0']=31. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@LOCK_ICON\C-@\\UF023']='\UF023.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@PATH_HIGHLIGHT_BOLD\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@PATH_SEPARATOR\C-@/']=/. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@PREFIX\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@SHORTENED_FOREGROUND\C-@']=103. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_COLOR\C-@031']=031. [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_dir_HOME_SUBFOLDER_NOT_WRITABLE\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_direnv\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_direnv\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_direnv\C-@DIRENV_ICON\C-@\\u25BC']='\u25BC.' [$'_p9k_param prompt_direnv\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_param prompt_direnv\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_direnv\C-@PREFIX\C-@']=. [$'_p9k_param prompt_direnv\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_direnv\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_direnv\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_direnv\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_direnv\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_direnv\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_direnv\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_direnv\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_direnv\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_direnv\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_direnv\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_param prompt_direnv\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_direnv\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_empty_line\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_midnight_commander\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_midnight_commander\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_midnight_commander\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_param prompt_midnight_commander\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_midnight_commander\C-@MIDNIGHT_COMMANDER_ICON\C-@mc']=mc. [$'_p9k_param prompt_midnight_commander\C-@PREFIX\C-@']=. [$'_p9k_param prompt_midnight_commander\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_midnight_commander\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_midnight_commander\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_midnight_commander\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_midnight_commander\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_midnight_commander\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_midnight_commander\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_midnight_commander\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_midnight_commander\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_midnight_commander\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_midnight_commander\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_param prompt_midnight_commander\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_midnight_commander\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nix_shell\C-@BACKGROUND\C-@4']=236. [$'_p9k_param prompt_nix_shell\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_nix_shell\C-@FOREGROUND\C-@0']=74. [$'_p9k_param prompt_nix_shell\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_nix_shell\C-@NIX_SHELL_ICON\C-@\\uF313']='\uF313.' [$'_p9k_param prompt_nix_shell\C-@PREFIX\C-@']=. [$'_p9k_param prompt_nix_shell\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nix_shell\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nix_shell\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_nix_shell\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_nix_shell\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nix_shell\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_nix_shell\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_nix_shell\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_nix_shell\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_nix_shell\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_nix_shell\C-@VISUAL_IDENTIFIER_COLOR\C-@074']=074. [$'_p9k_param prompt_nix_shell\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_nix_shell\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nnn\C-@BACKGROUND\C-@6']=236. [$'_p9k_param prompt_nnn\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_nnn\C-@FOREGROUND\C-@0']=72. [$'_p9k_param prompt_nnn\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_nnn\C-@NNN_ICON\C-@nnn']=nnn. [$'_p9k_param prompt_nnn\C-@PREFIX\C-@']=. [$'_p9k_param prompt_nnn\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nnn\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nnn\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_nnn\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_nnn\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_nnn\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_nnn\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_nnn\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_nnn\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_nnn\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_nnn\C-@VISUAL_IDENTIFIER_COLOR\C-@072']=072. [$'_p9k_param prompt_nnn\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_nnn\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_os_icon\C-@APPLE_ICON\C-@\\uF179']='\uF179.' [$'_p9k_param prompt_os_icon\C-@BACKGROUND\C-@black']=236. [$'_p9k_param prompt_os_icon\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_os_icon\C-@FOREGROUND\C-@white']=255. [$'_p9k_param prompt_os_icon\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_os_icon\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_os_icon\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_os_icon\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_os_icon\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_os_icon\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_os_icon\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_os_icon\C-@PREFIX\C-@']=. [$'_p9k_param prompt_os_icon\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_os_icon\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_os_icon\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_os_icon\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_os_icon\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_ranger\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_ranger\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_ranger\C-@FOREGROUND\C-@yellow']=178. [$'_p9k_param prompt_ranger\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_ranger\C-@PREFIX\C-@']=. [$'_p9k_param prompt_ranger\C-@RANGER_ICON\C-@\\uF00b']='\uF00b.' [$'_p9k_param prompt_ranger\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_ranger\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_ranger\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_ranger\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_ranger\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_ranger\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_ranger\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_ranger\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_ranger\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_ranger\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_ranger\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=178. [$'_p9k_param prompt_ranger\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_ranger\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_ruler\C-@BACKGROUND\C-@']=236. [$'_p9k_param prompt_ruler\C-@FOREGROUND\C-@']=. [$'_p9k_param prompt_status_ERROR\C-@BACKGROUND\C-@red']=236. [$'_p9k_param prompt_status_ERROR\C-@CARRIAGE_RETURN_ICON\C-@\\u21B5']='\u21B5.' [$'_p9k_param prompt_status_ERROR\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_status_ERROR\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_param prompt_status_ERROR\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_status_ERROR\C-@PREFIX\C-@']=. [$'_p9k_param prompt_status_ERROR\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_status_ERROR\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_status_ERROR\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_status_ERROR\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_status_ERROR\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_status_ERROR\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_status_ERROR\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_status_ERROR\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_param prompt_status_ERROR\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=✘. [$'_p9k_param prompt_status_ERROR\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_PIPE\C-@BACKGROUND\C-@red']=236. [$'_p9k_param prompt_status_ERROR_PIPE\C-@CARRIAGE_RETURN_ICON\C-@\\u21B5']='\u21B5.' [$'_p9k_param prompt_status_ERROR_PIPE\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_status_ERROR_PIPE\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_param prompt_status_ERROR_PIPE\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_status_ERROR_PIPE\C-@PREFIX\C-@']=. [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_status_ERROR_PIPE\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_status_ERROR_PIPE\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_status_ERROR_PIPE\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_status_ERROR_PIPE\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_status_ERROR_PIPE\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_param prompt_status_ERROR_PIPE\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=✘. [$'_p9k_param prompt_status_ERROR_PIPE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@BACKGROUND\C-@red']=236. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@CARRIAGE_RETURN_ICON\C-@\\u21B5']='\u21B5.' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@FOREGROUND\C-@yellow1']=160. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@PREFIX\C-@']=. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@VISUAL_IDENTIFIER_COLOR\C-@160']=160. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=✘. [$'_p9k_param prompt_status_ERROR_SIGNAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_status_OK\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_status_OK\C-@FOREGROUND\C-@green']=70. [$'_p9k_param prompt_status_OK\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_status_OK\C-@OK_ICON\C-@\\uF00C']='\uF00C.' [$'_p9k_param prompt_status_OK\C-@PREFIX\C-@']=. [$'_p9k_param prompt_status_OK\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_status_OK\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_status_OK\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_status_OK\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_status_OK\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_status_OK\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_status_OK\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_status_OK\C-@VISUAL_IDENTIFIER_COLOR\C-@070']=070. [$'_p9k_param prompt_status_OK\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=✔. [$'_p9k_param prompt_status_OK\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK_PIPE\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_status_OK_PIPE\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_status_OK_PIPE\C-@FOREGROUND\C-@green']=70. [$'_p9k_param prompt_status_OK_PIPE\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_status_OK_PIPE\C-@OK_ICON\C-@\\uF00C']='\uF00C.' [$'_p9k_param prompt_status_OK_PIPE\C-@PREFIX\C-@']=. [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_status_OK_PIPE\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_status_OK_PIPE\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_status_OK_PIPE\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_status_OK_PIPE\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_status_OK_PIPE\C-@VISUAL_IDENTIFIER_COLOR\C-@070']=070. [$'_p9k_param prompt_status_OK_PIPE\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']=✔. [$'_p9k_param prompt_status_OK_PIPE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_CLEAN\C-@BACKGROUND\C-@2']=236. [$'_p9k_param prompt_vcs_CLEAN\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_CLEAN\C-@CONTENT_EXPANSION\C-@x']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_CLEAN\C-@FOREGROUND\C-@0']=76. [$'_p9k_param prompt_vcs_CLEAN\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_vcs_CLEAN\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_vcs_CLEAN\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vcs_CLEAN\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vcs_CLEAN\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vcs_CLEAN\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vcs_CLEAN\C-@VCS_GIT_GITHUB_ICON\C-@\\uF113']='\uF113.' [$'_p9k_param prompt_vcs_CLEAN\C-@VCS_GIT_ICON\C-@\\uF1D3']='\uF1D3.' [$'_p9k_param prompt_vcs_CLEAN\C-@VISUAL_IDENTIFIER_COLOR\C-@076']=76. [$'_p9k_param prompt_vcs_CLEAN\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vcs_CLEAN\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_CONFLICTED\C-@CONTENT_EXPANSION\C-@x']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_LOADING\C-@BACKGROUND\C-@8']=236. [$'_p9k_param prompt_vcs_LOADING\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${$((my_git_formatter(0)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_LOADING\C-@CONTENT_EXPANSION\C-@x']='${$((my_git_formatter(0)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_LOADING\C-@FOREGROUND\C-@0']=0. [$'_p9k_param prompt_vcs_LOADING\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_vcs_LOADING\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_vcs_LOADING\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vcs_LOADING\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vcs_LOADING\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vcs_LOADING\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vcs_LOADING\C-@VCS_GIT_GITHUB_ICON\C-@\\uF113']='\uF113.' [$'_p9k_param prompt_vcs_LOADING\C-@VCS_GIT_ICON\C-@\\uF1D3']='\uF1D3.' [$'_p9k_param prompt_vcs_LOADING\C-@VCS_LOADING_ICON']=. [$'_p9k_param prompt_vcs_LOADING\C-@VISUAL_IDENTIFIER_COLOR\C-@000']=244. [$'_p9k_param prompt_vcs_LOADING\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vcs_LOADING\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_MODIFIED\C-@BACKGROUND\C-@3']=236. [$'_p9k_param prompt_vcs_MODIFIED\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_MODIFIED\C-@CONTENT_EXPANSION\C-@x']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_MODIFIED\C-@FOREGROUND\C-@0']=178. [$'_p9k_param prompt_vcs_MODIFIED\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_vcs_MODIFIED\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_vcs_MODIFIED\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vcs_MODIFIED\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vcs_MODIFIED\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vcs_MODIFIED\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vcs_MODIFIED\C-@VCS_GIT_GITHUB_ICON\C-@\\uF113']='\uF113.' [$'_p9k_param prompt_vcs_MODIFIED\C-@VCS_GIT_ICON\C-@\\uF1D3']='\uF1D3.' [$'_p9k_param prompt_vcs_MODIFIED\C-@VISUAL_IDENTIFIER_COLOR\C-@178']=76. [$'_p9k_param prompt_vcs_MODIFIED\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vcs_MODIFIED\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_UNTRACKED\C-@BACKGROUND\C-@2']=236. [$'_p9k_param prompt_vcs_UNTRACKED\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@CONTENT_EXPANSION\C-@x']='${$((my_git_formatter(1)))+${my_git_format}}.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@FOREGROUND\C-@0']=76. [$'_p9k_param prompt_vcs_UNTRACKED\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']='\uE0B0.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_SEGMENT_SEPARATOR\C-@\\uE0B0']='\uE0B0.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@LEFT_SUBSEGMENT_SEPARATOR\C-@\\uE0B1']='%244F\uE0B1.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vcs_UNTRACKED\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vcs_UNTRACKED\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vcs_UNTRACKED\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vcs_UNTRACKED\C-@VCS_GIT_GITHUB_ICON\C-@\\uF113']='\uF113.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@VCS_GIT_ICON\C-@\\uF1D3']='\uF1D3.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@VISUAL_IDENTIFIER_COLOR\C-@076']=76. [$'_p9k_param prompt_vcs_UNTRACKED\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vcs_UNTRACKED\C-@WHITESPACE_BETWEEN_LEFT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_NORMAL\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_vi_mode_NORMAL\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_vi_mode_NORMAL\C-@FOREGROUND\C-@white']=106. [$'_p9k_param prompt_vi_mode_NORMAL\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vi_mode_NORMAL\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_vi_mode_NORMAL\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_vi_mode_NORMAL\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vi_mode_NORMAL\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vi_mode_NORMAL\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vi_mode_NORMAL\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vi_mode_NORMAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@FOREGROUND\C-@blue']=172. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vi_mode_OVERWRITE\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_VISUAL\C-@BACKGROUND\C-@0']=236. [$'_p9k_param prompt_vi_mode_VISUAL\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_vi_mode_VISUAL\C-@FOREGROUND\C-@white']=68. [$'_p9k_param prompt_vi_mode_VISUAL\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vi_mode_VISUAL\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_vi_mode_VISUAL\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_vi_mode_VISUAL\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vi_mode_VISUAL\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vi_mode_VISUAL\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vi_mode_VISUAL\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vi_mode_VISUAL\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vim_shell\C-@BACKGROUND\C-@green']=236. [$'_p9k_param prompt_vim_shell\C-@CONTENT_EXPANSION\C-@${P9K_CONTENT}']='${P9K_CONTENT}.' [$'_p9k_param prompt_vim_shell\C-@FOREGROUND\C-@0']=34. [$'_p9k_param prompt_vim_shell\C-@ICON_BEFORE_CONTENT\C-@']=. [$'_p9k_param prompt_vim_shell\C-@PREFIX\C-@']=. [$'_p9k_param prompt_vim_shell\C-@RIGHT_LEFT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vim_shell\C-@RIGHT_MIDDLE_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vim_shell\C-@RIGHT_PROMPT_FIRST_SEGMENT_START_SYMBOL\C-@\C-A']='\uE0B2.' [$'_p9k_param prompt_vim_shell\C-@RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL\C-@\C-A']=. [$'_p9k_param prompt_vim_shell\C-@RIGHT_RIGHT_WHITESPACE\C-@\C-A ']=$'\C-A .' [$'_p9k_param prompt_vim_shell\C-@RIGHT_SEGMENT_SEPARATOR\C-@\\uE0B2']='\uE0B2.' [$'_p9k_param prompt_vim_shell\C-@RIGHT_SUBSEGMENT_SEPARATOR\C-@\\uE0B3']='%244F\uE0B3.' [$'_p9k_param prompt_vim_shell\C-@SELF_JOINED\C-@false']=false. [$'_p9k_param prompt_vim_shell\C-@SHOW_ON_UPGLOB\C-@']=. [$'_p9k_param prompt_vim_shell\C-@SUFFIX\C-@']=. [$'_p9k_param prompt_vim_shell\C-@VIM_ICON\C-@\\uE62B']='\uE62B.' [$'_p9k_param prompt_vim_shell\C-@VISUAL_IDENTIFIER_COLOR\C-@034']=034. [$'_p9k_param prompt_vim_shell\C-@VISUAL_IDENTIFIER_EXPANSION\C-@${P9K_VISUAL_IDENTIFIER}']='${P9K_VISUAL_IDENTIFIER}.' [$'_p9k_param prompt_vim_shell\C-@WHITESPACE_BETWEEN_RIGHT_SEGMENTS\C-@\C-A ']=$'\C-A .' [$'_p9k_right_prompt_segment\C-@prompt_background_jobs\C-@0\C-@cyan\C-@BACKGROUND_JOBS_ICON\C-@3']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=12}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+14}}${_p9k__n:=15}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rbackground_jobs+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{037\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{037\\} %b%K{236\\}%F{037\\}}${_p9k__sss::=%b%K{236\\}%F{037\\} }${_p9k__i::=3}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_command_execution_time\C-@red\C-@yellow1\C-@EXECUTION_TIME_ICON\C-@2']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=80}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+82}}${_p9k__n:=83}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rcommand_execution_time+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{248\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{248\\} %b%K{236\\}%F{248\\}}${_p9k__sss::=%b%K{236\\}%F{248\\} }${_p9k__i::=2}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_context_DEFAULT\C-@0\C-@yellow\C-@\C-@29']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=20}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+22}}${_p9k__n:=23}${_p9k__c::=}${_p9k__e::=${${_p9k__1rcontext+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{180\\}${${:-${_p9k__w::=%b%K{236\\}%F{180\\} %b%K{236\\}%F{180\\}}${_p9k__sss::=%b%K{236\\}%F{180\\} }${_p9k__i::=29}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_context_ROOT\C-@0\C-@yellow\C-@\C-@29']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=24}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+26}}${_p9k__n:=27}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rcontext+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{178\\}${${:-${_p9k__w::=%b%K{236\\}%F{178\\} %b%K{236\\}%F{178\\}}${_p9k__sss::=%b%K{236\\}%F{178\\} }${_p9k__i::=29}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_direnv\C-@0\C-@yellow\C-@DIRENV_ICON\C-@4']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=16}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+18}}${_p9k__n:=19}${_p9k__v::=▼}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rdirenv+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{178\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{178\\} %b%K{236\\}%F{178\\}}${_p9k__sss::=%b%K{236\\}%F{178\\} }${_p9k__i::=4}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_midnight_commander\C-@0\C-@yellow\C-@MIDNIGHT_COMMANDER_ICON\C-@34']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=60}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+62}}${_p9k__n:=63}${_p9k__v::=mc}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rmidnight_commander+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{178\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{178\\} %b%K{236\\}%F{178\\}}${_p9k__sss::=%b%K{236\\}%F{178\\} }${_p9k__i::=34}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_nix_shell\C-@4\C-@0\C-@NIX_SHELL_ICON\C-@35']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=64}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+66}}${_p9k__n:=67}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rnix_shell+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{074\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{074\\} %b%K{236\\}%F{074\\}}${_p9k__sss::=%b%K{236\\}%F{074\\} }${_p9k__i::=35}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_nnn\C-@6\C-@0\C-@NNN_ICON\C-@32']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=52}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+54}}${_p9k__n:=55}${_p9k__v::=nnn}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rnnn+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{072\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{072\\} %b%K{236\\}%F{072\\}}${_p9k__sss::=%b%K{236\\}%F{072\\} }${_p9k__i::=32}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_ranger\C-@0\C-@yellow\C-@RANGER_ICON\C-@31']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=48}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+50}}${_p9k__n:=51}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rranger+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{178\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{178\\} %b%K{236\\}%F{178\\}}${_p9k__sss::=%b%K{236\\}%F{178\\} }${_p9k__i::=31}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=88}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+90}}${_p9k__n:=91}${_p9k__v::="✘"}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{160\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{160\\} %b%K{236\\}%F{160\\}}${_p9k__sss::=%b%K{236\\}%F{160\\} }${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_status_ERROR_PIPE\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=128}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+130}}${_p9k__n:=131}${_p9k__v::="✘"}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{160\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{160\\} %b%K{236\\}%F{160\\}}${_p9k__sss::=%b%K{236\\}%F{160\\} }${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_status_ERROR_SIGNAL\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=92}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+94}}${_p9k__n:=95}${_p9k__v::="✘"}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{160\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{160\\} %b%K{236\\}%F{160\\}}${_p9k__sss::=%b%K{236\\}%F{160\\} }${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_status_OK\C-@0\C-@green\C-@OK_ICON\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=8}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+10}}${_p9k__n:=11}${_p9k__v::="✔"}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{070\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{070\\} %b%K{236\\}%F{070\\}}${_p9k__sss::=%b%K{236\\}%F{070\\} }${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_status_OK_PIPE\C-@0\C-@green\C-@OK_ICON\C-@1']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=136}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+138}}${_p9k__n:=139}${_p9k__v::="✔"}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rstatus+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{070\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{070\\} %b%K{236\\}%F{070\\}}${_p9k__sss::=%b%K{236\\}%F{070\\} }${_p9k__i::=1}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_vi_mode_NORMAL\C-@0\C-@white\C-@\C-@36']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=32}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+34}}${_p9k__n:=35}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rvi_mode+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{106\\}${${:-${_p9k__w::=%b%K{236\\}%F{106\\} %b%K{236\\}%F{106\\}}${_p9k__sss::=%b%K{236\\}%F{106\\} }${_p9k__i::=36}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_vi_mode_OVERWRITE\C-@0\C-@blue\C-@\C-@36']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=28}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+30}}${_p9k__n:=31}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rvi_mode+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{172\\}${${:-${_p9k__w::=%b%K{236\\}%F{172\\} %b%K{236\\}%F{172\\}}${_p9k__sss::=%b%K{236\\}%F{172\\} }${_p9k__i::=36}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_vi_mode_VISUAL\C-@0\C-@white\C-@\C-@36']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=36}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+38}}${_p9k__n:=39}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rvi_mode+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}0}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{068\\}${${:-${_p9k__w::=%b%K{236\\}%F{068\\} %b%K{236\\}%F{068\\}}${_p9k__sss::=%b%K{236\\}%F{068\\} }${_p9k__i::=36}${_p9k__bg::=236}}+}}\C-@00' [$'_p9k_right_prompt_segment\C-@prompt_vim_shell\C-@green\C-@0\C-@VIM_ICON\C-@33']=$'${_p9k__n::=}${${${_p9k__bg:-0}:#NONE}:-${_p9k__n::=56}}${_p9k__n:=${${(M)${:-x$_p9k__bg}:#x(236|236)}:+58}}${_p9k__n:=59}${_p9k__v::=}${_p9k__c::="${P9K_CONTENT}"}${_p9k__e::=${${_p9k__1rvim_shell+00}:-${${(%):-$_p9k__c%1(l.1.0)}[-1]}1}}}+}${${_p9k__e:#00}:+${_p9k_t[$_p9k__n]/<_p9k__w>/$_p9k__w}${_p9k__c}%b%K{236\\}%F{034\\}${${(M)_p9k__e:#11}:+ }$_p9k__v${${:-${_p9k__w::=%b%K{236\\}%F{034\\} %b%K{236\\}%F{034\\}}${_p9k__sss::=%b%K{236\\}%F{034\\} }${_p9k__i::=33}${_p9k__bg::=236}}+}}\C-@00' [$'prompt_status\C-@0\C-@0\C-@0']=$'prompt_status_OK\C-@0\C-@green\C-@OK_ICON\C-@0\C-@\C-@0' [$'prompt_status\C-@0\C-@0']=$'prompt_status_OK\C-@0\C-@green\C-@OK_ICON\C-@0\C-@\C-@0' [$'prompt_status\C-@0\C-@1\C-@0']=$'prompt_status_OK_PIPE\C-@0\C-@green\C-@OK_ICON\C-@0\C-@\C-@1|00' [$'prompt_status\C-@1\C-@0\C-@1']=$'prompt_status_ERROR_PIPE\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@0|10' [$'prompt_status\C-@1\C-@1']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@10' [$'prompt_status\C-@1\C-@141\C-@1']=$'prompt_status_ERROR_PIPE\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@PIPE|10' [$'prompt_status\C-@126\C-@126']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@1260' [$'prompt_status\C-@127\C-@127']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@1270' [$'prompt_status\C-@128\C-@128']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@1280' [$'prompt_status\C-@129\C-@129']=$'prompt_status_ERROR_SIGNAL\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@HUP0' [$'prompt_status\C-@130\C-@130']=$'prompt_status_ERROR_SIGNAL\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@INT0' [$'prompt_status\C-@141\C-@141']=$'prompt_status_ERROR_SIGNAL\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@PIPE0' [$'prompt_status\C-@2\C-@2']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@20' [$'prompt_status\C-@253\C-@253']=$'prompt_status_ERROR_SIGNAL\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@2530' [$'prompt_status\C-@255\C-@141\C-@255']=$'prompt_status_ERROR_PIPE\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@PIPE|2550' [$'prompt_status\C-@255\C-@255']=$'prompt_status_ERROR_SIGNAL\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@2550' [$'prompt_status\C-@3\C-@3']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@30' [$'prompt_status\C-@65\C-@65']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@650' [$'prompt_status\C-@66\C-@66']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@660' [$'prompt_status\C-@7\C-@7']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@70' [$'prompt_status\C-@78\C-@78']=$'prompt_status_ERROR\C-@red\C-@yellow1\C-@CARRIAGE_RETURN_ICON\C-@0\C-@\C-@780') 
 	typeset -g -a _p9k_line_gap_post=() 
 	typeset -g _p9k_os=OSX 
 	typeset -g _POWERLEVEL9K_STATUS_OK_PIPE_VISUAL_IDENTIFIER_EXPANSION=✔ 
@@ -11912,7 +10517,7 @@ _p9k_restore_state_impl () {
 	typeset -g _POWERLEVEL9K_PHP_VERSION_FOREGROUND=99 
 	typeset -g _POWERLEVEL9K_ASDF_NODEJS_FOREGROUND=70 
 	typeset -g -i _POWERLEVEL9K_ANACONDA_SHOW_PYTHON_VERSION=1 
-	typeset -g -A _p9k_dumped_instant_prompt_sigs=([/:0:%]=1 [/System/Library/Templates/Data/Applications/Safari.app/Contents:0:%]=1 [/System/Library/Templates/Data/Applications/Safari.app:0:%]=1 [/System/Library/Templates/Data/Applications:0:%]=1 [/System/Library/Templates/Data:0:%]=1 [/Users/LucasLarson/.oh-my-zsh/plugins/alias-finder:0:%]=1 [/Users/LucasLarson/.oh-my-zsh/plugins/thefuck:0:%]=1 [/Users/LucasLarson/.oh-my-zsh/plugins:0:%]=1 [/Users/LucasLarson/.oh-my-zsh:0:%]=1 [/Users/LucasLarson/Code/BashHub/bashhub/shell:0:%]=1 [/Users/LucasLarson/Code:0:%]=1 [/Users/LucasLarson/Desktop/trash:0:%]=1 ['/Users/LucasLarson/Dropbox/dotfiles/!=Mackup:0:%']=1 [/Users/LucasLarson/Dropbox/dotfiles/Library/Preferences/VisualStudio/8.0:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/Library/Preferences/VisualStudio:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/Library/Preferences:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/Library:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles:0:%]=1 ['/Users/LucasLarson/Library/Application Support/JetBrains:0:%']=1 ['/Users/LucasLarson/Library/Mobile Documents/JFJWWP64QD~com~goodiware~GoodReader/Documents/School/Superseded/CSCI136/bg:0:%']=1 [/Users/LucasLarson/c/BashHub/bashhub/shell:0:%]=1 [/Users/LucasLarson/c/BashHub:0:%]=1 [/Users/LucasLarson/c/BashTrash/OpenGenus/functions:0:%]=1 [/Users/LucasLarson/c/BashTrash/Sorting:0:%]=1 [/Users/LucasLarson/c/BashTrash:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/BillyWayneMcCann:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/BrianUstas:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/MarcCornellà/ohmyzsh:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/MarcCornellà:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/MarcoFerrari:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots:0:%]=1 [/Users/LucasLarson/c/Homebrew-brew/manpages:0:%]=1 [/Users/LucasLarson/c/Homebrew-brew:0:%]=1 [/Users/LucasLarson/c/ShellScripting/.github/workflows:0:%]=1 [/Users/LucasLarson/c/ShellScripting/.github:0:%]=1 [/Users/LucasLarson/c/ShellScripting:0:%]=1 [/Users/LucasLarson/c/bashtop/test/libs/bats/test/fixtures/bats:0:%]=1 [/Users/LucasLarson/c/bashtop/test/libs/bats/test/fixtures/suite/empty:0:%]=1 [/Users/LucasLarson/c/bashtop/test/libs/bats/test/fixtures:0:%]=1 [/Users/LucasLarson/c/bashtop/test/libs/bats:0:%]=1 [/Users/LucasLarson/c/bashtop/test/libs:0:%]=1 [/Users/LucasLarson/c/bashtop:0:%]=1 [/Users/LucasLarson/c/dotfiles/PaulIrish:0:%]=1 [/Users/LucasLarson/c/dotfiles/TimButters:0:%]=1 [/Users/LucasLarson/c/dotfiles/dotfile:0:%]=1 [/Users/LucasLarson/c/dotfiles/knoebber:0:%]=1 [/Users/LucasLarson/c/dotfiles:0:%]=1 [/Users/LucasLarson/c/gunstage:0:%]=1 [/Users/LucasLarson/c/oconnor.nyc:0:%]=1 [/Users/LucasLarson/c:0:%]=1 [/Users/LucasLarson:0:%]=1 ['/Volumes/Macintosh HD/.vol:0:%']=1 ['/Volumes/Macintosh HD/home:0:%']=1 ['/Volumes/Macintosh HD/opt/X11/lib/X11/fonts/100dpi:0:%']=1 ['/Volumes/Macintosh HD:0:%']=1 [/Volumes:0:%]=1 [/opt/X11/share/fonts/100dpi:0:%]=1 [/usr/local/libexec:0:%]=1 [/usr/local/opt/coreutils:0:%]=1 [/usr/local/opt:0:%]=1 [/usr/local:0:%]=1 [/var/tmp/kernel_panics:0:%]=1) 
+	typeset -g -A _p9k_dumped_instant_prompt_sigs=([/:0:%]=1 [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/bin:0:%]=1 [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include:0:%]=1 [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib:0:%]=1 [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr:0:%]=1 [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk:0:%]=1 [/Applications:0:%]=1 [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks:0:%]=1 [/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk:0:%]=1 [/Library/Developer/CommandLineTools/SDKs:0:%]=1 [/Library/Developer/CommandLineTools/usr/include/c++/v1:0:%]=1 [/Library/Developer/CommandLineTools/usr/include/c++:0:%]=1 [/Library/Developer/CommandLineTools:0:%]=1 [/Users/LucasLarson/.atom/.apm/_logs:0:%]=1 [/Users/LucasLarson/.bashhub:0:%]=1 [/Users/LucasLarson/.npm-packages:0:%]=1 [/Users/LucasLarson/.npm/_logs:0:%]=1 [/Users/LucasLarson/.npm:0:%]=1 [/Users/LucasLarson/.oh-my-zsh:0:%]=1 [/Users/LucasLarson/.rbenv/shims:0:%]=1 [/Users/LucasLarson/.rbenv:0:%]=1 [/Users/LucasLarson/.zsh_history+:0:%]=1 [/Users/LucasLarson/Code/BashTrash:0:%]=1 [/Users/LucasLarson/Code/CppSandbox:0:%]=1 [/Users/LucasLarson/Code/Flutter:0:%]=1 [/Users/LucasLarson/Code/GPG_Suite:0:%]=1 [/Users/LucasLarson/Code/GitHub/LucasLarson:0:%]=1 [/Users/LucasLarson/Code/LucasLarson.net:0:%]=1 [/Users/LucasLarson/Code/O’Connor.NYC:0:%]=1 [/Users/LucasLarson/Code/git-swift:0:%]=1 [/Users/LucasLarson/Code/git-take:0:%]=1 [/Users/LucasLarson/Code/git:0:%]=1 [/Users/LucasLarson/Code/gtake:0:%]=1 [/Users/LucasLarson/Code/oconnor.nyc/wp-content/plugins/duplicate-post:0:%]=1 [/Users/LucasLarson/Code/oconnor.nyc:0:%]=1 [/Users/LucasLarson/Code:0:%]=1 [/Users/LucasLarson/Desktop/pass:0:%]=1 [/Users/LucasLarson/Desktop/periodic/01_daily:0:%]=1 [/Users/LucasLarson/Desktop/periodic/daily:0:%]=1 [/Users/LucasLarson/Desktop/periodic/weekly:0:%]=1 [/Users/LucasLarson/Desktop/periodic:0:%]=1 [/Users/LucasLarson/Desktop/trash/.git/asdf/asdf/asdf:0:%]=1 [/Users/LucasLarson/Desktop/trash/.git/asdf/asdf/qwer:0:%]=1 [/Users/LucasLarson/Desktop/trash/.git:0:%]=1 [/Users/LucasLarson/Desktop/trash/5/5:0:%]=1 [/Users/LucasLarson/Desktop/trash/5:0:%]=1 [/Users/LucasLarson/Desktop/trash/asdfasdf:0:%]=1 [/Users/LucasLarson/Desktop/trash/git:0:%]=1 ['/Users/LucasLarson/Desktop/trash/jetpack 2:0:%']=1 [/Users/LucasLarson/Desktop/trash/jetpack:0:%]=1 [/Users/LucasLarson/Desktop/trash/new/old:0:%]=1 [/Users/LucasLarson/Desktop/trash/new:0:%]=1 ['/Users/LucasLarson/Desktop/trash/trasher/untitled folder/untitled folder/untitled folder:0:%']=1 [/Users/LucasLarson/Desktop/trash/trasher:0:%]=1 [/Users/LucasLarson/Desktop/trash/twentytwentyone:0:%]=1 [/Users/LucasLarson/Desktop/trash:0:%]=1 [/Users/LucasLarson/Desktop/trasher:0:%]=1 [/Users/LucasLarson/Desktop:0:%]=1 ['/Users/LucasLarson/Downloads/OLA Chase 2020:0:%']=1 [/Users/LucasLarson/Downloads/adobesajjad-attachments:0:%]=1 [/Users/LucasLarson/Downloads/d’oh!:0:%]=1 [/Users/LucasLarson/Downloads:0:%]=1 ['/Users/LucasLarson/Dropbox/My Mac (LBook.local)/Downloads:0:%']=1 [/Users/LucasLarson/Dropbox/Template:0:%]=1 ['/Users/LucasLarson/Dropbox/dotfiles/!=Mackup:0:%']=1 [/Users/LucasLarson/Dropbox/dotfiles/.git/modules:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/.git:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh/custom/plugins/git-take/bin:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh/custom/plugins/git-take:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh/custom/plugins/gunstage/bin:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh/custom/plugins/gunstage:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh/custom/plugins/safe:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh/custom/plugins:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh/custom:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh/themes:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/.oh-my-zsh:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/plugins/gunstage:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/report/updated_sources/.config/MusicBrainz:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/report/updated_sources/.config:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/report/updated_sources:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/report:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/setup/linux/alpine:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles/setup:0:%]=1 [/Users/LucasLarson/Dropbox/dotfiles:0:%]=1 ['/Users/LucasLarson/Library/Application Support:0:%']=1 ['/Users/LucasLarson/Library/Mobile Documents/JFJWWP64QD~com~goodiware~GoodReader/Documents/13/GR Library 1:0:%']=1 ['/Users/LucasLarson/Library/Mobile Documents/JFJWWP64QD~com~goodiware~GoodReader/Documents/13:0:%']=1 ['/Users/LucasLarson/Pictures/Photos Library.photoslibrary:0:%']=1 [/Users/LucasLarson/Pictures:0:%]=1 [/Users/LucasLarson/Public:0:%]=1 [/Users/LucasLarson/Sites:0:%]=1 [/Users/LucasLarson/c/AltStore/Carthage/Checkouts/LaunchAtLogin/.github:0:%]=1 [/Users/LucasLarson/c/AltStore:0:%]=1 [/Users/LucasLarson/c/BashAlgorithms/Classical/Sorting:0:%]=1 [/Users/LucasLarson/c/BashAlgorithms:0:%]=1 [/Users/LucasLarson/c/BashTrash/Alg-U:0:%]=1 [/Users/LucasLarson/c/BashTrash/DataStructures:0:%]=1 [/Users/LucasLarson/c/BashTrash/hackerrank:0:%]=1 [/Users/LucasLarson/c/BashTrash/report:0:%]=1 [/Users/LucasLarson/c/BashTrash:0:%]=1 [/Users/LucasLarson/c/BashTrashTemp/HackerRank:0:%]=1 [/Users/LucasLarson/c/BashTrashTemp/algorithms:0:%]=1 [/Users/LucasLarson/c/BashTrashTemp/hackerrank/arrays_in_bash:0:%]=1 [/Users/LucasLarson/c/BashTrashTemp/hackerrank/bash:0:%]=1 [/Users/LucasLarson/c/BashTrashTemp/hackerrank/grep_sed_awk:0:%]=1 [/Users/LucasLarson/c/BashTrashTemp/hackerrank/text_processing:0:%]=1 [/Users/LucasLarson/c/BashTrashTemp/hackerrank:0:%]=1 [/Users/LucasLarson/c/BashTrashTemp/sorting:0:%]=1 [/Users/LucasLarson/c/BashTrashTemp:0:%]=1 [/Users/LucasLarson/c/BashTrashTempTemp:0:%]=1 [/Users/LucasLarson/c/CFNF/assets:0:%]=1 [/Users/LucasLarson/c/CFNF:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/.github:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/FOSSilized_Daemon:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/dotfiles/files/.vim/pack/bundle/opt:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/deoplete/rplugin/python3/deoplete/source:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/deoplete/rplugin/python3/deoplete:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/deoplete/rplugin/python3:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/deoplete/rplugin:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/deoplete:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/ferret:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/nvim-lspconfig:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/pinnacle:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/scalpel:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/terminus:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/ultisnips:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt/vim-docvim:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files/.vim/pack/bundle/opt:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects/vim/files:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/aspects:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/roles/dotfiles/files/.vim/pack/bundle/opt:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/roles/dotfiles/files/.vim/pack/deoplete/opt:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/roles/dotfiles/files/.vim/pack:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/roles/dotfiles/files/.vim:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell/roles/dotfiles/files:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/GregHurrell:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/LarsKappert:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/MarcCornellà/ohmyzsh:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/MarcCornellà:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/MarcelBischoff/docs/cheatsheets:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots/MarcoFerrari:0:%]=1 [/Users/LucasLarson/c/ConnectTheDots:0:%]=1 [/Users/LucasLarson/c/ConnectTheDotsn’t:0:%]=1 [/Users/LucasLarson/c/CppSandbox:0:%]=1 [/Users/LucasLarson/c/GPG_Suite:0:%]=1 [/Users/LucasLarson/c/GitHubSlideshow:0:%]=1 [/Users/LucasLarson/c/GitTake:0:%]=1 [/Users/LucasLarson/c/GoogleTest:0:%]=1 [/Users/LucasLarson/c/HQ9:0:%]=1 [/Users/LucasLarson/c/LL.net/archive/rocio/swish:0:%]=1 [/Users/LucasLarson/c/LL.net/directory:0:%]=1 [/Users/LucasLarson/c/LL.net/error:0:%]=1 [/Users/LucasLarson/c/LL.net/google:0:%]=1 [/Users/LucasLarson/c/LL.net/ido:0:%]=1 [/Users/LucasLarson/c/LL.net/images:0:%]=1 [/Users/LucasLarson/c/LL.net/mondezo:0:%]=1 [/Users/LucasLarson/c/LL.net/rocio:0:%]=1 [/Users/LucasLarson/c/LL.net/ui:0:%]=1 [/Users/LucasLarson/c/LL.net/yahoo:0:%]=1 [/Users/LucasLarson/c/LL.net:0:%]=1 [/Users/LucasLarson/c/LucasLarson.github.io:0:%]=1 [/Users/LucasLarson/c/LucasLarson.net:0:%]=1 [/Users/LucasLarson/c/O’Connor.NYC/wp-content/plugins:0:%]=1 [/Users/LucasLarson/c/O’Connor.NYC/wp-content/themes/tmp/twentytwentyone:0:%]=1 [/Users/LucasLarson/c/O’Connor.NYC/wp-content/themes/tmp:0:%]=1 [/Users/LucasLarson/c/O’Connor.NYC:0:%]=1 [/Users/LucasLarson/c/OhMyZsh:0:%]=1 [/Users/LucasLarson/c/SwiftUIForBeginners/Chapter01:0:%]=1 [/Users/LucasLarson/c/SwiftUIForBeginners:0:%]=1 [/Users/LucasLarson/c/Ten:0:%]=1 [/Users/LucasLarson/c/UTM/Platform/Shared/HTerm/libapps:0:%]=1 [/Users/LucasLarson/c/UTM/qapi:0:%]=1 [/Users/LucasLarson/c/UTM:0:%]=1 [/Users/LucasLarson/c/bash-algorithms:0:%]=1 [/Users/LucasLarson/c/cf-temp-trash:0:%]=1 [/Users/LucasLarson/c/cppcheck:0:%]=1 [/Users/LucasLarson/c/cpplint:0:%]=1 ['/Users/LucasLarson/c/dotfiles/LucasLarson/!=Mackup:0:%']=1 [/Users/LucasLarson/c/dotfiles/LucasLarson/.oh-my-zsh/custom/plugins/gunstage:0:%]=1 [/Users/LucasLarson/c/dotfiles/LucasLarson/.oh-my-zsh/custom/plugins:0:%]=1 [/Users/LucasLarson/c/dotfiles/LucasLarson/.oh-my-zsh/custom:0:%]=1 [/Users/LucasLarson/c/dotfiles/LucasLarson/dotfiles:0:%]=1 [/Users/LucasLarson/c/dotfiles/LucasLarson:0:%]=1 [/Users/LucasLarson/c/dotfiles:0:%]=1 [/Users/LucasLarson/c/git-extra-commands:0:%]=1 [/Users/LucasLarson/c/git-extras/bin:0:%]=1 [/Users/LucasLarson/c/git-extras:0:%]=1 [/Users/LucasLarson/c/git-take/bin:0:%]=1 [/Users/LucasLarson/c/git-take:0:%]=1 [/Users/LucasLarson/c/git/sha1collisiondetection:0:%]=1 [/Users/LucasLarson/c/git:0:%]=1 [/Users/LucasLarson/c/gtake:0:%]=1 [/Users/LucasLarson/c/guetzli/bin/Release:0:%]=1 [/Users/LucasLarson/c/guetzli/bin:0:%]=1 [/Users/LucasLarson/c/guetzli:0:%]=1 [/Users/LucasLarson/c/gunstage:0:%]=1 [/Users/LucasLarson/c/jsonlint-mod:0:%]=1 [/Users/LucasLarson/c/oco/wp-content/plugins/jetpack:0:%]=1 [/Users/LucasLarson/c/oco/wp-content/plugins:0:%]=1 [/Users/LucasLarson/c/oco/wp-content:0:%]=1 [/Users/LucasLarson/c/oco:0:%]=1 [/Users/LucasLarson/c/oconnor.nyc:0:%]=1 [/Users/LucasLarson/c/safe:0:%]=1 [/Users/LucasLarson/c/spinner/tests:0:%]=1 [/Users/LucasLarson/c/spinner:0:%]=1 [/Users/LucasLarson/c/wget-trash:0:%]=1 [/Users/LucasLarson/c/wget/gnulib:0:%]=1 [/Users/LucasLarson/c/wget:0:%]=1 [/Users/LucasLarson/c:0:%]=1 [/Users/LucasLarson:0:%]=1 [/etc/periodic/daily:0:%]=1 [/etc/periodic:0:%]=1 [/etc:0:%]=1 [/private/etc:0:%]=1 [/usr/local/bin:0:%]=1 [/usr/local/lib:0:%]=1 [/usr/local/opt/curl/bin:0:%]=1 [/usr/local/opt/gnu-which/libexec/gnubin:0:%]=1) 
 	typeset -g -i _POWERLEVEL9K_GO_VERSION_PROJECT_ONLY=1 
 	typeset -g _POWERLEVEL9K_AWS_EB_ENV_FOREGROUND=70 
 	typeset -g -i _POWERLEVEL9K_BATTERY_LOW_THRESHOLD=20 
@@ -13336,8 +11941,13 @@ _p9k_wrap_widgets () {
 		then
 			functions[_p9k_widget_$widget]='_p9k_widget '${(q)widget}' "$@"' 
 		fi
-		zle -A $widget ._p9k_orig_$widget
-		zle -N $widget _p9k_widget_$widget
+		if [[ $widget == zle-* && $widgets[$widget] == user:azhw:* && -n $functions[add-zle-hook-widget] ]]
+		then
+			add-zle-hook-widget $widget _p9k_widget_$widget
+		else
+			zle -A $widget ._p9k_orig_$widget
+			zle -N $widget _p9k_widget_$widget
+		fi
 	done 2> /dev/null
 }
 _pack () {
@@ -14121,6 +12731,10 @@ _path_files () {
 	fi
 	[[ nm -ne compstate[nmatches] ]]
 }
+_patool () {
+	# undefined
+	builtin autoload -XUz
+}
 _pax () {
 	# undefined
 	builtin autoload -XUz
@@ -14145,7 +12759,15 @@ _pdftk () {
 	# undefined
 	builtin autoload -XUz
 }
+_perf () {
+	# undefined
+	builtin autoload -XUz
+}
 _perforce () {
+	# undefined
+	builtin autoload -XUz
+}
+_periscope () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14174,6 +12796,14 @@ _pfexec () {
 	builtin autoload -XUz
 }
 _pgrep () {
+	# undefined
+	builtin autoload -XUz
+}
+_pgsql_utils () {
+	# undefined
+	builtin autoload -XUz
+}
+_phing () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14213,6 +12843,14 @@ _piuparts () {
 	# undefined
 	builtin autoload -XUz
 }
+_pixz () {
+	# undefined
+	builtin autoload -XUz
+}
+_pkcon () {
+	# undefined
+	builtin autoload -XUz
+}
 _pkg-config () {
 	# undefined
 	builtin autoload -XUz
@@ -14245,7 +12883,15 @@ _pkgtool () {
 	# undefined
 	builtin autoload -XUz
 }
+_play () {
+	# undefined
+	builtin autoload -XUz
+}
 _plutil () {
+	# undefined
+	builtin autoload -XUz
+}
+_pm2 () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14254,6 +12900,10 @@ _pmap () {
 	builtin autoload -XUz
 }
 _pon () {
+	# undefined
+	builtin autoload -XUz
+}
+_port () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14325,6 +12975,10 @@ _prompt () {
 	# undefined
 	builtin autoload -XUz
 }
+_protoc () {
+	# undefined
+	builtin autoload -XUz
+}
 _prove () {
 	# undefined
 	builtin autoload -XUz
@@ -14377,16 +13031,9 @@ _pydoc () {
 	# undefined
 	builtin autoload -XUz
 }
-_pyenv () {
-	local words completions
-	read -cA words
-	if [ "${#words}" -eq 2 ]
-	then
-		completions="$(pyenv commands)" 
-	else
-		completions="$(pyenv completions ${words[2,-2]})" 
-	fi
-	reply=(${(ps:\n:)completions}) 
+_pygmentize () {
+	# undefined
+	builtin autoload -XUz
 }
 _python () {
 	# undefined
@@ -14416,7 +13063,15 @@ _quilt () {
 	# undefined
 	builtin autoload -XUz
 }
+_rails () {
+	# undefined
+	builtin autoload -XUz
+}
 _rake () {
+	# undefined
+	builtin autoload -XUz
+}
+_ralio () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14427,17 +13082,6 @@ _ranlib () {
 _rar () {
 	# undefined
 	builtin autoload -XUz
-}
-_rbenv () {
-	local words completions
-	read -cA words
-	if [ "${#words}" -eq 2 ]
-	then
-		completions="$(rbenv commands)" 
-	else
-		completions="$(rbenv completions ${words[2,-2]})" 
-	fi
-	reply=("${(ps:\n:)completions}") 
 }
 _rcctl () {
 	# undefined
@@ -14480,19 +13124,12 @@ _rebootin () {
 	builtin autoload -XUz
 }
 _redirect () {
-	local strs _comp_command1 _comp_command2 _comp_command
-	_set_command
-	strs=(-default-) 
-	if [[ "$CURRENT" != "1" ]]
-	then
-		strs=("${_comp_command}" "$strs[@]") 
-		if [[ -n "$_comp_command1" ]]
-		then
-			strs=("${_comp_command1}" "$strs[@]") 
-			[[ -n "$_comp_command2" ]] && strs=("${_comp_command2}" "$strs[@]") 
-		fi
-	fi
-	_dispatch -redirect-,{${compstate[redirect]},-default-},${^strs}
+	# undefined
+	builtin autoload -XUz
+}
+_redis-cli () {
+	# undefined
+	builtin autoload -XUz
 }
 _regex_arguments () {
 	# undefined
@@ -14540,11 +13177,19 @@ _retrieve_mac_apps () {
 	# undefined
 	builtin autoload -XUz
 }
+_rfkill () {
+	# undefined
+	builtin autoload -XUz
+}
 _rg () {
 	# undefined
 	builtin autoload -XUz
 }
 _ri () {
+	# undefined
+	builtin autoload -XUz
+}
+_rkt () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14572,11 +13217,27 @@ _rrdtool () {
 	# undefined
 	builtin autoload -XUz
 }
+_rslsync () {
+	# undefined
+	builtin autoload -XUz
+}
+_rspec () {
+	# undefined
+	builtin autoload -XUz
+}
+_rsvm () {
+	# undefined
+	builtin autoload -XUz
+}
 _rsync () {
 	# undefined
 	builtin autoload -XUz
 }
 _rubber () {
+	# undefined
+	builtin autoload -XUz
+}
+_rubocop () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14604,11 +13265,19 @@ _say () {
 	# undefined
 	builtin autoload -XUz
 }
+_sbt () {
+	# undefined
+	builtin autoload -XUz
+}
 _sbuild () {
 	# undefined
 	builtin autoload -XUz
 }
 _sc_usage () {
+	# undefined
+	builtin autoload -XUz
+}
+_scala () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14644,11 +13313,19 @@ _script () {
 	# undefined
 	builtin autoload -XUz
 }
+_scrub () {
+	# undefined
+	builtin autoload -XUz
+}
 _scselect () {
 	# undefined
 	builtin autoload -XUz
 }
 _scutil () {
+	# undefined
+	builtin autoload -XUz
+}
+_sdd () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14701,33 +13378,12 @@ _set () {
 	builtin autoload -XUz
 }
 _set_command () {
-	local command
-	command="$words[1]" 
-	[[ -z "$command" ]] && return
-	if (( $+builtins[$command] + $+functions[$command] ))
-	then
-		_comp_command1="$command" 
-		_comp_command="$_comp_command1" 
-	elif [[ "$command[1]" = '=' ]]
-	then
-		eval _comp_command2\=$command
-		_comp_command1="$command[2,-1]" 
-		_comp_command="$_comp_command2" 
-	elif [[ "$command" = ..#/* ]]
-	then
-		_comp_command1="${PWD}/$command" 
-		_comp_command2="${command:t}" 
-		_comp_command="$_comp_command2" 
-	elif [[ "$command" = */* ]]
-	then
-		_comp_command1="$command" 
-		_comp_command2="${command:t}" 
-		_comp_command="$_comp_command2" 
-	else
-		_comp_command1="$command" 
-		_comp_command2="$commands[$command]" 
-		_comp_command="$_comp_command1" 
-	fi
+	# undefined
+	builtin autoload -XUz
+}
+_setcap () {
+	# undefined
+	builtin autoload -XUz
 }
 _setfacl () {
 	# undefined
@@ -14808,7 +13464,15 @@ _setup () {
 	fi
 	[[ "$_comp_force_list" != always ]] && zstyle -s ":completion:${curcontext}:$1" force-list val && [[ "$val" = always || ( "$val" = [0-9]## && ( -z "$_comp_force_list" || _comp_force_list -gt val ) ) ]] && _comp_force_list="$val" 
 }
+_setup.py () {
+	# undefined
+	builtin autoload -XUz
+}
 _setxkbmap () {
+	# undefined
+	builtin autoload -XUz
+}
+_sfdx () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14821,6 +13485,10 @@ _shasum () {
 	builtin autoload -XUz
 }
 _showmount () {
+	# undefined
+	builtin autoload -XUz
+}
+_showoff () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14904,6 +13572,10 @@ _sqsh () {
 	# undefined
 	builtin autoload -XUz
 }
+_srm () {
+	# undefined
+	builtin autoload -XUz
+}
 _ss () {
 	# undefined
 	builtin autoload -XUz
@@ -14917,6 +13589,10 @@ _ssh_hosts () {
 	builtin autoload -XUz
 }
 _sshfs () {
+	# undefined
+	builtin autoload -XUz
+}
+_stack () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14968,7 +13644,15 @@ _sub_commands () {
 	# undefined
 	builtin autoload -XUz
 }
+_subl () {
+	# undefined
+	builtin autoload -XUz
+}
 _sublimetext () {
+	# undefined
+	builtin autoload -XUz
+}
+_subliminal () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -14997,6 +13681,10 @@ _suffix_alias_files () {
 	fi
 	_path_files "$@" -g $pat
 }
+_supervisorctl () {
+	# undefined
+	builtin autoload -XUz
+}
 _surfraw () {
 	# undefined
 	builtin autoload -XUz
@@ -15018,6 +13706,10 @@ _svcs () {
 	builtin autoload -XUz
 }
 _svcs_fmri () {
+	# undefined
+	builtin autoload -XUz
+}
+_svm () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -15127,6 +13819,10 @@ _tardy () {
 	# undefined
 	builtin autoload -XUz
 }
+_tarsnap () {
+	# undefined
+	builtin autoload -XUz
+}
 _tcpdump () {
 	# undefined
 	builtin autoload -XUz
@@ -15136,6 +13832,10 @@ _tcpsys () {
 	builtin autoload -XUz
 }
 _tcptraceroute () {
+	# undefined
+	builtin autoload -XUz
+}
+_teamocil () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -15160,6 +13860,10 @@ _texi () {
 	builtin autoload -XUz
 }
 _texinfo () {
+	# undefined
+	builtin autoload -XUz
+}
+_thor () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -15203,6 +13907,14 @@ _tmux () {
 	# undefined
 	builtin autoload -XUz
 }
+_tmuxinator () {
+	# undefined
+	builtin autoload -XUz
+}
+_tmuxp () {
+	# undefined
+	builtin autoload -XUz
+}
 _todo.sh () {
 	# undefined
 	builtin autoload -XUz
@@ -15231,6 +13943,10 @@ _touch () {
 	# undefined
 	builtin autoload -XUz
 }
+_tox () {
+	# undefined
+	builtin autoload -XUz
+}
 _tpb () {
 	# undefined
 	builtin autoload -XUz
@@ -15256,6 +13972,22 @@ _trap () {
 	builtin autoload -XUz
 }
 _trash () {
+	# undefined
+	builtin autoload -XUz
+}
+_trash-empty () {
+	# undefined
+	builtin autoload -XUz
+}
+_trash-list () {
+	# undefined
+	builtin autoload -XUz
+}
+_trash-put () {
+	# undefined
+	builtin autoload -XUz
+}
+_trash-restore () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -15292,6 +14024,14 @@ _twisted () {
 	builtin autoload -XUz
 }
 _typeset () {
+	# undefined
+	builtin autoload -XUz
+}
+_udisksctl () {
+	# undefined
+	builtin autoload -XUz
+}
+_ufw () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -15387,6 +14127,10 @@ _users_on () {
 	# undefined
 	builtin autoload -XUz
 }
+_vagrant () {
+	# undefined
+	builtin autoload -XUz
+}
 _valgrind () {
 	# undefined
 	builtin autoload -XUz
@@ -15419,6 +14163,10 @@ _vim-addons () {
 	# undefined
 	builtin autoload -XUz
 }
+_virtualbox () {
+	# undefined
+	builtin autoload -XUz
+}
 _visudo () {
 	# undefined
 	builtin autoload -XUz
@@ -15432,6 +14180,10 @@ _vmstat () {
 	builtin autoload -XUz
 }
 _vnc () {
+	# undefined
+	builtin autoload -XUz
+}
+_vnstat () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -15498,6 +14250,14 @@ _wc () {
 	builtin autoload -XUz
 }
 _webbrowser () {
+	# undefined
+	builtin autoload -XUz
+}
+_wemux () {
+	# undefined
+	builtin autoload -XUz
+}
+_wg-quick () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -15645,6 +14405,10 @@ _xft_fonts () {
 	# undefined
 	builtin autoload -XUz
 }
+_xinput () {
+	# undefined
+	builtin autoload -XUz
+}
 _xloadimage () {
 	# undefined
 	builtin autoload -XUz
@@ -15678,6 +14442,10 @@ _xrandr () {
 	builtin autoload -XUz
 }
 _xscreensaver () {
+	# undefined
+	builtin autoload -XUz
+}
+_xsel () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -15717,6 +14485,14 @@ _yafc () {
 	# undefined
 	builtin autoload -XUz
 }
+_yaourt () {
+	# undefined
+	builtin autoload -XUz
+}
+_yarn () {
+	# undefined
+	builtin autoload -XUz
+}
 _yast () {
 	# undefined
 	builtin autoload -XUz
@@ -15746,6 +14522,10 @@ _zcalc () {
 	builtin autoload -XUz
 }
 _zcalc_line () {
+	# undefined
+	builtin autoload -XUz
+}
+_zcash-cli () {
 	# undefined
 	builtin autoload -XUz
 }
@@ -15839,163 +14619,74 @@ _zsh-mime-handler () {
 }
 _zsh_highlight () {
 	local ret=$? 
-	typeset -r ret
-	(( ${+region_highlight} )) || {
-		echo 'zsh-syntax-highlighting: error: $region_highlight is not defined' >&2
-		echo 'zsh-syntax-highlighting: (Check whether zsh-syntax-highlighting was installed according to the instructions.)' >&2
-		return $ret
-	}
-	(( ${+zsh_highlight__memo_feature} )) || {
-		region_highlight+=(" 0 0 fg=red, memo=zsh-syntax-highlighting") 
-		case ${region_highlight[-1]} in
-			("0 0 fg=red") integer -gr zsh_highlight__memo_feature=0  ;;
-			("0 0 fg=red memo=zsh-syntax-highlighting") integer -gr zsh_highlight__memo_feature=1  ;;
-			(" 0 0 fg=red, memo=zsh-syntax-highlighting")  ;&
-			(*) if is-at-least 5.8.0.3 $ZSH_VERSION.0.0
-				then
-					integer -gr zsh_highlight__memo_feature=1 
-				else
-					integer -gr zsh_highlight__memo_feature=0 
-				fi ;;
-		esac
-		region_highlight[-1]=() 
-	}
-	if (( zsh_highlight__memo_feature ))
+	if [[ $WIDGET == zle-isearch-update ]] && ! (( $+ISEARCHMATCH_ACTIVE ))
 	then
-		region_highlight=("${(@)region_highlight:#*memo=zsh-syntax-highlighting*}") 
-	else
 		region_highlight=() 
-	fi
-	if [[ $WIDGET == zle-isearch-update ]] && {
-			$zsh_highlight__pat_static_bug || ! (( $+ISEARCHMATCH_ACTIVE ))
-		}
-	then
 		return $ret
 	fi
-	local -A zsyh_user_options
-	if zmodload -e zsh/parameter
-	then
-		zsyh_user_options=("${(kv)options[@]}") 
-	else
-		local canonical_options onoff option raw_options
-		raw_options=(${(f)"$(emulate -R zsh; set -o)"}) 
-		canonical_options=(${${${(M)raw_options:#*off}%% *}#no} ${${(M)raw_options:#*on}%% *}) 
-		for option in "${canonical_options[@]}"
-		do
-			[[ -o $option ]]
-			case $? in
-				(0) zsyh_user_options+=($option on)  ;;
-				(1) zsyh_user_options+=($option off)  ;;
-				(*) echo "zsh-syntax-highlighting: warning: '[[ -o $option ]]' returned $?" ;;
-			esac
-		done
-	fi
-	typeset -r zsyh_user_options
-	emulate -L zsh
-	setopt localoptions warncreateglobal nobashrematch
+	emulate -LR zsh
+	setopt extendedglob warncreateglobal typesetsilent noshortloops
 	local REPLY
+	local -a reply
 	[[ -n ${ZSH_HIGHLIGHT_MAXLENGTH:-} ]] && [[ $#BUFFER -gt $ZSH_HIGHLIGHT_MAXLENGTH ]] && return $ret
 	[[ $PENDING -gt 0 ]] && return $ret
+	if [[ $WIDGET == zle-line-finish ]] || _zsh_highlight_buffer_modified
+	then
+		-fast-highlight-init
+		-fast-highlight-process "$PREBUFFER" "$BUFFER" 0
+		(( FAST_HIGHLIGHT[use_brackets] )) && {
+			_FAST_MAIN_CACHE=($reply) 
+			-fast-highlight-string-process "$PREBUFFER" "$BUFFER"
+		}
+		region_highlight=($reply) 
+	else
+		local char="${BUFFER[CURSOR+1]}" 
+		if [[ "$char" = ["{([])}"] || "${FAST_HIGHLIGHT[prev_char]}" = ["{([])}"] ]]
+		then
+			FAST_HIGHLIGHT[prev_char]="$char" 
+			(( FAST_HIGHLIGHT[use_brackets] )) && {
+				reply=($_FAST_MAIN_CACHE) 
+				-fast-highlight-string-process "$PREBUFFER" "$BUFFER"
+				region_highlight=($reply) 
+			}
+		fi
+	fi
 	{
 		local cache_place
 		local -a region_highlight_copy
-		local highlighter
-		for highlighter in $ZSH_HIGHLIGHT_HIGHLIGHTERS
-		do
-			cache_place="_zsh_highlight__highlighter_${highlighter}_cache" 
-			typeset -ga ${cache_place}
-			if ! type "_zsh_highlight_highlighter_${highlighter}_predicate" >&/dev/null
-			then
-				echo "zsh-syntax-highlighting: warning: disabling the ${(qq)highlighter} highlighter as it has not been loaded" >&2
-				ZSH_HIGHLIGHT_HIGHLIGHTERS=(${ZSH_HIGHLIGHT_HIGHLIGHTERS:#${highlighter}}) 
-			elif "_zsh_highlight_highlighter_${highlighter}_predicate"
-			then
-				region_highlight_copy=("${region_highlight[@]}") 
-				region_highlight=() 
-				{
-					"_zsh_highlight_highlighter_${highlighter}_paint"
-				} always {
-					: ${(AP)cache_place::="${region_highlight[@]}"}
-				}
-				region_highlight=("${region_highlight_copy[@]}") 
-			fi
-			region_highlight+=("${(@P)cache_place}") 
-		done
-		() {
-			(( REGION_ACTIVE )) || return
-			integer min max
-			if (( MARK > CURSOR ))
-			then
-				min=$CURSOR max=$MARK 
-			else
-				min=$MARK max=$CURSOR 
-			fi
-			if (( REGION_ACTIVE == 1 ))
-			then
-				[[ $KEYMAP = vicmd ]] && (( max++ ))
-			elif (( REGION_ACTIVE == 2 ))
-			then
+		if (( REGION_ACTIVE == 1 ))
+		then
+			_zsh_highlight_apply_zle_highlight region standout "$MARK" "$CURSOR"
+		elif (( REGION_ACTIVE == 2 ))
+		then
+			() {
 				local needle=$'\n' 
-				(( min = ${BUFFER[(Ib:min:)$needle]} ))
-				(( max = ${BUFFER[(ib:max:)$needle]} - 1 ))
-			fi
-			_zsh_highlight_apply_zle_highlight region standout "$min" "$max"
-		}
+				integer min max
+				if (( MARK > CURSOR ))
+				then
+					min=$CURSOR max=$(( MARK + 1 )) 
+				else
+					min=$MARK max=$CURSOR 
+				fi
+				(( min = ${${BUFFER[1,$min]}[(I)$needle]} ))
+				(( max += ${${BUFFER:($max-1)}[(i)$needle]} - 1 ))
+				_zsh_highlight_apply_zle_highlight region standout "$min" "$max"
+			}
+		fi
 		(( $+YANK_ACTIVE )) && (( YANK_ACTIVE )) && _zsh_highlight_apply_zle_highlight paste standout "$YANK_START" "$YANK_END"
 		(( $+ISEARCHMATCH_ACTIVE )) && (( ISEARCHMATCH_ACTIVE )) && _zsh_highlight_apply_zle_highlight isearch underline "$ISEARCHMATCH_START" "$ISEARCHMATCH_END"
 		(( $+SUFFIX_ACTIVE )) && (( SUFFIX_ACTIVE )) && _zsh_highlight_apply_zle_highlight suffix bold "$SUFFIX_START" "$SUFFIX_END"
 		return $ret
 	} always {
 		typeset -g _ZSH_HIGHLIGHT_PRIOR_BUFFER="$BUFFER" 
+		typeset -g _ZSH_HIGHLIGHT_PRIOR_RACTIVE="$REGION_ACTIVE" 
 		typeset -gi _ZSH_HIGHLIGHT_PRIOR_CURSOR=$CURSOR 
 	}
-}
-_zsh_highlight__function_callable_p () {
-	if _zsh_highlight__is_function_p "$1" && ! _zsh_highlight__function_is_autoload_stub_p "$1"
-	then
-		return 0
-	else
-		(
-			autoload -U +X -- "$1" 2> /dev/null
-		)
-		return $?
-	fi
-}
-_zsh_highlight__function_is_autoload_stub_p () {
-	if zmodload -e zsh/parameter
-	then
-		[[ "$functions[$1]" == *"builtin autoload -X"* ]]
-	else
-		[[ "${${(@f)"$(which -- "$1")"}[2]}" == $'\t'$histchars[3]' undefined' ]]
-	fi
-}
-_zsh_highlight__is_function_p () {
-	if zmodload -e zsh/parameter
-	then
-		(( ${+functions[$1]} ))
-	else
-		[[ $(type -wa -- "$1") == *'function'* ]]
-	fi
-}
-_zsh_highlight_add_highlight () {
-	local -i start end
-	local highlight
-	start=$1 
-	end=$2 
-	shift 2
-	for highlight
-	do
-		if (( $+ZSH_HIGHLIGHT_STYLES[$highlight] ))
-		then
-			region_highlight+=("$start $end $ZSH_HIGHLIGHT_STYLES[$highlight], memo=zsh-syntax-highlighting") 
-			break
-		fi
-	done
 }
 _zsh_highlight_apply_zle_highlight () {
 	local entry="$1" default="$2" 
 	integer first="$3" second="$4" 
-	local region="${zle_highlight[(r)${entry}:*]-}" 
+	local region="${zle_highlight[(r)${entry}:*]}" 
 	if [[ -z "$region" ]]
 	then
 		region=$default 
@@ -16013,2092 +14704,696 @@ _zsh_highlight_apply_zle_highlight () {
 	else
 		start=$second end=$first 
 	fi
-	region_highlight+=("$start $end $region, memo=zsh-syntax-highlighting") 
+	region_highlight+=("$start $end $region") 
 }
 _zsh_highlight_bind_widgets () {
 	setopt localoptions noksharrays
-	typeset -F SECONDS
-	local prefix=orig-s$SECONDS-r$RANDOM 
+	local -F2 SECONDS
+	local prefix=orig-s${SECONDS/./}-r$(( RANDOM % 1000 )) 
 	zmodload zsh/zleparameter 2> /dev/null || {
 		print -r -- 'zsh-syntax-highlighting: failed loading zsh/zleparameter.' >&2
 		return 1
 	}
 	local -U widgets_to_bind
-	widgets_to_bind=(${${(k)widgets}:#(.*|run-help|which-command|beep|set-local-history|yank|yank-pop)}) 
+	widgets_to_bind=(${${(k)widgets}:#(.*|run-help|which-command|beep|set-local-history|yank|zle-line-pre-redraw|zle-keymap-select)}) 
 	widgets_to_bind+=(zle-line-finish) 
 	widgets_to_bind+=(zle-isearch-update) 
 	local cur_widget
 	for cur_widget in $widgets_to_bind
 	do
-		case ${widgets[$cur_widget]:-""} in
+		case $widgets[$cur_widget] in
 			(user:_zsh_highlight_widget_*)  ;;
-			(user:*) zle -N $prefix-$cur_widget ${widgets[$cur_widget]#*:}
+			(user:*) zle -N -- $prefix-$cur_widget ${widgets[$cur_widget]#*:}
 				eval "_zsh_highlight_widget_${(q)prefix}-${(q)cur_widget}() { _zsh_highlight_call_widget ${(q)prefix}-${(q)cur_widget} -- \"\$@\" }"
-				zle -N $cur_widget _zsh_highlight_widget_$prefix-$cur_widget ;;
+				zle -N -- $cur_widget _zsh_highlight_widget_$prefix-$cur_widget ;;
 			(completion:*) zle -C $prefix-$cur_widget ${${(s.:.)widgets[$cur_widget]}[2,3]}
 				eval "_zsh_highlight_widget_${(q)prefix}-${(q)cur_widget}() { _zsh_highlight_call_widget ${(q)prefix}-${(q)cur_widget} -- \"\$@\" }"
-				zle -N $cur_widget _zsh_highlight_widget_$prefix-$cur_widget ;;
+				zle -N -- $cur_widget _zsh_highlight_widget_$prefix-$cur_widget ;;
 			(builtin) eval "_zsh_highlight_widget_${(q)prefix}-${(q)cur_widget}() { _zsh_highlight_call_widget .${(q)cur_widget} -- \"\$@\" }"
-				zle -N $cur_widget _zsh_highlight_widget_$prefix-$cur_widget ;;
-			(*) if [[ $cur_widget == zle-* ]] && (( ! ${+widgets[$cur_widget]} ))
+				zle -N -- $cur_widget _zsh_highlight_widget_$prefix-$cur_widget ;;
+			(*) if [[ $cur_widget == zle-* ]] && [[ -z $widgets[$cur_widget] ]]
 				then
 					_zsh_highlight_widget_${cur_widget} () {
 						:
 						_zsh_highlight
 					}
-					zle -N $cur_widget _zsh_highlight_widget_$cur_widget
+					zle -N -- $cur_widget _zsh_highlight_widget_$cur_widget
 				else
 					print -r -- "zsh-syntax-highlighting: unhandled ZLE widget ${(qq)cur_widget}" >&2
-					print -r -- "zsh-syntax-highlighting: (This is sometimes caused by doing \`bindkey <keys> ${(q-)cur_widget}\` without creating the ${(qq)cur_widget} widget with \`zle -N\` or \`zle -C\`.)" >&2
 				fi ;;
 		esac
 	done
 }
-_zsh_highlight_brackets_match () {
-	case $BUFFER[$1] in
-		(\() [[ $BUFFER[$2] == \) ]] ;;
-		(\[) [[ $BUFFER[$2] == \] ]] ;;
-		(\{) [[ $BUFFER[$2] == \} ]] ;;
-		(*) false ;;
-	esac
-}
 _zsh_highlight_buffer_modified () {
-	[[ "${_ZSH_HIGHLIGHT_PRIOR_BUFFER:-}" != "$BUFFER" ]]
+	[[ "${_ZSH_HIGHLIGHT_PRIOR_BUFFER:-}" != "$BUFFER" ]] || [[ "$REGION_ACTIVE" != "$_ZSH_HIGHLIGHT_PRIOR_RACTIVE" ]] || {
+		_zsh_highlight_cursor_moved && [[ "$REGION_ACTIVE" = 1 || "$REGION_ACTIVE" = 2 ]]
+	}
 }
 _zsh_highlight_call_widget () {
-	builtin zle "$@" && _zsh_highlight
+	integer ret
+	builtin zle "$@"
+	ret=$? 
+	_zsh_highlight
+	return $ret
 }
 _zsh_highlight_cursor_moved () {
 	[[ -n $CURSOR ]] && [[ -n ${_ZSH_HIGHLIGHT_PRIOR_CURSOR-} ]] && (($_ZSH_HIGHLIGHT_PRIOR_CURSOR != $CURSOR))
 }
-_zsh_highlight_highlighter_brackets_paint () {
-	local char style
-	local -i bracket_color_size=${#ZSH_HIGHLIGHT_STYLES[(I)bracket-level-*]} buflen=${#BUFFER} level=0 matchingpos pos 
-	local -A levelpos lastoflevel matching
-	pos=0 
-	for char in ${(s..)BUFFER}
-	do
-		(( ++pos ))
-		case $char in
-			(["([{"]) levelpos[$pos]=$((++level)) 
-				lastoflevel[$level]=$pos  ;;
-			([")]}"]) if (( level > 0 ))
-				then
-					matchingpos=$lastoflevel[$level] 
-					levelpos[$pos]=$((level--)) 
-					if _zsh_highlight_brackets_match $matchingpos $pos
-					then
-						matching[$matchingpos]=$pos 
-						matching[$pos]=$matchingpos 
-					fi
-				else
-					levelpos[$pos]=-1 
-				fi ;;
-		esac
-	done
-	for pos in ${(k)levelpos}
-	do
-		if (( $+matching[$pos] ))
-		then
-			if (( bracket_color_size ))
-			then
-				_zsh_highlight_add_highlight $((pos - 1)) $pos bracket-level-$(( (levelpos[$pos] - 1) % bracket_color_size + 1 ))
-			fi
-		else
-			_zsh_highlight_add_highlight $((pos - 1)) $pos bracket-error
-		fi
-	done
-	if [[ $WIDGET != zle-line-finish ]]
-	then
-		pos=$((CURSOR + 1)) 
-		if (( $+levelpos[$pos] )) && (( $+matching[$pos] ))
-		then
-			local -i otherpos=$matching[$pos] 
-			_zsh_highlight_add_highlight $((otherpos - 1)) $otherpos cursor-matchingbracket
-		fi
-	fi
-}
-_zsh_highlight_highlighter_brackets_predicate () {
-	[[ $WIDGET == zle-line-finish ]] || _zsh_highlight_cursor_moved || _zsh_highlight_buffer_modified
-}
-_zsh_highlight_highlighter_cursor_paint () {
-	[[ $WIDGET == zle-line-finish ]] && return
-	_zsh_highlight_add_highlight $CURSOR $(( $CURSOR + 1 )) cursor
-}
-_zsh_highlight_highlighter_cursor_predicate () {
-	[[ $WIDGET == zle-line-finish ]] || _zsh_highlight_cursor_moved
-}
-_zsh_highlight_highlighter_line_paint () {
-	_zsh_highlight_add_highlight 0 $#BUFFER line
-}
-_zsh_highlight_highlighter_line_predicate () {
-	_zsh_highlight_buffer_modified
-}
-_zsh_highlight_highlighter_main_paint () {
-	setopt localoptions extendedglob
-	if [[ $CONTEXT == (select|vared) ]]
-	then
-		return
-	fi
-	typeset -a ZSH_HIGHLIGHT_TOKENS_COMMANDSEPARATOR
-	typeset -a ZSH_HIGHLIGHT_TOKENS_CONTROL_FLOW
-	local -a options_to_set reply
-	local REPLY
-	local flags_with_argument
-	local flags_sans_argument
-	local flags_solo
-	local -A precommand_options
-	precommand_options=('-' '' 'builtin' '' 'command' :pvV 'exec' a:cl 'noglob' '' 'doas' aCu:Lns 'nice' n: 'pkexec' '' 'sudo' Cgprtu:AEHPSbilns:eKkVv 'stdbuf' ioe: 'eatmydata' '' 'catchsegv' '' 'nohup' '' 'setsid' :wc 'env' u:i 'ionice' cn:t:pPu 'strace' IbeaosXPpEuOS:ACdfhikqrtTvVxyDc 'ssh-agent' aEPt:csDd:k 'tabbed' gnprtTuU:cdfhs 'chronic' :ev 'ifne' :n) 
-	if [[ $zsyh_user_options[ignorebraces] == on || ${zsyh_user_options[ignoreclosebraces]:-off} == on ]]
-	then
-		local right_brace_is_recognised_everywhere=false 
-	else
-		local right_brace_is_recognised_everywhere=true 
-	fi
-	if [[ $zsyh_user_options[pathdirs] == on ]]
-	then
-		options_to_set+=(PATH_DIRS) 
-	fi
-	ZSH_HIGHLIGHT_TOKENS_COMMANDSEPARATOR=('|' '||' ';' '&' '&&' $'\n' '|&' '&!' '&|') 
-	ZSH_HIGHLIGHT_TOKENS_CONTROL_FLOW=($'\x7b' $'\x28' '()' 'while' 'until' 'if' 'then' 'elif' 'else' 'do' 'time' 'coproc' '!') 
-	if (( $+X_ZSH_HIGHLIGHT_DIRS_BLACKLIST ))
-	then
-		print 'zsh-syntax-highlighting: X_ZSH_HIGHLIGHT_DIRS_BLACKLIST is deprecated. Please use ZSH_HIGHLIGHT_DIRS_BLACKLIST.' >&2
-		ZSH_HIGHLIGHT_DIRS_BLACKLIST=($X_ZSH_HIGHLIGHT_DIRS_BLACKLIST) 
-		unset X_ZSH_HIGHLIGHT_DIRS_BLACKLIST
-	fi
-	_zsh_highlight_main_highlighter_highlight_list -$#PREBUFFER '' 1 "$PREBUFFER$BUFFER"
-	local start end_ style
-	for start end_ style in $reply
-	do
-		(( start >= end_ )) && {
-			print -r -- "zsh-syntax-highlighting: BUG: _zsh_highlight_highlighter_main_paint: start($start) >= end($end_)" >&2
-			return
-		}
-		(( end_ <= 0 )) && continue
-		(( start < 0 )) && start=0 
-		_zsh_highlight_main_calculate_fallback $style
-		_zsh_highlight_add_highlight $start $end_ $reply
-	done
-}
-_zsh_highlight_highlighter_main_predicate () {
-	[[ $WIDGET == zle-line-finish ]] || _zsh_highlight_buffer_modified
-}
-_zsh_highlight_highlighter_pattern_paint () {
-	setopt localoptions extendedglob
-	local pattern
-	for pattern in ${(k)ZSH_HIGHLIGHT_PATTERNS}
-	do
-		_zsh_highlight_pattern_highlighter_loop "$BUFFER" "$pattern"
-	done
-}
-_zsh_highlight_highlighter_pattern_predicate () {
-	_zsh_highlight_buffer_modified
-}
-_zsh_highlight_highlighter_regexp_paint () {
-	setopt localoptions extendedglob
-	local pattern
-	for pattern in ${(k)ZSH_HIGHLIGHT_REGEXP}
-	do
-		_zsh_highlight_regexp_highlighter_loop "$BUFFER" "$pattern"
-	done
-}
-_zsh_highlight_highlighter_regexp_predicate () {
-	_zsh_highlight_buffer_modified
-}
-_zsh_highlight_highlighter_root_paint () {
-	if (( EUID == 0 ))
-	then
-		_zsh_highlight_add_highlight 0 $#BUFFER root
-	fi
-}
-_zsh_highlight_highlighter_root_predicate () {
-	_zsh_highlight_buffer_modified
-}
-_zsh_highlight_load_highlighters () {
-	setopt localoptions noksharrays bareglobqual
-	[[ -d "$1" ]] || {
-		print -r -- "zsh-syntax-highlighting: highlighters directory ${(qq)1} not found." >&2
-		return 1
-	}
-	local highlighter highlighter_dir
-	for highlighter_dir in $1/*/(/)
-	do
-		highlighter="${highlighter_dir:t}" 
-		[[ -f "$highlighter_dir${highlighter}-highlighter.zsh" ]] && . "$highlighter_dir${highlighter}-highlighter.zsh"
-		if type "_zsh_highlight_highlighter_${highlighter}_paint" &> /dev/null && type "_zsh_highlight_highlighter_${highlighter}_predicate" &> /dev/null
-		then
-			
-		elif type "_zsh_highlight_${highlighter}_highlighter" &> /dev/null && type "_zsh_highlight_${highlighter}_highlighter_predicate" &> /dev/null
-		then
-			if false
-			then
-				print -r -- "zsh-syntax-highlighting: warning: ${(qq)highlighter} highlighter uses deprecated entry point names; please ask its maintainer to update it: https://github.com/zsh-users/zsh-syntax-highlighting/issues/329" >&2
-			fi
-			eval "_zsh_highlight_highlighter_${(q)highlighter}_paint() { _zsh_highlight_${(q)highlighter}_highlighter \"\$@\" }"
-			eval "_zsh_highlight_highlighter_${(q)highlighter}_predicate() { _zsh_highlight_${(q)highlighter}_highlighter_predicate \"\$@\" }"
-		else
-			print -r -- "zsh-syntax-highlighting: ${(qq)highlighter} highlighter should define both required functions '_zsh_highlight_highlighter_${highlighter}_paint' and '_zsh_highlight_highlighter_${highlighter}_predicate' in ${(qq):-"$highlighter_dir${highlighter}-highlighter.zsh"}." >&2
-		fi
-	done
-}
-_zsh_highlight_main__is_global_alias () {
-	if zmodload -e zsh/parameter
-	then
-		(( ${+galiases[$arg]} ))
-	elif [[ $arg == '='* ]]
-	then
-		return 1
-	else
-		alias -L -g -- "$1" > /dev/null
-	fi
-}
-_zsh_highlight_main__is_redirection () {
-	[[ $1 == (<0-9>|)(\<|\>)* ]] && [[ $1 != (\<|\>)$'\x28'* ]] && [[ $1 != *'<'*'-'*'>'* ]]
-}
-_zsh_highlight_main__is_runnable () {
-	if _zsh_highlight_main__type "$1"
-	then
-		[[ $REPLY != none ]]
-	else
-		return 2
-	fi
-}
-_zsh_highlight_main__precmd_hook () {
-	setopt localoptions
-	if eval '[[ -o warnnestedvar ]]' 2> /dev/null
-	then
-		unsetopt warnnestedvar
-	fi
-	_zsh_highlight_main__command_type_cache=() 
-}
-_zsh_highlight_main__resolve_alias () {
-	if zmodload -e zsh/parameter
-	then
-		REPLY=${aliases[$arg]} 
-	else
-		REPLY="${"$(alias -- $arg)"#*=}" 
-	fi
-}
-_zsh_highlight_main__stack_pop () {
-	if [[ $braces_stack[1] == $1 ]]
-	then
-		braces_stack=${braces_stack:1} 
-		if (( $+2 ))
-		then
-			style=$2 
-		fi
-		return 0
-	else
-		style=unknown-token 
-		return 1
-	fi
-}
-_zsh_highlight_main__type () {
-	integer -r aliases_allowed=${2-1} 
-	integer may_cache=1 
-	if (( $+_zsh_highlight_main__command_type_cache ))
-	then
-		REPLY=$_zsh_highlight_main__command_type_cache[(e)$1] 
-		if [[ -n "$REPLY" ]]
-		then
-			return
-		fi
-	fi
-	if (( $#options_to_set ))
-	then
-		setopt localoptions $options_to_set
-	fi
-	unset REPLY
-	if zmodload -e zsh/parameter
-	then
-		if (( $+aliases[(e)$1] ))
-		then
-			may_cache=0 
-		fi
-		if (( ${+galiases[(e)$1]} )) && (( aliases_allowed ))
-		then
-			REPLY='global alias' 
-		elif (( $+aliases[(e)$1] )) && (( aliases_allowed ))
-		then
-			REPLY=alias 
-		elif [[ $1 == *.* && -n ${1%.*} ]] && (( $+saliases[(e)${1##*.}] ))
-		then
-			REPLY='suffix alias' 
-		elif (( $reswords[(Ie)$1] ))
-		then
-			REPLY=reserved 
-		elif (( $+functions[(e)$1] ))
-		then
-			REPLY=function 
-		elif (( $+builtins[(e)$1] ))
-		then
-			REPLY=builtin 
-		elif (( $+commands[(e)$1] ))
-		then
-			REPLY=command 
-		elif {
-				[[ $1 != */* ]] || is-at-least 5.3
-			} && ! (
-				builtin type -w -- "$1"
-			) > /dev/null 2>&1
-		then
-			REPLY=none 
-		fi
-	fi
-	if ! (( $+REPLY ))
-	then
-		REPLY="${$(:; (( aliases_allowed )) || unalias -- "$1" 2>/dev/null; LC_ALL=C builtin type -w -- "$1" 2>/dev/null)##*: }" 
-		if [[ $REPLY == 'alias' ]]
-		then
-			may_cache=0 
-		fi
-	fi
-	if (( may_cache )) && (( $+_zsh_highlight_main__command_type_cache ))
-	then
-		_zsh_highlight_main__command_type_cache[(e)$1]=$REPLY 
-	fi
-	[[ -n $REPLY ]]
-	return $?
-}
-_zsh_highlight_main_add_many_region_highlights () {
-	for 1 2 3
-	do
-		_zsh_highlight_main_add_region_highlight $1 $2 $3
-	done
-}
-_zsh_highlight_main_add_region_highlight () {
-	integer start=$1 end=$2 
-	shift 2
-	if (( $#in_alias ))
-	then
-		[[ $1 == unknown-token ]] && alias_style=unknown-token 
-		return
-	fi
-	if (( in_param ))
-	then
-		if [[ $1 == unknown-token ]]
-		then
-			param_style=unknown-token 
-		fi
-		if [[ -n $param_style ]]
-		then
-			return
-		fi
-		param_style=$1 
-		return
-	fi
-	(( start += buf_offset ))
-	(( end += buf_offset ))
-	list_highlights+=($start $end $1) 
-}
-_zsh_highlight_main_calculate_fallback () {
-	local -A fallback_of
-	fallback_of=(alias arg0 suffix-alias arg0 global-alias dollar-double-quoted-argument builtin arg0 function arg0 command arg0 precommand arg0 hashed-command arg0 autodirectory arg0 arg0_\* arg0 path_prefix path path_pathseparator path path_prefix_pathseparator path_prefix single-quoted-argument{-unclosed,} double-quoted-argument{-unclosed,} dollar-quoted-argument{-unclosed,} back-quoted-argument{-unclosed,} command-substitution{-quoted,,-unquoted,} command-substitution-delimiter{-quoted,,-unquoted,} command-substitution{-delimiter,} process-substitution{-delimiter,} back-quoted-argument{-delimiter,}) 
-	local needle=$1 value 
-	reply=($1) 
-	while [[ -n ${value::=$fallback_of[(k)$needle]} ]]
-	do
-		unset "fallback_of[$needle]"
-		reply+=($value) 
-		needle=$value 
-	done
-}
-_zsh_highlight_main_highlighter__try_expand_parameter () {
-	local arg="$1" 
-	unset reply
-	{
-		{
-			local -a match mbegin mend
-			local MATCH
-			integer MBEGIN MEND
-			local parameter_name
-			local -a words
-			if [[ $arg[1] != '$' ]]
-			then
-				return 1
-			fi
-			if [[ ${arg[2]} == '{' ]] && [[ ${arg[-1]} == '}' ]]
-			then
-				parameter_name=${${arg:2}%?} 
-			else
-				parameter_name=${arg:1} 
-			fi
-			if [[ $res == none ]] && [[ ${parameter_name} =~ ^${~parameter_name_pattern}$ ]] && [[ ${(tP)MATCH} != *special* ]]
-			then
-				case ${(tP)MATCH} in
-					(*array*|*assoc*) words=(${(P)MATCH})  ;;
-					("") words=()  ;;
-					(*) words=(${(P)MATCH})  ;;
-				esac
-				reply=("${words[@]}") 
-			else
-				return 1
-			fi
-		}
-	}
-}
-_zsh_highlight_main_highlighter_check_assign () {
-	setopt localoptions extended_glob
-	[[ $arg == [[:alpha:]_][[:alnum:]_]#(|\[*\])(|[+])=* ]] || [[ $arg == [0-9]##(|[+])=* ]]
-}
-_zsh_highlight_main_highlighter_check_path () {
-	_zsh_highlight_main_highlighter_expand_path "$1"
-	local expanded_path="$REPLY" tmp_path 
-	integer in_command_position=$2 
-	if [[ $zsyh_user_options[autocd] == on ]]
-	then
-		integer autocd=1 
-	else
-		integer autocd=0 
-	fi
-	if (( in_command_position ))
-	then
-		REPLY=arg0 
-	else
-		REPLY=path 
-	fi
-	if [[ ${1[1]} == '=' && $1 == ??* && ${1[2]} != $'\x28' && $zsyh_user_options[equals] == 'on' && $expanded_path[1] != '/' ]]
-	then
-		REPLY=unknown-token 
-		return 0
-	fi
-	[[ -z $expanded_path ]] && return 1
-	if [[ $expanded_path[1] == / ]]
-	then
-		tmp_path=$expanded_path 
-	else
-		tmp_path=$PWD/$expanded_path 
-	fi
-	tmp_path=$tmp_path:a 
-	while [[ $tmp_path != / ]]
-	do
-		[[ -n ${(M)ZSH_HIGHLIGHT_DIRS_BLACKLIST:#$tmp_path} ]] && return 1
-		tmp_path=$tmp_path:h 
-	done
-	if (( in_command_position ))
-	then
-		if [[ -x $expanded_path ]]
-		then
-			if (( autocd ))
-			then
-				if [[ -d $expanded_path ]]
-				then
-					REPLY=autodirectory 
-				fi
-				return 0
-			elif [[ ! -d $expanded_path ]]
-			then
-				return 0
-			fi
-		fi
-	else
-		if [[ -L $expanded_path || -e $expanded_path ]]
-		then
-			return 0
-		fi
-	fi
-	if [[ $expanded_path != /* ]] && (( autocd || ! in_command_position ))
-	then
-		local cdpath_dir
-		for cdpath_dir in $cdpath
-		do
-			if [[ -d "$cdpath_dir/$expanded_path" && -x "$cdpath_dir/$expanded_path" ]]
-			then
-				if (( in_command_position && autocd ))
-				then
-					REPLY=autodirectory 
-				fi
-				return 0
-			fi
-		done
-	fi
-	[[ ! -d ${expanded_path:h} ]] && return 1
-	if (( has_end && (len == end_pos) )) && (( ! $#in_alias )) && [[ $WIDGET != zle-line-finish ]]
-	then
-		local -a tmp
-		if (( in_command_position ))
-		then
-			tmp=(${expanded_path}*(N-*,N-/)) 
-		else
-			tmp=(${expanded_path}*(N)) 
-		fi
-		(( ${+tmp[1]} )) && REPLY=path_prefix  && return 0
-	fi
-	return 1
-}
-_zsh_highlight_main_highlighter_expand_path () {
-	(( $# == 1 )) || print -r -- "zsh-syntax-highlighting: BUG: _zsh_highlight_main_highlighter_expand_path: called without argument" >&2
-	setopt localoptions nonomatch
-	unset REPLY
-	: ${REPLY:=${(Q)${~1}}}
-}
-_zsh_highlight_main_highlighter_highlight_argument () {
-	local base_style=default i=$1 option_eligible=${2:-1} path_eligible=1 ret start style 
-	local -a highlights
-	local -a match mbegin mend
-	local MATCH
-	integer MBEGIN MEND
-	case "$arg[i]" in
-		('%') if [[ $arg[i+1] == '?' ]]
-			then
-				(( i += 2 ))
-			fi ;;
-		('-') if (( option_eligible ))
-			then
-				if [[ $arg[i+1] == - ]]
-				then
-					base_style=double-hyphen-option 
-				else
-					base_style=single-hyphen-option 
-				fi
-				path_eligible=0 
-			fi ;;
-		('=') if [[ $arg[i+1] == $'\x28' ]]
-			then
-				(( i += 2 ))
-				_zsh_highlight_main_highlighter_highlight_list $(( start_pos + i - 1 )) S $has_end $arg[i,-1]
-				ret=$? 
-				(( i += REPLY ))
-				highlights+=($(( start_pos + $1 - 1 )) $(( start_pos + i )) process-substitution $(( start_pos + $1 - 1 )) $(( start_pos + $1 + 1 )) process-substitution-delimiter $reply) 
-				if (( ret == 0 ))
-				then
-					highlights+=($(( start_pos + i - 1 )) $(( start_pos + i )) process-substitution-delimiter) 
-				fi
-			fi ;;
-	esac
-	(( --i ))
-	while (( ++i <= $#arg ))
-	do
-		i=${arg[(ib.i.)[\\\'\"\`\$\<\>\*\?]]} 
-		case "$arg[$i]" in
-			("") break ;;
-			("\\") (( i += 1 ))
-				continue ;;
-			("'") _zsh_highlight_main_highlighter_highlight_single_quote $i
-				(( i = REPLY ))
-				highlights+=($reply)  ;;
-			('"') _zsh_highlight_main_highlighter_highlight_double_quote $i
-				(( i = REPLY ))
-				highlights+=($reply)  ;;
-			('`') _zsh_highlight_main_highlighter_highlight_backtick $i
-				(( i = REPLY ))
-				highlights+=($reply)  ;;
-			('$') if [[ $arg[i+1] != "'" ]]
-				then
-					path_eligible=0 
-				fi
-				if [[ $arg[i+1] == "'" ]]
-				then
-					_zsh_highlight_main_highlighter_highlight_dollar_quote $i
-					(( i = REPLY ))
-					highlights+=($reply) 
-					continue
-				elif [[ $arg[i+1] == $'\x28' ]]
-				then
-					if [[ $arg[i+2] == $'\x28' ]] && _zsh_highlight_main_highlighter_highlight_arithmetic $i
-					then
-						(( i = REPLY ))
-						highlights+=($reply) 
-						continue
-					fi
-					start=$i 
-					(( i += 2 ))
-					_zsh_highlight_main_highlighter_highlight_list $(( start_pos + i - 1 )) S $has_end $arg[i,-1]
-					ret=$? 
-					(( i += REPLY ))
-					highlights+=($(( start_pos + start - 1)) $(( start_pos + i )) command-substitution-unquoted $(( start_pos + start - 1)) $(( start_pos + start + 1)) command-substitution-delimiter-unquoted $reply) 
-					if (( ret == 0 ))
-					then
-						highlights+=($(( start_pos + i - 1)) $(( start_pos + i )) command-substitution-delimiter-unquoted) 
-					fi
-					continue
-				fi
-				while [[ $arg[i+1] == [=~#+'^'] ]]
-				do
-					(( i += 1 ))
-				done
-				if [[ $arg[i+1] == [*@#?$!-] ]]
-				then
-					(( i += 1 ))
-				fi ;;
-			([\<\>]) if [[ $arg[i+1] == $'\x28' ]]
-				then
-					start=$i 
-					(( i += 2 ))
-					_zsh_highlight_main_highlighter_highlight_list $(( start_pos + i - 1 )) S $has_end $arg[i,-1]
-					ret=$? 
-					(( i += REPLY ))
-					highlights+=($(( start_pos + start - 1)) $(( start_pos + i )) process-substitution $(( start_pos + start - 1)) $(( start_pos + start + 1 )) process-substitution-delimiter $reply) 
-					if (( ret == 0 ))
-					then
-						highlights+=($(( start_pos + i - 1)) $(( start_pos + i )) process-substitution-delimiter) 
-					fi
-					continue
-				fi ;|
-			(*) if $highlight_glob && [[ $zsyh_user_options[multios] == on || $in_redirection -eq 0 ]] && [[ ${arg[$i]} =~ ^[*?] || ${arg:$i-1} =~ ^\<[0-9]*-[0-9]*\> ]]
-				then
-					highlights+=($(( start_pos + i - 1 )) $(( start_pos + i + $#MATCH - 1)) globbing) 
-					(( i += $#MATCH - 1 ))
-					path_eligible=0 
-				else
-					continue
-				fi ;;
-		esac
-	done
-	if (( path_eligible ))
-	then
-		if (( in_redirection )) && [[ $last_arg == *['<>']['&'] && $arg[$1,-1] == (<0->|p|-) ]]
-		then
-			if [[ $arg[$1,-1] == (p|-) ]]
-			then
-				base_style=redirection 
-			else
-				base_style=numeric-fd 
-			fi
-		elif _zsh_highlight_main_highlighter_check_path $arg[$1,-1] 0
-		then
-			base_style=$REPLY 
-			_zsh_highlight_main_highlighter_highlight_path_separators $base_style
-			highlights+=($reply) 
-		fi
-	fi
-	highlights=($(( start_pos + $1 - 1 )) $end_pos $base_style $highlights) 
-	_zsh_highlight_main_add_many_region_highlights $highlights
-}
-_zsh_highlight_main_highlighter_highlight_arithmetic () {
-	local -a saved_reply
-	local style
-	integer i j k paren_depth ret
-	reply=() 
-	for ((i = $1 + 3 ; i <= end_pos - start_pos ; i += 1 )) do
-		(( j = i + start_pos - 1 ))
-		(( k = j + 1 ))
-		case "$arg[$i]" in
-			([\'\"\\@{}]) style=unknown-token  ;;
-			('(') (( paren_depth++ ))
-				continue ;;
-			(')') if (( paren_depth ))
-				then
-					(( paren_depth-- ))
-					continue
-				fi
-				[[ $arg[i+1] == ')' ]] && {
-					(( i++ ))
-					break
-				}
-				(( has_end && (len == k) )) && break
-				return 1 ;;
-			('`') saved_reply=($reply) 
-				_zsh_highlight_main_highlighter_highlight_backtick $i
-				(( i = REPLY ))
-				reply=($saved_reply $reply) 
-				continue ;;
-			('$') if [[ $arg[i+1] == $'\x28' ]]
-				then
-					saved_reply=($reply) 
-					if [[ $arg[i+2] == $'\x28' ]] && _zsh_highlight_main_highlighter_highlight_arithmetic $i
-					then
-						(( i = REPLY ))
-						reply=($saved_reply $reply) 
-						continue
-					fi
-					(( i += 2 ))
-					_zsh_highlight_main_highlighter_highlight_list $(( start_pos + i - 1 )) S $has_end $arg[i,end_pos]
-					ret=$? 
-					(( i += REPLY ))
-					reply=($saved_reply $j $(( start_pos + i )) command-substitution-quoted $j $(( j + 2 )) command-substitution-delimiter-quoted $reply) 
-					if (( ret == 0 ))
-					then
-						reply+=($(( start_pos + i - 1 )) $(( start_pos + i )) command-substitution-delimiter) 
-					fi
-					continue
-				else
-					continue
-				fi ;;
-			($histchars[1]) if [[ $arg[i+1] != ('='|$'\x28'|$'\x7b'|[[:blank:]]) ]]
-				then
-					style=history-expansion 
-				else
-					continue
-				fi ;;
-			(*) continue ;;
-		esac
-		reply+=($j $k $style) 
-	done
-	if [[ $arg[i] != ')' ]]
-	then
-		(( i-- ))
-	fi
-	style=arithmetic-expansion 
-	reply=($(( start_pos + $1 - 1)) $(( start_pos + i )) arithmetic-expansion $reply) 
-	REPLY=$i 
-}
-_zsh_highlight_main_highlighter_highlight_backtick () {
-	local buf highlight style=back-quoted-argument-unclosed style_end 
-	local -i arg1=$1 end_ i=$1 last offset=0 start subshell_has_end=0 
-	local -a highlight_zone highlights offsets
-	reply=() 
-	last=$(( arg1 + 1 )) 
-	while i=$arg[(ib:i+1:)[\\\\\`]] 
-	do
-		if (( i > $#arg ))
-		then
-			buf=$buf$arg[last,i] 
-			offsets[i-arg1-offset]='' 
-			(( i-- ))
-			subshell_has_end=$(( has_end && (start_pos + i == len) )) 
-			break
-		fi
-		if [[ $arg[i] == '\' ]]
-		then
-			(( i++ ))
-			if [[ $arg[i] == ('$'|'`'|'\') ]]
-			then
-				buf=$buf$arg[last,i-2] 
-				(( offset++ ))
-				offsets[i-arg1-offset]=$offset 
-			else
-				buf=$buf$arg[last,i-1] 
-			fi
-		else
-			style=back-quoted-argument 
-			style_end=back-quoted-argument-delimiter 
-			buf=$buf$arg[last,i-1] 
-			offsets[i-arg1-offset]='' 
-			break
-		fi
-		last=$i 
-	done
-	_zsh_highlight_main_highlighter_highlight_list 0 '' $subshell_has_end $buf
-	for start end_ highlight in $reply
-	do
-		start=$(( start_pos + arg1 + start + offsets[(Rb:start:)?*] )) 
-		end_=$(( start_pos + arg1 + end_ + offsets[(Rb:end_:)?*] )) 
-		highlights+=($start $end_ $highlight) 
-		if [[ $highlight == back-quoted-argument-unclosed && $style == back-quoted-argument ]]
-		then
-			style_end=unknown-token 
-		fi
-	done
-	reply=($(( start_pos + arg1 - 1 )) $(( start_pos + i )) $style $(( start_pos + arg1 - 1 )) $(( start_pos + arg1 )) back-quoted-argument-delimiter $highlights) 
-	if (( $#style_end ))
-	then
-		reply+=($(( start_pos + i - 1)) $(( start_pos + i )) $style_end) 
-	fi
-	REPLY=$i 
-}
-_zsh_highlight_main_highlighter_highlight_dollar_quote () {
-	local -a match mbegin mend
-	local MATCH
-	integer MBEGIN MEND
-	local i j k style
-	local AA
-	integer c
-	reply=() 
-	for ((i = $1 + 2 ; i <= $#arg ; i += 1 )) do
-		(( j = i + start_pos - 1 ))
-		(( k = j + 1 ))
-		case "$arg[$i]" in
-			("'") break ;;
-			("\\") style=back-dollar-quoted-argument 
-				for ((c = i + 1 ; c <= $#arg ; c += 1 )) do
-					[[ "$arg[$c]" != ([0-9xXuUa-fA-F]) ]] && break
-				done
-				AA=$arg[$i+1,$c-1] 
-				if [[ "$AA" =~ "^(x|X)[0-9a-fA-F]{1,2}" || "$AA" =~ "^[0-7]{1,3}" || "$AA" =~ "^u[0-9a-fA-F]{1,4}" || "$AA" =~ "^U[0-9a-fA-F]{1,8}" ]]
-				then
-					(( k += $#MATCH ))
-					(( i += $#MATCH ))
-				else
-					if (( $#arg > $i+1 )) && [[ $arg[$i+1] == [xXuU] ]]
-					then
-						style=unknown-token 
-					fi
-					(( k += 1 ))
-					(( i += 1 ))
-				fi ;;
-			(*) continue ;;
-		esac
-		reply+=($j $k $style) 
-	done
-	if [[ $arg[i] == "'" ]]
-	then
-		style=dollar-quoted-argument 
-	else
-		(( i-- ))
-		style=dollar-quoted-argument-unclosed 
-	fi
-	reply=($(( start_pos + $1 - 1 )) $(( start_pos + i )) $style $reply) 
-	REPLY=$i 
-}
-_zsh_highlight_main_highlighter_highlight_double_quote () {
-	local -a breaks match mbegin mend saved_reply
-	local MATCH
-	integer last_break=$(( start_pos + $1 - 1 )) MBEGIN MEND 
-	local i j k ret style
-	reply=() 
-	for ((i = $1 + 1 ; i <= $#arg ; i += 1 )) do
-		(( j = i + start_pos - 1 ))
-		(( k = j + 1 ))
-		case "$arg[$i]" in
-			('"') break ;;
-			('`') saved_reply=($reply) 
-				_zsh_highlight_main_highlighter_highlight_backtick $i
-				(( i = REPLY ))
-				reply=($saved_reply $reply) 
-				continue ;;
-			('$') style=dollar-double-quoted-argument 
-				if [[ ${arg:$i} =~ ^([A-Za-z_][A-Za-z0-9_]*|[0-9]+) ]]
-				then
-					(( k += $#MATCH ))
-					(( i += $#MATCH ))
-				elif [[ ${arg:$i} =~ ^[{]([A-Za-z_][A-Za-z0-9_]*|[0-9]+)[}] ]]
-				then
-					(( k += $#MATCH ))
-					(( i += $#MATCH ))
-				elif [[ $arg[i+1] == '$' ]]
-				then
-					(( k += 1 ))
-					(( i += 1 ))
-				elif [[ $arg[i+1] == [-#*@?] ]]
-				then
-					(( k += 1 ))
-					(( i += 1 ))
-				elif [[ $arg[i+1] == $'\x28' ]]
-				then
-					saved_reply=($reply) 
-					if [[ $arg[i+2] == $'\x28' ]] && _zsh_highlight_main_highlighter_highlight_arithmetic $i
-					then
-						(( i = REPLY ))
-						reply=($saved_reply $reply) 
-						continue
-					fi
-					breaks+=($last_break $(( start_pos + i - 1 ))) 
-					(( i += 2 ))
-					_zsh_highlight_main_highlighter_highlight_list $(( start_pos + i - 1 )) S $has_end $arg[i,-1]
-					ret=$? 
-					(( i += REPLY ))
-					last_break=$(( start_pos + i )) 
-					reply=($saved_reply $j $(( start_pos + i )) command-substitution-quoted $j $(( j + 2 )) command-substitution-delimiter-quoted $reply) 
-					if (( ret == 0 ))
-					then
-						reply+=($(( start_pos + i - 1 )) $(( start_pos + i )) command-substitution-delimiter-quoted) 
-					fi
-					continue
-				else
-					continue
-				fi ;;
-			("\\") style=back-double-quoted-argument 
-				if [[ \\\`\"\$${histchars[1]} == *$arg[$i+1]* ]]
-				then
-					(( k += 1 ))
-					(( i += 1 ))
-				else
-					continue
-				fi ;;
-			($histchars[1]) if [[ $arg[i+1] != ('='|$'\x28'|$'\x7b'|[[:blank:]]) ]]
-				then
-					style=history-expansion 
-				else
-					continue
-				fi ;;
-			(*) continue ;;
-		esac
-		reply+=($j $k $style) 
-	done
-	if [[ $arg[i] == '"' ]]
-	then
-		style=double-quoted-argument 
-	else
-		(( i-- ))
-		style=double-quoted-argument-unclosed 
-	fi
-	(( last_break != start_pos + i )) && breaks+=($last_break $(( start_pos + i ))) 
-	saved_reply=($reply) 
-	reply=() 
-	for 1 2 in $breaks
-	do
-		(( $1 != $2 )) && reply+=($1 $2 $style) 
-	done
-	reply+=($saved_reply) 
-	REPLY=$i 
-}
-_zsh_highlight_main_highlighter_highlight_list () {
-	integer start_pos end_pos=0 buf_offset=$1 has_end=$3 
-	local alias_style param_style last_arg arg buf=$4 highlight_glob=true saw_assignment=false style 
-	local in_array_assignment=false 
-	integer in_param=0 len=$#buf 
-	local -a in_alias match mbegin mend list_highlights
-	local -A seen_alias
-	readonly parameter_name_pattern='([A-Za-z_][A-Za-z0-9_]*|[0-9]+)' 
-	list_highlights=() 
-	local braces_stack=$2 
-	local this_word next_word=':start::start_of_pipeline:' 
-	integer in_redirection
-	local proc_buf="$buf" 
-	local -a args
-	if [[ $zsyh_user_options[interactivecomments] == on ]]
-	then
-		args=(${(zZ+c+)buf}) 
-	else
-		args=(${(z)buf}) 
-	fi
-	if [[ $braces_stack == 'S' ]] && (( $+args[3] && ! $+args[4] )) && [[ $args[3] == $'\x29' ]] && [[ $args[1] == *'<'* ]] && _zsh_highlight_main__is_redirection $args[1]
-	then
-		highlight_glob=false 
-	fi
-	while (( $#args ))
-	do
-		last_arg=$arg 
-		arg=$args[1] 
-		shift args
-		if (( $#in_alias ))
-		then
-			(( in_alias[1]-- ))
-			in_alias=($in_alias[$in_alias[(i)<1->],-1]) 
-			() {
-				local alias_name
-				for alias_name in ${(k)seen_alias[(R)<$#in_alias->]}
-				do
-					unset "seen_alias[$alias_name]"
-				done
-			}
-			if (( $#in_alias == 0 ))
-			then
-				seen_alias=() 
-				_zsh_highlight_main_add_region_highlight $start_pos $end_pos $alias_style
-			fi
-		fi
-		if (( in_param ))
-		then
-			(( in_param-- ))
-			if (( in_param == 0 ))
-			then
-				_zsh_highlight_main_add_region_highlight $start_pos $end_pos $param_style
-				param_style="" 
-			fi
-		fi
-		if (( in_redirection == 0 ))
-		then
-			this_word=$next_word 
-			next_word=':regular:' 
-		elif (( !in_param ))
-		then
-			(( --in_redirection ))
-		fi
-		style=unknown-token 
-		if [[ $this_word == *':start:'* ]]
-		then
-			in_array_assignment=false 
-			if [[ $arg == 'noglob' ]]
-			then
-				highlight_glob=false 
-			fi
-		fi
-		if (( $#in_alias == 0 && in_param == 0 ))
-		then
-			[[ "$proc_buf" = (#b)(#s)(([ $'\t']|[\\]$'\n')#)(?|)* ]]
-			integer offset="${#match[1]}" 
-			(( start_pos = end_pos + offset ))
-			(( end_pos = start_pos + $#arg ))
-			[[ $arg == ';' && ${match[3]} == $'\n' ]] && arg=$'\n' 
-			proc_buf="${proc_buf[offset + $#arg + 1,len]}" 
-		fi
-		if [[ $zsyh_user_options[interactivecomments] == on && $arg[1] == $histchars[3] ]]
-		then
-			if [[ $this_word == *(':regular:'|':start:')* ]]
-			then
-				style=comment 
-			else
-				style=unknown-token 
-			fi
-			_zsh_highlight_main_add_region_highlight $start_pos $end_pos $style
-			in_redirection=1 
-			continue
-		fi
-		if [[ $this_word == *':start:'* ]] && ! (( in_redirection ))
-		then
-			_zsh_highlight_main__type "$arg" "$(( ! ${+seen_alias[$arg]} ))"
-			local res="$REPLY" 
-			if [[ $res == "alias" ]]
-			then
-				if [[ $arg == ?*=* ]]
-				then
-					_zsh_highlight_main_add_region_highlight $start_pos $end_pos unknown-token
-					continue
-				fi
-				seen_alias[$arg]=$#in_alias 
-				_zsh_highlight_main__resolve_alias $arg
-				local -a alias_args
-				if [[ $zsyh_user_options[interactivecomments] == on ]]
-				then
-					alias_args=(${(zZ+c+)REPLY}) 
-				else
-					alias_args=(${(z)REPLY}) 
-				fi
-				args=($alias_args $args) 
-				if (( $#in_alias == 0 ))
-				then
-					alias_style=alias 
-				else
-					(( in_alias[1]-- ))
-				fi
-				in_alias=($(($#alias_args + 1)) $in_alias) 
-				(( in_redirection++ ))
-				continue
-			else
-				_zsh_highlight_main_highlighter_expand_path $arg
-				_zsh_highlight_main__type "$REPLY" 0
-				res="$REPLY" 
-			fi
-		fi
-		if _zsh_highlight_main__is_redirection $arg
-		then
-			if (( in_redirection == 1 ))
-			then
-				_zsh_highlight_main_add_region_highlight $start_pos $end_pos unknown-token
-			else
-				in_redirection=2 
-				_zsh_highlight_main_add_region_highlight $start_pos $end_pos redirection
-			fi
-			continue
-		elif [[ $arg == '{'${~parameter_name_pattern}'}' ]] && _zsh_highlight_main__is_redirection $args[1]
-		then
-			in_redirection=3 
-			_zsh_highlight_main_add_region_highlight $start_pos $end_pos named-fd
-			continue
-		fi
-		if (( ! in_param )) && _zsh_highlight_main_highlighter__try_expand_parameter "$arg"
-		then
-			() {
-				local -a words
-				words=("${reply[@]}") 
-				if (( $#words == 0 )) && (( ! in_redirection ))
-				then
-					(( ++in_redirection ))
-					_zsh_highlight_main_add_region_highlight $start_pos $end_pos comment
-					continue
-				else
-					(( in_param = 1 + $#words ))
-					args=($words $args) 
-					arg=$args[1] 
-					_zsh_highlight_main__type "$arg" 0
-					res=$REPLY 
-				fi
-			}
-		fi
-		if (( ! in_redirection ))
-		then
-			if [[ $this_word == *':sudo_opt:'* ]]
-			then
-				if [[ -n $flags_with_argument ]] && {
-						if [[ -n $flags_sans_argument ]]
-						then
-							[[ $arg == '-'[$flags_sans_argument]#[$flags_with_argument] ]]
-						else
-							[[ $arg == '-'[$flags_with_argument] ]]
-						fi
-					}
-				then
-					this_word=${this_word//:start:/} 
-					next_word=':sudo_arg:' 
-				elif [[ -n $flags_with_argument ]] && {
-						if [[ -n $flags_sans_argument ]]
-						then
-							[[ $arg == '-'[$flags_sans_argument]#[$flags_with_argument]* ]]
-						else
-							[[ $arg == '-'[$flags_with_argument]* ]]
-						fi
-					}
-				then
-					this_word=${this_word//:start:/} 
-					next_word+=':start:' 
-					next_word+=':sudo_opt:' 
-				elif [[ -n $flags_sans_argument ]] && [[ $arg == '-'[$flags_sans_argument]# ]]
-				then
-					this_word=':sudo_opt:' 
-					next_word+=':start:' 
-					next_word+=':sudo_opt:' 
-				elif [[ -n $flags_solo ]] && {
-						if [[ -n $flags_sans_argument ]]
-						then
-							[[ $arg == '-'[$flags_sans_argument]#[$flags_solo]* ]]
-						else
-							[[ $arg == '-'[$flags_solo]* ]]
-						fi
-					}
-				then
-					this_word=':sudo_opt:' 
-					next_word=':regular:' 
-				elif [[ $arg == '-'* ]]
-				then
-					this_word=':sudo_opt:' 
-					next_word+=':start:' 
-					next_word+=':sudo_opt:' 
-				else
-					this_word=${this_word//:sudo_opt:/} 
-				fi
-			elif [[ $this_word == *':sudo_arg:'* ]]
-			then
-				next_word+=':sudo_opt:' 
-				next_word+=':start:' 
-			fi
-		fi
-		if [[ -n ${(M)ZSH_HIGHLIGHT_TOKENS_COMMANDSEPARATOR:#"$arg"} ]] && [[ $braces_stack != *T* || $arg != ('||'|'&&') ]]
-		then
-			if _zsh_highlight_main__stack_pop T || _zsh_highlight_main__stack_pop Q
-			then
-				style=unknown-token 
-			elif $in_array_assignment
-			then
-				case $arg in
-					($'\n') style=commandseparator  ;;
-					(';') style=unknown-token  ;;
-					(*) style=unknown-token  ;;
-				esac
-			elif [[ $this_word == *':regular:'* ]]
-			then
-				style=commandseparator 
-			elif [[ $this_word == *':start:'* ]] && [[ $arg == $'\n' ]]
-			then
-				style=commandseparator 
-			elif [[ $this_word == *':start:'* ]] && [[ $arg == ';' ]] && (( $#in_alias ))
-			then
-				style=commandseparator 
-			else
-				style=unknown-token 
-			fi
-			if [[ $arg == $'\n' ]] && $in_array_assignment
-			then
-				next_word=':regular:' 
-			elif [[ $arg == ';' ]] && $in_array_assignment
-			then
-				next_word=':regular:' 
-			else
-				next_word=':start:' 
-				highlight_glob=true 
-				saw_assignment=false 
-				() {
-					local alias_name
-					for alias_name in ${(k)seen_alias[(R)<$#in_alias->]}
-					do
-						unset "seen_alias[$alias_name]"
-					done
-				}
-				if [[ $arg != '|' && $arg != '|&' ]]
-				then
-					next_word+=':start_of_pipeline:' 
-				fi
-			fi
-		elif ! (( in_redirection)) && [[ $this_word == *':always:'* && $arg == 'always' ]]
-		then
-			style=reserved-word 
-			highlight_glob=true 
-			saw_assignment=false 
-			next_word=':start::start_of_pipeline:' 
-		elif ! (( in_redirection)) && [[ $this_word == *':start:'* ]]
-		then
-			if (( ${+precommand_options[$arg]} )) && _zsh_highlight_main__is_runnable $arg
-			then
-				style=precommand 
-				() {
-					set -- "${(@s.:.)precommand_options[$arg]}"
-					flags_with_argument=$1 
-					flags_sans_argument=$2 
-					flags_solo=$3 
-				}
-				next_word=${next_word//:regular:/} 
-				next_word+=':sudo_opt:' 
-				next_word+=':start:' 
-				if [[ $arg == 'exec' ]]
-				then
-					next_word+=':regular:' 
-				fi
-			else
-				case $res in
-					(reserved) style=reserved-word 
-						case $arg in
-							(time|nocorrect) next_word=${next_word//:regular:/} 
-								next_word+=':start:'  ;;
-							($'\x7b') braces_stack='Y'"$braces_stack"  ;;
-							($'\x7d') _zsh_highlight_main__stack_pop 'Y' reserved-word
-								if [[ $style == reserved-word ]]
-								then
-									next_word+=':always:' 
-								fi ;;
-							($'\x5b\x5b') braces_stack='T'"$braces_stack"  ;;
-							('do') braces_stack='D'"$braces_stack"  ;;
-							('done') _zsh_highlight_main__stack_pop 'D' reserved-word ;;
-							('if') braces_stack=':?'"$braces_stack"  ;;
-							('then') _zsh_highlight_main__stack_pop ':' reserved-word ;;
-							('elif') if [[ ${braces_stack[1]} == '?' ]]
-								then
-									braces_stack=':'"$braces_stack" 
-								else
-									style=unknown-token 
-								fi ;;
-							('else') if [[ ${braces_stack[1]} == '?' ]]
-								then
-									:
-								else
-									style=unknown-token 
-								fi ;;
-							('fi') _zsh_highlight_main__stack_pop '?' ;;
-							('foreach') braces_stack='$'"$braces_stack"  ;;
-							('end') _zsh_highlight_main__stack_pop '$' reserved-word ;;
-							('repeat') in_redirection=2 
-								this_word=':start::regular:'  ;;
-							('!') if [[ $this_word != *':start_of_pipeline:'* ]]
-								then
-									style=unknown-token 
-								else
-									
-								fi ;;
-						esac
-						if $saw_assignment && [[ $style != unknown-token ]]
-						then
-							style=unknown-token 
-						fi ;;
-					('suffix alias') style=suffix-alias  ;;
-					('global alias') style=global-alias  ;;
-					(alias) : ;;
-					(builtin) style=builtin 
-						[[ $arg == $'\x5b' ]] && braces_stack='Q'"$braces_stack"  ;;
-					(function) style=function  ;;
-					(command) style=command  ;;
-					(hashed) style=hashed-command  ;;
-					(none) if (( ! in_param )) && _zsh_highlight_main_highlighter_check_assign
-						then
-							_zsh_highlight_main_add_region_highlight $start_pos $end_pos assign
-							local i=$(( arg[(i)=] + 1 )) 
-							saw_assignment=true 
-							if [[ $arg[i] == '(' ]]
-							then
-								in_array_assignment=true 
-								_zsh_highlight_main_add_region_highlight start_pos+i-1 start_pos+i reserved-word
-							else
-								next_word+=':start:' 
-								if (( i <= $#arg ))
-								then
-									() {
-										local highlight_glob=false 
-										[[ $zsyh_user_options[globassign] == on ]] && highlight_glob=true 
-										_zsh_highlight_main_highlighter_highlight_argument $i
-									}
-								fi
-							fi
-							continue
-						elif (( ! in_param )) && [[ $arg[0,1] = $histchars[0,1] ]] && (( $#arg[0,2] == 2 ))
-						then
-							style=history-expansion 
-						elif (( ! in_param )) && [[ $arg[0,1] == $histchars[2,2] ]]
-						then
-							style=history-expansion 
-						elif (( ! in_param )) && ! $saw_assignment && [[ $arg[1,2] == '((' ]]
-						then
-							_zsh_highlight_main_add_region_highlight $start_pos $((start_pos + 2)) reserved-word
-							if [[ $arg[-2,-1] == '))' ]]
-							then
-								_zsh_highlight_main_add_region_highlight $((end_pos - 2)) $end_pos reserved-word
-							fi
-							continue
-						elif (( ! in_param )) && [[ $arg == '()' ]]
-						then
-							style=reserved-word 
-						elif (( ! in_param )) && ! $saw_assignment && [[ $arg == $'\x28' ]]
-						then
-							style=reserved-word 
-							braces_stack='R'"$braces_stack" 
-						elif (( ! in_param )) && [[ $arg == $'\x29' ]]
-						then
-							if _zsh_highlight_main__stack_pop 'S'
-							then
-								REPLY=$start_pos 
-								reply=($list_highlights) 
-								return 0
-							fi
-							_zsh_highlight_main__stack_pop 'R' reserved-word
-						else
-							if _zsh_highlight_main_highlighter_check_path $arg 1
-							then
-								style=$REPLY 
-							else
-								style=unknown-token 
-							fi
-						fi ;;
-					(*) _zsh_highlight_main_add_region_highlight $start_pos $end_pos arg0_$res
-						continue ;;
-				esac
-			fi
-			if [[ -n ${(M)ZSH_HIGHLIGHT_TOKENS_CONTROL_FLOW:#"$arg"} ]]
-			then
-				next_word=':start::start_of_pipeline:' 
-			fi
-		elif _zsh_highlight_main__is_global_alias "$arg"
-		then
-			style=global-alias 
-		else
-			case $arg in
-				($'\x29') if $in_array_assignment
-					then
-						_zsh_highlight_main_add_region_highlight $start_pos $end_pos assign
-						_zsh_highlight_main_add_region_highlight $start_pos $end_pos reserved-word
-						in_array_assignment=false 
-						next_word+=':start:' 
-						continue
-					elif (( in_redirection ))
-					then
-						style=unknown-token 
-					else
-						if _zsh_highlight_main__stack_pop 'S'
-						then
-							REPLY=$start_pos 
-							reply=($list_highlights) 
-							return 0
-						fi
-						_zsh_highlight_main__stack_pop 'R' reserved-word
-					fi ;;
-				($'\x28\x29') if (( in_redirection )) || $in_array_assignment
-					then
-						style=unknown-token 
-					else
-						if [[ $zsyh_user_options[multifuncdef] == on ]] || false
-						then
-							next_word+=':start::start_of_pipeline:' 
-						fi
-						style=reserved-word 
-					fi ;;
-				(*) if false
-					then
-						
-					elif [[ $arg = $'\x7d' ]] && $right_brace_is_recognised_everywhere
-					then
-						if (( in_redirection )) || $in_array_assignment
-						then
-							style=unknown-token 
-						else
-							_zsh_highlight_main__stack_pop 'Y' reserved-word
-							if [[ $style == reserved-word ]]
-							then
-								next_word+=':always:' 
-							fi
-						fi
-					elif [[ $arg[0,1] = $histchars[0,1] ]] && (( $#arg[0,2] == 2 ))
-					then
-						style=history-expansion 
-					elif [[ $arg == $'\x5d\x5d' ]] && _zsh_highlight_main__stack_pop 'T' reserved-word
-					then
-						:
-					elif [[ $arg == $'\x5d' ]] && _zsh_highlight_main__stack_pop 'Q' builtin
-					then
-						:
-					else
-						_zsh_highlight_main_highlighter_highlight_argument 1 $(( 1 != in_redirection ))
-						continue
-					fi ;;
-			esac
-		fi
-		_zsh_highlight_main_add_region_highlight $start_pos $end_pos $style
-	done
-	(( $#in_alias )) && in_alias=() _zsh_highlight_main_add_region_highlight $start_pos $end_pos $alias_style
-	(( in_param == 1 )) && in_param=0 _zsh_highlight_main_add_region_highlight $start_pos $end_pos $param_style
-	[[ "$proc_buf" = (#b)(#s)(([[:space:]]|\\$'\n')#) ]]
-	REPLY=$(( end_pos + ${#match[1]} - 1 )) 
-	reply=($list_highlights) 
-	return $(( $#braces_stack > 0 ))
-}
-_zsh_highlight_main_highlighter_highlight_path_separators () {
-	local pos style_pathsep
-	style_pathsep=$1_pathseparator 
-	reply=() 
-	[[ -z "$ZSH_HIGHLIGHT_STYLES[$style_pathsep]" || "$ZSH_HIGHLIGHT_STYLES[$1]" == "$ZSH_HIGHLIGHT_STYLES[$style_pathsep]" ]] && return 0
-	for ((pos = start_pos; $pos <= end_pos; pos++ )) do
-		if [[ $BUFFER[pos] == / ]]
-		then
-			reply+=($((pos - 1)) $pos $style_pathsep) 
-		fi
-	done
-}
-_zsh_highlight_main_highlighter_highlight_single_quote () {
-	local arg1=$1 i q=\' style 
-	i=$arg[(ib:arg1+1:)$q] 
-	reply=() 
-	if [[ $zsyh_user_options[rcquotes] == on ]]
-	then
-		while [[ $arg[i+1] == "'" ]]
-		do
-			reply+=($(( start_pos + i - 1 )) $(( start_pos + i + 1 )) rc-quote) 
-			(( i++ ))
-			i=$arg[(ib:i+1:)$q] 
-		done
-	fi
-	if [[ $arg[i] == "'" ]]
-	then
-		style=single-quoted-argument 
-	else
-		(( i-- ))
-		style=single-quoted-argument-unclosed 
-	fi
-	reply=($(( start_pos + arg1 - 1 )) $(( start_pos + i )) $style $reply) 
-	REPLY=$i 
-}
-_zsh_highlight_pattern_highlighter_loop () {
-	local buf="$1" pat="$2" 
-	local -a match mbegin mend
-	local MATCH
-	integer MBEGIN MEND
-	if [[ "$buf" == (#b)(*)(${~pat})* ]]
-	then
-		region_highlight+=("$((mbegin[2] - 1)) $mend[2] $ZSH_HIGHLIGHT_PATTERNS[$pat], memo=zsh-syntax-highlighting") 
-		"$0" "$match[1]" "$pat"
-		return $?
-	fi
-}
 _zsh_highlight_preexec_hook () {
 	typeset -g _ZSH_HIGHLIGHT_PRIOR_BUFFER= 
-	typeset -gi _ZSH_HIGHLIGHT_PRIOR_CURSOR= 
+	typeset -gi _ZSH_HIGHLIGHT_PRIOR_CURSOR=0 
+	typeset -ga _FAST_MAIN_CACHE
+	_FAST_MAIN_CACHE=() 
 }
-_zsh_highlight_regexp_highlighter_loop () {
-	local buf="$1" pat="$2" 
-	integer OFFSET=0 
-	local MATCH
-	integer MBEGIN MEND
-	local -a match mbegin mend
-	while true
-	do
-		[[ "$buf" =~ "$pat" ]] || return
-		region_highlight+=("$((MBEGIN - 1 + OFFSET)) $((MEND + OFFSET)) $ZSH_HIGHLIGHT_REGEXP[$pat], memo=zsh-syntax-highlighting") 
-		buf="$buf[$(($MEND+1)),-1]" 
-		OFFSET=$((MEND+OFFSET)) 
-	done
+_zsh_highlight_widget_orig-s000-r687-_bash_complete-word () {
+	_zsh_highlight_call_widget orig-s000-r687-_bash_complete-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_bash_complete-word () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_bash_complete-word -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_bash_list-choices () {
+	_zsh_highlight_call_widget orig-s000-r687-_bash_list-choices -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_bash_list-choices () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_bash_list-choices -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_complete_debug () {
+	_zsh_highlight_call_widget orig-s000-r687-_complete_debug -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_complete_debug () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_complete_debug -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_complete_help () {
+	_zsh_highlight_call_widget orig-s000-r687-_complete_help -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_complete_help () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_complete_help -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_complete_tag () {
+	_zsh_highlight_call_widget orig-s000-r687-_complete_tag -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_complete_tag () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_complete_tag -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_correct_filename () {
+	_zsh_highlight_call_widget orig-s000-r687-_correct_filename -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_correct_filename () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_correct_filename -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_correct_word () {
+	_zsh_highlight_call_widget orig-s000-r687-_correct_word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_correct_word () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_correct_word -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_expand_alias () {
+	_zsh_highlight_call_widget orig-s000-r687-_expand_alias -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_expand_alias () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_expand_alias -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_expand_word () {
+	_zsh_highlight_call_widget orig-s000-r687-_expand_word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_expand_word () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_expand_word -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_history-complete-newer () {
+	_zsh_highlight_call_widget orig-s000-r687-_history-complete-newer -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_history-complete-newer () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_history-complete-newer -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_history-complete-older () {
+	_zsh_highlight_call_widget orig-s000-r687-_history-complete-older -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_history-complete-older () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_history-complete-older -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_list_expansions () {
+	_zsh_highlight_call_widget orig-s000-r687-_list_expansions -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_list_expansions () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_list_expansions -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_most_recent_file () {
+	_zsh_highlight_call_widget orig-s000-r687-_most_recent_file -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_most_recent_file () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_most_recent_file -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_next_tags () {
+	_zsh_highlight_call_widget orig-s000-r687-_next_tags -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_next_tags () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_next_tags -- "$@"
+_zsh_highlight_widget_orig-s000-r687-_read_comp () {
+	_zsh_highlight_call_widget orig-s000-r687-_read_comp -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-_read_comp () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-_read_comp -- "$@"
-}
-_zsh_highlight_widget_orig-s0.0000040000-r5628-accept-and-hold () {
+_zsh_highlight_widget_orig-s000-r687-accept-and-hold () {
 	_zsh_highlight_call_widget .accept-and-hold -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-accept-and-infer-next-history () {
+_zsh_highlight_widget_orig-s000-r687-accept-and-infer-next-history () {
 	_zsh_highlight_call_widget .accept-and-infer-next-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-accept-and-menu-complete () {
+_zsh_highlight_widget_orig-s000-r687-accept-and-menu-complete () {
 	_zsh_highlight_call_widget .accept-and-menu-complete -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-accept-line () {
+_zsh_highlight_widget_orig-s000-r687-accept-line () {
 	_zsh_highlight_call_widget .accept-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-accept-line-and-down-history () {
+_zsh_highlight_widget_orig-s000-r687-accept-line-and-down-history () {
 	_zsh_highlight_call_widget .accept-line-and-down-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-accept-search () {
+_zsh_highlight_widget_orig-s000-r687-accept-search () {
 	_zsh_highlight_call_widget .accept-search -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-argument-base () {
+_zsh_highlight_widget_orig-s000-r687-argument-base () {
 	_zsh_highlight_call_widget .argument-base -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-auto-suffix-remove () {
+_zsh_highlight_widget_orig-s000-r687-auto-suffix-remove () {
 	_zsh_highlight_call_widget .auto-suffix-remove -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-auto-suffix-retain () {
+_zsh_highlight_widget_orig-s000-r687-auto-suffix-retain () {
 	_zsh_highlight_call_widget .auto-suffix-retain -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-backward-char () {
+_zsh_highlight_widget_orig-s000-r687-backward-char () {
 	_zsh_highlight_call_widget .backward-char -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-backward-delete-char () {
+_zsh_highlight_widget_orig-s000-r687-backward-delete-char () {
 	_zsh_highlight_call_widget .backward-delete-char -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-backward-delete-word () {
+_zsh_highlight_widget_orig-s000-r687-backward-delete-word () {
 	_zsh_highlight_call_widget .backward-delete-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-backward-kill-line () {
+_zsh_highlight_widget_orig-s000-r687-backward-kill-line () {
 	_zsh_highlight_call_widget .backward-kill-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-backward-kill-word () {
+_zsh_highlight_widget_orig-s000-r687-backward-kill-word () {
 	_zsh_highlight_call_widget .backward-kill-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-backward-word () {
+_zsh_highlight_widget_orig-s000-r687-backward-word () {
 	_zsh_highlight_call_widget .backward-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-beginning-of-buffer-or-history () {
+_zsh_highlight_widget_orig-s000-r687-beginning-of-buffer-or-history () {
 	_zsh_highlight_call_widget .beginning-of-buffer-or-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-beginning-of-history () {
+_zsh_highlight_widget_orig-s000-r687-beginning-of-history () {
 	_zsh_highlight_call_widget .beginning-of-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-beginning-of-line () {
+_zsh_highlight_widget_orig-s000-r687-beginning-of-line () {
 	_zsh_highlight_call_widget .beginning-of-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-beginning-of-line-hist () {
+_zsh_highlight_widget_orig-s000-r687-beginning-of-line-hist () {
 	_zsh_highlight_call_widget .beginning-of-line-hist -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-bracketed-paste () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-bracketed-paste -- "$@"
+_zsh_highlight_widget_orig-s000-r687-bracketed-paste () {
+	_zsh_highlight_call_widget orig-s000-r687-bracketed-paste -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-capitalize-word () {
+_zsh_highlight_widget_orig-s000-r687-capitalize-word () {
 	_zsh_highlight_call_widget .capitalize-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-clear-screen () {
+_zsh_highlight_widget_orig-s000-r687-clear-screen () {
 	_zsh_highlight_call_widget .clear-screen -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-complete-word () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-complete-word -- "$@"
+_zsh_highlight_widget_orig-s000-r687-complete-word () {
+	_zsh_highlight_call_widget orig-s000-r687-complete-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-copy-prev-shell-word () {
+_zsh_highlight_widget_orig-s000-r687-copy-prev-shell-word () {
 	_zsh_highlight_call_widget .copy-prev-shell-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-copy-prev-word () {
+_zsh_highlight_widget_orig-s000-r687-copy-prev-word () {
 	_zsh_highlight_call_widget .copy-prev-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-copy-region-as-kill () {
+_zsh_highlight_widget_orig-s000-r687-copy-region-as-kill () {
 	_zsh_highlight_call_widget .copy-region-as-kill -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-deactivate-region () {
+_zsh_highlight_widget_orig-s000-r687-deactivate-region () {
 	_zsh_highlight_call_widget .deactivate-region -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-delete-char () {
+_zsh_highlight_widget_orig-s000-r687-delete-char () {
 	_zsh_highlight_call_widget .delete-char -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-delete-char-or-list () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-delete-char-or-list -- "$@"
+_zsh_highlight_widget_orig-s000-r687-delete-char-or-list () {
+	_zsh_highlight_call_widget orig-s000-r687-delete-char-or-list -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-delete-word () {
+_zsh_highlight_widget_orig-s000-r687-delete-word () {
 	_zsh_highlight_call_widget .delete-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-describe-key-briefly () {
+_zsh_highlight_widget_orig-s000-r687-describe-key-briefly () {
 	_zsh_highlight_call_widget .describe-key-briefly -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-digit-argument () {
+_zsh_highlight_widget_orig-s000-r687-digit-argument () {
 	_zsh_highlight_call_widget .digit-argument -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-down-case-word () {
+_zsh_highlight_widget_orig-s000-r687-down-case-word () {
 	_zsh_highlight_call_widget .down-case-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-down-history () {
+_zsh_highlight_widget_orig-s000-r687-down-history () {
 	_zsh_highlight_call_widget .down-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-down-line () {
+_zsh_highlight_widget_orig-s000-r687-down-line () {
 	_zsh_highlight_call_widget .down-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-down-line-or-beginning-search () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-down-line-or-beginning-search -- "$@"
+_zsh_highlight_widget_orig-s000-r687-down-line-or-beginning-search () {
+	_zsh_highlight_call_widget orig-s000-r687-down-line-or-beginning-search -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-down-line-or-history () {
+_zsh_highlight_widget_orig-s000-r687-down-line-or-history () {
 	_zsh_highlight_call_widget .down-line-or-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-down-line-or-search () {
+_zsh_highlight_widget_orig-s000-r687-down-line-or-search () {
 	_zsh_highlight_call_widget .down-line-or-search -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-edit-command-line () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-edit-command-line -- "$@"
+_zsh_highlight_widget_orig-s000-r687-edit-command-line () {
+	_zsh_highlight_call_widget orig-s000-r687-edit-command-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-emacs-backward-word () {
+_zsh_highlight_widget_orig-s000-r687-emacs-backward-word () {
 	_zsh_highlight_call_widget .emacs-backward-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-emacs-forward-word () {
+_zsh_highlight_widget_orig-s000-r687-emacs-forward-word () {
 	_zsh_highlight_call_widget .emacs-forward-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-end-of-buffer-or-history () {
+_zsh_highlight_widget_orig-s000-r687-end-of-buffer-or-history () {
 	_zsh_highlight_call_widget .end-of-buffer-or-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-end-of-history () {
+_zsh_highlight_widget_orig-s000-r687-end-of-history () {
 	_zsh_highlight_call_widget .end-of-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-end-of-line () {
+_zsh_highlight_widget_orig-s000-r687-end-of-line () {
 	_zsh_highlight_call_widget .end-of-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-end-of-line-hist () {
+_zsh_highlight_widget_orig-s000-r687-end-of-line-hist () {
 	_zsh_highlight_call_widget .end-of-line-hist -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-end-of-list () {
+_zsh_highlight_widget_orig-s000-r687-end-of-list () {
 	_zsh_highlight_call_widget .end-of-list -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-exchange-point-and-mark () {
+_zsh_highlight_widget_orig-s000-r687-exchange-point-and-mark () {
 	_zsh_highlight_call_widget .exchange-point-and-mark -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-execute-last-named-cmd () {
+_zsh_highlight_widget_orig-s000-r687-execute-last-named-cmd () {
 	_zsh_highlight_call_widget .execute-last-named-cmd -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-execute-named-cmd () {
+_zsh_highlight_widget_orig-s000-r687-execute-named-cmd () {
 	_zsh_highlight_call_widget .execute-named-cmd -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-expand-cmd-path () {
+_zsh_highlight_widget_orig-s000-r687-expand-cmd-path () {
 	_zsh_highlight_call_widget .expand-cmd-path -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-expand-history () {
+_zsh_highlight_widget_orig-s000-r687-expand-history () {
 	_zsh_highlight_call_widget .expand-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-expand-or-complete () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-expand-or-complete -- "$@"
+_zsh_highlight_widget_orig-s000-r687-expand-or-complete () {
+	_zsh_highlight_call_widget orig-s000-r687-expand-or-complete -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-expand-or-complete-prefix () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-expand-or-complete-prefix -- "$@"
+_zsh_highlight_widget_orig-s000-r687-expand-or-complete-prefix () {
+	_zsh_highlight_call_widget orig-s000-r687-expand-or-complete-prefix -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-expand-or-complete-with-dots () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-expand-or-complete-with-dots -- "$@"
+_zsh_highlight_widget_orig-s000-r687-expand-or-complete-with-dots () {
+	_zsh_highlight_call_widget orig-s000-r687-expand-or-complete-with-dots -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-expand-word () {
+_zsh_highlight_widget_orig-s000-r687-expand-word () {
 	_zsh_highlight_call_widget .expand-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-forward-char () {
+_zsh_highlight_widget_orig-s000-r687-forward-char () {
 	_zsh_highlight_call_widget .forward-char -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-forward-word () {
+_zsh_highlight_widget_orig-s000-r687-forward-word () {
 	_zsh_highlight_call_widget .forward-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-get-line () {
+_zsh_highlight_widget_orig-s000-r687-get-line () {
 	_zsh_highlight_call_widget .get-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-gosmacs-transpose-chars () {
+_zsh_highlight_widget_orig-s000-r687-gosmacs-transpose-chars () {
 	_zsh_highlight_call_widget .gosmacs-transpose-chars -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-history-beginning-search-backward () {
+_zsh_highlight_widget_orig-s000-r687-history-beginning-search-backward () {
 	_zsh_highlight_call_widget .history-beginning-search-backward -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-history-beginning-search-forward () {
+_zsh_highlight_widget_orig-s000-r687-history-beginning-search-forward () {
 	_zsh_highlight_call_widget .history-beginning-search-forward -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-history-incremental-pattern-search-backward () {
+_zsh_highlight_widget_orig-s000-r687-history-incremental-pattern-search-backward () {
 	_zsh_highlight_call_widget .history-incremental-pattern-search-backward -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-history-incremental-pattern-search-forward () {
+_zsh_highlight_widget_orig-s000-r687-history-incremental-pattern-search-forward () {
 	_zsh_highlight_call_widget .history-incremental-pattern-search-forward -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-history-incremental-search-backward () {
+_zsh_highlight_widget_orig-s000-r687-history-incremental-search-backward () {
 	_zsh_highlight_call_widget .history-incremental-search-backward -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-history-incremental-search-forward () {
+_zsh_highlight_widget_orig-s000-r687-history-incremental-search-forward () {
 	_zsh_highlight_call_widget .history-incremental-search-forward -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-history-search-backward () {
+_zsh_highlight_widget_orig-s000-r687-history-search-backward () {
 	_zsh_highlight_call_widget .history-search-backward -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-history-search-forward () {
+_zsh_highlight_widget_orig-s000-r687-history-search-forward () {
 	_zsh_highlight_call_widget .history-search-forward -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-infer-next-history () {
+_zsh_highlight_widget_orig-s000-r687-infer-next-history () {
 	_zsh_highlight_call_widget .infer-next-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-insert-last-word () {
+_zsh_highlight_widget_orig-s000-r687-insert-last-word () {
 	_zsh_highlight_call_widget .insert-last-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-kill-buffer () {
+_zsh_highlight_widget_orig-s000-r687-kill-buffer () {
 	_zsh_highlight_call_widget .kill-buffer -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-kill-line () {
+_zsh_highlight_widget_orig-s000-r687-kill-line () {
 	_zsh_highlight_call_widget .kill-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-kill-region () {
+_zsh_highlight_widget_orig-s000-r687-kill-region () {
 	_zsh_highlight_call_widget .kill-region -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-kill-whole-line () {
+_zsh_highlight_widget_orig-s000-r687-kill-whole-line () {
 	_zsh_highlight_call_widget .kill-whole-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-kill-word () {
+_zsh_highlight_widget_orig-s000-r687-kill-word () {
 	_zsh_highlight_call_widget .kill-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-list-choices () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-list-choices -- "$@"
+_zsh_highlight_widget_orig-s000-r687-list-choices () {
+	_zsh_highlight_call_widget orig-s000-r687-list-choices -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-list-expand () {
+_zsh_highlight_widget_orig-s000-r687-list-expand () {
 	_zsh_highlight_call_widget .list-expand -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-magic-space () {
+_zsh_highlight_widget_orig-s000-r687-magic-space () {
 	_zsh_highlight_call_widget .magic-space -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-menu-complete () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-menu-complete -- "$@"
+_zsh_highlight_widget_orig-s000-r687-menu-complete () {
+	_zsh_highlight_call_widget orig-s000-r687-menu-complete -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-menu-expand-or-complete () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-menu-expand-or-complete -- "$@"
+_zsh_highlight_widget_orig-s000-r687-menu-expand-or-complete () {
+	_zsh_highlight_call_widget orig-s000-r687-menu-expand-or-complete -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-menu-select () {
+_zsh_highlight_widget_orig-s000-r687-menu-select () {
 	_zsh_highlight_call_widget .menu-select -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-neg-argument () {
+_zsh_highlight_widget_orig-s000-r687-neg-argument () {
 	_zsh_highlight_call_widget .neg-argument -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-overwrite-mode () {
+_zsh_highlight_widget_orig-s000-r687-overwrite-mode () {
 	_zsh_highlight_call_widget .overwrite-mode -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-pound-insert () {
+_zsh_highlight_widget_orig-s000-r687-pound-insert () {
 	_zsh_highlight_call_widget .pound-insert -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-push-input () {
+_zsh_highlight_widget_orig-s000-r687-push-input () {
 	_zsh_highlight_call_widget .push-input -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-push-line () {
+_zsh_highlight_widget_orig-s000-r687-push-line () {
 	_zsh_highlight_call_widget .push-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-push-line-or-edit () {
+_zsh_highlight_widget_orig-s000-r687-push-line-or-edit () {
 	_zsh_highlight_call_widget .push-line-or-edit -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-put-replace-selection () {
+_zsh_highlight_widget_orig-s000-r687-put-replace-selection () {
 	_zsh_highlight_call_widget .put-replace-selection -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-quote-line () {
+_zsh_highlight_widget_orig-s000-r687-quote-line () {
 	_zsh_highlight_call_widget .quote-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-quote-region () {
+_zsh_highlight_widget_orig-s000-r687-quote-region () {
 	_zsh_highlight_call_widget .quote-region -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-quoted-insert () {
+_zsh_highlight_widget_orig-s000-r687-quoted-insert () {
 	_zsh_highlight_call_widget .quoted-insert -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-read-command () {
+_zsh_highlight_widget_orig-s000-r687-read-command () {
 	_zsh_highlight_call_widget .read-command -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-recursive-edit () {
+_zsh_highlight_widget_orig-s000-r687-recursive-edit () {
 	_zsh_highlight_call_widget .recursive-edit -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-redisplay () {
+_zsh_highlight_widget_orig-s000-r687-redisplay () {
 	_zsh_highlight_call_widget .redisplay -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-redo () {
+_zsh_highlight_widget_orig-s000-r687-redo () {
 	_zsh_highlight_call_widget .redo -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-reset-prompt () {
+_zsh_highlight_widget_orig-s000-r687-reset-prompt () {
 	_zsh_highlight_call_widget .reset-prompt -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-reverse-menu-complete () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-reverse-menu-complete -- "$@"
+_zsh_highlight_widget_orig-s000-r687-reverse-menu-complete () {
+	_zsh_highlight_call_widget orig-s000-r687-reverse-menu-complete -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-select-a-blank-word () {
+_zsh_highlight_widget_orig-s000-r687-select-a-blank-word () {
 	_zsh_highlight_call_widget .select-a-blank-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-select-a-shell-word () {
+_zsh_highlight_widget_orig-s000-r687-select-a-shell-word () {
 	_zsh_highlight_call_widget .select-a-shell-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-select-a-word () {
+_zsh_highlight_widget_orig-s000-r687-select-a-word () {
 	_zsh_highlight_call_widget .select-a-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-select-in-blank-word () {
+_zsh_highlight_widget_orig-s000-r687-select-in-blank-word () {
 	_zsh_highlight_call_widget .select-in-blank-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-select-in-shell-word () {
+_zsh_highlight_widget_orig-s000-r687-select-in-shell-word () {
 	_zsh_highlight_call_widget .select-in-shell-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-select-in-word () {
+_zsh_highlight_widget_orig-s000-r687-select-in-word () {
 	_zsh_highlight_call_widget .select-in-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-self-insert () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-self-insert -- "$@"
+_zsh_highlight_widget_orig-s000-r687-self-insert () {
+	_zsh_highlight_call_widget orig-s000-r687-self-insert -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-self-insert-unmeta () {
+_zsh_highlight_widget_orig-s000-r687-self-insert-unmeta () {
 	_zsh_highlight_call_widget .self-insert-unmeta -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-send-break () {
+_zsh_highlight_widget_orig-s000-r687-send-break () {
 	_zsh_highlight_call_widget .send-break -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-set-mark-command () {
+_zsh_highlight_widget_orig-s000-r687-set-mark-command () {
 	_zsh_highlight_call_widget .set-mark-command -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-spell-word () {
+_zsh_highlight_widget_orig-s000-r687-spell-word () {
 	_zsh_highlight_call_widget .spell-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-split-undo () {
+_zsh_highlight_widget_orig-s000-r687-split-undo () {
 	_zsh_highlight_call_widget .split-undo -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-transpose-chars () {
+_zsh_highlight_widget_orig-s000-r687-transpose-chars () {
 	_zsh_highlight_call_widget .transpose-chars -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-transpose-words () {
+_zsh_highlight_widget_orig-s000-r687-transpose-words () {
 	_zsh_highlight_call_widget .transpose-words -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-undefined-key () {
+_zsh_highlight_widget_orig-s000-r687-undefined-key () {
 	_zsh_highlight_call_widget .undefined-key -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-undo () {
+_zsh_highlight_widget_orig-s000-r687-undo () {
 	_zsh_highlight_call_widget .undo -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-universal-argument () {
+_zsh_highlight_widget_orig-s000-r687-universal-argument () {
 	_zsh_highlight_call_widget .universal-argument -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-up-case-word () {
+_zsh_highlight_widget_orig-s000-r687-up-case-word () {
 	_zsh_highlight_call_widget .up-case-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-up-history () {
+_zsh_highlight_widget_orig-s000-r687-up-history () {
 	_zsh_highlight_call_widget .up-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-up-line () {
+_zsh_highlight_widget_orig-s000-r687-up-line () {
 	_zsh_highlight_call_widget .up-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-up-line-or-beginning-search () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-up-line-or-beginning-search -- "$@"
+_zsh_highlight_widget_orig-s000-r687-up-line-or-beginning-search () {
+	_zsh_highlight_call_widget orig-s000-r687-up-line-or-beginning-search -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-up-line-or-history () {
+_zsh_highlight_widget_orig-s000-r687-up-line-or-history () {
 	_zsh_highlight_call_widget .up-line-or-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-up-line-or-search () {
+_zsh_highlight_widget_orig-s000-r687-up-line-or-search () {
 	_zsh_highlight_call_widget .up-line-or-search -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-add-eol () {
+_zsh_highlight_widget_orig-s000-r687-vi-add-eol () {
 	_zsh_highlight_call_widget .vi-add-eol -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-add-next () {
+_zsh_highlight_widget_orig-s000-r687-vi-add-next () {
 	_zsh_highlight_call_widget .vi-add-next -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-backward-blank-word () {
+_zsh_highlight_widget_orig-s000-r687-vi-backward-blank-word () {
 	_zsh_highlight_call_widget .vi-backward-blank-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-backward-blank-word-end () {
+_zsh_highlight_widget_orig-s000-r687-vi-backward-blank-word-end () {
 	_zsh_highlight_call_widget .vi-backward-blank-word-end -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-backward-char () {
+_zsh_highlight_widget_orig-s000-r687-vi-backward-char () {
 	_zsh_highlight_call_widget .vi-backward-char -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-backward-delete-char () {
+_zsh_highlight_widget_orig-s000-r687-vi-backward-delete-char () {
 	_zsh_highlight_call_widget .vi-backward-delete-char -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-backward-kill-word () {
+_zsh_highlight_widget_orig-s000-r687-vi-backward-kill-word () {
 	_zsh_highlight_call_widget .vi-backward-kill-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-backward-word () {
+_zsh_highlight_widget_orig-s000-r687-vi-backward-word () {
 	_zsh_highlight_call_widget .vi-backward-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-backward-word-end () {
+_zsh_highlight_widget_orig-s000-r687-vi-backward-word-end () {
 	_zsh_highlight_call_widget .vi-backward-word-end -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-beginning-of-line () {
+_zsh_highlight_widget_orig-s000-r687-vi-beginning-of-line () {
 	_zsh_highlight_call_widget .vi-beginning-of-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-caps-lock-panic () {
+_zsh_highlight_widget_orig-s000-r687-vi-caps-lock-panic () {
 	_zsh_highlight_call_widget .vi-caps-lock-panic -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-change () {
+_zsh_highlight_widget_orig-s000-r687-vi-change () {
 	_zsh_highlight_call_widget .vi-change -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-change-eol () {
+_zsh_highlight_widget_orig-s000-r687-vi-change-eol () {
 	_zsh_highlight_call_widget .vi-change-eol -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-change-whole-line () {
+_zsh_highlight_widget_orig-s000-r687-vi-change-whole-line () {
 	_zsh_highlight_call_widget .vi-change-whole-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-cmd-mode () {
+_zsh_highlight_widget_orig-s000-r687-vi-cmd-mode () {
 	_zsh_highlight_call_widget .vi-cmd-mode -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-delete () {
+_zsh_highlight_widget_orig-s000-r687-vi-delete () {
 	_zsh_highlight_call_widget .vi-delete -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-delete-char () {
+_zsh_highlight_widget_orig-s000-r687-vi-delete-char () {
 	_zsh_highlight_call_widget .vi-delete-char -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-digit-or-beginning-of-line () {
+_zsh_highlight_widget_orig-s000-r687-vi-digit-or-beginning-of-line () {
 	_zsh_highlight_call_widget .vi-digit-or-beginning-of-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-down-case () {
+_zsh_highlight_widget_orig-s000-r687-vi-down-case () {
 	_zsh_highlight_call_widget .vi-down-case -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-down-line-or-history () {
+_zsh_highlight_widget_orig-s000-r687-vi-down-line-or-history () {
 	_zsh_highlight_call_widget .vi-down-line-or-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-end-of-line () {
+_zsh_highlight_widget_orig-s000-r687-vi-end-of-line () {
 	_zsh_highlight_call_widget .vi-end-of-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-fetch-history () {
+_zsh_highlight_widget_orig-s000-r687-vi-fetch-history () {
 	_zsh_highlight_call_widget .vi-fetch-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-find-next-char () {
+_zsh_highlight_widget_orig-s000-r687-vi-find-next-char () {
 	_zsh_highlight_call_widget .vi-find-next-char -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-find-next-char-skip () {
+_zsh_highlight_widget_orig-s000-r687-vi-find-next-char-skip () {
 	_zsh_highlight_call_widget .vi-find-next-char-skip -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-find-prev-char () {
+_zsh_highlight_widget_orig-s000-r687-vi-find-prev-char () {
 	_zsh_highlight_call_widget .vi-find-prev-char -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-find-prev-char-skip () {
+_zsh_highlight_widget_orig-s000-r687-vi-find-prev-char-skip () {
 	_zsh_highlight_call_widget .vi-find-prev-char-skip -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-first-non-blank () {
+_zsh_highlight_widget_orig-s000-r687-vi-first-non-blank () {
 	_zsh_highlight_call_widget .vi-first-non-blank -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-forward-blank-word () {
+_zsh_highlight_widget_orig-s000-r687-vi-forward-blank-word () {
 	_zsh_highlight_call_widget .vi-forward-blank-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-forward-blank-word-end () {
+_zsh_highlight_widget_orig-s000-r687-vi-forward-blank-word-end () {
 	_zsh_highlight_call_widget .vi-forward-blank-word-end -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-forward-char () {
+_zsh_highlight_widget_orig-s000-r687-vi-forward-char () {
 	_zsh_highlight_call_widget .vi-forward-char -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-forward-word () {
+_zsh_highlight_widget_orig-s000-r687-vi-forward-word () {
 	_zsh_highlight_call_widget .vi-forward-word -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-forward-word-end () {
+_zsh_highlight_widget_orig-s000-r687-vi-forward-word-end () {
 	_zsh_highlight_call_widget .vi-forward-word-end -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-goto-column () {
+_zsh_highlight_widget_orig-s000-r687-vi-goto-column () {
 	_zsh_highlight_call_widget .vi-goto-column -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-goto-mark () {
+_zsh_highlight_widget_orig-s000-r687-vi-goto-mark () {
 	_zsh_highlight_call_widget .vi-goto-mark -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-goto-mark-line () {
+_zsh_highlight_widget_orig-s000-r687-vi-goto-mark-line () {
 	_zsh_highlight_call_widget .vi-goto-mark-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-history-search-backward () {
+_zsh_highlight_widget_orig-s000-r687-vi-history-search-backward () {
 	_zsh_highlight_call_widget .vi-history-search-backward -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-history-search-forward () {
+_zsh_highlight_widget_orig-s000-r687-vi-history-search-forward () {
 	_zsh_highlight_call_widget .vi-history-search-forward -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-indent () {
+_zsh_highlight_widget_orig-s000-r687-vi-indent () {
 	_zsh_highlight_call_widget .vi-indent -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-insert () {
+_zsh_highlight_widget_orig-s000-r687-vi-insert () {
 	_zsh_highlight_call_widget .vi-insert -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-insert-bol () {
+_zsh_highlight_widget_orig-s000-r687-vi-insert-bol () {
 	_zsh_highlight_call_widget .vi-insert-bol -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-join () {
+_zsh_highlight_widget_orig-s000-r687-vi-join () {
 	_zsh_highlight_call_widget .vi-join -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-kill-eol () {
+_zsh_highlight_widget_orig-s000-r687-vi-kill-eol () {
 	_zsh_highlight_call_widget .vi-kill-eol -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-kill-line () {
+_zsh_highlight_widget_orig-s000-r687-vi-kill-line () {
 	_zsh_highlight_call_widget .vi-kill-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-match-bracket () {
+_zsh_highlight_widget_orig-s000-r687-vi-match-bracket () {
 	_zsh_highlight_call_widget .vi-match-bracket -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-open-line-above () {
+_zsh_highlight_widget_orig-s000-r687-vi-open-line-above () {
 	_zsh_highlight_call_widget .vi-open-line-above -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-open-line-below () {
+_zsh_highlight_widget_orig-s000-r687-vi-open-line-below () {
 	_zsh_highlight_call_widget .vi-open-line-below -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-oper-swap-case () {
+_zsh_highlight_widget_orig-s000-r687-vi-oper-swap-case () {
 	_zsh_highlight_call_widget .vi-oper-swap-case -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-pound-insert () {
+_zsh_highlight_widget_orig-s000-r687-vi-pound-insert () {
 	_zsh_highlight_call_widget .vi-pound-insert -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-put-after () {
+_zsh_highlight_widget_orig-s000-r687-vi-put-after () {
 	_zsh_highlight_call_widget .vi-put-after -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-put-before () {
+_zsh_highlight_widget_orig-s000-r687-vi-put-before () {
 	_zsh_highlight_call_widget .vi-put-before -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-quoted-insert () {
+_zsh_highlight_widget_orig-s000-r687-vi-quoted-insert () {
 	_zsh_highlight_call_widget .vi-quoted-insert -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-repeat-change () {
+_zsh_highlight_widget_orig-s000-r687-vi-repeat-change () {
 	_zsh_highlight_call_widget .vi-repeat-change -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-repeat-find () {
+_zsh_highlight_widget_orig-s000-r687-vi-repeat-find () {
 	_zsh_highlight_call_widget .vi-repeat-find -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-repeat-search () {
+_zsh_highlight_widget_orig-s000-r687-vi-repeat-search () {
 	_zsh_highlight_call_widget .vi-repeat-search -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-replace () {
+_zsh_highlight_widget_orig-s000-r687-vi-replace () {
 	_zsh_highlight_call_widget .vi-replace -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-replace-chars () {
+_zsh_highlight_widget_orig-s000-r687-vi-replace-chars () {
 	_zsh_highlight_call_widget .vi-replace-chars -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-rev-repeat-find () {
+_zsh_highlight_widget_orig-s000-r687-vi-rev-repeat-find () {
 	_zsh_highlight_call_widget .vi-rev-repeat-find -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-rev-repeat-search () {
+_zsh_highlight_widget_orig-s000-r687-vi-rev-repeat-search () {
 	_zsh_highlight_call_widget .vi-rev-repeat-search -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-set-buffer () {
+_zsh_highlight_widget_orig-s000-r687-vi-set-buffer () {
 	_zsh_highlight_call_widget .vi-set-buffer -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-set-mark () {
+_zsh_highlight_widget_orig-s000-r687-vi-set-mark () {
 	_zsh_highlight_call_widget .vi-set-mark -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-substitute () {
+_zsh_highlight_widget_orig-s000-r687-vi-substitute () {
 	_zsh_highlight_call_widget .vi-substitute -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-swap-case () {
+_zsh_highlight_widget_orig-s000-r687-vi-swap-case () {
 	_zsh_highlight_call_widget .vi-swap-case -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-undo-change () {
+_zsh_highlight_widget_orig-s000-r687-vi-undo-change () {
 	_zsh_highlight_call_widget .vi-undo-change -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-unindent () {
+_zsh_highlight_widget_orig-s000-r687-vi-unindent () {
 	_zsh_highlight_call_widget .vi-unindent -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-up-case () {
+_zsh_highlight_widget_orig-s000-r687-vi-up-case () {
 	_zsh_highlight_call_widget .vi-up-case -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-up-line-or-history () {
+_zsh_highlight_widget_orig-s000-r687-vi-up-line-or-history () {
 	_zsh_highlight_call_widget .vi-up-line-or-history -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-yank () {
+_zsh_highlight_widget_orig-s000-r687-vi-yank () {
 	_zsh_highlight_call_widget .vi-yank -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-yank-eol () {
+_zsh_highlight_widget_orig-s000-r687-vi-yank-eol () {
 	_zsh_highlight_call_widget .vi-yank-eol -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-vi-yank-whole-line () {
+_zsh_highlight_widget_orig-s000-r687-vi-yank-whole-line () {
 	_zsh_highlight_call_widget .vi-yank-whole-line -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-visual-line-mode () {
+_zsh_highlight_widget_orig-s000-r687-visual-line-mode () {
 	_zsh_highlight_call_widget .visual-line-mode -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-visual-mode () {
+_zsh_highlight_widget_orig-s000-r687-visual-mode () {
 	_zsh_highlight_call_widget .visual-mode -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-what-cursor-position () {
+_zsh_highlight_widget_orig-s000-r687-what-cursor-position () {
 	_zsh_highlight_call_widget .what-cursor-position -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-where-is () {
+_zsh_highlight_widget_orig-s000-r687-where-is () {
 	_zsh_highlight_call_widget .where-is -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-zle-line-finish () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-zle-line-finish -- "$@"
+_zsh_highlight_widget_orig-s000-r687-yank-pop () {
+	_zsh_highlight_call_widget .yank-pop -- "$@"
 }
-_zsh_highlight_widget_orig-s0.0000040000-r5628-zle-line-init () {
-	_zsh_highlight_call_widget orig-s0.0000040000-r5628-zle-line-init -- "$@"
+_zsh_highlight_widget_orig-s000-r687-zle-line-finish () {
+	_zsh_highlight_call_widget orig-s000-r687-zle-line-finish -- "$@"
+}
+_zsh_highlight_widget_orig-s000-r687-zle-line-init () {
+	_zsh_highlight_call_widget orig-s000-r687-zle-line-init -- "$@"
 }
 _zsh_highlight_widget_zle-isearch-update () {
 	:
@@ -18184,124 +15479,17 @@ add-zsh-hook () {
 alias_value () {
 	(( $+aliases[$1] )) && echo $aliases[$1]
 }
-backward-extend-paste () {
-	emulate -L zsh
-	integer bep_mark=$MARK bep_region=$REGION_ACTIVE 
-	if (( REGION_ACTIVE && MARK < CURSOR ))
-	then
-		zle .exchange-point-and-mark
-	fi
-	if (( CURSOR ))
-	then
-		local -a bep_words=(${(z)LBUFFER}) 
-		if [[ -n $bep_words[-1] && $LBUFFER = *$bep_words[-1] ]]
-		then
-			PASTED=$bep_words[-1]$PASTED 
-			LBUFFER=${LBUFFER%${bep_words[-1]}} 
-		fi
-	fi
-	if (( MARK > bep_mark ))
-	then
-		zle .exchange-point-and-mark
-	fi
-	REGION_ACTIVE=$bep_region 
+background () {
+	[ "$#" -ne 1 ] && printf '%s requires one argument\n' "$0" && return 1
+	"$1" &
 }
 bashcompinit () {
 	# undefined
 	builtin autoload -XUz
 }
 bracketed-paste-magic () {
-	if [[ "$LASTWIDGET" = *vi-set-buffer ]]
-	then
-		zle .bracketed-paste
-		return
-	else
-		local PASTED REPLY
-		zle .bracketed-paste PASTED
-	fi
-	local bpm_emulate="$(emulate)" bpm_opts="$-" 
-	emulate -L zsh
-	local -a bpm_hooks bpm_inactive
-	local bpm_func bpm_active bpm_keymap=$KEYMAP 
-	if zstyle -a :bracketed-paste-magic paste-init bpm_hooks
-	then
-		for bpm_func in $bpm_hooks
-		do
-			if (( $+functions[$bpm_func] ))
-			then
-				() {
-					emulate -L $bpm_emulate
-					set -$bpm_opts
-					$bpm_func || break
-				}
-			fi
-		done
-	fi
-	zstyle -a :bracketed-paste-magic inactive-keys bpm_inactive
-	if zstyle -s :bracketed-paste-magic active-widgets bpm_active '|'
-	then
-		integer bpm_mark=$MARK bpm_region=$REGION_ACTIVE 
-		integer bpm_numeric=${NUMERIC:-1} 
-		integer bpm_limit=$UNDO_LIMIT_NO bpm_undo=$UNDO_CHANGE_NO 
-		zle .split-undo
-		UNDO_LIMIT_NO=$UNDO_CHANGE_NO 
-		BUFFER= 
-		CURSOR=1 
-		fc -p -a /dev/null 0 0
-		if [[ $bmp_keymap = vicmd ]]
-		then
-			zle -K viins
-		fi
-		NUMERIC=1 
-		zle -U - "$PASTED"
-		while [[ -n $PASTED ]] && zle .read-command
-		do
-			PASTED=${PASTED#$KEYS} 
-			if [[ $KEYS = ${(~j:|:)${(b)bpm_inactive}} ]]
-			then
-				zle .self-insert
-			else
-				case $REPLY in
-					(${~bpm_active}) () {
-							emulate -L $bpm_emulate
-							set -$bpm_opts
-							zle $REPLY -w
-						} ;;
-					(*) zle .self-insert ;;
-				esac
-			fi
-		done
-		PASTED=$BUFFER 
-		zle -K $bpm_keymap
-		fc -P
-		MARK=$bpm_mark 
-		REGION_ACTIVE=$bpm_region 
-		NUMERIC=$bpm_numeric 
-		zle .undo $bpm_undo
-		UNDO_LIMIT_NO=$bpm_limit 
-	fi
-	if zstyle -a :bracketed-paste-magic paste-finish bpm_hooks
-	then
-		for bpm_func in $bpm_hooks
-		do
-			if (( $+functions[$bpm_func] ))
-			then
-				() {
-					emulate -L $bpm_emulate
-					set -$bpm_opts
-					$bpm_func || break
-				}
-			fi
-		done
-	fi
-	zle -U - $PASTED$'\e[201~'
-	zle .bracketed-paste -- "$@"
-	zle .split-undo
-	if [[ -z $zle_highlight || -n ${(M)zle_highlight:#paste:*} ]]
-	then
-		zle -R
-		zle .read-command && zle -U - "$KEYS"
-	fi
+	# undefined
+	builtin autoload -XUz
 }
 bzr_prompt_info () {
 	BZR_CB=`bzr nick 2> /dev/null | grep -v "ERROR" | cut -d ":" -f2 | awk -F / '{print "bzr::"$1}'` 
@@ -18312,18 +15500,69 @@ bzr_prompt_info () {
 		echo "$ZSH_THEME_SCM_PROMPT_PREFIX$BZR_CB$BZR_DIRTY$ZSH_THEME_GIT_PROMPT_SUFFIX"
 	fi
 }
+cd_pwd_P () {
+	cd_from=$(pwd) 
+	cd_to=$(pwd -P) 
+	if [ "${cd_from}" != "${cd_to}" ]
+	then
+		printf 'moving from \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_from}" && sleep 0.2
+		cd "${cd_to}" || (
+			printf 'unable to perform this operation\n' && return 1
+		)
+		printf '       into \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_to}" && sleep 0.2
+	else
+		printf 'already in unaliased directory '
+		printf '\xe2\x80\x98%s\xe2\x80\x99\n' "${cd_from}"
+	fi
+	unset cd_from cd_to
+}
+checkmark () {
+	set -eu
+	IFS=$(/usr/bin/printf -- '\n\t') 
+	/usr/bin/printf -- '\xe2\x9c\x85\n'
+}
 chruby_prompt_info () {
 	return 1
 }
+clang_format () {
+	(
+		IFS=$(printf '\n\t') 
+		set -x
+		program=clang-format 
+		if ! command -v "${program}" > /dev/null 2>&1
+		then
+			printf '
+  error: no %s installation detected;
+  skipping code\xc2\xa0formatting\n' "${program}"
+			exit 1
+		fi
+		IndentWidth=${1:-2} 
+		ColumnLimit=${2:-79} 
+		printf '\n%s\n\n' "$("${program}" --version)"
+		sleep 1
+		printf 'applying %s to all applicable files in %s...\n' "${program}" "${PWD##*/}"
+		sleep 1
+		printf 'setting \x60IndentWidth\x60 to %d\n' "${IndentWidth}"
+		sleep 1
+		printf 'setting \x60ColumnLimit\x60 to %d\n\n\n' "${ColumnLimit}"
+		sleep 1
+		find -- * -type f \( -iname '*.adb' -or -iname '*.ads' -or -iname '*.asm' -or -iname '*.ast' -or -iname '*.c' -or -iname '*.c++' -or -iname '*.c++m' -or -iname '*.cc' -or -iname '*.ccm' -or -iname '*.cl' -or -iname '*.cp' -or -iname '*.cpp' -or -iname '*.cppm' -or -iname '*.cs' -or -iname '*.cu' -or -iname '*.cuh' -or -iname '*.cui' -or -iname '*.cxx' -or -iname '*.cxxm' -or -iname '*.f' -or -iname '*.f90' -or -iname '*.f95' -or -iname '*.for' -or -iname '*.fpp' -or -iname '*.h' -or -iname '*.h++' -or -iname '*.hh' -or -iname '*.hip' -or -iname '*.hp' -or -iname '*.hpp' -or -iname '*.hxx' -or -iname '*.i' -or -iname '*.ifs' -or -iname '*.ii' -or -iname '*.iim' -or -iname '*.inc' -or -iname '*.inl' -or -iname '*.java' -or -iname '*.js' -or -iname '*.ll' -or -iname '*.m' -or -iname '*.mi' -or -iname '*.mii' -or -iname '*.mm' -or -iname '*.pcm' -or -iname '*.proto' -or -iname '*.protodevel' -or -iname '*.rs' -or -iname '*.tcc' -or -iname '*.td' -or -iname '*.theletters' -or -iname '*.tlh' -or -iname '*.tli' -or -iname '*.tpp' -or -iname '*.ts' -or -iname '*.txx' \) -exec "${program}" -i -style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \;
+		printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+		set +x
+	)
+}
 cleanup () {
 	(
-		if [ "$1" = -v ] || [ "$1" = --verbose ]
+		set -x
+		if [ "$1" = -q ] || [ "$1" = --quiet ]
 		then
-			verbose=-print 
+			verbose='' 
+		else
+			verbose='-print' 
 		fi
-		find -- . -type f \( -name '.DS_Store' -or -name 'Desktop.ini' -or -name 'desktop.ini' -or -name 'Thumbs.db' -or -name 'thumbs.db' \) $verbose -delete
-		find -- . -type f -size 0 \( -not -path '*/.git/*' -and -not -name '*.gitkeep' -and -not -name '*.keep' -and -not -name '*empty*' -and -not -name '*hushlogin' -and -not -name '*LOCK' -and -not -name '*lock' -and -not -name '*lockfile' \) $verbose -delete
-		find -- . -type d -empty \( -not -path '*/.git/*' -and -not -name '.well-known' \) $verbose -delete
+		find -- . -type f -writable \( -name '.DS_Store' -or -name 'Desktop.ini' -or -name 'desktop.ini' -or -name 'Thumbs.db' -or -name 'thumbs.db' \) "${verbose}" -delete
+		find -- . -type f -writable -size 0 \( -not -path '*.git/*' -and -not -name "$(printf 'Icon\xd\xa')" -and -not -name '*LOCK' -and -not -name '*empty*' -and -not -name '*hushlogin' -and -not -name '*ignore' -and -not -name '*journal' -and -not -name '*lock' -and -not -name '*lockfile' -and -not -name '.dirstamp' -and -not -name '.gitkeep' -and -not -name '.gitmodules' -and -not -name '.keep' -and -not -name '.sudo_as_admin_successful' -and -not -name '.watchmanconfig' -and -not -name '__init__.py' -and -not -name 'favicon.*' \) "${verbose}" -delete
+		find -- . -type d -empty \( -not -path '*.git/*' -and -not -name '.well-known' \) "${verbose}" -delete
 	)
 }
 clipcopy () {
@@ -18663,6 +15902,8 @@ contains_element () {
 }
 copyConfig () {
 	(
+		set -Eexo pipefail
+		IFS=$(printf '\n\t') 
 		if [ "$1" = Template ] || [ "$1" = TEMPLATE ]
 		then
 			cy "${TEMPLATE}/.cspell.json" && git add .cspell.json
@@ -18685,6 +15926,7 @@ current_branch () {
 }
 cy () {
 	(
+		set -ex
 		if [ -r "$1" ]
 		then
 			if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1
@@ -18718,6 +15960,25 @@ d () {
 default () {
 	(( $+parameters[$1] )) && return 0
 	typeset -g "$1"="$2" && return 3
+}
+define () {
+	(
+		set -eu
+		for command in "${@}"
+		do
+			printf '\n'
+			command -v hash > /dev/null 2>&1 && printf 'hash return value:\n%d\n\n' "$(hash "${command}" >/dev/null 2>&1; printf %s "$?")"
+			command -v type > /dev/null 2>&1 && printf 'type:\n%s\n\n' "$(type "${command}")"
+			command -v whence > /dev/null 2>&1 && printf 'whence:\n%s\n\n' "$(whence "${command}")"
+			command -v where > /dev/null 2>&1 && printf 'where:\n%s\n\n' "$(where "${command}")"
+			command -v whereis > /dev/null 2>&1 && printf 'whereis:\n%s\n\n' "$(whereis "${command}")"
+			command -v command -v > /dev/null 2>&1 && printf 'command -v:\n%s\n\n' "$(command -v "${command}")"
+			command -v command -V > /dev/null 2>&1 && printf 'command -V:\n%s\n\n' "$(command -V "${command}")"
+			command -v locate > /dev/null 2>&1 && printf 'locate:\n%s\n\n' "$(locate "${command}")"
+			command -v which -a > /dev/null 2>&1 && printf 'which -a:\n%s\n' "$(command -v which -a "${command}")"
+		done
+		set +eu
+	)
 }
 detect-clipboard () {
 	emulate -L zsh
@@ -18831,22 +16092,8 @@ detect-clipboard () {
 	fi
 }
 down-line-or-beginning-search () {
-	emulate -L zsh
-	typeset -g __searching __savecursor
-	if [[ ${+NUMERIC} -eq 0 && ( $LASTWIDGET = $__searching || $RBUFFER != *$'\n'* ) ]]
-	then
-		[[ $LASTWIDGET = $__searching ]] && CURSOR=$__savecursor 
-		__searching=$WIDGET 
-		__savecursor=$CURSOR 
-		if zle .history-beginning-search-forward
-		then
-			[[ $RBUFFER = *$'\n'* ]] || zstyle -T ':zle:down-line-or-beginning-search' leave-cursor && zle .end-of-line
-			return
-		fi
-		[[ $RBUFFER = *$'\n'* ]] || return
-	fi
-	__searching='' 
-	zle .down-line-or-history
+	# undefined
+	builtin autoload -XU
 }
 edit-command-line () {
 	# undefined
@@ -18856,33 +16103,50 @@ env_default () {
 	[[ ${parameters[$1]} = *-export* ]] && return 0
 	export "$1=$2" && return 3
 }
+exist-romkatv () {
+	(
+		query=${1:-vi} 
+		if command -v apt-get &> /dev/null
+		then
+			../..
+		fi
+		if command -v apt-get > /dev/null 2>&1
+		then
+			../..
+		fi
+		[ "$(printf %s "${+commands[apt-get]}")" = 1 ] && ../..
+		[ "$(printf %s $+commands[apt-get])" = 1 ] && ../..
+		if (( $+commands[apt-get] ))
+		then
+			../..
+		fi
+	)
+}
 existence () {
 	(
-		query=${1:-"vi"} 
-		printf '
-Bash `which %s` × 1,000' "${query}"
-		time bash -c "for i in {0..1000}; do which $query; done >/dev/null 2>&1"
-		printf '
-Bash `command -v %s` × 1,000' "${query}"
-		time bash -c "for i in {0..1000}; do command -v $query; done >/dev/null 2>&1"
-		printf '
-Bash `type %s` × 1,000' "${query}"
-		time bash -c "for i in {0..1000}; do type $query; done >/dev/null 2>&1"
-		printf '
-Bash `hash %s` × 1,000' "${query}"
-		time bash -c "for i in {0..1000}; do hash $query; done 2>/dev/null"
-		printf '
-Zsh `which %s` × 100,000' "${query}"
-		time zsh -c "for i in {0..100000}; do which $query; done >/dev/null 2>&1"
-		printf '
-Zsh `command -v %s` × 100,000' "${query}"
-		time zsh -c "for i in {0..100000}; do command -v $query; done >/dev/null 2>&1"
-		printf '
-Zsh `type %s` × 100,000' "${query}"
-		time zsh -c "for i in {0..100000}; do type $query; done >/dev/null 2>&1"
-		printf '
-Zsh `hash %s` × 100,000' "${query}"
-		time zsh -c "for i in {0..100000}; do hash $query; done 2>/dev/null"
+		IFS=$'\n\t' 
+		IFS=$(printf '\n\t') 
+		TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S' 
+		query=${1:-vi} 
+		printf 'Bash \x60which %s\x60 \xc3\x97 1000' "${query}"
+		time bash -c "for i in {0..1000}; do which ${query}; done >/dev/null 2>&1"
+		printf 'Bash \x60type %s\x60 \xc3\x97 1000' "${query}"
+		time bash -c "for i in {0..1000}; do type ${query}; done >/dev/null 2>&1"
+		printf 'Bash \x60hash %s\x60 \xc3\x97 1000' "${query}"
+		time bash -c "for i in {0..1000}; do hash ${query}; done 2>/dev/null"
+		printf 'Bash \x60command -v %s\x60 \xc3\x97 1000' "${query}"
+		time bash -c "for i in {0..1000}; do command -v ${query}; done >/dev/null 2>&1"
+		printf '\n'
+		printf 'Zsh  \x60which %s\x60 \xc3\x97 1000' "${query}"
+		time zsh -c "for i in {0..1000}; do which ${query}; done >/dev/null 2>&1"
+		printf 'Zsh  \x60type %s\x60 \xc3\x97 1000' "${query}"
+		time zsh -c "for i in {0..1000}; do type ${query}; done >/dev/null 2>&1"
+		printf 'Zsh  \x60hash %s\x60 \xc3\x97 1000' "${query}"
+		time zsh -c "for i in {0..1000}; do hash ${query}; done 2>/dev/null"
+		printf 'Zsh  \x60command -v %s\x60 \xc3\x97 1000' "${query}"
+		time zsh -c "for i in {0..1000}; do command -v ${query}; done >/dev/null 2>&1"
+		printf 'Zsh  \x60(( $+commands[%s] ))\x60 \xc3\x97 1000' "${query}"
+		time zsh -c "for i in {0..1000}; do (( $+commands[${query}] )); done 2>/dev/null"
 	)
 }
 expand-or-complete-with-dots () {
@@ -18890,15 +16154,41 @@ expand-or-complete-with-dots () {
 	zle expand-or-complete
 	zle redisplay
 }
+fast-theme () {
+	# undefined
+	builtin autoload -XUz
+}
 fdf () {
 	(
-		find -- . -not -empty -type f -not -path '*/.git/*' -printf '%s\n' | sort --reverse --numeric-sort | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 sha512sum | sort | uniq -w32 --all-repeated=separate
+		set -eux
+		find -- . -not -empty -type f -not -path '*.git/*' -printf '%s\n' | sort --reverse --numeric-sort | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 sha256sum | sort | uniq -w32 --all-repeated=separate
 	)
 }
 gcom () {
-	git checkout --progress "$(git_default_branch)"
+	(
+		set -x
+		response="$(git_default_branch >/dev/null 2>&1; printf %s $?)" 
+		if [ "${response}" -eq 0 ]
+		then
+			git checkout --progress "$(git_default_branch)"
+		elif [ "${response}" -eq 1 ]
+		then
+			printf 'unable to detect a \x60main\x60, \x60master\x60, or default '
+			printf 'branch in this repository\n'
+			return "${response}"
+		elif [ "${response}" -eq 2 ]
+		then
+			printf 'this function must be called from within a Git repository\n'
+			return "${response}"
+		else
+			response=3 
+			printf 'an unknown error occurred\n'
+			return "${response}"
+		fi
+	)
 }
 gdm () {
+	set -x
 	git diff "$(git_default_branch)"
 }
 gdnolock () {
@@ -18960,6 +16250,7 @@ getent () {
 	fi
 }
 ggc () {
+	set -x
 	(
 		command -v cleanup > /dev/null 2>&1 && cleanup
 	)
@@ -18967,6 +16258,7 @@ ggc () {
 	then
 		git fetch --prune --prune-tags --verbose
 		git gc --aggressive --prune=now
+		git status
 	else
 		return 1
 	fi
@@ -19010,8 +16302,12 @@ ggu () {
 	git pull --rebase origin "${b:=$1}"
 }
 git_add_patch () {
-	git add --patch --verbose "$@"
+	set -x
+	git add --patch --verbose -- "$@"
 	git status
+}
+git_commit_initial_commit () {
+	git init && git commit --allow-empty --verbose --message "$(printf '\xe2\x9c\xa8 initial commit')" && git add . && git commit --verbose --message "$(printf '\xe2\x9c\xa8 initial commit')"
 }
 git_commits_ahead () {
 	if __git_prompt_git rev-parse --git-dir &> /dev/null
@@ -19052,27 +16348,22 @@ git_current_user_name () {
 }
 git_default_branch () {
 	(
-		if git rev-parse --is-inside-work-tree > /dev/null 2>&1
+		set -x
+		if git symbolic-ref refs/remotes/origin/HEAD > /dev/null 2>&1
 		then
-			if git symbolic-ref refs/remotes/origin/HEAD > /dev/null 2>&1
-			then
-				default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')" 
-			elif [ -n "$(git branch --list main)" ]
-			then
-				default_branch=main 
-			elif [ -n "$(git branch --list master)" ]
-			then
-				default_branch=master 
-			else
-				printf 'unable to detect a \x60main\x60, \x60master\x60, or default '
-				printf 'branch in this repository\n'
-				return 1
-			fi
+			default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')" 
+		elif [ -n "$(git branch --list main)" ]
+		then
+			default_branch=main 
+		elif [ -n "$(git branch --list master)" ]
+		then
+			default_branch=master 
 		else
-			printf 'git_default_branch must be called from within a Git repository\n'
+			printf 'unable to detect a \x60main\x60, \x60master\x60, or default '
+			printf 'branch in this repository\n'
 			return 1
 		fi
-		printf '%s' "${default_branch}"
+		printf %s "${default_branch}"
 	)
 }
 git_main_branch () {
@@ -19220,6 +16511,22 @@ git_repo_name () {
 	then
 		echo ${repo_path:t}
 	fi
+}
+git_restore () {
+	(
+		set -eux
+		IFS=$(printf '\n\t') 
+		for file in "${@:-.}"
+		do
+			git checkout --progress -- "${file}"
+		done && git status
+	)
+}
+git_submodule_update () {
+	(
+		set -eux
+		git submodule update --init --recursive --remote -- "$@" && git status
+	)
 }
 gitstatus_check_p9k_ () {
 	emulate -L zsh -o no_aliases -o extended_glob -o typeset_silent
@@ -19700,7 +17007,8 @@ gitstatus_stop_p9k_ () {
 	_gitstatus_clear$fsuf
 }
 gmm () {
-	GIT_MERGE_VERBOSITY=4 git merge --verbose --progress --strategy-option patience "$(git_default_branch)"
+	set -x
+	GIT_MERGE_VERBOSITY=4 git merge --verbose --overwrite-ignore --progress --rerere-autoupdate --autostash --strategy-option patience "$(git_default_branch)"
 }
 grename () {
 	if [[ -z "$1" || -z "$2" ]]
@@ -19716,17 +17024,25 @@ grename () {
 }
 gu () {
 	(
-		command -v cleanup > /dev/null 2>&1 && cleanup
+		set -x
+		(
+			command -v cleanup > /dev/null 2>&1 && cleanup
+		)
+		if git rev-parse --is-inside-work-tree > /dev/null 2>&1
+		then
+			git fetch --all --verbose
+			if [ "$1" = --remote ] || [ "$1" = -r ]
+			then
+				remote="--remote" 
+			fi
+			git submodule update --init --recursive ${remote}
+			git status
+		fi
 	)
-	if git rev-parse --is-inside-work-tree > /dev/null 2>&1
-	then
-		git fetch --all --verbose
-		git submodule update --init --recursive
-		git status
-	fi
 }
 gvc () {
 	(
+		set -eux
 		git verify-commit "${1:-HEAD}"
 	)
 }
@@ -19756,6 +17072,27 @@ EOD
 }
 hg_prompt_info () {
 	return 1
+}
+install_wip () {
+	(
+		if command -v brew > /dev/null 2>&1
+		then
+			brew install "$@"
+		elif command -v apk > /dev/null 2>&1
+		then
+			apk add "$@"
+		elif command -v apt > /dev/null 2>&1
+		then
+			sudo apt install "$@"
+		elif command -v apt-get > /dev/null 2>&1
+		then
+			sudo apt-get install "$@"
+		else
+			printf 'unable to detect best installation for your '
+			printf 'system...\nAborting\n'
+			exit 1
+		fi
+	)
 }
 instant_prompt__p9k_internal_nothing () {
 	prompt__p9k_internal_nothing
@@ -19954,7 +17291,7 @@ m1 () {
 		if [ -r "$1" ]
 		then
 			source="$1" 
-			if [ "$2" ]
+			if [ -n "$2" ]
 			then
 				destination="$2" 
 			else
@@ -19978,13 +17315,15 @@ m1 () {
 	)
 }
 mu () {
+	set -x
 	cd "${DOTFILES:-${HOME}/Dropbox/dotfiles}" && (
-		command -v cleanup > /dev/null 2>&1 && cleanup
+		command -v cleanup > /dev/null 2>&1 && cleanup "$@"
 	) && mackup backup --force --root && git fetch --all && git submodule update --init --recursive && git status
 }
 mux () {
+	set -x
 	cd "${DOTFILES:-${HOME}/Dropbox/dotfiles}" && (
-		command -v cleanup > /dev/null 2>&1 && cleanup
+		command -v cleanup > /dev/null 2>&1 && cleanup "$@"
 	) && mackup backup --force --root --verbose && git fetch --all --verbose && git submodule update --init --recursive --remote && git status
 }
 my_git_formatter () {
@@ -20460,7 +17799,7 @@ parse_git_dirty () {
 			(git)  ;;
 			(*) FLAGS+="--ignore-submodules=${GIT_STATUS_IGNORE_SUBMODULES:-dirty}"  ;;
 		esac
-		STATUS=$(__git_prompt_git status ${FLAGS} 2> /dev/null | tail -n1) 
+		STATUS=$(__git_prompt_git status ${FLAGS} 2> /dev/null | tail -1) 
 	fi
 	if [[ -n $STATUS ]]
 	then
@@ -20468,6 +17807,33 @@ parse_git_dirty () {
 	else
 		echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
 	fi
+}
+pastefinish () {
+	zle -N self-insert "${OLD_SELF_INSERT}"
+}
+pasteinit () {
+	OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]} 
+	zle -N self-insert url-quote-magic
+}
+pledit () {
+	(
+		set -x
+		if [ "$(uname -s)" != 'Darwin' ]
+		then
+			printf 'Sorry, this script works only on macOS\n'
+			exit 1
+		fi
+		if [ $# -ne 1 ]
+		then
+			printf 'pledit: Edit Apple plist file\nusage: pledit plist_filename'
+		else
+			[ -w "${1}" ] || prefix='sudo' 
+			"${prefix}" plutil -convert xml1 "${1}"
+			"${prefix}" "${EDITOR:-vi}" "${1}"
+			"${prefix}" plutil -convert binary1 "${1}"
+		fi
+		set +x
+	)
 }
 powerlevel10k_plugin_unload () {
 	prompt_powerlevel9k_teardown
@@ -20482,6 +17848,16 @@ print_icon () {
 	else
 		echo -n - $icons[$1]
 	fi
+}
+process () {
+	(
+		set -eux
+		IFS=$(printf '\n\t') 
+		find -- * -type f \( \( -iname '*.json' -or -iname '*.imgbotconfig' -or -iname '*.whitesource' \) -and -not -path '*node_modules*' -and -not -path '*vscode*' \) -print -exec jsonlint --in-place --insert-final-newline -- {} \;
+		find -- * -type f \( -iname '*.sh' -or -iname '*.bash' -or -iname '*.ksh' -or -iname '*.zsh' \) -print -exec shfmt -w -s -i 2 -- {} \;
+		find -- * -type f -iname '*.css' -print -exec npx stylelint --color --fix --formatter verbose -- {} \;
+		set +eux
+	)
 }
 prompt__p9k_internal_nothing () {
 	_p9k__prompt+='${_p9k__sss::=}' 
@@ -22717,48 +20093,41 @@ prompt_wifi () {
 	(( _p9k__has_upglob )) || typeset -g "_p9k__segment_val_${_p9k__prompt_side}[_p9k__segment_index]"=$_p9k__prompt[len+1,-1]
 }
 pyenv () {
-	local command
-	command="${1:-}" 
-	if [ "$#" -gt 0 ]
-	then
-		shift
-	fi
-	case "$command" in
-		(rehash | shell) eval "$(pyenv "sh-$command" "$@")" ;;
-		(*) command pyenv "$command" "$@" ;;
-	esac
+	eval "$(command pyenv init - --no-rehash "${SHELL##*[-/]}")"
+	pyenv "$@"
 }
 pyenv_prompt_info () {
 	return 1
 }
-quote-paste () {
-	emulate -L zsh
-	local qstyle
-	zstyle -s :bracketed-paste-magic:finish quote-style qstyle && NUMERIC=1 
-	case $qstyle in
-		(b) PASTED=${(b)PASTED}  ;;
-		(q-) PASTED=${(q-)PASTED}  ;;
-		(\\|q) PASTED=${(q)PASTED}  ;;
-		(\'|qq) PASTED=${(qq)PASTED}  ;;
-		(\"|qqq) PASTED=${(qqq)PASTED}  ;;
-		(\$|qqqq) PASTED=${(qqqq)PASTED}  ;;
-		(Q) PASTED=${(Q)PASTED}  ;;
-	esac
+question_mark () {
+	printf '%s\n' "$?"
 }
 rbenv () {
-	local command
-	command="${1:-}" 
-	if [ "$#" -gt 0 ]
-	then
-		shift
-	fi
-	case "$command" in
-		(rehash | shell) eval "$(rbenv "sh-$command" "$@")" ;;
-		(*) command rbenv "$command" "$@" ;;
-	esac
+	eval "$(command rbenv init - --no-rehash "${SHELL##*[-/]}")"
+	rbenv "$@"
 }
 rbenv_prompt_info () {
 	return 1
+}
+remove_filename_spaces () {
+	(
+		set -x
+		IFS=$(printf '\n\t') 
+		find -- * -name '* *' | awk '{ print length, $0 }' | sort -nr -s | cut -d" " -f2- | while read -r f
+		do
+			base=$(basename "${f}") 
+			newbase=${base// /_} 
+			mv -v -i "$(dirname "${f}")/$(basename "${f}")" "$(dirname "${f}")/${newbase}"
+		done
+	)
+}
+rm () {
+	if command -v trash > /dev/null 2>&1
+	then
+		$(command -v trash) "$@"
+	else
+		/bin/rm "$@"
+	fi
 }
 ruby_prompt_info () {
 	echo $(rvm_prompt_info || rbenv_prompt_info || chruby_prompt_info)
@@ -22769,6 +20138,13 @@ rvm_prompt_info () {
 	rvm_prompt=$($HOME/.rvm/bin/rvm-prompt ${=ZSH_THEME_RVM_PROMPT_OPTIONS} 2>/dev/null) 
 	[[ -z "${rvm_prompt}" ]] && return 1
 	echo "${ZSH_THEME_RUBY_PROMPT_PREFIX}${rvm_prompt}${ZSH_THEME_RUBY_PROMPT_SUFFIX}"
+}
+saveApplications () {
+	(
+		set -x
+		saveApplications=1  && mkdir -p "${DOTFILES:-${HOME}/Dropbox/dotfiles}/!=Mackup" && mkdir -p /Applications && cd /Applications && filename="${DOTFILES:-${HOME}/Dropbox/dotfiles}/!=Mackup/:Applications"  && touch "${filename}" && pwd > "${filename}" && date '+%Y-%m-%d' >> "${filename}" && printf '—————————————\n' >> "${filename}" && /bin/ls -F1 >> "${filename}" && cd "${DOTFILES:-${HOME}/Dropbox/dotfiles}" && git diff "${filename}" && unset filename && saveApplications="${filename}"  && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "${filename}" "${saveApplications}"
+		set +x
+	)
 }
 spectrum_bls () {
 	local ZSH_SPECTRUM_TEXT=${ZSH_SPECTRUM_TEXT:-Arma virumque cano Troiae qui primus ab oris} 
@@ -22788,12 +20164,13 @@ svn_prompt_info () {
 	return 1
 }
 take () {
-	mkdir -p -v -- "$@" && printf 'cd: changed directory to \x27%s\x27\n' "${@:$#}" && cd -- "${@:$#}" || return 1
+	set -x
+	mkdir -p -v -- "$@" && printf 'cd: changed directory to \xe2\x80\x98%s\xe2\x80\x99\n' "${@:$#}" && cd -- "${@:$#}" || return 1
 }
 title () {
 	emulate -L zsh
 	setopt prompt_subst
-	[[ "$EMACS" == *term* ]] && return
+	[[ "$INSIDE_EMACS" == *term* ]] && return
 	: ${2=$1}
 	case "$TERM" in
 		(cygwin | xterm* | putty* | rxvt* | konsole* | ansi | mlterm* | alacritty | st*) print -Pn "\e]2;${2:q}\a"
@@ -22836,6 +20213,137 @@ up-line-or-beginning-search () {
 		zle .history-beginning-search-backward
 		zstyle -T ':zle:up-line-or-beginning-search' leave-cursor && zle .end-of-line
 	fi
+}
+update () {
+	set -x
+	IFS=$(printf '\n\t') 
+	update=1 
+	clear && clear
+	printf '                 .___       __\n'
+	printf ' __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n'
+	printf '\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n'
+	printf '\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n'
+	printf '\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n'
+	printf '      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n'
+	printf ' a Lucas Larson production\n\n'
+	sleep 1.0
+	printf '\n\xf0\x9f\x93\xa1 verifying network connectivity...\n'
+	sleep 0.5
+	for ((i = 0; i < 1024; i++)) do
+		if (((i / 3) % 2 == 0))
+		then
+			printf '.'
+		else
+			printf '\b'
+		fi
+	done
+	(
+		ping -q -i1 -c1 one.one.one.one > /dev/null 2>&1 && ping -q -i1 -c1 8.8.8.8 > /dev/null 2>&1
+	) || (
+		printf 'No internet connection was detected.\nAborting update.\n' && return "${update}"
+	)
+	printf '\xf0\x9f\x8d\xba checking for Homebrew installation...\n'
+	if command -v brew > /dev/null 2>&1
+	then
+		printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n'
+		brew update
+		brew upgrade
+		brew upgrade --cask
+	else
+		printf 'No Homebrew installation detected...\n'
+	fi
+	printf 'checking for Xcode installation...\n'
+	if command -v xcrun > /dev/null 2>&1
+	then
+		printf 'removing unavailable device simulators...\n'
+		xcrun simctl delete unavailable
+	else
+		printf 'no Xcode installation detected...\n'
+	fi
+	printf 'checking for Rust installation...\n'
+	if command -v rustup > /dev/null 2>&1
+	then
+		rustup update
+	else
+		printf 'no Rust installation detected...\n'
+	fi
+	printf 'checking for Atom installation...\n'
+	if command -v apm > /dev/null 2>&1
+	then
+		printf 'updating Atom packages...\n'
+		apm-nightly upgrade --no-confirm
+	else
+		printf 'no Atom installation detected...\n'
+	fi
+	if command -v npm > /dev/null 2>&1
+	then
+		printf 'checking this device is will update Node quickly...\n'
+		if [ "${COLUMNS}" -ge 79 ]
+		then
+			npm install npm --global
+			npm update --global --verbose
+		else
+			printf 'skipping Node update...\n\n' && sleep 1
+			printf 'to update Node later, run:\n\n'
+			printf '    npm install npm --global && \x5c'
+			printf '    npm update --global --verbose\x60\n\n\n'
+			sleep 3
+		fi
+	fi
+	if command -v gem > /dev/null 2>&1
+	then
+		gem update --system
+		gem update
+	fi
+	if command -v rbenv > /dev/null 2>&1
+	then
+		rbenv rehash
+	fi
+	printf 'checking for Alpine Package Keeper installation...\n'
+	if command -v apk > /dev/null 2>&1
+	then
+		printf '\xf0\x9f\x8f\x94 apk update...\n'
+		apk update --progress --verbose --verbose
+		printf '\n\xf0\x9f\x8f\x94 apk upgrade...\n'
+		apk upgrade --update-cache --progress --verbose --verbose
+		printf '\n\xf0\x9f\x8f\x94 apk fix...\n'
+		apk fix --progress --verbose --verbose
+		printf '\n\xf0\x9f\x8f\x94 apk verify...\n'
+		apk verify --progress --verbose --verbose
+		printf '\xf0\x9f\x8f\x94 apk verify complete...\n\n'
+	else
+		printf 'no Alpine Package Keeper installation detected...\n'
+	fi
+	if command -v python > /dev/null 2>&1
+	then
+		printf '\n\xf0\x9f\x90\x8d updating Python\xe2\x80\x99s packager...\n'
+		python -m pip install --upgrade pip
+		printf 'verifying pip installation...\n'
+		if command -v pip > /dev/null 2>&1
+		then
+			printf '\n\xf0\x9f\x90\x8d updating outdated Python packages...\n'
+			for package in $(pip list --outdated --format freeze)
+			do
+				pip install --upgrade --verbose --verbose --verbose "${package%%=*}"
+			done
+		fi
+		printf 'checking for pyenv installation...\n'
+		if command -v pyenv > /dev/null 2>&1
+		then
+			printf 'rehashing pyenv shims...\n'
+			pyenv rehash
+		else
+			printf 'no pyenv installation detected...\n'
+		fi
+	fi
+	if command -v omz > /dev/null 2>&1
+	then
+		omz update
+	fi
+	[ -r "${HOME}/.${SHELL##*[-/]}rc" ] && . "${HOME}/.${SHELL##*[-/]}rc" && rehash
+	unset update
+	printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "${update}"
+	exec -l "${SHELL##*[-/]}"
 }
 upgrade_oh_my_zsh () {
 	echo "${fg[yellow]}Note: \`$0\` is deprecated. Use \`omz update\` instead.$reset_color" >&2
@@ -22902,6 +20410,37 @@ vi_mode_prompt_info () {
 virtualenv_prompt_info () {
 	return 1
 }
+wgetInstall () {
+	(
+		cd "$(pwd -P)"
+		command -v brew > /dev/null 2>&1 && LDFLAGS="-L$(brew --prefix openssl)/lib"  && export LDFLAGS && CPPFLAGS="-I$(brew --prefix openssl)/include"  && export CPPFLAGS && if [ -n "${PKG_CONFIG_PATH}" ]
+		then
+			PKG_CONFIG_PATH="$(brew --prefix openssl)/lib/pkgconfig:${PKG_CONFIG_PATH}" 
+		else
+			PKG_CONFIG_PATH="$(brew --prefix openssl)/lib/pkgconfig" 
+		fi && export PKG_CONFIG_PATH && sed -i "/ac_cpp=/s/\$CPPFLAGS'/\$CPPFLAGS -O2'/" ./configure && ./configure --enable-debug --enable-valgrind-tests --with-cares --with-metalink --with-ssl=openssl --enable-manywarnings --libexecdir="$(brew --prefix openssl)/include"
+	)
+}
+which () {
+	if [ -x /usr/local/opt/gnu-which/libexec/gnubin/which ]
+	then
+		(
+			alias
+			declare -f
+		) | $(command -v /usr/local/opt/gnu-which/libexec/gnubin/which) --tty-only --read-alias --read-functions --show-tilde --show-dot "$@"
+	elif [ -x /bin/which ]
+	then
+		(
+			alias
+			declare -f
+		) | $(command -v /bin/which) "$@"
+	else
+		(
+			alias
+			declare -f
+		) | $(command -v /usr/bin/which) "$@"
+	fi
+}
 work_in_progress () {
 	if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-")
 	then
@@ -22915,5 +20454,5 @@ zle-line-init () {
 	echoti smkx
 }
 zsh_stats () {
-	fc -l 1 | awk '{ CMD[$2]++; count++; } END { for (a in CMD) print CMD[a] " " CMD[a]*100/count "% " a }' | grep -v "./" | sort -nr | head -n20 | column -c3 -s " " -t | nl
+	fc -l 1 | awk '{ CMD[$2]++; count++; } END { for (a in CMD) print CMD[a] " " CMD[a]*100/count "% " a }' | grep -v "./" | sort -nr | head -20 | column -c3 -s " " -t | nl
 }
