@@ -294,6 +294,10 @@ question_mark () {
 }
 alias '?'='question_mark'
 
+# sudo, even for aliases, but not functions
+# https://github.com/mathiasbynens/dotfiles/commit/bb8de8b
+alias sudo='sudo '
+
 # take
 # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
 take() {
