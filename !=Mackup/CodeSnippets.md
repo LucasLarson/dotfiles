@@ -468,7 +468,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## wget
 
-`wgetserver=`'**example.com**' `&& (wget --mirror --continue --verbose --append-output=$wgetserver.log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --show-progress http://$wgetserver || wget --continue  http://$wgetserver) && unset wgetserver || unset wgetserver`
+`wgetServer=`'**example.com**' `&& (wget --mirror --continue --verbose --append-output=$wgetServer.log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --show-progress http://$wgetServer || wget --continue  http://$wgetServer) && unset wgetServer || unset wgetServer`
 
 ## WiFi
 
