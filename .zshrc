@@ -121,7 +121,10 @@ plugins+=(
 # if `MANPATH` is empty, then set it to `/usr/local/man`
 [ -z "${MANPATH}" ] && MANPATH=/usr/local/man
 # if `man -w` does not fail, then add its output to `MANPATH`
-[ "$(man -w >/dev/null 2>&1; printf %d $?)" -eq 0 ] && MANPATH=${MANPATH}:$(man -w)
+[ "$(
+  man -w >/dev/null 2>&1
+  printf %d $?
+)" -eq 0 ] && MANPATH=${MANPATH}:$(man -w)
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
