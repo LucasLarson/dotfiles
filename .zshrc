@@ -170,6 +170,9 @@ if command -v brew >/dev/null 2>&1; then
   BREW_PREFIX=$(brew --prefix)
   [ -d "${BREW_PREFIX}/sbin" ] && PATH=${BREW_PREFIX}/sbin:${PATH}
 
+  # curl
+  [ -d "${BREW_PREFIX}/opt/curl/bin" ] && PATH=${BREW_PREFIX}/opt/curl/bin:${PATH}
+
   # GNU Core Utils
   # for `date`, `cat`, `ln`
   # https://apple.stackexchange.com/a/135749
