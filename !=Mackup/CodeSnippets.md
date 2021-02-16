@@ -21,6 +21,7 @@
 - [list everything recursively in a directory](#list-everything-recursively-in-a-directory)
   - [with full paths](#with-full-paths)
     - [and metadata](#and-metadata)
+    - [lines, words, characters](#lines-words-characters)
 - [search](#search)
   - [`grep`](#grep)
   - [locate all](#locate-all)
@@ -239,7 +240,14 @@ mackup backup --force --root && git fetch --all --verbose && git submodule updat
 `find .` # [via](https://www.cyberciti.biz/faq/how-to-list-directories-in-linux-unix-recursively/)
 
 #### and metadata
+
 `find . -ls`
+
+#### lines, words, characters
+
+in, for example, a C++ project directory, measuring only `.cpp` and `.hpp` files
+
+`find -- * \( -name '*.cpp' -or -name '*.hpp' \) -print0 | xargs -0 wc | sort -n -r` # [via](https://web.archive.org/web/20210216223000id_/github.com/bryceco/GoMap/issues/495#issuecomment-780111175)
 
 ## search
 
