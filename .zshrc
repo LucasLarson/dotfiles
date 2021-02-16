@@ -195,6 +195,9 @@ if command -v brew >/dev/null 2>&1; then
   # sed
   # https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
   [ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}
+
+  # which
+  [ -d "${BREW_PREFIX}/opt/gnu-which/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-which/libexec/gnubin:${PATH}
 fi
 
 # Rust Cargo
