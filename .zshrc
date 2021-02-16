@@ -317,7 +317,7 @@ export PATH
 # customize prompt via `p10k configure` or edit `~/.p10k.zsh`
 # if the theme is powerlevel10k,
 [ powerlevel10k/powerlevel10k = "${ZSH_THEME}" ] &&
-# and there is a file at ~/.p10k.zsh,
-[ -r "${HOME}/.p10k.zsh" ] &&
-# then source it
-. "${HOME}/.p10k.zsh"
+  # and there is a file at ~/.p10k.zsh,
+  [ -r "${HOME}/.p10k.zsh" ] &&
+  # then source it
+  . "${HOME}/.p10k.zsh"
