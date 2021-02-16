@@ -7,7 +7,7 @@ if [[ -r "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" 
 fi
 
 # Dotfiles
-DOTFILES=${HOME}/Dropbox/dotfiles && export DOTFILES
+export DOTFILES=${HOME}/Dropbox/dotfiles
 
 # If you come from Bash you might have to change your PATH.
 # export PATH=${HOME}/bin:/usr/local/bin:${PATH}
@@ -18,8 +18,8 @@ export ZSH=${HOME}/.oh-my-zsh
 # Use a custom folder other than $ZSH/custom
 # ZSH_CUSTOM=/path/to/new-custom-folder
 # https://reddit.com/comments/g1a2qd/_/fneil10
-ZSH_CUSTOM=${DOTFILES}/.oh-my-zsh/custom && export ZSH_CUSTOM
-ZSHCUSTOM=${ZSH_CUSTOM} && export ZSHCUSTOM
+export ZSH_CUSTOM=${DOTFILES}/.oh-my-zsh/custom
+export ZSHCUSTOM=${ZSH_CUSTOM}
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -92,7 +92,7 @@ export SAVEHIST=$((2 * HISTSIZE)) # 4,294,967,296
 
 # ~/.zcompdump override
 # https://github.com/ohmyzsh/ohmyzsh/commit/d2fe03d
-ZSH_COMPDUMP=${ZDOTDIR:-${HOME}}/.zcompdump && export ZSH_COMPDUMP
+export ZSH_COMPDUMP=${ZDOTDIR:-${HOME}}/.zcompdump
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins
@@ -115,11 +115,7 @@ plugins+=(
 
 . "${ZSH}/oh-my-zsh.sh"
 
-
-
 # User configuration
-
-
 
 # MANPATH
 # if `MANPATH` is empty, then set it to `/usr/local/man`
@@ -149,8 +145,7 @@ export EDITOR
 alias editor='${EDITOR}'
 alias edit=editor
 # https://unix.stackexchange.com/a/4861
-VISUAL=${EDITOR}
-export VISUAL
+export VISUAL=${EDITOR}
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
