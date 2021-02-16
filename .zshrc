@@ -318,6 +318,6 @@ export PATH
 # if the theme is powerlevel10k,
 [ powerlevel10k/powerlevel10k = "${ZSH_THEME}" ] &&
 # and there is a file at ~/.p10k.zsh,
-[ -f "${HOME}/.p10k.zsh" ] &&
+[ -r "${HOME}/.p10k.zsh" ] &&
 # then source it
 . "${HOME}/.p10k.zsh"
