@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- enable `sudo` even for aliases [\#273](https://github.com/LucasLarson/dotfiles/issues/273)
 - remove `motd` generally [\#262](https://github.com/LucasLarson/dotfiles/issues/262)
 - pip installation can be slow: let the user know [\#261](https://github.com/LucasLarson/dotfiles/issues/261)
 
