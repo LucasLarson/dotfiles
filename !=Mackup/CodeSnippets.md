@@ -237,11 +237,11 @@ mackup backup --force --root && git fetch --all --verbose && git submodule updat
 
 ### with full paths
 
-`find .` # [via](https://www.cyberciti.biz/faq/how-to-list-directories-in-linux-unix-recursively/)
+`find -- .` # [via](https://www.cyberciti.biz/faq/how-to-list-directories-in-linux-unix-recursively/)
 
 #### and metadata
 
-`find . -ls`
+`find -- . -ls`
 
 #### lines, words, characters
 
@@ -314,8 +314,8 @@ remove bogus entries from Finder’s “Open With” menu ([via](https://githu
 
 ### repair website disk permissions
 
-`find /path/to/your/wordpress -type d -exec chmod 755 {} \; && \`<br/>
-`find /path/to/your/wordpress -type f -exec chmod 644 {} \; #` [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
+`find -- /path/to/your/wordpress -type d -exec chmod 755 {} \; && \`<br/>
+`find -- /path/to/your/wordpress -type f -exec chmod 644 {} \; #` [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
 
 #### date modified modify
 
@@ -358,15 +358,15 @@ clangformat=${1:-2} && printf '\n%s\n\n' "$("$program" --version)" && sleep 1 &&
 #### C
 
 [via](https://stackoverflow.com/q/33662375)<br/>
-`gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic $(find . -type f -regex '.*\.c')`
+`gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic $(find -- . -type f -regex '*.c')`
 
 #### C++
 
-`g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ $(find . -iname '*\.cpp')`
+`g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ $(find -- . -iname '*.cpp')`
 
 #### Clang
 
-`clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps $(find . -iname '*\.cpp')`
+`clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps $(find -- . -iname '*.cpp')`
 
 ## Gatekeeper
 
@@ -526,7 +526,7 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 ### npm
 
 `npm doctor && #` creates empty `node_modules` directories `\`<br/>
-`find node_modules -empty -type d -delete #` deletes them [via](https://perma.cc/YNL2-FY3Z)
+`find -- node_modules -empty -type d -delete #` deletes them [via](https://perma.cc/YNL2-FY3Z)
 
 ### RubyGems
 
@@ -551,9 +551,9 @@ unset trashDeveloper && printf '\n\n\xf0\x9f%s\x9a\xae data successfully trashed
 ### empty directories
 
 make a list of empty folders inside and beneath current directory **`.`** ([via](https://unix.stackexchange.com/a/46326))<br/>
-`find . -type d -empty -print`<br/>
+`find -- . -type d -empty -print`<br/>
 if satisfied with the results being lost and gone forever, execute:<br/>
-<span title="You were warned: don’t do this!">`find . -type d -empty -delete`</span>
+<span title="You were warned: don’t do this!">`find -- . -type d -empty -delete`</span>
 
 ### compare two folders
 
