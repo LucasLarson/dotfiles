@@ -168,32 +168,32 @@ export GPG_TTY
 # https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
 if command -v brew >/dev/null 2>&1; then
 
-# https://github.com/driesvints/dotfiles/blob/388baf1/path.zsh#L17
-BREW_PREFIX="$(brew --prefix)"
-[ -d "${BREW_PREFIX}/sbin" ] && PATH=${BREW_PREFIX}/sbin:${PATH}
+  # https://github.com/driesvints/dotfiles/blob/388baf1/path.zsh#L17
+  BREW_PREFIX="$(brew --prefix)"
+  [ -d "${BREW_PREFIX}/sbin" ] && PATH=${BREW_PREFIX}/sbin:${PATH}
 
-# GNU Core Utils
-# for `date`, `cat`, `ln`
-# https://apple.stackexchange.com/a/135749
-[ -d "${BREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}
+  # GNU Core Utils
+  # for `date`, `cat`, `ln`
+  # https://apple.stackexchange.com/a/135749
+  [ -d "${BREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}
 
-# GNU Find Utils
-# for `find`, `xargs`, `locate`
-[ -d "${BREW_PREFIX}/opt/findutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/findutils/libexec/gnubin:${PATH}
+  # GNU Find Utils
+  # for `find`, `xargs`, `locate`
+  [ -d "${BREW_PREFIX}/opt/findutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/findutils/libexec/gnubin:${PATH}
 
-# grep
-# use latest via Homebrew but without the `g` prefix
-# https://github.com/Homebrew/homebrew-core/blob/ba7a70f/Formula/grep.rb#L43-L46
-[ -d "${BREW_PREFIX}/opt/grep/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/grep/libexec/gnubin:${PATH}
+  # grep
+  # use latest via Homebrew but without the `g` prefix
+  # https://github.com/Homebrew/homebrew-core/blob/ba7a70f/Formula/grep.rb#L43-L46
+  [ -d "${BREW_PREFIX}/opt/grep/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/grep/libexec/gnubin:${PATH}
 
-# make
-# use latest via Homebrew but without the `g` prefix
-# https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
-[ -d "${BREW_PREFIX}/opt/make/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/make/libexec/gnubin:${PATH}
+  # make
+  # use latest via Homebrew but without the `g` prefix
+  # https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
+  [ -d "${BREW_PREFIX}/opt/make/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/make/libexec/gnubin:${PATH}
 
-# sed
-# https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
-[ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}
+  # sed
+  # https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
+  [ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}
 fi
 
 # Rust Cargo
