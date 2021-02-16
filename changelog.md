@@ -40,7 +40,6 @@
 - Bump .oh-my-zsh/custom/plugins/gunstage from `2735a15` to `f6eb870` [\#245](https://github.com/LucasLarson/dotfiles/pull/245) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update peter-evans/create-pull-request action to v3.7.0 [\#243](https://github.com/LucasLarson/dotfiles/pull/243) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.26.0 [\#242](https://github.com/LucasLarson/dotfiles/pull/242) ([renovate[bot]](https://github.com/apps/renovate))
-- Update nvuillam/mega-linter action to v4.24.1 [\#237](https://github.com/LucasLarson/dotfiles/pull/237) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v0.5.4](https://github.com/LucasLarson/dotfiles/tree/v0.5.4) (2021-01-24)
 
@@ -54,6 +53,7 @@
 
 - Update nvuillam/mega-linter action to v4.25.0 [\#241](https://github.com/LucasLarson/dotfiles/pull/241) ([renovate[bot]](https://github.com/apps/renovate))
 - \[autofix\] Format JSON content [\#239](https://github.com/LucasLarson/dotfiles/pull/239) ([github-actions[bot]](https://github.com/apps/github-actions))
+- Update nvuillam/mega-linter action to v4.24.1 [\#237](https://github.com/LucasLarson/dotfiles/pull/237) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `9b12374` to `2735a15` [\#236](https://github.com/LucasLarson/dotfiles/pull/236) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `7b0698d` to `d26bdcd` [\#235](https://github.com/LucasLarson/dotfiles/pull/235) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `244cbfc` to `00c7e28` [\#234](https://github.com/LucasLarson/dotfiles/pull/234) ([dependabot[bot]](https://github.com/apps/dependabot))
