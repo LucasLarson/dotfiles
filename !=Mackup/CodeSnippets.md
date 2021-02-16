@@ -55,7 +55,7 @@
   - [`add`](#add)
   - [`diff`](#diff)
   - [`commit`](#commit)
-    - [with subject *and* body](#with-subject-and-body)
+    - [with subject and body](#with-subject-and-body)
     - [in the past](#in-the-past)
   - [`config`](#config)
     - [editor](#editor)
@@ -404,7 +404,7 @@ more detailed `git diff` and how I once found an LF‑to‑CRLF‑only differen
 
 ### `commit`
 
-#### with subject *and* body
+#### with subject and body
 
 `git commit --message 'subject' --message 'body' #` [via](https://stackoverflow.com/a/40506149)
 
