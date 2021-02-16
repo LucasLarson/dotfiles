@@ -77,6 +77,7 @@
 - [Xcode](#xcode)
   - [signing](#signing)
 - [housekeeping](#housekeeping)
+  - [Docker](#docker)
   - [Flutter](#flutter)
   - [Homebrew](#homebrew-1)
   - [npm](#npm)
@@ -511,6 +512,7 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 ## housekeeping
 
 ### Docker
+
 `docker system prune --all #` [via](https://news.ycombinator.com/item?id=25547876#25547876)
 
 ### Flutter
