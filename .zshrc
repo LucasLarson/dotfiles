@@ -167,7 +167,7 @@ export GPG_TTY
 if command -v brew >/dev/null 2>&1; then
 
   # https://github.com/driesvints/dotfiles/blob/388baf1/path.zsh#L17
-  BREW_PREFIX="$(brew --prefix)"
+  BREW_PREFIX=$(brew --prefix)
   [ -d "${BREW_PREFIX}/sbin" ] && PATH=${BREW_PREFIX}/sbin:${PATH}
 
   # GNU Core Utils
