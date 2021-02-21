@@ -20,6 +20,7 @@
 
 **Merged pull requests:**
 
+- Update stefanzweifel/git-auto-commit-action action to v4.9.0 [\#277](https://github.com/LucasLarson/dotfiles/pull/277) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `ae301df` to `69f8b2e` [\#272](https://github.com/LucasLarson/dotfiles/pull/272) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `6fe9995` to `c7baec4` [\#271](https://github.com/LucasLarson/dotfiles/pull/271) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle from `d31bae2` to `2ee3d7c` [\#270](https://github.com/LucasLarson/dotfiles/pull/270) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -291,6 +292,7 @@
 
 - add @GitHub standard issue templates [\#41](https://github.com/LucasLarson/dotfiles/pull/41) ([LucasLarson](https://github.com/LucasLarson))
 - add, remove @GitHub’s CodeQL [\#22](https://github.com/LucasLarson/dotfiles/pull/22) ([LucasLarson](https://github.com/LucasLarson))
+- add @GitHub Super-Linter [\#20](https://github.com/LucasLarson/dotfiles/pull/20) ([LucasLarson](https://github.com/LucasLarson))
 
 **Merged pull requests:**
 
@@ -316,10 +318,6 @@
 ## [v0.3.0](https://github.com/LucasLarson/dotfiles/tree/v0.3.0) (2020-07-15)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.2.0...v0.3.0)
-
-**Implemented enhancements:**
-
-- add @GitHub Super-Linter [\#20](https://github.com/LucasLarson/dotfiles/pull/20) ([LucasLarson](https://github.com/LucasLarson))
 
 **Closed issues:**
 
