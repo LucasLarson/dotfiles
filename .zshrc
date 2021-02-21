@@ -2,8 +2,8 @@
 
 # Powerlevel10k instant prompt
 # https://github.com/romkatv/powerlevel10k/tree/d394a4e#how-do-i-enable-instant-prompt
-if [[ -r "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${XDG_CACHE_HOME:=${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:=${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 # Dotfiles
@@ -92,7 +92,7 @@ export SAVEHIST=$((2 * HISTSIZE)) # 4,294,967,296
 
 # ~/.zcompdump override
 # https://github.com/ohmyzsh/ohmyzsh/commit/d2fe03d
-export ZSH_COMPDUMP=${ZDOTDIR:-${HOME}}/.zcompdump
+export ZSH_COMPDUMP=${ZDOTDIR:=${HOME}}/.zcompdump
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins
