@@ -290,7 +290,7 @@ alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
 alias mv='mv -v -i'
 
 # https://github.com/mcornella/dotfiles/commit/ff4e527
-question_mark () {
+question_mark() {
   printf '%s\n' "$?"
 }
 alias '?'='question_mark'
