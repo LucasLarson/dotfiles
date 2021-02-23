@@ -20,6 +20,8 @@
 
 **Merged pull requests:**
 
+- Update stefanzweifel/git-auto-commit-action action to v4.9.1 [\#281](https://github.com/LucasLarson/dotfiles/pull/281) ([renovate[bot]](https://github.com/apps/renovate))
+- add `.gitignore` for @nvuillam’s Mega-Linter [\#280](https://github.com/LucasLarson/dotfiles/pull/280) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `b816abf` to `3920940` [\#279](https://github.com/LucasLarson/dotfiles/pull/279) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/HTML.tmbundle from `0c3d5ee` to `56a5f29` [\#278](https://github.com/LucasLarson/dotfiles/pull/278) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update stefanzweifel/git-auto-commit-action action to v4.9.0 [\#277](https://github.com/LucasLarson/dotfiles/pull/277) ([renovate[bot]](https://github.com/apps/renovate))
