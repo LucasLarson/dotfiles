@@ -8,9 +8,9 @@
 git_shallow() {
   git submodule init
   for i in $(git submodule | sed -e 's/.* //'); do
-    spath=$(git config --file .gitmodules --get submodule."$i".path)
-    surl=$(git config --file .gitmodules --get submodule."$i".url)
-    git clone --depth 1 "$surl" "$spath"
+    submodule_path=$(git config --file .gitmodules --get submodule."$i".path)
+    submodule_url=$(git config --file .gitmodules --get submodule."$i".url)
+    git clone --depth 1 "$submodule_url" "$submodule_path"
   done
   git submodule update
 }
