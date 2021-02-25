@@ -128,7 +128,7 @@ plugins+=(
 [ "$(
   man -w >/dev/null 2>&1
   printf %d $?
-)" -eq 0 ] && MANPATH=${MANPATH}:$(man -w)
+)" -eq 0 ] && MANPATH=$(man -w):${MANPATH}
 # if `MANPATH` is still empty and `/usr/local/man` exists,
 # then set `MANPATH` to `/usr/local/man`
 [ -z "${MANPATH}" ] && [ -d /usr/local/man ] && MANPATH=/usr/local/man
