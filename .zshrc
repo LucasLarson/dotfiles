@@ -12,6 +12,7 @@ export DOTFILES=${HOME}/Dropbox/dotfiles
 # PATH
 # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/command.html
 PATH=$(command -p getconf PATH):${PATH}
+[ -d /usr/local/bin ] && PATH=/usr/local/bin:${PATH}
 
 # If you come from Bash you might have to change your PATH.
 # export PATH=${HOME}/bin:/usr/local/bin:${PATH}
