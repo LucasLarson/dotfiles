@@ -14,8 +14,9 @@ export DOTFILES=${HOME}/Dropbox/dotfiles
 PATH=$(command -p getconf PATH):${PATH}
 [ -d /usr/local/bin ] && PATH=/usr/local/bin:${PATH}
 
-# If you come from Bash you might have to change your PATH.
-# export PATH=${HOME}/bin:/usr/local/bin:${PATH}
+# set PATH so it includes applicable private `bin`s
+[ -d "${HOME}/bin" ] && PATH=${HOME}/bin:${PATH}
+[ -d "${HOME}/.local/bin" ] && PATH=${HOME}/.local/bin:${PATH}
 
 # Path to your oh-my-zsh installation.
 export ZSH=${HOME}/.oh-my-zsh
