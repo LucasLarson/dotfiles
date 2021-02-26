@@ -88,6 +88,7 @@
 - Update dependency mackup to v0.8.31 [\#210](https://github.com/LucasLarson/dotfiles/pull/210) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency mackup to v0.8.30 [\#209](https://github.com/LucasLarson/dotfiles/pull/209) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `44c5bce` to `9def41a` [\#207](https://github.com/LucasLarson/dotfiles/pull/207) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update nvuillam/mega-linter action to v4.20.0 [\#205](https://github.com/LucasLarson/dotfiles/pull/205) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `2e009c7` to `44c5bce` [\#204](https://github.com/LucasLarson/dotfiles/pull/204) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.19.0 [\#203](https://github.com/LucasLarson/dotfiles/pull/203) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-syntax-highlighting from `1715f39` to `5eb4948` [\#202](https://github.com/LucasLarson/dotfiles/pull/202) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -111,7 +112,6 @@
 
 **Merged pull requests:**
 
-- Update nvuillam/mega-linter action to v4.20.0 [\#205](https://github.com/LucasLarson/dotfiles/pull/205) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
