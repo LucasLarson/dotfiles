@@ -49,6 +49,8 @@ command -v less >/dev/null 2>&1 || (
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Shell_.40_commandline
 # https://web.archive.org/web/20210218201739id_/web.archive.org/screenshot/docs.google.com/document/d/10-8wjANQGbG43XZ0wN57M1RYOLUwu9RZATNe9vJQYKw/mobilebasic
+# https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
+apk add coreutils coreutils-doc
 { [ -x /usr/bin/coreutils ] &&
   [ -x /usr/bin/findutils ]; } || (
   printf '\ninstalling Linux utilities...\n'
