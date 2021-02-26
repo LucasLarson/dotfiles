@@ -171,7 +171,7 @@ find -- . -type f \( \
 # https://stackoverflow.com/a/64863398
 find -- . -type f -writable -size 0 \( \
   -not -path '*.git/*' -and \
-  -not -name "$(printf 'Icon\x0d\x0a')" -and \
+  -not -name "$(printf 'Icon\xd\xa')" -and \
   -not -name '*LOCK' -and \
   -not -name '*empty*' -and \
   -not -name '*hushlogin' -and \
