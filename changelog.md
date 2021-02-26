@@ -242,6 +242,7 @@
 - \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair autofix for JSON [\#75](https://github.com/LucasLarson/dotfiles/pull/75) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `ecffcba` to `6b68ebd` [\#73](https://github.com/LucasLarson/dotfiles/pull/73) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/plugins/gunstage from `0897849` to `b14876e` [\#64](https://github.com/LucasLarson/dotfiles/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.2](https://github.com/LucasLarson/dotfiles/tree/v0.4.2) (2020-10-03)
 
@@ -262,7 +263,6 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `71b39f0` to `42aa719` [\#69](https://github.com/LucasLarson/dotfiles/pull/69) ([dependabot[bot]](https://github.com/apps/dependabot))
 - add Android SDK to $PATH only if it exists [\#66](https://github.com/LucasLarson/dotfiles/pull/66) ([LucasLarson](https://github.com/LucasLarson))
 - copyedit boilerplate text [\#65](https://github.com/LucasLarson/dotfiles/pull/65) ([LucasLarson](https://github.com/LucasLarson))
-- Bump .oh-my-zsh/custom/plugins/gunstage from `0897849` to `b14876e` [\#64](https://github.com/LucasLarson/dotfiles/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/checkout requirement to v2.3.3 [\#62](https://github.com/LucasLarson/dotfiles/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump gaurav-nelson/github-action-markdown-link-check from v1.0.7 to 1.0.7 [\#61](https://github.com/LucasLarson/dotfiles/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
