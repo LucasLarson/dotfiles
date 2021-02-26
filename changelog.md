@@ -20,6 +20,7 @@
 
 **Merged pull requests:**
 
+- Bump .oh-my-zsh/custom/plugins/zsh-completions from `c7baec4` to `322d5f2` [\#282](https://github.com/LucasLarson/dotfiles/pull/282) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update stefanzweifel/git-auto-commit-action action to v4.9.1 [\#281](https://github.com/LucasLarson/dotfiles/pull/281) ([renovate[bot]](https://github.com/apps/renovate))
 - add `.gitignore` for @nvuillam’s Mega-Linter [\#280](https://github.com/LucasLarson/dotfiles/pull/280) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `b816abf` to `3920940` [\#279](https://github.com/LucasLarson/dotfiles/pull/279) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -87,7 +88,6 @@
 - Update dependency mackup to v0.8.31 [\#210](https://github.com/LucasLarson/dotfiles/pull/210) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency mackup to v0.8.30 [\#209](https://github.com/LucasLarson/dotfiles/pull/209) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `44c5bce` to `9def41a` [\#207](https://github.com/LucasLarson/dotfiles/pull/207) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Update nvuillam/mega-linter action to v4.20.0 [\#205](https://github.com/LucasLarson/dotfiles/pull/205) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `2e009c7` to `44c5bce` [\#204](https://github.com/LucasLarson/dotfiles/pull/204) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.19.0 [\#203](https://github.com/LucasLarson/dotfiles/pull/203) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-syntax-highlighting from `1715f39` to `5eb4948` [\#202](https://github.com/LucasLarson/dotfiles/pull/202) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -111,6 +111,7 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.20.0 [\#205](https://github.com/LucasLarson/dotfiles/pull/205) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
@@ -242,7 +243,6 @@
 - \[autofix\] Format JSON content [\#76](https://github.com/LucasLarson/dotfiles/pull/76) ([github-actions[bot]](https://github.com/apps/github-actions))
 - repair autofix for JSON [\#75](https://github.com/LucasLarson/dotfiles/pull/75) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `ecffcba` to `6b68ebd` [\#73](https://github.com/LucasLarson/dotfiles/pull/73) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/plugins/gunstage from `0897849` to `b14876e` [\#64](https://github.com/LucasLarson/dotfiles/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.2](https://github.com/LucasLarson/dotfiles/tree/v0.4.2) (2020-10-03)
 
@@ -263,6 +263,7 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `71b39f0` to `42aa719` [\#69](https://github.com/LucasLarson/dotfiles/pull/69) ([dependabot[bot]](https://github.com/apps/dependabot))
 - add Android SDK to $PATH only if it exists [\#66](https://github.com/LucasLarson/dotfiles/pull/66) ([LucasLarson](https://github.com/LucasLarson))
 - copyedit boilerplate text [\#65](https://github.com/LucasLarson/dotfiles/pull/65) ([LucasLarson](https://github.com/LucasLarson))
+- Bump .oh-my-zsh/custom/plugins/gunstage from `0897849` to `b14876e` [\#64](https://github.com/LucasLarson/dotfiles/pull/64) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/checkout requirement to v2.3.3 [\#62](https://github.com/LucasLarson/dotfiles/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump gaurav-nelson/github-action-markdown-link-check from v1.0.7 to 1.0.7 [\#61](https://github.com/LucasLarson/dotfiles/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
