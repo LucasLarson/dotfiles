@@ -70,7 +70,7 @@ apk update
   apk add openssh openssh-doc
 )
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
-[ -e /usr/bin/gpg2 ] || (
+[ -x /usr/bin/gpg2 ] || (
   apk add gnupg gnupg-doc
 )
 
