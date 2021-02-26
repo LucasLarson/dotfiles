@@ -316,9 +316,9 @@ rbenv() {
 # https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
 # https://github.com/zsh-users/zsh/blob/a9061cc/StartupFiles/zshrc#L56-L57
 # https://github.com/zsh-users/zsh/commit/db3f2d2
-[ -n "${ZSH_VERSION}" ] && typeset -U PATH path CDPATH cdpath FPATH fpath MANPATH manpath
-# export PATH for other sessions
-export PATH
+[ -n "${ZSH_VERSION}" ] &&
+  typeset -U PATH path CDPATH cdpath FPATH fpath MANPATH manpath &&
+  export PATH path CDPATH cdpath FPATH fpath MANPATH manpath
 
 # powerlevel10k prompt
 # customize prompt via `p10k configure` or edit `~/.p10k.zsh`
