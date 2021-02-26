@@ -275,6 +275,56 @@ cleanup() {(
     ${verbose} -delete
 )}
 
+define() {
+  (
+    set -eu
+    IFS=$(printf ' \t\n')
+    \unalias -a
+    for query in "${@:-$0}"; do
+      printf '\n'
+
+      # hash
+      command -v hash >/dev/null 2>&1 &&
+        printf 'hash return value:\n%d\n———\n' "$(
+          hash "${query}" >/dev/null 2>&1
+          printf %s $?
+        )"
+
+      # type (System V)
+      command -v type >/dev/null 2>&1 &&
+        printf 'type:\n%s\n———\n' "$(type "${query}")"
+
+      # whence (KornShell)
+      command -v whence >/dev/null 2>&1 &&
+        printf 'whence:\n%s\n———\n' "$(whence "${query}")"
+
+      # where
+      command -v where >/dev/null 2>&1 &&
+        printf 'where:\n%s\n———\n' "$(where "${query}")"
+
+      # whereis
+      command -v whereis >/dev/null 2>&1 &&
+        printf 'whereis:\n%s\n———\n' "$(whereis "${query}")"
+
+      # locate
+      command -v locate >/dev/null 2>&1 &&
+        printf 'locate:\n%s\n———\n' "$(locate "${query}")"
+
+      # command -V
+      printf 'command -V:\n%s\n———\n' "$(command -V "${query}")"
+
+      # command -v (POSIX)
+      printf 'command -v:\n%s\n———\n' "$(command -v "${query}")"
+
+      # which (C shell)
+      command -v which >/dev/null 2>&1 &&
+        printf 'which -a:\n%s\n' "$(which -a "${query}")"
+
+    done
+    set +eu
+  )
+}
+
 # find duplicate files
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 fdf() {(
