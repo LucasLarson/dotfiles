@@ -56,6 +56,12 @@ apk add coreutils coreutils-doc
   printf '\ninstalling Linux utilities...\n'
 )
 apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc
+{
+  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main\n';
+  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/community\n';
+  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/testing\n';
+} >>/etc/apk/repositories
+apk update
 
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
