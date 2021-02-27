@@ -196,6 +196,109 @@ cd_pwd_P() {
 }
 alias cdp='cd_pwd_P'
 
+clang_format() {
+# https://github.com/Originate/guide/blob/880952d/ios/files/clang-format.sh
+  (
+    program=clang-format
+
+    if ! command -v "${program}" >/dev/null 2>&1; then
+      printf '
+    error: no %s installation detected\n
+    skipping code\xc2\xa0formatting\n' "${program}"
+      exit 1
+    fi
+
+    # find all files supported by `clang-format` and send them there
+    # via Antimony https://stackoverflow.com/a/36046965
+    # find ${SRCROOT} -iname *.cpp -o -iname *.h | xargs clang-format -i --verbose
+
+    # if no argument is provided, then set `IndentWidth` to 2
+    # https://stackoverflow.com/a/2013573
+    IndentWidth=${1:-2}
+
+    # if no second argument is provided, then set `ColumnLimit` to 79
+    # https://stackoverflow.com/a/48016407
+    ColumnLimit=${2:-79}
+
+    printf '\n%s\n\n' "$("${program}" --version)"
+    sleep 1
+
+    printf 'applying %s to all applicable files in %s...\n' "${program}" "${PWD##*/}"
+    sleep 1
+
+    printf 'setting \x60IndentWidth\x60 to %d\n' "${IndentWidth}"
+    sleep 1
+
+    printf 'setting \x60ColumnLimit\x60 to %d\n\n\n' "${ColumnLimit}"
+    sleep 1
+
+    find -- * -type f \
+      \( \
+      -iname '*.adb' -or \
+      -iname '*.ads' -or \
+      -iname '*.ast' -or \
+      -iname '*.c' -or \
+      -iname '*.c++' -or \
+      -iname '*.c++m' -or \
+      -iname '*.cc' -or \
+      -iname '*.ccm' -or \
+      -iname '*.cl' -or \
+      -iname '*.cp' -or \
+      -iname '*.cpp' -or \
+      -iname '*.cppm' -or \
+      -iname '*.cs' -or \
+      -iname '*.cu' -or \
+      -iname '*.cuh' -or \
+      -iname '*.cui' -or \
+      -iname '*.cxx' -or \
+      -iname '*.cxxm' -or \
+      -iname '*.f' -or \
+      -iname '*.f90' -or \
+      -iname '*.f95' -or \
+      -iname '*.for' -or \
+      -iname '*.fpp' -or \
+      -iname '*.h' -or \
+      -iname '*.h++' -or \
+      -iname '*.hh' -or \
+      -iname '*.hip' -or \
+      -iname '*.hp' -or \
+      -iname '*.hpp' -or \
+      -iname '*.hxx' -or \
+      -iname '*.i' -or \
+      -iname '*.ifs' -or \
+      -iname '*.ii' -or \
+      -iname '*.iim' -or \
+      -iname '*.inc' -or \
+      -iname '*.inl' -or \
+      -iname '*.java' -or \
+      -iname '*.js' -or \
+      -iname '*.ll' -or \
+      -iname '*.m' -or \
+      -iname '*.mi' -or \
+      -iname '*.mii' -or \
+      -iname '*.mm' -or \
+      -iname '*.pcm' -or \
+      -iname '*.proto' -or \
+      -iname '*.protodevel' -or \
+      -iname '*.rs' -or \
+      -iname '*.tcc' -or \
+      -iname '*.td' -or \
+      -iname '*.theletters' -or \
+      -iname '*.tlh' -or \
+      -iname '*.tli' -or \
+      -iname '*.tpp' -or \
+      -iname '*.ts' -or \
+      -iname '*.txx' \
+      \) -and \
+      \( \
+      -not -path '*.git/*' -and \
+      -not -path '*node_modules/*' \
+      \) \
+      -exec "${program}" -i -style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \;
+    printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+  )
+}
+
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp='cp -r'
 cy() {(
