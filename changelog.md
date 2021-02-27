@@ -136,7 +136,6 @@
 - repair Markdown after Mega-Linter suggestions [\#171](https://github.com/LucasLarson/dotfiles/pull/171) ([LucasLarson](https://github.com/LucasLarson))
 - mega-linter conformance [\#168](https://github.com/LucasLarson/dotfiles/pull/168) ([LucasLarson](https://github.com/LucasLarson))
 - add out-of-the-box `.bashrc` file from new Ubuntu installation [\#162](https://github.com/LucasLarson/dotfiles/pull/162) ([LucasLarson](https://github.com/LucasLarson))
-- add initialization script for Alpine Linux [\#161](https://github.com/LucasLarson/dotfiles/pull/161) ([LucasLarson](https://github.com/LucasLarson))
 
 ## [v0.5.2](https://github.com/LucasLarson/dotfiles/tree/v0.5.2) (2020-11-25)
 
