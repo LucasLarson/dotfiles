@@ -20,6 +20,7 @@
 
 **Merged pull requests:**
 
+- Update github/super-linter action to v3.15.1 [\#283](https://github.com/LucasLarson/dotfiles/pull/283) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `c7baec4` to `322d5f2` [\#282](https://github.com/LucasLarson/dotfiles/pull/282) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update stefanzweifel/git-auto-commit-action action to v4.9.1 [\#281](https://github.com/LucasLarson/dotfiles/pull/281) ([renovate[bot]](https://github.com/apps/renovate))
 - add `.gitignore` for @nvuillam’s Mega-Linter [\#280](https://github.com/LucasLarson/dotfiles/pull/280) ([LucasLarson](https://github.com/LucasLarson))
