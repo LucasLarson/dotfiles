@@ -5,19 +5,18 @@ on:
   # https://github.com/calibreapp/image-actions/blob/6f4a17f/entrypoint.js#L28
   pull_request:
     paths:
-      - '**.gif'
-      - '**.jpeg'
-      - '**.jpg'
-      - '**.png'
-      - '**.webp'
-      - '**.GIF'
-      - '**.JPEG'
-      - '**.JPG'
-      - '**.PNG'
-      - '**.WEBP'
+      - "**.gif"
+      - "**.jpeg"
+      - "**.jpg"
+      - "**.png"
+      - "**.webp"
+      - "**.GIF"
+      - "**.JPEG"
+      - "**.JPG"
+      - "**.PNG"
+      - "**.WEBP"
 
 jobs:
-
   images:
     name: Optimize images
     runs-on: ubuntu-latest
@@ -27,9 +26,9 @@ jobs:
         id: calibre
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          jpegQuality: '100'
-          pngQuality: '100'
-          webpQuality: '100'
+          jpegQuality: "100"
+          pngQuality: "100"
+          webpQuality: "100"
       - uses: peter-evans/create-pull-request@v3.8.2
         with:
           commit-message: "[autofix] Optimize images"

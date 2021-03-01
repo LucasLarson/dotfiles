@@ -6,7 +6,6 @@
 
 version: 2
 updates:
-
   # Bundler
   - package-ecosystem: "bundler"
     directory: "/"
