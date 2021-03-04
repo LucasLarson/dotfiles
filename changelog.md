@@ -20,6 +20,7 @@
 
 **Merged pull requests:**
 
+- Update stefanzweifel/git-auto-commit-action action to v4.9.2 [\#287](https://github.com/LucasLarson/dotfiles/pull/287) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `69f8b2e` to `ac7ee86` [\#286](https://github.com/LucasLarson/dotfiles/pull/286) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/zsh-completions from `322d5f2` to `aa98bc5` [\#284](https://github.com/LucasLarson/dotfiles/pull/284) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update github/super-linter action to v3.15.1 [\#283](https://github.com/LucasLarson/dotfiles/pull/283) ([renovate[bot]](https://github.com/apps/renovate))
@@ -270,6 +271,7 @@
 - Update actions/checkout requirement to v2.3.3 [\#62](https://github.com/LucasLarson/dotfiles/pull/62) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump gaurav-nelson/github-action-markdown-link-check from v1.0.7 to 1.0.7 [\#61](https://github.com/LucasLarson/dotfiles/pull/61) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle from `cbf5109` to `1c579ef` [\#60](https://github.com/LucasLarson/dotfiles/pull/60) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `3b77282` to `71b39f0` [\#58](https://github.com/LucasLarson/dotfiles/pull/58) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.1](https://github.com/LucasLarson/dotfiles/tree/v0.4.1) (2020-09-23)
 
@@ -278,7 +280,6 @@
 **Merged pull requests:**
 
 - Bump .oh-my-zsh/custom/plugins/gunstage from `945a464` to `0897849` [\#59](https://github.com/LucasLarson/dotfiles/pull/59) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `3b77282` to `71b39f0` [\#58](https://github.com/LucasLarson/dotfiles/pull/58) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `f14b58e` to `3b77282` [\#57](https://github.com/LucasLarson/dotfiles/pull/57) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `cf9f502` to `945a464` [\#56](https://github.com/LucasLarson/dotfiles/pull/56) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `afb854d` to `f14b58e` [\#55](https://github.com/LucasLarson/dotfiles/pull/55) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -322,6 +323,7 @@
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7a114ad` to `88d5fb6` [\#24](https://github.com/LucasLarson/dotfiles/pull/24) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `620e69f` to `7a114ad` [\#23](https://github.com/LucasLarson/dotfiles/pull/23) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `4635fca` to `620e69f` [\#21](https://github.com/LucasLarson/dotfiles/pull/21) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Configure WhiteSource Bolt for GitHub [\#14](https://github.com/LucasLarson/dotfiles/pull/14) ([whitesource-bolt-for-github[bot]](https://github.com/apps/whitesource-bolt-for-github))
 
 ## [v0.3.0](https://github.com/LucasLarson/dotfiles/tree/v0.3.0) (2020-07-15)
 
@@ -337,7 +339,6 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `0c341b6` to `a28d450` [\#18](https://github.com/LucasLarson/dotfiles/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
 - \[ImgBot\] Optimize images [\#17](https://github.com/LucasLarson/dotfiles/pull/17) ([imgbot[bot]](https://github.com/apps/imgbot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e0ed693` to `0c341b6` [\#16](https://github.com/LucasLarson/dotfiles/pull/16) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Configure WhiteSource Bolt for GitHub [\#14](https://github.com/LucasLarson/dotfiles/pull/14) ([whitesource-bolt-for-github[bot]](https://github.com/apps/whitesource-bolt-for-github))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `be66f21` to `e0ed693` [\#13](https://github.com/LucasLarson/dotfiles/pull/13) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a88e11f` to `be66f21` [\#12](https://github.com/LucasLarson/dotfiles/pull/12) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `ae32fd5` to `a88e11f` [\#11](https://github.com/LucasLarson/dotfiles/pull/11) ([dependabot[bot]](https://github.com/apps/dependabot))
