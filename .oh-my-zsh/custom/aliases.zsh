@@ -440,6 +440,36 @@ fname() {
 }
 alias findname='fname'
 
+identify() {
+  sh -c 'IFS=$(printf " \t\n/"); IFS=${IFS%/}; printf %s "${IFS}" | xxd'
+
+  # uname
+  command -v uname >/dev/null 2>&1 && uname -a
+
+  # sw_vers
+  # https://apple.stackexchange.com/a/368244
+  command -v sw_vers >/dev/null 2>&1 && sw_vers
+
+  # lsb_release
+  # https://linuxize.com/post/how-to-check-your-debian-version
+  command -v lsb_release >/dev/null 2>&1 && lsb_release --all
+
+  # hostnamectl
+  # https://linuxize.com/post/how-to-check-your-debian-version
+  command -v hostnamectl >/dev/null 2>&1 && hostnamectl
+
+  # /etc/os-release
+  # https://linuxize.com/post/how-to-check-your-debian-version
+  [ -r /etc/os-release ] && cat -v /etc/os-release
+
+  # /proc/version
+  # https://superuser.com/a/773608
+  [ -r /proc/version ] && cat -v /proc/version
+
+  # /etc/issue
+  # https://linuxize.com/post/how-to-check-your-debian-version
+  [ -r /etc/issue ] && cat -v /etc/issue
+}
 alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
 
 # https://unix.stackexchange.com/a/30950
