@@ -30,6 +30,7 @@ mu() {
   mackup backup --force --root &&
   git fetch --all &&
   git submodule update --init --recursive &&
+  git submodule sync -- &&
   git status
 }
 mux() {
@@ -38,6 +39,7 @@ mux() {
   mackup backup --force --root --verbose &&
   git fetch --all --verbose &&
   git submodule update --init --recursive --remote &&
+  git submodule sync --recursive -- &&
   git status
 }
 
@@ -145,6 +147,7 @@ alias grs='git_restore'
 
 git_submodule_update() {(
   git submodule update --init --recursive --remote -- "$@" &&
+  git submodule sync --recursive -- "$@" &&
   git status
 )}
 alias gsu='git_submodule_update'
@@ -165,6 +168,7 @@ gu() {(
       remote="--remote"
     fi
     git submodule update --init --recursive ${remote}
+    git submodule sync --recursive --
     git status
   fi
 )}
