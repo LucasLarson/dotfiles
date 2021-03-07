@@ -109,6 +109,7 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e8afa80` to `d524164` [\#201](https://github.com/LucasLarson/dotfiles/pull/201) ([dependabot[bot]](https://github.com/apps/dependabot))
 - reactivate @Dependabot [\#200](https://github.com/LucasLarson/dotfiles/pull/200) ([LucasLarson](https://github.com/LucasLarson))
 - Update peter-evans/create-pull-request action to v3.6.0 [\#198](https://github.com/LucasLarson/dotfiles/pull/198) ([renovate[bot]](https://github.com/apps/renovate))
+- Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v0.5.3](https://github.com/LucasLarson/dotfiles/tree/v0.5.3) (2020-12-23)
 
@@ -128,7 +129,6 @@
 
 - Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
-- Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.2.0 [\#194](https://github.com/LucasLarson/dotfiles/pull/194) ([renovate[bot]](https://github.com/apps/renovate))
 - remove archival and example content \(fix \#187\) [\#193](https://github.com/LucasLarson/dotfiles/pull/193) ([LucasLarson](https://github.com/LucasLarson))
 - Update fkirc/skip-duplicate-actions action to v3.1.0 [\#192](https://github.com/LucasLarson/dotfiles/pull/192) ([renovate[bot]](https://github.com/apps/renovate))
@@ -300,7 +300,6 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `3b2f474` to `6c8c6ee` [\#48](https://github.com/LucasLarson/dotfiles/pull/48) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `a3727dc` to `3b2f474` [\#47](https://github.com/LucasLarson/dotfiles/pull/47) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `c1db392` to `a3727dc` [\#45](https://github.com/LucasLarson/dotfiles/pull/45) ([dependabot[bot]](https://github.com/apps/dependabot))
-- bump .oh-my-zsh/custom/themes/powerlevel10k from `f2bf019` to `c1db392` [\#44](https://github.com/LucasLarson/dotfiles/pull/44) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7eb501c` to `f2bf019` [\#43](https://github.com/LucasLarson/dotfiles/pull/43) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.4.0](https://github.com/LucasLarson/dotfiles/tree/v0.4.0) (2020-08-26)
@@ -315,6 +314,7 @@
 
 **Merged pull requests:**
 
+- bump .oh-my-zsh/custom/themes/powerlevel10k from `f2bf019` to `c1db392` [\#44](https://github.com/LucasLarson/dotfiles/pull/44) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `6279aa5` to `7eb501c` [\#42](https://github.com/LucasLarson/dotfiles/pull/42) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `dca8774` to `6279aa5` [\#40](https://github.com/LucasLarson/dotfiles/pull/40) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump .oh-my-zsh/custom/themes/powerlevel10k from `7114902` to `dca8774` [\#38](https://github.com/LucasLarson/dotfiles/pull/38) ([dependabot[bot]](https://github.com/apps/dependabot))
