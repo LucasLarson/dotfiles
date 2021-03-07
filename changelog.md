@@ -2,7 +2,16 @@
 
 ## [Unreleased](https://github.com/LucasLarson/dotfiles/tree/HEAD)
 
-[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.4...HEAD)
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.6.0...HEAD)
+
+**Merged pull requests:**
+
+- Bump Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle from `13169c6` to `90d74c8` [\#290](https://github.com/LucasLarson/dotfiles/pull/290) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `3920940` to `6d545d5` [\#289](https://github.com/LucasLarson/dotfiles/pull/289) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v0.6.0](https://github.com/LucasLarson/dotfiles/tree/v0.6.0) (2021-03-07)
+
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.5.4...v0.6.0)
 
 **Implemented enhancements:**
 
