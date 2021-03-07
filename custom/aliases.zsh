@@ -508,7 +508,7 @@ alias all='which -a'
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 # http://zsh.sf.net/Doc/Release/Shell-Grammar.html#index-exec
 alias ','='. "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
-alias aliases='"${EDITOR:=vi}" "${ZSH_CUSTOM:=${DOTFILES}/.oh-my-${0##*[-/]}/custom}/aliases.${0##*[-/]}"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
+alias aliases='"${EDITOR:=vi}" "${ZSH_CUSTOM:=${DOTFILES}/custom}/aliases.${0##*[-/]}"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
 alias ohmyzsh='cd "${ZSH:=${HOME}/.oh-my-${0##*[-/]}}" && git status'
 alias zshconfig='"${EDITOR:=vi}" "${HOME}/.${0##*[-/]}rc"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
 alias zshenv='"${EDITOR:=vi}" "${HOME}/.${0##*[-/]}env"; . "${HOME}/.${0##*[-/]}rc" && exec -l "${0##*[-/]}"'
