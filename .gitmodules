@@ -1,5 +1,5 @@
-[submodule ".oh-my-zsh/custom/themes/powerlevel10k"]
-	path = .oh-my-zsh/custom/themes/powerlevel10k
+[submodule "custom/themes/powerlevel10k"]
+	path = custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle
@@ -127,8 +127,8 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Mediawiki.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Mediawiki.tmbundle
 	url = https://github.com/textmate/mediawiki.tmbundle
-[submodule ".oh-my-zsh/custom/plugins/gunstage"]
-	path = .oh-my-zsh/custom/plugins/gunstage
+[submodule "custom/plugins/gunstage"]
+	path = custom/plugins/gunstage
 	url = https://github.com/LucasLarson/gunstage
 [submodule "Library/Application Support/TextMate/Managed/Bundles/CTags.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/CTags.tmbundle
@@ -160,9 +160,9 @@
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Hyperlink Helper.tmbundle"]
 	path = Library/Application Support/TextMate/Managed/Bundles/Hyperlink Helper.tmbundle
 	url = https://github.com/textmate/hyperlink-helper.tmbundle
-[submodule ".oh-my-zsh/custom/plugins/zsh-completions"]
-	path = .oh-my-zsh/custom/plugins/zsh-completions
+[submodule "custom/plugins/zsh-completions"]
+	path = custom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
-[submodule ".oh-my-zsh/custom/plugins/fast-syntax-highlighting"]
-	path = .oh-my-zsh/custom/plugins/fast-syntax-highlighting
+[submodule "custom/plugins/fast-syntax-highlighting"]
+	path = custom/plugins/fast-syntax-highlighting
 	url = https://github.com/zdharma/fast-syntax-highlighting
