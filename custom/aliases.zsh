@@ -174,11 +174,11 @@ gu() {(
 )}
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
-gvc() {(
+gvc() {
   # if there is an argument (commit hash), use it
   # otherwise check `HEAD`
   git verify-commit "${1:-HEAD}"
-)}
+}
 
 # shell
 cd_pwd_P() {
