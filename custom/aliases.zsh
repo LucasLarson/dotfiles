@@ -57,7 +57,7 @@ alias gco='git checkout --progress'
 
 # `git checkout` the default branch
 gcom() {
-  git checkout --progress "$(git_default_branch)"
+  git checkout --progress "$(git_default_branch)" --
 }
 gdm() {
   git diff "$(git_default_branch)"
