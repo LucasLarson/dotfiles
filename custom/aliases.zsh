@@ -145,11 +145,11 @@ git_restore() {
 }
 alias grs='git_restore'
 
-git_submodule_update() {(
+git_submodule_update() {
   git submodule update --init --recursive --remote -- "$@" &&
   git submodule sync --recursive -- "$@" &&
   git status
-)}
+}
 alias gsu='git_submodule_update'
 alias gtake='git checkout -b'
 alias gti='git'
