@@ -6,8 +6,11 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/gunstage from `ac7ee86` to `23350c6` [\#292](https://github.com/LucasLarson/dotfiles/pull/292) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `6d545d5` to `d28e84c` [\#291](https://github.com/LucasLarson/dotfiles/pull/291) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle from `13169c6` to `90d74c8` [\#290](https://github.com/LucasLarson/dotfiles/pull/290) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `3920940` to `6d545d5` [\#289](https://github.com/LucasLarson/dotfiles/pull/289) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update nvuillam/mega-linter action to v4.28.0 [\#255](https://github.com/LucasLarson/dotfiles/pull/255) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v0.6.0](https://github.com/LucasLarson/dotfiles/tree/v0.6.0) (2021-03-07)
 
@@ -207,7 +210,6 @@
 - repair workflow’s YAML formatting [\#114](https://github.com/LucasLarson/dotfiles/pull/114) ([LucasLarson](https://github.com/LucasLarson))
 - revert to 1.0.7 gaurav-nelson/github-action-markdown-link-check from 1.0.8 [\#113](https://github.com/LucasLarson/dotfiles/pull/113) ([LucasLarson](https://github.com/LucasLarson))
 - add Contributor Covenant Code of Conduct for Pedants [\#112](https://github.com/LucasLarson/dotfiles/pull/112) ([LucasLarson](https://github.com/LucasLarson))
-- Bump .oh-my-zsh/custom/themes/powerlevel10k from `2ea3356` to `aa6d40b` [\#111](https://github.com/LucasLarson/dotfiles/pull/111) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `74c6e18` to `2ea3356` [\#110](https://github.com/LucasLarson/dotfiles/pull/110) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `49d5617` to `74c6e18` [\#109](https://github.com/LucasLarson/dotfiles/pull/109) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `68c89ec` to `49d5617` [\#108](https://github.com/LucasLarson/dotfiles/pull/108) ([dependabot[bot]](https://github.com/apps/dependabot))
