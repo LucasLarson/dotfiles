@@ -6,12 +6,15 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.30.0 [\#298](https://github.com/LucasLarson/dotfiles/pull/298) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump custom/plugins/gunstage from `23350c6` to `da7ec97` [\#297](https://github.com/LucasLarson/dotfiles/pull/297) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.29.0 [\#296](https://github.com/LucasLarson/dotfiles/pull/296) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump github/super-linter from v3.15.2 to v3.15.3 [\#295](https://github.com/LucasLarson/dotfiles/pull/295) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/gunstage from `ac7ee86` to `23350c6` [\#292](https://github.com/LucasLarson/dotfiles/pull/292) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `6d545d5` to `d28e84c` [\#291](https://github.com/LucasLarson/dotfiles/pull/291) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle from `13169c6` to `90d74c8` [\#290](https://github.com/LucasLarson/dotfiles/pull/290) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `3920940` to `6d545d5` [\#289](https://github.com/LucasLarson/dotfiles/pull/289) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump .oh-my-zsh/custom/plugins/zsh-completions from `b8cc3b9` to `6fe9995` [\#258](https://github.com/LucasLarson/dotfiles/pull/258) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nvuillam/mega-linter action to v4.28.0 [\#255](https://github.com/LucasLarson/dotfiles/pull/255) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v0.6.0](https://github.com/LucasLarson/dotfiles/tree/v0.6.0) (2021-03-07)
@@ -53,7 +56,6 @@
 - Update actions/setup-ruby action to v1.1.3 [\#266](https://github.com/LucasLarson/dotfiles/pull/266) ([renovate[bot]](https://github.com/apps/renovate))
 - if there’s `/etc/motd`, clear its contents without newline \(fix \#262\) [\#265](https://github.com/LucasLarson/dotfiles/pull/265) ([LucasLarson](https://github.com/LucasLarson))
 - Update peter-evans/create-pull-request action to v3.8.1 [\#263](https://github.com/LucasLarson/dotfiles/pull/263) ([renovate[bot]](https://github.com/apps/renovate))
-- Bump .oh-my-zsh/custom/plugins/zsh-completions from `b8cc3b9` to `6fe9995` [\#258](https://github.com/LucasLarson/dotfiles/pull/258) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `d47af9f` to `ae301df` [\#257](https://github.com/LucasLarson/dotfiles/pull/257) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/cache action to v2.1.4 [\#254](https://github.com/LucasLarson/dotfiles/pull/254) ([renovate[bot]](https://github.com/apps/renovate))
 - repair jsonlint workflow’s `find` syntax [\#253](https://github.com/LucasLarson/dotfiles/pull/253) ([LucasLarson](https://github.com/LucasLarson))
