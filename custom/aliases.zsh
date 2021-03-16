@@ -69,6 +69,7 @@ ggc() {
   (command -v cleanup >/dev/null 2>&1 && cleanup)
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
+    git prune --verbose --progress --expire now
     git gc --aggressive --prune=now
     git status
   else
