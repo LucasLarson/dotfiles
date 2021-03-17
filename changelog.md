@@ -6,6 +6,9 @@
 
 **Merged pull requests:**
 
+- Bump Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle from `90d74c8` to `f2fbd0f` [\#303](https://github.com/LucasLarson/dotfiles/pull/303) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Library/Application Support/TextMate/Managed/Bundles/Ruby.tmbundle from `02613b0` to `efcb894` [\#302](https://github.com/LucasLarson/dotfiles/pull/302) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update fkirc/skip-duplicate-actions action to v3.4.0 [\#301](https://github.com/LucasLarson/dotfiles/pull/301) ([renovate[bot]](https://github.com/apps/renovate))
 - Update UnicornGlobal/has-changes-action action to v1.0.12 [\#300](https://github.com/LucasLarson/dotfiles/pull/300) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.30.0 [\#298](https://github.com/LucasLarson/dotfiles/pull/298) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump custom/plugins/gunstage from `23350c6` to `da7ec97` [\#297](https://github.com/LucasLarson/dotfiles/pull/297) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -63,11 +66,11 @@
 - Bump .oh-my-zsh/custom/plugins/gunstage from `c39ed05` to `d47af9f` [\#252](https://github.com/LucasLarson/dotfiles/pull/252) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update peter-evans/create-pull-request action to v3.8.0 [\#250](https://github.com/LucasLarson/dotfiles/pull/250) ([renovate[bot]](https://github.com/apps/renovate))
 - Update github/super-linter action to v3.14.5 [\#249](https://github.com/LucasLarson/dotfiles/pull/249) ([renovate[bot]](https://github.com/apps/renovate))
-- Update nvuillam/mega-linter action to v4.26.1 [\#248](https://github.com/LucasLarson/dotfiles/pull/248) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `d26bdcd` to `b816abf` [\#246](https://github.com/LucasLarson/dotfiles/pull/246) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `2735a15` to `f6eb870` [\#245](https://github.com/LucasLarson/dotfiles/pull/245) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update peter-evans/create-pull-request action to v3.7.0 [\#243](https://github.com/LucasLarson/dotfiles/pull/243) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.26.0 [\#242](https://github.com/LucasLarson/dotfiles/pull/242) ([renovate[bot]](https://github.com/apps/renovate))
+- \[autofix\] Format JSON content [\#239](https://github.com/LucasLarson/dotfiles/pull/239) ([github-actions[bot]](https://github.com/apps/github-actions))
 
 ## [v0.5.4](https://github.com/LucasLarson/dotfiles/tree/v0.5.4) (2021-01-24)
 
@@ -79,8 +82,8 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.26.1 [\#248](https://github.com/LucasLarson/dotfiles/pull/248) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.25.0 [\#241](https://github.com/LucasLarson/dotfiles/pull/241) ([renovate[bot]](https://github.com/apps/renovate))
-- \[autofix\] Format JSON content [\#239](https://github.com/LucasLarson/dotfiles/pull/239) ([github-actions[bot]](https://github.com/apps/github-actions))
 - Update nvuillam/mega-linter action to v4.24.1 [\#237](https://github.com/LucasLarson/dotfiles/pull/237) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump .oh-my-zsh/custom/plugins/gunstage from `9b12374` to `2735a15` [\#236](https://github.com/LucasLarson/dotfiles/pull/236) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `7b0698d` to `d26bdcd` [\#235](https://github.com/LucasLarson/dotfiles/pull/235) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -117,6 +120,7 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `e8afa80` to `d524164` [\#201](https://github.com/LucasLarson/dotfiles/pull/201) ([dependabot[bot]](https://github.com/apps/dependabot))
 - reactivate @Dependabot [\#200](https://github.com/LucasLarson/dotfiles/pull/200) ([LucasLarson](https://github.com/LucasLarson))
 - Update peter-evans/create-pull-request action to v3.6.0 [\#198](https://github.com/LucasLarson/dotfiles/pull/198) ([renovate[bot]](https://github.com/apps/renovate))
+- Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v0.5.3](https://github.com/LucasLarson/dotfiles/tree/v0.5.3) (2020-12-23)
 
@@ -135,7 +139,6 @@
 **Merged pull requests:**
 
 - Update nvuillam/mega-linter action to v4.18.0 [\#197](https://github.com/LucasLarson/dotfiles/pull/197) ([renovate[bot]](https://github.com/apps/renovate))
-- Update fkirc/skip-duplicate-actions action to v3.3.0 [\#196](https://github.com/LucasLarson/dotfiles/pull/196) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.17.0 [\#195](https://github.com/LucasLarson/dotfiles/pull/195) ([renovate[bot]](https://github.com/apps/renovate))
 - Update fkirc/skip-duplicate-actions action to v3.2.0 [\#194](https://github.com/LucasLarson/dotfiles/pull/194) ([renovate[bot]](https://github.com/apps/renovate))
 - remove archival and example content \(fix \#187\) [\#193](https://github.com/LucasLarson/dotfiles/pull/193) ([LucasLarson](https://github.com/LucasLarson))
