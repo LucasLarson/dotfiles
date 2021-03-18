@@ -26,21 +26,21 @@ alias apm='apm-nightly'
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 mu() {
   cd "${DOTFILES:=${HOME}/Dropbox/dotfiles}" &&
-  (command -v cleanup >/dev/null 2>&1 && cleanup) &&
-  mackup backup --force --root &&
-  git fetch --all &&
-  git submodule update --init --recursive &&
-  git submodule sync -- &&
-  git status
+    (command -v cleanup >/dev/null 2>&1 && cleanup) &&
+    mackup backup --force --root &&
+    git fetch --all &&
+    git submodule update --init --recursive &&
+    git submodule sync -- &&
+    git status
 }
 mux() {
   cd "${DOTFILES:=${HOME}/Dropbox/dotfiles}" &&
-  (command -v cleanup >/dev/null 2>&1 && cleanup) &&
-  mackup backup --force --root --verbose &&
-  git fetch --all --verbose &&
-  git submodule update --init --recursive --remote &&
-  git submodule sync --recursive -- &&
-  git status
+    (command -v cleanup >/dev/null 2>&1 && cleanup) &&
+    mackup backup --force --root --verbose &&
+    git fetch --all --verbose &&
+    git submodule update --init --recursive --remote &&
+    git submodule sync --recursive -- &&
+    git status
 }
 
 # Git
@@ -93,27 +93,29 @@ alias glog='git log --graph --branches --remotes --tags --format=format:"%Cgreen
 # ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
 # place the function inside `{()}` to prevent the leaking of variable data
 # https://stackoverflow.com/a/37675401
-git_default_branch() {(
-  # check if there’s a `remote` with a default branch and
-  # if so, then use that name for `default_branch`
-  # https://stackoverflow.com/a/44750379
-  if git symbolic-ref refs/remotes/origin/HEAD >/dev/null 2>&1; then
-    default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+git_default_branch() {
+  (
+    # check if there’s a `remote` with a default branch and
+    # if so, then use that name for `default_branch`
+    # https://stackoverflow.com/a/44750379
+    if git symbolic-ref refs/remotes/origin/HEAD >/dev/null 2>&1; then
+      default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
 
-  # check for `main`, which, if it exists, is most likely to be default
-  elif [ -n "$(git branch --list main)" ]; then
-    default_branch=main
+    # check for `main`, which, if it exists, is most likely to be default
+    elif [ -n "$(git branch --list main)" ]; then
+      default_branch=main
 
-  # check for a branch called `master`
-  elif [ -n "$(git branch --list master)" ]; then
-    default_branch=master
-  else
-    printf 'unable to detect a \x60main\x60, \x60master\x60, or default '
-    printf 'branch in this repository\n'
-    return 1
-  fi
-  printf %s "${default_branch}"
-)}
+    # check for a branch called `master`
+    elif [ -n "$(git branch --list master)" ]; then
+      default_branch=master
+    else
+      printf 'unable to detect a \x60main\x60, \x60master\x60, or default '
+      printf 'branch in this repository\n'
+      return 1
+    fi
+    printf %s "${default_branch}"
+  )
+}
 alias gdb='git_default_branch'
 
 # https://news.ycombinator.com/item?id=5512864
@@ -149,31 +151,33 @@ alias grs='git_restore'
 
 git_submodule_update() {
   git submodule update --init --recursive --remote -- "$@" &&
-  git submodule sync --recursive -- "$@" &&
-  git status
+    git submodule sync --recursive -- "$@" &&
+    git status
 }
 alias gsu='git_submodule_update'
 alias gtake='git checkout -b'
 alias gti='git'
 
-gu() {(
-  (command -v cleanup >/dev/null 2>&1 && cleanup)
+gu() {
+  (
+    (command -v cleanup >/dev/null 2>&1 && cleanup)
 
-  # run only from within a git repository
-  # https://stackoverflow.com/a/53809163
-  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    git fetch --all --verbose
+    # run only from within a git repository
+    # https://stackoverflow.com/a/53809163
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      git fetch --all --verbose
 
-    # `git submodule update` with `--remote` appears to slow Git to a crawl
-    # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
-    if [ "$1" = --remote ] || [ "$1" = -r ]; then
-      remote="--remote"
+      # `git submodule update` with `--remote` appears to slow Git to a crawl
+      # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
+      if [ "$1" = --remote ] || [ "$1" = -r ]; then
+        remote="--remote"
+      fi
+      git submodule update --init --recursive ${remote}
+      git submodule sync --recursive --
+      git status
     fi
-    git submodule update --init --recursive ${remote}
-    git submodule sync --recursive --
-    git status
-  fi
-)}
+  )
+}
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
 gvc() {
@@ -188,12 +192,12 @@ cd_pwd_P() {
   cd_to=$(pwd -P)
   if [ "${cd_from}" != "${cd_to}" ]; then
     printf 'moving from \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_from}" &&
-    sleep 0.2
+      sleep 0.2
     cd "${cd_to}" || (
       printf 'unable to perform this operation\n' && return 1
     )
     printf '       into \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_to}" &&
-    sleep 0.2
+      sleep 0.2
   else
     printf 'already in unaliased directory '
     printf '\xe2\x80\x98%s\xe2\x80\x99\n' "${cd_from}"
@@ -203,7 +207,7 @@ cd_pwd_P() {
 alias cdp='cd_pwd_P'
 
 clang_format() {
-# https://github.com/Originate/guide/blob/880952d/ios/files/clang-format.sh
+  # https://github.com/Originate/guide/blob/880952d/ios/files/clang-format.sh
   (
     program=clang-format
 
@@ -307,82 +311,86 @@ clang_format() {
 
 # http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp='cp -r'
-cy() {(
-  if [ -r "$1" ]; then
-    # if within git repo, then auto-overwrite
-    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-      interactive="-i"
-    fi
-    if [ -z "$2" ]; then
-      # if there is no second argument,
-      # then copy to the current directory
-      # -r to copy recursively
-      # -L to follow symbolic links
-      eval cp -r -L "${interactive} -- $1 ${PWD}"
+cy() {
+  (
+    if [ -r "$1" ]; then
+      # if within git repo, then auto-overwrite
+      if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        interactive="-i"
+      fi
+      if [ -z "$2" ]; then
+        # if there is no second argument,
+        # then copy to the current directory
+        # -r to copy recursively
+        # -L to follow symbolic links
+        eval cp -r -L "${interactive} -- $1 ${PWD}"
+      else
+        eval cp -r -L "${interactive} -- $1 $2"
+      fi
+    elif [ -e "$1" ]; then
+      printf '\x60%s\x60 is not readable and cannot be copied\n' "$1"
+      return 1
     else
-      eval cp -r -L "${interactive} -- $1 $2"
+      printf '\x60%s\x60 does not exist and cannot be copied\n' "$1"
+      return 2
     fi
-  elif [ -e "$1" ]; then
-    printf '\x60%s\x60 is not readable and cannot be copied\n' "$1"
-    return 1
-  else
-    printf '\x60%s\x60 does not exist and cannot be copied\n' "$1"
-    return 2
-  fi
-)}
+  )
+}
 
-cleanup() {(
-  # if `cleanup -v` or `cleanup --verbose`,
-  # then use `-print` during `-delete`
-  if [ "$1" = -v ] || [ "$1" = --verbose ]; then
-    verbose=-print
-  fi
+cleanup() {
+  (
+    # if `cleanup -v` or `cleanup --verbose`,
+    # then use `-print` during `-delete`
+    if [ "$1" = -v ] || [ "$1" = --verbose ]; then
+      verbose=-print
+    fi
 
-  # delete thumbnail cache files
-  find -- * -type f \( \
-    -name '.DS_Store' -or \
-    -name 'Desktop.ini' -or \
-    -name 'desktop.ini' -or \
-    -name 'Thumbs.db' -or \
-    -name 'thumbs.db' \
-    \) \
-    ${verbose} -delete
+    # delete thumbnail cache files
+    find -- * -type f \( \
+      -name '.DS_Store' -or \
+      -name 'Desktop.ini' -or \
+      -name 'desktop.ini' -or \
+      -name 'Thumbs.db' -or \
+      -name 'thumbs.db' \
+      \) \
+      ${verbose} -delete
 
-  # delete empty, zero-length files
-  # except those within `.git/` directories
-  # or with specific names and are writable
-  # https://stackoverflow.com/a/64863398
-  find -- * -type f -writable -size 0 \( \
-    -not -path '*.git/*' -and \
-    -not -path '*/test*' -and \
-    -not -name "$(printf 'Icon\x0d\x0a')" -and \
-    -not -name '*LOCK' -and \
-    -not -name '*empty*' -and \
-    -not -name '*hushlogin' -and \
-    -not -name '*ignore' -and \
-    -not -name '*journal' -and \
-    -not -name '*lock' -and \
-    -not -name '*lockfile' -and \
-    -not -name '.dirstamp' -and \
-    -not -name '.gitkeep' -and \
-    -not -name '.gitmodules' -and \
-    -not -name '.keep' -and \
-    -not -name '.sudo_as_admin_successful' -and \
-    -not -name '.watchmanconfig' -and \
-    -not -name '__init__.py' -and \
-    -not -name 'favicon.*' \
-    \) \
-    ${verbose} -delete
+    # delete empty, zero-length files
+    # except those within `.git/` directories
+    # or with specific names and are writable
+    # https://stackoverflow.com/a/64863398
+    find -- * -type f -writable -size 0 \( \
+      -not -path '*.git/*' -and \
+      -not -path '*/test*' -and \
+      -not -name "$(printf 'Icon\x0d\x0a')" -and \
+      -not -name '*LOCK' -and \
+      -not -name '*empty*' -and \
+      -not -name '*hushlogin' -and \
+      -not -name '*ignore' -and \
+      -not -name '*journal' -and \
+      -not -name '*lock' -and \
+      -not -name '*lockfile' -and \
+      -not -name '.dirstamp' -and \
+      -not -name '.gitkeep' -and \
+      -not -name '.gitmodules' -and \
+      -not -name '.keep' -and \
+      -not -name '.sudo_as_admin_successful' -and \
+      -not -name '.watchmanconfig' -and \
+      -not -name '__init__.py' -and \
+      -not -name 'favicon.*' \
+      \) \
+      ${verbose} -delete
 
-  # delete empty directories recursively
-  # but skip Git-specific and `/.well-known/` directories
-  # https://stackoverflow.com/q/4210042#comment38334264_4210072
-  find -- * -type d -empty \( \
-    -not -path '*.git/*' -and \
-    -not -name '.well-known' \
-    \) \
-    ${verbose} -delete
-)}
+    # delete empty directories recursively
+    # but skip Git-specific and `/.well-known/` directories
+    # https://stackoverflow.com/q/4210042#comment38334264_4210072
+    find -- * -type d -empty \( \
+      -not -path '*.git/*' -and \
+      -not -name '.well-known' \
+      \) \
+      ${verbose} -delete
+  )
+}
 
 define() {
   sh -c 'IFS=$(printf " \t\n/"); IFS=${IFS%/}'
@@ -500,8 +508,8 @@ alias sudo='sudo '
 # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
 take() {
   mkdir -p -v -- "$@" &&
-  printf 'cd: changed directory to \xe2\x80\x98%s\xe2\x80\x99\n' "${@:$#}" &&
-  cd -- "${@:$#}" || return 1
+    printf 'cd: changed directory to \xe2\x80\x98%s\xe2\x80\x99\n' "${@:$#}" &&
+    cd -- "${@:$#}" || return 1
 }
 
 # Unix epoch seconds
