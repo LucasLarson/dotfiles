@@ -130,7 +130,7 @@
 **Implemented enhancements:**
 
 - remove archival material from the version-control system [\#187](https://github.com/LucasLarson/dotfiles/issues/187)
-- `${SHELL\#\#\*/}` depends on user configuration; `${0\#\#\*\[-/\]}` does not [\#186](https://github.com/LucasLarson/dotfiles/issues/186)
+- `${SHELL##*/}` depends on user configuration; `${0##*[-/]}` does not [\#186](https://github.com/LucasLarson/dotfiles/issues/186)
 
 **Fixed bugs:**
 
@@ -160,7 +160,13 @@
 - Update nvuillam/mega-linter action to v4.13.0 [\#173](https://github.com/LucasLarson/dotfiles/pull/173) ([renovate[bot]](https://github.com/apps/renovate))
 - Update github/super-linter action to v3.14.3 [\#172](https://github.com/LucasLarson/dotfiles/pull/172) ([renovate[bot]](https://github.com/apps/renovate))
 - repair Markdown after Mega-Linter suggestions [\#171](https://github.com/LucasLarson/dotfiles/pull/171) ([LucasLarson](https://github.com/LucasLarson))
+- Update github/super-linter action to v3.14.0 [\#169](https://github.com/LucasLarson/dotfiles/pull/169) ([renovate[bot]](https://github.com/apps/renovate))
 - mega-linter conformance [\#168](https://github.com/LucasLarson/dotfiles/pull/168) ([LucasLarson](https://github.com/LucasLarson))
+- add mega-linter workflow action [\#167](https://github.com/LucasLarson/dotfiles/pull/167) ([LucasLarson](https://github.com/LucasLarson))
+- Bump .oh-my-zsh/custom/themes/powerlevel10k from `31ede3c` to `2c3bcd8` [\#166](https://github.com/LucasLarson/dotfiles/pull/166) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle from `97d29d2` to `d31bae2` [\#165](https://github.com/LucasLarson/dotfiles/pull/165) ([dependabot[bot]](https://github.com/apps/dependabot))
+- repair Dependabot [\#164](https://github.com/LucasLarson/dotfiles/pull/164) ([LucasLarson](https://github.com/LucasLarson))
+- Alpine Linux 2nd attempt resurrection [\#163](https://github.com/LucasLarson/dotfiles/pull/163) ([LucasLarson](https://github.com/LucasLarson))
 - add out-of-the-box `.bashrc` file from new Ubuntu installation [\#162](https://github.com/LucasLarson/dotfiles/pull/162) ([LucasLarson](https://github.com/LucasLarson))
 - add initialization script for Alpine Linux [\#161](https://github.com/LucasLarson/dotfiles/pull/161) ([LucasLarson](https://github.com/LucasLarson))
 
@@ -182,7 +188,7 @@
 - allow `git verify-commit`’s alias to allow a commit hash as argument [\#158](https://github.com/LucasLarson/dotfiles/pull/158) ([LucasLarson](https://github.com/LucasLarson))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `04f75a1` to `31ede3c` [\#157](https://github.com/LucasLarson/dotfiles/pull/157) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `7969eb3` to `04f75a1` [\#156](https://github.com/LucasLarson/dotfiles/pull/156) ([dependabot[bot]](https://github.com/apps/dependabot))
-- test replacing LucasLarson with `${{ github.repository\_owner }}` in TOML file [\#155](https://github.com/LucasLarson/dotfiles/pull/155) ([LucasLarson](https://github.com/LucasLarson))
+- test replacing LucasLarson with `${{ github.repository_owner }}` in TOML file [\#155](https://github.com/LucasLarson/dotfiles/pull/155) ([LucasLarson](https://github.com/LucasLarson))
 - replace toml repository name programmatically [\#154](https://github.com/LucasLarson/dotfiles/pull/154) ([LucasLarson](https://github.com/LucasLarson))
 - Bump peter-evans/create-pull-request from v3.4.1 to v3.5.0 [\#153](https://github.com/LucasLarson/dotfiles/pull/153) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update peter-evans/create-pull-request action to v3.5.0 [\#152](https://github.com/LucasLarson/dotfiles/pull/152) ([renovate[bot]](https://github.com/apps/renovate))
@@ -224,6 +230,8 @@
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `74c6e18` to `2ea3356` [\#110](https://github.com/LucasLarson/dotfiles/pull/110) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `49d5617` to `74c6e18` [\#109](https://github.com/LucasLarson/dotfiles/pull/109) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump .oh-my-zsh/custom/themes/powerlevel10k from `68c89ec` to `49d5617` [\#108](https://github.com/LucasLarson/dotfiles/pull/108) ([dependabot[bot]](https://github.com/apps/dependabot))
+- \[autofix\] Format JSON content [\#107](https://github.com/LucasLarson/dotfiles/pull/107) ([github-actions[bot]](https://github.com/apps/github-actions))
+- \[autofix\] Format JSON content [\#106](https://github.com/LucasLarson/dotfiles/pull/106) ([github-actions[bot]](https://github.com/apps/github-actions))
 
 ## [v0.5.0](https://github.com/LucasLarson/dotfiles/tree/v0.5.0) (2020-10-25)
 
@@ -379,7 +387,12 @@
 
 ## [v0.1.0](https://github.com/LucasLarson/dotfiles/tree/v0.1.0) (2020-05-19)
 
-[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/3c4c02ab7d244eca88246c413514a4e72718145e...v0.1.0)
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/4b904db476a5c712c5064e508415e663d7d5dff8...v0.1.0)
+
+**Merged pull requests:**
+
+- zsh enable command auto-correction [\#2](https://github.com/LucasLarson/dotfiles/pull/2) ([LucasLarson](https://github.com/LucasLarson))
+- .gitconfig: add compression options [\#1](https://github.com/LucasLarson/dotfiles/pull/1) ([LucasLarson](https://github.com/LucasLarson))
 
 
 
