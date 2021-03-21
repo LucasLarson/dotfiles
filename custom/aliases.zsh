@@ -60,7 +60,7 @@ gcom() {
   git checkout --progress "$(git_default_branch)" --
 }
 gdm() {
-  git diff "$(git_default_branch)"
+  git diff "$(git_default_branch)" --
 }
 alias gsd='gds'
 
