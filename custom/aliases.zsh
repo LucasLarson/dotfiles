@@ -154,6 +154,36 @@ git_restore() {
 }
 alias grs='git_restore'
 
+# git submodule rm
+git_submodule_rm() {
+  # https://github.com/romkatv/dotfiles-public/commit/07c9b29
+
+  # usage: $0 submodule-to-remove
+  if [ $# -eq 1 ] &&
+    # continue only if `submodule-to-remove` is an existing file or directory
+    [ -e "$1" ] &&
+    # continue only if called from the top of a Git repository
+    [ "$(git rev-parse --show-toplevel)" = "$(pwd -P)" ]; then
+        command git submodule deinit --force -- "$1"
+        command rm -r -f -- "$(git rev-parse --git-dir)"/modules/"$1"
+        command git rm --force -- "$1"
+  else
+    command -v git rev-parse --git-dir >/dev/null 2>&1 || (
+      printf ''
+      return 2
+    )
+    command cd -- "$(git rev-parse --git-dir)" || (
+      printf ''
+      return 3
+    )
+    printf 'usage: \xe2\x80\x98%s <path-of-submodule-to-remove>\xe2\x80\x99\n' "$0"
+    return 1
+  fi
+}
+alias git-submodule-rm='git_submodule_rm'
+alias git-rm-submodule='git-submodule-rm'
+alias gsr='git_submodule_rm'
+
 git_submodule_update() {
   git submodule update --init --recursive --remote -- "$@" &&
     git submodule sync --recursive -- "$@" &&
