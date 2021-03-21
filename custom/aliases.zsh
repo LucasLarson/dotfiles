@@ -78,6 +78,11 @@ ggc() {
   fi
 }
 
+# https://github.com/jwiegley/git-scripts/blob/3c301e7/git-find-children
+alias git_find_parents='git rev-list'
+alias gfp='git_find_parents'
+alias gfc='gfp'
+
 # initial commit
 # https://stackoverflow.com/a/1007545
 # https://stackoverflow.com/q/1006775#comment23686803_1007545
