@@ -6,6 +6,8 @@
 
 **Merged pull requests:**
 
+- Update github/super-linter action to v3.15.5 [\#308](https://github.com/LucasLarson/dotfiles/pull/308) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump custom/themes/powerlevel10k from `7d786b9` to `58f5470` [\#307](https://github.com/LucasLarson/dotfiles/pull/307) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `d28e84c` to `7d786b9` [\#306](https://github.com/LucasLarson/dotfiles/pull/306) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-completions from `aa98bc5` to `f1ab611` [\#304](https://github.com/LucasLarson/dotfiles/pull/304) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle from `90d74c8` to `f2fbd0f` [\#303](https://github.com/LucasLarson/dotfiles/pull/303) ([dependabot[bot]](https://github.com/apps/dependabot))
