@@ -6,6 +6,9 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/zsh-completions from `788926f` to `f0c8569` [\#311](https://github.com/LucasLarson/dotfiles/pull/311) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/plugins/zsh-completions from `f1ab611` to `788926f` [\#310](https://github.com/LucasLarson/dotfiles/pull/310) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/plugins/gunstage from `da7ec97` to `134f5c5` [\#309](https://github.com/LucasLarson/dotfiles/pull/309) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update github/super-linter action to v3.15.5 [\#308](https://github.com/LucasLarson/dotfiles/pull/308) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump custom/themes/powerlevel10k from `7d786b9` to `58f5470` [\#307](https://github.com/LucasLarson/dotfiles/pull/307) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `d28e84c` to `7d786b9` [\#306](https://github.com/LucasLarson/dotfiles/pull/306) ([dependabot[bot]](https://github.com/apps/dependabot))
