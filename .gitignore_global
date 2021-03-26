@@ -40,6 +40,9 @@ Temporary Items
 ## Mercurial ##
 *.hg
 
+## Node ##
+node_modules/
+
 ## SourceTree ##
 *-lock.*
 !package-lock.json
