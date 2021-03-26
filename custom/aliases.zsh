@@ -30,7 +30,6 @@ mu() {
     mackup backup --force --root &&
     git fetch --all &&
     git submodule update --init --recursive &&
-    git submodule sync -- &&
     git status
 }
 mux() {
