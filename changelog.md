@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.6.0...HEAD)
 
+**Closed issues:**
+
+- perform a `grep -inrP password` [\#299](https://github.com/LucasLarson/dotfiles/issues/299)
+
 **Merged pull requests:**
 
 - Bump custom/plugins/zsh-completions from `788926f` to `f0c8569` [\#311](https://github.com/LucasLarson/dotfiles/pull/311) ([dependabot[bot]](https://github.com/apps/dependabot))
