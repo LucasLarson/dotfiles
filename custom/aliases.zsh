@@ -521,11 +521,10 @@ alias mv='mv -v -i'
 same_file() {
   # POSIX-compliant conditional expression `-ef`
   # to find if two files refer to the device and inode numbers
-  # same_file file1 file2
+  # usage: same_file file1 file2
   # return 0 if they match
   # https://superuser.com/a/196655
-  set -x
-  [ "$(stat -c %d:%i "$1")" = "$(stat -c %d:%i "$2")" ] && return 0 || return 1
+  [ "$(stat -L -c %d:%i "$1")" = "$(stat -L -c %d:%i "$2")" ] && return 0 || return 1
 }
 
 # https://github.com/mcornella/dotfiles/commit/ff4e527
