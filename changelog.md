@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/themes/powerlevel10k from `af86b53` to `4d15cf9` [\#313](https://github.com/LucasLarson/dotfiles/pull/313) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `58f5470` to `af86b53` [\#312](https://github.com/LucasLarson/dotfiles/pull/312) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-completions from `788926f` to `f0c8569` [\#311](https://github.com/LucasLarson/dotfiles/pull/311) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-completions from `f1ab611` to `788926f` [\#310](https://github.com/LucasLarson/dotfiles/pull/310) ([dependabot[bot]](https://github.com/apps/dependabot))
