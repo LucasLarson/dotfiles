@@ -71,6 +71,7 @@ ggc() {
     git prune --verbose --progress --expire now
     git prune-packed
     git gc --aggressive --prune=now
+    git maintenance start
     git status
   else
     return 1
