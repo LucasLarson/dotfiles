@@ -84,7 +84,6 @@ alias gfp='git_find_parents'
 alias gfc='gfp'
 
 # initial commit
-# https://stackoverflow.com/a/1007545
 # https://stackoverflow.com/q/1006775#comment23686803_1007545
 alias gic='git rev-list --topo-order --parents HEAD | egrep "^[a-f0-9]{40}$"'
 alias gcic='git rev-parse --is-inside-work-tree >/dev/null 2>&1 || git init && git commit --allow-empty --verbose --message $(printf \x27\xe2\x9c\xa8 initial commit\x27) && git add . && git commit --verbose --message $(printf \x27\xe2\x9c\xa8 initial commit\x27)'
