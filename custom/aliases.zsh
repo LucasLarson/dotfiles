@@ -117,7 +117,7 @@ git_default_branch() {
 alias gdb='git_default_branch'
 
 # https://news.ycombinator.com/item?id=5512864
-alias gm='GIT_MERGE_VERBOSITY=4 git merge --progress --rerere-autoupdate --strategy-option patience'
+alias gm='GIT_MERGE_VERBOSITY=4 git merge --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience'
 alias gmc='GIT_MERGE_VERBOSITY=4 git merge --continue'
 
 # git merge main
