@@ -56,7 +56,7 @@ alias gdm='git_diff_default'
 alias gsd='gds'
 
 alias gfgs='git fetch --all --verbose && git status'
-ggc() {
+git_garbage_collection() {
   (command -v cleanup >/dev/null 2>&1 && cleanup)
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     git fetch --prune --prune-tags --verbose
@@ -69,6 +69,8 @@ ggc() {
     return 1
   fi
 }
+alias ggc='git_garbage_collection'
+alias git_garbage_collect='ggc'
 
 # https://github.com/jwiegley/git-scripts/blob/3c301e7/git-find-children
 alias git_find_parents='git rev-list'
