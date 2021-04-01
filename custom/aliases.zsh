@@ -48,9 +48,11 @@ git_checkout_default() {
 }
 alias gcom='git_checkout_default'
 
-gdm() {
+git_diff_default() {
   git diff "$(git_default_branch)" --
 }
+alias gdm='git_diff_default'
+
 alias gsd='gds'
 
 alias gfgs='git fetch --all --verbose && git status'
