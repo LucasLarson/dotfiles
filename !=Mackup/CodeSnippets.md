@@ -64,6 +64,7 @@
   - [Affixes](#affixes)
 - [Operating system](#operating-system)
   - [Identify](#identify)
+- [redirection](#redirection)
 - [rename files](#rename-files)
 - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
 - [SSH](#ssh)
@@ -451,6 +452,19 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 `printf '\n\x60lsb_release --all\x60:\n%s\n\n' "$(lsb_release --all)"; \`<br/>
 `[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`<br/>
 `printf '\x60cat /etc/os-release\x60:\n%s\n\n' "$(cat /etc/os-release)"`
+
+## redirection
+[via](https://askubuntu.com/a/350216)
+
+| syntax        | meaning                                         | POSIX compliance |
+| -------       | -----------------------------                   | --               |
+| `>file`       | redirect `stdout` to `file`                     | ✅                |
+| `1>file`      | redirect `stdout` to `file`                     | ✅                |
+| `2>file`      | redirect `stderr` to `file`                     | ✅                |
+| `>file 2>&1`  | redirect `stdout` and `stderr` to `file`        | ✅                |
+| `&>file`      | redirect `stdout` and `stderr` to `file` (Bash) | 🚫               |
+| `>>file 2>&1` | append `stdout` and `stderr` to `file`          | ✅                |
+| `&>>/file`    | append `stdout` and `stderr` to `file` (Bash)   | 🚫               |
 
 ## rename files
 
