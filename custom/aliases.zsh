@@ -3,18 +3,6 @@
 # aliases.zsh
 # for all active aliases, run `alias`
 
-# paste faster
-# https://git.io/pasteinit-pastefinish
-pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
-  zle -N self-insert url-quote-magic
-}
-pastefinish() {
-  zle -N self-insert "${OLD_SELF_INSERT}"
-}
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
-
 # Atom
 # https://github.com/jeefberkey/dotfiles/blob/2ded1c3/.zshrc#L48-L61
 alias atom-beta='atom-nightly'
@@ -517,6 +505,18 @@ alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
 
 # https://unix.stackexchange.com/a/30950
 alias mv='mv -v -i'
+
+# paste faster
+# https://git.io/pasteinit-pastefinish
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic
+}
+pastefinish() {
+  zle -N self-insert "${OLD_SELF_INSERT}"
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
 
 same_file() {
   # POSIX-compliant conditional expression `-ef`
