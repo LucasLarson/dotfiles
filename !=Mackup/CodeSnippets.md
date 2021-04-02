@@ -64,6 +64,7 @@
   - [Affixes](#affixes)
 - [Operating system](#operating-system)
   - [Identify](#identify)
+- [parameter expansion](#parameter-expansion)
 - [redirection](#redirection)
 - [rename files](#rename-files)
 - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
@@ -452,6 +453,19 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 `printf '\n\x60lsb_release --all\x60:\n%s\n\n' "$(lsb_release --all)"; \`<br/>
 `[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`<br/>
 `printf '\x60cat /etc/os-release\x60:\n%s\n\n' "$(cat /etc/os-release)"`
+
+## parameter expansion
+
+|                        | *parameter* Set and Not Null | *parameter* Set But Null | *parameter* Unset |
+|------------------------|------------------------------|--------------------------|-------------------|
+| ${*parameter*:-*word*} | substitute *parameter*       | substitute *word*        | substitute *word* |
+| ${*parameter*-*word*}  | substitute *parameter*       | substitute null          | substitute *word* |
+| ${*parameter*:=*word*} | substitute *parameter*       | assign *word*            | assign *word*     |
+| ${*parameter*=*word*}  | substitute *parameter*       | substitute null          | assign *word*     |
+| ${*parameter*:?*word*} | substitute *parameter*       | error, exit              | error, exit       |
+| ${*parameter*?*word*}  | substitute *parameter*       | substitute null          | error, exit       |
+| ${*parameter*:+*word*} | substitute *word*            | substitute null          | substitute null   |
+| ${*parameter*+*word*}  | substitute *word*            | substitute *word*        | substitute null   |
 
 ## redirection
 [via](https://askubuntu.com/a/350216)
