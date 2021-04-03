@@ -556,6 +556,163 @@ take() {
 # date -j +%s # for milliseconds
 alias unixtime='date +%s'
 
+# update
+update() {
+  (
+    update=1
+    clear && clear
+
+    printf '                 .___       __\n __ ________   __\x7c _\x2f____ _\x2f  \x7c_  ____\n\x7c  \x7c  \x5c____ \x5c \x2f __ \x7c\x5c__  \x5c\x5c   __\x5c\x2f __ \x5c\n\x7c  \x7c  \x2f  \x7c_\x3e \x3e \x2f_\x2f \x7c \x2f __ \x5c\x7c  \x7c \x5c  ___\x2f\n\x7c____\x2f\x7c   __\x2f\x5c____ \x7c\x28____  \x2f__\x7c  \x5c___  \x3e\n      \x7c__\x7c        \x5c\x2f     \x5c\x2f          \x5c\x2f\n a Lucas Larson production\n\n'
+
+    sleep 1.0
+
+    printf '\n\xf0\x9f\x93\xa1 verifying network connectivity'
+    sleep 0.5
+    for ((i = 0; i < 2 ** 15; i++)); do
+      if (((i / 3) % 2 == 0)); then
+        printf '.'
+      else
+        printf '\b'
+      fi
+    done
+    (
+      ping -q -i1 -c1 one.one.one.one >/dev/null 2>&1 && ping -q -i1 -c1 8.8.8.8 >/dev/null 2>&1
+    ) || (
+      printf 'No internet connection was detected.\nAborting update.\n' && return "${update}"
+    )
+
+    ### Homebrew
+    printf '\xf0\x9f\x8d\xba checking for Homebrew installation...\n'
+    if command -v brew >/dev/null 2>&1; then
+      printf '\xf0\x9f\x8d\xba checking for Homebrew updates...\n'
+      brew update
+      brew upgrade
+      brew upgrade --cask
+    else
+      printf 'No Homebrew installation detected...\n'
+    fi # brew
+
+    ### Alpine Linux package keeper
+    printf 'checking for Alpine Package Keeper installation...\n'
+    if command -v apk >/dev/null 2>&1; then
+      printf '\xf0\x9f\x8f\x94 apk update...\n'
+      apk update --progress --verbose --verbose
+
+      printf '\n\xf0\x9f\x8f\x94 apk upgrade...\n'
+      apk upgrade --update-cache --progress --verbose --verbose
+
+      printf '\n\xf0\x9f\x8f\x94 apk fix...\n'
+      apk fix --progress --verbose --verbose
+
+      printf '\n\xf0\x9f\x8f\x94 apk verify...\n'
+      apk verify --progress --verbose --verbose
+      printf '\xf0\x9f\x8f\x94 apk verify complete...\n\n'
+    else
+      printf 'no Alpine Package Keeper installation detected...\n'
+    fi # apk
+
+    ### Xcode
+    printf 'checking for Xcode installation...\n'
+    if command -v xcrun >/dev/null 2>&1; then
+      printf 'removing unavailable device simulators...\n'
+      xcrun simctl delete unavailable
+    else
+      printf 'no Xcode installation detected...\n'
+    fi # xcrun
+
+    ### Atom
+    printf 'checking for Atom installation...\n'
+    if command -v apm >/dev/null 2>&1; then
+      printf 'updating Atom packages...\n'
+      apm upgrade --no-confirm
+    else
+      printf 'no Atom installation detected...\n'
+    fi # apm
+
+    ### Rust
+    printf 'checking for Rust installation...\n'
+    if command -v rustup >/dev/null 2>&1; then
+      rustup update
+    else
+      printf 'no Rust installation detected...\n'
+    fi # rustup
+
+    ### Node
+    if command -v npm >/dev/null 2>&1; then
+      printf 'checking this device is can update Node quickly...\n'
+      if [ $((COLUMNS * LINES)) -ge $((80 * 24)) ]; then
+        npm install npm --global
+        npm update --global --verbose
+      else
+        printf 'skipping Node update...\n\n' && sleep 1
+        printf 'to update Node later, run:\n\n'
+        printf '    npm install npm --global && \x5c'
+        printf '    npm update --global --verbose\x60\n\n\n'
+        sleep 3
+      fi # columns
+
+    fi # npm
+
+    ### RubyGems
+    if command -v gem >/dev/null 2>&1; then
+      gem update --system
+      gem update
+    fi # gem
+
+    ### rbenv
+    if command -v rbenv >/dev/null 2>&1; then
+      rbenv rehash
+    fi # rbenv
+
+    ### Python
+    if command -v python >/dev/null 2>&1; then
+      printf '\n\xf0\x9f\x90\x8d verifying Python\xe2\x80\x99s packager is up to date...\n'
+      python -m pip install --upgrade pip
+
+      ### pip
+      printf 'verifying pip installation...\n'
+      if command -v pip >/dev/null 2>&1; then
+        printf '\n\xf0\x9f\x90\x8d updating outdated Python packages...\n'
+        for package in $(pip list --outdated --format freeze); do
+          pip install --upgrade --verbose --verbose --verbose "${package%%=*}"
+        done
+      fi # pip
+
+      ### pyenv
+      printf 'checking for pyenv installation...\n'
+      if command -v pyenv >/dev/null 2>&1; then
+        printf 'rehashing pyenv shims...\n'
+        pyenv rehash
+      else
+        printf 'no pyenv installation detected...\n'
+      fi # pyenv
+
+    fi # python
+
+    ### Oh My Zsh
+    if command -v omz >/dev/null 2>&1; then
+
+      # because otherwise omz will force this to exit
+      omz update >/dev/null 2>&1 &
+    fi # omz
+
+    ### ~/.shrc
+    # shellcheck source=/dev/null
+    if [ -r "${HOME}"/."${SHELL##*[-/]}"rc ]; then
+      . "${HOME}"/."${SHELL##*[-/]}"rc
+    fi # ~/.shrc
+
+    ### rehash
+    if command -v rehash >/dev/null 2>&1; then
+      rehash
+    fi # rehash
+    unset update
+
+    printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "${update}"
+    exec -l "${SHELL##*[-/]}"
+  )
+}
+
 alias all='which -a'
 
 # https://stackoverflow.com/a/1371283
