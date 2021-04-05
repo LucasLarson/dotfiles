@@ -322,7 +322,7 @@ clang_format() {
       -not -path '*.git/*' -and \
       -not -path '*node_modules/*' \
       \) \
-      -exec "${program}" -i -style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \;
+      -exec "${program}" -i --style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \+
     printf '\n\n\xe2\x9c\x85 done\x21\n\n'
   )
 }
