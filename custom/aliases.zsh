@@ -239,17 +239,6 @@ clang_format() {
   (
     program=clang-format
 
-    if ! command -v "${program}" >/dev/null 2>&1; then
-      printf '
-    error: no %s installation detected\n
-    skipping code\xc2\xa0formatting\n' "${program}"
-      exit 1
-    fi
-
-    # find all files supported by `clang-format` and send them there
-    # via Antimony https://stackoverflow.com/a/36046965
-    # find ${SRCROOT} -iname *.cpp -o -iname *.h | xargs clang-format -i --verbose
-
     # if no argument is provided, then set `IndentWidth` to 2
     # https://stackoverflow.com/a/2013573
     IndentWidth=${1:-2}
