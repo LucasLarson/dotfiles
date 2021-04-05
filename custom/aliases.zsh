@@ -363,6 +363,8 @@ cleanup() {
       verbose=-print
     fi
 
+    # refuse to run from `$HOME`
+    [ "$(pwd -P)" = "${HOME}" ] && return 1
     # delete thumbnail cache files
     find -- * -type f \( \
       -name '.DS_Store' -or \
