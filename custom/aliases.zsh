@@ -157,9 +157,9 @@ git_submodule_rm() {
     [ -e "$1" ] &&
     # continue only if called from the top of a Git repository
     [ "$(git rev-parse --show-toplevel)" = "$(pwd -P)" ]; then
-        command git submodule deinit --force -- "$1"
-        command rm -r -f -- "$(git rev-parse --git-dir)"/modules/"$1"
-        command git rm --force -- "$1"
+    command git submodule deinit --force -- "$1"
+    command rm -r -f -- "$(git rev-parse --git-dir)"/modules/"$1"
+    command git rm --force -- "$1"
   else
     command -v git rev-parse --git-dir >/dev/null 2>&1 || (
       printf ''
