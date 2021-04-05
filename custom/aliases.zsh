@@ -558,13 +558,13 @@ update() {
 
     printf '\n\xf0\x9f\x93\xa1 verifying network connectivity'
     sleep 0.5
-    for ((i = 0; i < 2 ** 15; i++)); do
+    for ((i = 0; i < 2 ** 15; i = i + 1)); do
       if (((i / 3) % 2 == 0)); then
         printf '.'
       else
         printf '\b'
       fi
-    done
+    done && printf '.\n'
     (
       ping -q -i1 -c1 one.one.one.one >/dev/null 2>&1 && ping -q -i1 -c1 8.8.8.8 >/dev/null 2>&1
     ) || (
