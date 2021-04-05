@@ -97,7 +97,7 @@ git_default_branch() {
     # if so, then use that name for `default_branch`
     # https://stackoverflow.com/a/44750379
     if git symbolic-ref refs/remotes/origin/HEAD >/dev/null 2>&1; then
-      default_branch="$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+      default_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 
     # check for `main`, which, if it exists, is most likely to be default
     elif [ -n "$(git branch --list main)" ]; then
@@ -709,7 +709,7 @@ update() {
     unset update
 
     printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "${update}"
-    exec -l "${SHELL##*[-/]}"
+    exec -l ${SHELL##*[-/]}
   )
 }
 
@@ -718,9 +718,9 @@ alias all='which -a'
 # https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 # http://zsh.sf.net/Doc/Release/Shell-Grammar.html#index-exec
-alias ','='. "${HOME}/.${SHELL##*[-/]}rc" && exec -l "${SHELL##*[-/]}"'
-alias aliases='"${EDITOR:=vi}" "${ZSH_CUSTOM:=${DOTFILES}/custom}/aliases.${SHELL##*[-/]}"; . "${HOME}/.${SHELL##*[-/]}rc" && exec -l "${SHELL##*[-/]}"'
-alias ohmyzsh='cd "${ZSH:=${HOME}/.oh-my-${SHELL##*[-/]}}" && git status'
-alias zshconfig='"${EDITOR:=vi}" "${HOME}/.${SHELL##*[-/]}rc"; . "${HOME}/.${SHELL##*[-/]}rc" && exec -l "${SHELL##*[-/]}"'
-alias zshenv='"${EDITOR:=vi}" "${HOME}/.${SHELL##*[-/]}env"; . "${HOME}/.${SHELL##*[-/]}rc" && exec -l "${SHELL##*[-/]}"'
-alias zshrc='"${EDITOR:=vi}" "${HOME}/.${SHELL##*[-/]}rc"; . "${HOME}/.${SHELL##*[-/]}rc" && exec -l "${SHELL##*[-/]}"'
+alias ','='. "${HOME}"/."${SHELL##*[-/]}"rc && exec -l ${SHELL##*[-/]}'
+alias aliases='${EDITOR:=vi} "${ZSH_CUSTOM:=${DOTFILES}/custom}"/aliases."${SHELL##*[-/]}"; . "${HOME}"/."${SHELL##*[-/]}"rc && exec -l ${SHELL##*[-/]}'
+alias ohmyzsh='cd -- "${ZSH:=${HOME}/.oh-my-${SHELL##*[-/]}}" && git status'
+alias zshconfig='${EDITOR:=vi} "${HOME}"/."${SHELL##*[-/]}"rc; . "${HOME}"/."${SHELL##*[-/]}"rc && exec -l ${SHELL##*[-/]}'
+alias zshenv='${EDITOR:=vi} "${HOME}"/."${SHELL##*[-/]}"env; . "${HOME}"/."${SHELL##*[-/]}"rc && exec -l ${SHELL##*[-/]}'
+alias zshrc='${EDITOR:=vi} "${HOME}"/."${SHELL##*[-/]}"rc; . "${HOME}"/."${SHELL##*[-/]}"rc && exec -l ${SHELL##*[-/]}'
