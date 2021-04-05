@@ -263,6 +263,7 @@ clang_format() {
       \( \
       -iname '*.adb' -or \
       -iname '*.ads' -or \
+      -iname '*.asm' -or \
       -iname '*.ast' -or \
       -iname '*.c' -or \
       -iname '*.c++' -or \
