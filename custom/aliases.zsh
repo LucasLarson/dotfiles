@@ -383,6 +383,7 @@ cleanup() {
       -not -path '*.git/*' -and \
       -not -path '*/test*' -and \
       -not -name "$(printf 'Icon\x0d\x0a')" -and \
+      -not -name '*.plugin.zsh' -and \
       -not -name '*LOCK' -and \
       -not -name '*empty*' -and \
       -not -name '*hushlogin' -and \
