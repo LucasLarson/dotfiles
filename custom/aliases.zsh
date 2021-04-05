@@ -147,7 +147,6 @@ git_restore() {
 }
 alias grs='git_restore'
 
-# git submodule rm
 git_submodule_rm() {
   # https://github.com/romkatv/dotfiles-public/commit/07c9b29
 
