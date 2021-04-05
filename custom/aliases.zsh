@@ -26,7 +26,7 @@ mux() {
     mackup backup --force --root --verbose &&
     git fetch --all --verbose &&
     git submodule update --init --recursive --remote &&
-    git submodule sync --recursive -- &&
+    git submodule sync --recursive &&
     git status
 }
 
@@ -44,12 +44,12 @@ alias gco='git checkout --progress'
 
 # `git checkout` the default branch
 git_checkout_default() {
-  git checkout --progress "$(git_default_branch)" --
+  git checkout --progress "$(git_default_branch)"
 }
 alias gcom='git_checkout_default'
 
 git_diff_default() {
-  git diff "$(git_default_branch)" --
+  git diff "$(git_default_branch)"
 }
 alias gdm='git_diff_default'
 
