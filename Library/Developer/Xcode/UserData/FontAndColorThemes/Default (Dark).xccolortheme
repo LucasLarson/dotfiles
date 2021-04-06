@@ -156,59 +156,59 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.character</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.declaration.other</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.declaration.type</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.mark</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.markup.code</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.number</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.plain</key>
 		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.string</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 		<key>xcode.syntax.url</key>
-		<string>FiraCode-Regular - 13.0</string>
+		<string>MesloLGS-NF-Regular - 13.0</string>
 	</dict>
 </dict>
 </plist>
