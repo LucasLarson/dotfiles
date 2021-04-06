@@ -37,7 +37,7 @@ git_add_patch() {
 }
 alias gap='git_add_patch'
 alias gc='git commit --verbose --gpg-sign; git status'
-alias gca='git commit --amend --verbose --gpg-sign; git status'
+alias gca='git commit --verbose --gpg-sign --amend; git status'
 alias gcl='git clone --verbose --progress --recursive --recurse-submodules'
 alias gcm='git commit --verbose --gpg-sign --message'
 alias gco='git checkout --progress'
