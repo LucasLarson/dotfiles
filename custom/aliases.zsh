@@ -70,7 +70,6 @@ git_garbage_collection() {
   fi
 }
 alias ggc='git_garbage_collection'
-alias git_garbage_collect='ggc'
 
 # https://github.com/jwiegley/git-scripts/blob/3c301e7/git-find-children
 alias git_find_parents='git rev-list'
