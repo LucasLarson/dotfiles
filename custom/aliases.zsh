@@ -87,7 +87,7 @@ git_commit_initial_commit() {
     git init &&
     git reset --quiet HEAD -- . &&
     git commit --allow-empty --verbose --message "$(printf '\xe2\x9c\xa8 initial commit')" &&
-    git add . &&
+    git add -- . &&
     git commit --verbose --message "$(printf '\xe2\x9c\xa8 initial commit')"
 }
 alias gcic='git_commit_initial_commit'
