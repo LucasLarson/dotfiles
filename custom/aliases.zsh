@@ -79,6 +79,8 @@ alias gfc='gfp'
 # initial commit
 # https://stackoverflow.com/q/1006775#comment23686803_1007545
 alias gic='git rev-list --topo-order --parents HEAD | grep -E "^[a-f0-9]{40}$"'
+# create initial commits: one empty root, then the rest
+# https://news.ycombinator.com/item?id=25515963
 git_commit_initial_commit() {
   # either an initial commit exists or we create the first two
   git rev-list --topo-order --parents HEAD | grep -E "^[a-f0-9]{40}$" >/dev/null 2>&1 ||
