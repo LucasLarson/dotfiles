@@ -526,6 +526,40 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
+path_check() {
+  # check that each directory in user `$PATH` still exists and is a directory
+
+  # return verbose output if requested
+  for argument in "$@"; do
+    case ${argument} in
+    -v | --verbose)
+      set -o xtrace # set -x
+      shift
+      ;;
+    *)
+      printf 'usage: %s [-v|--verbose]\n' "$(basename "${0}")"
+      return 1
+      ;;
+    esac
+  done
+
+  for directory in $(
+
+    # newline-delimited `$PATH` like the Zsh `$path`
+    # https://stackoverflow.com/a/33469401
+    printf %s "${PATH}" | xargs -d ':' -n 1
+  ); do
+    if [ -d "${directory}" ]; then
+      printf 'is a directory: %s\n' "${directory}"
+    else
+      printf 'not a directory: %s\n' "${directory}"
+    fi
+  done
+
+  # silently undo verbose output for everyone
+  { set +x; } 2>/dev/null
+}
+
 same_file() {
   # POSIX-compliant conditional expression `-ef`
   # to find if two files refer to the device and inode numbers
