@@ -43,10 +43,7 @@ alias gcm='git commit --verbose --gpg-sign --message'
 alias gco='git checkout --progress'
 
 # `git checkout` the default branch
-git_checkout_default() {
-  git checkout --progress "$(git_default_branch)"
-}
-alias gcom='git_checkout_default'
+alias gcom='git checkout --progress "$(git_default_branch)"'
 
 git_diff_default() {
   git diff "$(git_default_branch)"
