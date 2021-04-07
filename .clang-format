@@ -49,5 +49,5 @@ SpacesInAngles: false
 SpacesInContainerLiterals: false
 SpacesInCStyleCastParentheses: false
 SpacesInParentheses: false
-TabWidth: 4
+TabWidth: 2
 UseTab: Never
