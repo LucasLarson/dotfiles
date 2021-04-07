@@ -44,12 +44,7 @@ alias gco='git checkout --progress'
 
 # `git checkout` the default branch
 alias gcom='git checkout --progress "$(git_default_branch)"'
-
-git_diff_default() {
-  git diff "$(git_default_branch)"
-}
-alias gdm='git_diff_default'
-
+alias gdm='git diff "$(git_default_branch)"'
 alias gsd='gds'
 
 alias gfgs='git fetch --all --verbose && git status'
