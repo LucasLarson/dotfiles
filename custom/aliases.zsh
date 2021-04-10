@@ -63,10 +63,25 @@ git_garbage_collection() {
 }
 alias ggc='git_garbage_collection'
 
-# https://github.com/jwiegley/git-scripts/blob/3c301e7/git-find-children
-alias git_find_parents='git rev-list'
-alias gfp='git_find_parents'
-alias gfc='gfp'
+# git parents
+git_find_parent() {
+  # return the hash prior to the current commit
+  # if an argument is provided, return the commit prior to that commit
+  # usage: git_find_parent [commit]
+  command git rev-list --max-count=1 "${1:-$(command git show --format='%H')}^"
+}
+git_find_parents() {
+  # return all hashes prior to the current commit
+  # if an argument is provided, return all commits prior to that commit
+  # usage: git_find_parent [commit]
+  command git rev-list "${1:-$(command git show --format='%H')}^"
+}
+alias git-find-parent='git_find_parent'
+alias git-parent='git_find_parent'
+alias gfp='git_find_parent'
+alias gfc='git_find_parent'
+alias git-find-parents='git_find_parents'
+alias git-parents='git_find_parents'
 
 # initial commit
 # https://stackoverflow.com/q/1006775#comment23686803_1007545
