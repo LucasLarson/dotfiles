@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/themes/powerlevel10k from `8dc9100` to `30bd946` [\#321](https://github.com/LucasLarson/dotfiles/pull/321) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-completions from `f0c8569` to `43fecdf` [\#320](https://github.com/LucasLarson/dotfiles/pull/320) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/upload-artifact action to v2.2.3 [\#318](https://github.com/LucasLarson/dotfiles/pull/318) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump nvuillam/mega-linter from v4.30.0 to v4.31.0 [\#317](https://github.com/LucasLarson/dotfiles/pull/317) ([dependabot[bot]](https://github.com/apps/dependabot))
