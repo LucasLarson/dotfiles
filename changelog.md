@@ -10,6 +10,8 @@
 
 **Merged pull requests:**
 
+- Update stefanzweifel/git-auto-commit-action action to v4.10.0 [\#323](https://github.com/LucasLarson/dotfiles/pull/323) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/cache action to v2.1.5 [\#322](https://github.com/LucasLarson/dotfiles/pull/322) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump custom/themes/powerlevel10k from `8dc9100` to `30bd946` [\#321](https://github.com/LucasLarson/dotfiles/pull/321) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-completions from `f0c8569` to `43fecdf` [\#320](https://github.com/LucasLarson/dotfiles/pull/320) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update actions/upload-artifact action to v2.2.3 [\#318](https://github.com/LucasLarson/dotfiles/pull/318) ([renovate[bot]](https://github.com/apps/renovate))
