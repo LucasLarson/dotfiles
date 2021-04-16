@@ -40,10 +40,11 @@ alias gc='git commit --verbose --gpg-sign; git status'
 alias gca='git commit --verbose --gpg-sign --amend --allow-empty; git status'
 alias gcl='git clone --verbose --progress --recursive --recurse-submodules'
 alias gcm='git commit --verbose --gpg-sign --message'
-alias gco='git checkout --progress'
+alias gco='git checkout --progress --conflict=diff3'
 
 # `git checkout` the default branch
-alias gcom='git checkout --progress "$(git_default_branch)"'
+alias gcom='git checkout --progress --conflict=diff3 "$(git_default_branch)"'
+
 alias gdm='git diff "$(git_default_branch)" --'
 alias gsd='gds'
 
@@ -157,7 +158,7 @@ alias grm='grmr'
 
 git_restore() {
   for file in "${@}"; do
-    git checkout --progress -- "${file}"
+    git checkout --progress --conflict=diff3 -- "${file}"
   done && git status
 }
 alias grs='git_restore'
