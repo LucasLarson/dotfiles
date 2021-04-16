@@ -45,6 +45,12 @@ alias gco='git checkout --progress --conflict=diff3'
 # `git checkout` the default branch
 alias gcom='git checkout --progress --conflict=diff3 "$(git_default_branch)"'
 
+# git cherry-pick
+alias gcp='git cherry-pick'
+alias gcpa='git cherry-pick --abort'
+alias gcpc='git cherry-pick --continue'
+alias gcpn='git cherry-pick --no-commit'
+
 alias gdm='git diff "$(git_default_branch)" --'
 alias gsd='gds'
 
