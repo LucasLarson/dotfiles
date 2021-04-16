@@ -10,6 +10,9 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/gunstage from `134f5c5` to `d170bd6` [\#326](https://github.com/LucasLarson/dotfiles/pull/326) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/plugins/zsh-completions from `43fecdf` to `cb4b721` [\#325](https://github.com/LucasLarson/dotfiles/pull/325) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `30bd946` to `b55ad16` [\#324](https://github.com/LucasLarson/dotfiles/pull/324) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update stefanzweifel/git-auto-commit-action action to v4.10.0 [\#323](https://github.com/LucasLarson/dotfiles/pull/323) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/cache action to v2.1.5 [\#322](https://github.com/LucasLarson/dotfiles/pull/322) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump custom/themes/powerlevel10k from `8dc9100` to `30bd946` [\#321](https://github.com/LucasLarson/dotfiles/pull/321) ([dependabot[bot]](https://github.com/apps/dependabot))
