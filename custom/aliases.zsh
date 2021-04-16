@@ -83,6 +83,7 @@ git_find_parents() {
   # usage: git_find_parent [commit]
   command git rev-list "${1:-$(command git show --format='%H')}^"
 }
+alias git_parent='git_find_parent'
 alias git-find-parent='git_find_parent'
 alias git-parent='git_find_parent'
 alias gfp='git_find_parent'
