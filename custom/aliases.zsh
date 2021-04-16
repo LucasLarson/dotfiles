@@ -501,7 +501,7 @@ fdf() {
 
 # find by name
 fname() {
-  find -- * -iname "*${*}*"
+  find -- * -iname "*${*}*" 2>/dev/null
 }
 alias findname='fname'
 
