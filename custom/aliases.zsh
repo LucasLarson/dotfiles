@@ -99,7 +99,6 @@ git_commit_initial_commit() {
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
   git init &&
-    git reset --quiet HEAD -- . &&
     git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')" &&
 
   # if there are non-repository files present, then add them and commit
