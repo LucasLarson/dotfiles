@@ -96,16 +96,23 @@ alias git-parents='git_find_parents'
 # https://stackoverflow.com/q/1006775#comment23686803_1007545
 alias gic='git rev-list --topo-order --parents HEAD | grep -E "^[a-f0-9]{40}$"'
 git_commit_initial_commit() {
+  # usage: git_commit_initial_commit [yyyy-mm-dd]
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
   git init &&
-    git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')" &&
+    if [ ${#} -eq 1 ]; then
+      GIT_TIME="$(date -d @$(($(date --date="${1}" +%s) + 43200)) '+%c %z')" GIT_AUTHOR_DATE="${GIT_TIME}" GIT_COMMITTER_DATE="${GIT_AUTHOR_DATE}" git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
+    else
+      git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
+    fi
 
   # if there are non-repository files present, then add them and commit
   if [ -n "$(git ls-files --others)" ]; then
     git add -- . &&
       git commit --verbose --message "$(printf '\xe2\x9c\xa8\xc2\xa0 initial commit')"
   fi
+
+  unset GIT_TIME GIT_AUTHOR_DATE GIT_COMMITTER_DATE
 }
 alias gcic='git_commit_initial_commit'
 alias ginit='git init && git status'
