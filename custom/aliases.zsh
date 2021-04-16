@@ -88,6 +88,7 @@ alias git-find-parent='git_find_parent'
 alias git-parent='git_find_parent'
 alias gfp='git_find_parent'
 alias gfc='git_find_parent'
+alias git_parents='git_find_parents'
 alias git-find-parents='git_find_parents'
 alias git-parents='git_find_parents'
 
