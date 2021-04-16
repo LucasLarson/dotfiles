@@ -207,7 +207,7 @@ alias gsu='git_submodule_update'
 alias gtake='git checkout -b'
 alias gti='git'
 
-gu() {
+git_update() {
   (
     (command -v cleanup >/dev/null 2>&1 && cleanup)
 
@@ -227,6 +227,8 @@ gu() {
     fi
   )
 }
+alias git-update='git_update'
+alias gu='git-update'
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
 gvc() {
