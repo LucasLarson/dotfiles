@@ -103,7 +103,7 @@ git_commit_initial_commit() {
   # if there are non-repository files present, then add them and commit
   if [ -n "$(git ls-files --others)" ]; then
     git add -- . &&
-      git commit --verbose --message "$(printf '\xe2\x9c\xa8 initial commit')"
+      git commit --verbose --message "$(printf '\xe2\x9c\xa8\xc2\xa0 initial commit')"
   fi
 }
 alias gcic='git_commit_initial_commit'
