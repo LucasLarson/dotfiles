@@ -93,9 +93,9 @@ alias git-parents='git_find_parents'
 # initial commit
 # https://stackoverflow.com/q/1006775#comment23686803_1007545
 alias gic='git rev-list --topo-order --parents HEAD | grep -E "^[a-f0-9]{40}$"'
-# create initial commits: one empty root, then the rest
-# https://news.ycombinator.com/item?id=25515963
 git_commit_initial_commit() {
+  # create initial commits: one empty root, then the rest
+  # https://news.ycombinator.com/item?id=25515963
   git init &&
     git reset --quiet HEAD -- . &&
     git commit --allow-empty --verbose --message "$(printf '\xe2\x9c\xa8 initial commit')" &&
