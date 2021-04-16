@@ -62,7 +62,7 @@ git_garbage_collection() {
     git prune --verbose --progress --expire now
     git prune-packed
     git gc --aggressive --prune=now
-    git maintenance start
+    git maintenance start >/dev/null 2>&1 && git maintenance start
     git status
   else
     return 1
