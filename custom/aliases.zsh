@@ -401,7 +401,7 @@ cleanup() {
     # refuse to run from `$HOME`
     [ "$(pwd -P)" = "${HOME}" ] && return 1
     # delete thumbnail cache files
-    find -- * -type f \( \
+    find -- "${1:-*}" -type f \( \
       -name '.DS_Store' -or \
       -name 'Desktop.ini' -or \
       -name 'desktop.ini' -or \
@@ -414,7 +414,7 @@ cleanup() {
     # except those within `.git/` directories
     # or with specific names and are writable
     # https://stackoverflow.com/a/64863398
-    find -- * -type f -writable -size 0 \( \
+    find -- "${1:-*}" -type f -writable -size 0 \( \
       -not -path '*.git/*' -and \
       -not -path '*/test*' -and \
       -not -name "$(printf 'Icon\x0d\x0a')" -and \
@@ -440,7 +440,7 @@ cleanup() {
     # delete empty directories recursively
     # but skip Git-specific and `/.well-known/` directories
     # https://stackoverflow.com/q/4210042#comment38334264_4210072
-    find -- * -type d -empty \( \
+    find -- "${1:-*}" -type d -empty \( \
       -not -path '*.git/*' -and \
       -not -name '.well-known' \
       \) \
