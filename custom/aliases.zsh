@@ -394,8 +394,8 @@ cleanup() {
   (
     # if `cleanup -v` or `cleanup --verbose`,
     # then use `-print` during `-delete`
-    if [ "$1" = -v ] || [ "$1" = --verbose ]; then
-      verbose=-print
+    if [ "${1}" = -v ] || [ "${1}" = --verbose ]; then
+      set -x && shift
     fi
 
     # refuse to run from `$HOME`
@@ -408,7 +408,7 @@ cleanup() {
       -name 'Thumbs.db' -or \
       -name 'thumbs.db' \
       \) \
-      ${verbose} -delete
+      -delete
 
     # delete empty, zero-length files
     # except those within `.git/` directories
@@ -435,7 +435,7 @@ cleanup() {
       -not -name '__init__.py' -and \
       -not -name 'favicon.*' \
       \) \
-      ${verbose} -delete
+      -delete
 
     # delete empty directories recursively
     # but skip Git-specific and `/.well-known/` directories
@@ -444,7 +444,7 @@ cleanup() {
       -not -path '*.git/*' -and \
       -not -name '.well-known' \
       \) \
-      ${verbose} -delete
+      -delete
   )
 }
 
