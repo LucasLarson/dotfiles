@@ -166,3 +166,6 @@
 [submodule "custom/plugins/fast-syntax-highlighting"]
 	path = custom/plugins/fast-syntax-highlighting
 	url = https://github.com/zdharma/fast-syntax-highlighting
+[submodule "custom/plugins/samefile"]
+	path = custom/plugins/samefile
+	url = https://github.com/LucasLarson/samefile
