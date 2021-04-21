@@ -108,6 +108,7 @@ export ZSH_COMPDUMP=${ZDOTDIR:=${HOME}}/.zcompdump
 plugins+=(
   git
   gunstage
+  samefile
 )
 [ "$(uname)" = Darwin ] && plugins+=(
   fast-syntax-highlighting
