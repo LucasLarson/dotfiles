@@ -10,6 +10,8 @@
 
 **Merged pull requests:**
 
+- Bump nvuillam/mega-linter from v4.31.0 to v4.32.0 [\#332](https://github.com/LucasLarson/dotfiles/pull/332) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `48ff2e8` to `8d1daa4` [\#330](https://github.com/LucasLarson/dotfiles/pull/330) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-completions from `cb4b721` to `901a787` [\#328](https://github.com/LucasLarson/dotfiles/pull/328) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `b55ad16` to `48ff2e8` [\#327](https://github.com/LucasLarson/dotfiles/pull/327) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/gunstage from `134f5c5` to `d170bd6` [\#326](https://github.com/LucasLarson/dotfiles/pull/326) ([dependabot[bot]](https://github.com/apps/dependabot))
