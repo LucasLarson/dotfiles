@@ -57,9 +57,9 @@ apk add coreutils coreutils-doc
 )
 apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
 {
-  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main\n';
-  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/community\n';
-  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/testing\n';
+  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main\n'
+  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/community\n'
+  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/testing\n'
 } >>/etc/apk/repositories
 apk update
 
