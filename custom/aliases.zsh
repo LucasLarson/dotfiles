@@ -592,9 +592,10 @@ command -v python3 >/dev/null 2>&1 &&
   command -v pip3 >/dev/null 2>&1 &&
   alias pip='pip3'
 
-# https://github.com/mcornella/dotfiles/commit/ff4e527
+# $?
 question_mark() {
-  printf '%s\n' "$?"
+  # https://github.com/mcornella/dotfiles/commit/ff4e527
+  printf '%i\n' "${?}"
 }
 alias '?'='question_mark'
 
