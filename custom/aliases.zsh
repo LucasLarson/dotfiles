@@ -592,15 +592,6 @@ command -v python3 >/dev/null 2>&1 &&
   command -v pip3 >/dev/null 2>&1 &&
   alias pip='pip3'
 
-same_file() {
-  # POSIX-compliant conditional expression `-ef`
-  # to find if two files refer to the device and inode numbers
-  # usage: same_file file1 file2
-  # return 0 if they match
-  # https://superuser.com/a/196655
-  [ "$(stat -L -c %d:%i "$1")" = "$(stat -L -c %d:%i "$2")" ] && return 0 || return 1
-}
-
 # https://github.com/mcornella/dotfiles/commit/ff4e527
 question_mark() {
   printf '%s\n' "$?"
