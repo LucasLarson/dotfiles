@@ -586,6 +586,12 @@ path_check() {
   { set +x; } 2>/dev/null
 }
 
+# Python
+command -v python3 >/dev/null 2>&1 &&
+  alias python='python3' &&
+  command -v pip3 >/dev/null 2>&1 &&
+  alias pip='pip3'
+
 same_file() {
   # POSIX-compliant conditional expression `-ef`
   # to find if two files refer to the device and inode numbers
