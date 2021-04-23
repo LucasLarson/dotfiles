@@ -109,6 +109,7 @@ plugins+=(
   git
   gunstage
   samefile
+  git-default-branch
 )
 [ "$(uname)" = Darwin ] && plugins+=(
   fast-syntax-highlighting
