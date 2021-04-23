@@ -169,3 +169,6 @@
 [submodule "custom/plugins/samefile"]
 	path = custom/plugins/samefile
 	url = https://github.com/LucasLarson/samefile
+[submodule "custom/plugins/git-default-branch"]
+	path = custom/plugins/git-default-branch
+	url = https://github.com/LucasLarson/git-default-branch
