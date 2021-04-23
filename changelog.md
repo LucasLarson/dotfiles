@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Update ibiqlik/action-yamllint action to v3.0.1 [\#334](https://github.com/LucasLarson/dotfiles/pull/334) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump nvuillam/mega-linter from v4.31.0 to v4.32.0 [\#332](https://github.com/LucasLarson/dotfiles/pull/332) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-completions from `901a787` to `d7959bb` [\#331](https://github.com/LucasLarson/dotfiles/pull/331) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `48ff2e8` to `8d1daa4` [\#330](https://github.com/LucasLarson/dotfiles/pull/330) ([dependabot[bot]](https://github.com/apps/dependabot))
