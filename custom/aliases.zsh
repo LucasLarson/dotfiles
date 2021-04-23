@@ -43,7 +43,7 @@ alias gcm='git commit --verbose --gpg-sign --message'
 alias gco='git checkout --progress --conflict=diff3'
 
 # `git checkout` the default branch
-alias gcom='git checkout --progress --conflict=diff3 "$(git_default_branch)"'
+alias gcom='git checkout --progress --conflict=diff3 "$(git-default-branch)"'
 
 # git cherry-pick
 alias gcp='git cherry-pick'
@@ -51,7 +51,7 @@ alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 alias gcpn='git cherry-pick --no-commit'
 
-alias gdm='git diff "$(git_default_branch)" --'
+alias gdm='git diff "$(git-default-branch)" --'
 alias gsd='gds'
 
 alias gfgs='git fetch --all --verbose && git status'
@@ -121,35 +121,6 @@ alias ginit='git init && git status'
 # https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
 alias glog='git log --graph --branches --remotes --tags --format=format:"%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d" --date-order'
 
-# return the name of the repository’s default branch
-# ohmyzsh/ohmyzsh@c99f3c5/plugins/git/git.plugin.zsh#L28-L35
-# place the function inside `{()}` to prevent the leaking of variable data
-# https://stackoverflow.com/a/37675401
-git_default_branch() {
-  (
-    # check if there’s a `remote` with a default branch and
-    # if so, then use that name for `default_branch`
-    # https://stackoverflow.com/a/44750379
-    if git symbolic-ref refs/remotes/origin/HEAD >/dev/null 2>&1; then
-      default_branch=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
-
-    # check for `main`, which, if it exists, is most likely to be default
-    elif [ -n "$(git branch --list main)" ]; then
-      default_branch=main
-
-    # check for a branch called `master`
-    elif [ -n "$(git branch --list master)" ]; then
-      default_branch=master
-    else
-      printf 'unable to detect a \x60main\x60, \x60master\x60, or default '
-      printf 'branch in this repository\n'
-      return 1
-    fi
-    printf %s "${default_branch}"
-  )
-}
-alias gdb='git_default_branch'
-
 # https://news.ycombinator.com/item?id=5512864
 alias gm='GIT_MERGE_VERBOSITY=4 git merge --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience'
 alias gmc='GIT_MERGE_VERBOSITY=4 git merge --continue'
@@ -160,7 +131,7 @@ gmm() {
   # 4 “shows all paths as they are processed” but
   # 5 is “show detailed debugging information”
   # https://github.com/progit/progit2/commit/aea93a7
-  GIT_MERGE_VERBOSITY=4 git merge --verbose --progress --rerere-autoupdate --strategy-option patience "$(git_default_branch)"
+  GIT_MERGE_VERBOSITY=4 git merge --verbose --progress --rerere-autoupdate --strategy-option patience "$(git-default-branch)"
 }
 
 alias gmv='git mv --verbose'
