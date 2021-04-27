@@ -10,6 +10,10 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/gunstage from `d170bd6` to `ad882d6` [\#338](https://github.com/LucasLarson/dotfiles/pull/338) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update github/super-linter action to v3.16.1 [\#337](https://github.com/LucasLarson/dotfiles/pull/337) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump custom/plugins/zsh-completions from `252c7a9` to `773ead6` [\#336](https://github.com/LucasLarson/dotfiles/pull/336) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle from `2ee3d7c` to `8c7672d` [\#335](https://github.com/LucasLarson/dotfiles/pull/335) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update ibiqlik/action-yamllint action to v3.0.1 [\#334](https://github.com/LucasLarson/dotfiles/pull/334) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump custom/plugins/zsh-completions from `d7959bb` to `252c7a9` [\#333](https://github.com/LucasLarson/dotfiles/pull/333) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump nvuillam/mega-linter from v4.31.0 to v4.32.0 [\#332](https://github.com/LucasLarson/dotfiles/pull/332) ([dependabot[bot]](https://github.com/apps/dependabot))
