@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Bump Library/Application Support/TextMate/Managed/Bundles/Shell Script.tmbundle from `f9ffa6a` to `37404fb` [\#339](https://github.com/LucasLarson/dotfiles/pull/339) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/gunstage from `d170bd6` to `ad882d6` [\#338](https://github.com/LucasLarson/dotfiles/pull/338) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update github/super-linter action to v3.16.1 [\#337](https://github.com/LucasLarson/dotfiles/pull/337) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump custom/plugins/zsh-completions from `252c7a9` to `773ead6` [\#336](https://github.com/LucasLarson/dotfiles/pull/336) ([dependabot[bot]](https://github.com/apps/dependabot))
