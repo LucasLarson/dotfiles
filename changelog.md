@@ -10,6 +10,8 @@
 
 **Merged pull requests:**
 
+- Update nvuillam/mega-linter action to v4.33.0 [\#341](https://github.com/LucasLarson/dotfiles/pull/341) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump custom/plugins/zsh-completions from `773ead6` to `e14d470` [\#340](https://github.com/LucasLarson/dotfiles/pull/340) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Shell Script.tmbundle from `f9ffa6a` to `37404fb` [\#339](https://github.com/LucasLarson/dotfiles/pull/339) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/gunstage from `d170bd6` to `ad882d6` [\#338](https://github.com/LucasLarson/dotfiles/pull/338) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update github/super-linter action to v3.16.1 [\#337](https://github.com/LucasLarson/dotfiles/pull/337) ([renovate[bot]](https://github.com/apps/renovate))
