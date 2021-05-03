@@ -11,8 +11,11 @@
 
 **Merged pull requests:**
 
+- Update stefanzweifel/git-auto-commit-action action to v4.11.0 [\#349](https://github.com/LucasLarson/dotfiles/pull/349) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump custom/plugins/gunstage from `ad882d6` to `2c6e99e` [\#348](https://github.com/LucasLarson/dotfiles/pull/348) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-completions from `e14d470` to `11ad0a4` [\#347](https://github.com/LucasLarson/dotfiles/pull/347) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace deprecated `actions/setup-ruby` with `ruby/setup-ruby` \(fix \#344\) [\#345](https://github.com/LucasLarson/dotfiles/pull/345) ([LucasLarson](https://github.com/LucasLarson))
+- Update github/super-linter action to v3.16.3 [\#343](https://github.com/LucasLarson/dotfiles/pull/343) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nvuillam/mega-linter action to v4.33.0 [\#341](https://github.com/LucasLarson/dotfiles/pull/341) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump custom/plugins/zsh-completions from `773ead6` to `e14d470` [\#340](https://github.com/LucasLarson/dotfiles/pull/340) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Library/Application Support/TextMate/Managed/Bundles/Shell Script.tmbundle from `f9ffa6a` to `37404fb` [\#339](https://github.com/LucasLarson/dotfiles/pull/339) ([dependabot[bot]](https://github.com/apps/dependabot))
