@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/zsh-completions from `e14d470` to `11ad0a4` [\#347](https://github.com/LucasLarson/dotfiles/pull/347) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace deprecated `actions/setup-ruby` with `ruby/setup-ruby` \(fix \#344\) [\#345](https://github.com/LucasLarson/dotfiles/pull/345) ([LucasLarson](https://github.com/LucasLarson))
 - Update nvuillam/mega-linter action to v4.33.0 [\#341](https://github.com/LucasLarson/dotfiles/pull/341) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump custom/plugins/zsh-completions from `773ead6` to `e14d470` [\#340](https://github.com/LucasLarson/dotfiles/pull/340) ([dependabot[bot]](https://github.com/apps/dependabot))
