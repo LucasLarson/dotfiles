@@ -144,7 +144,7 @@ jobs:
           ) &&
           env.APPLY_FIXES_MODE == 'commit' &&
           github.ref != 'refs/heads/main'
-        uses: stefanzweifel/git-auto-commit-action@v4.10.0
+        uses: stefanzweifel/git-auto-commit-action@v4.11.0
         with:
           branch: >
             ${{
