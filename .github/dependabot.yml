@@ -3,6 +3,7 @@
 # package ecosystems to update and where the package manifests are located.
 # Please see the documentation for all configuration options:
 # https://git.io/help-dependabot-configuration
+# https://github.com/dependabot/dependabot-core/issues/2219#issuecomment-829501674
 
 version: 2
 updates:
@@ -11,87 +12,147 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # Cargo
   - package-ecosystem: "cargo"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # Composer
   - package-ecosystem: "composer"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # Docker
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # Elm
   - package-ecosystem: "elm"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # git submodules
   - package-ecosystem: "gitsubmodule"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # Go modules
   - package-ecosystem: "gomod"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # Gradle
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # Maven
   - package-ecosystem: "maven"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # Mix
   - package-ecosystem: "mix"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # npm
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # NuGet
   - package-ecosystem: "nuget"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # pip
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
 
   # Terraform
   - package-ecosystem: "terraform"
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
