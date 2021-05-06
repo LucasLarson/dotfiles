@@ -1,7 +1,7 @@
 ---
 # Mega-Linter GitHub Action configuration file
 # More info at https://nvuillam.github.io/mega-linter
-# https://github.com/nvuillam/mega-linter/commit/c0779f9/.github/workflows/mega-linter.yml
+# https://github.com/nvuillam/mega-linter/blob/0b3f7e8/.github/workflows/mega-linter.yml
 name: Mega-Linter
 
 # Start lint on any push and on pull requests
@@ -15,19 +15,21 @@ on:
   pull_request:
     branches: [main]
 
+# Comment `env` block if you do not want to apply fixes
 env:
   # Apply linter fixes configuration
+
   # Uncomment APPLY_FIXES line to apply fixes provided by linters
   # You can also specify the list of fixing linters
   APPLY_FIXES: all
 
-  # Decide which event triggers application of fixes in a commit or a PR:
+  # Decide which event triggers fixes in a commit or Pull Request:
   # (pull_request (default), push, all)
   APPLY_FIXES_EVENT: pull_request
 
-  # If APPLY_FIXES is also used, then this defines if the fixes are
+  # If APPLY_FIXES is also used, then this specifies whether fixes are
   # directly committed (commit) or
-  # posted in a PR (pull_request)
+  # posted in a Pull Request (pull_request)
   APPLY_FIXES_MODE: pull_request
 
 jobs:
@@ -41,6 +43,7 @@ jobs:
         with:
           github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
+  # Run Mega-Linter
   build:
     name: Mega-Linter
     runs-on: ubuntu-latest
@@ -50,34 +53,35 @@ jobs:
         uses: actions/checkout@v2.3.4
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
-          # Full git history to determine changed files within `mega-linter`
+
+          # Linter requires full repository history
           fetch-depth: 0
 
       # Mega-Linter
       - name: Mega-Linter
         id: ml
+
+        # Override Mega-Linter flavor for faster performance
+        # More info at https://nvuillam.github.io/mega-linter/flavors/
         uses: nvuillam/mega-linter@v4.33.0
         env:
           # Add custom env variables here or
           # define them in a file .mega-linter.yml at the repository root
           # All available variables are described in documentation
-          # https://nvuillam.github.io/mega-linter/#configuration
+          # https://nvuillam.github.io/mega-linter/configuration/#common-variables
 
-          # Validates all source when push on main, else just the
-          # git diff with main.
-          # Override with true if you always want to lint all sources
+          # Lint changes only or set `true` to always lint all sources
           VALIDATE_ALL_CODEBASE: >
             ${{
               github.event_name == 'push' &&
               github.ref == 'refs/heads/main'
             }}
+
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           FILTER_REGEX_EXCLUDE: '(\.automation\/test\/)'
           # https://github.com/nvuillam/mega-linter/blob/1170817/.automation/test/pre-post-test/.mega-linter.yml#L9-L11
-          DISABLE:
-            - COPYPASTE
-            - SPELL
+          DISABLE: COPYPASTE,SPELL
           DISABLE_LINTERS: COPYPASTE,EDITORCONFIG_CHECKER,MARKDOWN_LINK_CHECK
 
       # Upload Mega-Linter artifacts
