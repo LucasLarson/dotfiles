@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- repair readme [\#352](https://github.com/LucasLarson/dotfiles/pull/352) ([LucasLarson](https://github.com/LucasLarson))
 - ignore semver minor updates [\#351](https://github.com/LucasLarson/dotfiles/pull/351) ([LucasLarson](https://github.com/LucasLarson))
 - Bump custom/plugins/zsh-completions from `11ad0a4` to `9dfd5c6` [\#350](https://github.com/LucasLarson/dotfiles/pull/350) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update stefanzweifel/git-auto-commit-action action to v4.11.0 [\#349](https://github.com/LucasLarson/dotfiles/pull/349) ([renovate[bot]](https://github.com/apps/renovate))
