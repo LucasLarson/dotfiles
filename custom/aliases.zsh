@@ -181,6 +181,8 @@ alias git-submodule-rm='git_submodule_rm'
 alias git-rm-submodule='git-submodule-rm'
 alias gsr='git_submodule_rm'
 
+alias gs='git status'
+
 git_submodule_update() {
   git submodule update --init --recursive --remote -- "$@" &&
     git submodule sync --recursive -- "$@" &&
