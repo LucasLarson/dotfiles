@@ -8,6 +8,14 @@
 
 - ignore semver minor updates [\#353](https://github.com/LucasLarson/dotfiles/pull/353) ([LucasLarson](https://github.com/LucasLarson))
 
+**Fixed bugs:**
+
+- conform to JSON schema; expand, repair comments [\#354](https://github.com/LucasLarson/dotfiles/pull/354) ([LucasLarson](https://github.com/LucasLarson))
+
+**Closed issues:**
+
+- include crufty `.zcompdump` files in `cleanup` [\#199](https://github.com/LucasLarson/dotfiles/issues/199)
+
 ## [v0.6.1](https://github.com/LucasLarson/dotfiles/tree/v0.6.1) (2021-05-06)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.6.0...v0.6.1)
