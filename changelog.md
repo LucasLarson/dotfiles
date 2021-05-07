@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/LucasLarson/dotfiles/tree/HEAD)
 
-[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.6.0...HEAD)
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.6.1...HEAD)
+
+**Implemented enhancements:**
+
+- ignore semver minor updates [\#353](https://github.com/LucasLarson/dotfiles/pull/353) ([LucasLarson](https://github.com/LucasLarson))
+
+## [v0.6.1](https://github.com/LucasLarson/dotfiles/tree/v0.6.1) (2021-05-06)
+
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.6.0...v0.6.1)
 
 **Closed issues:**
 
