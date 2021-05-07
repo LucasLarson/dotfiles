@@ -10,6 +10,14 @@
     "bash",
     "php"
   ],
+  "ignorePaths": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    ".vscode",
+    "package-lock.json",
+    "report"
+  ],
   "words": [
     "Affero",
     "Algis",
