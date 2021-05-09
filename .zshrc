@@ -140,6 +140,7 @@ man -w >/dev/null 2>&1 &&
 
 # You may need to manually set your language environment
 export LANG=${LANG:=en_US.UTF-8}
+export TZ=${TZ:=America/New_York}
 
 # $EDITOR: access favorite with `edit`
 # Set preferred editor if it is available
