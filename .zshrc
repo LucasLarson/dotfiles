@@ -47,41 +47,41 @@ fi
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE=true
+# export CASE_SENSITIVE=true
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE=true
+# export HYPHEN_INSENSITIVE=true
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE=true
+export DISABLE_AUTO_UPDATE=true
 
 # Uncomment the following line to automatically update without prompting.
-DISABLE_UPDATE_PROMPT=true
+export DISABLE_UPDATE_PROMPT=true
 
 # Uncomment the following line to change how often, in days, to autoupdate.
 export UPDATE_ZSH_DAYS=1
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
+# export DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS=true
+# export DISABLE_LS_COLORS=true
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE=true
+# export DISABLE_AUTO_TITLE=true
 
 # Uncomment the following line to enable command auto-correction.
 # This is an unhelpful, badly documented setting and should not be enabled.
-ENABLE_CORRECTION=false
+export ENABLE_CORRECTION=false
 
 # Uncomment the following line to display red dots whilst awaiting completion.
-COMPLETION_WAITING_DOTS=true
+export COMPLETION_WAITING_DOTS=true
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY=true
+# export DISABLE_UNTRACKED_FILES_DIRTY=true
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -89,7 +89,7 @@ COMPLETION_WAITING_DOTS=true
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-HIST_STAMPS=yyyy-mm-dd
+export HIST_STAMPS=yyyy-mm-dd
 
 # set maximum number of lines in history file
 # https://unix.stackexchange.com/a/273863
