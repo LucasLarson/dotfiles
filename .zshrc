@@ -208,6 +208,9 @@ if command -v brew >/dev/null 2>&1; then
   # https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
   [ -d "${BREW_PREFIX}/opt/make/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/make/libexec/gnubin:${PATH}
 
+  # openssl
+  [ -d "${BREW_PREFIX}/opt/openssl/bin" ] && PATH=${BREW_PREFIX}/opt/openssl/bin:${PATH}
+
   # sed
   # https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
   [ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}
