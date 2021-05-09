@@ -129,11 +129,11 @@ plugins+=(
 # User configuration
 
 # MANPATH
-# if `man -w` does not fail, then add its output to `MANPATH`
-[ "$(
-  man -w >/dev/null 2>&1
-  printf %d $?
-)" -eq 0 ] && MANPATH=$(man -w):${MANPATH}
+# if `MANPATH` is empty and `man -w` does not fail, then use it for `MANPATH`
+man -w >/dev/null 2>&1 &&
+  # skip adding initial and terminal colons `:`
+  # https://unix.stackexchange.com/a/162893
+  MANPATH=${MANPATH:+${MANPATH}:}$(man -w)
 # if `MANPATH` is still empty and `/usr/local/man` exists,
 # then set `MANPATH` to `/usr/local/man`
 [ -z "${MANPATH}" ] && [ -d /usr/local/man ] && MANPATH=/usr/local/man
