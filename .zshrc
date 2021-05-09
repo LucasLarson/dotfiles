@@ -139,7 +139,7 @@ man -w >/dev/null 2>&1 &&
 [ -z "${MANPATH}" ] && [ -d /usr/local/man ] && MANPATH=/usr/local/man
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=${LANG:=en_US.UTF-8}
 
 # $EDITOR: access favorite with `edit`
 # Set preferred editor if it is available
