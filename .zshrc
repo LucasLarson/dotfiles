@@ -183,6 +183,9 @@ if command -v brew >/dev/null 2>&1; then
   BREW_PREFIX=$(brew --prefix)
   [ -d "${BREW_PREFIX}/sbin" ] && PATH=${BREW_PREFIX}/sbin:${PATH}
 
+  # GNU bc calculator
+  [ -d "${BREW_PREFIX}/opt/bc/bin" ] && PATH=${BREW_PREFIX}/opt/bc/bin:${PATH}
+
   # curl
   [ -d "${BREW_PREFIX}/opt/curl/bin" ] && PATH=${BREW_PREFIX}/opt/curl/bin:${PATH}
 
