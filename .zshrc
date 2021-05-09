@@ -92,9 +92,12 @@ export COMPLETION_WAITING_DOTS=true
 export HIST_STAMPS=yyyy-mm-dd
 
 # set maximum number of lines in history file
-# https://unix.stackexchange.com/a/273863
-export HISTSIZE=$((2 ** 31))      # 2,147,483,648
-export SAVEHIST=$((2 * HISTSIZE)) # 4,294,967,296
+# https://unix.stackexchange.com/a/273929
+# https://stackoverflow.com/a/13111995
+# https://unix.stackexchange.com/a/111777
+SAVEHIST=$(printf '2^32\n' | bc) # 4,294,967,296 in history file
+HISTSIZE=$((SAVEHIST / 2))       # 2,147,478,648 in session
+export SAVEHIST HISTSIZE
 
 # ~/.zcompdump override
 # https://github.com/ohmyzsh/ohmyzsh/commit/d2fe03d
