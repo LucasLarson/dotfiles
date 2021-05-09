@@ -212,6 +212,11 @@ if command -v brew >/dev/null 2>&1; then
   # https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
   [ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}
 
+  # texinfo for `info`
+  # “more detailed than . . . manpage (as is true for most GNU utilities)”
+  # https://stackoverflow.com/a/1489405
+  [ -d "${BREW_PREFIX}/opt/texinfo/bin" ] && PATH=${BREW_PREFIX}/opt/texinfo/bin:${PATH}
+
   # which
   [ -d "${BREW_PREFIX}/opt/gnu-which/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-which/libexec/gnubin:${PATH}
 fi
