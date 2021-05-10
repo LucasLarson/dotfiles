@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- add to arrays in a more portable way [\#356](https://github.com/LucasLarson/dotfiles/issues/356)
 - ignore semver minor updates [\#353](https://github.com/LucasLarson/dotfiles/pull/353) ([LucasLarson](https://github.com/LucasLarson))
 
 **Fixed bugs:**
