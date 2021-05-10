@@ -78,6 +78,7 @@ jobs:
             }}
 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAT: ${{ secrets.PAT }}
           DEFAULT_BRANCH: main
           FILTER_REGEX_EXCLUDE: '(\.automation\/test\/)'
           # https://github.com/nvuillam/mega-linter/blob/1170817/.automation/test/pre-post-test/.mega-linter.yml#L9-L11
