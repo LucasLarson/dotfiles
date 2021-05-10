@@ -94,13 +94,9 @@ jobs:
             report
             mega-linter.log
 
-      # This step will evaluate the repo status and report the change
-      - name: Check if there are changes
-        id: changes
-        if: ${{ success() }} || ${{ failure() }}
-        uses: UnicornGlobal/has-changes-action@v1.0.12
-
-      # Create pull request if applicable
+      # Create Pull Request if applicable
+      # Works only on Pull Requests from the same repository since 2020-12-01
+      # https://github.com/nvuillam/mega-linter/commit/0b8f159
       - name: Create Pull Request with applied fixes
         id: cpr
         if: >
