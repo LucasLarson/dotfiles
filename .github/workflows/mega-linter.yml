@@ -81,7 +81,7 @@ jobs:
           PAT: ${{ secrets.PAT }}
           DEFAULT_BRANCH: main
           FILTER_REGEX_EXCLUDE: '(\.automation\/test\/)'
-          # https://github.com/nvuillam/mega-linter/blob/1170817/.automation/test/pre-post-test/.mega-linter.yml#L9-L11
+
           DISABLE: COPYPASTE,SPELL
           DISABLE_LINTERS: COPYPASTE,EDITORCONFIG_CHECKER,MARKDOWN_LINK_CHECK
 
