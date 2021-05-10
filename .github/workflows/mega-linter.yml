@@ -105,7 +105,9 @@ jobs:
             env.APPLY_FIXES_EVENT == 'all' ||
             env.APPLY_FIXES_EVENT == github.event_name
           ) &&
-          env.APPLY_FIXES_MODE == 'pull_request'
+          env.APPLY_FIXES_MODE == 'pull_request' &&
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          !contains(github.event.head_commit.message, 'skip fix')
         uses: peter-evans/create-pull-request@v3.8.2
         with:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
@@ -119,7 +121,9 @@ jobs:
             env.APPLY_FIXES_EVENT == 'all' ||
             env.APPLY_FIXES_EVENT == github.event_name
           ) &&
-          env.APPLY_FIXES_MODE == 'pull_request'
+          env.APPLY_FIXES_MODE == 'pull_request' &&
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          !contains(github.event.head_commit.message, 'skip fix')
         run: |
           echo "PR #${{ steps.cpr.outputs.pull-request-number }}"
           echo "${{ steps.cpr.outputs.pull-request-url }}"
