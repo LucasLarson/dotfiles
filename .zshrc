@@ -108,13 +108,15 @@ export ZSH_COMPDUMP=${ZDOTDIR:=${HOME}}/.zcompdump
 # Custom plugins may be added to $ZSH_CUSTOM/plugins
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins+=(
+plugins=(
+  "${plugins[@]}"
   git
   gunstage
   samefile
   git-default-branch
 )
-[ "$(uname)" = Darwin ] && plugins+=(
+[ "$(uname)" = Darwin ] && plugins=(
+  "${plugins[@]}"
   fast-syntax-highlighting
 )
 
