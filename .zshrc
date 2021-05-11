@@ -114,6 +114,7 @@ plugins=(
   gunstage
   samefile
   git-default-branch
+  history-substring-search
 )
 [ "$(uname)" = Darwin ] && plugins=(
   "${plugins[@]}"
