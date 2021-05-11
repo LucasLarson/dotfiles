@@ -172,3 +172,6 @@
 [submodule "custom/plugins/git-default-branch"]
 	path = custom/plugins/git-default-branch
 	url = https://github.com/LucasLarson/git-default-branch
+[submodule "custom/plugins/zsh-history-substring-search"]
+	path = custom/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
