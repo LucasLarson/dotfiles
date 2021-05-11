@@ -188,12 +188,12 @@ if command -v brew >/dev/null 2>&1; then
   # curl
   [ -d "${BREW_PREFIX}/opt/curl/bin" ] && PATH=${BREW_PREFIX}/opt/curl/bin:${PATH}
 
-  # GNU Core Utils
+  # GNU coreutils
   # for `date`, `cat`, `ln`
   # https://apple.stackexchange.com/a/135749
   [ -d "${BREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}
 
-  # GNU Find Utils
+  # GNU findutils
   # for `find`, `xargs`, `locate`
   [ -d "${BREW_PREFIX}/opt/findutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/findutils/libexec/gnubin:${PATH}
 
