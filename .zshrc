@@ -11,7 +11,10 @@ export DOTFILES=${HOME}/Dropbox/dotfiles
 
 # PATH
 # https://opengroup.org/onlinepubs/9699919799/utilities/command.html
-PATH=$(command -p getconf PATH):${PATH}
+# prepend without extra colon
+# https://unix.stackexchange.com/a/415028
+PATH=$(command -p getconf PATH)${PATH:+:${PATH}}
+
 [ -d /usr/local/bin ] && PATH=/usr/local/bin:${PATH}
 
 # set PATH so it includes applicable private `bin`s
