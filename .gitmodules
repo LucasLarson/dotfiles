@@ -1,180 +1,180 @@
 [submodule "custom/themes/powerlevel10k"]
-	path = custom/themes/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k
+  path = custom/themes/powerlevel10k
+  url = https://github.com/romkatv/powerlevel10k
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle
-	url = https://github.com/textmate/bundle-support.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Bundle Support.tmbundle
+  url = https://github.com/textmate/bundle-support.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Git.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Git.tmbundle
-	url = https://github.com/textmate/git.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Git.tmbundle
+  url = https://github.com/textmate/git.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle
-	url = https://github.com/textmate/java.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Java.tmbundle
+  url = https://github.com/textmate/java.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/JavaScript.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/JavaScript.tmbundle
-	url = https://github.com/textmate/javascript.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/JavaScript.tmbundle
+  url = https://github.com/textmate/javascript.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/JavaScript jQuery.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/JavaScript jQuery.tmbundle
-	url = https://github.com/textmate/javascript-jquery.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/JavaScript jQuery.tmbundle
+  url = https://github.com/textmate/javascript-jquery.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/LaTeX.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/LaTeX.tmbundle
-	url = https://github.com/textmate/latex.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/LaTeX.tmbundle
+  url = https://github.com/textmate/latex.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle
-	url = https://github.com/textmate/Linter.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Linter.tmbundle
+  url = https://github.com/textmate/Linter.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Markdown.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Markdown.tmbundle
-	url = https://github.com/textmate/markdown.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Markdown.tmbundle
+  url = https://github.com/textmate/markdown.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Objective-C.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Objective-C.tmbundle
-	url = https://github.com/textmate/objective-c.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Objective-C.tmbundle
+  url = https://github.com/textmate/objective-c.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle
-	url = https://github.com/textmate/python.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Python.tmbundle
+  url = https://github.com/textmate/python.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Rust.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Rust.tmbundle
-	url = https://github.com/carols10cents/rust.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Rust.tmbundle
+  url = https://github.com/carols10cents/rust.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle
-	url = https://github.com/textmate/swift.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Swift.tmbundle
+  url = https://github.com/textmate/swift.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/C.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/C.tmbundle
-	url = https://github.com/textmate/c.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/C.tmbundle
+  url = https://github.com/textmate/c.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/reStructuredText.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/reStructuredText.tmbundle
-	url = https://github.com/textmate/restructuredtext.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/reStructuredText.tmbundle
+  url = https://github.com/textmate/restructuredtext.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/YAML.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/YAML.tmbundle
-	url = https://github.com/textmate/yaml.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/YAML.tmbundle
+  url = https://github.com/textmate/yaml.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/iPhone.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/iPhone.tmbundle
-	url = https://github.com/textmate/iphone.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/iPhone.tmbundle
+  url = https://github.com/textmate/iphone.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Themes.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Themes.tmbundle
-	url = https://github.com/textmate/themes.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Themes.tmbundle
+  url = https://github.com/textmate/themes.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/TextMate.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/TextMate.tmbundle
-	url = https://github.com/textmate/textmate.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/TextMate.tmbundle
+  url = https://github.com/textmate/textmate.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Text.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Text.tmbundle
-	url = https://github.com/textmate/text.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Text.tmbundle
+  url = https://github.com/textmate/text.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Xcode.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Xcode.tmbundle
-	url = https://github.com/textmate/xcode.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Xcode.tmbundle
+  url = https://github.com/textmate/xcode.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/XML.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/XML.tmbundle
-	url = https://github.com/textmate/xml.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/XML.tmbundle
+  url = https://github.com/textmate/xml.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/TODO.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/TODO.tmbundle
-	url = https://github.com/textmate/todo.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/TODO.tmbundle
+  url = https://github.com/textmate/todo.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/HTML.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/HTML.tmbundle
-	url = https://github.com/textmate/html.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/HTML.tmbundle
+  url = https://github.com/textmate/html.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/PHP.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/PHP.tmbundle
-	url = https://github.com/textmate/php.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/PHP.tmbundle
+  url = https://github.com/textmate/php.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Apache.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Apache.tmbundle
-	url = https://github.com/textmate/apache.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Apache.tmbundle
+  url = https://github.com/textmate/apache.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Make.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Make.tmbundle
-	url = https://github.com/textmate/make.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Make.tmbundle
+  url = https://github.com/textmate/make.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/SQL.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/SQL.tmbundle
-	url = https://github.com/textmate/sql.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/SQL.tmbundle
+  url = https://github.com/textmate/sql.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Shell Script.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Shell Script.tmbundle
-	url = https://github.com/textmate/shellscript.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Shell Script.tmbundle
+  url = https://github.com/textmate/shellscript.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Source.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Source.tmbundle
-	url = https://github.com/textmate/source.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Source.tmbundle
+  url = https://github.com/textmate/source.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/SSH Config.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/SSH Config.tmbundle
-	url = https://github.com/textmate/ssh-config.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/SSH Config.tmbundle
+  url = https://github.com/textmate/ssh-config.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/SCM.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/SCM.tmbundle
-	url = https://github.com/textmate/scm.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/SCM.tmbundle
+  url = https://github.com/textmate/scm.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/SCM Diff Gutter.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/SCM Diff Gutter.tmbundle
-	url = https://github.com/textmate/scm-diff-gutter.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/SCM Diff Gutter.tmbundle
+  url = https://github.com/textmate/scm-diff-gutter.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Ruby.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Ruby.tmbundle
-	url = https://github.com/textmate/ruby.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Ruby.tmbundle
+  url = https://github.com/textmate/ruby.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/R.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/R.tmbundle
-	url = https://github.com/textmate/r.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/R.tmbundle
+  url = https://github.com/textmate/r.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Property List.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Property List.tmbundle
-	url = https://github.com/textmate/property-list.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Property List.tmbundle
+  url = https://github.com/textmate/property-list.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/AppleScript.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/AppleScript.tmbundle
-	url = https://github.com/textmate/applescript.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/AppleScript.tmbundle
+  url = https://github.com/textmate/applescript.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Diff.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Diff.tmbundle
-	url = https://github.com/textmate/diff.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Diff.tmbundle
+  url = https://github.com/textmate/diff.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/CSS.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/CSS.tmbundle
-	url = https://github.com/textmate/css.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/CSS.tmbundle
+  url = https://github.com/textmate/css.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Greasemonkey.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Greasemonkey.tmbundle
-	url = https://github.com/textmate/greasemonkey.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Greasemonkey.tmbundle
+  url = https://github.com/textmate/greasemonkey.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Go.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Go.tmbundle
-	url = https://github.com/syscrusher/golang.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Go.tmbundle
+  url = https://github.com/syscrusher/golang.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/CMake.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/CMake.tmbundle
-	url = https://github.com/textmate/cmake.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/CMake.tmbundle
+  url = https://github.com/textmate/cmake.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Mediawiki.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Mediawiki.tmbundle
-	url = https://github.com/textmate/mediawiki.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Mediawiki.tmbundle
+  url = https://github.com/textmate/mediawiki.tmbundle
 [submodule "custom/plugins/gunstage"]
-	path = custom/plugins/gunstage
-	url = https://github.com/LucasLarson/gunstage
+  path = custom/plugins/gunstage
+  url = https://github.com/LucasLarson/gunstage
 [submodule "Library/Application Support/TextMate/Managed/Bundles/CTags.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/CTags.tmbundle
-	url = https://github.com/textmate/ctags.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/CTags.tmbundle
+  url = https://github.com/textmate/ctags.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Ninja.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Ninja.tmbundle
-	url = https://github.com/textmate/ninja.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Ninja.tmbundle
+  url = https://github.com/textmate/ninja.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Math.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Math.tmbundle
-	url = https://github.com/textmate/math.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Math.tmbundle
+  url = https://github.com/textmate/math.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Markdown (GitHub).tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Markdown (GitHub).tmbundle
-	url = https://github.com/textmate/GitHub-Markdown.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Markdown (GitHub).tmbundle
+  url = https://github.com/textmate/GitHub-Markdown.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Mail.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Mail.tmbundle
-	url = https://github.com/textmate/mail.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Mail.tmbundle
+  url = https://github.com/textmate/mail.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Lua.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Lua.tmbundle
-	url = https://github.com/textmate/lua.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Lua.tmbundle
+  url = https://github.com/textmate/lua.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/JavaDoc.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/JavaDoc.tmbundle
-	url = https://github.com/textmate/javadoc.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/JavaDoc.tmbundle
+  url = https://github.com/textmate/javadoc.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/JSON.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/JSON.tmbundle
-	url = https://github.com/textmate/json.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/JSON.tmbundle
+  url = https://github.com/textmate/json.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Ini.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Ini.tmbundle
-	url = https://github.com/textmate/ini.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Ini.tmbundle
+  url = https://github.com/textmate/ini.tmbundle
 [submodule "Library/Application Support/TextMate/Managed/Bundles/Hyperlink Helper.tmbundle"]
-	path = Library/Application Support/TextMate/Managed/Bundles/Hyperlink Helper.tmbundle
-	url = https://github.com/textmate/hyperlink-helper.tmbundle
+  path = Library/Application Support/TextMate/Managed/Bundles/Hyperlink Helper.tmbundle
+  url = https://github.com/textmate/hyperlink-helper.tmbundle
 [submodule "custom/plugins/zsh-completions"]
-	path = custom/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions
+  path = custom/plugins/zsh-completions
+  url = https://github.com/zsh-users/zsh-completions
 [submodule "custom/plugins/fast-syntax-highlighting"]
-	path = custom/plugins/fast-syntax-highlighting
-	url = https://github.com/zdharma/fast-syntax-highlighting
+  path = custom/plugins/fast-syntax-highlighting
+  url = https://github.com/zdharma/fast-syntax-highlighting
 [submodule "custom/plugins/samefile"]
-	path = custom/plugins/samefile
-	url = https://github.com/LucasLarson/samefile
+  path = custom/plugins/samefile
+  url = https://github.com/LucasLarson/samefile
 [submodule "custom/plugins/git-default-branch"]
-	path = custom/plugins/git-default-branch
-	url = https://github.com/LucasLarson/git-default-branch
+  path = custom/plugins/git-default-branch
+  url = https://github.com/LucasLarson/git-default-branch
 [submodule "custom/plugins/zsh-history-substring-search"]
-	path = custom/plugins/zsh-history-substring-search
-	url = https://github.com/zsh-users/zsh-history-substring-search
+  path = custom/plugins/zsh-history-substring-search
+  url = https://github.com/zsh-users/zsh-history-substring-search
 [submodule "custom/plugins/zsh-diff-so-fancy"]
-	path = custom/plugins/zsh-diff-so-fancy
-	url = https://github.com/zdharma/zsh-diff-so-fancy
+  path = custom/plugins/zsh-diff-so-fancy
+  url = https://github.com/zdharma/zsh-diff-so-fancy
