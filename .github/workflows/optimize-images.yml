@@ -21,7 +21,7 @@ jobs:
     name: Optimize images
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2
       - uses: calibreapp/image-actions@1.1.0
         id: calibre
         with:
@@ -29,7 +29,7 @@ jobs:
           jpegQuality: "100"
           pngQuality: "100"
           webpQuality: "100"
-      - uses: peter-evans/create-pull-request@v3.9.2
+      - uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "[autofix] Optimize images"
           title: "[autofix] Optimize images"
