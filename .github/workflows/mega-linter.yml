@@ -143,7 +143,7 @@ jobs:
           github.event.pull_request.head.repo.full_name == github.repository &&
           !contains(github.event.head_commit.message, 'skip fix')
 
-        run: sudo chown -Rc $UID .git/
+        run: sudo chown --recursive --changes "${UID}" -- .git/
       - name: Commit and push applied linter fixes
         if: >
           steps.ml.outputs.has_updated_sources == 1 &&
