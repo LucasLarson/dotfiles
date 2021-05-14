@@ -1,5 +1,5 @@
 ---
-name: Autofix
+name: JSON Lint
 on:
   push:
     # target only the default branch to avoid auto-fixing recursion
