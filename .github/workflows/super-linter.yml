@@ -1,9 +1,9 @@
 ---
-#################################
-#################################
-## Super-Linter GitHub Actions ##
-#################################
-#################################
+#########################
+#########################
+## GitHub Super-Linter ##
+#########################
+#########################
 name: Super-Linter
 
 #
@@ -40,7 +40,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2.3.4
         with:
-          # Full history is needed to analyze changed files
+          # Linter requires full repository history
           fetch-depth: 0
 
       ################################
