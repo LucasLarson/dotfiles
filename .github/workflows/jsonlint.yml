@@ -15,7 +15,7 @@ jobs:
     name: Format JSON files and create a PR
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v2
       - name: Install linter
         run: |
           sudo npm install jsonlint-newline-fork -g
@@ -30,7 +30,7 @@ jobs:
             -not -path '*vscode*' \
           \) -print -exec \
           jsonlint --in-place --insert-final-newline -- {} \;
-      - uses: peter-evans/create-pull-request@v3.9.2
+      - uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "[autofix] Format JSON content"
           title: "[autofix] Format JSON content"
