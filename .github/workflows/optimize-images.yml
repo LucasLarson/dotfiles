@@ -29,7 +29,7 @@ jobs:
           jpegQuality: "100"
           pngQuality: "100"
           webpQuality: "100"
-      - uses: peter-evans/create-pull-request@v3.8.2
+      - uses: peter-evans/create-pull-request@v3.9.2
         with:
           commit-message: "[autofix] Optimize images"
           title: "[autofix] Optimize images"
