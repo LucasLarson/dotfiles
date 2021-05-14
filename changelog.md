@@ -17,6 +17,10 @@
 
 - include crufty `.zcompdump` files in `cleanup` [\#199](https://github.com/LucasLarson/dotfiles/issues/199)
 
+**Merged pull requests:**
+
+- Update peter-evans/create-pull-request action to v3.9.2 [\#355](https://github.com/LucasLarson/dotfiles/pull/355) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v0.6.1](https://github.com/LucasLarson/dotfiles/tree/v0.6.1) (2021-05-06)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.6.0...v0.6.1)
