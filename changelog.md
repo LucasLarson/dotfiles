@@ -19,6 +19,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/gunstage from `2c6e99e` to `a420181` [\#359](https://github.com/LucasLarson/dotfiles/pull/359) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update peter-evans/create-pull-request action to v3.9.2 [\#355](https://github.com/LucasLarson/dotfiles/pull/355) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v0.6.1](https://github.com/LucasLarson/dotfiles/tree/v0.6.1) (2021-05-06)
