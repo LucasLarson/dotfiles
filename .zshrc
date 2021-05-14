@@ -118,6 +118,7 @@ plugins=(
   samefile
   git-default-branch
   history-substring-search
+  zsh-diff-so-fancy
 )
 [ "$(uname)" = Darwin ] && plugins=(
   "${plugins[@]}"
