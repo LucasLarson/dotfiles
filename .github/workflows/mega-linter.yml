@@ -8,9 +8,8 @@ name: Mega-Linter
 on:
   # Trigger mega-linter at every push.
   # Action will also be visible from Pull Requests to main
-
-  # Comment the `push:` line to trigger action only on Pull Requests
-  # (recommended if you pay for GH Actions)
+  # Comment `push:` to trigger action only on Pull Requests
+  # (recommended if you pay for GitHub Actions)
   push:
   pull_request:
     branches: [main]
@@ -62,7 +61,7 @@ jobs:
         id: ml
 
         # Override Mega-Linter flavor for faster performance
-        # More info at https://nvuillam.github.io/mega-linter/flavors/
+        # More info at https://nvuillam.github.io/mega-linter/flavors
         uses: nvuillam/mega-linter@v4.33.0
         env:
           # Add custom env variables here or
@@ -130,6 +129,8 @@ jobs:
           echo "${{ steps.cpr.outputs.pull-request-url }}"
 
       # Push new commit if applicable
+      # Works only on Pull Requests from the same repository since 2020-12-01
+      # https://github.com/nvuillam/mega-linter/commit/0b8f159
       - name: Prepare commit
         if: >
           steps.ml.outputs.has_updated_sources == 1 &&
