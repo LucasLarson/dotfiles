@@ -6,7 +6,7 @@ exclude_patterns = [
   "**/archive/**",
   "**/custom/plugins/**",
   "**/custom/themes/**",
-  "**/node_modules/**
+  "**/node_modules/**"
 ]
 
 [[analyzers]]
