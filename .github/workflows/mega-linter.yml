@@ -24,7 +24,7 @@ env:
 
   # Decide which event triggers fixes in a commit or Pull Request:
   # (pull_request (default), push, all)
-  APPLY_FIXES_EVENT: pull_request
+  APPLY_FIXES_EVENT: all
 
   # If APPLY_FIXES is also used, then this specifies whether fixes are
   # directly committed (commit) or
