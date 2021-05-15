@@ -1,5 +1,14 @@
 version = 1
 
+exclude_patterns = [
+  "**/.vscode/**",
+  "**/Application Support/**",
+  "**/archive/**",
+  "**/custom/plugins/**",
+  "**/custom/themes/**",
+  "**/node_modules/**
+]
+
 [[analyzers]]
 name = "python"
 enabled = true
