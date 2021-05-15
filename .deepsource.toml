@@ -42,6 +42,14 @@ enabled = true
 name = "sql"
 enabled = true
 
+[[analyzers]]
+name = "shell"
+enabled = true
+
+[[analyzers]]
+name = "secrets"
+enabled = true
+
 [[transformers]]
 name = "gofmt"
 enabled = true
