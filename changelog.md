@@ -7,6 +7,7 @@
 **Implemented enhancements:**
 
 - add to arrays in a more portable way [\#356](https://github.com/LucasLarson/dotfiles/issues/356)
+- find alias to delete merged Git branches [\#275](https://github.com/LucasLarson/dotfiles/issues/275)
 - ignore semver minor updates [\#353](https://github.com/LucasLarson/dotfiles/pull/353) ([LucasLarson](https://github.com/LucasLarson))
 
 **Fixed bugs:**
@@ -19,6 +20,11 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/fast-syntax-highlighting from `a62d721` to `817916d` [\#364](https://github.com/LucasLarson/dotfiles/pull/364) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/plugins/gunstage from `a420181` to `b44728b` [\#363](https://github.com/LucasLarson/dotfiles/pull/363) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Library/Application Support/TextMate/Managed/Bundles/Shell Script.tmbundle from `37404fb` to `5b6cee0` [\#362](https://github.com/LucasLarson/dotfiles/pull/362) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `8d1daa4` to `f924646` [\#361](https://github.com/LucasLarson/dotfiles/pull/361) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Library/Application Support/TextMate/Managed/Bundles/CTags.tmbundle from `17c7f03` to `f29558b` [\#360](https://github.com/LucasLarson/dotfiles/pull/360) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/gunstage from `2c6e99e` to `a420181` [\#359](https://github.com/LucasLarson/dotfiles/pull/359) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update peter-evans/create-pull-request action to v3.9.2 [\#355](https://github.com/LucasLarson/dotfiles/pull/355) ([renovate[bot]](https://github.com/apps/renovate))
 
