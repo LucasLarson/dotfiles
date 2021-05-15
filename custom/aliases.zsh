@@ -444,7 +444,6 @@ cleanup() {
 }
 
 define() {
-  sh -c 'IFS=$(printf " \t\n/"); IFS=${IFS%/}'
   for query in "${@:-$0}"; do
     printf '\n'
 
@@ -501,7 +500,6 @@ fname() {
 alias findname='fname'
 
 identify() {
-  sh -c 'IFS=$(printf " \t\n/"); IFS=${IFS%/}; printf %s "${IFS}" | xxd'
 
   # uname
   command -v uname >/dev/null 2>&1 && uname -a
