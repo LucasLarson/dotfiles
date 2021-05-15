@@ -51,6 +51,10 @@ name = "secrets"
 enabled = true
 
 [[transformers]]
+name = "yapf"
+enabled = true
+
+[[transformers]]
 name = "gofmt"
 enabled = true
 
@@ -67,5 +71,21 @@ name = "standardrb"
 enabled = true
 
 [[transformers]]
+name = "google-java-format"
+enabled = true
+
+[[transformers]]
+name = "prettier"
+enabled = false
+
+[[transformers]]
+name = "black"
+enabled = true
+
+[[transformers]]
 name = "standardjs"
+enabled = true
+
+[[transformers]]
+name = "rubocop"
 enabled = true
