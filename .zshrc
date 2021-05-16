@@ -30,7 +30,7 @@ export ZSH=${HOME}/.oh-my-zsh
 export ZSH_CUSTOM=${DOTFILES}/custom
 export ZSHCUSTOM=${ZSH_CUSTOM}
 
-# Set name of the theme to load --- if set to "random", it will
+# Set name of the theme to load. If set to `random`, it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -161,7 +161,7 @@ elif command -v vi >/dev/null 2>&1; then
   EDITOR=$(command -v vi)
 fi
 export EDITOR
-# https://github.com/koalaman/shellcheck/wiki/SC2139/db553bf16fcb86b2cdc77b835e75b9121eacc429#this-expands-when-defined-not-when-used-consider-escaping
+# https://github.com/koalaman/shellcheck/wiki/SC2139/db553bf#this-expands-when-defined-not-when-used-consider-escaping
 alias editor='${EDITOR}'
 alias edit=editor
 # https://unix.stackexchange.com/q/4859#comment5812_4861
@@ -272,7 +272,10 @@ zstyle ':completion:*:descriptions' format %F"{green}"%d%f
 # zsh-completions
 # https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
 # https://github.com/zsh-users/zsh-completions/tree/f68950a#oh-my-zsh
-[ -d "${ZSH_CUSTOM}/plugins/zsh-completions/src" ] && FPATH=${FPATH:+${FPATH}:}${ZSH_CUSTOM}/plugins/zsh-completions/src
+[ -d "${ZSH_CUSTOM}/plugins/zsh-completions/src" ] &&
+  # skip adding initial and terminal colons `:`
+  # https://unix.stackexchange.com/a/162893
+  FPATH=${FPATH:+${FPATH}:}${ZSH_CUSTOM}/plugins/zsh-completions/src
 
 autoload -U compinit && compinit
 
