@@ -71,6 +71,8 @@ alias gfgs='git fetch --all --verbose && git status'
 git_garbage_collection() {
   command -v cleanup >/dev/null 2>&1 && cleanup "${@}"
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    # see `git gc` and other wrapping commands behind-the-scene mechanics
+    # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
     git fetch --prune --prune-tags --verbose
     git prune --verbose --progress --expire now
     git prune-packed
@@ -149,10 +151,12 @@ gmm() {
 
 alias gmv='git mv --verbose'
 
-# git pull after @ohmyzsh `gupav` ohmyzsh/ohmyzsh@3d2542f
+# git pull (Oh My Zsh `gupav`)
+# https://github.com/ohmyzsh/ohmyzsh/commit/3d2542f
 alias gpl='git pull --all --rebase --autostash --ff-only --verbose && git status'
 
-# git push after @ohmyzsh `gpsup` ohmyzsh/ohmyzsh@ae21102
+# git push (Oh My Zsh `gpsup`)
+# https://github.com/ohmyzsh/ohmyzsh/commit/ae21102
 alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && git status'
 
 alias grmr='git rm -r'
@@ -168,7 +172,7 @@ alias grs='git_restore'
 git_submodule_rm() {
   # https://github.com/romkatv/dotfiles-public/commit/07c9b29
 
-  # usage: $0 submodule-to-remove
+  # usage: git_submodule_rm submodule-to-remove
   if [ $# -eq 1 ] &&
     # continue only if `submodule-to-remove` is an existing file or directory
     [ -e "$1" ] &&
@@ -235,7 +239,6 @@ gvc() {
   git verify-commit "${1:-HEAD}"
 }
 
-# shell
 cd_pwd_P() {
   cd_from=$(pwd)
   cd_to=$(pwd -P)
@@ -443,6 +446,7 @@ cleanup() {
   )
 }
 
+# define
 define() {
   for query in "${@:-$0}"; do
     printf '\n'
@@ -563,8 +567,7 @@ path_check() {
   done
 
   for directory in $(
-
-    # newline-delimited `$PATH` like the Zsh `$path`
+    # newline-delimited `$PATH` like Zsh `<<<${(F)path}`
     # https://stackoverflow.com/a/33469401
     printf %s "${PATH}" | xargs -d ':' -n 1
   ); do
@@ -596,10 +599,10 @@ alias '?'='question_mark'
 # https://github.com/mathiasbynens/dotfiles/commit/bb8de8b
 alias sudo='sudo '
 
-# take
-# https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
+# mkdir && cd
 take() {
   mkdir -p -v -- "$@" &&
+    # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
     printf 'cd: changed directory to \xe2\x80\x98%s\xe2\x80\x99\n' "${@:$#}" &&
     cd -- "${@:$#}" || return 1
 }
