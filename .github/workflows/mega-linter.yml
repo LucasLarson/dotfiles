@@ -76,8 +76,8 @@ jobs:
               github.ref == 'refs/heads/main'
             }}
 
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PAT: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          PAT: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           FILTER_REGEX_EXCLUDE: '(\.automation\/test\/)'
 
