@@ -241,12 +241,6 @@ NPM_PACKAGES=${HOME}/.npm-packages
 [ -d "${NPM_PACKAGES}/bin" ] && PATH=${PATH}:${NPM_PACKAGES}/bin
 [ -d "${NPM_PACKAGES}/share/man" ] && MANPATH=${MANPATH}:${NPM_PACKAGES}/share/man
 
-# RVM and rbenv are incompatible and shell references to RVM have to be removed
-# https://github.com/rbenv/rbenv/blob/577f046/README.md#installation
-# Add RVM to PATH for scripting
-# Make sure this is the last PATH variable change
-# export PATH=${PATH}:${HOME}/.rvm/bin
-
 # Template repository
 if [ -d "${HOME}/Dropbox/Template" ]; then
   TEMPLATE=${HOME}/Dropbox/Template
