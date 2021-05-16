@@ -15,11 +15,11 @@ export DOTFILES=${HOME}/Dropbox/dotfiles
 # https://unix.stackexchange.com/a/415028
 PATH=$(command -p getconf PATH)${PATH:+:${PATH}}
 
-[ -d /usr/local/bin ] && PATH=/usr/local/bin:${PATH}
+[ -d /usr/local/bin ] && PATH=/usr/local/bin${PATH:+:${PATH}}
 
 # set PATH so it includes applicable private `bin`s
-[ -d "${HOME}/bin" ] && PATH=${HOME}/bin:${PATH}
-[ -d "${HOME}/.local/bin" ] && PATH=${HOME}/.local/bin:${PATH}
+[ -d "${HOME}/bin" ] && PATH=${HOME}/bin${PATH:+:${PATH}}
+[ -d "${HOME}/.local/bin" ] && PATH=${HOME}/.local/bin${PATH:+:${PATH}}
 
 # Path to your oh-my-zsh installation.
 export ZSH=${HOME}/.oh-my-zsh
@@ -143,7 +143,7 @@ man -w >/dev/null 2>&1 &&
   MANPATH=${MANPATH:+${MANPATH}:}$(man -w)
 # if `MANPATH` is still empty and `/usr/local/man` exists,
 # then set `MANPATH` to `/usr/local/man`
-[ -z "${MANPATH}" ] && [ -d /usr/local/man ] && MANPATH=/usr/local/man
+[ -z "${MANPATH}" ] && [ -d /usr/local/man ] && MANPATH=/usr/local/man${MANPATH:+:${MANPATH}}
 
 # You may need to manually set your language environment
 export LANG=${LANG:=en_US.UTF-8}
@@ -185,52 +185,52 @@ if command -v brew >/dev/null 2>&1; then
 
   # https://github.com/driesvints/dotfiles/blob/388baf1/path.zsh#L17
   BREW_PREFIX=$(brew --prefix)
-  [ -d "${BREW_PREFIX}/sbin" ] && PATH=${BREW_PREFIX}/sbin:${PATH}
+  [ -d "${BREW_PREFIX}/sbin" ] && PATH=${BREW_PREFIX}/sbin${PATH:+:${PATH}}
 
   # GNU bc calculator
-  [ -d "${BREW_PREFIX}/opt/bc/bin" ] && PATH=${BREW_PREFIX}/opt/bc/bin:${PATH}
+  [ -d "${BREW_PREFIX}/opt/bc/bin" ] && PATH=${BREW_PREFIX}/opt/bc/bin${PATH:+:${PATH}}
 
   # curl
-  [ -d "${BREW_PREFIX}/opt/curl/bin" ] && PATH=${BREW_PREFIX}/opt/curl/bin:${PATH}
+  [ -d "${BREW_PREFIX}/opt/curl/bin" ] && PATH=${BREW_PREFIX}/opt/curl/bin${PATH:+:${PATH}}
 
   # GNU coreutils
   # for `date`, `cat`, `ln`
   # https://apple.stackexchange.com/a/135749
-  [ -d "${BREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}
+  [ -d "${BREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/coreutils/libexec/gnubin${PATH:+:${PATH}}
 
   # GNU findutils
   # for `find`, `xargs`, `locate`
-  [ -d "${BREW_PREFIX}/opt/findutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/findutils/libexec/gnubin:${PATH}
+  [ -d "${BREW_PREFIX}/opt/findutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/findutils/libexec/gnubin${PATH:+:${PATH}}
 
   # grep
   # use latest via Homebrew but without the `g` prefix
   # https://github.com/Homebrew/homebrew-core/blob/ba7a70f/Formula/grep.rb#L43-L46
-  [ -d "${BREW_PREFIX}/opt/grep/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/grep/libexec/gnubin:${PATH}
+  [ -d "${BREW_PREFIX}/opt/grep/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/grep/libexec/gnubin${PATH:+:${PATH}}
 
   # make
   # use latest via Homebrew but without the `g` prefix
   # https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
-  [ -d "${BREW_PREFIX}/opt/make/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/make/libexec/gnubin:${PATH}
+  [ -d "${BREW_PREFIX}/opt/make/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/make/libexec/gnubin${PATH:+:${PATH}}
 
   # openssl
-  [ -d "${BREW_PREFIX}/opt/openssl/bin" ] && PATH=${BREW_PREFIX}/opt/openssl/bin:${PATH}
+  [ -d "${BREW_PREFIX}/opt/openssl/bin" ] && PATH=${BREW_PREFIX}/opt/openssl/bin${PATH:+:${PATH}}
 
   # sed
   # https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
-  [ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin:${PATH}
+  [ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin${PATH:+:${PATH}}
 
   # texinfo for `info`
   # “more detailed than . . . manpage (as is true for most GNU utilities)”
   # https://stackoverflow.com/a/1489405
-  [ -d "${BREW_PREFIX}/opt/texinfo/bin" ] && PATH=${BREW_PREFIX}/opt/texinfo/bin:${PATH}
+  [ -d "${BREW_PREFIX}/opt/texinfo/bin" ] && PATH=${BREW_PREFIX}/opt/texinfo/bin${PATH:+:${PATH}}
 
   # which
-  [ -d "${BREW_PREFIX}/opt/gnu-which/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-which/libexec/gnubin:${PATH}
+  [ -d "${BREW_PREFIX}/opt/gnu-which/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-which/libexec/gnubin${PATH:+:${PATH}}
 fi
 
 # Rust Cargo
 # if its `bin` is a directory, then add it to `PATH`
-[ -d "${HOME}/.cargo/bin" ] && PATH=${HOME}/.cargo/bin:${PATH}
+[ -d "${HOME}/.cargo/bin" ] && PATH=${HOME}/.cargo/bin${PATH:+:${PATH}}
 
 # Bashhub.com
 [ -r "${HOME}/.bashhub/bashhub.zsh" ] && . "${HOME}/.bashhub/bashhub.zsh"
@@ -238,8 +238,8 @@ fi
 # npm without sudo
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES=${HOME}/.npm-packages
-[ -d "${NPM_PACKAGES}/bin" ] && PATH=${PATH}:${NPM_PACKAGES}/bin
-[ -d "${NPM_PACKAGES}/share/man" ] && MANPATH=${MANPATH}:${NPM_PACKAGES}/share/man
+[ -d "${NPM_PACKAGES}/bin" ] && PATH=${PATH:+${PATH}:}${NPM_PACKAGES}/bin
+[ -d "${NPM_PACKAGES}/share/man" ] && MANPATH=${MANPATH:+${MANPATH}:}${NPM_PACKAGES}/share/man
 
 # Template repository
 if [ -d "${HOME}/Dropbox/Template" ]; then
@@ -272,7 +272,8 @@ zstyle ':completion:*:descriptions' format %F"{green}"%d%f
 # zsh-completions
 # https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
 # https://github.com/zsh-users/zsh-completions/tree/f68950a#oh-my-zsh
-[ -d "${ZSH_CUSTOM}/plugins/zsh-completions/src" ] && FPATH=${FPATH}:${ZSH_CUSTOM}/plugins/zsh-completions/src
+[ -d "${ZSH_CUSTOM}/plugins/zsh-completions/src" ] && FPATH=${FPATH:+${FPATH}:}${ZSH_CUSTOM}/plugins/zsh-completions/src
+
 autoload -U compinit && compinit
 
 # share all commands from everywhere
@@ -280,7 +281,7 @@ autoload -U compinit && compinit
 setopt SHARE_HISTORY
 
 # pyenv
-[ -d "${HOME}/.pyenv/shims" ] && PATH=${HOME}/.pyenv/shims:${PATH}
+[ -d "${HOME}/.pyenv/shims" ] && PATH=${HOME}/.pyenv/shims${PATH:+:${PATH}}
 # https://git.io/init_-_--no-rehash
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
 pyenv() {
@@ -301,7 +302,7 @@ fi
 # and `flutter`’s not in the PATH, then add it
 if [ -x "${HOME}/Code/Flutter/bin/flutter" ]; then
   if ! command -v flutter >/dev/null 2>&1; then
-    PATH=${PATH}:${HOME}/Code/Flutter/bin
+    PATH=${PATH:+${PATH}:}${HOME}/Code/Flutter/bin
   fi
 fi
 
@@ -311,13 +312,13 @@ fi
 
 # pip
 # location of Python packages on Linux
-[ -d "${HOME}/.local/bin" ] && PATH=${HOME}/.local/bin:${PATH}
+[ -d "${HOME}/.local/bin" ] && PATH=${HOME}/.local/bin${PATH:+:${PATH}}
 
 # rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # https://git.io/init_-_--no-rehash
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
-[ -d "${HOME}/.rbenv/shims" ] && PATH=${HOME}/.rbenv/shims:${PATH}
+[ -d "${HOME}/.rbenv/shims" ] && PATH=${HOME}/.rbenv/shims${PATH:+:${PATH}}
 rbenv() {
   eval "$(command rbenv init - --no-rehash "${SHELL##*[-/]}")"
   rbenv "$@"
@@ -325,7 +326,7 @@ rbenv() {
 
 # Radicle
 # https://github.com/radicle-dev/radicle-docs/blob/a0f08f4/docs/getting-started/doc1-1.md#configuring-your-system
-[ -d "${HOME}/.radicle/bin" ] && PATH=${HOME}/.radicle/bin:${PATH}
+[ -d "${HOME}/.radicle/bin" ] && PATH=${HOME}/.radicle/bin${PATH:+:${PATH}}
 
 # automatically remove PATH duplicates
 # https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
