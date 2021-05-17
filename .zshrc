@@ -246,14 +246,7 @@ NPM_PACKAGES=${HOME}/.npm-packages
 [ -d "${NPM_PACKAGES}/share/man" ] && MANPATH=${MANPATH:+${MANPATH}:}${NPM_PACKAGES}/share/man
 
 # Template repository
-if [ -d "${HOME}/Dropbox/Template" ]; then
-  TEMPLATE=${HOME}/Dropbox/Template
-elif [ -d "${HOME}/Code/ Template" ]; then
-  TEMPLATE=${HOME}/Code/ Template
-elif [ -d "${HOME}/Code/Template" ]; then
-  TEMPLATE=${HOME}/Code/Template
-fi
-export TEMPLATE
+[ -d "${TEMPLATE:=${DOTFILES:=${HOME}/Dropbox/dotfiles}/../Template}" ] && export TEMPLATE
 
 # completion dots
 # https://git.io/completion-dots-in-.zshrc
