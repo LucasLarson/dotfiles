@@ -22,13 +22,13 @@ sleep 1
 # apk
 command -v apk >/dev/null 2>&1 || (
   # https://github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version/89019508ddd504e6f08af30d8c8da2d3a8691b76#wiki-body
-  wget --output-document - http://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | tar -xz apk.static
+  wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | tar -xz apk.static
   ./apk.static add apk-tools
 )
 
 # configure repositories
-printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n' >/etc/apk/repositories
-printf 'http://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >>/etc/apk/repositories
+printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n' >/etc/apk/repositories
+printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >>/etc/apk/repositories
 
 # update
 printf '\nupdating Alpine Linux repositories...\n'
@@ -63,9 +63,9 @@ apk add coreutils coreutils-doc
 )
 apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
 {
-  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main\n'
-  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/community\n'
-  printf 'http://dl-cdn.alpinelinux.org/alpine/edge/testing\n'
+  printf 'https://dl-cdn.alpinelinux.org/alpine/edge/main\n'
+  printf 'https://dl-cdn.alpinelinux.org/alpine/edge/community\n'
+  printf 'https://dl-cdn.alpinelinux.org/alpine/edge/testing\n'
 } >>/etc/apk/repositories
 apk update
 
@@ -109,7 +109,7 @@ command -v python >/dev/null 2>&1 || (
 command -v pip >/dev/null 2>&1 || (
   printf '\ninstalling pip...\n' && sleep 3
   printf 'this may take a while...\n'
-  curl http://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
+  curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
   python3 get-pip.py
 )
 
@@ -134,7 +134,7 @@ command -v chsh >/dev/null 2>&1 || (
 # Oh My Zsh
 command -v omz >/dev/null 2>&1 || [ -d "${HOME}/.oh-my-zsh" ] || (
   printf 'installing Oh My Zsh...\n'
-  sh -c "$(wget http://web.archive.org/web/20201211072817id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
+  sh -c "$(wget https://web.archive.org/web/20201211072817id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
 )
 
 # update, repair everything again before close
