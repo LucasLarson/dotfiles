@@ -17,7 +17,7 @@ sleep 1
 # https://askubuntu.com/a/459425
 # https://stackoverflow.com/a/26314887
 # force refresh with `-yy`
-[ "$(awk -F= '/^NAME/{print $2}' /etc/os-release | tr -d '"')" = "Arch Linux" ] && pacman --sync -yy
+[ "$(awk -F= '/^NAME/{print $2}' /etc/os-release 2>/dev/null | tr -d '"')" = "Arch Linux" ] && pacman --sync -yy
 
 # apk
 command -v apk >/dev/null 2>&1 || (
