@@ -339,7 +339,7 @@ rbenv() {
 # powerlevel10k prompt
 # customize prompt via `p10k configure` or edit `~/.p10k.zsh`
 # if the theme is powerlevel10k,
-[ powerlevel10k/powerlevel10k = "${ZSH_THEME}" ] &&
+[ "${ZSH_THEME}" = powerlevel10k/powerlevel10k ] &&
   # and there is a file at ~/.p10k.zsh,
   [ -r "${HOME}/.p10k.zsh" ] &&
   # then source it
