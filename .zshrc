@@ -219,6 +219,10 @@ if command -v brew >/dev/null 2>&1; then
   # openssl
   [ -d "${BREW_PREFIX}/opt/openssl/bin" ] && PATH=${BREW_PREFIX}/opt/openssl/bin${PATH:+:${PATH}}
 
+  # PKG_CONFIG_PATH is colon-delimited
+  # https://superuser.com/a/1277306
+  PKG_CONFIG_PATH=${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH}:}${BREW_PREFIX}/opt/openssl/lib/pkgconfig
+
   # sed
   # https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
   [ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin${PATH:+:${PATH}}
