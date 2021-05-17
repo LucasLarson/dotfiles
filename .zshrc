@@ -164,7 +164,7 @@ elif command -v vim >/dev/null 2>&1; then
 elif command -v vi >/dev/null 2>&1; then
   EDITOR=$(command -v vi)
 fi
-export EDITOR
+[ -n "${EDITOR}" ] && export EDITOR
 # https://github.com/koalaman/shellcheck/wiki/SC2139/db553bf#this-expands-when-defined-not-when-used-consider-escaping
 alias editor='${EDITOR}'
 alias edit=editor
