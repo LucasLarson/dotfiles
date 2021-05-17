@@ -140,7 +140,7 @@ plugins=(
 # User configuration
 
 # MANPATH
-# if `MANPATH` is empty and `man -w` does not fail, then use it for `MANPATH`
+# if `man -w` does not fail, then add it to `$MANPATH`
 man -w >/dev/null 2>&1 &&
   # skip adding initial and terminal colons `:`
   # https://unix.stackexchange.com/a/162893
