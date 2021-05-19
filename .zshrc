@@ -333,6 +333,16 @@ if command -v xcrun >/dev/null 2>&1 && [ -n "$(xcrun --show-sdk-path)" ]; then
   export CPATH
 fi
 
+# cpplint tests
+# `$LIBRARY_PATH` || ld: library not found for -lSystem
+# https://stackoverflow.com/a/65428700
+if [ -d /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib ]; then
+  # skip adding initial and terminal colons `:`
+  # https://unix.stackexchange.com/a/162893
+  LIBRARY_PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib${LIBRARY_PATH:+:${LIBRARY_PATH}}
+  export LIBRARY_PATH
+fi
+
 # Flutter
 # https://github.com/flutter/website/blob/e5f725c/src/docs/get-started/install/_path-mac.md#user-content-update-your-path
 # if `~/Code/Flutter/bin/flutter`’s an executable
