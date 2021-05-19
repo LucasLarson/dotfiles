@@ -163,8 +163,8 @@ alias grmr='git rm -r'
 alias grm='grmr'
 
 git_restore() {
-  for file in "${@}"; do
-    git checkout --progress --conflict=diff3 -- "${file}"
+  for file in "$@"; do
+    git checkout --progress -- "${file}"
   done && git status
 }
 alias grs='git_restore'
