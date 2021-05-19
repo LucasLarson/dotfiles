@@ -309,6 +309,10 @@ autoload -U compinit && compinit
 # https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
 setopt SHARE_HISTORY
 
+# permit inline comments after hash signs `#`
+# https://stackoverflow.com/a/11873793
+setopt INTERACTIVE_COMMENTS
+
 # pyenv
 [ -d "${HOME}/.pyenv/shims" ] && PATH=${HOME}/.pyenv/shims${PATH:+:${PATH}}
 # https://git.io/init_-_--no-rehash
