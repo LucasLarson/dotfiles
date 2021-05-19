@@ -193,31 +193,41 @@ if command -v brew >/dev/null 2>&1; then
 
   # GNU bc calculator
   [ -d "${BREW_PREFIX}/opt/bc/bin" ] && PATH=${BREW_PREFIX}/opt/bc/bin${PATH:+:${PATH}}
+  [ -d "${BREW_PREFIX}/opt/bc/share/man" ] &&
+    # Homebrew `MANPATH`
+    # https://github.com/ferrarimarco/dotfiles/blob/eb176e4/.path#L14-L20
+    MANPATH=${BREW_PREFIX}/opt/bc/share/man${MANPATH:+:${MANPATH}}
 
   # curl
   [ -d "${BREW_PREFIX}/opt/curl/bin" ] && PATH=${BREW_PREFIX}/opt/curl/bin${PATH:+:${PATH}}
+  [ -d "${BREW_PREFIX}/opt/curl/share/man" ] && MANPATH=${BREW_PREFIX}/opt/curl/share/man${MANPATH:+:${MANPATH}}
 
   # GNU coreutils
   # for `date`, `cat`, `ln`
   # https://apple.stackexchange.com/a/135749
   [ -d "${BREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/coreutils/libexec/gnubin${PATH:+:${PATH}}
+  [ -d "${BREW_PREFIX}/opt/coreutils/libexec/gnuman" ] && MANPATH=${BREW_PREFIX}/opt/coreutils/libexec/gnuman${MANPATH:+:${MANPATH}}
 
   # GNU findutils
   # for `find`, `xargs`, `locate`
   [ -d "${BREW_PREFIX}/opt/findutils/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/findutils/libexec/gnubin${PATH:+:${PATH}}
+  [ -d "${BREW_PREFIX}/opt/findutils/libexec/gnuman" ] && MANPATH=${BREW_PREFIX}/opt/findutils/libexec/gnuman${MANPATH:+:${MANPATH}}
 
   # grep
   # use latest via Homebrew but without the `g` prefix
   # https://github.com/Homebrew/homebrew-core/blob/ba7a70f/Formula/grep.rb#L43-L46
   [ -d "${BREW_PREFIX}/opt/grep/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/grep/libexec/gnubin${PATH:+:${PATH}}
+  [ -d "${BREW_PREFIX}/opt/grep/libexec/gnuman" ] && MANPATH=${BREW_PREFIX}/opt/grep/libexec/gnuman${MANPATH:+:${MANPATH}}
 
   # make
   # use latest via Homebrew but without the `g` prefix
   # https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
   [ -d "${BREW_PREFIX}/opt/make/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/make/libexec/gnubin${PATH:+:${PATH}}
+  [ -d "${BREW_PREFIX}/opt/make/libexec/gnuman" ] && MANPATH=${BREW_PREFIX}/opt/make/libexec/gnuman${MANPATH:+:${MANPATH}}
 
   # openssl
   [ -d "${BREW_PREFIX}/opt/openssl/bin" ] && PATH=${BREW_PREFIX}/opt/openssl/bin${PATH:+:${PATH}}
+  [ -d "${BREW_PREFIX}/opt/openssl/share/man" ] && MANPATH=${BREW_PREFIX}/opt/openssl/share/man${MANPATH:+:${MANPATH}}
 
   # PKG_CONFIG_PATH is colon-delimited
   # https://superuser.com/a/1277306
@@ -226,14 +236,17 @@ if command -v brew >/dev/null 2>&1; then
   # sed
   # https://github.com/Homebrew/homebrew-core/blob/8ec6f0e/Formula/gnu-sed.rb#L35-L39
   [ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnubin${PATH:+:${PATH}}
+  [ -d "${BREW_PREFIX}/opt/gnu-sed/libexec/gnuman" ] && MANPATH=${BREW_PREFIX}/opt/gnu-sed/libexec/gnuman${MANPATH:+:${MANPATH}}
 
   # texinfo for `info`
   # “more detailed than . . . manpage (as is true for most GNU utilities)”
   # https://stackoverflow.com/a/1489405
   [ -d "${BREW_PREFIX}/opt/texinfo/bin" ] && PATH=${BREW_PREFIX}/opt/texinfo/bin${PATH:+:${PATH}}
+  [ -d "${BREW_PREFIX}/opt/texinfo/share/man" ] && MANPATH=${BREW_PREFIX}/opt/texinfo/share/man${MANPATH:+:${MANPATH}}
 
   # which
   [ -d "${BREW_PREFIX}/opt/gnu-which/libexec/gnubin" ] && PATH=${BREW_PREFIX}/opt/gnu-which/libexec/gnubin${PATH:+:${PATH}}
+  [ -d "${BREW_PREFIX}/opt/gnu-which/libexec/gnuman" ] && MANPATH=${BREW_PREFIX}/opt/gnu-which/libexec/gnuman${MANPATH:+:${MANPATH}}
 fi
 
 # Rust Cargo
