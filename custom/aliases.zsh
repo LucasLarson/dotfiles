@@ -446,6 +446,12 @@ cleanup() {
   )
 }
 
+# number of files in current directory
+# https://web.archive.org/web/200id_/tldp.org/HOWTO/Bash-Prompt-HOWTO/x700.html
+count_files() {
+  printf '%i\n' "$(command ls -A1 | wc -l)"
+}
+
 # define
 define() {
   for query in "${@:-$0}"; do
