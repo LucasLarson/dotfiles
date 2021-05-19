@@ -140,14 +140,19 @@ plugins=(
 # User configuration
 
 # MANPATH
+# Linux
+[ -d /usr/local/man ] &&
+  # skip adding initial and terminal colons `:`
+  # https://unix.stackexchange.com/a/162893
+  MANPATH=/usr/local/man${MANPATH:+:${MANPATH}}
+# macOS
+[ -d /usr/share/man ] &&
+  MANPATH=/usr/share/man${MANPATH:+:${MANPATH}}
 # if `man -w` does not fail, then add it to `$MANPATH`
 man -w >/dev/null 2>&1 &&
   # skip adding initial and terminal colons `:`
   # https://unix.stackexchange.com/a/162893
   MANPATH=${MANPATH:+${MANPATH}:}$(man -w)
-# if `MANPATH` is still empty and `/usr/local/man` exists,
-# then set `MANPATH` to `/usr/local/man`
-[ -z "${MANPATH}" ] && [ -d /usr/local/man ] && MANPATH=/usr/local/man${MANPATH:+:${MANPATH}}
 
 # You may need to manually set your language environment
 export LANG=${LANG:=en_US.UTF-8}
