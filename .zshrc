@@ -267,8 +267,9 @@ NPM_PACKAGES=${HOME}/.npm-packages
 [ -d "${NPM_PACKAGES}/bin" ] && PATH=${PATH:+${PATH}:}${NPM_PACKAGES}/bin
 [ -d "${NPM_PACKAGES}/share/man" ] && MANPATH=${MANPATH:+${MANPATH}:}${NPM_PACKAGES}/share/man
 
-# Template repository
+# Template repositories
 [ -d "${TEMPLATE:=${DOTFILES:=${HOME}/Dropbox/dotfiles}/../Template}" ] && export TEMPLATE
+[ -d "${DEFAULT:=${DOTFILES:=${HOME}/Dropbox/dotfiles}/../Default}" ] && export DEFAULT
 
 # completion dots
 # https://git.io/completion-dots-in-.zshrc
