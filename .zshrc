@@ -324,8 +324,12 @@ pyenv() {
 
 # C, C++ headers
 # https://apple.stackexchange.com/a/372600
-if command -v xcrun >/dev/null 2>&1; then
-  CPATH=$(xcrun --show-sdk-path)/usr/include
+if command -v xcrun >/dev/null 2>&1 && [ -n "$(xcrun --show-sdk-path)" ]; then
+  # `CPATH` is delimited like `PATH` as are
+  # `C_INCLUDE_PATH`, `OBJC_INCLUDE_PATH`,
+  # `CPLUS_INCLUDE_PATH`, and `OBJCPLUS_INCLUDE_PATH`
+  # https://github.com/llvm/llvm-project/commit/16af476
+  CPATH=$(xcrun --show-sdk-path)/usr/include${CPATH:+:${CPATH}}
   export CPATH
 fi
 
