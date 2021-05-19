@@ -233,6 +233,12 @@ if command -v brew >/dev/null 2>&1; then
   # openssl
   [ -d "${BREW_PREFIX}/opt/openssl/bin" ] && PATH=${BREW_PREFIX}/opt/openssl/bin${PATH:+:${PATH}}
   [ -d "${BREW_PREFIX}/opt/openssl/share/man" ] && MANPATH=${BREW_PREFIX}/opt/openssl/share/man${MANPATH:+:${MANPATH}}
+  # LDFLAGS, CPPFLAGS are space-delimited
+  # https://thelinuxcluster.com/2018/11/13/using-multiple-ldflags-and-cppflags
+  # skip adding initial and terminal spaces
+  # https://unix.stackexchange.com/a/162893
+  export LDFLAGS=${LDFLAGS:+${LDFLAGS} }-L${BREW_PREFIX}/opt/openssl/lib
+  export CPPFLAGS=${CPPFLAGS:+${CPPFLAGS} }-I${BREW_PREFIX}/opt/openssl/include
 
   # PKG_CONFIG_PATH is colon-delimited
   # https://superuser.com/a/1277306
