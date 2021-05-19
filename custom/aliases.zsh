@@ -455,7 +455,6 @@ count_files() {
 # define
 define() {
   for query in "${@:-$0}"; do
-    printf '\n'
 
     # hash
     command -v hash >/dev/null 2>&1 &&
