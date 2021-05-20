@@ -29,7 +29,7 @@ env:
   # If APPLY_FIXES is also used, then this specifies whether fixes are
   # directly committed (commit) or
   # posted in a Pull Request (pull_request)
-  APPLY_FIXES_MODE: pull_request
+  APPLY_FIXES_MODE: commit
 
 jobs:
   # Cancel duplicate jobs:
