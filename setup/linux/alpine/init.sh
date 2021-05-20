@@ -13,6 +13,13 @@ sleep 1
 printf '  a Lucas Larson production\n\n'
 sleep 1
 
+# unset `$PS4`
+# if this quaternary prompt string is already unset, then
+# set it to the POSIX default: `+ `
+# https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
+PS4_temporary=${PS4:-+ }
+unset PS4
+
 # pacman
 # https://askubuntu.com/a/459425
 # https://stackoverflow.com/a/26314887
@@ -210,5 +217,10 @@ printf '\ninitialization complete\n'
 sleep 0.5
 printf '\nrestarting...\n'
 sleep 1
+
+# restore `$PS4`
+PS4=${PS4_temporary}
+unset PS4_temporary
+
 printf '\ndone!\n'
 exit
