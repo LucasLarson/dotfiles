@@ -120,6 +120,10 @@ command -v pip >/dev/null 2>&1 || (
   curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
   python3 get-pip.py
 )
+command -v pip >/dev/null 2>&1 && (
+  printf '\nupdating Python package manager...\n'
+  python3 -m pip install --upgrade pip
+)
 
 # mackup
 command -v mackup >/dev/null 2>&1 || (
@@ -154,10 +158,6 @@ printf '\nrepairing and resolving dependencies...\n'
 apk fix --verbose --verbose --depends --progress
 printf '\nverifying installations...\n'
 apk verify --verbose --verbose --progress && printf 'verified.\n'
-command -v pip >/dev/null 2>&1 && (
-  printf '\nupdating Python\xe2\x80\x99s package manager...\n'
-  python3 -m pip install --upgrade pip
-)
 
 # cleanup
 printf '\n\ncleaning up temporary installation files and performing housekeeping...\n'
