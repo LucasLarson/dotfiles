@@ -177,7 +177,7 @@ find -- . -type f \( \
   -name 'desktop.ini' -or \
   -name 'thumbs.db' \
   \) \
-  -delete
+  -delete 2>/dev/null
 
 # delete empty, writable, zero-length files
 # except those within `.git/` directories
@@ -202,7 +202,7 @@ find -- . -type f -writable -size 0 \( \
   -not -name '__init__.py' -and \
   -not -name 'favicon.*' \
   \) \
-  -delete
+  -delete 2>/dev/null
 
 # delete empty directories recursively
 # but skip Git-specific and `/.well-known/` directories
@@ -211,7 +211,7 @@ find -- . -type d -empty \( \
   -not -path '*.git/*' -and \
   -not -name '.well-known' \
   \) \
-  -delete
+  -delete 2>/dev/null
 
 # done
 printf '\ninitialization complete\n'
