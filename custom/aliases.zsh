@@ -404,7 +404,7 @@ cleanup() {
     # https://stackoverflow.com/a/8811800
     if [ "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP}" ]; then
       while [ -n "$(find -- "${HOME}" -maxdepth 1 -type f -not -name "$(printf "*\n*")" -not -name '.zcompdump' -name '.zcompdump*' -print)" ]; do
-        find -- "${HOME}" -maxdepth 1 -type f -not -name "$(printf "*\n*")" -not -name '.zcompdump' -name '.zcompdump*' -print -exec command rm -- {} \;
+        find -- "${HOME}" -maxdepth 1 -type f -not -name "$(printf "*\n*")" -not -name '.zcompdump' -name '.zcompdump*' -print -exec rm -- {} \;
       done
     fi
 
