@@ -176,6 +176,14 @@ alias edit=editor
 # https://unix.stackexchange.com/q/4859#comment5812_4861
 export VISUAL=${EDITOR}
 
+# ignore case in `man` page searches
+# https://unix.stackexchange.com/a/101299
+# https://github.com/awdeorio/dotfiles/commit/65ff822
+PAGER='less --IGNORE-CASE'
+export PAGER
+export MANPAGER=${PAGER}
+alias less='${PAGER}'
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
