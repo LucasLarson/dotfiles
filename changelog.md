@@ -20,6 +20,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/themes/powerlevel10k from `9c03410` to `a3494a5` [\#366](https://github.com/LucasLarson/dotfiles/pull/366) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `f924646` to `9c03410` [\#365](https://github.com/LucasLarson/dotfiles/pull/365) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/fast-syntax-highlighting from `a62d721` to `817916d` [\#364](https://github.com/LucasLarson/dotfiles/pull/364) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/gunstage from `a420181` to `b44728b` [\#363](https://github.com/LucasLarson/dotfiles/pull/363) ([dependabot[bot]](https://github.com/apps/dependabot))
