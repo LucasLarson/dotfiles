@@ -351,7 +351,7 @@ clang_format() {
   )
 }
 
-# http://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
+# https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp='cp -r'
 cy() {
   (
@@ -778,7 +778,7 @@ alias all='which -a'
 
 # https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
-# http://zsh.sf.net/Doc/Release/Shell-Grammar.html#index-exec
+# https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#index-exec
 alias ','='. -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- ${SHELL##*[-/]}'
 alias aliases='${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES}/custom}"/aliases."${SHELL##*[-/]}"; . -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- ${SHELL##*[-/]}'
 alias ohmyzsh='cd -- "${ZSH:=${HOME}/.oh-my-${SHELL##*[-/]}}" && git status'
