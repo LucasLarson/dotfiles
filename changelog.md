@@ -20,6 +20,8 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/gunstage from `b44728b` to `199b9bc` [\#374](https://github.com/LucasLarson/dotfiles/pull/374) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/plugins/git-default-branch from `c465f20` to `0c7a390` [\#373](https://github.com/LucasLarson/dotfiles/pull/373) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/samefile from `66e8257` to `8afff8a` [\#372](https://github.com/LucasLarson/dotfiles/pull/372) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `c597206` to `35acee1` [\#371](https://github.com/LucasLarson/dotfiles/pull/371) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/git-default-branch from `9a249f3` to `c465f20` [\#369](https://github.com/LucasLarson/dotfiles/pull/369) ([dependabot[bot]](https://github.com/apps/dependabot))
