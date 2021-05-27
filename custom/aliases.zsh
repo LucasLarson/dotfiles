@@ -16,7 +16,7 @@ mu() {
   cd "${DOTFILES:=${HOME}/Dropbox/dotfiles}" &&
     command -v cleanup >/dev/null 2>&1 && cleanup "${@}" &&
     mackup backup --force --root &&
-    git fetch --all &&
+    git fetch --all --prune &&
     git submodule update --init --recursive &&
     git status
 }
@@ -24,7 +24,7 @@ mux() {
   cd "${DOTFILES:=${HOME}/Dropbox/dotfiles}" &&
     command -v cleanup >/dev/null 2>&1 && cleanup "${@}" &&
     mackup backup --force --root --verbose &&
-    git fetch --all --verbose &&
+    git fetch --all --prune --verbose &&
     git submodule update --init --recursive --remote &&
     git submodule sync --recursive &&
     git status
@@ -67,7 +67,7 @@ alias git-delete-merged-branches='git_delete_merged_branches'
 alias gdm='git diff "$(git-default-branch)" --'
 alias gsd='gds'
 
-alias gfgs='git fetch --all --verbose && git status'
+alias gfgs='git fetch --all --prune --verbose && git status'
 git_garbage_collection() {
   command -v cleanup >/dev/null 2>&1 && cleanup "${@}"
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -153,7 +153,7 @@ alias gmv='git mv --verbose'
 
 # git pull (Oh My Zsh `gupav`)
 # https://github.com/ohmyzsh/ohmyzsh/commit/3d2542f
-alias gpl='git pull --all --rebase --autostash --verbose && git status'
+alias gpl='git pull --all --rebase --autostash --prune --verbose && git status'
 
 # git push (Oh My Zsh `gpsup`)
 # https://github.com/ohmyzsh/ohmyzsh/commit/ae21102
@@ -216,7 +216,7 @@ git_update() {
     # run only from within a git repository
     # https://stackoverflow.com/a/53809163
     if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-      git fetch --all --verbose
+      git fetch --all --prune --verbose
 
       # `git submodule update` with `--remote` appears to slow Git to a crawl
       # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
