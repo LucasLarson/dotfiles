@@ -384,20 +384,11 @@ do not disable it, because that would allow you to install any software, even if
 ### `add`
 
 [via](https://stackoverflow.com/a/15011313)
-<table>
-<tr class="odd">
-<td><p>Modified files only</p></td>
-<td><code>git add -u</code></td>
-</tr>
-<tr class="even">
-<td><p>Everything, without deleted Files</p></td>
-<td><code>git add .</code></td>
-</tr>
-<tr class="odd">
-<td><p><strong>Everything</strong></p></td>
-<td><code>git add -A</code></td>
-</tr>
-</table>
+| content to add | git command |
+|------------------------|----|
+| modified files only | `git add --updated || git add -u` |
+| everything except deleted files | `git add .` |
+| everything | `git add --all || git add -A` |
 
 ### `diff`
 
