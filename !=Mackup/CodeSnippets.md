@@ -12,7 +12,7 @@
       - [Atom packages](#atom-packages)
       - [Homebrew](#homebrew)
         - [Cask](#cask)
-      - [`$manpath`](#manpath)
+      - [MANPATH](#manpath)
         - [man pages](#man-pages)
       - [pip packages](#pip-packages)
 - [apk](#apk)
@@ -25,7 +25,7 @@
 - [search](#search)
   - [`grep`](#grep)
   - [locate all](#locate-all)
-- [`$path`](#path)
+- [PATH](#path)
   - [entries](#entries)
     - [macOS](#macos)
     - [Linux](#linux)
@@ -73,9 +73,8 @@
 - [variables](#variables)
 - [wget](#wget)
 - [WiFi](#wifi)
-  - [password](#password)
-    - [Windows](#windows)
-    - [macOS](#macos-1)
+  - [Windows password](#windows-password)
+  - [macOS password](#macos-password)
 - [Xcode](#xcode)
   - [signing](#signing)
 - [housekeeping](#housekeeping)
@@ -197,7 +196,7 @@ listBrew="$DOTFILES/!=Mackup/brew list --formula --verbose" && touch "$listBrew"
 listBrewCask="$DOTFILES"/!=Mackup/brew\ cask\ list && touch "$listBrewCask" && printf 'brew cask list\n—————————————\n' > "$listBrewCask" && brew cask list >> "$listBrewCask" && unset listBrewCask && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrewCask"
 ```
 
-##### `$manpath`
+##### MANPATH
 
 ```zsh
 saveManpath=1 && mkdir --parents "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && \
@@ -264,7 +263,7 @@ search for the word “example” inside the current directory which is “.”
 for example, locate all JPEG files<br/>
 `locate -i *.jpg #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#search-via-locate); see also [§ grep](#grep)
 
-## `$path`
+## PATH
 
 ### entries
 
@@ -509,13 +508,11 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## WiFi
 
-### password
-
-#### Windows
+### Windows password
 
 `netsh wlan show profile WiFi-name key=clear #` [via](https://reddit.com/r/LifeProTips/comments/d5vknk/lpt_if_you_ever_forget_your_wifi_password_or_you/)
 
-#### macOS
+### macOS password
 
 `security find-generic-password -wa ExampleNetwork #` [via](https://www.labnol.org/software/find-wi-fi-network-password/28949/)
 
