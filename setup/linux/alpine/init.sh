@@ -19,6 +19,7 @@ sleep 1
 # https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
 PS4_temporary=${PS4:-+ }
 unset PS4
+set -x
 
 # pacman
 # https://askubuntu.com/a/459425
@@ -38,7 +39,7 @@ printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n' >/etc/apk/re
 printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >>/etc/apk/repositories
 
 # update
-printf '\nupdating Alpine Linux repositories...\n'
+updating Alpine Linux repositories... >/dev/null 2>&1
 apk update --verbose --progress
 apk upgrade --verbose --progress
 
@@ -48,15 +49,15 @@ apk upgrade --verbose --progress
   [ -d /usr/share/man/man2 ] &&
   [ -d /usr/share/man/man4 ] &&
   [ -d /usr/share/man/man6 ]; } || (
-  printf '\ninstalling man pages...\n'
+  installing man pages... >/dev/null 2>&1
   apk add man-pages
 )
 command -v mandoc >/dev/null 2>&1 || (
-  printf '\ninstalling mandoc for man pages...\n'
+  installing mandoc for man pages... >/dev/null 2>&1
   apk add mandoc mandoc-doc
 )
 command -v less >/dev/null 2>&1 || (
-  printf '\ninstalling less to read man pages...\n'
+  installing less to read man pages... >/dev/null 2>&1
   apk add less less-doc
 )
 
@@ -66,7 +67,7 @@ command -v less >/dev/null 2>&1 || (
 apk add coreutils coreutils-doc
 { [ -x /usr/bin/coreutils ] &&
   [ "$(command find -version | head -n1 | awk '{print $3}' | tr -d '()')" = findutils ]; } || (
-  printf '\ninstalling Linux utilities...\n'
+  installing Linux utilities... >/dev/null 2>&1
 )
 apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
 {
@@ -79,7 +80,7 @@ apk update
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
 [ -d /etc/ssh ] || (
-  printf '\ninstalling OpenSSH...\n'
+  installing OpenSSH... >/dev/null 2>&1
   apk add openssh openssh-doc
 )
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
@@ -89,7 +90,7 @@ apk update
 
 # git
 command -v git >/dev/null 2>&1 || (
-  printf '\ninstalling Git...\n'
+  installing Git... >/dev/null 2>&1
   apk add git git-doc
 )
 
@@ -100,41 +101,40 @@ command -v git >/dev/null 2>&1 || (
 )
 
 # time zone
-printf '\nupdating time zone information...\n'
+updating time zone information... >/dev/null 2>&1
 apk add --no-cache tzdata tzdata-doc
 [ -r /usr/share/zoneinfo/America/New_York ] &&
   cp /usr/share/zoneinfo/America/New_York /etc/localtime
 printf 'America/New_York\n' >/etc/timezone
 
 # python
-printf '\nchecking Python installation...\n'
+checking Python installation... >/dev/null 2>&1
 command -v python >/dev/null 2>&1 || (
-  printf '\ninstalling Python 2 and Python 3...\n'
+  installing Python 2 and Python 3... >/dev/null 2>&1
   apk add python2 python2-doc python3 python3-doc
 )
 
 # pip
 command -v pip >/dev/null 2>&1 || (
-  printf '\ninstalling pip...\n' && sleep 3
-  printf 'this may take a while...\n'
+  installing pip... >/dev/null 2>&1 && sleep 3
   curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
   this may take a while... >/dev/null 2>&1
   python3 get-pip.py
 )
 command -v pip >/dev/null 2>&1 && (
-  printf '\nupdating Python package manager...\n'
+  updating Python package manager... >/dev/null 2>&1
   python3 -m pip install --upgrade pip
 )
 
 # mackup
 command -v mackup >/dev/null 2>&1 || (
-  printf '\ninstalling mackup...\n'
+  installing mackup... >/dev/null 2>&1
   pip install --upgrade mackup
 )
 
 # zsh
 command -v zsh >/dev/null 2>&1 || (
-  printf '\ninstalling Zsh...\n'
+  installing Zsh... >/dev/null 2>&1
   apk add zsh zsh-doc
 )
 
@@ -147,22 +147,24 @@ command -v chsh >/dev/null 2>&1 || (
 # Oh My Zsh
 command -v omz >/dev/null 2>&1 ||
   [ -d "${HOME}/.oh-my-zsh" ] || (
-  printf 'installing Oh My Zsh...\n'
+  installing Oh My Zsh... >/dev/null 2>&1
   sh -c "$(wget https://web.archive.org/web/20201211072817id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
 )
 
 # update, repair everything again before close
-printf '\nupdating...\n'
+updating... >/dev/null 2>&1
 apk update --verbose --progress
-printf '\nupgrading...\n'
+upgrading... >/dev/null 2>&1
 apk upgrade --verbose --progress
-printf '\nrepairing and resolving dependencies...\n'
+repairing and resolving dependencies... >/dev/null 2>&1
 apk fix --verbose --verbose --depends --progress
-printf '\nverifying installations...\n'
-apk verify --verbose --verbose --progress && printf 'verified.\n'
+
+verifying installations... >/dev/null 2>&1
+apk verify --verbose --verbose --progress &&
+  verified. >/dev/null 2>&1
 
 # cleanup
-printf '\n\ncleaning up temporary installation files and performing housekeeping...\n'
+cleaning up temporary installation files and performing housekeeping... >/dev/null 2>&1
 [ -w apk.static ] && rm apk.static
 [ -w get-pip.py ] && rm get-pip.py
 [ -w setup ] && rm setup
@@ -216,9 +218,7 @@ find -- . -type d -empty \( \
   -delete 2>/dev/null
 
 # done
-printf '\ninitialization complete\n'
-sleep 0.5
-printf '\nrestarting...\n'
+"${0##*[-/]}" complete >/dev/null 2>&1
 sleep 1
 
 # restore `$PS4`
