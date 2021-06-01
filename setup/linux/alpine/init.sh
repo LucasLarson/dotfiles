@@ -157,9 +157,11 @@ command -v omz >/dev/null 2>&1 ||
 
 # update, repair everything again before close
 updating... >/dev/null 2>&1
-apk update --verbose --progress
+apk update --verbose --verbose --progress
+
 upgrading... >/dev/null 2>&1
-apk upgrade --verbose --progress
+apk upgrade --verbose --verbose --progress
+
 repairing and resolving dependencies... >/dev/null 2>&1
 apk fix --verbose --verbose --depends --progress
 
