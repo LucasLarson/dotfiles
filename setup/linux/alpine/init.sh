@@ -225,5 +225,4 @@ sleep 1
 PS4=${PS4_temporary}
 unset PS4_temporary
 
-printf '\ndone!\n'
 exit
