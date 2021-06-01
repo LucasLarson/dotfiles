@@ -226,6 +226,8 @@ find -- . -type d -empty \( \
 # done
 "${0##*[-/]}" complete >/dev/null 2>&1
 sleep 1
+exiting to apply updates... >/dev/null 2>&1
+{ set +x; } 2>/dev/null
 
 # restore `$PS4`
 PS4=${PS4_temporary}
