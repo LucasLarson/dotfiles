@@ -152,7 +152,7 @@ command -v chsh >/dev/null 2>&1 || (
 command -v omz >/dev/null 2>&1 ||
   [ -d "${ZSH:=${HOME}/.oh-my-zsh}" ] || (
   installing Oh My Zsh... >/dev/null 2>&1
-  sh -c "$(wget https://web.archive.org/web/20201211072817id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
+  sh -c "$(wget https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
 )
 
 # update, repair everything again before close
