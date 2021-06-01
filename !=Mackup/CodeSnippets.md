@@ -446,6 +446,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 ## parameter expansion
 
+[via](https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02)
 |                        | *parameter* Set and Not Null | *parameter* Set But Null | *parameter* Unset |
 |------------------------|------------------------------|--------------------------|-------------------|
 | ${*parameter*:-*word*} | substitute *parameter*       | substitute *word*        | substitute *word* |
