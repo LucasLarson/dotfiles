@@ -571,7 +571,7 @@ unset trashDeveloper && printf '\n\n\xf0\x9f%s\x9a\xae data successfully trashed
 make a list of empty folders inside and beneath current directory **`.`** ([via](https://unix.stackexchange.com/a/46326))<br/>
 `find -- . -type d -empty -print`<br/>
 if satisfied with the results being lost and gone forever, execute:<br/>
-<span title="You were warned: don’t do this!">`find -- . -type d -empty -delete`</span>
+`find -- . -type d -empty -delete`
 
 ### compare two folders
 
