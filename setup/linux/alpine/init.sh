@@ -120,7 +120,7 @@ command -v python >/dev/null 2>&1 || (
 # pip
 checking pip installation... >/dev/null 2>&1
 command -v pip >/dev/null 2>&1 || (
-  installing pip... >/dev/null 2>&1 && sleep 3
+  installing pip... >/dev/null 2>&1
   curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
   this may take a while... >/dev/null 2>&1
   python3 get-pip.py
