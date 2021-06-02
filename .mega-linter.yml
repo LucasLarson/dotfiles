@@ -3,7 +3,7 @@
 # https://nvuillam.github.io/mega-linter/configuration
 
 # all, none, or list of linter keys
-APPLY_FIXES: none
+APPLY_FIXES: all
 
 # Usually master or main
 DEFAULT_BRANCH: main
