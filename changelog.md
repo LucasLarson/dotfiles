@@ -16,10 +16,12 @@
 
 **Closed issues:**
 
+- consider 𝑥 \>/dev/null 2\>&1 instead of printf 𝑥 [\#315](https://github.com/LucasLarson/dotfiles/issues/315)
 - include crufty `.zcompdump` files in `cleanup` [\#199](https://github.com/LucasLarson/dotfiles/issues/199)
 
 **Merged pull requests:**
 
+- Bump custom/themes/powerlevel10k from `35acee1` to `f217e4a` [\#375](https://github.com/LucasLarson/dotfiles/pull/375) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/gunstage from `b44728b` to `199b9bc` [\#374](https://github.com/LucasLarson/dotfiles/pull/374) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/git-default-branch from `c465f20` to `0c7a390` [\#373](https://github.com/LucasLarson/dotfiles/pull/373) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/samefile from `66e8257` to `8afff8a` [\#372](https://github.com/LucasLarson/dotfiles/pull/372) ([dependabot[bot]](https://github.com/apps/dependabot))
