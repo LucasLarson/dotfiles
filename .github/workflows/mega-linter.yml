@@ -39,12 +39,7 @@ jobs:
     steps:
       - uses: fkirc/skip-duplicate-actions@v3.4.0
         with:
-          github_token: >
-            ${{
-              secrets.PAT ||
-              secrets.TOKEN ||
-              secrets.GITHUB_TOKEN
-            }}
+          github_token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
   # Run Mega-Linter
   build:
@@ -55,12 +50,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
         with:
-          token: >
-            ${{
-              secrets.PAT ||
-              secrets.TOKEN ||
-              secrets.GITHUB_TOKEN
-            }}
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
           # Linter requires full repository history
           fetch-depth: 0
@@ -82,18 +72,7 @@ jobs:
               github.event_name == 'push' &&
               github.ref == 'refs/heads/main'
             }}
-          GITHUB_TOKEN: >
-            ${{
-              secrets.PAT ||
-              secrets.TOKEN ||
-              secrets.GITHUB_TOKEN
-            }}
-          PAT: >
-            ${{
-              secrets.PAT ||
-              secrets.TOKEN ||
-              secrets.GITHUB_TOKEN
-            }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
           # Add custom `env` variables here to
           # override values in root `/.mega-linter.yml`
@@ -124,12 +103,7 @@ jobs:
           !contains(github.event.head_commit.message, 'skip fix')
         uses: peter-evans/create-pull-request@v3
         with:
-          token: >
-            ${{
-              secrets.PAT ||
-              secrets.TOKEN ||
-              secrets.GITHUB_TOKEN
-            }}
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
           commit-message: "[Mega-Linter] Apply linters automatic fixes"
           title: "[Mega-Linter] Apply linters automatic fixes"
           labels: bot
