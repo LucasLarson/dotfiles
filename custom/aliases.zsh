@@ -164,6 +164,8 @@ alias gpl='git pull --all --rebase --autostash --prune --verbose && git status'
 # https://github.com/ohmyzsh/ohmyzsh/commit/ae21102
 alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && git status'
 
+alias gref='git reflog'
+
 alias grmr='git rm -r'
 alias grm='grmr'
 
