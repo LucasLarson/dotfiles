@@ -40,10 +40,10 @@ alias gc='git commit --verbose --gpg-sign; git status'
 alias gca='git commit --verbose --gpg-sign --amend --allow-empty; git status'
 alias gcl='git clone --verbose --progress --recursive --recurse-submodules'
 alias gcm='git commit --verbose --gpg-sign --message'
-alias gco='git checkout --progress --conflict=diff3'
+alias gco='git checkout --progress'
 
 # `git checkout` the default branch
-alias gcom='git checkout --progress --conflict=diff3 "$(git-default-branch)"'
+alias gcom='git checkout --progress "$(git-default-branch)"'
 
 # git cherry-pick
 alias gcp='git cherry-pick'
