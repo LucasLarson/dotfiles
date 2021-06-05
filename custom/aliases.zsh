@@ -31,8 +31,13 @@ mux() {
 }
 
 # Git
+git_add() {
+  git add --verbose -- "${@:-.}"
+  git status
+}
+alias ga='git_add'
 git_add_patch() {
-  git add --patch --verbose -- "$@"
+  git add --patch --verbose -- "${@:-.}"
   git status
 }
 alias gap='git_add_patch'
