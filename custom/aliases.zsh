@@ -193,7 +193,7 @@ git_submodule_rm() {
       printf ''
       return 2
     )
-    command cd -- "$(git rev-parse --git-dir)" || (
+    cd -- "$(git rev-parse --git-dir)" || (
       printf ''
       return 3
     )
