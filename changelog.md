@@ -21,6 +21,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/themes/powerlevel10k from `717573d` to `67f494c` [\#381](https://github.com/LucasLarson/dotfiles/pull/381) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `f5d6184` to `717573d` [\#380](https://github.com/LucasLarson/dotfiles/pull/380) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `4ba3c01` to `f5d6184` [\#379](https://github.com/LucasLarson/dotfiles/pull/379) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `b9c62ca` to `4ba3c01` [\#378](https://github.com/LucasLarson/dotfiles/pull/378) ([dependabot[bot]](https://github.com/apps/dependabot))
