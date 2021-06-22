@@ -14,7 +14,7 @@ alias apm='apm-nightly'
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 mu() {
   cd "${DOTFILES:=${HOME}/Dropbox/dotfiles}" &&
-    command -v cleanup >/dev/null 2>&1 && cleanup "${@}" &&
+    command -v cleanup >/dev/null 2>&1 && cleanup "$@" &&
     mackup backup --force --root &&
     git fetch --all --prune &&
     git submodule update --init --recursive &&
@@ -22,7 +22,7 @@ mu() {
 }
 mux() {
   cd "${DOTFILES:=${HOME}/Dropbox/dotfiles}" &&
-    command -v cleanup >/dev/null 2>&1 && cleanup "${@}" &&
+    command -v cleanup >/dev/null 2>&1 && cleanup "$@" &&
     mackup backup --force --root --verbose &&
     git fetch --all --prune --verbose &&
     git submodule update --init --recursive --remote &&
@@ -74,7 +74,7 @@ alias gsd='gds'
 
 alias gfgs='git fetch --all --prune --verbose && git status'
 git_garbage_collection() {
-  command -v cleanup >/dev/null 2>&1 && cleanup "${@}"
+  command -v cleanup >/dev/null 2>&1 && cleanup "$@"
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     # see `git gc` and other wrapping commands behind-the-scene mechanics
     # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
@@ -120,8 +120,8 @@ git_commit_initial_commit() {
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
   git init &&
-    if [ ${#} -eq 1 ]; then
-      GIT_TIME="$(date -d @$(($(date --date="${1}" +%s) + 43200)) '+%c %z')" GIT_AUTHOR_DATE="${GIT_TIME}" GIT_COMMITTER_DATE="${GIT_AUTHOR_DATE}" git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
+    if [ $# -eq 1 ]; then
+      GIT_TIME="$(date -d @$(($(date --date="$1" +%s) + 43200)) '+%c %z')" GIT_AUTHOR_DATE="${GIT_TIME}" GIT_COMMITTER_DATE="${GIT_AUTHOR_DATE}" git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
     else
       git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
     fi
@@ -218,7 +218,7 @@ alias gti='git'
 
 git_update() {
   (
-    command -v cleanup >/dev/null 2>&1 && cleanup "${@}"
+    command -v cleanup >/dev/null 2>&1 && cleanup "$@"
 
     # run only from within a git repository
     # https://stackoverflow.com/a/53809163
@@ -390,7 +390,7 @@ cleanup() {
   (
     # if `cleanup -v` or `cleanup --verbose`,
     # then use `-print` during `-delete`
-    if [ "${1}" = -v ] || [ "${1}" = --verbose ]; then
+    if [ "$1" = -v ] || [ "$1" = --verbose ]; then
       set -x && shift
     fi
 
@@ -588,7 +588,7 @@ path_check() {
       shift
       ;;
     *)
-      printf 'usage: %s [-v|--verbose]\n' "$(basename "${0}")"
+      printf 'usage: %s [-v|--verbose]\n' "$(basename "$0")"
       return 1
       ;;
     esac
@@ -619,7 +619,7 @@ command -v python3 >/dev/null 2>&1 &&
 # $?
 question_mark() {
   # https://github.com/mcornella/dotfiles/commit/ff4e527
-  printf '%i\n' "${?}"
+  printf '%i\n' "$?"
 }
 alias '?'='question_mark'
 
