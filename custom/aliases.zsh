@@ -248,6 +248,15 @@ gvc() {
   git verify-commit "${1:-HEAD}"
 }
 
+atom_packages() {
+  # https://web.archive.org/web/0id_/discuss.atom.io/t/15674/2
+  {
+    command apm-nightly list --installed --bare ||
+      command apm-beta list --installed --bare ||
+      command apm list --installed --bare
+  } >"${1:-${DOTFILES:-${HOME}/Dropbox/dotfiles}/!=Mackup/atom}" 2>/dev/null
+}
+
 cd_pwd_P() {
   cd_from=$(pwd)
   cd_to=$(pwd -P)
