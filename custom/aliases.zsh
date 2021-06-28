@@ -5,10 +5,12 @@
 
 # Atom
 # https://github.com/jeefberkey/dotfiles/blob/2ded1c3/.zshrc#L48-L61
-alias atom-beta='atom-nightly'
-alias apm-beta='apm-nightly'
-alias atom='atom-nightly'
-alias apm='apm-nightly'
+command -v atom-nightly >/dev/null 2>&1 &&
+  alias atom='atom-nightly' &&
+  alias atom-beta='atom-nightly'
+command -v apm-nightly >/dev/null 2>&1 &&
+  alias apm='apm-nightly' &&
+  alias apm-beta='apm-nightly'
 
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
