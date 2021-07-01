@@ -61,14 +61,15 @@ alias gcpn='git cherry-pick --no-commit'
 git_delete_merged_branches() {
   # delete all local Git branches that have been merged
   # https://gist.github.com/8775224
-
   set -eu
-  if git branch --merged | grep -v '\*'; then
-    git branch --merged | grep -v '\*' |
-      xargs -n 1 git branch --delete --verbose
+  if command git branch --merged | command grep -v '\*'; then
+    command git branch --merged | command grep -v '\*' |
+      command xargs -n 1 command git branch --delete --verbose
   fi
   { set +eu; } 2>/dev/null
 }
+alias gdmb='git_delete_merged_branches'
+alias gDmb='git_delete_merged_branches'
 alias git-delete-merged-branches='git_delete_merged_branches'
 
 alias gdm='git diff "$(git-default-branch)" --'
