@@ -157,7 +157,8 @@ command -v chsh >/dev/null 2>&1 || (
 
 # Oh My Zsh
 command -v omz >/dev/null 2>&1 ||
-  [ -d "${ZSH:=${HOME}/.oh-my-zsh}" ] || (
+  [ -d "${ZSH:=${HOME}/.oh-my-zsh}" ] ||
+  [ "$(curl --fail --silent --location https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh | sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' ] || (
   installing Oh My Zsh... >/dev/null 2>&1
   sh -c "$(wget https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
 )
