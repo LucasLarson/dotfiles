@@ -9,7 +9,6 @@
     - [manual](#manual)
       - [lists](#lists)
         - [applications](#applications)
-      - [Atom packages](#atom-packages)
       - [Homebrew](#homebrew)
         - [Cask](#cask)
       - [MANPATH](#manpath)
@@ -176,13 +175,6 @@ git fetch --all && git submodule update --init --recursive --remote && git diff 
 
 On Alpine Linux, generate a list of installed packages with:<br/>
 `apk -vv info|sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
-
-##### Atom packages
-
-```zsh
-apm list && mkdir --parents "$DOTFILES/!=Mackup" && printf 'Atom extensions ' > "$DOTFILES/!=Mackup/atom" && date '+%Y-%m-%d' >> "$DOTFILES/!=Mackup/atom" && printf '——————————————————————————\n' >> "$DOTFILES/!=Mackup/atom" && apm list >> "$DOTFILES/!=Mackup/atom" && cd "$DOTFILES" && mackup backup --force --root && \
-git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$DOTFILES/!=Mackup/atom" && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
-```
 
 ##### Homebrew
 
@@ -459,6 +451,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 | ${*parameter*+*word*}  | substitute *word*            | substitute *word*        | substitute null   |
 
 ## redirection
+
 [via](https://askubuntu.com/a/350216)
 
 | syntax        | meaning                                         | POSIX compliance |
