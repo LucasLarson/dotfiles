@@ -16,10 +16,20 @@
 
 **Closed issues:**
 
+- consider 𝑥 \>/dev/null 2\>&1 instead of printf 𝑥 [\#315](https://github.com/LucasLarson/dotfiles/issues/315)
 - include crufty `.zcompdump` files in `cleanup` [\#199](https://github.com/LucasLarson/dotfiles/issues/199)
 
 **Merged pull requests:**
 
+- bump custom/plugins/zsh-completions from `9dfd5c6` to `a736cfe` [\#384](https://github.com/LucasLarson/dotfiles/pull/384) ([dependabot[bot]](https://github.com/apps/dependabot))
+- bump custom/themes/powerlevel10k from `c003c25` to `0c862a1` [\#383](https://github.com/LucasLarson/dotfiles/pull/383) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `67f494c` to `c003c25` [\#382](https://github.com/LucasLarson/dotfiles/pull/382) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `717573d` to `67f494c` [\#381](https://github.com/LucasLarson/dotfiles/pull/381) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `f5d6184` to `717573d` [\#380](https://github.com/LucasLarson/dotfiles/pull/380) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `4ba3c01` to `f5d6184` [\#379](https://github.com/LucasLarson/dotfiles/pull/379) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `b9c62ca` to `4ba3c01` [\#378](https://github.com/LucasLarson/dotfiles/pull/378) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `f217e4a` to `b9c62ca` [\#377](https://github.com/LucasLarson/dotfiles/pull/377) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump custom/themes/powerlevel10k from `35acee1` to `f217e4a` [\#375](https://github.com/LucasLarson/dotfiles/pull/375) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/gunstage from `b44728b` to `199b9bc` [\#374](https://github.com/LucasLarson/dotfiles/pull/374) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/git-default-branch from `c465f20` to `0c7a390` [\#373](https://github.com/LucasLarson/dotfiles/pull/373) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/samefile from `66e8257` to `8afff8a` [\#372](https://github.com/LucasLarson/dotfiles/pull/372) ([dependabot[bot]](https://github.com/apps/dependabot))
