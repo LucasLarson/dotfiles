@@ -11,6 +11,7 @@ on:
       - main
 
 jobs:
+
   json:
     name: Format JSON files and create a PR
     runs-on: ubuntu-latest
