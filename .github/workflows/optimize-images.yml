@@ -1,5 +1,6 @@
 ---
 name: Optimize images
+
 on:
   # This action only runs for pushes to PRs
   # https://github.com/calibreapp/image-actions/blob/6f4a17f/entrypoint.js#L28
@@ -20,6 +21,7 @@ jobs:
   images:
     name: Optimize images
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - uses: calibreapp/image-actions@1.1.0
