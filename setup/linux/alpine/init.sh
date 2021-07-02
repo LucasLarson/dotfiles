@@ -123,7 +123,10 @@ command -v python >/dev/null 2>&1 || (
 
 # pip
 checking pip installation... >/dev/null 2>&1
-command -v pip >/dev/null 2>&1 || (
+command -v pip >/dev/null 2>&1 || {
+  verifying integrity of pip bootstrap file... >/dev/null 2>&1
+  [ "$(curl --fail --silent --location https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py | sha256sum)" != 'e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de  -' ]
+} || (
   installing pip... >/dev/null 2>&1
   curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
   this may take a while... >/dev/null 2>&1
