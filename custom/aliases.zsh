@@ -5,16 +5,18 @@
 
 # Atom
 # https://github.com/jeefberkey/dotfiles/blob/2ded1c3/.zshrc#L48-L61
-alias atom-beta='atom-nightly'
-alias apm-beta='apm-nightly'
-alias atom='atom-nightly'
-alias apm='apm-nightly'
+command -v atom-nightly >/dev/null 2>&1 &&
+  alias atom='atom-nightly' &&
+  alias atom-beta='atom-nightly'
+command -v apm-nightly >/dev/null 2>&1 &&
+  alias apm='apm-nightly' &&
+  alias apm-beta='apm-nightly'
 
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 mu() {
   cd "${DOTFILES:=${HOME}/Dropbox/dotfiles}" &&
-    command -v cleanup >/dev/null 2>&1 && cleanup "${@}" &&
+    command -v cleanup >/dev/null 2>&1 && cleanup "$@" &&
     mackup backup --force --root &&
     git fetch --all --prune &&
     git submodule update --init --recursive &&
@@ -22,7 +24,7 @@ mu() {
 }
 mux() {
   cd "${DOTFILES:=${HOME}/Dropbox/dotfiles}" &&
-    command -v cleanup >/dev/null 2>&1 && cleanup "${@}" &&
+    command -v cleanup >/dev/null 2>&1 && cleanup "$@" &&
     mackup backup --force --root --verbose &&
     git fetch --all --prune --verbose &&
     git submodule update --init --recursive --remote &&
@@ -31,8 +33,13 @@ mux() {
 }
 
 # Git
+git_add() {
+  git add --verbose -- "${@:-.}"
+  git status
+}
+alias ga='git_add'
 git_add_patch() {
-  git add --patch --verbose -- "$@"
+  git add --patch --verbose -- "${@:-.}"
   git status
 }
 alias gap='git_add_patch'
@@ -40,10 +47,10 @@ alias gc='git commit --verbose --gpg-sign; git status'
 alias gca='git commit --verbose --gpg-sign --amend --allow-empty; git status'
 alias gcl='git clone --verbose --progress --recursive --recurse-submodules'
 alias gcm='git commit --verbose --gpg-sign --message'
-alias gco='git checkout --progress --conflict=diff3'
+alias gco='git checkout --progress'
 
 # `git checkout` the default branch
-alias gcom='git checkout --progress --conflict=diff3 "$(git-default-branch)"'
+alias gcom='git checkout --progress "$(git-default-branch)"'
 
 # git cherry-pick
 alias gcp='git cherry-pick'
@@ -69,7 +76,7 @@ alias gsd='gds'
 
 alias gfgs='git fetch --all --prune --verbose && git status'
 git_garbage_collection() {
-  command -v cleanup >/dev/null 2>&1 && cleanup "${@}"
+  command -v cleanup >/dev/null 2>&1 && cleanup "$@"
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     # see `git gc` and other wrapping commands behind-the-scene mechanics
     # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
@@ -115,8 +122,8 @@ git_commit_initial_commit() {
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
   git init &&
-    if [ ${#} -eq 1 ]; then
-      GIT_TIME="$(date -d @$(($(date --date="${1}" +%s) + 43200)) '+%c %z')" GIT_AUTHOR_DATE="${GIT_TIME}" GIT_COMMITTER_DATE="${GIT_AUTHOR_DATE}" git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
+    if [ $# -eq 1 ]; then
+      GIT_TIME="$(date -d @$(($(date --date="$1" +%s) + 43200)) '+%c %z')" GIT_AUTHOR_DATE="${GIT_TIME}" GIT_COMMITTER_DATE="${GIT_AUTHOR_DATE}" git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
     else
       git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
     fi
@@ -159,6 +166,8 @@ alias gpl='git pull --all --rebase --autostash --prune --verbose && git status'
 # https://github.com/ohmyzsh/ohmyzsh/commit/ae21102
 alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && git status'
 
+alias gref='git reflog'
+
 alias grmr='git rm -r'
 alias grm='grmr'
 
@@ -186,7 +195,7 @@ git_submodule_rm() {
       printf ''
       return 2
     )
-    command cd -- "$(git rev-parse --git-dir)" || (
+    cd -- "$(git rev-parse --git-dir)" || (
       printf ''
       return 3
     )
@@ -211,7 +220,7 @@ alias gti='git'
 
 git_update() {
   (
-    command -v cleanup >/dev/null 2>&1 && cleanup "${@}"
+    command -v cleanup >/dev/null 2>&1 && cleanup "$@"
 
     # run only from within a git repository
     # https://stackoverflow.com/a/53809163
@@ -237,6 +246,15 @@ gvc() {
   # if there is an argument (commit hash), use it
   # otherwise check `HEAD`
   git verify-commit "${1:-HEAD}"
+}
+
+atom_packages() {
+  # https://web.archive.org/web/0id_/discuss.atom.io/t/15674/2
+  {
+    command apm-nightly list --installed --bare ||
+      command apm-beta list --installed --bare ||
+      command apm list --installed --bare
+  } >"${1:-${DOTFILES:-${HOME}/Dropbox/dotfiles}/!=Mackup/atom}" 2>/dev/null
 }
 
 cd_pwd_P() {
@@ -383,7 +401,7 @@ cleanup() {
   (
     # if `cleanup -v` or `cleanup --verbose`,
     # then use `-print` during `-delete`
-    if [ "${1}" = -v ] || [ "${1}" = --verbose ]; then
+    if [ "$1" = -v ] || [ "$1" = --verbose ]; then
       set -x && shift
     fi
 
@@ -537,7 +555,23 @@ identify() {
   # https://linuxize.com/post/how-to-check-your-debian-version
   [ -r /etc/issue ] && cat -v /etc/issue
 }
-alias l='ls -AFgho1 --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
+
+# list files
+builtin unalias -- ls 2>/dev/null
+builtin unalias -- l 2>/dev/null
+if command exa --color=auto >/dev/null 2>&1; then
+  alias ls='command exa --color=auto'
+  alias l='ls --bytes --classify --git --header --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso'
+elif command gls --color=auto >/dev/null 2>&1; then
+  alias ls='command gls --color=auto'
+  alias l='ls -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
+elif command ls --color=auto >/dev/null 2>&1; then
+  alias ls='command ls --color=auto'
+  alias l='ls -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
+elif [ "$(command /bin/ls -G -- "${HOME}" | hexdump)" = "$(command ls -G -- "${HOME}" | hexdump)" ] && [ "$(command ls -G -- "${HOME}" | hexdump)" != "$(command ls --color=auto -- "${HOME}" 2>/dev/null)" ]; then
+  alias ls='command ls -G'
+  alias l='ls -AFgo'
+fi
 
 # https://unix.stackexchange.com/a/30950
 alias mv='mv -v -i'
@@ -565,7 +599,7 @@ path_check() {
       shift
       ;;
     *)
-      printf 'usage: %s [-v|--verbose]\n' "$(basename "${0}")"
+      printf 'usage: %s [-v|--verbose]\n' "$(basename "$0")"
       return 1
       ;;
     esac
@@ -596,7 +630,7 @@ command -v python3 >/dev/null 2>&1 &&
 # $?
 question_mark() {
   # https://github.com/mcornella/dotfiles/commit/ff4e527
-  printf '%i\n' "${?}"
+  printf '%i\n' "$?"
 }
 alias '?'='question_mark'
 
