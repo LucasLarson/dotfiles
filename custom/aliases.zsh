@@ -387,6 +387,7 @@ cleanup() {
   # refuse to run from `$HOME`
   [ "$(pwd -P)" = "${HOME}" ] && return 1
   # delete thumbnail cache files
+  # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
   find -- "${1:-.}" -type f \( \
     -name '.DS_Store' -or \
     -name 'Desktop.ini' -or \
@@ -394,7 +395,7 @@ cleanup() {
     -name 'Thumbs.db' -or \
     -name 'thumbs.db' \
     \) \
-    -delete
+    -delete 2>/dev/null
 
   # delete crufty Zsh files
   # if `$ZSH_COMPDUMP` always generates a crufty file then skip
