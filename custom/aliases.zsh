@@ -105,7 +105,7 @@ git_find_parent() {
 git_find_parents() {
   # return all hashes prior to the current commit
   # if an argument is provided, return all commits prior to that commit
-  # usage: git_find_parent [commit]
+  # usage: git_find_parents [commit]
   command git rev-list "${1:-$(command git rev-parse HEAD)}^"
 }
 alias git_parent='git_find_parent'
