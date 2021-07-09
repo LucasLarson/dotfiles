@@ -201,24 +201,22 @@ alias gtake='git checkout -b'
 alias gti='git'
 
 git_update() {
-  (
-    command -v cleanup >/dev/null 2>&1 && cleanup "$@"
+  command -v cleanup >/dev/null 2>&1 && cleanup "$@"
 
-    # run only from within a git repository
-    # https://stackoverflow.com/a/53809163
-    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-      git fetch --all --prune --verbose
+  # run only from within a git repository
+  # https://stackoverflow.com/a/53809163
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    git fetch --all --prune --verbose
 
-      # `git submodule update` with `--remote` appears to slow Git to a crawl
-      # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
-      if [ "$1" = --remote ] || [ "$1" = -r ]; then
-        remote="--remote"
-      fi
-      git submodule update --init --recursive ${remote}
-      git submodule sync --recursive --
-      git status
+    # `git submodule update` with `--remote` appears to slow Git to a crawl
+    # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
+    if [ "$1" = --remote ] || [ "$1" = -r ]; then
+      remote="--remote"
     fi
-  )
+    git submodule update --init --recursive ${remote}
+    git submodule sync --recursive --
+    git status
+  fi
 }
 alias git-update='git_update'
 alias gu='git-update'
