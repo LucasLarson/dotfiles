@@ -147,8 +147,8 @@ alias ginit='git init && git status'
 alias glog='git log --graph --branches --remotes --tags --format=format:"%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d" --date-order'
 
 # https://news.ycombinator.com/item?id=5512864
-alias gm='GIT_MERGE_VERBOSITY=4 git merge --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience'
-alias gmc='GIT_MERGE_VERBOSITY=4 git merge --continue'
+alias gm='GIT_MERGE_VERBOSITY=4 git merge --log --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience'
+alias gmc='GIT_MERGE_VERBOSITY=4 git merge --log --continue'
 
 # git merge main
 gmm() {
@@ -156,7 +156,7 @@ gmm() {
   # 4 “shows all paths as they are processed” but
   # 5 is “show detailed debugging information”
   # https://github.com/progit/progit2/commit/aea93a7
-  GIT_MERGE_VERBOSITY=4 git merge --verbose --progress --rerere-autoupdate --strategy-option patience "$(git-default-branch)"
+  GIT_MERGE_VERBOSITY=4 git merge --log --verbose --progress --rerere-autoupdate --strategy-option patience "$(git-default-branch)"
 }
 
 alias gmv='git mv --verbose'
