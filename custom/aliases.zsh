@@ -378,70 +378,68 @@ cy() {
 }
 
 cleanup() {
-  (
-    # if `cleanup -v` or `cleanup --verbose`,
-    # then use `-print` during `-delete`
-    if [ "$1" = -v ] || [ "$1" = --verbose ]; then
-      set -x && shift
-    fi
+  # if `cleanup -v` or `cleanup --verbose`,
+  # then use `-print` during `-delete`
+  if [ "$1" = -v ] || [ "$1" = --verbose ]; then
+    set -x && shift
+  fi
 
-    # refuse to run from `$HOME`
-    [ "$(pwd -P)" = "${HOME}" ] && return 1
-    # delete thumbnail cache files
-    find -- "${1:-.}" -type f \( \
-      -name '.DS_Store' -or \
-      -name 'Desktop.ini' -or \
-      -name 'desktop.ini' -or \
-      -name 'Thumbs.db' -or \
-      -name 'thumbs.db' \
-      \) \
-      -delete
+  # refuse to run from `$HOME`
+  [ "$(pwd -P)" = "${HOME}" ] && return 1
+  # delete thumbnail cache files
+  find -- "${1:-.}" -type f \( \
+    -name '.DS_Store' -or \
+    -name 'Desktop.ini' -or \
+    -name 'desktop.ini' -or \
+    -name 'Thumbs.db' -or \
+    -name 'thumbs.db' \
+    \) \
+    -delete
 
-    # delete crufty Zsh files
-    # if `$ZSH_COMPDUMP` always generates a crufty file then skip
-    # https://stackoverflow.com/a/8811800
-    if [ "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP}" ]; then
-      while [ -n "$(find -- "${HOME}" -maxdepth 1 -type f -not -name "$(printf "*\n*")" -not -name '.zcompdump' -name '.zcompdump*' -print)" ]; do
-        find -- "${HOME}" -maxdepth 1 -type f -not -name "$(printf "*\n*")" -not -name '.zcompdump' -name '.zcompdump*' -print -exec rm -- {} \;
-      done
-    fi
+  # delete crufty Zsh files
+  # if `$ZSH_COMPDUMP` always generates a crufty file then skip
+  # https://stackoverflow.com/a/8811800
+  if [ "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP}" ]; then
+    while [ -n "$(find -- "${HOME}" -maxdepth 1 -type f -not -name "$(printf "*\n*")" -not -name '.zcompdump' -name '.zcompdump*' -print)" ]; do
+      find -- "${HOME}" -maxdepth 1 -type f -not -name "$(printf "*\n*")" -not -name '.zcompdump' -name '.zcompdump*' -print -exec rm -- {} \;
+    done
+  fi
 
-    # delete empty, zero-length files
-    # except those within `.git/` directories
-    # or with specific names and are writable
-    # https://stackoverflow.com/a/64863398
-    find -- "${1:-.}" -type f -writable -size 0 \( \
-      -not -path '*.git/*' -and \
-      -not -path '*/test*' -and \
-      -not -name "$(printf 'Icon\x0d\x0a')" -and \
-      -not -name '*.plugin.zsh' -and \
-      -not -name '*LOCK' -and \
-      -not -name '*empty*' -and \
-      -not -name '*hushlogin' -and \
-      -not -name '*ignore' -and \
-      -not -name '*journal' -and \
-      -not -name '*lock' -and \
-      -not -name '*lockfile' -and \
-      -not -name '.dirstamp' -and \
-      -not -name '.gitkeep' -and \
-      -not -name '.gitmodules' -and \
-      -not -name '.keep' -and \
-      -not -name '.sudo_as_admin_successful' -and \
-      -not -name '.watchmanconfig' -and \
-      -not -name '__init__.py' -and \
-      -not -name 'favicon.*' \
-      \) \
-      -delete
+  # delete empty, zero-length files
+  # except those within `.git/` directories
+  # or with specific names and are writable
+  # https://stackoverflow.com/a/64863398
+  find -- "${1:-.}" -type f -writable -size 0 \( \
+    -not -path '*.git/*' -and \
+    -not -path '*/test*' -and \
+    -not -name "$(printf 'Icon\x0d\x0a')" -and \
+    -not -name '*.plugin.zsh' -and \
+    -not -name '*LOCK' -and \
+    -not -name '*empty*' -and \
+    -not -name '*hushlogin' -and \
+    -not -name '*ignore' -and \
+    -not -name '*journal' -and \
+    -not -name '*lock' -and \
+    -not -name '*lockfile' -and \
+    -not -name '.dirstamp' -and \
+    -not -name '.gitkeep' -and \
+    -not -name '.gitmodules' -and \
+    -not -name '.keep' -and \
+    -not -name '.sudo_as_admin_successful' -and \
+    -not -name '.watchmanconfig' -and \
+    -not -name '__init__.py' -and \
+    -not -name 'favicon.*' \
+    \) \
+    -delete
 
-    # delete empty directories recursively
-    # but skip Git-specific and `/.well-known/` directories
-    # https://stackoverflow.com/q/4210042#comment38334264_4210072
-    find -- "${1:-.}" -type d -empty \( \
-      -not -path '*.git/*' -and \
-      -not -name '.well-known' \
-      \) \
-      -delete
-  )
+  # delete empty directories recursively
+  # but skip Git-specific and `/.well-known/` directories
+  # https://stackoverflow.com/q/4210042#comment38334264_4210072
+  find -- "${1:-.}" -type d -empty \( \
+    -not -path '*.git/*' -and \
+    -not -name '.well-known' \
+    \) \
+    -delete
 }
 
 # number of files in current directory
