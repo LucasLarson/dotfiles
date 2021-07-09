@@ -119,7 +119,7 @@ alias git-parents='git_find_parents'
 
 # initial commit
 # https://stackoverflow.com/q/1006775#comment23686803_1007545
-alias gic='git rev-list --topo-order --parents HEAD | grep -E "^[a-f0-9]{40}$"'
+alias gic='git rev-list --topo-order --parents HEAD -- | grep -E "^[a-f0-9]{40}$"'
 git_commit_initial_commit() {
   # usage: git_commit_initial_commit [yyyy-mm-dd]
   # create initial commits: one empty root, then the rest
