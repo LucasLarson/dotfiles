@@ -32,7 +32,7 @@ mux() {
     git status
 }
 
-# Git
+# git add
 git_add() {
   git add --verbose -- "${@:-.}"
   git status
