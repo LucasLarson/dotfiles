@@ -1084,6 +1084,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>Häagen-Dazs</string>
+		<key>shortcut</key>
+		<string>haagen-dasz</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>hadn’t</string>
 		<key>shortcut</key>
 		<string>hadn't</string>
