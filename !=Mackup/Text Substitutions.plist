@@ -3334,6 +3334,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>you’re</string>
+		<key>shortcut</key>
+		<string>youre</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>York</string>
 		<key>shortcut</key>
 		<string>yrik</string>
