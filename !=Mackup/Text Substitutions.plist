@@ -712,9 +712,21 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⁄</string>
+		<key>shortcut</key>
+		<string>dividedbyslash</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>÷</string>
 		<key>shortcut</key>
 		<string>divisionsign</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⁄</string>
+		<key>shortcut</key>
+		<string>divisionslash</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
