@@ -12,6 +12,7 @@
 
 **Fixed bugs:**
 
+- add reinitialized Mega-Linter installation [\#376](https://github.com/LucasLarson/dotfiles/pull/376) ([LucasLarson](https://github.com/LucasLarson))
 - conform to JSON schema; expand, repair comments [\#354](https://github.com/LucasLarson/dotfiles/pull/354) ([LucasLarson](https://github.com/LucasLarson))
 
 **Closed issues:**
@@ -21,6 +22,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/themes/powerlevel10k from `4bcc519` to `1e7be00` [\#389](https://github.com/LucasLarson/dotfiles/pull/389) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `f4668bc` to `4bcc519` [\#387](https://github.com/LucasLarson/dotfiles/pull/387) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `fd7313a` to `f4668bc` [\#386](https://github.com/LucasLarson/dotfiles/pull/386) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `0c862a1` to `fd7313a` [\#385](https://github.com/LucasLarson/dotfiles/pull/385) ([dependabot[bot]](https://github.com/apps/dependabot))
