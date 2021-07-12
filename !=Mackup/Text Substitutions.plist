@@ -64,12 +64,6 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>+1.646.318.1888</string>
-		<key>shortcut</key>
-		<string>+1.646.318.1888</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
 		<string>←</string>
 		<key>shortcut</key>
 		<string>&lt;-</string>
@@ -235,12 +229,6 @@
 		<string>1️⃣2️⃣🪜</string>
 		<key>shortcut</key>
 		<string>12s</string>
-	</dict>
-	<dict>
-		<key>phrase</key>
-		<string>646.318.1888</string>
-		<key>shortcut</key>
-		<string>646.318.1888</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -3361,6 +3349,12 @@
 		<string>tszuj</string>
 		<key>shortcut</key>
 		<string>zhoozh</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>tszuj</string>
+		<key>shortcut</key>
+		<string>zshoosh</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
