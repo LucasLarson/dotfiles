@@ -2236,6 +2236,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>onomatopoeia</string>
+		<key>shortcut</key>
+		<string>onomopeia</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>oopsies</string>
 		<key>shortcut</key>
 		<string>oopsies</string>
