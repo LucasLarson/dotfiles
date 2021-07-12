@@ -964,6 +964,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>꧁꧂</string>
+		<key>shortcut</key>
+		<string>flowers</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>Find My</string>
 		<key>shortcut</key>
 		<string>fmf</string>
