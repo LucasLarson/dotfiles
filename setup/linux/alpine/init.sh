@@ -112,6 +112,11 @@ git config --global --get user.name >/dev/null 2>&1 || (
   git config --global user.name "Lucas Larson"
 )
 
+# git default branch
+git config --global --get init.defaultBranch >/dev/null 2>&1 || (
+  git config --global init.defaultBranch "main"
+)
+
 # time zone
 updating time zone information... >/dev/null 2>&1
 apk add --no-cache tzdata tzdata-doc
