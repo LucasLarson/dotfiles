@@ -107,6 +107,11 @@ command -v git >/dev/null 2>&1 || (
   apk add git-perl
 )
 
+# git user
+git config --global --get user.name >/dev/null 2>&1 || (
+  git config --global user.name "Lucas Larson"
+)
+
 # time zone
 updating time zone information... >/dev/null 2>&1
 apk add --no-cache tzdata tzdata-doc
