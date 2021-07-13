@@ -258,10 +258,12 @@ command -v zsh >/dev/null 2>&1 && command grep -P '/bin/b?a?sh' /etc/passwd 2>&1
 "${0##*[-/]}" complete >/dev/null 2>&1
 sleep 1
 exiting to apply updates... >/dev/null 2>&1
-{ set +x; } 2>/dev/null
+{ set +euvx; } 2>/dev/null
 
 # restore `$PS4`
 PS4=${PS4_temporary:-+ }
 unset PS4_temporary
+
+printf '\ndone!\n'
 
 exit
