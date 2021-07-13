@@ -213,6 +213,11 @@ find -- . -type f \( \
 # https://stackoverflow.com/a/64863398
 find -- . -type f -writable -size 0 \( \
   -not -path '*.git/*' -and \
+  -not -path '*example*' -and \
+  -not -path '*sample*' -and \
+  -not -path '*template*' -and \
+  -not -path '*test*' -and \
+  \
   -not -name "$(printf 'Icon\0xd\0xa')" -and \
   -not -name '*LOCK' -and \
   -not -name '*empty*' -and \
