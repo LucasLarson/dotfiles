@@ -261,7 +261,7 @@ exiting to apply updates... >/dev/null 2>&1
 { set +x; } 2>/dev/null
 
 # restore `$PS4`
-PS4=${PS4_temporary}
+PS4=${PS4_temporary:-+ }
 unset PS4_temporary
 
 exit
