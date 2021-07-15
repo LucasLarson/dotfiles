@@ -519,6 +519,48 @@ fname() {
 }
 alias findname='fname'
 
+find_shell_scripts() {
+  set -eu
+  {
+    # all files with extensions `.bash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
+    command find -- . -type f \
+      ! -path '*.git/*' \
+      -iname '*.bash' -o \
+      -iname '*.ksh' -o \
+      -iname '*.mksh' -o \
+      -iname '*.sh' -o \
+      -iname '*.zsh'
+
+    # files whose first line resembles those of shell scripts
+    # https://stackoverflow.com/a/9612232
+    command find -- . \
+      ! -path '*.git/*' \
+      -type f \
+      -exec command head -n1 {} \+ 2>/dev/null |
+      command grep \
+        --binary-files=without-match \
+        --exclude-dir='.git' \
+        --files-with-matches \
+        --recursive \
+        '^#!.*bin.*sh' .
+
+    # https://github.com/bzz/LangID/blob/37c4960/README.md#collect-the-data
+    # https://github.com/stedolan/jq/issues/1735#issuecomment-427863218
+    command github-linguist "$(
+      command git rev-parse --show-toplevel 2>/dev/null
+    )" --json 2>/dev/null |
+      command jq --raw-output '.Shell[]' |
+
+      # prepend filenames with `./`
+      command awk '{print "./" $0}'
+
+  } |
+    command sort --unique
+
+  { set +eu; } 2>/dev/null
+}
+alias find-shell-scripts='find_shell_scripts'
+
 identify() {
 
   # uname
