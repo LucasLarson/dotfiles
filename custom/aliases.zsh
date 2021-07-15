@@ -549,7 +549,7 @@ find_shell_scripts() {
     command github-linguist "$(
       command git rev-parse --show-toplevel 2>/dev/null
     )" --json 2>/dev/null |
-      command jq --raw-output '.Shell[]' |
+      command jq --raw-output '.Shell[]' 2>/dev/null |
 
       # prepend filenames with `./`
       command awk '{print "./" $0}'
