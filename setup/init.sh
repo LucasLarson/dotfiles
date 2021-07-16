@@ -245,6 +245,7 @@ find -- . -type f -writable -size 0 \( \
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 find -- . -type d -empty \( \
   -not -path '*.git/*' -and \
+  \
   -not -name '.well-known' \
   \) \
   -delete 2>/dev/null
