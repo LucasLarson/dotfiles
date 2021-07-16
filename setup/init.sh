@@ -42,8 +42,10 @@ command -v apk >/dev/null 2>&1 || {
 )
 
 # configure repositories
-printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n' >/etc/apk/repositories
-printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n' >>/etc/apk/repositories
+{
+  printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n'
+  printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n'
+} >/etc/apk/repositories
 
 # update
 updating Alpine Linux repositories... >/dev/null 2>&1
