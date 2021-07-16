@@ -138,7 +138,7 @@ command -v python >/dev/null 2>&1 || (
 checking Python package manager installation... >/dev/null 2>&1
 command -v pip >/dev/null 2>&1 && {
   updating pip... >/dev/null 2>&1
-  python3 -m pip install --upgrade pip
+  python3 -m pip install --upgrade pip 2>/dev/null
 } || {
   installing pip... >/dev/null 2>&1
   verifying integrity of pip bootstrap file... >/dev/null 2>&1
