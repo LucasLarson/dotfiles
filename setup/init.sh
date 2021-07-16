@@ -94,6 +94,7 @@ apk update
 # gpg
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
 [ -x /usr/bin/gpg2 ] || (
+  installing GPG... >/dev/null 2>&1
   apk add gnupg gnupg-doc
 )
 
