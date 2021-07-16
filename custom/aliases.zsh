@@ -529,7 +529,7 @@ find_shell_scripts() {
       -iname '*.ksh' -o \
       -iname '*.mksh' -o \
       -iname '*.sh' -o \
-      -iname '*.zsh'
+      -iname '*.zsh' 2>/dev/null
 
     # files whose first line resembles those of shell scripts
     # https://stackoverflow.com/a/9612232
@@ -542,7 +542,7 @@ find_shell_scripts() {
         --exclude-dir='.git' \
         --files-with-matches \
         --recursive \
-        '^#!.*bin.*sh' .
+        '^#!.*bin.*sh' . 2>/dev/null
 
     # https://github.com/bzz/LangID/blob/37c4960/README.md#collect-the-data
     # https://github.com/stedolan/jq/issues/1735#issuecomment-427863218
