@@ -138,7 +138,7 @@ git_commit_initial_commit() {
   # https://news.ycombinator.com/item?id=25515963
   git init &&
     if [ $# -eq 1 ]; then
-      GIT_TIME="$(date -d @$(($(date --date="$1" +%s) + 43200)) '+%c %z')" GIT_AUTHOR_DATE="${GIT_TIME}" GIT_COMMITTER_DATE="${GIT_AUTHOR_DATE}" git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
+      git_time="$(date -d @$(($(date --date="$1" +%s) + 43200)) '+%c %z')" GIT_AUTHOR_DATE="${git_time}" GIT_COMMITTER_DATE="${git_time}" git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
     else
       git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
     fi
@@ -149,7 +149,7 @@ git_commit_initial_commit() {
       git commit --verbose --message "$(printf '\xe2\x9c\xa8\xc2\xa0 initial commit')"
   fi
 
-  unset GIT_TIME GIT_AUTHOR_DATE GIT_COMMITTER_DATE
+  unset git_time GIT_AUTHOR_DATE GIT_COMMITTER_DATE
 }
 alias gcic='git_commit_initial_commit'
 alias ginit='git init && git status'
