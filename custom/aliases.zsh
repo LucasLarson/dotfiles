@@ -45,10 +45,22 @@ git_add_patch() {
 alias gap='git_add_patch'
 
 # git commit
-alias gc='git commit --verbose --gpg-sign; git status'
+git_commit() {
+  set -eux
+  if [ $# -ne 0 ]; then
+    git commit --verbose --gpg-sign --message "$@"
+  else
+    git commit --verbose --gpg-sign
+  fi
+  git status
+  {
+    set +eux
+  } 2>/dev/null
+}
+alias gc='git_commit'
+alias gcm='git_commit'
 alias gca='git commit --verbose --gpg-sign --amend --allow-empty; git status'
 alias gcl='git clone --verbose --progress --recursive --recurse-submodules'
-alias gcm='git commit --verbose --gpg-sign --message'
 alias gco='git checkout --progress'
 
 # `git checkout` the default branch
