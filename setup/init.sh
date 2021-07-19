@@ -17,7 +17,10 @@ sleep 1
 [ -z "${HOME-}" ] || exit 1
 
 # start from `$HOME`
-command cd -- "${HOME-}" || exit 1
+[ "$(command pwd -P)" = "${HOME-}" ] || {
+  # or navigate there
+  command cd -- "${HOME-}" || exit 1
+}
 
 # unset `$PS4`
 # if this quaternary prompt string is already unset, then
