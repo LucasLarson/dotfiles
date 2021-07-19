@@ -60,7 +60,7 @@ git_commit() {
 alias gc='git_commit'
 alias gcm='git_commit'
 alias gca='git commit --verbose --gpg-sign --amend --allow-empty; git status'
-alias gcl='git clone --verbose --progress --recursive --recurse-submodules'
+alias gcl='git clone --verbose --progress'
 alias gco='git checkout --progress'
 
 # `git checkout` the default branch
