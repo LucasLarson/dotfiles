@@ -138,7 +138,13 @@ git_commit_initial_commit() {
   # https://news.ycombinator.com/item?id=25515963
   git init &&
     if [ $# -eq 1 ]; then
-      git_time="$(date -d @$(($(date --date="$1" +%s) + 43200)) '+%c %z')" GIT_AUTHOR_DATE="${git_time}" GIT_COMMITTER_DATE="${git_time}" git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
+
+      # add 12 hours (43,200 seconds) so it occurs around midday
+      git_time=$(date -d @$(($(date -d "${1:-$(date +%Y-%m-%d)}" +%s) + 43200)) '+%c %z')
+      export GIT_AUTHOR_DATE=${git_time-}
+      export GIT_COMMITTER_DATE=${git_time-}
+      git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
+
     else
       git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
     fi
