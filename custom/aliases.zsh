@@ -675,6 +675,13 @@ path_check() {
   { set +x; } 2>/dev/null
 }
 
+# PlistBuddy
+if [ -x /usr/libexec/PlistBuddy ]; then
+  # https://apple.stackexchange.com/a/414774
+  alias PlistBuddy='/usr/libexec/PlistBuddy'
+  alias plistbuddy='PlistBuddy'
+fi
+
 # Python
 command -v python3 >/dev/null 2>&1 &&
   alias python='python3' &&
