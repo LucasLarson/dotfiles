@@ -14,7 +14,7 @@ printf '  a Lucas Larson production\n\n'
 sleep 1
 
 # start from `$HOME`
-[ -n "${HOME}" ] && cd -- "${HOME}" || exit 1
+[ -n "${HOME-}" ] && cd -- "${HOME-}" || exit 1
 
 # unset `$PS4`
 # if this quaternary prompt string is already unset, then
