@@ -12,13 +12,14 @@
 
 **Fixed bugs:**
 
+- `cd` is a `builtin` not a `command` [\#388](https://github.com/LucasLarson/dotfiles/issues/388)
+- replace `builtin cd` with `command cd` for @AlpineLinux \(fix \#388\) [\#393](https://github.com/LucasLarson/dotfiles/pull/393) ([LucasLarson](https://github.com/LucasLarson))
 - use `builtin cd` instead of `command cd` \(fix \#388\) [\#391](https://github.com/LucasLarson/dotfiles/pull/391) ([LucasLarson](https://github.com/LucasLarson))
 - add reinitialized Mega-Linter installation [\#376](https://github.com/LucasLarson/dotfiles/pull/376) ([LucasLarson](https://github.com/LucasLarson))
 - conform to JSON schema; expand, repair comments [\#354](https://github.com/LucasLarson/dotfiles/pull/354) ([LucasLarson](https://github.com/LucasLarson))
 
 **Closed issues:**
 
-- `cd` is a `builtin` not a `command` [\#388](https://github.com/LucasLarson/dotfiles/issues/388)
 - consider 𝑥 \>/dev/null 2\>&1 instead of printf 𝑥 [\#315](https://github.com/LucasLarson/dotfiles/issues/315)
 - include crufty `.zcompdump` files in `cleanup` [\#199](https://github.com/LucasLarson/dotfiles/issues/199)
 
