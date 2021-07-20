@@ -154,10 +154,6 @@ man -w >/dev/null 2>&1 &&
   # https://unix.stackexchange.com/a/162893
   MANPATH=${MANPATH:+${MANPATH}:}$(man -w)
 
-# You may need to manually set your language environment
-export LANG=${LANG:=en_US.UTF-8}
-export TZ=${TZ:=America/New_York}
-
 # $EDITOR: access favorite with `edit`
 # Set preferred editor if it is available
 # https://stackoverflow.com/a/14755066
