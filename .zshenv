@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+# Language and locale
+export LANG=${LANG:=en_US.UTF-8}
+export TZ=${TZ:=America/New_York}
+
 # XDG
 # https://specifications.freedesktop.org/basedir-spec/0.7/ar01s03.html
 export XDG_DATA_HOME=${XDG_DATA_HOME:=${HOME}/.local/share}
