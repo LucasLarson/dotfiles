@@ -78,7 +78,7 @@ git_delete_merged_branches() {
   set -u
   if command git branch --merged | command grep -v '\*'; then
     command git branch --merged | command grep -v '\*' |
-      command xargs -n 1 command git branch --delete --verbose
+      command xargs -n 1 git branch --delete --verbose
   fi
   { set +u; } 2>/dev/null
 }
