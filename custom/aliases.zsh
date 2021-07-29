@@ -154,7 +154,6 @@ git_commit_initial_commit() {
     git add -- . &&
       git commit --verbose --message "$(printf '\xe2\x9c\xa8\xc2\xa0 initial commit')"
   fi
-
   unset git_time GIT_AUTHOR_DATE GIT_COMMITTER_DATE
 }
 alias gcic='git_commit_initial_commit'
@@ -458,6 +457,7 @@ cleanup() {
     -not -name '.gitkeep' -and \
     -not -name '.gitmodules' -and \
     -not -name '.keep' -and \
+    -not -name '.nojekyll' -and \
     -not -name '.sudo_as_admin_successful' -and \
     -not -name '.watchmanconfig' -and \
     -not -name '__init__.py' -and \
