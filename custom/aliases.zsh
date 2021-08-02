@@ -53,9 +53,7 @@ git_commit() {
     git commit --verbose --gpg-sign
   fi
   git status
-  {
-    set +eux
-  } 2>/dev/null
+  { set +eux; } 2>/dev/null
 }
 alias gc='git_commit'
 alias gcm='git_commit'
