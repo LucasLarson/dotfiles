@@ -234,10 +234,15 @@ git_update() {
 
     # `git submodule update` with `--remote` appears to slow Git to a crawl
     # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
-    if [ "$1" = --remote ] || [ "$1" = -r ]; then
-      remote="--remote"
-    fi
-    git submodule update --init --recursive ${remote}
+    case "$1" in
+    -r | --remote)
+      command git submodule update --init --recursive --remote
+      shift
+      ;;
+    *)
+      command git submodule update --init --recursive --
+      ;;
+    esac
     git submodule sync --recursive --
     git status
   fi
