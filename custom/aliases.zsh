@@ -53,7 +53,7 @@ git_commit() {
     git commit --verbose --gpg-sign
   fi
   git status
-  { set +eux; } 2>/dev/null
+  { set +euvx; } 2>/dev/null
 }
 alias gc='git_commit'
 alias gcm='git_commit'
@@ -78,7 +78,7 @@ git_delete_merged_branches() {
     command git branch --merged | command grep -v '\*' |
       command xargs -n 1 git branch --delete --verbose
   fi
-  { set +u; } 2>/dev/null
+  { set +euvx; } 2>/dev/null
 }
 alias gdmb='git_delete_merged_branches'
 alias gDmb='git_delete_merged_branches'
@@ -573,7 +573,7 @@ find_shell_scripts() {
   } |
     command sort --unique
 
-  { set +eu; } 2>/dev/null
+  { set +euvx; } 2>/dev/null
 }
 alias find-shell-scripts='find_shell_scripts'
 
@@ -676,7 +676,7 @@ path_check() {
   done
 
   # silently undo verbose output for everyone
-  { set +x; } 2>/dev/null
+  { set +euvx; } 2>/dev/null
 }
 
 # PlistBuddy
