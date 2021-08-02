@@ -1,7 +1,7 @@
 {
   "deepcode.api.cloudBackend": "https://www.deepcode.ai/",
-  "editor.fontFamily": "'FiraCode Nerd Font', 'FiraCode', 'Fira Code', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 13,
+  "editor.fontFamily": "'MesloLGS NF', 'FiraCode Nerd Font', 'FiraCode', 'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 15,
   "editor.renderWhitespace": "all",
   "editor.scrollBeyondLastLine": false,
   "editor.suggestSelection": "first",
