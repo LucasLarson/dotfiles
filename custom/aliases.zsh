@@ -188,6 +188,7 @@ alias gmv='git mv --verbose'
 # git pull (Oh My Zsh `gupav`)
 # https://github.com/ohmyzsh/ohmyzsh/commit/3d2542f
 alias gpl='git pull --all --rebase --autostash --prune --verbose && git status'
+alias gp='gpl'
 
 # git push (Oh My Zsh `gpsup`)
 # https://github.com/ohmyzsh/ohmyzsh/commit/ae21102
