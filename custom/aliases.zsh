@@ -672,10 +672,13 @@ path_check() {
   # return verbose output if requested
   for argument in "$@"; do
     case ${argument} in
+
+    # return verbose output if requested
     -v | --verbose)
-      set -o xtrace # set -x
+      set -x
       shift
       ;;
+
     *)
       printf 'usage: %s [-v|--verbose]\n' "$(basename "$0")"
       return 1
@@ -742,7 +745,10 @@ alias all='which -a'
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 # https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#index-exec
 alias ','='. -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- ${SHELL##*[-/]}'
-alias aliases='${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES}/custom}"/aliases."${SHELL##*[-/]}"; . -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- ${SHELL##*[-/]}'
+aliases() {
+  ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES}/custom}"/aliases."${SHELL##*[-/]}"
+  . "${ZSH_CUSTOM}"/aliases."${SHELL##*[-/]}"
+}
 alias ohmyzsh='cd -- "${ZSH:=${HOME}/.oh-my-${SHELL##*[-/]}}" && git status'
 alias zshenv='${EDITOR:-vi} -- "${HOME}"/."${SHELL##*[-/]}"env; . -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- ${SHELL##*[-/]}'
 alias zshrc='${EDITOR:-vi} -- "${HOME}"/."${SHELL##*[-/]}"rc; . -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- ${SHELL##*[-/]}'
