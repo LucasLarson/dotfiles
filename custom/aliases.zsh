@@ -194,9 +194,13 @@ git_pull() {
 alias gpl='git_pull'
 alias gp='git_pull'
 
-# git push (Oh My Zsh `gpsup`)
-# https://github.com/ohmyzsh/ohmyzsh/commit/ae21102
-alias gps='git push --verbose --set-upstream origin "$(git_current_branch)" && git status'
+# git push
+git_push() {
+  # https://github.com/ohmyzsh/ohmyzsh/commit/ae21102
+  command git push --verbose --set-upstream origin "$(git_current_branch)"
+  command git status
+}
+alias gps='git_push'
 
 alias gref='git reflog'
 
