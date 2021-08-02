@@ -540,7 +540,13 @@ define() {
 # find duplicate files
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 fdf() {
-  find -- . -not -empty -type f \( -not -path '*.git/*' -and -not -path '*node_modules*' \) -printf '%s\n' | sort --reverse --numeric-sort | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 sha256sum | sort | uniq -w32 --all-repeated=separate
+  command find -- . -not -empty -type f \( -not -path '*.git/*' -and -not -path '*node_modules*' \) -printf '%s\n' |
+    command sort --reverse --numeric-sort |
+    command uniq -d |
+    command xargs -I{} -n 1 find -type f -size {}c -print0 |
+    command xargs -0 sha256sum |
+    command sort |
+    command uniq -w32 --all-repeated=separate
 }
 
 # find by name
