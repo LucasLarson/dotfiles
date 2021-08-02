@@ -313,66 +313,66 @@ clang_format() {
 
     find -- . -type f \
       \( \
-      -iname '*.adb' -or \
-      -iname '*.ads' -or \
-      -iname '*.asm' -or \
-      -iname '*.ast' -or \
-      -iname '*.c' -or \
-      -iname '*.c++' -or \
-      -iname '*.c++m' -or \
-      -iname '*.cc' -or \
-      -iname '*.ccm' -or \
-      -iname '*.cl' -or \
-      -iname '*.cp' -or \
-      -iname '*.cpp' -or \
-      -iname '*.cppm' -or \
-      -iname '*.cs' -or \
-      -iname '*.cu' -or \
-      -iname '*.cuh' -or \
-      -iname '*.cui' -or \
-      -iname '*.cxx' -or \
-      -iname '*.cxxm' -or \
-      -iname '*.f' -or \
-      -iname '*.f90' -or \
-      -iname '*.f95' -or \
-      -iname '*.for' -or \
-      -iname '*.fpp' -or \
-      -iname '*.h' -or \
-      -iname '*.h++' -or \
-      -iname '*.hh' -or \
-      -iname '*.hip' -or \
-      -iname '*.hp' -or \
-      -iname '*.hpp' -or \
-      -iname '*.hxx' -or \
-      -iname '*.i' -or \
-      -iname '*.ifs' -or \
-      -iname '*.ii' -or \
-      -iname '*.iim' -or \
-      -iname '*.inc' -or \
-      -iname '*.inl' -or \
-      -iname '*.java' -or \
-      -iname '*.js' -or \
-      -iname '*.ll' -or \
-      -iname '*.m' -or \
-      -iname '*.mi' -or \
-      -iname '*.mii' -or \
-      -iname '*.mm' -or \
-      -iname '*.pcm' -or \
-      -iname '*.proto' -or \
-      -iname '*.protodevel' -or \
-      -iname '*.rs' -or \
-      -iname '*.tcc' -or \
-      -iname '*.td' -or \
-      -iname '*.theletters' -or \
-      -iname '*.tlh' -or \
-      -iname '*.tli' -or \
-      -iname '*.tpp' -or \
-      -iname '*.ts' -or \
+      -iname '*.adb' -o \
+      -iname '*.ads' -o \
+      -iname '*.asm' -o \
+      -iname '*.ast' -o \
+      -iname '*.c' -o \
+      -iname '*.c++' -o \
+      -iname '*.c++m' -o \
+      -iname '*.cc' -o \
+      -iname '*.ccm' -o \
+      -iname '*.cl' -o \
+      -iname '*.cp' -o \
+      -iname '*.cpp' -o \
+      -iname '*.cppm' -o \
+      -iname '*.cs' -o \
+      -iname '*.cu' -o \
+      -iname '*.cuh' -o \
+      -iname '*.cui' -o \
+      -iname '*.cxx' -o \
+      -iname '*.cxxm' -o \
+      -iname '*.f' -o \
+      -iname '*.f90' -o \
+      -iname '*.f95' -o \
+      -iname '*.for' -o \
+      -iname '*.fpp' -o \
+      -iname '*.h' -o \
+      -iname '*.h++' -o \
+      -iname '*.hh' -o \
+      -iname '*.hip' -o \
+      -iname '*.hp' -o \
+      -iname '*.hpp' -o \
+      -iname '*.hxx' -o \
+      -iname '*.i' -o \
+      -iname '*.ifs' -o \
+      -iname '*.ii' -o \
+      -iname '*.iim' -o \
+      -iname '*.inc' -o \
+      -iname '*.inl' -o \
+      -iname '*.java' -o \
+      -iname '*.js' -o \
+      -iname '*.ll' -o \
+      -iname '*.m' -o \
+      -iname '*.mi' -o \
+      -iname '*.mii' -o \
+      -iname '*.mm' -o \
+      -iname '*.pcm' -o \
+      -iname '*.proto' -o \
+      -iname '*.protodevel' -o \
+      -iname '*.rs' -o \
+      -iname '*.tcc' -o \
+      -iname '*.td' -o \
+      -iname '*.theletters' -o \
+      -iname '*.tlh' -o \
+      -iname '*.tli' -o \
+      -iname '*.tpp' -o \
+      -iname '*.ts' -o \
       -iname '*.txx' \
-      \) -and \
+      \) -a \
       \( \
-      -not -path '*.git/*' -and \
-      -not -path '*node_modules/*' \
+      ! -path '*.git/*' -a \
+      ! -path '*node_modules/*' \
       \) \
       -exec "${program}" -i --style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \+
     printf '\n\n\xe2\x9c\x85 done\x21\n\n'
@@ -419,10 +419,10 @@ cleanup() {
   # delete thumbnail cache files
   # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
   find -- "${1:-.}" -type f \( \
-    -name '.DS_Store' -or \
-    -name 'Desktop.ini' -or \
-    -name 'desktop.ini' -or \
-    -name 'Thumbs.db' -or \
+    -name '.DS_Store' -o \
+    -name 'Desktop.ini' -o \
+    -name 'desktop.ini' -o \
+    -name 'Thumbs.db' -o \
     -name 'thumbs.db' \
     \) \
     -delete 2>/dev/null
@@ -435,15 +435,15 @@ cleanup() {
       find -- "${HOME}" \
         -maxdepth 1 \
         -type f \
-        -not -name "$(printf "*\n*")" \
-        -not -name '.zcompdump' \
+        ! -name "$(printf "*\n*")" \
+        ! -name '.zcompdump' \
         -name '.zcompdump*' -print
     )" ]; do
       find -- "${HOME}" \
         -maxdepth 1 \
         -type f \
-        -not -name "$(printf "*\n*")" \
-        -not -name '.zcompdump' \
+        ! -name "$(printf "*\n*")" \
+        ! -name '.zcompdump' \
         -name '.zcompdump*' \
         -print \
         -exec rm -- {} \;
@@ -455,26 +455,26 @@ cleanup() {
   # or with specific names and are writable
   # https://stackoverflow.com/a/64863398
   find -- "${1:-.}" -type f -writable -size 0 \( \
-    -not -path '*.git/*' -and \
-    -not -path '*/test*' -and \
-    -not -name "$(printf 'Icon\x0d\x0a')" -and \
-    -not -name '*.plugin.zsh' -and \
-    -not -name '*LOCK' -and \
-    -not -name '*empty*' -and \
-    -not -name '*hushlogin' -and \
-    -not -name '*ignore' -and \
-    -not -name '*journal' -and \
-    -not -name '*lock' -and \
-    -not -name '*lockfile' -and \
-    -not -name '.dirstamp' -and \
-    -not -name '.gitkeep' -and \
-    -not -name '.gitmodules' -and \
-    -not -name '.keep' -and \
-    -not -name '.nojekyll' -and \
-    -not -name '.sudo_as_admin_successful' -and \
-    -not -name '.watchmanconfig' -and \
-    -not -name '__init__.py' -and \
-    -not -name 'favicon.*' \
+    ! -path '*.git/*' -a \
+    ! -path '*/test*' -a \
+    ! -name "$(printf 'Icon\x0d\x0a')" -a \
+    ! -name '*.plugin.zsh' -a \
+    ! -name '*LOCK' -a \
+    ! -name '*empty*' -a \
+    ! -name '*hushlogin' -a \
+    ! -name '*ignore' -a \
+    ! -name '*journal' -a \
+    ! -name '*lock' -a \
+    ! -name '*lockfile' -a \
+    ! -name '.dirstamp' -a \
+    ! -name '.gitkeep' -a \
+    ! -name '.gitmodules' -a \
+    ! -name '.keep' -a \
+    ! -name '.nojekyll' -a \
+    ! -name '.sudo_as_admin_successful' -a \
+    ! -name '.watchmanconfig' -a \
+    ! -name '__init__.py' -a \
+    ! -name 'favicon.*' \
     \) \
     -delete
 
@@ -482,8 +482,8 @@ cleanup() {
   # but skip Git-specific and `/.well-known/` directories
   # https://stackoverflow.com/q/4210042#comment38334264_4210072
   find -- "${1:-.}" -type d -empty \( \
-    -not -path '*.git/*' -and \
-    -not -name '.well-known' \
+    ! -path '*.git/*' -a \
+    ! -name '.well-known' \
     \) \
     -delete
 }
@@ -541,7 +541,7 @@ define() {
 # find duplicate files
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 fdf() {
-  command find -- . -not -empty -type f \( -not -path '*.git/*' -and -not -path '*node_modules*' \) -printf '%s\n' |
+  command find -- . ! -empty -type f \( ! -path '*.git/*' -a ! -path '*node_modules*' \) -printf '%s\n' |
     command sort --reverse --numeric-sort |
     command uniq -d |
     command xargs -I{} -n 1 find -type f -size {}c -print0 |
@@ -651,7 +651,7 @@ alias mv='mv -v -i'
 # find files with non-ASCII characters
 # https://unix.stackexchange.com/a/109753
 non_ascii() {
-  LC_ALL=C find -- . -not -path '*.git/*' -name '*[! -~]*'
+  LC_ALL=C find -- . ! -path '*.git/*' -name '*[! -~]*'
 }
 alias non-ascii='non_ascii'
 
