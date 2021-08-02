@@ -185,9 +185,9 @@ gmm() {
 
 alias gmv='git mv --verbose'
 
-# git pull (Oh My Zsh `gupav`)
-# https://github.com/ohmyzsh/ohmyzsh/commit/3d2542f
+# git pull
 git_pull() {
+  # https://github.com/ohmyzsh/ohmyzsh/commit/3d2542f
   command git pull --all --rebase --autostash --prune --verbose "${@-}"
   command git status
 }
