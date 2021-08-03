@@ -491,7 +491,9 @@ cleanup() {
 # number of files in current directory
 # https://web.archive.org/web/200id_/tldp.org/HOWTO/Bash-Prompt-HOWTO/x700.html
 count_files() {
-  printf '%i\n' "$(command ls -A1 | wc -l)"
+  # https://unix.stackexchange.com/a/1126
+  command find -- .//. ! -path '*.git/*' ! -name . -print |
+    command grep --count //
 }
 
 # define
