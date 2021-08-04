@@ -211,6 +211,7 @@ git_restore() {
   for file in "$@"; do
     git checkout --progress -- "${file}"
   done && git status
+  unset file
 }
 alias grs='git_restore'
 alias gs='git status'
@@ -376,6 +377,8 @@ clang_format() {
       \) \
       -exec "${program}" -i --style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \+
     printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+
+    unset program IndentWidth ColumnLimit
   )
 }
 
@@ -404,6 +407,7 @@ cy() {
       printf '\x60%s\x60 does not exist and cannot be copied\n' "$1"
       return 2
     fi
+    unset interactive
   )
 }
 
@@ -538,6 +542,7 @@ define() {
       printf 'which -a:\n%s\n' "$(which -a "${query}")"
 
   done
+  unset query
 }
 
 # find duplicate files
@@ -703,6 +708,8 @@ path_check() {
 
   # silently undo verbose output for everyone
   { set +euvx; } 2>/dev/null
+
+  unset argument directory
 }
 
 # PlistBuddy
