@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+# init
+# Author: Lucas Larson
+#
+
 clear
 printf '   .\x5f\x5f       .\x5f\x5f  \x5f\x5f\n'
 printf '   \x7c\x5f\x5f\x7c \x5f\x5f\x5f\x5f \x7c\x5f\x5f\x7c\x2f  \x7c\x5f\n'
@@ -14,7 +18,7 @@ printf '  a Lucas Larson production\n\n'
 sleep 1
 
 # ensure `$HOME` is defined
-[ -z "${HOME-}" ] || exit 1
+[ -n "${HOME-}" ] || exit 1
 
 # start from `$HOME`
 [ "$(command pwd -P)" = "${HOME-}" ] || {
