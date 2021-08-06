@@ -12,6 +12,7 @@
 
 **Fixed bugs:**
 
+- `find -exec` and `xargs` must 𝑛𝑜𝑡 be followed by `command` [\#392](https://github.com/LucasLarson/dotfiles/issues/392)
 - `cd` is a `builtin` not a `command` [\#388](https://github.com/LucasLarson/dotfiles/issues/388)
 - replace `builtin cd` with `command cd` for @AlpineLinux \(fix \#388\) [\#393](https://github.com/LucasLarson/dotfiles/pull/393) ([LucasLarson](https://github.com/LucasLarson))
 - use `builtin cd` instead of `command cd` \(fix \#388\) [\#391](https://github.com/LucasLarson/dotfiles/pull/391) ([LucasLarson](https://github.com/LucasLarson))
@@ -25,6 +26,7 @@
 
 **Merged pull requests:**
 
+- replace `find -exec command` with `find -exec` \(fix \#392\) [\#398](https://github.com/LucasLarson/dotfiles/pull/398) ([LucasLarson](https://github.com/LucasLarson))
 - Bump custom/themes/powerlevel10k from `83d80fa` to `e3c8529` [\#395](https://github.com/LucasLarson/dotfiles/pull/395) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-completions from `a736cfe` to `d4511c2` [\#394](https://github.com/LucasLarson/dotfiles/pull/394) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `1e7be00` to `83d80fa` [\#390](https://github.com/LucasLarson/dotfiles/pull/390) ([dependabot[bot]](https://github.com/apps/dependabot))
