@@ -580,7 +580,7 @@ find_shell_scripts() {
     command find -- . \
       ! -path '*.git/*' \
       -type f \
-      -exec command head -n1 {} \+ 2>/dev/null |
+      -exec head -n1 {} \+ 2>/dev/null |
       command grep \
         --binary-files=without-match \
         --exclude-dir='.git' \
