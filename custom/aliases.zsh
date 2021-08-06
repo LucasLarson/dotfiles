@@ -127,9 +127,15 @@ alias git_parents='git_find_parents'
 alias git-find-parents='git_find_parents'
 alias git-parents='git_find_parents'
 
-# initial commit
-# https://stackoverflow.com/q/1006775#comment23686803_1007545
-alias gic='git rev-list --topo-order --parents HEAD -- | grep -E "^[a-f0-9]{40}$"'
+# find initial commit
+git_find_initial_commit() {
+  # https://stackoverflow.com/q/1006775#comment23686803_1007545
+  command git rev-list --topo-order --parents HEAD -- |
+    command grep -E '^[a-f0-9]{40}$'
+}
+alias gic='git_find_initial_commit'
+
+# commit initial commit
 git_commit_initial_commit() {
   # usage: git_commit_initial_commit [yyyy-mm-dd]
   # create initial commits: one empty root, then the rest
@@ -266,6 +272,17 @@ atom_packages() {
       command apm list --installed --bare
   } >"${1:-${DOTFILES:-${HOME}/Dropbox/dotfiles}/!=Mackup/atom}" 2>/dev/null
 }
+
+bash_major_version() {
+  confirm Bash version is at least any given version (default: at least Bash 4)
+  if [ "$(command bash --version | command head -n 1 | command awk '{ print $4 }' | command cut -d . -f 1)" -lt "${1:-3}" ]; then
+    printf 'You will need to upgrade to version %s for full functionality.\n' "${1:-3.0}" >&2
+    exit 1
+  else
+    exit 0
+  fi
+}
+alias bash_version='bash_major_version'
 
 cd_pwd_P() {
   cd_from=$(pwd)
