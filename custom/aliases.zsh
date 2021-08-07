@@ -100,7 +100,7 @@ git_garbage_collection() {
     git maintenance start >/dev/null 2>&1 && git maintenance start
     git status
   else
-    return 1
+    exit 1
   fi
 }
 alias ggc='git_garbage_collection'
@@ -166,7 +166,7 @@ alias ginit='git init && git status'
 # git last common ancestor
 git_last_common_ancestor() {
   # https://stackoverflow.com/a/1549155
-  [ $# -eq 2 ] || return 1
+  [ $# -eq 2 ] || exit 1
   command git merge-base "$1" "$2"
 }
 alias glca='git_last_common_ancestor'
@@ -292,7 +292,7 @@ cd_pwd_P() {
     sleep 0.2
     cd "${cd_to}" || {
       printf 'unable to perform this operation\n'
-      return 1
+      exit 1
     }
     printf '       into \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_to}"
     sleep 0.2
@@ -419,10 +419,10 @@ cy() {
       fi
     elif [ -e "$1" ]; then
       printf '\x60%s\x60 is not readable and cannot be copied\n' "$1"
-      return 1
+      exit 1
     else
       printf '\x60%s\x60 does not exist and cannot be copied\n' "$1"
-      return 3
+      exit 3
     fi
     unset interactive
   )
@@ -436,7 +436,7 @@ cleanup() {
   fi
 
   # refuse to run from `$HOME`
-  [ "$(pwd -P)" = "${HOME}" ] && return 1
+  [ "$(pwd -P)" = "${HOME}" ] && exit 1
   # delete thumbnail cache files
   # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
   find -- "${1:-.}" -type f \( \
@@ -706,7 +706,7 @@ path_check() {
 
     *)
       printf 'usage: %s [-v|--verbose]\n' "$(basename "$0")"
-      return 1
+      exit 1
       ;;
     esac
   done
@@ -758,7 +758,7 @@ take() {
   mkdir -p -v -- "$@" &&
     # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
     printf 'cd: changed directory to \xe2\x80\x98%s\xe2\x80\x99\n' "${@:$#}" &&
-    cd -- "${@:$#}" || return 1
+    cd -- "${@:$#}" || exit 1
 }
 
 # Unix epoch seconds
