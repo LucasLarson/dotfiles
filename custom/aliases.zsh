@@ -422,7 +422,7 @@ cy() {
       return 1
     else
       printf '\x60%s\x60 does not exist and cannot be copied\n' "$1"
-      return 2
+      return 3
     fi
     unset interactive
   )
