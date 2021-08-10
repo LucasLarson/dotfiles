@@ -686,16 +686,16 @@ builtin unalias -- ls 2>/dev/null
 builtin unalias -- l 2>/dev/null
 if command exa --color=auto >/dev/null 2>&1; then
   alias ls='command exa --color=auto'
-  alias l='ls --bytes --classify --git --header --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso'
+  alias l='command exa --color=auto --bytes --classify --git --header --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso'
 elif command gls --color=auto >/dev/null 2>&1; then
   alias ls='command gls --color=auto'
-  alias l='ls -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
+  alias l='command gls --color=auto -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
 elif command ls --color=auto >/dev/null 2>&1; then
   alias ls='command ls --color=auto'
-  alias l='ls -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
+  alias l='command ls --color=auto -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
 elif [ "$(command /bin/ls -G -- "${HOME}" | hexdump)" = "$(command ls -G -- "${HOME}" | hexdump)" ] && [ "$(command ls -G -- "${HOME}" | hexdump)" != "$(command ls --color=auto -- "${HOME}" 2>/dev/null)" ]; then
   alias ls='command ls -G'
-  alias l='ls -AFgo'
+  alias l='command ls -G -AFgo'
 fi
 
 # https://unix.stackexchange.com/a/30950
