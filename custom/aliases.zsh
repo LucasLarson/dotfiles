@@ -479,7 +479,7 @@ cleanup() {
         ! -name '.zcompdump' \
         -name '.zcompdump*' \
         -print \
-        -exec rm -- {} \;
+        -delete -- {} \;
     done
   fi
 
