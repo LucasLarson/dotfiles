@@ -108,7 +108,7 @@ git_garbage_collection() {
     GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true git status
     unset GIT_TRACE GIT_TRACE_PACK_ACCESS GIT_TRACE_PACKET GIT_TRACE_PERFORMANCE GIT_TRACE_SETUP
   else
-    exit 1
+    return 1
   fi
 }
 alias ggc='git_garbage_collection'
@@ -174,7 +174,7 @@ alias ginit='git init && git status'
 # git last common ancestor
 git_last_common_ancestor() {
   # https://stackoverflow.com/a/1549155
-  [ $# -eq 2 ] || exit 1
+  [ $# -eq 2 ] || return 1
   command git merge-base "$1" "$2"
 }
 alias glca='git_last_common_ancestor'
@@ -288,9 +288,9 @@ bash_major_version() {
   # confirm Bash version is at least any given version (default: at least Bash 4)
   if [ "$(command bash --version | command head -n 1 | command awk '{ print $4 }' | command cut -d . -f 1)" -lt "${1:-4}" ]; then
     printf 'You will need to upgrade to version %s for full functionality.\n' "${1:-4}" >&2
-    exit 1
+    return 1
   else
-    exit 0
+    return 0
   fi
 }
 alias bash_version='bash_major_version'
@@ -303,7 +303,7 @@ cd_pwd_P() {
     sleep 0.2
     cd "${cd_to}" || {
       printf 'unable to perform this operation\n'
-      exit 1
+      return 1
     }
     printf '       into \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_to}"
     sleep 0.2
@@ -447,7 +447,7 @@ cleanup() {
   fi
 
   # refuse to run from `$HOME`
-  [ "$(pwd -P)" = "${HOME}" ] && exit 1
+  [ "$(pwd -P)" = "${HOME}" ] && return 1
   # delete thumbnail cache files
   # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
   find -- "${1:-.}" -type f \( \
@@ -717,7 +717,7 @@ path_check() {
 
     *)
       printf 'usage: %s [-v|--verbose]\n' "$(basename "$0")"
-      exit 1
+      return 1
       ;;
     esac
   done
@@ -769,7 +769,7 @@ take() {
   mkdir -p -v -- "$@" &&
     # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
     printf 'cd: changed directory to \xe2\x80\x98%s\xe2\x80\x99\n' "${@:$#}" &&
-    cd -- "${@:$#}" || exit 1
+    cd -- "${@:$#}" || return 1
 }
 
 # Unix epoch seconds
