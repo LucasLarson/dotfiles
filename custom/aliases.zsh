@@ -38,6 +38,13 @@ git_add() {
   git status
 }
 alias ga='git_add'
+
+git_add_deleted() {
+  # https://gist.github.com/8775224
+  command git ls-files -z --deleted | xargs -0 git add --verbose -- 2>/dev/null
+}
+alias git-add-deleted='git_add_deleted'
+
 git_add_patch() {
   git add --patch --verbose -- "${@:-.}"
   git status
