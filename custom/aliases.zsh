@@ -100,12 +100,13 @@ git_garbage_collection() {
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     # see `git gc` and other wrapping commands behind-the-scene mechanics
     # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
-    git fetch --prune --prune-tags --verbose
-    git prune --verbose --progress --expire now
-    git prune-packed
-    git gc --aggressive --prune=now
-    git maintenance start >/dev/null 2>&1 && git maintenance start
+    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true git fetch --prune --prune-tags --verbose
+    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true git prune --verbose --progress --expire now
+    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true git prune-packed
+    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true git gc --aggressive --prune=now
+    git maintenance start >/dev/null 2>&1 && GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true git maintenance start
     git status
+    unset GIT_TRACE GIT_TRACE_PACK_ACCESS GIT_TRACE_PACKET GIT_TRACE_PERFORMANCE GIT_TRACE_SETUP
   else
     exit 1
   fi
