@@ -273,16 +273,19 @@ gvc() {
 }
 
 atom_packages() {
+  set -eux
   # https://web.archive.org/web/0id_/discuss.atom.io/t/15674/2
   {
     command apm-nightly list --installed --bare ||
       command apm-beta list --installed --bare ||
       command apm list --installed --bare
   } >"${1:-${DOTFILES:-${HOME}/Dropbox/dotfiles}/!=Mackup/atom}" 2>/dev/null
+
+  { set +euvx; } 2>/dev/null
 }
 
 bash_major_version() {
-  confirm Bash version is at least any given version (default: at least Bash 4)
+  # confirm Bash version is at least any given version (default: at least Bash 4)
   if [ "$(command bash --version | command head -n 1 | command awk '{ print $4 }' | command cut -d . -f 1)" -lt "${1:-3}" ]; then
     printf 'You will need to upgrade to version %s for full functionality.\n' "${1:-3.0}" >&2
     exit 1
