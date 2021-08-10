@@ -488,25 +488,25 @@ cleanup() {
   # or with specific names and are writable
   # https://stackoverflow.com/a/64863398
   find -- "${1:-.}" -type f -writable -size 0 \( \
-    ! -path '*.git/*' -a \
-    ! -path '*/test*' -a \
-    ! -name "$(printf 'Icon\x0d\x0a')" -a \
-    ! -name '*.plugin.zsh' -a \
-    ! -name '*LOCK' -a \
-    ! -name '*empty*' -a \
-    ! -name '*hushlogin' -a \
-    ! -name '*ignore' -a \
-    ! -name '*journal' -a \
-    ! -name '*lock' -a \
-    ! -name '*lockfile' -a \
-    ! -name '.dirstamp' -a \
-    ! -name '.gitkeep' -a \
-    ! -name '.gitmodules' -a \
-    ! -name '.keep' -a \
-    ! -name '.nojekyll' -a \
-    ! -name '.sudo_as_admin_successful' -a \
-    ! -name '.watchmanconfig' -a \
-    ! -name '__init__.py' -a \
+    ! -path '*.git/*' \
+    ! -path '*/test*' \
+    ! -name "$(printf 'Icon\x0d\x0a')" \
+    ! -name '*.plugin.zsh' \
+    ! -name '*LOCK' \
+    ! -name '*empty*' \
+    ! -name '*hushlogin' \
+    ! -name '*ignore' \
+    ! -name '*journal' \
+    ! -name '*lock' \
+    ! -name '*lockfile' \
+    ! -name '.dirstamp' \
+    ! -name '.gitkeep' \
+    ! -name '.gitmodules' \
+    ! -name '.keep' \
+    ! -name '.nojekyll' \
+    ! -name '.sudo_as_admin_successful' \
+    ! -name '.watchmanconfig' \
+    ! -name '__init__.py' \
     ! -name 'favicon.*' \
     \) \
     -delete
@@ -515,7 +515,7 @@ cleanup() {
   # but skip Git-specific and `/.well-known/` directories
   # https://stackoverflow.com/q/4210042#comment38334264_4210072
   find -- "${1:-.}" -type d -empty \( \
-    ! -path '*.git/*' -a \
+    ! -path '*.git/*' \
     ! -name '.well-known' \
     \) \
     -delete
