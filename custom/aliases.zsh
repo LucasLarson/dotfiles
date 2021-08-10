@@ -462,7 +462,7 @@ cleanup() {
   # delete crufty Zsh files
   # if `$ZSH_COMPDUMP` always generates a crufty file then skip
   # https://stackoverflow.com/a/8811800
-  if [ "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP}" ]; then
+  if [ -n "${ZSH_COMPDUMP}" ] && [ "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP}" ]; then
     while [ -n "$(
       find -- "${HOME}" \
         -maxdepth 1 \
