@@ -438,11 +438,14 @@ cy() {
 }
 
 cleanup() {
+  case "$1" in
   # if `cleanup -v` or `cleanup --verbose`,
   # then use `-print` during `-delete`
-  if [ "$1" = -v ] || [ "$1" = --verbose ]; then
-    set -x && shift
-  fi
+  -v | --verbose)
+    set -vx
+    shift
+    ;;
+  esac
 
   # refuse to run from `$HOME`
   [ "$(pwd -P)" = "${HOME}" ] && return 1
