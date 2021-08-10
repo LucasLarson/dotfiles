@@ -529,6 +529,23 @@ count_files() {
     command grep --count //
 }
 
+count_files_by_extension() {
+  # files with no extension
+  printf ' %i files without extensions\n' "$(
+    command find -- . ! -path '*.git/*' -type f ! -name '*.*' -exec basename -a -- {} \+ 2>/dev/null |
+      command grep --count --invert-match '\.'
+  )"
+
+  # files with extensions
+  command find -- . ! -path '*.git/*' -type f -exec basename -a -- {} \+ 2>/dev/null |
+
+    # https://2daygeek.com/how-to-count-files-by-extension-in-linux
+    command sed -n -- 's/..*\.//p' |
+    command sort |
+    command uniq -c |
+    command sort -r
+}
+
 # define
 define() {
   for query in "${@:-$0}"; do
