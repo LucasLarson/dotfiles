@@ -119,6 +119,7 @@ plugins=(
   git-default-branch
   history-substring-search
   zsh-diff-so-fancy
+  zchee-zsh-completions
 )
 [ "$(uname)" = Darwin ] && plugins=(
   "${plugins[@]}"
