@@ -178,3 +178,6 @@
 [submodule "custom/plugins/zsh-diff-so-fancy"]
   path = custom/plugins/zsh-diff-so-fancy
   url = https://github.com/zdharma/zsh-diff-so-fancy
+[submodule "custom/plugins/zchee-zsh-completions"]
+  path = custom/plugins/zchee-zsh-completions
+  url = https://github.com/zchee/zsh-completions
