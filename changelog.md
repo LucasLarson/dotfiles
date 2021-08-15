@@ -26,6 +26,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/zchee-zsh-completions from `690cc73` to `229cf48` [\#401](https://github.com/LucasLarson/dotfiles/pull/401) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump custom/themes/powerlevel10k from `8f798f9` to `32e76e7` [\#400](https://github.com/LucasLarson/dotfiles/pull/400) ([dependabot[bot]](https://github.com/apps/dependabot))
 - replace `find -exec command` with `find -exec` \(fix \#392\) [\#398](https://github.com/LucasLarson/dotfiles/pull/398) ([LucasLarson](https://github.com/LucasLarson))
 - Bump custom/themes/powerlevel10k from `83d80fa` to `e3c8529` [\#395](https://github.com/LucasLarson/dotfiles/pull/395) ([dependabot[bot]](https://github.com/apps/dependabot))
