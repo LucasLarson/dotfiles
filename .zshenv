@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+# Dotfiles
+export DOTFILES=${HOME}/Dropbox/dotfiles
+
 # Language and locale
 export LANG=${LANG:=en_US.UTF-8}
 export TZ=${TZ:=America/New_York}
