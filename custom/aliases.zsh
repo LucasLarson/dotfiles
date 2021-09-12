@@ -12,6 +12,15 @@ command -v apm-nightly >/dev/null 2>&1 &&
   alias apm='apm-nightly' &&
   alias apm-beta='apm-nightly'
 
+atom_packages() {
+  # https://web.archive.org/web/0id_/discuss.atom.io/t/15674/2
+  {
+    command apm-nightly list --installed --bare ||
+      command apm-beta list --installed --bare ||
+      command apm list --installed --bare
+  } >"${1:-${DOTFILES:-${HOME}/Dropbox/dotfiles}/!=Mackup/atom}" 2>/dev/null
+}
+
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 mu() {
@@ -271,18 +280,6 @@ gvc() {
   # if there is an argument (commit hash), use it
   # otherwise check `HEAD`
   command git verify-commit "${1:-HEAD}"
-}
-
-atom_packages() {
-  set -eux
-  # https://web.archive.org/web/0id_/discuss.atom.io/t/15674/2
-  {
-    command apm-nightly list --installed --bare ||
-      command apm-beta list --installed --bare ||
-      command apm list --installed --bare
-  } >"${1:-${DOTFILES:-${HOME}/Dropbox/dotfiles}/!=Mackup/atom}" 2>/dev/null
-
-  { set +euvx; } 2>/dev/null
 }
 
 bash_major_version() {
