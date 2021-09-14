@@ -46,7 +46,7 @@ command -v apk >/dev/null 2>&1 || {
   verifying apk tools integrity... >/dev/null 2>&1
   [ "$(curl --fail --silent --location https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -' ]
 } || (
-  # https://github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version/8901950#wiki-body
+  # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
   wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | tar -xz apk.static
   ./apk.static add apk-tools
 )
