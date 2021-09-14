@@ -52,7 +52,6 @@ git_add_deleted() {
   # https://gist.github.com/8775224
   command git ls-files -z --deleted | command xargs -0 git add --verbose -- 2>/dev/null
 }
-alias git-add-deleted='git_add_deleted'
 
 git_add_patch() {
   command git add --patch --verbose -- "${@:-.}"
@@ -98,7 +97,6 @@ git_delete_merged_branches() {
 }
 alias gdmb='git_delete_merged_branches'
 alias gDmb='git_delete_merged_branches'
-alias git-delete-merged-branches='git_delete_merged_branches'
 
 alias gdm='command git diff "$(git-default-branch)" --'
 alias gsd='gds'
@@ -137,13 +135,9 @@ git_find_parents() {
   command git rev-list "${1:-$(command git rev-parse HEAD)}^"
 }
 alias git_parent='git_find_parent'
-alias git-find-parent='git_find_parent'
-alias git-parent='git_find_parent'
 alias gfp='git_find_parent'
 alias gfc='git_find_parent'
 alias git_parents='git_find_parents'
-alias git-find-parents='git_find_parents'
-alias git-parents='git_find_parents'
 
 # find initial commit
 git_find_initial_commit() {
@@ -272,7 +266,6 @@ git_update() {
     command git status
   fi
 }
-alias git-update='git_update'
 alias gu='git-update'
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
@@ -647,7 +640,6 @@ find_shell_scripts() {
 
   { set +euvx; } 2>/dev/null
 }
-alias find-shell-scripts='find_shell_scripts'
 
 identify() {
 
@@ -704,7 +696,6 @@ alias mv='mv -v -i'
 non_ascii() {
   LC_ALL=C find -- . ! -path '*.git/*' -name '*[! -~]*'
 }
-alias non-ascii='non_ascii'
 
 # paste faster
 # https://git.io/pasteinit-pastefinish
