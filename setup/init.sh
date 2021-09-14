@@ -12,7 +12,7 @@ printf '   \x7c  \x7c   \x7c  \x5c  \x7c\x7c  \x7c\n'
 printf '   \x7c\x5f\x5f\x7c\x5f\x5f\x5f\x7c'
 printf '  \x2f\x5f\x5f\x7c\x7c\x5f\x5f\x7c\n'
 printf '           \x5c\x2f\n\n'
-printf ' Alpine Linux setup\n'
+printf '        Linux setup\n'
 sleep 1
 printf '  a Lucas Larson production\n\n'
 sleep 1
