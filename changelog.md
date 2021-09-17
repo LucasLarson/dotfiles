@@ -26,6 +26,7 @@
 
 **Merged pull requests:**
 
+- bump zchee-zsh-completions from `303e682` to `8de9211` [\#413](https://github.com/LucasLarson/dotfiles/pull/413) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `b3b0efb` to `c5c9178` [\#411](https://github.com/LucasLarson/dotfiles/pull/411) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump custom/plugins/zchee-zsh-completions from `229cf48` to `303e682` [\#410](https://github.com/LucasLarson/dotfiles/pull/410) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump custom/plugins/zsh-completions from `f52061c` to `3273291` [\#409](https://github.com/LucasLarson/dotfiles/pull/409) ([dependabot[bot]](https://github.com/apps/dependabot))
