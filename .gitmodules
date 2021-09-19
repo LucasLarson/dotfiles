@@ -181,3 +181,6 @@
 [submodule "custom/plugins/zchee-zsh-completions"]
   path = custom/plugins/zchee-zsh-completions
   url = https://github.com/zchee/zsh-completions
+[submodule "custom/plugins/git-open"]
+	path = custom/plugins/git-open
+	url = https://github.com/paulirish/git-open
