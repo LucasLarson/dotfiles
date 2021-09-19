@@ -114,6 +114,7 @@ plugins=(
   gunstage
   samefile
   git-default-branch
+  git-open
   history-substring-search
   zsh-diff-so-fancy
   zchee-zsh-completions
