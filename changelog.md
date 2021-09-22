@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/LucasLarson/dotfiles/tree/HEAD)
+## [v0.7.0](https://github.com/LucasLarson/dotfiles/tree/v0.7.0) (2021-09-22)
 
-[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.6.1...HEAD)
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.6.1...v0.7.0)
 
 **Implemented enhancements:**
 
