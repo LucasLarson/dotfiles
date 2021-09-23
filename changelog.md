@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/LucasLarson/dotfiles/tree/HEAD)
+
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.7.0...HEAD)
+
+**Merged pull requests:**
+
+- bump powerlevel10k from `7a72acf` to `0ce9df6` [\#416](https://github.com/LucasLarson/dotfiles/pull/416) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.7.0](https://github.com/LucasLarson/dotfiles/tree/v0.7.0) (2021-09-22)
 
 [Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.6.1...v0.7.0)
