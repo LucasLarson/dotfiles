@@ -41,6 +41,17 @@ mux() {
     command git status
 }
 
+# Git
+unalias g 2>/dev/null
+compdef g=git
+g() {
+  {
+    [ $# -eq 0 ] &&
+      command git status "$@"
+  } ||
+    command git "$@"
+}
+
 # git add
 git_add() {
   command git add --verbose -- "${@:-.}"
