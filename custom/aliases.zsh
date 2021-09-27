@@ -257,7 +257,7 @@ alias gti='git'
 git_update() {
   command -v cleanup >/dev/null 2>&1 && cleanup "$@"
 
-  # run only from within a git repository
+  # run only from within a Git repository
   # https://stackoverflow.com/a/53809163
   if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     command git fetch --all --prune --verbose
