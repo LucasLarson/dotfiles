@@ -51,7 +51,7 @@ command -v apk >/dev/null 2>&1 || {
   ./apk.static add apk-tools
 )
 
-# configure repositories
+# configure only main and community repositories at first
 {
   printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n'
   printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n'
