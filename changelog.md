@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/samefile from `8afff8a` to `448cd3c` [\#417](https://github.com/LucasLarson/dotfiles/pull/417) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump powerlevel10k from `7a72acf` to `0ce9df6` [\#416](https://github.com/LucasLarson/dotfiles/pull/416) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.7.0](https://github.com/LucasLarson/dotfiles/tree/v0.7.0) (2021-09-22)
