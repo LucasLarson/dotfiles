@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/themes/powerlevel10k from `3e515a7` to `edd9805` [\#420](https://github.com/LucasLarson/dotfiles/pull/420) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump custom/themes/powerlevel10k from `0ce9df6` to `3e515a7` [\#419](https://github.com/LucasLarson/dotfiles/pull/419) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/git-default-branch from `0c7a390` to `2ba4381` [\#418](https://github.com/LucasLarson/dotfiles/pull/418) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/samefile from `8afff8a` to `448cd3c` [\#417](https://github.com/LucasLarson/dotfiles/pull/417) ([dependabot[bot]](https://github.com/apps/dependabot))
