@@ -54,7 +54,7 @@ g() {
 
 # git add
 git_add() {
-  command git add --verbose -- "${@:-.}"
+  command git add --verbose "${@:-.}"
   command git status
 }
 alias ga='git_add'
@@ -65,7 +65,7 @@ git_add_deleted() {
 }
 
 git_add_patch() {
-  command git add --patch --verbose -- "${@:-.}"
+  command git add --patch --verbose "${@:-.}"
   command git status
 }
 alias gap='git_add_patch'
@@ -246,8 +246,8 @@ alias grs='git_restore'
 alias gs='command git status'
 
 git_submodule_update() {
-  command git submodule update --init --recursive --remote -- "$@" &&
-    command git submodule sync --recursive -- "$@" &&
+  command git submodule update --init --recursive --remote "$@" &&
+    command git submodule sync --recursive "$@" &&
     command git status
 }
 alias gsu='git_submodule_update'
@@ -266,14 +266,13 @@ git_update() {
     # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
     case "$1" in
     -r | --remote)
-      command git submodule update --init --recursive --remote
-      shift
+      command git submodule update --init --recursive --remote "$@"
       ;;
     *)
-      command git submodule update --init --recursive --
+      command git submodule update --init --recursive "$@"
       ;;
     esac
-    command git submodule sync --recursive --
+    command git submodule sync --recursive "$@"
     command git status
   fi
 }
