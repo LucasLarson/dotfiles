@@ -276,7 +276,7 @@ git_update() {
     command git status
   fi
 }
-alias gu='git-update'
+alias gu='git_update'
 
 # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
 gvc() {
