@@ -34,9 +34,9 @@ jobs:
           --output changelog.md
       - name: Commit files
         run: |
-          git config --local user.email "actions@github.com" && \
-          git config --local user.name "GitHub" && \
-          git add --all --verbose && \
+          git config --local user.email "actions@github.com" &&
+          git config --local user.name "GitHub" &&
+          git add --all --verbose &&
           git commit --allow-empty --verbose --message \
           '[ci skip] update changelog'
       - name: Push changes
