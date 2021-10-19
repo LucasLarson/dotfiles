@@ -170,16 +170,16 @@ git_commit_initial_commit() {
       git_time=$(date -d @$(($(date -d "${1:-$(date +%Y-%m-%d)}" +%s) + 43200)) '+%c %z')
       export GIT_AUTHOR_DATE=${git_time-}
       export GIT_COMMITTER_DATE=${git_time-}
-      command git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
+      command git commit --allow-empty --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
 
     else
-      command git commit --allow-empty --verbose --message "$(printf '\xf0\x9f\x8c\xb3\xc2\xa0 root commit')"
+      command git commit --allow-empty --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
     fi
 
   # if there are non-repository files present, then add them and commit
   if [ -n "$(command git ls-files --others --exclude-standard)" ]; then
     command git add -- . &&
-      command git commit --verbose --message "$(printf '\xe2\x9c\xa8\xc2\xa0 initial commit')"
+      command git commit --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
   fi
   unset git_time GIT_AUTHOR_DATE GIT_COMMITTER_DATE
 }
@@ -298,17 +298,17 @@ cd_pwd_P() {
   cd_from=$(pwd)
   cd_to=$(pwd -P)
   if [ "${cd_from}" != "${cd_to}" ]; then
-    printf 'moving from \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_from}"
+    printf 'moving from \342\200\230%s\342\200\231\n' "${cd_from}"
     sleep 0.2
     cd "${cd_to}" || {
       printf 'unable to perform this operation\n'
       return 1
     }
-    printf '       into \xe2\x80\x98%s\xe2\x80\x99\n' "${cd_to}"
+    printf '       into \342\200\230%s\342\200\231\n' "${cd_to}"
     sleep 0.2
   else
     printf 'already in unaliased directory '
-    printf '\xe2\x80\x98%s\xe2\x80\x99\n' "${cd_from}"
+    printf '\342\200\230%s\342\200\231\n' "${cd_from}"
   fi
   unset cd_from cd_to
 }
@@ -333,10 +333,10 @@ clang_format() {
     printf 'applying %s to all applicable files in %s...\n' "${program}" "${PWD##*/}"
     sleep 1
 
-    printf 'setting \x60IndentWidth\x60 to %d\n' "${IndentWidth}"
+    printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth}"
     sleep 1
 
-    printf 'setting \x60ColumnLimit\x60 to %d\n\n\n' "${ColumnLimit}"
+    printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit}"
     sleep 1
 
     find -- . -type f \
@@ -403,7 +403,7 @@ clang_format() {
       ! -path '*node_modules/*' \
       \) \
       -exec "${program}" -i --style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \+
-    printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+    printf '\n\n\342\234\205 done\041\n\n'
 
     unset program IndentWidth ColumnLimit
   )
@@ -428,10 +428,10 @@ cy() {
         eval cp -r -L "${interactive} -- $1 $2"
       fi
     elif [ -e "$1" ]; then
-      printf '\x60%s\x60 is not readable and cannot be copied\n' "$1"
+      printf '\140%s\140 is not readable and cannot be copied\n' "$1"
       exit 1
     else
-      printf '\x60%s\x60 does not exist and cannot be copied\n' "$1"
+      printf '\140%s\140 does not exist and cannot be copied\n' "$1"
       exit 3
     fi
     unset interactive
@@ -491,7 +491,7 @@ cleanup() {
   find -- "${1:-.}" -type f -writable -size 0 \( \
     ! -path '*.git/*' \
     ! -path '*/test*' \
-    ! -name "$(printf 'Icon\x0d\x0a')" \
+    ! -name "$(printf 'Icon\015\012')" \
     ! -name '*.plugin.zsh' \
     ! -name '*LOCK' \
     ! -name '*empty*' \
@@ -785,7 +785,7 @@ alias sudo='sudo '
 take() {
   mkdir -p -v -- "$@" &&
     # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
-    printf 'cd: changed directory to \xe2\x80\x98%s\xe2\x80\x99\n' "${@:$#}" &&
+    printf 'cd: changed directory to \342\200\230%s\342\200\231\n' "${@:$#}" &&
     cd -- "${@:$#}" || return 1
 }
 
