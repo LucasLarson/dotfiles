@@ -5,13 +5,13 @@
 #
 
 clear
-printf '   .\x5f\x5f       .\x5f\x5f  \x5f\x5f\n'
-printf '   \x7c\x5f\x5f\x7c \x5f\x5f\x5f\x5f \x7c\x5f\x5f\x7c\x2f  \x7c\x5f\n'
-printf '   \x7c  \x7c\x2f    \x5c\x7c  \x5c   \x5f\x5f\x5c\n'
-printf '   \x7c  \x7c   \x7c  \x5c  \x7c\x7c  \x7c\n'
-printf '   \x7c\x5f\x5f\x7c\x5f\x5f\x5f\x7c'
-printf '  \x2f\x5f\x5f\x7c\x7c\x5f\x5f\x7c\n'
-printf '           \x5c\x2f\n\n'
+printf '   .\137\137       .\137\137  \137\137\n'
+printf '   \174\137\137\174 \137\137\137\137 \174\137\137\174\057  \174\137\n'
+printf '   \174  \174\057    \134\174  \134   \137\137\134\n'
+printf '   \174  \174   \174  \134  \174\174  \174\n'
+printf '   \174\137\137\174\137\137\137\174'
+printf '  \057\137\137\174\174\137\137\174\n'
+printf '           \134\057\n\n'
 printf '        Linux setup\n'
 sleep 1
 printf '  a Lucas Larson production\n\n'
