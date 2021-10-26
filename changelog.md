@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- bump gunstage from `4d6e288` to `2b1c779` [\#425](https://github.com/LucasLarson/dotfiles/pull/425) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump powerlevel10k from `6441a01` to `ed0bd29` [\#424](https://github.com/LucasLarson/dotfiles/pull/424) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump git-default-branch from `2ba4381` to `e219585` [\#423](https://github.com/LucasLarson/dotfiles/pull/423) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump powerlevel10k from `edd9805` to `6441a01` [\#422](https://github.com/LucasLarson/dotfiles/pull/422) ([dependabot[bot]](https://github.com/apps/dependabot))
