@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/LucasLarson/dotfiles/tree/HEAD)
 
-[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.7.0...HEAD)
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.7.1...HEAD)
+
+**Merged pull requests:**
+
+- bump powerlevel10k from `ed0bd29` to `a55955c` [\#427](https://github.com/LucasLarson/dotfiles/pull/427) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v0.7.1](https://github.com/LucasLarson/dotfiles/tree/v0.7.1) (2021-10-30)
+
+[Full Changelog](https://github.com/LucasLarson/dotfiles/compare/v0.7.0...v0.7.1)
 
 **Merged pull requests:**
 
