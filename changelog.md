@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/themes/powerlevel10k from `a55955c` to `d281e59` [\#430](https://github.com/LucasLarson/dotfiles/pull/430) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump powerlevel10k from `ed0bd29` to `a55955c` [\#427](https://github.com/LucasLarson/dotfiles/pull/427) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [v0.7.1](https://github.com/LucasLarson/dotfiles/tree/v0.7.1) (2021-10-30)
