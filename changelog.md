@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/themes/powerlevel10k from `d281e59` to `6520323` [\#431](https://github.com/LucasLarson/dotfiles/pull/431) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `a55955c` to `d281e59` [\#430](https://github.com/LucasLarson/dotfiles/pull/430) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/fast-syntax-highlighting from `817916d` to `9a5a4a5` [\#429](https://github.com/LucasLarson/dotfiles/pull/429) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump powerlevel10k from `ed0bd29` to `a55955c` [\#427](https://github.com/LucasLarson/dotfiles/pull/427) ([dependabot[bot]](https://github.com/apps/dependabot))
