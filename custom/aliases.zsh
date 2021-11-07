@@ -174,11 +174,8 @@ git_commit_initial_commit() {
       git_time=$(date -d @$(($(date -d "${1:-$(date +%Y-%m-%d)}" +%s) + 43200)) '+%c %z')
       export GIT_AUTHOR_DATE=${git_time-}
       export GIT_COMMITTER_DATE=${git_time-}
-      command git commit --allow-empty --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
-
-    else
-      command git commit --allow-empty --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
     fi
+  command git commit --allow-empty --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
 
   # if there are non-repository files present, then add them and commit
   if [ -n "$(command git ls-files --others --exclude-standard)" ]; then
