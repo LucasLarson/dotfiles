@@ -214,6 +214,7 @@ gmm() {
 }
 
 alias gmv='command git mv --verbose'
+alias gmvf='command git mv --verbose --force'
 
 # git pull
 git_pull() {
