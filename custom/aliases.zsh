@@ -73,18 +73,21 @@ alias gap='git_add_patch'
 
 # git commit
 git_commit() {
-  set -eux
-  if [ $# -ne 0 ]; then
-    command git commit --verbose --gpg-sign --message "$@"
+  set -ux
+  if [ "$#" -eq "0" ]; then
+    command git commit --verbose --gpg-sign
+  elif [ "$1" = '--amend' ]; then
+    command git commit --verbose --gpg-sign --amend
   else
-    command git commit --verbose --gpg-sign "$@"
+    command git commit --verbose --gpg-sign --message "$@"
   fi
   command git status
   { set +euvx; } 2>/dev/null
 }
 alias gc='git_commit'
 alias gcm='git_commit'
-alias gca='command git commit --verbose --gpg-sign --amend --allow-empty; command git status'
+alias gca='git_commit --amend'
+
 alias gcl='command git clone --verbose --progress'
 alias gco='command git checkout --progress'
 
