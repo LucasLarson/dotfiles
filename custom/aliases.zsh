@@ -51,6 +51,7 @@ g() {
   } ||
     command git "$@"
 }
+alias g.='command git status .'
 
 # git add
 git_add() {
