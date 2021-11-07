@@ -318,97 +318,95 @@ alias cdp='cd_pwd_P'
 
 clang_format() {
   # https://github.com/Originate/guide/blob/880952d/ios/files/clang-format.sh
-  (
-    program=clang-format
+  program=clang-format
 
-    # if no argument is provided, then set `IndentWidth` to 2
-    # https://stackoverflow.com/a/2013573
-    IndentWidth=${1:-2}
+  # if no argument is provided, then set `IndentWidth` to 2
+  # https://stackoverflow.com/a/2013573
+  IndentWidth=${1:-2}
 
-    # if no second argument is provided, then set `ColumnLimit` to 79
-    # https://stackoverflow.com/a/48016407
-    ColumnLimit=${2:-79}
+  # if no second argument is provided, then set `ColumnLimit` to 79
+  # https://stackoverflow.com/a/48016407
+  ColumnLimit=${2:-79}
 
-    printf '\n%s\n\n' "$("${program}" --version)"
-    sleep 1
+  printf '\n%s\n\n' "$("${program}" --version)"
+  sleep 1
 
-    printf 'applying %s to all applicable files in %s...\n' "${program}" "${PWD##*/}"
-    sleep 1
+  printf 'applying %s to all applicable files in %s...\n' "${program}" "${PWD##*/}"
+  sleep 1
 
-    printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth}"
-    sleep 1
+  printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth}"
+  sleep 1
 
-    printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit}"
-    sleep 1
+  printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit}"
+  sleep 1
 
-    find -- . -type f \
-      \( \
-      -iname '*.adb' -o \
-      -iname '*.ads' -o \
-      -iname '*.asm' -o \
-      -iname '*.ast' -o \
-      -iname '*.c' -o \
-      -iname '*.c++' -o \
-      -iname '*.c++m' -o \
-      -iname '*.cc' -o \
-      -iname '*.ccm' -o \
-      -iname '*.cl' -o \
-      -iname '*.cp' -o \
-      -iname '*.cpp' -o \
-      -iname '*.cppm' -o \
-      -iname '*.cs' -o \
-      -iname '*.cu' -o \
-      -iname '*.cuh' -o \
-      -iname '*.cui' -o \
-      -iname '*.cxx' -o \
-      -iname '*.cxxm' -o \
-      -iname '*.f' -o \
-      -iname '*.f90' -o \
-      -iname '*.f95' -o \
-      -iname '*.for' -o \
-      -iname '*.fpp' -o \
-      -iname '*.h' -o \
-      -iname '*.h++' -o \
-      -iname '*.hh' -o \
-      -iname '*.hip' -o \
-      -iname '*.hp' -o \
-      -iname '*.hpp' -o \
-      -iname '*.hxx' -o \
-      -iname '*.i' -o \
-      -iname '*.ifs' -o \
-      -iname '*.ii' -o \
-      -iname '*.iim' -o \
-      -iname '*.inc' -o \
-      -iname '*.inl' -o \
-      -iname '*.java' -o \
-      -iname '*.js' -o \
-      -iname '*.ll' -o \
-      -iname '*.m' -o \
-      -iname '*.mi' -o \
-      -iname '*.mii' -o \
-      -iname '*.mm' -o \
-      -iname '*.pcm' -o \
-      -iname '*.proto' -o \
-      -iname '*.protodevel' -o \
-      -iname '*.rs' -o \
-      -iname '*.tcc' -o \
-      -iname '*.td' -o \
-      -iname '*.theletters' -o \
-      -iname '*.tlh' -o \
-      -iname '*.tli' -o \
-      -iname '*.tpp' -o \
-      -iname '*.ts' -o \
-      -iname '*.txx' \
-      \) -a \
-      \( \
-      ! -path '*.git/*' -a \
-      ! -path '*node_modules/*' \
-      \) \
-      -exec "${program}" -i --style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \+
-    printf '\n\n\342\234\205 done\041\n\n'
+  find -- . -type f \
+    \( \
+    -iname '*.adb' -o \
+    -iname '*.ads' -o \
+    -iname '*.asm' -o \
+    -iname '*.ast' -o \
+    -iname '*.c' -o \
+    -iname '*.c++' -o \
+    -iname '*.c++m' -o \
+    -iname '*.cc' -o \
+    -iname '*.ccm' -o \
+    -iname '*.cl' -o \
+    -iname '*.cp' -o \
+    -iname '*.cpp' -o \
+    -iname '*.cppm' -o \
+    -iname '*.cs' -o \
+    -iname '*.cu' -o \
+    -iname '*.cuh' -o \
+    -iname '*.cui' -o \
+    -iname '*.cxx' -o \
+    -iname '*.cxxm' -o \
+    -iname '*.f' -o \
+    -iname '*.f90' -o \
+    -iname '*.f95' -o \
+    -iname '*.for' -o \
+    -iname '*.fpp' -o \
+    -iname '*.h' -o \
+    -iname '*.h++' -o \
+    -iname '*.hh' -o \
+    -iname '*.hip' -o \
+    -iname '*.hp' -o \
+    -iname '*.hpp' -o \
+    -iname '*.hxx' -o \
+    -iname '*.i' -o \
+    -iname '*.ifs' -o \
+    -iname '*.ii' -o \
+    -iname '*.iim' -o \
+    -iname '*.inc' -o \
+    -iname '*.inl' -o \
+    -iname '*.java' -o \
+    -iname '*.js' -o \
+    -iname '*.ll' -o \
+    -iname '*.m' -o \
+    -iname '*.mi' -o \
+    -iname '*.mii' -o \
+    -iname '*.mm' -o \
+    -iname '*.pcm' -o \
+    -iname '*.proto' -o \
+    -iname '*.protodevel' -o \
+    -iname '*.rs' -o \
+    -iname '*.tcc' -o \
+    -iname '*.td' -o \
+    -iname '*.theletters' -o \
+    -iname '*.tlh' -o \
+    -iname '*.tli' -o \
+    -iname '*.tpp' -o \
+    -iname '*.ts' -o \
+    -iname '*.txx' \
+    \) -a \
+    \( \
+    ! -path '*.git/*' -a \
+    ! -path '*node_modules/*' \
+    \) \
+    -exec "${program}" -i --style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \+
+  printf '\n\n\342\234\205 done\041\n\n'
 
-    unset program IndentWidth ColumnLimit
-  )
+  unset program IndentWidth ColumnLimit
 }
 
 # https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
