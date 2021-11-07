@@ -47,7 +47,7 @@ compdef g=git
 g() {
   {
     [ $# -eq 0 ] &&
-      command git status "$@"
+      command git status
   } ||
     command git "$@"
 }
