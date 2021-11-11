@@ -211,7 +211,7 @@ alias glog='command git log --graph --branches --remotes --tags --format=format:
 alias gm='GIT_MERGE_VERBOSITY=4 command git merge --log --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience'
 alias gmc='GIT_MERGE_VERBOSITY=4 command git merge --log --continue'
 
-# git merge main
+# git merge with default branch
 gmm() {
   # set Git merge verbosity environment variable
   # 4 “shows all paths as they are processed” but
