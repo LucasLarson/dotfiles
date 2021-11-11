@@ -5,9 +5,9 @@
 
 git_shallow() {
   command git submodule init
-  for i in $(command git submodule | command sed -e 's/.* //'); do
-    submodule_path=$(command git config --file .gitmodules --get submodule."${i}".path)
-    submodule_url=$(command git config --file .gitmodules --get submodule."${i}".url)
+  for submodule in $(command git submodule | command sed -e 's/.* //'); do
+    submodule_path=$(command git config --file .gitmodules --get submodule."${submodule}".path)
+    submodule_url=$(command git config --file .gitmodules --get submodule."${submodule}".url)
     command git clone --depth 1 --shallow-submodules --sparse "${submodule_url}" "${submodule_path}"
   done
   command git submodule update
