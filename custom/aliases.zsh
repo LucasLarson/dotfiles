@@ -321,7 +321,6 @@ alias cdp='cd_pwd_P'
 
 clang_format() {
   # https://github.com/Originate/guide/blob/880952d/ios/files/clang-format.sh
-  program=clang-format
 
   # if no argument is provided, then set `IndentWidth` to 2
   # https://stackoverflow.com/a/2013573
@@ -331,10 +330,10 @@ clang_format() {
   # https://stackoverflow.com/a/48016407
   ColumnLimit=${2:-79}
 
-  printf '\n%s\n\n' "$("${program}" --version)"
+  printf '\n%s\n\n' "$(clang-format --version)"
   sleep 1
 
-  printf 'applying %s to all applicable files in %s...\n' "${program}" "${PWD##*/}"
+  printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
   sleep 1
 
   printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth}"
@@ -406,10 +405,10 @@ clang_format() {
     ! -path '*.git/*' -a \
     ! -path '*node_modules/*' \
     \) \
-    -exec "${program}" -i --style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \+
+    -exec clang-format -i --style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \+
   printf '\n\n\342\234\205 done\041\n\n'
 
-  unset program IndentWidth ColumnLimit
+  unset IndentWidth ColumnLimit
 }
 
 # https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
