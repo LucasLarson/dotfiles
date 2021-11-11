@@ -331,7 +331,7 @@ bash_major_version() {
 alias bash_version='bash_major_version'
 
 cd_pwd_P() {
-  cd_from="$(command pwd)"
+  cd_from="$(command pwd -L)"
   cd_to="$(command pwd -P)"
   if [ "${cd_from}" != "${cd_to}" ]; then
     printf 'moving from \342\200\230%s\342\200\231\n' "${cd_from}"
