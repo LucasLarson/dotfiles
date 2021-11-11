@@ -219,12 +219,11 @@ alias gmvf='command git mv --verbose --force'
 # git pull
 git_pull() {
   # https://github.com/ohmyzsh/ohmyzsh/commit/3d2542f
-  if command git pull --all --rebase --autostash --prune --verbose "${@-}"; then
-    command git status
-  else
+  command git pull --all --rebase --autostash --prune --verbose "${@-}" || {
     command git rebase --abort
     command git rebase --strategy-option=theirs
-  fi
+  }
+  command git status
 }
 alias gpl='git_pull'
 alias gp='git_pull'
