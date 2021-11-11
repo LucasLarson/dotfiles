@@ -43,10 +43,10 @@ mux() {
 
 # Git
 unalias g 2>/dev/null
-compdef g=git
+compdef g="git"
 g() {
   {
-    [ $# -eq 0 ] &&
+    [ "$#" -eq "0" ] &&
       command git status
   } ||
     command git "$@"
@@ -168,12 +168,12 @@ git_commit_initial_commit() {
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
   command git init &&
-    if [ $# -eq 1 ]; then
+    if [ "$#" -eq "1" ]; then
 
       # add 12 hours (43,200 seconds) so it occurs around midday
-      git_time=$(date -d @$(($(date -d "${1:-$(date +%Y-%m-%d)}" +%s) + 43200)) '+%c %z')
-      export GIT_AUTHOR_DATE=${git_time-}
-      export GIT_COMMITTER_DATE=${git_time-}
+      git_time="$(date -d @$(($(date -d "${1:-$(date +%Y-%m-%d)}" +%s) + 43200)) '+%c %z')"
+      export GIT_AUTHOR_DATE="${git_time-}"
+      export GIT_COMMITTER_DATE="${git_time-}"
     fi
   command git commit --allow-empty --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
 
@@ -190,7 +190,7 @@ alias ginit='command git init && command git status'
 # git last common ancestor
 git_last_common_ancestor() {
   # https://stackoverflow.com/a/1549155
-  [ $# -eq 2 ] || return 1
+  [ "$#" -eq "2" ] || return 1
   command git merge-base "$1" "$2"
 }
 alias glca='git_last_common_ancestor'
@@ -300,8 +300,8 @@ bash_major_version() {
 alias bash_version='bash_major_version'
 
 cd_pwd_P() {
-  cd_from=$(pwd)
-  cd_to=$(pwd -P)
+  cd_from="$(pwd)"
+  cd_to="$(pwd -P)"
   if [ "${cd_from}" != "${cd_to}" ]; then
     printf 'moving from \342\200\230%s\342\200\231\n' "${cd_from}"
     sleep 0.2
@@ -324,11 +324,11 @@ clang_format() {
 
   # if no argument is provided, then set `IndentWidth` to 2
   # https://stackoverflow.com/a/2013573
-  IndentWidth=${1:-2}
+  IndentWidth="${1:-2}"
 
   # if no second argument is provided, then set `ColumnLimit` to 79
   # https://stackoverflow.com/a/48016407
-  ColumnLimit=${2:-79}
+  ColumnLimit="${2:-79}"
 
   printf '\n%s\n\n' "$(clang-format --version)"
   sleep 1
@@ -712,7 +712,7 @@ non_ascii() {
 # paste faster
 # https://git.io/pasteinit-pastefinish
 pasteinit() {
-  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  OLD_SELF_INSERT="${${(s.:.)widgets[self-insert]}[2,3]}"
   zle -N self-insert url-quote-magic
 }
 pastefinish() {
