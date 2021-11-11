@@ -271,6 +271,9 @@ git_shallow() {
   unset submodule submodule_path submodule_url
 }
 
+# https://github.com/ohmyzsh/ohmyzsh/commit/69ba6e4
+alias gstall='command git stash save --all'
+
 alias gs='command git status'
 
 git_submodule_update() {
