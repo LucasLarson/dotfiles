@@ -42,7 +42,7 @@ mux() {
 }
 
 # Git
-unalias g 2>/dev/null
+unalias -- g 2>/dev/null
 compdef g="git"
 g() {
   {
