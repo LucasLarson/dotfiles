@@ -207,6 +207,7 @@ alias gmrca='git_last_common_ancestor'
 # https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
 alias glog='command git log --graph --branches --remotes --tags --format=format:"%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d" --date-order'
 
+# git merge
 # https://news.ycombinator.com/item?id=5512864
 alias gm='GIT_MERGE_VERBOSITY=4 command git merge --log --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience'
 alias gmc='GIT_MERGE_VERBOSITY=4 command git merge --log --continue'
