@@ -122,6 +122,7 @@ alias gdmb='git_delete_merged_branches'
 alias gDmb='git_delete_merged_branches'
 
 alias gdm='command git diff "$(git-default-branch)" --'
+alias gdom='command git diff "$(git-default-branch)" origin/"$(git-default-branch)" || command git diff "$(git-default-branch)" upstream/"$(git-default-branch)"'
 alias gsd='gds'
 
 alias gfgs='command git fetch --all --prune --verbose && command git status'
