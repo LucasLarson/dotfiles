@@ -71,6 +71,14 @@ git_add_patch() {
 }
 alias gap='git_add_patch'
 
+git_add_untracked() {
+  while [ -n "$(command git ls-files --others --exclude-standard)" ]; do
+    command git ls-files -z --others --exclude-standard | command xargs -0 git add --verbose -- 2>/dev/null
+  done
+  command git status
+}
+alias git_add_others='git_add_untracked'
+
 # git commit
 git_commit() {
   set -ux
