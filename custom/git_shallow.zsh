@@ -4,11 +4,11 @@
 # Mauricio Scheffer https://stackoverflow.com/a/2169914
 
 git_shallow() {
-  git submodule init
-  for i in $(git submodule | sed -e 's/.* //'); do
-    submodule_path=$(git config --file .gitmodules --get submodule."${i}".path)
-    submodule_url=$(git config --file .gitmodules --get submodule."${i}".url)
-    git clone --depth 1 --shallow-submodules --sparse "${submodule_url}" "${submodule_path}"
+  command git submodule init
+  for i in $(command git submodule | command sed -e 's/.* //'); do
+    submodule_path=$(command git config --file .gitmodules --get submodule."${i}".path)
+    submodule_url=$(command git config --file .gitmodules --get submodule."${i}".url)
+    command git clone --depth 1 --shallow-submodules --sparse "${submodule_url}" "${submodule_path}"
   done
-  git submodule update
+  command git submodule update
 }
