@@ -283,8 +283,8 @@ alias gstall='command git stash save --all'
 alias gs='command git status'
 
 git_submodule_update() {
-  command git submodule update --init --recursive --remote "$@" &&
-    command git submodule sync --recursive "$@" &&
+  command git submodule update --init --remote "$@" &&
+    command git submodule sync "$@" &&
     command git status
 }
 alias gsu='git_submodule_update'
