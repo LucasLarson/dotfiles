@@ -11,4 +11,6 @@ git_shallow() {
     command git clone --depth=1 --shallow-submodules "${submodule_url}" "${submodule_path}"
   done
   command git submodule update
+
+  unset submodule submodule_path submodule_url
 }
