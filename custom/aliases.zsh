@@ -289,7 +289,6 @@ git_submodule_update() {
 }
 alias gsu='git_submodule_update'
 alias gtake='git checkout -b'
-alias gti='git'
 
 git_update() {
   command -v cleanup >/dev/null 2>&1 && cleanup "$@"
