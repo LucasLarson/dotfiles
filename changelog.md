@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump custom/plugins/fast-syntax-highlighting from `9a5a4a5` to `6c072dc` [\#434](https://github.com/LucasLarson/dotfiles/pull/434) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-diff-so-fancy from `9a06bed` to `aadbe4e` [\#433](https://github.com/LucasLarson/dotfiles/pull/433) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `d281e59` to `6520323` [\#431](https://github.com/LucasLarson/dotfiles/pull/431) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/themes/powerlevel10k from `a55955c` to `d281e59` [\#430](https://github.com/LucasLarson/dotfiles/pull/430) ([dependabot[bot]](https://github.com/apps/dependabot))
