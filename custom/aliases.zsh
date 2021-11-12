@@ -645,10 +645,11 @@ alias findname='fname'
 find_shell_scripts() {
   set -eu
   {
-    # all files with extensions `.bash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
+    # all files with extensions `.bash`, `.dash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
     command find -- . -type f \
       ! -path '*.git/*' \
       -iname '*.bash' -o \
+      -iname '*.dash' -o \
       -iname '*.ksh' -o \
       -iname '*.mksh' -o \
       -iname '*.sh' -o \
