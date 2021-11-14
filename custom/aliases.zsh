@@ -144,7 +144,17 @@ git_garbage_collection() {
 }
 alias ggc='git_garbage_collection'
 
-# git parents
+# git parents, git child
+git_find_child() {
+  set -eu
+  commit="${1:-"$(command git rev-parse HEAD)"}"
+  # %H: commit hash
+  # %P: parent commit
+  command git log --pretty='%H %P' |
+    command grep " ${commit-}" |
+    command cut -c 1-40
+  { set +euvx; } 2>/dev/null
+}
 git_find_parent() {
   # return the hash prior to the current commit
   # if an argument is provided, return the commit prior to that commit
@@ -159,7 +169,7 @@ git_find_parents() {
 }
 alias git_parent='git_find_parent'
 alias gfp='git_find_parent'
-alias gfc='git_find_parent'
+alias gfc='git_find_child'
 alias git_parents='git_find_parents'
 
 # find initial commit
