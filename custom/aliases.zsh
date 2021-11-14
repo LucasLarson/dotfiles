@@ -372,7 +372,7 @@ clang_format() {
   # https://stackoverflow.com/a/48016407
   ColumnLimit="${2:-79}"
 
-  printf '\n%s\n\n' "$(clang-format --version)"
+  command clang-format --version 2>/dev/null || return 2
   sleep 1
 
   printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
