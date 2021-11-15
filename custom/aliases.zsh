@@ -647,10 +647,6 @@ fdf() {
     ! -empty \
     ! -type l \
     -type f \
-    \( \
-      ! -path '*.git/*' -a \
-      ! -path '*node_modules*' \
-    \) \
     -printf '%s\n' |
     command sort -r -n |
     command uniq -d |
