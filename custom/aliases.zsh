@@ -637,7 +637,7 @@ define() {
 # find duplicate files
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 fdf() {
-  command find -- . \
+  command find -- "${1:-.}" \
     ! -empty \
     -type f \
     \( \
