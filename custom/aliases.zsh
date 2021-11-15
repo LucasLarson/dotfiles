@@ -444,7 +444,9 @@ clang_format() {
     -iname '*.txx' \
     \) -a \
     \( \
-    ! -path '*.git/*' -a \
+    ! -path '*.git/*' \
+    ! -path '*.vscode/*' \
+    ! -path '*/test*' \
     ! -path '*node_modules/*' \
     \) \
     -exec clang-format -i --style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \+
@@ -638,6 +640,10 @@ define() {
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 fdf() {
   command find -- "${1:-.}" \
+    ! -path '*.git/*' \
+    ! -path '*.vscode/*' \
+    ! -path '*/test*' \
+    ! -path '*node_modules/*' \
     ! -empty \
     -type f \
     \( \
@@ -655,7 +661,17 @@ fdf() {
 
 # find by name
 fname() {
-  find -- . -iname "*${*}*" 2>/dev/null
+  find -- . \
+    ! -path '*.git/*' \
+    ! -path '*.vscode/*' \
+    ! -path '*/test*' \
+    ! -path '*Application Support*' \
+    ! -path '*Archive*' \
+    ! -path '*archive*' \
+    ! -path '*custom/plugins*' \
+    ! -path '*custom/themes*' \
+    ! -path '*node_modules/*' \
+    -iname "*${*}*" 2>/dev/null | sort -u
 }
 alias findname='fname'
 
@@ -676,6 +692,9 @@ find_shell_scripts() {
     # https://stackoverflow.com/a/9612232
     command find -- . \
       ! -path '*.git/*' \
+      ! -path '*.vscode/*' \
+      ! -path '*/test*' \
+      ! -path '*node_modules/*' \
       -type f \
       -exec head -n1 {} \+ 2>/dev/null |
       command grep \
