@@ -637,7 +637,14 @@ define() {
 # find duplicate files
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 fdf() {
-  command find -- . ! -empty -type f \( ! -path '*.git/*' -a ! -path '*node_modules*' \) -printf '%s\n' |
+  command find -- . \
+    ! -empty \
+    -type f \
+    \( \
+      ! -path '*.git/*' -a \
+      ! -path '*node_modules*' \
+    \) \
+    -printf '%s\n' |
     command sort --reverse --numeric-sort |
     command uniq -d |
     command xargs -I{} -n 1 find -type f -size {}c -print0 |
