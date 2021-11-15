@@ -652,7 +652,7 @@ fdf() {
       ! -path '*node_modules*' \
     \) \
     -printf '%s\n' |
-    command sort --reverse --numeric-sort |
+    command sort -r -n |
     command uniq -d |
     command xargs -I{} -n 1 find -type f -size {}c -print0 |
     command xargs -0 sha256sum |
