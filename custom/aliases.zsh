@@ -651,7 +651,7 @@ fdf() {
     command sort -r -n |
     command uniq -d |
     command xargs -I{} -n 1 find -type f -size {}c -print0 2>/dev/null |
-    command xargs -0 sha256sum 2>/dev/null |
+    command xargs -0 sha1sum 2>/dev/null |
     command sort |
     command uniq -w32 --all-repeated=separate
 }
