@@ -645,6 +645,7 @@ fdf() {
     ! -path '*/test*' \
     ! -path '*node_modules/*' \
     ! -empty \
+    ! -type l \
     -type f \
     \( \
       ! -path '*.git/*' -a \
