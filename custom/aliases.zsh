@@ -197,7 +197,7 @@ git_commit_initial_commit() {
 
   # if there are non-repository files present, then add them and commit
   if [ -n "$(command git ls-files --others --exclude-standard)" ]; then
-    command git add -- . &&
+    command git add --verbose -- . &&
       command git commit --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
   fi
   unset git_time GIT_AUTHOR_DATE GIT_COMMITTER_DATE
