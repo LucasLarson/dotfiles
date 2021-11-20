@@ -866,12 +866,12 @@ alias all='which -a'
 # https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 # https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#index-exec
-alias ','='. -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- "${SHELL##*[-/]}"'
+alias ','='. -- "${HOME}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
-  ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES}/custom}"/aliases."${SHELL##*[-/]}"
-  . "${ZSH_CUSTOM}"/aliases."${SHELL##*[-/]}"
+  ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES}/custom}"/aliases."${SHELL##*[-./]}"
+  . "${ZSH_CUSTOM}"/aliases."${SHELL##*[-./]}"
 }
-alias ohmyzsh='cd -- "${ZSH:=${HOME}/.oh-my-${SHELL##*[-/]}}" && command git status'
-alias zshenv='${EDITOR:-vi} -- "${HOME}/.${SHELL##*[-/]}env"; . -- "${HOME}/.${SHELL##*[-/]}rc" && exec -l -- "${SHELL##*[-/]}"'
-alias zshrc='${EDITOR:-vi} -- "${HOME}/.${SHELL##*[-/]}rc"; . -- "${HOME}/.${SHELL##*[-/]}rc" && exec -l -- "${SHELL##*[-/]}"'
+alias ohmyzsh='cd -- "${ZSH:=${HOME}/.oh-my-${SHELL##*[-./]}}" && command git status'
+alias zshenv='${EDITOR:-vi} -- "${HOME}/.${SHELL##*[-./]}env"; . -- "${HOME}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
+alias zshrc='${EDITOR:-vi} -- "${HOME}/.${SHELL##*[-./]}rc"; . -- "${HOME}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
 alias zshconfig='zshrc'

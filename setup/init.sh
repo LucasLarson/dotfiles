@@ -271,7 +271,7 @@ command -v zsh >/dev/null 2>&1 && command grep -P '/bin/b?a?sh' /etc/passwd 2>&1
   sed -i -E "s|/bin/b?a?sh$|$(command -v zsh)|g" /etc/passwd
 
 # done
-"${0##*[-/]}" complete >/dev/null 2>&1
+"${0##*[-./]}" complete >/dev/null 2>&1
 sleep 1
 exiting to apply updates... >/dev/null 2>&1
 { set +euvx; } 2>/dev/null

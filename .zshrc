@@ -316,7 +316,7 @@ setopt INTERACTIVE_COMMENTS
 # https://git.io/init_-_--no-rehash
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
 pyenv() {
-  eval "$(command pyenv init - --no-rehash "${SHELL##*[-/]}")"
+  eval "$(command pyenv init - --no-rehash "${SHELL##*[-./]}")"
   pyenv "$@"
 }
 
@@ -365,7 +365,7 @@ fi
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
 [ -d "${HOME}/.rbenv/shims" ] && PATH="${HOME}/.rbenv/shims${PATH:+:${PATH}}"
 rbenv() {
-  eval "$(command rbenv init - --no-rehash "${SHELL##*[-/]}")"
+  eval "$(command rbenv init - --no-rehash "${SHELL##*[-./]}")"
   rbenv "$@"
 }
 
