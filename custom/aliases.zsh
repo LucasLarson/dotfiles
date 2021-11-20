@@ -575,6 +575,25 @@ count_files() {
     command grep --count //
 }
 
+# number of files
+# in current directory
+count_files_in_this_directory() {
+  case "$@" in
+  # count files as well as directories
+  -d | --directory | --directories)
+    command find -- . ! -path '*.git/*' ! -name '.' -prune -print |
+      command grep --count /
+    ;;
+
+    # count only regular, non-directory files
+  *)
+    # https://unix.stackexchange.com/a/1126
+    command find -- . -type f ! -path '*.git/*' ! -name '.' -prune -print |
+      command grep --count /
+    ;;
+  esac
+}
+
 count_files_by_extension() {
   # files with no extension
   printf ' %i files without extensions\n' "$(
