@@ -83,11 +83,11 @@ alias git_add_others='git_add_untracked'
 git_commit() {
   set -ux
   if [ "$#" -eq "0" ]; then
-    command git commit --verbose --gpg-sign
+    command git commit --verbose --gpg-sign || return 1
   elif [ "$1" = '--amend' ]; then
-    command git commit --verbose --gpg-sign --amend
+    command git commit --verbose --gpg-sign --amend || return 1
   else
-    command git commit --verbose --gpg-sign --message "$@"
+    command git commit --verbose --gpg-sign --message "$@" || return 1
   fi
   command git status
   { set +euvx; } 2>/dev/null
