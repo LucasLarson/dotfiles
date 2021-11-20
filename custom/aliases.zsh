@@ -571,7 +571,7 @@ cleanup() {
 # https://web.archive.org/web/200id_/tldp.org/HOWTO/Bash-Prompt-HOWTO/x700.html
 count_files() {
   # https://unix.stackexchange.com/a/1126
-  command find -- .//. ! -path '*.git/*' ! -name . -print |
+  command find -- .//. ! -path '*.git/*' ! -name '.' -print |
     command grep --count //
 }
 
@@ -777,7 +777,7 @@ non_ascii() {
 # paste faster
 # https://git.io/pasteinit-pastefinish
 pasteinit() {
-  OLD_SELF_INSERT="${${(s.:.)widgets[self-insert]}[2,3]}"
+  OLD_SELF_INSERT="${"${(s.:.)widgets[self-insert]}"[2,3]}"
   zle -N self-insert url-quote-magic
 }
 pastefinish() {
@@ -866,12 +866,12 @@ alias all='which -a'
 # https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 # https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#index-exec
-alias ','='. -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- ${SHELL##*[-/]}'
+alias ','='. -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- "${SHELL##*[-/]}"'
 aliases() {
   ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES}/custom}"/aliases."${SHELL##*[-/]}"
   . "${ZSH_CUSTOM}"/aliases."${SHELL##*[-/]}"
 }
 alias ohmyzsh='cd -- "${ZSH:=${HOME}/.oh-my-${SHELL##*[-/]}}" && command git status'
-alias zshenv='${EDITOR:-vi} -- "${HOME}"/."${SHELL##*[-/]}"env; . -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- ${SHELL##*[-/]}'
-alias zshrc='${EDITOR:-vi} -- "${HOME}"/."${SHELL##*[-/]}"rc; . -- "${HOME}"/."${SHELL##*[-/]}"rc && exec -l -- ${SHELL##*[-/]}'
+alias zshenv='${EDITOR:-vi} -- "${HOME}/.${SHELL##*[-/]}env"; . -- "${HOME}/.${SHELL##*[-/]}rc" && exec -l -- "${SHELL##*[-/]}"'
+alias zshrc='${EDITOR:-vi} -- "${HOME}/.${SHELL##*[-/]}rc"; . -- "${HOME}/.${SHELL##*[-/]}rc" && exec -l -- "${SHELL##*[-/]}"'
 alias zshconfig='zshrc'
