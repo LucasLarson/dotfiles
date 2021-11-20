@@ -129,7 +129,7 @@ plugins=(
 # https://github.com/paulirish/dotfiles/blob/ccccd07/.dircolors
 [ -r "${HOME}/.local/share/lscolors.sh" ] && . "${HOME}/.local/share/lscolors.sh"
 
-. "${ZSH:=${HOME}/.oh-my-zsh}/oh-my-zsh.sh"
+. "${ZSH}/oh-my-zsh.sh"
 
 # User configuration
 
