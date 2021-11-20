@@ -2,9 +2,8 @@
 
 # Powerlevel10k instant prompt
 # https://github.com/romkatv/powerlevel10k/tree/d394a4e#how-do-i-enable-instant-prompt
-if [[ -r "${XDG_CACHE_HOME:=${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+[[ -r "${XDG_CACHE_HOME:=${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] &&
   source "${XDG_CACHE_HOME:=${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
 
 # PATH
 # https://opengroup.org/onlinepubs/9699919799/utilities/command.html
