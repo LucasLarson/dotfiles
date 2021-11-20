@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- bump gunstage from `2b1c779` to `4bcfcda` [\#436](https://github.com/LucasLarson/dotfiles/pull/436) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/fast-syntax-highlighting from `6c072dc` to `84c7e50` [\#435](https://github.com/LucasLarson/dotfiles/pull/435) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/fast-syntax-highlighting from `9a5a4a5` to `6c072dc` [\#434](https://github.com/LucasLarson/dotfiles/pull/434) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/zsh-diff-so-fancy from `9a06bed` to `aadbe4e` [\#433](https://github.com/LucasLarson/dotfiles/pull/433) ([dependabot[bot]](https://github.com/apps/dependabot))
