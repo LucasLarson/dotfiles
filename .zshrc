@@ -118,7 +118,7 @@ plugins=(
   zsh-diff-so-fancy
   zchee-zsh-completions
 )
-[ "$(uname)" = 'Darwin' ] && plugins=(
+[ "$(command uname)" = 'Darwin' ] && plugins=(
   "${plugins[@]}"
   fast-syntax-highlighting
 )
@@ -143,10 +143,10 @@ plugins=(
 [ -d '/usr/share/man' ] &&
   MANPATH="/usr/share/man${MANPATH:+:${MANPATH}}"
 # if `man -w` does not fail, then add it to `$MANPATH`
-man -w >/dev/null 2>&1 &&
+command man -w >/dev/null 2>&1 &&
   # skip adding initial and terminal colons `:`
   # https://unix.stackexchange.com/a/162893
-  MANPATH="${MANPATH:+${MANPATH}:}$(man -w)"
+  MANPATH="${MANPATH:+${MANPATH}:}$(command man -w)"
 
 # $EDITOR: access favorite with `edit`
 # Set preferred editor if it is available
@@ -169,7 +169,7 @@ export VISUAL="${EDITOR}"
 # ignore case in `man` page searches
 # https://unix.stackexchange.com/a/101299
 # https://github.com/awdeorio/dotfiles/commit/65ff822
-PAGER='less --IGNORE-CASE'
+PAGER='command less --IGNORE-CASE'
 export PAGER
 export MANPAGER="${PAGER}"
 alias less='${PAGER}'
@@ -183,7 +183,7 @@ alias less='${PAGER}'
 # GPG signing with macOS-compatible Linux
 # https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key
 # https://reddit.com/comments/dk53ow/_/f50146x
-GPG_TTY="$(tty)"
+GPG_TTY="$(command tty)"
 export GPG_TTY
 
 # Homebrew
@@ -191,7 +191,7 @@ export GPG_TTY
 if command -v brew >/dev/null 2>&1; then
 
   # https://github.com/driesvints/dotfiles/blob/388baf1/path.zsh#L17
-  BREW_PREFIX="$(brew --prefix)"
+  BREW_PREFIX="$(command brew --prefix)"
   [ -d "${BREW_PREFIX}/sbin" ] && PATH="${BREW_PREFIX}/sbin${PATH:+:${PATH}}"
 
   # GNU bc calculator
@@ -322,12 +322,12 @@ pyenv() {
 
 # C, C++ headers
 # https://apple.stackexchange.com/a/372600
-if command -v xcrun >/dev/null 2>&1 && [ -n "$(xcrun --show-sdk-path)" ]; then
+if command -v xcrun >/dev/null 2>&1 && [ -n "$(command xcrun --show-sdk-path)" ]; then
   # `CPATH` is delimited like `PATH` as are
   # `C_INCLUDE_PATH`, `OBJC_INCLUDE_PATH`,
   # `CPLUS_INCLUDE_PATH`, and `OBJCPLUS_INCLUDE_PATH`
   # https://github.com/llvm/llvm-project/commit/16af476
-  CPATH="$(xcrun --show-sdk-path)/usr/include${CPATH:+:${CPATH}}"
+  CPATH="$(command xcrun --show-sdk-path)/usr/include${CPATH:+:${CPATH}}"
   export CPATH
 fi
 
