@@ -22,7 +22,7 @@ PATH="$(command -p getconf PATH)${PATH:+:${PATH}}"
 [ -d "${HOME}/.local/bin" ] && PATH="${HOME}/.local/bin${PATH:+:${PATH}}"
 
 # Plugin manager installation
-export ZSH="${HOME}/.oh-my-zsh"
+[ -d "${HOME}/.oh-my-zsh" ] && export ZSH="${HOME}/.oh-my-zsh"
 
 # Use a custom folder other than $ZSH/custom
 # ZSH_CUSTOM=/path/to/new-custom-folder
