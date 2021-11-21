@@ -98,8 +98,8 @@ export HIST_STAMPS='yyyy-mm-dd'
 # https://unix.stackexchange.com/a/273929
 # https://stackoverflow.com/a/13111995
 # https://unix.stackexchange.com/a/111777
-SAVEHIST="$(printf '2 ^ 32\n' | command bc)" # 4,294,967,296 in history file
-HISTSIZE="$((SAVEHIST / 2))"                 # 2,147,478,648 in session
+SAVEHIST="$(printf '2 ^ 32 - 1\n' | command bc)" # 4,294,967,295 in history file
+HISTSIZE="$((SAVEHIST / 2))"                     # 2,147,478,647 in session
 export SAVEHIST HISTSIZE
 
 # ~/.zcompdump override
