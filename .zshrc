@@ -48,6 +48,7 @@ fi
 # a theme from this variable instead of looking in $ZSH/themes
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+export ZSH_THEME
 
 # Uncomment the following line to use case-sensitive completion.
 # export CASE_SENSITIVE='true'
