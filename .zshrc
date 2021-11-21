@@ -244,6 +244,12 @@ if command -v brew >/dev/null 2>&1; then
   [ -d "${BREW_PREFIX}/opt/grep/libexec/gnuman" ] &&
     MANPATH="${BREW_PREFIX}/opt/grep/libexec/gnuman${MANPATH:+:${MANPATH}}"
 
+  # libarchive
+  [ -d "${BREW_PREFIX}/opt/libarchive/bin" ] &&
+    PATH="${BREW_PREFIX}/opt/libarchive/bin${PATH:+:${PATH}}"
+  [ -d "${BREW_PREFIX}/opt/libarchive/share/man" ] &&
+    MANPATH="${BREW_PREFIX}/opt/libarchive/share/man${MANPATH:+:${MANPATH}}"
+
   # make
   # use latest via Homebrew but without the `g` prefix
   # https://github.com/Homebrew/homebrew-core/blob/9591758/Formula/make.rb#L37-L41
