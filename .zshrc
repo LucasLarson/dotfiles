@@ -186,8 +186,8 @@ alias less='${PAGER}'
 # GPG signing with macOS-compatible Linux
 # https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key
 # https://reddit.com/comments/dk53ow/_/f50146x
-GPG_TTY="$(command tty)"
-export GPG_TTY
+# https://github.com/romkatv/powerlevel10k/commit/faddef4
+export GPG_TTY="${TTY-}"
 
 # Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
