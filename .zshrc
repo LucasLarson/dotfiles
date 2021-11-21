@@ -66,8 +66,8 @@ export DISABLE_UPDATE_PROMPT='true'
 # Uncomment the following line to change how often, in days, to autoupdate.
 export UPDATE_ZSH_DAYS='1'
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# export DISABLE_MAGIC_FUNCTIONS='true'
+# Magic functions prevent easy pasting of URLs containing `#`, `?`
+export DISABLE_MAGIC_FUNCTIONS='true'
 
 # Uncomment the following line to disable colors in ls.
 # export DISABLE_LS_COLORS='true'
