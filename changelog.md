@@ -6,6 +6,10 @@
 
 **Merged pull requests:**
 
+- bump zsh-diff-so-fancy from `aadbe4e` to `0ecf4ae` [\#440](https://github.com/LucasLarson/dotfiles/pull/440) ([dependabot[bot]](https://github.com/apps/dependabot))
+- bump fast-syntax-highlighting from `84c7e50` to `585c089` [\#439](https://github.com/LucasLarson/dotfiles/pull/439) ([dependabot[bot]](https://github.com/apps/dependabot))
+- bump zsh-completions from `bebaa61` to `a1a11ca` [\#438](https://github.com/LucasLarson/dotfiles/pull/438) ([dependabot[bot]](https://github.com/apps/dependabot))
+- bump powerlevel10k from `6520323` to `a9f208c` [\#437](https://github.com/LucasLarson/dotfiles/pull/437) ([dependabot[bot]](https://github.com/apps/dependabot))
 - bump gunstage from `2b1c779` to `4bcfcda` [\#436](https://github.com/LucasLarson/dotfiles/pull/436) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/fast-syntax-highlighting from `6c072dc` to `84c7e50` [\#435](https://github.com/LucasLarson/dotfiles/pull/435) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump custom/plugins/fast-syntax-highlighting from `9a5a4a5` to `6c072dc` [\#434](https://github.com/LucasLarson/dotfiles/pull/434) ([dependabot[bot]](https://github.com/apps/dependabot))
