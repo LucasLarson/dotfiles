@@ -732,7 +732,7 @@ find_shell_scripts() {
       command awk '{print "./" $0}'
 
   } |
-    command sort --unique
+    command sort -u
 
   { set +euvx; } 2>/dev/null
 }
@@ -768,8 +768,8 @@ identify() {
 }
 
 # list files
-builtin unalias -- ls 2>/dev/null
-builtin unalias -- l 2>/dev/null
+unalias -- ls 2>/dev/null
+unalias -- l 2>/dev/null
 if command exa --color=auto >/dev/null 2>&1; then
   alias ls='command exa --color=auto'
   alias l='command exa --color=auto --bytes --classify --git --header --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso'
