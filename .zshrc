@@ -159,10 +159,10 @@ if command -v nvim >/dev/null 2>&1; then
   EDITOR="$(command -v nvim)"
 elif command -v vim >/dev/null 2>&1; then
   EDITOR="$(command -v vim)"
-elif command -v vi >/dev/null 2>&1; then
+else
   EDITOR="$(command -v vi)"
 fi
-[ -n "${EDITOR}" ] && export EDITOR
+export EDITOR
 # https://github.com/koalaman/shellcheck/wiki/SC2139/db553bf#this-expands-when-defined-not-when-used-consider-escaping
 alias editor='${EDITOR}'
 alias edit='editor'
