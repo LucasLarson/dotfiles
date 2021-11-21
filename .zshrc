@@ -281,7 +281,7 @@ NPM_PACKAGES="${HOME}/.npm-packages"
 # completion dots
 # https://git.io/completion-dots-in-.zshrc
 expand-or-complete-with-dots() {
-  print -Pn "%F{red}...%f"
+  printf '\033[0;31m...\033[0m'
   zle expand-or-complete
   zle redisplay
 }
