@@ -108,6 +108,8 @@ export SAVEHIST HISTSIZE
 export ZSH_COMPDUMP="${ZDOTDIR:=${HOME}}/.zcompdump"
 
 # Plugins
+# plugins at the beginning of the array are
+# overridden by plugins at its end
 plugins=(
   "${plugins[@]}"
   git
