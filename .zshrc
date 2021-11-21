@@ -105,7 +105,7 @@ export SAVEHIST HISTSIZE
 
 # ~/.zcompdump override
 # https://github.com/ohmyzsh/ohmyzsh/commit/d2fe03d
-export ZSH_COMPDUMP="${ZDOTDIR:=${HOME}}/.zcompdump"
+export ZSH_COMPDUMP="${HOME}/.zcompdump"
 
 # Plugins
 # plugins at the beginning of the array are
