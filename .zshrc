@@ -21,7 +21,7 @@ PATH="$(command -p getconf PATH)${PATH:+:${PATH}}"
 [ -d "${HOME}/bin" ] && PATH="${HOME}/bin${PATH:+:${PATH}}"
 [ -d "${HOME}/.local/bin" ] && PATH="${HOME}/.local/bin${PATH:+:${PATH}}"
 
-# Path to your oh-my-zsh installation.
+# Plugin manager installation
 export ZSH="${HOME}/.oh-my-zsh"
 
 # Use a custom folder other than $ZSH/custom
