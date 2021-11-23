@@ -62,6 +62,9 @@
   # https://stackoverflow.com/a/59278535
   helper = "!f() { if [ \"$(uname -s)\" = Linux ]; then git credential-cache --timeout 7889238 \"$@\"; else git credential-osxkeychain \"$@\"; fi; };f"
 
+[credential "https://dev.azure.com"]
+  useHttpPath = true
+
 [diff]
   # allow `git merge` to examine enormous diffs
   # https://stackoverflow.com/a/13118734
