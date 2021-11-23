@@ -55,9 +55,6 @@
   newNormal = green bold
   newHighlight = green bold 22
 
-[diff-so-fancy]
-  stripLeadingSymbols = true
-
 [commit]
   gpgSign = true
 
@@ -74,6 +71,9 @@
   # macOS strings files
   # https://www.programming-books.io/essential/git/diff-utf-16-encoded-text-and-binary-plist-files-b4b8d7c85497429ea2c7a18cca6a1c53
   textconv = "iconv -f utf-16 -t utf-8"
+
+[diff-so-fancy]
+  stripLeadingSymbols = true
 
 [filter "lfs"]
   clean = git-lfs clean -- %f
