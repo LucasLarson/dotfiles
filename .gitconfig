@@ -34,6 +34,9 @@
   # https://github.com/jeefberkey/dotfiles/blob/b3513ad/.gitconfig#L11
   pager = diff-so-fancy | less --tabs=4 -RFX
 
+[checkout]
+  defaultRemote = origin
+
 [color]
   # changed from auto to true in 2020-04
   # https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_bootstrapping_configuration
