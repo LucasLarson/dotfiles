@@ -41,12 +41,6 @@
   # https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_bootstrapping_configuration
   ui = true
 
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
-
 [color "diff"]
   meta = 11
   frag = magenta bold
@@ -54,6 +48,12 @@
   old = red bold
   new = green bold
   whitespace = red reverse
+
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 
 [diff-so-fancy]
   stripLeadingSymbols = false
