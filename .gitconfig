@@ -72,12 +72,12 @@
 
 [diff "plist"]
   # permit 𝚐𝚒𝚝 𝚍𝚒𝚏𝚏 even in binary 𝚙𝚕𝚒𝚜𝚝s
-  # https://www.programming-books.io/essential/git/diff-utf-16-encoded-text-and-binary-plist-files-b4b8d7c85497429ea2c7a18cca6a1c53
+  # https://archive.org/details/2018GitNotesForProfessionals/page/n46
   textconv = plutil -convert xml1 -o -
 
 [diff "utf16"]
   # macOS strings files
-  # https://www.programming-books.io/essential/git/diff-utf-16-encoded-text-and-binary-plist-files-b4b8d7c85497429ea2c7a18cca6a1c53
+  # https://archive.org/details/2018GitNotesForProfessionals/page/n45
   textconv = "iconv -f utf-16 -t utf-8"
 
 [diff-so-fancy]
