@@ -88,6 +88,7 @@ command apk upgrade --verbose --progress
   [ -d /usr/share/man/man6 ]; } || {
   installing man pages... >/dev/null 2>&1
   install man-pages
+  install man-pages-doc
 }
 command -v mandoc >/dev/null 2>&1 || {
   installing mandoc for man pages... >/dev/null 2>&1
