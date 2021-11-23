@@ -14,7 +14,7 @@
   # https://stackoverflow.com/a/14755066
   editor = "if command -v nvim >/dev/null 2>&1; then EDITOR='nvim'; elif command -v vim >/dev/null 2>&1; then EDITOR='vim'; elif command -v vi >/dev/null 2>&1; then EDITOR='vi'; else EDITOR='nano'; fi; export EDITOR; $EDITOR"
 
-  excludesfile = ~/.gitignore_global
+  excludesFile = ~/.gitignore_global
 
   # aggressive but slow repo compression
   # https://stackoverflow.com/a/28156806
@@ -55,7 +55,7 @@
   stripLeadingSymbols = false
 
 [commit]
-  gpgsign = true
+  gpgSign = true
 
 [credential]
   # https://stackoverflow.com/a/59278535
