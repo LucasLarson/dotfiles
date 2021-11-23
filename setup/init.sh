@@ -233,10 +233,10 @@ printf '' >/etc/motd
 
 # delete thumbnail cache files
 command find -- . -type f \( \
-  -name '.DS_Store' -or \
-  -name 'Desktop.ini' -or \
-  -name 'Thumbs.db' -or \
-  -name 'desktop.ini' -or \
+  -name '.DS_Store' -o \
+  -name 'Desktop.ini' -o \
+  -name 'Thumbs.db' -o \
+  -name 'desktop.ini' -o \
   -name 'thumbs.db' \
   \) \
   -delete 2>/dev/null
@@ -246,28 +246,28 @@ command find -- . -type f \( \
 # and those with specific names
 # https://stackoverflow.com/a/64863398
 command find -- . -type f -writable -size 0 \( \
-  -not -path '*.git/*' -and \
-  -not -path '*example*' -and \
-  -not -path '*sample*' -and \
-  -not -path '*template*' -and \
-  -not -path '*test*' -and \
+  ! -path '*.git/*' -a \
+  ! -path '*example*' -a \
+  ! -path '*sample*' -a \
+  ! -path '*template*' -a \
+  ! -path '*test*' -a \
   \
-  -not -name "$(printf 'Icon\0xd\0xa')" -and \
-  -not -name '*LOCK' -and \
-  -not -name '*empty*' -and \
-  -not -name '*hushlogin' -and \
-  -not -name '*ignore' -and \
-  -not -name '*journal' -and \
-  -not -name '*lock' -and \
-  -not -name '*lockfile' -and \
-  -not -name '.dirstamp' -and \
-  -not -name '.gitkeep' -and \
-  -not -name '.gitmodules' -and \
-  -not -name '.keep' -and \
-  -not -name '.sudo_as_admin_successful' -and \
-  -not -name '.watchmanconfig' -and \
-  -not -name '__init__.py' -and \
-  -not -name 'favicon.*' \
+  ! -name "$(printf 'Icon\0xd\0xa')" -a \
+  ! -name '*LOCK' -a \
+  ! -name '*empty*' -a \
+  ! -name '*hushlogin' -a \
+  ! -name '*ignore' -a \
+  ! -name '*journal' -a \
+  ! -name '*lock' -a \
+  ! -name '*lockfile' -a \
+  ! -name '.dirstamp' -a \
+  ! -name '.gitkeep' -a \
+  ! -name '.gitmodules' -a \
+  ! -name '.keep' -a \
+  ! -name '.sudo_as_admin_successful' -a \
+  ! -name '.watchmanconfig' -a \
+  ! -name '__init__.py' -a \
+  ! -name 'favicon.*' \
   \) \
   -delete 2>/dev/null
 
@@ -275,9 +275,9 @@ command find -- . -type f -writable -size 0 \( \
 # but skip Git-specific and `/.well-known/` directories
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 command find -- . -type d -empty \
-  -not -path '*.git/*' -and \
+  ! -path '*.git/*' -a \
   \
-  -not -name '.well-known' \
+  ! -name '.well-known' \
   \) \
   -delete 2>/dev/null
 
