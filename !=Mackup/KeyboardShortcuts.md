@@ -12,6 +12,7 @@
 - [Status](#status)
 
 ## Access
+
 1. open <kbd>System Preferences.app</kbd>
 1. select <kbd>Keyboard</kbd>
 1. select the <kbd>Shortcuts</kbd> tab
@@ -25,6 +26,7 @@
 ## Shortcuts
 
 ### Keys
+
 | Name    | Glyph                      | Code                         |
 |---------|----------------------------|------------------------------|
 | Command | <kbd title=Command>⌘</kbd> | `<kbd title=Command>⌘</kbd>` |
@@ -40,14 +42,17 @@
 <kbd title=Function>fn</kbd>
 <kbd></kbd>
 -->
+
 ### All Applications
 
 #### Standard
+
 | Menu Title     | Keyboard Shortcut                                              |
 |----------------|----------------------------------------------------------------|
 | Show Help menu | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>/</kbd> |
 
 #### Custom
+
 | Menu Title                    | Keyboard Shortcut                                                                                                 | Application                                                  |
 |-------------------------------|-------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
 | All Upper Case                | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd>U</kbd>                                                   | Barebones [@BBEdit](https://github.com/BBEdit)               |
@@ -69,9 +74,11 @@
 ### Brave
 
 #### Custom
+
 | Menu Title         | Keyboard Shortcut                                                                                                 | Notes                                                                                        |
 |--------------------|-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
 | New Private Window | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd title=Control>⌃</kbd><kbd title=Shift>⇧</kbd><kbd>N</kbd> | this frees <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>N</kbd> for activating Tor |
 
 ## Status
+
 Never automatable as of 2020-04<!-- @TODO update -->.
