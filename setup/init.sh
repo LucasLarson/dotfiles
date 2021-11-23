@@ -48,7 +48,7 @@ sleep 1
 # if this quaternary prompt string is already unset, then
 # set it to the POSIX default: `+ `
 # https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
-PS4_temporary=${PS4:-+ }
+PS4_temporary="${PS4:-+ }"
 unset PS4
 set -x
 
@@ -65,7 +65,7 @@ command -v apk >/dev/null 2>&1 || {
   [ "$(command curl --fail --silent --location https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -' ]
 } || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
-  command wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command tar -xz apk.static
+  command wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command tar -xz 'apk.static'
   ./apk.static add apk-tools
 }
 
@@ -103,7 +103,7 @@ command -v less >/dev/null 2>&1 || {
 # https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
 install coreutils coreutils-doc
 { [ -x /usr/bin/coreutils ] &&
-  [ "$(command find -version 2>/dev/null | command head -n1 | command awk '{print $3}' | command tr -d '()')" = findutils ]; } || {
+  [ "$(command find -version 2>/dev/null | command head -n1 | command awk '{print $3}' | command tr -d '()')" = 'findutils' ]; } || {
   installing Linux utilities... >/dev/null 2>&1
 }
 install util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
@@ -295,7 +295,7 @@ exiting to apply updates... >/dev/null 2>&1
 { set +euvx; } 2>/dev/null
 
 # restore `$PS4`
-PS4=${PS4_temporary:-+ }
+PS4="${PS4_temporary:-+ }"
 unset PS4_temporary
 
 printf '\ndone!\n'
