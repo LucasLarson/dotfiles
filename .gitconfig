@@ -6,6 +6,8 @@
   # use `git config --system user.signingKey 𝑥`
 
 [core]
+  abbrev = 7
+
   # macOS and Linux only per
   # https://wildlyinaccurate.com/useful-git-configuration-items/#prevent-line-ending-issues
   autocrlf = input
