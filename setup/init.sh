@@ -16,7 +16,7 @@
 
 if command -v wget >/dev/null 2>&1; then
   alias install='command apk add --verbose'
-  wget --continue --server-response "https://lucaslarson.net/init.sh"
+  command wget --continue --server-response "https://lucaslarson.net/init.sh"
 else
   alias install='command pacman --sync --verbose --noconfirm'
   command curl --remote-name --location "https://lucaslarson.net/init.sh"
@@ -56,16 +56,16 @@ set -x
 # https://askubuntu.com/a/459425
 # https://stackoverflow.com/a/26314887
 # force refresh with `-yy`
-[ "$(awk -F= '/^NAME/{print $2}' /etc/os-release 2>/dev/null | tr -d '"')" = "Arch Linux" ] && pacman --sync -yy
+[ "$(command awk -F= '/^NAME/{print $2}' /etc/os-release 2>/dev/null | command tr -d '"')" = "Arch Linux" ] && command pacman --sync -yy
 
 # apk
 command -v apk >/dev/null 2>&1 || {
   # trust apk only if it matches a known checksum
   verifying apk tools integrity... >/dev/null 2>&1
-  [ "$(curl --fail --silent --location https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -' ]
+  [ "$(command curl --fail --silent --location https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -' ]
 } || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
-  wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | tar -xz apk.static
+  command wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command tar -xz apk.static
   ./apk.static add apk-tools
 }
 
@@ -77,8 +77,8 @@ command -v apk >/dev/null 2>&1 || {
 
 # update
 updating Alpine Linux repositories... >/dev/null 2>&1
-apk update --verbose --progress
-apk upgrade --verbose --progress
+command apk update --verbose --progress
+command apk upgrade --verbose --progress
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
 # man-pages adds `man0`, `man2`, man4`, `man6` to `/usr/share/man/`
@@ -103,7 +103,7 @@ command -v less >/dev/null 2>&1 || {
 # https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
 install coreutils coreutils-doc
 { [ -x /usr/bin/coreutils ] &&
-  [ "$(command find -version 2>/dev/null | head -n1 | awk '{print $3}' | tr -d '()')" = findutils ]; } || {
+  [ "$(command find -version 2>/dev/null | command head -n1 | command awk '{print $3}' | command tr -d '()')" = findutils ]; } || {
   installing Linux utilities... >/dev/null 2>&1
 }
 install util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
@@ -112,7 +112,7 @@ install util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc co
   printf 'https://dl-cdn.alpinelinux.org/alpine/edge/community\n'
   printf 'https://dl-cdn.alpinelinux.org/alpine/edge/testing\n'
 } >>/etc/apk/repositories
-apk update
+command apk update
 
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
@@ -168,22 +168,22 @@ command -v python >/dev/null 2>&1 || {
 checking Python package manager installation... >/dev/null 2>&1
 command -v pip >/dev/null 2>&1 && {
   updating pip... >/dev/null 2>&1
-  python3 -m pip install --upgrade pip 2>/dev/null
+  command python3 -m pip install --upgrade pip 2>/dev/null
 } || {
   installing pip... >/dev/null 2>&1
   verifying integrity of pip bootstrap file... >/dev/null 2>&1
-  [ "$(curl --fail --silent --location https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py | sha256sum)" != 'e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de  -' ]
+  [ "$(command curl --fail --silent --location https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py | command sha256sum)" != 'e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de  -' ]
 } || {
   installing pip using bootstrap... >/dev/null 2>&1
-  curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
+  command curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
   this may take a while... >/dev/null 2>&1
-  python3 get-pip.py
+  command python3 get-pip.py
 }
 
 # mackup
 command -v mackup >/dev/null 2>&1 || {
   installing mackup... >/dev/null 2>&1
-  pip install --upgrade mackup
+  command pip install --upgrade mackup
 }
 
 # zsh
@@ -201,23 +201,23 @@ command -v chsh >/dev/null 2>&1 || {
 # Oh My Zsh
 command -v omz >/dev/null 2>&1 ||
   [ -d "${ZSH:=${HOME}/.oh-my-zsh}" ] ||
-  [ "$(curl --fail --silent --location https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh | sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' ] || {
+  [ "$(command curl --fail --silent --location https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh | command sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' ] || {
   installing Oh My Zsh... >/dev/null 2>&1
-  sh -c "$(wget https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
+  sh -c "$(command wget https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
 }
 
 # update, repair everything again before close
 updating... >/dev/null 2>&1
-apk update --verbose --verbose --progress
+command apk update --verbose --verbose --progress
 
 upgrading... >/dev/null 2>&1
-apk upgrade --verbose --verbose --progress
+command apk upgrade --verbose --verbose --progress
 
 repairing and resolving dependencies... >/dev/null 2>&1
-apk fix --verbose --verbose --depends --progress
+command apk fix --verbose --verbose --depends --progress
 
 verifying installations... >/dev/null 2>&1
-apk verify --verbose --verbose --progress &&
+command apk verify --verbose --verbose --progress &&
   verified. >/dev/null 2>&1
 
 # cleanup
@@ -231,7 +231,7 @@ cleaning up temporary installation files and performing housekeeping... >/dev/nu
 printf '' >/etc/motd
 
 # delete thumbnail cache files
-find -- . -type f \( \
+command find -- . -type f \( \
   -name '.DS_Store' -or \
   -name 'Desktop.ini' -or \
   -name 'Thumbs.db' -or \
@@ -244,7 +244,7 @@ find -- . -type f \( \
 # except those within `.git/` directories
 # and those with specific names
 # https://stackoverflow.com/a/64863398
-find -- . -type f -writable -size 0 \( \
+command find -- . -type f -writable -size 0 \( \
   -not -path '*.git/*' -and \
   -not -path '*example*' -and \
   -not -path '*sample*' -and \
@@ -273,7 +273,7 @@ find -- . -type f -writable -size 0 \( \
 # delete empty directories recursively
 # but skip Git-specific and `/.well-known/` directories
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
-find -- . -type d -empty \( \
+command find -- . -type d -empty \
   -not -path '*.git/*' -and \
   \
   -not -name '.well-known' \
@@ -286,7 +286,7 @@ command -v zsh >/dev/null 2>&1 && command grep -P '/bin/b?a?sh' /etc/passwd 2>&1
   command cp -- /etc/passwd /etc/passwd-"$(date +%Y%m%d)" &&
   # `-i` for in-place editing
   # `-E` for regex searching for `/bin/ash` and `/bin/sh`
-  sed -i -E "s|/bin/b?a?sh$|$(command -v zsh)|g" /etc/passwd
+  command sed -i -E "s|/bin/b?a?sh$|$(command -v zsh)|g" /etc/passwd
 
 # done
 "${0##*[-./]}" complete >/dev/null 2>&1
