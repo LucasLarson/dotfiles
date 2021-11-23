@@ -246,27 +246,27 @@ command find -- . -type f \( \
 # and those with specific names
 # https://stackoverflow.com/a/64863398
 command find -- . -type f -writable -size 0 \( \
-  ! -path '*.git/*' -a \
-  ! -path '*example*' -a \
-  ! -path '*sample*' -a \
-  ! -path '*template*' -a \
-  ! -path '*test*' -a \
+  ! -path '*.git/*' \
+  ! -path '*example*' \
+  ! -path '*sample*' \
+  ! -path '*template*' \
+  ! -path '*test*' \
   \
-  ! -name "$(printf 'Icon\0xd\0xa')" -a \
-  ! -name '*LOCK' -a \
-  ! -name '*empty*' -a \
-  ! -name '*hushlogin' -a \
-  ! -name '*ignore' -a \
-  ! -name '*journal' -a \
-  ! -name '*lock' -a \
-  ! -name '*lockfile' -a \
-  ! -name '.dirstamp' -a \
-  ! -name '.gitkeep' -a \
-  ! -name '.gitmodules' -a \
-  ! -name '.keep' -a \
-  ! -name '.sudo_as_admin_successful' -a \
-  ! -name '.watchmanconfig' -a \
-  ! -name '__init__.py' -a \
+  ! -name "$(printf 'Icon\0xd\0xa')" \
+  ! -name '*LOCK' \
+  ! -name '*empty*' \
+  ! -name '*hushlogin' \
+  ! -name '*ignore' \
+  ! -name '*journal' \
+  ! -name '*lock' \
+  ! -name '*lockfile' \
+  ! -name '.dirstamp' \
+  ! -name '.gitkeep' \
+  ! -name '.gitmodules' \
+  ! -name '.keep' \
+  ! -name '.sudo_as_admin_successful' \
+  ! -name '.watchmanconfig' \
+  ! -name '__init__.py' \
   ! -name 'favicon.*' \
   \) \
   -delete 2>/dev/null
@@ -275,10 +275,8 @@ command find -- . -type f -writable -size 0 \( \
 # but skip Git-specific and `/.well-known/` directories
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 command find -- . -type d -empty \
-  ! -path '*.git/*' -a \
-  \
+  ! -path '*.git/*' \
   ! -name '.well-known' \
-  \) \
   -delete 2>/dev/null
 
 # if sed installation was successful, and
