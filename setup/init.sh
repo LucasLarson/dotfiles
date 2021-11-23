@@ -63,11 +63,11 @@ command -v apk >/dev/null 2>&1 || {
   # trust apk only if it matches a known checksum
   verifying apk tools integrity... >/dev/null 2>&1
   [ "$(curl --fail --silent --location https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -' ]
-} || (
+} || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
   wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | tar -xz apk.static
   ./apk.static add apk-tools
-)
+}
 
 # configure only main and community repositories at first
 {
@@ -85,27 +85,27 @@ apk upgrade --verbose --progress
 { [ -d /usr/share/man/man0 ] &&
   [ -d /usr/share/man/man2 ] &&
   [ -d /usr/share/man/man4 ] &&
-  [ -d /usr/share/man/man6 ]; } || (
+  [ -d /usr/share/man/man6 ]; } || {
   installing man pages... >/dev/null 2>&1
   install man-pages
-)
-command -v mandoc >/dev/null 2>&1 || (
+}
+command -v mandoc >/dev/null 2>&1 || {
   installing mandoc for man pages... >/dev/null 2>&1
   install mandoc mandoc-doc
-)
-command -v less >/dev/null 2>&1 || (
+}
+command -v less >/dev/null 2>&1 || {
   installing less to read man pages... >/dev/null 2>&1
   install less less-doc
-)
+}
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Shell_.40_commandline
 # https://web.archive.org/web/20210218201739id_/web.archive.org/screenshot/docs.google.com/document/d/10-8wjANQGbG43XZ0wN57M1RYOLUwu9RZATNe9vJQYKw/mobilebasic
 # https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
 install coreutils coreutils-doc
 { [ -x /usr/bin/coreutils ] &&
-  [ "$(command find -version 2>/dev/null | head -n1 | awk '{print $3}' | tr -d '()')" = findutils ]; } || (
+  [ "$(command find -version 2>/dev/null | head -n1 | awk '{print $3}' | tr -d '()')" = findutils ]; } || {
   installing Linux utilities... >/dev/null 2>&1
-)
+}
 install util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
 {
   printf 'https://dl-cdn.alpinelinux.org/alpine/edge/main\n'
@@ -116,39 +116,39 @@ apk update
 
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
-[ -d /etc/ssh ] || (
+[ -d /etc/ssh ] || {
   installing OpenSSH... >/dev/null 2>&1
   install openssh openssh-doc
-)
+}
 
 # gpg
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
-[ -x /usr/bin/gpg2 ] || (
+[ -x /usr/bin/gpg2 ] || {
   installing GPG... >/dev/null 2>&1
   install gnupg gnupg-doc
-)
+}
 
 # git
-command -v git >/dev/null 2>&1 || (
+command -v git >/dev/null 2>&1 || {
   installing Git... >/dev/null 2>&1
   install git git-doc
-)
+}
 
 # git add --patch
-[ -x /usr/libexec/git-core/git-add--interactive ] || (
+[ -x /usr/libexec/git-core/git-add--interactive ] || {
   # https://stackoverflow.com/a/57632778
   install git-perl
-)
+}
 
 # git user
-git config --global --get user.name >/dev/null 2>&1 || (
+git config --global --get user.name >/dev/null 2>&1 || {
   git config --global user.name "Lucas Larson"
-)
+}
 
 # git default branch
-git config --global --get init.defaultBranch >/dev/null 2>&1 || (
+git config --global --get init.defaultBranch >/dev/null 2>&1 || {
   git config --global init.defaultBranch "main"
-)
+}
 
 # time zone
 updating time zone information... >/dev/null 2>&1
@@ -159,10 +159,10 @@ printf 'America/New_York\n' >/etc/timezone
 
 # python
 checking Python installation... >/dev/null 2>&1
-command -v python >/dev/null 2>&1 || (
+command -v python >/dev/null 2>&1 || {
   installing Python 2 and Python 3... >/dev/null 2>&1
   install python2 python2-doc python3 python3-doc
-)
+}
 
 # pip
 checking Python package manager installation... >/dev/null 2>&1
@@ -173,38 +173,38 @@ command -v pip >/dev/null 2>&1 && {
   installing pip... >/dev/null 2>&1
   verifying integrity of pip bootstrap file... >/dev/null 2>&1
   [ "$(curl --fail --silent --location https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py | sha256sum)" != 'e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de  -' ]
-} || (
+} || {
   installing pip using bootstrap... >/dev/null 2>&1
   curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o get-pip.py
   this may take a while... >/dev/null 2>&1
   python3 get-pip.py
-)
+}
 
 # mackup
-command -v mackup >/dev/null 2>&1 || (
+command -v mackup >/dev/null 2>&1 || {
   installing mackup... >/dev/null 2>&1
   pip install --upgrade mackup
-)
+}
 
 # zsh
-command -v zsh >/dev/null 2>&1 || (
+command -v zsh >/dev/null 2>&1 || {
   installing Zsh... >/dev/null 2>&1
   install zsh zsh-doc
-)
+}
 
 # chsh
 # part of shadow on Alpine Linux
-command -v chsh >/dev/null 2>&1 || (
+command -v chsh >/dev/null 2>&1 || {
   install shadow shadow-doc
-)
+}
 
 # Oh My Zsh
 command -v omz >/dev/null 2>&1 ||
   [ -d "${ZSH:=${HOME}/.oh-my-zsh}" ] ||
-  [ "$(curl --fail --silent --location https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh | sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' ] || (
+  [ "$(curl --fail --silent --location https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh | sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' ] || {
   installing Oh My Zsh... >/dev/null 2>&1
   sh -c "$(wget https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
-)
+}
 
 # update, repair everything again before close
 updating... >/dev/null 2>&1
