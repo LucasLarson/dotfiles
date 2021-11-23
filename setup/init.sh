@@ -23,7 +23,7 @@ sleep 1
 # start from `$HOME`
 [ "$(command pwd -P)" = "${HOME-}" ] || {
   # or navigate there
-  builtin cd -- "${HOME-}" || exit 1
+  cd -- "${HOME-}" || exit 1
 }
 
 # unset `$PS4`
