@@ -3,6 +3,24 @@
 # init
 # Author: Lucas Larson
 #
+# Description: bootstrap a new machine
+# Assumptions: installation target is one of Arch Linux or Alpine Linux
+
+# Alpine Linux
+# wget --continue --server-response "https://lucaslarson.net/init.sh"
+# apk add --verbose -- "@"
+
+# Arch Linux
+# curl --remote-name --location "https://lucaslarson.net/init.sh"
+# pacman --sync --verbose --noconfirm -- "$@"
+
+if command -v wget >/dev/null 2>&1; then
+  alias install='command apk add --verbose'
+  wget --continue --server-response "https://lucaslarson.net/init.sh"
+else
+  alias install='command pacman --sync --verbose --noconfirm'
+  command curl --remote-name --location "https://lucaslarson.net/init.sh"
+fi
 
 clear
 printf '   .\137\137       .\137\137  \137\137\n'
@@ -69,26 +87,26 @@ apk upgrade --verbose --progress
   [ -d /usr/share/man/man4 ] &&
   [ -d /usr/share/man/man6 ]; } || (
   installing man pages... >/dev/null 2>&1
-  apk add man-pages
+  install man-pages
 )
 command -v mandoc >/dev/null 2>&1 || (
   installing mandoc for man pages... >/dev/null 2>&1
-  apk add mandoc mandoc-doc
+  install mandoc mandoc-doc
 )
 command -v less >/dev/null 2>&1 || (
   installing less to read man pages... >/dev/null 2>&1
-  apk add less less-doc
+  install less less-doc
 )
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Shell_.40_commandline
 # https://web.archive.org/web/20210218201739id_/web.archive.org/screenshot/docs.google.com/document/d/10-8wjANQGbG43XZ0wN57M1RYOLUwu9RZATNe9vJQYKw/mobilebasic
 # https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
-apk add coreutils coreutils-doc
+install coreutils coreutils-doc
 { [ -x /usr/bin/coreutils ] &&
   [ "$(command find -version 2>/dev/null | head -n1 | awk '{print $3}' | tr -d '()')" = findutils ]; } || (
   installing Linux utilities... >/dev/null 2>&1
 )
-apk add util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
+install util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
 {
   printf 'https://dl-cdn.alpinelinux.org/alpine/edge/main\n'
   printf 'https://dl-cdn.alpinelinux.org/alpine/edge/community\n'
@@ -100,26 +118,26 @@ apk update
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
 [ -d /etc/ssh ] || (
   installing OpenSSH... >/dev/null 2>&1
-  apk add openssh openssh-doc
+  install openssh openssh-doc
 )
 
 # gpg
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
 [ -x /usr/bin/gpg2 ] || (
   installing GPG... >/dev/null 2>&1
-  apk add gnupg gnupg-doc
+  install gnupg gnupg-doc
 )
 
 # git
 command -v git >/dev/null 2>&1 || (
   installing Git... >/dev/null 2>&1
-  apk add git git-doc
+  install git git-doc
 )
 
 # git add --patch
 [ -x /usr/libexec/git-core/git-add--interactive ] || (
   # https://stackoverflow.com/a/57632778
-  apk add git-perl
+  install git-perl
 )
 
 # git user
@@ -134,7 +152,7 @@ git config --global --get init.defaultBranch >/dev/null 2>&1 || (
 
 # time zone
 updating time zone information... >/dev/null 2>&1
-apk add --no-cache tzdata tzdata-doc
+install --no-cache tzdata tzdata-doc
 [ -r /usr/share/zoneinfo/America/New_York ] &&
   cp /usr/share/zoneinfo/America/New_York /etc/localtime
 printf 'America/New_York\n' >/etc/timezone
@@ -143,7 +161,7 @@ printf 'America/New_York\n' >/etc/timezone
 checking Python installation... >/dev/null 2>&1
 command -v python >/dev/null 2>&1 || (
   installing Python 2 and Python 3... >/dev/null 2>&1
-  apk add python2 python2-doc python3 python3-doc
+  install python2 python2-doc python3 python3-doc
 )
 
 # pip
@@ -171,13 +189,13 @@ command -v mackup >/dev/null 2>&1 || (
 # zsh
 command -v zsh >/dev/null 2>&1 || (
   installing Zsh... >/dev/null 2>&1
-  apk add zsh zsh-doc
+  install zsh zsh-doc
 )
 
 # chsh
 # part of shadow on Alpine Linux
 command -v chsh >/dev/null 2>&1 || (
-  apk add shadow shadow-doc
+  install shadow shadow-doc
 )
 
 # Oh My Zsh
