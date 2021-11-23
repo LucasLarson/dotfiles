@@ -7,19 +7,19 @@
 # Assumptions: installation target is one of Arch Linux or Alpine Linux
 
 # Alpine Linux
-# wget --continue --server-response "https://lucaslarson.net/init.sh"
+# wget --continue --server-response 'https://lucaslarson.net/init.sh'
 # apk add --verbose -- "@"
 
 # Arch Linux
-# curl --remote-name --location "https://lucaslarson.net/init.sh"
+# curl --remote-name --location 'https://lucaslarson.net/init.sh'
 # pacman --sync --verbose --noconfirm -- "$@"
 
 if command -v wget >/dev/null 2>&1; then
   alias install='command apk add --verbose'
-  command wget --continue --server-response "https://lucaslarson.net/init.sh"
+  command wget --continue --server-response 'https://lucaslarson.net/init.sh'
 else
   alias install='command pacman --sync --verbose --noconfirm'
-  command curl --remote-name --location "https://lucaslarson.net/init.sh"
+  command curl --remote-name --location 'https://lucaslarson.net/init.sh'
 fi
 
 clear
@@ -56,7 +56,7 @@ set -x
 # https://askubuntu.com/a/459425
 # https://stackoverflow.com/a/26314887
 # force refresh with `-yy`
-[ "$(command awk -F= '/^NAME/{print $2}' /etc/os-release 2>/dev/null | command tr -d '"')" = "Arch Linux" ] && command pacman --sync -yy
+[ "$(command awk -F= '/^NAME/{print $2}' /etc/os-release 2>/dev/null | command tr -d '"')" = 'Arch Linux' ] && command pacman --sync -yy
 
 # apk
 command -v apk >/dev/null 2>&1 || {
@@ -142,12 +142,12 @@ command -v git >/dev/null 2>&1 || {
 
 # git user
 git config --global --get user.name >/dev/null 2>&1 || {
-  git config --global user.name "Lucas Larson"
+  git config --global user.name 'Lucas Larson'
 }
 
 # git default branch
 git config --global --get init.defaultBranch >/dev/null 2>&1 || {
-  git config --global init.defaultBranch "main"
+  git config --global init.defaultBranch 'main'
 }
 
 # time zone
