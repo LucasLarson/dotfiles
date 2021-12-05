@@ -22,8 +22,6 @@
     ]
     projectHome: "/Users/LucasLarson/Code"
     telemetryConsent: "limited"
-  deepcode:
-    sessionToken: 
   editor:
     fontFamily: "MesloLGS NF, Fira Code, JetBrains Mono, Dank, Dank Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
     fontSize: 15
@@ -39,8 +37,6 @@
     liveSearchMinimumCharacters: 2
     scrollToResultOnLiveSearch: true
     useRipgrep: true
-  "gitlab-integration":
-    token: 
   "linter-ui-default":
     panelHeight: 193
     showPanel: true
