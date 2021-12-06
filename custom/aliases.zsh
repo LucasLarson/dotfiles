@@ -788,7 +788,6 @@ fi
 alias mv='mv -v -i'
 
 # find files with non-ASCII characters
-# https://unix.stackexchange.com/a/109753
 non_ascii() {
   LC_ALL=C find -- . ! -path '*.git/*' -name '*[! -~]*'
 }
