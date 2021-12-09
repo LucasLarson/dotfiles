@@ -412,7 +412,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 ### `git tag`
 
-`git tag v𝑖.𝑗.𝑘 #` where 𝑖, 𝑗, and 𝑘 are non-negative integers representing [<abbr title="semantic versioning">semver</abbr>](https://github.com/semver/semver/blob/8b2e8eec394948632957639dfa99fc7ec6286911/semver.md#summary) major, minor, and patch releases<br/>
+`git tag v𝑖.𝑗.𝑘 #` where 𝑖, 𝑗, and 𝑘 are non-negative integers representing [semver](https://github.com/semver/semver/blob/8b2e8eec394948632957639dfa99fc7ec6286911/semver.md#summary) (semantic versioning) major, minor, and patch releases<br/>
 `git push origin v𝑖.𝑗.𝑘 #` push the unannotated tag [via](https://stackoverflow.com/a/5195913)
 
 ## Numbers
