@@ -46,12 +46,12 @@
   - [run `cppcheck` recursively](#run-cppcheck-recursively)
   - [compile all files of type .𝑥 in a directory](#compile-all-files-of-type-𝑥-in-a-directory)
     - [C](#c)
-    - [C++](#c)
+    - [C++](#c-1)
     - [Clang](#clang)
 - [Gatekeeper](#gatekeeper)
 - [Git](#git)
   - [`init` via GitHub](#init-via-github)
-  - [`add`](#add)
+  - [`add`](#add-2)
   - [`diff`](#diff)
   - [`commit`](#commit)
     - [with subject and body](#with-subject-and-body)
@@ -76,6 +76,9 @@
   - [macOS password](#macos-password)
 - [Xcode](#xcode)
   - [signing](#signing)
+- [Zsh](#zsh)
+  - [.zshrc](#zshrc)
+    - [troubleshooting](#troubleshooting)
 - [housekeeping](#housekeeping)
   - [Docker](#docker)
   - [Flutter](#flutter)
@@ -169,7 +172,7 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 Track changes to which applications are installed without syncing them. The instructions are Bash-compatible and refer to this document for instructions on regenerating the list.
 
 ```zsh
-saveApplications=1 && mkdir --parents "$DOTFILES"/\!=Mackup && mkdir --parents /Applications && cd /Applications && filename="$DOTFILES"/\!=Mackup/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && \
+saveApplications=1 && mkdir --parents "$DOTFILES" && mkdir --parents /Applications && cd /Applications && filename="$DOTFILES"/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && \
 git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
 ```
 
@@ -179,19 +182,19 @@ On Alpine Linux, generate a list of installed packages with:<br/>
 ##### Homebrew
 
 ```zsh
-listBrew="$DOTFILES/!=Mackup/brew list --formula --verbose" && touch "$listBrew" && printf 'brew list --formula --verbose\n' > "$listBrew" && date '+%Y-%m-%d' >> "$listBrew" && printf '—————————————————————————————\n' >> "$listBrew" && brew list --formula --verbose >> "$listBrew" && unset listBrew && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrew"
+listBrew="$DOTFILES/brew list --formula --verbose" && touch "$listBrew" && printf 'brew list --formula --verbose\n' > "$listBrew" && date '+%Y-%m-%d' >> "$listBrew" && printf '—————————————————————————————\n' >> "$listBrew" && brew list --formula --verbose >> "$listBrew" && unset listBrew && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrew"
 ```
 
 ###### Cask
 
 ```zsh
-listBrewCask="$DOTFILES"/!=Mackup/brew\ cask\ list && touch "$listBrewCask" && printf 'brew cask list\n—————————————\n' > "$listBrewCask" && brew cask list >> "$listBrewCask" && unset listBrewCask && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrewCask"
+listBrewCask="$DOTFILES"/brew\ cask\ list && touch "$listBrewCask" && printf 'brew cask list\n—————————————\n' > "$listBrewCask" && brew cask list >> "$listBrewCask" && unset listBrewCask && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrewCask"
 ```
 
 ##### MANPATH
 
 ```zsh
-saveManpath=1 && mkdir --parents "$DOTFILES"/\!=Mackup && filename="$DOTFILES"/\!=Mackup/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && \
+saveManpath=1 && mkdir --parents "$DOTFILES" && filename="$DOTFILES"/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && \
 mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
 ```
 
@@ -213,8 +216,8 @@ Section description
 ##### pip packages
 
 ```zsh
-pip list && mkdir --parents "$DOTFILES"/\!=Mackup && printf 'pip packages installed ' > "$DOTFILES"/\!=Mackup/pip && date '+%Y-%m-%d' >> "$DOTFILES"/\!=Mackup/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/\!=Mackup/pip && pip list >> "$DOTFILES"/\!=Mackup/pip && cd "$DOTFILES" && \
-mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff \!=Mackup/pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+pip list && mkdir --parents "$DOTFILES" && printf 'pip packages installed ' > "$DOTFILES"/pip && date '+%Y-%m-%d' >> "$DOTFILES"/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/pip && pip list >> "$DOTFILES"/pip && cd "$DOTFILES" && \
+mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
 
 ## apk
@@ -266,7 +269,7 @@ for example, locate all JPEG files<br/>
 #### Linux
 
 ```zsh
-pathSave=1 && mkdir --parents "$DOTFILES"/\!=Mackup && cd "$DOTFILES"/\!=Mackup && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
+pathSave=1 && mkdir --parents "$DOTFILES" && cd "$DOTFILES" && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
 ```
 
 ## text editing
