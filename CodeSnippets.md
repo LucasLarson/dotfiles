@@ -15,8 +15,7 @@
         - [man pages](#man-pages)
       - [pip packages](#pip-packages)
 - [apk](#apk)
-  - [add](#add-1)
-    - [testing](#testing)
+  - [testing](#testing)
 - [list everything recursively in a directory](#list-everything-recursively-in-a-directory)
   - [with full paths](#with-full-paths)
     - [and metadata](#and-metadata)
@@ -222,9 +221,7 @@ mackup backup --force --root && git fetch --all --verbose && git submodule updat
 
 ## apk
 
-### add
-
-#### testing
+### testing
 
 `apk add foo #` unavailable? `\`<br/>
 `#` then try `\`<br/>
