@@ -561,7 +561,7 @@ unset trashDeveloper && printf '\n\n\xf0\x9f%s\x9a\xae data successfully trashed
 ## delete
 
 `rm -ri /directory #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br/>
-`rm  -i /document.txt # -i` stands for <u>i</u>nteractive
+`rm  -i /document.txt # -i` stands for interactive
 
 ### empty directories
 
