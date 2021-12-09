@@ -877,7 +877,9 @@ take() {
 # Unix epoch seconds
 # https://stackoverflow.com/a/12312982
 # date -j +%s # for milliseconds
-alias unixtime='command date +%s'
+unixtime() {
+  command date +%s
+}
 
 alias all='which -a'
 
