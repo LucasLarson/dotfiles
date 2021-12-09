@@ -51,14 +51,14 @@
 - [Gatekeeper](#gatekeeper)
 - [Git](#git)
   - [`init` via GitHub](#init-via-github)
-  - [`add`](#add-2)
-  - [`diff`](#diff)
-  - [`commit`](#commit)
+  - [`git add`](#git-add)
+  - [`git diff`](#git-diff)
+  - [`git commit`](#git-commit)
     - [with subject and body](#with-subject-and-body)
     - [in the past](#in-the-past)
-  - [`config`](#config)
+  - [`git config`](#git-config)
     - [editor](#editor)
-  - [`tag`](#tag)
+  - [`git tag`](#git-tag)
 - [Numbers](#numbers)
   - [Affixes](#affixes)
 - [Operating system](#operating-system)
@@ -376,7 +376,7 @@ do not disable it, because that would allow you to install any software, even if
 
 `git push --set-upstream git@github.com:LucasLarson/$(git rev-parse --show-toplevel | xargs basename).git $(git rev-parse --abbrev-ref HEAD)`
 
-### `add`
+### `git add`
 
 [via](https://stackoverflow.com/a/15011313)
 | content to add | git command |
@@ -385,12 +385,12 @@ do not disable it, because that would allow you to install any software, even if
 | everything except deleted files | `git add .` |
 | everything | `git add --all || git add -A` |
 
-### `diff`
+### `git diff`
 
 more detailed `git diff` and how I once found an LF‑to‑CRLF‑only difference<br/>
 `git diff --raw`
 
-### `commit`
+### `git commit`
 
 #### with subject and body
 
@@ -401,7 +401,7 @@ more detailed `git diff` and how I once found an LF‑to‑CRLF‑only differen
 to backdate a commit:<br/>
 `GIT_TIME='`**2000-01-02T15:04:05 -0500**`' GIT_AUTHOR_DATE=$GIT_TIME GIT_COMMITTER_DATE=$GIT_TIME git commit --message 'add modifications made at 3:04:05pm EST on January 2, 2000' #` [via](https://stackoverflow.com/questions/3895453/how-do-i-make-a-git-commit-in-the-past#comment97787061_3896112)
 
-### `config`
+### `git config`
 
 #### editor
 
@@ -410,7 +410,7 @@ Vim<br/>
 Atom [via](https://stackoverflow.com/a/31389989)<br/>
 `git config --global core.editor "atom --wait"`
 
-### `tag`
+### `git tag`
 
 `git tag v𝑖.𝑗.𝑘 #` where 𝑖, 𝑗, and 𝑘 are non-negative integers representing [<abbr title="semantic versioning">semver</abbr>](https://github.com/semver/semver/blob/8b2e8eec394948632957639dfa99fc7ec6286911/semver.md#summary) major, minor, and patch releases<br/>
 `git push origin v𝑖.𝑗.𝑘 #` push the unannotated tag [via](https://stackoverflow.com/a/5195913)
