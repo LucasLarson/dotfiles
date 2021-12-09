@@ -200,7 +200,7 @@ mackup backup --force --root && git fetch --all --verbose && git submodule updat
 
 ###### man pages
 
-Section description
+Definintions of the numbers that follow `man` commands.
 
 1. Executable programs or shell commands
 1. System calls (functions provided by the kernel)
