@@ -878,7 +878,7 @@ take() {
 # https://stackoverflow.com/a/12312982
 # date -j '+%s' # for milliseconds
 unixtime() {
-  command date '+%s'
+  command date '+%s' "$@"
 }
 
 alias all='which -a'
