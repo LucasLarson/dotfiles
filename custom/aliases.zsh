@@ -190,7 +190,7 @@ git_commit_initial_commit() {
     if [ "$#" -eq "1" ]; then
 
       # add 12 hours (43,200 seconds) so it occurs around midday
-      git_time="$(command date -d @$(($(command date -d "${1:-$(command date +%Y-%m-%d)}" +%s) + 43200)) '+%c %z')"
+      git_time="$(command date -d @$(($(command date -d "${1:-$(command date '+%Y-%m-%d')}" '+%s') + 43200)) '+%c %z')"
       export GIT_AUTHOR_DATE="${git_time-}"
       export GIT_COMMITTER_DATE="${git_time-}"
     fi
@@ -876,9 +876,9 @@ take() {
 
 # Unix epoch seconds
 # https://stackoverflow.com/a/12312982
-# date -j +%s # for milliseconds
+# date -j '+%s' # for milliseconds
 unixtime() {
-  command date +%s
+  command date '+%s'
 }
 
 alias all='which -a'
