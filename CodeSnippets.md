@@ -301,7 +301,7 @@ printf '%s\n' "${PATH[@]-}" | command sed -e 's|:|\n|g'
 
 ### export output
 
-`printf 'First Name\n' >./ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
+`printf 'First Name\n'` **>**`./ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
 `printf 'Other First Name\n'` **>**`./ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
 `printf 'Last Name\n'` **>>**`./ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
 
