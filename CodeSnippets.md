@@ -212,11 +212,8 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 
 ###### applications
 
-Track changes to which applications are installed without syncing them. The instructions are Bash-compatible and refer to this document for instructions on regenerating the list.
-
 ```shell
-saveApplications='1'; filename="${DOTFILES-}/:Applications"; command mkdir -p -- "${DOTFILES-}"; command mkdir -p -- /Applications; cd /Applications; command touch -- "${filename-}"; { command pwd; command date -- '+%Y-%m-%d'; printf -- '—————————————\n'; command ls -1 -F; } >"${filename-}"; cd "${DOTFILES-}"
-command git diff -- "${filename-}"; unset filename; saveApplications="${filename-}"; printf -- '\n\n\342%s\234%s\205 done\041\n\n' "${filename-}" "${saveApplications-}"
+command find -- /System/Applications /Applications -maxdepth 3 -type d -name '*.app' -print0 | xargs -0 basename -a -s '.app' | LC_ALL='C' command sort -f -u
 ```
 
 On Alpine Linux, generate a list of installed packages with:<br/>
