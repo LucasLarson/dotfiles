@@ -488,9 +488,9 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 | `1>file`      | redirect `stdout` to `file`                     | ✅                |
 | `2>file`      | redirect `stderr` to `file`                     | ✅                |
 | `>file 2>&1`  | redirect `stdout` and `stderr` to `file`        | ✅                |
-| `&>file`      | redirect `stdout` and `stderr` to `file` (Bash) | 🚫               |
+| `&>file`      | redirect `stdout` and `stderr` to `file` (Bash) | 🚫                |
 | `>>file 2>&1` | append `stdout` and `stderr` to `file`          | ✅                |
-| `&>>/file`    | append `stdout` and `stderr` to `file` (Bash)   | 🚫               |
+| `&>>/file`    | append `stdout` and `stderr` to `file` (Bash)   | 🚫                |
 
 ## rename files
 
