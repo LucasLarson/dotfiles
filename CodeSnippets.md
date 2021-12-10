@@ -231,7 +231,7 @@ command brew list -1 --cask
 ##### MANPATH
 
 ```shell
-saveManpath='1'; command mkdir -p -- "${DOTFILES-}"; filename="${DOTFILES-}/manpath"; command touch -- "${filename-}"; { printf -- '\044manpath\342\200\231s contents\n'; command date -- '+%Y-%m-%d'; printf -- '———————————————————\n'; printf '%s\n' "${MANPATH[@]-}" | command sed -e 's|:|\n|g'; } >"${filename-}"; cd "${DOTFILES-}"; command git diff -- "${filename-}"; unset -- filename; saveManpath="${filename-}"; printf -- '\n\n\342%s\234%s\205 done\041\n\n' "${filename-}" "${saveManpath-}"
+printf '%s\n' "${MANPATH[@]-}" | command sed -e 's|:|\n|g'
 ```
 
 ###### man pages
@@ -295,7 +295,7 @@ for example, locate all JPEG files<br/>
 ## PATH
 
 ```shell
-pathSave=1 && mkdir --parents "$DOTFILES" && cd "$DOTFILES" && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
+printf '%s\n' "${PATH[@]-}" | command sed -e 's|:|\n|g'
 ```
 
 ## text editing
