@@ -24,9 +24,6 @@
   - [`grep`](#grep)
   - [locate all](#locate-all)
 - [PATH](#path)
-  - [entries](#entries)
-    - [macOS](#macos)
-    - [Linux](#linux)
 - [text editing](#text-editing)
   - [export output](#export-output)
     - [sort](#sort)
@@ -296,14 +293,6 @@ for example, locate all JPEG files<br/>
 `command locate -i *.jpg #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#search-via-locate); see also [§ grep](#grep)
 
 ## PATH
-
-### entries
-
-#### macOS
-
-`<<<${(F)path}` # [via](https://codegolf.stackexchange.com/a/96471)
-
-#### Linux
 
 ```shell
 pathSave=1 && mkdir --parents "$DOTFILES" && cd "$DOTFILES" && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
