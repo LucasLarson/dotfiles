@@ -215,8 +215,8 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 Track changes to which applications are installed without syncing them. The instructions are Bash-compatible and refer to this document for instructions on regenerating the list.
 
 ```shell
-saveApplications=1 && mkdir --parents "$DOTFILES" && mkdir --parents /Applications && cd /Applications && filename="$DOTFILES"/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && \
-git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
+saveApplications='1'; filename="${DOTFILES-}/:Applications"; command mkdir -p -- "${DOTFILES-}"; command mkdir -p -- /Applications; cd /Applications; command touch -- "${filename-}"; { command pwd; command date -- '+%Y-%m-%d'; printf -- '—————————————\n'; command ls -1 -F; } >"${filename-}"; cd "${DOTFILES-}"
+command git diff -- "${filename-}"; unset filename; saveApplications="${filename-}"; printf -- '\n\n\342%s\234%s\205 done\041\n\n' "${filename-}" "${saveApplications-}"
 ```
 
 On Alpine Linux, generate a list of installed packages with:<br/>
@@ -225,20 +225,19 @@ On Alpine Linux, generate a list of installed packages with:<br/>
 ##### Homebrew
 
 ```shell
-listBrew="$DOTFILES/brew list --formula --verbose" && touch "$listBrew" && printf 'brew list --formula --verbose\n' > "$listBrew" && date '+%Y-%m-%d' >> "$listBrew" && printf '—————————————————————————————\n' >> "$listBrew" && brew list --formula --verbose >> "$listBrew" && unset listBrew && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrew"
+listBrew="${DOTFILES-}/brew list --formula --verbose"; command touch "${listBrew-}"; { printf -- 'brew list --formula --verbose\n'; command date -- '+%Y-%m-%d'; printf -- '—————————————————————————————\n'; command brew list --formula --verbose; } >"${listBrew-}"; unset listBrew; printf -- '\n\n\342%s\234\205 done\041\n\n' "${listBrew-}"
 ```
 
 ###### Cask
 
 ```shell
-listBrewCask="$DOTFILES"/brew\ cask\ list && touch "$listBrewCask" && printf 'brew cask list\n—————————————\n' > "$listBrewCask" && brew cask list >> "$listBrewCask" && unset listBrewCask && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrewCask"
+listBrewCask="${DOTFILES-}/brew cask list"; command touch "${listBrewCask-}"; { printf -- 'brew cask list\n'; command date -- '+%Y-%m-%d'; printf -- '——————————————\n'; command brew cask list; } >"${listBrewCask-}"; unset -- listBrewCask; printf -- '\n\n\342%s\234\205 done\041\n\n' "${listBrewCask-}"
 ```
 
 ##### MANPATH
 
 ```shell
-saveManpath=1 && mkdir --parents "$DOTFILES" && filename="$DOTFILES"/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && \
-mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
+saveManpath='1'; command mkdir -p -- "${DOTFILES-}"; filename="${DOTFILES-}/manpath"; command touch -- "${filename-}"; { printf -- '\044manpath\342\200\231s contents\n'; command date -- '+%Y-%m-%d'; printf -- '———————————————————\n'; printf '%s\n' "${MANPATH[@]-}" | command sed -e 's|:|\n|g'; } >"${filename-}"; cd "${DOTFILES-}"; command git diff -- "${filename-}"; unset -- filename; saveManpath="${filename-}"; printf -- '\n\n\342%s\234%s\205 done\041\n\n' "${filename-}" "${saveManpath-}"
 ```
 
 ###### man pages
