@@ -217,7 +217,7 @@ command find -- /System/Applications /Applications -maxdepth 3 -type d -name '*.
 ```
 
 On Alpine Linux, generate a list of installed packages with:<br/>
-`command apk --verbose --verbose info | command sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
+`command apk --verbose --verbose info | LC_ALL='C' command sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
 
 ##### Homebrew
 
@@ -320,7 +320,7 @@ pathSave=1 && mkdir --parents "$DOTFILES" && cd "$DOTFILES" && printf 'path\n' >
 #### sort
 
 `command env > example.txt` # save an unordered list of `env` variables<br/>
-`command env | command sort > example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
+`command env | LC_ALL='C' command sort > example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
 
 ### EOL and EOF encoding
 
