@@ -222,13 +222,13 @@ On Alpine Linux, generate a list of installed packages with:<br/>
 ##### Homebrew
 
 ```shell
-listBrew="${DOTFILES-}/brew list --formula --verbose"; command touch "${listBrew-}"; { printf -- 'brew list --formula --verbose\n'; command date -- '+%Y-%m-%d'; printf -- '—————————————————————————————\n'; command brew list --formula --verbose; } >"${listBrew-}"; unset listBrew; printf -- '\n\n\342%s\234\205 done\041\n\n' "${listBrew-}"
+command brew list -1 --formula
 ```
 
 ###### Cask
 
 ```shell
-listBrewCask="${DOTFILES-}/brew cask list"; command touch "${listBrewCask-}"; { printf -- 'brew cask list\n'; command date -- '+%Y-%m-%d'; printf -- '——————————————\n'; command brew cask list; } >"${listBrewCask-}"; unset -- listBrewCask; printf -- '\n\n\342%s\234\205 done\041\n\n' "${listBrewCask-}"
+command brew list -1 --cask
 ```
 
 ##### MANPATH
