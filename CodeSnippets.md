@@ -94,7 +94,7 @@
 
 ## copy, paste, return
 
-```zsh
+```shell
 update='1'; IFS="$(printf ' \t\n|')"; IFS="${IFS%|}"; command clear; command clear
 printf '                 .___       __\n __ ________   __\174 _\057____ _\057  \174_  ____\n\174  \174  \134____ \134 \057 __ \174\134__  \134\134   __\134\057 __ \134\n\174  \174  \057  \174_\076 \076 \057_\057 \174 \057 __ \134\174  \174 \134  ___\057\n\174____\057\174   __\057\134____ \174\050____  \057__\174  \134___  \076\n      \174__\174        \134\057     \134\057          \134\057\n a Lucas Larson production\n\n' && command sleep 1.0; unset PS4
 printf '\n\360\237\223\241  verifying network connectivity'; command sleep 0.5; i='0'; while [ "${i-}" -lt "$(
@@ -214,7 +214,7 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 
 Track changes to which applications are installed without syncing them. The instructions are Bash-compatible and refer to this document for instructions on regenerating the list.
 
-```zsh
+```shell
 saveApplications=1 && mkdir --parents "$DOTFILES" && mkdir --parents /Applications && cd /Applications && filename="$DOTFILES"/:Applications && touch "$filename" && pwd > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '—————————————\n' >> "$filename" && ls -F1 >> "$filename" && cd "$DOTFILES" && mackup backup --force --root && \
 git fetch --all && git submodule update --init --recursive --remote && git diff "$filename" && unset filename && saveApplications=$filename && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveApplications"
 ```
@@ -224,19 +224,19 @@ On Alpine Linux, generate a list of installed packages with:<br/>
 
 ##### Homebrew
 
-```zsh
+```shell
 listBrew="$DOTFILES/brew list --formula --verbose" && touch "$listBrew" && printf 'brew list --formula --verbose\n' > "$listBrew" && date '+%Y-%m-%d' >> "$listBrew" && printf '—————————————————————————————\n' >> "$listBrew" && brew list --formula --verbose >> "$listBrew" && unset listBrew && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrew"
 ```
 
 ###### Cask
 
-```zsh
+```shell
 listBrewCask="$DOTFILES"/brew\ cask\ list && touch "$listBrewCask" && printf 'brew cask list\n—————————————\n' > "$listBrewCask" && brew cask list >> "$listBrewCask" && unset listBrewCask && printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$listBrewCask"
 ```
 
 ##### MANPATH
 
-```zsh
+```shell
 saveManpath=1 && mkdir --parents "$DOTFILES" && filename="$DOTFILES"/manpath && touch "$filename" && printf '# \x24manpath\xe2\x80\x99s contents\n# ' > "$filename" && date '+%Y-%m-%d' >> "$filename" && printf '# ———————————————————————\n' >> "$filename" && <<<${(F)manpath} >> "$filename" && cd "$DOTFILES" && \
 mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff "$filename" && unset filename && saveManpath="$filename" && printf '\n\n\xe2%s\x9c%s\x85 done!\n\n' "$filename" "$saveManpath"
 ```
@@ -258,7 +258,7 @@ Definintions of the numbers that follow `man` commands.
 
 ##### pip packages
 
-```zsh
+```shell
 pip list && mkdir --parents "$DOTFILES" && printf 'pip packages installed ' > "$DOTFILES"/pip && date '+%Y-%m-%d' >> "$DOTFILES"/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/pip && pip list >> "$DOTFILES"/pip && cd "$DOTFILES" && \
 mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
 ```
@@ -309,7 +309,7 @@ for example, locate all JPEG files<br/>
 
 #### Linux
 
-```zsh
+```shell
 pathSave=1 && mkdir --parents "$DOTFILES" && cd "$DOTFILES" && printf 'path\n' > path && date '+%Y-%m-%d' >> path && printf 'automagically generated' >> path && printf '\n———————————————————————\n' >> path && <<<${(F)path} >> path && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff path && printf '\n\n\xe2\x9c\x85 done\x21\n\n' && pathSave=0
 ```
 
@@ -590,7 +590,7 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 ### Xcode, JetBrains, Carthage
 
-```zsh
+```shell
 trashDeveloper=1 && sleep 0.25 && \
 mkdir --parents "${HOME}/Library/Developer/Xcode/DerivedData" && mv "${HOME}/Library/Developer/Xcode/DerivedData" "${HOME}/.Trash/Xcode-${RANDOM}" && \
 mkdir --parents "${HOME}/Library/Developer/Xcode/UserData/IB Support" && mv "${HOME}/Library/Developer/Xcode/UserData/IB Support" "${HOME}/.Trash/Xcode⁄UserData⁄IB Support-${RANDOM}" && \
