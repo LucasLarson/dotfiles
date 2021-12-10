@@ -289,8 +289,8 @@ search for the word “example” inside the current directory which is “.”
 
 ### locate all
 
-for example, locate all JPEG files<br/>
-`command locate -i *.jpg #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#search-via-locate); see also [§ grep](#grep)
+for example, locate all JPEG files:<br/>
+`command find -- . -type f \( -name '*.JPEG' -o -name '*.JPG*' -o -name '*.jpeg*' -o -name '*.jpg*' \)`
 
 ## PATH
 
