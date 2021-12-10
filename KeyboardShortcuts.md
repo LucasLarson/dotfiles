@@ -7,7 +7,6 @@
     - [Standard](#standard)
     - [Custom](#custom)
   - [Brave](#brave)
-    - [Custom](#custom-1)
 - [Status](#status)
 
 ## Access
@@ -71,8 +70,6 @@
 | WWW±                          | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd title=Control>⌃</kbd><kbd>W</kbd>                         | bookmarklet                                                  |
 
 ### Brave
-
-#### Custom
 
 | Menu Title         | Keyboard Shortcut                                                                                                 | Notes                                                                                        |
 |--------------------|-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
