@@ -301,14 +301,14 @@ printf '%s\n' "${PATH[@]-}" | command sed -e 's|:|\n|g'
 
 ### export output
 
-`printf 'First Name\n' > ./ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
-`printf 'Other First Name\n'` **>** `./ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
-`printf 'Last Name\n'` **>>** `./ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
+`printf 'First Name\n' >./ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
+`printf 'Other First Name\n'` **>**`./ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
+`printf 'Last Name\n'` **>>**`./ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
 
 #### sort
 
-`command env > ./example.txt` # save an unordered list of `env` variables<br/>
-`command env | LC_ALL='C' command sort > ./example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
+`command env >./example.txt` # save an unordered list of `env` variables<br/>
+`command env | LC_ALL='C' command sort >./example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
 
 ### EOL and EOF encoding
 
@@ -369,11 +369,11 @@ clangformat=${1:-2} && printf '\n%s\n\n' "$("$program" --version)" && sleep 1 &&
 
 ### run `cpplint` recursively
 
-`cpplint --verbose=0 --linelength=79 --recursive --extensions=c++,cc,cp,cpp,cxx,h,h++,hh,hp,hpp,hxx . >> ./cpplint.txt`
+`cpplint --verbose=0 --linelength=79 --recursive --extensions=c++,cc,cp,cpp,cxx,h,h++,hh,hp,hpp,hxx . >>./cpplint.txt`
 
 ### run `cppcheck` recursively
 
-`cppcheck --force -I $CPATH . >> ./cppcheck.txt`
+`cppcheck --force -I $CPATH . >>./cppcheck.txt`
 
 ### compile all files of type .𝑥 in a directory
 
