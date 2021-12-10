@@ -217,7 +217,7 @@ command find -- /System/Applications /Applications -maxdepth 3 -type d -name '*.
 ```
 
 On Alpine Linux, generate a list of installed packages with:<br/>
-`apk -vv info|sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
+`apk --verbose --verbose info | sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
 
 ##### Homebrew
 
