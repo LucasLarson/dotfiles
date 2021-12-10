@@ -252,8 +252,7 @@ Definintions of the numbers that follow `man` commands.
 ##### pip packages
 
 ```shell
-pip list && mkdir --parents "$DOTFILES" && printf 'pip packages installed ' > "$DOTFILES"/pip && date '+%Y-%m-%d' >> "$DOTFILES"/pip && printf '—————————————————————————————————\n' >> "$DOTFILES"/pip && pip list >> "$DOTFILES"/pip && cd "$DOTFILES" && \
-mackup backup --force --root && git fetch --all --verbose && git submodule update --init --recursive && git status && git diff pip && printf '\n\n\xe2\x9c\x85 done\x21\n\n'
+{ command pip list || command pip3 list; } 2>/dev/null
 ```
 
 ## apk
