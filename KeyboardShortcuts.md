@@ -1,6 +1,5 @@
 # Keyboard Shortcuts
 <!-- TOC -->
-## Table of contents
 - [Access](#access)
 - [Shortcuts](#shortcuts)
   - [Keys](#keys)
