@@ -62,6 +62,7 @@
 - [parameter expansion](#parameter-expansion)
 - [redirection](#redirection)
 - [rename files](#rename-files)
+  - [replace](#replace)
 - [split enormous files into something manageable](#split-enormous-files-into-something-manageable)
 - [SSH](#ssh)
   - [`ls` on Windows](#ls-on-windows)
@@ -498,6 +499,14 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 `brew install --upgrade rename && #` [via](https://stackoverflow.com/a/31694356) `\`<br/>
 `rename --dry-run --verbose --subst searchword replaceword *`
+
+### replace
+
+recursively edit files, replacing each instance of `bin/bash` with `usr/bin/env zsh`
+
+```shell
+find -- . -type f -exec sed -i 's|bin/bash|usr/bin/env zsh|g' {} \+
+```
 
 ## split enormous files into something manageable
 
