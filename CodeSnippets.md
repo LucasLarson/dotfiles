@@ -103,7 +103,7 @@ printf '\n\n'; set -u; { command ping -q -i 1 -c 1 -- one.one.one.one >/dev/null
 printf 'No internet connection detected.\nAborting update.\n'; exit "${update:-1}"; }
 printf '\360\237\215\272  checking for Homebrew installation...'; if command -v brew >/dev/null 2>&1; then
 printf '  \342\234\205  found\n'
-printf '\360\237\215\272  checking for Homebrew updates...\n'; command brew update; command brew upgrade --greedy; command brew upgrade --cask --greedy; command brew install --debug --verbose --include-test --HEAD --display-times --git -- git; command brew install --debug --verbose --include-test --HEAD --display-times --git -- mackup; command brew install --debug --verbose --include-test --HEAD --display-times --git -- shellcheck; command brew install --debug --verbose --include-test --HEAD --display-times --git -- shfmt; command brew install --debug --verbose --include-test --HEAD --display-times --git -- zsh; else
+printf '\360\237\215\272  checking for Homebrew updates...\n'; command brew update; command brew upgrade --greedy; command brew upgrade --cask --greedy; command brew install --debug --verbose --include-test --HEAD --display-times --git -- git mackup shellcheck shfmt zsh; else
 printf 'No Homebrew installation detected...\n\n'; fi
 printf '\360\237\217\224  checking for Alpine Package Keeper installation...\n'; if command -v apk >/dev/null 2>&1; then
 printf '\360\237\217\224  apk update...\n'; command apk update --progress --verbose --verbose
