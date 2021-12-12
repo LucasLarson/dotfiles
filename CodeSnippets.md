@@ -484,15 +484,15 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 [via](https://askubuntu.com/a/350216)
 
-| syntax        | meaning                                         | POSIX compliance |
-| -------       | -----------------------------                   | --               |
-| `>file`       | redirect `stdout` to `file`                     | ✅                |
-| `1>file`      | redirect `stdout` to `file`                     | ✅                |
-| `2>file`      | redirect `stderr` to `file`                     | ✅                |
-| `>file 2>&1`  | redirect `stdout` and `stderr` to `file`        | ✅                |
-| `&>file`      | redirect `stdout` and `stderr` to `file` (Bash) | 🚫                |
-| `>>file 2>&1` | append `stdout` and `stderr` to `file`          | ✅                |
-| `&>>/file`    | append `stdout` and `stderr` to `file` (Bash)   | 🚫                |
+| syntax        | meaning                                  | POSIX compliance |
+| -------       | -----------------------------            | --               |
+| `>file`       | redirect `stdout` to `file`              | ✅               |
+| `1>file`      | redirect `stdout` to `file`              | ✅               |
+| `2>file`      | redirect `stderr` to `file`              | ✅               |
+| `>file 2>&1`  | redirect `stdout` and `stderr` to `file` | ✅               |
+| `&>file`      | redirect `stdout` and `stderr` to `file` | 🚫               |
+| `>>file 2>&1` | append `stdout` and `stderr` to `file`   | ✅               |
+| `&>>/file`    | append `stdout` and `stderr` to `file`   | 🚫               |
 
 ## rename files
 
