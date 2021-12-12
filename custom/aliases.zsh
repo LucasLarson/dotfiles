@@ -715,9 +715,9 @@ find_shell_scripts() {
       -type f \
       -exec head -n1 {} \+ 2>/dev/null |
       command grep \
+        -I \
         -l \
         -r \
-        --binary-files=without-match \
         --exclude-dir='.git' \
         '^#!.*bin.*sh' . 2>/dev/null
 
