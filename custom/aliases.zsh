@@ -572,7 +572,7 @@ cleanup() {
 count_files() {
   # https://unix.stackexchange.com/a/1126
   command find -- .//. ! -path '*.git/*' ! -name '.' -print |
-    command grep --count //
+    command grep -c //
 }
 
 # number of files
@@ -582,14 +582,14 @@ count_files_in_this_directory() {
   # count files as well as directories
   -d | --directory | --directories)
     command find -- . ! -path '*.git/*' ! -name '.' -prune -print |
-      command grep --count /
+      command grep -c /
     ;;
 
     # count only regular, non-directory files
   *)
     # https://unix.stackexchange.com/a/1126
     command find -- . -type f ! -path '*.git/*' ! -name '.' -prune -print |
-      command grep --count /
+      command grep -c /
     ;;
   esac
 }
@@ -598,7 +598,7 @@ count_files_by_extension() {
   # files with no extension
   printf ' %i files without extensions\n' "$(
     command find -- . ! -path '*.git/*' -type f ! -name '*.*' -exec basename -a -- {} \+ 2>/dev/null |
-      command grep --count --invert-match '\.'
+      command grep -c --invert-match '\.'
   )"
 
   # files with extensions
