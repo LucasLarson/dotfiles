@@ -24,6 +24,7 @@
   - [`grep`](#grep)
   - [locate all](#locate-all)
 - [PATH](#path)
+  - [executables](#executables)
 - [text editing](#text-editing)
   - [export output](#export-output)
     - [sort](#sort)
@@ -299,6 +300,10 @@ for example, locate all JPEG files:<br/>
 ```shell
 printf '%s\n' "${PATH[@]-}" | command sed -e 's|:|\n|g'
 ```
+
+### executables
+
+`print -l ${^path}/*(-*N)` # [via](https://web.archive.org/web/20210206194844id_/grml.org/zsh/zsh-lovers#_unsorted_misc_examples)
 
 ## text editing
 
