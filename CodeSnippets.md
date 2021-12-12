@@ -578,6 +578,7 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 ### npm
 
+`npm audit fix && \`<br/>
 `npm doctor && #` creates empty `node_modules` directories `\`<br/>
 `find -- node_modules -empty -type d -delete #` deletes them [via](https://perma.cc/YNL2-FY3Z)
 
