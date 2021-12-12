@@ -536,7 +536,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 ### signing
 
 `PRODUCT_BUNDLE_IDENTIFIER = net.LucasLarson.$(PRODUCT_NAME:rfc1034identifier);`<br/>
-`PRODUCT_NAME = $(PROJECT_NAME);`<br/>
+`PRODUCT_NAME = $(PROJECT_NAME) || $(PRODUCT_NAME:c99extidentifier)`<br/>
 `DEVELOPMENT_TEAM = Z25963JBNP;`<br/>
 `DevelopmentTeam = Z25963JBNP;`
 
