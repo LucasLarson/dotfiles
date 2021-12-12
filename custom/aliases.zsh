@@ -598,7 +598,7 @@ count_files_by_extension() {
   # files with no extension
   printf ' %i files without extensions\n' "$(
     command find -- . ! -path '*.git/*' -type f ! -name '*.*' -exec basename -a -- {} \+ 2>/dev/null |
-      command grep -c --invert-match '\.'
+      command grep -c -v '\.'
   )"
 
   # files with extensions
