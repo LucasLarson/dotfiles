@@ -448,10 +448,10 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 | Definition  | Prefix | Suffix |
 |-------------|--------|--------|
-| binary      | `0b`𝑛  | 𝑛₂     |
-| octal       | `0o`𝑛  | 𝑛₈     |
-| decimal     | `0d`𝑛  | 𝑛₁₀    |
-| hexadecimal | `0x`𝑛  | 𝑛₁₆    |
+| binary      | `0b`𝑛  | 𝑛`₂`   |
+| octal       | `0o`𝑛  | 𝑛`₈`   |
+| decimal     | `0d`𝑛  | 𝑛`₁₀`  |
+| hexadecimal | `0x`𝑛  | 𝑛`₁₆`  |
 
 ## Operating system
 
