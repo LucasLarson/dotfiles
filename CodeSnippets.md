@@ -73,7 +73,7 @@
 - [Xcode](#xcode)
   - [signing](#signing)
 - [Zsh](#zsh)
-  - [.zshrc](#zshrc)
+  - [array types](#array-types)
     - [troubleshooting](#troubleshooting)
 - [housekeeping](#housekeeping)
   - [Docker](#docker)
