@@ -134,7 +134,8 @@ printf '    npm install npm --global \046\046 \134\n'
 printf '    npm update --global --verbose\n\n\n'; command sleep 3; fi; else
 printf 'no npm installation detected...\n\n'; fi
 printf 'checking for RubyGems installation...\n'; if command -v gem >/dev/null 2>&1; then
-printf 'updating RubyGems...\n'; command gem update --system; command gem update; if command bundle update >/dev/null 2>&1; then command bundle update 2>/dev/null; fi; if command bundle install >/dev/null 2>&1; then command bundle install --verbose 2>/dev/null; fi; if command bundle exec pod install >/dev/null 2>&1; then command bundle exec pod install --verbose 2>/dev/null; fi; if command pod repo update >/dev/null 2>&1; then command pod repo update; command pod repo update; fi; else
+printf 'updating RubyGems...\n'; command gem update --system; command gem update; if command bundle update >/dev/null 2>&1; then command bundle update 2>/dev/null; fi; if command bundle install >/dev/null 2>&1; then command bundle install --verbose 2>/dev/null; fi
+printf 'checking for CocoaPods installation...\n'; if command bundle exec pod install >/dev/null 2>&1; then command bundle exec pod install --verbose 2>/dev/null; fi; if command pod repo update >/dev/null 2>&1; then command pod repo update; command pod repo update; fi; else
 printf 'no RubyGems installation detected...\n\n'; fi; if command -v rbenv >/dev/null 2>&1; then command rbenv rehash; fi; if command -v c_rehash >/dev/null 2>&1; then command c_rehash; fi; if command -v python >/dev/null 2>&1; then
 printf '\n\360\237\220\215  verifying Python\342\200\231s packager is up to date...\n'; command python -m pip install --upgrade --verbose --verbose --verbose -- pip
 printf 'verifying pip installation...\n'; if command -v pip >/dev/null 2>&1; then
