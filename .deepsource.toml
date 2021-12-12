@@ -21,7 +21,7 @@ name = "go"
 enabled = true
 
   [analyzers.meta]
-  import_root = 'github.com/LucasLarson/"$(git rev-parse --show-toplevel | xargs basename)"'
+  import_root = 'github.com/LucasLarson/"$(command git rev-parse --show-toplevel | command xargs basename)"'
 
 [[analyzers]]
 name = "test-coverage"
