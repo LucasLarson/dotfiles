@@ -1,5 +1,4 @@
 {
-  "deepcode.api.cloudBackend": "https://www.deepcode.ai/",
   "editor.fontFamily": "'MesloLGS NF', 'FiraCode Nerd Font', 'FiraCode', 'Fira Code', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 15,
   "editor.renderWhitespace": "all",
@@ -15,13 +14,9 @@
   "window.zoomLevel": 0,
   "vsonline.accountProvider": "Microsoft",
   "cmake.configureOnOpen": true,
-  "deepcode.url": "https://www.deepcode.ai",
-  "deepcode.token": "72ea14e95f81b5db780bec3e887dfbed91fcc84342d3c1cf96bd0d108d158a74",
   "codespaces.accountProvider": "Microsoft",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "html.format.endWithNewline": true,
-  "deepcode.uploadApproved": true,
-  "editor.renderControlCharacters": true,
-  "deepcode.yesWelcomeNotification": false
+  "editor.renderControlCharacters": true
 }
