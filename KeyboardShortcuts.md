@@ -60,6 +60,7 @@
 | Minimize All                  | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd title=Control>⌃</kbd><kbd title=Shift>⇧</kbd><kbd>/</kbd> |                                                              |
 | New Private Window with Tor   | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>N</kbd>                                                    | [@Brave](https://github.com/brave) Brave                     |
 | Paste and Match Formatting    | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>V</kbd>                                                    | [@Microsoft](https://github.com/microsoft) Word              |
+| Paste and Match Style         | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>V</kbd>                                                    |                                                            |
 | Quit Safari                   | <kbd title=Command>⌘</kbd><kbd title=Control>⌃</kbd><kbd>Q</kbd>                                                  | [@Apple](https://github.com/apple) Safari                    |
 | Quit Safari Technology Review | <kbd title=Command>⌘</kbd><kbd title=Control>⌃</kbd><kbd>Q</kbd>                                                  | [@Apple](https://github.com/apple) Safari Technology Preview |
 | Show Next Tab                 | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd>→</kbd>                                                   |                                                              |
