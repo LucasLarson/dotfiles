@@ -715,10 +715,10 @@ find_shell_scripts() {
       -type f \
       -exec head -n1 {} \+ 2>/dev/null |
       command grep \
+        -l \
         -r \
         --binary-files=without-match \
         --exclude-dir='.git' \
-        --files-with-matches \
         '^#!.*bin.*sh' . 2>/dev/null
 
     # https://github.com/bzz/LangID/blob/37c4960/README.md#collect-the-data
