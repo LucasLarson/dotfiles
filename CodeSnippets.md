@@ -542,6 +542,10 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## Zsh
 
+### array types
+
+`<<<${(t)path} #` [via](https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path)
+
 ### .zshrc
 
 #### troubleshooting
