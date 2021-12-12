@@ -74,7 +74,7 @@
   - [signing](#signing)
 - [Zsh](#zsh)
   - [array types](#array-types)
-    - [troubleshooting](#troubleshooting)
+  - [troubleshooting](#troubleshooting)
 - [housekeeping](#housekeeping)
   - [Docker](#docker)
   - [Flutter](#flutter)
@@ -546,9 +546,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 `<<<${(t)path} #` [via](https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path)
 
-### .zshrc
-
-#### troubleshooting
+### troubleshooting
 
 Add `zmodload zsh/zprof` at the top of `~/.zshrc` and `zprof` at the bottom of
 it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://web.archive.org/web/20210112072135id_/reddit.com/r/zsh/comments/kums6q/zsh_very_slow_to_open_how_to_debug/gisz7nc/)
