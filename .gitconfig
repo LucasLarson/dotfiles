@@ -8,6 +8,8 @@
 [core]
   abbrev = 7
 
+  # `autocrlf` is all-lowercase
+  # https://git-scm.com/docs/git-config/2.34.1#Documentation/git-config.txt-coreautocrlf
   # macOS and Linux only
   # https://wildlyinaccurate.com/useful-git-configuration-items/#prevent-line-ending-issues
   autocrlf = input
