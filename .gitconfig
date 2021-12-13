@@ -28,7 +28,7 @@
 
   # better diffs via the person from whom I learned to alias `apm-beta`
   # https://github.com/jeefberkey/dotfiles/blob/b3513ad/.gitconfig#L11
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = command diff-so-fancy | command less --tabs=4 -RFX
 
 [checkout]
   defaultRemote = origin
@@ -69,20 +69,20 @@
 [diff "plist"]
   # permit 𝚐𝚒𝚝 𝚍𝚒𝚏𝚏 even in binary 𝚙𝚕𝚒𝚜𝚝s
   # https://archive.org/details/2018GitNotesForProfessionals/page/n46
-  textconv = plutil -convert xml1 -o -
+  textconv = command plutil -convert xml1 -o -
 
 [diff "utf16"]
   # macOS strings files
   # https://archive.org/details/2018GitNotesForProfessionals/page/n45
-  textconv = "iconv -f utf-16 -t utf-8"
+  textconv = command iconv -f utf-16 -t utf-8
 
 [diff-so-fancy]
   stripLeadingSymbols = true
 
 [filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
+  clean = command git-lfs clean -- %f
+  smudge = command git-lfs smudge -- %f
+  process = command git-lfs filter-process
   required = true
 
 [gpg]
