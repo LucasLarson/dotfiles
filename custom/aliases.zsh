@@ -43,10 +43,10 @@ mux() {
 
 # Git
 unalias -- g 2>/dev/null
-compdef g="git" 2>/dev/null
+compdef g='git' 2>/dev/null
 g() {
   {
-    [ "$#" -eq "0" ] &&
+    [ "$#" -eq '0' ] &&
       command git status
   } ||
     command git "$@"
@@ -82,7 +82,7 @@ alias git_add_others='git_add_untracked'
 # git commit
 git_commit() {
   set -ux
-  if [ "$#" -eq "0" ]; then
+  if [ "$#" -eq '0' ]; then
     command git commit --verbose --gpg-sign || return 1
   elif [ "$1" = '--amend' ]; then
     command git commit --verbose --gpg-sign --amend || return 1
@@ -187,7 +187,7 @@ git_commit_initial_commit() {
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
   command git init &&
-    if [ "$#" -eq "1" ]; then
+    if [ "$#" -eq '1' ]; then
 
       # add 12 hours (43,200 seconds) so it occurs around midday
       git_time="$(command date -d @$(($(command date -d "${1:-$(command date '+%Y-%m-%d')}" '+%s') + 43200)) '+%c %z')"
@@ -209,7 +209,7 @@ alias ginit='command git init && command git status'
 # git last common ancestor
 git_last_common_ancestor() {
   # https://stackoverflow.com/a/1549155
-  [ "$#" -eq "2" ] || return 1
+  [ "$#" -eq '2' ] || return 1
   command git merge-base "$1" "$2"
 }
 alias glca='git_last_common_ancestor'
@@ -462,7 +462,7 @@ cy() {
   if [ -r "$1" ]; then
     # if within git repo, then auto-overwrite
     if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-      interactive="-i"
+      interactive='-i'
     fi
     if [ -z "$2" ]; then
       # if there is no second argument,
