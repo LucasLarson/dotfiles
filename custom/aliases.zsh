@@ -43,7 +43,7 @@ mux() {
 
 # Git
 unalias -- g 2>/dev/null
-compdef g="git"
+compdef g="git" 2>/dev/null
 g() {
   {
     [ "$#" -eq "0" ] &&
