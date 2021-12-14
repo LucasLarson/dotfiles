@@ -25,20 +25,21 @@ jobs:
             ${{ runner.os }}-gem-
       - name: Create local changes
         run: |
-          gem install github_changelog_generator
-          github_changelog_generator \
-          -u ${{ github.repository_owner }} \
-          -p "$(git rev-parse --show-toplevel | xargs basename)" \
-          -t ${{ secrets.GITHUB_TOKEN }} \
-          --exclude-labels duplicate,question,invalid,wontfix,nodoc \
-          --output changelog.md
+          command gem install github_changelog_generator
+          command github_changelog_generator \
+            --user ${{ github.repository_owner }} \
+            --project "$(command git rev-parse --show-toplevel |
+              command xargs basename)" \
+            --token ${{ secrets.GITHUB_TOKEN }} \
+            --exclude-labels duplicate,question,invalid,wontfix,nodoc \
+            --output changelog.md
       - name: Commit files
         run: |
-          git config --local user.email "actions@github.com" &&
-          git config --local user.name "GitHub" &&
-          git add --all --verbose &&
-          git commit --allow-empty --verbose --message \
-          '[ci skip] update changelog'
+          command git config -- user.email 'actions@github.com'
+          command git config -- user.name 'GitHub'
+          command git add --verbose --all
+          command git commit --allow-empty --verbose \
+            --message='[ci skip] update changelog'
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
