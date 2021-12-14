@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-
-# Tidy for Mac OS X by balthisar.com is adding the new path for Tidy.
-export PATH=/usr/local/bin:$PATH
-
 # Tidy for Mac OS X by balthisar.com is adding the new path for Tidy.
 export PATH=/usr/local/bin:$PATH
 
