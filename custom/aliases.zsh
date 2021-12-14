@@ -52,6 +52,7 @@ g() {
     command git "$@"
 }
 alias g.='command git status .'
+alias guo='command git status --untracked-files=no'
 
 # git add
 git_add() {
