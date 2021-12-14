@@ -63,6 +63,9 @@
 [credential "https://dev.azure.com"]
   useHttpPath = true
 
+[credential "https://gitlab.com"]
+  provider = generic
+
 [diff]
   # allow `git merge` to examine enormous diffs
   # https://stackoverflow.com/a/13118734
