@@ -8,3 +8,8 @@
 #   ╭─╯│   ╭─╯│
 #   ╰──╯   ╰──╯
 #
+#
+## hide private variables
+# https://stackoverflow.com/a/55441931
+# https://web.archive.org/web/2020_/docs.npmjs.com/using-private-packages-in-a-ci-cd-workflow
+/.env
