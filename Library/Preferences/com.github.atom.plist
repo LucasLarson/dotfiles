@@ -2,44 +2,44 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSFullScreenMenuItemEverywhere</key>
-	<false/>
-	<key>NSNavLastRootDirectory</key>
-	<string>~/Code/git-default-branch</string>
-	<key>NSNavLastUserSetHideExtensionButtonState</key>
-	<false/>
-	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{799, 448}</string>
-	<key>NSNavPanelExpandedSizeForSaveMode</key>
-	<string>{744, 400}</string>
-	<key>NSNavPanelExpandedStateForSaveMode</key>
-	<true/>
-	<key>NSTreatUnknownArgumentsAsOpen</key>
-	<string>NO</string>
-	<key>NSWindow Frame NSNavPanelAutosaveName</key>
-	<string>504 521 744 400 0 0 1792 1095 </string>
-	<key>SGTRecentFileSearches</key>
-	<array>
-		<dict>
-			<key>attributes</key>
-			<array>
-				<string>kMDItemKind</string>
-			</array>
-			<key>enforceStrictMatch</key>
-			<true/>
-			<key>exactMatch</key>
-			<false/>
-			<key>name</key>
-			<string>GeoJSON File</string>
-			<key>scope</key>
-			<integer>3</integer>
-			<key>type</key>
-			<string>com.apple.finder</string>
-			<key>values</key>
-			<array>
-				<string>com.apple.dt.document.geojson</string>
-			</array>
-		</dict>
-	</array>
+  <key>NSFullScreenMenuItemEverywhere</key>
+  <false/>
+  <key>NSNavLastRootDirectory</key>
+  <string>~/Code/git-default-branch</string>
+  <key>NSNavLastUserSetHideExtensionButtonState</key>
+  <false/>
+  <key>NSNavPanelExpandedSizeForOpenMode</key>
+  <string>{799, 448}</string>
+  <key>NSNavPanelExpandedSizeForSaveMode</key>
+  <string>{744, 400}</string>
+  <key>NSNavPanelExpandedStateForSaveMode</key>
+  <true/>
+  <key>NSTreatUnknownArgumentsAsOpen</key>
+  <string>NO</string>
+  <key>NSWindow Frame NSNavPanelAutosaveName</key>
+  <string>504 521 744 400 0 0 1792 1095 </string>
+  <key>SGTRecentFileSearches</key>
+  <array>
+    <dict>
+      <key>attributes</key>
+      <array>
+        <string>kMDItemKind</string>
+      </array>
+      <key>enforceStrictMatch</key>
+      <true/>
+      <key>exactMatch</key>
+      <false/>
+      <key>name</key>
+      <string>GeoJSON File</string>
+      <key>scope</key>
+      <integer>3</integer>
+      <key>type</key>
+      <string>com.apple.finder</string>
+      <key>values</key>
+      <array>
+        <string>com.apple.dt.document.geojson</string>
+      </array>
+    </dict>
+  </array>
 </dict>
 </plist>
