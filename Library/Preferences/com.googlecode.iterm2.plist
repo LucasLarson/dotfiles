@@ -1712,7 +1712,7 @@
   <key>NoSyncSavePanelSavedSettings_SaveProfile</key>
   <dict>
     <key>Initial Directory</key>
-    <string>/Users/LucasLarson/Code/ dotfiles/LucasLarson/!=Mackup</string>
+    <string>/Users/LucasLarson/Code/ dotfiles/LucasLarson</string>
   </dict>
   <key>NoSyncTipOfTheDayEligibilityBeganTime</key>
   <real>586907136.24731696</real>
