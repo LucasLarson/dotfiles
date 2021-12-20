@@ -480,7 +480,7 @@ cy() {
   else
     printf '\140%s\140 does not exist and cannot be copied\n' "$1"
     exit 3
-    fi
+  fi
   unset interactive
 }
 
