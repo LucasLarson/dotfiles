@@ -18,7 +18,7 @@ atom_packages() {
     command apm-nightly list --installed --bare ||
       command apm-beta list --installed --bare ||
       command apm list --installed --bare
-  } >"${1:-${DOTFILES:-${HOME}/Dropbox/dotfiles}/!=Mackup/atom}" 2>/dev/null
+  } >"${1:-${DOTFILES}/atom_packages}" 2>/dev/null
 }
 
 # dotfiles
