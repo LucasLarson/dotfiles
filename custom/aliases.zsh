@@ -14,11 +14,10 @@ command -v apm-nightly >/dev/null 2>&1 &&
 
 atom_packages() {
   # https://web.archive.org/web/0id_/discuss.atom.io/t/15674/2
-  {
-    command apm-nightly list --installed --bare ||
-      command apm-beta list --installed --bare ||
-      command apm list --installed --bare
-  } >"${1:-${DOTFILES}/atom_packages}" 2>/dev/null
+  command apm-nightly list --installed --bare ||
+    command apm-beta list --installed --bare ||
+    command apm list --installed --bare
+  { set +euvx; } 2>/dev/null
 }
 
 # dotfiles
