@@ -23,7 +23,7 @@ atom_packages() {
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 mu() {
-  cd "${DOTFILES:=${HOME}/Dropbox/dotfiles}" &&
+  cd "${DOTFILES}" &&
     command -v cleanup >/dev/null 2>&1 && cleanup "$@" &&
     mackup backup --force --root &&
     command git fetch --all --prune &&
@@ -31,7 +31,7 @@ mu() {
     command git status
 }
 mux() {
-  cd "${DOTFILES:=${HOME}/Dropbox/dotfiles}" &&
+  cd "${DOTFILES}" &&
     command -v cleanup >/dev/null 2>&1 && cleanup "$@" &&
     mackup backup --force --root --verbose &&
     command git fetch --all --prune --verbose &&
@@ -891,7 +891,7 @@ aliases() {
   ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES}/custom}"/aliases."${SHELL##*[-./]}"
   . "${ZSH_CUSTOM}"/aliases."${SHELL##*[-./]}"
 }
-alias ohmyzsh='cd -- "${ZSH:=${HOME}/.oh-my-${SHELL##*[-./]}}" && command git status'
+alias ohmyzsh='cd -- "${ZSH}" && command git status'
 alias zshenv='${EDITOR:-vi} -- "${HOME}/.${SHELL##*[-./]}env"; . -- "${HOME}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
 alias zshrc='${EDITOR:-vi} -- "${HOME}/.${SHELL##*[-./]}rc"; . -- "${HOME}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
 alias zshconfig='zshrc'
