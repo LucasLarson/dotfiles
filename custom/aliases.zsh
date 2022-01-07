@@ -81,7 +81,7 @@ alias git_add_others='git_add_untracked'
 
 # git commit
 git_commit() {
-  set -ux
+  set -u
   if [ "$#" -eq '0' ]; then
     command git commit --verbose || return 1
   elif [ "$1" = '--amend' ]; then
