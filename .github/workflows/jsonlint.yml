@@ -13,7 +13,7 @@ on:
 jobs:
 
   json:
-    name: Format JSON files and create a PR
+    name: Format JSON files and create a Pull Request
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
