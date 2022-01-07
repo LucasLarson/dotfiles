@@ -48,7 +48,7 @@ g() {
     [ "$#" -eq '0' ] &&
       command git status
   } ||
-    command git "$@"
+    command git "$@" || command git status .
 }
 alias g.='command git status .'
 alias guo='command git status --untracked-files=no'
