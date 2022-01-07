@@ -22,7 +22,7 @@ jobs:
           sudo npm install --global jsonlint-newline-fork
       - name: Lint
         run: |
-          find -- . -type f \( \( \
+          command find -- . -type f \( \( \
               -name '*.JSON' -o \
               -name '*.json' -o \
               -name '*.imgbotconfig' -o \
