@@ -147,7 +147,8 @@ alias ggc='git_garbage_collection'
 
 # git parents, git child
 git_find_child() {
-  set -eu
+  set -e
+  set -u
   commit="${1:-"$(command git rev-parse HEAD)"}"
   # %H: commit hash
   # %P: parent commit
@@ -488,7 +489,8 @@ cleanup() {
   # if `cleanup -v` or `cleanup --verbose`,
   # then use `-print` during `-delete`
   -v | --verbose)
-    set -vx
+    set -v
+    set -x
     shift
     ;;
   esac
@@ -693,7 +695,8 @@ fname() {
 alias findname='fname'
 
 find_shell_scripts() {
-  set -eu
+  set -e
+  set -u
   {
     # all files with extensions `.bash`, `.dash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
     command find -- . -type f \
