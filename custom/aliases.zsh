@@ -23,7 +23,7 @@ atom_packages() {
 # dotfiles
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 mu() {
-  cd "${DOTFILES}" &&
+  cd "${DOTFILES-}" &&
     command -v cleanup >/dev/null 2>&1 && cleanup "$@" &&
     mackup backup --force --root &&
     command git fetch --all --prune &&
@@ -31,7 +31,7 @@ mu() {
     command git status
 }
 mux() {
-  cd "${DOTFILES}" &&
+  cd "${DOTFILES-}" &&
     command -v cleanup >/dev/null 2>&1 && cleanup "$@" &&
     mackup backup --force --root --verbose &&
     command git fetch --all --prune --verbose &&
@@ -269,7 +269,7 @@ alias grm='grmr'
 
 git_restore() {
   for file in "$@"; do
-    command git checkout --progress -- "${file}"
+    command git checkout --progress -- "${file-}"
   done && command git status
   unset file
 }
@@ -281,9 +281,9 @@ git_shallow() {
 
   command git submodule init
   for submodule in $(command git submodule | command sed -e 's/.* //'); do
-    submodule_path="$(command git config --file .gitmodules --get submodule."${submodule}".path)"
-    submodule_url="$(command git config --file .gitmodules --get submodule."${submodule}".url)"
-    command git clone --depth=1 --shallow-submodules "${submodule_url}" "${submodule_path}"
+    submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
+    submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
+    command git clone --depth=1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
   done
   command git submodule update
 
@@ -346,18 +346,18 @@ alias bash_version='bash_major_version'
 cd_pwd_P() {
   cd_from="$(command pwd -L)"
   cd_to="$(command pwd -P)"
-  if [ "${cd_from}" != "${cd_to}" ]; then
-    printf 'moving from \342\200\230%s\342\200\231\n' "${cd_from}"
+  if [ "${cd_from-}" != "${cd_to-}" ]; then
+    printf 'moving from \342\200\230%s\342\200\231\n' "${cd_from-}"
     sleep 0.2
-    cd "${cd_to}" || {
+    cd "${cd_to-}" || {
       printf 'unable to perform this operation\n'
       return 1
     }
-    printf '       into \342\200\230%s\342\200\231\n' "${cd_to}"
+    printf '       into \342\200\230%s\342\200\231\n' "${cd_to-}"
     sleep 0.2
   else
     printf 'already in unaliased directory '
-    printf '\342\200\230%s\342\200\231\n' "${cd_from}"
+    printf '\342\200\230%s\342\200\231\n' "${cd_from-}"
   fi
   unset cd_from cd_to
 }
@@ -380,10 +380,10 @@ clang_format() {
   printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
   sleep 1
 
-  printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth}"
+  printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"
   sleep 1
 
-  printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit}"
+  printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit-}"
   sleep 1
 
   find -- . -type f \
@@ -451,7 +451,7 @@ clang_format() {
     ! -path '*/test*' \
     ! -path '*node_modules/*' \
     \) \
-    -exec clang-format -i --style "{IndentWidth: ${IndentWidth}, ColumnLimit: ${ColumnLimit}}" --verbose --fcolor-diagnostics --print-options {} \+
+    -exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options {} \+
   printf '\n\n\342\234\205 done\041\n\n'
 
   unset IndentWidth ColumnLimit
@@ -470,9 +470,9 @@ cy() {
       # then copy to the current directory
       # -r to copy recursively
       # -L to follow symbolic links
-      eval cp -r -L "${interactive} -- $1 ${PWD}"
+      eval cp -r -L "${interactive-} -- $1 ${PWD-}"
     else
-      eval cp -r -L "${interactive} -- $1 $2"
+      eval cp -r -L "${interactive-} -- $1 $2"
     fi
   elif [ -e "$1" ]; then
     printf '\140%s\140 is not readable and cannot be copied\n' "$1"
@@ -496,7 +496,7 @@ cleanup() {
   esac
 
   # refuse to run from `$HOME`
-  [ "$(pwd -P)" = "${HOME}" ] && return 1
+  [ "$(pwd -P)" = "${HOME-}" ] && return 1
   # delete thumbnail cache files
   # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
   find -- "${1:-.}" -type f \( \
@@ -511,16 +511,16 @@ cleanup() {
   # delete crufty Zsh files
   # if `$ZSH_COMPDUMP` always generates a crufty file then skip
   # https://stackoverflow.com/a/8811800
-  if [ -n "${ZSH_COMPDUMP}" ] && [ "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP}" ]; then
+  if [ -n "${ZSH_COMPDUMP-}" ] && [ "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP-}" ]; then
     while [ -n "$(
-      find -- "${HOME}" \
+      find -- "${HOME-}" \
         -maxdepth 1 \
         -type f \
         ! -name "$(printf "*\n*")" \
         ! -name '.zcompdump' \
         -name '.zcompdump*' -print
     )" ]; do
-      find -- "${HOME}" \
+      find -- "${HOME-}" \
         -maxdepth 1 \
         -type f \
         ! -name "$(printf "*\n*")" \
@@ -620,39 +620,39 @@ define() {
     # hash
     command -v hash >/dev/null 2>&1 &&
       printf 'hash return value:\n%d\n———\n' "$(
-        hash "${query}" >/dev/null 2>&1
+        hash "${query-}" >/dev/null 2>&1
         printf '%i\n' "$?"
       )"
 
     # type (System V)
     command -v type >/dev/null 2>&1 &&
-      printf 'type:\n%s\n———\n' "$(type "${query}")"
+      printf 'type:\n%s\n———\n' "$(type "${query-}")"
 
     # whence (KornShell)
     command -v whence >/dev/null 2>&1 &&
-      printf 'whence:\n%s\n———\n' "$(whence "${query}")"
+      printf 'whence:\n%s\n———\n' "$(whence "${query-}")"
 
     # where
     command -v where >/dev/null 2>&1 &&
-      printf 'where:\n%s\n———\n' "$(where "${query}")"
+      printf 'where:\n%s\n———\n' "$(where "${query-}")"
 
     # whereis
     command -v whereis >/dev/null 2>&1 &&
-      printf 'whereis:\n%s\n———\n' "$(whereis "${query}")"
+      printf 'whereis:\n%s\n———\n' "$(whereis "${query-}")"
 
     # locate
     command -v locate >/dev/null 2>&1 &&
-      printf 'locate:\n%s\n———\n' "$(locate "${query}")"
+      printf 'locate:\n%s\n———\n' "$(locate "${query-}")"
 
     # command -V
-    printf 'command -V:\n%s\n———\n' "$(command -V "${query}")"
+    printf 'command -V:\n%s\n———\n' "$(command -V "${query-}")"
 
     # command -v (POSIX)
-    printf 'command -v:\n%s\n———\n' "$(command -v "${query}")"
+    printf 'command -v:\n%s\n———\n' "$(command -v "${query-}")"
 
     # which (C shell)
     command -v which >/dev/null 2>&1 &&
-      printf 'which -a:\n%s\n' "$(which -a "${query}")"
+      printf 'which -a:\n%s\n' "$(which -a "${query-}")"
 
   done
   unset query
@@ -782,7 +782,7 @@ elif command gls --color=auto >/dev/null 2>&1; then
 elif command ls --color=auto >/dev/null 2>&1; then
   alias ls='command ls --color=auto'
   alias l='command ls --color=auto -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
-elif [ "$(command /bin/ls -G -- "${HOME}" | hexdump)" = "$(command ls -G -- "${HOME}" | hexdump)" ] && [ "$(command ls -G -- "${HOME}" | hexdump)" != "$(command ls --color=auto -- "${HOME}" 2>/dev/null)" ]; then
+elif [ "$(command /bin/ls -G -- "${HOME-}" | hexdump)" = "$(command ls -G -- "${HOME-}" | hexdump)" ] && [ "$(command ls -G -- "${HOME-}" | hexdump)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)" ]; then
   alias ls='command ls -G'
   alias l='command ls -G -AFgo'
 fi
@@ -802,7 +802,7 @@ pasteinit() {
   zle -N self-insert url-quote-magic
 }
 pastefinish() {
-  zle -N self-insert "${OLD_SELF_INSERT}"
+  zle -N self-insert "${OLD_SELF_INSERT-}"
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
@@ -812,7 +812,7 @@ path_check() {
 
   # return verbose output if requested
   for argument in "$@"; do
-    case ${argument} in
+    case ${argument-} in
 
     # return verbose output if requested
     -v | --verbose)
@@ -830,12 +830,12 @@ path_check() {
   for directory in $(
     # newline-delimited `$PATH` like Zsh `<<<${(F)path}`
     # https://stackoverflow.com/a/33469401
-    printf %s "${PATH}" | xargs -d ':' -n 1
+    printf %s "${PATH-}" | xargs -d ':' -n 1
   ); do
-    if [ -d "${directory}" ]; then
-      printf 'is a directory: %s\n' "${directory}"
+    if [ -d "${directory-}" ]; then
+      printf 'is a directory: %s\n' "${directory-}"
     else
-      printf 'not a directory: %s\n' "${directory}"
+      printf 'not a directory: %s\n' "${directory-}"
     fi
   done
 
@@ -889,12 +889,12 @@ alias all='which -a'
 # https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 # https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#index-exec
-alias ','='. -- "${HOME}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
+alias ','='. -- "${HOME-}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
-  ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES}/custom}"/aliases."${SHELL##*[-./]}"
-  . "${ZSH_CUSTOM}"/aliases."${SHELL##*[-./]}"
+  ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES-}/custom}"/aliases."${SHELL##*[-./]}"
+  . "${ZSH_CUSTOM-}"/aliases."${SHELL##*[-./]}"
 }
-alias ohmyzsh='cd -- "${ZSH}" && command git status'
-alias zshenv='${EDITOR:-vi} -- "${HOME}/.${SHELL##*[-./]}env"; . -- "${HOME}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
-alias zshrc='${EDITOR:-vi} -- "${HOME}/.${SHELL##*[-./]}rc"; . -- "${HOME}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
+alias ohmyzsh='cd -- "${ZSH-}" && command git status'
+alias zshenv='${EDITOR:-vi} -- "${HOME-}/.${SHELL##*[-./]}env"; . -- "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
+alias zshrc='${EDITOR:-vi} -- "${HOME-}/.${SHELL##*[-./]}rc"; . -- "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
 alias zshconfig='zshrc'
