@@ -884,6 +884,7 @@ rm() {
   { set +euvx; } 2>/dev/null
   unset utility
 }
+alias rmo='rm --others'
 
 # sudo, even for aliases, but not functions
 # https://github.com/mathiasbynens/dotfiles/commit/bb8de8b
