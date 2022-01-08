@@ -865,6 +865,26 @@ question_mark() {
 }
 alias '?'='question_mark'
 
+# remove
+rm() {
+  if command -v trash >/dev/null 2>&1; then
+    utility='trash'
+  else
+    utility='rm'
+  fi
+  case "$1" in
+  -o | --others)
+    command git ls-files -z --others --exclude-standard |
+      command xargs -0 "${utility-}"
+    ;;
+  *)
+    command "${utility-}" "$@"
+    ;;
+  esac
+  { set +euvx; } 2>/dev/null
+  unset utility
+}
+
 # sudo, even for aliases, but not functions
 # https://github.com/mathiasbynens/dotfiles/commit/bb8de8b
 alias sudo='sudo '
