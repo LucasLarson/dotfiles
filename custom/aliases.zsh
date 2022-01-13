@@ -426,7 +426,6 @@ clang_format() {
     -iname '*.inc' -o \
     -iname '*.inl' -o \
     -iname '*.java' -o \
-    -iname '*.js' -o \
     -iname '*.ll' -o \
     -iname '*.m' -o \
     -iname '*.mi' -o \
