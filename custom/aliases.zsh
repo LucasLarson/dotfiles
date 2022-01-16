@@ -257,7 +257,7 @@ alias gp='git_pull'
 # git push
 git_push() {
   # https://github.com/ohmyzsh/ohmyzsh/commit/ae21102
-  command git push --verbose --set-upstream origin "$(git_current_branch)"
+  command git push --verbose --progress --set-upstream origin "$(git_current_branch)"
   command git status
 }
 alias gps='git_push'
