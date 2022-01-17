@@ -126,12 +126,8 @@ plugins=(
   history-substring-search
   zsh-diff-so-fancy
   zchee-zsh-completions
+  fast-syntax-highlighting
 )
-[ "$(command uname)" = 'Darwin' ] &&
-  plugins=(
-    "${plugins[@]}"
-    fast-syntax-highlighting
-  )
 
 # trapd00r/LS_COLORS: .dircolors to override Oh My Zsh’s `ls -G` for coreutils
 # https://github.com/ohmyzsh/ohmyzsh/blob/d0d01c0/lib/theme-and-appearance.zsh
