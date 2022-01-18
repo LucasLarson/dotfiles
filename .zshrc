@@ -419,11 +419,6 @@ rbenv() {
   rbenv "$@"
 }
 
-# Radicle
-# https://github.com/radicle-dev/radicle-docs/blob/a0f08f4/docs/getting-started/doc1-1.md#configuring-your-system
-[ -d "${HOME}/.radicle/bin" ] &&
-  PATH="${HOME}/.radicle/bin${PATH:+:${PATH}}"
-
 # automatically remove PATH duplicates
 # https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
 # https://github.com/zsh-users/zsh/blob/a9061cc/StartupFiles/zshrc#L56-L57
