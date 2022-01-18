@@ -30,7 +30,7 @@
 
   # better diffs via the person from whom I learned to alias `apm-beta`
   # https://github.com/jeefberkey/dotfiles/blob/b3513ad/.gitconfig#L11
-  pager = command diff-so-fancy | command less --tabs=4 -RFX
+  pager = command diff-so-fancy | command less --RAW-CONTROL-CHARS --no-init --quit-if-one-screen --tabs=4
 
 [checkout]
   defaultRemote = origin
