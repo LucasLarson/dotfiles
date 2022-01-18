@@ -657,6 +657,14 @@ define() {
   unset query
 }
 
+# find broken symlinks
+find_broken_symlinks() {
+  set -u
+  # https://unix.stackexchange.com/a/49470
+  command find -- . ! -path '*.git/*' -type l -exec [ ! -e {} ] \; -print 2>/dev/null
+  { set +euvx; } 2>/dev/null
+}
+
 # find duplicate files
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 fdf() {
