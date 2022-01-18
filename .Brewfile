@@ -369,8 +369,6 @@ cask "qlvideo"
 cask "qtspim"
 cask "quicklook-json"
 cask "quicklookase"
-# Desktop client for Radicle, a p2p stack for code collaboration
-cask "radicle-upstream"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Simple Sass processor
