@@ -28,6 +28,3 @@
 [submodule "custom/plugins/git-open"]
   path = custom/plugins/git-open
   url = https://github.com/paulirish/git-open
-[submodule "custom/plugins/shellfirm"]
-  path = custom/plugins/shellfirm
-  url = https://github.com/kaplanelad/shellfirm

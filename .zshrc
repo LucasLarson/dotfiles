@@ -128,11 +128,6 @@ plugins=(
   zchee-zsh-completions
   fast-syntax-highlighting
 )
-command -v cargo >/dev/null 2>&1 &&
-  plugins=(
-    "${plugins[@]-}"
-    shellfirm
-  )
 
 # trapd00r/LS_COLORS: .dircolors to override Oh My Zsh’s `ls -G` for coreutils
 # https://github.com/ohmyzsh/ohmyzsh/blob/d0d01c0/lib/theme-and-appearance.zsh
