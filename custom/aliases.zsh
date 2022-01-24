@@ -45,7 +45,7 @@ unalias -- g 2>/dev/null
 compdef g='git' 2>/dev/null
 g() {
   {
-    [ "$#" -eq '0' ] &&
+    test "$#" -eq '0' &&
       command git status
   } ||
     command git "$@" || command git status .
@@ -72,7 +72,7 @@ git_add_patch() {
 alias gap='git_add_patch'
 
 git_add_untracked() {
-  while [ -n "$(command git ls-files --others --exclude-standard)" ]; do
+  while test -n "$(command git ls-files --others --exclude-standard)"; do
     command git ls-files -z --others --exclude-standard | command xargs -0 git add --verbose -- 2>/dev/null
   done
   command git status
@@ -82,9 +82,9 @@ alias git_add_others='git_add_untracked'
 # git commit
 git_commit() {
   set -u
-  if [ "$#" -eq '0' ]; then
+  if test "$#" -eq '0'; then
     command git commit --verbose || return 1
-  elif [ "$1" = '--amend' ]; then
+  elif test "$1" = '--amend'; then
     command git commit --verbose --amend || return 1
   else
     command git commit --verbose --message "$@" || return 1
@@ -188,7 +188,7 @@ git_commit_initial_commit() {
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
   command git init &&
-    if [ "$#" -eq '1' ]; then
+    if test "$#" -eq '1'; then
 
       # add 12 hours (43,200 seconds) so it occurs around midday
       git_time="$(command date -d @$(($(command date -d "${1:-$(command date '+%Y-%m-%d')}" '+%s') + 43200)) '+%c %z')"
@@ -198,7 +198,7 @@ git_commit_initial_commit() {
   command git commit --allow-empty --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
 
   # if there are non-repository files present, then add them and commit
-  if [ -n "$(command git ls-files --others --exclude-standard)" ]; then
+  if test -n "$(command git ls-files --others --exclude-standard)"; then
     command git add --verbose -- . &&
       command git commit --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
   fi
@@ -210,7 +210,7 @@ alias ginit='command git init && command git status'
 # git last common ancestor
 git_last_common_ancestor() {
   # https://stackoverflow.com/a/1549155
-  [ "$#" -eq '2' ] || return 1
+  test "$#" -eq '2' || return 1
   command git merge-base "$1" "$2"
 }
 alias glca='git_last_common_ancestor'
@@ -336,7 +336,7 @@ gvc() {
 
 bash_major_version() {
   # confirm Bash version is at least any given version (default: at least Bash 4)
-  if [ "$(command bash --version | command head -n 1 | command awk '{ print $4 }' | command cut -d . -f 1)" -lt "${1:-4}" ]; then
+  if test "$(command bash --version | command head -n 1 | command awk '{ print $4 }' | command cut -d . -f 1)" -lt "${1:-4}"; then
     printf 'You will need to upgrade to version %s for full functionality.\n' "${1:-4}" >&2
     return 1
   fi
@@ -346,7 +346,7 @@ alias bash_version='bash_major_version'
 cd_pwd_P() {
   cd_from="$(command pwd -L)"
   cd_to="$(command pwd -P)"
-  if [ "${cd_from-}" != "${cd_to-}" ]; then
+  if test "${cd_from-}" != "${cd_to-}"; then
     printf 'moving from \342\200\230%s\342\200\231\n' "${cd_from-}"
     sleep 0.2
     cd "${cd_to-}" || {
@@ -459,12 +459,12 @@ clang_format() {
 # https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp='cp -R'
 cy() {
-  if [ -r "$1" ]; then
+  if test -r "$1"; then
     # if within git repo, then auto-overwrite
     if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
       interactive='-i'
     fi
-    if [ -z "$2" ]; then
+    if test -z "$2"; then
       # if there is no second argument,
       # then copy to the current directory
       # -r to copy recursively
@@ -473,7 +473,7 @@ cy() {
     else
       eval cp -r -L "${interactive-} -- $1 $2"
     fi
-  elif [ -e "$1" ]; then
+  elif test -e "$1"; then
     printf '\140%s\140 is not readable and cannot be copied\n' "$1"
     exit 1
   else
@@ -495,7 +495,7 @@ cleanup() {
   esac
 
   # refuse to run from `$HOME`
-  [ "$(pwd -P)" = "${HOME-}" ] && return 1
+  test "$(pwd -P)" = "${HOME-}" && return 1
   # delete thumbnail cache files
   # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
   find -- "${1:-.}" -type f \( \
@@ -510,15 +510,15 @@ cleanup() {
   # delete crufty Zsh files
   # if `$ZSH_COMPDUMP` always generates a crufty file then skip
   # https://stackoverflow.com/a/8811800
-  if [ -n "${ZSH_COMPDUMP-}" ] && [ "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP-}" ]; then
-    while [ -n "$(
+  if test -n "${ZSH_COMPDUMP-}" && test "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP-}"; then
+    while test -n "$(
       find -- "${HOME-}" \
         -maxdepth 1 \
         -type f \
         ! -name "$(printf "*\n*")" \
         ! -name '.zcompdump' \
         -name '.zcompdump*' -print
-    )" ]; do
+    )"; do
       find -- "${HOME-}" \
         -maxdepth 1 \
         -type f \
@@ -661,7 +661,7 @@ define() {
 find_broken_symlinks() {
   set -u
   # https://unix.stackexchange.com/a/49470
-  command find -- . ! -path '*.git/*' -type l -exec [ ! -e {} ] \; -print 2>/dev/null
+  command find -- . ! -path '*.git/*' -type l -exec test ! -e {} \; -print 2>/dev/null
   { set +euvx; } 2>/dev/null
 }
 
@@ -766,15 +766,15 @@ identify() {
 
   # /etc/os-release
   # https://linuxize.com/post/how-to-check-your-debian-version
-  [ -r /etc/os-release ] && cat -v /etc/os-release
+  test -r /etc/os-release && cat -v /etc/os-release
 
   # /proc/version
   # https://superuser.com/a/773608
-  [ -r /proc/version ] && cat -v /proc/version
+  test -r /proc/version && cat -v /proc/version
 
   # /etc/issue
   # https://linuxize.com/post/how-to-check-your-debian-version
-  [ -r /etc/issue ] && cat -v /etc/issue
+  test -r /etc/issue && cat -v /etc/issue
 }
 
 # list files
@@ -789,7 +789,7 @@ elif command gls --color=auto >/dev/null 2>&1; then
 elif command ls --color=auto >/dev/null 2>&1; then
   alias ls='command ls --color=auto'
   alias l='command ls --color=auto -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
-elif [ "$(command /bin/ls -G -- "${HOME-}" | hexdump)" = "$(command ls -G -- "${HOME-}" | hexdump)" ] && [ "$(command ls -G -- "${HOME-}" | hexdump)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)" ]; then
+elif test "$(command /bin/ls -G -- "${HOME-}" | hexdump)" = "$(command ls -G -- "${HOME-}" | hexdump)" && test "$(command ls -G -- "${HOME-}" | hexdump)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)"; then
   alias ls='command ls -G'
   alias l='command ls -G -AFgo'
 fi
@@ -839,7 +839,7 @@ path_check() {
     # https://stackoverflow.com/a/33469401
     printf %s "${PATH-}" | xargs -d ':' -n 1
   ); do
-    if [ -d "${directory-}" ]; then
+    if test -d "${directory-}"; then
       printf 'is a directory: %s\n' "${directory-}"
     else
       printf 'not a directory: %s\n' "${directory-}"
@@ -853,7 +853,7 @@ path_check() {
 }
 
 # PlistBuddy
-if [ -x /usr/libexec/PlistBuddy ]; then
+if test -x /usr/libexec/PlistBuddy; then
   # https://apple.stackexchange.com/a/414774
   alias PlistBuddy='/usr/libexec/PlistBuddy'
   alias plistbuddy='PlistBuddy'

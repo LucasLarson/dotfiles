@@ -36,10 +36,10 @@ printf '  a Lucas Larson production\n\n'
 sleep 1
 
 # ensure `$HOME` is defined
-[ -n "${HOME-}" ] || exit 1
+test -n "${HOME-}" || exit 1
 
 # start from `$HOME`
-[ "$(command pwd -P)" = "${HOME-}" ] || {
+test "$(command pwd -P)" = "${HOME-}" || {
   # or navigate there
   cd -- "${HOME-}" || exit 1
 }
@@ -56,13 +56,13 @@ set -x
 # https://askubuntu.com/a/459425
 # https://stackoverflow.com/a/26314887
 # force refresh with `-yy`
-[ "$(command awk -F '=' '/^NAME/{print $2}' /etc/os-release 2>/dev/null | command tr -d '"')" = 'Arch Linux' ] && command pacman --sync -yy
+test "$(command awk -F '=' '/^NAME/{print $2}' /etc/os-release 2>/dev/null | command tr -d '"')" = 'Arch Linux' && command pacman --sync -yy
 
 # apk
 command -v apk >/dev/null 2>&1 || {
   # trust apk only if it matches a known checksum
   verifying apk tools integrity... >/dev/null 2>&1
-  [ "$(command curl --fail --silent --location https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -' ]
+  test "$(command curl --fail --silent --location https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -'
 } || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
   command wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command tar -xz 'apk.static'
@@ -82,10 +82,10 @@ command apk upgrade --verbose --progress
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
 # man-pages adds `man0`, `man2`, man4`, `man6` to `/usr/share/man/`
-{ [ -d /usr/share/man/man0 ] &&
-  [ -d /usr/share/man/man2 ] &&
-  [ -d /usr/share/man/man4 ] &&
-  [ -d /usr/share/man/man6 ]; } || {
+{ test -d /usr/share/man/man0 &&
+  test -d /usr/share/man/man2 &&
+  test -d /usr/share/man/man4 &&
+  test -d /usr/share/man/man6; } || {
   installing man pages... >/dev/null 2>&1
   install man-pages
   install man-pages-doc
@@ -103,8 +103,8 @@ command -v less >/dev/null 2>&1 || {
 # https://web.archive.org/web/20210218201739id_/web.archive.org/screenshot/docs.google.com/document/d/10-8wjANQGbG43XZ0wN57M1RYOLUwu9RZATNe9vJQYKw/mobilebasic
 # https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
 install coreutils coreutils-doc
-{ [ -x /usr/bin/coreutils ] &&
-  [ "$(command find -version 2>/dev/null | command head -n1 | command awk '{print $3}' | command tr -d '()')" = 'findutils' ]; } || {
+{ test -x /usr/bin/coreutils &&
+  test "$(command find -version 2>/dev/null | command head -n1 | command awk '{print $3}' | command tr -d '()')" = 'findutils'; } || {
   installing Linux utilities... >/dev/null 2>&1
 }
 install util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
@@ -117,14 +117,14 @@ command apk update
 
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
-[ -d /etc/ssh ] || {
+test -d /etc/ssh || {
   installing OpenSSH... >/dev/null 2>&1
   install openssh openssh-doc
 }
 
 # gpg
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
-[ -x /usr/bin/gpg2 ] || {
+test -x /usr/bin/gpg2 || {
   installing GPG... >/dev/null 2>&1
   install gnupg gnupg-doc
 }
@@ -136,7 +136,7 @@ command -v git >/dev/null 2>&1 || {
 }
 
 # git add --patch
-[ -x /usr/libexec/git-core/git-add--interactive ] || {
+test -x /usr/libexec/git-core/git-add--interactive || {
   # https://stackoverflow.com/a/57632778
   install git-perl
 }
@@ -154,7 +154,7 @@ git config --global --get init.defaultBranch >/dev/null 2>&1 || {
 # time zone
 updating time zone information... >/dev/null 2>&1
 install --no-cache tzdata tzdata-doc
-[ -r /usr/share/zoneinfo/America/New_York ] &&
+test -r /usr/share/zoneinfo/America/New_York &&
   cp /usr/share/zoneinfo/America/New_York /etc/localtime
 printf 'America/New_York\n' >/etc/timezone
 
@@ -173,7 +173,7 @@ command -v pip >/dev/null 2>&1 && {
 } || {
   installing pip... >/dev/null 2>&1
   verifying integrity of pip bootstrap file... >/dev/null 2>&1
-  [ "$(command curl --fail --silent --location https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py | command sha256sum)" != 'e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de  -' ]
+  test "$(command curl --fail --silent --location https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py | command sha256sum)" != 'e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de  -'
 } || {
   installing pip using bootstrap... >/dev/null 2>&1
   command curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o ./get-pip.py
@@ -201,8 +201,8 @@ command -v chsh >/dev/null 2>&1 || {
 
 # Oh My Zsh
 command -v omz >/dev/null 2>&1 ||
-  [ -d "${ZSH:=${HOME}/.oh-my-zsh}" ] ||
-  [ "$(command curl --fail --silent --location https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh | command sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' ] || {
+  test -d "${ZSH:=${HOME}/.oh-my-zsh}" ||
+  test "$(command curl --fail --silent --location https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh | command sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' || {
   installing Oh My Zsh... >/dev/null 2>&1
   sh -c "$(command wget https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
 }
@@ -223,12 +223,12 @@ command apk verify --verbose --verbose --progress &&
 
 # cleanup
 cleaning up temporary installation files and performing housekeeping... >/dev/null 2>&1
-[ -w ./apk.static ] && rm ./apk.static
-[ -w ./get-pip.py ] && rm ./get-pip.py
-[ -w ./setup ] && rm ./setup
+test -w ./apk.static && rm ./apk.static
+test -w ./get-pip.py && rm ./get-pip.py
+test -w ./setup && rm ./setup
 
 # message of the day
-[ -e /etc/motd.bak ] || cp /etc/motd /etc/motd.bak
+test -e /etc/motd.bak || cp /etc/motd /etc/motd.bak
 printf '' >/etc/motd
 
 # delete thumbnail cache files
