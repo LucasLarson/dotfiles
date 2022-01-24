@@ -5,6 +5,6 @@ export PATH=/usr/local/bin:$PATH
 
 ### Bashhub.com Installation.
 ### This Should be at the EOF. https://bashhub.com/docs
-if [ -f ~/.bashhub/bashhub.sh ]; then
+if test -f ~/.bashhub/bashhub.sh; then
     source ~/.bashhub/bashhub.sh
 fi
