@@ -386,7 +386,7 @@ clang_format() {
   printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit-}"
   sleep 1
 
-  find -- . -type f \
+  command find -- . -type f \
     \( \
     -iname '*.adb' -o \
     -iname '*.ads' -o \
@@ -498,7 +498,7 @@ cleanup() {
   test "$(pwd -P)" = "${HOME-}" && return 1
   # delete thumbnail cache files
   # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
-  find -- "${1:-.}" \
+  command find -- "${1:-.}" \
     -type f \
     \( \
     -name '.DS_Store' -o \
@@ -514,7 +514,7 @@ cleanup() {
   # https://stackoverflow.com/a/8811800
   if test -n "${ZSH_COMPDUMP-}" && test "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP-}"; then
     while test -n "$(
-      find -- "${HOME-}" \
+      command find -- "${HOME-}" \
         -maxdepth 1 \
         -type f \
         ! -name "$(printf "*\n*")" \
@@ -522,7 +522,7 @@ cleanup() {
         -name '.zcompdump*' \
         -print
     )"; do
-      find -- "${HOME-}" \
+      command find -- "${HOME-}" \
         -maxdepth 1 \
         -type f \
         ! -name "$(printf "*\n*")" \
@@ -537,7 +537,7 @@ cleanup() {
   # except those within `.git/` directories
   # and except those with specific names
   # https://stackoverflow.com/a/64863398
-  find -- "${1:-.}" \
+  command find -- "${1:-.}" \
     -type f \
     -writable \
     -size 0 \
@@ -568,7 +568,7 @@ cleanup() {
   # delete empty directories recursively
   # but skip Git-specific and `/.well-known/` directories
   # https://stackoverflow.com/q/4210042#comment38334264_4210072
-  find -- "${1:-.}" \
+  command find -- "${1:-.}" \
     -type d \
     -empty \
     \( \
@@ -579,7 +579,7 @@ cleanup() {
 
   # repair Git case sensitivity
   # https://unix.stackexchange.com/a/112024
-  find -- "${1:-.}" \
+  command find -- "${1:-.}" \
     -type f \
     ! -path '*.vscode/*' \
     ! -path '*/test*' \
@@ -593,7 +593,7 @@ cleanup() {
     -exec sed -E -i 's|\t|  |g' {} + 2>/dev/null
 
   # remove Git sample hooks
-  find -- "${1:-.}" \
+  command find -- "${1:-.}" \
     -type f \
     -path './.git/*' \
     -path '*hooks/*.sample' \
@@ -720,7 +720,7 @@ fdf() {
 
 # find by name
 fname() {
-  find -- . \
+  command find -- . \
     ! -path '*.git/*' \
     ! -path '*.vscode/*' \
     ! -path '*/test*' \
@@ -832,7 +832,7 @@ alias mv='mv -v -i'
 
 # find files with non-ASCII characters
 non_ascii() {
-  LC_ALL=C find -- . ! -path '*.git/*' -name '*[! -~]*'
+  LC_ALL=C command find -- . ! -path '*.git/*' -name '*[! -~]*'
 }
 
 # paste faster
