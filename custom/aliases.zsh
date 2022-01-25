@@ -498,7 +498,9 @@ cleanup() {
   test "$(pwd -P)" = "${HOME-}" && return 1
   # delete thumbnail cache files
   # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
-  find -- "${1:-.}" -type f \( \
+  find -- "${1:-.}" \
+    -type f \
+    \( \
     -name '.DS_Store' -o \
     -name 'Desktop.ini' -o \
     -name 'desktop.ini' -o \
@@ -517,7 +519,8 @@ cleanup() {
         -type f \
         ! -name "$(printf "*\n*")" \
         ! -name '.zcompdump' \
-        -name '.zcompdump*' -print
+        -name '.zcompdump*' \
+        -print
     )"; do
       find -- "${HOME-}" \
         -maxdepth 1 \
@@ -534,7 +537,11 @@ cleanup() {
   # except those within `.git/` directories
   # and except those with specific names
   # https://stackoverflow.com/a/64863398
-  find -- "${1:-.}" -type f -writable -size 0 \( \
+  find -- "${1:-.}" \
+    -type f \
+    -writable \
+    -size 0 \
+    \( \
     ! -path '*.git/*' \
     ! -path '*/test*' \
     ! -name "$(printf 'Icon\015\012')" \
@@ -561,7 +568,10 @@ cleanup() {
   # delete empty directories recursively
   # but skip Git-specific and `/.well-known/` directories
   # https://stackoverflow.com/q/4210042#comment38334264_4210072
-  find -- "${1:-.}" -type d -empty \( \
+  find -- "${1:-.}" \
+    -type d \
+    -empty \
+    \( \
     ! -path '*.git/*' \
     ! -name '.well-known' \
     \) \
