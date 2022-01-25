@@ -577,6 +577,21 @@ cleanup() {
     \) \
     -delete
 
+  # repair Git case sensitivity
+  # https://unix.stackexchange.com/a/112024
+  find -- "${1:-.}" \
+    -type f \
+    ! -path '*.vscode/*' \
+    ! -path '*/test*' \
+    ! -path '*node_modules/*' \
+    \( \
+    -name '*gitconfig' -o \
+    -path '*.git/*' -a -name 'config' \
+    \) \
+    -print \
+    -exec sed -E -i 's|ignore[Cc]ase =.*|ignoreCase = false|g' {} + \
+    -exec sed -E -i 's|\t|  |g' {} + 2>/dev/null
+
   # remove Git sample hooks
   find -- "${1:-.}" \
     -type f \
