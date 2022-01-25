@@ -530,9 +530,9 @@ cleanup() {
     done
   fi
 
-  # delete empty, zero-length files
+  # delete empty, writable, zero-length files
   # except those within `.git/` directories
-  # or with specific names and are writable
+  # and except those with specific names
   # https://stackoverflow.com/a/64863398
   find -- "${1:-.}" -type f -writable -size 0 \( \
     ! -path '*.git/*' \
