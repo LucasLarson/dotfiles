@@ -576,6 +576,14 @@ cleanup() {
     ! -name '.well-known' \
     \) \
     -delete
+
+  # remove Git sample hooks
+  find -- "${1:-.}" \
+    -type f \
+    -path './.git/*' \
+    -path '*hooks/*.sample' \
+    -print \
+    -delete
 }
 
 # number of files in current directory
