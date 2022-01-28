@@ -942,7 +942,7 @@ alias rmo='rm --others'
 # https://github.com/mathiasbynens/dotfiles/commit/bb8de8b
 alias sudo='sudo '
 
-# mkdir && cd
+# take: mkdir && cd
 take() {
   mkdir -p -v -- "$@" &&
     # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
