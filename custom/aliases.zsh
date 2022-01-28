@@ -981,7 +981,10 @@ aliases() {
   ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES-}/custom}"/aliases."${SHELL##*[-./]}"
   "$(command -v .)" "${ZSH_CUSTOM-}"/aliases."${SHELL##*[-./]}"
 }
-alias ohmyzsh='cd -- "${ZSH-}" && command git status'
+ohmyzsh() {
+  cd -- "${ZSH-}" &&
+    command git status
+}
 alias zshenv='${EDITOR:-vi} -- "${HOME-}/.${SHELL##*[-./]}env"; . -- "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
 alias zshrc='${EDITOR:-vi} -- "${HOME-}/.${SHELL##*[-./]}rc"; . -- "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
 alias zshconfig='zshrc'
