@@ -24,16 +24,18 @@ atom_packages() {
 # https://stackoverflow.com/q/4210042#comment38334264_4210072
 mu() {
   cd "${DOTFILES-}" &&
-    command -v cleanup >/dev/null 2>&1 && cleanup "$@" &&
-    mackup backup --force --root &&
+    command -v cleanup >/dev/null 2>&1 &&
+    cleanup "$@"
+  mackup backup --force --root &&
     command git fetch --all --prune &&
     command git submodule update --init --recursive &&
     command git status
 }
 mux() {
   cd "${DOTFILES-}" &&
-    command -v cleanup >/dev/null 2>&1 && cleanup "$@" &&
-    mackup backup --force --root --verbose &&
+    command -v cleanup >/dev/null 2>&1 &&
+    cleanup "$@"
+  mackup backup --force --root --verbose &&
     command git fetch --all --prune --verbose &&
     command git submodule update --init --recursive --remote &&
     command git submodule sync --recursive &&
