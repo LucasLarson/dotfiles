@@ -693,7 +693,7 @@ define() {
 
     # which (C shell)
     command -v which >/dev/null 2>&1 &&
-      printf 'which -a:\n%s\n' "$(which -a "${query-}")"
+      printf 'which -a:\n%s\n' "$(command which -a "${query-}")"
 
   done
   unset query
