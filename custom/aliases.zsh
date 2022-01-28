@@ -262,6 +262,7 @@ git_push() {
 }
 alias gps='git_push'
 
+alias grbi='command git rebase --interactive'
 alias gref='command git reflog'
 
 alias grmr='command git rm -r'
