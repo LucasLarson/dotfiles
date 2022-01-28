@@ -447,6 +447,7 @@ clang_format() {
     \( \
     ! -path '*.git/*' \
     ! -path '*.vscode/*' \
+    ! -path '*/Test*' \
     ! -path '*/test*' \
     ! -path '*node_modules/*' \
     \) \
@@ -543,6 +544,7 @@ cleanup() {
     -size 0 \
     \( \
     ! -path '*.git/*' \
+    ! -path '*/Test*' \
     ! -path '*/test*' \
     ! -name "$(printf 'Icon\015\012')" \
     ! -name '*.plugin.zsh' \
@@ -582,6 +584,7 @@ cleanup() {
   command find -- "${1:-.}" \
     -type f \
     ! -path '*.vscode/*' \
+    ! -path '*/Test*' \
     ! -path '*/test*' \
     ! -path '*node_modules/*' \
     \( \
@@ -704,6 +707,7 @@ fdf() {
   command find -- "${1:-.}" \
     ! -path '*.git/*' \
     ! -path '*.vscode/*' \
+    ! -path '*/Test*' \
     ! -path '*/test*' \
     ! -path '*node_modules/*' \
     ! -empty \
@@ -723,6 +727,7 @@ fname() {
   command find -- . \
     ! -path '*.git/*' \
     ! -path '*.vscode/*' \
+    ! -path '*/Test*' \
     ! -path '*/test*' \
     ! -path '*Application Support*' \
     ! -path '*Archive*' \
@@ -753,6 +758,7 @@ find_shell_scripts() {
     command find -- . \
       ! -path '*.git/*' \
       ! -path '*.vscode/*' \
+      ! -path '*/Test*' \
       ! -path '*/test*' \
       ! -path '*node_modules/*' \
       -type f \
