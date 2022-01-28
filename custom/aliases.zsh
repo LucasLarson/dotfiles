@@ -944,10 +944,24 @@ alias sudo='sudo '
 
 # take: mkdir && cd
 take() {
-  mkdir -p -v -- "$@" &&
-    # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
-    printf 'cd: changed directory to \342\200\230%s\342\200\231\n' "${@:$#}" &&
-    cd -- "${@:$#}" || return 1
+  # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
+  for directory in "$@"; do
+    if test ! -d "${directory-}"; then
+      command mkdir -p -- "${directory-}"
+      test -d "${directory-}" &&
+        printf 'creating directory \342\200\230%s\342\200\231...\n' "${directory-}" || return 1
+    else
+      printf 'directory \342\200\230%s\342\200\231 exists...\n' "${directory-}"
+    fi
+  done
+  unset directory
+
+  # POSIX-compliant `${@:$#}`-style string indexing (SC3057)
+  # https://stackoverflow.com/a/1853993
+  for directory in "$@"; do
+    :
+  done
+  unset directory
 }
 
 # Unix epoch seconds
