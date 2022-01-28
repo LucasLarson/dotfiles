@@ -496,115 +496,118 @@ cleanup() {
     set -x
     shift
     ;;
+
+  *)
+    # refuse to run from `$HOME`
+    test "$(pwd -P)" = "${HOME-}" && return 1
+    # delete thumbnail cache files
+    # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
+    command find -- "${1:-.}" \
+      -type f \
+      \( \
+      -name '.DS_Store' -o \
+      -name 'Desktop.ini' -o \
+      -name 'desktop.ini' -o \
+      -name 'Thumbs.db' -o \
+      -name 'thumbs.db' \
+      \) \
+      -delete 2>/dev/null
+
+    # delete crufty Zsh files
+    # if `$ZSH_COMPDUMP` always generates a crufty file then skip
+    # https://stackoverflow.com/a/8811800
+    if test -n "${ZSH_COMPDUMP-}" && test "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP-}"; then
+      while test -n "$(
+        command find -- "${HOME-}" \
+          -maxdepth 1 \
+          -type f \
+          ! -name "$(printf "*\n*")" \
+          ! -name '.zcompdump' \
+          -name '.zcompdump*' \
+          -print
+      )"; do
+        command find -- "${HOME-}" \
+          -maxdepth 1 \
+          -type f \
+          ! -name "$(printf "*\n*")" \
+          ! -name '.zcompdump' \
+          -name '.zcompdump*' \
+          -print \
+          -delete -- {} \;
+      done
+    fi
+
+    # delete empty, writable, zero-length files
+    # except those within `.git/` directories
+    # and except those with specific names
+    # https://stackoverflow.com/a/64863398
+    command find -- "${1:-.}" \
+      -type f \
+      -writable \
+      -size 0 \
+      \( \
+      ! -path '*.git/*' \
+      ! -path '*/Test*' \
+      ! -path '*/test*' \
+      ! -name "$(printf 'Icon\015\012')" \
+      ! -name '*.plugin.zsh' \
+      ! -name '*LOCK' \
+      ! -name '*empty*' \
+      ! -name '*hushlogin' \
+      ! -name '*ignore' \
+      ! -name '*journal' \
+      ! -name '*lock' \
+      ! -name '*lockfile' \
+      ! -name '.dirstamp' \
+      ! -name '.gitkeep' \
+      ! -name '.gitmodules' \
+      ! -name '.keep' \
+      ! -name '.nojekyll' \
+      ! -name '.sudo_as_admin_successful' \
+      ! -name '.watchmanconfig' \
+      ! -name '__init__.py' \
+      ! -name 'favicon.*' \
+      \) \
+      -delete
+
+    # delete empty directories recursively
+    # but skip Git-specific and `/.well-known/` directories
+    # https://stackoverflow.com/q/4210042#comment38334264_4210072
+    command find -- "${1:-.}" \
+      -type d \
+      -empty \
+      \( \
+      ! -path '*.git/*' \
+      ! -name '.well-known' \
+      \) \
+      -delete
+
+    # repair Git case sensitivity
+    # https://unix.stackexchange.com/a/112024
+    command find -- "${1:-.}" \
+      -type f \
+      ! -path '*.vscode/*' \
+      ! -path '*/Test*' \
+      ! -path '*/test*' \
+      ! -path '*node_modules/*' \
+      \( \
+      -name '*gitconfig' -o \
+      -path '*.git/*' -a -name 'config' \
+      \) \
+      -print \
+      -exec sed -E -i 's|ignore[Cc]ase =.*|ignoreCase = false|g' {} + \
+      -exec sed -E -i 's|\t|  |g' {} + 2>/dev/null
+
+    # remove Git sample hooks
+    command find -- "${1:-.}" \
+      -type f \
+      -path './.git/*' \
+      -path '*hooks/*.sample' \
+      -print \
+      -delete
+
+    ;;
   esac
-
-  # refuse to run from `$HOME`
-  test "$(pwd -P)" = "${HOME-}" && return 1
-  # delete thumbnail cache files
-  # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
-  command find -- "${1:-.}" \
-    -type f \
-    \( \
-    -name '.DS_Store' -o \
-    -name 'Desktop.ini' -o \
-    -name 'desktop.ini' -o \
-    -name 'Thumbs.db' -o \
-    -name 'thumbs.db' \
-    \) \
-    -delete 2>/dev/null
-
-  # delete crufty Zsh files
-  # if `$ZSH_COMPDUMP` always generates a crufty file then skip
-  # https://stackoverflow.com/a/8811800
-  if test -n "${ZSH_COMPDUMP-}" && test "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP-}"; then
-    while test -n "$(
-      command find -- "${HOME-}" \
-        -maxdepth 1 \
-        -type f \
-        ! -name "$(printf "*\n*")" \
-        ! -name '.zcompdump' \
-        -name '.zcompdump*' \
-        -print
-    )"; do
-      command find -- "${HOME-}" \
-        -maxdepth 1 \
-        -type f \
-        ! -name "$(printf "*\n*")" \
-        ! -name '.zcompdump' \
-        -name '.zcompdump*' \
-        -print \
-        -delete -- {} \;
-    done
-  fi
-
-  # delete empty, writable, zero-length files
-  # except those within `.git/` directories
-  # and except those with specific names
-  # https://stackoverflow.com/a/64863398
-  command find -- "${1:-.}" \
-    -type f \
-    -writable \
-    -size 0 \
-    \( \
-    ! -path '*.git/*' \
-    ! -path '*/Test*' \
-    ! -path '*/test*' \
-    ! -name "$(printf 'Icon\015\012')" \
-    ! -name '*.plugin.zsh' \
-    ! -name '*LOCK' \
-    ! -name '*empty*' \
-    ! -name '*hushlogin' \
-    ! -name '*ignore' \
-    ! -name '*journal' \
-    ! -name '*lock' \
-    ! -name '*lockfile' \
-    ! -name '.dirstamp' \
-    ! -name '.gitkeep' \
-    ! -name '.gitmodules' \
-    ! -name '.keep' \
-    ! -name '.nojekyll' \
-    ! -name '.sudo_as_admin_successful' \
-    ! -name '.watchmanconfig' \
-    ! -name '__init__.py' \
-    ! -name 'favicon.*' \
-    \) \
-    -delete
-
-  # delete empty directories recursively
-  # but skip Git-specific and `/.well-known/` directories
-  # https://stackoverflow.com/q/4210042#comment38334264_4210072
-  command find -- "${1:-.}" \
-    -type d \
-    -empty \
-    \( \
-    ! -path '*.git/*' \
-    ! -name '.well-known' \
-    \) \
-    -delete
-
-  # repair Git case sensitivity
-  # https://unix.stackexchange.com/a/112024
-  command find -- "${1:-.}" \
-    -type f \
-    ! -path '*.vscode/*' \
-    ! -path '*/Test*' \
-    ! -path '*/test*' \
-    ! -path '*node_modules/*' \
-    \( \
-    -name '*gitconfig' -o \
-    -path '*.git/*' -a -name 'config' \
-    \) \
-    -print \
-    -exec sed -E -i 's|ignore[Cc]ase =.*|ignoreCase = false|g' {} + \
-    -exec sed -E -i 's|\t|  |g' {} + 2>/dev/null
-
-  # remove Git sample hooks
-  command find -- "${1:-.}" \
-    -type f \
-    -path './.git/*' \
-    -path '*hooks/*.sample' \
-    -print \
-    -delete
 }
 
 # number of files in current directory
