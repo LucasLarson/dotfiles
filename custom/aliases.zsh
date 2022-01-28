@@ -979,7 +979,7 @@ alias all='which -a'
 alias ','='. -- "${HOME-}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
   ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES-}/custom}"/aliases."${SHELL##*[-./]}"
-  . "${ZSH_CUSTOM-}"/aliases."${SHELL##*[-./]}"
+  "$(command -v .)" "${ZSH_CUSTOM-}"/aliases."${SHELL##*[-./]}"
 }
 alias ohmyzsh='cd -- "${ZSH-}" && command git status'
 alias zshenv='${EDITOR:-vi} -- "${HOME-}/.${SHELL##*[-./]}env"; . -- "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
