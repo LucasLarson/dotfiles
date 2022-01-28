@@ -389,7 +389,8 @@ clang_format() {
   printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit-}"
   sleep 1
 
-  command find -- . -type f \
+  command find -- . \
+    -type f \
     \( \
     -iname '*.adb' -o \
     -iname '*.ads' -o \
@@ -446,7 +447,8 @@ clang_format() {
     -iname '*.tpp' -o \
     -iname '*.ts' -o \
     -iname '*.txx' \
-    \) -a \
+    \) \
+    -a \
     \( \
     ! -path '*.git/*' \
     ! -path '*.vscode/*' \
@@ -614,7 +616,10 @@ cleanup() {
 # https://web.archive.org/web/200id_/tldp.org/HOWTO/Bash-Prompt-HOWTO/x700.html
 count_files() {
   # https://unix.stackexchange.com/a/1126
-  command find -- .//. ! -path '*.git/*' ! -name '.' -print |
+  command find -- .//. \
+    ! -path '*.git/*' \
+    ! -name '.' \
+    -print |
     command grep -c //
 }
 
@@ -624,14 +629,23 @@ count_files_in_this_directory() {
   case "$@" in
   # count files as well as directories
   -d | --directory | --directories)
-    command find -- . ! -path '*.git/*' ! -name '.' -prune -print |
+    command find -- . \
+      ! -path '*.git/*' \
+      ! -name '.' \
+      -prune \
+      -print |
       command grep -c /
     ;;
 
     # count only regular, non-directory files
   *)
     # https://unix.stackexchange.com/a/1126
-    command find -- . -type f ! -path '*.git/*' ! -name '.' -prune -print |
+    command find -- . \
+      -type f \
+      ! -path '*.git/*' \
+      ! -name '.' \
+      -prune \
+      -print |
       command grep -c /
     ;;
   esac
@@ -640,12 +654,19 @@ count_files_in_this_directory() {
 count_files_by_extension() {
   # files with no extension
   printf ' %i files without extensions\n' "$(
-    command find -- . ! -path '*.git/*' -type f ! -name '*.*' -exec basename -a -- {} \+ 2>/dev/null |
+    command find -- . \
+      ! -path '*.git/*' \
+      -type f \
+      ! -name '*.*' \
+      -exec basename -a -- {} \+ 2>/dev/null |
       command grep -c -v '\.'
   )"
 
   # files with extensions
-  command find -- . ! -path '*.git/*' -type f -exec basename -a -- {} \+ 2>/dev/null |
+  command find -- . \
+    ! -path '*.git/*' \
+    -type f \
+    -exec basename -a -- {} \+ 2>/dev/null |
 
     # https://2daygeek.com/how-to-count-files-by-extension-in-linux
     command sed -n -- 's/..*\.//p' |
@@ -703,7 +724,11 @@ define() {
 find_broken_symlinks() {
   set -u
   # https://unix.stackexchange.com/a/49470
-  command find -- . ! -path '*.git/*' -type l -exec test ! -e {} \; -print 2>/dev/null
+  command find -- . \
+    ! -path '*.git/*' \
+    -type l \
+    -exec test ! -e {} \; \
+    -print 2>/dev/null
   { set +euvx; } 2>/dev/null
 }
 
@@ -722,7 +747,10 @@ fdf() {
     -printf '%s\n' 2>/dev/null |
     command sort -r -n |
     command uniq -d |
-    command xargs -I{} -n 1 find -type f -size {}c -print0 2>/dev/null |
+    command xargs -I{} -n 1 find \
+      -type f \
+      -size {}c \
+      -print0 2>/dev/null |
     command xargs -0 sha1sum 2>/dev/null |
     command sort |
     command uniq -w 32 --all-repeated=separate
@@ -750,7 +778,8 @@ find_shell_scripts() {
   set -u
   {
     # all files with extensions `.bash`, `.dash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
-    command find -- . -type f \
+    command find -- . \
+      -type f \
       ! -path '*.git/*' \
       -iname '*.bash' -o \
       -iname '*.dash' -o \
@@ -844,7 +873,9 @@ alias mv='mv -v -i'
 
 # find files with non-ASCII characters
 non_ascii() {
-  LC_ALL=C command find -- . ! -path '*.git/*' -name '*[! -~]*'
+  LC_ALL=C command find -- . \
+    ! -path '*.git/*' \
+    -name '*[! -~]*'
 }
 
 # paste faster
