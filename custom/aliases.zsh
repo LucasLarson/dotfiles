@@ -274,6 +274,8 @@ alias gref='command git reflog'
 alias grmr='command git rm -r'
 alias grm='grmr'
 
+alias grv='command git remote --verbose'
+
 git_restore() {
   for file in "$@"; do
     command git checkout --progress -- "${file-}"
