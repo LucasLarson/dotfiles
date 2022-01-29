@@ -299,6 +299,8 @@ git_shallow() {
   unset submodule submodule_path submodule_url
 }
 
+alias gsh='command git show'
+
 # https://github.com/ohmyzsh/ohmyzsh/commit/69ba6e4
 alias gstall='command git stash save --all'
 
