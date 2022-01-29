@@ -81,6 +81,8 @@ git_add_untracked() {
 }
 alias git_add_others='git_add_untracked'
 
+alias gba='command git branch --all'
+
 # git commit
 git_commit() {
   set -u
