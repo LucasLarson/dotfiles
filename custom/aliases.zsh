@@ -61,6 +61,7 @@ git_add() {
   command git status
 }
 alias ga='git_add'
+alias gaa='command git add --all'
 
 git_add_deleted() {
   # https://gist.github.com/8775224
