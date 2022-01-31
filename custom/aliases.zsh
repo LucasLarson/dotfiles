@@ -20,28 +20,6 @@ atom_packages() {
   { set +euvx; } 2>/dev/null
 }
 
-# dotfiles
-# https://stackoverflow.com/q/4210042#comment38334264_4210072
-mu() {
-  cd "${DOTFILES-}" &&
-    command -v cleanup >/dev/null 2>&1 &&
-    cleanup "$@"
-  mackup backup --force --root &&
-    command git fetch --all --prune &&
-    command git submodule update --init --recursive &&
-    command git status
-}
-mux() {
-  cd "${DOTFILES-}" &&
-    command -v cleanup >/dev/null 2>&1 &&
-    cleanup "$@"
-  mackup backup --force --root --verbose &&
-    command git fetch --all --prune --verbose &&
-    command git submodule update --init --recursive --remote &&
-    command git submodule sync --recursive &&
-    command git status
-}
-
 # Git
 unalias -- g 2>/dev/null
 compdef g='git' 2>/dev/null
@@ -894,6 +872,28 @@ elif test "$(command /bin/ls -G -- "${HOME-}" | hexdump)" = "$(command ls -G -- 
   alias ls='command ls -G'
   alias l='command ls -G -AFgo'
 fi
+
+# dotfiles
+# https://stackoverflow.com/q/4210042#comment38334264_4210072
+mu() {
+  cd "${DOTFILES-}" &&
+    command -v cleanup >/dev/null 2>&1 &&
+    cleanup "$@"
+  mackup backup --force --root &&
+    command git fetch --all --prune &&
+    command git submodule update --init --recursive &&
+    command git status
+}
+mux() {
+  cd "${DOTFILES-}" &&
+    command -v cleanup >/dev/null 2>&1 &&
+    cleanup "$@"
+  mackup backup --force --root --verbose &&
+    command git fetch --all --prune --verbose &&
+    command git submodule update --init --recursive --remote &&
+    command git submodule sync --recursive &&
+    command git status
+}
 
 # https://unix.stackexchange.com/a/30950
 alias mv='mv -v -i'
