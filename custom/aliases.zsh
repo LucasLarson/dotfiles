@@ -1046,4 +1046,3 @@ ohmyzsh() {
 }
 alias zshenv='${EDITOR:-vi} -- "${HOME-}/.${SHELL##*[-./]}env"; . -- "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
 alias zshrc='${EDITOR:-vi} -- "${HOME-}/.${SHELL##*[-./]}rc"; . -- "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
-alias zshconfig='zshrc'
