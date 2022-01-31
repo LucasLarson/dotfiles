@@ -762,7 +762,7 @@ fdf() {
     ! -type l \
     -type f \
     -printf '%s\n' 2>/dev/null |
-    command sort -r -n |
+    command sort -n -r |
     command uniq -d |
     command xargs -I{} -n 1 find \
       -type f \
