@@ -687,9 +687,9 @@ count_files_by_extension() {
 
     # https://2daygeek.com/how-to-count-files-by-extension-in-linux
     command sed -n -- 's/..*\.//p' |
-    command sort |
+    LC_ALL='C' command sort |
     command uniq -c |
-    command sort -r
+    LC_ALL='C' command sort -r
 }
 
 # define
@@ -762,14 +762,14 @@ fdf() {
     ! -type l \
     -type f \
     -printf '%s\n' 2>/dev/null |
-    command sort -n -r |
+    LC_ALL='C' command sort -n -r |
     command uniq -d |
     command xargs -I{} -n 1 find \
       -type f \
       -size {}c \
       -print0 2>/dev/null |
     command xargs -0 sha1sum 2>/dev/null |
-    command sort |
+    LC_ALL='C' command sort |
     command uniq -w 32 --all-repeated=separate
 }
 
@@ -787,7 +787,7 @@ fname() {
     ! -path '*custom/themes*' \
     ! -path '*node_modules/*' \
     -iname "*${*}*" 2>/dev/null |
-    command sort -u
+    LC_ALL='C' command sort -u
 }
 alias findname='fname'
 
@@ -834,7 +834,7 @@ find_shell_scripts() {
       command awk '{print "./" $0}'
 
   } |
-    command sort -u
+    LC_ALL='C' command sort -u
 
   { set +euvx; } 2>/dev/null
 }
