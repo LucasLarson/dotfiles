@@ -465,7 +465,6 @@ fname() {
     -iname "*${*}*" 2>/dev/null |
     LC_ALL='C' command sort -u
 }
-alias findname='fname'
 
 find_shell_scripts() {
   set -e
