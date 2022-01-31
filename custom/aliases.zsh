@@ -858,15 +858,15 @@ identify() {
 
   # /etc/os-release
   # https://linuxize.com/post/how-to-check-your-debian-version
-  test -r /etc/os-release && cat -v /etc/os-release
+  test -r /etc/os-release && cat /etc/os-release
 
   # /proc/version
   # https://superuser.com/a/773608
-  test -r /proc/version && cat -v /proc/version
+  test -r /proc/version && cat /proc/version
 
   # /etc/issue
   # https://linuxize.com/post/how-to-check-your-debian-version
-  test -r /etc/issue && cat -v /etc/issue
+  test -r /etc/issue && cat /etc/issue
 }
 
 # list files
