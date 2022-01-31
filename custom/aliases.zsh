@@ -315,6 +315,30 @@ count_files() {
     command grep -c //
 }
 
+count_files_by_extension() {
+  # files with no extension
+  printf ' %i files without extensions\n' "$(
+    command find -- . \
+      ! -path '*.git/*' \
+      -type f \
+      ! -name '*.*' \
+      -exec basename -a -- {} \+ 2>/dev/null |
+      command grep -c -v '\.'
+  )"
+
+  # files with extensions
+  command find -- . \
+    ! -path '*.git/*' \
+    -type f \
+    -exec basename -a -- {} \+ 2>/dev/null |
+
+    # https://2daygeek.com/how-to-count-files-by-extension-in-linux
+    command sed -n -- 's/..*\.//p' |
+    LC_ALL='C' command sort |
+    command uniq -c |
+    LC_ALL='C' command sort -r
+}
+
 # number of files
 # in current directory
 count_files_in_this_directory() {
@@ -341,30 +365,6 @@ count_files_in_this_directory() {
       command grep -c /
     ;;
   esac
-}
-
-count_files_by_extension() {
-  # files with no extension
-  printf ' %i files without extensions\n' "$(
-    command find -- . \
-      ! -path '*.git/*' \
-      -type f \
-      ! -name '*.*' \
-      -exec basename -a -- {} \+ 2>/dev/null |
-      command grep -c -v '\.'
-  )"
-
-  # files with extensions
-  command find -- . \
-    ! -path '*.git/*' \
-    -type f \
-    -exec basename -a -- {} \+ 2>/dev/null |
-
-    # https://2daygeek.com/how-to-count-files-by-extension-in-linux
-    command sed -n -- 's/..*\.//p' |
-    LC_ALL='C' command sort |
-    command uniq -c |
-    LC_ALL='C' command sort -r
 }
 
 # define
