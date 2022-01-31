@@ -126,6 +126,15 @@ git_delete_merged_branches() {
 alias gdmb='git_delete_merged_branches'
 alias gDmb='git_delete_merged_branches'
 
+unalias -- gd 2>/dev/null
+gd() {
+  if test -n "$(command git diff "$@" 2>/dev/null)"; then
+    command git diff "$@"
+  else
+    command git diff --staged "$@"
+  fi
+}
+
 alias gdm='command git diff "$(git-default-branch)" --'
 alias gdom='command git diff "$(git-default-branch)" origin/"$(git-default-branch)" || command git diff "$(git-default-branch)" upstream/"$(git-default-branch)"'
 alias gdw='command git diff --word-diff=color'
