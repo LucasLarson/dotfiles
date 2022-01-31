@@ -426,7 +426,7 @@ find_broken_symlinks() {
 
 # find duplicate files
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
-fdf() {
+find_duplicate_files() {
   command find -- "${1:-.}" \
     ! -path '*.git/*' \
     ! -path '*.vscode/*' \
@@ -447,6 +447,7 @@ fdf() {
     LC_ALL='C' command sort |
     command uniq -w 32 --all-repeated=separate
 }
+alias fdf='find_duplicate_files'
 
 # find by name
 fname() {
