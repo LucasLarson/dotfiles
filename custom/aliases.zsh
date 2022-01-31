@@ -935,7 +935,7 @@ path_check() {
 
   # return verbose output if requested
   for argument in "$@"; do
-    case ${argument-} in
+    case "${argument-}" in
 
     # return verbose output if requested
     -v | --verbose)
