@@ -31,7 +31,7 @@ atom_packages() {
 
 bash_major_version() {
   # confirm Bash version is at least any given version (default: at least Bash 4)
-  if test "$(command bash --version | command head -n 1 | command awk '{ print $4 }' | command cut -d . -f 1)" -lt "${1:-4}"; then
+  if test "$(command bash --version | command head -n 1 | command awk '{print $4}' | command cut -d '.' -f 1)" -lt "${1:-4}"; then
     printf 'You will need to upgrade to version %s for full functionality.\n' "${1:-4}" >&2
     return 1
   fi
