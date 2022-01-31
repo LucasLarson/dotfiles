@@ -154,33 +154,6 @@ clang_format() {
   unset IndentWidth ColumnLimit
 }
 
-# https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
-alias cp='cp -R'
-cy() {
-  if test -r "$1"; then
-    # if within git repo, then auto-overwrite
-    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-      interactive='-i'
-    fi
-    if test -z "$2"; then
-      # if there is no second argument,
-      # then copy to the current directory
-      # -r to copy recursively
-      # -L to follow symbolic links
-      eval cp -r -L "${interactive-} -- $1 ${PWD-}"
-    else
-      eval cp -r -L "${interactive-} -- $1 $2"
-    fi
-  elif test -e "$1"; then
-    printf '\140%s\140 is not readable and cannot be copied\n' "$1"
-    exit 1
-  else
-    printf '\140%s\140 does not exist and cannot be copied\n' "$1"
-    exit 3
-  fi
-  unset interactive
-}
-
 cleanup() {
   case "$1" in
   # if `cleanup -v` or `cleanup --verbose`,
@@ -302,6 +275,33 @@ cleanup() {
 
     ;;
   esac
+}
+
+# https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
+alias cp='cp -R'
+cy() {
+  if test -r "$1"; then
+    # if within git repo, then auto-overwrite
+    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      interactive='-i'
+    fi
+    if test -z "$2"; then
+      # if there is no second argument,
+      # then copy to the current directory
+      # -r to copy recursively
+      # -L to follow symbolic links
+      eval cp -r -L "${interactive-} -- $1 ${PWD-}"
+    else
+      eval cp -r -L "${interactive-} -- $1 $2"
+    fi
+  elif test -e "$1"; then
+    printf '\140%s\140 is not readable and cannot be copied\n' "$1"
+    exit 1
+  else
+    printf '\140%s\140 does not exist and cannot be copied\n' "$1"
+    exit 3
+  fi
+  unset interactive
 }
 
 # number of files in current directory
