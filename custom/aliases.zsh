@@ -29,327 +29,6 @@ atom_packages() {
   { set +euvx; } 2>/dev/null
 }
 
-# Git
-unalias -- g 2>/dev/null
-compdef g='git' 2>/dev/null
-g() {
-  {
-    test "$#" -eq '0' &&
-      command git status
-  } ||
-    command git "$@" || command git status .
-}
-alias g.='command git status .'
-alias guo='command git status --untracked-files=no'
-
-# git add
-git_add() {
-  command git add --verbose "${@:-.}"
-  command git status
-}
-alias ga='git_add'
-alias gaa='command git add --all'
-
-git_add_deleted() {
-  # https://gist.github.com/8775224
-  command git ls-files -z --deleted | command xargs -0 git add --verbose 2>/dev/null
-}
-
-git_add_patch() {
-  command git add --patch --verbose "${@:-.}"
-  command git status
-}
-alias gap='git_add_patch'
-
-git_add_untracked() {
-  while test -n "$(command git ls-files --others --exclude-standard)"; do
-    command git ls-files -z --others --exclude-standard | command xargs -0 git add --verbose 2>/dev/null
-  done
-  command git status
-}
-alias git_add_others='git_add_untracked'
-
-alias gba='command git branch --all'
-
-# git commit
-git_commit() {
-  set -u
-  if test "$#" -eq '0'; then
-    command git commit --verbose || return 1
-  elif test "$1" = '--amend'; then
-    command git commit --verbose --amend || return 1
-  else
-    command git commit --verbose --message "$@" || return 1
-  fi
-  command git status
-  { set +euvx; } 2>/dev/null
-}
-alias gc='git_commit'
-alias gcm='git_commit'
-alias gca='git_commit --amend'
-
-alias gcl='command git clone --verbose --progress'
-alias gco='command git checkout --progress'
-
-# `git checkout` the default branch
-alias gcom='command git checkout --progress "$(git-default-branch)"'
-
-# git cherry-pick
-alias gcp='command git cherry-pick'
-alias gcpa='command git cherry-pick --abort'
-alias gcpc='command git cherry-pick --continue'
-alias gcpn='command git cherry-pick --no-commit'
-
-git_delete_merged_branches() {
-  # delete all local Git branches that have been merged
-  # https://gist.github.com/8775224
-  set -u
-  if command git branch --merged | command grep -v '\*'; then
-    command git branch --merged | command grep -v '\*' |
-      command xargs -n 1 git branch --delete --verbose
-  fi
-  { set +euvx; } 2>/dev/null
-}
-alias gdmb='git_delete_merged_branches'
-alias gDmb='git_delete_merged_branches'
-
-unalias -- gd 2>/dev/null
-gd() {
-  if test -n "$(command git diff "$@" 2>/dev/null)"; then
-    command git diff "$@"
-  else
-    command git diff --staged "$@"
-  fi
-}
-alias gds='command git diff --staged'
-alias gsd='gds'
-
-alias gdm='command git diff "$(git-default-branch)" --'
-alias gdom='command git diff "$(git-default-branch)" origin/"$(git-default-branch)" || command git diff "$(git-default-branch)" upstream/"$(git-default-branch)"'
-alias gdw='command git diff --word-diff=color'
-
-alias gfgs='command git fetch --all --prune --verbose && command git status'
-git_garbage_collection() {
-  command -v cleanup >/dev/null 2>&1 && cleanup "$@"
-  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    # see `git gc` and other wrapping commands behind-the-scene mechanics
-    # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
-    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git fetch --prune --prune-tags --verbose 2>/dev/null
-    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git prune --verbose --progress --expire=now 2>/dev/null
-    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git prune-packed
-    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git gc --aggressive --prune=now
-    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git repack -a -d -f -F --window=4095 --depth=4095
-    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git status
-    unset GIT_TRACE GIT_TRACE_PACK_ACCESS GIT_TRACE_PACKET GIT_TRACE_PERFORMANCE GIT_TRACE_SETUP
-  else
-    return 1
-  fi
-}
-alias ggc='git_garbage_collection'
-
-# git parents, git child
-git_find_child() {
-  set -e
-  set -u
-  commit="${1:-"$(command git rev-parse HEAD)"}"
-  # %H: commit hash
-  # %P: parent commit
-  command git log --pretty='%H %P' |
-    command grep " ${commit-}" |
-    command cut -c 1-40
-  { set +euvx; } 2>/dev/null
-}
-git_find_parent() {
-  # return the hash prior to the current commit
-  # if an argument is provided, return the commit prior to that commit
-  # usage: git_find_parent <commit>
-  command git rev-list --max-count=1 "${1:-$(command git rev-parse HEAD)}^"
-}
-git_find_parents() {
-  # return all hashes prior to the current commit
-  # if an argument is provided, return all commits prior to that commit
-  # usage: git_find_parents <commit>
-  command git rev-list "${1:-$(command git rev-parse HEAD)}^"
-}
-alias git_parent='git_find_parent'
-alias gfp='git_find_parent'
-alias gfc='git_find_child'
-alias git_parents='git_find_parents'
-
-# find initial commit
-git_find_initial_commit() {
-  # https://stackoverflow.com/q/1006775#comment23686803_1007545
-  command git rev-list --topo-order --parents HEAD -- |
-    command grep -E '^[a-f0-9]{40}$'
-}
-alias gic='git_find_initial_commit'
-
-# commit initial commit
-git_commit_initial_commit() {
-  # usage: git_commit_initial_commit [yyyy-mm-dd]
-  # create initial commits: one empty root, then the rest
-  # https://news.ycombinator.com/item?id=25515963
-  command git init &&
-    if test "$#" -eq '1'; then
-
-      # add 12 hours (43,200 seconds) so it occurs around midday
-      git_time="$(command date -d @$(($(command date -d "${1:-$(command date '+%Y-%m-%d')}" '+%s') + 43200)) '+%c %z')"
-      export GIT_AUTHOR_DATE="${git_time-}"
-      export GIT_COMMITTER_DATE="${git_time-}"
-    fi
-  command git commit --allow-empty --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
-
-  # if there are non-repository files present, then add them and commit
-  if test -n "$(command git ls-files --others --exclude-standard)"; then
-    command git add --verbose -- . &&
-      command git commit --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
-  fi
-  unset git_time GIT_AUTHOR_DATE GIT_COMMITTER_DATE
-}
-alias gcic='git_commit_initial_commit'
-alias ginit='command git init && command git status'
-
-# git last common ancestor
-git_last_common_ancestor() {
-  # https://stackoverflow.com/a/1549155
-  test "$#" -eq '2' || return 1
-  command git merge-base "$1" "$2"
-}
-alias glca='git_last_common_ancestor'
-alias gmrca='git_last_common_ancestor'
-
-# git log
-# https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
-alias glog='command git log --graph --branches --remotes --tags --format=format:"%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d" --date-order'
-
-# git merge
-unalias -- gm 2>/dev/null
-gm() {
-  # https://news.ycombinator.com/item?id=5512864
-  GIT_MERGE_VERBOSITY=4 command git merge --log --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience
-}
-gmc() {
-  GIT_MERGE_VERBOSITY=4 command git merge --log --continue
-}
-
-# git merge with default branch
-gmm() {
-  # set Git merge verbosity environment variable
-  # 4 “shows all paths as they are processed” but
-  # 5 is “show detailed debugging information”
-  # https://github.com/progit/progit2/commit/aea93a7
-  GIT_MERGE_VERBOSITY=4 command git merge --log --verbose --progress --rerere-autoupdate --strategy-option patience "$(git-default-branch)"
-}
-
-alias gmv='command git mv --verbose'
-alias gmvf='command git mv --verbose --force'
-
-# git pull
-git_pull() {
-  # https://github.com/ohmyzsh/ohmyzsh/commit/3d2542f
-  command git pull --all --rebase --autostash --prune --verbose "${@-}" || {
-    command git rebase --abort
-    command git rebase --strategy-option=theirs
-  }
-  command git status
-}
-alias gpl='git_pull'
-alias gp='git_pull'
-
-git_default_remote() {
-  command git config --get --worktree checkout.defaultRemote 2>/dev/null ||
-    command git config --get --local checkout.defaultRemote 2>/dev/null ||
-    command git config --get --system checkout.defaultRemote 2>/dev/null ||
-    command git config --get --global checkout.defaultRemote 2>/dev/null ||
-    printf 'origin\n'
-}
-
-# git push
-git_push() {
-  # https://github.com/ohmyzsh/ohmyzsh/commit/ae21102
-  command git push --verbose --progress --set-upstream origin "$(git_current_branch)" &&
-    command git status
-}
-alias gps='git_push'
-
-alias grbi='command git rebase --interactive'
-alias gref='command git reflog'
-
-alias grmr='command git rm -r'
-alias grm='grmr'
-
-alias grv='command git remote --verbose'
-
-git_restore() {
-  for file in "$@"; do
-    command git checkout --progress -- "${file-}"
-  done && command git status
-  unset file
-}
-alias grs='git_restore'
-
-git_shallow() {
-  # Shallow .gitmodules submodule installations
-  # Mauricio Scheffer https://stackoverflow.com/a/2169914
-
-  command git submodule init
-  for submodule in $(command git submodule | command sed -e 's/.* //'); do
-    submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
-    submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
-    command git clone --depth=1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
-  done
-  command git submodule update
-
-  unset submodule submodule_path submodule_url
-}
-
-alias gsh='command git show'
-
-# https://github.com/ohmyzsh/ohmyzsh/commit/69ba6e4
-alias gstall='command git stash save --all'
-alias gstc='command git stash clear'
-
-alias gs='command git status'
-
-git_submodule_update() {
-  command git submodule update --init --remote "$@" &&
-    command git submodule sync "$@" &&
-    command git status
-}
-alias gsu='git_submodule_update'
-alias gtake='git checkout -b'
-
-git_update() {
-  command -v cleanup >/dev/null 2>&1 && cleanup "$@"
-
-  # run only from within a Git repository
-  # https://stackoverflow.com/a/53809163
-  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    command git fetch --all --prune --verbose
-
-    # `git submodule update` with `--remote` appears to slow Git to a crawl
-    # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
-    case "$1" in
-    -r | --remote)
-      command git submodule update --init --recursive --remote "$@"
-      ;;
-    *)
-      command git submodule update --init --recursive "$@"
-      ;;
-    esac
-    command git submodule sync --recursive "$@"
-    command git status
-  fi
-}
-alias gu='git_update'
-
-# https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
-gvc() {
-  # if there is an argument (commit hash), use it
-  # otherwise check `HEAD`
-  command git verify-commit "${1:-HEAD}"
-}
-
 bash_major_version() {
   # confirm Bash version is at least any given version (default: at least Bash 4)
   if test "$(command bash --version | command head -n 1 | command awk '{ print $4 }' | command cut -d . -f 1)" -lt "${1:-4}"; then
@@ -833,6 +512,327 @@ find_shell_scripts() {
     LC_ALL='C' command sort -u
 
   { set +euvx; } 2>/dev/null
+}
+
+# Git
+unalias -- g 2>/dev/null
+compdef g='git' 2>/dev/null
+g() {
+  {
+    test "$#" -eq '0' &&
+      command git status
+  } ||
+    command git "$@" || command git status .
+}
+alias g.='command git status .'
+alias guo='command git status --untracked-files=no'
+
+# git add
+git_add() {
+  command git add --verbose "${@:-.}"
+  command git status
+}
+alias ga='git_add'
+alias gaa='command git add --all'
+
+git_add_deleted() {
+  # https://gist.github.com/8775224
+  command git ls-files -z --deleted | command xargs -0 git add --verbose 2>/dev/null
+}
+
+git_add_patch() {
+  command git add --patch --verbose "${@:-.}"
+  command git status
+}
+alias gap='git_add_patch'
+
+git_add_untracked() {
+  while test -n "$(command git ls-files --others --exclude-standard)"; do
+    command git ls-files -z --others --exclude-standard | command xargs -0 git add --verbose 2>/dev/null
+  done
+  command git status
+}
+alias git_add_others='git_add_untracked'
+
+alias gba='command git branch --all'
+
+# git commit
+git_commit() {
+  set -u
+  if test "$#" -eq '0'; then
+    command git commit --verbose || return 1
+  elif test "$1" = '--amend'; then
+    command git commit --verbose --amend || return 1
+  else
+    command git commit --verbose --message "$@" || return 1
+  fi
+  command git status
+  { set +euvx; } 2>/dev/null
+}
+alias gc='git_commit'
+alias gcm='git_commit'
+alias gca='git_commit --amend'
+
+alias gcl='command git clone --verbose --progress'
+alias gco='command git checkout --progress'
+
+# `git checkout` the default branch
+alias gcom='command git checkout --progress "$(git-default-branch)"'
+
+# git cherry-pick
+alias gcp='command git cherry-pick'
+alias gcpa='command git cherry-pick --abort'
+alias gcpc='command git cherry-pick --continue'
+alias gcpn='command git cherry-pick --no-commit'
+
+git_delete_merged_branches() {
+  # delete all local Git branches that have been merged
+  # https://gist.github.com/8775224
+  set -u
+  if command git branch --merged | command grep -v '\*'; then
+    command git branch --merged | command grep -v '\*' |
+      command xargs -n 1 git branch --delete --verbose
+  fi
+  { set +euvx; } 2>/dev/null
+}
+alias gdmb='git_delete_merged_branches'
+alias gDmb='git_delete_merged_branches'
+
+unalias -- gd 2>/dev/null
+gd() {
+  if test -n "$(command git diff "$@" 2>/dev/null)"; then
+    command git diff "$@"
+  else
+    command git diff --staged "$@"
+  fi
+}
+alias gds='command git diff --staged'
+alias gsd='gds'
+
+alias gdm='command git diff "$(git-default-branch)" --'
+alias gdom='command git diff "$(git-default-branch)" origin/"$(git-default-branch)" || command git diff "$(git-default-branch)" upstream/"$(git-default-branch)"'
+alias gdw='command git diff --word-diff=color'
+
+alias gfgs='command git fetch --all --prune --verbose && command git status'
+git_garbage_collection() {
+  command -v cleanup >/dev/null 2>&1 && cleanup "$@"
+  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    # see `git gc` and other wrapping commands behind-the-scene mechanics
+    # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
+    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git fetch --prune --prune-tags --verbose 2>/dev/null
+    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git prune --verbose --progress --expire=now 2>/dev/null
+    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git prune-packed
+    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git gc --aggressive --prune=now
+    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git repack -a -d -f -F --window=4095 --depth=4095
+    GIT_TRACE=true GIT_TRACE_PACK_ACCESS=true GIT_TRACE_PACKET=true GIT_TRACE_PERFORMANCE=true GIT_TRACE_SETUP=true command git status
+    unset GIT_TRACE GIT_TRACE_PACK_ACCESS GIT_TRACE_PACKET GIT_TRACE_PERFORMANCE GIT_TRACE_SETUP
+  else
+    return 1
+  fi
+}
+alias ggc='git_garbage_collection'
+
+# git parents, git child
+git_find_child() {
+  set -e
+  set -u
+  commit="${1:-"$(command git rev-parse HEAD)"}"
+  # %H: commit hash
+  # %P: parent commit
+  command git log --pretty='%H %P' |
+    command grep " ${commit-}" |
+    command cut -c 1-40
+  { set +euvx; } 2>/dev/null
+}
+git_find_parent() {
+  # return the hash prior to the current commit
+  # if an argument is provided, return the commit prior to that commit
+  # usage: git_find_parent <commit>
+  command git rev-list --max-count=1 "${1:-$(command git rev-parse HEAD)}^"
+}
+git_find_parents() {
+  # return all hashes prior to the current commit
+  # if an argument is provided, return all commits prior to that commit
+  # usage: git_find_parents <commit>
+  command git rev-list "${1:-$(command git rev-parse HEAD)}^"
+}
+alias git_parent='git_find_parent'
+alias gfp='git_find_parent'
+alias gfc='git_find_child'
+alias git_parents='git_find_parents'
+
+# find initial commit
+git_find_initial_commit() {
+  # https://stackoverflow.com/q/1006775#comment23686803_1007545
+  command git rev-list --topo-order --parents HEAD -- |
+    command grep -E '^[a-f0-9]{40}$'
+}
+alias gic='git_find_initial_commit'
+
+# commit initial commit
+git_commit_initial_commit() {
+  # usage: git_commit_initial_commit [yyyy-mm-dd]
+  # create initial commits: one empty root, then the rest
+  # https://news.ycombinator.com/item?id=25515963
+  command git init &&
+    if test "$#" -eq '1'; then
+
+      # add 12 hours (43,200 seconds) so it occurs around midday
+      git_time="$(command date -d @$(($(command date -d "${1:-$(command date '+%Y-%m-%d')}" '+%s') + 43200)) '+%c %z')"
+      export GIT_AUTHOR_DATE="${git_time-}"
+      export GIT_COMMITTER_DATE="${git_time-}"
+    fi
+  command git commit --allow-empty --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
+
+  # if there are non-repository files present, then add them and commit
+  if test -n "$(command git ls-files --others --exclude-standard)"; then
+    command git add --verbose -- . &&
+      command git commit --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
+  fi
+  unset git_time GIT_AUTHOR_DATE GIT_COMMITTER_DATE
+}
+alias gcic='git_commit_initial_commit'
+alias ginit='command git init && command git status'
+
+# git last common ancestor
+git_last_common_ancestor() {
+  # https://stackoverflow.com/a/1549155
+  test "$#" -eq '2' || return 1
+  command git merge-base "$1" "$2"
+}
+alias glca='git_last_common_ancestor'
+alias gmrca='git_last_common_ancestor'
+
+# git log
+# https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
+alias glog='command git log --graph --branches --remotes --tags --format=format:"%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d" --date-order'
+
+# git merge
+unalias -- gm 2>/dev/null
+gm() {
+  # https://news.ycombinator.com/item?id=5512864
+  GIT_MERGE_VERBOSITY=4 command git merge --log --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience
+}
+gmc() {
+  GIT_MERGE_VERBOSITY=4 command git merge --log --continue
+}
+
+# git merge with default branch
+gmm() {
+  # set Git merge verbosity environment variable
+  # 4 “shows all paths as they are processed” but
+  # 5 is “show detailed debugging information”
+  # https://github.com/progit/progit2/commit/aea93a7
+  GIT_MERGE_VERBOSITY=4 command git merge --log --verbose --progress --rerere-autoupdate --strategy-option patience "$(git-default-branch)"
+}
+
+alias gmv='command git mv --verbose'
+alias gmvf='command git mv --verbose --force'
+
+# git pull
+git_pull() {
+  # https://github.com/ohmyzsh/ohmyzsh/commit/3d2542f
+  command git pull --all --rebase --autostash --prune --verbose "${@-}" || {
+    command git rebase --abort
+    command git rebase --strategy-option=theirs
+  }
+  command git status
+}
+alias gpl='git_pull'
+alias gp='git_pull'
+
+git_default_remote() {
+  command git config --get --worktree checkout.defaultRemote 2>/dev/null ||
+    command git config --get --local checkout.defaultRemote 2>/dev/null ||
+    command git config --get --system checkout.defaultRemote 2>/dev/null ||
+    command git config --get --global checkout.defaultRemote 2>/dev/null ||
+    printf 'origin\n'
+}
+
+# git push
+git_push() {
+  # https://github.com/ohmyzsh/ohmyzsh/commit/ae21102
+  command git push --verbose --progress --set-upstream origin "$(git_current_branch)" &&
+    command git status
+}
+alias gps='git_push'
+
+alias grbi='command git rebase --interactive'
+alias gref='command git reflog'
+
+alias grmr='command git rm -r'
+alias grm='grmr'
+
+alias grv='command git remote --verbose'
+
+git_restore() {
+  for file in "$@"; do
+    command git checkout --progress -- "${file-}"
+  done && command git status
+  unset file
+}
+alias grs='git_restore'
+
+git_shallow() {
+  # Shallow .gitmodules submodule installations
+  # Mauricio Scheffer https://stackoverflow.com/a/2169914
+
+  command git submodule init
+  for submodule in $(command git submodule | command sed -e 's/.* //'); do
+    submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
+    submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
+    command git clone --depth=1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
+  done
+  command git submodule update
+
+  unset submodule submodule_path submodule_url
+}
+
+alias gsh='command git show'
+
+# https://github.com/ohmyzsh/ohmyzsh/commit/69ba6e4
+alias gstall='command git stash save --all'
+alias gstc='command git stash clear'
+
+alias gs='command git status'
+
+git_submodule_update() {
+  command git submodule update --init --remote "$@" &&
+    command git submodule sync "$@" &&
+    command git status
+}
+alias gsu='git_submodule_update'
+alias gtake='git checkout -b'
+
+git_update() {
+  command -v cleanup >/dev/null 2>&1 && cleanup "$@"
+
+  # run only from within a Git repository
+  # https://stackoverflow.com/a/53809163
+  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    command git fetch --all --prune --verbose
+
+    # `git submodule update` with `--remote` appears to slow Git to a crawl
+    # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
+    case "$1" in
+    -r | --remote)
+      command git submodule update --init --recursive --remote "$@"
+      ;;
+    *)
+      command git submodule update --init --recursive "$@"
+      ;;
+    esac
+    command git submodule sync --recursive "$@"
+    command git status
+  fi
+}
+alias gu='git_update'
+
+# https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
+gvc() {
+  # if there is an argument (commit hash), use it
+  # otherwise check `HEAD`
+  command git verify-commit "${1:-HEAD}"
 }
 
 identify() {
