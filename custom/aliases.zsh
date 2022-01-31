@@ -597,7 +597,6 @@ git_delete_merged_branches() {
   { set +euvx; } 2>/dev/null
 }
 alias gdmb='git_delete_merged_branches'
-alias gDmb='git_delete_merged_branches'
 
 unalias -- gd 2>/dev/null
 gd() {
