@@ -450,7 +450,7 @@ find_duplicate_files() {
 alias fdf='find_duplicate_files'
 
 # find by name
-fname() {
+find_by_name() {
   command find -- . \
     ! -path '*.git/*' \
     ! -path '*.vscode/*' \
@@ -465,6 +465,7 @@ fname() {
     -iname "*${*}*" 2>/dev/null |
     LC_ALL='C' command sort -u
 }
+alias fname='find_by_name'
 
 find_shell_scripts() {
   set -e
