@@ -3,6 +3,15 @@
 # aliases.zsh
 # for all active aliases, run `alias`
 
+# https://stackoverflow.com/a/1371283
+# https://github.com/mathiasbynens/dotfiles/commit/cb8843b
+# https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#index-exec
+alias ','='. -- "${HOME-}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
+aliases() {
+  ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES-}/custom}"/aliases."${SHELL##*[-./]}"
+  "$(command -v .)" "${ZSH_CUSTOM-}"/aliases."${SHELL##*[-./]}"
+}
+
 # Atom
 # https://github.com/jeefberkey/dotfiles/blob/2ded1c3/.zshrc#L48-L61
 command -v atom-nightly >/dev/null 2>&1 &&
@@ -1031,14 +1040,6 @@ unixtime() {
 
 alias all='which -a'
 
-# https://stackoverflow.com/a/1371283
-# https://github.com/mathiasbynens/dotfiles/commit/cb8843b
-# https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#index-exec
-alias ','='. -- "${HOME-}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
-aliases() {
-  ${EDITOR:-vi} -- "${ZSH_CUSTOM:=${DOTFILES-}/custom}"/aliases."${SHELL##*[-./]}"
-  "$(command -v .)" "${ZSH_CUSTOM-}"/aliases."${SHELL##*[-./]}"
-}
 ohmyzsh() {
   cd -- "${ZSH-}" &&
     command git status
