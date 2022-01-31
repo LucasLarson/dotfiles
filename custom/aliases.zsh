@@ -786,7 +786,8 @@ fname() {
     ! -path '*custom/plugins*' \
     ! -path '*custom/themes*' \
     ! -path '*node_modules/*' \
-    -iname "*${*}*" 2>/dev/null | command sort -u
+    -iname "*${*}*" 2>/dev/null |
+    command sort -u
 }
 alias findname='fname'
 
