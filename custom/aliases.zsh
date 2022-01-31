@@ -159,7 +159,7 @@ clang_format() {
 }
 
 cleanup() {
-  case "$1" in
+  case "${1-}" in
   # if `cleanup -v` or `cleanup --verbose`,
   # then use `-print` during `-delete`
   -v | --verbose)
@@ -818,7 +818,7 @@ git_update() {
 
     # `git submodule update` with `--remote` appears to slow Git to a crawl
     # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
-    case "$1" in
+    case "${1-}" in
     -r | --remote)
       command git submodule update --init --recursive --remote "$@"
       ;;
@@ -995,7 +995,7 @@ rm() {
   else
     utility='rm'
   fi
-  case "$1" in
+  case "${1-}" in
   -o | --others)
     command git ls-files -z --others --exclude-standard |
       command xargs -0 "${utility-}"
