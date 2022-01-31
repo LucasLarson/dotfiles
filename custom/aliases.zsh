@@ -134,11 +134,12 @@ gd() {
     command git diff --staged "$@"
   fi
 }
+alias gds='command git diff --staged'
+alias gsd='gds'
 
 alias gdm='command git diff "$(git-default-branch)" --'
 alias gdom='command git diff "$(git-default-branch)" origin/"$(git-default-branch)" || command git diff "$(git-default-branch)" upstream/"$(git-default-branch)"'
 alias gdw='command git diff --word-diff=color'
-alias gsd='gds'
 
 alias gfgs='command git fetch --all --prune --verbose && command git status'
 git_garbage_collection() {
