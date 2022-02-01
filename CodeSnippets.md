@@ -147,7 +147,7 @@ printf 'rehashing pyenv shims...\n'; command pyenv rehash; else
 printf 'no pyenv installation detected...\n\n'; fi
 printf 'checking for Conda installation...\n'; if command -v conda >/dev/null 2>&1; then command conda update --yes --all; else
 printf 'no Conda installation detected...\n\n'; fi; fi; if command -v omz >/dev/null 2>&1; then { set +e; set +u; } 2>/dev/null; omz update 2>/dev/null; fi; { set +e; set +u; set +v; set +x; } 2>/dev/null; [ -r "${HOME-}/.${SHELL##*[-./]}rc" ] && . "${HOME-}/.${SHELL##*[-./]}rc"; if command -v rehash >/dev/null 2>&1; then rehash; fi; unset update
-printf '\n\n\342%s\234\205  done\041\n\n' "${update-}"; builtin exec -l -- "${SHELL##*[-./]}" # 2021-12-11
+printf '\n\n\342%s\234\205  done\041\n\n' "${update-}"; exec -l -- "${SHELL##*[-./]}" # 2021-12-11
 ```
 
 ### detail
