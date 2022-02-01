@@ -1044,6 +1044,48 @@ unixtime() {
 
 alias all='which -a'
 
+yamllint_er() {
+  command -v yamllint >/dev/null 2>&1 ||
+    return 1
+  (
+    unset PS4
+    set -u
+    set -v
+    set -x
+    case "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" in
+    true)
+      {
+        command git ls-files -z -- ./**/*.CFF
+        command git ls-files -z -- ./**/*.YAML
+        command git ls-files -z -- ./**/*.YML
+        command git ls-files -z -- ./**/*.cff
+        command git ls-files -z -- ./**/*.yaml
+        command git ls-files -z -- ./**/*.yml
+      } 2>/dev/null |
+        command xargs -0 yamllint --strict
+      ;;
+
+    *)
+      command find -- . \
+        ! -path '*.git/*' \
+        ! -path '*.vscode/*' \
+        ! -path '*/Test*' \
+        ! -path '*/test*' \
+        ! -path '*node_modules/*' \
+        \( \
+        -name '*.CFF*' -o \
+        -name '*.YAML' -o \
+        -name '*.YML' -o \
+        -name '*.cff' -o \
+        -name '*.yaml' -o \
+        -name '*.yml' \
+        \) \
+        -exec yamllint --strict -- {} +
+      ;;
+    esac
+  )
+}
+
 ohmyzsh() {
   cd -- "${ZSH-}" &&
     command git status
