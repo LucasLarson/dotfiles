@@ -464,8 +464,8 @@ find_by_name() {
     ! -path '*/Test*' \
     ! -path '*/test*' \
     ! -path '*Application Support*' \
-    ! -path '*Archive*' \
-    ! -path '*archive*' \
+    ! -path '*/Archive*' \
+    ! -path '*/archive*' \
     ! -path '*custom/plugins*' \
     ! -path '*custom/themes*' \
     ! -path '*node_modules/*' \
