@@ -40,7 +40,7 @@ alias bash_version='bash_major_version'
 
 # prefer `bat` to `cat` if available
 command -v bat >/dev/null 2>&1 &&
-  alias cat='bat'
+  alias cat='command bat'
 
 cd_pwd_P() {
   cd_from="$(command pwd -L)"
@@ -170,7 +170,7 @@ cleanup() {
 
   *)
     # refuse to run from `$HOME`
-    test "$(pwd -P)" = "${HOME-}" && return 1
+    test "$(command pwd -P)" = "${HOME-}" && return 1
     # delete thumbnail cache files
     # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
     command find -- "${1:-.}" \
@@ -842,31 +842,31 @@ gvc() {
 identify() {
 
   # uname
-  command -v uname >/dev/null 2>&1 && uname -a
+  command -v uname >/dev/null 2>&1 && command uname -a
 
   # sw_vers
   # https://apple.stackexchange.com/a/368244
-  command -v sw_vers >/dev/null 2>&1 && sw_vers
+  command -v sw_vers >/dev/null 2>&1 && command sw_vers
 
   # lsb_release
   # https://linuxize.com/post/how-to-check-your-debian-version
-  command -v lsb_release >/dev/null 2>&1 && lsb_release --all
+  command -v lsb_release >/dev/null 2>&1 && command lsb_release --all
 
   # hostnamectl
   # https://linuxize.com/post/how-to-check-your-debian-version
-  command -v hostnamectl >/dev/null 2>&1 && hostnamectl
+  command -v hostnamectl >/dev/null 2>&1 && command hostnamectl
 
   # /etc/os-release
   # https://linuxize.com/post/how-to-check-your-debian-version
-  test -r /etc/os-release && cat /etc/os-release
+  test -r /etc/os-release && command cat /etc/os-release
 
   # /proc/version
   # https://superuser.com/a/773608
-  test -r /proc/version && cat /proc/version
+  test -r /proc/version && command cat /proc/version
 
   # /etc/issue
   # https://linuxize.com/post/how-to-check-your-debian-version
-  test -r /etc/issue && cat /etc/issue
+  test -r /etc/issue && command cat /etc/issue
 }
 
 # list files
@@ -881,7 +881,7 @@ elif command gls --color=auto >/dev/null 2>&1; then
 elif command ls --color=auto >/dev/null 2>&1; then
   alias ls='command ls --color=auto'
   alias l='command ls --color=auto -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
-elif test "$(command /bin/ls -G -- "${HOME-}" | hexdump)" = "$(command ls -G -- "${HOME-}" | hexdump)" && test "$(command ls -G -- "${HOME-}" | hexdump)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)"; then
+elif test "$(command /bin/ls -G -- "${HOME-}" | command hexdump)" = "$(command ls -G -- "${HOME-}" | command hexdump)" && test "$(command ls -G -- "${HOME-}" | command hexdump)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)"; then
   alias ls='command ls -G'
   alias l='command ls -G -AFgo'
 fi
@@ -944,7 +944,7 @@ path_check() {
       ;;
 
     *)
-      printf 'usage: %s [-v|--verbose]\n' "$(basename "$0")"
+      printf 'usage: %s [-v|--verbose]\n' "$(command basename "$0")"
       return 1
       ;;
     esac
@@ -953,7 +953,7 @@ path_check() {
   for directory in $(
     # newline-delimited `$PATH` like Zsh `<<<${(F)path}`
     # https://stackoverflow.com/a/33469401
-    printf %s "${PATH-}" | xargs -d ':' -n 1
+    printf %s "${PATH-}" | command xargs -d ':' -n 1
   ); do
     if test -d "${directory-}"; then
       printf 'is a directory: %s\n' "${directory-}"
