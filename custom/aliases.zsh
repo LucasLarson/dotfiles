@@ -73,7 +73,8 @@ clang_format() {
   # https://stackoverflow.com/a/48016407
   ColumnLimit="${2:-79}"
 
-  command clang-format --version 2>/dev/null || return 2
+  command clang-format --version 2>/dev/null ||
+    return 2
   sleep 1
 
   printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
@@ -170,7 +171,8 @@ cleanup() {
 
   *)
     # refuse to run from `$HOME`
-    test "$(command pwd -P)" = "${HOME-}" && return 1
+    test "$(command pwd -P)" = "${HOME-}" &&
+      return 1
     # delete thumbnail cache files
     # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
     command find -- "${1:-.}" \
@@ -187,7 +189,8 @@ cleanup() {
     # delete crufty Zsh files
     # if `$ZSH_COMPDUMP` always generates a crufty file then skip
     # https://stackoverflow.com/a/8811800
-    if test -n "${ZSH_COMPDUMP-}" && test "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP-}"; then
+    if test -n "${ZSH_COMPDUMP-}" &&
+      test "${ZSH_COMPDUMP#*'zcompdump-'}" != "${ZSH_COMPDUMP-}"; then
       while test -n "$(
         command find -- "${HOME-}" \
           -maxdepth 1 \
@@ -527,7 +530,8 @@ g() {
     test "$#" -eq '0' &&
       command git status
   } ||
-    command git "$@" || command git status .
+    command git "$@" ||
+    command git status .
 }
 alias g.='command git status .'
 alias guo='command git status --untracked-files=no'
@@ -542,7 +546,8 @@ alias gaa='command git add --all'
 
 git_add_deleted() {
   # https://gist.github.com/8775224
-  command git ls-files -z --deleted | command xargs -0 git add --verbose 2>/dev/null
+  command git ls-files -z --deleted |
+    command xargs -0 git add --verbose 2>/dev/null
 }
 
 git_add_patch() {
@@ -553,7 +558,8 @@ alias gap='git_add_patch'
 
 git_add_untracked() {
   while test -n "$(command git ls-files --others --exclude-standard)"; do
-    command git ls-files -z --others --exclude-standard | command xargs -0 git add --verbose 2>/dev/null
+    command git ls-files -z --others --exclude-standard |
+      command xargs -0 git add --verbose 2>/dev/null
   done
   command git status
 }
@@ -565,11 +571,14 @@ alias gba='command git branch --all'
 git_commit() {
   set -u
   if test "$#" -eq '0'; then
-    command git commit --verbose || return 1
+    command git commit --verbose ||
+      return 1
   elif test "$1" = '--amend'; then
-    command git commit --verbose --amend || return 1
+    command git commit --verbose --amend ||
+      return 1
   else
-    command git commit --verbose --message "$@" || return 1
+    command git commit --verbose --message "$@" ||
+      return 1
   fi
   command git status
   { set +euvx; } 2>/dev/null
@@ -594,8 +603,10 @@ git_delete_merged_branches() {
   # delete all local Git branches that have been merged
   # https://gist.github.com/8775224
   set -u
-  if command git branch --merged | command grep -v '\*'; then
-    command git branch --merged | command grep -v '\*' |
+  if command git branch --merged |
+    command grep -v '\*'; then
+    command git branch --merged |
+      command grep -v '\*' |
       command xargs -n 1 git branch --delete --verbose
   fi
   { set +euvx; } 2>/dev/null
@@ -619,7 +630,8 @@ alias gdw='command git diff --word-diff=color'
 
 alias gfgs='command git fetch --all --prune --verbose && command git status'
 git_garbage_collection() {
-  command -v cleanup >/dev/null 2>&1 && cleanup "$@"
+  command -v cleanup >/dev/null 2>&1 &&
+    cleanup "$@"
   if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     # see `git gc` and other wrapping commands behind-the-scene mechanics
     # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
@@ -701,7 +713,8 @@ alias ginit='command git init && command git status'
 # git last common ancestor
 git_last_common_ancestor() {
   # https://stackoverflow.com/a/1549155
-  test "$#" -eq '2' || return 1
+  test "$#" -eq '2' ||
+    return 1
   command git merge-base "$1" "$2"
 }
 alias glca='git_last_common_ancestor'
@@ -772,7 +785,8 @@ alias grv='command git remote --verbose'
 git_restore() {
   for file in "$@"; do
     command git checkout --progress -- "${file-}"
-  done && command git status
+  done &&
+    command git status
   unset file
 }
 alias grs='git_restore'
@@ -809,7 +823,8 @@ alias gsu='git_submodule_update'
 alias gtake='git checkout -b'
 
 git_update() {
-  command -v cleanup >/dev/null 2>&1 && cleanup "$@"
+  command -v cleanup >/dev/null 2>&1 &&
+    cleanup "$@"
 
   # run only from within a Git repository
   # https://stackoverflow.com/a/53809163
@@ -842,31 +857,38 @@ gvc() {
 identify() {
 
   # uname
-  command -v uname >/dev/null 2>&1 && command uname -a
+  command -v uname >/dev/null 2>&1 &&
+    command uname -a
 
   # sw_vers
   # https://apple.stackexchange.com/a/368244
-  command -v sw_vers >/dev/null 2>&1 && command sw_vers
+  command -v sw_vers >/dev/null 2>&1 &&
+    command sw_vers
 
   # lsb_release
   # https://linuxize.com/post/how-to-check-your-debian-version
-  command -v lsb_release >/dev/null 2>&1 && command lsb_release --all
+  command -v lsb_release >/dev/null 2>&1 &&
+    command lsb_release --all
 
   # hostnamectl
   # https://linuxize.com/post/how-to-check-your-debian-version
-  command -v hostnamectl >/dev/null 2>&1 && command hostnamectl
+  command -v hostnamectl >/dev/null 2>&1 &&
+    command hostnamectl
 
   # /etc/os-release
   # https://linuxize.com/post/how-to-check-your-debian-version
-  test -r /etc/os-release && command cat /etc/os-release
+  test -r /etc/os-release &&
+    command cat /etc/os-release
 
   # /proc/version
   # https://superuser.com/a/773608
-  test -r /proc/version && command cat /proc/version
+  test -r /proc/version &&
+    command cat /proc/version
 
   # /etc/issue
   # https://linuxize.com/post/how-to-check-your-debian-version
-  test -r /etc/issue && command cat /etc/issue
+  test -r /etc/issue &&
+    command cat /etc/issue
 }
 
 # list files
@@ -881,7 +903,8 @@ elif command gls --color=auto >/dev/null 2>&1; then
 elif command ls --color=auto >/dev/null 2>&1; then
   alias ls='command ls --color=auto'
   alias l='command ls --color=auto -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
-elif test "$(command /bin/ls -G -- "${HOME-}" | command hexdump)" = "$(command ls -G -- "${HOME-}" | command hexdump)" && test "$(command ls -G -- "${HOME-}" | command hexdump)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)"; then
+elif test "$(command /bin/ls -G -- "${HOME-}" | command hexdump)" = "$(command ls -G -- "${HOME-}" | command hexdump)" &&
+  test "$(command ls -G -- "${HOME-}" | command hexdump)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)"; then
   alias ls='command ls -G'
   alias l='command ls -G -AFgo'
 fi
@@ -953,7 +976,8 @@ path_check() {
   for directory in $(
     # newline-delimited `$PATH` like Zsh `<<<${(F)path}`
     # https://stackoverflow.com/a/33469401
-    printf %s "${PATH-}" | command xargs -d ':' -n 1
+    printf %s "${PATH-}" |
+      command xargs -d ':' -n 1
   ); do
     if test -d "${directory-}"; then
       printf 'is a directory: %s\n' "${directory-}"
@@ -1020,7 +1044,8 @@ take() {
     if test ! -d "${directory-}"; then
       command mkdir -p -- "${directory-}"
       test -d "${directory-}" &&
-        printf 'creating directory \342\200\230%s\342\200\231...\n' "${directory-}" || return 1
+        printf 'creating directory \342\200\230%s\342\200\231...\n' "${directory-}" ||
+        return 1
     else
       printf 'directory \342\200\230%s\342\200\231 exists...\n' "${directory-}"
     fi
