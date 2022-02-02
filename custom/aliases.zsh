@@ -227,7 +227,6 @@ cleanup() {
       ! -name '*.plugin.zsh' \
       ! -name '*LOCK' \
       ! -name '*empty*' \
-      ! -name '*hushlogin' \
       ! -name '*ignore' \
       ! -name '*journal' \
       ! -name '*lock' \
@@ -235,6 +234,7 @@ cleanup() {
       ! -name '.dirstamp' \
       ! -name '.gitkeep' \
       ! -name '.gitmodules' \
+      ! -name '.hushlogin' \
       ! -name '.keep' \
       ! -name '.nojekyll' \
       ! -name '.sudo_as_admin_successful' \
