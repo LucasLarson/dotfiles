@@ -22,7 +22,7 @@ command -v apm-nightly >/dev/null 2>&1 &&
   alias apm-beta='apm-nightly'
 
 atom_packages() {
-  # https://web.archive.org/web/0id_/discuss.atom.io/t/15674/2
+  # https://gist.github.com/a8289eeaba6ede045dd532cf0eaea44f#comments
   command apm-nightly list --installed --bare ||
     command apm-beta list --installed --bare ||
     command apm list --installed --bare
