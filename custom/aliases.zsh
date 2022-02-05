@@ -57,6 +57,7 @@ cd_pwd_P() {
   else
     printf 'already in unaliased directory '
     printf '\342\200\230%s\342\200\231\n' "${cd_from-}"
+    return 1
   fi
   unset cd_from cd_to
 }
