@@ -63,6 +63,8 @@ cd_pwd_P() {
 }
 alias cdp='cd_pwd_P'
 
+alias chmod='command chmod -v'
+
 clang_format() {
   # https://github.com/Originate/guide/blob/880952d/ios/files/clang-format.sh
 
