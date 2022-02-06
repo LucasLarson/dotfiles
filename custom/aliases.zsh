@@ -157,9 +157,13 @@ clang_format() {
     ! -path '*node_modules/*' \
     \) \
     -exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options {} \+
-  printf '\n\n\342\234\205 done\041\n\n'
 
-  unset IndentWidth ColumnLimit
+  unset IndentWidth
+  unset ColumnLimit
+
+  printf '\n\n'
+  printf '\342\234\205 done\041\n\n'
+
 }
 
 cleanup() {
