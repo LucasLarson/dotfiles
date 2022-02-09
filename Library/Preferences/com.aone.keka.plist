@@ -2,9 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>SUHasLaunchedBefore</key>
-  <true/>
-  <key>SULastCheckTime</key>
-  <date>2021-02-25T21:16:33Z</date>
+	<key>SUHasLaunchedBefore</key>
+	<true/>
+	<key>SULastCheckTime</key>
+	<date>2021-02-25T21:16:33Z</date>
 </dict>
 </plist>

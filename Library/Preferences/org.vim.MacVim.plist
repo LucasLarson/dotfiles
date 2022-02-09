@@ -2,25 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>MMAutosaveColumns</key>
-  <integer>80</integer>
-  <key>MMAutosaveRows</key>
-  <integer>24</integer>
-  <key>MMCurrentPreferencePane</key>
-  <string>General</string>
-  <key>MMLastWindowClosedBehavior</key>
-  <integer>2</integer>
-  <key>MMPreloadCacheSize</key>
-  <true/>
-  <key>NSQuotedKeystrokeBinding</key>
-  <string></string>
-  <key>NSRepeatCountBinding</key>
-  <string></string>
-  <key>NSWindow Frame FindAndReplace</key>
-  <string>243 738 490 169 0 0 1792 1097 </string>
-  <key>NSWindow Frame NSFontPanel</key>
-  <string>849 755 445 237 0 0 1792 1097 </string>
-  <key>NSWindow Frame com.apple.typography_panel_FiraCodeNerdFontComplete-Regular</key>
-  <string>917 216 260 759 0 0 1792 1097 </string>
+	<key>MMAutosaveColumns</key>
+	<integer>80</integer>
+	<key>MMAutosaveRows</key>
+	<integer>24</integer>
+	<key>MMCurrentPreferencePane</key>
+	<string>General</string>
+	<key>MMLastWindowClosedBehavior</key>
+	<integer>2</integer>
+	<key>MMPreloadCacheSize</key>
+	<true/>
+	<key>NSQuotedKeystrokeBinding</key>
+	<string></string>
+	<key>NSRepeatCountBinding</key>
+	<string></string>
+	<key>NSWindow Frame FindAndReplace</key>
+	<string>243 738 490 169 0 0 1792 1097 </string>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>849 755 445 237 0 0 1792 1097 </string>
+	<key>NSWindow Frame com.apple.typography_panel_FiraCodeNerdFontComplete-Regular</key>
+	<string>917 216 260 759 0 0 1792 1097 </string>
 </dict>
 </plist>

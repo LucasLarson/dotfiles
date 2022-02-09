@@ -2,21 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>AutoStartSettingIsHidden</key>
-  <false/>
-  <key>NSFullScreenMenuItemEverywhere</key>
-  <false/>
-  <key>NSIsFullScreen</key>
-  <false/>
-  <key>NSNavLastRootDirectory</key>
-  <string>~/Dropbox/My Mac (LBook.local)/Downloads</string>
-  <key>NSNavPanelExpandedSizeForOpenMode</key>
-  <string>{799, 450}</string>
-  <key>NSWindow Frame NSNavPanelAutosaveName</key>
-  <string>476 483 799 425 0 0 1792 1095 </string>
-  <key>NSWindow Frame com.spotify.client.mainwindow</key>
-  <string>0 85 1121 610 0 0 1792 1095 </string>
-  <key>run_mode</key>
-  <string>clean_quit</string>
+	<key>AutoStartSettingIsHidden</key>
+	<false/>
+	<key>NSFullScreenMenuItemEverywhere</key>
+	<false/>
+	<key>NSIsFullScreen</key>
+	<false/>
+	<key>NSNavLastRootDirectory</key>
+	<string>~/Dropbox/My Mac (LBook.local)/Downloads</string>
+	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{799, 450}</string>
+	<key>NSWindow Frame NSNavPanelAutosaveName</key>
+	<string>476 483 799 425 0 0 1792 1095 </string>
+	<key>NSWindow Frame com.spotify.client.mainwindow</key>
+	<string>0 85 1121 610 0 0 1792 1095 </string>
+	<key>run_mode</key>
+	<string>clean_quit</string>
 </dict>
 </plist>
