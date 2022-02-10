@@ -789,6 +789,7 @@ git_push() {
 alias gps='git_push'
 
 alias grbi='command git rebase --interactive'
+alias grbc='command git rebase --continue'
 alias gref='command git reflog'
 
 alias grmr='command git rm -r'
