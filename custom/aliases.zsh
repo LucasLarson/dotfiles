@@ -483,7 +483,6 @@ find_by_name() {
 alias fname='find_by_name'
 
 find_shell_scripts() {
-  set -e
   set -u
   {
     # all files with extensions `.bash`, `.dash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
