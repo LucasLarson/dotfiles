@@ -163,8 +163,7 @@ clang_format() {
   unset ColumnLimit 2>/dev/null
 
   printf '\n\n'
-  printf '\342\234\205 done\041\n\n'
-
+  printf '\342\234\205  done\041\n'
 }
 
 cleanup() {
