@@ -23,9 +23,9 @@ command -v apm-nightly >/dev/null 2>&1 &&
 
 atom_packages() {
   # https://gist.github.com/a8289eeaba6ede045dd532cf0eaea44f#comments
-  command apm-nightly list --installed --bare ||
-    command apm-beta list --installed --bare ||
-    command apm list --installed --bare
+  command apm-nightly list --installed --bare 2>/dev/null ||
+    command apm-beta list --installed --bare 2>/dev/null ||
+    command apm list --installed --bare 2>/dev/null
   { set +euvx; } 2>/dev/null
 }
 
