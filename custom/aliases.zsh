@@ -254,7 +254,6 @@ cleanup() {
 
     # delete empty directories recursively
     # but skip Git-specific and `/.well-known/` directories
-    # https://stackoverflow.com/q/4210042#comment38334264_4210072
     command find -- "${1:-.}" \
       -type d \
       -empty \
@@ -926,7 +925,6 @@ elif test "$(command /bin/ls -G -- "${HOME-}" | command hexdump)" = "$(command l
 fi
 
 # dotfiles
-# https://stackoverflow.com/q/4210042#comment38334264_4210072
 mu() {
   cd "${DOTFILES-}" &&
     command -v cleanup >/dev/null 2>&1 &&

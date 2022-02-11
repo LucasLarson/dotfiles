@@ -273,7 +273,6 @@ command find -- . -type f -writable -size 0 \( \
 
 # delete empty directories recursively
 # but skip Git-specific and `/.well-known/` directories
-# https://stackoverflow.com/q/4210042#comment38334264_4210072
 command find -- . -type d -empty \
   ! -path '*.git/*' \
   ! -name '.well-known' \
