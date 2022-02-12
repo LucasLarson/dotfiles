@@ -384,16 +384,6 @@ if test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
   export LIBRARY_PATH
 fi
 
-# Flutter
-# https://github.com/flutter/website/blob/e5f725c/src/docs/get-started/install/_path-mac.md#user-content-update-your-path
-# if `~/Code/Flutter/bin/flutter`’s an executable
-# and `flutter`’s not in the PATH, then add it
-if test -x "${HOME}/Code/Flutter/bin/flutter"; then
-  if ! command -v flutter >/dev/null 2>&1; then
-    PATH="${PATH:+${PATH}:}${HOME}/Code/Flutter/bin"
-  fi
-fi
-
 # Android SDK
 # if it’s a directory, then assign it the name `ANDROID_SDK_ROOT`
 test -d "${HOME}/Library/Android/sdk" &&
