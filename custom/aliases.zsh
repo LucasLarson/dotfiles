@@ -573,6 +573,7 @@ alias git_add_others='git_add_untracked'
 
 alias gba='command git branch --all'
 alias gbd='command git branch --delete'
+alias gbD='command git branch --delete --force'
 
 # git commit
 git_commit() {
