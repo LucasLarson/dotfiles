@@ -347,7 +347,7 @@ count_files_by_extension() {
     -exec basename -a -- {} \+ 2>/dev/null |
 
     # https://2daygeek.com/how-to-count-files-by-extension-in-linux
-    command sed -n -- 's/..*\.//p' |
+    command sed -n -- 's|..*\.||p' |
     LC_ALL='C' command sort |
     command uniq -c |
     LC_ALL='C' command sort -r
@@ -811,7 +811,7 @@ git_shallow() {
   # Mauricio Scheffer https://stackoverflow.com/a/2169914
 
   command git submodule init
-  for submodule in $(command git submodule | command sed -e 's/.* //'); do
+  for submodule in $(command git submodule | command sed -e 's|.* ||'); do
     submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
     submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
     command git clone --depth=1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
