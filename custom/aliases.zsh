@@ -215,7 +215,7 @@ cleanup() {
           ! -name '.zcompdump' \
           -name '.zcompdump*' \
           -print \
-          -delete -- {} \;
+          -delete
       done
     fi
 
@@ -227,7 +227,6 @@ cleanup() {
       -type f \
       -writable \
       -size 0 \
-      \( \
       ! -path '*.git/*' \
       ! -path '*/Test*' \
       ! -path '*/test*' \
@@ -249,7 +248,7 @@ cleanup() {
       ! -name '.watchmanconfig' \
       ! -name '__init__.py' \
       ! -name 'favicon.*' \
-      \) \
+      -print \
       -delete
 
     # delete empty directories recursively
@@ -257,10 +256,9 @@ cleanup() {
     command find -- "${1:-.}" \
       -type d \
       -empty \
-      \( \
       ! -path '*.git/*' \
       ! -name '.well-known' \
-      \) \
+      -print \
       -delete
 
     # repair Git case sensitivity
