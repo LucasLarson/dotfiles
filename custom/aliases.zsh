@@ -1110,7 +1110,7 @@ unixtime() {
 
 alias all='which -a'
 
-yamllint_er() {
+yamllint_r() {
   command -v yamllint >/dev/null 2>&1 ||
     return 1
   (
