@@ -1009,6 +1009,30 @@ path_check() {
   unset directory 2>/dev/null
 }
 
+# .plist
+plist_r() {
+  command -v plutil >/dev/null 2>&1 ||
+    return 127
+  set -e
+  set -u
+  set -v
+  set -x
+  case "$(command pwd -P)" in
+  "${HOME-}" | "${DOTFILES-}")
+    return 1
+    ;;
+  *)
+    command find -- . \
+      ! -path "${HOME-}"'/Library' \
+      ! -path "${DOTFILES-}"'/Library' \
+      -name '*.plist' \
+      -exec plutil -convert xml1 -- {} \; \
+      -exec sed -i -- 's|\t|  |g' {} \;
+    ;;
+  esac
+  { set -euvx; } 2>/dev/null
+}
+
 # PlistBuddy
 if test -x /usr/libexec/PlistBuddy; then
   # https://apple.stackexchange.com/a/414774
