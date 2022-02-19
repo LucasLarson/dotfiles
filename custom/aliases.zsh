@@ -40,7 +40,7 @@ alias bash_version='bash_major_version'
 
 # prefer `bat` to `cat` if available
 command -v bat >/dev/null 2>&1 &&
-  alias cat='command bat'
+  alias cat='command bat --decorations never'
 
 cd_pwd_P() {
   cd_from="$(command pwd -L)"
