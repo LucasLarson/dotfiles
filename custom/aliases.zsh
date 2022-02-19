@@ -630,7 +630,6 @@ gd() {
   fi
 }
 alias gds='command git diff --staged'
-alias gsd='gds'
 
 alias gdm='command git diff "$(git-default-branch)" --'
 alias gdom='command git diff "$(git-default-branch)" origin/"$(git-default-branch)" || command git diff "$(git-default-branch)" upstream/"$(git-default-branch)"'
