@@ -59,8 +59,8 @@ cd_pwd_P() {
     printf '\342\200\230%s\342\200\231\n' "${cd_from-}"
     return 1
   fi
-  unset cd_from 2>/dev/null
-  unset cd_to 2>/dev/null
+  unset -- cd_from 2>/dev/null
+  unset -- cd_to 2>/dev/null
 }
 alias cdp='cd_pwd_P'
 
@@ -159,8 +159,8 @@ clang_format() {
     \) \
     -exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options {} \+
 
-  unset IndentWidth 2>/dev/null
-  unset ColumnLimit 2>/dev/null
+  unset -- IndentWidth 2>/dev/null
+  unset -- ColumnLimit 2>/dev/null
 
   printf '\n\n'
   printf '\342\234\205  done\041\n'
@@ -313,7 +313,7 @@ cy() {
     printf '\140%s\140 does not exist and cannot be copied\n' "$1"
     exit 3
   fi
-  unset interactive 2>/dev/null
+  unset -- interactive 2>/dev/null
 }
 
 # number of files in current directory
@@ -421,7 +421,7 @@ define() {
       printf 'which -a:\n%s\n' "$(command which -a "${query-}")"
 
   done
-  unset query 2>/dev/null
+  unset -- query 2>/dev/null
 }
 
 # find broken symlinks
@@ -647,11 +647,11 @@ git_garbage_collection() {
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git gc --aggressive --prune=now
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git repack -a -d -f -F --window=4095 --depth=4095
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git status
-    unset GIT_TRACE 2>/dev/null
-    unset GIT_TRACE_PACK_ACCESS 2>/dev/null
-    unset GIT_TRACE_PACKET 2>/dev/null
-    unset GIT_TRACE_PERFORMANCE 2>/dev/null
-    unset GIT_TRACE_SETUP 2>/dev/null
+    unset -- GIT_TRACE 2>/dev/null
+    unset -- GIT_TRACE_PACK_ACCESS 2>/dev/null
+    unset -- GIT_TRACE_PACKET 2>/dev/null
+    unset -- GIT_TRACE_PERFORMANCE 2>/dev/null
+    unset -- GIT_TRACE_SETUP 2>/dev/null
   else
     return 1
   fi
@@ -715,9 +715,9 @@ git_commit_initial_commit() {
     command git add --verbose -- . &&
       command git commit --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
   fi
-  unset git_time 2>/dev/null
-  unset GIT_AUTHOR_DATE 2>/dev/null
-  unset GIT_COMMITTER_DATE 2>/dev/null
+  unset -- git_time 2>/dev/null
+  unset -- GIT_AUTHOR_DATE 2>/dev/null
+  unset -- GIT_COMMITTER_DATE 2>/dev/null
 }
 alias gcic='git_commit_initial_commit'
 alias ginit='command git init && command git status'
@@ -800,7 +800,7 @@ git_restore() {
     command git checkout --progress -- "${file-}"
   done &&
     command git status
-  unset file 2>/dev/null
+  unset -- file 2>/dev/null
 }
 alias grs='git_restore'
 
@@ -816,9 +816,9 @@ git_shallow() {
   done
   command git submodule update
 
-  unset submodule 2>/dev/null
-  unset submodule_path 2>/dev/null
-  unset submodule_url 2>/dev/null
+  unset -- submodule 2>/dev/null
+  unset -- submodule_path 2>/dev/null
+  unset -- submodule_url 2>/dev/null
 }
 
 alias gsh='command git show'
@@ -1003,8 +1003,8 @@ path_check() {
   # silently undo verbose output for everyone
   { set +euvx; } 2>/dev/null
 
-  unset argument 2>/dev/null
-  unset directory 2>/dev/null
+  unset -- argument 2>/dev/null
+  unset -- directory 2>/dev/null
 }
 
 # .plist
@@ -1068,7 +1068,7 @@ rm() {
     ;;
   esac
   { set +euvx; } 2>/dev/null
-  unset utility 2>/dev/null
+  unset -- utility 2>/dev/null
 }
 alias rmo='rm --others'
 
@@ -1089,14 +1089,14 @@ take() {
       printf 'directory \342\200\230%s\342\200\231 exists...\n' "${directory-}"
     fi
   done
-  unset directory 2>/dev/null
+  unset -- directory 2>/dev/null
 
   # POSIX-compliant `${@:$#}`-style string indexing (SC3057)
   # https://stackoverflow.com/a/1853993
   for directory in "$@"; do
     :
   done
-  unset directory 2>/dev/null
+  unset -- directory 2>/dev/null
 }
 
 # Unix epoch seconds
@@ -1112,7 +1112,7 @@ yamllint_r() {
   command -v yamllint >/dev/null 2>&1 ||
     return 1
   (
-    unset PS4 2>/dev/null
+    unset -- PS4 2>/dev/null
     set -u
     set -v
     set -x
