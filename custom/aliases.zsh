@@ -379,6 +379,8 @@ count_files_in_this_directory() {
   esac
 }
 
+alias diff='command diff --color'
+
 # define
 define() {
   for query in "${@:-$0}"; do
