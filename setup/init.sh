@@ -36,12 +36,14 @@ printf '  a Lucas Larson production\n\n' 2>/dev/null
 sleep 1
 
 # ensure `$HOME` is defined
-test -n "${HOME-}" || exit 1
+test -n "${HOME-}" ||
+  exit 1
 
 # start from `$HOME`
 test "$(command pwd -P)" = "${HOME-}" || {
   # or navigate there
-  cd -- "${HOME-}" || exit 1
+  cd -- "${HOME-}" ||
+    exit 1
 }
 
 # unset `$PS4`
@@ -56,7 +58,8 @@ set -x
 # https://askubuntu.com/a/459425
 # https://stackoverflow.com/a/26314887
 # force refresh with `-yy`
-test "$(command awk -F '=' '/^NAME/{print $2}' /etc/os-release 2>/dev/null | command tr -d '"')" = 'Arch Linux' && command pacman --sync -yy
+test "$(command awk -F '=' '/^NAME/{print $2}' /etc/os-release 2>/dev/null | command tr -d '"')" = 'Arch Linux' &&
+  command pacman --sync -yy
 
 # apk
 command -v apk >/dev/null 2>&1 || {
@@ -67,7 +70,8 @@ command -v apk >/dev/null 2>&1 || {
   test "$(command curl --fail --silent --location https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -'
 } || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
-  command wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command tar -xz 'apk.static'
+  command wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk |
+    command tar -xz 'apk.static'
   ./apk.static add apk-tools
 }
 
@@ -278,12 +282,16 @@ command apk verify --verbose --verbose --progress && {
 { set +x; } 2>/dev/null
 printf 'cleaning up temporary installation files and performing housekeeping...\n' 2>/dev/null
 set -x
-test -w ./apk.static && rm ./apk.static
-test -w ./get-pip.py && rm ./get-pip.py
-test -w ./setup && rm ./setup
+test -w ./apk.static &&
+  rm ./apk.static
+test -w ./get-pip.py &&
+  rm ./get-pip.py
+test -w ./setup &&
+  rm ./setup
 
 # message of the day
-test -e /etc/motd.bak || cp /etc/motd /etc/motd.bak
+test -e /etc/motd.bak ||
+  cp /etc/motd /etc/motd.bak
 printf '' >/etc/motd
 
 # delete thumbnail cache files
@@ -335,7 +343,8 @@ command find -- . -type d -empty \
 
 # if sed installation was successful, and
 # if zsh is available, replace bash, ash, and sh with zsh in `/etc/passwd`
-command -v zsh >/dev/null 2>&1 && command grep -E '/bin/b?a?sh' /etc/passwd 2>&1 &&
+command -v zsh >/dev/null 2>&1 &&
+  command grep -E '/bin/b?a?sh' /etc/passwd 2>&1 &&
   cp -- /etc/passwd /etc/passwd-"$(command date '+%Y%m%d')" &&
   # `-i` for in-place editing
   # `-E` for regex searching for `/bin/ash` and `/bin/sh`
