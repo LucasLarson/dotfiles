@@ -48,7 +48,7 @@ test "$(command pwd -P)" = "${HOME-}" || {
 # if this quaternary prompt string is already unset, then
 # set it to the POSIX default: `+ `
 # https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
-PS4_temporary="${PS4:-+ }"
+ps4_temporary="${PS4:-+ }"
 unset PS4
 set -x
 
@@ -293,8 +293,8 @@ exiting to apply updates... >/dev/null 2>&1
 { set +euvx; } 2>/dev/null
 
 # restore `$PS4`
-PS4="${PS4_temporary:-+ }"
-unset PS4_temporary
+PS4="${ps4_temporary:-+ }"
+unset ps4_temporary
 
 printf '\ndone!\n'
 
