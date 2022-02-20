@@ -40,11 +40,8 @@ test -n "${HOME-}" ||
   exit 1
 
 # start from `$HOME`
-test "$(command pwd -P)" = "${HOME-}" || {
-  # or navigate there
-  cd -- "${HOME-}" ||
-    exit 1
-}
+cd -- "${HOME-}" ||
+  exit 1
 
 # unset `$PS4`
 # if this quaternary prompt string is already unset, then
