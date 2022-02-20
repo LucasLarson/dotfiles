@@ -176,7 +176,7 @@ printf 'updating time zone information...\n' 2>/dev/null
 set -x
 install --no-cache tzdata tzdata-doc
 test -r '/usr/share/zoneinfo/America/New_York' &&
-  cp '/usr/share/zoneinfo/America/New_York' '/etc/localtime'
+  cp -- '/usr/share/zoneinfo/America/New_York' '/etc/localtime'
 printf 'America/New_York\n' >'/etc/timezone'
 
 # python
@@ -288,7 +288,7 @@ test -w ./setup &&
 
 # message of the day
 test -s '/etc/motd' &&
-  cp '/etc/motd' '/etc/motd-'"$(command date '+%Y%m%d_%s')" &&
+  cp -- '/etc/motd' '/etc/motd-'"$(command date '+%Y%m%d_%s')" &&
   printf '' >'/etc/motd'
 
 # delete thumbnail cache files
