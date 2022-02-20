@@ -504,7 +504,7 @@ find_shell_scripts() {
       ! -path '*/test*' \
       ! -path '*node_modules/*' \
       -type f \
-      -exec head -n1 {} \+ 2>/dev/null |
+      -exec head -n 1 {} \+ 2>/dev/null |
       command grep \
         -I \
         -l \
