@@ -287,9 +287,9 @@ test -w ./setup &&
   rm ./setup
 
 # message of the day
-test -e '/etc/motd.bak' ||
-  cp '/etc/motd' '/etc/motd.bak'
-printf '' >'/etc/motd'
+test -s '/etc/motd' &&
+  cp '/etc/motd' '/etc/motd.bak' &&
+  printf '' >'/etc/motd'
 
 # delete thumbnail cache files
 command find -- . \
