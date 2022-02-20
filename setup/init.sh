@@ -292,7 +292,9 @@ test -e '/etc/motd.bak' ||
 printf '' >'/etc/motd'
 
 # delete thumbnail cache files
-command find -- . -type f \( \
+command find -- . \
+  -type f \
+  \( \
   -name '.DS_Store' -o \
   -name 'Desktop.ini' -o \
   -name 'Thumbs.db' -o \
@@ -305,7 +307,11 @@ command find -- . -type f \( \
 # except those within `.git/` directories
 # and those with specific names
 # https://stackoverflow.com/a/64863398
-command find -- . -type f -writable -size 0 \( \
+command find -- . \
+  -type f \
+  -writable \
+  -size 0 \
+  \( \
   ! -path '*.git/*' \
   ! -path '*example*' \
   ! -path '*sample*' \
