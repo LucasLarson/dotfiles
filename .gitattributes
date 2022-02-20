@@ -1,3 +1,0 @@
-# permit 𝚐𝚒𝚝 𝚍𝚒𝚏𝚏 even in binary 𝚙𝚕𝚒𝚜𝚝s via
-# https://www.programming-books.io/essential/git/diff-utf-16-encoded-text-and-binary-plist-files-b4b8d7c85497429ea2c7a18cca6a1c53
-*.plist diff=plist
