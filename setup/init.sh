@@ -23,16 +23,16 @@ else
 fi
 
 clear
-printf '   .\137\137       .\137\137  \137\137\n'
-printf '   \174\137\137\174 \137\137\137\137 \174\137\137\174\057  \174\137\n'
-printf '   \174  \174\057    \134\174  \134   \137\137\134\n'
-printf '   \174  \174   \174  \134  \174\174  \174\n'
-printf '   \174\137\137\174\137\137\137\174'
-printf '  \057\137\137\174\174\137\137\174\n'
-printf '           \134\057\n\n'
-printf '        Linux setup\n'
+printf '   .\137\137       .\137\137  \137\137\n' 2>/dev/null
+printf '   \174\137\137\174 \137\137\137\137 \174\137\137\174\057  \174\137\n' 2>/dev/null
+printf '   \174  \174\057    \134\174  \134   \137\137\134\n' 2>/dev/null
+printf '   \174  \174   \174  \134  \174\174  \174\n' 2>/dev/null
+printf '   \174\137\137\174\137\137\137\174' 2>/dev/null
+printf '  \057\137\137\174\174\137\137\174\n' 2>/dev/null
+printf '           \134\057\n\n' 2>/dev/null
+printf '        Linux setup\n' 2>/dev/null
 sleep 1
-printf '  a Lucas Larson production\n\n'
+printf '  a Lucas Larson production\n\n' 2>/dev/null
 sleep 1
 
 # ensure `$HOME` is defined
