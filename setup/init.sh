@@ -348,7 +348,7 @@ command find -- . -type d -empty \
 # if zsh is available, replace bash, ash, and sh with zsh in `/etc/passwd`
 command -v zsh >/dev/null 2>&1 &&
   command grep -E '/bin/b?a?sh' '/etc/passwd' 2>&1 &&
-  cp -- '/etc/passwd' '/etc/passwd-'"$(command date '+%Y%m%d')" &&
+  cp -- '/etc/passwd' '/etc/passwd-'"$(command date '+%Y%m%d_%s')" &&
   # `-i` for in-place editing
   # `-E` for regex searching for `/bin/ash` and `/bin/sh`
   command sed -i -E "s|/bin/b?a?sh$|$(command -v zsh)|g" '/etc/passwd'
