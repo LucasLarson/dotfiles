@@ -1042,7 +1042,7 @@ plist_r() {
       -exec sed -i -- 's|\t|  |g' {} \;
     ;;
   esac
-  { set -euvx; } 2>/dev/null
+  { set +euvx; } 2>/dev/null
 }
 
 # PlistBuddy
