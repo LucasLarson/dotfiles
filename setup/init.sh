@@ -49,7 +49,7 @@ test "$(command pwd -P)" = "${HOME-}" || {
 # set it to the POSIX default: `+ `
 # https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
 ps4_temporary="${PS4:-+ }"
-unset PS4
+unset -- PS4
 set -x
 
 # pacman
@@ -294,7 +294,7 @@ exiting to apply updates... >/dev/null 2>&1
 
 # restore `$PS4`
 PS4="${ps4_temporary:-+ }"
-unset ps4_temporary
+unset -- ps4_temporary
 
 printf '\ndone!\n'
 
