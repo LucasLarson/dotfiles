@@ -288,7 +288,7 @@ test -w ./setup &&
 
 # message of the day
 test -s '/etc/motd' &&
-  cp '/etc/motd' '/etc/motd.bak' &&
+  cp '/etc/motd' '/etc/motd-'"$(command date '+%Y%m%d_%s')" &&
   printf '' >'/etc/motd'
 
 # delete thumbnail cache files
