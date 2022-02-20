@@ -161,13 +161,13 @@ test -x '/usr/libexec/git-core/git-add--interactive' || {
 }
 
 # git user
-git config --global --get user.name >/dev/null 2>&1 || {
-  git config --global user.name 'Lucas Larson'
+command git config --global --get user.name >/dev/null 2>&1 || {
+  command git config --global user.name 'Lucas Larson'
 }
 
 # git default branch
-git config --global --get init.defaultBranch >/dev/null 2>&1 || {
-  git config --global init.defaultBranch 'main'
+command git config --global --get init.defaultBranch >/dev/null 2>&1 || {
+  command git config --global init.defaultBranch 'main'
 }
 
 # time zone
