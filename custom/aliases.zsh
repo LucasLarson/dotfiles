@@ -97,12 +97,14 @@ clang_format() {
     -iname '*.ads' -o \
     -iname '*.asm' -o \
     -iname '*.ast' -o \
+    -iname '*.bc' -o \
     -iname '*.c' -o \
     -iname '*.c++' -o \
     -iname '*.c++m' -o \
     -iname '*.cc' -o \
     -iname '*.ccm' -o \
     -iname '*.cl' -o \
+    -iname '*.clcpp' -o \
     -iname '*.cp' -o \
     -iname '*.cpp' -o \
     -iname '*.cppm' -o \
@@ -117,6 +119,7 @@ clang_format() {
     -iname '*.f95' -o \
     -iname '*.for' -o \
     -iname '*.fpp' -o \
+    -iname '*.gch' -o \
     -iname '*.h' -o \
     -iname '*.h++' -o \
     -iname '*.hh' -o \
@@ -131,15 +134,18 @@ clang_format() {
     -iname '*.inc' -o \
     -iname '*.inl' -o \
     -iname '*.java' -o \
+    -iname '*.lib' -o \
     -iname '*.ll' -o \
     -iname '*.m' -o \
     -iname '*.mi' -o \
     -iname '*.mii' -o \
     -iname '*.mm' -o \
+    -iname '*.pch' -o \
     -iname '*.pcm' -o \
     -iname '*.proto' -o \
     -iname '*.protodevel' -o \
     -iname '*.rs' -o \
+    -iname '*.s' -o \
     -iname '*.tcc' -o \
     -iname '*.td' -o \
     -iname '*.theletters' -o \
