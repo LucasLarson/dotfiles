@@ -55,7 +55,7 @@ set -x
 # https://askubuntu.com/a/459425
 # https://stackoverflow.com/a/26314887
 # force refresh with `-yy`
-test "$(command awk -F '=' '/^NAME/{print $2}' /etc/os-release 2>/dev/null | command tr -d '"')" = 'Arch Linux' &&
+test "$(command awk -F '=' '/^NAME/{print $2}' '/etc/os-release' 2>/dev/null | command tr -d '"')" = 'Arch Linux' &&
   command pacman --sync -yy
 
 # apk
@@ -64,10 +64,10 @@ command -v apk >/dev/null 2>&1 || {
   { set +x; } 2>/dev/null
   printf 'verifying apk tools integrity...\n' 2>/dev/null
   set -x
-  test "$(command curl --fail --silent --location https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk | command sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -'
+  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' | command sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -'
 } || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
-  command wget --output-document - https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk |
+  command wget --output-document - 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' |
     command tar -xz 'apk.static'
   ./apk.static add apk-tools
 }
@@ -76,7 +76,7 @@ command -v apk >/dev/null 2>&1 || {
 {
   printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n'
   printf 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n'
-} >/etc/apk/repositories
+} >'/etc/apk/repositories'
 
 # update
 { set +x; } 2>/dev/null
@@ -87,10 +87,10 @@ command apk upgrade --verbose --progress
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
 # man-pages adds `man0`, `man2`, man4`, `man6` to `/usr/share/man/`
-{ test -d /usr/share/man/man0 &&
-  test -d /usr/share/man/man2 &&
-  test -d /usr/share/man/man4 &&
-  test -d /usr/share/man/man6; } || {
+{ test -d '/usr/share/man/man0' &&
+  test -d '/usr/share/man/man2' &&
+  test -d '/usr/share/man/man4' &&
+  test -d '/usr/share/man/man6'; } || {
   { set +x; } 2>/dev/null
   printf 'installing man pages...\n' 2>/dev/null
   set -x
@@ -114,7 +114,7 @@ command -v less >/dev/null 2>&1 || {
 # https://web.archive.org/web/20210218201739id_/web.archive.org/screenshot/docs.google.com/document/d/10-8wjANQGbG43XZ0wN57M1RYOLUwu9RZATNe9vJQYKw/mobilebasic
 # https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
 install coreutils coreutils-doc
-{ test -x /usr/bin/coreutils &&
+{ test -x '/usr/bin/coreutils' &&
   test "$(command find -version 2>/dev/null | command head -n 1 | command awk '{print $3}' | command tr -d '()')" = 'findutils'; } || {
   { set +x; } 2>/dev/null
   printf 'installing Linux utilities...\n' 2>/dev/null
@@ -125,12 +125,12 @@ install util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc co
   printf 'https://dl-cdn.alpinelinux.org/alpine/edge/main\n'
   printf 'https://dl-cdn.alpinelinux.org/alpine/edge/community\n'
   printf 'https://dl-cdn.alpinelinux.org/alpine/edge/testing\n'
-} >>/etc/apk/repositories
+} >>'/etc/apk/repositories'
 command apk update
 
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
-test -d /etc/ssh || {
+test -d '/etc/ssh' || {
   { set +x; } 2>/dev/null
   printf 'installing OpenSSH...\n' 2>/dev/null
   set -x
@@ -139,7 +139,7 @@ test -d /etc/ssh || {
 
 # gpg
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
-test -x /usr/bin/gpg2 || {
+test -x '/usr/bin/gpg2' || {
   { set +x; } 2>/dev/null
   printf 'installing GPG...\n' 2>/dev/null
   set -x
@@ -155,7 +155,7 @@ command -v git >/dev/null 2>&1 || {
 }
 
 # git add --patch
-test -x /usr/libexec/git-core/git-add--interactive || {
+test -x '/usr/libexec/git-core/git-add--interactive' || {
   # https://stackoverflow.com/a/57632778
   install git-perl
 }
@@ -175,9 +175,9 @@ git config --global --get init.defaultBranch >/dev/null 2>&1 || {
 printf 'updating time zone information...\n' 2>/dev/null
 set -x
 install --no-cache tzdata tzdata-doc
-test -r /usr/share/zoneinfo/America/New_York &&
-  cp /usr/share/zoneinfo/America/New_York /etc/localtime
-printf 'America/New_York\n' >/etc/timezone
+test -r '/usr/share/zoneinfo/America/New_York' &&
+  cp '/usr/share/zoneinfo/America/New_York' '/etc/localtime'
+printf 'America/New_York\n' >'/etc/timezone'
 
 # python
 { set +x; } 2>/dev/null
@@ -287,9 +287,9 @@ test -w ./setup &&
   rm ./setup
 
 # message of the day
-test -e /etc/motd.bak ||
-  cp /etc/motd /etc/motd.bak
-printf '' >/etc/motd
+test -e '/etc/motd.bak' ||
+  cp '/etc/motd' '/etc/motd.bak'
+printf '' >'/etc/motd'
 
 # delete thumbnail cache files
 command find -- . -type f \( \
@@ -341,11 +341,11 @@ command find -- . -type d -empty \
 # if sed installation was successful, and
 # if zsh is available, replace bash, ash, and sh with zsh in `/etc/passwd`
 command -v zsh >/dev/null 2>&1 &&
-  command grep -E '/bin/b?a?sh' /etc/passwd 2>&1 &&
-  cp -- /etc/passwd /etc/passwd-"$(command date '+%Y%m%d')" &&
+  command grep -E '/bin/b?a?sh' '/etc/passwd' 2>&1 &&
+  cp -- '/etc/passwd' '/etc/passwd-'"$(command date '+%Y%m%d')" &&
   # `-i` for in-place editing
   # `-E` for regex searching for `/bin/ash` and `/bin/sh`
-  command sed -i -E "s|/bin/b?a?sh$|$(command -v zsh)|g" /etc/passwd
+  command sed -i -E "s|/bin/b?a?sh$|$(command -v zsh)|g" '/etc/passwd'
 
 # done
 { set +euvx; } 2>/dev/null
