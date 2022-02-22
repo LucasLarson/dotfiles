@@ -203,8 +203,8 @@ cleanup() {
     # if `$ZSH_COMPDUMP` always generates a crufty file then skip
     # https://stackoverflow.com/a/8811800
     if test -n "${ZSH_COMPDUMP-}" &&
-      ! test "${ZSH_COMPDUMP-}" != "${ZSH_COMPDUMP#*'zcompdump-'}" &&
-      ! test "${ZSH_COMPDUMP-}" != "${ZSH_COMPDUMP#*'zcompdump.'}"; then
+      test ! "${ZSH_COMPDUMP-}" != "${ZSH_COMPDUMP#*'zcompdump-'}" &&
+      test ! "${ZSH_COMPDUMP-}" != "${ZSH_COMPDUMP#*'zcompdump.'}"; then
       while test -n "$(
         command find -- "${HOME-}" \
           -maxdepth 1 \
