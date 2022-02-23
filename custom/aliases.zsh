@@ -67,6 +67,11 @@ alias cdp='cd_pwd_P'
 alias chmod='command chmod -v'
 
 clang_format() {
+
+  command clang-format --version 2>/dev/null ||
+    return 2
+  sleep 1
+
   # https://github.com/Originate/guide/blob/880952d/ios/files/clang-format.sh
 
   # if no argument is provided, then set `IndentWidth` to 2
@@ -76,10 +81,6 @@ clang_format() {
   # if no second argument is provided, then set `ColumnLimit` to 79
   # https://stackoverflow.com/a/48016407
   ColumnLimit="${2:-79}"
-
-  command clang-format --version 2>/dev/null ||
-    return 2
-  sleep 1
 
   printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
   sleep 1
