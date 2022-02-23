@@ -80,15 +80,22 @@ clang_format() {
   # set `clang-format` `ColumnLimit` default to 79
   ColumnLimit='79'
 
+  printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
+  sleep 1
+
   # permit arguments in any order
   # https://salsa.debian.org/debian/debianutils/blob/c2a1c435ef/savelog
   while getopts i:w: opt; do
     case ${opt-} in
     i)
       IndentWidth="${OPTARG-}"
+      printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"
+      sleep 1
       ;;
     w)
       ColumnLimit="${OPTARG-}"
+      printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit-}"
+      sleep 1
       ;;
     *)
       printf 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'
@@ -96,15 +103,6 @@ clang_format() {
       ;;
     esac
   done
-
-  printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
-  sleep 1
-
-  printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"
-  sleep 1
-
-  printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit-}"
-  sleep 1
 
   command find -- . \
     -type f \
