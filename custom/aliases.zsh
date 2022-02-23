@@ -74,13 +74,28 @@ clang_format() {
 
   # https://github.com/Originate/guide/blob/880952d/ios/files/clang-format.sh
 
-  # if no argument is provided, then set `IndentWidth` to 2
-  # https://stackoverflow.com/a/2013573
-  IndentWidth="${1:-2}"
+  # set `clang-format` `IndentWidth` default to 2
+  IndentWidth='2'
 
-  # if no second argument is provided, then set `ColumnLimit` to 79
-  # https://stackoverflow.com/a/48016407
-  ColumnLimit="${2:-79}"
+  # set `clang-format` `ColumnLimit` default to 79
+  ColumnLimit='79'
+
+  # permit arguments in any order
+  # https://salsa.debian.org/debian/debianutils/blob/c2a1c435ef/savelog
+  while getopts i:w: opt; do
+    case ${opt-} in
+    i)
+      IndentWidth="${OPTARG-}"
+      ;;
+    w)
+      ColumnLimit="${OPTARG-}"
+      ;;
+    *)
+      printf 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'
+      return 1
+      ;;
+    esac
+  done
 
   printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
   sleep 1
