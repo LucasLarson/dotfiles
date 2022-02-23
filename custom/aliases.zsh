@@ -106,6 +106,12 @@ clang_format() {
 
   command find -- . \
     -type f \
+    ! -path '*.git/*' \
+    ! -path '*.vscode/*' \
+    ! -path '*/Test*' \
+    ! -path '*/t/*' \
+    ! -path '*/test*' \
+    ! -path '*node_modules/*' \
     \( \
     -iname '*.adb' -o \
     -iname '*.ads' -o \
@@ -168,15 +174,6 @@ clang_format() {
     -iname '*.tpp' -o \
     -iname '*.ts' -o \
     -iname '*.txx' \
-    \) \
-    -a \
-    \( \
-    ! -path '*.git/*' \
-    ! -path '*.vscode/*' \
-    ! -path '*/Test*' \
-    ! -path '*/t/*' \
-    ! -path '*/test*' \
-    ! -path '*node_modules/*' \
     \) \
     -exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options {} \+
 
