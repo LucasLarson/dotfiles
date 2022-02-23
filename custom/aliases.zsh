@@ -161,6 +161,7 @@ clang_format() {
     ! -path '*.git/*' \
     ! -path '*.vscode/*' \
     ! -path '*/Test*' \
+    ! -path '*/t/*' \
     ! -path '*/test*' \
     ! -path '*node_modules/*' \
     \) \
