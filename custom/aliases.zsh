@@ -1088,8 +1088,6 @@ plist_r() {
     return 127
   set -e
   set -u
-  set -v
-  set -x
   case "$(command pwd -P)" in
   "${HOME-}" | "${DOTFILES-}")
     return 1
@@ -1189,8 +1187,6 @@ yamllint_r() {
   (
     unset -- PS4 2>/dev/null
     set -u
-    set -v
-    set -x
     case "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" in
     true)
       {
