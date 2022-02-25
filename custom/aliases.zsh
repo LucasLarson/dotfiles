@@ -26,7 +26,6 @@ atom_packages() {
   command apm-nightly list --installed --bare 2>/dev/null ||
     command apm-beta list --installed --bare 2>/dev/null ||
     command apm list --installed --bare 2>/dev/null
-  { set +euvx; } 2>/dev/null
 }
 
 bash_major_version() {
@@ -1140,7 +1139,6 @@ rm() {
     command "${utility-}" "$@"
     ;;
   esac
-  { set +euvx; } 2>/dev/null
   unset -- utility 2>/dev/null
 }
 alias rmo='rm --others'
