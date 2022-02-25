@@ -188,8 +188,8 @@ cleanup() {
   # if `cleanup -v` or `cleanup --verbose`,
   # then use `-print` during `-delete`
   -v | --verbose)
-    set -v
-    set -x
+    set -o verbose
+    set -o xtrace
     shift
     ;;
 
@@ -304,7 +304,12 @@ cleanup() {
 
     ;;
   esac
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 
 # https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
@@ -446,14 +451,19 @@ define() {
 
 # find broken symlinks
 find_broken_symlinks() {
-  set -u
+  set -o nounset
   # https://unix.stackexchange.com/a/49470
   command find -- . \
     ! -path '*.git/*' \
     -type l \
     -exec test ! -e {} \; \
     -print 2>/dev/null
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 
 # find duplicate files
@@ -500,7 +510,7 @@ find_by_name() {
 alias fname='find_by_name'
 
 find_shell_scripts() {
-  set -u
+  set -o nounset
   {
     # all files with extensions `.bash`, `.dash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
     command find -- . \
@@ -543,7 +553,12 @@ find_shell_scripts() {
   } |
     LC_ALL='C' command sort -u
 
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 
 # Git
@@ -595,7 +610,7 @@ alias gbD='command git branch --delete --force'
 
 # git commit
 git_commit() {
-  set -u
+  set -o nounset
   if test "$#" -eq '0'; then
     command git commit --verbose ||
       return 1
@@ -607,7 +622,12 @@ git_commit() {
       return 1
   fi
   command git status
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 alias gc='git_commit'
 alias gcm='git_commit'
@@ -628,14 +648,19 @@ alias gcpn='command git cherry-pick --no-commit'
 git_delete_merged_branches() {
   # delete all local Git branches that have been merged
   # https://gist.github.com/8775224
-  set -u
+  set -o nounset
   if command git branch --merged |
     command grep -v '\*'; then
     command git branch --merged |
       command grep -v '\*' |
       command xargs -n 1 git branch --delete --verbose
   fi
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 alias gdmb='git_delete_merged_branches'
 
@@ -658,7 +683,7 @@ git_garbage_collection() {
   command -v cleanup >/dev/null 2>&1 &&
     cleanup "$@"
   if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    set -u
+    set -o nounset
     # see `git gc` and other wrapping commands behind-the-scene mechanics
     # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git fetch --prune --prune-tags --verbose 2>/dev/null
@@ -675,37 +700,57 @@ git_garbage_collection() {
   else
     return 1
   fi
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 alias ggc='git_garbage_collection'
 
 # git parents, git child
 git_find_child() {
-  set -e
-  set -u
+  set -o errexit
+  set -o nounset
   commit="${1:-"$(command git rev-parse HEAD)"}"
   # %H: commit hash
   # %P: parent commit
   command git log --pretty='%H %P' |
     command grep " ${commit-}" |
     command cut -c 1-40
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 git_find_parent() {
   # return the hash prior to the current commit
   # if an argument is provided, return the commit prior to that commit
   # usage: git_find_parent <commit>
-  set -u
+  set -o nounset
   command git rev-list --max-count=1 "${1:-$(command git rev-parse HEAD)}^"
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 git_find_parents() {
   # return all hashes prior to the current commit
   # if an argument is provided, return all commits prior to that commit
   # usage: git_find_parents <commit>
-  set -u
+  set -o nounset
   command git rev-list "${1:-$(command git rev-parse HEAD)}^"
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 alias git_parent='git_find_parent'
 alias gfp='git_find_parent'
@@ -722,7 +767,7 @@ alias gic='git_find_initial_commit'
 
 # commit initial commit
 git_commit_initial_commit() {
-  set -u
+  set -o nounset
   # usage: git_commit_initial_commit [yyyy-mm-dd]
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
@@ -742,7 +787,12 @@ git_commit_initial_commit() {
       command git commit --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
   fi
 
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
   unset -- git_time 2>/dev/null
   unset -- GIT_AUTHOR_DATE 2>/dev/null
   unset -- GIT_COMMITTER_DATE 2>/dev/null
@@ -836,7 +886,7 @@ git_shallow() {
   # Shallow .gitmodules submodule installations
   # Mauricio Scheffer https://stackoverflow.com/a/2169914
 
-  set -u
+  set -o nounset
   command git submodule init
   for submodule in $(command git submodule | command sed -e 's|.* ||'); do
     submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
@@ -845,7 +895,12 @@ git_shallow() {
   done
   command git submodule update
 
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
   unset -- submodule 2>/dev/null
   unset -- submodule_path 2>/dev/null
   unset -- submodule_url 2>/dev/null
@@ -903,9 +958,9 @@ gravatar() {
   # gravatar
   # return the URL of a Gravatar image for the given email address
 
-  set +a
-  set -e
-  set -u
+  set +o allexport
+  set -o errexit
+  set -o nounset
 
   # get the email address
   email="${1:-$(command git config --get user.email)}"
@@ -936,9 +991,9 @@ gravatar() {
   unset -- utility 2>/dev/null
 
   {
-    set -a
-    set +e
-    set +u
+    set -o allexport
+    set +o errexit
+    set +o nounset
   } 2>/dev/null
 }
 
@@ -1023,11 +1078,16 @@ alias mv='mv -v -i'
 
 # find files with non-ASCII characters
 non_ascii() {
-  set -u
+  set -o nounset
   LC_ALL='C' command find -- . \
     ! -path '*.git/*' \
     -name '*[! -~]*'
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 
 # paste faster
@@ -1051,7 +1111,7 @@ path_check() {
 
     # return verbose output if requested
     -v | --verbose)
-      set -x
+      set -o xtrace
       shift
       ;;
 
@@ -1076,7 +1136,12 @@ path_check() {
   done
 
   # silently undo verbose output for everyone
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 
   unset -- argument 2>/dev/null
   unset -- directory 2>/dev/null
@@ -1086,8 +1151,8 @@ path_check() {
 plist_r() {
   command -v plutil >/dev/null 2>&1 ||
     return 127
-  set -e
-  set -u
+  set -o errexit
+  set -o nounset
   case "$(command pwd -P)" in
   "${HOME-}" | "${DOTFILES-}")
     return 1
@@ -1101,7 +1166,12 @@ plist_r() {
       -exec sed -i -- 's|\t|  |g' {} \;
     ;;
   esac
-  { set +euvx; } 2>/dev/null
+  {
+    set +o errexit
+    set +o nounset
+    set +o verbose
+    set +o xtrace
+  } 2>/dev/null
 }
 
 # PlistBuddy
@@ -1185,7 +1255,7 @@ yamllint_r() {
     return 1
   (
     unset -- PS4 2>/dev/null
-    set -u
+    set -o nounset
     case "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" in
     true)
       {
