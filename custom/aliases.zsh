@@ -304,6 +304,7 @@ cleanup() {
 
     ;;
   esac
+  { set +euvx; } 2>/dev/null
 }
 
 # https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
