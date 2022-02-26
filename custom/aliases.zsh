@@ -583,32 +583,54 @@ alias guo='command git status --untracked-files=no'
 
 # git add
 git_add() {
-  command git add --verbose "${@:-.}"
-  command git status
+  (
+    unset -- PS4 2>/dev/null
+    set +o allexport
+    set -o verbose
+    set -o xtrace
+    case "${1-}" in
+    --A | --all)
+      command git add --all --verbose "$@" &&
+        shift
+      ;;
+    -D | --deleted)
+      # https://gist.github.com/8775224
+      command git ls-files -z --deleted |
+        command xargs -0 git add --verbose 2>/dev/null &&
+        shift
+      ;;
+    -m | --modified)
+      command git ls-files -z --modified |
+        command xargs -0 git add --verbose 2>/dev/null &&
+        shift
+      ;;
+    -o | --others | --untracked)
+      while test -n "$(command git ls-files --others --exclude-standard)"; do
+        command git ls-files -z --others --exclude-standard |
+          command xargs -0 git add --verbose 2>/dev/null
+      done &&
+        shift
+      ;;
+    -p | --patch)
+      command git add --patch --verbose "${@:-.}" &&
+        shift
+      ;;
+    *)
+      # default to everything in the current directory and below
+      command git add --verbose "${@:-.}" &&
+        shift
+      ;;
+    esac &&
+      command git status
+  )
 }
 alias ga='git_add'
-alias gaa='command git add --all'
-
-git_add_deleted() {
-  # https://gist.github.com/8775224
-  command git ls-files -z --deleted |
-    command xargs -0 git add --verbose 2>/dev/null
-}
-
-git_add_patch() {
-  command git add --patch --verbose "${@:-.}"
-  command git status
-}
-alias gap='git_add_patch'
-
-git_add_untracked() {
-  while test -n "$(command git ls-files --others --exclude-standard)"; do
-    command git ls-files -z --others --exclude-standard |
-      command xargs -0 git add --verbose 2>/dev/null
-  done
-  command git status
-}
-alias git_add_others='git_add_untracked'
+alias gaa='git_add --all'
+alias gap='git_add --patch'
+alias git_add_deleted='git_add --deleted'
+alias git_add_others='git_add --others'
+alias git_add_patch='git_add --patch'
+alias git_add_untracked='git_add --others'
 
 alias gba='command git branch --all'
 alias gbd='command git branch --delete'
