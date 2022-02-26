@@ -582,6 +582,7 @@ alias g.='command git status .'
 alias guo='command git status --untracked-files=no'
 
 # git add
+compdef git_add='git add' 2>/dev/null
 git_add() {
   (
     unset -- PS4 2>/dev/null
