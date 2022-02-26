@@ -176,6 +176,12 @@ clang_format() {
     \) \
     -exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options {} \+
 
+  # hide `set +x`
+  # https://stackoverflow.com/a/19226038
+  {
+    set +o xtrace
+  } 2>/dev/null
+
   unset -- IndentWidth 2>/dev/null
   unset -- ColumnLimit 2>/dev/null
 
