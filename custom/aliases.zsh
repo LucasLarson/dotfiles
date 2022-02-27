@@ -246,6 +246,7 @@ cleanup() {
       -size 0 \
       ! -path '*.git/*' \
       ! -path '*/Test*' \
+      ! -path '*/t/*' \
       ! -path '*/test*' \
       ! -name "$(printf 'Icon\015\012')" \
       ! -name '*.plugin.zsh' \
@@ -284,6 +285,7 @@ cleanup() {
       -type f \
       ! -path '*.vscode/*' \
       ! -path '*/Test*' \
+      ! -path '*/t/*' \
       ! -path '*/test*' \
       ! -path '*node_modules/*' \
       \( \
@@ -479,6 +481,7 @@ find_duplicate_files() {
     ! -path '*.git/*' \
     ! -path '*.vscode/*' \
     ! -path '*/Test*' \
+    ! -path '*/t/*' \
     ! -path '*/test*' \
     ! -path '*node_modules/*' \
     ! -empty \
@@ -505,6 +508,7 @@ find_by_name() {
     ! -path '*/Archive*' \
     ! -path '*/Test*' \
     ! -path '*/archive*' \
+    ! -path '*/t/*' \
     ! -path '*/test*' \
     ! -path '*Application Support*' \
     ! -path '*custom/plugins*' \
@@ -535,6 +539,7 @@ find_shell_scripts() {
       ! -path '*.git/*' \
       ! -path '*.vscode/*' \
       ! -path '*/Test*' \
+      ! -path '*/t/*' \
       ! -path '*/test*' \
       ! -path '*node_modules/*' \
       -type f \
@@ -1339,6 +1344,7 @@ yamllint_r() {
         ! -path '*.git/*' \
         ! -path '*.vscode/*' \
         ! -path '*/Test*' \
+        ! -path '*/t/*' \
         ! -path '*/test*' \
         ! -path '*node_modules/*' \
         \( \
