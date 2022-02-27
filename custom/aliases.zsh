@@ -210,8 +210,8 @@ cleanup() {
       \( \
       -name '.DS_Store' -o \
       -name 'Desktop.ini' -o \
-      -name 'desktop.ini' -o \
       -name 'Thumbs.db' -o \
+      -name 'desktop.ini' -o \
       -name 'thumbs.db' \
       \) \
       -delete 2>/dev/null
