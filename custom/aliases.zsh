@@ -502,11 +502,11 @@ find_by_name() {
   command find -- . \
     ! -path '*.git/*' \
     ! -path '*.vscode/*' \
+    ! -path '*/Archive*' \
     ! -path '*/Test*' \
+    ! -path '*/archive*' \
     ! -path '*/test*' \
     ! -path '*Application Support*' \
-    ! -path '*/Archive*' \
-    ! -path '*/archive*' \
     ! -path '*custom/plugins*' \
     ! -path '*custom/themes*' \
     ! -path '*node_modules/*' \
