@@ -311,7 +311,10 @@ cleanup() {
     ;;
   esac
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -465,7 +468,10 @@ find_broken_symlinks() {
     -exec test ! -e {} \; \
     -print 2>/dev/null
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -560,7 +566,10 @@ find_shell_scripts() {
     LC_ALL='C' command sort -u
 
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -652,7 +661,10 @@ git_commit() {
   fi
   command git status
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -685,7 +697,10 @@ git_delete_merged_branches() {
       command xargs -n 1 git branch --delete --verbose
   fi
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -730,7 +745,10 @@ git_garbage_collection() {
     return 1
   fi
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -749,7 +767,10 @@ git_find_child() {
     command grep " ${commit-}" |
     command cut -c 1-40
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -762,7 +783,10 @@ git_find_parent() {
   set -o nounset
   command git rev-list --max-count=1 "${1:-$(command git rev-parse HEAD)}^"
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -775,7 +799,10 @@ git_find_parents() {
   set -o nounset
   command git rev-list "${1:-$(command git rev-parse HEAD)}^"
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -817,7 +844,10 @@ git_commit_initial_commit() {
   fi
 
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -925,7 +955,10 @@ git_shallow() {
   command git submodule update
 
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -1112,7 +1145,10 @@ non_ascii() {
     ! -path '*.git/*' \
     -name '*[! -~]*'
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -1166,7 +1202,10 @@ path_check() {
 
   # silently undo verbose output for everyone
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -1196,7 +1235,10 @@ plist_r() {
     ;;
   esac
   {
+    set -o allexport
     set +o errexit
+    set +o noclobber
+    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
