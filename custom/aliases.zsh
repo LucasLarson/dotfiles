@@ -357,14 +357,17 @@ count_files() {
 
 count_files_by_extension() {
   # files with no extension
-  printf ' %i files without extensions\n' "$(
-    command find -- . \
-      ! -path '*.git/*' \
-      -type f \
-      ! -name '*.*' \
-      -exec basename -a -- {} \+ 2>/dev/null |
-      command grep -c -v '\.'
-  )"
+  # homemade
+  command find -- . \
+    ! -path '*.git/*' \
+    -type f \
+    ! -name '*.*' \
+    -print 2>/dev/null |
+    LC_ALL='C' command sort -u |
+    command uniq -c |
+    LC_ALL='C' command awk '{print $1}' |
+    command uniq -c |
+    command sed -E 's|.$|[no extension]|g'
 
   # files with extensions
   command find -- . \
