@@ -478,6 +478,15 @@ define() {
   unset -- query 2>/dev/null
 }
 
+epoch_seconds() {
+  # return seconds since the epoch, 1969-12-31 19:00:00 EST
+  # https://stackoverflow.com/a/41324810
+  # `srand([expr])` will “Set the seed value for `rand` to `expr` or
+  # use the time of day if `expr` is omitted.”
+  # https://opengroup.org/onlinepubs/9699919799/utilities/awk.html#tag_20_06_13_12
+  command awk 'BEGIN {srand(); print srand()}'
+}
+
 # find broken symlinks
 find_broken_symlinks() {
   set -o nounset
