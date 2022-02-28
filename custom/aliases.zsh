@@ -344,8 +344,8 @@ cy() {
   unset -- interactive 2>/dev/null
 }
 
-# number of files in current directory
-# https://web.archive.org/web/200id_/tldp.org/HOWTO/Bash-Prompt-HOWTO/x700.html
+# number of files
+# this directory and below
 count_files() {
   # https://unix.stackexchange.com/a/1126
   command find -- .//. \
