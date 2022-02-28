@@ -103,6 +103,13 @@ clang_format() {
     esac
   done
 
+  # eligible filename extensions:
+  # https://github.com/llvm/llvm-project/blob/d1c8a151df/clang/lib/Driver/Types.cpp#L236-L294
+  # https://github.com/llvm/llvm-project/blob/d1c8a151df/clang/lib/Frontend/FrontendOptions.cpp#L17-L35
+  # https://github.com/llvm/llvm-project/blob/e20a1e486e/clang/tools/clang-format-vs/ClangFormat/ClangFormatPackage.cs#L41-L42
+  # https://github.com/llvm/llvm-project/blob/edbb8a843c/clang/tools/clang-format/git-clang-format#L78-L90
+  # https://github.com/llvm/llvm-project/blob/cea81e95b0/clang/tools/clang-format/clang-format-diff.py#L50-L51
+
   command find -- . \
     -type f \
     ! -path '*.git/*' \
