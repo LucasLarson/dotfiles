@@ -460,6 +460,20 @@ define() {
     command -v which >/dev/null 2>&1 &&
       printf 'which -a:\n%s\n' "$(command which -a "${query-}")"
 
+    {
+      if functions "${query-}" 2>/dev/null | command bash --pretty-print >/dev/null 2>&1 | command shfmt -s -i 2 >/dev/null 2>&1; then
+        printf '%s\n' "$(builtin functions "${query-}" | command bash --pretty-print | command shfmt -s -i 2)"
+      elif builtin functions "${query-}" 2>/dev/null | command shfmt -s -i 2 >/dev/null 2>&1; then
+        printf '%s\n' "$(builtin functions "${query-}" | command shfmt -s -i 2)"
+      elif builtin functions "${query-}" 2>/dev/null | command bash --pretty-print >/dev/null 2>&1; then
+        printf '%s\n' "$(builtin functions "${query-}" | command bash --pretty-print)"
+      elif builtin functions "${query-}" >/dev/null 2>&1; then
+        printf '%s\n' "$(builtin functions "${query-}")"
+      else
+        "$(command -v type)" -a -f -- "${query-}" 2>/dev/null
+      fi
+    } |
+      command sed -e 's|\t|  |g'
   done
   unset -- query 2>/dev/null
 }
