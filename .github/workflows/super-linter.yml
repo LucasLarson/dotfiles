@@ -40,7 +40,7 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           # Linter requires full repository history for analysis
           fetch-depth: 0
