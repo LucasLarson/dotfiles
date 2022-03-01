@@ -3,8 +3,8 @@
 # Tidy for Mac OS X by balthisar.com is adding the new path for Tidy.
 export PATH=/usr/local/bin:$PATH
 
-### Bashhub.com Installation.
-### This Should be at the EOF. https://bashhub.com/docs
-if test -f ~/.bashhub/bashhub.sh; then
-    source ~/.bashhub/bashhub.sh
-fi
+## Bashhub
+# this should be EOF
+# https://bashhub.com/docs
+test -r "${HOME-}"'/.bashhub/bashhub.sh' &&
+  . "${HOME-}"'/.bashhub/bashhub.sh'
