@@ -962,7 +962,13 @@ alias gref='command git reflog'
 alias grmr='command git rm -r'
 alias grm='grmr'
 
-alias grv='command git remote --verbose'
+git_remote_verbose() {
+  # print `git remote -v` into columnized output
+  command git remote --verbose |
+    command awk -F'[\t ]+' '{printf "%-16s %s\n", $1, $2}' |
+    command uniq
+}
+alias grv='git_remote_verbose'
 
 git_restore() {
   for file in "$@"; do
