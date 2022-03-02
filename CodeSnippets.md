@@ -343,8 +343,8 @@ remove bogus entries from Finder’s “Open With” menu ([via](https://githu
 
 ### repair website disk permissions
 
-`find -- . -type d -exec chmod 755 {} \; && \`<br/>
-`find -- . -type f -exec chmod 644 {} \; #` [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
+`find -- . -type d -exec chmod 755 {} \; && \`<br/>
+`find -- . -type f -exec chmod 644 {} \; #` [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
 
 #### date modified modify
 
