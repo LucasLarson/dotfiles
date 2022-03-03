@@ -7,7 +7,6 @@ on:
       - main
 
 jobs:
-
   json:
     name: Format JSON files and create a Pull Request
     runs-on: ubuntu-latest
@@ -20,14 +19,13 @@ jobs:
         run: |
           command find -- . \
             -type f \
+            ! -path '*node_modules*' \
+            ! -path '*vscode*' \
             \( \
             -name '*.JSON' -o \
             -name '*.json' -o \
             -name '*.imgbotconfig' -o \
             -name '*.whitesource' \
-            \) -a \
-            ! -path '*node_modules*' -a \
-            ! -path '*vscode*' \
             \) \
             -print \
             -exec jsonlint --in-place --insert-final-newline -- {} \;
