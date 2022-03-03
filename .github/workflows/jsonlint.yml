@@ -25,8 +25,15 @@ jobs:
             \( \
             -name '*.JSON' -o \
             -name '*.json' -o \
-            -name '*.imgbotconfig' -o \
-            -name '*.whitesource' \
+            -name '*app-site-association' -o \
+            -name '.dccache' -o \
+            -name '.flutter' -o \
+            -name '.flutter_tool_state' -o \
+            -name '.imgbotconfig' -o \
+            -name '.vs-liveshare-keychain' -o \
+            -name '.vsconfig' -o \
+            -name '.whitesource' -o \
+            -name 'null.stats' \
             \) \
             -print \
             -exec jsonlint --in-place --insert-final-newline -- {} \;
