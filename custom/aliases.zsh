@@ -174,7 +174,6 @@ clang_format() {
     -iname '*.s' -o \
     -iname '*.tcc' -o \
     -iname '*.td' -o \
-    -iname '*.theletters' -o \
     -iname '*.tlh' -o \
     -iname '*.tli' -o \
     -iname '*.tpp' -o \
