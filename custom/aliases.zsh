@@ -490,6 +490,14 @@ define() {
   unset -- query 2>/dev/null
 }
 
+dictionary() {
+  # sort as you’d expect to find in a dictionary
+  test -f "${1-}" ||
+    return 1
+  LC_ALL='C' command sort -u -- "${1-}" |
+    LC_ALL='C' command sort -f
+}
+
 epoch_seconds() {
   # return seconds since the epoch, 1969-12-31 19:00:00 EST
   # https://stackoverflow.com/a/41324810
