@@ -1107,7 +1107,7 @@ gravatar() {
   email="$(printf '%s' "${email-}" | command "${utility-}" | command cut -b 1-32)"
 
   # return the Gravatar image URL
-  printf 'https://gravatar.com/avatar/%s?s=%s\n' "${email-}" "${size-}"
+  printf 'https://gravatar.com/avatar/%s?s=%d\n' "${email-}" "${size-}"
 
   # cleanup variables
   unset -- email 2>/dev/null
