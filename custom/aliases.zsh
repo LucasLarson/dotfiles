@@ -579,12 +579,12 @@ find_shell_scripts() {
     command find -- . \
       -type f \
       ! -path '*.git/*' \
-      -iname '*.bash' -o \
-      -iname '*.dash' -o \
-      -iname '*.ksh' -o \
-      -iname '*.mksh' -o \
-      -iname '*.sh' -o \
-      -iname '*.zsh' 2>/dev/null
+      -name '*.bash' -o \
+      -name '*.dash' -o \
+      -name '*.ksh' -o \
+      -name '*.mksh' -o \
+      -name '*.sh' -o \
+      -name '*.zsh' 2>/dev/null
 
     # files whose first line resembles those of shell scripts
     # https://stackoverflow.com/a/9612232
