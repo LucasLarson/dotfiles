@@ -1028,8 +1028,12 @@ git_shallow() {
 
 alias gsh='command git show'
 
-# https://github.com/ohmyzsh/ohmyzsh/commit/69ba6e4
-alias gstall='command git stash save --all'
+git_stash_save_all() {
+  # https://github.com/ohmyzsh/ohmyzsh/commit/69ba6e4359
+  command git stash push --all --message "$@" 2>/dev/null ||
+    command git stash push --all
+}
+alias gstall='git_stash_save_all'
 alias gstc='command git stash clear'
 
 alias gs='command git status'
