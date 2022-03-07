@@ -1180,23 +1180,25 @@ fi
 
 # dotfiles
 mu() {
-  cd "${DOTFILES-}" &&
-    command -v cleanup >/dev/null 2>&1 &&
+  cd "${DOTFILES-}" ||
+    return 1
+  command -v cleanup >/dev/null 2>&1 &&
     cleanup "$@"
-  mackup backup --force --root &&
-    command git fetch --all --prune &&
-    command git submodule update --init --recursive &&
+  case "${1-}" in
+  -s | --short)
+    command mackup backup --force --root
+    command git fetch --all --prune
+    command git submodule update --init
     command git status
-}
-mux() {
-  cd "${DOTFILES-}" &&
-    command -v cleanup >/dev/null 2>&1 &&
-    cleanup "$@"
-  mackup backup --force --root --verbose &&
-    command git fetch --all --prune --verbose &&
-    command git submodule update --init --recursive --remote &&
-    command git submodule sync --recursive &&
+    ;;
+  *)
+    command mackup backup --force --root --verbose
+    command git fetch --all --prune --verbose
+    command git submodule update --init --recursive
+    command git submodule sync --recursive
     command git status
+    ;;
+  esac
 }
 
 # https://unix.stackexchange.com/a/30950
