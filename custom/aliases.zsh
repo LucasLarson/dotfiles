@@ -1121,6 +1121,8 @@ gravatar() {
   } 2>/dev/null
 }
 
+alias h1='command head -n 1'
+
 identify() {
 
   # uname
