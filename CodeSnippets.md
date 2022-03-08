@@ -33,7 +33,7 @@
 - [create an alias](#create-an-alias)
 - [launch services](#launch-services)
   - [reset](#reset)
-  - [repair website disk permissions](#repair-website-disk-permissions)
+  - [repair site disk permissions](#repair-site-disk-permissions)
     - [date modified modify](#date-modified-modify)
 - [C, C++](#c-c)
   - [flags](#flags)
@@ -69,7 +69,7 @@
   - [`ls` on Windows](#ls-on-windows)
 - [variables](#variables)
 - [wget](#wget)
-- [WiFi](#wifi)
+- [Wi-Fi](#wi-fi)
   - [Windows password](#windows-password)
   - [macOS password](#macos-password)
 - [Xcode](#xcode)
@@ -78,10 +78,10 @@
   - [array types](#array-types)
   - [troubleshooting](#troubleshooting)
 - [housekeeping](#housekeeping)
-  - [Docker](#docker)
-  - [Homebrew](#homebrew-1)
+  - [docker](#docker)
+  - [brew](#brew)
   - [npm](#npm)
-  - [RubyGems](#rubygems)
+  - [gem](#gem)
   - [Xcode, JetBrains, Carthage](#xcode-jetbrains-carthage)
 - [delete](#delete)
   - [empty directories](#empty-directories)
@@ -341,7 +341,7 @@ replace `\r\n`
 remove bogus entries from Finder’s “Open With” menu ([via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L69-L70))<br/>
 `/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -seed -r -domain local -domain system -domain user && killall Finder`
 
-### repair website disk permissions
+### repair site disk permissions
 
 `find -- . -type d -exec chmod 755 {} \; && \`<br/>
 `find -- . -type f -exec chmod 644 {} \; #` [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
@@ -411,11 +411,11 @@ do not disable it, because that would allow you to install any software, even if
 ### `git add`
 
 [via](https://stackoverflow.com/a/15011313)
-| content to add | git command |
-|------------------------|----|
-| modified files only | `git add --updated || git add -u` |
-| everything except deleted files | `git add .` |
-| everything | `git add --all || git add -A` |
+| content to add                  | git command                       |
+| ------------------------------- | --------------------------------- |
+| modified files only             | `git add --updated || git add -u` |
+| everything except deleted files | `git add .`                       |
+| everything                      | `git add --all || git add -A`     |
 
 ### `git diff`
 
@@ -452,7 +452,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 ### Affixes
 
 | Definition  | Prefix | Suffix |
-|-------------|--------|--------|
+| ----------- | ------ | ------ |
 | binary      | `0b`𝑛  | 𝑛`₂`   |
 | octal       | `0o`𝑛  | 𝑛`₈`   |
 | decimal     | `0d`𝑛  | 𝑛`₁₀`  |
@@ -475,7 +475,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 [via](https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02)
 |                        | *parameter* Set and Not Null | *parameter* Set But Null | *parameter* Unset |
-|------------------------|------------------------------|--------------------------|-------------------|
+| ---------------------- | ---------------------------- | ------------------------ | ----------------- |
 | ${*parameter*:-*word*} | substitute *parameter*       | substitute *word*        | substitute *word* |
 | ${*parameter*-*word*}  | substitute *parameter*       | substitute null          | substitute *word* |
 | ${*parameter*:=*word*} | substitute *parameter*       | assign *word*            | assign *word*     |
@@ -490,14 +490,14 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 [via](https://askubuntu.com/a/350216)
 
 | syntax        | meaning                                  | POSIX compliance |
-| -------       | -----------------------------            | --               |
-| `>file`       | redirect `stdout` to `file`              | ✅               |
-| `1>file`      | redirect `stdout` to `file`              | ✅               |
-| `2>file`      | redirect `stderr` to `file`              | ✅               |
-| `>file 2>&1`  | redirect `stdout` and `stderr` to `file` | ✅               |
-| `&>file`      | redirect `stdout` and `stderr` to `file` | 🚫               |
-| `>>file 2>&1` | append `stdout` and `stderr` to `file`   | ✅               |
-| `&>>/file`    | append `stdout` and `stderr` to `file`   | 🚫               |
+| ------------- | ---------------------------------------- | ---------------- |
+| `>file`       | redirect `stdout` to `file`              | ✅                |
+| `1>file`      | redirect `stdout` to `file`              | ✅                |
+| `2>file`      | redirect `stderr` to `file`              | ✅                |
+| `>file 2>&1`  | redirect `stdout` and `stderr` to `file` | ✅                |
+| `&>file`      | redirect `stdout` and `stderr` to `file` | 🚫                |
+| `>>file 2>&1` | append `stdout` and `stderr` to `file`   | ✅                |
+| `&>>/file`    | append `stdout` and `stderr` to `file`   | 🚫                |
 
 ## rename files
 
@@ -532,9 +532,13 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## wget
 
-wget_server='`**example.com**`'; if command -v wget2 >/dev/null 2>&1; then utility='wget2'; else utility='wget'; fi; command "${utility-}" --level=0 --mirror --continue --verbose --append-output=./"${wget_server-}".log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --progress=bar --no-check-certificate --random-wait --referer=https://"${wget_server-}" --adjust-extension --page-requisites --convert-links --server-response https://"${wget_server-}"; unset wget_server utility`
+wget_server='`**example.com**`'; if command -v wget2 >/dev/null 2>&1; then utility='wget2'; else utility='wget'; fi; \
+command "${utility-}" --level=0 --mirror --continue --verbose \
+--append-output=./"${wget_server-}".log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --progress=bar --no-check-certificate --random-wait \
+--referer=https://"${wget_server-}" --adjust-extension --page-requisites --convert-links --server-response \
+https://"${wget_server-}"; unset wget_server utility`
 
-## WiFi
+## Wi-Fi
 
 ### Windows password
 
@@ -566,11 +570,11 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 ## housekeeping
 
-### Docker
+### docker
 
 `docker system prune --all #` [via](https://news.ycombinator.com/item?id=25547876#25547876)
 
-### Homebrew
+### brew
 
 `brew doctor --debug --verbose && \`<br/>
 `brew cleanup --debug --verbose && #` [via](https://stackoverflow.com/a/41030599) `\`<br/>
@@ -582,7 +586,7 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 `npm doctor && #` creates empty `node_modules` directories `\`<br/>
 `find -- node_modules -empty -type d -delete #` deletes them [via](https://perma.cc/YNL2-FY3Z)
 
-### RubyGems
+### gem
 
 `gem cleanup --verbose`
 
