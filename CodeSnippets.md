@@ -532,7 +532,11 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## wget
 
-wget_server='`**example.com**`'; if command -v wget2 >/dev/null 2>&1; then utility='wget2'; else utility='wget'; fi; command "${utility-}" --level=0 --mirror --continue --verbose --append-output=./"${wget_server-}".log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --progress=bar --no-check-certificate --random-wait --referer=https://"${wget_server-}" --adjust-extension --page-requisites --convert-links --server-response https://"${wget_server-}"; unset wget_server utility`
+wget_server='`**example.com**`'; if command -v wget2 >/dev/null 2>&1; then utility='wget2'; else utility='wget'; fi; \
+command "${utility-}" --level=0 --mirror --continue --verbose \
+--append-output=./"${wget_server-}".log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --progress=bar --no-check-certificate --random-wait \
+--referer=https://"${wget_server-}" --adjust-extension --page-requisites --convert-links --server-response \
+https://"${wget_server-}"; unset wget_server utility`
 
 ## Wi-Fi
 
