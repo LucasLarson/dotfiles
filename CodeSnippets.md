@@ -33,7 +33,7 @@
 - [create an alias](#create-an-alias)
 - [launch services](#launch-services)
   - [reset](#reset)
-  - [repair website disk permissions](#repair-website-disk-permissions)
+  - [repair site disk permissions](#repair-site-disk-permissions)
     - [date modified modify](#date-modified-modify)
 - [C, C++](#c-c)
   - [flags](#flags)
@@ -69,7 +69,7 @@
   - [`ls` on Windows](#ls-on-windows)
 - [variables](#variables)
 - [wget](#wget)
-- [WiFi](#wifi)
+- [Wi-Fi](#wi-fi)
   - [Windows password](#windows-password)
   - [macOS password](#macos-password)
 - [Xcode](#xcode)
@@ -341,7 +341,7 @@ replace `\r\n`
 remove bogus entries from Finder’s “Open With” menu ([via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L69-L70))<br/>
 `/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -seed -r -domain local -domain system -domain user && killall Finder`
 
-### repair website disk permissions
+### repair site disk permissions
 
 `find -- . -type d -exec chmod 755 {} \; && \`<br/>
 `find -- . -type f -exec chmod 644 {} \; #` [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
@@ -534,7 +534,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 wget_server='`**example.com**`'; if command -v wget2 >/dev/null 2>&1; then utility='wget2'; else utility='wget'; fi; command "${utility-}" --level=0 --mirror --continue --verbose --append-output=./"${wget_server-}".log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --progress=bar --no-check-certificate --random-wait --referer=https://"${wget_server-}" --adjust-extension --page-requisites --convert-links --server-response https://"${wget_server-}"; unset wget_server utility`
 
-## WiFi
+## Wi-Fi
 
 ### Windows password
 
