@@ -411,11 +411,11 @@ do not disable it, because that would allow you to install any software, even if
 ### `git add`
 
 [via](https://stackoverflow.com/a/15011313)
-| content to add | git command |
-|------------------------|----|
-| modified files only | `git add --updated || git add -u` |
-| everything except deleted files | `git add .` |
-| everything | `git add --all || git add -A` |
+| content to add                  | git command                       |
+| ------------------------------- | --------------------------------- |
+| modified files only             | `git add --updated || git add -u` |
+| everything except deleted files | `git add .`                       |
+| everything                      | `git add --all || git add -A`     |
 
 ### `git diff`
 
@@ -452,7 +452,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 ### Affixes
 
 | Definition  | Prefix | Suffix |
-|-------------|--------|--------|
+| ----------- | ------ | ------ |
 | binary      | `0b`𝑛  | 𝑛`₂`   |
 | octal       | `0o`𝑛  | 𝑛`₈`   |
 | decimal     | `0d`𝑛  | 𝑛`₁₀`  |
@@ -475,7 +475,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 [via](https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02)
 |                        | *parameter* Set and Not Null | *parameter* Set But Null | *parameter* Unset |
-|------------------------|------------------------------|--------------------------|-------------------|
+| ---------------------- | ---------------------------- | ------------------------ | ----------------- |
 | ${*parameter*:-*word*} | substitute *parameter*       | substitute *word*        | substitute *word* |
 | ${*parameter*-*word*}  | substitute *parameter*       | substitute null          | substitute *word* |
 | ${*parameter*:=*word*} | substitute *parameter*       | assign *word*            | assign *word*     |
@@ -490,14 +490,14 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 [via](https://askubuntu.com/a/350216)
 
 | syntax        | meaning                                  | POSIX compliance |
-| -------       | -----------------------------            | --               |
-| `>file`       | redirect `stdout` to `file`              | ✅               |
-| `1>file`      | redirect `stdout` to `file`              | ✅               |
-| `2>file`      | redirect `stderr` to `file`              | ✅               |
-| `>file 2>&1`  | redirect `stdout` and `stderr` to `file` | ✅               |
-| `&>file`      | redirect `stdout` and `stderr` to `file` | 🚫               |
-| `>>file 2>&1` | append `stdout` and `stderr` to `file`   | ✅               |
-| `&>>/file`    | append `stdout` and `stderr` to `file`   | 🚫               |
+| ------------- | ---------------------------------------- | ---------------- |
+| `>file`       | redirect `stdout` to `file`              | ✅                |
+| `1>file`      | redirect `stdout` to `file`              | ✅                |
+| `2>file`      | redirect `stderr` to `file`              | ✅                |
+| `>file 2>&1`  | redirect `stdout` and `stderr` to `file` | ✅                |
+| `&>file`      | redirect `stdout` and `stderr` to `file` | 🚫                |
+| `>>file 2>&1` | append `stdout` and `stderr` to `file`   | ✅                |
+| `&>>/file`    | append `stdout` and `stderr` to `file`   | 🚫                |
 
 ## rename files
 
