@@ -78,10 +78,10 @@
   - [array types](#array-types)
   - [troubleshooting](#troubleshooting)
 - [housekeeping](#housekeeping)
-  - [Docker](#docker)
-  - [Homebrew](#homebrew-1)
+  - [docker](#docker)
+  - [brew](#brew)
   - [npm](#npm)
-  - [RubyGems](#rubygems)
+  - [gem](#gem)
   - [Xcode, JetBrains, Carthage](#xcode-jetbrains-carthage)
 - [delete](#delete)
   - [empty directories](#empty-directories)
@@ -566,11 +566,11 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 ## housekeeping
 
-### Docker
+### docker
 
 `docker system prune --all #` [via](https://news.ycombinator.com/item?id=25547876#25547876)
 
-### Homebrew
+### brew
 
 `brew doctor --debug --verbose && \`<br/>
 `brew cleanup --debug --verbose && #` [via](https://stackoverflow.com/a/41030599) `\`<br/>
@@ -582,7 +582,7 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 `npm doctor && #` creates empty `node_modules` directories `\`<br/>
 `find -- node_modules -empty -type d -delete #` deletes them [via](https://perma.cc/YNL2-FY3Z)
 
-### RubyGems
+### gem
 
 `gem cleanup --verbose`
 
