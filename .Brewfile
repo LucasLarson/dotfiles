@@ -318,8 +318,6 @@ cask "quicklookase"
 cask "rectangle"
 # Instant messaging application focusing on security
 cask "signal"
-# Git client
-cask "sublime-merge-dev"
 # Application for inspecting installer packages
 cask "suspicious-package"
 # Messaging app with a focus on speed and security
