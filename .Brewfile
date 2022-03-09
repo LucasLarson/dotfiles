@@ -292,8 +292,6 @@ brew "zsh-lovers"
 # App to build and share containerized applications and microservices
 cask "docker"
 cask "edex-ui"
-# Shows hidden files and folders and switches their visibility in Finder
-cask "funter"
 cask "git-credential-manager-core"
 # Virtual globe
 cask "google-earth-pro"
