@@ -4,7 +4,6 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
-tap "louisbrunner/valgrind"
 tap "microsoft/git"
 # Library for command-line editing
 brew "readline"
