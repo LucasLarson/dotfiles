@@ -8,7 +8,6 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "louisbrunner/valgrind"
 tap "microsoft/git"
-tap "peripheryapp/periphery"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -342,7 +341,6 @@ cask "inkscape"
 cask "musicbrainz-picard"
 # Static source code analysis tool
 cask "oclint"
-cask "periphery"
 cask "pluralsight"
 # Command-line shell and scripting language
 cask "powershell"
