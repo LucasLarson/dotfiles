@@ -291,11 +291,7 @@ brew "zlib"
 brew "zsh", args: ["HEAD"]
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
-# E-book reader
-cask "adobe-digital-editions"
 cask "android-sdk"
-# E-books management software
-cask "calibre"
 # App to build and share containerized applications and microservices
 cask "docker"
 cask "edex-ui"
