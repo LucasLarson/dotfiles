@@ -46,8 +46,6 @@ brew "bfg"
 brew "black"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
-# Glorious Glasgow Haskell Compilation System
-brew "ghc"
 # Library for manipulating PNG images
 brew "libpng"
 # Software library to render fonts
