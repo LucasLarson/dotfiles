@@ -237,8 +237,6 @@ brew "shellcheck", args: ["HEAD"]
 brew "shellharden"
 # Autoformat shell script source code
 brew "shfmt", args: ["HEAD"]
-# MIPS32 simulator
-brew "spim"
 # Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id", link: true
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -318,7 +316,6 @@ cask "qlimagesize"
 cask "qlmarkdown"
 cask "qlstephen"
 cask "qlvideo"
-cask "qtspim"
 cask "quicklook-json"
 cask "quicklookase"
 # Move and resize windows using keyboard shortcuts or snap areas
