@@ -11,8 +11,6 @@ brew "readline"
 brew "sqlite"
 # General-purpose data compression with high compression ratio
 brew "xz"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Formatter/translator for text files to numerous formats. Includes a2x
 brew "asciidoc"
 # Text processor and publishing toolchain for AsciiDoc
@@ -35,8 +33,6 @@ brew "bats-core"
 brew "bc"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
-# Python code formatter
-brew "black"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
 # Library for manipulating PNG images
@@ -249,8 +245,6 @@ brew "shellharden"
 brew "shfmt", args: ["HEAD"]
 # Unit testing framework for Bourne-based shell scripts
 brew "shunit2"
-# Tool to create Python bindings for C and C++ libraries
-brew "sip"
 # MIPS32 simulator
 brew "spim"
 # Add a public key to a remote machine's authorized_keys file
