@@ -103,8 +103,6 @@ brew "exa"
 brew "exiftool"
 # YAML Parser
 brew "libyaml"
-# Easiest way to build and release mobile apps
-brew "fastlane"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Identify or delete duplicate files
