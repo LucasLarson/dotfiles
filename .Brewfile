@@ -322,8 +322,6 @@ cask "suspicious-package"
 cask "telegram"
 # Open-source BitTorrent client
 cask "transmission-nightly"
-# Code editor
-cask "visual-studio-code-insiders"
 cask "webpquicklook"
 # Torrent streaming application
 cask "webtorrent"
