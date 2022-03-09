@@ -11,7 +11,6 @@ tap "keys-pub/tap"
 tap "louisbrunner/valgrind"
 tap "microsoft/git"
 tap "peripheryapp/periphery"
-tap "sass/sass"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -328,8 +327,6 @@ brew "bashhub-server/latest/bashhub-server"
 brew "dart-lang/dart/dart"
 # Sentry command-line client for some generic tasks
 brew "getsentry/tools/sentry-cli"
-# Stylesheet Preprocessor
-brew "sass/sass/sass"
 # E-book reader
 cask "adobe-digital-editions"
 cask "android-sdk"
@@ -369,8 +366,6 @@ cask "quicklook-json"
 cask "quicklookase"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
-# Simple Sass processor
-cask "scout"
 # Instant messaging application focusing on security
 cask "signal"
 # Git client
