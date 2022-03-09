@@ -297,10 +297,6 @@ brew "watchman"
 brew "wget"
 # Lookup tool for domain names and other internet resources
 brew "whois", link: true
-# Command-line interface for WordPress
-brew "wp-cli"
-# Bash completion for Wpcli
-brew "wp-cli-completion"
 # Python-powered, cross-platform, Unix-gazing shell language and command prompt
 brew "xonsh"
 # Linter for YAML files
