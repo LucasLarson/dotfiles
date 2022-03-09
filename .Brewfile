@@ -75,8 +75,6 @@ brew "libidn2"
 brew "p11-kit"
 # OpenType text shaping engine
 brew "harfbuzz"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
@@ -169,8 +167,6 @@ brew "ksh"
 brew "less"
 # Multi-format archive and compression library
 brew "libarchive"
-# ISO/IEC 23008-12:2017 HEIF file format decoder and encoder
-brew "libheif"
 # X.509 and CMS library
 brew "libksba"
 # Next-gen compiler infrastructure
