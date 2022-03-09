@@ -291,7 +291,6 @@ brew "zlib"
 brew "zsh", args: ["HEAD"]
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
-cask "android-sdk"
 # App to build and share containerized applications and microservices
 cask "docker"
 cask "edex-ui"
