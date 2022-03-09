@@ -303,8 +303,6 @@ cask "handbrake"
 cask "inkscape"
 # Music tagger
 cask "musicbrainz-picard"
-# Static source code analysis tool
-cask "oclint"
 cask "pluralsight"
 # Command-line shell and scripting language
 cask "powershell"
