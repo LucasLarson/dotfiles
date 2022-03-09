@@ -6,7 +6,6 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
-tap "keys-pub/tap"
 tap "louisbrunner/valgrind"
 tap "microsoft/git"
 tap "peripheryapp/periphery"
@@ -343,7 +342,6 @@ cask "graphicconverter"
 cask "handbrake"
 # Vector graphics editor
 cask "inkscape"
-cask "keys"
 # Music tagger
 cask "musicbrainz-picard"
 # Static source code analysis tool
