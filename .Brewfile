@@ -304,8 +304,6 @@ cask "inkscape"
 # Music tagger
 cask "musicbrainz-picard"
 cask "pluralsight"
-# Command-line shell and scripting language
-cask "powershell"
 # Display image info and preview unsupported formats in QuickLook
 cask "qlimagesize"
 # QuickLook generator for Markdown files
