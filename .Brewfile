@@ -187,8 +187,6 @@ brew "meson"
 brew "mksh"
 # Generate Objective-C & Swift classes from your Core Data model
 brew "mogenerator"
-# Cross platform, open source .NET development framework
-brew "mono"
 # Free (GNU) replacement for the Pico text editor
 brew "nano"
 # Ambitious Vim-fork focused on extensibility and agility
