@@ -237,8 +237,6 @@ brew "shellcheck", args: ["HEAD"]
 brew "shellharden"
 # Autoformat shell script source code
 brew "shfmt", args: ["HEAD"]
-# Unit testing framework for Bourne-based shell scripts
-brew "shunit2"
 # MIPS32 simulator
 brew "spim"
 # Add a public key to a remote machine's authorized_keys file
@@ -293,8 +291,6 @@ brew "zlib"
 brew "zsh", args: ["HEAD"]
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
-# Debugger for zsh
-brew "zshdb"
 # E-book reader
 cask "adobe-digital-editions"
 cask "android-sdk"
