@@ -326,8 +326,6 @@ cask "telegram"
 cask "transmission-nightly"
 # Code editor
 cask "visual-studio-code-insiders"
-# Virtual machine client
-cask "vmware-horizon-client"
 cask "webpquicklook"
 # Torrent streaming application
 cask "webtorrent"
