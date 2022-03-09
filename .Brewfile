@@ -1,4 +1,3 @@
-tap "bashhub-server/latest"
 tap "github/gh"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -313,8 +312,6 @@ brew "zsh", args: ["HEAD"]
 brew "zsh-lovers"
 # Debugger for zsh
 brew "zshdb"
-# privately hosted open source server for bashhub-client https://github.com/rcaloras/bashhub-client
-brew "bashhub-server/latest/bashhub-server"
 # E-book reader
 cask "adobe-digital-editions"
 cask "android-sdk"
