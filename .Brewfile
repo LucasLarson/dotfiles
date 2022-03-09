@@ -229,8 +229,6 @@ brew "rsync"
 brew "ruby"
 # Bash completion for Ruby
 brew "ruby-completion"
-# Safe, concurrent, practical language
-brew "rust"
 # Small man page generator
 brew "scdoc"
 # Static analysis and lint tool, for (ba)sh scripts
