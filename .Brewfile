@@ -1,5 +1,4 @@
 tap "bashhub-server/latest"
-tap "getsentry/tools"
 tap "github/gh"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -316,8 +315,6 @@ brew "zsh-lovers"
 brew "zshdb"
 # privately hosted open source server for bashhub-client https://github.com/rcaloras/bashhub-client
 brew "bashhub-server/latest/bashhub-server"
-# Sentry command-line client for some generic tasks
-brew "getsentry/tools/sentry-cli"
 # E-book reader
 cask "adobe-digital-editions"
 cask "android-sdk"
