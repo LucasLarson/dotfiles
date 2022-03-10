@@ -302,7 +302,7 @@ printf '%s\n' "${PATH[@]-}" | command sed -e 's|:|\n|g'
 
 ### executables
 
-`print -l ${^path}/*(-*N)` # [via](https://web.archive.org/web/20210206194844id_/grml.org/zsh/zsh-lovers#_unsorted_misc_examples)
+`print -l ${^path-}/*(-*N)` # [via](https://web.archive.org/web/20210206194844id_/grml.org/zsh/zsh-lovers#_unsorted_misc_examples)
 
 ## text editing
 
@@ -372,7 +372,7 @@ for example, C++17’s `<filesystem>`<br/>
 `program="clang-format" && if ! command -v "$program" >/dev/null 2>&1; then printf '\nerror: no %s installation detected;\nskipping code\xc2\xa0formatting\n' "$program" && return 1; fi; \
 clangformat=${1:-2} && printf '\n%s\n\n' "$("$program" --version)" && sleep 1 && printf 'applying %s to all applicable files in %s...\n' "$program" "${PWD##*/}" && sleep 1 && printf 'setting \x60IndentWidth\x60 to %s\n\n\n' "$clangformat" && sleep 1 && find -- . -type f \( \
 -iname '*.c' -or -iname '*.c++' -or -iname '*.cc' -or -iname '*.cp' -or -iname '*.cpp' -or -iname '*.cxx' -or -iname '*.h' -or -iname '*.h++' -or -iname '*.hh' -or -iname '*.hp' -or -iname '*.hpp' -or -iname '*.hxx' -or \
--iname '*.i' -or -iname '*.ii' -or -iname '*.java' -or -iname '*.js' -or -iname '*.m' -or -iname '*.mi' -or -iname '*.mii' -or -iname '*.mm' -or -iname '*.tcc' -or -iname '*.tpp' -or -iname '*.txx' \) -exec "$program" -i -style "{IndentWidth: $clangformat}" --verbose {} \; && printf '\n\n\xe2\x9c\x85 done\x21\n\n'`
+-iname '*.i' -or -iname '*.ii' -or -iname '*.java' -or -iname '*.js' -or -iname '*.m' -or -iname '*.mi' -or -iname '*.mii' -or -iname '*.mm' -or -iname '*.tcc' -or -iname '*.tpp' -or -iname '*.txx' \) -exec "$program" -i -style "{IndentWidth: ${clangformat-}}" --verbose {} \; && printf '\n\n\xe2\x9c\x85 done\x21\n\n'`
 
 ### run `cpplint` recursively
 
@@ -561,7 +561,7 @@ https://"${wget_server-}"; unset wget_server utility`
 
 ### array types
 
-`<<<${(t)path} #` [via](https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path)
+`<<<${(t)path-} #` [via](https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path)
 
 ### troubleshooting
 
@@ -594,10 +594,10 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 ```shell
 trashDeveloper=1 && sleep 0.25 && \
-mkdir --parents "${HOME}/Library/Developer/Xcode/DerivedData" && mv "${HOME}/Library/Developer/Xcode/DerivedData" "${HOME}/.Trash/Xcode-${RANDOM}" && \
-mkdir --parents "${HOME}/Library/Developer/Xcode/UserData/IB Support" && mv "${HOME}/Library/Developer/Xcode/UserData/IB Support" "${HOME}/.Trash/Xcode⁄UserData⁄IB Support-${RANDOM}" && \
-mkdir --parents "${HOME}/Library/Caches/JetBrains" && mv "${HOME}/Library/Caches/JetBrains" "${HOME}/.Trash/JetBrains-${RANDOM}" && \
-mkdir --parents "${HOME}/Library/Caches/org.carthage.CarthageKit/DerivedData" && mv "${HOME}/Library/Caches/org.carthage.CarthageKit/DerivedData" "${HOME}/.Trash/Carthage-${RANDOM}" && \
+mkdir --parents "${HOME-}/Library/Developer/Xcode/DerivedData" && mv "${HOME-}/Library/Developer/Xcode/DerivedData" "${HOME-}/.Trash/Xcode-${RANDOM-}" && \
+mkdir --parents "${HOME-}/Library/Developer/Xcode/UserData/IB Support" && mv "${HOME-}/Library/Developer/Xcode/UserData/IB Support" "${HOME-}/.Trash/Xcode⁄UserData⁄IB Support-${RANDOM-}" && \
+mkdir --parents "${HOME-}/Library/Caches/JetBrains" && mv "${HOME-}/Library/Caches/JetBrains" "${HOME-}/.Trash/JetBrains-${RANDOM-}" && \
+mkdir --parents "${HOME-}/Library/Caches/org.carthage.CarthageKit/DerivedData" && mv "${HOME-}/Library/Caches/org.carthage.CarthageKit/DerivedData" "${HOME-}/.Trash/Carthage-${RANDOM-}" && \
 unset trashDeveloper && printf '\n\n\xf0\x9f%s\x9a\xae data successfully trashed\n\n' "${trashDeveloper:-"$(printf '')"}"
 ```
 
