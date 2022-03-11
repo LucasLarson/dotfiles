@@ -95,9 +95,6 @@
   # https://github.com/ustasb/dotfiles/commit/da93f0f
   program = gpg
 
-[grep]
-  lineNumber = true
-
 [i18n]
   commitEncoding = utf-8
 
