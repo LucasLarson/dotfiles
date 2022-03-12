@@ -307,12 +307,6 @@ test -d "${NPM_PACKAGES-}/bin" &&
 test -d "${NPM_PACKAGES-}/share/man" &&
   MANPATH="${MANPATH:+${MANPATH-}:}${NPM_PACKAGES-}/share/man"
 
-# Template repositories
-test -d "${TEMPLATE:=${DOTFILES:=${HOME-}/Dropbox/dotfiles}/../Template}" &&
-  export TEMPLATE
-test -d "${DEFAULT:=${DOTFILES:=${HOME-}/Dropbox/dotfiles}/../Default}" &&
-  export DEFAULT
-
 # completion dots
 # https://git.io/completion-dots-in-.zshrc
 expand-or-complete-with-dots() {

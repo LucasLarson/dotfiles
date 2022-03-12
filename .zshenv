@@ -1,7 +1,12 @@
 #!/usr/bin/env zsh
 
-# Dotfiles
-export DOTFILES="${HOME}/Dropbox/dotfiles"
+## Dotfiles and templates
+command mkdir -p "${HOME-}"'/Dropbox/dotfiles' &&
+  export DOTFILES="${DOTFILES:="${HOME-}"/Dropbox/dotfiles}" &&
+  command mkdir -p "${TEMPLATE:="${DOTFILES-}"/../Template}" &&
+  export TEMPLATE="${TEMPLATE:="${DOTFILES-}"/../Template}" &&
+  command mkdir -p "${DEFAULT:="${TEMPLATE-}"/../Default}" &&
+  export DEFAULT="${DEFAULT:="${TEMPLATE-}"/../Default}"
 
 # Language and locale
 export LANG="${LANG:=en_US.UTF-8}"
