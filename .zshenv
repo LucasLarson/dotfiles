@@ -22,7 +22,7 @@ export XDG_DATA_DIRS="${XDG_DATA_DIRS:=/usr/local/share/:/usr/share/}"
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:=/etc/xdg}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:=${HOME-}/.cache}"
 
-# Language and locale
+# Locale
 export LC_ALL="${LC_ALL:=en_US.UTF-8}"
 export TZ="${TZ:=America/New_York}"
 
