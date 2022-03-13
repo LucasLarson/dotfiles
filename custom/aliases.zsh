@@ -724,7 +724,31 @@ alias gc='git_commit'
 alias gcm='git_commit'
 alias gca='git_commit --amend'
 
-alias gcl='command git clone --verbose --progress'
+# git clone
+git_clone() {
+  set -o nounset
+  case "${1-}" in
+  -h | --help)
+    printf 'Usage: %s <git_url> [<dir_name>]\n' "$(command basename "$0")" &&
+      return 0
+    ;;
+  -1 | --shallow)
+    shift
+    command mkdir "${2:-$(command basename "$1" .git || return 123)}" >/dev/null 2>&1
+    cd "${2:-$(command basename "$1" .git || return 122)}" >/dev/null 2>&1 || return 5
+    command git clone --verbose --progress --depth=1 --shallow-submodules --single-branch "$1" . || return 6
+    ;;
+  *)
+    command mkdir "${2:-$(command basename "$1" .git || return 126)}" >/dev/null 2>&1
+    cd "${2:-$(command basename "$1" .git || return 125)}" >/dev/null 2>&1 || return 3
+    command git clone --verbose --progress --recursive -- "$1" . || return 4
+    ;;
+  esac
+  set +o nounset
+}
+alias gcl='git_clone'
+alias gcl1='git_clone -1'
+
 alias gco='command git checkout --progress'
 
 # `git checkout` the default branch
