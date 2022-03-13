@@ -27,6 +27,12 @@ command mkdir -p "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"$(command id -n -u)" &&
   command chmod 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"$(command id -n -u)" &&
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:="${TMPDIR:-/tmp}"/xdg_runtime_dir-"$(command id -n -u)"}"
 
+## Internal Field Separators
+# https://unix.stackexchange.com/a/220658
+# https://opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_05_03
+IFS="$(printf ' \t\n|')"
+export IFS="${IFS%|}"
+
 ## Locale
 export LC_ALL="${LC_ALL:=en_US.UTF-8}"
 export TZ="${TZ:=America/New_York}"
