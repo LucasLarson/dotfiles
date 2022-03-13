@@ -212,12 +212,12 @@ command -v pip >/dev/null 2>&1 && {
     printf 'verifying integrity of pip bootstrap file...\n'
   } 2>/dev/null
   set -o xtrace
-  test "$(command curl --fail --silent --location https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py | command sha256sum)" != 'e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de  -'
+  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py' | command sha256sum)" != 'e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de  -'
 } || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing pip using bootstrap...\n' 2>/dev/null
   set -o xtrace
-  command curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o ./get-pip.py
+  command curl 'https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py' -o ./get-pip.py
   { set +o xtrace; } 2>/dev/null
   printf 'this may take a while...\n' 2>/dev/null
   set -o xtrace
@@ -249,11 +249,11 @@ command -v chsh >/dev/null 2>&1 || {
 # Oh My Zsh
 command -v omz >/dev/null 2>&1 ||
   test -d "${ZSH:=${HOME-}/.oh-my-zsh}" ||
-  test "$(command curl --fail --silent --location https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh | command sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' || {
+  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' | command sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing Oh My Zsh...\n' 2>/dev/null
   set -o xtrace
-  sh -c "$(command wget https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
+  sh -c "$(command wget 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' --output-document -)" "" --unattended --keep-zshrc
 }
 
 # update, repair everything again before close
