@@ -22,6 +22,11 @@ export XDG_DATA_DIRS="${XDG_DATA_DIRS:=/usr/local/share/:/usr/share/}"
 export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:=/etc/xdg}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:="${HOME-}"/.cache}"
 
+# `XDG_RUNTIME_DIR` has no default and requires `700` permissions
+command mkdir -p "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"$(command id -n -u)" &&
+  command chmod 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"$(command id -n -u)" &&
+  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:="${TMPDIR:-/tmp}"/xdg_runtime_dir-"$(command id -n -u)"}"
+
 ## Locale
 export LC_ALL="${LC_ALL:=en_US.UTF-8}"
 export TZ="${TZ:=America/New_York}"
