@@ -55,7 +55,7 @@ cd -- "${HOME-}" ||
 # https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
 ps4_temporary="${PS4:-+ }"
 unset -- PS4 2>/dev/null
-set -x
+set -o xtrace
 
 # pacman
 # https://askubuntu.com/a/459425
@@ -67,9 +67,9 @@ test "$(command awk -F '=' '/^NAME/{print $2}' '/etc/os-release' 2>/dev/null | c
 # apk
 command -v apk >/dev/null 2>&1 || {
   # trust apk only if it matches a known checksum
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'verifying apk tools integrity...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   test "$(command curl --fail --silent --location 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' | command sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -'
 } || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
@@ -85,9 +85,9 @@ command -v apk >/dev/null 2>&1 || {
 } >'/etc/apk/repositories'
 
 # update
-{ set +x; } 2>/dev/null
+{ set +o xtrace; } 2>/dev/null
 printf 'updating Alpine Linux repositories...\n' 2>/dev/null
-set -x
+set -o xtrace
 command apk update --verbose --progress
 command apk upgrade --verbose --progress
 
@@ -97,22 +97,22 @@ command apk upgrade --verbose --progress
   test -d '/usr/share/man/man2' &&
   test -d '/usr/share/man/man4' &&
   test -d '/usr/share/man/man6'; } || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing man pages...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   install man-pages
   install man-pages-doc
 }
 command -v mandoc >/dev/null 2>&1 || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing mandoc for man pages...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   install mandoc mandoc-doc
 }
 command -v less >/dev/null 2>&1 || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing less to read man pages...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   install less less-doc
 }
 
@@ -122,9 +122,9 @@ command -v less >/dev/null 2>&1 || {
 install coreutils coreutils-doc
 { test -x '/usr/bin/coreutils' &&
   test "$(command find --version 2>/dev/null | command head -n 1 | command awk '{print $3}' | command tr -d '()')" = 'findutils'; } || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing Linux utilities...\n' 2>/dev/null
-  set -x
+  set -o xtrace
 }
 install util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
 {
@@ -137,26 +137,26 @@ command apk update
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
 test -d '/etc/ssh' || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing OpenSSH...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   install openssh openssh-doc
 }
 
 # gpg
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
 test -x '/usr/bin/gpg2' || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing GPG...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   install gnupg gnupg-doc
 }
 
 # git
 command -v git >/dev/null 2>&1 || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing Git...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   install git git-doc
 }
 
@@ -177,66 +177,66 @@ command git config --global --get init.defaultBranch >/dev/null 2>&1 || {
 }
 
 # time zone
-{ set +x; } 2>/dev/null
+{ set +o xtrace; } 2>/dev/null
 printf 'updating time zone information...\n' 2>/dev/null
-set -x
+set -o xtrace
 install --no-cache tzdata tzdata-doc
 test -r '/usr/share/zoneinfo/America/New_York' &&
   cp -- '/usr/share/zoneinfo/America/New_York' '/etc/localtime'
 printf 'America/New_York\n' >'/etc/timezone'
 
 # python
-{ set +x; } 2>/dev/null
+{ set +o xtrace; } 2>/dev/null
 printf 'checking Python installation...\n' 2>/dev/null
-set -x
+set -o xtrace
 command -v python >/dev/null 2>&1 || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing Python 2 and Python 3...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   install python2 python2-doc python3 python3-doc
 }
 
 # pip
-{ set +x; } 2>/dev/null
+{ set +o xtrace; } 2>/dev/null
 printf 'checking Python package manager installation...\n' 2>/dev/null
-set -x
+set -o xtrace
 command -v pip >/dev/null 2>&1 && {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'updating pip...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   command python3 -m pip install --upgrade pip 2>/dev/null
 } || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   {
     printf 'installing pip...\n'
     printf 'verifying integrity of pip bootstrap file...\n'
   } 2>/dev/null
-  set -x
+  set -o xtrace
   test "$(command curl --fail --silent --location https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py | command sha256sum)" != 'e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de  -'
 } || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing pip using bootstrap...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   command curl https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py -o ./get-pip.py
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'this may take a while...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   command python3 ./get-pip.py
 }
 
 # mackup
 command -v mackup >/dev/null 2>&1 || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing mackup...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   command pip install --upgrade mackup
 }
 
 # zsh
 command -v zsh >/dev/null 2>&1 || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing Zsh...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   install zsh zsh-doc
 }
 
@@ -250,41 +250,41 @@ command -v chsh >/dev/null 2>&1 || {
 command -v omz >/dev/null 2>&1 ||
   test -d "${ZSH:=${HOME-}/.oh-my-zsh}" ||
   test "$(command curl --fail --silent --location https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh | command sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' || {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'installing Oh My Zsh...\n' 2>/dev/null
-  set -x
+  set -o xtrace
   sh -c "$(command wget https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh --output-document -)" "" --unattended --keep-zshrc
 }
 
 # update, repair everything again before close
-{ set +x; } 2>/dev/null
+{ set +o xtrace; } 2>/dev/null
 printf 'updating...\n' 2>/dev/null
-set -x
+set -o xtrace
 command apk update --verbose --verbose --progress
 
-{ set +x; } 2>/dev/null
+{ set +o xtrace; } 2>/dev/null
 printf 'upgrading...\n' 2>/dev/null
-set -x
+set -o xtrace
 command apk upgrade --verbose --verbose --progress
 
-{ set +x; } 2>/dev/null
+{ set +o xtrace; } 2>/dev/null
 printf 'repairing and resolving dependencies...\n' 2>/dev/null
-set -x
+set -o xtrace
 command apk fix --verbose --verbose --depends --progress
 
-{ set +x; } 2>/dev/null
+{ set +o xtrace; } 2>/dev/null
 printf 'verifying installations...\n' 2>/dev/null
-set -x
+set -o xtrace
 command apk verify --verbose --verbose --progress && {
-  { set +x; } 2>/dev/null
+  { set +o xtrace; } 2>/dev/null
   printf 'verified\n' 2>/dev/null
-  set -x
+  set -o xtrace
 }
 
 # cleanup
-{ set +x; } 2>/dev/null
+{ set +o xtrace; } 2>/dev/null
 printf 'cleaning up temporary installation files and performing housekeeping...\n' 2>/dev/null
-set -x
+set -o xtrace
 test -w ./apk.static &&
   rm ./apk.static
 test -w ./get-pip.py &&
