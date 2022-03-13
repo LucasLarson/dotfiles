@@ -24,6 +24,8 @@ if command -v apk >/dev/null 2>&1; then
   alias install='command apk add --verbose'
 elif command -v pacman >/dev/null 2>&1; then
   alias install='command pacman --sync --verbose --noconfirm'
+elif command -v apt-get >/dev/null 2>&1; then
+  alias install='command apt-get install --verbose --show-progress --assume-yes'
 fi
 
 clear
