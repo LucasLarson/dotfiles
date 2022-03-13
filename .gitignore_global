@@ -66,6 +66,9 @@ backup*/
 ## Vim ##
 *.swp
 
+## Wget ##
+*.wget-hsts
+
 ## keys ##
 *.key
 *.pem
