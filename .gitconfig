@@ -35,10 +35,6 @@
 [checkout]
   defaultRemote = origin
 
-[color]
-  # https://commondatastorage.googleapis.com/chrome-infra-docs/flat/depot_tools/docs/html/depot_tools_tutorial.html#_bootstrapping_configuration
-  ui = true
-
 [color "diff"]
   meta = 11
   frag = magenta bold
