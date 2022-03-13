@@ -312,7 +312,6 @@ command find -- . \
 # delete empty, writable, zero-length files
 # except those within `.git/` directories
 # and those with specific names
-# https://stackoverflow.com/a/64863398
 command find -- . \
   -type f \
   -writable \
