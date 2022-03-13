@@ -44,7 +44,7 @@ Temporary Items
 *.hg
 
 ## Node ##
-node_modules/
+*node_modules/
 
 ## SourceTree ##
 *-lock.*
