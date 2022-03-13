@@ -28,4 +28,4 @@ export TZ="${TZ:=America/New_York}"
 
 ## private
 test -r "${HOME-}"'/.env' &&
-. "${HOME-}"'/.env'
+  . "${HOME-}"'/.env'
