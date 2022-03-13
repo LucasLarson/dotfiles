@@ -37,6 +37,11 @@ export IFS="${IFS%|}"
 export LC_ALL="${LC_ALL:=en_US.UTF-8}"
 export TZ="${TZ:=America/New_York}"
 
+## POSIX
+# https://askubuntu.com/a/1121665
+# set to `1` to activate debugging
+export POSIXLY_CORRECT="${POSIXLY_CORRECT:-0}"
+
 ## private
 test -r "${HOME-}"'/.env' &&
   . "${HOME-}"'/.env'
