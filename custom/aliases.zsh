@@ -275,6 +275,7 @@ cleanup() {
       ! -name '*journal' \
       ! -name '*lock' \
       ! -name '*lockfile' \
+      ! -name '*rc' \
       ! -name '.dirstamp' \
       ! -name '.gitkeep' \
       ! -name '.gitmodules' \
