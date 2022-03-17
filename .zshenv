@@ -42,6 +42,10 @@ export TZ="${TZ:=America/New_York}"
 # set to `1` to activate debugging
 export POSIXLY_CORRECT="${POSIXLY_CORRECT:-0}"
 
+## Rust
+# https://github.com/mkrasnitski/git-power-rs/tree/2fc2906#installing
+export CARGO_HOME="${CARGO_HOME:="${HOME-}"/.cargo}"
+
 ## private
 test -r "${HOME-}"'/.env' &&
   . "${HOME-}"'/.env'
