@@ -17,9 +17,6 @@
   core:
     closeDeletedFileTabs: true
     debugLSP: true
-    disabledPackages: [
-      "whitespace"
-    ]
     projectHome: "/Users/LucasLarson/Code"
     telemetryConsent: "limited"
   editor:
