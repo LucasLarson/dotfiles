@@ -34,6 +34,11 @@
     liveSearchMinimumCharacters: 2
     scrollToResultOnLiveSearch: true
     useRipgrep: true
+  "format-shell":
+    keepPaddings: true
+    showNotifications: true
+    simplify: true
+    spaceAfterRedirect: false
   "gitlab-integration":
     token: "$GITLAB_API_TOKEN"
   "linter-markdown":
