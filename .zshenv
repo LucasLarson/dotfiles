@@ -27,6 +27,11 @@ command mkdir -p "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"$(command id -n -u)" &&
   command chmod 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"$(command id -n -u)" &&
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:="${TMPDIR:-/tmp}"/xdg_runtime_dir-"$(command id -n -u)"}"
 
+## Go
+# https://github.com/golang/go/wiki/SettingGOPATH/450fad957455a745f8d97ad4cb79376cd689810a
+# command go env -w GOPATH="${HOME-}"'/.go' ||
+export GOPATH="${GOPATH:="${HOME-}"/.go}"
+
 ## Internal Field Separators
 # https://unix.stackexchange.com/a/220658
 # https://opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_05_03
