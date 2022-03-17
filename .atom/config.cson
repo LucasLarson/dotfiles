@@ -34,6 +34,8 @@
     liveSearchMinimumCharacters: 2
     scrollToResultOnLiveSearch: true
     useRipgrep: true
+  "gitlab-integration":
+    token: "$GITLAB_API_TOKEN"
   "linter-ui-default":
     panelHeight: 193
     showPanel: true
