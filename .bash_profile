@@ -9,6 +9,10 @@ export LC_ALL="${LC_ALL:=en_US.UTF-8}"
 test -d '/usr/local/bin' &&
   export PATH="/usr/local/bin:${PATH:+:${PATH-}}"
 
+## Bash completions
+test -r '/usr/local/etc/profile.d/bash_completion.sh' &&
+  . '/usr/local/etc/profile.d/bash_completion.sh'
+
 ## Bashhub
 # this should be EOF
 # https://bashhub.com/docs
