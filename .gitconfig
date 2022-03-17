@@ -6,7 +6,7 @@
   # use `git config --system user.signingKey 𝑥`
 
 [core]
-  abbrev = 7
+  abbrev = 10
 
   # `autocrlf` is all-lowercase
   # https://git-scm.com/docs/git-config/2.34.1#Documentation/git-config.txt-coreautocrlf
