@@ -221,7 +221,7 @@ command -v pip >/dev/null 2>&1 && {
   { set +o xtrace; } 2>/dev/null
   printf 'this may take a while...\n' 2>/dev/null
   set -o xtrace
-  command python3 ./get-pip.py
+  command python3 -v ./get-pip.py
 }
 
 # mackup
