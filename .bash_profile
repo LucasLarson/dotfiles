@@ -10,8 +10,13 @@ test -d '/usr/local/bin' &&
   export PATH="/usr/local/bin:${PATH:+:${PATH-}}"
 
 ## Bash completions
-test -r '/usr/local/etc/profile.d/bash_completion.sh' &&
-  . '/usr/local/etc/profile.d/bash_completion.sh'
+for file in \
+  '/etc/profile.d/bash_completion.sh' \
+  '/usr/local/etc/profile.d/bash_completion.sh' \
+  '/opt/local/etc/profile.d/bash_completion.sh'; do
+  test -r "${file-}" &&
+    . "${file-}"
+done
 
 ## Bashhub
 # this should be EOF
