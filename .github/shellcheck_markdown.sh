@@ -1,0 +1,61 @@
+#!/usr/bin/env sh
+# test shell syntax of Markdown code snippets
+# https://github.com/dylanaraps/pure-sh-bible/commit/9d54e96011
+
+set -o verbose
+main() {
+  trap 'command rm -f # ./codesnippets_code' EXIT INT
+
+  # Extract code blocks from the README.
+  while read -r line; do
+    test "${code-}" = '1' &&
+      test "${line-}" != '```' &&
+      printf '%s\n' "${line-}"
+
+    case "${line-}" in
+    '```sh' | '```bash' | '```zsh' | '```shell')
+      code='1'
+      ;;
+    '```')
+      code=''
+      ;;
+    *) ;;
+
+    esac
+  done <./../CodeSnippets.md >'./codesnippets_code'
+
+  # Print the code blocks.
+  while read -r line; do
+    printf '%s\n' "${line-}"
+  done <'./codesnippets_code'
+
+  # Run shellcheck on the extracted code blocks
+  # and this test script itself.
+
+  # SC1071: allow shell directives outside sh, bash, ksh, dash
+  # SC1091: allow linking to, but not following, linked scripts
+  # SC2123: alllow `PATH=...`
+  # SC2312: allow masking of return values
+  command shellcheck \
+    --exclude="SC1071,SC1091,SC2123,SC2312" \
+    --check-sourced \
+    --enable=all \
+    --source-path=/dev/null \
+    --external-sources \
+    --include="" \
+    --format=gcc \
+    --shell=sh \
+    --severity=style \
+    --norc \
+    --color=always \
+    -- \
+    ./codesnippets_code \
+    ./shellcheck_markdown.sh ||
+    exit 1
+
+  unset -- code
+  unset -- line
+}
+
+main "$@"
+set +o verbose
