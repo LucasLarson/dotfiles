@@ -20,7 +20,7 @@ jobs:
           set -o noglob
           set -o nounset
           set -o verbose
-          trap 'command rm -f # ./codesnippets_code' EXIT INT
+          trap 'printf "\342\234\205  done\n"' EXIT INT
 
           # Extract code blocks from the README.
           while read -r line; do
