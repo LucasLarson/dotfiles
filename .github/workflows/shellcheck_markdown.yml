@@ -59,7 +59,6 @@ jobs:
             --source-path=/dev/null \
             --external-sources \
             --include="" \
-            --format=gcc \
             --shell=sh \
             --severity=style \
             --norc \
