@@ -396,8 +396,16 @@ rbenv() {
 # https://github.com/zsh-users/zsh/blob/a9061cc/StartupFiles/zshrc#L56-L57
 # https://github.com/zsh-users/zsh/commit/db3f2d2
 test -n "${ZSH_VERSION-}" &&
-  typeset -U PATH path CDPATH cdpath FPATH fpath MANPATH manpath &&
-  export PATH path CDPATH cdpath FPATH fpath MANPATH manpath
+  typeset -U \
+    PATH path \
+    CDPATH cdpath \
+    FPATH fpath \
+    MANPATH manpath &&
+  export \
+    PATH path \
+    CDPATH cdpath \
+    FPATH fpath \
+    MANPATH manpath
 
 # powerlevel10k prompt
 # customize prompt via `p10k configure` or edit `~/.p10k.zsh`
