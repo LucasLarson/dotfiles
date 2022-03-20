@@ -396,7 +396,7 @@ rbenv() {
 # https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
 # https://github.com/zsh-users/zsh/blob/a9061cc/StartupFiles/zshrc#L56-L57
 # https://github.com/zsh-users/zsh/commit/db3f2d2
-test -n "${ZSH_VERSION-}" &&
+test -n "${ZSH-}" &&
   typeset -U \
     PATH path \
     CDPATH cdpath \
