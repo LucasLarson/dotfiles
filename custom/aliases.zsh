@@ -37,6 +37,49 @@ bash_major_version() {
 }
 alias bash_version='bash_major_version'
 
+bash_pretty() {
+  # use this script to remove comments from shell scripts
+  # and potentially find duplicate content
+
+  set +o allexport
+  set -o noclobber
+  set -o nounset
+  set -o xtrace
+  for file in "$@"; do
+
+    # if `bash --pretty-print` fails on the file, skip it
+    if command bash --pretty-print -- "${file}" 2>/dev/null; then
+      # first Bash
+      {
+        # add the shell directive
+        printf '#!/usr/bin/env bash\n'
+
+        # add `bash --pretty-print` content
+        command bash --pretty-print -- "${file}"
+
+        # save `$file`'s interpolated content into a file called `$file.bash`
+        # unless it already exists: `>|` prevents overwriting
+      } >|"${file}"'.bash'
+
+      # next nominally POSIX shell
+      {
+        # add the shell directive
+        printf '#!/usr/bin/env sh\n'
+
+        # add `bash --pretty-print --posix` content
+        command bash --pretty-print --posix -- "${file-}"
+      } >|"${file-}"'.sh'
+    fi
+  done
+  {
+    set -o allexport
+    set +o noclobber
+    set +o nounset
+    set +o xtrace
+  } 2>/dev/null
+  unset file
+}
+
 # prefer `bat` to `cat` if available
 command -v bat >/dev/null 2>&1 &&
   alias cat='command bat --decorations never'
