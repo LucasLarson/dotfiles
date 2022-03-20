@@ -8,4 +8,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run shellcheck
-        run: ../shellcheck_markdown.sh
+        run: ./.github/shellcheck_markdown.sh
