@@ -50,7 +50,7 @@ main() {
     --color=always \
     -- \
     ./codesnippets_code \
-    ./shellcheck_markdown.sh ||
+    "$0" ||
     exit 1
 
   unset -- code
