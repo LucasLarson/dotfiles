@@ -85,7 +85,7 @@ clang_format() {
   # permit arguments in any order
   # https://salsa.debian.org/debian/debianutils/blob/c2a1c435ef/savelog
   while getopts i:w: opt; do
-    case ${opt-} in
+    case "${opt-}" in
     i)
       IndentWidth="${OPTARG-}"
       printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"
