@@ -227,6 +227,7 @@ cleanup() {
       -name 'desktop.ini' -o \
       -name 'thumbs.db' \
       \) \
+      -print \
       -delete 2>/dev/null
 
     # delete crufty Zsh files
@@ -566,7 +567,8 @@ find_by_name() {
     ! -path '*custom/plugins*' \
     ! -path '*custom/themes*' \
     ! -path '*node_modules/*' \
-    -iname "*${*}*" 2>/dev/null |
+    -iname "*${*}*" 2>/dev/null \
+    -print 2>/dev/null |
     LC_ALL='C' command sort -u
 }
 alias fname='find_by_name'
@@ -1321,6 +1323,7 @@ plist_r() {
       ! -path "${HOME-}"'/Library' \
       ! -path "${DOTFILES-}"'/Library' \
       -name '*.plist' \
+      -print \
       -exec plutil -convert xml1 -- {} \; \
       -exec sed -i -- 's|\t|  |g' {} \;
     ;;
