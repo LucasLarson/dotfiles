@@ -1,0 +1,70 @@
+---
+# https://github.com/dylanaraps/pure-sh-bible/commit/9d54e96011
+name: Shellcheck
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: sh
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run shellcheck
+        run: |
+          # test shell syntax of Markdown code snippets
+          # https://github.com/dylanaraps/pure-sh-bible/commit/9d54e96011
+
+          set +o allexport
+          set -o noclobber
+          set -o noglob
+          set -o nounset
+          set -o verbose
+          trap 'printf "shellcheck complete\n"' EXIT INT
+
+          # Extract code blocks from the README.
+          while read -r line; do
+            test "${code-}" = '1' &&
+              test "${line-}" != '```' &&
+              printf '%s\n' "${line-}"
+
+            case "${line-}" in
+            '```sh' | '```bash' | '```zsh' | '```shell')
+              code='1'
+              ;;
+            '```')
+              code=''
+              ;;
+            *) ;;
+
+            esac
+          done <./CodeSnippets.md >'./codesnippets_code'
+
+          # Print the code blocks.
+          while read -r line; do
+            printf '%s\n' "${line-}"
+          done <'./codesnippets_code'
+
+          # Run shellcheck on the extracted code blocks
+          # and this test script itself.
+
+          # SC1071: allow shell directives outside sh, bash, ksh, dash
+          # SC1091: allow linking to, but not following, linked scripts
+          # SC2123: alllow `PATH=...`
+          # SC2312: allow masking of return values
+          command shellcheck \
+            --exclude="SC1071,SC1091,SC2123,SC2312" \
+            --wiki-link-count="$(command getconf UINT_MAX)" \
+            --check-sourced \
+            --enable=all \
+            --source-path=/dev/null \
+            --external-sources \
+            --include="" \
+            --shell=sh \
+            --severity=style \
+            --norc \
+            --color=always \
+            -- \
+            ./codesnippets_code \
+            "$0" ||
+            exit 1
