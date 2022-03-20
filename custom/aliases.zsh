@@ -249,8 +249,26 @@ cleanup() {
 
   *)
     # refuse to run from `$HOME`
-    test "$(command pwd -P)" = "${HOME-}" &&
-      return 1
+    test "$(command pwd -P)" = "${HOME-}" ||
+
+      # or from any titlecase-named directory just below it
+      # assumes any titlecase-named directory in `$HOME` must not be touched
+      # even though macOS standard directories are a closed set of:
+      # `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Movies`, `Music`, `Pictures`, `Public`, and `Sites`
+      # https://web.archive.org/web/0id_/developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGUide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW9
+      test "$(command pwd -P | command xargs -n 1 dirname)" = "${HOME-}" &&
+      case "$(command pwd -P | command tr -d '[:space:]' | command xargs basename | command cut -c1)" in
+      [A-Z])
+        printf '\n\n'
+        printf '\342\233\224\357\270\217  aborting: refusing to run from \140\044HOME\140 or macOS standard directory\n'
+        printf '\n\n'
+        exit 19
+        ;;
+      *)
+        # permit running from non-titlecase-named directories in `$HOME`
+        ;;
+      esac
+
     # delete thumbnail cache files
     # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
     command find -- "${1:-.}" \
