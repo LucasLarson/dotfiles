@@ -68,7 +68,3 @@ jobs:
             ./codesnippets_code \
             "$0" ||
             exit 1
-
-          unset -- code
-          unset -- line
-          set +o verbose
