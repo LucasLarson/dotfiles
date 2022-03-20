@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: sh +a -Cfuvx
+        shell: sh
     steps:
       - uses: actions/checkout@v3
       - name: Run shellcheck
