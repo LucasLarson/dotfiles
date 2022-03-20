@@ -2,8 +2,8 @@
 
 # Powerlevel10k instant prompt
 # https://github.com/romkatv/powerlevel10k/tree/d394a4e#how-do-i-enable-instant-prompt
-test -r "${XDG_CACHE_HOME:=${HOME-}/.cache}/p10k-instant-prompt-$(command id -n -u).zsh" &&
-  . "${XDG_CACHE_HOME:=${HOME-}/.cache}/p10k-instant-prompt-$(command id -n -u).zsh"
+test -r "${XDG_CACHE_HOME-}/p10k-instant-prompt-$(command id -n -u).zsh" &&
+  . "${XDG_CACHE_HOME-}/p10k-instant-prompt-$(command id -n -u).zsh"
 
 # PATH
 # https://opengroup.org/onlinepubs/9699919799/utilities/command.html
