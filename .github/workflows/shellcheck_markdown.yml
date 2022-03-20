@@ -5,6 +5,9 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: sh +a -Cfuvx
     steps:
       - uses: actions/checkout@v3
       - name: Run shellcheck
