@@ -155,8 +155,6 @@ command man -w >/dev/null 2>&1 &&
 
 # $EDITOR: access favorite with `edit`
 # Set preferred editor if it is available
-# https://stackoverflow.com/a/14755066
-# https://github.com/wililupy/snapd/commit/0573e7b
 if command -v nvim >/dev/null 2>&1; then
   EDITOR="$(command -v nvim)"
 elif command -v vim >/dev/null 2>&1; then
