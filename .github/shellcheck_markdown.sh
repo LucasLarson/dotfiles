@@ -22,7 +22,7 @@ main() {
     *) ;;
 
     esac
-  done <./../CodeSnippets.md >'./codesnippets_code'
+  done <./CodeSnippets.md >'./codesnippets_code'
 
   # Print the code blocks.
   while read -r line; do
