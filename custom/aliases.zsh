@@ -13,14 +13,6 @@ aliases() {
 }
 
 # Atom
-# https://github.com/jeefberkey/dotfiles/blob/2ded1c3/.zshrc#L48-L61
-command -v atom-nightly >/dev/null 2>&1 &&
-  alias atom='atom-nightly' &&
-  alias atom-beta='atom-nightly'
-command -v apm-nightly >/dev/null 2>&1 &&
-  alias apm='apm-nightly' &&
-  alias apm-beta='apm-nightly'
-
 atom_packages() {
   # https://gist.github.com/a8289eeaba6ede045dd532cf0eaea44f#comments
   command apm-nightly list --installed --bare 2>/dev/null ||
