@@ -113,7 +113,6 @@ export ZSH_COMPDUMP="${HOME-}/.zcompdump"
 # overridden by plugins at its end
 plugins=(
   "${plugins[@]}"
-  git
   gunstage
   samefile
   git-default-branch
