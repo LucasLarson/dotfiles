@@ -295,7 +295,7 @@ cleanup() {
           ! -name '.zcompdump' \
           -name '.zcompdump*' \
           -print \
-          -delete
+          -delete 2>/dev/null
       done
     fi
 
@@ -331,7 +331,7 @@ cleanup() {
       ! -name '__init__.py' \
       ! -name 'favicon.*' \
       -print \
-      -delete
+      -delete 2>/dev/null
 
     # delete empty directories recursively
     # but skip Git-specific and `/.well-known/` directories
@@ -341,7 +341,7 @@ cleanup() {
       ! -path '*.git/*' \
       ! -name '.well-known' \
       -print \
-      -delete
+      -delete 2>/dev/null
 
     # repair Git case sensitivity
     # https://unix.stackexchange.com/a/112024
@@ -366,7 +366,7 @@ cleanup() {
       -path './.git/*' \
       -path '*hooks/*.sample' \
       -print \
-      -delete
+      -delete 2>/dev/null
 
     ;;
   esac
