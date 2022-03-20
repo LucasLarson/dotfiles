@@ -43,7 +43,10 @@ export ZSHCUSTOM="${ZSH_CUSTOM-}"
 # powerlevel10k
 # https://github.com/romkatv/powerlevel10k/blob/48c6ff4/README.md#oh-my-zsh
 if test -r "${ZSH_CUSTOM-}/themes/powerlevel10k/powerlevel10k.zsh-theme" &&
-  test "$((COLUMNS * LINES))" -gt "$((80 * 24 / 2))"; then
+  {
+    test "$(command uname)" = 'Darwin' ||
+      test "$((COLUMNS * LINES))" -gt "$((80 * 24))"
+  }; then
   ZSH_THEME='powerlevel10k/powerlevel10k'
 else
   ZSH_THEME='robbyrussell'
