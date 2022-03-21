@@ -593,12 +593,13 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 ### Xcode, JetBrains, Carthage, Homebrew
 
 ```shell
-trashDeveloper=1 && sleep 0.25 && \
-mkdir --parents "${HOME-}/Library/Developer/Xcode/DerivedData" && mv "${HOME-}/Library/Developer/Xcode/DerivedData" "${HOME-}/.Trash/Xcode-${RANDOM-}" && \
-mkdir --parents "${HOME-}/Library/Developer/Xcode/UserData/IB Support" && mv "${HOME-}/Library/Developer/Xcode/UserData/IB Support" "${HOME-}/.Trash/Xcode⁄UserData⁄IB Support-${RANDOM-}" && \
-mkdir --parents "${HOME-}/Library/Caches/JetBrains" && mv "${HOME-}/Library/Caches/JetBrains" "${HOME-}/.Trash/JetBrains-${RANDOM-}" && \
-mkdir --parents "${HOME-}/Library/Caches/org.carthage.CarthageKit/DerivedData" && mv "${HOME-}/Library/Caches/org.carthage.CarthageKit/DerivedData" "${HOME-}/.Trash/Carthage-${RANDOM-}" && \
-unset trashDeveloper && printf '\n\n\xf0\x9f%s\x9a\xae data successfully trashed\n\n' "${trashDeveloper:-"$(printf '')"}"
+trash_developer='1'; sleep 1; set -o errexit; set -o nounset; set -o xtrace; trash_date="$(command date -u '+%Y%m%d_%s')" \
+command mkdir -p "${HOME-}"'/Library/Developer/Xcode/DerivedData' && command mv -i "${HOME-}"'/Library/Developer/Xcode/DerivedData' "${HOME-}"'/.Trash/Xcode-'"${trash_date-}" \
+command mkdir -p "${HOME-}"'/Library/Developer/Xcode/UserData/IB Support' && command mv -i "${HOME-}"'/Library/Developer/Xcode/UserData/IB Support' "${HOME-}"'/.Trash/Xcode⁄UserData⁄IB Support-'"${trash_date-}" \
+command mkdir -p "${HOME-}"'/Library/Caches/JetBrains' && command mv -i "${HOME-}"'/Library/Caches/JetBrains' "${HOME-}"'/.Trash/JetBrains-'"${trash_date-}" \
+command mkdir -p "${HOME-}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' && command mv -i "${HOME-}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' "${HOME-}"'/.Trash/Carthage-'"${trash_date-}" \
+command mkdir -p "${HOME-}"'/Library/Caches/Homebrew/downloads' && command mv -i "${HOME-}"'/Library/Caches/Homebrew/downloads' "${HOME-}"'/.Trash/Homebrew-'"${trash_date-}" \
+command -v brew >/dev/null 2>&1 && command brew cleanup --prune=all --verbose; { set +o errexit; set +o nounset; set +o xtrace; unset -- trash_developer; unset -- trash_date; } 2>/dev/null; printf '\n\n'; printf '\360\237%s\232\256  data successfully trashed\n' "${trash_developer-}"
 ```
 
 ## delete
