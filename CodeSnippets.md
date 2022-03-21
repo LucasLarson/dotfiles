@@ -82,7 +82,7 @@
   - [brew](#brew)
   - [npm](#npm)
   - [gem](#gem)
-  - [Xcode, JetBrains, Carthage](#xcode-jetbrains-carthage)
+  - [Xcode, JetBrains, Carthage, Homebrew](#xcode-jetbrains-carthage-homebrew)
 - [delete](#delete)
   - [empty directories](#empty-directories)
   - [compare two folders](#compare-two-folders)
@@ -590,7 +590,7 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 `gem cleanup --verbose`
 
-### Xcode, JetBrains, Carthage
+### Xcode, JetBrains, Carthage, Homebrew
 
 ```shell
 trashDeveloper=1 && sleep 0.25 && \
