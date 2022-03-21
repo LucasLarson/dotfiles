@@ -49,11 +49,12 @@ jobs:
           # and this test script itself.
 
           # SC1071: allow shell directives outside sh, bash, ksh, dash
+          # SC1090: allow linking to a dynamic location
           # SC1091: allow linking to, but not following, linked scripts
           # SC2123: alllow `PATH=...`
           # SC2312: allow masking of return values
           command shellcheck \
-            --exclude="SC1071,SC1091,SC2123,SC2312" \
+            --exclude="SC1071,SC1090,SC1091,SC2123,SC2312" \
             --wiki-link-count="$(command getconf UINT_MAX)" \
             --check-sourced \
             --enable=all \
