@@ -95,58 +95,58 @@
 ```shell
 update='1'; IFS="$(printf ' \t\n|')"; IFS="${IFS%|}"; command clear; command clear
 printf '                 .___       __\n __ ________   __\174 _\057____ _\057  \174_  ____\n\174  \174  \134____ \134 \057 __ \174\134__  \134\134   __\134\057 __ \134\n\174  \174  \057  \174_\076 \076 \057_\057 \174 \057 __ \134\174  \174 \134  ___\057\n\174____\057\174   __\057\134____ \174\050____  \057__\174  \134___  \076\n'
-printf '      \174__\174        \134\057     \134\057          \134\057\n a Lucas Larson production\n\n' && command sleep 1.0; unset PS4
-printf '\n\360\237\223\241  verifying network connectivity'; command sleep 0.5; i='0'; while [ "${i-}" -lt "$(
-printf '2 ^ 7 + 1\n' | command bc)" ]; do if [ "$((i / 3 % 2))" -eq '0' ]; then
+printf '      \174__\174        \134\057     \134\057          \134\057\n a Lucas Larson production\n\n' && command sleep 1; unset PS4
+printf '\n\360\237\223\241  verifying network connectivity'; command sleep 1; i='0'; while test "${i-}" -lt "$(
+printf '2 ^ 7 + 1\n' | command bc)"; do if test "$((i / 3 % 2))" -eq '0'; then
 printf '.'; else
 printf '\b'; fi; i="$((i + 1))"; done; unset i
-printf '\n\n'; set -u; { command ping -q -i 1 -c 1 -- one.one.one.one >/dev/null 2>&1 && command ping -q -i 1 -c 1 -- 8.8.8.8 >/dev/null 2>&1; } || {
+printf '\n\n'; set -o nounset; { command ping -q -i 1 -c 1 -- one.one.one.one >/dev/null 2>&1 && command ping -q -i 1 -c 1 -- 8.8.8.8 >/dev/null 2>&1; } || {
 printf 'No internet connection detected.\nAborting update.\n'; exit "${update:-1}"; }
 printf '\360\237\215\272  checking for Homebrew installation...'; if command -v brew >/dev/null 2>&1; then
 printf '  \342\234\205  found\n'
-printf '\360\237\215\272  checking for Homebrew updates...\n'; command brew update; command brew upgrade --greedy; command brew upgrade --cask --greedy; command brew install --debug --verbose --include-test --HEAD --display-times --git -- git mackup shellcheck shfmt zsh; else
-printf 'No Homebrew installation detected...\n\n'; fi
+printf '\360\237\215\272  checking for Homebrew updates...\n'; command brew update; command brew upgrade --greedy; command brew upgrade --cask --greedy; command brew install --debug --verbose --include-test --HEAD --display-times --git -- git; command brew install --debug --verbose --include-test --HEAD --display-times --git -- mackup; command brew install --debug --verbose --include-test --HEAD --display-times --git -- shellcheck; command brew install --debug --verbose --include-test --HEAD --display-times --git -- shfmt; command brew install --debug --verbose --include-test --HEAD --display-times --git -- zsh; command brew generate-man-completions; else
+printf 'No Homebrew installation detected.\n\n'; fi
 printf '\360\237\217\224  checking for Alpine Package Keeper installation...\n'; if command -v apk >/dev/null 2>&1; then
 printf '\360\237\217\224  apk update...\n'; command apk update --progress --verbose --verbose
 printf '\n\360\237\217\224  apk upgrade...\n'; command apk upgrade --update-cache --progress --verbose --verbose
 printf '\n\360\237\217\224  apk fix...\n'; command apk fix --progress --verbose --verbose
 printf '\n\360\237\217\224  apk verify...\n'; command apk verify --progress --verbose --verbose
 printf '\360\237\217\224  apk verify complete...\n\n'; else
-printf 'no Alpine Package Keeper installation detected...\n\n'; fi
+printf 'no Alpine Package Keeper installation detected.\n\n'; fi
 printf 'checking access to Software Update...\n'; if command -v softwareupdate >/dev/null 2>&1; then
 printf '\360\237\215\216  '; command softwareupdate --list --all --verbose; else
-printf 'no Software Update installation detected...\n\n'; fi
+printf 'no Software Update installation detected.\n\n'; fi
 printf 'checking for Xcode installation...\n'; if command -v xcrun >/dev/null 2>&1; then
 printf 'removing unavailable device simulators...\n'; command xcrun simctl delete unavailable; else
-printf 'no Xcode installation detected...\n\n'; fi
+printf 'no Xcode installation detected.\n\n'; fi
 printf '\342\232\233\357\270\217  checking for Atom installation...\n'; if command -v apm >/dev/null 2>&1; then command apm upgrade --no-confirm; else
-printf 'no Atom installation detected...\n\n'; fi
+printf 'no Atom installation detected.\n\n'; fi
 printf 'checking for Rust installation...\n'; if command -v rustup >/dev/null 2>&1; then command rustup update; else
-printf 'no Rust installation detected...\n\n'; fi
+printf 'no Rust installation detected.\n\n'; fi
 printf 'checking for npm installation...\n'; if command -v npm >/dev/null 2>&1; then
-printf '...and whether this device is can update Node quickly...\n'; if [ "$((${COLUMNS:-80} * ${LINES:-24}))" -ge "$((80 * 24))" ]; then while [ -n "$(command find -- "${HOME-}/.npm-packages" -type f ! -name "$(
-printf "*\n*")" -name '.DS_Store' -print)" ]; do command find -- "${HOME-}/.npm-packages" -type f ! -name "$(
-printf "*\n*")" -name '.DS_Store' -print -exec rm -v -- {} \;; done; command npm install npm --global; while [ -n "$(command find -- "${HOME-}/.npm-packages" -type f ! -name "$(
-printf "*\n*")" -name '.DS_Store' -print)" ]; do command find -- "${HOME-}/.npm-packages" -type f ! -name "$(
-printf "*\n*")" -name '.DS_Store' -print -exec rm -v -- {} \;; done; command npm update --global --verbose; else
+printf '...and whether this device is can update Node quickly...\n'; if test "$((${COLUMNS:-80} * ${LINES:-24}))" -ge "$((80 * 24))"; then while test -n "$(command find -- "${HOME-}"'/.npm-packages' -type f ! -name "$(
+printf "*\n*")" -name '.DS_Store' -print)"; do command find -- "${HOME-}"'/.npm-packages' -type f ! -name "$(
+printf "*\n*")" -name '.DS_Store' -print -delete; done; command npm install npm --global; while test -n "$(command find -- "${HOME-}"'/.npm-packages' -type f ! -name "$(
+printf "*\n*")" -name '.DS_Store' -print)"; do command find -- "${HOME-}"'/.npm-packages' -type f ! -name "$(
+printf "*\n*")" -name '.DS_Store' -print -delete; done; command npm update --global --verbose; else
 printf 'skipping Node update...\n\n'; command sleep 1
 printf 'to update Node later, run:\n\n'
 printf '    npm install npm --global \046\046 \134\n'
 printf '    npm update --global --verbose\n\n\n'; command sleep 3; fi; else
-printf 'no npm installation detected...\n\n'; fi
+printf 'no npm installation detected.\n\n'; fi
 printf 'checking for RubyGems installation...\n'; if command -v gem >/dev/null 2>&1; then
 printf 'updating RubyGems...\n'; command gem update --system --verbose; command gem update --verbose; if command bundle update >/dev/null 2>&1; then command bundle update --verbose 2>/dev/null; fi; if command bundle install >/dev/null 2>&1; then command bundle install --verbose 2>/dev/null; fi
 printf 'checking for CocoaPods installation...\n'; if command bundle exec pod install >/dev/null 2>&1; then command bundle exec pod install --verbose 2>/dev/null; fi; if command pod repo update >/dev/null 2>&1; then command pod repo update --verbose; command pod repo update --verbose; fi; else
-printf 'no RubyGems installation detected...\n\n'; fi; if command -v rbenv >/dev/null 2>&1; then command rbenv rehash; fi; if command -v c_rehash >/dev/null 2>&1; then command c_rehash; fi; if command -v python >/dev/null 2>&1; then
+printf 'no RubyGems installation detected.\n\n'; fi; if command -v rbenv >/dev/null 2>&1; then command rbenv rehash; fi; if command -v c_rehash >/dev/null 2>&1; then command c_rehash; fi; if command -v python >/dev/null 2>&1; then
 printf '\n\360\237\220\215  verifying Python\342\200\231s packager is up to date...\n'; command python -m pip install --upgrade --verbose --verbose --verbose -- pip
 printf 'verifying pip installation...\n'; if command -v pip >/dev/null 2>&1; then
 printf '\n\360\237\220\215  updating outdated Python packages...\n'; for package in $(command pip list --outdated --format freeze); do command pip install --upgrade --verbose --verbose --verbose -- "${package%%=*}"; done; unset package; fi
 printf 'checking for pyenv installation...\n'; if command -v pyenv >/dev/null 2>&1; then
 printf 'rehashing pyenv shims...\n'; command pyenv rehash; else
-printf 'no pyenv installation detected...\n\n'; fi
+printf 'no pyenv installation detected.\n\n'; fi
 printf 'checking for Conda installation...\n'; if command -v conda >/dev/null 2>&1; then command conda update --yes --all; else
-printf 'no Conda installation detected...\n\n'; fi; fi; if command -v omz >/dev/null 2>&1; then { set +e; set +u; } 2>/dev/null; omz update 2>/dev/null; fi; { set +e; set +u; set +v; set +x; } 2>/dev/null; [ -r "${HOME-}/.${SHELL##*[-./]}rc" ] && . "${HOME-}/.${SHELL##*[-./]}rc"; if command -v rehash >/dev/null 2>&1; then rehash; fi; unset update
-printf '\n\n\342%s\234\205  done\041\n\n' "${update-}"; exec -l -- "${SHELL##*[-./]}" # 2021-12-11
+printf 'no Conda installation detected.\n\n'; fi; fi; if command -v omz >/dev/null 2>&1; then { set +o nounset; } 2>/dev/null; omz update 2>/dev/null; fi; { set -o allexport; set +o errexit; set +o noclobber; set +o nounset; set +o verbose; set +o xtrace; } 2>/dev/null; test -r "${HOME-}"'/.'"${SHELL##*[-./]}"'rc' && . "${HOME-}"'/.'"${SHELL##*[-./]}"'rc'; if command -v rehash >/dev/null 2>&1; then rehash; fi; unset update
+printf '\n\n\342%s\234\205  done\041\n' "${update-}"; $(command -v exec) -l -- "${SHELL##*[-./]}" # 2022-03-17
 ```
 
 ### detail
