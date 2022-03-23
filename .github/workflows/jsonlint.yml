@@ -37,7 +37,7 @@ jobs:
             \) \
             -print \
             -exec jsonlint --in-place --insert-final-newline -- {} \;
-      - uses: peter-evans/create-pull-request@v3
+      - uses: peter-evans/create-pull-request@v4
         with:
           commit-message: "[autofix] Format JSON content"
           title: "[autofix] Format JSON content"
