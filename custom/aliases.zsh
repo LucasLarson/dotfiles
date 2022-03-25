@@ -150,11 +150,11 @@ clang_format() {
   command find -- . \
     -type f \
     ! -path '*.git/*' \
-    ! -path '*.vscode/*' \
     ! -path '*/Test*' \
     ! -path '*/t/*' \
     ! -path '*/test*' \
     ! -path '*node_modules/*' \
+    ! -path '*vscode*' \
     \( \
     -name '*.adb' -o \
     -name '*.ads' -o \
@@ -359,11 +359,11 @@ cleanup() {
     # https://unix.stackexchange.com/a/112024
     command find -- "${1:-.}" \
       -type f \
-      ! -path '*.vscode/*' \
       ! -path '*/Test*' \
       ! -path '*/t/*' \
       ! -path '*/test*' \
       ! -path '*node_modules/*' \
+      ! -path '*vscode*' \
       \( \
       -name '*gitconfig' -o \
       -path '*.git/*' -a -name 'config' \
@@ -587,11 +587,11 @@ find_broken_symlinks() {
 find_duplicate_files() {
   command find -- "${1:-.}" \
     ! -path '*.git/*' \
-    ! -path '*.vscode/*' \
     ! -path '*/Test*' \
     ! -path '*/t/*' \
     ! -path '*/test*' \
     ! -path '*node_modules/*' \
+    ! -path '*vscode*' \
     ! -empty \
     ! -type l \
     -type f \
@@ -612,7 +612,6 @@ alias fdf='find_duplicate_files'
 find_by_name() {
   command find -- . \
     ! -path '*.git/*' \
-    ! -path '*.vscode/*' \
     ! -path '*/Archive*' \
     ! -path '*/Test*' \
     ! -path '*/archive*' \
@@ -622,6 +621,7 @@ find_by_name() {
     ! -path '*custom/plugins*' \
     ! -path '*custom/themes*' \
     ! -path '*node_modules/*' \
+    ! -path '*vscode*' \
     -iname "*${*}*" \
     -print 2>/dev/null |
     LC_ALL='C' command sort -u
@@ -646,11 +646,11 @@ find_shell_scripts() {
     # https://stackoverflow.com/a/9612232
     command find -- . \
       ! -path '*.git/*' \
-      ! -path '*.vscode/*' \
       ! -path '*/Test*' \
       ! -path '*/t/*' \
       ! -path '*/test*' \
       ! -path '*node_modules/*' \
+      ! -path '*vscode*' \
       -type f \
       -exec head -n 1 {} \+ 2>/dev/null |
       command grep \
@@ -1493,11 +1493,11 @@ yamllint_r() {
     *)
       command find -- . \
         ! -path '*.git/*' \
-        ! -path '*.vscode/*' \
         ! -path '*/Test*' \
         ! -path '*/t/*' \
         ! -path '*/test*' \
         ! -path '*node_modules/*' \
+        ! -path '*vscode*' \
         \( \
         -name '*.CFF*' -o \
         -name '*.YAML' -o \
