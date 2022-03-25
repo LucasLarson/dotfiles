@@ -14,10 +14,12 @@ aliases() {
 
 # Atom
 atom_packages() {
-  # https://gist.github.com/a8289eeaba6ede045dd532cf0eaea44f#comments
-  command apm-nightly list --installed --bare 2>/dev/null ||
-    command apm-beta list --installed --bare 2>/dev/null ||
-    command apm list --installed --bare 2>/dev/null
+  {
+    # https://gist.github.com/a8289eeaba6ede045dd532cf0eaea44f#comments
+    command apm-nightly list --installed --bare ||
+      command apm-beta list --installed --bare ||
+      command apm list --installed --bare
+  } 2>/dev/null
 }
 
 bash_major_version() {
@@ -620,7 +622,7 @@ find_by_name() {
     ! -path '*custom/plugins*' \
     ! -path '*custom/themes*' \
     ! -path '*node_modules/*' \
-    -iname "*${*}*" 2>/dev/null \
+    -iname "*${*}*" \
     -print 2>/dev/null |
     LC_ALL='C' command sort -u
 }
@@ -1040,11 +1042,13 @@ alias gpl='git_pull'
 alias gp='git_pull'
 
 git_default_remote() {
-  command git config --get --worktree checkout.defaultRemote 2>/dev/null ||
-    command git config --get --local checkout.defaultRemote 2>/dev/null ||
-    command git config --get --system checkout.defaultRemote 2>/dev/null ||
-    command git config --get --global checkout.defaultRemote 2>/dev/null ||
-    printf 'origin\n'
+  {
+    command git config --get --worktree checkout.defaultRemote ||
+      command git config --get --local checkout.defaultRemote ||
+      command git config --get --system checkout.defaultRemote ||
+      command git config --get --global checkout.defaultRemote ||
+      printf 'origin\n'
+  } 2>/dev/null
 }
 
 # git push
