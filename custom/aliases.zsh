@@ -1210,8 +1210,7 @@ alias h1='command head -n 1'
 identify() {
 
   # uname
-  command -v uname >/dev/null 2>&1 &&
-    command uname -a
+  command uname -a
 
   # sw_vers
   # https://apple.stackexchange.com/a/368244
