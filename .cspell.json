@@ -13,8 +13,7 @@
   "ignorePaths": [
     "**/.git/**",
     "**/node_modules/**",
-    "**/vscode-extension/**",
-    ".vscode",
+    "*vscode*",
     "package-lock.json",
     "report"
   ],
