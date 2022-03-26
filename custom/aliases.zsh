@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 # aliases.zsh
 # for all active aliases, run `alias`

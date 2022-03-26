@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 ## Dotfiles and templates
 command mkdir -p "${HOME-}"'/Dropbox/dotfiles' &&
