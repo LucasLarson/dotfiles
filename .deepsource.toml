@@ -23,7 +23,7 @@ name = "go"
 enabled = true
 
   [analyzers.meta]
-  import_root = 'github.com/LucasLarson/"$(command git rev-parse --show-toplevel | command xargs basename)"'
+  import_root = 'github.com/LucasLarson/"$(command git remote get-url "$(command git config --get --worktree checkout.defaultRemote 2>/dev/null || command git config --get --local checkout.defaultRemote 2>/dev/null || command git config --get --system checkout.defaultRemote 2>/dev/null || command git config --get --global checkout.defaultRemote 2>/dev/null || printf "origin\n")" | command tr -d "[:space:]" | command xargs basename | command sed -e "s|.git$||")"'
 
 [[analyzers]]
 name = "test-coverage"
