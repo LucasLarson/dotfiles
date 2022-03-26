@@ -1,41 +1,49 @@
 ---
 name: Bug report
 about: Create a report to help us improve.
-title: ''
-labels: ''
-assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+# Bug report
 
-**To Reproduce**
-Steps to reproduce the behavior:
+<!--
+The text in these Markdown comments is instructions that will not appear in
+the displayed issue.
 
-1. Go to . . . .
-2. Click on . . . .
-3. Scroll down to . . . .
+Please use the “Preview” button before submitting.
+-->
+
+## Summary
+
+<!--
+Add a clear and concise description of what the bug is.
+-->
+
+## To reproduce
+
+<!--
+Add precise steps to reproduce the bug.
+-->
+1. <!-- suggested format -->
+2.
+3.
 4. See error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## Expected results
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+What I expected to see was . . .
+<!--
+Add a clear and concise description of what you expected to happen.
+-->
 
-**Desktop (please complete the following information):**
+## Actual results
 
-- OS: [like iOS]
-- Browser: [like Chrome, Safari]
-- Version: [like 22]
+<!--
+Add a description of what actually happened.
+-->
 
-**Smartphone (please complete the following information):**
+<!--
+## Additional context
 
-- Device: [like iPhone 6]
-- OS: [like iOS 8.1]
-- Browser: [like stock browser, Safari]
-- Version: [like 22]
-
-**Additional context**
-Add any other context about the problem here.
+Optionally, add any other context about the problem.
+-->
