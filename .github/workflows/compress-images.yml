@@ -1,0 +1,88 @@
+---
+name: Compress images
+# https://github.com/calibreapp/image-actions/tree/b5f479ebe0#combined-workflow
+# Image Actions will run in the following scenarios:
+# - on Pull Requests containing images (not including forks)
+# - on pushing of images to `main` (for forks)
+# - on demand
+# - at 11 PM every Sunday just in case
+# For Pull Requests, compressed images are added to the Pull Request
+# For other scenarios, a new Pull Request will open if compression is possible
+
+on:
+  pull_request:
+    paths:
+      - '**.JPEG'
+      - '**.jpeg'
+      - '**.JPG'
+      - '**.jpg'
+      - '**.PNG'
+      - '**.png'
+      - '**.WEBP'
+      - '**.webp'
+
+  workflow_dispatch:
+  schedule:
+    - cron: '00 23 * * 0'
+
+jobs:
+  build:
+    name: calibreapp/image-actions
+    runs-on: ubuntu-latest
+
+    # Run on parent repo on and Pull Requests onto it
+    if: |
+      github.repository == '"$(
+      command git remote get-url "$(
+        {
+          command git config --get --worktree checkout.defaultRemote ||
+          command git config --get --local checkout.defaultRemote ||
+          command git config --get --system checkout.defaultRemote ||
+          command git config --get --global checkout.defaultRemote ||
+          printf "origin\n"
+        } 2>/dev/null
+      )" |
+        command tr -d "[:space:]" |
+        command xargs basename |
+        command sed -e "s|.git$||"
+      )"' &&
+      (github.event_name != 'pull_request' ||
+        github.event.pull_request.head.repo.full_name == github.repository)
+
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+      - name: Compress Images
+        id: calibre
+        uses: calibreapp/image-actions@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN || secrets.PAT }}
+          jpegQuality: '100'
+          pngQuality: '100'
+          webpQuality: '100'
+
+          # For non-Pull Requests, run in `compressOnly` mode
+          # for a Pull Request after
+          compressOnly: ${{ github.event_name != 'pull_request' }}
+
+      - name: Create Pull Request
+        # If not a Pull Request then commit any changes as a new Pull Request
+        if: |
+          github.event_name != 'pull_request' &&
+          steps.calibre.outputs.markdown != ''
+
+        uses: peter-evans/create-pull-request@v4
+        with:
+          title: "[autofix] compress images"
+          body: >
+            [Auto-generated on run
+            #${{ github.run_id }}](https://github.com/${{ github.repository
+            }}/actions/runs/${{ github.run_id }}) as defined by [workflow
+            action](https://github.com/${{ github.repository
+            }}/blob/${{ github.sha }}/.github/workflows/optimize-images.yml).
+
+            ${{ steps.calibre.outputs.markdown }}
+          branch: compress-images
+          branch-suffix: timestamp
+          commit-message: compress images
+          base: ${{ github.head_ref }}
