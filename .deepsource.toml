@@ -1,14 +1,14 @@
 version = 1
 
 exclude_patterns = [
+  "**/*vscode*",
   "**/Application Support/**",
   "**/Test*",
   "**/archive/**",
   "**/custom/plugins/**",
   "**/custom/themes/**",
   "**/node_modules/**",
-  "**/test*",
-  "*vscode*"
+  "**/test*"
 ]
 
 [[analyzers]]
