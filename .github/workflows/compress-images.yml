@@ -1,13 +1,13 @@
 ---
 name: Compress images
 # https://github.com/calibreapp/image-actions/tree/b5f479ebe0#combined-workflow
-# Image Actions will run in the following scenarios:
+# this action runs under the following conditions:
 # - on Pull Requests containing images (not including forks)
-# - on pushing of images to `main` (for forks)
+# - on images pushed to `main` (for forks)
 # - on demand
 # - at 11 PM every Sunday just in case
-# For Pull Requests, compressed images are added to the Pull Request
-# For other scenarios, a new Pull Request will open if compression is possible
+# for Pull Requests, compressed images are added to the Pull Request
+# for other scenarios, a new Pull Request will open if compression is possible
 
 on:
   pull_request:
@@ -30,7 +30,7 @@ jobs:
     name: calibreapp/image-actions
     runs-on: ubuntu-latest
 
-    # Run on parent repo on and Pull Requests onto it
+    # run on parent repo on and Pull Requests onto it
     if: |
       github.repository == '"$(
       command git remote get-url "$(
@@ -61,12 +61,12 @@ jobs:
           pngQuality: '100'
           webpQuality: '100'
 
-          # For non-Pull Requests, run in `compressOnly` mode
+          # for non-Pull Requests, run in `compressOnly` mode
           # for a Pull Request after
           compressOnly: ${{ github.event_name != 'pull_request' }}
 
       - name: Create Pull Request
-        # If not a Pull Request then commit any changes as a new Pull Request
+        # if not a Pull Request, then commit any changes as a new Pull Request
         if: |
           github.event_name != 'pull_request' &&
           steps.calibre.outputs.markdown != ''
@@ -79,7 +79,7 @@ jobs:
             #${{ github.run_id }}](https://github.com/${{ github.repository
             }}/actions/runs/${{ github.run_id }}) as defined by [workflow
             action](https://github.com/${{ github.repository
-            }}/blob/${{ github.sha }}/.github/workflows/optimize-images.yml).
+            }}/blob/${{ github.sha }}/.github/workflows/compress-images.yml).
 
             ${{ steps.calibre.outputs.markdown }}
           branch: compress-images
