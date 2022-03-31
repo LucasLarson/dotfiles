@@ -1325,7 +1325,7 @@ mu() {
 }
 
 # https://unix.stackexchange.com/a/30950
-alias mv='mv -v -i'
+alias mv='command mv -v -i'
 
 # find files with non-ASCII characters
 non_ascii() {
@@ -1439,9 +1439,9 @@ test -x '/usr/libexec/PlistBuddy' &&
 
 # Python
 command -v python3 >/dev/null 2>&1 &&
-  alias python='python3' &&
+  alias python='command python3' &&
   command -v pip3 >/dev/null 2>&1 &&
-  alias pip='pip3'
+  alias pip='command pip3'
 
 # $?
 question_mark() {
