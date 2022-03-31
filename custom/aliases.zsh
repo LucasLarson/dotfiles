@@ -1165,6 +1165,11 @@ git_submodule_update() {
 alias gsu='git_submodule_update'
 alias gtake='git checkout -b'
 
+git_undo() {
+  command git reset HEAD@'{'"${1:-1}"'}'
+}
+alias gundo='git_undo'
+
 git_update() {
   command -v cleanup >/dev/null 2>&1 &&
     cleanup "$@"
