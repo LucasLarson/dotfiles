@@ -1050,6 +1050,7 @@ gmm() {
   # 5 is “show detailed debugging information”
   # https://github.com/progit/progit2/commit/aea93a7
   GIT_MERGE_VERBOSITY='4' command git merge --log --verbose --progress --rerere-autoupdate --strategy-option patience "$(git-default-branch)"
+}
 
 # git move
 git_move() {
