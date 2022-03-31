@@ -1247,6 +1247,17 @@ gravatar() {
 
 alias h1='command head -n 1'
 
+history_stats() {
+  fc -l 1 |
+    command awk '{CMD[$2]++; count++;}; END {for (a in CMD) print CMD[a] " " CMD[a] * 100 / count "% " a;}' |
+    command grep -v './' |
+    LC_ALL='C' command sort -n -r |
+    command head -n "${1:-"$((LINES - 5))"}" |
+    command column -c3 -s ' ' -t |
+    command nl
+}
+alias zsh_stats='history_stats'
+
 identify() {
 
   # uname
