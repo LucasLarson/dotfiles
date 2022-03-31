@@ -560,6 +560,23 @@ epoch_seconds() {
   command awk 'BEGIN {srand(); print srand()}'
 }
 
+filename_spaces_to_underscores() {
+  (
+    from="${1:- }"
+    to="${2:-_}"
+    command find -- . \
+      -depth \
+      -name '*'"${from-}"'*' |
+      while IFS='' read -r filename; do
+        command mv -i "${filename-}" "$(
+          command dirname "${filename-}"
+        )"/"$(
+          command basename "${filename-}" |
+            command tr "${from-}" "${to-}"
+        )"
+      done
+  )
+}
 command -v fd >/dev/null 2>&1 &&
   alias fd='command fd --hidden'
 
