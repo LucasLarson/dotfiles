@@ -1062,6 +1062,8 @@ git_move() {
 }
 alias gmv='git_move'
 
+command -v git open >/dev/null 2>&1 &&
+  alias gopen='command git open 2>/dev/null'
 
 # git pull
 git_pull() {
