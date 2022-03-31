@@ -811,7 +811,7 @@ git_clone() {
     shift
     command mkdir "${2:-$(command basename "$1" .git || return 123)}" >/dev/null 2>&1
     cd "${2:-$(command basename "$1" .git || return 122)}" >/dev/null 2>&1 || return 5
-    command git clone --verbose --progress --depth=1 --shallow-submodules --single-branch "$1" . || return 6
+    command git clone --verbose --progress --depth=1 --shallow-submodules "$1" . || return 6
     ;;
   *)
     command mkdir "${2:-$(command basename "$1" .git || return 126)}" >/dev/null 2>&1
