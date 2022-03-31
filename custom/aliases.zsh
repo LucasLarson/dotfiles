@@ -1298,7 +1298,7 @@ elif command ls --color=auto >/dev/null 2>&1; then
 elif test "$(command /bin/ls -G -- "${HOME-}" | command hexdump)" = "$(command ls -G -- "${HOME-}" | command hexdump)" &&
   test "$(command ls -G -- "${HOME-}" | command hexdump)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)"; then
   alias ls='command ls -G'
-  alias l='command ls -G -AFgo'
+  alias l='command ls -A -F -G -g -o'
 fi
 
 # dotfiles
