@@ -764,6 +764,25 @@ alias git_add_others='git_add --others'
 alias git_add_patch='git_add --patch'
 alias git_add_untracked='git_add --others'
 
+git_all_files_ever() {
+  # list all files that ever existed in the repository
+  # inspiration: https://gist.github.com/8775224
+  case "${1-}" in
+  -D | --deleted)
+    # list only files that have been deleted
+    command git log --pretty= --name-only --all --diff-filter=D |
+      LC_ALL='C' command sort -u |
+      command awk '{print "./" $0}'
+    ;;
+  *)
+    # list all files ever
+    command git log --pretty= --name-only --all |
+      LC_ALL='C' command sort -u |
+      command awk '{print "./" $0}'
+    ;;
+  esac
+}
+
 alias gba='command git branch --all'
 alias gbd='command git branch --delete'
 alias gbD='command git branch --delete --force'
