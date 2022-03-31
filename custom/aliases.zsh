@@ -1433,11 +1433,9 @@ plist_r() {
 }
 
 # PlistBuddy
-if test -x /usr/libexec/PlistBuddy; then
+test -x '/usr/libexec/PlistBuddy' &&
   # https://apple.stackexchange.com/a/414774
-  alias PlistBuddy='/usr/libexec/PlistBuddy'
-  alias plistbuddy='PlistBuddy'
-fi
+  alias plistbuddy='command /usr/libexec/PlistBuddy'
 
 # Python
 command -v python3 >/dev/null 2>&1 &&
