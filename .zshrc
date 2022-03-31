@@ -120,6 +120,12 @@ plugins=(
   history-substring-search
   zsh-diff-so-fancy
   zchee-zsh-completions
+)
+
+# fast-syntax-highlighting/zsh-syntax-highlighting
+# performs best when loaded late
+plugins=(
+  "${plugins[@]}"
   fast-syntax-highlighting
 )
 
