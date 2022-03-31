@@ -14,12 +14,10 @@ aliases() {
 
 # Atom
 atom_packages() {
-  {
-    # https://gist.github.com/a8289eeaba6ede045dd532cf0eaea44f#comments
-    command apm-nightly list --installed --bare ||
-      command apm-beta list --installed --bare ||
-      command apm list --installed --bare
-  } 2>/dev/null
+  # https://gist.github.com/a8289eeaba6ede045dd532cf0eaea44f#comments
+  command apm-nightly list --installed --bare ||
+    command apm-beta list --installed --bare ||
+    command apm list --installed --bare
 }
 
 bash_major_version() {
