@@ -560,6 +560,9 @@ epoch_seconds() {
   command awk 'BEGIN {srand(); print srand()}'
 }
 
+command -v fd >/dev/null 2>&1 &&
+  alias fd='command fd --hidden'
+
 # find broken symlinks
 find_broken_symlinks() {
   set -o nounset
