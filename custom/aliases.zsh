@@ -1547,6 +1547,15 @@ yamllint_r() {
   )
 }
 
+# zero
+# https://github.com/zdharma-continuum/Zsh-100-Commits-Club/blob/1f880d03ec/Zsh-Plugin-Standard.adoc#zero-handling
+zero() {
+  printf '0=\044{ZERO:-\044{\044{0:#\044ZSH_ARGZERO}:-\044{(\045):-\045N}}}'
+  printf '\n'
+  printf '0=\044{\044{(M)0:#/*}:-\044{PWD}/\0440}'
+  printf '\n'
+}
+
 ohmyzsh() {
   cd -- "${ZSH-}" &&
     command git status
