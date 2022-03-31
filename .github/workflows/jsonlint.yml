@@ -39,8 +39,8 @@ jobs:
             -exec jsonlint --in-place --insert-final-newline -- '{}' ';'
       - uses: peter-evans/create-pull-request@v4
         with:
-          commit-message: "[autofix] Format JSON content"
-          title: "[autofix] Format JSON content"
+          commit-message: "[autofix] format JSON content"
+          title: "[autofix] format JSON content"
           body: >
             [Auto-generated on run
             #${{ github.run_id }}](https://github.com/${{ github.repository
