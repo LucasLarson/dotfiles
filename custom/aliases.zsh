@@ -384,7 +384,6 @@ cleanup() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -593,7 +592,6 @@ find_broken_symlinks() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -695,7 +693,6 @@ find_shell_scripts() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -789,7 +786,6 @@ git_commit() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -849,7 +845,6 @@ git_delete_merged_branches() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -899,7 +894,6 @@ git_garbage_collection() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -921,7 +915,6 @@ git_find_child() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -937,7 +930,6 @@ git_find_parent() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -953,7 +945,6 @@ git_find_parents() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -998,7 +989,6 @@ git_commit_initial_commit() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -1117,7 +1107,6 @@ git_shallow() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -1314,7 +1303,6 @@ non_ascii() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -1371,7 +1359,6 @@ path_check() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
@@ -1405,7 +1392,6 @@ plist_r() {
     set -o allexport
     set +o errexit
     set +o noclobber
-    set +o noglob
     set +o nounset
     set +o verbose
     set +o xtrace
