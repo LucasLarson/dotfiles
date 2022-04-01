@@ -104,7 +104,13 @@ printf '\n\n'; set -o nounset; { command ping -q -i 1 -c 1 -- one.one.one.one >/
 printf 'No internet connection detected.\nAborting update.\n'; exit "${update:-1}"; }
 printf '\360\237\215\272  checking for Homebrew installation...'; if command -v brew >/dev/null 2>&1; then
 printf '  \342\234\205  found\n'
-printf '\360\237\215\272  checking for Homebrew updates...\n'; command brew update; command brew upgrade --greedy; command brew upgrade --cask --greedy; command brew install --debug --verbose --include-test --HEAD --display-times --git -- git; command brew install --debug --verbose --include-test --HEAD --display-times --git -- mackup; command brew install --debug --verbose --include-test --HEAD --display-times --git -- shellcheck; command brew install --debug --verbose --include-test --HEAD --display-times --git -- shfmt; command brew install --debug --verbose --include-test --HEAD --display-times --git -- zsh; command brew generate-man-completions; else
+printf '\360\237\215\272  checking for Homebrew updates...\n'; command brew update; command brew upgrade --greedy; command brew upgrade --cask --greedy
+command brew install --debug --verbose --include-test --HEAD --display-times --git -- git
+command brew install --debug --verbose --include-test --HEAD --display-times --git -- mackup
+command brew install --debug --verbose --include-test --HEAD --display-times --git -- shellcheck;
+command brew install --debug --verbose --include-test --HEAD --display-times --git -- shfmt
+command brew install --debug --verbose --include-test --HEAD --display-times --git -- zsh
+command brew generate-man-completions; else
 printf 'No Homebrew installation detected.\n\n'; fi
 printf '\360\237\217\224  checking for Alpine Package Keeper installation...\n'; if command -v apk >/dev/null 2>&1; then
 printf '\360\237\217\224  apk update...\n'; command apk update --progress --verbose --verbose
@@ -145,7 +151,8 @@ printf 'checking for pyenv installation...\n'; if command -v pyenv >/dev/null 2>
 printf 'rehashing pyenv shims...\n'; command pyenv rehash; else
 printf 'no pyenv installation detected.\n\n'; fi
 printf 'checking for Conda installation...\n'; if command -v conda >/dev/null 2>&1; then command conda update --yes --all; else
-printf 'no Conda installation detected.\n\n'; fi; fi; if command -v omz >/dev/null 2>&1; then { set +o nounset; } 2>/dev/null; omz update 2>/dev/null; fi; { set -o allexport; set +o errexit; set +o noclobber; set +o nounset; set +o verbose; set +o xtrace; } 2>/dev/null; test -r "${HOME-}"'/.'"${SHELL##*[-./]}"'rc' && . "${HOME-}"'/.'"${SHELL##*[-./]}"'rc'; if command -v rehash >/dev/null 2>&1; then rehash; fi; unset update
+printf 'no Conda installation detected.\n\n'; fi; fi; if command -v omz >/dev/null 2>&1; then { set +o nounset; } 2>/dev/null; omz update 2>/dev/null; fi; { set -o allexport; set +o errexit; set +o noclobber; set +o nounset; set +o verbose; set +o xtrace; } 2>/dev/null
+test -r "${HOME-}"'/.'"${SHELL##*[-./]}"'rc' && . "${HOME-}"'/.'"${SHELL##*[-./]}"'rc'; if command -v rehash >/dev/null 2>&1; then rehash; fi; unset update
 printf '\n\n\342%s\234\205  done\041\n' "${update-}"; $(command -v exec) -l -- "${SHELL##*[-./]}" # 2022-03-17
 ```
 
