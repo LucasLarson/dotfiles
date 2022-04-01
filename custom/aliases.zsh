@@ -9,7 +9,7 @@
 alias ,='. "${HOME-}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
   ${EDITOR:-vi} -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
-  "$(command -v .)" "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
+  . "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
 }
 
 # Atom
