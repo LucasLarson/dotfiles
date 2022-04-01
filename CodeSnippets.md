@@ -192,7 +192,7 @@ printf '\n\n\342%s\234\205  done\041\n' "${update-}"; $(command -v exec) -l -- "
 `git gc && \`<br/>
 `# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br/>
 `. ~/.${SHELL##*/}rc && \`<br/>
-`printf '\n\n\xe2%s\x9c\x85 done\x21\n\n' "$update" && #` [via](https://stackoverflow.com/a/30762087), [via](https://stackoverflow.com/a/602924), [via](https://github.com/koalaman/shellcheck/wiki/SC2059/0c9cfe7e8811d3cafae8df60f41849ef7d17e296#problematic-code) `\`<br/>
+`printf '\n\n\342%s\234\205 done\041\n\n' "$update" && #` [via](https://stackoverflow.com/a/30762087), [via](https://stackoverflow.com/a/602924), [via](https://github.com/koalaman/shellcheck/wiki/SC2059/0c9cfe7e8811d3cafae8df60f41849ef7d17e296#problematic-code) `\`<br/>
 `#` note successful finish before restarting the shell `\`<br/>
 `exec -l "${SHELL##*/}" #` [via](https://github.com/mathiasbynens/dotfiles/commit/cb8843bea74f1d223ea2967c7a891ca76c9e54e9#diff-ec67f41a7a08f67e6d486db809809f700007e2d58895d67e842ff21123adaee4R145-R146)
 
@@ -368,10 +368,10 @@ for example, C++17’s `<filesystem>`<br/>
 ### apply `clang-format` recursively
 
 [via](https://stackoverflow.com/a/36046965)<br/>
-`program="clang-format" && if ! command -v "$program" >/dev/null 2>&1; then printf '\nerror: no %s installation detected;\nskipping code\xc2\xa0formatting\n' "$program" && return 1; fi; \
-clangformat=${1:-2} && printf '\n%s\n\n' "$("$program" --version)" && sleep 1 && printf 'applying %s to all applicable files in %s...\n' "$program" "${PWD##*/}" && sleep 1 && printf 'setting \x60IndentWidth\x60 to %s\n\n\n' "$clangformat" && sleep 1 && find -- . -type f \( \
+`program="clang-format" && if ! command -v "$program" >/dev/null 2>&1; then printf '\nerror: no %s installation detected;\nskipping code\302\240formatting\n' "$program" && return 1; fi; \
+clangformat=${1:-2} && printf '\n%s\n\n' "$("$program" --version)" && sleep 1 && printf 'applying %s to all applicable files in %s...\n' "$program" "${PWD##*/}" && sleep 1 && printf 'setting \140IndentWidth\140 to %s\n\n\n' "$clangformat" && sleep 1 && find -- . -type f \( \
 -iname '*.c' -or -iname '*.c++' -or -iname '*.cc' -or -iname '*.cp' -or -iname '*.cpp' -or -iname '*.cxx' -or -iname '*.h' -or -iname '*.h++' -or -iname '*.hh' -or -iname '*.hp' -or -iname '*.hpp' -or -iname '*.hxx' -or \
--iname '*.i' -or -iname '*.ii' -or -iname '*.java' -or -iname '*.js' -or -iname '*.m' -or -iname '*.mi' -or -iname '*.mii' -or -iname '*.mm' -or -iname '*.tcc' -or -iname '*.tpp' -or -iname '*.txx' \) -exec "$program" -i -style "{IndentWidth: ${clangformat-}}" --verbose {} \; && printf '\n\n\xe2\x9c\x85 done\x21\n\n'`
+-iname '*.i' -or -iname '*.ii' -or -iname '*.java' -or -iname '*.js' -or -iname '*.m' -or -iname '*.mi' -or -iname '*.mii' -or -iname '*.mm' -or -iname '*.tcc' -or -iname '*.tpp' -or -iname '*.txx' \) -exec "$program" -i -style "{IndentWidth: ${clangformat-}}" --verbose {} \; && printf '\n\n\342\234\205 done\041\n\n'`
 
 ### run `cpplint` recursively
 
@@ -462,13 +462,13 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 ### Identify
 
 `command -v uname >/dev/null 2>&1 && \`<br/>
-`printf '\n\x60uname -a\x60:\n%s\n\n' "$(uname -a)"; \`<br/>
+`printf '\n\140uname -a\140:\n%s\n\n' "$(uname -a)"; \`<br/>
 `command -v sw_vers >/dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`<br/>
-`printf '\n\x60sw_vers\x60:\n%s\n\n' "$(sw_vers)"; \`<br/>
+`printf '\n\140sw_vers\140:\n%s\n\n' "$(sw_vers)"; \`<br/>
 `command -v lsb_release >/dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`<br/>
-`printf '\n\x60lsb_release --all\x60:\n%s\n\n' "$(lsb_release --all)"; \`<br/>
+`printf '\n\140lsb_release --all\140:\n%s\n\n' "$(lsb_release --all)"; \`<br/>
 `[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`<br/>
-`printf '\x60cat /etc/os-release\x60:\n%s\n\n' "$(cat /etc/os-release)"`
+`printf '\140cat /etc/os-release\140:\n%s\n\n' "$(cat /etc/os-release)"`
 
 ## parameter expansion
 
