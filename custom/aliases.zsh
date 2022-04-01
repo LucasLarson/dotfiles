@@ -731,7 +731,7 @@ git_add() {
     set -o xtrace
     case "${1-}" in
     -A | --all)
-      command git add --all --verbose "$@" &&
+      command git add --verbose "$@" &&
         shift
       ;;
     -D | --deleted)
