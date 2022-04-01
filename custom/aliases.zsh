@@ -424,6 +424,7 @@ count_files() {
   command find -- .//. \
     ! -path '*.git/*' \
     ! -name '.' \
+    -type f \
     -print |
     command grep -c //
 }
