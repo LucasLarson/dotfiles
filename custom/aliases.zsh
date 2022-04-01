@@ -1471,6 +1471,10 @@ question_mark() {
 }
 alias '?'='question_mark'
 
+# QuickLook
+command -v qlmanage >/dev/null 2>&1 &&
+  alias ql='command qlmanage -p 2>/dev/null'
+
 # remove
 rm() {
   if command -v trash >/dev/null 2>&1; then
