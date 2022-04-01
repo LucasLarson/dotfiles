@@ -1466,8 +1466,7 @@ command -v python3 >/dev/null 2>&1 &&
 
 # $?
 question_mark() {
-  # https://github.com/mcornella/dotfiles/commit/ff4e527
-  printf '%i\n' "$?"
+  printf '%d\n' "$?"
 }
 alias '?'='question_mark'
 
