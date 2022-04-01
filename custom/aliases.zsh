@@ -429,6 +429,14 @@ count_files() {
     command grep -c //
 }
 
+count_files_and_directories() {
+  command find -- .//. \
+    ! -path '*.git/*' \
+    ! -name '.' \
+    -print |
+    command grep -c //
+}
+
 count_files_by_extension() {
   # files with no extension
   # homemade
