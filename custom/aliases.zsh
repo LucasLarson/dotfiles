@@ -730,7 +730,7 @@ git_add() {
     set -o verbose
     set -o xtrace
     case "${1-}" in
-    --A | --all)
+    -A | --all)
       command git add --all --verbose "$@" &&
         shift
       ;;
