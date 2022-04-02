@@ -153,7 +153,7 @@ clang_format() {
     ! -path '*/test*' \
     ! -path '*node_modules/*' \
     ! -path '*vscode*' \
-    \( \
+    '(' \
     -name '*.adb' -o \
     -name '*.ads' -o \
     -name '*.asm' -o \
@@ -227,8 +227,8 @@ clang_format() {
     -name '*.tpp' -o \
     -name '*.ts' -o \
     -name '*.txx' \
-    \) \
-    -exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options {} \+
+    ')' \
+    -exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options -- '{}' '+'
 
   unset -- IndentWidth 2>/dev/null
   unset -- ColumnLimit 2>/dev/null
@@ -273,13 +273,13 @@ cleanup() {
     # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
     command find -- "${1:-.}" \
       -type f \
-      \( \
+      '(' \
       -name '.DS_Store' -o \
       -name 'Desktop.ini' -o \
       -name 'Thumbs.db' -o \
       -name 'desktop.ini' -o \
       -name 'thumbs.db' \
-      \) \
+      ')' \
       -print \
       -delete 2>/dev/null
 
@@ -362,13 +362,13 @@ cleanup() {
       ! -path '*/test*' \
       ! -path '*node_modules/*' \
       ! -path '*vscode*' \
-      \( \
+      '(' \
       -name '*gitconfig' -o \
       -path '*.git/*' -a -name 'config' \
-      \) \
+      ')' \
       -print \
-      -exec sed -E -i 's|ignore[Cc]ase =.*|ignoreCase = false|g' {} + \
-      -exec sed -E -i 's|\t|  |g' {} + 2>/dev/null
+      -exec sed -E -i 's|ignore[Cc]ase =.*|ignoreCase = false|g' -- '{}' '+' \
+      -exec sed -E -i 's|\t|  |g' -- '{}' '+' 2>/dev/null
 
     # remove Git sample hooks
     command find -- "${1:-.}" \
@@ -455,7 +455,7 @@ count_files_by_extension() {
   command find -- . \
     ! -path '*.git/*' \
     -type f \
-    -exec basename -a -- {} \+ 2>/dev/null |
+    -exec basename -a -- '{}' '+' 2>/dev/null |
 
     # https://2daygeek.com/how-to-count-files-by-extension-in-linux
     command sed -n -- 's|..*\.||p' |
@@ -603,7 +603,7 @@ find_broken_symlinks() {
   command find -- . \
     ! -path '*.git/*' \
     -type l \
-    -exec test ! -e {} \; \
+    -exec test ! -e '{}' ';' \
     -print 2>/dev/null
   {
     set -o allexport
@@ -685,7 +685,7 @@ find_shell_scripts() {
       ! -path '*node_modules/*' \
       ! -path '*vscode*' \
       -type f \
-      -exec head -n 1 {} \+ 2>/dev/null |
+      -exec head -n 1 -- '{}' '+' 2>/dev/null |
       command grep \
         -I \
         -l \
@@ -1447,8 +1447,8 @@ plist_r() {
       ! -path "${DOTFILES-}"'/Library' \
       -name '*.plist' \
       -print \
-      -exec plutil -convert xml1 -- {} \; \
-      -exec sed -i -- 's|\t|  |g' {} \;
+      -exec plutil -convert xml1 -- '{}' ';' \
+      -exec sed -i -- 's|\t|  |g' -- '{}' ';'
     ;;
   esac
   {
@@ -1561,15 +1561,15 @@ yamllint_r() {
         ! -path '*/test*' \
         ! -path '*node_modules/*' \
         ! -path '*vscode*' \
-        \( \
+        '(' \
         -name '*.CFF*' -o \
         -name '*.YAML' -o \
         -name '*.YML' -o \
         -name '*.cff' -o \
         -name '*.yaml' -o \
         -name '*.yml' \
-        \) \
-        -exec yamllint --strict -- {} +
+        ')' \
+        -exec yamllint --strict -- '{}' '+'
       ;;
     esac
   )
