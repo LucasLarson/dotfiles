@@ -585,6 +585,14 @@ filename_spaces_to_underscores() {
       done
   )
 }
+
+file_closes_with_newline() {
+  set -o nounset
+  test "$(command tail -c 1 -- "${1-}" | command wc -l)" -eq '0' &&
+    return 1
+  set +o nounset
+}
+
 command -v fd >/dev/null 2>&1 &&
   alias fd='command fd --hidden'
 
