@@ -367,8 +367,8 @@ cleanup() {
       -path '*.git/*' -a -name 'config' \
       ')' \
       -print \
-      -exec sed -E -i 's|ignore[Cc]ase =.*|ignoreCase = false|g' -- '{}' '+' \
-      -exec sed -E -i 's|\t|  |g' -- '{}' '+' 2>/dev/null
+      -exec sed -E -i -e 's|ignore[Cc]ase =.*|ignoreCase = false|g' -- '{}' '+' \
+      -exec sed -E -i -e 's|\t|  |g' -- '{}' '+' 2>/dev/null
 
     # remove Git sample hooks
     command find -- "${1:-.}" \
@@ -449,7 +449,7 @@ count_files_by_extension() {
     command uniq -c |
     LC_ALL='C' command awk '{print $1}' |
     command uniq -c |
-    command sed -E 's|.$|[no extension]|g'
+    command sed -E -e 's|.$|[no extension]|g'
 
   # files with extensions
   command find -- . \
@@ -458,7 +458,7 @@ count_files_by_extension() {
     -exec basename -a -- '{}' '+' 2>/dev/null |
 
     # https://2daygeek.com/how-to-count-files-by-extension-in-linux
-    command sed -n -- 's|..*\.||p' |
+    command sed -n -e 's|..*\.||p' |
     LC_ALL='C' command sort |
     command uniq -c |
     LC_ALL='C' command sort -r
@@ -1448,7 +1448,7 @@ plist_r() {
       -name '*.plist' \
       -print \
       -exec plutil -convert xml1 -- '{}' ';' \
-      -exec sed -i -- 's|\t|  |g' -- '{}' ';'
+      -exec sed -i -e 's|\t|  |g' -- '{}' ';'
     ;;
   esac
   {
