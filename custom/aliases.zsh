@@ -8,7 +8,9 @@
 # https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#index-exec
 alias ,='. "${HOME-}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
-  ${EDITOR:-vi} -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
+  ${EDITOR:-vi} -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}" &&
+    command -v shfmt >/dev/null 2>&1 &&
+    command shfmt -s -w -i 2 -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
   . "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
 }
 
