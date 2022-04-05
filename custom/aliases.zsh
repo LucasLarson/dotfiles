@@ -8,7 +8,7 @@
 # https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#index-exec
 alias ,='. "${HOME-}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
-  ${EDITOR:-vi} -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}" &&
+  command "${EDITOR:-vi}" -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}" &&
     command -v shfmt >/dev/null 2>&1 &&
     command shfmt -s -w -i 2 -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
   . "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
@@ -1593,5 +1593,5 @@ ohmyzsh() {
   cd -- "${ZSH-}" &&
     command git status
 }
-alias zshenv='${EDITOR:-vi} -- "${HOME-}/.${SHELL##*[-./]}env"; . "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
-alias zshrc='${EDITOR:-vi} -- "${HOME-}/.${SHELL##*[-./]}rc"; . "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
+alias zshenv='command "${EDITOR:-vi}" -- "${HOME-}/.${SHELL##*[-./]}env"; . "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
+alias zshrc='command "${EDITOR:-vi}" -- "${HOME-}/.${SHELL##*[-./]}rc"; . "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
