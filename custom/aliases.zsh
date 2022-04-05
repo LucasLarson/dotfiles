@@ -327,14 +327,17 @@ cleanup() {
       ! -name '*empty*' \
       ! -name '*ignore' \
       ! -name '*journal' \
+      ! -name '*lck' \
       ! -name '*lock' \
       ! -name '*lockfile' \
       ! -name '*rc' \
       ! -name '.dirstamp' \
+      ! -name '.do_not_remove' \
       ! -name '.gitkeep' \
       ! -name '.gitmodules' \
       ! -name '.hushlogin' \
       ! -name '.keep' \
+      ! -name '.keepme' \
       ! -name '.nojekyll' \
       ! -name '.sudo_as_admin_successful' \
       ! -name '.watchmanconfig' \
