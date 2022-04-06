@@ -80,12 +80,6 @@
 [diff-so-fancy]
   stripLeadingSymbols = true
 
-[filter "lfs"]
-  clean = command git-lfs clean -- %f
-  smudge = command git-lfs smudge -- %f
-  process = command git-lfs filter-process
-  required = true
-
 [gpg]
   # `gpg` is an alias to `gpg2` where possible
   # https://github.com/ustasb/dotfiles/commit/da93f0f
