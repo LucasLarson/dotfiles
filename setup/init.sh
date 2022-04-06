@@ -101,7 +101,6 @@ command apk upgrade --verbose --progress
   printf 'installing man pages...\n' 2>/dev/null
   set -o xtrace
   install man-pages
-  install man-pages-doc
 }
 command -v mandoc >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
