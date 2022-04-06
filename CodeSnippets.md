@@ -377,8 +377,8 @@ for example, C++17’s `<filesystem>`<br/>
 [via](https://stackoverflow.com/a/36046965)<br/>
 
 ```shell
-command clang-format --version 2>/dev/null || return 2; sleep 1; IndentWidth='2'; ColumnLimit='79'; printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"; sleep 1; while getopts i:w: opt;do case "${opt-}" in (i) IndentWidth="${OPTARG-}"; printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"; sleep 1;; \
-(w) ColumnLimit="${OPTARG-}"; printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit-}"; sleep 1 ;; (*) printf 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'; return 1; esac; done; command find -- . -type f ! -path '*.git/*' ! -path '*/Test*' ! -path '*/t/*' ! -path '*/test*' ! -path '*node_modules/*' ! -path '*vscode*' \( \
+command clang-format --version 2>/dev/null || return 2; command sleep 1; IndentWidth='2'; ColumnLimit='79'; printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"; command sleep 1; while getopts i:w: opt;do case "${opt-}" in (i) IndentWidth="${OPTARG-}"; printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"; command sleep 1;; \
+(w) ColumnLimit="${OPTARG-}"; printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit-}"; command sleep 1 ;; (*) printf 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'; return 1; esac; done; command find -- . -type f ! -path '*.git/*' ! -path '*/Test*' ! -path '*/t/*' ! -path '*/test*' ! -path '*node_modules/*' ! -path '*vscode*' \( \
 -name '*.adb' -o -name '*.ads' -o -name '*.asm' -o -name '*.ast' -o -name '*.bc' -o -name '*.C' -o -name '*.c' -o -name '*.C++' -o -name '*.c++' -o -name '*.c++m' -o -name '*.CC' -o -name '*.cc' -o -name '*.ccm' -o -name '*.cl' -o -name '*.clcpp' -o -name '*.cp' -o -name '*.CPP' -o -name '*.cpp' -o -name '*.cppm' -o \
 -name '*.cs' -o -name '*.cu' -o -name '*.cuh' -o -name '*.cui' -o -name '*.CXX' -o -name '*.cxx' -o -name '*.cxxm' -o -name '*.F' -o -name '*.f' -o -name '*.F90' -o -name '*.f90' -o -name '*.F95' -o -name '*.f95' -o -name '*.FOR' -o -name '*.for' -o -name '*.FPP' -o -name '*.fpp' -o -name '*.gch' -o \
 -name '*.H' -o -name '*.h' -o -name '*.h++' -o -name '*.hh' -o -name '*.hip' -o -name '*.hp' -o -name '*.hpp' -o -name '*.hxx' -o -name '*.i' -o -name '*.ifs' -o -name '*.ii' -o -name '*.iim' -o -name '*.inc' -o -name '*.inl' -o -name '*.java' -o -name '*.lib' -o -name '*.ll' -o -name '*.M' -o \
@@ -605,7 +605,7 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 ### Xcode, JetBrains, Carthage, Homebrew
 
 ```shell
-trash_developer='1'; sleep 1; set -o errexit; set -o nounset; set -o xtrace; trash_date="$(command date -u '+%Y%m%d_%s')" \
+trash_developer='1'; command sleep 1; set -o errexit; set -o nounset; set -o xtrace; trash_date="$(command date -u '+%Y%m%d_%s')" \
 command mkdir -p "${HOME-}"'/Library/Developer/Xcode/DerivedData' && command mv -i "${HOME-}"'/Library/Developer/Xcode/DerivedData' "${HOME-}"'/.Trash/Xcode-'"${trash_date-}" \
 command mkdir -p "${HOME-}"'/Library/Developer/Xcode/UserData/IB Support' && command mv -i "${HOME-}"'/Library/Developer/Xcode/UserData/IB Support' "${HOME-}"'/.Trash/Xcode⁄UserData⁄IB Support-'"${trash_date-}" \
 command mkdir -p "${HOME-}"'/Library/Caches/JetBrains' && command mv -i "${HOME-}"'/Library/Caches/JetBrains' "${HOME-}"'/.Trash/JetBrains-'"${trash_date-}" \
