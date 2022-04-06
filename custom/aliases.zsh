@@ -83,13 +83,13 @@ cd_pwd_P() {
   cd_to="$(command pwd -P)"
   if test "${cd_from-}" != "${cd_to-}"; then
     printf 'moving from \342\200\230%s\342\200\231\n' "${cd_from-}"
-    sleep 0.2
+    command sleep 0.2
     cd "${cd_to-}" || {
       printf 'unable to perform this operation\n'
       return 1
     }
     printf '       into \342\200\230%s\342\200\231\n' "${cd_to-}"
-    sleep 0.2
+    command sleep 0.2
   else
     printf 'already in unaliased directory '
     printf '\342\200\230%s\342\200\231\n' "${cd_from-}"
@@ -106,7 +106,7 @@ clang_format() {
 
   command clang-format --version 2>/dev/null ||
     return 2
-  sleep 1
+  command sleep 1
 
   # https://github.com/Originate/guide/blob/880952d/ios/files/clang-format.sh
 
@@ -117,7 +117,7 @@ clang_format() {
   ColumnLimit='79'
 
   printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
-  sleep 1
+  command sleep 1
 
   # permit arguments in any order
   # https://salsa.debian.org/debian/debianutils/blob/c2a1c435ef/savelog
@@ -126,12 +126,12 @@ clang_format() {
     i)
       IndentWidth="${OPTARG-}"
       printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"
-      sleep 1
+      command sleep 1
       ;;
     w)
       ColumnLimit="${OPTARG-}"
       printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit-}"
-      sleep 1
+      command sleep 1
       ;;
     *)
       printf 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'
