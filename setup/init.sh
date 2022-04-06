@@ -41,10 +41,6 @@ sleep 1
 printf '  a Lucas Larson production\n\n' 2>/dev/null
 sleep 1
 
-# ensure `$HOME` is defined
-test -n "${HOME-}" ||
-  exit 1
-
 # start from `$HOME`
 cd -- "${HOME-}" ||
   exit 1
