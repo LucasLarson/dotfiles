@@ -8,7 +8,7 @@
 
 # Alpine Linux
 # wget --continue --server-response 'https://lucaslarson.net/init.sh'
-# apk add --verbose -- "@"
+# apk add --verbose -- "$@"
 
 # Arch Linux
 # curl --remote-name --location 'https://lucaslarson.net/init.sh'
