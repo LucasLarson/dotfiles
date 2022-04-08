@@ -431,7 +431,7 @@ count_files() {
     ! -name '.' \
     -type f \
     -print |
-    command grep -c //
+    command grep -c -e //
 }
 
 count_files_and_directories() {
@@ -439,7 +439,7 @@ count_files_and_directories() {
     ! -path '*.git/*' \
     ! -name '.' \
     -print |
-    command grep -c //
+    command grep -c -e //
 }
 
 count_files_by_extension() {
@@ -480,7 +480,7 @@ count_files_in_this_directory() {
       ! -name '.' \
       -prune \
       -print |
-      command grep -c /
+      command grep -c -e /
     ;;
 
     # count only regular, non-directory files
@@ -492,7 +492,7 @@ count_files_in_this_directory() {
       ! -name '.' \
       -prune \
       -print |
-      command grep -c /
+      command grep -c -e /
     ;;
   esac
 }
@@ -877,9 +877,9 @@ git_delete_merged_branches() {
   # https://gist.github.com/8775224
   set -o nounset
   if command git branch --merged |
-    command grep -v '\*'; then
+    command grep -v -e '\*'; then
     command git branch --merged |
-      command grep -v '\*' |
+      command grep -v -e '\*' |
       command xargs -n 1 git branch --delete --verbose
   fi
   {
@@ -950,7 +950,7 @@ git_find_child() {
   # %H: commit hash
   # %P: parent commit
   command git log --pretty='%H %P' |
-    command grep " ${commit-}" |
+    command grep -e " ${commit-}" |
     command cut -c 1-40
   {
     set -o allexport
@@ -1000,7 +1000,7 @@ alias git_parents='git_find_parents'
 git_find_initial_commit() {
   # https://stackoverflow.com/q/1006775#comment23686803_1007545
   command git rev-list --topo-order --parents HEAD -- |
-    command grep -E '^[a-f0-9]{40}$'
+    command grep -E -e '^[a-f0-9]{40}$'
 }
 alias gic='git_find_initial_commit'
 
@@ -1273,7 +1273,7 @@ alias h1='command head -n 1'
 history_stats() {
   fc -l 1 |
     command awk '{CMD[$2]++; count++;}; END {for (a in CMD) print CMD[a] " " CMD[a] * 100 / count "% " a;}' |
-    command grep -v './' |
+    command grep -v -e './' |
     LC_ALL='C' command sort -n -r |
     command head -n "${1:-"$((LINES - 5))"}" |
     command column -c3 -s ' ' -t |
