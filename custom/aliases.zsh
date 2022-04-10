@@ -415,6 +415,7 @@ cy() {
     "${TEMPLATE-}"'/.gitlab-ci.yml' \
     "${TEMPLATE-}"'/.imgbotconfig' \
     "${TEMPLATE-}"'/.whitesource' \
+    "${TEMPLATE-}"'/citation.cff' \
     "${TEMPLATE-}"'/renovate.json'; do
     test -r "${file-}" &&
       # -R to copy recursively
