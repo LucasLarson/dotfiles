@@ -272,7 +272,7 @@ cleanup() {
       esac
 
     # delete thumbnail cache files
-    # and hide `find: ‘./com...’: Operation not permitted` with 2>/dev/null
+    # and hide `find: ‘./com...’: Operation not permitted` with `2>/dev/null`
     command find -- "${1:-.}" \
       -type f \
       '(' \
