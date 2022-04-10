@@ -398,28 +398,34 @@ cleanup() {
 # https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp='cp -R'
 cy() {
-  if test -r "$1"; then
-    # if within git repo, then auto-overwrite
-    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-      interactive='-i'
-    fi
-    if test -z "$2"; then
-      # if there is no second argument,
-      # then copy to the current directory
-      # -r to copy recursively
-      # -L to follow symbolic links
-      eval cp -r -L "${interactive-} -- $1 ${PWD-}"
-    else
-      eval cp -r -L "${interactive-} -- $1 $2"
-    fi
-  elif test -e "$1"; then
-    printf '\140%s\140 is not readable and cannot be copied\n' "$1"
-    exit 1
+  test -n "${DOTFILES-}" &&
+    test -n "${TEMPLATE-}" ||
+    return 1
+
+  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    target="$(command git rev-parse --show-toplevel)"
   else
-    printf '\140%s\140 does not exist and cannot be copied\n' "$1"
-    exit 3
+    target="$(command pwd -L)"
   fi
-  unset -- interactive 2>/dev/null
+
+  for file in \
+    "${DOTFILES-}"'/.github' \
+    "${TEMPLATE-}"'/.github' \
+    "${TEMPLATE-}"'/.deepsource.toml' \
+    "${TEMPLATE-}"'/.gitlab-ci.yml' \
+    "${TEMPLATE-}"'/.imgbotconfig' \
+    "${TEMPLATE-}"'/.whitesource' \
+    "${TEMPLATE-}"'/renovate.json'; do
+    test -r "${file-}" &&
+      # -R to copy recursively
+      # -L to follow symbolic links
+      # -v to show progress
+      command cp -R -L -- "${file-}" "${target-}"
+  done
+  {
+    unset -- file
+    unset -- target
+  } 2>/dev/null
 }
 
 # number of files
