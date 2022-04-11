@@ -819,13 +819,13 @@ alias gbD='command git branch --delete --force'
 git_commit() {
   set -o nounset
   if test "$#" -eq '0'; then
-    command git commit --verbose ||
+    command git commit --signoff --verbose ||
       return 1
   elif test "$1" = '--amend'; then
-    command git commit --verbose --amend ||
+    command git commit --amend --signoff --verbose ||
       return 1
   else
-    command git commit --verbose --message "$@" ||
+    command git commit --signoff --verbose --message "$@" ||
       return 1
   fi
   command git status
@@ -1024,12 +1024,12 @@ git_commit_initial_commit() {
       export GIT_AUTHOR_DATE="${git_time-}"
       export GIT_COMMITTER_DATE="${git_time-}"
     fi
-  command git commit --allow-empty --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
+  command git commit --allow-empty --signoff --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
 
   # if there are non-repository files present, then add them and commit
   if test -n "$(command git ls-files --others --exclude-standard)"; then
     command git add --verbose -- . &&
-      command git commit --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
+      command git commit --signoff --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
   fi
 
   {
