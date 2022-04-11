@@ -420,7 +420,6 @@ cy() {
     test -r "${file-}" &&
       # -R to copy recursively
       # -L to follow symbolic links
-      # -v to show progress
       command cp -R -L -- "${file-}" "${target-}"
   done
   {
