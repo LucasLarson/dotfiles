@@ -772,8 +772,8 @@ git_add() {
         shift
       ;;
     -p | --patch)
-      command git add --patch --verbose "${@:-.}" &&
-        shift
+      shift
+      command git add --verbose --patch "${@:-.}"
       ;;
     *)
       # default to everything in the current directory and below
