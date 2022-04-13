@@ -259,7 +259,7 @@ cleanup() {
       # `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Movies`, `Music`, `Pictures`, `Public`, and `Sites`
       # https://web.archive.org/web/0id_/developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGUide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW9
       test "$(command pwd -P | command xargs -n 1 dirname)" = "${HOME-}" &&
-      case "$(command pwd -P | command tr -d '[:space:]' | command xargs basename | command cut -c 1)" in
+      case "$(command pwd -P | command tr -d '[:space:]' | command xargs basename -- | command cut -c 1)" in
       [A-Z])
         printf '\n\n'
         printf '\342\233\224\357\270\217  aborting: refusing to run from \140\044HOME\140 or macOS standard directory\n'
@@ -596,7 +596,7 @@ filename_spaces_to_underscores() {
         command mv -i "${filename-}" "$(
           command dirname "${filename-}"
         )"/"$(
-          command basename "${filename-}" |
+          command basename -- "${filename-}" |
             command tr "${from-}" "${to-}"
         )"
       done
@@ -853,18 +853,18 @@ git_clone() {
   set -o nounset
   case "${1-}" in
   -h | --help)
-    printf 'Usage: %s <git_url> [<dir_name>]\n' "$(command basename "$0")" &&
+    printf 'Usage: %s <git_url> [<dir_name>]\n' "$(command basename -- "$0")" &&
       return 0
     ;;
   -1 | --shallow)
     shift
-    command mkdir "${2:-$(command basename "$1" .git || return 123)}" >/dev/null 2>&1
-    cd "${2:-$(command basename "$1" .git || return 122)}" >/dev/null 2>&1 || return 5
+    command mkdir "${2:-$(command basename -- "$1" .git || return 123)}" >/dev/null 2>&1
+    cd "${2:-$(command basename -- "$1" .git || return 122)}" >/dev/null 2>&1 || return 5
     command git clone --verbose --progress --depth=1 --shallow-submodules "$1" . || return 6
     ;;
   *)
-    command mkdir "${2:-$(command basename "$1" .git || return 126)}" >/dev/null 2>&1
-    cd "${2:-$(command basename "$1" .git || return 125)}" >/dev/null 2>&1 || return 3
+    command mkdir "${2:-$(command basename -- "$1" .git || return 126)}" >/dev/null 2>&1
+    cd "${2:-$(command basename -- "$1" .git || return 125)}" >/dev/null 2>&1 || return 3
     command git clone --verbose --progress --recursive -- "$1" . || return 4
     ;;
   esac
@@ -1415,7 +1415,7 @@ path_check() {
       ;;
 
     *)
-      printf 'usage: %s [-v|--verbose]\n' "$(command basename "$0")"
+      printf 'usage: %s [-v|--verbose]\n' "$(command basename -- "$0")"
       return 1
       ;;
     esac

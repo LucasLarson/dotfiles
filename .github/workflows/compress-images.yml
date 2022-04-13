@@ -43,7 +43,7 @@ jobs:
         } 2>/dev/null
       )" |
         command tr -d "[:space:]" |
-        command xargs basename |
+        command xargs basename -- |
         command sed -e "s|.git$||"
       )"' &&
       (github.event_name != 'pull_request' ||
