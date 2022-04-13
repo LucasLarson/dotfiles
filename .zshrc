@@ -167,7 +167,7 @@ command man -w >/dev/null 2>&1 &&
   # https://unix.stackexchange.com/a/162893
   MANPATH="${MANPATH:+${MANPATH-}:}$(command man -w)"
 
-# $EDITOR: access favorite with `edit`
+# $EDITOR: access favorite with `e`
 # Set preferred editor if it is available
 if command -v nvim >/dev/null 2>&1; then
   EDITOR="$(command -v nvim)"
@@ -177,9 +177,9 @@ else
   EDITOR="$(command -v vi)"
 fi
 export EDITOR
-# https://github.com/koalaman/shellcheck/wiki/SC2139/db553bf#this-expands-when-defined-not-when-used-consider-escaping
-alias editor='${EDITOR-}'
-alias edit='editor'
+# https://github.com/koalaman/shellcheck/wiki/SC2139
+alias e='command "${EDITOR-}"'
+alias edit='command "${EDITOR-}"'
 # https://unix.stackexchange.com/q/4859#comment5812_4861
 export VISUAL="${EDITOR-}"
 
