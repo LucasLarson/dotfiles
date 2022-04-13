@@ -259,7 +259,7 @@ cleanup() {
       # `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Movies`, `Music`, `Pictures`, `Public`, and `Sites`
       # https://web.archive.org/web/0id_/developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGUide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW9
       test "$(command pwd -P | command xargs -n 1 dirname)" = "${HOME-}" &&
-      case "$(command pwd -P | command tr -d '[:space:]' | command xargs basename | command cut -c1)" in
+      case "$(command pwd -P | command tr -d '[:space:]' | command xargs basename | command cut -c 1)" in
       [A-Z])
         printf '\n\n'
         printf '\342\233\224\357\270\217  aborting: refusing to run from \140\044HOME\140 or macOS standard directory\n'
@@ -1288,7 +1288,7 @@ history_stats() {
     command grep -v -e './' |
     LC_ALL='C' command sort -n -r |
     command head -n "${1:-"$((LINES - 5))"}" |
-    command column -c3 -s ' ' -t |
+    command column -c 3 -s ' ' -t |
     command nl
 }
 alias zsh_stats='history_stats'
