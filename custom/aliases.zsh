@@ -453,7 +453,10 @@ count_files_by_extension() {
   # homemade
   command find -- . \
     ! -path '*.git/*' \
-    -type f \
+    '(' \
+    -type f -o \
+    -type l \
+    ')' \
     ! -name '*.*' \
     -print 2>/dev/null |
     LC_ALL='C' command sort -u |
@@ -465,7 +468,10 @@ count_files_by_extension() {
   # files with extensions
   command find -- . \
     ! -path '*.git/*' \
-    -type f \
+    '(' \
+    -type f -o \
+    -type l \
+    ')' \
     -exec basename -a -- '{}' '+' 2>/dev/null |
 
     # https://2daygeek.com/how-to-count-files-by-extension-in-linux
