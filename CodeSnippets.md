@@ -219,7 +219,7 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 ###### applications
 
 ```shell
-command find -- /System/Applications /Applications -maxdepth 3 -type d -name '*.app' -print0 | xargs -0 basename -a -s '.app' | LC_ALL='C' command sort -f -u
+command find -- /System/Applications /Applications -maxdepth 3 -type d -name '*.app' -print0 | command xargs -0 basename -a -s '.app' -- | LC_ALL='C' command sort -u | LC_ALL='C' command sort -f
 ```
 
 On Alpine Linux, generate a list of installed packages with:<br/>
