@@ -149,11 +149,11 @@ clang_format() {
 
   command find -- . \
     -type f \
-    ! -path '*.git/*' \
-    ! -path '*/Test*' \
+    ! -path '*/.git/*' \
+    ! -path '*/node_modules/*' \
     ! -path '*/t/*' \
+    ! -path '*/Test*' \
     ! -path '*/test*' \
-    ! -path '*node_modules/*' \
     ! -path '*vscode*' \
     '(' \
     -name '*.adb' -o \
@@ -278,8 +278,8 @@ cleanup() {
       '(' \
       -name '.DS_Store' -o \
       -name 'Desktop.ini' -o \
-      -name 'Thumbs.db' -o \
       -name 'desktop.ini' -o \
+      -name 'Thumbs.db' -o \
       -name 'thumbs.db' \
       ')' \
       -print \
@@ -319,17 +319,19 @@ cleanup() {
       -type f \
       -writable \
       -size 0 \
-      ! -path '*.git/*' \
-      ! -path '*/Test*' \
+      ! -path '*/.git/*' \
+      ! -path '*/node_modules/*' \
       ! -path '*/t/*' \
+      ! -path '*/Test*' \
       ! -path '*/test*' \
+      ! -path '*vscode*' \
       ! -name "$(printf 'Icon\015\012')" \
       ! -name '*.plugin.zsh' \
-      ! -name '*LOCK' \
       ! -name '*empty*' \
       ! -name '*ignore' \
       ! -name '*journal' \
       ! -name '*lck' \
+      ! -name '*LOCK' \
       ! -name '*lock' \
       ! -name '*lockfile' \
       ! -name '*rc' \
@@ -353,7 +355,7 @@ cleanup() {
     command find -- "${1:-.}" \
       -type d \
       -empty \
-      ! -path '*.git/*' \
+      ! -path '*/.git/*' \
       ! -name '.well-known' \
       -print \
       -delete 2>/dev/null
@@ -362,14 +364,14 @@ cleanup() {
     # https://unix.stackexchange.com/a/112024
     command find -- "${1:-.}" \
       -type f \
-      ! -path '*/Test*' \
+      ! -path '*/node_modules/*' \
       ! -path '*/t/*' \
+      ! -path '*/Test*' \
       ! -path '*/test*' \
-      ! -path '*node_modules/*' \
       ! -path '*vscode*' \
       '(' \
       -name '*gitconfig' -o \
-      -path '*.git/*' -a -name 'config' \
+      -path '*/.git/*' -a -name 'config' \
       ')' \
       -print \
       -exec sed -E -i -e 's|ignore[Cc]ase =.*|ignoreCase = false|g' -- '{}' '+' \
@@ -378,8 +380,7 @@ cleanup() {
     # remove Git sample hooks
     command find -- "${1:-.}" \
       -type f \
-      -path './.git/*' \
-      -path '*hooks/*.sample' \
+      -path '*/.git/hooks/*.sample' \
       -print \
       -delete 2>/dev/null
 
@@ -433,7 +434,7 @@ cy() {
 count_files() {
   # https://unix.stackexchange.com/a/1126
   command find -- .//. \
-    ! -path '*.git/*' \
+    ! -path '*/.git/*' \
     ! -name '.' \
     -type f \
     -print |
@@ -442,7 +443,7 @@ count_files() {
 
 count_files_and_directories() {
   command find -- .//. \
-    ! -path '*.git/*' \
+    ! -path '*/.git/*' \
     ! -name '.' \
     -print |
     command grep -c -e //
@@ -452,7 +453,8 @@ count_files_by_extension() {
   # files with no extension
   # homemade
   command find -- . \
-    ! -path '*.git/*' \
+    ! -path '*/.git/*' \
+    ! -path '*/node_modules/*' \
     '(' \
     -type f -o \
     -type l \
@@ -467,7 +469,8 @@ count_files_by_extension() {
 
   # files with extensions
   command find -- . \
-    ! -path '*.git/*' \
+    ! -path '*/.git/*' \
+    ! -path '*/node_modules/*' \
     '(' \
     -type f -o \
     -type l \
@@ -488,7 +491,7 @@ count_files_in_this_directory() {
   # count files as well as directories
   -d | --directory | --directories)
     command find -- . \
-      ! -path '*.git/*' \
+      ! -path '*/.git/*' \
       ! -name '.' \
       -prune \
       -print |
@@ -500,7 +503,7 @@ count_files_in_this_directory() {
     # https://unix.stackexchange.com/a/1126
     command find -- . \
       -type f \
-      ! -path '*.git/*' \
+      ! -path '*/.git/*' \
       ! -name '.' \
       -prune \
       -print |
@@ -636,11 +639,11 @@ find_broken_symlinks() {
 # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 find_duplicate_files() {
   command find -- "${1:-.}" \
-    ! -path '*.git/*' \
-    ! -path '*/Test*' \
+    ! -path '*/.git/*' \
+    ! -path '*/node_modules/*' \
     ! -path '*/t/*' \
+    ! -path '*/Test*' \
     ! -path '*/test*' \
-    ! -path '*node_modules/*' \
     ! -path '*vscode*' \
     ! -empty \
     ! -type l \
@@ -661,16 +664,16 @@ alias fdf='find_duplicate_files'
 # find by name
 find_by_name() {
   command find -- . \
-    ! -path '*.git/*' \
+    ! -path '*/.git/*' \
+    ! -path '*/Application Support/*' \
     ! -path '*/Archive*' \
-    ! -path '*/Test*' \
     ! -path '*/archive*' \
+    ! -path '*/custom/plugins/*' \
+    ! -path '*/custom/themes/*' \
+    ! -path '*/node_modules/*' \
     ! -path '*/t/*' \
+    ! -path '*/Test*' \
     ! -path '*/test*' \
-    ! -path '*Application Support*' \
-    ! -path '*custom/plugins*' \
-    ! -path '*custom/themes*' \
-    ! -path '*node_modules/*' \
     ! -path '*vscode*' \
     -iname "*${*}*" \
     -print 2>/dev/null |
@@ -683,8 +686,8 @@ find_shell_scripts() {
   {
     # all files with extensions `.bash`, `.dash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
     command find -- . \
+      ! -path '*/.git/*' \
       -type f \
-      ! -path '*.git/*' \
       -name '*.bash' -o \
       -name '*.dash' -o \
       -name '*.ksh' -o \
@@ -695,11 +698,11 @@ find_shell_scripts() {
     # files whose first line resembles those of shell scripts
     # https://stackoverflow.com/a/9612232
     command find -- . \
-      ! -path '*.git/*' \
-      ! -path '*/Test*' \
+      ! -path '*/.git/*' \
+      ! -path '*/node_modules/*' \
       ! -path '*/t/*' \
+      ! -path '*/Test*' \
       ! -path '*/test*' \
-      ! -path '*node_modules/*' \
       ! -path '*vscode*' \
       -type f \
       -exec head -n 1 -- '{}' '+' 2>/dev/null |
@@ -1377,7 +1380,7 @@ alias mv='command mv -v -i'
 non_ascii() {
   set -o nounset
   LC_ALL='C' command find -- . \
-    ! -path '*.git/*' \
+    ! -path '*/.git/*' \
     -name '*[! -~]*'
   {
     set -o allexport
