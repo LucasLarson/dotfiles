@@ -321,7 +321,6 @@ test -d "${NPM_PACKAGES-}/share/man" &&
   MANPATH="${MANPATH:+${MANPATH-}:}${NPM_PACKAGES-}/share/man"
 
 # completion dots
-# https://git.io/completion-dots-in-.zshrc
 expand-or-complete-with-dots() {
   printf '\033[0;31m...\033[0m'
   zle expand-or-complete
@@ -360,7 +359,7 @@ setopt INTERACTIVE_COMMENTS
 # pyenv
 test -d "${HOME-}/.pyenv/shims" &&
   PATH="${HOME-}/.pyenv/shims${PATH:+:${PATH-}}"
-# https://git.io/init_-_--no-rehash
+# https://gist.github.com/4a4c4986ccdcaf47b91e8227f9868ded#prezto
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
 pyenv() {
   eval "$(command pyenv init - --no-rehash "${SHELL##*[-./]}")"
@@ -401,7 +400,7 @@ test -d "${HOME-}/.local/bin" &&
 
 # rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
-# https://git.io/init_-_--no-rehash
+# https://gist.github.com/4a4c4986ccdcaf47b91e8227f9868ded#prezto
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
 test -d "${HOME-}/.rbenv/shims" &&
   PATH="${HOME-}/.rbenv/shims${PATH:+:${PATH-}}"

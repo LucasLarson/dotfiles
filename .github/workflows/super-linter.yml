@@ -6,11 +6,6 @@
 #########################
 name: Super-Linter
 
-#
-# Documentation:
-# https://git.io/workflow-syntax-for-github-actions
-#
-
 #############################
 # Start the job on all push #
 #############################

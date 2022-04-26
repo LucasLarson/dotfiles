@@ -1,9 +1,6 @@
 ---
 # To get started with Dependabot version updates, you'll need to specify which
 # package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://git.io/help-dependabot-configuration
-# https://github.com/dependabot/dependabot-core/issues/2219#issuecomment-829501674
 
 version: 2
 updates:
