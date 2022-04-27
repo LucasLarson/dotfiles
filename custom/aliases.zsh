@@ -1393,7 +1393,7 @@ non_ascii() {
 }
 
 # paste faster
-# https://git.io/pasteinit-pastefinish
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238#issuecomment-389324292
 pasteinit() {
   OLD_SELF_INSERT="${"${(s.:.)widgets[self-insert]}"[2,3]}"
   zle -N self-insert url-quote-magic
