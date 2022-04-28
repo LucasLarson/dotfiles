@@ -681,6 +681,14 @@ find_by_name() {
 }
 alias fname='find_by_name'
 
+compdef -- 'find_no_git'='find' 2>/dev/null
+find_no_git() {
+  command find -- . \
+    -mindepth 1 \
+    ! -path '*/.git/*' \
+    "$@"
+}
+
 find_shell_scripts() {
   set -o nounset
   {
