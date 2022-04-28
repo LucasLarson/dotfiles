@@ -689,6 +689,14 @@ find_no_git() {
     "$@"
 }
 
+find_oldest_file() {
+  command find -- . \
+    -type f \
+    ! -path '*/.git/*' \
+    -exec /bin/ls -l -t -r -- '{}' '+' 2>/dev/null |
+    command head -n 1
+}
+
 find_shell_scripts() {
   set -o nounset
   {
