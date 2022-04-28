@@ -118,6 +118,7 @@ plugins=(
   git-default-branch
   git-open
   history-substring-search
+  zsh-abbr
   zsh-diff-so-fancy
   zchee-zsh-completions
 )

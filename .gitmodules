@@ -31,3 +31,6 @@
 [submodule "custom/plugins/zsh_codex"]
   path = custom/plugins/zsh_codex
   url = https://github.com/tom-doerr/zsh_codex
+[submodule "custom/plugins/zsh-abbr"]
+  path = custom/plugins/zsh-abbr
+  url = https://github.com/olets/zsh-abbr
