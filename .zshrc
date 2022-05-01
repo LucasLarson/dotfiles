@@ -111,8 +111,7 @@ export ZSH_COMPDUMP="${HOME-}/.zcompdump"
 # Plugins
 # plugins at the beginning of the array are
 # overridden by plugins at its end
-plugins=(
-  "${plugins[@]}"
+plugins+=(
   gunstage
   samefile
   git-default-branch
@@ -130,15 +129,13 @@ test -r "${XDG_CONFIG_HOME-}"'/openaiapirc' || {
   printf 'secret_key = %s\n' "${OPENAI_SECRET_KEY-}"
 } >|"${XDG_CONFIG_HOME-}"'/openaiapirc'
 bindkey '^X' create_completion
-plugins=(
-  "${plugins[@]}"
+plugins+=(
   zsh_codex
 )
 
 # fast-syntax-highlighting/zsh-syntax-highlighting
 # performs best when loaded late
-plugins=(
-  "${plugins[@]}"
+plugins+=(
   fast-syntax-highlighting
 )
 
