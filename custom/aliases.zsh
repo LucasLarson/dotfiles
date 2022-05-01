@@ -1471,7 +1471,7 @@ plist_r() {
     return 127
   case "$(command pwd -P)" in
   "${HOME-}" | "${DOTFILES-}")
-    return 1
+    return 77
     ;;
   *)
     command find -- . \
