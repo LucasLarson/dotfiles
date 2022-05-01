@@ -1469,8 +1469,6 @@ path_check() {
 plist_r() {
   command -v plutil >/dev/null 2>&1 ||
     return 127
-  set -o errexit
-  set -o nounset
   case "$(command pwd -P)" in
   "${HOME-}" | "${DOTFILES-}")
     return 1
@@ -1485,14 +1483,6 @@ plist_r() {
       -exec sed -i -e 's|\t|  |g' -- '{}' ';'
     ;;
   esac
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
 }
 
 # PlistBuddy
