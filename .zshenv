@@ -36,7 +36,7 @@ export GOPATH="${GOPATH:="${HOME-}"/.go}"
 # https://unix.stackexchange.com/a/220658
 # https://opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_05_03
 IFS="$(printf ' \t\n|')"
-export IFS="${IFS%|}"
+export IFS="${IFS%'|'}"
 
 ## Locale
 export LC_ALL="${LC_ALL:=en_US.UTF-8}"
