@@ -1482,7 +1482,8 @@ plist_r() {
       -name '*.plist' \
       -print \
       -exec plutil -convert xml1 -- '{}' ';' \
-      -exec sed -i -e 's|\t|  |g' -- '{}' ';'
+      -exec sed -i -e 's|\t|  |g' -- '{}' ';' \
+      -exec sed -E -i -e 's/^(  |<\/?dict)/  &/' -- '{}' ';'
     ;;
   esac
 }

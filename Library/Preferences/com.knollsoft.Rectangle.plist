@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-  <key>NSStatusItem Preferred Position Item-0</key>
-  <real>776</real>
-  <key>NSWindow Frame SUAutomaticUpdateAlert</key>
-  <string>572 686 616 180 0 0 1792 1095 </string>
-  <key>NSWindow Frame SUUpdateAlert</key>
-  <string>565 522 620 398 0 0 1792 1095 </string>
-  <key>SUAutomaticallyUpdate</key>
-  <true/>
-  <key>SUEnableAutomaticChecks</key>
-  <true/>
-  <key>SUHasLaunchedBefore</key>
-  <true/>
-  <key>SULastCheckTime</key>
-  <date>2021-03-05T23:38:41Z</date>
-  <key>SUSendProfileInfo</key>
-  <false/>
-  <key>SUUpdateRelaunchingMarker</key>
-  <false/>
-  <key>bottomHalf</key>
-  <data>
-  YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
-  AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAChC1UkbnVsbAgRGiQpMjdJTFFT
-  VQAAAAAAAAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
-  </data>
-  <key>gapSize</key>
-  <real>1</real>
-  <key>lastVersion</key>
-  <string>48</string>
-  <key>launchOnLogin</key>
-  <true/>
-  <key>leftHalf</key>
-  <data>
-  YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
-  AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAChC1UkbnVsbAgRGiQpMjdJTFFT
-  VQAAAAAAAAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
-  </data>
-  <key>rightHalf</key>
-  <data>
-  YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
-  AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAChC1UkbnVsbAgRGiQpMjdJTFFT
-  VQAAAAAAAAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
-  </data>
-  <key>topHalf</key>
-  <data>
-  YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
-  AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAChC1UkbnVsbAgRGiQpMjdJTFFT
-  VQAAAAAAAAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
-  </data>
-  <key>windowSnapping</key>
-  <integer>2</integer>
-</dict>
+  <dict>
+    <key>NSStatusItem Preferred Position Item-0</key>
+    <real>776</real>
+    <key>NSWindow Frame SUAutomaticUpdateAlert</key>
+    <string>572 686 616 180 0 0 1792 1095 </string>
+    <key>NSWindow Frame SUUpdateAlert</key>
+    <string>565 522 620 398 0 0 1792 1095 </string>
+    <key>SUAutomaticallyUpdate</key>
+    <true/>
+    <key>SUEnableAutomaticChecks</key>
+    <true/>
+    <key>SUHasLaunchedBefore</key>
+    <true/>
+    <key>SULastCheckTime</key>
+    <date>2021-03-05T23:38:41Z</date>
+    <key>SUSendProfileInfo</key>
+    <false/>
+    <key>SUUpdateRelaunchingMarker</key>
+    <false/>
+    <key>bottomHalf</key>
+    <data>
+    YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+    AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAChC1UkbnVsbAgRGiQpMjdJTFFT
+    VQAAAAAAAAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
+    </data>
+    <key>gapSize</key>
+    <real>1</real>
+    <key>lastVersion</key>
+    <string>48</string>
+    <key>launchOnLogin</key>
+    <true/>
+    <key>leftHalf</key>
+    <data>
+    YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+    AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAChC1UkbnVsbAgRGiQpMjdJTFFT
+    VQAAAAAAAAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
+    </data>
+    <key>rightHalf</key>
+    <data>
+    YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+    AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAChC1UkbnVsbAgRGiQpMjdJTFFT
+    VQAAAAAAAAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
+    </data>
+    <key>topHalf</key>
+    <data>
+    YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
+    AAGGoF8QD05TS2V5ZWRBcmNoaXZlctEICVRyb290gAChC1UkbnVsbAgRGiQpMjdJTFFT
+    VQAAAAAAAAEBAAAAAAAAAAwAAAAAAAAAAAAAAAAAAABb
+    </data>
+    <key>windowSnapping</key>
+    <integer>2</integer>
+  </dict>
 </plist>
