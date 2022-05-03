@@ -102,7 +102,7 @@ printf '.'; else
 printf '\b'; fi; i="$((i + 1))"; done; unset i
 printf '\n\n'; set -o nounset; { command ping -q -i 1 -c 1 -- one.one.one.one >/dev/null 2>&1 && command ping -q -i 1 -c 1 -- 8.8.8.8 >/dev/null 2>&1; } || {
 printf 'No internet connection detected.\nAborting update.\n'; exit "${update:-1}"; }
-printf '\360\237\215\272  checking for Homebrew installation...'; if command -v brew >/dev/null 2>&1; then
+printf '\360\237\215\272  checking for Homebrew installation...'; if command -v -- brew >/dev/null 2>&1; then
 printf '  \342\234\205  found\n'
 printf '\360\237\215\272  checking for Homebrew updates...\n'; command brew update; command brew upgrade --greedy; command brew upgrade --cask --greedy
 command brew install --debug --verbose --include-test --HEAD --display-times --git -- git
@@ -112,24 +112,24 @@ command brew install --debug --verbose --include-test --HEAD --display-times --g
 command brew install --debug --verbose --include-test --HEAD --display-times --git -- zsh
 command brew generate-man-completions; else
 printf 'No Homebrew installation detected.\n\n'; fi
-printf '\360\237\217\224  checking for Alpine Package Keeper installation...\n'; if command -v apk >/dev/null 2>&1; then
+printf '\360\237\217\224  checking for Alpine Package Keeper installation...\n'; if command -v -- apk >/dev/null 2>&1; then
 printf '\360\237\217\224  apk update...\n'; command apk update --progress --verbose --verbose
 printf '\n\360\237\217\224  apk upgrade...\n'; command apk upgrade --update-cache --progress --verbose --verbose
 printf '\n\360\237\217\224  apk fix...\n'; command apk fix --progress --verbose --verbose
 printf '\n\360\237\217\224  apk verify...\n'; command apk verify --progress --verbose --verbose
 printf '\360\237\217\224  apk verify complete...\n\n'; else
 printf 'no Alpine Package Keeper installation detected.\n\n'; fi
-printf 'checking access to Software Update...\n'; if command -v softwareupdate >/dev/null 2>&1; then
+printf 'checking access to Software Update...\n'; if command -v -- softwareupdate >/dev/null 2>&1; then
 printf '\360\237\215\216  '; command softwareupdate --list --all --verbose; else
 printf 'no Software Update installation detected.\n\n'; fi
-printf 'checking for Xcode installation...\n'; if command -v xcrun >/dev/null 2>&1; then
+printf 'checking for Xcode installation...\n'; if command -v -- xcrun >/dev/null 2>&1; then
 printf 'removing unavailable device simulators...\n'; command xcrun simctl delete unavailable; else
 printf 'no Xcode installation detected.\n\n'; fi
-printf '\342\232\233\357\270\217  checking for Atom installation...\n'; if command -v apm >/dev/null 2>&1; then command apm upgrade --no-confirm; else
+printf '\342\232\233\357\270\217  checking for Atom installation...\n'; if command -v -- apm >/dev/null 2>&1; then command apm upgrade --no-confirm; else
 printf 'no Atom installation detected.\n\n'; fi
-printf 'checking for Rust installation...\n'; if command -v rustup >/dev/null 2>&1; then command rustup update; else
+printf 'checking for Rust installation...\n'; if command -v -- rustup >/dev/null 2>&1; then command rustup update; else
 printf 'no Rust installation detected.\n\n'; fi
-printf 'checking for npm installation...\n'; if command -v npm >/dev/null 2>&1; then
+printf 'checking for npm installation...\n'; if command -v -- npm >/dev/null 2>&1; then
 printf '...and whether this device is can update Node quickly...\n'; if test "$((${COLUMNS:-80} * ${LINES:-24}))" -ge "$((80 * 24))"; then while test -n "$(command find -- "${HOME-}"'/.npm-packages' -type f ! -name "$(
 printf "*\n*")" -name '.DS_Store' -print)"; do command find -- "${HOME-}"'/.npm-packages' -type f ! -name "$(
 printf "*\n*")" -name '.DS_Store' -print -delete; done; command npm install npm --global; while test -n "$(command find -- "${HOME-}"'/.npm-packages' -type f ! -name "$(
@@ -140,20 +140,20 @@ printf 'to update Node later, run:\n\n'
 printf '    npm install npm --global \046\046 \134\n'
 printf '    npm update --global --verbose\n\n\n'; command sleep 3; fi; else
 printf 'no npm installation detected.\n\n'; fi
-printf 'checking for RubyGems installation...\n'; if command -v gem >/dev/null 2>&1; then
+printf 'checking for RubyGems installation...\n'; if command -v -- gem >/dev/null 2>&1; then
 printf 'updating RubyGems...\n'; command gem update --system --verbose; command gem update --verbose; if command bundle update >/dev/null 2>&1; then command bundle update --verbose 2>/dev/null; fi; if command bundle install >/dev/null 2>&1; then command bundle install --verbose 2>/dev/null; fi
 printf 'checking for CocoaPods installation...\n'; if command bundle exec pod install >/dev/null 2>&1; then command bundle exec pod install --verbose 2>/dev/null; fi; if command pod repo update >/dev/null 2>&1; then command pod repo update --verbose; command pod repo update --verbose; fi; else
-printf 'no RubyGems installation detected.\n\n'; fi; if command -v rbenv >/dev/null 2>&1; then command rbenv rehash; fi; if command -v c_rehash >/dev/null 2>&1; then command c_rehash; fi; if command -v python >/dev/null 2>&1; then
+printf 'no RubyGems installation detected.\n\n'; fi; if command -v -- rbenv >/dev/null 2>&1; then command rbenv rehash; fi; if command -v -- c_rehash >/dev/null 2>&1; then command c_rehash; fi; if command -v -- python >/dev/null 2>&1; then
 printf '\n\360\237\220\215  verifying Python\342\200\231s packager is up to date...\n'; command python -m pip install --upgrade --verbose --verbose --verbose -- pip
-printf 'verifying pip installation...\n'; if command -v pip >/dev/null 2>&1; then
+printf 'verifying pip installation...\n'; if command -v -- pip >/dev/null 2>&1; then
 printf '\n\360\237\220\215  updating outdated Python packages...\n'; for package in $(command pip list --outdated --format freeze); do command pip install --upgrade --verbose --verbose --verbose -- "${package%%=*}"; done; unset package; fi
-printf 'checking for pyenv installation...\n'; if command -v pyenv >/dev/null 2>&1; then
+printf 'checking for pyenv installation...\n'; if command -v -- pyenv >/dev/null 2>&1; then
 printf 'rehashing pyenv shims...\n'; command pyenv rehash; else
 printf 'no pyenv installation detected.\n\n'; fi
-printf 'checking for Conda installation...\n'; if command -v conda >/dev/null 2>&1; then command conda update --yes --all; else
-printf 'no Conda installation detected.\n\n'; fi; fi; if command -v omz >/dev/null 2>&1; then { set +o nounset; } 2>/dev/null; omz update 2>/dev/null; fi; { set -o allexport; set +o errexit; set +o noclobber; set +o nounset; set +o verbose; set +o xtrace; } 2>/dev/null
-test -r "${HOME-}"'/.'"${SHELL##*[-./]}"'rc' && . "${HOME-}"'/.'"${SHELL##*[-./]}"'rc'; if command -v rehash >/dev/null 2>&1; then rehash; fi; unset update
-printf '\n\n\342%s\234\205  done\041\n' "${update-}"; $(command -v exec) -l -- "${SHELL##*[-./]}" # 2022-03-17
+printf 'checking for Conda installation...\n'; if command -v -- conda >/dev/null 2>&1; then command conda update --yes --all; else
+printf 'no Conda installation detected.\n\n'; fi; fi; if command -v -- omz >/dev/null 2>&1; then { set +o nounset; } 2>/dev/null; omz update 2>/dev/null; fi; { set -o allexport; set +o errexit; set +o noclobber; set +o nounset; set +o verbose; set +o xtrace; } 2>/dev/null
+test -r "${HOME-}"'/.'"${SHELL##*[-./]}"'rc' && . "${HOME-}"'/.'"${SHELL##*[-./]}"'rc'; if command -v -- rehash >/dev/null 2>&1; then rehash; fi; unset update
+printf '\n\n\342%s\234\205  done\041\n' "${update-}"; $(command -v -- exec) -l -- "${SHELL##*[-./]}" # 2022-03-17
 ```
 
 ### detail
@@ -474,11 +474,11 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 ### Identify
 
-`command -v uname >/dev/null 2>&1 && \`<br/>
+`command -v -- uname >/dev/null 2>&1 && \`<br/>
 `printf '\n\140uname -a\140:\n%s\n\n' "$(uname -a)"; \`<br/>
-`command -v sw_vers >/dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`<br/>
+`command -v -- sw_vers >/dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`<br/>
 `printf '\n\140sw_vers\140:\n%s\n\n' "$(sw_vers)"; \`<br/>
-`command -v lsb_release >/dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`<br/>
+`command -v -- lsb_release >/dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`<br/>
 `printf '\n\140lsb_release --all\140:\n%s\n\n' "$(lsb_release --all)"; \`<br/>
 `[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`<br/>
 `printf '\140cat /etc/os-release\140:\n%s\n\n' "$(cat /etc/os-release)"`
@@ -544,7 +544,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## wget
 
-wget_server='`**example.com**`'; if command -v wget2 >/dev/null 2>&1; then utility='wget2'; else utility='wget'; fi; \
+wget_server='`**example.com**`'; if command -v -- wget2 >/dev/null 2>&1; then utility='wget2'; else utility='wget'; fi; \
 command "${utility-}" --level=0 --mirror --continue --verbose \
 --append-output=./"${wget_server-}".log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --progress=bar --no-check-certificate --random-wait \
 --referer=https://"${wget_server-}" --adjust-extension --page-requisites --convert-links --server-response \
@@ -611,7 +611,7 @@ command mkdir -p "${HOME-}"'/Library/Developer/Xcode/UserData/IB Support' && com
 command mkdir -p "${HOME-}"'/Library/Caches/JetBrains' && command mv -i "${HOME-}"'/Library/Caches/JetBrains' "${HOME-}"'/.Trash/JetBrains-'"${trash_date-}" \
 command mkdir -p "${HOME-}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' && command mv -i "${HOME-}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' "${HOME-}"'/.Trash/Carthage-'"${trash_date-}" \
 command mkdir -p "${HOME-}"'/Library/Caches/Homebrew/downloads' && command mv -i "${HOME-}"'/Library/Caches/Homebrew/downloads' "${HOME-}"'/.Trash/Homebrew-'"${trash_date-}" \
-command -v brew >/dev/null 2>&1 && command brew cleanup --prune=all --verbose; { set +o errexit; set +o nounset; set +o xtrace; unset -- trash_developer; unset -- trash_date; } 2>/dev/null; printf '\n\n'; printf '\360\237%s\232\256  data successfully trashed\n' "${trash_developer-}"
+command -v -- brew >/dev/null 2>&1 && command brew cleanup --prune=all --verbose; { set +o errexit; set +o nounset; set +o xtrace; unset -- trash_developer; unset -- trash_date; } 2>/dev/null; printf '\n\n'; printf '\360\237%s\232\256  data successfully trashed\n' "${trash_developer-}"
 ```
 
 ## delete

@@ -14,17 +14,17 @@
 # curl --remote-name --location 'https://lucaslarson.net/init.sh'
 # pacman --sync --verbose --noconfirm -- "$@"
 
-if command -v wget >/dev/null 2>&1; then
+if command -v -- wget >/dev/null 2>&1; then
   command wget --continue --server-response 'https://lucaslarson.net/init.sh'
 else
   command curl --remote-name --location 'https://lucaslarson.net/init.sh'
 fi
 
-if command -v apk >/dev/null 2>&1; then
+if command -v -- apk >/dev/null 2>&1; then
   alias install='command apk add --verbose'
-elif command -v pacman >/dev/null 2>&1; then
+elif command -v -- pacman >/dev/null 2>&1; then
   alias install='command pacman --sync --verbose --noconfirm'
-elif command -v apt-get >/dev/null 2>&1; then
+elif command -v -- apt-get >/dev/null 2>&1; then
   alias install='command apt-get install --verbose --show-progress --assume-yes'
 fi
 
@@ -61,7 +61,7 @@ test "$(command awk -F '=' '/^NAME/{print $2}' '/etc/os-release' 2>/dev/null | c
   command pacman --sync -yy
 
 # apk
-command -v apk >/dev/null 2>&1 || {
+command -v -- apk >/dev/null 2>&1 || {
   # trust apk only if it matches a known checksum
   { set +o xtrace; } 2>/dev/null
   printf 'verifying apk tools integrity...\n' 2>/dev/null
@@ -98,13 +98,13 @@ command apk upgrade --verbose --progress
   set -o xtrace
   install man-pages
 }
-command -v mandoc >/dev/null 2>&1 || {
+command -v -- mandoc >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing mandoc for man pages...\n' 2>/dev/null
   set -o xtrace
   install mandoc mandoc-doc
 }
-command -v less >/dev/null 2>&1 || {
+command -v -- less >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing less to read man pages...\n' 2>/dev/null
   set -o xtrace
@@ -148,7 +148,7 @@ test -x '/usr/bin/gpg2' || {
 }
 
 # git
-command -v git >/dev/null 2>&1 || {
+command -v -- git >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing Git...\n' 2>/dev/null
   set -o xtrace
@@ -184,7 +184,7 @@ printf 'America/New_York\n' >'/etc/timezone'
 { set +o xtrace; } 2>/dev/null
 printf 'checking Python installation...\n' 2>/dev/null
 set -o xtrace
-command -v python >/dev/null 2>&1 || {
+command -v -- python >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing Python 2 and Python 3...\n' 2>/dev/null
   set -o xtrace
@@ -195,7 +195,7 @@ command -v python >/dev/null 2>&1 || {
 { set +o xtrace; } 2>/dev/null
 printf 'checking Python package manager installation...\n' 2>/dev/null
 set -o xtrace
-command -v pip >/dev/null 2>&1 && {
+command -v -- pip >/dev/null 2>&1 && {
   { set +o xtrace; } 2>/dev/null
   printf 'updating pip...\n' 2>/dev/null
   set -o xtrace
@@ -220,7 +220,7 @@ command -v pip >/dev/null 2>&1 && {
 }
 
 # mackup
-command -v mackup >/dev/null 2>&1 || {
+command -v -- mackup >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing mackup...\n' 2>/dev/null
   set -o xtrace
@@ -228,7 +228,7 @@ command -v mackup >/dev/null 2>&1 || {
 }
 
 # zsh
-command -v zsh >/dev/null 2>&1 || {
+command -v -- zsh >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing Zsh...\n' 2>/dev/null
   set -o xtrace
@@ -237,12 +237,12 @@ command -v zsh >/dev/null 2>&1 || {
 
 # chsh
 # part of shadow on Alpine Linux
-command -v chsh >/dev/null 2>&1 || {
+command -v -- chsh >/dev/null 2>&1 || {
   install shadow shadow-doc
 }
 
 # Oh My Zsh
-command -v omz >/dev/null 2>&1 ||
+command -v -- omz >/dev/null 2>&1 ||
   test -d "${ZSH:="${HOME-}"/.oh-my-zsh}" ||
   test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' | command sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' || {
   { set +o xtrace; } 2>/dev/null
@@ -346,12 +346,12 @@ command find -- . -type d -empty \
 
 # if sed installation was successful, and
 # if zsh is available, replace bash, ash, and sh with zsh in `/etc/passwd`
-command -v zsh >/dev/null 2>&1 &&
+command -v -- zsh >/dev/null 2>&1 &&
   command grep -E -e '/bin/b?a?sh' '/etc/passwd' 2>&1 &&
   cp -- '/etc/passwd' '/etc/passwd-'"$(command date '+%Y%m%d_%s')" &&
   # `-E` for expanded regex searching for `/bin/ash` and `/bin/sh`
   # `-i` for in-place editing
-  command sed -E -i -e "s|/bin/b?a?sh$|$(command -v zsh)|g" '/etc/passwd'
+  command sed -E -i -e "s|/bin/b?a?sh$|$(command -v -- zsh)|g" '/etc/passwd'
 
 # done
 { set +euvx; } 2>/dev/null

@@ -9,7 +9,7 @@
 alias ,='. "${HOME-}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
   command "${EDITOR:-vi}" -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}" &&
-    command -v shfmt >/dev/null 2>&1 &&
+    command -v -- shfmt >/dev/null 2>&1 &&
     command shfmt -s -w -i 2 -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
   . "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
 }
@@ -75,7 +75,7 @@ bash_pretty() {
 }
 
 # prefer `bat` to `cat` if available
-command -v bat >/dev/null 2>&1 &&
+command -v -- bat >/dev/null 2>&1 &&
   alias cat='command bat --decorations never'
 
 cd_pwd_P() {
@@ -519,40 +519,40 @@ define() {
   for query in "${@:-$0}"; do
 
     # hash
-    command -v hash >/dev/null 2>&1 &&
+    command -v -- hash >/dev/null 2>&1 &&
       printf 'hash return value:\n%d\n———\n' "$(
         hash "${query-}" >/dev/null 2>&1
         printf '%i\n' "$?"
       )"
 
     # type (System V)
-    command -v type >/dev/null 2>&1 &&
+    command -v -- type >/dev/null 2>&1 &&
       printf 'type:\n%s\n———\n' "$(type "${query-}")"
 
     # whence (KornShell)
-    command -v whence >/dev/null 2>&1 &&
+    command -v -- whence >/dev/null 2>&1 &&
       printf 'whence:\n%s\n———\n' "$(whence "${query-}")"
 
     # where
-    command -v where >/dev/null 2>&1 &&
+    command -v -- where >/dev/null 2>&1 &&
       printf 'where:\n%s\n———\n' "$(where "${query-}")"
 
     # whereis
-    command -v whereis >/dev/null 2>&1 &&
+    command -v -- whereis >/dev/null 2>&1 &&
       printf 'whereis:\n%s\n———\n' "$(whereis "${query-}")"
 
     # locate
-    command -v locate >/dev/null 2>&1 &&
+    command -v -- locate >/dev/null 2>&1 &&
       printf 'locate:\n%s\n———\n' "$(locate "${query-}")"
 
     # command -V
-    printf 'command -V:\n%s\n———\n' "$(command -V "${query-}")"
+    printf 'command -V:\n%s\n———\n' "$(command -V -- "${query-}")"
 
     # command -v (POSIX)
-    printf 'command -v:\n%s\n———\n' "$(command -v "${query-}")"
+    printf 'command -v:\n%s\n———\n' "$(command -v -- "${query-}")"
 
     # which (C shell)
-    command -v which >/dev/null 2>&1 &&
+    command -v -- which >/dev/null 2>&1 &&
       printf 'which -a:\n%s\n' "$(command which -a "${query-}")"
 
     {
@@ -565,7 +565,7 @@ define() {
       elif builtin functions "${query-}" >/dev/null 2>&1; then
         printf '%s\n' "$(builtin functions "${query-}")"
       else
-        "$(command -v type)" -a -f -- "${query-}" 2>/dev/null
+        "$(command -v -- type)" -a -f -- "${query-}" 2>/dev/null
       fi
     } |
       command sed -e 's|\t|  |g'
@@ -611,7 +611,7 @@ file_closes_with_newline() {
   set +o nounset
 }
 
-command -v fd >/dev/null 2>&1 &&
+command -v -- fd >/dev/null 2>&1 &&
   alias fd='command fd --hidden'
 
 # find broken symlinks
@@ -938,7 +938,7 @@ alias gdw='command git diff --word-diff=color'
 
 alias gfgs='command git fetch --all --prune --verbose && command git status'
 git_garbage_collection() {
-  command -v cleanup >/dev/null 2>&1 &&
+  command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "$@"
   if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     set -o nounset
@@ -1114,7 +1114,7 @@ git_move() {
 }
 alias gmv='git_move'
 
-command -v git open >/dev/null 2>&1 &&
+command -v -- git open >/dev/null 2>&1 &&
   alias gopen='command git open 2>/dev/null'
 
 # git pull
@@ -1223,7 +1223,7 @@ git_undo() {
 alias gundo='git_undo'
 
 git_update() {
-  command -v cleanup >/dev/null 2>&1 &&
+  command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "$@"
 
   # run only from within a Git repository
@@ -1273,7 +1273,7 @@ gravatar() {
   email="$(printf '%s' "${email-}" | command tr '[:upper:]' '[:lower:]')"
 
   # discover md5 utility
-  if command -v md5sum >/dev/null 2>&1; then
+  if command -v -- md5sum >/dev/null 2>&1; then
     utility='md5sum'
   else
     utility='md5'
@@ -1317,17 +1317,17 @@ identify() {
 
   # sw_vers
   # https://apple.stackexchange.com/a/368244
-  command -v sw_vers >/dev/null 2>&1 &&
+  command -v -- sw_vers >/dev/null 2>&1 &&
     command sw_vers
 
   # lsb_release
   # https://linuxize.com/post/how-to-check-your-debian-version
-  command -v lsb_release >/dev/null 2>&1 &&
+  command -v -- lsb_release >/dev/null 2>&1 &&
     command lsb_release --all
 
   # hostnamectl
   # https://linuxize.com/post/how-to-check-your-debian-version
-  command -v hostnamectl >/dev/null 2>&1 &&
+  command -v -- hostnamectl >/dev/null 2>&1 &&
     command hostnamectl
 
   # /etc/os-release
@@ -1368,7 +1368,7 @@ fi
 mu() {
   cd "${DOTFILES-}" ||
     return 1
-  command -v cleanup >/dev/null 2>&1 &&
+  command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "$@"
   case "${1-}" in
   -s | --short)
@@ -1467,7 +1467,7 @@ path_check() {
 
 # .plist
 plist_r() {
-  command -v plutil >/dev/null 2>&1 ||
+  command -v -- plutil >/dev/null 2>&1 ||
     return 127
   case "$(command pwd -P)" in
   "${HOME-}" | "${DOTFILES-}")
@@ -1494,9 +1494,9 @@ test -x '/usr/libexec/PlistBuddy' &&
   alias plistbuddy='command /usr/libexec/PlistBuddy'
 
 # Python
-command -v python3 >/dev/null 2>&1 &&
+command -v -- python3 >/dev/null 2>&1 &&
   alias python='command python3' &&
-  command -v pip3 >/dev/null 2>&1 &&
+  command -v -- pip3 >/dev/null 2>&1 &&
   alias pip='command pip3'
 
 # $?
@@ -1506,12 +1506,12 @@ question_mark() {
 alias '?'='question_mark'
 
 # QuickLook
-command -v qlmanage >/dev/null 2>&1 &&
+command -v -- qlmanage >/dev/null 2>&1 &&
   alias ql='command qlmanage -p 2>/dev/null'
 
 # remove
 rm() {
-  if command -v trash >/dev/null 2>&1; then
+  if command -v -- trash >/dev/null 2>&1; then
     utility='trash'
   else
     utility='rm'
@@ -1562,7 +1562,7 @@ unixtime() {
 alias all='which -a'
 
 yamllint_r() {
-  command -v yamllint >/dev/null 2>&1 ||
+  command -v -- yamllint >/dev/null 2>&1 ||
     return 1
   (
     unset -- PS4 2>/dev/null

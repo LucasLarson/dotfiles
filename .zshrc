@@ -167,12 +167,12 @@ command man -w >/dev/null 2>&1 &&
 
 # $EDITOR: access favorite with `e`
 # Set preferred editor if it is available
-if command -v nvim >/dev/null 2>&1; then
-  EDITOR="$(command -v nvim)"
-elif command -v vim >/dev/null 2>&1; then
-  EDITOR="$(command -v vim)"
+if command -v -- nvim >/dev/null 2>&1; then
+  EDITOR="$(command -v -- nvim)"
+elif command -v -- vim >/dev/null 2>&1; then
+  EDITOR="$(command -v -- vim)"
 else
-  EDITOR="$(command -v vi)"
+  EDITOR="$(command -v -- vi)"
 fi
 export EDITOR
 # https://github.com/koalaman/shellcheck/wiki/SC2139
@@ -204,7 +204,7 @@ export GPG_TTY="${TTY-}"
 
 # Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
-if command -v brew >/dev/null 2>&1; then
+if command -v -- brew >/dev/null 2>&1; then
 
   # https://github.com/driesvints/dotfiles/blob/388baf1/path.zsh#L17
   HOMEBREW_PREFIX="$(command brew --prefix)"
@@ -366,7 +366,7 @@ pyenv() {
 
 # C, C++ headers
 # https://apple.stackexchange.com/a/372600
-if command -v xcrun >/dev/null 2>&1 &&
+if command -v -- xcrun >/dev/null 2>&1 &&
   test -n "$(command xcrun --show-sdk-path)"; then
   # `CPATH` is delimited like `PATH` as are
   # `C_INCLUDE_PATH`, `OBJC_INCLUDE_PATH`,
