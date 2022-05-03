@@ -516,7 +516,7 @@ alias diff='command diff --color'
 
 # define
 define() {
-  for query in "${@:-$0}"; do
+  for query in "${@:-"$0"}"; do
 
     # hash
     command -v -- hash >/dev/null 2>&1 &&
