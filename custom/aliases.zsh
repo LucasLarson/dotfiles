@@ -564,8 +564,7 @@ define() {
       elif builtin functions -- "${query-}" >/dev/null 2>&1; then
         printf '%s\n' "$(builtin functions -x 2 -- "${query-}")"
       fi
-    } |
-      command sed -e 's|\t|  |g'
+    }
   done
   unset -- query 2>/dev/null
 }
