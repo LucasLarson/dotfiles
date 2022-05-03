@@ -380,7 +380,8 @@ cleanup() {
     # remove Git sample hooks
     command find -- "${1:-.}" \
       -type f \
-      -path '*/.git/hooks/*.sample' \
+      -path '*/.git/*' \
+      -path '*/hooks/*.sample' \
       -print \
       -delete 2>/dev/null
 
