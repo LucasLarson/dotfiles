@@ -518,40 +518,40 @@ alias diff='command diff --color'
 define() {
   for query in "${@:-"$0"}"; do
 
-    # hash
+    # `hash`
     command -v -- hash >/dev/null 2>&1 &&
       printf 'hash return value:\n%d\n———\n' "$(
         hash "${query-}" >/dev/null 2>&1
         printf '%i\n' "$?"
       )"
 
-    # type (System V)
+    # `type` (System V)
     command -v -- type >/dev/null 2>&1 &&
       printf 'type:\n%s\n———\n' "$(type "${query-}")"
 
-    # whence (KornShell)
+    # `whence` (KornShell)
     command -v -- whence >/dev/null 2>&1 &&
       printf 'whence:\n%s\n———\n' "$(whence "${query-}")"
 
-    # where
+    # `where`
     command -v -- where >/dev/null 2>&1 &&
       printf 'where:\n%s\n———\n' "$(where "${query-}")"
 
-    # whereis
+    # `whereis`
     command -v -- whereis >/dev/null 2>&1 &&
       printf 'whereis:\n%s\n———\n' "$(whereis "${query-}")"
 
-    # locate
+    # `locate`
     command -v -- locate >/dev/null 2>&1 &&
       printf 'locate:\n%s\n———\n' "$(locate "${query-}")"
 
-    # command -V
+    # `command -V`
     printf 'command -V:\n%s\n———\n' "$(command -V -- "${query-}")"
 
-    # command -v (POSIX)
+    # `command -v` (POSIX)
     printf 'command -v:\n%s\n———\n' "$(command -v -- "${query-}")"
 
-    # which (C shell)
+    # `which` (C shell)
     command -v -- which >/dev/null 2>&1 &&
       printf 'which -a:\n%s\n' "$(command which -a "${query-}")"
 
