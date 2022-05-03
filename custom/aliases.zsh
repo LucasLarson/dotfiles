@@ -563,9 +563,6 @@ define() {
         # `functions`
       elif builtin functions -- "${query-}" >/dev/null 2>&1; then
         printf '%s\n' "$(builtin functions -x 2 -- "${query-}")"
-
-        # `type -af`
-        "$(command -v -- type)" -a -f -- "${query-}" 2>/dev/null
       fi
     } |
       command sed -e 's|\t|  |g'
