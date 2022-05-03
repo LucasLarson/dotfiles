@@ -522,7 +522,7 @@ define() {
     command -v -- hash >/dev/null 2>&1 &&
       printf 'hash return value:\n%d\n———\n' "$(
         hash "${query-}" >/dev/null 2>&1
-        printf '%i\n' "$?"
+        printf '%d\n' "$?"
       )"
 
     # `type` (System V)
