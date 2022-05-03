@@ -581,6 +581,7 @@ define() {
   done
   unset -- query 2>/dev/null
 }
+alias d='define'
 
 dictionary() {
   # sort as you’d expect to find in a dictionary
