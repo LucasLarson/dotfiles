@@ -556,17 +556,9 @@ define() {
       printf 'which -a:\n%s\n' "$(command which -a "${query-}")"
 
     {
-      # `functions | bash | shfmt`
-      if builtin functions -- "${query-}" 2>/dev/null | command bash --pretty-print >/dev/null 2>&1 | command shfmt -s -i 2 >/dev/null 2>&1; then
-        printf '%s\n' "$(builtin functions -- "${query-}" | command bash --pretty-print | command shfmt -s -i 2)"
-
-        # `functions | shfmt`
-      elif builtin functions -- "${query-}" 2>/dev/null | command shfmt -s -i 2 >/dev/null 2>&1; then
+      # `functions | shfmt`
+      if builtin functions -- "${query-}" 2>/dev/null | command shfmt -s -i 2 >/dev/null 2>&1; then
         printf '%s\n' "$(builtin functions -- "${query-}" | command shfmt -s -i 2)"
-
-        # `functions | bash`
-      elif builtin functions -- "${query-}" 2>/dev/null | command bash --pretty-print >/dev/null 2>&1; then
-        printf '%s\n' "$(builtin functions -- "${query-}" | command bash --pretty-print | command sed -e 's|    |  |g')"
 
         # `functions`
       elif builtin functions -- "${query-}" >/dev/null 2>&1; then
