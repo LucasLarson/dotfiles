@@ -474,7 +474,6 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 ### Identify
 
-`command -v -- uname >/dev/null 2>&1 && \`<br/>
 `printf '\n\140uname -a\140:\n%s\n\n' "$(uname -a)"; \`<br/>
 `command -v -- sw_vers >/dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`<br/>
 `printf '\n\140sw_vers\140:\n%s\n\n' "$(sw_vers)"; \`<br/>
