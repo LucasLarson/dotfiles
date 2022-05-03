@@ -555,16 +555,14 @@ define() {
     command -v -- which >/dev/null 2>&1 &&
       printf 'which -a:\n%s\n' "$(command which -a "${query-}")"
 
-    {
-      # `functions | shfmt`
-      if builtin functions -- "${query-}" 2>/dev/null | command shfmt -s -i 2 >/dev/null 2>&1; then
-        printf '%s\n' "$(builtin functions -- "${query-}" | command shfmt -s -i 2)"
+    # `functions | shfmt`
+    if builtin functions -- "${query-}" 2>/dev/null | command shfmt -s -i 2 >/dev/null 2>&1; then
+      printf '%s\n' "$(builtin functions -- "${query-}" | command shfmt -s -i 2)"
 
-        # `functions`
-      elif builtin functions -- "${query-}" >/dev/null 2>&1; then
-        printf '%s\n' "$(builtin functions -x 2 -- "${query-}")"
-      fi
-    }
+    # `functions`
+    elif builtin functions -- "${query-}" >/dev/null 2>&1; then
+      printf '%s\n' "$(builtin functions -x 2 -- "${query-}")"
+    fi
   done
   unset -- query 2>/dev/null
 }
