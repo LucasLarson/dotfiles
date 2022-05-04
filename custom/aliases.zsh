@@ -1411,8 +1411,8 @@ pasteinit() {
 pastefinish() {
   zle -N self-insert "${old_self_insert-}"
 }
-zstyle :bracketed-paste-magic paste-init pasteinit
-zstyle :bracketed-paste-magic paste-finish pastefinish
+zstyle :bracketed-paste-magic paste-init pasteinit 2>/dev/null
+zstyle :bracketed-paste-magic paste-finish pastefinish 2>/dev/null
 
 path_check() {
   # check that each directory in user `$PATH` still exists and is a directory
