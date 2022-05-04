@@ -117,7 +117,6 @@ plugins+=(
   history-substring-search
   zsh-abbr
   zsh-diff-so-fancy
-  zchee-zsh-completions
 )
 
 # zsh_codex
