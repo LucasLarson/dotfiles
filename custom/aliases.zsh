@@ -1405,11 +1405,11 @@ non_ascii() {
 # paste faster
 # https://github.com/zsh-users/zsh-autosuggestions/issues/238#issuecomment-389324292
 pasteinit() {
-  OLD_SELF_INSERT="${"${(s.:.)widgets[self-insert]}"[2,3]}"
+  old_self_insert="${"${(s.:.)widgets[self-insert]}"[2,3]}"
   zle -N self-insert url-quote-magic
 }
 pastefinish() {
-  zle -N self-insert "${OLD_SELF_INSERT-}"
+  zle -N self-insert "${old_self_insert-}"
 }
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
