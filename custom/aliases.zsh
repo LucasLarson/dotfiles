@@ -412,11 +412,8 @@ cy() {
     test -n "${TEMPLATE-}" ||
     return 1
 
-  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    target="$(command git rev-parse --show-toplevel)"
-  else
-    target="$(command pwd -L)"
-  fi
+  target="$(command git rev-parse --show-toplevel 2>/dev/null || command pwd -L)" ||
+    return 1
 
   for file in \
     "${DOTFILES-}"'/.github' \
