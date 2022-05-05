@@ -620,7 +620,6 @@ find_broken_symlinks() {
   set -o nounset
   # https://unix.stackexchange.com/a/49470
   command find -- . \
-    ! -path '*.git/*' \
     -type l \
     -exec test ! -e '{}' ';' \
     -print 2>/dev/null
