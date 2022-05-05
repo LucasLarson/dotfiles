@@ -915,7 +915,6 @@ git_garbage_collection() {
   command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "$@"
   if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    set -o nounset
     # see `git gc` and other wrapping commands behind-the-scene mechanics
     # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git fetch --prune --prune-tags --verbose 2>/dev/null
@@ -926,22 +925,9 @@ git_garbage_collection() {
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git gc --aggressive --prune=now
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git repack -a -d -f -F --window=4095 --depth=4095
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git status
-    unset -- GIT_TRACE 2>/dev/null
-    unset -- GIT_TRACE_PACK_ACCESS 2>/dev/null
-    unset -- GIT_TRACE_PACKET 2>/dev/null
-    unset -- GIT_TRACE_PERFORMANCE 2>/dev/null
-    unset -- GIT_TRACE_SETUP 2>/dev/null
   else
     return 1
   fi
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
 }
 alias ggc='git_garbage_collection'
 
