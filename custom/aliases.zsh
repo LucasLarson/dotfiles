@@ -1044,8 +1044,6 @@ git_last_common_ancestor() {
     return 1
   command git merge-base "$1" "$2"
 }
-alias glca='git_last_common_ancestor'
-alias gmrca='git_last_common_ancestor'
 
 # git log
 # https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
