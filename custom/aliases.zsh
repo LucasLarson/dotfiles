@@ -968,52 +968,24 @@ alias ggc='git_garbage_collection'
 
 # git parents, git child
 git_find_child() {
-  set -o errexit
-  set -o nounset
-  commit="${1:-"$(command git rev-parse HEAD)"}"
+  commit="${1:-"$(command git rev-parse HEAD)"}" --
   # %H: commit hash
   # %P: parent commit
   command git log --pretty='%H %P' |
     command grep -e " ${commit-}" |
     command cut -c 1-40
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
 }
 git_find_parent() {
   # return the hash prior to the current commit
   # if an argument is provided, return the commit prior to that commit
   # usage: git_find_parent <commit>
-  set -o nounset
-  command git rev-list --max-count=1 "${1:-$(command git rev-parse HEAD)}^"
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
+  command git rev-list --max-count=1 "${1:-"$(command git rev-parse HEAD)"}^" --
 }
 git_find_parents() {
   # return all hashes prior to the current commit
   # if an argument is provided, return all commits prior to that commit
   # usage: git_find_parents <commit>
-  set -o nounset
-  command git rev-list "${1:-$(command git rev-parse HEAD)}^"
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
+  command git rev-list "${1:-"$(command git rev-parse HEAD)"}^" --
 }
 alias git_parent='git_find_parent'
 alias gfp='git_find_parent'
