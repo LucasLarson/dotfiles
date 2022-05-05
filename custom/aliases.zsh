@@ -1,8 +1,17 @@
 #!/usr/bin/env sh
-
-# aliases.zsh
-# for all active aliases, run `alias`
-
+#                           │
+#       ╭╮                  │
+#       ││                  │
+#    ╭──┤│╭┬──┬──┬──┬──╮    │
+#    │╭╮││├┤╭╮│ ─┤│─┤ ─┤    │
+#    │╭╮│╰┤│╭╮├─ ││─┼─ │    │
+#    ╰╯╰┴─┴┴╯╰┴──┴──┴──╯    │
+#          and functions    │
+#                           │
+#  curator: Lucas Larson    │
+#                           │
+# ──────────────────────────╯
+#
 # https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 # https://zsh.sourceforge.io/Doc/Release/Shell-Grammar.html#index-exec
