@@ -659,6 +659,21 @@ find_duplicate_files() {
 }
 alias fdf='find_duplicate_files'
 
+find_files_with_no_extension() {
+  set -o errexit
+  set -o nounset
+  command find -- . \
+    ! -path '*/.git/*' \
+    -type f \
+    ! -name '*.*' \
+    -print 2>/dev/null |
+    LC_ALL='C' command sort -u
+  {
+    set +o errexit
+    set +o nounset
+  } 2>/dev/null
+}
+
 compdef -- 'find_no_git'='find' 2>/dev/null
 find_no_git() {
   command find -- . \
