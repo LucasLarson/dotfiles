@@ -896,27 +896,6 @@ alias gcpa='command git cherry-pick --abort'
 alias gcpc='command git cherry-pick --continue'
 alias gcpn='command git cherry-pick --no-commit'
 
-git_delete_merged_branches() {
-  # delete all local Git branches that have been merged
-  # https://gist.github.com/8775224
-  set -o nounset
-  if command git branch --merged |
-    command grep -v -e '\*'; then
-    command git branch --merged |
-      command grep -v -e '\*' |
-      command xargs -n 1 git branch --delete --verbose
-  fi
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
-}
-alias gdmb='git_delete_merged_branches'
-
 unalias -- gd 2>/dev/null
 gd() {
   if test -n "$(command git diff "$@" 2>/dev/null)"; then
