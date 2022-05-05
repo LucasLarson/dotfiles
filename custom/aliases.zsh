@@ -659,26 +659,6 @@ find_duplicate_files() {
 }
 alias fdf='find_duplicate_files'
 
-# find by name
-find_by_name() {
-  command find -- . \
-    ! -path '*/.git/*' \
-    ! -path '*/Application Support/*' \
-    ! -path '*/Archive*' \
-    ! -path '*/archive*' \
-    ! -path '*/custom/plugins/*' \
-    ! -path '*/custom/themes/*' \
-    ! -path '*/node_modules/*' \
-    ! -path '*/t/*' \
-    ! -path '*/Test*' \
-    ! -path '*/test*' \
-    ! -path '*vscode*' \
-    -iname "*${*}*" \
-    -print 2>/dev/null |
-    LC_ALL='C' command sort -u
-}
-alias fname='find_by_name'
-
 compdef -- 'find_no_git'='find' 2>/dev/null
 find_no_git() {
   command find -- . \
