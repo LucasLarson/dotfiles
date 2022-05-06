@@ -8,11 +8,11 @@
 
 # Alpine Linux
 # wget --continue --server-response 'https://lucaslarson.net/init.sh'
-# apk add --verbose -- "$@"
+# apk add --verbose "$@"
 
 # Arch Linux
 # curl --remote-name --location 'https://lucaslarson.net/init.sh'
-# pacman --sync --verbose --noconfirm -- "$@"
+# pacman --sync --verbose --noconfirm "$@"
 
 if command -v -- wget >/dev/null 2>&1; then
   command wget --continue --server-response 'https://lucaslarson.net/init.sh'
