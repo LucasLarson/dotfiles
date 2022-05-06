@@ -398,16 +398,16 @@ command clang-format --version 2>/dev/null || return 2; command sleep 1; IndentW
 
 #### C
 
-[via](https://stackoverflow.com/q/33662375)<br/>
-`gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic $(find -- . -type f -regex '*.c')`
+[via](https://stackoverflow.com/q/32029445), [via](https://stackoverflow.com/q/33662375)<br/>
+`gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic *.c`
 
 #### C++
 
-`g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ $(find -- . -iname '*.cpp')`
+`g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ *.cpp`
 
 #### Clang
 
-`clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps $(find -- . -iname '*.cpp')`
+`clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps *.cpp`
 
 ## Gatekeeper
 
