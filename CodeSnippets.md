@@ -423,11 +423,11 @@ do not disable it, because that would allow you to install any software, even if
 ### `git add`
 
 [via](https://stackoverflow.com/a/15011313)
-| content to add                  | git command                       |
-| ------------------------------- | --------------------------------- |
-| modified files only             | `git add --updated || git add -u` |
-| everything except deleted files | `git add .`                       |
-| everything                      | `git add --all || git add -A`     |
+| content to add                  | git command                         |
+| ------------------------------- | ----------------------------------- |
+| modified files only             | `git add --updated` or `git add -u` |
+| everything except deleted files | `git add .`                         |
+| everything                      | `git add --all` or `git add -A`     |
 
 ### `git diff`
 
@@ -538,12 +538,12 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## variables
 
-`$PWD` # the name of the current directory and its entire path
+`$PWD` # the name of the current directory and its entire path<br/>
 `${PWD##*/}` # [via](https://stackoverflow.com/a/1371283) the name of only the current directory
 
 ## wget
 
-wget_server='`**example.com**`'; if command -v -- wget2 >/dev/null 2>&1; then utility='wget2'; else utility='wget'; fi; \
+`wget_server='`**example.com**`'; if command -v -- wget2 >/dev/null 2>&1; then utility='wget2'; else utility='wget'; fi; \
 command "${utility-}" --level=0 --mirror --continue --verbose \
 --append-output=./"${wget_server-}".log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --progress=bar --no-check-certificate --random-wait \
 --referer=https://"${wget_server-}" --adjust-extension --page-requisites --convert-links --server-response \
