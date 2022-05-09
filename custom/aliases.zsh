@@ -43,10 +43,6 @@ bash_pretty() {
   # use this script to remove comments from shell scripts
   # and potentially find duplicate content
 
-  set +o allexport
-  set -o noclobber
-  set -o nounset
-  set -o xtrace
   for file in "$@"; do
 
     # if `bash --pretty-print` fails on the file, skip it
@@ -73,13 +69,7 @@ bash_pretty() {
       } >|"${file-}"'.sh'
     fi
   done
-  {
-    set -o allexport
-    set +o noclobber
-    set +o nounset
-    set +o xtrace
-  } 2>/dev/null
-  unset file
+  unset -- file 2>/dev/null
 }
 
 # prefer `bat` to `cat` if available
