@@ -824,7 +824,6 @@ alias gbD='command git branch --delete --force'
 
 # git commit
 git_commit() {
-  set -o nounset
   if test "$#" -eq '0'; then
     command git commit --signoff --verbose ||
       return 1
@@ -836,14 +835,6 @@ git_commit() {
       return 1
   fi
   command git status
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
 }
 alias gc='git_commit'
 alias gcm='git_commit'
