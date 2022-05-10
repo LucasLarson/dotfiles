@@ -566,7 +566,8 @@ https://"${wget_server-}"; unset wget_server utility`
 `PRODUCT_BUNDLE_IDENTIFIER = net.LucasLarson.$(PRODUCT_NAME:rfc1034identifier);`<br/>
 `PRODUCT_NAME = $(PROJECT_NAME) || $(PRODUCT_NAME:c99extidentifier) || $(TARGET_NAME)`<br/>
 `DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";`<br/>
-`DevelopmentTeam = "$(DEVELOPMENT_TEAM)";`
+`DevelopmentTeam = "$(DEVELOPMENT_TEAM)";`<br/>
+`WARNING_CFLAGS = $(inherited) $(WAX_ANALYZER_FLAGS)`
 
 Search the `.pbxproj` file for
 `project|product|development|example|public|sample|organization|target|ident|dir`.
