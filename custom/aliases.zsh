@@ -957,7 +957,6 @@ alias gic='git_find_initial_commit'
 
 # commit initial commit
 git_commit_initial_commit() {
-  set -o nounset
   # usage: git_commit_initial_commit [yyyy-mm-dd]
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
@@ -977,14 +976,6 @@ git_commit_initial_commit() {
       command git commit --signoff --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
   fi
 
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
   unset -- git_time 2>/dev/null
   unset -- GIT_AUTHOR_DATE 2>/dev/null
   unset -- GIT_COMMITTER_DATE 2>/dev/null
