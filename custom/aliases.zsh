@@ -1373,11 +1373,6 @@ path_check() {
 
   # silently undo verbose output for everyone
   {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
     set +o xtrace
   } 2>/dev/null
 
