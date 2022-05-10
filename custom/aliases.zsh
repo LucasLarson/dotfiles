@@ -1463,7 +1463,7 @@ take() {
   done
   unset -- directory 2>/dev/null
 
-  # POSIX-compliant `${@:$#}`-style string indexing (SC3057)
+  # POSIX-compliant `${@:$#}`-style and `${@: -1}`-style string indexing (SC3057)
   # https://stackoverflow.com/a/1853993
   for directory in "$@"; do
     :
