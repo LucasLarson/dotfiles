@@ -12,21 +12,11 @@ exclude_patterns = [
 ]
 
 [[analyzers]]
-name = "python"
+name = "ansible"
 enabled = true
 
-  [analyzers.meta]
-  runtime_version = "3.x.x"
-
 [[analyzers]]
-name = "go"
-enabled = true
-
-  [analyzers.meta]
-  import_root = 'github.com/LucasLarson/"$(command git remote get-url "$(command git config --get --worktree checkout.defaultRemote 2>/dev/null || command git config --get --local checkout.defaultRemote 2>/dev/null || command git config --get --system checkout.defaultRemote 2>/dev/null || command git config --get --global checkout.defaultRemote 2>/dev/null || printf "origin\n")" | command tr -d "[:space:]" | command xargs basename -- | command sed -e "s|.git$||")"'
-
-[[analyzers]]
-name = "test-coverage"
+name = "csharp"
 enabled = true
 
 [[analyzers]]
@@ -34,11 +24,14 @@ name = "docker"
 enabled = true
 
 [[analyzers]]
-name = "ruby"
+name = "go"
 enabled = true
 
+  [analyzers.meta]
+  import_root = 'github.com/LucasLarson/"$(command git remote get-url "$({ command git config --get --worktree checkout.defaultRemote || command git config --get --local checkout.defaultRemote || command git config --get --system checkout.defaultRemote || command git config --get --global checkout.defaultRemote; } 2>/dev/null || printf "origin\n")" | command tr -d "[:space:]" | command xargs basename -- | command sed -e "s|.git$||")"'
+
 [[analyzers]]
-name = "terraform"
+name = "java"
 enabled = true
 
 [[analyzers]]
@@ -49,8 +42,39 @@ enabled = true
   style_guide = "standard"
   environment = ["browser"]
 
+[[transformers]]
+name = "standardjs"
+enabled = true
+
 [[analyzers]]
-name = "sql"
+name = "php"
+enabled = true
+
+[[transformers]]
+name = "php-cs-fixer"
+enabled = true
+
+[[analyzers]]
+name = "python"
+enabled = true
+
+  [analyzers.meta]
+  runtime_version = "3.x.x"
+
+[[analyzers]]
+name = "ruby"
+enabled = true
+
+[[analyzers]]
+name = "rust"
+enabled = true
+
+[[analyzers]]
+name = "scala"
+enabled = true
+
+[[analyzers]]
+name = "secrets"
 enabled = true
 
 [[analyzers]]
@@ -58,45 +82,13 @@ name = "shell"
 enabled = true
 
 [[analyzers]]
-name = "secrets"
+name = "sql"
 enabled = true
 
-[[transformers]]
-name = "yapf"
+[[analyzers]]
+name = "terraform"
 enabled = true
 
-[[transformers]]
-name = "gofmt"
-enabled = true
-
-[[transformers]]
-name = "autopep8"
-enabled = true
-
-[[transformers]]
-name = "isort"
-enabled = true
-
-[[transformers]]
-name = "standardrb"
-enabled = true
-
-[[transformers]]
-name = "google-java-format"
-enabled = true
-
-[[transformers]]
-name = "prettier"
-enabled = false
-
-[[transformers]]
-name = "black"
-enabled = true
-
-[[transformers]]
-name = "standardjs"
-enabled = true
-
-[[transformers]]
-name = "rubocop"
+[[analyzers]]
+name = "test-coverage"
 enabled = true
