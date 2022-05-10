@@ -565,8 +565,8 @@ https://"${wget_server-}"; unset wget_server utility`
 
 `PRODUCT_BUNDLE_IDENTIFIER = net.LucasLarson.$(PRODUCT_NAME:rfc1034identifier);`<br/>
 `PRODUCT_NAME = $(PROJECT_NAME) || $(PRODUCT_NAME:c99extidentifier) || $(TARGET_NAME)`<br/>
-`DEVELOPMENT_TEAM = Z25963JBNP;`<br/>
-`DevelopmentTeam = Z25963JBNP;`
+`DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";`<br/>
+`DevelopmentTeam = "$(DEVELOPMENT_TEAM)";`
 
 ## Zsh
 
