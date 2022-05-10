@@ -901,6 +901,7 @@ alias gdom='command git diff "$(git-default-branch)" origin/"$(git-default-branc
 alias gdw='command git diff --word-diff=color'
 
 alias gfgs='command git fetch --all --prune --verbose && command git status'
+
 git_garbage_collection() {
   command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "$@"
