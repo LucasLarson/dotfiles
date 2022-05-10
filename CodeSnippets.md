@@ -293,7 +293,7 @@ in, for example, a C++ project directory, measuring only `.cpp` and `.hpp` files
 ### `grep`
 
 search for the word “example” inside the current directory which is “.”<br/>
-`grep --ignore-case --line-number --recursive 'example' .`
+`grep -i -n -r 'example' .`
 
 ### locate all
 
