@@ -1451,7 +1451,6 @@ alias rmo='rm --others'
 
 # take: mkdir && cd
 take() {
-  # https://github.com/ohmyzsh/ohmyzsh/commit/7cba6bb
   for directory in "$@"; do
     if test ! -d "${directory-}"; then
       command mkdir -p -- "${directory-}"
@@ -1469,6 +1468,8 @@ take() {
   for directory in "$@"; do
     :
   done
+  cd -- "${directory-}" ||
+    return 1
   unset -- directory 2>/dev/null
 }
 
