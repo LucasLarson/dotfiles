@@ -568,6 +568,9 @@ https://"${wget_server-}"; unset wget_server utility`
 `DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";`<br/>
 `DevelopmentTeam = "$(DEVELOPMENT_TEAM)";`
 
+Search the `.pbxproj` file for
+`project|product|development|example|public|sample|organization|target|ident|dir`.
+
 ## Zsh
 
 ### array types
