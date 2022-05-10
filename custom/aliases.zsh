@@ -76,7 +76,7 @@ bash_pretty() {
 command -v -- bat >/dev/null 2>&1 &&
   alias cat='command bat --decorations never'
 
-cd_pwd_P() {
+cdp() {
   cd_from="$(command pwd -L)"
   cd_to="$(command pwd -P)"
   if test "${cd_from-}" != "${cd_to-}"; then
@@ -96,7 +96,6 @@ cd_pwd_P() {
   unset -- cd_from 2>/dev/null
   unset -- cd_to 2>/dev/null
 }
-alias cdp='cd_pwd_P'
 
 alias chmod='command chmod -v'
 
