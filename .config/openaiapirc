@@ -1,3 +1,0 @@
-[openai]
-organization_id = $OPENAI_ORGANIZATION_ID
-secret_key = $OPENAI_SECRET_KEY
