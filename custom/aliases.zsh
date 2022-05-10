@@ -1094,24 +1094,13 @@ alias grs='git_restore'
 git_shallow() {
   # Shallow .gitmodules submodule installations
   # Mauricio Scheffer https://stackoverflow.com/a/2169914
-
-  set -o nounset
   command git submodule init
-  for submodule in $(command git submodule | command sed -e 's|.* ||'); do
+  for submodule in $(command git submodule | command awk '{print $2}'); do
     submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
     submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
     command git clone --depth=1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
   done
   command git submodule update
-
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
   unset -- submodule 2>/dev/null
   unset -- submodule_path 2>/dev/null
   unset -- submodule_url 2>/dev/null
