@@ -18,7 +18,7 @@ alias ,='. "${HOME-}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
   command "${EDITOR:-vi}" -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}" &&
     command -v -- shfmt >/dev/null 2>&1 &&
-    command shfmt -s -w -i 2 -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
+    command shfmt --simplify --write --indent 2 -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
   . "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
 }
 
@@ -551,8 +551,8 @@ define() {
       printf 'which -a:\n%s\n' "$(command which -a "${query-}")"
 
     # `functions | shfmt`
-    if builtin functions -- "${query-}" 2>/dev/null | command shfmt -s -i 2 >/dev/null 2>&1; then
-      printf '%s\n' "$(builtin functions -- "${query-}" | command shfmt -s -i 2)"
+    if builtin functions -- "${query-}" 2>/dev/null | command shfmt --simplify --indent 2 >/dev/null 2>&1; then
+      printf '%s\n' "$(builtin functions -- "${query-}" | command shfmt --simplify --indent 2)"
 
     # `functions`
     elif builtin functions -- "${query-}" >/dev/null 2>&1; then
