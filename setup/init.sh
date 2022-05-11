@@ -56,9 +56,8 @@ set -o xtrace
 # pacman
 # https://askubuntu.com/a/459425
 # https://stackoverflow.com/a/26314887
-# force refresh with `-yy`
 test "$(command awk -F '=' '/^NAME/{print $2}' '/etc/os-release' 2>/dev/null | command tr -d '"')" = 'Arch Linux' &&
-  command pacman --sync -yy
+  command pacman --sync --refresh --refresh
 
 # apk
 command -v -- apk >/dev/null 2>&1 || {
