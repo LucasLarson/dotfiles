@@ -138,7 +138,7 @@
   # Filler between left and right prompt on the first prompt line. You can set it to ' ', '·' or
   # '─'. The last two make it easier to see the alignment between left and right prompt and to
   # separate prompt from command output. You might want to set POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
-  # for more compact prompt if using using this option.
+  # for more compact prompt if using this option.
   typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR=' '
   typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_BACKGROUND=
   typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_GAP_BACKGROUND=
@@ -586,7 +586,7 @@
   typeset -g POWERLEVEL9K_ASDF_SHOW_SYSTEM=true
 
   # If set to non-empty value, hide tools unless there is a file matching the specified file pattern
-  # in the current directory, or its parent diretory, or its grandparent directory, and so on.
+  # in the current directory, or its parent directory, or its grandparent directory, and so on.
   #
   # Note: If this parameter is set to empty value, it won't hide tools.
   # Note: SHOW_ON_UPGLOB isn't specific to asdf. It works with all prompt segments.
@@ -1178,7 +1178,7 @@
   # typeset -g POWERLEVEL9K_TERRAFORM_OTHER_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #############[ kubecontext: current kubernetes context (https://kubernetes.io/) ]#############
-  # Show kubecontext only when the the command you are typing invokes one of these tools.
+  # Show kubecontext only when the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show kubecontext.
   typeset -g POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|helm|kubens|kubectx|oc|istioctl|kogito|k9s|helmfile'
 
@@ -1265,7 +1265,7 @@
   # typeset -g POWERLEVEL9K_KUBECONTEXT_PREFIX='%246Fat '
 
   #[ aws: aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html) ]#
-  # Show aws only when the the command you are typing invokes one of these tools.
+  # Show aws only when the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show aws.
   typeset -g POWERLEVEL9K_AWS_SHOW_ON_COMMAND='aws|awless|terraform|pulumi|terragrunt'
 
@@ -1306,7 +1306,7 @@
   # typeset -g POWERLEVEL9K_AWS_EB_ENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ##########[ azure: azure account name (https://docs.microsoft.com/en-us/cli/azure) ]##########
-  # Show azure only when the the command you are typing invokes one of these tools.
+  # Show azure only when the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show azure.
   typeset -g POWERLEVEL9K_AZURE_SHOW_ON_COMMAND='az|terraform|pulumi|terragrunt'
   # Azure account name color.
@@ -1315,7 +1315,7 @@
   # typeset -g POWERLEVEL9K_AZURE_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   ##########[ gcloud: google cloud account and project (https://cloud.google.com/) ]###########
-  # Show gcloud only when the the command you are typing invokes one of these tools.
+  # Show gcloud only when the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show gcloud.
   typeset -g POWERLEVEL9K_GCLOUD_SHOW_ON_COMMAND='gcloud|gcs'
    # Google cloud color.
@@ -1356,7 +1356,7 @@
   # typeset -g POWERLEVEL9K_GCLOUD_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
   #[ google_app_cred: google application credentials (https://cloud.google.com/docs/authentication/production) ]#
-  # Show google_app_cred only when the the command you are typing invokes one of these tools.
+  # Show google_app_cred only when the command you are typing invokes one of these tools.
   # Tip: Remove the next line to always show google_app_cred.
   typeset -g POWERLEVEL9K_GOOGLE_APP_CRED_SHOW_ON_COMMAND='terraform|pulumi|terragrunt'
 
