@@ -56,8 +56,11 @@ set -o xtrace
 # pacman
 # https://askubuntu.com/a/459425
 # https://stackoverflow.com/a/26314887
-test "$(command awk -F '=' '/^NAME/{print $2}' '/etc/os-release' 2>/dev/null | command tr -d '"')" = 'Arch Linux' &&
-  command pacman --sync --refresh --refresh
+test "$(command awk -F '=' '/^NAME/{print $2}' '/etc/os-release' 2>/dev/null | command tr -d '"')" = 'Arch Linux' && {
+  command pacman --sync --refresh --refresh ||
+    # https://wiki.archlinux.org/?oldid=667441#Installing_packages
+    command pacman --sync --refresh --upgrades 2>/dev/null
+}
 
 # apk
 command -v -- apk >/dev/null 2>&1 || {
