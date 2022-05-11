@@ -507,7 +507,7 @@ count_files_in_this_directory() {
   esac
 }
 
-alias diff='command diff --color'
+alias diff='command diff --color --suppress-common-lines'
 
 # define
 define() {
