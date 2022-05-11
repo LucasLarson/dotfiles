@@ -32,6 +32,10 @@ command mkdir -p "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"$(command id -n -u)" &&
 # command go env -w GOPATH="${HOME-}"'/.go' ||
 export GOPATH="${GOPATH:="${HOME-}"/.go}"
 
+## iCloud
+test -d "${HOME-}"'/Library/Mobile Documents' &&
+  export ICLOUD="${ICLOUD:="${HOME-}"/Library/Mobile Documents}"
+
 ## Internal Field Separators
 # https://unix.stackexchange.com/a/220658
 # https://opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_05_03
