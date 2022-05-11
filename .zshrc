@@ -383,7 +383,7 @@ if test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
   export LIBRARY_PATH
 fi
 
-# Go⏎
+# Go
 test -n "${GOPATH-}" &&
   test -d "${GOPATH-}"'/bin' &&
   PATH="${GOPATH-}"'/bin'"${PATH:+:"${PATH-}"}"
