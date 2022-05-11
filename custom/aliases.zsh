@@ -831,7 +831,7 @@ git_commit() {
     command git commit --amend --signoff --verbose ||
       return 1
   else
-    command git commit --signoff --verbose --message="$@" ||
+    command git commit --signoff --verbose --message="$*" ||
       return 1
   fi
   command git status
@@ -1092,7 +1092,7 @@ alias gsh='command git show'
 
 git_stash_save_all() {
   # https://github.com/ohmyzsh/ohmyzsh/commit/69ba6e4359
-  command git stash push --all --message="$@" 2>/dev/null ||
+  command git stash push --all --message="$*" 2>/dev/null ||
     command git stash push --all
 }
 alias gstall='git_stash_save_all'
