@@ -606,20 +606,10 @@ command -v -- fd >/dev/null 2>&1 &&
 
 # find broken symlinks
 find_broken_symlinks() {
-  set -o nounset
-  # https://unix.stackexchange.com/a/49470
   command find -- . \
     -type l \
     -exec test ! -e '{}' ';' \
     -print 2>/dev/null
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
 }
 
 # find duplicate files
