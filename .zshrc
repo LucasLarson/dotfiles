@@ -383,6 +383,11 @@ if test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
   export LIBRARY_PATH
 fi
 
+# Go⏎
+test -n "${GOPATH-}" &&
+  test -d "${GOPATH-}"'/bin' &&
+  PATH="${GOPATH-}"'/bin'"${PATH:+:"${PATH-}"}"
+
 # Android SDK
 # if it’s a directory, then assign it the name `ANDROID_SDK_ROOT`
 test -d "${HOME-}/Library/Android/sdk" &&
