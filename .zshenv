@@ -43,9 +43,9 @@ export LC_ALL="${LC_ALL:=en_US.UTF-8}"
 export TZ="${TZ:=America/New_York}"
 
 ## POSIX
-# https://askubuntu.com/a/1121665
-# set to `1` to activate debugging
-export POSIXLY_CORRECT="${POSIXLY_CORRECT:-0}"
+# activated when set to any value (even empty)
+# https://gnu.org/s/autoconf/manual/autoconf#index-POSIXLY_005fCORRECT
+unset -- POSIXLY_CORRECT 2>/dev/null
 
 ## Rust
 # https://github.com/mkrasnitski/git-power-rs/tree/2fc2906#installing
