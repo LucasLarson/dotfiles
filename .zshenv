@@ -46,6 +46,11 @@ export IFS="${IFS%'|'}"
 export LC_ALL="${LC_ALL:=en_US.UTF-8}"
 export TZ="${TZ:=America/New_York}"
 
+## macOS
+# allow `control` + `command` + `click and drag` a window from any location
+# https://github.com/mathiasbynens/dotfiles/issues/828#issue-296489157
+command defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true >/dev/null 2>&1
+
 ## POSIX
 # activated when set to any value (even empty)
 # https://gnu.org/s/autoconf/manual/autoconf#index-POSIXLY_005fCORRECT
