@@ -308,7 +308,7 @@ cleanup() {
       done
     fi
 
-    # delete empty, writable, zero-length files
+    # delete empty, writable files
     # except those within `.git/` directories
     # and except those with specific names
     # https://stackoverflow.com/a/64863398
