@@ -357,21 +357,14 @@ cleanup() {
       -print \
       -delete 2>/dev/null
 
-    # repair Git case sensitivity
-    # https://unix.stackexchange.com/a/112024
+    # repair Git case sensitivity for macOS
+    command git config core.ignoreCase false >/dev/null 2>&1
+
+    # swap `.git/config` tabs for spaces
     command find -- "${1:-.}" \
       -type f \
-      ! -path '*/node_modules/*' \
-      ! -path '*/t/*' \
-      ! -path '*/Test*' \
-      ! -path '*/test*' \
-      ! -path '*vscode*' \
-      '(' \
-      -name '*gitconfig' -o \
-      -path '*/.git/*' -a -name 'config' \
-      ')' \
-      -print \
-      -exec sed -E -i -e 's|ignore[Cc]ase =.*|ignoreCase = false|g' -- '{}' '+' \
+      -path '*/.git/*' \
+      -name 'config' \
       -exec sed -E -i -e 's|\t|  |g' -- '{}' '+' 2>/dev/null
 
     # remove Git sample hooks
