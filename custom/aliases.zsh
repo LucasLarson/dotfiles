@@ -279,7 +279,6 @@ cleanup() {
       -name 'Thumbs.db' -o \
       -name 'thumbs.db' \
       ')' \
-      -print \
       -delete 2>/dev/null
 
     # delete crufty Zsh files
@@ -294,8 +293,7 @@ cleanup() {
           -type f \
           ! -name "$(printf "*\n*")" \
           ! -name '.zcompdump' \
-          -name '.zcompdump*' \
-          -print
+          -name '.zcompdump*'
       )"; do
         command find -- "${HOME-}" \
           -maxdepth 1 \
@@ -303,7 +301,6 @@ cleanup() {
           ! -name "$(printf "*\n*")" \
           ! -name '.zcompdump' \
           -name '.zcompdump*' \
-          -print \
           -delete 2>/dev/null
       done
     fi
@@ -343,7 +340,6 @@ cleanup() {
       ! -name '.watchmanconfig' \
       ! -name '__init__.py' \
       ! -name 'favicon.*' \
-      -print \
       -delete 2>/dev/null
 
     # delete empty directories recursively
@@ -353,7 +349,6 @@ cleanup() {
       -empty \
       ! -path '*/.git/*' \
       ! -name '.well-known' \
-      -print \
       -delete 2>/dev/null
 
     # repair Git case sensitivity for macOS
@@ -371,7 +366,6 @@ cleanup() {
       -type f \
       -path '*/.git/*' \
       -path '*/hooks/*.sample' \
-      -print \
       -delete 2>/dev/null
 
     ;;
