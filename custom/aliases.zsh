@@ -311,7 +311,6 @@ cleanup() {
     # delete empty, writable files
     # except those within `.git/` directories
     # and except those with specific names
-    # https://stackoverflow.com/a/64863398
     command find -- "${1:-.}" \
       -type f \
       -writable \
