@@ -880,7 +880,7 @@ alias ggc='git_garbage_collection'
 
 # git parents, git child
 git_find_child() {
-  commit="${1:-"$(command git rev-parse HEAD)"}" --
+  commit="${1:-"$(command git rev-parse HEAD)"}"
   # %H: commit hash
   # %P: parent commit
   command git log --pretty='%H %P' |
