@@ -1154,6 +1154,20 @@ gravatar() {
   } 2>/dev/null
 }
 
+hashlookup() {
+  test -e "${1-}" ||
+    return 66
+  command curl \
+    --silent \
+    --header 'accept: application/json' \
+    --request 'GET' \
+    'https://hashlookup.circl.lu/lookup/sha256/'"$(
+      command sha256sum "${1-}" |
+        command awk '{print $1}'
+    )" |
+    command jq --raw-output '.message'
+}
+
 alias h1='command head -n 1'
 
 history_stats() {
