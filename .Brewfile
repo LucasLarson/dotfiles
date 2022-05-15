@@ -125,7 +125,7 @@ brew "gh"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
 # Distributed revision control system
-brew "git"
+brew "git", args: ["HEAD"]
 # Quickly rewrite git repository history
 brew "git-filter-repo"
 # Extensions to follow Vincent Driessen's branching model
