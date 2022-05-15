@@ -21,7 +21,7 @@ brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
 # Bourne-Again SHell, a UNIX command interpreter
-brew "bash"
+brew "bash", args: ["HEAD"]
 # Programmable completion for Bash 4.2+
 brew "bash-completion@2"
 # GNU File, Shell, and Text utilities
