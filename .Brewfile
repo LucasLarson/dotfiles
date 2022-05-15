@@ -44,6 +44,8 @@ brew "freetype"
 brew "gettext"
 # Portable Foreign Function Interface library
 brew "libffi"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Core application library for C
 brew "glib"
 # Manage compile and link flags for libraries
@@ -192,6 +194,8 @@ brew "nano"
 brew "neovim"
 # Bash-compatible Unix shell with more consistent syntax and semantics
 brew "oil"
+# OpenBSD freely-licensed SSH connectivity tools
+brew "openssh"
 # Outputs current CPU temperature for OSX
 brew "osx-cpu-temp"
 # Package manager in the style of Arch's pacman
