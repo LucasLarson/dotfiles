@@ -305,7 +305,6 @@ cask "handbrake"
 cask "inkscape"
 # Music tagger
 cask "musicbrainz-picard"
-cask "pluralsight"
 # Display image info and preview unsupported formats in QuickLook
 cask "qlimagesize"
 cask "qlstephen"
