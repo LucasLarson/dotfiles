@@ -70,8 +70,6 @@ brew "libtool"
 brew "libidn2"
 # Library to load and enumerate PKCS#11 modules
 brew "p11-kit"
-# OpenType text shaping engine
-brew "harfbuzz"
 # Core component of the AcoustID project (Audio fingerprinting)
 brew "chromaprint"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
