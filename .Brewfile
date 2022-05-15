@@ -85,7 +85,7 @@ brew "cpplint"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # Pack, ship and run any application as a lightweight container
-brew "docker", link: false
+brew "docker"
 # Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
 # Generate documentation for several programming languages
