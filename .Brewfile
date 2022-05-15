@@ -260,8 +260,6 @@ brew "uncrustify"
 brew "vim"
 # Pager/text based browser
 brew "w3m"
-# Watch files and take action when they change
-brew "watchman"
 # Internet file retriever
 brew "wget"
 # Lookup tool for domain names and other internet resources
