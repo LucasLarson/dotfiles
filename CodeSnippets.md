@@ -284,9 +284,14 @@ Definintions of the numbers that follow `man` commands.
 
 #### lines, words, characters
 
-in, for example, a C++ project directory, measuring only `.cpp` and `.hpp` files
+in, for example, a C++ project directory, measuring only `.cpp` and `.hpp`
+files. [via](https://web.archive.org/web/0id_/github.com/bryceco/GoMap/issues/495#issuecomment-780111175)
 
-`find -- * \( -name '*.cpp' -or -name '*.hpp' \) -print0 | xargs -0 wc | sort -n -r` # [via](https://web.archive.org/web/20210216223000id_/github.com/bryceco/GoMap/issues/495#issuecomment-780111175)
+```sh
+command find -- . '(' -name '*.cpp' -o -name '*.hpp' ')' -print |
+  command xargs wc |
+  LC_ALL='C' command sort -n
+```
 
 ## search
 
