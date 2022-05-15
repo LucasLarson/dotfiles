@@ -198,8 +198,6 @@ brew "osx-cpu-temp"
 brew "pacapt"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Framework for layout and rendering of i18n text
-brew "pango"
 # Highly capable, feature-rich programming language
 brew "perl"
 # Bash completion for Pip
