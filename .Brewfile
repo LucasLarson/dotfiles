@@ -242,8 +242,6 @@ brew "shfmt", args: ["HEAD"]
 brew "ssh-copy-id", link: true
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
-# Version control system designed to be a better CVS
-brew "subversion"
 # Formatting tool for reformatting Swift code
 brew "swiftformat"
 # Swift code generator for assets, storyboards, Localizable.strings, …
