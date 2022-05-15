@@ -16,8 +16,6 @@ name: Super-Linter
 #############################
 on:
   push:
-  pull_request:
-    branches: [main]
 
 ###############
 # Set the Job #
