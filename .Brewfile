@@ -10,7 +10,7 @@ brew "readline"
 brew "sqlite"
 # General-purpose data compression with high compression ratio
 brew "xz"
-# Formatter/translator for text files to numerous formats. Includes a2x
+# Formatter/translator for text files to numerous formats
 brew "asciidoc"
 # Text processor and publishing toolchain for AsciiDoc
 brew "asciidoctor"
@@ -290,6 +290,7 @@ brew "zsh", args: ["HEAD"]
 brew "zsh-lovers"
 # App to build and share containerized applications and microservices
 cask "docker"
+# Sci-fi themed terminal emulator and system monitor
 cask "edex-ui"
 cask "git-credential-manager-core"
 # Virtual globe
@@ -310,6 +311,7 @@ cask "qlmarkdown"
 cask "qlstephen"
 cask "qlvideo"
 cask "quicklook-json"
+# QuickLook generator for Adobe Swatch Exchange files
 cask "quicklookase"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
