@@ -238,8 +238,6 @@ brew "shellharden"
 brew "shfmt", args: ["HEAD"]
 # Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id", link: true
-# Organize software neatly under a single directory tree (e.g. /usr/local)
-brew "stow"
 # Formatting tool for reformatting Swift code
 brew "swiftformat"
 # Swift code generator for assets, storyboards, Localizable.strings, …
