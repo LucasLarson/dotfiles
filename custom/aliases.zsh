@@ -880,12 +880,10 @@ alias ggc='git_garbage_collection'
 
 # git parents, git child
 git_find_child() {
-  commit="${1:-"$(command git rev-parse HEAD)"}"
-  # %H: commit hash
-  # %P: parent commit
-  command git log --pretty='%H %P' |
-    command grep -e " ${commit-}" |
-    command cut -c 1-40
+  # return the commit hash that occurred after the given one (default current)
+  # usage: git_find_child [<commit>]
+  command git rev-list --ancestry-path "${1:-HEAD}".."$(git default-branch)" |
+    command tail -n 1
 }
 git_find_parent() {
   # return the hash prior to the current commit
