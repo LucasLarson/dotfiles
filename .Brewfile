@@ -308,8 +308,6 @@ cask "musicbrainz-picard"
 cask "pluralsight"
 # Display image info and preview unsupported formats in QuickLook
 cask "qlimagesize"
-# QuickLook generator for Markdown files
-cask "qlmarkdown"
 cask "qlstephen"
 cask "qlvideo"
 cask "quicklook-json"
