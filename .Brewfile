@@ -100,6 +100,8 @@ brew "node"
 brew "eslint"
 # Modern replacement for 'ls'
 brew "exa"
+# Command-line tool to interact with exercism.io
+brew "exercism"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # YAML Parser
