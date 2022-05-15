@@ -266,8 +266,6 @@ brew "watchman"
 brew "wget"
 # Lookup tool for domain names and other internet resources
 brew "whois", link: true
-# Python-powered, cross-platform, Unix-gazing shell language and command prompt
-brew "xonsh"
 # Linter for YAML files
 brew "yamllint"
 # JavaScript package manager
