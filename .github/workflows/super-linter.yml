@@ -50,4 +50,6 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: false
           DEFAULT_BRANCH: main
+          # unset `GITHUB_TOKEN` permitted, but should be passed
+          # https://github.com/github/super-linter/tree/44e48abb43#how-to-use
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || secrets.PAT }}
