@@ -1,8 +1,13 @@
+tap "homebrew/aliases"
+tap "homebrew/autoupdate"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
+tap "homebrew/command-not-found"
 tap "homebrew/core"
+tap "homebrew/services"
+tap "homebrew/test-bot"
 tap "microsoft/git"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
