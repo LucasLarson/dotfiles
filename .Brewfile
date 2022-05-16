@@ -333,6 +333,8 @@ cask "transmission-nightly"
 cask "webpquicklook"
 # Torrent streaming application
 cask "webtorrent"
+# Desktop client for WhatsApp
+cask "whatsapp-beta"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 # Video communication and virtual meeting platform
