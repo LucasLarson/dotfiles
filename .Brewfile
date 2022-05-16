@@ -72,8 +72,6 @@ brew "checkbashisms"
 brew "libtool"
 # International domain name library (IDNA2008, Punycode and TR46)
 brew "libidn2"
-# Library to load and enumerate PKCS#11 modules
-brew "p11-kit"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
 # Cross-platform make
