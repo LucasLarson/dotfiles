@@ -78,6 +78,8 @@ brew "libidn2"
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
+# Dependency manager for Cocoa projects
+brew "cocoapods"
 # Utility that creates projects from templates
 brew "cookiecutter"
 # Static analysis of C and C++ code
