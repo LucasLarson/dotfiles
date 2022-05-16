@@ -82,6 +82,8 @@ brew "cookiecutter"
 brew "cppcheck"
 # Static code checker for C++
 brew "cpplint"
+# POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
+brew "dash", args: ["HEAD"]
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # File comparison utilities
