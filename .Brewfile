@@ -34,6 +34,8 @@ brew "bats-core"
 brew "bc"
 # Remove large files or passwords from Git history like git-filter-branch
 brew "bfg"
+# Python code formatter
+brew "black"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
 # Library for manipulating PNG images
