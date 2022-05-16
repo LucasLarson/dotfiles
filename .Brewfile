@@ -4,6 +4,8 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "microsoft/git"
+# Static checker for GitHub Actions workflow files
+brew "actionlint"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
