@@ -176,6 +176,8 @@ brew "libksba"
 brew "llvm"
 # Text-based web browser
 brew "lynx"
+# Python 2 and 3 compatibility utilities
+brew "six"
 # Keep your Mac's application settings in sync
 brew "mackup", args: ["HEAD"]
 # Move files and folders to the trash
