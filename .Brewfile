@@ -208,6 +208,8 @@ brew "neovim"
 brew "oil"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Outputs current CPU temperature for OSX
 brew "osx-cpu-temp"
 # Package manager in the style of Arch's pacman
