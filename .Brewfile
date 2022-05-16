@@ -303,6 +303,8 @@ cask "graphicconverter"
 cask "handbrake"
 # Vector graphics editor
 cask "inkscape"
+# File archiver
+cask "keka"
 # Music tagger
 cask "musicbrainz-picard"
 # Display image info and preview unsupported formats in QuickLook
