@@ -120,6 +120,8 @@ brew "findutils"
 brew "ncurses"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Lint your Python code for style and logical errors
+brew "flake8"
 # Examines code and reports possible security weaknesses
 brew "flawfinder"
 # Static type checker for JavaScript
