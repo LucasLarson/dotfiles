@@ -311,6 +311,8 @@ brew "zsh", args: ["HEAD"]
 brew "zsh-lovers"
 # Text editor
 cask "atom"
+# Voice and text chat software
+cask "discord-canary"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Sci-fi themed terminal emulator and system monitor
