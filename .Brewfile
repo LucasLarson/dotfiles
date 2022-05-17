@@ -87,6 +87,8 @@ brew "cmake"
 brew "cocoapods"
 # General-purpose scripting language
 brew "php"
+# Dependency Manager for PHP
+brew "composer"
 # Utility that creates projects from templates
 brew "cookiecutter"
 # Static analysis of C and C++ code
