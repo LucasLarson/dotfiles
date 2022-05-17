@@ -309,6 +309,8 @@ brew "zlib"
 brew "zsh", args: ["HEAD"]
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
+# Text editor
+cask "atom"
 # App to build and share containerized applications and microservices
 cask "docker"
 # Sci-fi themed terminal emulator and system monitor
