@@ -11,6 +11,8 @@ tap "homebrew/test-bot"
 tap "microsoft/git"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
