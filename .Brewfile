@@ -235,6 +235,8 @@ brew "pip-completion"
 brew "pngcrush"
 # Policy-compliant ordinary shell
 brew "posh"
+# PHP Static Analysis Tool
+brew "psalm"
 # Python version management
 brew "pyenv"
 # It's not just a linter that annoys you!
