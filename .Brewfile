@@ -85,6 +85,8 @@ brew "clang-format"
 brew "cmake"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
+# General-purpose scripting language
+brew "php"
 # Utility that creates projects from templates
 brew "cookiecutter"
 # Static analysis of C and C++ code
