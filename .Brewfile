@@ -227,6 +227,8 @@ brew "pacapt"
 brew "pandoc"
 # Highly capable, feature-rich programming language
 brew "perl"
+# Tool to automatically fix PHP coding standards issues
+brew "php-cs-fixer"
 # Bash completion for Pip
 brew "pip-completion"
 # Optimizer for PNG files
