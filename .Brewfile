@@ -285,6 +285,8 @@ brew "tmate"
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Ultra fast grep with query UI, fuzzy search, archive search, and more
+brew "ugrep"
 # Source code beautifier
 brew "uncrustify"
 # Vi 'workalike' with many additional features
