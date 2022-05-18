@@ -17,6 +17,8 @@ brew "jpeg"
 brew "libpng"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
