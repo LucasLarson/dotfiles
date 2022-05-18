@@ -355,6 +355,10 @@ cask "suspicious-package"
 cask "telegram"
 # Open-source BitTorrent client
 cask "transmission-nightly"
+# Virtualizer for x86 hardware
+cask "virtualbox"
+# Extend the functionality of VirtualBox
+cask "virtualbox-extension-pack"
 cask "webpquicklook"
 # Torrent streaming application
 cask "webtorrent"
