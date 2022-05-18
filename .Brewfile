@@ -15,6 +15,8 @@ brew "actionlint"
 brew "jpeg"
 # Library for manipulating PNG images
 brew "libpng"
+# TIFF library and utilities
+brew "libtiff"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
 # C/C++ and Java libraries for Unicode and globalization
@@ -57,10 +59,6 @@ brew "bfg"
 brew "black"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
-# Library for manipulating PNG images
-brew "libpng"
-# TIFF library and utilities
-brew "libtiff"
 # Software library to render fonts
 brew "freetype"
 # Portable Foreign Function Interface library
