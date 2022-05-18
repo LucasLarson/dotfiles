@@ -361,6 +361,8 @@ cask "transmission-nightly"
 cask "virtualbox"
 # Extend the functionality of VirtualBox
 cask "virtualbox-extension-pack"
+# Open-source cross-platform multimedia player
+cask "vlc-nightly"
 cask "webpquicklook"
 # Torrent streaming application
 cask "webtorrent"
