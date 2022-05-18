@@ -353,6 +353,8 @@ cask "signal"
 cask "suspicious-package"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Web browser focusing on security
+cask "tor-browser-alpha"
 # Open-source BitTorrent client
 cask "transmission-nightly"
 # Virtualizer for x86 hardware
