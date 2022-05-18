@@ -13,6 +13,8 @@ tap "microsoft/git"
 brew "actionlint"
 # Image manipulation library
 brew "jpeg"
+# Library for manipulating PNG images
+brew "libpng"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
 # Library for command-line editing
@@ -31,12 +33,16 @@ brew "astyle"
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
+# GNU internationalization (i18n) and localization (l10n) library
+brew "gettext"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash", args: ["HEAD"]
 # Programmable completion for Bash 4.2+
 brew "bash-completion@2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# GNU multiple precision arithmetic library
+brew "gmp"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Bash Automated Testing System
@@ -49,12 +55,8 @@ brew "bfg"
 brew "black"
 # Fish completion for brew-cask
 brew "brew-cask-completion"
-# Library for manipulating PNG images
-brew "libpng"
 # Software library to render fonts
 brew "freetype"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
 # Portable Foreign Function Interface library
 brew "libffi"
 # Interpreted, interactive, object-oriented programming language
@@ -67,28 +69,22 @@ brew "pkg-config"
 brew "cairo"
 # Decentralized dependency manager for Cocoa
 brew "carthage"
-# GNU multiple precision arithmetic library
-brew "gmp"
-# Integer Set Library for the polyhedral model
-brew "isl"
-# C library for multiple-precision floating-point computations
-brew "mpfr"
-# C library for the arithmetic of high precision complex numbers
-brew "libmpc"
-# GNU compiler collection
-brew "gcc"
 # Checks for bashisms in shell scripts
 brew "checkbashisms"
-# Generic library support script
-brew "libtool"
-# International domain name library (IDNA2008, Punycode and TR46)
-brew "libidn2"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
+# International domain name library (IDNA2008, Punycode and TR46)
+brew "libidn2"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+# Generic library support script
+brew "libtool"
+# Granddaddy of HTML tools, with support for modern standards
+brew "tidy-html5"
 # General-purpose scripting language
 brew "php"
 # Dependency Manager for PHP
@@ -101,8 +97,6 @@ brew "cppcheck"
 brew "cpplint"
 # POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
 brew "dash", args: ["HEAD"]
-# Get a file from an HTTP, HTTPS or FTP server
-brew "curl"
 # File comparison utilities
 brew "diffutils"
 # Pack, ship and run any application as a lightweight container
@@ -123,8 +117,6 @@ brew "exa"
 brew "exercism"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
-# YAML Parser
-brew "libyaml"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Identify or delete duplicate files
@@ -141,8 +133,16 @@ brew "flake8"
 brew "flawfinder"
 # Static type checker for JavaScript
 brew "flow"
+# C library for multiple-precision floating-point computations
+brew "mpfr"
 # GNU awk utility
 brew "gawk"
+# Integer Set Library for the polyhedral model
+brew "isl"
+# C library for the arithmetic of high precision complex numbers
+brew "libmpc"
+# GNU compiler collection
+brew "gcc"
 # Bash completion for gem
 brew "gem-completion"
 # GitHub command-line tool
@@ -187,6 +187,8 @@ brew "less"
 brew "libarchive"
 # X.509 and CMS library
 brew "libksba"
+# YAML Parser
+brew "libyaml"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Text-based web browser
@@ -283,8 +285,6 @@ brew "swiftlint"
 brew "tcsh"
 # Official documentation format of the GNU project
 brew "texinfo"
-# Granddaddy of HTML tools, with support for modern standards
-brew "tidy-html5"
 # Instant terminal sharing
 brew "tmate"
 # Terminal multiplexer
