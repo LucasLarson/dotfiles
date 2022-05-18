@@ -326,6 +326,8 @@ cask "dropbox"
 # Sci-fi themed terminal emulator and system monitor
 cask "edex-ui"
 cask "git-credential-manager-core"
+# Client for the Google Drive storage service
+cask "google-drive"
 # Virtual globe
 cask "google-earth-pro"
 # For browsing, enhancing and converting images
