@@ -317,7 +317,7 @@ expand-or-complete-with-dots() {
 
 # include hidden files in tab completion
 # https://unix.stackexchange.com/a/366137
-setopt GLOB_DOTS
+set -o globdots
 # but hide `./` and `../`
 # https://unix.stackexchange.com/q/308315#comment893697_308322
 zstyle ':completion:*' special-dirs false
@@ -338,11 +338,11 @@ autoload -U compinit &&
 
 # share all commands from everywhere
 # https://github.com/mcornella/dotfiles/blob/047eaa1/zshrc#L104-L105
-setopt SHARE_HISTORY
+set -o share_history
 
 # permit inline comments after hash signs `#`
 # https://stackoverflow.com/a/11873793
-setopt INTERACTIVE_COMMENTS
+set -o interactive_comments
 
 # pyenv
 test -d "${HOME-}/.pyenv/shims" &&
