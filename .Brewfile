@@ -167,8 +167,6 @@ brew "gitleaks"
 brew "glfw"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
-# GNU implementation of which utility
-brew "gnu-which"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Open-source build automation tool based on the Groovy and Kotlin DSL
