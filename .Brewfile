@@ -342,6 +342,8 @@ cask "handbrake"
 cask "inkscape"
 # File archiver
 cask "keka"
+# File system integration
+cask "macfuse"
 # Music tagger
 cask "musicbrainz-picard"
 # Display image info and preview unsupported formats in QuickLook
