@@ -468,6 +468,7 @@ count_files_in_this_directory() {
   # count files as well as directories
   -d | --directory | --directories)
     command find -- . \
+      -maxdepth 1 \
       ! -path '*/.git/*' \
       ! -name '.' \
       -prune \
@@ -475,10 +476,11 @@ count_files_in_this_directory() {
       command grep -c -e /
     ;;
 
-    # count only regular, non-directory files
+  # count only regular, non-directory files
   *)
     # https://unix.stackexchange.com/a/1126
     command find -- . \
+      -maxdepth 1 \
       -type f \
       ! -path '*/.git/*' \
       ! -name '.' \
