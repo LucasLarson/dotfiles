@@ -259,9 +259,9 @@ cleanup() {
       case "$(command pwd -P | command tr -d '[:space:]' | command xargs basename -- | command cut -c 1)" in
       [A-Z])
         printf '\n\n'
-        printf '\342\233\224\357\270\217  aborting: refusing to run from \140\044HOME\140 or macOS standard directory\n'
+        printf '\342\233\224\357\270\217 aborting: refusing to run from a macOS standard directory\n'
         printf '\n\n'
-        exit 19
+        return 77
         ;;
       *)
         # permit running from non-titlecase-named directories in `$HOME`
