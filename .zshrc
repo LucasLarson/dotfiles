@@ -172,14 +172,6 @@ alias edit='command "${EDITOR-}"'
 # https://unix.stackexchange.com/q/4859#comment5812_4861
 export VISUAL="${EDITOR-}"
 
-# ignore case in `man` page searches
-# https://unix.stackexchange.com/a/101299
-# https://github.com/awdeorio/dotfiles/commit/65ff822
-PAGER='command less --IGNORE-CASE'
-export PAGER
-export MANPAGER="${PAGER-}"
-alias less='${PAGER-}'
-
 ## iTerm
 test -r "${HOME-}/.iterm2_shell_integration.zsh" &&
   . "${HOME-}/.iterm2_shell_integration.zsh"

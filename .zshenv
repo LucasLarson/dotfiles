@@ -51,6 +51,10 @@ export TZ="${TZ:=America/New_York}"
 # https://github.com/mathiasbynens/dotfiles/issues/828#issue-296489157
 command defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true >/dev/null 2>&1
 
+## PAGER
+export PAGER="${PAGER:-"command less --ignore-case"}"
+export MANPAGER="${MANPAGER:-"${PAGER-}"}"
+
 ## POSIX
 # activated when set to any value (even empty)
 # https://gnu.org/s/autoconf/manual/autoconf#index-POSIXLY_005fCORRECT
