@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh
 
-# Powerlevel10k instant prompt
+## Powerlevel10k
+# instant prompt
 . "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${USER-}"'.zsh'
 
-# PATH
+## PATH
 # https://opengroup.org/onlinepubs/9699919799/utilities/command.html
 # prepend without extra colon
 # https://unix.stackexchange.com/a/415028
@@ -23,7 +24,7 @@ test -d "${HOME-}/bin" &&
 test -d "${HOME-}/.local/bin" &&
   PATH="${HOME-}/.local/bin${PATH:+:${PATH-}}"
 
-# Plugin manager installation
+## Plugin manager
 test -d "${HOME-}/.oh-my-zsh" &&
   export ZSH="${HOME-}/.oh-my-zsh"
 
@@ -33,7 +34,7 @@ test -d "${HOME-}/.oh-my-zsh" &&
 export ZSH_CUSTOM="${DOTFILES-}/custom"
 export ZSHCUSTOM="${ZSH_CUSTOM-}"
 
-# Theme
+## Theme
 # Set name of the theme to load. If set to `random`, it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -102,11 +103,11 @@ SAVEHIST="$(printf '2 ^ 32 - 1\n' | command bc)" # 4,294,967,295 in history file
 HISTSIZE="$((SAVEHIST / 2))"                     # 2,147,478,647 in session
 export SAVEHIST HISTSIZE
 
-# ~/.zcompdump override
+## zsh compdump
 # https://github.com/ohmyzsh/ohmyzsh/commit/d2fe03d
 export ZSH_COMPDUMP="${HOME-}/.zcompdump"
 
-# Plugins
+## Plugins
 # plugins at the beginning of the array are
 # overridden by plugins at its end
 plugins+=(
@@ -119,7 +120,7 @@ plugins+=(
   zsh-diff-so-fancy
 )
 
-# zsh_codex
+# plugin: zsh_codex
 test -r "${XDG_CONFIG_HOME-}"'/openaiapirc' || {
   printf '[openai]\n'
   printf 'organization_id = %s\n' "${OPENAI_ORGANIZATION_ID-}"
@@ -130,17 +131,18 @@ plugins+=(
   zsh_codex
 )
 
-# fast-syntax-highlighting/zsh-syntax-highlighting
+# plugin: fast-syntax-highlighting/zsh-syntax-highlighting
 # performs best when loaded late
 plugins+=(
   fast-syntax-highlighting
 )
 
+## Oh My Zsh
 . "${ZSH-}/oh-my-zsh.sh"
 
-# User configuration
+### User configuration
 
-# MANPATH
+## MANPATH
 # Linux
 test -d '/usr/local/man' &&
   # skip adding initial and terminal colons `:`
@@ -155,7 +157,8 @@ command man -w >/dev/null 2>&1 &&
   # https://unix.stackexchange.com/a/162893
   MANPATH="${MANPATH:+${MANPATH-}:}$(command man -w)"
 
-# $EDITOR: access favorite with `e`
+## EDITOR
+# access favorite with `e`
 # Set preferred editor if it is available
 if command -v -- nvim >/dev/null 2>&1; then
   EDITOR="$(command -v -- nvim)"
@@ -179,20 +182,21 @@ export PAGER
 export MANPAGER="${PAGER-}"
 alias less='${PAGER-}'
 
-# Compilation flags
+## Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# iTerm
+## iTerm
 test -r "${HOME-}/.iterm2_shell_integration.zsh" &&
   . "${HOME-}/.iterm2_shell_integration.zsh"
 
-# GPG signing with macOS-compatible Linux
+## GPG
+# sign with macOS-compatible Linux
 # https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key
 # https://reddit.com/comments/dk53ow/_/f50146x
 # https://github.com/romkatv/powerlevel10k/commit/faddef4
 export GPG_TTY="${TTY-}"
 
-# Homebrew
+## Homebrew
 # https://github.com/Homebrew/brew/blob/a5b6c5f/Library/Homebrew/diagnostic.rb#L432-L435
 if command -v -- brew >/dev/null 2>&1; then
 
@@ -290,17 +294,18 @@ if command -v -- brew >/dev/null 2>&1; then
     MANPATH="${HOMEBREW_PREFIX-}/opt/gnu-which/libexec/gnuman${MANPATH:+:${MANPATH-}}"
 fi
 
-# Rust Cargo
+## Rust
 # if its `bin` is a directory, then add it to `PATH`
 test -d "${HOME-}/.cargo/bin" &&
   PATH="${HOME-}/.cargo/bin${PATH:+:${PATH-}}"
 
-# Bashhub.com
+## Bashhub
 test -r "${HOME-}/.bashhub/bashhub.${SHELL##*[-./]}" && {
   . "${HOME-}/.bashhub/bashhub.${SHELL##*[-./]}"
 }
 
-# npm without sudo
+## npm
+# without sudo
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
 NPM_PACKAGES="${HOME-}/.npm-packages"
 test -d "${NPM_PACKAGES-}/bin" &&
@@ -308,7 +313,7 @@ test -d "${NPM_PACKAGES-}/bin" &&
 test -d "${NPM_PACKAGES-}/share/man" &&
   MANPATH="${MANPATH:+${MANPATH-}:}${NPM_PACKAGES-}/share/man"
 
-# completion dots
+## completion dots
 expand-or-complete-with-dots() {
   printf '\033[0;31m...\033[0m'
   zle expand-or-complete
@@ -325,7 +330,7 @@ zstyle ':completion:*' special-dirs false
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format %F"{green}"%d%f
 
-# zsh-completions
+## plugin: zsh-completions
 # https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
 # https://github.com/zsh-users/zsh-completions/tree/f68950a#oh-my-zsh
 test -d "${ZSH_CUSTOM-}/plugins/zsh-completions/src" &&
@@ -344,7 +349,7 @@ set -o share_history
 # https://stackoverflow.com/a/11873793
 set -o interactive_comments
 
-# pyenv
+## pyenv
 test -d "${HOME-}/.pyenv/shims" &&
   PATH="${HOME-}/.pyenv/shims${PATH:+:${PATH-}}"
 # https://gist.github.com/4a4c4986ccdcaf47b91e8227f9868ded#prezto
@@ -354,7 +359,8 @@ pyenv() {
   pyenv "$@"
 }
 
-# C, C++ headers
+## C, C++
+# headers
 # https://apple.stackexchange.com/a/372600
 if command -v -- xcrun >/dev/null 2>&1 &&
   test -n "$(command xcrun --show-sdk-path)"; then
@@ -366,7 +372,7 @@ if command -v -- xcrun >/dev/null 2>&1 &&
   export CPATH
 fi
 
-# cpplint tests
+## cpplint
 # `$LIBRARY_PATH` || ld: library not found for -lSystem
 # https://stackoverflow.com/a/65428700
 if test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
@@ -376,22 +382,22 @@ if test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
   export LIBRARY_PATH
 fi
 
-# Go
+## Go
 test -n "${GOPATH-}" &&
   test -d "${GOPATH-}"'/bin' &&
   PATH="${GOPATH-}"'/bin'"${PATH:+:"${PATH-}"}"
 
-# Android SDK
+## Android SDK
 # if it’s a directory, then assign it the name `ANDROID_SDK_ROOT`
 test -d "${HOME-}/Library/Android/sdk" &&
   export ANDROID_SDK_ROOT="${HOME-}/Library/Android/sdk"
 
-# pip
+## pip
 # location of Python packages on Linux
 test -d "${HOME-}/.local/bin" &&
   PATH="${HOME-}/.local/bin${PATH:+:${PATH-}}"
 
-# rbenv
+## rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # https://gist.github.com/4a4c4986ccdcaf47b91e8227f9868ded#prezto
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
@@ -402,7 +408,8 @@ rbenv() {
   rbenv "$@"
 }
 
-# automatically remove PATH duplicates
+## PATHs
+# prevent duplicate entries
 # https://github.com/mcornella/dotfiles/blob/e62b0d4/zshenv#L63-L67
 # https://github.com/zsh-users/zsh/blob/a9061cc/StartupFiles/zshrc#L56-L57
 # https://github.com/zsh-users/zsh/commit/db3f2d2
@@ -418,8 +425,8 @@ test -n "${ZSH-}" &&
     FPATH fpath \
     MANPATH manpath
 
-# powerlevel10k prompt
-# customize prompt via `p10k configure` or edit `~/.p10k.zsh`
+## Powerlevel10k
+# prompt
 # if the theme is powerlevel10k,
 test "${ZSH_THEME-}" = 'powerlevel10k/powerlevel10k' &&
   # and there is a file at ~/.p10k.zsh,
