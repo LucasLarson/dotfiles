@@ -28,6 +28,13 @@ command mkdir -p "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
   command chmod 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:="${TMPDIR:-/tmp}"/xdg_runtime_dir-"${USER-}"}"
 
+## GitHub
+export GITHUB_ORG="${GITHUB_ORG:="${USER-}"}"
+
+## GitLab
+# for `gitlab_create_repository`
+export GITLAB_USERNAME="${GITLAB_USERNAME:="${USER-}"}"
+
 ## Go
 # https://github.com/golang/go/wiki/SettingGOPATH/450fad957455a745f8d97ad4cb79376cd689810a
 # command go env -w GOPATH="${HOME-}"'/.go' ||
