@@ -387,11 +387,6 @@ test -n "${GOPATH-}" &&
   test -d "${GOPATH-}"'/bin' &&
   PATH="${GOPATH-}"'/bin'"${PATH:+:"${PATH-}"}"
 
-## Android SDK
-# if it’s a directory, then assign it the name `ANDROID_SDK_ROOT`
-test -d "${HOME-}/Library/Android/sdk" &&
-  export ANDROID_SDK_ROOT="${HOME-}/Library/Android/sdk"
-
 ## pip
 # location of Python packages on Linux
 test -d "${HOME-}/.local/bin" &&
