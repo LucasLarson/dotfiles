@@ -140,8 +140,6 @@ plugins+=(
 ## Oh My Zsh
 . "${ZSH-}/oh-my-zsh.sh"
 
-### User configuration
-
 ## MANPATH
 # Linux
 test -d '/usr/local/man' &&
