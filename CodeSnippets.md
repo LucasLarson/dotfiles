@@ -558,11 +558,11 @@ https://"${wget_server-}"; unset wget_server utility`
 
 ### Windows password
 
-`netsh wlan show profile WiFi-name key=clear #` [via](https://reddit.com/r/LifeProTips/comments/d5vknk/lpt_if_you_ever_forget_your_wifi_password_or_you/)
+`netsh wlan show profile WiFi-name key=clear #` [via](https://redd.it/d5vknk)
 
 ### macOS password
 
-`security find-generic-password -wa ExampleNetwork #` [via](https://www.labnol.org/software/find-wi-fi-network-password/28949/)
+`security find-generic-password -wa ExampleNetwork #` [via](https://labnol.org/software/find-wi-fi-network-password/28949)
 
 ## Xcode
 
