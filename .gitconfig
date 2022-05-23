@@ -67,11 +67,6 @@
 [diff-so-fancy]
   stripLeadingSymbols = true
 
-[gpg]
-  # `gpg` is an alias to `gpg2` where possible
-  # https://github.com/ustasb/dotfiles/commit/da93f0f
-  program = gpg
-
 [i18n]
   commitEncoding = utf-8
 
