@@ -23,9 +23,9 @@ export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:=/etc/xdg}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:="${HOME-}"/.cache}"
 
 # `XDG_RUNTIME_DIR` has no default and requires `700` permissions
-command mkdir -p "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"$(command id -n -u)" &&
-  command chmod 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"$(command id -n -u)" &&
-  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:="${TMPDIR:-/tmp}"/xdg_runtime_dir-"$(command id -n -u)"}"
+command mkdir -p "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
+  command chmod 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
+  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:="${TMPDIR:-/tmp}"/xdg_runtime_dir-"${USER-}"}"
 
 ## Go
 # https://github.com/golang/go/wiki/SettingGOPATH/450fad957455a745f8d97ad4cb79376cd689810a
