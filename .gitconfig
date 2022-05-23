@@ -64,16 +64,6 @@
   # https://stackoverflow.com/a/13118734
   renameLimit = 0
 
-[diff "plist"]
-  # permit 𝚐𝚒𝚝 𝚍𝚒𝚏𝚏 even in binary 𝚙𝚕𝚒𝚜𝚝s
-  # https://archive.org/details/2018GitNotesForProfessionals/page/n46
-  textconv = command plutil -convert xml1 -o -
-
-[diff "utf16"]
-  # macOS strings files
-  # https://archive.org/details/2018GitNotesForProfessionals/page/n45
-  textconv = command iconv -f utf-16 -t utf-8
-
 [diff-so-fancy]
   stripLeadingSymbols = true
 
