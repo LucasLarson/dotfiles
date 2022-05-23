@@ -182,9 +182,6 @@ export PAGER
 export MANPAGER="${PAGER-}"
 alias less='${PAGER-}'
 
-## Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 ## iTerm
 test -r "${HOME-}/.iterm2_shell_integration.zsh" &&
   . "${HOME-}/.iterm2_shell_integration.zsh"
