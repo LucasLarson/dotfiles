@@ -32,7 +32,6 @@ test -d "${HOME-}/.oh-my-zsh" &&
 # ZSH_CUSTOM=/path/to/new-custom-folder
 # https://reddit.com/comments/g1a2qd/_/fneil10
 export ZSH_CUSTOM="${DOTFILES-}/custom"
-export ZSHCUSTOM="${ZSH_CUSTOM-}"
 
 ## Theme
 # Set name of the theme to load. If set to `random`, it will
