@@ -51,9 +51,6 @@ else
 fi
 export ZSH_THEME
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-export DISABLE_AUTO_UPDATE='true'
-
 # Uncomment the following line to automatically update without prompting.
 export DISABLE_UPDATE_PROMPT='true'
 
