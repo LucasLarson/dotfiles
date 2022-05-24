@@ -553,6 +553,21 @@ dictionary() {
     LC_ALL='C' command sort -f
 }
 
+domain_name_from_url() {
+  for url in "$@"; do
+    # remove `user@` if any (ultra rare)
+    url="${url##*@}"
+    # remove `https://` or `http://`
+    url="${url##*//}"
+    # remove leading `www.`
+    url="${url#*www.}"
+    # remove ports like `:80`, `:443` (rare) and trailing slash and beyond
+    url="${url%%[:/]*}"
+    printf '%s\n' "${url-}"
+  done
+  unset -- url 2>/dev/null
+}
+
 epoch_seconds() {
   # return seconds since the epoch, 1969-12-31 19:00:00 EST
   # https://stackoverflow.com/a/41324810
