@@ -342,7 +342,5 @@ test -n "${ZSH-}" &&
 # prompt
 # if the theme is powerlevel10k,
 test "${ZSH_THEME-}" = 'powerlevel10k/powerlevel10k' &&
-  # and there is a file at ~/.p10k.zsh,
-  test -r "${HOME-}/.p10k.zsh" &&
-  # then source it
-  . "${HOME-}/.p10k.zsh"
+  # then source `~/.p10k.zsh`
+  . "${HOME-}"'/.p10k.zsh'
