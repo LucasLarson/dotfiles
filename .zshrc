@@ -51,9 +51,6 @@ else
 fi
 export ZSH_THEME
 
-# Uncomment the following line to use case-sensitive completion.
-# export CASE_SENSITIVE='true'
-
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # export HYPHEN_INSENSITIVE='true'
