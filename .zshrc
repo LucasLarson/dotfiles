@@ -73,14 +73,6 @@ export ENABLE_CORRECTION='false'
 # Uncomment the following line to display red dots whilst awaiting completion.
 export COMPLETION_WAITING_DOTS='\033[0;31m.\033[0;33m.\033[0;32m.\033[0m'
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-export HIST_STAMPS='yyyy-mm-dd'
-
 # set maximum number of lines in history file
 # https://unix.stackexchange.com/a/111777
 SAVEHIST="$(printf '2 ^ 32 - 1\n' | command bc)" # 4,294,967,295 in history file
