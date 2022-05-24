@@ -1169,6 +1169,36 @@ gravatar() {
   } 2>/dev/null
 }
 
+hash_abbreviate() {
+  # abbreviate commit hash and copy to clipboard
+  # usage: hash_abbreviate [-l <length>] <hash> [<hash> ...]
+  while getopts l: opt; do
+    case "${opt-}" in
+    l)
+      length="${OPTARG-}"
+      ;;
+    *)
+      printf 'usage: %s [-l <length>] <hash> [<hash> ...]\n' "$(command basename -- "$0")" >&2
+      ;;
+    esac
+  done
+  shift "$((OPTIND - 1))"
+  for hash in "$@"; do
+    if printf '%s' "${hash-}" | command grep -E -q -w -e '[[:xdigit:]]{4,40}'; then
+      printf '%s\n' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- '7')"}"
+      # prevent copying trailing newline with `tr` and
+      # hide clipboard errors because `pbcopy` is not common
+      printf '%s' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- '7')"}" | command tr -d '[:space:]' | command pbcopy 2>/dev/null
+    else
+      return 1
+    fi
+  done
+  {
+    unset -- 'hash'
+    unset -- 'length'
+  } 2>/dev/null
+}
+
 hashlookup() {
   test -e "${1-}" ||
     return 66
