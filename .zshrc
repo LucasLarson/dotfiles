@@ -247,12 +247,6 @@ if command -v -- brew >/dev/null 2>&1; then
     PATH="${HOMEBREW_PREFIX-}/opt/texinfo/bin${PATH:+:${PATH-}}"
   test -d "${HOMEBREW_PREFIX-}/opt/texinfo/share/man" &&
     MANPATH="${HOMEBREW_PREFIX-}/opt/texinfo/share/man${MANPATH:+:${MANPATH-}}"
-
-  # which
-  test -d "${HOMEBREW_PREFIX-}/opt/gnu-which/libexec/gnubin" &&
-    PATH="${HOMEBREW_PREFIX-}/opt/gnu-which/libexec/gnubin${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}/opt/gnu-which/libexec/gnuman" &&
-    MANPATH="${HOMEBREW_PREFIX-}/opt/gnu-which/libexec/gnuman${MANPATH:+:${MANPATH-}}"
 fi
 
 ## Rust
