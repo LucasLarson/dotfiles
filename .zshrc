@@ -127,8 +127,6 @@ test -d '/usr/share/man' &&
   MANPATH="/usr/share/man${MANPATH:+:${MANPATH-}}"
 # if `man -w` does not fail, then add it to `$MANPATH`
 command man -w >/dev/null 2>&1 &&
-  # skip adding initial and terminal colons `:`
-  # https://unix.stackexchange.com/a/162893
   MANPATH="${MANPATH:+${MANPATH-}:}$(command man -w)"
 
 ## EDITOR
@@ -297,8 +295,6 @@ zstyle ':completion:*:descriptions' format %F"{green}"%d%f
 # https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
 # https://github.com/zsh-users/zsh-completions/tree/f68950a#oh-my-zsh
 test -d "${ZSH_CUSTOM-}/plugins/zsh-completions/src" &&
-  # skip adding initial and terminal colons `:`
-  # https://unix.stackexchange.com/a/162893
   FPATH="${FPATH:+${FPATH-}:}${ZSH_CUSTOM-}/plugins/zsh-completions/src"
 
 autoload -U compinit &&
@@ -339,8 +335,6 @@ fi
 # `$LIBRARY_PATH` || ld: library not found for -lSystem
 # https://stackoverflow.com/a/65428700
 if test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
-  # skip adding initial and terminal colons `:`
-  # https://unix.stackexchange.com/a/162893
   LIBRARY_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib${LIBRARY_PATH:+:${LIBRARY_PATH-}}"
   export LIBRARY_PATH
 fi
