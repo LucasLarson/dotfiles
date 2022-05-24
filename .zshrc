@@ -63,9 +63,6 @@ export UPDATE_ZSH_DAYS='1'
 # Magic functions prevent easy pasting of URLs containing `#`, `?`
 export DISABLE_MAGIC_FUNCTIONS='true'
 
-# Uncomment the following line to disable colors in ls.
-# export DISABLE_LS_COLORS='true'
-
 # Uncomment the following line to disable auto-setting terminal title.
 # export DISABLE_AUTO_TITLE='true'
 
