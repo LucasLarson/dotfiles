@@ -1198,6 +1198,7 @@ hash_abbreviate() {
     unset -- 'length'
   } 2>/dev/null
 }
+alias h7='hash_abbreviate'
 
 hashlookup() {
   test -e "${1-}" ||
