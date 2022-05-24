@@ -66,7 +66,7 @@ export MANPAGER="${MANPAGER:-"${PAGER-}"}"
 ## POSIX
 # activated when set to any value (even empty)
 # https://gnu.org/s/autoconf/manual/autoconf#index-POSIXLY_005fCORRECT
-unset -- POSIXLY_CORRECT 2>/dev/null
+export POSIXLY_CORRECT="${POSIXLY_CORRECT:-1}"
 
 ## Rust
 # https://github.com/mkrasnitski/git-power-rs/tree/2fc2906#installing
