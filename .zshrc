@@ -73,11 +73,6 @@ export ENABLE_CORRECTION='false'
 # Uncomment the following line to display red dots whilst awaiting completion.
 export COMPLETION_WAITING_DOTS='\033[0;31m.\033[0;33m.\033[0;32m.\033[0m'
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# export DISABLE_UNTRACKED_FILES_DIRTY='true'
-
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
