@@ -124,10 +124,6 @@ alias edit='command "${EDITOR-}"'
 # https://unix.stackexchange.com/q/4859#comment5812_4861
 export VISUAL="${EDITOR-}"
 
-## iTerm
-test -r "${HOME-}/.iterm2_shell_integration.zsh" &&
-  . "${HOME-}/.iterm2_shell_integration.zsh"
-
 ## GPG
 # sign with macOS-compatible Linux
 # https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key
