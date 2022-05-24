@@ -51,25 +51,6 @@ else
 fi
 export ZSH_THEME
 
-# Uncomment the following line to automatically update without prompting.
-export DISABLE_UPDATE_PROMPT='true'
-
-# Uncomment the following line to change how often, in days, to autoupdate.
-export UPDATE_ZSH_DAYS='1'
-
-# Magic functions prevent easy pasting of URLs containing `#`, `?`
-export DISABLE_MAGIC_FUNCTIONS='true'
-
-# Uncomment the following line to disable auto-setting terminal title.
-# export DISABLE_AUTO_TITLE='true'
-
-# Uncomment the following line to enable command auto-correction.
-# This is an unhelpful, badly documented setting and should not be enabled.
-export ENABLE_CORRECTION='false'
-
-# Uncomment the following line to display red dots whilst awaiting completion.
-export COMPLETION_WAITING_DOTS='\033[0;31m.\033[0;33m.\033[0;32m.\033[0m'
-
 # set maximum number of lines in history file
 # https://unix.stackexchange.com/a/111777
 SAVEHIST="$(printf '2 ^ 32 - 1\n' | command bc)" # 4,294,967,295 in history file
@@ -264,13 +245,6 @@ test -d "${NPM_PACKAGES-}/bin" &&
   PATH="${PATH:+${PATH-}:}${NPM_PACKAGES-}/bin"
 test -d "${NPM_PACKAGES-}/share/man" &&
   MANPATH="${MANPATH:+${MANPATH-}:}${NPM_PACKAGES-}/share/man"
-
-## completion dots
-expand-or-complete-with-dots() {
-  printf '\033[0;31m...\033[0m'
-  zle expand-or-complete
-  zle redisplay
-}
 
 # include hidden files in tab completion
 # https://unix.stackexchange.com/a/366137
