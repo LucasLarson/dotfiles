@@ -51,10 +51,6 @@ else
 fi
 export ZSH_THEME
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# export HYPHEN_INSENSITIVE='true'
-
 # Uncomment the following line to disable bi-weekly auto-update checks.
 export DISABLE_AUTO_UPDATE='true'
 
