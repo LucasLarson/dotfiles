@@ -46,8 +46,6 @@ if test -r "${ZSH_CUSTOM-}/themes/powerlevel10k/powerlevel10k.zsh-theme" &&
       test "$((COLUMNS * LINES))" -gt "$((80 * 24))"
   }; then
   ZSH_THEME='powerlevel10k/powerlevel10k'
-else
-  ZSH_THEME='robbyrussell'
 fi
 export ZSH_THEME
 
