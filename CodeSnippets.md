@@ -76,6 +76,7 @@
   - [signing](#signing)
 - [Zsh](#zsh)
   - [array types](#array-types)
+  - [initialization](#initialization)
   - [troubleshooting](#troubleshooting)
 - [housekeeping](#housekeeping)
   - [docker](#docker)
@@ -582,6 +583,21 @@ Search the `.pbxproj` file for
 ### array types
 
 `<<<${(t)path-} #` [via](https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path)
+
+### initialization
+
+Zsh sources in order loaded:
+
+1. `/etc/zshenv`
+1. `~/.zshenv`
+1. `/etc/zprofile`
+1. `~/.zprofile`
+1. `/etc/zshrc`
+1. `~/.zshrc`
+1. `/etc/zlogin`
+1. `~/.zlogin`
+1. `/etc/zlogout`
+1. `~/.zlogout`
 
 ### troubleshooting
 
