@@ -1,6 +1,6 @@
 == dotfiles
 
-=== about
+=== About
 
 My own private dotfiles built with help from
 https://github.com/gnachman/iTerm2[iTerm^],
