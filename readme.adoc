@@ -8,3 +8,9 @@ https://github.com/lra/mackup[Mackup^], https://github.com/git/git[Git^],
 https://github.com/neovim/neovim[Neovim^],
 https://github.com/ohmyzsh/ohmyzsh[Oh&nbsp;My&nbsp;Zsh^],
 and&nbsp;https://github.com/twitter/twemoji/blob/4dd7e73900/assets/svg/1fac0.svg[Twemoji^].
+
+=== License
+
+dotfiles by https://lucaslarson.net[Lucas Larson^] is a repository licensed
+under any https://github.com/LucasLarson/dotfiles/blob/HEAD/license.adoc[GNU
+Affero General Public License^] whose version number is no less than&nbsp;3.0.
