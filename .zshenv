@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
 ## Dotfiles and templates
-command mkdir -p "${HOME-}"'/Dropbox/dotfiles' &&
+command mkdir -p -- "${HOME-}"'/Dropbox/dotfiles' &&
   export DOTFILES="${DOTFILES:="${HOME-}"/Dropbox/dotfiles}" &&
-  command mkdir -p "${TEMPLATE:="${DOTFILES-}"/../Template}" &&
+  command mkdir -p -- "${TEMPLATE:="${DOTFILES-}"/../Template}" &&
   export TEMPLATE="${TEMPLATE:="${DOTFILES-}"/../Template}" &&
-  command mkdir -p "${DEFAULT:="${TEMPLATE-}"/../Default}" &&
+  command mkdir -p -- "${DEFAULT:="${TEMPLATE-}"/../Default}" &&
   export DEFAULT="${DEFAULT:="${TEMPLATE-}"/../Default}"
 export ZDOTDIR="${ZDOTDIR:="${HOME-}"}"
 
@@ -24,7 +24,7 @@ export XDG_CONFIG_DIRS="${XDG_CONFIG_DIRS:=/etc/xdg}"
 export XDG_CACHE_HOME="${XDG_CACHE_HOME:="${HOME-}"/.cache}"
 
 # `XDG_RUNTIME_DIR` has no default and requires `700` permissions
-command mkdir -p "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
+command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
   command chmod 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:="${TMPDIR:-/tmp}"/xdg_runtime_dir-"${USER-}"}"
 
