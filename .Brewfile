@@ -241,6 +241,8 @@ brew "php-cs-fixer"
 brew "pip-completion"
 # Optimizer for PNG files
 brew "pngcrush"
+# PDF rendering library (based on the xpdf-3.0 code base)
+brew "poppler"
 # Policy-compliant ordinary shell
 brew "posh"
 # PHP Static Analysis Tool
