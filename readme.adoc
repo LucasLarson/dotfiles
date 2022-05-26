@@ -1,5 +1,8 @@
 == dotfiles
 
+[quote]
+It’s home. And home is where the heart is &nbsp; at.
+
 === About
 
 My own private dotfiles built with help from
