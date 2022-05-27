@@ -105,6 +105,11 @@ bindkey '^[[Z' reverse-menu-complete
 ## Oh My Zsh
 . "${ZSH-}/oh-my-zsh.sh"
 
+for file in "${ZSH_CUSTOM-}"/plugins/**/*.plugin.*sh; do
+  . "${file-}" 2>/dev/null &&
+    FPATH="${FPATH:+"${FPATH-}":}$(command dirname -- "${file-}")"
+done
+
 ## MANPATH
 # Linux
 test -d '/usr/local/man' &&
