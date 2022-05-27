@@ -109,6 +109,9 @@ for file in "${ZSH_CUSTOM-}"/plugins/**/*.plugin.*sh; do
   . "${file-}" 2>/dev/null &&
     FPATH="${FPATH:+"${FPATH-}":}$(command dirname -- "${file-}")"
 done
+for file in "${ZSH_CUSTOM-}"/*sh; do
+  . "${file-}"
+done
 
 ## MANPATH
 # Linux
