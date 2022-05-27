@@ -62,7 +62,6 @@ plugins+=(
   samefile
   git-default-branch
   git-open
-  history-substring-search
   zsh-abbr
   zsh-diff-so-fancy
 )
@@ -83,6 +82,17 @@ plugins+=(
 plugins+=(
   fast-syntax-highlighting
 )
+
+# plugin: zsh-history-substring-search
+plugins+=(
+  # load after fast-syntax-highlighting
+  # https://github.com/zsh-users/zsh-history-substring-search/blob/02a1971540/history-substring-search.zsh
+  zsh-history-substring-search
+) && {
+  # https://github.com/zsh-users/zsh-history-substring-search/commit/9c51863eb2
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+}
 
 ## Oh My Zsh
 . "${ZSH-}/oh-my-zsh.sh"
