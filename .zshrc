@@ -94,6 +94,10 @@ plugins+=(
   bindkey '^[[B' history-substring-search-down
 }
 
+## Options
+# go to directory without `cd`
+set -o autocd
+
 ## shell navigation without the mouse
 bindkey '^?' backward-delete-char
 bindkey '^A' beginning-of-line
