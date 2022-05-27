@@ -6,13 +6,12 @@
 
 ## PATH
 # https://opengroup.org/onlinepubs/9699919799/utilities/command.html
-# prepend without extra colon
+# prepend without extra colon `:`
 # https://unix.stackexchange.com/a/415028
 PATH="$(command -p -- getconf PATH)${PATH:+:${PATH-}}"
 # https://github.com/archlinux/svntogit-packages/commit/a10f20b/filesystem/trunk/profile
 test -d '/usr/local/sbin' &&
   PATH="/usr/local/sbin${PATH:+:${PATH-}}"
-
 # /usr/local/bin first
 # https://stackoverflow.com/a/34984922
 test -d '/usr/local/bin' &&
@@ -120,8 +119,6 @@ done
 ## MANPATH
 # Linux
 test -d '/usr/local/man' &&
-  # skip adding initial and terminal colons `:`
-  # https://unix.stackexchange.com/a/162893
   MANPATH="/usr/local/man${MANPATH:+:${MANPATH-}}"
 # macOS
 test -d '/usr/share/man' &&
@@ -225,9 +222,6 @@ if command -v -- brew >/dev/null 2>&1; then
   # https://unix.stackexchange.com/a/162893
   export LDFLAGS="${LDFLAGS:+${LDFLAGS-} }-L${HOMEBREW_PREFIX-}/opt/openssl/lib"
   export CPPFLAGS="${CPPFLAGS:+${CPPFLAGS-} }-I${HOMEBREW_PREFIX-}/opt/openssl/include"
-
-  # PKG_CONFIG_PATH is colon-delimited
-  # https://superuser.com/a/1277306
   PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH-}:}${HOMEBREW_PREFIX-}/opt/openssl/lib/pkgconfig"
 
   # sed
