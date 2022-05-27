@@ -3,6 +3,8 @@
 ## Dotfiles and templates
 command mkdir -p -- "${HOME-}"'/Dropbox/dotfiles' &&
   export DOTFILES="${DOTFILES:="${HOME-}"/Dropbox/dotfiles}" &&
+  export ZSH_CUSTOM="${ZSH_CUSTOM:="${DOTFILES-}"/custom}" &&
+  export custom="${custom:="${ZSH_CUSTOM-}"}" &&
   command mkdir -p -- "${TEMPLATE:="${DOTFILES-}"/../Template}" &&
   export TEMPLATE="${TEMPLATE:="${DOTFILES-}"/../Template}" &&
   command mkdir -p -- "${DEFAULT:="${TEMPLATE-}"/../Default}" &&

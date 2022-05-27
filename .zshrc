@@ -28,11 +28,6 @@ test -d "${HOME-}/.local/bin" &&
 test -d "${HOME-}/.oh-my-zsh" &&
   export ZSH="${HOME-}/.oh-my-zsh"
 
-# Use a custom folder other than $ZSH/custom
-# ZSH_CUSTOM=/path/to/new-custom-folder
-# https://reddit.com/comments/g1a2qd/_/fneil10
-export ZSH_CUSTOM="${DOTFILES-}/custom"
-
 ## Theme
 # Set name of the theme to load. If set to `random`, it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
