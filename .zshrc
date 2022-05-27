@@ -94,6 +94,14 @@ plugins+=(
   bindkey '^[[B' history-substring-search-down
 }
 
+## shell navigation without the mouse
+bindkey '^?' backward-delete-char
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[Z' reverse-menu-complete
+
 ## Oh My Zsh
 . "${ZSH-}/oh-my-zsh.sh"
 
