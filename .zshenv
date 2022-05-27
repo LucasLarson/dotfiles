@@ -2,13 +2,14 @@
 
 ## Dotfiles and templates
 command mkdir -p -- "${HOME-}"'/Dropbox/dotfiles' &&
-  export DOTFILES="${DOTFILES:="${HOME-}"/Dropbox/dotfiles}" &&
-  export ZSH_CUSTOM="${ZSH_CUSTOM:="${DOTFILES-}"/custom}" &&
-  export custom="${custom:="${ZSH_CUSTOM-}"}" &&
-  command mkdir -p -- "${TEMPLATE:="${DOTFILES-}"/../Template}" &&
-  export TEMPLATE="${TEMPLATE:="${DOTFILES-}"/../Template}" &&
-  command mkdir -p -- "${DEFAULT:="${TEMPLATE-}"/../Default}" &&
-  export DEFAULT="${DEFAULT:="${TEMPLATE-}"/../Default}"
+  export DOTFILES="${HOME-}"'/Dropbox/dotfiles' &&
+  command mkdir -p -- "${DOTFILES-}"'/custom' &&
+  export ZSH_CUSTOM="${DOTFILES-}"'/custom' &&
+  export custom="${ZSH_CUSTOM-}" &&
+  command mkdir -p -- "${DOTFILES-}"'/../Template' &&
+  export TEMPLATE="${DOTFILES-}"'/../Template' &&
+  command mkdir -p -- "${DOTFILES-}"'/../Default' &&
+  export DEFAULT="${TEMPLATE-}"'/../Default'
 export ZDOTDIR="${ZDOTDIR:="${HOME-}"}"
 
 ## XDG
