@@ -211,6 +211,15 @@ if command -v -- brew >/dev/null 2>&1; then
   test -d "${HOMEBREW_PREFIX-}/opt/make/libexec/gnuman" &&
     MANPATH="${HOMEBREW_PREFIX-}/opt/make/libexec/gnuman${MANPATH:+:${MANPATH-}}"
 
+  ## Node
+  # version 16 at head of `PATH` to support GitHub Copilot
+  # https://github.com/github/copilot.vim/commit/f6cdb5caae
+  test -d "${HOMEBREW_PREFIX-}"'/opt/node@16/bin' &&
+    PATH='/usr/local/opt/node@16/bin'"${PATH:+:${PATH-}}" &&
+    MANPATH='/usr/local/opt/node@16/share'"${MANPATH:+:"${MANPATH-}"}" &&
+    export LDFLAGS="${LDFLAGS:+"${LDFLAGS-}" }"'-L'"${HOMEBREW_PREFIX-}"'/opt/node@16/lib' &&
+    export CPPFLAGS="${CPPFLAGS:+"${CPPFLAGS-}" }"'-I'"${HOMEBREW_PREFIX-}"'/opt/node@16/include'
+
   # openssl
   test -d "${HOMEBREW_PREFIX-}/opt/openssl/bin" &&
     PATH="${HOMEBREW_PREFIX-}/opt/openssl/bin${PATH:+:${PATH-}}"

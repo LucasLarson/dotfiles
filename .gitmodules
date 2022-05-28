@@ -31,3 +31,6 @@
 [submodule "custom/plugins/zsh-abbr"]
   path = custom/plugins/zsh-abbr
   url = https://github.com/olets/zsh-abbr
+[submodule ".config/nvim/pack/github/start/copilot.vim"]
+  path = .config/nvim/pack/github/start/copilot.vim
+  url = https://github.com/github/copilot.vim
