@@ -28,20 +28,13 @@ test -d "${HOME-}/.oh-my-zsh" &&
   export ZSH="${HOME-}/.oh-my-zsh"
 
 ## Theme
-# Set name of the theme to load. If set to `random`, it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# powerlevel10k
-# https://github.com/romkatv/powerlevel10k/blob/48c6ff4/README.md#oh-my-zsh
 if test -r "${ZSH_CUSTOM-}/themes/powerlevel10k/powerlevel10k.zsh-theme" &&
   {
     test "$(command uname)" = 'Darwin' ||
       test "$((COLUMNS * LINES))" -gt "$((80 * 24))"
   }; then
-  ZSH_THEME='powerlevel10k/powerlevel10k'
+  export ZSH_THEME='powerlevel10k/powerlevel10k'
 fi
-export ZSH_THEME
 
 # set maximum number of lines in history file
 # https://unix.stackexchange.com/a/111777
