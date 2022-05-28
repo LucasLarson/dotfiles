@@ -33,6 +33,7 @@ if test -r "${ZSH_CUSTOM-}/themes/powerlevel10k/powerlevel10k.zsh-theme" &&
     test "$(command uname)" = 'Darwin' ||
       test "$((COLUMNS * LINES))" -gt "$((80 * 24))"
   }; then
+  . "${ZSH_CUSTOM-}"'/themes/powerlevel10k/powerlevel10k.zsh-theme'
   export ZSH_THEME='powerlevel10k/powerlevel10k'
 fi
 
