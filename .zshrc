@@ -128,15 +128,14 @@ if command -v -- nvim >/dev/null 2>&1; then
   EDITOR="$(command -v -- nvim)"
 elif command -v -- vim >/dev/null 2>&1; then
   EDITOR="$(command -v -- vim)"
-else
+elif command -v -- vi >/dev/null 2>&1; then
   EDITOR="$(command -v -- vi)"
 fi
-export EDITOR
-# https://github.com/koalaman/shellcheck/wiki/SC2139
-alias e='command "${EDITOR-}"'
-alias edit='command "${EDITOR-}"'
-# https://unix.stackexchange.com/q/4859#comment5812_4861
-export VISUAL="${EDITOR-}"
+if test -n "${EDITOR-}"; then
+  export EDITOR
+  alias e='command "${EDITOR-}"'
+  export VISUAL="${VISUAL:-"${EDITOR-}"}"
+fi
 
 ## GPG
 # sign with macOS-compatible Linux
