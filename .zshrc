@@ -346,12 +346,7 @@ rbenv() {
 # https://github.com/zsh-users/zsh/blob/a9061cc/StartupFiles/zshrc#L56-L57
 # https://github.com/zsh-users/zsh/commit/db3f2d2
 test -n "${ZSH-}" &&
-  typeset -U \
-    PATH path \
-    CDPATH cdpath \
-    FPATH fpath \
-    MANPATH manpath &&
-  export \
+  export -U \
     PATH path \
     CDPATH cdpath \
     FPATH fpath \
