@@ -88,6 +88,11 @@ plugins+=(
 }
 
 ## Options
+# completion
+set -o always_to_end
+set -o complete_in_word
+set +o flow_control
+
 # go to directory without `cd`
 set -o autocd
 
