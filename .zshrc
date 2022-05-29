@@ -70,8 +70,8 @@ test -r "${XDG_CONFIG_HOME-}"'/openaiapirc' || {
     zsh_codex
   )
 
-# plugin: fast-syntax-highlighting/zsh-syntax-highlighting
-# performs best when loaded late
+# plugin: fast-syntax-highlighting
+# performs best when loaded late, but before zsh-history-substring-search
 plugins+=(
   fast-syntax-highlighting
 )
