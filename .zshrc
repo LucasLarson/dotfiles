@@ -96,6 +96,14 @@ set +o flow_control
 # go to directory without `cd`
 set -o autocd
 
+# history
+set -o extended_history
+set -o hist_ignore_dups
+set -o hist_expire_dups_first
+set -o hist_ignore_space
+# bash-compatible
+set -o histverify
+
 ## shell navigation without the mouse
 bindkey '^?' backward-delete-char
 bindkey '^A' beginning-of-line
