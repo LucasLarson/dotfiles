@@ -68,7 +68,7 @@ command defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true >/d
 
 ## PAGER
 export PAGER="${PAGER:-"command less --ignore-case"}"
-export MANPAGER="${MANPAGER:-"${PAGER-}"}"
+export MANPAGER="${MANPAGER:-${PAGER-}}"
 
 ## POSIX
 # activated when set to any value (even empty)
