@@ -93,6 +93,8 @@ brew "tidy-html5"
 brew "php"
 # Dependency Manager for PHP
 brew "composer"
+# Python 2 and 3 compatibility utilities
+brew "six"
 # Utility that creates projects from templates
 brew "cookiecutter"
 # Static analysis of C and C++ code
@@ -195,8 +197,6 @@ brew "libyaml"
 brew "llvm"
 # Text-based web browser
 brew "lynx"
-# Python 2 and 3 compatibility utilities
-brew "six"
 # Keep your Mac's application settings in sync
 brew "mackup", args: ["HEAD"]
 # Move files and folders to the trash
