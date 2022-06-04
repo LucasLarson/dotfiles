@@ -350,6 +350,8 @@ cask "inkscape"
 cask "keka"
 # File system integration
 cask "macfuse"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
 # Music tagger
 cask "musicbrainz-picard"
 # Display image info and preview unsupported formats in QuickLook
