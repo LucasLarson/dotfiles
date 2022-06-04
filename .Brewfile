@@ -181,6 +181,8 @@ brew "grex"
 brew "guetzli"
 # Convert source code to formatted text with syntax highlighting
 brew "highlight"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # KornShell, ksh93
