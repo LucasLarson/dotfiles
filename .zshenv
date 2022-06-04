@@ -71,7 +71,7 @@ export TZ="${TZ:=America/New_York}"
 command defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true >/dev/null 2>&1
 
 ## PAGER
-export PAGER="${PAGER:-"command less --ignore-case"}"
+export PAGER="${PAGER:-"command less --file-size --ignore-case"}"
 export MANPAGER="${MANPAGER:-${PAGER-}}"
 
 ## POSIX
