@@ -383,4 +383,4 @@ cask "whatsapp-beta"
 # Open-source version of the X.Org X Window System
 cask "xquartz"
 # Video communication and virtual meeting platform
-cask "zoom"
+cask "zoom-for-it-admins"
