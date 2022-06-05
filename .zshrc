@@ -276,7 +276,8 @@ test -d "${NPM_PACKAGES-}"'/share/man' &&
 
 # include hidden files in tab completion
 # https://unix.stackexchange.com/a/366137
-set -o globdots
+# `setopt globdots` alias for bash-compatibility
+set -o dotglob
 # but hide `./` and `../`
 # https://unix.stackexchange.com/q/308315#comment893697_308322
 zstyle ':completion:*' special-dirs false
