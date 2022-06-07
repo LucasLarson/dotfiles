@@ -223,6 +223,8 @@ brew "mogenerator"
 brew "nano"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Platform built on V8 to build network applications
+brew "node@16"
 # Bash-compatible Unix shell with more consistent syntax and semantics
 brew "oil"
 # OpenBSD freely-licensed SSH connectivity tools
