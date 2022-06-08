@@ -727,7 +727,7 @@ find_shell_scripts() {
 }
 
 # Git
-unalias -- g 2>/dev/null
+unalias -- 'g' 2>/dev/null
 compdef g='git' 2>/dev/null
 g() {
   {
@@ -868,7 +868,7 @@ alias gcpa='command git cherry-pick --abort'
 alias gcpc='command git cherry-pick --continue'
 alias gcpn='command git cherry-pick --no-commit'
 
-unalias -- gd 2>/dev/null
+unalias -- 'gd' 2>/dev/null
 gd() {
   if test -n "$(command git diff "$@" 2>/dev/null)"; then
     command git diff "$@"
@@ -977,7 +977,7 @@ git_last_common_ancestor() {
 alias glog='command git log --graph --branches --remotes --tags --format=format:"%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d" --date-order'
 
 # git merge
-unalias -- gm 2>/dev/null
+unalias -- 'gm' 2>/dev/null
 gm() {
   # https://news.ycombinator.com/item?id=5512864
   GIT_MERGE_VERBOSITY='4' command git merge --log --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience
@@ -1273,8 +1273,8 @@ identify() {
 }
 
 # list files
-unalias -- ls 2>/dev/null
-unalias -- l 2>/dev/null
+unalias -- 'ls' 2>/dev/null
+unalias -- 'l' 2>/dev/null
 if command exa --color=auto >/dev/null 2>&1; then
   alias ls='command exa --color=auto'
   alias l='command exa --color=auto --bytes --classify --git --header --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso'
