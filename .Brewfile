@@ -188,7 +188,7 @@ brew "jq"
 # KornShell, ksh93
 brew "ksh"
 # Pager program similar to more
-brew "less"
+brew "less", args: ["HEAD"]
 # Multi-format archive and compression library
 brew "libarchive"
 # X.509 and CMS library
