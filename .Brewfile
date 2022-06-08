@@ -346,6 +346,8 @@ cask "google-earth-pro"
 cask "graphicconverter"
 # Open-source video transcoder
 cask "handbrake"
+# Hex editor focussing on speed
+cask "hex-fiend"
 # Vector graphics editor
 cask "inkscape"
 # File archiver
