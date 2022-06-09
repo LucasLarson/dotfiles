@@ -1017,7 +1017,7 @@ command -v -- git-open >/dev/null 2>&1 &&
 # git pull
 git_pull() {
   # https://github.com/ohmyzsh/ohmyzsh/commit/3d2542f
-  command git pull --all --rebase --autostash --prune --verbose "${@-}" || {
+  command git pull --all --rebase --autostash --prune --verbose "$@" || {
     command git rebase --abort
     command git rebase --strategy-option=theirs
   }
