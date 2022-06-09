@@ -727,6 +727,8 @@ find_shell_scripts() {
 unalias -- 'g' 2>/dev/null
 compdef g='git' 2>/dev/null
 g() {
+  command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
+    return "$?"
   {
     test "$#" -eq '0' &&
       command git status
