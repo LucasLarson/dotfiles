@@ -1023,7 +1023,6 @@ git_pull() {
   }
   command git status
 }
-alias gpl='git_pull'
 alias gp='git_pull'
 
 git_default_remote() {
