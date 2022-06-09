@@ -499,8 +499,6 @@ count_files_in_this_directory() {
   esac
 }
 
-alias diff='command diff --color --suppress-common-lines'
-
 # define
 define() {
   for query in "${@:-"$0"}"; do
@@ -554,6 +552,8 @@ define() {
   unset -- query 2>/dev/null
 }
 alias d='define'
+
+alias diff='command diff --color --suppress-common-lines'
 
 dictionary() {
   # sort as you’d expect to find in a dictionary
