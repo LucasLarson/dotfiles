@@ -873,7 +873,13 @@ gd() {
     command git diff --staged "$@"
   fi
 }
-alias gds='command git diff --staged'
+gds() {
+  if test -n "$(command git diff --staged -- "$@" 2>/dev/null)"; then
+    command git diff --staged "$@"
+  else
+    command git diff "$@"
+  fi
+}
 
 alias gdm='command git diff "$(git-default-branch)" --'
 alias gdom='command git diff "$(git-default-branch)" origin/"$(git-default-branch)" || command git diff "$(git-default-branch)" upstream/"$(git-default-branch)"'
