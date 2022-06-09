@@ -542,11 +542,11 @@ define() {
 
     # `functions | shfmt`
     if builtin functions -- "${query-}" 2>/dev/null | command shfmt --simplify --indent 2 >/dev/null 2>&1; then
-      printf '%s\n' "$(builtin functions -- "${query-}" | command shfmt --simplify --indent 2)"
+      builtin functions -- "${query-}" | command shfmt --simplify --indent 2
 
     # `functions`
     elif builtin functions -- "${query-}" >/dev/null 2>&1; then
-      printf '%s\n' "$(builtin functions -x 2 -- "${query-}")"
+      builtin functions -x 2 -- "${query-}"
     fi
   done
   unset -- query 2>/dev/null
