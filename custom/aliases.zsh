@@ -1152,10 +1152,6 @@ gravatar() {
   # gravatar
   # return the URL of a Gravatar image for the given email address
 
-  set +o allexport
-  set -o errexit
-  set -o nounset
-
   # get the email address
   email="${1:-$(command git config --get user.email)}"
   size="${2:-4096}"
@@ -1183,12 +1179,6 @@ gravatar() {
   unset -- email 2>/dev/null
   unset -- size 2>/dev/null
   unset -- utility 2>/dev/null
-
-  {
-    set -o allexport
-    set +o errexit
-    set +o nounset
-  } 2>/dev/null
 }
 
 hash_abbreviate() {
