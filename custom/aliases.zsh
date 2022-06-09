@@ -1139,6 +1139,15 @@ gvc() {
   command git verify-commit "${1:-HEAD}"
 }
 
+gitlab_create_repository() {
+  command git push --set-upstream git@gitlab.com:"${GITLAB_USERNAME:-"${USER-}"}"/"$(
+    command git rev-parse --show-toplevel |
+      command xargs basename --
+  )".git "$(
+    command git rev-parse --abbrev-ref HEAD
+  )"
+}
+
 gravatar() {
   # gravatar
   # return the URL of a Gravatar image for the given email address
