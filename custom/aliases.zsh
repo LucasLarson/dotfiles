@@ -136,7 +136,7 @@ clang_format() {
       ;;
     w)
       ColumnLimit="${OPTARG-}"
-      printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit-}"
+      printf 'setting \140ColumnLimit\140 to %d\n\n' "${ColumnLimit-}"
       command sleep 1
       ;;
     *)
