@@ -114,16 +114,11 @@ clang_format() {
     return 2
   command sleep 1
 
-  # https://github.com/Originate/guide/blob/880952d/ios/files/clang-format.sh
-
   # set `clang-format` `IndentWidth` default to 2
   IndentWidth='2'
 
   # set `clang-format` `ColumnLimit` default to 79
   ColumnLimit='79'
-
-  printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
-  command sleep 1
 
   # permit arguments in any order
   # https://salsa.debian.org/debian/debianutils/blob/c2a1c435ef/savelog
@@ -132,12 +127,10 @@ clang_format() {
     i)
       IndentWidth="${OPTARG-}"
       printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"
-      command sleep 1
       ;;
     w)
       ColumnLimit="${OPTARG-}"
       printf 'setting \140ColumnLimit\140 to %d\n\n' "${ColumnLimit-}"
-      command sleep 1
       ;;
     *)
       printf 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'
@@ -146,6 +139,13 @@ clang_format() {
     esac
   done
 
+  # permit `find` to have a narrower scope by parsing the rest of the arguments
+  shift "$((OPTIND - 1))"
+
+  command sleep 1
+  printf 'applying clang-format to all applicable files in %s...\n' "${1:-${PWD##*/}}"
+  command sleep 1
+
   # eligible filename extensions:
   # https://github.com/llvm/llvm-project/blob/d1c8a151df/clang/lib/Driver/Types.cpp#L236-L294
   # https://github.com/llvm/llvm-project/blob/d1c8a151df/clang/lib/Frontend/FrontendOptions.cpp#L17-L35
@@ -153,7 +153,7 @@ clang_format() {
   # https://github.com/llvm/llvm-project/blob/edbb8a843c/clang/tools/clang-format/git-clang-format#L78-L90
   # https://github.com/llvm/llvm-project/blob/cea81e95b0/clang/tools/clang-format/clang-format-diff.py#L50-L51
 
-  command find -- . \
+  command find -- "${1:-${PWD##*/}}" \
     -type f \
     ! -path '*/.git/*' \
     ! -path '*/node_modules/*' \
@@ -241,7 +241,7 @@ clang_format() {
   unset -- IndentWidth 2>/dev/null
   unset -- ColumnLimit 2>/dev/null
 
-  printf '\n\n'
+  printf '\n'
   printf '\342\234\205  done\041\n'
 }
 
