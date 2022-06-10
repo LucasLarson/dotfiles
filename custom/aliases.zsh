@@ -1293,6 +1293,12 @@ elif test "$(command /bin/ls -G -- "${HOME-}" | command hexdump)" = "$(command l
   alias l='command ls -A -F -G -g -o'
 fi
 
+# list --others
+lso() {
+  command git ls-files --others --exclude-standard "$@" |
+    command awk '{print "./" $0}'
+}
+
 # dotfiles
 mu() {
   cd "${DOTFILES-}" ||
