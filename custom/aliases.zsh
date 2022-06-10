@@ -1486,6 +1486,7 @@ take() {
     cd -- "${directory-}" >/dev/null 2>&1 &&
       printf 'moving into \342\200\230%s\342\200\231\n' "${directory-}"
   else
+    # it’s not a directory
     return 1
   fi
   unset -- directory 2>/dev/null
