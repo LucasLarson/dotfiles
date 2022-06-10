@@ -68,7 +68,9 @@ export TZ="${TZ:=America/New_York}"
 ## macOS
 # allow `control` + `command` + `click and drag` a window from any location
 # https://github.com/mathiasbynens/dotfiles/issues/828#issue-296489157
-command defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true >/dev/null 2>&1
+if command -v -- defaults >/dev/null 2>&1; then
+  command defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true
+fi
 
 ## PAGER
 export PAGER="${PAGER:-"command less --file-size --ignore-case"}"
