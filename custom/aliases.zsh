@@ -19,6 +19,7 @@ aliases() {
   command "${EDITOR-}" -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}" &&
     command -v -- shfmt >/dev/null 2>&1 &&
     command shfmt --simplify --write --indent 2 -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
+  # shellcheck disable=SC1090
   . "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
 }
 
