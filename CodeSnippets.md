@@ -422,10 +422,6 @@ do not disable it, because that would allow you to install any software, even if
 
 ## Git
 
-### `init` via GitHub
-
-`git push --set-upstream git@github.com:LucasLarson/$(git rev-parse --show-toplevel | xargs basename).git $(git rev-parse --abbrev-ref HEAD)`
-
 ### `git add`
 
 [via](https://stackoverflow.com/a/15011313)
