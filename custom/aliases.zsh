@@ -1436,8 +1436,12 @@ question_mark() {
 alias '?'='question_mark'
 
 # QuickLook
-command -v -- qlmanage >/dev/null 2>&1 &&
-  alias ql='command qlmanage -p 2>/dev/null'
+ql() {
+  while test "$#" -ne '0'; do
+    command qlmanage -p -- "$1" >/dev/null 2>&1 &&
+      shift
+  done
+}
 
 # remove
 rm() {
