@@ -90,6 +90,7 @@ export POSIXLY_CORRECT="${POSIXLY_CORRECT:-1}"
 export CARGO_HOME="${CARGO_HOME:="${HOME-}"/.cargo}"
 
 ## private
+# shellcheck disable=SC1091
 command touch -- "${HOME-}"'/.env' &&
   command chmod 600 "${HOME-}"'/.env' &&
   . "${HOME-}"'/.env'
