@@ -1341,18 +1341,6 @@ non_ascii() {
   } 2>/dev/null
 }
 
-# paste faster
-# https://github.com/zsh-users/zsh-autosuggestions/issues/238#issuecomment-389324292
-pasteinit() {
-  old_self_insert="${"${(s.:.)widgets[self-insert]}"[2,3]}"
-  zle -N self-insert url-quote-magic
-}
-pastefinish() {
-  zle -N self-insert "${old_self_insert-}"
-}
-zstyle :bracketed-paste-magic paste-init pasteinit 2>/dev/null
-zstyle :bracketed-paste-magic paste-finish pastefinish 2>/dev/null
-
 path_check() {
   # check that each directory in user `$PATH` still exists and is a directory
 
