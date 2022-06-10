@@ -1487,6 +1487,14 @@ take() {
   unset -- directory 2>/dev/null
 }
 
+transfer() {
+  for file in "$@"; do
+    command curl --progress-bar --upload-file "${file-}" 'https://transfer.sh/'"$(
+      command basename -- "${file-}"
+    )" && printf '\n'
+  done
+}
+
 # Unix epoch seconds
 # https://stackoverflow.com/a/12312982
 # date -j '+%s' # for milliseconds
