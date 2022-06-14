@@ -1,4 +1,4 @@
-# Contributor Covenant Code of Conduct for Pedants
+# Contributor Covenant Code of Conduct
 
 ## Our Pledge
 
@@ -6,15 +6,12 @@ We as members, contributors, and leaders pledge to make participation in our
 community a harassment‑free experience for everyone, regardless of age, body
 size, visible or invisible disability, ethnicity, sex characteristics, gender
 identity and expression, level of experience, education, socioeconomic status,
-nationality, personal appearance, race, religion, or sexual identity
-and&nbsp;orientation.
+nationality, personal appearance, race, caste, color, religion, or sexual
+identity and&nbsp;orientation.
 
 We pledge to act and interact in ways that contribute to an open, welcoming,
 diverse, inclusive, and healthy&nbsp;community.
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-- [Our Pledge](#our-pledge)
 - [Our Standards](#our-standards)
 - [Enforcement Responsibilities](#enforcement-responsibilities)
 - [Scope](#scope)
@@ -25,8 +22,6 @@ diverse, inclusive, and healthy&nbsp;community.
   1. [Temporary Ban](#3-temporary-ban)
   1. [Permanent Ban](#4-permanent-ban)
 - [Attribution](#attribution)
-
-<!-- /TOC -->
 
 ## Our Standards
 
@@ -117,9 +112,9 @@ sustained inappropriate&nbsp;behavior.
 
 **Consequence**: A temporary ban from any sort of interaction or public
 communication with the community for a specified period of&nbsp;time. No public
-or private interaction with the people involved, including unsolicited
-interaction with those enforcing the Code of Conduct, is allowed during
-this&nbsp;period. Violating these terms may lead to a permanent&nbsp;ban.
+or private interaction with the people involved is allowed during this period,
+including unsolicited interaction with those enforcing the Code
+of&nbsp;Conduct. Violating these terms may lead to a permanent&nbsp;ban.
 
 ### 4. Permanent Ban
 
@@ -133,11 +128,12 @@ the&nbsp;community.
 
 ## Attribution
 
-This Code of Conduct is adapted from the [Contributor Covenant,
-version&nbsp;2.0](https://contributor-covenant.org/version/2/0/code_of_conduct).
+This Code of Conduct is adapted from the [Contributor
+Covenant](https://contributor-covenant.org),
+[version&nbsp;2.1](https://contributor-covenant.org/version/2/1).
 
 Community Impact Guidelines were inspired by [Mozilla’s code of conduct
-enforcement&nbsp;ladder](https://github.com/mozilla/inclusion/blob/master/code-of-conduct-enforcement/consequence-ladder.md#readme).
+enforcement&nbsp;ladder](https://github.com/mozilla/inclusion).
 
 For answers to common questions about this code of conduct, see
 [the&nbsp;FAQ](https://contributor-covenant.org/faq). [Translations
