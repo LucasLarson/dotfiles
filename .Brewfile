@@ -227,6 +227,8 @@ brew "neovim"
 brew "node@16"
 # Bash-compatible Unix shell with more consistent syntax and semantics
 brew "oil"
+# Portable OpenBSD ksh, based on the public domain Korn shell (pdksh)
+brew "oksh"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
 # Cryptography and SSL/TLS Toolkit
