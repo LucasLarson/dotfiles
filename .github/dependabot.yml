@@ -4,6 +4,7 @@
 # https://bit.ly/git-io_help-dependabot-configuration
 
 version: 2
+enable-beta-ecosystems: true
 updates:
 
   # Bundler
@@ -138,6 +139,16 @@ updates:
 
   # pip
   - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    ignore:
+      # ignore patch updates for all dependencies
+      - dependency-name: "*"
+        update-types: ["version-update:semver-minor"]
+
+  # pub
+  - package-ecosystem: "pub"
     directory: "/"
     schedule:
       interval: "daily"
