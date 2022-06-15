@@ -1317,7 +1317,6 @@ non_ascii() {
 path_check() {
   # check that each directory in user `$PATH` still exists and is a directory
 
-  # return verbose output if requested
   for argument in "$@"; do
     case "${argument-}" in
 
