@@ -730,12 +730,11 @@ compdef g='git' 2>/dev/null
 g() {
   command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "$?"
-  {
-    test "$#" -eq '0' &&
-      command git status
-  } ||
-    command git "$@" ||
-    command git status .
+  if test -e "${1-}"; then
+    command git status -- "$@"
+  else
+    command git "${@:-status}"
+  fi
 }
 alias g.='command git status .'
 alias guo='command git status --untracked-files=no'
