@@ -670,7 +670,6 @@ find_oldest_file() {
 }
 
 find_shell_scripts() {
-  set -o nounset
   {
     # all files with extensions `.bash`, `.dash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
     command find -- . \
@@ -713,15 +712,6 @@ find_shell_scripts() {
 
   } |
     LC_ALL='C' command sort -u
-
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
 }
 
 # Git
@@ -741,46 +731,40 @@ alias guo='command git status --untracked-files=no'
 
 # git add
 git_add() {
-  (
-    unset -- PS4 2>/dev/null
-    set +o allexport
-    set -o verbose
-    set -o xtrace
-    case "${1-}" in
-    -A | --all)
-      command git add --verbose "$@" &&
-        shift
-      ;;
-    -D | --deleted)
-      # https://gist.github.com/8775224
-      command git ls-files -z --deleted |
-        command xargs -0 git add --verbose 2>/dev/null &&
-        shift
-      ;;
-    -m | --modified)
-      command git ls-files -z --modified |
-        command xargs -0 git add --verbose 2>/dev/null &&
-        shift
-      ;;
-    -o | --others | --untracked)
-      while test -n "$(command git ls-files --others --exclude-standard)"; do
-        command git ls-files -z --others --exclude-standard |
-          command xargs -0 git add --verbose 2>/dev/null
-      done &&
-        shift
-      ;;
-    -p | --patch)
+  case "${1-}" in
+  -A | --all)
+    command git add --verbose "$@" &&
       shift
-      command git add --verbose --patch "${@:-.}"
-      ;;
-    *)
-      # default to everything in the current directory and below
-      command git add --verbose "${@:-.}" &&
-        shift
-      ;;
-    esac &&
-      command git status
-  )
+    ;;
+  -D | --deleted)
+    # https://gist.github.com/8775224
+    command git ls-files -z --deleted |
+      command xargs -0 git add --verbose 2>/dev/null &&
+      shift
+    ;;
+  -m | --modified)
+    command git ls-files -z --modified |
+      command xargs -0 git add --verbose 2>/dev/null &&
+      shift
+    ;;
+  -o | --others | --untracked)
+    while test -n "$(command git ls-files --others --exclude-standard)"; do
+      command git ls-files -z --others --exclude-standard |
+        command xargs -0 git add --verbose 2>/dev/null
+    done &&
+      shift
+    ;;
+  -p | --patch)
+    shift
+    command git add --verbose --patch "${@:-.}"
+    ;;
+  *)
+    # default to everything in the current directory and below
+    command git add --verbose "${@:-.}" &&
+      shift
+    ;;
+  esac &&
+    command git status
 }
 alias ga='git_add'
 alias gaa='git_add --all'
@@ -833,7 +817,6 @@ alias gca='git_commit --amend'
 
 # git clone
 git_clone() {
-  set -o nounset
   case "${1-}" in
   -h | --help)
     printf 'Usage: %s <git_url> [<dir_name>]\n' "$(command basename -- "$0")" &&
@@ -851,7 +834,6 @@ git_clone() {
     command git clone --verbose --progress --recursive -- "$1" . || return 4
     ;;
   esac
-  set +o nounset
 }
 alias gcl='git_clone'
 alias gcl1='git_clone -1'
@@ -1327,18 +1309,9 @@ alias mv='command mv -v -i'
 
 # find files with non-ASCII characters
 non_ascii() {
-  set -o nounset
   LC_ALL='C' command find -- . \
     ! -path '*/.git/*' \
     -name '*[! -~]*'
-  {
-    set -o allexport
-    set +o errexit
-    set +o noclobber
-    set +o nounset
-    set +o verbose
-    set +o xtrace
-  } 2>/dev/null
 }
 
 path_check() {
@@ -1500,42 +1473,38 @@ alias all='which -a'
 yamllint_r() {
   command -v -- yamllint >/dev/null 2>&1 ||
     return 1
-  (
-    unset -- PS4 2>/dev/null
-    set -o nounset
-    case "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" in
-    true)
-      {
-        command git ls-files -z -- ./**/*.CFF
-        command git ls-files -z -- ./**/*.YAML
-        command git ls-files -z -- ./**/*.YML
-        command git ls-files -z -- ./**/*.cff
-        command git ls-files -z -- ./**/*.yaml
-        command git ls-files -z -- ./**/*.yml
-      } 2>/dev/null |
-        command xargs -0 yamllint --strict
-      ;;
+  case "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" in
+  true)
+    {
+      command git ls-files -z -- ./**/*.CFF
+      command git ls-files -z -- ./**/*.YAML
+      command git ls-files -z -- ./**/*.YML
+      command git ls-files -z -- ./**/*.cff
+      command git ls-files -z -- ./**/*.yaml
+      command git ls-files -z -- ./**/*.yml
+    } 2>/dev/null |
+      command xargs -0 yamllint --strict
+    ;;
 
-    *)
-      command find -- . \
-        ! -path '*.git/*' \
-        ! -path '*/Test*' \
-        ! -path '*/t/*' \
-        ! -path '*/test*' \
-        ! -path '*node_modules/*' \
-        ! -path '*vscode*' \
-        '(' \
-        -name '*.CFF*' -o \
-        -name '*.YAML' -o \
-        -name '*.YML' -o \
-        -name '*.cff' -o \
-        -name '*.yaml' -o \
-        -name '*.yml' \
-        ')' \
-        -exec yamllint --strict -- '{}' '+'
-      ;;
-    esac
-  )
+  *)
+    command find -- . \
+      ! -path '*.git/*' \
+      ! -path '*/Test*' \
+      ! -path '*/t/*' \
+      ! -path '*/test*' \
+      ! -path '*node_modules/*' \
+      ! -path '*vscode*' \
+      '(' \
+      -name '*.CFF*' -o \
+      -name '*.YAML' -o \
+      -name '*.YML' -o \
+      -name '*.cff' -o \
+      -name '*.yaml' -o \
+      -name '*.yml' \
+      ')' \
+      -exec yamllint --strict -- '{}' '+'
+    ;;
+  esac
 }
 
 # zero
