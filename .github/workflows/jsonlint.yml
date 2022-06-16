@@ -22,8 +22,8 @@ jobs:
         run: |
           command find -- . \
             -type f \
-            ! -path '*.git/*' \
-            ! -path '*node_modules/*' \
+            ! -path '*/.git/*' \
+            ! -path '*/node_modules/*' \
             ! -path '*vscode*' \
             \( \
             -name '*.JSON' -o \
