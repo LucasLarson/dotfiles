@@ -866,7 +866,10 @@ gds() {
 }
 
 alias gdm='command git diff "$(git-default-branch)" --'
-alias gdom='command git diff "$(git-default-branch)" origin/"$(git-default-branch)" || command git diff "$(git-default-branch)" upstream/"$(git-default-branch)"'
+gdom() {
+  command git diff origin/"$(git-default-branch)" -- ||
+    command git diff upstream/"$(git-default-branch)" --
+}
 alias gdw='command git diff --word-diff=color'
 
 alias gfgs='command git fetch --all --prune --verbose && command git status'
