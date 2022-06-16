@@ -52,5 +52,4 @@ jobs:
             }}/blob/${{ github.sha }}/.github/workflows/jsonlint.yml).
           labels: CI/CD
           branch: format-json
-          branch-suffix: timestamp
           base: ${{ github.head_ref }}
