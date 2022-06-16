@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install linter
         run: |
-          command sudo npm install --global jsonlint-newline-fork
+          command sudo npm install --location=global jsonlint-newline-fork
       - name: Lint
         run: |
           command find -- . \
