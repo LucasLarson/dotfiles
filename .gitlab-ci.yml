@@ -1,4 +1,0 @@
----
-# GitLab Code Quality CI
-include:
-  template: Jobs/Code-Quality.gitlab-ci.yml
