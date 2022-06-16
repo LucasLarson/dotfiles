@@ -25,7 +25,7 @@ jobs:
             ! -path '*/.git/*' \
             ! -path '*/node_modules/*' \
             ! -path '*vscode*' \
-            \( \
+            '(' \
             -name '*.JSON' -o \
             -name '*.json' -o \
             -name '*app-site-association' -o \
@@ -37,7 +37,7 @@ jobs:
             -name '.vsconfig' -o \
             -name '.whitesource' -o \
             -name 'null.stats' \
-            \) \
+            ')' \
             -print \
             -exec jsonlint --in-place --insert-final-newline -- '{}' ';'
       - uses: peter-evans/create-pull-request@v4
