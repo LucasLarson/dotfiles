@@ -39,7 +39,7 @@ jobs:
             -name '.whitesource' \
             ')' \
             -print \
-            -exec jsonlint --in-place --insert-final-newline -- '{}' ';'
+            -exec npm exec -- jsonlint --in-place --insert-final-newline -- '{}' ';'
       - uses: peter-evans/create-pull-request@v4
         with:
           commit-message: "[autofix] format JSON content"
