@@ -569,7 +569,8 @@ domain_name_from_url() {
     url="${url#*www.}"
     # remove ports like `:80`, `:443` (rare) and trailing slash and beyond
     url="${url%%[:/]*}"
-    printf '%s\n' "${url-}"
+    printf '%s' "${url-}" &&
+      printf '\n'
   done
   unset -- url 2>/dev/null
 }
