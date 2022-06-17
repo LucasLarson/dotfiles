@@ -1028,6 +1028,7 @@ git_push() {
 }
 alias gps='git_push'
 
+alias grba='command git rebase --abort'
 alias grbi='command git rebase --interactive'
 alias grbc='command git rebase --continue'
 alias gref='command git reflog'
