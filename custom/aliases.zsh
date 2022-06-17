@@ -527,10 +527,6 @@ define() {
     command -v -- whereis >/dev/null 2>&1 &&
       printf 'whereis:\n%s\n———\n' "$(whereis "${query-}")"
 
-    # `locate`
-    command -v -- locate >/dev/null 2>&1 &&
-      printf 'locate:\n%s\n———\n' "$(locate "${query-}")"
-
     # `command -V`
     printf 'command -V:\n%s\n———\n' "$(command -V -- "${query-}")"
 
