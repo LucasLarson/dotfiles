@@ -1471,6 +1471,11 @@ unixtime() {
   command date '+%s' "$@"
 }
 
+user() {
+  printf '%s' "${USER-}" &&
+    printf '\n'
+}
+
 alias all='which -a'
 
 yamllint_r() {
