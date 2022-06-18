@@ -346,7 +346,7 @@ replace `\r\n`
 `ln -s` (link, symbolic) uses arguments just like `cp existing new`
 ([via](https://reddit.com/comments/1qt0z#t1_c1qtge)):
 
-```sh
+```shell
 ln -s existing_file shortcut_to_file
 ```
 
