@@ -1037,7 +1037,7 @@ alias grmr='command git rm -r'
 alias grm='grmr'
 
 git_remote_verbose() {
-  # print `git remote -v` into columnized output
+  # print `git remote -v` into columns
   command git remote --verbose |
     command awk -F'[\t ]+' '{printf "%-16s %s\n", $1, $2}' |
     command uniq
