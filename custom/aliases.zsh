@@ -971,6 +971,7 @@ gm() {
   # https://news.ycombinator.com/item?id=5512864
   GIT_MERGE_VERBOSITY='4' command git merge --log --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience
 }
+alias gma='command git merge --abort'
 gmc() {
   GIT_MERGE_VERBOSITY='4' command git merge --log --continue
 }
