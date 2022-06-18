@@ -241,7 +241,7 @@ command brew list -1 --cask
 ##### MANPATH
 
 ```shell
-printf '%s\n' "${MANPATH[@]-}" | command sed -e 's|:|\n|g'
+printf '%s\n' "${MANPATH-}" | LC_ALL='C' command tr ':' '\n'
 ```
 
 ###### man pages
@@ -309,7 +309,7 @@ for example, locate all JPEG files:<br/>
 ## PATH
 
 ```shell
-printf '%s\n' "${PATH[@]-}" | command sed -e 's|:|\n|g'
+printf '%s\n' "${PATH-}" | LC_ALL='C' command tr ':' '\n'
 ```
 
 ### executables
