@@ -343,8 +343,12 @@ replace `\r\n`
 
 ## create an alias
 
-`ln --symbolic file shortcut #` [via](https://reddit.com/comments/1qt0z/_/c1qtge/)<br/>
-(just like `cp existing new`)
+`ln -s` (link, symbolic) uses arguments just like `cp existing new`
+([via](https://reddit.com/comments/1qt0z/_/c1qtge/)):
+
+```sh
+ln -s existing_file shortcut_to_file
+```
 
 ## launch services
 
