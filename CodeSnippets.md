@@ -344,7 +344,7 @@ replace `\r\n`
 ## create an alias
 
 `ln -s` (link, symbolic) uses arguments just like `cp existing new`
-([via](https://reddit.com/comments/1qt0z/_/c1qtge/)):
+([via](https://reddit.com/comments/1qt0z#t1_c1qtge)):
 
 ```sh
 ln -s existing_file shortcut_to_file

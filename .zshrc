@@ -153,7 +153,7 @@ fi
 ## GPG
 # sign with macOS-compatible Linux
 # https://docs.github.com/en/github/authenticating-to-github/telling-git-about-your-signing-key#telling-git-about-your-gpg-key
-# https://reddit.com/comments/dk53ow/_/f50146x
+# https://reddit.com/comments/dk53ow#t1_f50146x
 # https://github.com/romkatv/powerlevel10k/commit/faddef4
 export GPG_TTY="${TTY-}"
 
