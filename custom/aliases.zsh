@@ -701,11 +701,11 @@ find_shell_scripts() {
         '^#!.*bin.*sh' . 2>/dev/null
 
     # https://github.com/bzz/LangID/blob/37c4960/README.md#collect-the-data
-    # https://github.com/stedolan/jq/issues/1735#issuecomment-427863218
-    command github-linguist "$(
-      command git rev-parse --show-toplevel 2>/dev/null
-    )" --json 2>/dev/null |
-      command jq --raw-output '.Shell[]' 2>/dev/null |
+    command github-linguist --breakdown --json -- . 2>/dev/null |
+
+      # https://web.archive.org/web/20210904183309id_/earthly.dev/blog/jq-select/#cb22
+      # https://github.com/stedolan/jq/issues/1735#issuecomment-427863218
+      command jq --raw-output '.Shell.files[]' 2>/dev/null |
 
       # prepend filenames with `./`
       command awk '{print "./" $0}'
