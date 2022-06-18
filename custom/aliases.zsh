@@ -1015,9 +1015,9 @@ git_default_remote() {
     command git config --get --worktree checkout.defaultRemote ||
       command git config --get --local checkout.defaultRemote ||
       command git config --get --system checkout.defaultRemote ||
-      command git config --get --global checkout.defaultRemote ||
-      printf 'origin\n'
-  } 2>/dev/null
+      command git config --get --global checkout.defaultRemote
+  } 2>/dev/null ||
+    printf 'origin\n'
 }
 
 # git push
