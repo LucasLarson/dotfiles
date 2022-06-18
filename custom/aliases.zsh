@@ -1303,7 +1303,7 @@ mu() {
     command git fetch --all --prune --verbose
     command git submodule update --init --recursive
     command git submodule sync --recursive
-    command git status
+    command git status --untracked-files=no
     ;;
   esac
 }
