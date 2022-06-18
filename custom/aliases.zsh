@@ -812,7 +812,6 @@ git_commit() {
   command git status
 }
 alias gc='git_commit'
-alias gcm='git_commit'
 alias gca='git_commit --amend'
 
 # git clone
