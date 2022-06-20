@@ -10,7 +10,6 @@ command mkdir -p -- "${HOME-}"'/Dropbox/dotfiles' &&
   export TEMPLATE="${DOTFILES-}"'/../Template' &&
   command mkdir -p -- "${DOTFILES-}"'/../Default' &&
   export DEFAULT="${TEMPLATE-}"'/../Default'
-export ZDOTDIR="${ZDOTDIR:="${HOME-}"}"
 
 ## XDG
 # https://specifications.freedesktop.org/basedir-spec/0.7/ar01s03.html
