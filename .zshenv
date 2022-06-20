@@ -5,11 +5,11 @@ command mkdir -p -- "${HOME-}"'/Dropbox/dotfiles' &&
   export DOTFILES="${HOME-}"'/Dropbox/dotfiles' &&
   command mkdir -p -- "${DOTFILES-}"'/custom' &&
   export ZSH_CUSTOM="${DOTFILES-}"'/custom' &&
-  export custom="${ZSH_CUSTOM-}" &&
+  export custom="${DOTFILES-}"'/custom' &&
   command mkdir -p -- "${DOTFILES-}"'/../Template' &&
   export TEMPLATE="${DOTFILES-}"'/../Template' &&
   command mkdir -p -- "${DOTFILES-}"'/../Default' &&
-  export DEFAULT="${TEMPLATE-}"'/../Default'
+  export DEFAULT="${DOTFILES-}"'/../Default'
 
 ## XDG
 # https://specifications.freedesktop.org/basedir-spec/0.7/ar01s03.html
