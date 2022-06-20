@@ -1126,7 +1126,7 @@ gvc() {
 }
 
 gitlab_create_repository() {
-  command git push --set-upstream git@gitlab.com:"${GITLAB_USERNAME:-"${USER-}"}"/"$(
+  command git push --set-upstream git@gitlab.com:"${GITLAB_USERNAME:-${USER-}}"/"$(
     command git rev-parse --show-toplevel |
       command xargs basename --
   )".git "$(
