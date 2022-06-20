@@ -20,10 +20,10 @@ command mkdir -p -- "${HOME-}"'/.config' &&
 command mkdir -p -- "${HOME-}"'/.local/state' &&
   export XDG_STATE_HOME="${HOME-}"'/.local/state'
 command mkdir -p -- '/usr/local/share' &&
-  export XDG_DATA_DIRS="${XDG_DATA_DIRS:+"${XDG_DATA_DIRS-}":}"'/usr/local/share'
+  export XDG_DATA_DIRS="${XDG_DATA_DIRS:+${XDG_DATA_DIRS-}:}"'/usr/local/share'
 command mkdir -p -- '/usr/share' &&
   # this trailing slash is prescribed
-  export XDG_DATA_DIRS="${XDG_DATA_DIRS:+"${XDG_DATA_DIRS-}":}"'/usr/share/'
+  export XDG_DATA_DIRS="${XDG_DATA_DIRS:+${XDG_DATA_DIRS-}:}"'/usr/share/'
 command mkdir -p -- '/etc/xdg' &&
   export XDG_CONFIG_DIRS='/etc/xdg'
 command mkdir -p -- "${HOME-}"'/.cache' &&
