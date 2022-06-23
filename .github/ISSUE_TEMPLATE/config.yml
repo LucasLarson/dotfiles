@@ -10,8 +10,8 @@ contact_links:
     url: feature_request.md
     about: Please submit new feature ideas here.
   - name: GitHub Community Support
-    url: https://github.community/
+    url: https://github.community
     about: Please ask and answer questions here.
   - name: GitHub Security Bug Bounty
-    url: https://bounty.github.com/
+    url: https://bounty.github.com
     about: Please report security vulnerabilities here.
