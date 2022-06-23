@@ -2,22 +2,29 @@
 name: JSON Lint
 on:
   push:
+    # target only the default branch to avoid auto-fixing recursion
     branches:
       - main
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  # cancel any in-progress job or run
+  # https://github.com/kdeldycke/workflows/commit/8bee3ba877
+  # https://docs.github.com/actions/using-jobs/using-concurrency
+  group: ${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  json:
+  format-json:
     name: Format JSON files and create a Pull Request
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Install linter
         run: |
-          command sudo npm install --location=global --loglevel=verbose -- jsonlint-newline-fork
+          command sudo npm install \
+            --location=global \
+            --loglevel=verbose \
+            -- @prantlf/jsonlint
       - name: Lint
         run: |
           command find -- . \
@@ -26,22 +33,57 @@ jobs:
             ! -path '*/node_modules/*' \
             ! -path '*vscode*' \
             '(' \
+            -name '*.4DForm' -o \
+            -name '*.4DProject' -o \
+            -name '*.avsc' -o \
+            -name '*.geojson' -o \
+            -name '*.gltf' -o \
+            -name '*.har' -o \
+            -name '*.ice' -o \
             -name '*.JSON' -o \
-            -name '*.JSON5' -o \
             -name '*.json' -o \
+            -name '*.JSON-tmLanguage' -o \
+            -name '*.JSON5' -o \
             -name '*.json5' -o \
+            -name '*.jsonl' -o \
+            -name '*.mcmeta' -o \
             -name '*.stats' -o \
+            -name '*.tfstate' -o \
+            -name '*.tfstate.backup' -o \
+            -name '*.topojson' -o \
+            -name '*.webapp' -o \
+            -name '*.webmanifest' -o \
+            -name '*.yy' -o \
+            -name '*.yyp' -o \
             -name '*app-site-association' -o \
+            -name '.arcconfig' -o \
+            -name '.auto-changelog' -o \
+            -name '.c8rc' -o \
             -name '.dccache' -o \
             -name '.flutter' -o \
             -name '.flutter_tool_state' -o \
+            -name '.htmlhintrc' -o \
             -name '.imgbotconfig' -o \
+            -name '.nycrc' -o \
+            -name '.tern-config' -o \
+            -name '.tern-project' -o \
             -name '.vs-liveshare-keychain' -o \
             -name '.vsconfig' -o \
+            -name '.watchmanconfig' -o \
             -name '.whitesource' \
             ')' \
             -print \
-            -exec npm exec -- jsonlint --in-place --insert-final-newline -- '{}' ';'
+            -exec sh -v -x -c '
+            command npm exec -- @prantlf/jsonlint \
+              --in-place \
+              --prune-comments \
+              --trailing-newline \
+              --trim-trailing-commas \
+              -- "{}"; \
+            test "$( \
+              command git hash-object -- "{}" \
+            )" = "417b7b5370df81a7316ee9f983437444afdae432" && \
+              command git restore --progress --source=HEAD -- "{}"' ';'
       - uses: peter-evans/create-pull-request@v4
         with:
           commit-message: "[autofix] format JSON content"
@@ -49,7 +91,7 @@ jobs:
           body: >
             Auto-generated on [run #${{ github.run_id }}](${{
             github.event.repository.html_url }}/actions/runs/${{ github.run_id
-            }}) as defined by [`jsonlint.yml` workflow](${{
+            }}) as defined by [workflow action](${{
             github.event.repository.html_url }}/blob/${{ github.sha
             }}/.github/workflows/jsonlint.yml).
           labels: enhancement, github_actions
