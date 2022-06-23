@@ -932,23 +932,22 @@ git_commit_initial_commit() {
   # https://news.ycombinator.com/item?id=25515963
   command git init &&
     if test "$#" -eq '1'; then
-
       # add 12 hours (43,200 seconds) so it occurs around midday
       git_time="$(command date -d @$(($(command date -d "${1:-$(command date '+%Y-%m-%d')}" '+%s') + 43200)) '+%c %z')"
       export GIT_AUTHOR_DATE="${git_time-}"
       export GIT_COMMITTER_DATE="${git_time-}"
     fi
   command git commit --allow-empty --signoff --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
-
   # if there are non-repository files present, then add them and commit
   if test -n "$(command git ls-files --others --exclude-standard)"; then
     command git add --verbose -- . &&
       command git commit --signoff --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
   fi
-
-  unset -- git_time 2>/dev/null
-  unset -- GIT_AUTHOR_DATE 2>/dev/null
-  unset -- GIT_COMMITTER_DATE 2>/dev/null
+  {
+    unset -- git_time
+    unset -- GIT_AUTHOR_DATE
+    unset -- GIT_COMMITTER_DATE
+  } 2>/dev/null
 }
 alias gcic='git_commit_initial_commit'
 alias ginit='command git init && command git status'
