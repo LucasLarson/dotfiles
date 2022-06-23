@@ -1,6 +1,7 @@
 ---
 # https://github.com/dylanaraps/pure-sh-bible/commit/9d54e96011
-name: Shellcheck
+name: Shellcheck code in Markdown
+
 on: [push]
 
 concurrency:
