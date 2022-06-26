@@ -386,7 +386,6 @@ cleanup() {
   } 2>/dev/null
 }
 
-# https://mywiki.wooledge.org/BashPitfalls?rev=524#Filenames_with_leading_dashes
 alias cp='cp -R'
 
 alias cpplint_r='command cpplint --counting=detailed --verbose=0 --filter=-legal/copyright --recursive -- .'
