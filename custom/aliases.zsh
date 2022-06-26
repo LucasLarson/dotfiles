@@ -385,9 +385,11 @@ cleanup() {
     set +o xtrace
   } 2>/dev/null
 }
-alias cpplint_r='command cpplint --counting=detailed --verbose=0 --filter=-legal/copyright --recursive -- .'
 
 alias cp='cp -R'
+
+alias cpplint_r='command cpplint --counting=detailed --verbose=0 --filter=-legal/copyright --recursive -- .'
+
 cy() {
   test -n "${DOTFILES-}" &&
     test -n "${TEMPLATE-}" ||
