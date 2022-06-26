@@ -1317,6 +1317,20 @@ non_ascii() {
     -name '*[! -~]*'
 }
 
+odb() {
+  # odb: convert hexadecimal escapes to octal escapes
+  # usage: odb <string>
+  printf '%s' "$@" |
+    # `-An` hide the address base
+    # `-t o1` convert to octal
+    command od -A n -t o1 |
+    # replace spaces, tabs, newlines with (escaped) literal backslash `\`
+    command tr -s '[:space:]' '\134\134' |
+    # replace trailing backslash `\`
+    # with literal newline `\n`
+    command sed -e 's/\\$/\n/'
+}
+
 path_check() {
   # check that each directory in user `$PATH` still exists and is a directory
 
