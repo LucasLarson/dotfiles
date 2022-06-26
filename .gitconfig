@@ -22,8 +22,6 @@
   compression = 9
   looseCompression = 9
 
-  ignoreCase = false
-
   # ensure Unicode filenames aren’t mangled by HFS
   # https://chromium.googlesource.com/chromium/src/+/11eee6b/docs/mac_build_instructions.md#get-the-code
   precomposeUnicode = true
