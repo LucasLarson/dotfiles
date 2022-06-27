@@ -1022,7 +1022,7 @@ git_default_remote() {
 
 # git push
 git_push() {
-  command git push --verbose --progress --set-upstream origin "$(command git branch --show-current --verbose)" &&
+  command git push --verbose --progress origin "$(command git branch --show-current --verbose)" &&
     command git status
 }
 alias gps='git_push'
