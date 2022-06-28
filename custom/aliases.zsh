@@ -701,6 +701,11 @@ find_shell_scripts() {
         --exclude-dir='.git' \
         '^#!.*bin.*sh' . 2>/dev/null
 
+    # shfmt also knows how to find shell scripts
+    command -v -- shfmt >/dev/null 2>&1 &&
+      command shfmt --find -- . |
+      command awk '{print "./" $0}'
+
     # https://github.com/bzz/LangID/blob/37c4960/README.md#collect-the-data
     command github-linguist --breakdown --json -- . 2>/dev/null |
 
