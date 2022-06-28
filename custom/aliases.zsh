@@ -719,14 +719,21 @@ find_shell_scripts() {
 unalias -- 'g' 2>/dev/null
 compdef g='git' 2>/dev/null
 g() {
-  command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
-    return "${?:-1}"
-  # if first argument is a file, then perform `git status` on it
-  if test -e "${1-}"; then
-    command git status -- "$@"
-  else
-    command git "${@:-status}"
-  fi
+  case "${1-}" in
+  clone | config | help | init | version | -*)
+    command git "$@"
+    ;;
+  *)
+    command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
+      return "${?:-1}"
+    # if first argument is a file, then perform `git status` on it
+    if test -e "${1-}"; then
+      command git status -- "$@"
+    else
+      command git "${@:-status}"
+    fi
+    ;;
+  esac
 }
 alias g.='command git status .'
 alias guo='command git status --untracked-files=no'
