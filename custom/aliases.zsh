@@ -721,6 +721,7 @@ compdef g='git' 2>/dev/null
 g() {
   command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "$?"
+  # if first argument is a file, then perform `git status` on it
   if test -e "${1-}"; then
     command git status -- "$@"
   else
