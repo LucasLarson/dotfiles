@@ -36,7 +36,7 @@ command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
 
 ## Bashhub
 # filter from history
-export BH_FILTER="${BH_FILTER:="(^ |^bh |psql|ssh)"}"
+export BH_FILTER="${BH_FILTER:="(^ |^bh |sql|ssh)"}"
 
 ## GitHub
 export GITHUB_ORG="${USER-}"
