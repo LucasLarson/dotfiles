@@ -693,13 +693,7 @@ find_shell_scripts() {
       ! -path '*/test*' \
       ! -path '*vscode*' \
       -type f \
-      -exec head -n 1 -- '{}' '+' 2>/dev/null |
-      command grep \
-        -I \
-        -l \
-        -r \
-        --exclude-dir='.git' \
-        '^#!.*bin.*sh' . 2>/dev/null
+      -exec sh -c 'command head -n 1 -- "{}" | command git grep --files-with-matches -e "^#\!.*bin.*sh" "{}" 2>/dev/null | command sed -e "s/^/.\//"' ';'
 
     # shfmt also knows how to find shell scripts
     command -v -- shfmt >/dev/null 2>&1 &&
