@@ -361,9 +361,6 @@ cleanup() {
       ! -name '.well-known' \
       -delete 2>/dev/null
 
-    # repair Git case sensitivity for macOS
-    command git config core.ignoreCase false >/dev/null 2>&1
-
     # swap `.git/config` tabs for spaces
     command find -- "${1:-.}" \
       -type f \
