@@ -107,7 +107,7 @@ cdp() {
   unset -- cd_to 2>/dev/null
 }
 
-alias chmod='command chmod -v'
+alias chmod='chmod -v'
 
 clang_format() {
 
