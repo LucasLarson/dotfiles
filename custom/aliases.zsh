@@ -609,6 +609,33 @@ file_closes_with_newline() {
 command -v -- fd >/dev/null 2>&1 &&
   alias fd='command fd --hidden'
 
+find_binary_files() {
+  {
+    command find -- . \
+      -type f \
+      ! -path '*/.git/*' \
+      ! -path '*/node_modules/*' \
+      ! -path '*/t/*' \
+      ! -path '*/Test*' \
+      ! -path '*/test*' \
+      ! -path '*vscode*' \
+      -exec file '{}' ';' |
+      command grep -E -e ' (executable|shared object|binary)' |
+      command cut -d ':' -f 1
+    command find -- . \
+      -type f \
+      ! -path '*/.git/*' \
+      ! -path '*/node_modules/*' \
+      ! -path '*/t/*' \
+      ! -path '*/Test*' \
+      ! -path '*/test*' \
+      ! -path '*vscode*' \
+      -exec grep -I -L -e '.*' '{}' ';'
+  } |
+    LC_ALL='C' command sort -u |
+    LC_ALL='C' command sort -f
+}
+
 # find broken symlinks
 find_broken_symlinks() {
   command find -- . \
