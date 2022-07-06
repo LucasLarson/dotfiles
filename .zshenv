@@ -65,10 +65,7 @@ export LC_ALL='en_US.UTF-8'
 export TZ='America/New_York'
 
 ## macOS
-# allow `control` + `command` + `click and drag` a window from any location
-# https://github.com/mathiasbynens/dotfiles/issues/828#issue-296489157
 if command -v -- defaults >/dev/null 2>&1; then
-  command defaults write NSGlobalDomain NSWindowShouldDragOnGesture -bool true
   # app: Rectangle
   # set ⌘ ⌥ F to maximize the focused window
   # if it’s not 1572864, then it’s 1573160
