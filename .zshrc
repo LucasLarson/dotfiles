@@ -188,6 +188,12 @@ if command -v -- brew >/dev/null 2>&1; then
   test -d "${HOMEBREW_PREFIX-}"'/opt/coreutils/libexec/gnuman' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/coreutils/libexec/gnuman'"${MANPATH:+:${MANPATH-}}"
 
+  # file
+  test -d "${HOMEBREW_PREFIX-}"'/opt/file/bin' &&
+    PATH="${HOMEBREW_PREFIX-}"'/opt/file/bin'"${PATH:+:${PATH-}}"
+  test -d "${HOMEBREW_PREFIX-}"'/opt/file/share/man' &&
+    MANPATH="${HOMEBREW_PREFIX-}"'/opt/file/share/man'"${MANPATH:+:${MANPATH-}}"
+
   # GNU findutils
   # for `find`, `xargs`, `locate`
   test -d "${HOMEBREW_PREFIX-}"'/opt/findutils/libexec/gnubin' &&

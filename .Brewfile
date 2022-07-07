@@ -127,6 +127,8 @@ brew "exiftool"
 brew "fd"
 # Identify or delete duplicate files
 brew "fdupes"
+# Utility to determine file types
+brew "file-formula"
 # Collection of GNU find, xargs, and locate
 brew "findutils"
 # Text-based UI library
