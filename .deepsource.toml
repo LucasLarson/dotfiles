@@ -28,10 +28,6 @@ name = "docker"
 enabled = true
 
 [[analyzers]]
-name = "java"
-enabled = true
-
-[[analyzers]]
 name = "javascript"
 enabled = true
 
