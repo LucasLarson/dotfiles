@@ -288,7 +288,7 @@ set -o dotglob
 zstyle ':completion:*' special-dirs false
 # https://github.com/TimButters/dotfiles/blob/3e03c81/zshrc#L46-L50
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*:descriptions' format %F"{green}"%d%f
+zstyle ':completion:*:descriptions' format %B%F"{green}"%d%f%b
 
 ## plugin: zsh-completions
 # https://github.com/Homebrew/homebrew-core/blob/7cf42e0/Formula/zsh-completions.rb#L18-L23
