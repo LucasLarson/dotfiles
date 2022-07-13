@@ -267,9 +267,8 @@ test -d "${HOME-}"'/.cargo/bin' &&
   PATH="${HOME-}"'/.cargo/bin'"${PATH:+:${PATH-}}"
 
 ## Bashhub
-test -r "${HOME-}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" && {
+test -r "${HOME-}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" &&
   . "${HOME-}"'/.bashhub/bashhub.'"${SHELL##*[-./]}"
-}
 
 ## npm
 # without sudo
