@@ -693,6 +693,9 @@ find_oldest_file() {
 }
 
 find_shell_scripts() {
+  cd "$(command git rev-parse --show-toplevel)" ||
+    return 1
+
   {
     # all files with extensions `.bash`, `.dash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
     command find -- . \
