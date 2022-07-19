@@ -361,12 +361,13 @@ cleanup() {
       ! -name '.well-known' \
       -delete 2>/dev/null
 
-    # swap `.git/config` tabs for spaces
+    # swap `.git/config` and `$HOME/.gitconfig` tabs for spaces
     command find -- "${1:-.}" \
       -type f \
       -path '*/.git/*' \
       -name 'config' \
       -exec sed -i -e 's/\t/  /g' -- '{}' '+' 2>/dev/null
+    command sed -i -e 's/\t/  /g' -- "${HOME-}"'/.gitconfig'
 
     # remove Git sample hooks
     command find -- "${1:-.}" \
