@@ -668,6 +668,20 @@ find_duplicate_files() {
 }
 alias fdf='find_duplicate_files'
 
+find_files_with_the_same_names() {
+  for file in $(
+    command find -- . \
+      -type f \
+      ! -path '*/.git/*' \
+      ! -path '*/node_modules/*' \
+      -print0 |
+      command awk -F '/' 'BEGIN {RS="\0"} {n=$NF} k[n]==1 {print p[n]} k[n] {print $0} {p[n]=$0; k[n]++}'
+  ); do
+    command basename "${file-}"
+  done |
+    LC_ALL='C' command sort -u
+}
+
 find_files_with_no_extension() {
   command find -- . \
     ! -path '*/.git/*' \
