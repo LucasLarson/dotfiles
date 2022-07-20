@@ -362,8 +362,8 @@ remove bogus entries from Finder’s “Open With” menu ([via](https://githu
 [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
 
 ```shell
-command find -- . ! -path './.*' -type d -exec chmod 755 '{}' ';' &&
-command find -- . ! -path './.*' -type f -exec chmod 644 '{}' ';'
+command find -- . ! -path './.*' -type d -exec chmod 755 -- '{}' ';' &&
+command find -- . ! -path './.*' -type f -exec chmod 644 -- '{}' ';'
 ```
 
 #### date modified modify
@@ -397,7 +397,7 @@ command clang-format --version 2>/dev/null || return 2; command sleep 1; IndentW
 -name '*.cs' -o -name '*.cu' -o -name '*.cuh' -o -name '*.cui' -o -name '*.CXX' -o -name '*.cxx' -o -name '*.cxxm' -o -name '*.F' -o -name '*.f' -o -name '*.F90' -o -name '*.f90' -o -name '*.F95' -o -name '*.f95' -o -name '*.FOR' -o -name '*.for' -o -name '*.FPP' -o -name '*.fpp' -o -name '*.gch' -o \
 -name '*.H' -o -name '*.h' -o -name '*.h++' -o -name '*.hh' -o -name '*.hip' -o -name '*.hp' -o -name '*.hpp' -o -name '*.hxx' -o -name '*.i' -o -name '*.ifs' -o -name '*.ii' -o -name '*.iim' -o -name '*.inc' -o -name '*.inl' -o -name '*.java' -o -name '*.lib' -o -name '*.ll' -o -name '*.M' -o \
 -name '*.m' -o -name '*.mi' -o -name '*.mii' -o -name '*.mm' -o -name '*.pch' -o -name '*.pcm' -o -name '*.proto' -o -name '*.protodevel' -o -name '*.rs' -o -name '*.S' -o -name '*.s' -o -name '*.tcc' -o -name '*.td' -o -name '*.tlh' -o -name '*.tli' -o -name '*.tpp' -o -name '*.ts' -o -name '*.txx' \) \
--exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options '{}' '+'; unset -- IndentWidth 2>/dev/null; unset -- ColumnLimit 2>/dev/null; printf '\n\n\342\234\205  done\041\n'
+-exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options -- '{}' '+'; unset -- IndentWidth 2>/dev/null; unset -- ColumnLimit 2>/dev/null; printf '\n\n\342\234\205  done\041\n'
 ```
 
 ### run `cpplint` recursively
