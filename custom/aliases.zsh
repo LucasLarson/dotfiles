@@ -617,7 +617,7 @@ find_binary_files() {
       ! -path '*/Test*' \
       ! -path '*/test*' \
       ! -path '*vscode*' \
-      -exec file '{}' ';' |
+      -exec file -- '{}' ';' |
       command grep -E -e ' (executable|shared object|binary)' |
       command cut -d ':' -f 1
     command find -- . \
@@ -628,7 +628,7 @@ find_binary_files() {
       ! -path '*/Test*' \
       ! -path '*/test*' \
       ! -path '*vscode*' \
-      -exec grep -I -L -e '.*' '{}' ';'
+      -exec grep -I -L -e '.*' -- '{}' ';'
   } |
     LC_ALL='C' command sort -u |
     LC_ALL='C' command sort -f
@@ -735,7 +735,7 @@ find_shell_scripts() {
       ! -path '*/test*' \
       ! -path '*vscode*' \
       -type f \
-      -exec sh -c 'command head -n 1 -- "{}" | command git grep --files-with-matches -e "^#\!.*bin.*sh" "{}" 2>/dev/null | command sed -e "s/^/.\//"' ';'
+      -exec sh -c 'command head -n 1 -- "{}" | command git grep --files-with-matches -e "^#\!.*bin.*sh" -- "{}" 2>/dev/null | command sed -e "s/^/.\//"' ';'
 
     # shfmt also knows how to find shell scripts
     command -v -- shfmt >/dev/null 2>&1 &&
