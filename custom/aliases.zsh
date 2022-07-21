@@ -1229,7 +1229,7 @@ hash_abbreviate() {
   done
   shift "$((OPTIND - 1))"
   for hash in "$@"; do
-    if printf '%s' "${hash-}" | command grep -E -q -w -e '[[:xdigit:]]{4,40}'; then
+    if printf '%s' "${hash-}" | command grep -E -q -w -e '^[[:xdigit:]]{4,40}$'; then
       printf '%s\n' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- '7')"}"
       # prevent copying trailing newline with `tr` and
       # hide clipboard errors because `pbcopy` is not common
