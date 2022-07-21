@@ -21,12 +21,12 @@ brew "libtiff"
 brew "webp"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
 brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Formatter/translator for text files to numerous formats
 brew "asciidoc"
 # Text processor and publishing toolchain for AsciiDoc
@@ -63,12 +63,12 @@ brew "brew-cask-completion"
 brew "freetype"
 # Portable Foreign Function Interface library
 brew "libffi"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
 # Core application library for C
 brew "glib"
 # Manage compile and link flags for libraries
 brew "pkg-config"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.9"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # Decentralized dependency manager for Cocoa
