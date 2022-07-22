@@ -793,9 +793,8 @@ git_add() {
       shift
     ;;
   -m | --modified)
-    command git ls-files -z --modified |
-      command xargs -0 git add --verbose 2>/dev/null &&
-      shift
+    command git add --update --verbose -- .
+    shift
     ;;
   -o | --others | --untracked)
     while test -n "$(command git ls-files --others --exclude-standard)"; do
