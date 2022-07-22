@@ -643,8 +643,8 @@ find_broken_symlinks() {
 }
 
 # find duplicate files
-# https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
 find_duplicate_files() {
+  # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
   command find -- "${1:-.}" \
     ! -path '*/.git/*' \
     ! -path '*/node_modules/*' \
