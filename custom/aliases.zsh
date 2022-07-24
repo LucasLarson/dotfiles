@@ -386,6 +386,8 @@ cleanup() {
   } 2>/dev/null
 }
 
+# copy
+# -R recursive
 alias cp='cp -R'
 
 alias cpplint_r='command cpplint --counting=detailed --verbose=0 --filter=-legal/copyright --recursive -- .'
