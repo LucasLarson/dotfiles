@@ -359,7 +359,7 @@ cleanup() {
       -type d \
       -empty \
       ! -path '*/.git/*' \
-      ! -name '.well-known' \
+      ! -path '*/.well-known' \
       -delete 2>/dev/null
 
     # swap `.git/config` and `$HOME/.gitconfig` tabs for spaces
