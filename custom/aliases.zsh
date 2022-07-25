@@ -784,6 +784,10 @@ alias guo='command git status --untracked-files=no'
 # git add
 git_add() {
   case "${1-}" in
+  -p | --patch)
+    shift
+    command git add --verbose --patch "${@:-.}"
+    ;;
   -A | --all)
     command git add --verbose "$@" &&
       shift
@@ -804,10 +808,6 @@ git_add() {
         command xargs -0 git add --verbose 2>/dev/null
     done &&
       shift
-    ;;
-  -p | --patch)
-    shift
-    command git add --verbose --patch "${@:-.}"
     ;;
   *)
     # default to everything in the current directory and below
