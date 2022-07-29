@@ -367,8 +367,8 @@ cleanup() {
       -type f \
       -path '*/.git/*' \
       -name 'config' \
-      -exec sed -i -e 's/\t/  /g' -- '{}' '+' 2>/dev/null
-    command sed -i -e 's/\t/  /g' -- "${HOME-}"'/.gitconfig'
+      -exec sed -i -e 's/\t/  /g' '{}' '+' 2>/dev/null
+    command sed -i -e 's/\t/  /g' "${HOME-}"'/.gitconfig'
 
     # remove Git sample hooks
     command find -- "${1:-.}" \
@@ -1439,8 +1439,8 @@ plist_r() {
       -name '*.plist' \
       -print \
       -exec plutil -convert xml1 -- '{}' ';' \
-      -exec sed -i -e 's/\t/  /g' -- '{}' ';' \
-      -exec sed -E -i -e 's/^(  |<\/?dict)/  &/' -- '{}' ';'
+      -exec sed -i -e 's/\t/  /g' '{}' ';' \
+      -exec sed -E -i -e 's/^(  |<\/?dict)/  &/' '{}' ';'
     ;;
   esac
 }
