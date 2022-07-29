@@ -530,7 +530,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 recursively edit files, replacing each instance of `bin/bash` and `bin/sh` with `usr/bin/env zsh`
 
 ```shell
-find -- . -type f -exec sed -E -i 's|bin/b?a?sh|usr/bin/env zsh|g' '{}' '+'
+find -- . -type f -exec sed -E -i -e 's|bin/b?a?sh|usr/bin/env zsh|g' '{}' '+'
 ```
 
 ## split enormous files into something manageable
