@@ -1404,7 +1404,7 @@ path_check() {
     # newline-delimited `$PATH` like Zsh `<<<${(F)path}`
     # https://stackoverflow.com/a/33469401
     printf %s "${PATH-}" |
-      command xargs -d ':' -n 1
+      command tr ':' '\n'
   ); do
     if test -d "${directory-}"; then
       printf 'is a directory: %s\n' "${directory-}"
