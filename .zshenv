@@ -62,7 +62,6 @@ IFS="$(printf ' \t\n|')" &&
 
 ## Locale
 export LC_ALL='en_US.UTF-8'
-export TZ='America/New_York'
 
 ## macOS
 # Rectangle
