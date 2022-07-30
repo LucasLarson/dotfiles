@@ -107,6 +107,13 @@ cdp() {
   unset -- cd_to 2>/dev/null
 }
 
+# cheat
+cheat() {
+  command curl --silent 'https://cheat.sh/'"$(
+    printf '%s' "$*" | command sed -e 'y/ /+/'
+  )"
+}
+
 alias chmod='chmod -v'
 
 clang_format() {
