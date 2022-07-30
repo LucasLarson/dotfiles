@@ -527,7 +527,8 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 ### replace
 
-recursively edit files, replacing each instance of `bin/bash` and `bin/sh` with `usr/bin/env zsh`
+recursively edit files, replacing each instance of `bin/bash`, `bin/sh`, or
+`bin/ash` with `usr/bin/env zsh`
 
 ```shell
 find -- . -type f -exec sed -E -i -e 's|bin/b?a?sh|usr/bin/env zsh|g' '{}' '+'
