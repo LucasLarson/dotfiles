@@ -1329,8 +1329,8 @@ elif command gls --color=auto >/dev/null 2>&1; then
 elif command ls --color=auto >/dev/null 2>&1; then
   alias ls='command ls --color=auto'
   alias l='command ls --color=auto -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
-elif test "$(command /bin/ls -G -- "${HOME-}" | command hexdump)" = "$(command ls -G -- "${HOME-}" | command hexdump)" &&
-  test "$(command ls -G -- "${HOME-}" | command hexdump)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)"; then
+elif test "$(command /bin/ls -G -- "${HOME-}" | command od)" = "$(command ls -G -- "${HOME-}" | command od)" &&
+  test "$(command ls -G -- "${HOME-}" | command od)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)"; then
   alias ls='command ls -G'
   alias l='command ls -A -F -G -g -o'
 fi
