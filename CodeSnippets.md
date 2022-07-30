@@ -526,11 +526,18 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 
 ### replace
 
-recursively edit files, replacing each instance of `bin/bash`, `bin/sh`, or
-`bin/ash` with `usr/bin/env zsh`
+recursively replace each file’s first instance of `bin/bash`, `bin/sh`, or
+`bin/ash` with `usr/bin/env zsh` ([via](https://stackoverflow.com/a/11458836))
 
 ```shell
-find -- . -type f -exec sed -E -i -e 's|bin/b?a?sh|usr/bin/env zsh|g' '{}' '+'
+find -- . -type f -exec sed -E -i \
+  -e '/\/bin\/b?a?sh/{' \
+  -e 's//\/usr\/bin\/env zsh/' \
+  -e ':a' \
+  -e '$! N' \
+  -e '$! b a' \
+  -e '}' \
+  '{}' ';'
 ```
 
 ## split enormous files into something manageable
