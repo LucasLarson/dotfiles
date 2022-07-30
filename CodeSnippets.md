@@ -47,7 +47,6 @@
     - [Clang](#clang)
 - [Gatekeeper](#gatekeeper)
 - [Git](#git)
-  - [`init` via GitHub](#init-via-github)
   - [`git add`](#git-add)
   - [`git diff`](#git-diff)
   - [`git commit`](#git-commit)
