@@ -705,6 +705,7 @@ compdef -- 'find_no_git'='find' 2>/dev/null
 find_no_git() {
   command find -- . \
     -mindepth 1 \
+    ! -name '.git' \
     ! -path '*/.git/*' \
     "$@"
 }
