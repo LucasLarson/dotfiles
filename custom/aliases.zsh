@@ -656,12 +656,6 @@ find_broken_symlinks() {
 find_duplicate_files() {
   # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
   command find -- "${1:-.}" \
-    ! -path '*/.git/*' \
-    ! -path '*/node_modules/*' \
-    ! -path '*/t/*' \
-    ! -path '*/Test*' \
-    ! -path '*/test*' \
-    ! -path '*vscode*' \
     ! -empty \
     ! -type l \
     -type f \
@@ -669,6 +663,12 @@ find_duplicate_files() {
     LC_ALL='C' command sort -n -r |
     command uniq -d |
     command xargs -I '{}' -n 1 find \
+      ! -path '*/.git/*' \
+      ! -path '*/node_modules/*' \
+      ! -path '*/t/*' \
+      ! -path '*/Test*' \
+      ! -path '*/test*' \
+      ! -path '*vscode*' \
       -type f \
       -size {}c \
       -print0 2>/dev/null |
