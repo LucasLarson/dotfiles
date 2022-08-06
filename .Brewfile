@@ -366,6 +366,7 @@ cask "musicbrainz-picard"
 cask "qlimagesize"
 cask "qlstephen"
 cask "qlvideo"
+# QuickLook plugin for JSON files
 cask "quicklook-json"
 # QuickLook generator for Adobe Swatch Exchange files
 cask "quicklookase"
