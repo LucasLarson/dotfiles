@@ -788,7 +788,10 @@ g() {
   esac
 }
 alias g.='command git status .'
-alias guo='command git status --untracked-files=no'
+guo() {
+  command git -c color.status=always status --untracked-files=no |
+    command sed -e '$d'
+}
 
 # git add
 git_add() {
@@ -824,7 +827,8 @@ git_add() {
       shift
     ;;
   esac &&
-    command git status
+    command git -c color.status=always status --untracked-files=no |
+    command sed -e '$d'
 }
 alias ga='git_add'
 alias gaa='git_add --all'
@@ -869,7 +873,8 @@ git_commit() {
     command git commit --signoff --verbose -m "$@" ||
       return 1
   fi
-  command git status
+  command git -c color.status=always status --untracked-files=no |
+    command sed -e '$d'
 }
 alias gc='git_commit'
 alias gca='git_commit --amend'
@@ -930,7 +935,11 @@ gdom() {
     command git diff upstream/"$(git-default-branch)"
 }
 
-alias gfgs='command git fetch --all --prune --verbose && command git status'
+gfgs() {
+  command git fetch --all --prune --verbose &&
+    command git -c color.status=always status --untracked-files=no |
+    command sed -e '$d'
+}
 
 git_garbage_collection() {
   command -v -- cleanup >/dev/null 2>&1 &&
@@ -945,7 +954,8 @@ git_garbage_collection() {
       GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git maintenance start
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git gc --aggressive --prune=now
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git repack -a -d -f -F --window=4095 --depth=4095
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git status
+    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git -c color.status=always status --untracked-files=no |
+      command sed -e '$d'
   else
     return 1
   fi
@@ -1050,7 +1060,8 @@ git_move() {
       command mv -i "$@" ||
       return 1
   } &&
-    command git status
+    command git -c color.status=always status --untracked-files=no |
+    command sed -e '$d'
 }
 alias gmv='git_move'
 
@@ -1064,7 +1075,8 @@ git_pull() {
     command git rebase --abort
     command git rebase --strategy-option=theirs
   }
-  command git status
+  command git -c color.status=always status --untracked-files=no |
+    command sed -e '$d'
 }
 alias gp='git_pull'
 
@@ -1081,7 +1093,8 @@ git_default_remote() {
 # git push
 git_push() {
   command git push --verbose --progress origin "$(command git branch --show-current --verbose)" &&
-    command git status
+    command git -c color.status=always status --untracked-files=no |
+    command sed -e '$d'
 }
 alias gps='git_push'
 
@@ -1140,7 +1153,8 @@ alias gs='command git status'
 git_submodule_update() {
   command git submodule update --init --remote "$@" &&
     command git submodule sync "$@" &&
-    command git status
+    command git -c color.status=always status --untracked-files=no |
+    command sed -e '$d'
 }
 alias gsu='git_submodule_update'
 alias gtake='git checkout -b'
@@ -1170,7 +1184,8 @@ git_update() {
       ;;
     esac
     command git submodule sync --recursive "$@"
-    command git status
+    command git -c color.status=always status --untracked-files=no |
+      command sed -e '$d'
   fi
 }
 alias gu='git_update'
@@ -1353,14 +1368,16 @@ mu() {
     command mackup backup --force --root
     command git fetch --all --prune
     command git submodule update --init
-    command git status
+    command git -c color.status=always status --untracked-files=no |
+      command sed -e '$d'
     ;;
   *)
     command mackup backup --force --root --verbose
     command git fetch --all --prune --verbose
     command git submodule update --init --recursive
     command git submodule sync --recursive
-    command git status --untracked-files=no
+    command git -c color.status=always status --untracked-files=no |
+      command sed -e '$d'
     ;;
   esac
 }
@@ -1597,7 +1614,8 @@ zero() {
 
 ohmyzsh() {
   cd -- "${ZSH-}" &&
-    command git status
+    command git -c color.status=always status --untracked-files=no |
+    command sed -e '$d'
 }
 alias zshenv='command "${EDITOR-}" -- "${HOME-}/.${SHELL##*[-./]}env"; . "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
 alias zshrc='command "${EDITOR-}" -- "${HOME-}/.${SHELL##*[-./]}rc"; . "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
