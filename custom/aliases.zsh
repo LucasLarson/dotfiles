@@ -1299,7 +1299,11 @@ alias zsh_stats='history_stats'
 
 identify() {
   # identify the current machine
-  command uname -a
+  command uname -m
+  command uname -n
+  command uname -r
+  command uname -s
+  command uname -v
   {
     command sw_vers
     command lsb_release --all
