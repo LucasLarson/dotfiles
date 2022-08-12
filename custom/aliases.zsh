@@ -1298,39 +1298,16 @@ history_stats() {
 alias zsh_stats='history_stats'
 
 identify() {
-
-  # uname
+  # identify the current machine
   command uname -a
-
-  # sw_vers
-  # https://apple.stackexchange.com/a/368244
-  command -v -- sw_vers >/dev/null 2>&1 &&
+  {
     command sw_vers
-
-  # lsb_release
-  # https://linuxize.com/post/how-to-check-your-debian-version
-  command -v -- lsb_release >/dev/null 2>&1 &&
     command lsb_release --all
-
-  # hostnamectl
-  # https://linuxize.com/post/how-to-check-your-debian-version
-  command -v -- hostnamectl >/dev/null 2>&1 &&
     command hostnamectl
-
-  # /etc/os-release
-  # https://linuxize.com/post/how-to-check-your-debian-version
-  test -r /etc/os-release &&
-    command cat /etc/os-release
-
-  # /proc/version
-  # https://superuser.com/a/773608
-  test -r /proc/version &&
-    command cat /proc/version
-
-  # /etc/issue
-  # https://linuxize.com/post/how-to-check-your-debian-version
-  test -r /etc/issue &&
-    command cat /etc/issue
+    command cat -- /etc/os-release
+    command cat -- /proc/version
+    command cat -- /etc/issue
+  } 2>/dev/null
 }
 
 # list files
