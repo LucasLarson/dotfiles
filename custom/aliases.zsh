@@ -1019,14 +1019,6 @@ git_commit_initial_commit() {
 alias gcic='git_commit_initial_commit'
 alias ginit='command git init && command git status'
 
-# git last common ancestor
-git_last_common_ancestor() {
-  # https://stackoverflow.com/a/1549155
-  test "$#" -eq '2' ||
-    return 1
-  command git merge-base "$1" "$2"
-}
-
 # git log
 # https://github.com/gggritso/gggritso.com/blob/a07b620/_posts/2015-08-23-human-git-aliases.md#readme
 alias glog='command git log --graph --branches --remotes --tags --format=format:"%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d" --date-order'
