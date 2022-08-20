@@ -594,19 +594,17 @@ epoch_seconds() {
 }
 
 filename_spaces_to_underscores() {
-  (
-    from="${1:- }"
-    to="${2:-_}"
-    command find -- . \
-      -depth \
-      -name '*'"${from-}"'*' |
-      while IFS='' read -r filename; do
-        command mv -i "${filename-}" "$(command dirname -- "${filename-}")"/"$(
-          command basename -- "${filename-}" |
-            command tr "${from-}" "${to-}"
-        )"
-      done
-  )
+  from="${1:- }"
+  to="${2:-_}"
+  command find -- . \
+    -depth \
+    -name '*'"${from-}"'*' |
+    while IFS='' read -r filename; do
+      command mv -i "${filename-}" "$(command dirname -- "${filename-}")"/"$(
+        command basename -- "${filename-}" |
+          command tr "${from-}" "${to-}"
+      )"
+    done
 }
 
 file_closes_with_newline() {
