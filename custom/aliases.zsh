@@ -677,16 +677,15 @@ find_duplicate_files() {
 alias fdf='find_duplicate_files'
 
 find_files_with_the_same_names() {
-  for file in $(
-    command find -- . \
-      -type f \
-      ! -path '*/.git/*' \
-      ! -path '*/node_modules/*' \
-      -print0 |
-      command awk -F '/' 'BEGIN {RS="\0"} {n=$NF} k[n]==1 {print p[n]} k[n] {print $0} {p[n]=$0; k[n]++}'
-  ); do
-    command basename "${file-}"
-  done |
+  command find -- . \
+    -type f \
+    ! -path '*/.git/*' \
+    ! -path '*/node_modules/*' \
+    -print0 |
+    command awk -F '/' 'BEGIN {RS="\0"} {n=$NF} k[n]==1 {print p[n]} k[n] {print $0} {p[n]=$0; k[n]++}' |
+    while IFS='' read -r file; do
+      command basename -- "${file-}"
+    done |
     LC_ALL='C' command sort -u
 }
 
@@ -1117,15 +1116,19 @@ git_shallow() {
   # Shallow .gitmodules submodule installations
   # Mauricio Scheffer https://stackoverflow.com/a/2169914
   command git submodule init
-  for submodule in $(command git submodule | command awk '{print $2}'); do
-    submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
-    submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
-    command git clone --depth=1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
-  done
+  command git submodule |
+    command awk '{print $2}' |
+    while IFS='' read -r submodule; do
+      submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
+      submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
+      command git clone --depth=1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
+    done
   command git submodule update
-  unset -- submodule 2>/dev/null
-  unset -- submodule_path 2>/dev/null
-  unset -- submodule_url 2>/dev/null
+  {
+    unset -- submodule
+    unset -- submodule_path
+    unset -- submodule_url
+  } 2>/dev/null
 }
 
 alias gsh='command git show'
@@ -1396,18 +1399,15 @@ path_check() {
     esac
   done
 
-  for directory in $(
-    # newline-delimited `$PATH` like Zsh `<<<${(F)path}`
-    # https://stackoverflow.com/a/33469401
-    printf %s "${PATH-}" |
-      command tr ':' '\n'
-  ); do
-    if test -d "${directory-}"; then
-      printf 'is a directory: %s\n' "${directory-}"
-    else
-      printf 'not a directory: %s\n' "${directory-}"
-    fi
-  done
+  printf '%s\n' "${PATH-}" |
+    command tr ':' '\n' |
+    while IFS='' read -r directory; do
+      if test -d "${directory-}"; then
+        printf 'is a directory: %s\n' "${directory-}"
+      else
+        printf 'not a directory: %s\n' "${directory-}"
+      fi
+    done
 
   # silently undo verbose output for everyone
   {
