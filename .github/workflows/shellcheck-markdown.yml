@@ -4,13 +4,6 @@ name: Shellcheck code in Markdown
 
 on: [push]
 
-concurrency:
-  # cancel any in-progress job or run
-  # https://github.com/kdeldycke/workflows/commit/8bee3ba877
-  # https://docs.github.com/actions/using-jobs/using-concurrency
-  group: ${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
