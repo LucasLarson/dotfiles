@@ -42,9 +42,10 @@ jobs:
             esac
           done < <(
             # Markdown filename extensions
-            # https://github.com/github/linguist/blob/116d46aacc/lib/linguist/languages.yml#L3221-L3231
+            # https://github.com/github/linguist/blob/7503f7588c/lib/linguist/languages.yml#L3707-L3718
             command find -- . \
               -name '*.md' -o \
+              -name '*.livemd' -o \
               -name '*.markdown' -o \
               -name '*.mdown' -o \
               -name '*.mdwn' -o \
