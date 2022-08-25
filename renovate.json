@@ -1,5 +1,23 @@
 {
   "extends": [
     "config:base"
+  ],
+  "ignorePaths": [
+    "**/*copilot*",
+    "**/*vscode*",
+    "**/.git/*",
+    "**/.https/*",
+    "**/Application Support/*",
+    "**/archive/*",
+    "**/custom/plugins/*",
+    "**/custom/themes/*",
+    "**/node_modules/*",
+    "**/package-lock.json",
+    "**/t/*",
+    "**/Test*",
+    "**/test*",
+    "**/wp-admin/*",
+    "**/wp-content/*",
+    "**/wp-includes/*"
   ]
 }
