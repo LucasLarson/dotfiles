@@ -433,6 +433,7 @@ count_files() {
   command find -- .//. \
     ! -path '*/.git/*' \
     ! -name '.' \
+    ! -name '.DS_Store' \
     -type f \
     -print |
     command grep -c -e //
@@ -442,6 +443,7 @@ count_files_and_directories() {
   command find -- .//. \
     ! -path '*/.git/*' \
     ! -name '.' \
+    ! -name '.DS_Store' \
     -print |
     command grep -c -e //
 }
@@ -490,6 +492,7 @@ count_files_in_this_directory() {
       -maxdepth 1 \
       ! -path '*/.git/*' \
       ! -name '.' \
+      ! -name '.DS_Store' \
       -prune \
       -print |
       command grep -c -e /
@@ -503,6 +506,7 @@ count_files_in_this_directory() {
       -type f \
       ! -path '*/.git/*' \
       ! -name '.' \
+      ! -name '.DS_Store' \
       -prune \
       -print |
       command grep -c -e /
