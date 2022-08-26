@@ -1549,10 +1549,10 @@ yamllint_r() {
     {
       command git ls-files -z -- ./**/*.yml
       command git ls-files -z -- ./**/*.CFF
-      command git ls-files -z -- ./**/*.YAML
-      command git ls-files -z -- ./**/*.YML
       command git ls-files -z -- ./**/*.cff
+      command git ls-files -z -- ./**/*.YAML
       command git ls-files -z -- ./**/*.yaml
+      command git ls-files -z -- ./**/*.YML
     } 2>/dev/null |
       command xargs -0 yamllint --strict
     ;;
@@ -1568,10 +1568,10 @@ yamllint_r() {
       '(' \
       -name '*.yml' -o \
       -name '*.CFF' -o \
-      -name '*.YAML' -o \
-      -name '*.YML' -o \
       -name '*.cff' -o \
-      -name '*.yaml' \
+      -name '*.YAML' -o \
+      -name '*.yaml' -o \
+      -name '*.YML' \
       ')' \
       -exec yamllint --strict -- '{}' '+'
     ;;
