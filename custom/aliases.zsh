@@ -1567,11 +1567,34 @@ yamllint_r() {
       ! -path '*vscode*' \
       '(' \
       -name '*.yml' -o \
+      -name '*.anim' -o \
+      -name '*.asset' -o \
       -name '*.CFF' -o \
       -name '*.cff' -o \
+      -name '*.ksy' -o \
+      -name '*.lookml' -o \
+      -name '*.mask' -o \
+      -name '*.mat' -o \
+      -name '*.meta' -o \
+      -name '*.mir' -o \
+      -name '*.model.lkml' -o \
+      -name '*.prefab' -o \
+      -name '*.raml' -o \
+      -name '*.reek' -o \
+      -name '*.rviz' -o \
+      -name '*.sublime-syntax' -o \
+      -name '*.syntax' -o \
+      -name '*.unity' -o \
+      -name '*.view.lkml' -o \
       -name '*.YAML' -o \
       -name '*.yaml' -o \
-      -name '*.YML' \
+      -name '*.yaml-tmlanguage' -o \
+      -name '*.yaml.sed' -o \
+      -name '*.YML' -o \
+      -name '*.yml.mysql' -o \
+      -name '.clang-format' -o \
+      -name '.clang-tidy' -o \
+      -name '.gemrc' \
       ')' \
       -exec yamllint --strict -- '{}' '+'
     ;;
