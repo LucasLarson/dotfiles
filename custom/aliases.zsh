@@ -1566,7 +1566,7 @@ yamllint_r() {
       ! -path '*node_modules/*' \
       ! -path '*vscode*' \
       '(' \
-      -name '*.CFF*' -o \
+      -name '*.CFF' -o \
       -name '*.YAML' -o \
       -name '*.YML' -o \
       -name '*.cff' -o \

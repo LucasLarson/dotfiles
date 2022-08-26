@@ -303,7 +303,7 @@ search for the word “example” inside the current directory which is “.”
 ### locate all
 
 for example, locate all JPEG files:<br/>
-`command find -- . -type f \( -name '*.JPEG' -o -name '*.JPG*' -o -name '*.jpeg*' -o -name '*.jpg*' \)`
+`command find -- . -type f \( -name '*.JPEG' -o -name '*.JPG' -o -name '*.jpeg' -o -name '*.jpg' \)`
 
 ## PATH
 
