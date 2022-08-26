@@ -297,13 +297,13 @@ test -s '/etc/motd' &&
 # delete thumbnail cache files
 command find -- . \
   -type f \
-  \( \
+  '(' \
   -name '.DS_Store' -o \
   -name 'Desktop.ini' -o \
   -name 'Thumbs.db' -o \
   -name 'desktop.ini' -o \
   -name 'thumbs.db' \
-  \) \
+  ')' \
   -delete 2>/dev/null
 
 # delete empty, writable, zero-length files
@@ -313,7 +313,7 @@ command find -- . \
   -type f \
   -writable \
   -size 0 \
-  \( \
+  '(' \
   ! -path '*.git/*' \
   ! -path '*example*' \
   ! -path '*sample*' \
@@ -335,7 +335,7 @@ command find -- . \
   ! -name '.watchmanconfig' \
   ! -name '__init__.py' \
   ! -name 'favicon.*' \
-  \) \
+  ')' \
   -delete 2>/dev/null
 
 # delete empty directories recursively
