@@ -1547,12 +1547,12 @@ yamllint_r() {
   case "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" in
   true)
     {
+      command git ls-files -z -- ./**/*.yml
       command git ls-files -z -- ./**/*.CFF
       command git ls-files -z -- ./**/*.YAML
       command git ls-files -z -- ./**/*.YML
       command git ls-files -z -- ./**/*.cff
       command git ls-files -z -- ./**/*.yaml
-      command git ls-files -z -- ./**/*.yml
     } 2>/dev/null |
       command xargs -0 yamllint --strict
     ;;
@@ -1566,12 +1566,12 @@ yamllint_r() {
       ! -path '*node_modules/*' \
       ! -path '*vscode*' \
       '(' \
+      -name '*.yml' -o \
       -name '*.CFF' -o \
       -name '*.YAML' -o \
       -name '*.YML' -o \
       -name '*.cff' -o \
-      -name '*.yaml' -o \
-      -name '*.yml' \
+      -name '*.yaml' \
       ')' \
       -exec yamllint --strict -- '{}' '+'
     ;;
