@@ -26,20 +26,27 @@ jobs:
             ! -path '*/node_modules/*' \
             ! -path '*vscode*' \
             '(' \
+            -name '*.json' -o \
             -name '*.4DForm' -o \
             -name '*.4DProject' -o \
             -name '*.avsc' -o \
+            -name '*.cy' -o \
+            -name '*.epj' -o \
             -name '*.geojson' -o \
             -name '*.gltf' -o \
             -name '*.har' -o \
             -name '*.ice' -o \
             -name '*.JSON' -o \
-            -name '*.json' -o \
             -name '*.JSON-tmLanguage' -o \
             -name '*.JSON5' -o \
             -name '*.json5' -o \
             -name '*.jsonl' -o \
+            -name '*.jsonld' -o \
+            -name '*.maxhelp' -o \
+            -name '*.maxpat' -o \
+            -name '*.maxproj' -o \
             -name '*.mcmeta' -o \
+            -name '*.mxt' -o \
             -name '*.stats' -o \
             -name '*.tfstate' -o \
             -name '*.tfstate.backup' -o \
@@ -63,7 +70,8 @@ jobs:
             -name '.vs-liveshare-keychain' -o \
             -name '.vsconfig' -o \
             -name '.watchmanconfig' -o \
-            -name '.whitesource' \
+            -name '.whitesource' -o \
+            -name 'mcmod.info' \
             ')' \
             -print \
             -exec sh -v -x -c '
