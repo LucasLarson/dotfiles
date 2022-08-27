@@ -61,10 +61,10 @@ brew "black"
 brew "brew-cask-completion"
 # Software library to render fonts
 brew "freetype"
-# Portable Foreign Function Interface library
-brew "libffi"
 # Core application library for C
 brew "glib"
+# Portable Foreign Function Interface library
+brew "libffi"
 # Manage compile and link flags for libraries
 brew "pkg-config"
 # Interpreted, interactive, object-oriented programming language
