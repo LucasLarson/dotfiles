@@ -1077,7 +1077,7 @@ git_pull() {
 }
 alias gp='git_pull'
 
-git_default_remote() {
+gdr() {
   {
     command git config --get --worktree checkout.defaultRemote ||
       command git config --get --local checkout.defaultRemote ||
@@ -1087,6 +1087,7 @@ git_default_remote() {
   } 2>/dev/null ||
     printf 'origin\n'
 }
+alias git-default-remote='gdr'
 
 # git push
 git_push() {
