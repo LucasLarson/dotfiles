@@ -103,8 +103,10 @@ cdp() {
     printf '\342\200\230%s\342\200\231\n' "${cd_from-}"
     return 1
   fi
-  unset -- cd_from 2>/dev/null
-  unset -- cd_to 2>/dev/null
+  {
+    unset -- cd_from
+    unset -- cd_to
+  } 2>/dev/null
 }
 
 # cheat
@@ -248,8 +250,10 @@ clang_format() {
     ')' \
     -exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options -- '{}' '+'
 
-  unset -- IndentWidth 2>/dev/null
-  unset -- ColumnLimit 2>/dev/null
+  {
+    unset -- IndentWidth
+    unset -- ColumnLimit
+  } 2>/dev/null
 
   printf '\n'
   printf '\342\234\205  done\041\n'
@@ -1231,9 +1235,11 @@ gravatar() {
   printf 'https://gravatar.com/avatar/%s?s=%d\n' "${email-}" "${size-}"
 
   # cleanup variables
-  unset -- email 2>/dev/null
-  unset -- size 2>/dev/null
-  unset -- utility 2>/dev/null
+  {
+    unset -- email
+    unset -- size
+    unset -- utility
+  } 2>/dev/null
 }
 
 hash_abbreviate() {
@@ -1411,14 +1417,11 @@ path_check() {
         printf 'not a directory: %s\n' "${directory-}"
       fi
     done
-
-  # silently undo verbose output for everyone
   {
+    unset -- argument
+    unset -- directory
     set +o xtrace
   } 2>/dev/null
-
-  unset -- argument 2>/dev/null
-  unset -- directory 2>/dev/null
 }
 
 # .plist
