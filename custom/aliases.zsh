@@ -1088,6 +1088,7 @@ gdr() {
     printf 'origin\n'
 }
 alias git-default-remote='gdr'
+alias git-default-origin='gdr'
 
 # git push
 git_push() {
