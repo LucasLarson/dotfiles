@@ -1273,7 +1273,6 @@ hashlookup() {
   command curl \
     --silent \
     --header 'accept: application/json' \
-    --request 'GET' \
     'https://hashlookup.circl.lu/lookup/sha256/'"$(
       command sha256sum "${1-}" |
         command awk '{print $1}'
