@@ -1280,7 +1280,7 @@ hashlookup() {
     --silent \
     --header 'accept: application/json' \
     'https://hashlookup.circl.lu/lookup/sha256/'"$(
-      command sha256sum "${1-}" |
+      command sha256sum -- "${1-}" |
         command awk '{print $1}'
     )" |
     command jq --raw-output '.parents[]' 2>/dev/null
