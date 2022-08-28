@@ -1278,7 +1278,7 @@ hashlookup() {
       command sha256sum "${1-}" |
         command awk '{print $1}'
     )" |
-    command jq --raw-output '.message'
+    command jq --raw-output '.parents[]' 2>/dev/null
 }
 
 alias h1='command head -n 1'
