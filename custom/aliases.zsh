@@ -613,6 +613,11 @@ filename_spaces_to_underscores() {
           command tr "${from-}" "${to-}"
       )"
     done
+  {
+    unset -- from
+    unset -- to
+    unset -- filename
+  } 2>/dev/null
 }
 
 file_closes_with_newline() {
