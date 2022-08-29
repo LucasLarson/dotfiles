@@ -1128,6 +1128,16 @@ git_restore() {
 }
 alias grs='git_restore'
 
+git_search() {
+  # search all repository content since its creation
+  command git rev-list --all |
+    while IFS='' read -r commit; do
+      command git grep --color=always --extended-regexp --ignore-case --line-number -e "$@" "${commit-}" --
+    done
+  unset -- commit 2>/dev/null
+}
+alias gsearch='git_search'
+
 git_shallow() {
   # Shallow .gitmodules submodule installations
   # Mauricio Scheffer https://stackoverflow.com/a/2169914
