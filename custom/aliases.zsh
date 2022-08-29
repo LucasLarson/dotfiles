@@ -680,6 +680,7 @@ find_duplicate_files() {
       ! -path '*/Test*' \
       ! -path '*/test*' \
       ! -path '*vscode*' \
+      ! -type l \
       -type f \
       -size {}c \
       -print0 2>/dev/null |
