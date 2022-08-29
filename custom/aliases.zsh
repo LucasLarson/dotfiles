@@ -484,7 +484,7 @@ count_files_by_extension() {
     command uniq -c |
     LC_ALL='C' command sort -r
 }
-alias countfx='count_files_by_extension'
+alias cfx='count_files_by_extension'
 
 # number of files
 # in current directory
