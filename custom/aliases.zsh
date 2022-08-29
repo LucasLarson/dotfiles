@@ -1087,7 +1087,8 @@ gdr() {
     command git config --get --worktree checkout.defaultRemote ||
       command git config --get --local checkout.defaultRemote ||
       command git config --get --system checkout.defaultRemote ||
-      command git config --get --global checkout.defaultRemote
+      command git config --get --global checkout.defaultRemote ||
+      command git config --get branch."$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote
   } 2>/dev/null ||
     printf 'origin\n'
 }
@@ -1095,7 +1096,7 @@ alias git-default-remote='gdr'
 
 # git push
 git_push() {
-  command git push --verbose --progress origin "$(command git branch --show-current --verbose)" &&
+  command git push --verbose --progress origin "$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)" &&
     command git -c color.status=always status --untracked-files=no |
     command sed -e '$d'
 }
