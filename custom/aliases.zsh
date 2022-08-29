@@ -1277,7 +1277,7 @@ hash_abbreviate() {
 alias h7='hash_abbreviate'
 
 hashlookup() {
-  test -e "${1-}" ||
+  test -f "${1-}" ||
     return 66
   command curl \
     --silent \
