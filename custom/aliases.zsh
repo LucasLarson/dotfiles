@@ -1484,6 +1484,8 @@ alias '?'='question_mark'
 
 # QuickLook
 ql() {
+  command -v -- qlmanage >/dev/null 2>&1 ||
+    return 127
   while test "$#" -ne '0'; do
     command qlmanage -p -- "$1" >/dev/null 2>&1 &&
       shift
