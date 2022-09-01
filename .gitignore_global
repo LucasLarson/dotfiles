@@ -75,3 +75,4 @@ backup*/
 ## keys ##
 *.key
 *.pem
+.aws/
