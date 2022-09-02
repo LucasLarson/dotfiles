@@ -354,6 +354,8 @@ cask "hex-fiend"
 cask "inkscape"
 # File archiver
 cask "keka"
+# Clipboard manager
+cask "maccy"
 # File system integration
 cask "macfuse"
 # Provides updates to various Microsoft products
