@@ -690,6 +690,15 @@ find_duplicate_files() {
 }
 alias fdf='find_duplicate_files'
 
+find_files_with_no_extension() {
+  command find -- . \
+    ! -path '*/.git/*' \
+    -type f \
+    ! -name '*.*' \
+    -print 2>/dev/null |
+    LC_ALL='C' command sort -u
+}
+
 find_files_with_the_same_names() {
   command find -- . \
     -type f \
@@ -700,15 +709,6 @@ find_files_with_the_same_names() {
     while IFS='' read -r file; do
       command basename -- "${file-}"
     done |
-    LC_ALL='C' command sort -u
-}
-
-find_files_with_no_extension() {
-  command find -- . \
-    ! -path '*/.git/*' \
-    -type f \
-    ! -name '*.*' \
-    -print 2>/dev/null |
     LC_ALL='C' command sort -u
 }
 
@@ -872,23 +872,16 @@ alias gba='command git branch --all'
 alias gbd='command git branch --delete'
 alias gbD='command git branch --delete --force'
 
-# git commit
-git_commit() {
-  if test "$#" -eq '0'; then
-    command git commit --signoff --verbose ||
-      return 1
-  elif test "$1" = '--amend'; then
-    command git commit --amend --signoff --verbose ||
-      return 1
-  else
-    command git commit --signoff --verbose -m "$@" ||
-      return 1
-  fi
-  command git -c color.status=always status --untracked-files=no |
-    command sed -e '$d'
-}
-alias gc='git_commit'
-alias gca='git_commit --amend'
+alias gco='command git checkout --progress'
+
+# `git checkout` the default branch
+alias gcom='command git checkout --progress "$(git-default-branch)"'
+
+# git cherry-pick
+alias gcp='command git cherry-pick'
+alias gcpa='command git cherry-pick --abort'
+alias gcpc='command git cherry-pick --continue'
+alias gcpn='command git cherry-pick --no-commit'
 
 # git clone
 git_clone() {
@@ -913,16 +906,23 @@ git_clone() {
 alias gcl='git_clone'
 alias gcl1='git_clone -1'
 
-alias gco='command git checkout --progress'
-
-# `git checkout` the default branch
-alias gcom='command git checkout --progress "$(git-default-branch)"'
-
-# git cherry-pick
-alias gcp='command git cherry-pick'
-alias gcpa='command git cherry-pick --abort'
-alias gcpc='command git cherry-pick --continue'
-alias gcpn='command git cherry-pick --no-commit'
+# git commit
+git_commit() {
+  if test "$#" -eq '0'; then
+    command git commit --signoff --verbose ||
+      return 1
+  elif test "$1" = '--amend'; then
+    command git commit --amend --signoff --verbose ||
+      return 1
+  else
+    command git commit --signoff --verbose -m "$@" ||
+      return 1
+  fi
+  command git -c color.status=always status --untracked-files=no |
+    command sed -e '$d'
+}
+alias gc='git_commit'
+alias gca='git_commit --amend'
 
 unalias -- 'gd' 2>/dev/null
 gd() {
@@ -952,27 +952,6 @@ gfgs() {
     command sed -e '$d'
 }
 
-git_garbage_collection() {
-  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-    command -v -- cleanup >/dev/null 2>&1 &&
-      cleanup "$@"
-    # see `git gc` and other wrapping commands behind-the-scene mechanics
-    # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git fetch --prune --prune-tags --verbose
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git prune --verbose --progress --expire=now
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git prune-packed
-    command git maintenance start >/dev/null 2>&1 &&
-      GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git maintenance start
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git gc --aggressive --prune=now
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git repack -a -d -f -F --window=4095 --depth=4095
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git -c color.status=always status --untracked-files=no |
-      command sed -e '$d'
-  else
-    return 1
-  fi
-}
-alias ggc='git_garbage_collection'
-
 # git parents, git child
 git_find_child() {
   # return the commit hash that occurred after the given one (default current)
@@ -996,6 +975,27 @@ alias git_parent='git_find_parent'
 alias gfp='git_find_parent'
 alias gfc='git_find_child'
 alias git_parents='git_find_parents'
+
+git_garbage_collection() {
+  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    command -v -- cleanup >/dev/null 2>&1 &&
+      cleanup "$@"
+    # see `git gc` and other wrapping commands behind-the-scene mechanics
+    # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
+    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git fetch --prune --prune-tags --verbose
+    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git prune --verbose --progress --expire=now
+    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git prune-packed
+    command git maintenance start >/dev/null 2>&1 &&
+      GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git maintenance start
+    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git gc --aggressive --prune=now
+    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git repack -a -d -f -F --window=4095 --depth=4095
+    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git -c color.status=always status --untracked-files=no |
+      command sed -e '$d'
+  else
+    return 1
+  fi
+}
+alias ggc='git_garbage_collection'
 
 # find initial commit
 git_find_initial_commit() {
