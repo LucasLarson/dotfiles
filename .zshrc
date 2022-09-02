@@ -342,11 +342,6 @@ test -n "${GOPATH-}" &&
   test -d "${GOPATH-}"'/bin' &&
   PATH="${GOPATH-}"'/bin'"${PATH:+:${PATH-}}"
 
-## pip
-# location of Python packages on Linux
-test -d "${HOME-}"'/.local/bin' &&
-  PATH="${HOME-}"'/.local/bin'"${PATH:+:${PATH-}}"
-
 ## rbenv
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # https://gist.github.com/4a4c4986ccdcaf47b91e8227f9868ded#prezto
