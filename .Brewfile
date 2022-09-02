@@ -177,8 +177,6 @@ brew "go"
 brew "gradle"
 # GNU grep, egrep and fgrep
 brew "grep"
-# Command-line tool for generating regular expressions
-brew "grex"
 # Perceptual JPEG encoder
 brew "guetzli"
 # Convert source code to formatted text with syntax highlighting
