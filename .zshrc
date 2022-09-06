@@ -321,8 +321,7 @@ pyenv() {
 ## C, C++
 # headers
 # https://apple.stackexchange.com/a/372600
-if command -v -- xcrun >/dev/null 2>&1 &&
-  test -n "$(command xcrun --show-sdk-path)"; then
+if test -n "$(command xcrun --show-sdk-path 2>/dev/null)"; then
   # `CPATH` is delimited like `PATH` as are
   # `C_INCLUDE_PATH`, `OBJC_INCLUDE_PATH`,
   # `CPLUS_INCLUDE_PATH`, and `OBJCPLUS_INCLUDE_PATH`
