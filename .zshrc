@@ -230,7 +230,7 @@ if command -v -- brew >/dev/null 2>&1; then
   # https://github.com/github/copilot.vim/commit/f6cdb5caae
   test -d "${HOMEBREW_PREFIX-}"'/opt/node@16/bin' &&
     PATH='/usr/local/opt/node@16/bin'"${PATH:+:${PATH-}}" &&
-    MANPATH='/usr/local/opt/node@16/share'"${MANPATH:+:${MANPATH-}}" &&
+    MANPATH='/usr/local/opt/node@16/share/man'"${MANPATH:+:${MANPATH-}}" &&
     export LDFLAGS="${LDFLAGS:+${LDFLAGS-} }"'-L'"${HOMEBREW_PREFIX-}"'/opt/node@16/lib' &&
     export CPPFLAGS="${CPPFLAGS:+${CPPFLAGS-} }"'-I'"${HOMEBREW_PREFIX-}"'/opt/node@16/include'
 
