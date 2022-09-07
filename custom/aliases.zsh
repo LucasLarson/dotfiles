@@ -73,6 +73,35 @@ bash_pretty() {
   unset -- file 2>/dev/null
 }
 
+brewfile() {
+  command brew bundle dump \
+    --all \
+    --cask \
+    --debug \
+    --describe \
+    --file=- \
+    --force \
+    --formula \
+    --mas \
+    --tap \
+    --verbose \
+    --whalebrew \
+    "$@" |
+    command sed \
+      -e '$!N;/^#.*\n[^#]/s/\n/\t/;P;D' |
+    command awk -F '\t' '{print $2 $1}' |
+    command sed -E \
+      -e 's/^(tap)/0\1/' \
+      -e 's/^(brew)/1\1/' \
+      -e 's/^(cask)/2\1/' |
+    LC_ALL=C command sort -f |
+    command sed \
+      -e 's/^[[:digit:]]//' |
+    command sed \
+      -e 's/\([^#]*\)\(#.*\)/\2\n\1/' \
+      >"${HOME-}"'/.Brewfile'
+}
+
 # prefer `bat` to `cat` if available
 command -v -- bat >/dev/null 2>&1 &&
   alias cat='command bat --decorations never'
