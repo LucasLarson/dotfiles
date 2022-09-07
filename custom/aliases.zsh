@@ -74,8 +74,7 @@ bash_pretty() {
 }
 
 brewfile() {
-  command \
-    brew bundle dump \
+  command brew bundle dump \
     --all \
     --cask \
     --debug \
@@ -88,12 +87,19 @@ brewfile() {
     --verbose \
     --whalebrew \
     "$@" |
-    command sed -e '$!N;/^#.*\n[^#]/s/\n/\t/;P;D' |
+    command sed \
+      -e '$!N;/^#.*\n[^#]/s/\n/\t/;P;D' |
     command awk -F '\t' '{print $2 $1}' |
-    command sed -E -e 's/^(tap)/0\1/' -e 's/^(brew|cask)/1\1/' |
+    command sed -E \
+      -e 's/^(tap)/0\1/' \
+      -e 's/^(brew)/1\1/' \
+      -e 's/^(cask)/2\1/' |
     LC_ALL=C command sort -f |
-    command sed -e 's/^[[:digit:]]//' |
-    command sed -e 's/\([^#]*\)\(#.*\)/\2\n\1/' >"${HOME-}"'/.Brewfile'
+    command sed \
+      -e 's/^[[:digit:]]//' |
+    command sed \
+      -e 's/\([^#]*\)\(#.*\)/\2\n\1/' \
+      >"${HOME-}"'/.Brewfile'
 }
 
 # prefer `bat` to `cat` if available
