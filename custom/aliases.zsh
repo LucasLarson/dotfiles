@@ -301,8 +301,10 @@ cleanup() {
     ;;
 
   *)
-    # refuse to run from `$HOME`
-    test "$(command pwd -P)" = "${HOME-}" ||
+    # refuse to run from `/`, `$HOME`, or `~/Library`
+    test "$(command pwd -P)" = '/' ||
+      test "$(command pwd -P)" = "${HOME-}" ||
+      test "$(command pwd -P)" = "${HOME-}"'/Library' ||
 
       # or from any titlecase-named directory just below it
       # assumes any titlecase-named directory in `$HOME` must not be touched
