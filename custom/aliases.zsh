@@ -957,6 +957,23 @@ git_commit() {
 alias gc='git_commit'
 alias gca='git_commit --amend'
 
+git_config_file_locations() {
+  for scope in global system local worktree; do
+    # do not return `.git/config` if called from outside a git repository
+    test -z "$(command git config --list --show-scope --"${scope-}" 2>/dev/null)" ||
+      printf '%-10s%s\n' "${scope-}" "$(
+        command git config --list --show-origin --"${scope-}" |
+          command sed \
+            -e 's|file:||' \
+            -e 's|\t.*||' \
+            -e 's|^\.|./.|' \
+            -e 's|'"${HOME-}"'|~|' |
+          LC_ALL='C' command sort -u
+      )"
+  done
+  unset -- scope
+}
+
 unalias -- 'gd' 2>/dev/null
 gd() {
   if test -n "$(command git diff "$@" 2>/dev/null)"; then
