@@ -300,14 +300,12 @@ cleanup() {
     ;;
 
   *)
-    # refuse to run from `/`, `$HOME`, or `~/Library`
+    # refuse to run from `/`
     test "$(command pwd -P)" = '/' ||
+      # or from `$HOME`
       test "$(command pwd -P)" = "${HOME-}" ||
-      test "$(command pwd -P)" = "${HOME-}"'/Library' ||
-
-      # or from any titlecase-named directory just below it
-      # assumes any titlecase-named directory in `$HOME` must not be touched
-      # even though macOS standard directories are a closed set of:
+      # or from any titlecase-named directory just below `$HOME`
+      # such the closed set of macOS standard directories:
       # `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Movies`, `Music`, `Pictures`, `Public`, and `Sites`
       # https://web.archive.org/web/0id_/developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGUide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW9
       test "$(command pwd -P | command xargs -0 dirname)" = "${HOME-}" &&
