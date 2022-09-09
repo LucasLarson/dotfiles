@@ -1052,9 +1052,7 @@ alias ggc='git_garbage_collection'
 
 # find initial commit
 git_find_initial_commit() {
-  # https://stackoverflow.com/q/1006775#comment23686803_1007545
-  command git rev-list --topo-order --parents HEAD -- |
-    command grep -E -e '^[a-f0-9]{40}$'
+  command git rev-list --max-parents=0 HEAD --
 }
 alias gic='git_find_initial_commit'
 
