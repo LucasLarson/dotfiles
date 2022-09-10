@@ -601,7 +601,7 @@ define() {
 }
 alias d='define'
 
-alias diff='command diff --color --suppress-common-lines'
+alias diff='command git diff --color-words --no-index'
 
 dictionary() {
   # sort as you’d expect to find in a dictionary
