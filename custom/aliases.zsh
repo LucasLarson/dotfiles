@@ -292,8 +292,7 @@ command clang-format -i --style '{IndentWidth: ${IndentWidth-}, ColumnLimit: ${C
 
 cleanup() {
   case "${1-}" in
-  # if `cleanup -v` or `cleanup --verbose`,
-  # then use `-print` during `-delete`
+
   -v | --verbose)
     set -o verbose
     set -o xtrace
