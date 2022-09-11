@@ -403,6 +403,7 @@ command rm -- "{}"' ';'
     # delete empty directories recursively
     # but skip Git-specific and `/.well-known/` directories
     command find -- . \
+      -depth \
       -type d \
       -empty \
       ! -path '*/.git/*' \
