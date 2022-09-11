@@ -391,7 +391,9 @@ cleanup() {
       ! -name '.watchmanconfig' \
       ! -name '__init__.py' \
       ! -name 'favicon.*' \
-      -delete 2>/dev/null
+      -exec sh -v -c 'command git ls-files --error-unmatch -- "{}" >/dev/null 2>&1 ||
+! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+command rm -- "{}"' ';'
 
     # delete empty directories recursively
     # but skip Git-specific and `/.well-known/` directories
