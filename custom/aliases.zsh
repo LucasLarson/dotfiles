@@ -326,7 +326,7 @@ cleanup() {
 
     # delete thumbnail cache files
     # and hide `find: ‘./com...’: Operation not permitted` with `2>/dev/null`
-    command find -- "${1:-.}" \
+    command find -- . \
       -type f \
       '(' \
       -name '.DS_Store' -o \
@@ -364,7 +364,7 @@ cleanup() {
     # delete empty, writable files
     # except those within `.git/` directories
     # and except those with specific names
-    command find -- "${1:-.}" \
+    command find -- . \
       -type f \
       -writable \
       -size 0 \
@@ -399,7 +399,7 @@ cleanup() {
 
     # delete empty directories recursively
     # but skip Git-specific and `/.well-known/` directories
-    command find -- "${1:-.}" \
+    command find -- . \
       -type d \
       -empty \
       ! -path '*/.git/*' \
@@ -407,7 +407,7 @@ cleanup() {
       -delete 2>/dev/null
 
     # swap `.git/config` and `$HOME/.gitconfig` tabs for spaces
-    command find -- "${1:-.}" \
+    command find -- . \
       -type f \
       -path '*/.git/*' \
       -name 'config' \
@@ -415,7 +415,7 @@ cleanup() {
     command sed -i -e 's/\t/  /g' "${HOME-}"'/.gitconfig'
 
     # remove Git sample hooks
-    command find -- "${1:-.}" \
+    command find -- . \
       -type f \
       -path '*/.git/*' \
       -path '*/hooks/*.sample' \
