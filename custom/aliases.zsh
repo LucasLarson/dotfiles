@@ -383,6 +383,8 @@ cleanup() {
       ! -name '*lock' \
       ! -name '*lockfile' \
       ! -name '*rc' \
+      ! -name '. ' \
+      ! -name '.. ' \
       ! -name '.dirstamp' \
       ! -name '.do_not_remove' \
       ! -name '.gitkeep' \
