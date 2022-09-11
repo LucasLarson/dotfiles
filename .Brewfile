@@ -244,7 +244,7 @@ brew "pyenv"
 # It's not just a linter that annoys you!
 brew "pylint"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.9"
+brew "python@3.10"
 # Ruby version manager
 brew "rbenv"
 # Implementation of the AT&T Plan 9 shell
