@@ -358,9 +358,9 @@ cleanup() {
       done
     fi
 
-    # delete empty, writable files
-    # except those within `.git/` directories
-    # and except those with specific names
+    # delete empty, writable files except
+    # those with specific names and
+    # those that belong to a repository
     command find -- . \
       -type f \
       -writable \
@@ -409,7 +409,7 @@ command rm -- "{}"' ';'
       ! -path '*/.well-known' \
       -delete 2>/dev/null
 
-    # swap `.git/config` and `$HOME/.gitconfig` tabs for spaces
+    # swap each tab for two spaces each in `.git/config` and `$HOME/.gitconfig`
     command find -- . \
       -type f \
       -path '*/.git/*' \
