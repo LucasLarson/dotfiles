@@ -763,7 +763,7 @@ find_oldest_file() {
   command find -- . \
     -type f \
     ! -path '*/.git/*' \
-    -exec /bin/ls -l -r -t -- '{}' '+' 2>/dev/null |
+    -exec /bin/ls -o -r -t -- '{}' '+' 2>/dev/null |
     command head -n 1
 }
 
