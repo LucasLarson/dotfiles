@@ -47,18 +47,18 @@ bash_pretty() {
   for file in "$@"; do
 
     # if `bash --pretty-print` fails on the file, skip it
-    if command bash --pretty-print -- "${file}" 2>/dev/null; then
+    if command bash --pretty-print -- "${file-}" 2>/dev/null; then
       # first Bash
       {
         # add the shell directive
         printf '#!/usr/bin/env bash\n'
 
         # add `bash --pretty-print` content
-        command bash --pretty-print -- "${file}"
+        command bash --pretty-print -- "${file-}"
 
         # save `$file`'s interpolated content into a file called `$file.bash`
         # unless it already exists: `>|` prevents overwriting
-      } >|"${file}"'.bash'
+      } >|"${file-}"'.bash'
 
       # next nominally POSIX shell
       {
