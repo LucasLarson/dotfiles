@@ -702,7 +702,7 @@ find_broken_symlinks() {
 # find duplicate files
 find_duplicate_files() {
   # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
-  command find -- "${1:-.}" \
+  command find -- . \
     ! -empty \
     ! -type l \
     -type f \
