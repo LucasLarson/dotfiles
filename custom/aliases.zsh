@@ -1616,61 +1616,42 @@ alias all='which -a'
 yamllint_r() {
   command -v -- yamllint >/dev/null 2>&1 ||
     return 1
-  case "$(command git rev-parse --is-inside-work-tree 2>/dev/null)" in
-  true)
-    {
-      command git ls-files -z -- ./**/*.yml
-      command git ls-files -z -- ./**/*.CFF
-      command git ls-files -z -- ./**/*.cff
-      command git ls-files -z -- ./**/*.YAML
-      command git ls-files -z -- ./**/*.yaml
-      command git ls-files -z -- ./**/*.YML
-    } 2>/dev/null |
-      command xargs -0 yamllint --strict
-    ;;
-
-  *)
-    command find -- . \
-      ! -path '*.git/*' \
-      ! -path '*/Test*' \
-      ! -path '*/t/*' \
-      ! -path '*/test*' \
-      ! -path '*node_modules/*' \
-      ! -path '*vscode*' \
-      '(' \
-      -name '*.yml' -o \
-      -name '*.anim' -o \
-      -name '*.asset' -o \
-      -name '*.CFF' -o \
-      -name '*.cff' -o \
-      -name '*.ksy' -o \
-      -name '*.lookml' -o \
-      -name '*.mask' -o \
-      -name '*.mat' -o \
-      -name '*.meta' -o \
-      -name '*.mir' -o \
-      -name '*.model.lkml' -o \
-      -name '*.prefab' -o \
-      -name '*.raml' -o \
-      -name '*.reek' -o \
-      -name '*.rviz' -o \
-      -name '*.sublime-syntax' -o \
-      -name '*.syntax' -o \
-      -name '*.unity' -o \
-      -name '*.view.lkml' -o \
-      -name '*.YAML' -o \
-      -name '*.yaml' -o \
-      -name '*.yaml-tmlanguage' -o \
-      -name '*.yaml.sed' -o \
-      -name '*.YML' -o \
-      -name '*.yml.mysql' -o \
-      -name '.clang-format' -o \
-      -name '.clang-tidy' -o \
-      -name '.gemrc' \
-      ')' \
-      -exec yamllint --strict -- '{}' '+'
-    ;;
-  esac
+  command find -- . \
+    -type f \
+    ! -path "${DOTFILES-}"'/Library' \
+    ! -path "${HOME-}"'/Library' \
+    ! -path '*/.git/*' \
+    ! -path '*/.well-known' \
+    ! -path '*/node_modules/*' \
+    ! -path '*/t/*' \
+    ! -path '*/Test*' \
+    ! -path '*/test*' \
+    ! -path '*copilot*' \
+    ! -path '*vscode*' \
+    '(' \
+    -name '*.yml' -o \
+    -name '*.CFF' -o \
+    -name '*.cff' -o \
+    -name '*.mir' -o \
+    -name '*.reek' -o \
+    -name '*.rviz' -o \
+    -name '*.sublime-syntax' -o \
+    -name '*.syntax' -o \
+    -name '*.YAML' -o \
+    -name '*.yaml' -o \
+    -name '*.yaml-tmlanguage' -o \
+    -name '*.yaml.sed' -o \
+    -name '*.YML' -o \
+    -name '*.yml.mysql' -o \
+    -name '.clang-format' -o \
+    -name '.clang-tidy' -o \
+    -name '.gemrc' \
+    ')' \
+    -print \
+    -exec sh -c 'command git ls-files --error-unmatch -- "{}" >/dev/null 2>&1 ||
+! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  command yamllint --format colored --strict -- "{}" |
+  command grep -v -e "(truthy)"' ';'
 }
 
 # zero
