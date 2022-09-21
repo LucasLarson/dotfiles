@@ -27,7 +27,8 @@ command mkdir -p -- '/usr/share' &&
 command mkdir -p -- '/etc/xdg' &&
   export XDG_CONFIG_DIRS='/etc/xdg'
 command mkdir -p -- "${HOME-}"'/.cache' &&
-  export XDG_CACHE_HOME="${HOME-}"'/.cache'
+  export XDG_CACHE_HOME="${HOME-}"'/.cache' &&
+  command touch -- "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${USER-}"'.zsh'
 
 # `XDG_RUNTIME_DIR` has no default and requires `700` permissions
 command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
