@@ -489,8 +489,21 @@ count_files_and_directories() {
 }
 
 count_files_by_extension() {
+  # files with extensions
+  command find -- . \
+    ! -path '*/.git/*' \
+    ! -path '*/node_modules/*' \
+    '(' \
+    -type f -o \
+    -type l \
+    ')' \
+    -exec basename -a -- '{}' '+' 2>/dev/null |
+    command sed -e 's/.*\.//' |
+    LC_ALL='C' command sort |
+    command uniq -c |
+    LC_ALL='C' command sort
+
   # files with no extension
-  # homemade
   command find -- . \
     ! -path '*/.git/*' \
     ! -path '*/node_modules/*' \
@@ -505,20 +518,6 @@ count_files_by_extension() {
     LC_ALL='C' command awk '{print $1}' |
     command uniq -c |
     command sed -e 's/.$/[no extension]/'
-
-  # files with extensions
-  command find -- . \
-    ! -path '*/.git/*' \
-    ! -path '*/node_modules/*' \
-    '(' \
-    -type f -o \
-    -type l \
-    ')' \
-    -exec basename -a -- '{}' '+' 2>/dev/null |
-    command sed -e 's/.*\.//' |
-    LC_ALL='C' command sort |
-    command uniq -c |
-    LC_ALL='C' command sort -r
 }
 alias cfx='count_files_by_extension'
 
