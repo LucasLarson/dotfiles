@@ -635,6 +635,13 @@ epoch_seconds() {
   # https://opengroup.org/onlinepubs/9699919799/utilities/awk.html#tag_20_06_13_12
   command awk 'BEGIN {srand(); print srand()}'
 }
+epoch_to_date_time() {
+  if command date -d @0 >/dev/null 2>&1; then
+    command date -d @"${1:-0}"
+  else
+    command date -r "${1:-0}"
+  fi
+}
 
 filename_spaces_to_underscores() {
   from="${1:- }"
