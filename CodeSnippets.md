@@ -35,6 +35,7 @@
   - [reset](#reset)
   - [repair site disk permissions](#repair-site-disk-permissions)
     - [date modified modify](#date-modified-modify)
+- [case-naming conventions](#case-naming-conventions)
 - [C, C++](#c-c)
   - [flags](#flags)
     - [C++ features before wide support](#c-features-before-wide-support)
@@ -368,6 +369,40 @@ command find -- . ! -path './.*' -type f -exec chmod -- 644 '{}' ';'
 #### date modified modify
 
 `touch -t 2003040500 file.txt` # date modified → 2020-03-04 5:00am
+
+## case-naming conventions
+
+| Naming Convention    | Format               |
+| -------------------- | -------------------- |
+| Camel Case           | camelCase            |
+| Camel Snake Case     | camel_Snake_Case     |
+| Capital Case         | Capital Case         |
+| Cobol Case           | COBOL-CASE           |
+| Constant Case        | CONSTANT_CASE        |
+| Dash Case            | dash-case            |
+| Dot Case             | dot.case             |
+| Dromedary Case       | dromedaryCase        |
+| Flat Case            | flatcase             |
+| HTTP Header Case     | HTTP-Header-Case     |
+| Kebab Case           | kebab-case           |
+| Lisp Case            | lisp-case            |
+| Lower Camel Case     | lowerCamelCase       |
+| Lower Case           | lower case           |
+| Macro Case           | MACRO_CASE           |
+| Mixed Case           | Mixed Case           |
+| Pascal Case          | PascalCase           |
+| Pascal Snake Case    | Pascal_Snake_Case    |
+| Pothole Case         | pothole_case         |
+| Screaming Kebab Case | SCREAMING-KEBAB-CASE |
+| Screaming Snake      | SCREAMING_SNAKE_CASE |
+| Sentence case        | Sentence case        |
+| Snake Case           | snake_case           |
+| Spinal Case          | spinal-case          |
+| Studly Case          | StudlyCase           |
+| Title Case           | Title Case           |
+| Train Case           | Train-Case           |
+| Upper Camel Case     | UpperCamelCase       |
+| Upper Case           | UPPER CASE           |
 
 ## C, C++
 
