@@ -545,7 +545,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 [via](https://askubuntu.com/a/350216)
 
 | syntax        | meaning                                  | POSIX compliance |
-| ------------- | ---------------------------------------- | ---------------- |
+| ------------- | ---------------------------------------- | :--------------: |
 | `>file`       | redirect `stdout` to `file`              | ✅                |
 | `1>file`      | redirect `stdout` to `file`              | ✅                |
 | `2>file`      | redirect `stderr` to `file`              | ✅                |
