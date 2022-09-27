@@ -235,18 +235,18 @@ printf '%s\n' "${MANPATH-}" | LC_ALL='C' command tr ':' '\n'
 
 ###### man pages
 
-Definintions of the numbers that follow `man` commands.
+Definintions of the numbers that follow `man` commands ([via](https://web.archive.org/web/20200627082020id_/manpages.ubuntu.com/cgi-bin/search.py?q=man&titles=Title#distroAndSection))
 
-1. Executable programs or shell commands
-1. System calls (functions provided by the kernel)
-1. Library calls (functions within program libraries)
-1. Special files (usually found in `/dev`)
-1. File formats and conventions, `/etc/passwd` for example
-1. Games
-1. Miscellaneous (including macro packages and conventions)
-1. System administration commands (usually only for `root`)
-
-[via](https://web.archive.org/web/20200627082020id_/manpages.ubuntu.com/cgi-bin/search.py?q=man&titles=Title#distroAndSection)
+| section | contents                                                 |
+| :-----: | -------------------------------------------------------- |
+| `1`     | Executable programs or shell commands                    |
+| `2`     | System calls (functions provided by the kernel)          |
+| `3`     | Library calls (functions within program libraries)       |
+| `4`     | Special files (usually found in `/dev`)                  |
+| `5`     | File formats and conventions, `/etc/passwd`, for example |
+| `6`     | Games                                                    |
+| `7`     | Miscellaneous (including macro packages and conventions) |
+| `8`     | System administration commands (usually only for `root`) |
 
 ##### pip packages
 
