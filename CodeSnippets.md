@@ -10,7 +10,6 @@
       - [lists](#lists)
         - [applications](#applications)
       - [Homebrew](#homebrew)
-        - [Cask](#cask)
       - [MANPATH](#manpath)
         - [man pages](#man-pages)
       - [pip packages](#pip-packages)
@@ -227,13 +226,7 @@ On Alpine Linux, generate a list of installed packages with:<br/>
 ##### Homebrew
 
 ```shell
-command brew list -1 --formula
-```
-
-###### Cask
-
-```shell
-command brew list -1 --cask
+command brew list -1
 ```
 
 ##### MANPATH
