@@ -181,12 +181,12 @@ printf '\n\n\342%s\234\205  done\041\n' "${update-}"; $(command -v -- exec) -l -
 `pod repo update && pod repo update && \`<br/>
 `pod install && \`<br/>
 `rbenv rehash && pyenv rehash && \`<br/>
-`python -m pip install --upgrade -- pip` && # 22.2.2 [2022-08-03](https://pip.pypa.io/en/stable/news/#id1) `\`<br/>
+`python -m pip install --upgrade --verbose --verbose --verbose -- pip` && # 22.2.2 [2022-08-03](https://pip.pypa.io/en/stable/news/#id1) `\`<br/>
 `pip list --outdated --format freeze \`<br/>
     `| grep --invert-match '^\-e' \`<br/>
     `| cut --delimiter = --fields 1 \`<br/>
     `| xargs -n1 pip install --upgrade && #` [via](https://stackoverflow.com/revisions/3452888/14) `\`<br/>
-`pip install --upgrade -- $(pip freeze | cut --delimiter '=' --fields 1) && #` [via](https://web.archive.org/web/20200508173219id_/coderwall.com/p/quwaxa/update-all-installed-python-packages-with-pip#comment_29830) `\`<br/>
+`pip install --upgrade --verbose --verbose --verbose -- $(pip freeze | cut --delimiter '=' --fields 1) && #` [via](https://web.archive.org/web/20200508173219id_/coderwall.com/p/quwaxa/update-all-installed-python-packages-with-pip#comment_29830) `\`<br/>
 `pipenv shell &&` # [via](https://github.com/pypa/pipenv/blob/bfbe1304f63372a0eb7c1531590b51195db453ea/pipenv/core.py?instructions_while_running_pipenv_install#L1282) `\`<br/>
 `pipenv install --dev && #` [via](https://stackoverflow.com/a/49867443) `\`<br/>
 `rustup update && #` 1.44.1 [2020-06-18](https://github.com/rust-lang/rust/releases) `\`<br/>
