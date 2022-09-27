@@ -4,7 +4,7 @@
 
 - [copy, paste, return](#copy-paste-return)
   - [detail](#detail)
-- [Mackup](#mackup)
+- [dotfiles](#dotfiles)
   - [add](#add)
     - [manual](#manual)
       - [lists](#lists)
@@ -201,7 +201,7 @@ printf '\n\n\342%s\234\205  done\041\n' "${update-}"; $(command -v -- exec) -l -
 `#` note successful finish before restarting the shell `\`<br>
 `exec -l "${SHELL##*/}" #` [via](https://github.com/mathiasbynens/dotfiles/commit/cb8843bea74f1d223ea2967c7a891ca76c9e54e9#diff-ec67f41a7a08f67e6d486db809809f700007e2d58895d67e842ff21123adaee4R145-R146)
 
-## Mackup
+## dotfiles
 
 ### add
 
