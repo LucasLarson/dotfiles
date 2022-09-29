@@ -497,6 +497,10 @@ count_files_by_extension() {
     -type f -o \
     -type l \
     ')' \
+    '(' \
+    -name '.*' -o \
+    -name '*.*' \
+    ')' \
     -exec basename -a -- '{}' '+' 2>/dev/null |
     command sed -e 's/.*\.//' |
     LC_ALL='C' command sort |
