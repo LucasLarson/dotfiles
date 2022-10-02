@@ -1009,6 +1009,7 @@ gdom() {
     command git diff upstream/"$(git-default-branch)"
 }
 
+alias gf='git fetch --keep --multiple --progress --prune --verbose'
 gfgs() {
   command git fetch --all --prune --verbose &&
     command git -c color.status=always status --untracked-files=no |
