@@ -58,6 +58,7 @@ plugins+=(
   git-open
   zsh-abbr
   zsh-diff-so-fancy
+  zsh-autosuggestions
 )
 
 # plugin: zsh_codex
