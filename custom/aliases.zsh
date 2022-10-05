@@ -70,7 +70,7 @@ bash_pretty() {
       } >|"${file-}"'.sh'
     fi
   done
-  unset -- file 2>/dev/null
+  unset -- file
 }
 
 brewfile() {
@@ -132,10 +132,8 @@ cdp() {
     printf '\342\200\230%s\342\200\231\n' "${cd_from-}"
     return 1
   fi
-  {
-    unset -- cd_from
-    unset -- cd_to
-  } 2>/dev/null
+  unset -- cd_from
+  unset -- cd_to
 }
 
 # cheat
@@ -282,10 +280,8 @@ clang_format() {
 command clang-format -i --style '{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}' --verbose -- '{}' 2>&1
 " ';' |
     command sed -e 's/\[1\/1\]//'
-  {
-    unset -- IndentWidth
-    unset -- ColumnLimit
-  } 2>/dev/null
+  unset -- IndentWidth
+  unset -- ColumnLimit
   printf '\n'
   printf '\342\234\205  done\041\n'
 }
@@ -460,10 +456,8 @@ cy() {
       # -L to follow symbolic links
       command cp -R -L -- "${file-}" "${target-}"
   done
-  {
-    unset -- file
-    unset -- target
-  } 2>/dev/null
+  unset -- file
+  unset -- target
 }
 
 # number of files
@@ -603,7 +597,7 @@ define() {
       builtin functions -x 2 -- "${query-}"
     fi
   done
-  unset -- query 2>/dev/null
+  unset -- query
 }
 alias d='define'
 
@@ -628,7 +622,7 @@ domain_name_from_url() {
     printf '%s' "${url-}" &&
       printf '\n'
   done
-  unset -- url 2>/dev/null
+  unset -- url
 }
 
 epoch_seconds() {
@@ -659,11 +653,9 @@ filename_spaces_to_underscores() {
           command tr "${from-}" "${to-}"
       )"
     done
-  {
-    unset -- from
-    unset -- to
-    unset -- filename
-  } 2>/dev/null
+  unset -- from
+  unset -- to
+  unset -- filename
 }
 
 file_closes_with_newline() {
@@ -1085,11 +1077,9 @@ git_commit_initial_commit() {
     command git add --verbose -- . &&
       command git commit --signoff --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
   fi
-  {
-    unset -- git_time
-    unset -- GIT_AUTHOR_DATE
-    unset -- GIT_COMMITTER_DATE
-  } 2>/dev/null
+  unset -- git_time
+  unset -- GIT_AUTHOR_DATE
+  unset -- GIT_COMMITTER_DATE
 }
 alias gcic='git_commit_initial_commit'
 alias ginit='command git init && command git status'
@@ -1187,7 +1177,7 @@ git_restore() {
     command git checkout --progress -- "${file-}"
   done &&
     command git status
-  unset -- file 2>/dev/null
+  unset -- file
 }
 alias grs='git_restore'
 
@@ -1197,7 +1187,7 @@ git_search() {
     while IFS='' read -r commit; do
       command git grep --color=always --extended-regexp --ignore-case --line-number -e "$@" "${commit-}" --
     done
-  unset -- commit 2>/dev/null
+  unset -- commit
 }
 alias gsearch='git_search'
 
@@ -1213,11 +1203,9 @@ git_shallow() {
       command git clone --depth=1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
     done
   command git submodule update
-  {
-    unset -- submodule
-    unset -- submodule_path
-    unset -- submodule_url
-  } 2>/dev/null
+  unset -- submodule
+  unset -- submodule_path
+  unset -- submodule_url
 }
 
 alias gsh='command git show'
@@ -1316,11 +1304,9 @@ gravatar() {
   printf 'https://gravatar.com/avatar/%s?s=%d\n' "${email-}" "${size-}"
 
   # cleanup variables
-  {
-    unset -- email
-    unset -- size
-    unset -- utility
-  } 2>/dev/null
+  unset -- email
+  unset -- size
+  unset -- utility
 }
 
 hash_abbreviate() {
@@ -1347,10 +1333,8 @@ hash_abbreviate() {
       return 1
     fi
   done
-  {
-    unset -- 'hash'
-    unset -- 'length'
-  } 2>/dev/null
+  unset -- hash
+  unset -- length
 }
 alias h7='hash_abbreviate'
 
@@ -1498,9 +1482,9 @@ path_check() {
         printf 'not a directory: %s\n' "${directory-}"
       fi
     done
+  unset -- argument
+  unset -- directory
   {
-    unset -- argument
-    unset -- directory
     set +o xtrace
   } 2>/dev/null
 }
@@ -1569,7 +1553,7 @@ rm() {
     command "${utility-}" "$@"
     ;;
   esac
-  unset -- utility 2>/dev/null
+  unset -- utility
 }
 alias rmo='rm --others'
 
@@ -1585,7 +1569,7 @@ take() {
       printf 'directory \342\200\230%s\342\200\231 exists...\n' "${directory-}"
     fi
   done
-  unset -- directory 2>/dev/null
+  unset -- directory
 
   # POSIX-compliant `${@:$#}`-style and `${@: -1}`-style string indexing (SC3057)
   # https://stackoverflow.com/a/1853993
@@ -1599,7 +1583,7 @@ take() {
     # it’s not a directory
     return 1
   fi
-  unset -- directory 2>/dev/null
+  unset -- directory
 }
 
 transfer() {
