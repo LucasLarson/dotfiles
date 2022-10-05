@@ -50,7 +50,7 @@ cd -- "${HOME-}" ||
 # set it to the POSIX default: `+ `
 # https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
 ps4_temporary="${PS4:-+ }"
-unset -- PS4 2>/dev/null
+unset -- PS4
 set -o xtrace
 
 # pacman
@@ -362,7 +362,7 @@ printf 'exiting to apply updates...\n' 2>/dev/null
 
 # restore `$PS4`
 PS4="${ps4_temporary:-+ }"
-unset -- ps4_temporary 2>/dev/null
+unset -- ps4_temporary
 
 {
   printf '\n'
