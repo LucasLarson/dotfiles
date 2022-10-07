@@ -1454,6 +1454,15 @@ odb() {
     command sed -e 's/\\$/\n/'
 }
 
+# open current directory if no argument is given
+open() {
+  if test "$#" -eq '0'; then
+    command open -- .
+  else
+    command open "$@"
+  fi
+}
+
 path_check() {
   # check that each directory in user `$PATH` still exists and is a directory
 
