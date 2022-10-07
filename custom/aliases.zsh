@@ -86,7 +86,7 @@ brewfile() {
       -e 's/^(tap)/1\1/' \
       -e 's/^(brew)/2\1/' \
       -e 's/^(cask)/3\1/' |
-    LC_ALL=C command sort -f |
+    LC_ALL='C' command sort -f |
     command sed \
       -e 's/^[[:digit:]]//' |
     command sed \
