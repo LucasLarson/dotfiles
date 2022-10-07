@@ -1459,7 +1459,17 @@ open() {
   if test "$#" -eq '0'; then
     command open -- .
   else
-    command open "$@"
+    case "${1-}" in
+    sc*)
+      command open -- 'https://shellcheck.net/wiki/SC'"${1#sc}"
+      ;;
+    SC*)
+      command open -- 'https://shellcheck.net/wiki/'"${1-}"
+      ;;
+    *)
+      command open "$@"
+      ;;
+    esac
   fi
 }
 
