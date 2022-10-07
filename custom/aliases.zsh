@@ -1460,6 +1460,9 @@ open() {
     command open -- .
   else
     case "${1-}" in
+    p)
+      command open -- 'https://opengroup.org/onlinepubs/9699919799/idx/utilities.html'
+      ;;
     sc*)
       command open -- 'https://shellcheck.net/wiki/SC'"${1#sc}"
       ;;
