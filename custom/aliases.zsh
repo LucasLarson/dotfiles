@@ -1499,7 +1499,7 @@ path_check() {
   done
 
   printf '%s\n' "${PATH-}" |
-    command tr ':' '\n' |
+    command sed -e 'y/:/\n/' |
     while IFS='' read -r directory; do
       if test -d "${directory-}"; then
         printf 'is a directory: %s\n' "${directory-}"
