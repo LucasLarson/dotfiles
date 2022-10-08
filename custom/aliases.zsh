@@ -1461,10 +1461,14 @@ open() {
   else
     case "${1-}" in
     p | posix_utilities)
-      command open -- 'https://opengroup.org/onlinepubs/9699919799/idx/utilities.html'
+      test -z "${2-}" ||
+        command open -- 'https://opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html' ||
+        command open -- 'https://opengroup.org/onlinepubs/9699919799/idx/utilities.html'
       ;;
     pb | posix_builtins)
-      command open -- 'https://opengroup.org/onlinepubs/9699919799/idx/sbi.html'
+      test -z "${2-}" ||
+        command open -- 'https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#'"${2-}" ||
+        command open -- 'https://opengroup.org/onlinepubs/9699919799/idx/sbi.html'
       ;;
     sc*)
       command open -- 'https://shellcheck.net/wiki/SC'"${1#sc}"
