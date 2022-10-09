@@ -1476,6 +1476,10 @@ open() {
     SC*)
       command open -- 'https://shellcheck.net/wiki/'"${1-}"
       ;;
+    so*)
+      # like cheat.sh’s `so/q/10638538`
+      command open -- 'https://stackoverflow.com/'"${1#so/}"
+      ;;
     *)
       command open "$@"
       ;;
