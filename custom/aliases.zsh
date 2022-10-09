@@ -33,7 +33,7 @@ atom_packages() {
 
 bash_major_version() {
   # confirm Bash version is at least any given version (default: at least Bash 4)
-  if test "$(command bash --version | command head -n 1 | command awk '{print $4}' | command cut -d '.' -f 1)" -lt "${1:-4}"; then
+  if test "$(command bash --version | command sed -e '1q' | command awk '{print $4}' | command cut -d '.' -f 1)" -lt "${1:-4}"; then
     printf 'You will need to upgrade to version %d for full functionality.\n' "${1:-4}" >&2
     return 1
   fi
@@ -764,7 +764,7 @@ find_oldest_file() {
     -type f \
     ! -path '*/.git/*' \
     -exec /bin/ls -o -r -t -- '{}' '+' 2>/dev/null |
-    command head -n 1
+    command sed -e '1q'
 }
 
 find_shell_scripts() {
@@ -795,7 +795,7 @@ find_shell_scripts() {
       ! -path '*/test*' \
       ! -path '*vscode*' \
       -type f \
-      -exec sh -c 'command head -n 1 -- "{}" | command git grep --files-with-matches -e "^#\!.*bin.*sh" -- "{}" 2>/dev/null | command sed -e "s/^/.\//"' ';'
+      -exec sh -c 'command sed -e "1q" -- "{}" | command git grep --files-with-matches -e "^#\!.*bin.*sh" -- "{}" 2>/dev/null | command sed -e "s/^/.\//"' ';'
 
     # shfmt also knows how to find shell scripts
     command -v -- shfmt >/dev/null 2>&1 &&
@@ -1351,14 +1351,14 @@ hashlookup() {
     command jq --raw-output '.parents[]' 2>/dev/null
 }
 
-alias h1='command head -n 1'
+alias h1='command sed -e "1q"'
 
 history_stats() {
   fc -l 1 |
     command awk '{CMD[$2]++; count++;}; END {for (a in CMD) print CMD[a] " " CMD[a] * 100 / count "% " a;}' |
     command grep -v -e './' |
     LC_ALL='C' command sort -n -r |
-    command head -n "${1:-"$((LINES - 5))"}" |
+    command sed -e "${1:-"$((LINES - 5))"}q" |
     command column -c 3 -s ' ' -t |
     command nl
 }
