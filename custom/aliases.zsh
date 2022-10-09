@@ -1362,7 +1362,7 @@ history_stats() {
     command awk -- '{CMD[$2]++; count++;}; END {for (a in CMD) print CMD[a] " " CMD[a] * 100 / count "% " a;}' |
     command grep -v -e './' |
     LC_ALL='C' command sort -n -r |
-    command sed -e "${1:-"$((LINES - 5))"}q" |
+    command sed -e "${1:-"$((LINES - 5))"}"'q' |
     command column -c 3 -s ' ' -t |
     command nl
 }
