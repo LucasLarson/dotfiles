@@ -987,6 +987,7 @@ gd() {
     command git diff --staged "$@"
   fi
 }
+unalias -- 'gds' 2>/dev/null
 gds() {
   if test -n "$(command git diff --staged -- "$@" 2>/dev/null)"; then
     command git diff --staged "$@"
