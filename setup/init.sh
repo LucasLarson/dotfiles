@@ -187,9 +187,9 @@ printf 'checking Python installation...\n' 2>/dev/null
 set -o xtrace
 command -v -- python >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
-  printf 'installing Python 2 and Python 3...\n' 2>/dev/null
+  printf 'installing Python...\n' 2>/dev/null
   set -o xtrace
-  install python2 python2-doc python3 python3-doc
+  install python3 python3-doc
 }
 
 # pip
