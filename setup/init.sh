@@ -70,7 +70,7 @@ command -v -- apk >/dev/null 2>&1 || {
   test "$(command curl --fail --silent --location 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' | command sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -'
 } || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
-  command wget --output-document - 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' |
+  command wget --output-document=- 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' |
     command tar --extract --gzip 'apk.static'
   ./apk.static add apk-tools
 }
@@ -249,7 +249,7 @@ command -v -- omz >/dev/null 2>&1 ||
   { set +o xtrace; } 2>/dev/null
   printf 'installing Oh My Zsh...\n' 2>/dev/null
   set -o xtrace
-  sh -c "$(command wget 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' --output-document -)" "" --unattended --keep-zshrc
+  sh -c "$(command wget 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' --output-document=-)" "" --unattended --keep-zshrc
 }
 
 # update, repair everything again before close
