@@ -87,16 +87,21 @@ brewfile() {
     --verbose \
     --whalebrew \
     "$@" |
+    # move each package name onto the comment line above it, if any
     command sed \
       -e '$!N;/^#.*\n[^#]/s/\n/\t/;P;D' |
+    # swap the package and the comment
     command awk -F '\t' -- '{print $2 $1}' |
+    # prepend each category with a number for sorting
     command sed -E \
       -e 's/^(tap)/1\1/' \
       -e 's/^(brew)/2\1/' \
       -e 's/^(cask)/3\1/' |
     LC_ALL='C' command sort -f |
+    # remove the prepended numbers
     command sed \
       -e 's/^[[:digit:]]//' |
+    # restore each comment to a line above its package
     command sed \
       -e 's/\([^#]*\)\(#.*\)/\2\n\1/' \
       >"${HOME-}"'/.Brewfile'
