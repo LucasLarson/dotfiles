@@ -248,8 +248,14 @@ command -v -- omz >/dev/null 2>&1 ||
   test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' | command sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing Oh My Zsh...\n' 2>/dev/null
-  set -o xtrace
-  sh -c "$(command wget 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' --output-document=-)" "" --unattended --keep-zshrc
+  if command -v -- wget >/dev/null 2>&1; then
+    set -o xtrace
+    sh -c "$(command wget 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' --output-document=-)" "" --unattended --keep-zshrc
+  elif command -v -- curl >/dev/null 2>&1; then
+    set -o xtrace
+    sh -c "$(curl --location 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh')" --unattended --keep-zshrc
+  fi
+  { set +o xtrace; } 2>/dev/null
 }
 
 # update, repair everything again before close
