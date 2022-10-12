@@ -91,9 +91,9 @@ brewfile() {
       -e '$!N;/^#.*\n[^#]/s/\n/\t/;P;D' |
     command awk -F '\t' '{print $2 $1}' |
     command sed -E \
-      -e 's/^(tap)/0\1/' \
-      -e 's/^(brew)/1\1/' \
-      -e 's/^(cask)/2\1/' |
+      -e 's/^(tap)/1\1/' \
+      -e 's/^(brew)/2\1/' \
+      -e 's/^(cask)/3\1/' |
     LC_ALL=C command sort -f |
     command sed \
       -e 's/^[[:digit:]]//' |
