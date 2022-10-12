@@ -17,11 +17,6 @@ jobs:
           # test shell syntax of Markdown code snippets
           # https://github.com/dylanaraps/pure-sh-bible/commit/9d54e96011
 
-          set +o allexport
-          set -o noclobber
-          set -o noglob
-          set -o nounset
-          set -o verbose
           trap 'printf "shellcheck complete\n"' EXIT INT
 
           # Extract code blocks from the README.
