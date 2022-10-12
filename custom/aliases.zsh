@@ -33,7 +33,7 @@ atom_packages() {
 
 bash_major_version() {
   # confirm Bash version is at least any given version (default: at least Bash 4)
-  if test "$(command bash --version | command sed -e '1q' | command awk '{print $4}' | command cut -d '.' -f 1)" -lt "${1:-4}"; then
+  if test "$(command bash --version | command sed -e '1q' | command awk -- '{print $4}' | command cut -d '.' -f 1)" -lt "${1:-4}"; then
     printf 'You will need to upgrade to version %d for full functionality.\n' "${1:-4}" >&2
     return 1
   fi
@@ -91,7 +91,7 @@ brewfile() {
     command sed \
       -e '$!N;/^#.*\n[^#]/s/\n/\t/;P;D' |
     # swap the package and the comment
-    command awk -F '\t' '{print $2 $1}' |
+    command awk -F '\t' -- '{print $2 $1}' |
     # prepend each category with a number for sorting
     command sed -E \
       -e 's/^(tap)/1\1/' \
@@ -518,7 +518,7 @@ count_files_by_extension() {
     -print 2>/dev/null |
     LC_ALL='C' command sort -u |
     command uniq -c |
-    LC_ALL='C' command awk '{print $1}' |
+    LC_ALL='C' command awk -- '{print $1}' |
     command uniq -c |
     command sed -e 's/.$/[no extension]/'
 }
@@ -636,7 +636,7 @@ epoch_seconds() {
   # `srand([expr])` will “Set the seed value for `rand` to `expr` or
   # use the time of day if `expr` is omitted.”
   # https://opengroup.org/onlinepubs/9699919799/utilities/awk.html#tag_20_06_13_12
-  command awk 'BEGIN {srand(); print srand()}'
+  command awk -- 'BEGIN {srand(); print srand()}'
 }
 epoch_to_date_time() {
   if command date -d @0 >/dev/null 2>&1; then
@@ -748,7 +748,7 @@ find_files_with_the_same_names() {
     ! -path '*/.git/*' \
     ! -path '*/node_modules/*' \
     -print0 |
-    command awk -F '/' 'BEGIN {RS="\0"} {n=$NF} k[n]==1 {print p[n]} k[n] {print $0} {p[n]=$0; k[n]++}' |
+    command awk -F '/' -- 'BEGIN {RS="\0"} {n=$NF} k[n]==1 {print p[n]} k[n] {print $0} {p[n]=$0; k[n]++}' |
     while IFS='' read -r file; do
       command basename -- "${file-}"
     done |
@@ -805,7 +805,7 @@ find_shell_scripts() {
     # shfmt also knows how to find shell scripts
     command -v -- shfmt >/dev/null 2>&1 &&
       command shfmt --find -- . |
-      command awk '{print "./" $0}'
+      command awk -- '{print "./" $0}'
 
     # https://github.com/bzz/LangID/blob/37c4960/README.md#collect-the-data
     command github-linguist --breakdown --json -- . 2>/dev/null |
@@ -815,7 +815,7 @@ find_shell_scripts() {
       command jq --raw-output '.Shell.files[]' 2>/dev/null |
 
       # prepend filenames with `./`
-      command awk '{print "./" $0}'
+      command awk -- '{print "./" $0}'
 
   } |
     LC_ALL='C' command sort -u
@@ -900,13 +900,13 @@ git_all_files_ever() {
     # list only files that have been deleted
     command git log --pretty= --name-only --all --diff-filter=D |
       LC_ALL='C' command sort -u |
-      command awk '{print "./" $0}'
+      command awk -- '{print "./" $0}'
     ;;
   *)
     # list all files ever
     command git log --pretty= --name-only --all |
       LC_ALL='C' command sort -u |
-      command awk '{print "./" $0}'
+      command awk -- '{print "./" $0}'
     ;;
   esac
 }
@@ -1173,7 +1173,7 @@ alias grm='grmr'
 git_remote_verbose() {
   # print `git remote -v` into columns
   command git remote --verbose |
-    command awk '{printf "%-16s %s\n", $1, $2}' |
+    command awk -- '{printf "%-16s %s\n", $1, $2}' |
     command uniq
 }
 alias grv='git_remote_verbose'
@@ -1202,7 +1202,7 @@ git_shallow() {
   # Mauricio Scheffer https://stackoverflow.com/a/2169914
   command git submodule init
   command git submodule |
-    command awk '{print $2}' |
+    command awk -- '{print $2}' |
     while IFS='' read -r submodule; do
       submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
       submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
@@ -1352,7 +1352,7 @@ hashlookup() {
     --header 'accept: application/json' \
     'https://hashlookup.circl.lu/lookup/sha256/'"$(
       command sha256sum -- "${1-}" |
-        command awk '{print $1}'
+        command awk -- '{print $1}'
     )" |
     command jq --raw-output '.parents[]' 2>/dev/null
 }
@@ -1361,7 +1361,7 @@ alias h1='command sed -e '\''1q'\'''
 
 history_stats() {
   fc -l 1 |
-    command awk '{CMD[$2]++; count++;}; END {for (a in CMD) print CMD[a] " " CMD[a] * 100 / count "% " a;}' |
+    command awk -- '{CMD[$2]++; count++;}; END {for (a in CMD) print CMD[a] " " CMD[a] * 100 / count "% " a;}' |
     command grep -v -e './' |
     LC_ALL='C' command sort -n -r |
     command sed -e "${1:-"$((LINES - 5))"}"'q' |
@@ -1408,7 +1408,7 @@ fi
 # list --others
 lso() {
   command git ls-files --others --exclude-standard "$@" |
-    command awk '{print "./" $0}'
+    command awk -- '{print "./" $0}'
 }
 
 # dotfiles
