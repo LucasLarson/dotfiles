@@ -803,8 +803,7 @@ find_shell_scripts() {
       -exec sh -c 'command sed -e "1q" -- "{}" | command git grep --files-with-matches -e "^#\!.*bin.*sh" -- "{}" 2>/dev/null | command sed -e "s/^/.\//"' ';'
 
     # shfmt also knows how to find shell scripts
-    command -v -- shfmt >/dev/null 2>&1 &&
-      command shfmt --find -- . |
+    command shfmt --find -- . 2>/dev/null |
       command awk -- '{print "./" $0}'
 
     # https://github.com/bzz/LangID/blob/37c4960/README.md#collect-the-data
