@@ -876,8 +876,7 @@ git_add() {
     ;;
   *)
     # default to everything in the current directory and below
-    command git add --verbose "${@:-.}" &&
-      shift
+    command git add --verbose "${@:-.}"
     ;;
   esac &&
     command git -c color.status=always status --untracked-files=no |
