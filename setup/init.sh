@@ -67,7 +67,7 @@ command -v -- apk >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf 'verifying apk tools integrity...\n' 2>/dev/null
   set -o xtrace
-  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' | command sha256sum)" != '6b3f874c374509e845633c9bb76f21847d0c905dae3e5df58c1809184cef8260  -'
+  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' | command cksum)" != '2112918202 1400307'
 } || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
   command wget --output-document=- 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' |
@@ -208,7 +208,7 @@ command -v -- pip >/dev/null 2>&1 && {
     printf 'verifying integrity of pip bootstrap file...\n'
   } 2>/dev/null
   set -o xtrace
-  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py' | command sha256sum)" != 'e03eb8a33d3b441ff484c56a436ff10680479d4bd14e59268e67977ed40904de  -'
+  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py' | command cksum)" != '545084056 1927630'
 } || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing pip using bootstrap...\n' 2>/dev/null
@@ -245,7 +245,7 @@ command -v -- chsh >/dev/null 2>&1 || {
 # Oh My Zsh
 command -v -- omz >/dev/null 2>&1 ||
   test -d "${ZSH:="${HOME-}"/.oh-my-zsh}" ||
-  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' | command sha256sum)" != 'b6af836b2662f21081091e0bd851d92b2507abb94ece340b663db7e4019f8c7c  -' || {
+  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' | command cksum)" != '1976015298 9942' || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing Oh My Zsh...\n' 2>/dev/null
   if command -v -- wget >/dev/null 2>&1; then
