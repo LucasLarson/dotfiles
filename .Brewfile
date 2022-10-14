@@ -161,6 +161,8 @@ brew "libffi"
 brew "libidn2"
 # X.509 and CMS library
 brew "libksba"
+# Implementation of the file(1) command
+brew "libmagic"
 # C library for the arithmetic of high precision complex numbers
 brew "libmpc"
 # Library for manipulating PNG images
