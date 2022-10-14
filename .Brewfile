@@ -366,6 +366,7 @@ cask "microsoft-auto-update"
 cask "musicbrainz-picard"
 # Display image info and preview unsupported formats in QuickLook
 cask "qlimagesize"
+# QuickLook plugin for plaintext files without an extension
 cask "qlstephen"
 cask "qlvideo"
 # QuickLook plugin for JSON files
