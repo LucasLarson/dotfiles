@@ -1521,6 +1521,10 @@ test -x '/usr/libexec/PlistBuddy' &&
   # https://apple.stackexchange.com/a/414774
   alias plistbuddy='command /usr/libexec/PlistBuddy'
 
+# Python
+command -v -- python3 >/dev/null 2>&1 &&
+  alias python='command python3'
+
 # $?
 question_mark() {
   printf '%d\n' "$?"
