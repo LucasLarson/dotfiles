@@ -833,6 +833,7 @@ g() {
   esac
 }
 alias g.='command git status .'
+alias gs='command git -c color.status=always -c core.quotePath=false status --short --untracked-files=no'
 guo() {
   command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     command sed -e '$d'
@@ -1213,8 +1214,6 @@ git_stash_save_all() {
 }
 alias gstall='git_stash_save_all'
 alias gstc='command git stash clear'
-
-alias gs='command git status'
 
 git_submodule_update() {
   command git submodule update --init --remote "$@" &&
