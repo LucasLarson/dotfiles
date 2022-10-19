@@ -1489,6 +1489,14 @@ path_check() {
   } 2>/dev/null
 }
 
+permissions() {
+  # restore default file and directory permissions
+  command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
+    return "${?:-1}"
+  command find -- . ! -path '*/.*' -type d -exec /bin/chmod -- 755 '{}' '+'
+  command find -- . ! -path '*/.*' -type f -exec /bin/chmod -- 644 '{}' '+'
+}
+
 # pip
 command -v -- pip3 >/dev/null 2>&1 &&
   alias pip='command pip3'
