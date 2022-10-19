@@ -832,7 +832,7 @@ g() {
     ;;
   esac
 }
-alias g.='command git status .'
+alias g.='command git -c color.status=always -c core.quotePath=false status .'
 alias gs='command git -c color.status=always -c core.quotePath=false status --short --untracked-files=no'
 guo() {
   command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
