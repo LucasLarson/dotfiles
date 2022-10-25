@@ -658,7 +658,7 @@ filename_spaces_to_underscores() {
     -depth \
     -name '*'"${from-}"'*' |
     while IFS='' read -r filename; do
-      command mv -i "${filename-}" "$(command dirname -- "${filename-}")"/"$(
+      command mv -i -- "${filename-}" "$(command dirname -- "${filename-}")"/"$(
         command basename -- "${filename-}" |
           command tr "${from-}" "${to-}"
       )"
