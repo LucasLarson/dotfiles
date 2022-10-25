@@ -774,7 +774,7 @@ find_oldest_file() {
     -type f \
     ! -path '*/.git/*' \
     -exec /bin/ls -o -r -t -- '{}' '+' 2>/dev/null |
-    command sed -e '1q'
+    command sed -e "${1:-1}"'q'
 }
 
 find_shell_scripts() {
