@@ -616,6 +616,11 @@ domain_name_from_url() {
   unset -- url
 }
 
+du() {
+  command du -h -s |
+    command awk -- '{print $1}'
+}
+
 epoch_seconds() {
   # return seconds since the epoch, 1969-12-31 19:00:00 EST
   # https://stackoverflow.com/a/41324810
