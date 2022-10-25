@@ -138,7 +138,7 @@ cdp() {
 
 # cheat
 cheat() {
-  command curl --silent 'https://cheat.sh/'"$(
+  command curl --show-error --silent 'https://cheat.sh/'"$(
     printf '%s' "$*" | command sed -e 'y/ /+/'
   )"
 }
@@ -1342,6 +1342,7 @@ hashlookup() {
   test -f "${1-}" ||
     return 66
   command curl \
+    --show-error \
     --silent \
     --header 'accept: application/json' \
     'https://hashlookup.circl.lu/lookup/sha256/'"$(
