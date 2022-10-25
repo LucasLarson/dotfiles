@@ -1275,6 +1275,9 @@ gvc() {
   command git verify-commit "${1:-HEAD}"
 }
 
+command -v -- gh >/dev/null 2>&1 &&
+  alias ghs='command gh status'
+
 gitlab_create_repository() {
   command git push --set-upstream git@gitlab.com:"${GITLAB_USERNAME:-${USER-}}"/"$(
     command git rev-parse --show-toplevel |
