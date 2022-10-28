@@ -955,16 +955,16 @@ alias gcl1='git_clone -1'
 
 # git commit
 git_commit() {
-  if test "$#" -eq '0'; then
-    command git commit --signoff --verbose ||
+  case "${1-}" in
+  --amend | '')
+    command git commit --signoff --verbose "$@" ||
       return 1
-  elif test "$1" = '--amend'; then
-    command git commit --amend --signoff --verbose ||
-      return 1
-  else
+    ;;
+  *)
     command git commit --signoff --verbose -m "$@" ||
       return 1
-  fi
+    ;;
+  esac
   command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     command sed -e '$d'
 }
