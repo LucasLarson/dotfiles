@@ -125,8 +125,6 @@ printf 'no Software Update installation detected.\n\n'; fi
 printf 'checking for Xcode installation...\n'; if command -v -- xcrun >/dev/null 2>&1; then
 printf 'removing unavailable device simulators...\n'; command xcrun simctl delete unavailable; else
 printf 'no Xcode installation detected.\n\n'; fi
-printf '\342\232\233\357\270\217  checking for Atom installation...\n'; if command -v -- apm >/dev/null 2>&1; then command apm upgrade --no-confirm; else
-printf 'no Atom installation detected.\n\n'; fi
 printf 'checking for Rust installation...\n'; if command -v -- rustup >/dev/null 2>&1; then command rustup update; else
 printf 'no Rust installation detected.\n\n'; fi
 printf 'checking for npm installation...\n'; if command -v -- npm >/dev/null 2>&1; then
@@ -485,8 +483,8 @@ to backdate a commit:<br>
 
 Vim<br>
 `git config --global core.editor /usr/local/bin/vim`<br>
-Atom [via](https://stackoverflow.com/a/31389989)<br>
-`git config --global core.editor "atom --wait"`
+Visual Studio Code<br>
+`git config --global core.editor "code --wait"`
 
 ### `git tag`
 
