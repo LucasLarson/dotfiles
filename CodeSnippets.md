@@ -456,6 +456,7 @@ do not disable it, because that would allow you to install any software, even if
 ### `git add`
 
 [via](https://stackoverflow.com/a/15011313)
+
 | content to add                  | git command                         |
 | ------------------------------- | ----------------------------------- |
 | modified files only             | `git add --updated` or `git add -u` |
@@ -518,6 +519,7 @@ Atom [via](https://stackoverflow.com/a/31389989)<br/>
 ## parameter expansion
 
 [via](https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02)
+
 |                        | *parameter* Set and Not Null | *parameter* Set But Null | *parameter* Unset |
 | ---------------------- | ---------------------------- | ------------------------ | ----------------- |
 | ${*parameter*:-*word*} | substitute *parameter*       | substitute *word*        | substitute *word* |
