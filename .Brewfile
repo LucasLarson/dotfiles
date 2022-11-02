@@ -327,8 +327,6 @@ brew "zlib"
 brew "zsh", args: ["HEAD"]
 # Tips, tricks, and examples for zsh
 brew "zsh-lovers"
-# Text editor
-cask "atom"
 # Voice and text chat software
 cask "discord-canary"
 # App to build and share containerized applications and microservices
