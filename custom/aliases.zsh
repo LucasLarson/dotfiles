@@ -1235,12 +1235,13 @@ git_undo() {
 alias gundo='git_undo'
 
 git_update() {
-  command -v -- cleanup >/dev/null 2>&1 &&
-    cleanup "$@"
-
   # run only from within a Git repository
   # https://stackoverflow.com/a/53809163
   if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+
+    command -v -- cleanup >/dev/null 2>&1 &&
+      cleanup "$@"
+
     command git fetch --all --prune --verbose
 
     # `git submodule update` with `--remote` appears to slow Git to a crawl
