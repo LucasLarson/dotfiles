@@ -25,7 +25,7 @@ aliases() {
 
 bash_major_version() {
   # confirm Bash version is at least any given version (default: at least Bash 4)
-  if test "$(command bash --version | command sed -e '1q' | command awk -- '{print $4}' | command cut -d '.' -f 1)" -lt "${1:-4}"; then
+  if test "$(bash -c 'printf "%d" "${BASH_VERSINFO[0]}"')" -lt "${1:-4}"; then
     printf 'You will need to upgrade to version %d for full functionality.\n' "${1:-4}" >&2
     return 1
   fi
