@@ -1,1 +1,1 @@
-abbr --global l="exa --all --bytes --classify --color-scale --color=always --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso"
+abbr --global lf='exa --all --bytes --classify --color-scale --color=always --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso -- '\''{}'\'' '\''+'\'''
