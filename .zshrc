@@ -138,15 +138,11 @@ command man -w >/dev/null 2>&1 &&
   MANPATH="${MANPATH:+${MANPATH-}:}$(command man -w)"
 
 ## EDITOR
-# access favorite with `e`
-# Set preferred editor if it is available
-if command -v -- nvim >/dev/null 2>&1; then
-  EDITOR="$(command -v -- nvim)"
-elif command -v -- vim >/dev/null 2>&1; then
-  EDITOR="$(command -v -- vim)"
-elif command -v -- vi >/dev/null 2>&1; then
-  EDITOR="$(command -v -- vi)"
-fi
+EDITOR="$(
+  command -v -- nvim ||
+    command -v -- vim ||
+    command -v -- vi
+)"
 if test -n "${EDITOR-}"; then
   export EDITOR
   alias e='command "${EDITOR-}"'
