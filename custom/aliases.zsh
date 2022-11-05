@@ -1447,6 +1447,26 @@ odb() {
     command sed -e 's/\\$/\n/'
 }
 
+command -v -- ocrmypdf >/dev/null 2>&1 &&
+  ocr() {
+    command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
+      return "${?:-1}"
+    for file; do
+      test "${file-}" = "${file%.pdf}" &&
+        return "${?:-1}"
+      command ocrmypdf \
+        --deskew \
+        --language eng \
+        --optimize 0 \
+        --pdfa-image-compression lossless \
+        --rotate-pages \
+        --skip-text \
+        -- \
+        "${file-}" "${file-}".ocr.pdf
+    done
+    unset file
+  }
+
 # open current directory if no argument is given
 open() {
   if test "$#" -eq '0'; then
