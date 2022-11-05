@@ -209,6 +209,8 @@ brew "ninja"
 brew "node"
 # Platform built on V8 to build network applications
 brew "node@16"
+# Adds an OCR text layer to scanned PDF files
+brew "ocrmypdf"
 # Bash-compatible Unix shell with more consistent syntax and semantics
 brew "oil"
 # Portable OpenBSD ksh, based on the public domain Korn shell (pdksh)
