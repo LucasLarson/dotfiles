@@ -30,6 +30,9 @@
   # https://github.com/jeefberkey/dotfiles/blob/b3513ad/.gitconfig#L11
   pager = command diff-so-fancy | command less --RAW-CONTROL-CHARS --no-init --quit-if-one-screen --tabs=4
 
+[blame]
+  coloring = highlightRecent
+
 [color "diff"]
   meta = 11
   frag = magenta bold
