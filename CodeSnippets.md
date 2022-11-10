@@ -156,49 +156,49 @@ printf '\n\n\342%s\234\205  done\041\n' "${update-}"; $(command -v -- exec) -l -
 
 ### detail
 
-`xcode-select --switch /Applications/Xcode.app || xcode-select --switch /Applications/Xcode-beta.app || xcode-select --install && \`<br/>
-`xcrun simctl delete unavailable && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/d7406c3bb347af9fb1734885ed571117a5dbf90a/README.md#remove-all-unavailable-simulators) `\`<br/>
-`brew update --debug --verbose && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/launchagents.md#periodic-homebrew-update-and-upgrade)`,` [via](https://stackoverflow.com/a/47664603) `\`<br/>
-`brew upgrade && \`<br/>
-`brew upgrade --cask && #` [via](https://github.com/hisaac/hisaac.net/blob/8c63d51119fe2a0f05fa6c1c2a404d12256b0594/source/_posts/2018/2018-02-12-update-all-the-things.md#readme), [via](https://github.com/Homebrew/homebrew-cask/pull/88681) `\`<br/>
-`brew install mackup --head && #` 0.8.29 [2020-06-06](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br/>
-`mackup backup --force --root \`<br/>
-`omz update && #` [via](https://github.com/ohmyzsh/ohmyzsh/blob/3935ccc/lib/functions.zsh#L9-L12) `\`<br/>
-`git clone --recurse-submodules --depth 1 --branch main --verbose --progress #` [via](https://github.com/hisaac/Tiime/blob/ff1a39d6765d8ae5c9724ca84d5c680dff4c602e/README.md#bootstrapping-instructions), [via](https://stackoverflow.com/a/50028481) `\`<br/>
-`git submodule update --init --recursive && #` [via](https://stackoverflow.com/a/10168693) `\`<br/>
-`npm install npm --global && #` [via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L51-L52), [via](https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties) `\`<br/>
-`npm update --global --verbose && #` 6.14.5 [2020-05-04](https://www.npmjs.com/package/npm?activeTab=versions#versions) `\`<br/>
-`apm upgrade --no-confirm && #` via npm analogy `\`<br/>
-`gem update --system && #`  3.1.4 [2020-06-03](https://blog.rubygems.org) `\`<br/>
-`gem update && \`<br/>
-`gem install bundler --pre && #`  2.1.4 [2020-01-05](https://rubygems.org/gems/bundler/versions) `\`<br/>
-`gem install cocoapods --pre && #`  1.9.3 [2020-05-29](https://rubygems.org/gems/cocoapods/versions) `\`<br/>
-`bundle update && #` [via](https://github.com/ffi/ffi/issues/651#issuecomment-513835103) `\`<br/>
-`bundle install --verbose && \`<br/>
-`bundle exec pod install --verbose && \`<br/>
-`pod repo update && pod repo update && \`<br/>
-`pod install && \`<br/>
-`rbenv rehash && pyenv rehash && \`<br/>
-`python -m pip install --upgrade pip` && # 20.1.1 [2020-05-19](https://pip.pypa.io/en/stable/news/#id1) [via](https://opensource.com/article/19/5/python-3-default-mac#comment-180271), [via](https://github.com/pypa/pip/blob/52309f98d10d8feec6d319d714b0d2e5612eaa47/src/pip/_internal/self_outdated_check.py#L233-L236) `\`<br/>
-`pip list --outdated --format freeze \`<br/>
-    `| grep --invert-match '^\-e' \`<br/>
-    `| cut --delimiter = --fields 1 \`<br/>
-    `| xargs -n1 pip install --upgrade && #` [via](https://stackoverflow.com/revisions/3452888/14) `\`<br/>
-`pip install --upgrade $(pip freeze | cut --delimiter '=' --fields 1) && #` [via](https://web.archive.org/web/20200508173219id_/coderwall.com/p/quwaxa/update-all-installed-python-packages-with-pip#comment_29830) `\`<br/>
-`pipenv shell &&` # [via](https://github.com/pypa/pipenv/blob/bfbe1304f63372a0eb7c1531590b51195db453ea/pipenv/core.py?instructions_while_running_pipenv_install#L1282) `\`<br/>
-`pipenv install --dev && #` [via](https://stackoverflow.com/a/49867443) `\`<br/>
-`rustup update && #` 1.44.1 [2020-06-18](https://github.com/rust-lang/rust/releases) `\`<br/>
-`brew install carthage --head && #` 0.36.0 [2020-09-18](https://github.com/Carthage/Carthage/releases) `\`<br/>
-`carthage update --verbose --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br/>
-`brew install swiftgen --head && #`  6.2.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br/>
-`swiftgen && \`<br/>
-`brew install swiftlint --head && #` 0.40.3 [2020-09-22](https://github.com/realm/SwiftLint/releases) `\`<br/>
-`swiftlint autocorrect && \`<br/>
-`git gc && \`<br/>
-`# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br/>
-`. ~/.${SHELL##*/}rc && \`<br/>
-`printf '\n\n\342%s\234\205 done\041\n\n' "$update" && #` [via](https://stackoverflow.com/a/30762087), [via](https://stackoverflow.com/a/602924), [via](https://github.com/koalaman/shellcheck/wiki/SC2059/0c9cfe7e8811d3cafae8df60f41849ef7d17e296#problematic-code) `\`<br/>
-`#` note successful finish before restarting the shell `\`<br/>
+`xcode-select --switch /Applications/Xcode.app || xcode-select --switch /Applications/Xcode-beta.app || xcode-select --install && \`<br>
+`xcrun simctl delete unavailable && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/d7406c3bb347af9fb1734885ed571117a5dbf90a/README.md#remove-all-unavailable-simulators) `\`<br>
+`brew update --debug --verbose && #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/launchagents.md#periodic-homebrew-update-and-upgrade)`,` [via](https://stackoverflow.com/a/47664603) `\`<br>
+`brew upgrade && \`<br>
+`brew upgrade --cask && #` [via](https://github.com/hisaac/hisaac.net/blob/8c63d51119fe2a0f05fa6c1c2a404d12256b0594/source/_posts/2018/2018-02-12-update-all-the-things.md#readme), [via](https://github.com/Homebrew/homebrew-cask/pull/88681) `\`<br>
+`brew install mackup --head && #` 0.8.29 [2020-06-06](https://github.com/lra/mackup/blob/master/CHANGELOG.md#mackup-changelog) `\`<br>
+`mackup backup --force --root \`<br>
+`omz update && #` [via](https://github.com/ohmyzsh/ohmyzsh/blob/3935ccc/lib/functions.zsh#L9-L12) `\`<br>
+`git clone --recurse-submodules --depth 1 --branch main --verbose --progress #` [via](https://github.com/hisaac/Tiime/blob/ff1a39d6765d8ae5c9724ca84d5c680dff4c602e/README.md#bootstrapping-instructions), [via](https://stackoverflow.com/a/50028481) `\`<br>
+`git submodule update --init --recursive && #` [via](https://stackoverflow.com/a/10168693) `\`<br>
+`npm install npm --global && #` [via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L51-L52), [via](https://docs.npmjs.com/misc/config#shorthands-and-other-cli-niceties) `\`<br>
+`npm update --global --verbose && #` 6.14.5 [2020-05-04](https://www.npmjs.com/package/npm?activeTab=versions#versions) `\`<br>
+`apm upgrade --no-confirm && #` via npm analogy `\`<br>
+`gem update --system && #`  3.1.4 [2020-06-03](https://blog.rubygems.org) `\`<br>
+`gem update && \`<br>
+`gem install bundler --pre && #`  2.1.4 [2020-01-05](https://rubygems.org/gems/bundler/versions) `\`<br>
+`gem install cocoapods --pre && #`  1.9.3 [2020-05-29](https://rubygems.org/gems/cocoapods/versions) `\`<br>
+`bundle update && #` [via](https://github.com/ffi/ffi/issues/651#issuecomment-513835103) `\`<br>
+`bundle install --verbose && \`<br>
+`bundle exec pod install --verbose && \`<br>
+`pod repo update && pod repo update && \`<br>
+`pod install && \`<br>
+`rbenv rehash && pyenv rehash && \`<br>
+`python -m pip install --upgrade pip` && # 20.1.1 [2020-05-19](https://pip.pypa.io/en/stable/news/#id1) [via](https://opensource.com/article/19/5/python-3-default-mac#comment-180271), [via](https://github.com/pypa/pip/blob/52309f98d10d8feec6d319d714b0d2e5612eaa47/src/pip/_internal/self_outdated_check.py#L233-L236) `\`<br>
+`pip list --outdated --format freeze \`<br>
+    `| grep --invert-match '^\-e' \`<br>
+    `| cut --delimiter = --fields 1 \`<br>
+    `| xargs -n1 pip install --upgrade && #` [via](https://stackoverflow.com/revisions/3452888/14) `\`<br>
+`pip install --upgrade $(pip freeze | cut --delimiter '=' --fields 1) && #` [via](https://web.archive.org/web/20200508173219id_/coderwall.com/p/quwaxa/update-all-installed-python-packages-with-pip#comment_29830) `\`<br>
+`pipenv shell &&` # [via](https://github.com/pypa/pipenv/blob/bfbe1304f63372a0eb7c1531590b51195db453ea/pipenv/core.py?instructions_while_running_pipenv_install#L1282) `\`<br>
+`pipenv install --dev && #` [via](https://stackoverflow.com/a/49867443) `\`<br>
+`rustup update && #` 1.44.1 [2020-06-18](https://github.com/rust-lang/rust/releases) `\`<br>
+`brew install carthage --head && #` 0.36.0 [2020-09-18](https://github.com/Carthage/Carthage/releases) `\`<br>
+`carthage update --verbose --no-use-binaries && #` [via](https://stackoverflow.com/a/41526660) `\`<br>
+`brew install swiftgen --head && #`  6.2.0 [2019-01-29](https://github.com/SwiftGen/SwiftGen/releases) `\`<br>
+`swiftgen && \`<br>
+`brew install swiftlint --head && #` 0.40.3 [2020-09-22](https://github.com/realm/SwiftLint/releases) `\`<br>
+`swiftlint autocorrect && \`<br>
+`git gc && \`<br>
+`# gradle build --refresh-dependencies --warning-mode all && #` [via](https://stackoverflow.com/a/35374051) `\`<br>
+`. ~/.${SHELL##*/}rc && \`<br>
+`printf '\n\n\342%s\234\205 done\041\n\n' "$update" && #` [via](https://stackoverflow.com/a/30762087), [via](https://stackoverflow.com/a/602924), [via](https://github.com/koalaman/shellcheck/wiki/SC2059/0c9cfe7e8811d3cafae8df60f41849ef7d17e296#problematic-code) `\`<br>
+`#` note successful finish before restarting the shell `\`<br>
 `exec -l "${SHELL##*/}" #` [via](https://github.com/mathiasbynens/dotfiles/commit/cb8843bea74f1d223ea2967c7a891ca76c9e54e9#diff-ec67f41a7a08f67e6d486db809809f700007e2d58895d67e842ff21123adaee4R145-R146)
 
 ## Mackup
@@ -220,7 +220,7 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 command find -- /System/Applications /Applications -maxdepth 3 -type d -name '*.app' -print0 | command xargs -0 basename -a -s '.app' -- | LC_ALL='C' command sort -u | LC_ALL='C' command sort -f
 ```
 
-On Alpine Linux, generate a list of installed packages with:<br/>
+On Alpine Linux, generate a list of installed packages with:<br>
 `command apk --verbose --verbose info | LC_ALL='C' command sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
 
 ##### Homebrew
@@ -260,8 +260,8 @@ Definintions of the numbers that follow `man` commands ([via](https://web.archi
 
 ### testing
 
-`apk add foo #` unavailable? `\`<br/>
-`#` then try `\`<br/>
+`apk add foo #` unavailable? `\`<br>
+`#` then try `\`<br>
 `apk add foo@testing #` [via](https://web.archive.org/web/20201014175951id_/stackoverrun.com/ja/q/12834672#text_a46821207)
 
 ## list everything recursively in a directory
@@ -289,12 +289,12 @@ command find -- . '(' -name '*.cpp' -o -name '*.hpp' ')' -print |
 
 ### `grep`
 
-search for the word “example” inside the current directory which is “.”<br/>
+search for the word “example” inside the current directory which is “.”<br>
 `grep -i -n -r 'example' .`
 
 ### locate all
 
-for example, locate all JPEG files:<br/>
+for example, locate all JPEG files:<br>
 `command find -- . -type f '(' -name '*.jpg' -o -name '*.JPEG' -o -name '*.JPG' -o -name '*.jpeg' ')'`
 
 ## PATH
@@ -311,25 +311,25 @@ printf '%s\n' "${PATH-}" | sed -e 'y/:/\n/'
 
 ### export output
 
-`printf 'First Name\n'` **>**`./ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br/>
-`printf 'Other First Name\n'` **>**`./ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br/>
+`printf 'First Name\n'` **>**`./ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br>
+`printf 'Other First Name\n'` **>**`./ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br>
 `printf 'Last Name\n'` **>>**`./ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
 
 #### sort
 
-`command env >./example.txt` # save an unordered list of `env` variables<br/>
+`command env >./example.txt` # save an unordered list of `env` variables<br>
 `command env | LC_ALL='C' command sort >./example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
 
 ### EOL and EOF encoding
 
-find `(?<![\r\n])$(?![\r\n])` # [via](https://stackoverflow.com/a/34958727)<br/>
+find `(?<![\r\n])$(?![\r\n])` # [via](https://stackoverflow.com/a/34958727)<br>
 replace `\r\n`
 
 ## make invisible
 
-`chflags -hvv hidden example.txt`<br/>
-`-h` for symbolic links, if applicable, but not their targets<br/>
-`-v`₁ for verbose<br/>
+`chflags -hvv hidden example.txt`<br>
+`-h` for symbolic links, if applicable, but not their targets<br>
+`-v`₁ for verbose<br>
 `-v`₂ for printing the old and new flags in octal to `stdout`
 
 ## create an alias
@@ -345,7 +345,7 @@ ln -s existing_file shortcut_to_file
 
 ### reset
 
-remove bogus entries from Finder’s “Open With” menu ([via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L69-L70))<br/>
+remove bogus entries from Finder’s “Open With” menu ([via](https://github.com/mathiasbynens/dotfiles/blob/e42090bf49f860283951041709163653c8a2c522/.aliases#L69-L70))<br>
 `/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -seed -r -domain local -domain system -domain user && killall Finder`
 
 ### repair site disk permissions
@@ -399,21 +399,21 @@ command find -- . ! -path '*/.*' -type f -exec chmod -- 644 '{}' '+'
 
 ### flags
 
-`-Wall -Wextra -pedantic`<br/>
-`#ifdef __APPLE__`<br/>
-    `-Weverything <!--` do not use ([via](https://web.archive.org/web/20190926015534id_/quuxplusone.github.io/blog/2018/12/06/dont-use-weverything/#for-example-if-you-want-to-see-a)) `-->`<br/>
-`#endif`<br/>
-`-Woverriding-method-mismatch -Weffc++ -Wcall-to-pure-virtual-from-ctor-dtor -Wmemset-transposed-args -Wreturn-std-move -Wsizeof-pointer-div -Wdefaulted-function-deleted` # [via](https://github.com/jonreid/XcodeWarnings/issues/8#partial-discussion-header)<br/>
+`-Wall -Wextra -pedantic`<br>
+`#ifdef __APPLE__`<br>
+    `-Weverything <!--` do not use ([via](https://web.archive.org/web/20190926015534id_/quuxplusone.github.io/blog/2018/12/06/dont-use-weverything/#for-example-if-you-want-to-see-a)) `-->`<br>
+`#endif`<br>
+`-Woverriding-method-mismatch -Weffc++ -Wcall-to-pure-virtual-from-ctor-dtor -Wmemset-transposed-args -Wreturn-std-move -Wsizeof-pointer-div -Wdefaulted-function-deleted` # [via](https://github.com/jonreid/XcodeWarnings/issues/8#partial-discussion-header)<br>
 `-lstdc++ #` [via](https://web.archive.org/web/20200517174250id_/unspecified.wordpress.com/2009/03/15/linking-c-code-with-gcc/#post-54) but this might – or might not – be helpful on macOS using gcc or g++
 
 #### C++ features before wide support
 
-for example, C++17’s `<filesystem>`<br/>
+for example, C++17’s `<filesystem>`<br>
 `-lstdc++fs`
 
 ### apply `clang-format` recursively
 
-[via](https://stackoverflow.com/a/36046965)<br/>
+[via](https://stackoverflow.com/a/36046965)<br>
 
 ```shell
 command clang-format --version 2>/dev/null || return 2; command sleep 1; IndentWidth='2'; ColumnLimit='79'; printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"; command sleep 1; while getopts i:w: opt;do case "${opt-}" in (i) IndentWidth="${OPTARG-}"; printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"; command sleep 1;; \
@@ -437,7 +437,7 @@ command clang-format --version 2>/dev/null || return 2; command sleep 1; IndentW
 
 #### C
 
-[via](https://stackoverflow.com/q/32029445), [via](https://stackoverflow.com/q/33662375)<br/>
+[via](https://stackoverflow.com/q/32029445), [via](https://stackoverflow.com/q/33662375)<br>
 `gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic *.c`
 
 #### C++
@@ -450,7 +450,7 @@ command clang-format --version 2>/dev/null || return 2; command sleep 1; IndentW
 
 ## Gatekeeper
 
-do not disable it, because that would allow you to install any software, even if unsigned, even if malicious:<br/>
+do not disable it, because that would allow you to install any software, even if unsigned, even if malicious:<br>
 `sudo spctl --master-disable #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/bd25a136655e63fcb7f3462a8dc7105f30093e54/README.md#manage-gatekeeper)
 
 ## Git
@@ -467,7 +467,7 @@ do not disable it, because that would allow you to install any software, even if
 
 ### `git diff`
 
-more detailed `git diff` and how I once found an LF‑to‑CRLF‑only difference<br/>
+more detailed `git diff` and how I once found an LF‑to‑CRLF‑only difference<br>
 `git diff --raw`
 
 ### `git commit`
@@ -478,21 +478,21 @@ more detailed `git diff` and how I once found an LF‑to‑CRLF‑only differen
 
 #### in the past
 
-to backdate a commit:<br/>
+to backdate a commit:<br>
 `GIT_TIME='`**2000-01-02T15:04:05 -0500**`' GIT_AUTHOR_DATE=$GIT_TIME GIT_COMMITTER_DATE=$GIT_TIME git commit --message='add modifications made at 3:04:05pm EST on January 2, 2000' #` [via](https://stackoverflow.com/questions/3895453/how-do-i-make-a-git-commit-in-the-past#comment97787061_3896112)
 
 ### `git config`
 
 #### editor
 
-Vim<br/>
-`git config --global core.editor /usr/local/bin/vim`<br/>
+Vim<br>
+`git config --global core.editor /usr/local/bin/vim`<br>
 Visual Studio Code<br>
 `git config --global core.editor "code --wait"`
 
 ### `git tag`
 
-`git tag v𝑖.𝑗.𝑘 #` where 𝑖, 𝑗, and 𝑘 are non-negative integers representing [SemVer](https://github.com/semver/semver/blob/8b2e8eec394948632957639dfa99fc7ec6286911/semver.md#summary) (semantic versioning) major, minor, and patch releases<br/>
+`git tag v𝑖.𝑗.𝑘 #` where 𝑖, 𝑗, and 𝑘 are non-negative integers representing [SemVer](https://github.com/semver/semver/blob/8b2e8eec394948632957639dfa99fc7ec6286911/semver.md#summary) (semantic versioning) major, minor, and patch releases<br>
 `git push origin v𝑖.𝑗.𝑘 #` push the unannotated tag [via](https://stackoverflow.com/a/5195913)
 
 ## Numbers
@@ -510,12 +510,12 @@ Visual Studio Code<br>
 
 ### Identify
 
-`printf '\n\140uname -a\140:\n%s\n\n' "$(uname -a)"; \`<br/>
-`command -v -- sw_vers >/dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`<br/>
-`printf '\n\140sw_vers\140:\n%s\n\n' "$(sw_vers)"; \`<br/>
-`command -v -- lsb_release >/dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`<br/>
-`printf '\n\140lsb_release --all\140:\n%s\n\n' "$(lsb_release --all)"; \`<br/>
-`[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`<br/>
+`printf '\n\140uname -a\140:\n%s\n\n' "$(uname -a)"; \`<br>
+`command -v -- sw_vers >/dev/null 2>&1 && #` [via](https://apple.stackexchange.com/a/368244) `\`<br>
+`printf '\n\140sw_vers\140:\n%s\n\n' "$(sw_vers)"; \`<br>
+`command -v -- lsb_release >/dev/null 2>&1 && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-from-the-command-line) `\`<br>
+`printf '\n\140lsb_release --all\140:\n%s\n\n' "$(lsb_release --all)"; \`<br>
+`[ -r /etc/os-release ] && #` [via](https://web.archive.org/web/20201023154958id_/linuxize.com/post/how-to-check-your-debian-version/#checking-debian-version-using-the-etcos-release-file) `\`<br>
 `printf '\140cat /etc/os-release\140:\n%s\n\n' "$(cat /etc/os-release)"`
 
 ## parameter expansion
@@ -549,7 +549,7 @@ Visual Studio Code<br>
 
 ## rename files
 
-`brew install --upgrade rename && #` [via](https://stackoverflow.com/a/31694356) `\`<br/>
+`brew install --upgrade rename && #` [via](https://stackoverflow.com/a/31694356) `\`<br>
 `rename --dry-run --verbose --subst searchword replaceword *`
 
 ### replace
@@ -570,7 +570,7 @@ find -- . -type f -exec sed -E -i \
 
 ## split enormous files into something manageable
 
-if your example.csv has too many rows ([via](https://web.archive.org/web/20181210131347/domains-index.com/best-way-view-edit-large-csv-files/#post-12141))<br/>
+if your example.csv has too many rows ([via](https://web.archive.org/web/20181210131347/domains-index.com/best-way-view-edit-large-csv-files/#post-12141))<br>
 `split -l 2000 example.csv; for i in *; do mv "$i" "$i.csv"; done`
 
 ## SSH
@@ -583,7 +583,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## variables
 
-`$PWD` # the name of the current directory and its entire path<br/>
+`$PWD` # the name of the current directory and its entire path<br>
 `${PWD##*/}` # [via](https://stackoverflow.com/a/1371283) the name of only the current directory
 
 ## wget
@@ -608,10 +608,10 @@ https://"${wget_server-}"; unset wget_server utility`
 
 ### signing
 
-`PRODUCT_BUNDLE_IDENTIFIER = net.LucasLarson.$(PRODUCT_NAME:rfc1034identifier);`<br/>
-`PRODUCT_NAME = $(PROJECT_NAME) || $(PRODUCT_NAME:c99extidentifier) || $(TARGET_NAME)`<br/>
-`DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";`<br/>
-`DevelopmentTeam = "$(DEVELOPMENT_TEAM)";`<br/>
+`PRODUCT_BUNDLE_IDENTIFIER = net.LucasLarson.$(PRODUCT_NAME:rfc1034identifier);`<br>
+`PRODUCT_NAME = $(PROJECT_NAME) || $(PRODUCT_NAME:c99extidentifier) || $(TARGET_NAME)`<br>
+`DEVELOPMENT_TEAM = "$(DEVELOPMENT_TEAM)";`<br>
+`DevelopmentTeam = "$(DEVELOPMENT_TEAM)";`<br>
 `WARNING_CFLAGS = $(inherited) $(WAX_ANALYZER_FLAGS)`
 
 Search the `.pbxproj` file for
@@ -651,14 +651,14 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 ### brew
 
-`brew doctor --debug --verbose && \`<br/>
-`brew cleanup --debug --verbose && #` [via](https://stackoverflow.com/a/41030599) `\`<br/>
+`brew doctor --debug --verbose && \`<br>
+`brew cleanup --debug --verbose && #` [via](https://stackoverflow.com/a/41030599) `\`<br>
 `brew audit cask --strict --token-conflicts`
 
 ### npm
 
-`npm audit fix && \`<br/>
-`npm doctor && #` creates empty `node_modules` directories `\`<br/>
+`npm audit fix && \`<br>
+`npm doctor && #` creates empty `node_modules` directories `\`<br>
 `find -- node_modules -empty -type d -delete #` deletes them [via](https://perma.cc/YNL2-FY3Z)
 
 ### gem
@@ -679,14 +679,14 @@ command -v -- brew >/dev/null 2>&1 && command brew cleanup --prune=all --verbose
 
 ## delete
 
-`rm -ri /directory #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br/>
+`rm -ri /directory #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br>
 `rm  -i /document.txt # -i` stands for interactive
 
 ### empty directories
 
-make a list of empty folders inside and beneath current directory **`.`** ([via](https://unix.stackexchange.com/a/46326))<br/>
-`find -- . -type d -empty -print`<br/>
-if satisfied with the results being lost and gone forever, execute:<br/>
+make a list of empty folders inside and beneath current directory **`.`** ([via](https://unix.stackexchange.com/a/46326))<br>
+`find -- . -type d -empty -print`<br>
+if satisfied with the results being lost and gone forever, execute:<br>
 `find -- . -type d -empty -delete`
 
 ### compare two folders
