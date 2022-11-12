@@ -14,8 +14,6 @@
   # https://wildlyinaccurate.com/useful-git-configuration-items/#prevent-line-ending-issues
   autocrlf = input
 
-  excludesFile = ~/.gitignore_global
-
   # aggressive but slow repo compression
   # https://stackoverflow.com/a/28156806
   # https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression

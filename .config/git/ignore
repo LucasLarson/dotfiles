@@ -1,8 +1,17 @@
-# Automatically created by GitHub for Mac
-# To make edits, delete these initial comments, or else your changes may be lost!
+#       ╭╮                     ╭╮   ╭╮    ╭╮
+#      ╭╯╰╮                    ││   ││    ││
+#   ╭──┼╮╭┼┬──┬─╮╭──┬─┬──╮  ╭──┤│╭──┤╰─┬──┤│
+#   │╭╮├┤│├┤╭╮│╭╮┤╭╮│╭┤│─┤  │╭╮│││╭╮│╭╮│╭╮││
+#  ╭┤╰╯││╰┤│╰╯││││╰╯││││─┼──┤╰╯│╰┤╰╯│╰╯│╭╮│╰╮
+#  ╰┴─╮├┴─┴┴─╮├╯╰┴──┴╯╰──┴──┴─╮├─┴──┴──┴╯╰┴─╯
+#   ╭─╯│   ╭─╯│             ╭─╯│
+#   ╰──╯   ╰──╯             ╰──╯
+#
+# https://github.com/github/gitignore/blob/320a610/Global/macOS.gitignore
 
+### macOS ###
 # General
-*.DS_Store
+.DS_Store
 .AppleDouble
 .LSOverride
 
@@ -11,6 +20,9 @@ Icon
 
 # Thumbnails
 ._*
+
+# Downloads
+.part
 
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
@@ -27,3 +39,43 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+## JetBrains ##
+*.idea/
+
+## Mercurial ##
+*.hg
+
+## Node ##
+*node_modules/
+
+## SourceTree ##
+*-lock.*
+!package-lock.json
+*.pbxuser
+*.xcuserstate
+Cartfile.resolved
+Gemfile.lock
+
+## Subversion ##
+*.svn
+
+## UpdraftPlus ##
+upgrade/
+*cache/
+updraft/
+backup*/
+*backups/
+*.sql
+*.log
+
+## Vim ##
+*.swp
+
+## Wget ##
+*.wget-hsts
+
+## keys ##
+*.key
+*.pem
+.aws/
