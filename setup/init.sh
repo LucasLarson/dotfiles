@@ -279,8 +279,6 @@ command apk verify --verbose --verbose --progress && {
 { set +o xtrace; } 2>/dev/null
 printf 'cleaning up temporary installation files and performing housekeeping...\n' 2>/dev/null
 set -o xtrace
-test -w ./setup &&
-  rm ./setup
 
 # message of the day
 test -s '/etc/motd' &&
