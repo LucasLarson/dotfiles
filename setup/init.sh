@@ -14,12 +14,6 @@
 # curl --remote-name --location 'https://lucaslarson.net/init.sh'
 # pacman --sync --verbose --noconfirm "$@"
 
-if command -v -- wget >/dev/null 2>&1; then
-  command wget --continue --server-response 'https://lucaslarson.net/init.sh'
-else
-  command curl --remote-name --location 'https://lucaslarson.net/init.sh'
-fi
-
 if command -v -- apk >/dev/null 2>&1; then
   alias install='command apk add --verbose'
 elif command -v -- pacman >/dev/null 2>&1; then
