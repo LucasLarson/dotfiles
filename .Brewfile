@@ -95,8 +95,6 @@ brew "fish"
 brew "flake8"
 # Examines code and reports possible security weaknesses
 brew "flawfinder"
-# Static type checker for JavaScript
-brew "flow"
 # Software library to render fonts
 brew "freetype"
 # GNU awk utility
