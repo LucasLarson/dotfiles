@@ -202,7 +202,7 @@ command -v -- pip >/dev/null 2>&1 && {
     printf 'verifying integrity of pip bootstrap file...\n'
   } 2>/dev/null
   set -o xtrace
-  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py' | command cksum)" != '545084056 1927630'
+  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20221114002029id_/bootstrap.pypa.io/get-pip.py' | command cksum)" != '3397773170 2569500'
 } || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing pip using bootstrap...\n' 2>/dev/null
