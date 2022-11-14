@@ -61,7 +61,7 @@ command -v -- apk >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf 'verifying apk tools integrity...\n' 2>/dev/null
   set -o xtrace
-  test "$(command curl --fail --silent --location 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' | command cksum)" != '2112918202 1400307'
+  test "$(command wget --output-document=- --quiet -- 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' | command cksum)" != '2112918202 1400307'
 } || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
   command wget --output-document=- 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' |
