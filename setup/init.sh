@@ -206,12 +206,9 @@ command -v -- pip >/dev/null 2>&1 && {
 } || {
   { set +o xtrace; } 2>/dev/null
   printf 'installing pip using bootstrap...\n' 2>/dev/null
-  set -o xtrace
-  command curl 'https://web.archive.org/web/20210420182646id_/bootstrap.pypa.io/get-pip.py' -o ./get-pip.py
-  { set +o xtrace; } 2>/dev/null
   printf 'this may take a while...\n' 2>/dev/null
   set -o xtrace
-  command python3 -v ./get-pip.py
+  command curl 'https://web.archive.org/web/20221114002029id_/bootstrap.pypa.io/get-pip.py' | command python3
 }
 
 # mackup
@@ -283,8 +280,6 @@ printf 'cleaning up temporary installation files and performing housekeeping...\
 set -o xtrace
 test -w ./apk.static &&
   rm ./apk.static
-test -w ./get-pip.py &&
-  rm ./get-pip.py
 test -w ./setup &&
   rm ./setup
 
