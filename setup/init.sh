@@ -65,8 +65,8 @@ command -v -- apk >/dev/null 2>&1 || {
 } || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
   command wget --output-document=- 'https://web.archive.org/web/20201127185919id_/dl-cdn.alpinelinux.org/alpine/v3.12/main/x86/apk-tools-static-2.10.5-r1.apk' |
-    command tar --extract --gzip 'apk.static'
-  ./apk.static add apk-tools
+    command tar --extract --gzip --strip-components=1 --verbose -- sbin/apk.static &&
+    ./apk.static add apk-tools
 }
 
 # configure only main and community repositories at first
