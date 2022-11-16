@@ -157,7 +157,7 @@ command -v -- git >/dev/null 2>&1 || {
 }
 
 # git add --patch
-test -x '/usr/libexec/git-core/git-add--interactive' || {
+test -x "$(command git --exec-path)"'/git-add--interactive' || {
   # https://stackoverflow.com/a/57632778
   install git-perl
 }
