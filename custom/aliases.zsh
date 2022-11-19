@@ -103,14 +103,13 @@ brewfile() {
 command -v -- bat >/dev/null 2>&1 &&
   alias cat='command bat --decorations never'
 
-alias -- -='cd -'
-alias -- 1='cd -1'
-alias -- 2='cd -2'
-alias -- 3='cd -3'
-alias -- 4='cd -4'
-alias -- ...='cd ../..'
-alias -- ....='cd ../../..'
-alias -- .....='cd ../../../..'
+alias 1='cd -1' -='cd -'
+alias 2='cd -2'
+alias 3='cd -3'
+alias 4='cd -4'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 cdp() {
   cd_from="$(command pwd -L)"
