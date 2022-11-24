@@ -79,7 +79,7 @@ if command defaults read com.knollsoft.Rectangle >/dev/null 2>&1; then
 fi
 
 ## PAGER
-export PAGER='command less --file-size --ignore-case'
+export PAGER='less --file-size --ignore-case'
 export MANPAGER="${PAGER-}"
 
 ## POSIX
