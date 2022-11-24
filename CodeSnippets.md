@@ -38,7 +38,6 @@
 - [C, C++](#c-c)
   - [flags](#flags)
     - [C++ features before wide support](#c-features-before-wide-support)
-  - [apply `clang-format` recursively](#apply-clang-format-recursively)
   - [run `cpplint` recursively](#run-cpplint-recursively)
   - [run `cppcheck` recursively](#run-cppcheck-recursively)
   - [compile all files of type .𝑥 in a directory](#compile-all-files-of-type-𝑥-in-a-directory)
@@ -406,20 +405,6 @@ command find -- . ! -path '*/.*' -type f -exec chmod -- 644 '{}' '+'
 
 for example, C++17’s `<filesystem>`<br>
 `-lstdc++fs`
-
-### apply `clang-format` recursively
-
-[via](https://stackoverflow.com/a/36046965)<br>
-
-```shell
-command clang-format --version 2>/dev/null || return 2; command sleep 1; IndentWidth='2'; ColumnLimit='79'; printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"; command sleep 1; while getopts i:w: opt;do case "${opt-}" in (i) IndentWidth="${OPTARG-}"; printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"; command sleep 1;; \
-(w) ColumnLimit="${OPTARG-}"; printf 'setting \140ColumnLimit\140 to %d\n\n\n' "${ColumnLimit-}"; command sleep 1 ;; (*) printf 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'; return 1; esac; done; command find -- . -type f ! -path '*.git/*' ! -path '*/Test*' ! -path '*/t/*' ! -path '*/test*' ! -path '*node_modules/*' ! -path '*vscode*' '(' \
--name '*.adb' -o -name '*.ads' -o -name '*.asm' -o -name '*.ast' -o -name '*.bc' -o -name '*.C' -o -name '*.c' -o -name '*.C++' -o -name '*.c++' -o -name '*.c++m' -o -name '*.CC' -o -name '*.cc' -o -name '*.ccm' -o -name '*.cl' -o -name '*.clcpp' -o -name '*.cp' -o -name '*.CPP' -o -name '*.cpp' -o -name '*.cppm' -o \
--name '*.cs' -o -name '*.cu' -o -name '*.cuh' -o -name '*.cui' -o -name '*.CXX' -o -name '*.cxx' -o -name '*.cxxm' -o -name '*.F' -o -name '*.f' -o -name '*.F90' -o -name '*.f90' -o -name '*.F95' -o -name '*.f95' -o -name '*.FOR' -o -name '*.for' -o -name '*.FPP' -o -name '*.fpp' -o -name '*.gch' -o \
--name '*.H' -o -name '*.h' -o -name '*.h++' -o -name '*.hh' -o -name '*.hip' -o -name '*.hp' -o -name '*.hpp' -o -name '*.hxx' -o -name '*.i' -o -name '*.ifs' -o -name '*.ii' -o -name '*.iim' -o -name '*.inc' -o -name '*.inl' -o -name '*.java' -o -name '*.lib' -o -name '*.ll' -o -name '*.M' -o \
--name '*.m' -o -name '*.mi' -o -name '*.mii' -o -name '*.mm' -o -name '*.pch' -o -name '*.pcm' -o -name '*.proto' -o -name '*.protodevel' -o -name '*.rs' -o -name '*.S' -o -name '*.s' -o -name '*.tcc' -o -name '*.td' -o -name '*.tlh' -o -name '*.tli' -o -name '*.tpp' -o -name '*.ts' -o -name '*.txx' ')' \
--exec clang-format -i --style "{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}" --verbose --fcolor-diagnostics --print-options -- '{}' '+'; unset -- IndentWidth 2>/dev/null; unset -- ColumnLimit 2>/dev/null; printf '\n\n\342\234\205  done\041\n'
-```
 
 ### run `cpplint` recursively
 
