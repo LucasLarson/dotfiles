@@ -94,5 +94,5 @@ export CARGO_HOME="${HOME-}"'/.cargo'
 ## private
 # shellcheck disable=SC1091
 command touch -- "${HOME-}"'/.env' &&
-  command chmod 600 "${HOME-}"'/.env' &&
+  command chmod 400 "${HOME-}"'/.env' &&
   . "${HOME-}"'/.env'
