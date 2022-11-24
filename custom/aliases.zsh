@@ -1355,7 +1355,12 @@ hashlookup() {
     command jq --raw-output '.parents[]' 2>/dev/null
 }
 
-alias h1='command sed -e '\''1q'\'''
+h1() {
+  for file; do
+    command sed -e '1q' "${file-}"
+  done
+  unset -- file
+}
 
 history_stats() {
   fc -l 1 |
