@@ -274,7 +274,7 @@ clang_format() {
     -exec sh -u -v -c "command git ls-files --error-unmatch -- '{}' >/dev/null 2>&1 ||
 ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
 command clang-format -i --style '{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}' --verbose -- '{}' 2>&1
-" '+' |
+" ';' |
     command sed -e 's/\[1\/1\]//'
   unset -- IndentWidth
   unset -- ColumnLimit
