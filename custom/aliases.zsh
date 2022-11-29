@@ -102,7 +102,7 @@ brewfile() {
       >"${HOME-}"'/.Brewfile'
 }
 
-# prefer `bat` to `cat` if available
+# prefer `bat` without line numbers for easier copying
 command -v -- bat >/dev/null 2>&1 &&
   alias cat='command bat --decorations never'
 
