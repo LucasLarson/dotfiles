@@ -1483,7 +1483,7 @@ command -v -- ocrmypdf >/dev/null 2>&1 &&
         -- \
         "${file-}" "${file-}".ocr.pdf
     done
-    unset file
+    unset -- file
   }
 
 # open current directory if no argument is given
