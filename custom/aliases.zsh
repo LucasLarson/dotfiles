@@ -942,6 +942,7 @@ git_clone() {
     command git clone --verbose --progress --recursive -- "$1" . || return 4
     ;;
   esac
+  unset -- remote_branch
 }
 alias gcl='git_clone'
 alias gcl1='git_clone -1'
