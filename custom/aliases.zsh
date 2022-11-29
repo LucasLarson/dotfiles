@@ -81,7 +81,10 @@ brewfile() {
     "$@" |
     # move each package name onto the comment line above it, if any
     command sed \
-      -e '$!N;/^#.*\n[^#]/s/\n/\t/;P;D' |
+      -e '$!N' \
+      -e '/^#.*\n[^#]/s/\n/\t/' \
+      -e 'P' \
+      -e 'D' |
     # swap the package and the comment
     command awk -F '\t' -- '{print $2 $1}' |
     # prepend each category with a number for sorting
