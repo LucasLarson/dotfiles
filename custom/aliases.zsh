@@ -93,11 +93,10 @@ brewfile() {
       -e 's/^\(brew\)/2\1/' \
       -e 's/^\(cask\)/3\1/' |
     LC_ALL='C' command sort -f |
-    # remove the prepended numbers
-    command sed \
-      -e 's/^[[:digit:]]//' |
+    # remove the prepended numbers and
     # restore each comment to a line above its package
     command sed \
+      -e 's/^[[:digit:]]//' \
       -e 's/\([^#]*\)\(#.*\)/\2\n\1/' \
       >"${HOME-}"'/.Brewfile'
 }
