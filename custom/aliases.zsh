@@ -1387,7 +1387,8 @@ identify() {
     command sw_vers
     command lsb_release --all
     command hostnamectl
-    command cat -- /etc/os-release
+    command cat -- /etc/os-release ||
+      command cat -- /usr/lib/os-release
     command cat -- /proc/version
     command cat -- /etc/issue
   } 2>/dev/null
