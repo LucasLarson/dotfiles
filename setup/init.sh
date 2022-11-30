@@ -39,6 +39,9 @@ command sleep 1
 cd -- "${HOME-}" ||
   exit 1
 
+# save `date` for backup files
+now="$(command date '+%Y%m%d_%s')"
+
 # unset `$PS4`
 # if this quaternary prompt string is already unset, then
 # set it to the POSIX default: `+ `
@@ -282,7 +285,7 @@ set -o xtrace
 
 # message of the day
 test -s '/etc/motd' &&
-  cp -- '/etc/motd' '/etc/motd-'"$(command date '+%Y%m%d_%s')" &&
+  cp -- '/etc/motd' '/etc/motd-'"${now-}" &&
   printf '' >'/etc/motd'
 
 # delete thumbnail cache files
@@ -340,7 +343,7 @@ command find -- . -type d -empty \
 # if zsh is available, replace bash, ash, and sh with zsh in `/etc/passwd`
 command -v -- zsh >/dev/null 2>&1 &&
   command grep -E -e '/bin/b?a?sh' '/etc/passwd' 2>&1 &&
-  cp -- '/etc/passwd' '/etc/passwd-'"$(command date '+%Y%m%d_%s')" &&
+  cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
   # `-E` for extended regex searching for `/bin/ash` and `/bin/sh`
   # `-i` for in-place editing
   command sed -E -i -e "s|/bin/b?a?sh$|$(command -v -- zsh)|" '/etc/passwd'
