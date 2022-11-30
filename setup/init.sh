@@ -313,7 +313,7 @@ command find -- . \
   ! -path '*sample*' \
   ! -path '*template*' \
   ! -path '*test*' \
-  ! -name "$(printf 'Icon\0xd\0xa')" \
+  ! -name "$(printf 'Icon\015\012')" \
   ! -name '*LOCK' \
   ! -name '*empty*' \
   ! -name '*hushlogin' \
