@@ -173,9 +173,6 @@ command git config --global --get init.defaultBranch >/dev/null 2>&1 || {
 printf 'updating time zone information...\n' 2>/dev/null
 set -o xtrace
 install --no-cache tzdata tzdata-doc
-test -r '/usr/share/zoneinfo/America/New_York' &&
-  cp -- '/usr/share/zoneinfo/America/New_York' '/etc/localtime'
-printf 'America/New_York\n' >'/etc/timezone'
 
 # python
 { set +o xtrace; } 2>/dev/null
