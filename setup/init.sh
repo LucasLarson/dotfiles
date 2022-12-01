@@ -7,10 +7,10 @@
 # Assumptions: installation target is one of Arch Linux or Alpine Linux
 
 # Alpine Linux
-# wget --continue --server-response 'https://lucaslarson.net/init.sh'
+# wget -O - https://lucaslarson.net/init.sh | sh
 
 # Arch Linux
-# curl --remote-name --location 'https://lucaslarson.net/init.sh'
+# curl https://lucaslarson.net/init.sh | sh
 
 if command -v -- apk >/dev/null 2>&1; then
   alias install='command apk add --verbose'
