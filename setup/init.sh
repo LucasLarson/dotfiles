@@ -8,11 +8,9 @@
 
 # Alpine Linux
 # wget --continue --server-response 'https://lucaslarson.net/init.sh'
-# apk add --verbose "$@"
 
 # Arch Linux
 # curl --remote-name --location 'https://lucaslarson.net/init.sh'
-# pacman --sync --verbose --noconfirm "$@"
 
 if command -v -- apk >/dev/null 2>&1; then
   alias install='command apk add --verbose'
