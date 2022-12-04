@@ -64,20 +64,6 @@ IFS="$(printf ' \t\n|')" &&
 ## Locale
 export LC_ALL='en_US.UTF-8'
 
-## macOS
-# Rectangle
-if command defaults read com.knollsoft.Rectangle >/dev/null 2>&1; then
-  # set ⌘⌥F to maximize the focused window
-  string="$(command defaults read com.knollsoft.Rectangle maximize 2>/dev/null)"
-  substring='1572864'
-  test "${string#*"${substring-}"}" != "${string-}" ||
-    command defaults write com.knollsoft.Rectangle \
-      maximize -dict-add \
-      keyCode -float 3 \
-      modifierFlags -float "${substring-}"
-  unset -- string substring
-fi
-
 ## PAGER
 export PAGER='less --file-size --ignore-case'
 export MANPAGER="${PAGER-}"
