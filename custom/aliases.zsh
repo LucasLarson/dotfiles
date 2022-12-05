@@ -798,7 +798,7 @@ find_shell_scripts() {
       ! -path '*/test*' \
       ! -path '*vscode*' \
       -type f \
-      -exec sh -c 'command sed -e "1q" -- "{}" | command grep -q -e "^#\!.*bin.*sh" && printf "%s\n" "{}"' ';' 2>/dev/null
+      -exec sh -c 'command sed -e "1q" "{}" | command grep -q -e "^#\!.*bin.*sh" && printf "%s\n" "{}"' ';' 2>/dev/null
 
     # shfmt also knows how to find shell scripts
     command shfmt --find -- . 2>/dev/null |
