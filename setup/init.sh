@@ -279,7 +279,7 @@ printf 'cleaning up temporary installation files and performing housekeeping...\
 set -o xtrace
 
 # message of the day
-test -s '/etc/motd' &&
+test -w '/etc/motd' &&
   cp -- '/etc/motd' '/etc/motd-'"${now-}" &&
   printf '' >'/etc/motd'
 
@@ -338,6 +338,7 @@ command find -- . -type d -empty \
 # if zsh is available, replace bash, ash, and sh with zsh in `/etc/passwd`
 command -v -- zsh >/dev/null 2>&1 &&
   command grep -E -e '/bin/b?a?sh' '/etc/passwd' 2>&1 &&
+  test -w '/etc/passwd' &&
   cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
   # `-E` for extended regex searching for `/bin/ash` and `/bin/sh`
   # `-i` for in-place editing
