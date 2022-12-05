@@ -85,8 +85,8 @@ plugins+=(
   zsh-history-substring-search
 ) && {
   # https://github.com/zsh-users/zsh-history-substring-search/commit/9c51863eb2
-  bindkey '^[[A' history-substring-search-up
-  bindkey '^[[B' history-substring-search-down
+  bindkey '^[OA' history-substring-search-up
+  bindkey '^[OB' history-substring-search-down
 }
 
 ## Options
