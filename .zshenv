@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+## Operating system
+. /etc/os-release 2>/dev/null ||
+  . /usr/lib/os-release 2>/dev/null
+
 ## Dotfiles and templates
 command mkdir -p -- "${HOME-}"'/Dropbox/dotfiles' &&
   export DOTFILES="${HOME-}"'/Dropbox/dotfiles' &&
