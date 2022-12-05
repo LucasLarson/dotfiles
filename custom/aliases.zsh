@@ -1623,21 +1623,30 @@ alias rectangle_shortcut'command defaults write com.knollsoft.Rectangle maximize
 
 # remove
 rm() {
-  if command -v -- trash >/dev/null 2>&1; then
-    utility='trash'
+  if test -d "${HOME-}"'/.Trash'; then
+    target="${HOME-}"'/.Trash'
+  elif command mkdir -p -- "${XDG_DATA_HOME-}"'/Trash' 2>/dev/null; then
+    target="${XDG_DATA_HOME-}"'/Trash'
+  elif command mkdir -p -- "${TMPDIR:-/tmp}"'/.Trash' 2>/dev/null; then
+    target="${TMPDIR:-/tmp}"'/.Trash'
+  elif command mkdir -p -- '/tmp/.Trash' 2>/dev/null; then
+    target='/tmp/.Trash'
   else
-    utility='rm'
+    return 76
   fi
   case "${1-}" in
   -o | --others)
     command git ls-files -z --others --exclude-standard |
-      command xargs -0 "${utility-}"
+      command xargs -0 -I '{}' mv -- '{}' "${target-}"
     ;;
   *)
-    command "${utility-}" "$@"
+    for file in "$@"; do
+      command mv -- "${file-}" "${target-}"/"${file##*/}"-"$(command date -u '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')" 2>/dev/null
+    done
     ;;
   esac
-  unset -- utility
+  unset -- file
+  unset -- target
 }
 alias rmo='rm --others'
 
