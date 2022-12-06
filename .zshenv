@@ -51,8 +51,6 @@ export GITHUB_ORG="${USER-}"
 export GITLAB_USERNAME="${USER-}"
 
 ## Go
-# https://github.com/golang/go/wiki/SettingGOPATH/450fad957455a745f8d97ad4cb79376cd689810a
-# command go env -w GOPATH="${HOME-}"'/.go' ||
 export GOPATH="${HOME-}"'/.go'
 
 ## iCloud
