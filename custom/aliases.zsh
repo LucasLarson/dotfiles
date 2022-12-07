@@ -1670,11 +1670,7 @@ transfer() {
 }
 
 # Unix epoch seconds
-# https://stackoverflow.com/a/12312982
-# date -j '+%s' # for milliseconds
-unixtime() {
-  command date '+%s' "$@"
-}
+alias unixtime='command awk -- '\''BEGIN {srand(); print srand()}'\'''
 
 user() {
   printf '%s' "${USER-}" &&
