@@ -38,7 +38,7 @@ cd -- "${HOME-}" ||
   exit 1
 
 # save `date` for backup files
-now="$(command date -- '+%Y%m%d_%s')"
+now="$(command date -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')"
 
 # unset `$PS4`
 # if this quaternary prompt string is already unset, then
