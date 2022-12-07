@@ -1633,6 +1633,9 @@ rm() {
     return 73
   fi
   case "${1-}" in
+  -- | -R | -r | --recursive)
+    shift
+    ;;
   -o | --others)
     command git ls-files -z --others --exclude-standard |
       command xargs -0 -I '{}' mv -- '{}' "${target-}"
