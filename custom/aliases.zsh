@@ -1471,8 +1471,6 @@ odb() {
 
 command -v -- ocrmypdf >/dev/null 2>&1 &&
   ocr() {
-    command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
-      return "${?:-1}"
     for file; do
       test "${file-}" = "${file%.pdf}" &&
         return "${?:-1}"
