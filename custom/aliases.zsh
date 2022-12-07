@@ -1630,7 +1630,7 @@ rm() {
   elif command mkdir -p -- '/tmp/.Trash' 2>/dev/null; then
     target='/tmp/.Trash'
   else
-    return 76
+    return 73
   fi
   case "${1-}" in
   -o | --others)
