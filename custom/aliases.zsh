@@ -1637,7 +1637,7 @@ rm() {
     shift
     ;;
   -o | --others)
-    command git ls-files -z --others --exclude-standard |
+    command git ls-files -z --others |
       command xargs -0 -I '{}' mv -- '{}' "${target-}"
     ;;
   *)
