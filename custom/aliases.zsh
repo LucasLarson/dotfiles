@@ -927,8 +927,7 @@ alias gcpn='command git cherry-pick --no-commit'
 git_clone() {
   case "${1-}" in
   -h | --help)
-    printf 'Usage: %s <git_url> [<dir_name>]\n' "$(command basename -- "$0")" &&
-      return 0
+    printf 'Usage: %s <git_url> [<dir_name>]\n' "$(command basename -- "$0")"
     ;;
   -1 | --shallow)
     shift
