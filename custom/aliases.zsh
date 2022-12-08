@@ -738,15 +738,16 @@ find_files_with_no_extension() {
 
 find_files_with_the_same_names() {
   command find -- . \
-    -type f \
-    ! -path '*/.git/*' \
+    -mindepth 1 \
+    ! -name '.git' \
     ! -path '*/node_modules/*' \
-    -print0 |
-    command awk -F '/' -- 'BEGIN {RS="\0"} {n=$NF} k[n]==1 {print p[n]} k[n] {print $0} {p[n]=$0; k[n]++}' |
-    while IFS='' read -r file; do
-      command basename -- "${file-}"
-    done |
-    LC_ALL='C' command sort -u
+    ! -path '*/.git/*' \
+    ! -type d \
+    ! -type l |
+    command sed -e 's/.*\//\.\//' |
+    LC_ALL='C' command sort |
+    command uniq -c -d |
+    command sed -e 's/ *.* \.\//.\//'
 }
 
 compdef -- 'find_no_git'='find' 2>/dev/null
