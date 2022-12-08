@@ -647,11 +647,11 @@ epoch_to_date_time() {
 filename_spaces_to_underscores() {
   command find -- . \
     -depth \
-    -name '*'"${1:- }"'*' |
+    -name '*'"${1:-[[:space:]]}"'*' |
     while IFS='' read -r filename; do
       command mv -i -- "${filename-}" "${filename%/*}"/"$(
         printf '%s' "${filename##*/}" |
-          command tr "${1:- }" "${2:-_}"
+          command tr "${1:-[[:space:]]}" "${2:-_}"
       )"
     done
   unset -- filename
