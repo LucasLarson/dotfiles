@@ -1069,7 +1069,7 @@ git_commit_initial_commit() {
   command git init &&
     if test "$#" -eq '1'; then
       # add 12 hours (43,200 seconds) so it occurs around midday
-      git_time="$(command date -d @$(($(command date -d "${1:-$(command date '+%Y-%m-%d')}" '+%s') + 43200)) '+%c %z')"
+      git_time="$(command date -d @$(($(command date -d "${1:-$(command date -- '+%Y-%m-%d')}" -- '+%s') + 43200)) -- '+%c %z')"
       export GIT_AUTHOR_DATE="${git_time-}"
       export GIT_COMMITTER_DATE="${git_time-}"
     fi
@@ -1638,7 +1638,7 @@ rm() {
     ;;
   *)
     for file in "$@"; do
-      command mv -- "${file-}" "${target-}"/"${file##*/}"-"$(command date -u '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')" 2>/dev/null
+      command mv -- "${file-}" "${target-}"/"${file##*/}"-"$(command date -u -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')" 2>/dev/null
     done
     ;;
   esac
