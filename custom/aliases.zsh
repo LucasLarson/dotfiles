@@ -302,7 +302,7 @@ cleanup() {
       # such the closed set of macOS standard directories:
       # `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Movies`, `Music`, `Pictures`, `Public`, and `Sites`
       # https://web.archive.org/web/0id_/developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGUide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW9
-      test "$(command pwd -P | command xargs -0 dirname)" = "${HOME-}" &&
+      test "${PWD%/*}" = "${HOME-}" &&
       case "$(command pwd -P | command tr -d '[:space:]' | command xargs basename -- | command cut -c 1)" in
       [A-Z])
         printf '\n\n'
@@ -492,7 +492,7 @@ count_files_by_extension() {
     -name '.*' -o \
     -name '*.*' \
     ')' \
-    -exec basename -a -- '{}' '+' 2>/dev/null |
+    -print 2>/dev/null |
     command sed -e 's/.*\.//' |
     LC_ALL='C' command sort |
     command uniq -c |
@@ -648,8 +648,8 @@ filename_spaces_to_underscores() {
     -depth \
     -name '*'"${1:- }"'*' |
     while IFS='' read -r filename; do
-      command mv -i -- "${filename-}" "$(command dirname -- "${filename-}")"/"$(
-        command basename -- "${filename-}" |
+      command mv -i -- "${filename-}" "${filename%/*}"/"$(
+        printf '%s' "${filename##*/}" |
           command tr "${1:- }" "${2:-_}"
       )"
     done
@@ -743,7 +743,7 @@ find_files_with_the_same_names() {
     -print0 |
     command awk -F '/' -- 'BEGIN {RS="\0"} {n=$NF} k[n]==1 {print p[n]} k[n] {print $0} {p[n]=$0; k[n]++}' |
     while IFS='' read -r file; do
-      command basename -- "${file-}"
+      printf '%s\n' "${file##*/}"
     done |
     LC_ALL='C' command sort -u
 }
@@ -922,8 +922,7 @@ alias gcpn='command git cherry-pick --no-commit'
 git_clone() {
   case "${1-}" in
   -h | --help)
-    printf 'Usage: %s <git_url> [<dir_name>]\n' "$(command basename -- "$0")" &&
-      return 0
+    printf 'Usage: %s <git_url> [<dir_name>]\n' "${0##*/}" >&2
     ;;
   -1 | --shallow)
     shift
@@ -1318,7 +1317,7 @@ hash_abbreviate() {
       length="${OPTARG-}"
       ;;
     *)
-      printf 'usage: %s [-l <length>] <hash> [<hash> ...]\n' "$(command basename -- "$0")" >&2
+      printf 'usage: %s [-l <length>] <hash> [<hash> ...]\n' "${0##*/}" >&2
       ;;
     esac
   done
@@ -1525,7 +1524,7 @@ path_check() {
       ;;
 
     *)
-      printf 'usage: %s [-v|--verbose]\n' "$(command basename -- "$0")"
+      printf 'usage: %s [-v|--verbose]\n' "${0##*/}" >&2
       return 1
       ;;
     esac
@@ -1662,9 +1661,7 @@ take() {
 
 transfer() {
   for file in "$@"; do
-    command curl --progress-bar --upload-file "${file-}" 'https://transfer.sh/'"$(
-      command basename -- "${file-}"
-    )" && printf '\n'
+    command curl --progress-bar --upload-file "${file-}" 'https://transfer.sh/'"${file##*/}" && printf '\n'
   done
 }
 
