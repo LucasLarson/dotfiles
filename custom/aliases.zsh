@@ -645,19 +645,15 @@ epoch_to_date_time() {
 }
 
 filename_spaces_to_underscores() {
-  from="${1:- }"
-  to="${2:-_}"
   command find -- . \
     -depth \
-    -name '*'"${from-}"'*' |
+    -name '*'"${1:- }"'*' |
     while IFS='' read -r filename; do
       command mv -i -- "${filename-}" "$(command dirname -- "${filename-}")"/"$(
         command basename -- "${filename-}" |
-          command tr "${from-}" "${to-}"
+          command tr "${1:- }" "${2:-_}"
       )"
     done
-  unset -- from
-  unset -- to
   unset -- filename
 }
 
