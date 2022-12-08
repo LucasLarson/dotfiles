@@ -649,8 +649,8 @@ filename_spaces_to_underscores() {
     -depth \
     -name '*'"${1:- }"'*' |
     while IFS='' read -r filename; do
-      command mv -i -- "${filename-}" "$(command dirname -- "${filename-}")"/"$(
-        command basename -- "${filename-}" |
+      command mv -i -- "${filename-}" "${filename%/*}"/"$(
+        printf '%s' "${filename##*/}" |
           command tr "${1:- }" "${2:-_}"
       )"
     done
@@ -924,7 +924,7 @@ alias gcpn='command git cherry-pick --no-commit'
 git_clone() {
   case "${1-}" in
   -h | --help)
-    printf 'Usage: %s <git_url> [<dir_name>]\n' "$(command basename -- "$0")"
+    printf 'Usage: %s <git_url> [<dir_name>]\n' "${0##*/}" >&2
     ;;
   -1 | --shallow)
     shift
@@ -1322,7 +1322,7 @@ hash_abbreviate() {
       length="${OPTARG-}"
       ;;
     *)
-      printf 'usage: %s [-l <length>] <hash> [<hash> ...]\n' "$(command basename -- "$0")" >&2
+      printf 'usage: %s [-l <length>] <hash> [<hash> ...]\n' "${0##*/}" >&2
       ;;
     esac
   done
@@ -1529,7 +1529,7 @@ path_check() {
       ;;
 
     *)
-      printf 'usage: %s [-v|--verbose]\n' "$(command basename -- "$0")"
+      printf 'usage: %s [-v|--verbose]\n' "${0##*/}" >&2
       return 1
       ;;
     esac
@@ -1678,9 +1678,7 @@ take() {
 
 transfer() {
   for file in "$@"; do
-    command curl --progress-bar --upload-file "${file-}" 'https://transfer.sh/'"$(
-      command basename -- "${file-}"
-    )" && printf '\n'
+    command curl --progress-bar --upload-file "${file-}" 'https://transfer.sh/'"${file##*/}" && printf '\n'
   done
 }
 
