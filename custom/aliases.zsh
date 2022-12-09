@@ -1634,7 +1634,10 @@ rm() {
     ;;
   -o | --others)
     command git ls-files -z --others |
-      command xargs -0 -I '{}' mv -- '{}' "${target-}"
+      command tr -s '\0' '\n' |
+      while IFS='' read -r file; do
+        command mv -- "${file-}" "${target-}"/"${file##*/}"-"$(command date -u -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')"
+      done
     ;;
   *)
     for file in "$@"; do
