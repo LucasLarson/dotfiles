@@ -1639,6 +1639,7 @@ rm() {
   *)
     for file in "$@"; do
       command mv -- "${file-}" "${target-}"/"${file##*/}"-"$(command date -u -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')" 2>/dev/null
+      command git rm -r --force -- "${file-}" 2>/dev/null
     done
     ;;
   esac
