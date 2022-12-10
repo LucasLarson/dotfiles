@@ -9,8 +9,9 @@ My own private dotfiles built with help from
 https://github.com/gnachman/iTerm2[iTerm^],
 https://github.com/lra/mackup[Mackup^], https://github.com/git/git[Git^],
 https://github.com/neovim/neovim[Neovim^],
-https://github.com/ohmyzsh/ohmyzsh[Oh&nbsp;My&nbsp;Zsh^], and
-https://github.com/LucasLarson/ConnectTheDots[other&nbsp;dots^].
+https://github.com/ohmyzsh/ohmyzsh[Oh&nbsp;My&nbsp;Zsh^],
+https://github.com/LucasLarson/ConnectTheDots[other dots^], and
+https://github.com/search?q=repo%3ALucasLarson%2Fdotfiles+%2Fhttps%3A%5C%2F%5C%2F%5Ba-z0-9%23-%5C%2E%5C%2F%3D%5C%3F%40_%5D*%2F[other&nbsp;heroes^].
 
 === License
 
