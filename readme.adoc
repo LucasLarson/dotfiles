@@ -1,7 +1,7 @@
 == dotfiles
 
 [quote]
-It’s home. And home is where the heart is &nbsp; &nbsp; &nbsp; at.
+This is where the heart is&nbsp;&nbsp;&nbsp;&nbsp;at.
 
 === About
 
