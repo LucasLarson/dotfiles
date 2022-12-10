@@ -13,6 +13,7 @@ and&nbsp;https://github.com/ohmyzsh/ohmyzsh[Oh&nbsp;My&nbsp;Zsh^].
 
 === License
 
-dotfiles by https://lucaslarson.net[Lucas Larson^] is a repository licensed
+dotfiles by https://lucaslarson.net[Lucas Larson^]
+(https://github.com/LucasLarson[*@LucasLarson*^]) is a repository licensed
 under any https://github.com/LucasLarson/dotfiles/blob/HEAD/license.adoc[GNU
 Affero General Public License^] whose version number is no less than&nbsp;3.0.
