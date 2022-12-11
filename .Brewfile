@@ -152,7 +152,7 @@ brew "jq"
 # KornShell, ksh93
 brew "ksh"
 # Pager program similar to more
-brew "less", args: ["HEAD"]
+brew "less"
 # Multi-format archive and compression library
 brew "libarchive"
 # Portable Foreign Function Interface library
