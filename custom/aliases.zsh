@@ -1227,6 +1227,9 @@ git_submodule_update() {
     command sed -e '$d'
 }
 alias gsu='git_submodule_update'
+
+alias gtag='command git --no-pager tag --sort=creatordate'
+
 alias gtake='git checkout -b'
 
 git_undo() {
