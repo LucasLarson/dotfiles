@@ -359,7 +359,7 @@ cask "musicbrainz-picard"
 cask "qlimagesize"
 # QuickLook plugin for plaintext files without an extension
 cask "qlstephen"
-# QuickLook generator for video files
+# Thumbnails, static previews, cover art and metadata for video files
 cask "qlvideo"
 # QuickLook plugin for JSON files
 cask "quicklook-json"
