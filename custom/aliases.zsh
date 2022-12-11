@@ -1628,6 +1628,7 @@ rm() {
   else
     return 73
   fi
+  now="$(command date -u -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')"
   case "${1-}" in
   -- | -R | -r | --recursive)
     shift
@@ -1636,19 +1637,20 @@ rm() {
     command git ls-files -z --others |
       command tr -s '\0' '\n' |
       while IFS='' read -r file; do
-        command mv -- "${file-}" "${target-}"/"${file##*/}"-"$(command date -u -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')"
+        command mv -- "${file-}" "${target-}"/"${file##*/}"-"${now-}"
       done
     shift
     ;;
   *)
     for file in "$@"; do
-      command mv -- "${file-}" "${target-}"/"${file##*/}"-"$(command date -u -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')" 2>/dev/null
+      command mv -- "${file-}" "${target-}"/"${file##*/}"-"${now-}" 2>/dev/null
       command git rm -r --force -- "${file-}" 2>/dev/null
     done
     shift
     ;;
   esac
   unset -- file
+  unset -- now
   unset -- target
 }
 alias rmo='rm --others'
