@@ -770,17 +770,69 @@ find_shell_scripts() {
     return 1
 
   {
-    # all files with extensions `.bash`, `.dash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
+    # all files with `linguist` Shell filename extensions
     command find -- . \
       ! -path '*/.git/*' \
       -type f \
       '(' \
+      -name '.sh' -o \
       -name '*.bash' -o \
+      -name '*.bats' -o \
+      -name '*.cgi' -o \
+      -name '*.command' -o \
       -name '*.dash' -o \
+      -name '*.env' -o \
+      -name '*.fcgi' -o \
       -name '*.ksh' -o \
       -name '*.mksh' -o \
       -name '*.sh' -o \
-      -name '*.zsh' \
+      -name '*.sh.in' -o \
+      -name '*.tmux' -o \
+      -name '*.tool' -o \
+      -name '*.zsh' -o \
+      -name '*.zsh-theme' -o \
+      -name '.ash' -o \
+      -name '.bash' -o \
+      -name '.bash_aliases' -o \
+      -name '.bash_history' -o \
+      -name '.bash_logout' -o \
+      -name '.bash_profile' -o \
+      -name '.bashrc' -o \
+      -name '.cshrc' -o \
+      -name '.dash' -o \
+      -name '.env' -o \
+      -name '.env.example' -o \
+      -name '.flaskenv' -o \
+      -name '.ksh' -o \
+      -name '.kshrc' -o \
+      -name '.login' -o \
+      -name '.mksh' -o \
+      -name '.pdksh' -o \
+      -name '.profile' -o \
+      -name '.rc' -o \
+      -name '.zlogin' -o \
+      -name '.zlogout' -o \
+      -name '.zprofile' -o \
+      -name '.zsh' -o \
+      -name '.zshenv' -o \
+      -name '.zshrc' -o \
+      -name '9fs' -o \
+      -name 'PKGBUILD' -o \
+      -name 'bash_aliases' -o \
+      -name 'bash_logout' -o \
+      -name 'bash_profile' -o \
+      -name 'bashrc' -o \
+      -name 'cshrc' -o \
+      -name 'gradlew' -o \
+      -name 'kshrc' -o \
+      -name 'login' -o \
+      -name 'man' -o \
+      -name 'profile' -o \
+      -name 'zlogin' -o \
+      -name 'zlogout' -o \
+      -name 'zprofile' -o \
+      -name 'zshenv' -o \
+      -name 'zshrc' \
       ')' 2>/dev/null
 
     # files whose first line resembles those of shell scripts
