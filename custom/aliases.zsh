@@ -102,7 +102,7 @@ brewfile() {
 
 # prefer `bat` without line numbers for easier copying
 command -v -- bat >/dev/null 2>&1 &&
-  alias cat='command bat --decorations never'
+  alias bat='command bat --decorations never'
 
 alias 1='cd -1' -='cd -'
 alias 2='cd -2'
