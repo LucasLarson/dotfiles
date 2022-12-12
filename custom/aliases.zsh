@@ -443,7 +443,6 @@ cy() {
   for file in \
     "${DOTFILES-}"'/.github' \
     "${TEMPLATE-}"'/.github' \
-    "${TEMPLATE-}"'/.deepsource.toml' \
     "${TEMPLATE-}"'/.gitlab-ci.yml' \
     "${TEMPLATE-}"'/.imgbotconfig' \
     "${TEMPLATE-}"'/.whitesource' \
