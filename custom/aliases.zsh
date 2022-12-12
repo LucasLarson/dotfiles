@@ -48,8 +48,7 @@ bash_pretty() {
         command bash --pretty-print -- "${file-}"
 
         # save `$file`'s interpolated content into a file called `$file.bash`
-        # unless it already exists: `>|` prevents overwriting
-      } >|"${file-}"'.bash'
+      } >"${file-}"'.bash'
 
       # next nominally POSIX shell
       {
@@ -58,7 +57,7 @@ bash_pretty() {
 
         # add `bash --pretty-print --posix` content
         command bash --pretty-print --posix -- "${file-}"
-      } >|"${file-}"'.sh'
+      } >"${file-}"'.sh'
     fi
   done
   unset -v -- file
