@@ -1649,7 +1649,6 @@ rm() {
       command mv -- "${file-}" "${target-}"/"${file##*/}"-"${now-}" 2>/dev/null
       command git rm -r --force -- "${file-}" 2>/dev/null
     done
-    shift
     ;;
   esac
   unset -- file
