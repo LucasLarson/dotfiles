@@ -407,7 +407,7 @@ command rm -- "{}"' ';'
       -type f \
       -path '*/.git/*' \
       -name 'config' \
-      -exec sed -i -e 's/\t/  /g' '{}' '+' 2>/dev/null
+      -exec sed -i -e 's/\t/  /g' '{}' ';'
     command sed -i -e 's/\t/  /g' "${HOME-}"'/.gitconfig'
 
     # remove Git sample hooks
