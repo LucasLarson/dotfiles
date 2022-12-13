@@ -148,7 +148,7 @@ brew "jpeg"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # KornShell, ksh93
-brew "ksh"
+brew "ksh93"
 # Pager program similar to more
 brew "less"
 # Multi-format archive and compression library
