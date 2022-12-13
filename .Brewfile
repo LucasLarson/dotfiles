@@ -319,8 +319,8 @@ brew "yamllint"
 brew "yarn"
 # Yet another shell: a POSIX-compliant command-line shell
 brew "yash"
-# Download YouTube videos from the command-line
-brew "youtube-dl"
+# Fork of youtube-dl with additional features and fixes
+brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
 # UNIX shell (command interpreter)
