@@ -1071,13 +1071,13 @@ git_find_parent() {
   # return the hash prior to the current commit
   # if an argument is provided, return the commit prior to that commit
   # usage: git_find_parent [<commit>]
-  command git rev-list --max-count=1 "${1:-"$(command git rev-parse HEAD)"}^" --
+  command git rev-list --max-count=1 "${1:-"$(command git rev-parse HEAD)"}"'^' --
 }
 git_find_parents() {
   # return all hashes prior to the current commit
   # if an argument is provided, return all commits prior to that commit
   # usage: git_find_parents [<commit>]
-  command git rev-list "${1:-"$(command git rev-parse HEAD)"}^" --
+  command git rev-list "${1:-"$(command git rev-parse HEAD)"}"'^' --
 }
 alias git_parent='git_find_parent'
 alias gfp='git_find_parent'
