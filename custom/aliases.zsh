@@ -551,18 +551,18 @@ count_files_in_this_directory() {
 define() {
   for query in "${@:-"$0"}"; do
 
-    # `hash`
+    # `hash` (POSIX)
     command -v -- hash >/dev/null 2>&1 &&
       printf 'hash return value:\n%d\n———\n' "$(
         hash "${query-}" >/dev/null 2>&1
         printf '%d\n' "$?"
       )"
 
-    # `type` (System V)
+    # `type` (System V; POSIX)
     command -v -- type >/dev/null 2>&1 &&
       printf 'type:\n%s\n———\n' "$(type "${query-}")"
 
-    # `command -V`
+    # `command -V (POSIX)`
     printf 'command -V:\n%s\n———\n' "$(command -V -- "${query-}")"
 
     # `command -v` (POSIX)
