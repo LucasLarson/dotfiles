@@ -562,18 +562,6 @@ define() {
     command -v -- type >/dev/null 2>&1 &&
       printf 'type:\n%s\n———\n' "$(type "${query-}")"
 
-    # `whence` (KornShell)
-    command -v -- whence >/dev/null 2>&1 &&
-      printf 'whence:\n%s\n———\n' "$(whence "${query-}")"
-
-    # `where`
-    command -v -- where >/dev/null 2>&1 &&
-      printf 'where:\n%s\n———\n' "$(where "${query-}")"
-
-    # `whereis`
-    command -v -- whereis >/dev/null 2>&1 &&
-      printf 'whereis:\n%s\n———\n' "$(whereis "${query-}")"
-
     # `command -V`
     printf 'command -V:\n%s\n———\n' "$(command -V -- "${query-}")"
 
