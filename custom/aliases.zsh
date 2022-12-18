@@ -584,11 +584,11 @@ define() {
     command -v -- which >/dev/null 2>&1 &&
       printf 'which -a:\n%s\n' "$(command which -a "${query-}")"
 
-    # `functions | shfmt`
+    # `functions | shfmt` (Zsh)
     if builtin functions -- "${query-}" 2>/dev/null | command shfmt --simplify --indent 2 >/dev/null 2>&1; then
       builtin functions -- "${query-}" | command shfmt --simplify --indent 2
 
-    # `functions`
+    # `functions` (Zsh)
     elif builtin functions -- "${query-}" >/dev/null 2>&1; then
       builtin functions -x 2 -- "${query-}"
     fi
