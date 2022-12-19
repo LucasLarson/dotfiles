@@ -933,7 +933,7 @@ git_clone() {
     shift
     command mkdir "${2:-$(command basename -- "$1" .git || return 123)}" >/dev/null 2>&1
     cd "${2:-$(command basename -- "$1" .git || return 122)}" >/dev/null 2>&1 || return 5
-    command git clone --verbose --progress --depth=1 --shallow-submodules "$1" . || return 6
+    command git clone --verbose --progress --depth 1 --shallow-submodules "$1" . || return 6
     ;;
   *)
     command mkdir "${2:-$(command basename -- "$1" .git || return 126)}" >/dev/null 2>&1
@@ -1041,7 +1041,7 @@ git_garbage_collection() {
     # see `git gc` and other wrapping commands behind-the-scene mechanics
     # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git fetch --prune --prune-tags --verbose
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git prune --verbose --progress --expire=now
+    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git prune --verbose --progress --expire now
     GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git prune-packed
     command git maintenance start >/dev/null 2>&1 &&
       GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git maintenance start
@@ -1202,7 +1202,7 @@ git_shallow() {
     while IFS='' read -r submodule; do
       submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
       submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
-      command git clone --depth=1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
+      command git clone --depth 1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
     done
   command git submodule update
   unset -- submodule
