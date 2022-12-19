@@ -1238,14 +1238,12 @@ git_shallow() {
   command git submodule |
     command awk -- '{print $2}' |
     while IFS='' read -r submodule; do
-      submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
-      submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
-      command git clone --depth 1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
+      command git clone --depth 1 --shallow-submodules \
+        "$(command git config --file .gitmodules --get submodule."${submodule-}".url)" \
+        "$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
     done
   command git submodule update
   unset -- submodule
-  unset -- submodule_path
-  unset -- submodule_url
 }
 
 alias gsh='command git show'
