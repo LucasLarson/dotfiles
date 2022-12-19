@@ -2,6 +2,7 @@
   path = custom/themes/powerlevel10k
   url = https://github.com/romkatv/powerlevel10k
 [submodule "custom/plugins/gunstage"]
+  branch = main
   path = custom/plugins/gunstage
   url = https://github.com/LucasLarson/gunstage
 [submodule "custom/plugins/zsh-completions"]
@@ -11,27 +12,33 @@
   path = custom/plugins/fast-syntax-highlighting
   url = https://github.com/zdharma-continuum/fast-syntax-highlighting
 [submodule "custom/plugins/samefile"]
+  branch = main
   path = custom/plugins/samefile
   url = https://github.com/LucasLarson/samefile
 [submodule "custom/plugins/git-default-branch"]
+  branch = main
   path = custom/plugins/git-default-branch
   url = https://github.com/LucasLarson/git-default-branch
 [submodule "custom/plugins/zsh-history-substring-search"]
   path = custom/plugins/zsh-history-substring-search
   url = https://github.com/zsh-users/zsh-history-substring-search
 [submodule "custom/plugins/zsh-diff-so-fancy"]
+  branch = main
   path = custom/plugins/zsh-diff-so-fancy
   url = https://github.com/zdharma-continuum/zsh-diff-so-fancy
 [submodule "custom/plugins/git-open"]
   path = custom/plugins/git-open
   url = https://github.com/paulirish/git-open
 [submodule "custom/plugins/zsh_codex"]
+  branch = main
   path = custom/plugins/zsh_codex
   url = https://github.com/tom-doerr/zsh_codex
 [submodule "custom/plugins/zsh-abbr"]
+  branch = main
   path = custom/plugins/zsh-abbr
   url = https://github.com/olets/zsh-abbr
 [submodule ".config/nvim/pack/github/start/copilot.vim"]
+  branch = release
   path = .config/nvim/pack/github/start/copilot.vim
   url = https://github.com/github/copilot.vim
 [submodule "custom/plugins/zsh-autosuggestions"]
