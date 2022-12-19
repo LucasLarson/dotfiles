@@ -969,7 +969,7 @@ git_clone() {
     command mkdir "${2:-$(command basename -- "$1" .git || return 123)}" >/dev/null 2>&1
     printf 'moving into %s...\n' "${2:-$(command basename -- "$1" .git)}" >&2
     cd "${2:-$(command basename -- "$1" .git || return 122)}" >/dev/null 2>&1 || return 5
-    command git clone --verbose --progress --depth 1 --shallow-submodules "$1" . || return 6
+    command git clone --verbose --progress --depth 1 --shallow-submodules -- "$1" . || return 6
     ;;
   *)
     command mkdir "${2:-$(command basename -- "$1" .git || return 126)}" >/dev/null 2>&1
@@ -1238,7 +1238,7 @@ git_shallow() {
   command git submodule |
     command awk -- '{print $2}' |
     while IFS='' read -r submodule; do
-      command git clone --depth 1 --shallow-submodules \
+      command git clone --depth 1 --shallow-submodules -- \
         "$(command git config --file .gitmodules --get submodule."${submodule-}".url)" \
         "$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
     done
