@@ -1713,7 +1713,7 @@ take() {
     :
   done
   if test -d "${directory-}"; then
-    cd -- "${directory-}" >/dev/null 2>&1 &&
+    cd "${directory-}" >/dev/null 2>&1 &&
       printf 'moving into \342\200\230%s\342\200\231\n' "${directory-}"
   else
     # it’s not a directory
@@ -1789,7 +1789,7 @@ zero() {
 }
 
 ohmyzsh() {
-  cd -- "${ZSH-}" &&
+  cd "${ZSH-}" &&
     command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     command sed -e '$d'
 }
