@@ -34,7 +34,7 @@ printf '  a Lucas Larson production\n\n' 2>/dev/null
 command sleep 1
 
 # start from `$HOME`
-cd -- "${HOME-}" ||
+cd "${HOME-}" ||
   exit 1
 
 # save `date` for backup files
