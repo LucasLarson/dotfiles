@@ -1652,7 +1652,7 @@ ql() {
 
 # Rectangle
 # set ⌘⌥F to maximize the focused window
-alias rectangle_shortcut'command defaults write com.knollsoft.Rectangle maximize -dict-add keyCode -float 3 modifierFlags -float 1572864 2>/dev/null'
+alias rectangle_shortcut='command defaults write com.knollsoft.Rectangle maximize -dict-add keyCode -float 3 modifierFlags -float 1572864 2>/dev/null'
 
 # remove
 rm() {
