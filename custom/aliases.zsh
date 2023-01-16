@@ -104,7 +104,7 @@ brewfile() {
 command -v -- bat >/dev/null 2>&1 &&
   alias bat='command bat --decorations never'
 
-alias 1='cd -1' -='cd -'
+alias 1='cd "${OLDPWD-}"' -='cd "${OLDPWD-}"'
 alias 2='cd -2'
 alias 3='cd -3'
 alias 4='cd -4'
