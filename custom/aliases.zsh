@@ -1205,10 +1205,12 @@ alias grmr='command git rm -r'
 alias grm='grmr'
 
 git_remote_verbose() {
-  # print `git remote -v` into columns
+  # print `git remote -v` into columns as narrow as possible
   command git remote --verbose |
-    command awk -- '{printf "%-16s %s\n", $1, $2}' |
-    command uniq
+    command awk -v max="$(
+      command git remote |
+        command awk -- 'BEGIN {max = 0} {if (length() > max) {max = length()} } END {print max}'
+    )" -- '! seen[$2]++ {printf "%-" max "s %s\n", $1, $2}'
 }
 alias grv='git_remote_verbose'
 
