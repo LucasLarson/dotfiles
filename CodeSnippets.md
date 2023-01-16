@@ -426,12 +426,12 @@ Visual Studio Code<br>
 
 ### replace
 
-recursively replace each file’s first instance of `bin/bash`, `bin/sh`, or
-`bin/ash` with `usr/bin/env zsh` ([via](https://stackoverflow.com/a/11458836))
+recursively replace each file’s first instance of `/bin/bash`, `/bin/sh`, or
+`/bin/ash` with `/usr/bin/env zsh` ([via](https://stackoverflow.com/a/11458836))
 
 ```shell
-find -- . -type f -exec sed -E -i \
-  -e '/\/bin\/b?a?sh/{' \
+find -- . -type f -exec sed \
+  -e '/\/bin\/b\{0,1\}a\{0,1\}sh$/ {' \
   -e 's//\/usr\/bin\/env zsh/' \
   -e ':a' \
   -e '$! N' \
