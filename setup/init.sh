@@ -279,7 +279,7 @@ printf 'cleaning up temporary installation files and performing housekeeping...\
 set -o xtrace
 
 # message of the day
-test -s '/etc/motd' &&
+test -w '/etc/motd' &&
   cp -- '/etc/motd' '/etc/motd-'"${now-}" &&
   printf '' >'/etc/motd'
 
@@ -334,12 +334,13 @@ command find -- . -type d -empty \
   ! -name '.well-known' \
   -delete 2>/dev/null
 
-# if sed installation was successful, and
-# if zsh is available, replace bash, ash, and sh with zsh in `/etc/passwd`
-command -v -- zsh >/dev/null 2>&1 &&
+# if the shell can be changed and
+# if zsh is available, then replace bash, ash, and sh with zsh in `/etc/passwd`
+test -w '/etc/passwd' &&
+  command -v -- zsh >/dev/null 2>&1 &&
   command grep -E -e '/bin/b?a?sh' '/etc/passwd' 2>&1 &&
   cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
-  command sed -e 's|/bin/b\{0,1\}a\{0,1\}sh$|'"$(command -v -- zsh)"'|' '/etc/passwd'
+  command sed -e 's|/bin/b\{0,1\}a\{0,1\}sh$|'"$(command -v -- zsh)"'|' '/etc/passwd-'"${now-}" >'/etc/passwd'
 
 # done
 { set +euvx; } 2>/dev/null
