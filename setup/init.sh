@@ -339,9 +339,7 @@ command find -- . -type d -empty \
 command -v -- zsh >/dev/null 2>&1 &&
   command grep -E -e '/bin/b?a?sh' '/etc/passwd' 2>&1 &&
   cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
-  # `-E` for extended regex searching for `/bin/ash` and `/bin/sh`
-  # `-i` for in-place editing
-  command sed -E -i -e "s|/bin/b?a?sh$|$(command -v -- zsh)|" '/etc/passwd'
+  command sed -e 's|/bin/b\{0,1\}a\{0,1\}sh$|'"$(command -v -- zsh)"'|' '/etc/passwd'
 
 # done
 { set +euvx; } 2>/dev/null
