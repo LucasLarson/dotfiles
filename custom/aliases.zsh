@@ -1252,8 +1252,8 @@ alias gsh='command git show'
 
 git_stash_save_all() {
   # https://github.com/ohmyzsh/ohmyzsh/commit/69ba6e4359
-  command git stash push --all -m "$@" 2>/dev/null ||
-    command git stash push --all
+  command git stash push -m "$@" 2>/dev/null ||
+    command git stash push
 }
 alias gstall='git_stash_save_all'
 alias gstc='command git stash clear'
