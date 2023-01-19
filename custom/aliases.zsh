@@ -509,7 +509,7 @@ count_files_by_extension() {
     -print 2>/dev/null |
     LC_ALL='C' command sort -u |
     command uniq -c |
-    LC_ALL='C' command awk -- '{print $1}' |
+    command awk -- '{print $1}' |
     command uniq -c |
     command sed -e 's/.$/[no extension]/'
 }
