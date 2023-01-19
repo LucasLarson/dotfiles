@@ -1772,7 +1772,8 @@ yamllint_r() {
     -name '*.yml.mysql' -o \
     -name '.clang-format' -o \
     -name '.clang-tidy' -o \
-    -name '.gemrc' \
+    -name '.gemrc' -o \
+    -name '.yamllint' \
     ')' \
     -print \
     -exec sh -c 'command git ls-files --error-unmatch -- "{}" >/dev/null 2>&1 ||
