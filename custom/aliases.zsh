@@ -1141,9 +1141,7 @@ gm() {
   GIT_MERGE_VERBOSITY='4' command git merge --log --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience
 }
 alias gma='command git merge --abort'
-gmc() {
-  GIT_MERGE_VERBOSITY='4' command git merge --log --continue
-}
+alias gmc='GIT_MERGE_VERBOSITY=4 command git merge --continue'
 
 # git merge with default branch
 gmm() {
