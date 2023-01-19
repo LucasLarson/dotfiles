@@ -1111,12 +1111,18 @@ git_commit_initial_commit() {
       export GIT_AUTHOR_DATE="${git_time-}"
       export GIT_COMMITTER_DATE="${git_time-}"
     fi
-  command git commit --allow-empty --signoff --verbose --message="$(printf '\360\237\214\263\302\240 root commit')"
-  # if there are non-repository files present, then add them and commit
-  if test -n "$(command git ls-files --others --exclude-standard)"; then
+  # create empty root commit
+  command git commit --allow-empty --signoff --verbose --message="$(printf '\360\237\214\263\302\240 root commit')" &&
+    # ...and add a signed v0.0.0 tag to it
+    command git tag --annotate --sign v0.0.0 --message='' &&
+    # ...and if there are files present...
+    test -n "$(command git ls-files --others --exclude-standard)" &&
+    # add them...
     command git add --verbose -- . &&
-      command git commit --signoff --verbose --message="$(printf '\342\234\250\302\240 initial commit')"
-  fi
+    # ...and commit them
+    command git commit --signoff --verbose --message="$(printf '\342\234\250\302\240 initial commit')" &&
+    # ...and add a signed v0.0.1 tag
+    command git tag --annotate --sign v0.0.1 --message=''
   unset -- git_time
   unset -- GIT_AUTHOR_DATE
   unset -- GIT_COMMITTER_DATE
