@@ -589,7 +589,7 @@ alias diff='command git diff --color-words --no-index'
 
 dictionary() {
   # sort as you’d expect to find in a dictionary
-  LC_ALL='C' command sort -u "${1:---}" |
+  LC_ALL='C' command sort -u "${1:--}" |
     LC_ALL='C' command sort -f
 }
 
