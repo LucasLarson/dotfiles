@@ -40,6 +40,7 @@ jobs:
             # https://github.com/github/linguist/blob/7503f7588c/lib/linguist/languages.yml#L3707-L3718
             command find -- . \
               -name '*.md' -o \
+              -name 'contents.lr' -o \
               -name '*.livemd' -o \
               -name '*.markdown' -o \
               -name '*.mdown' -o \
