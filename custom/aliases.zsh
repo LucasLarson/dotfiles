@@ -148,23 +148,15 @@ clang_format() {
     return 2
   command sleep 1
 
-  # set `clang-format` `IndentWidth` default to 2
-  IndentWidth='2'
-
-  # set `clang-format` `ColumnLimit` default to 79
-  ColumnLimit='79'
-
   # permit arguments in any order
   # https://salsa.debian.org/debian/debianutils/blob/c2a1c435ef/savelog
   while getopts i:w: opt; do
     case "${opt-}" in
     i)
       IndentWidth="${OPTARG-}"
-      printf 'setting \140IndentWidth\140 to %d\n' "${IndentWidth-}"
       ;;
     w)
       ColumnLimit="${OPTARG-}"
-      printf 'setting \140ColumnLimit\140 to %d\n\n' "${ColumnLimit-}"
       ;;
     *)
       printf 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'
@@ -273,8 +265,8 @@ clang_format() {
     -name '*.txx' \
     ')' \
     -exec sh -u -v -c "command git ls-files --error-unmatch -- '{}' >/dev/null 2>&1 ||
-! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-command clang-format -i --style '{IndentWidth: ${IndentWidth-}, ColumnLimit: ${ColumnLimit-}}' --verbose -- '{}' 2>&1
+  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  command clang-format -i --style '{IndentWidth: ${IndentWidth:-2}, ColumnLimit: ${ColumnLimit:-79}}' --verbose -- '{}' 2>&1
 " ';' |
     command sed -e 's/\[1\/1\]//'
   unset -- IndentWidth
