@@ -1402,7 +1402,7 @@ hashlookup() {
 }
 
 h1() {
-  for file; do
+  for file in "$@"; do
     command sed -e '1q' "${file-}"
   done
   unset -- file
@@ -1512,7 +1512,7 @@ odb() {
 
 command -v -- ocrmypdf >/dev/null 2>&1 &&
   ocr() {
-    for file; do
+    for file in "$@"; do
       test "${file-}" = "${file%.pdf}" &&
         return "${?:-1}"
       command ocrmypdf \
