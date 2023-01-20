@@ -20,7 +20,7 @@ jobs:
           trap 'printf "shellcheck complete\n"' EXIT INT
 
           # Extract code blocks from the README.
-          while read -r line; do
+          while IFS='' read -r line; do
             test "${code-}" = '1' &&
               test "${line-}" != '```' &&
               printf '%s\n' "${line-}"
@@ -55,7 +55,7 @@ jobs:
           ) >'./codesnippets_code'
 
           # Print the code blocks.
-          while read -r line; do
+          while IFS='' read -r line; do
             printf '%s\n' "${line-}"
           done <'./codesnippets_code'
 
