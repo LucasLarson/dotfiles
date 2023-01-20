@@ -9,7 +9,7 @@
 # https://opengroup.org/onlinepubs/9699919799/utilities/command.html
 # prepend without extra colon `:`
 # https://unix.stackexchange.com/a/415028
-PATH="$(command -p -- getconf PATH)${PATH:+:${PATH-}}"
+PATH="$(command -p -- getconf -- PATH)${PATH:+:${PATH-}}"
 # https://github.com/archlinux/svntogit-packages/commit/a10f20b/filesystem/trunk/profile
 test -d '/usr/local/sbin' &&
   PATH='/usr/local/sbin'"${PATH:+:${PATH-}}"
