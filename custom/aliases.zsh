@@ -348,7 +348,6 @@ cleanup() {
     # those that belong to a repository
     command find -- . \
       -type f \
-      -writable \
       -size 0 \
       ! -path '*/.git/*' \
       ! -path '*/node_modules/*' \
