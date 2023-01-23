@@ -457,7 +457,7 @@ count_files() {
     ! -name '.DS_Store' \
     -type f \
     -print |
-    command grep -c -e //
+    command grep -c -e '//'
 }
 
 count_files_and_directories() {
@@ -466,7 +466,7 @@ count_files_and_directories() {
     ! -name '.' \
     ! -name '.DS_Store' \
     -print |
-    command grep -c -e //
+    command grep -c -e '//'
 }
 
 count_files_by_extension() {
@@ -519,7 +519,7 @@ count_files_in_this_directory() {
       ! -name '.DS_Store' \
       -prune \
       -print |
-      command grep -c -e /
+      command grep -c -e '/'
     ;;
 
   # count only regular, non-directory files
@@ -533,7 +533,7 @@ count_files_in_this_directory() {
       ! -name '.DS_Store' \
       -prune \
       -print |
-      command grep -c -e /
+      command grep -c -e '/'
     ;;
   esac
 }
