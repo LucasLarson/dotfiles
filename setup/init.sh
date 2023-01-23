@@ -293,7 +293,7 @@ command find -- . \
   -name 'desktop.ini' -o \
   -name 'thumbs.db' \
   ')' \
-  -delete 2>/dev/null
+  -delete
 
 # delete empty, writable, zero-length files
 # except those within `.git/` directories
@@ -325,14 +325,14 @@ command find -- . \
   ! -name '__init__.py' \
   ! -name 'favicon.*' \
   ')' \
-  -delete 2>/dev/null
+  -delete
 
 # delete empty directories recursively
 # but skip Git-specific and `/.well-known/` directories
 command find -- . -type d -empty \
   ! -path '*.git/*' \
   ! -name '.well-known' \
-  -delete 2>/dev/null
+  -delete
 
 # if the shell can be changed and
 # if zsh is available, then replace bash, ash, and sh with zsh in `/etc/passwd`

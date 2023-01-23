@@ -317,7 +317,7 @@ cleanup() {
       -name 'Thumbs.db' -o \
       -name 'thumbs.db' \
       ')' \
-      -delete 2>/dev/null
+      -delete
 
     # delete crufty Zsh files
     # if `$ZSH_COMPDUMP` always generates a crufty file then skip
@@ -339,7 +339,7 @@ cleanup() {
           ! -name "$(printf "*\n*")" \
           ! -name '.zcompdump' \
           -name '.zcompdump*' \
-          -delete 2>/dev/null
+          -delete
       done
     fi
 
@@ -391,7 +391,7 @@ command rm -- "{}"' ';'
       -empty \
       ! -path '*/.git/*' \
       ! -path '*/.well-known' \
-      -delete 2>/dev/null
+      -delete
 
     # swap each tab for two spaces each in `.git/config` and `$HOME/.gitconfig`
     command find -- . \
@@ -406,7 +406,7 @@ command rm -- "{}"' ';'
       -type f \
       -path '*/.git/*' \
       -path '*/hooks/*.sample' \
-      -delete 2>/dev/null
+      -delete
 
     ;;
   esac
