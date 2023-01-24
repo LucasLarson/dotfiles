@@ -25,8 +25,8 @@ aliases() {
 
 bash_major_version() {
   # confirm Bash version is at least any given version (default: at least Bash 4)
-  if test "$(command bash -c 'printf "%d" "${BASH_VERSINFO[0]}"')" -lt "${1:-4}"; then
-    printf 'You will need to upgrade to version %d for full functionality.\n' "${1:-4}" >&2
+  if test "$(command bash -c 'printf -- "%d" "${BASH_VERSINFO[0]}"')" -lt "${1:-4}"; then
+    printf -- 'You will need to upgrade to version %d for full functionality.\n' "${1:-4}" >&2
     return 1
   fi
 }
@@ -43,7 +43,7 @@ bash_pretty() {
       # first Bash
       {
         # add the shell directive
-        printf '#!/usr/bin/env bash\n'
+        printf -- '#!/usr/bin/env bash\n'
 
         # add `bash --pretty-print` content
         command bash --pretty-print -- "${file-}"
@@ -54,7 +54,7 @@ bash_pretty() {
       # next nominally POSIX shell
       {
         # add the shell directive
-        printf '#!/usr/bin/env sh\n'
+        printf -- '#!/usr/bin/env sh\n'
 
         # add `bash --pretty-print --posix` content
         command bash --pretty-print --posix -- "${file-}"
@@ -116,17 +116,17 @@ cdp() {
   cd_from="$(command pwd -L)"
   cd_to="$(command pwd -P)"
   if test "${cd_from-}" != "${cd_to-}"; then
-    printf 'moving from \342\200\230%s\342\200\231\n' "${cd_from-}"
+    printf -- 'moving from \342\200\230%s\342\200\231\n' "${cd_from-}"
     command sleep 0.2
     cd "${cd_to-}" || {
-      printf 'unable to perform this operation\n'
+      printf -- 'unable to perform this operation\n'
       return 1
     }
-    printf '       into \342\200\230%s\342\200\231\n' "${cd_to-}"
+    printf -- '       into \342\200\230%s\342\200\231\n' "${cd_to-}"
     command sleep 0.2
   else
-    printf 'already in unaliased directory '
-    printf '\342\200\230%s\342\200\231\n' "${cd_from-}"
+    printf -- 'already in unaliased directory '
+    printf -- '\342\200\230%s\342\200\231\n' "${cd_from-}"
     return 1
   fi
   unset -- cd_from
@@ -136,7 +136,7 @@ cdp() {
 # cheat
 cheat() {
   command curl --show-error --silent 'https://cheat.sh/'"$(
-    printf '%s' "$*" | command sed -e 'y/ /+/'
+    printf -- '%s' "$*" | command sed -e 'y/ /+/'
   )"
 }
 
@@ -159,7 +159,7 @@ clang_format() {
       ColumnLimit="${OPTARG-}"
       ;;
     *)
-      printf 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'
+      printf -- 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'
       return 1
       ;;
     esac
@@ -169,7 +169,7 @@ clang_format() {
   shift "$((OPTIND - 1))"
 
   command sleep 1
-  printf 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
+  printf -- 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
   command sleep 1
 
   # eligible filename extensions:
@@ -271,8 +271,8 @@ clang_format() {
     command sed -e 's/\[1\/1\]//'
   unset -- IndentWidth
   unset -- ColumnLimit
-  printf '\n'
-  printf '\342\234\205  done\041\n'
+  printf -- '\n'
+  printf -- '\342\234\205  done\041\n'
 }
 
 cleanup() {
@@ -296,9 +296,9 @@ cleanup() {
       test "$(command pwd -P | command xargs -0 dirname)" = "${HOME-}" &&
       case "$(command pwd -P | command tr -d '[:space:]' | command xargs basename -- | command cut -c 1)" in
       [A-Z])
-        printf '\n\n'
-        printf '\342\233\224\357\270\217 aborting: refusing to run from a macOS standard directory\n'
-        printf '\n\n'
+        printf -- '\n\n'
+        printf -- '\342\233\224\357\270\217 aborting: refusing to run from a macOS standard directory\n'
+        printf -- '\n\n'
         return 77
         ;;
       *)
@@ -329,14 +329,14 @@ cleanup() {
         command find -- "${HOME-}" \
           -maxdepth 1 \
           -type f \
-          ! -name "$(printf "*\n*")" \
+          ! -name "$(printf -- "*\n*")" \
           ! -name '.zcompdump' \
           -name '.zcompdump*'
       )"; do
         command find -- "${HOME-}" \
           -maxdepth 1 \
           -type f \
-          ! -name "$(printf "*\n*")" \
+          ! -name "$(printf -- "*\n*")" \
           ! -name '.zcompdump' \
           -name '.zcompdump*' \
           -delete
@@ -355,7 +355,7 @@ cleanup() {
       ! -path '*/Test*' \
       ! -path '*/test*' \
       ! -path '*vscode*' \
-      ! -name "$(printf 'Icon\015\012')" \
+      ! -name "$(printf -- 'Icon\015\012')" \
       ! -name '*.plugin.zsh' \
       ! -name '*empty*' \
       ! -name '*ignore' \
@@ -544,24 +544,24 @@ define() {
 
     # `hash` (POSIX)
     command -v -- hash >/dev/null 2>&1 &&
-      printf 'hash return value:\n%d\n———\n' "$(
+      printf -- 'hash return value:\n%d\n———\n' "$(
         hash "${query-}" >/dev/null 2>&1
-        printf '%d\n' "$?"
+        printf -- '%d\n' "$?"
       )"
 
     # `type` (System V; POSIX)
     command -v -- type >/dev/null 2>&1 &&
-      printf 'type:\n%s\n———\n' "$(type "${query-}")"
+      printf -- 'type:\n%s\n———\n' "$(type "${query-}")"
 
     # `command -V (POSIX)`
-    printf 'command -V:\n%s\n———\n' "$(command -V -- "${query-}")"
+    printf -- 'command -V:\n%s\n———\n' "$(command -V -- "${query-}")"
 
     # `command -v` (POSIX)
-    printf 'command -v:\n%s\n———\n' "$(command -v -- "${query-}")"
+    printf -- 'command -v:\n%s\n———\n' "$(command -v -- "${query-}")"
 
     # `which` (C shell)
     command -v -- which >/dev/null 2>&1 &&
-      printf 'which -a:\n%s\n' "$(command which -a "${query-}")"
+      printf -- 'which -a:\n%s\n' "$(command which -a "${query-}")"
 
     # `functions | shfmt` (Zsh)
     if builtin functions -- "${query-}" 2>/dev/null | command shfmt --simplify --indent 2 >/dev/null 2>&1; then
@@ -594,8 +594,8 @@ domain_name_from_url() {
     url="${url#*www.}"
     # remove ports like `:80`, `:443` (rare) and trailing slash and beyond
     url="${url%%[:/]*}"
-    printf '%s' "${url-}" &&
-      printf '\n'
+    printf -- '%s' "${url-}" &&
+      printf -- '\n'
   done
   unset -- url
 }
@@ -627,7 +627,7 @@ filename_spaces_to_underscores() {
     -name '*'"${1:-[[:space:]]}"'*' |
     while IFS='' read -r filename; do
       command mv -i -- "${filename-}" "${filename%/*}"/"$(
-        printf '%s' "${filename##*/}" |
+        printf -- '%s' "${filename##*/}" |
           command tr "${1:-[[:space:]]}" "${2:-_}"
       )"
     done
@@ -824,7 +824,7 @@ find_shell_scripts() {
       ! -path '*/test*' \
       ! -path '*vscode*' \
       -type f \
-      -exec sh -c 'command sed -e "1q" "{}" | command grep -q -e "^#!.*bin.*sh" && printf "%s\n" "{}"' ';' 2>/dev/null
+      -exec sh -c 'command sed -e "1q" "{}" | command grep -q -e "^#!.*bin.*sh" && printf -- "%s\n" "{}"' ';' 2>/dev/null
 
     # shfmt also knows how to find shell scripts
     command shfmt --find -- . 2>/dev/null |
@@ -953,18 +953,18 @@ alias gcpn='command git cherry-pick --no-commit'
 git_clone() {
   case "${1-}" in
   -h | --help)
-    printf 'Usage: %s <git_url> [<dir_name>]\n' "${0##*/}" >&2
+    printf -- 'Usage: %s <git_url> [<dir_name>]\n' "${0##*/}" >&2
     ;;
   -1 | --shallow)
     shift
     command mkdir "${2:-$(command basename -- "$1" .git || return 123)}" >/dev/null 2>&1
-    printf 'moving into %s...\n' "${2:-$(command basename -- "$1" .git)}" >&2
+    printf -- 'moving into %s...\n' "${2:-$(command basename -- "$1" .git)}" >&2
     cd "${2:-$(command basename -- "$1" .git || return 122)}" >/dev/null 2>&1 || return 5
     command git clone --verbose --progress --depth 1 --shallow-submodules -- "$1" . || return 6
     ;;
   *)
     command mkdir "${2:-$(command basename -- "$1" .git || return 126)}" >/dev/null 2>&1
-    printf 'moving into %s...\n' "${2:-$(command basename -- "$1" .git)}" >&2
+    printf -- 'moving into %s...\n' "${2:-$(command basename -- "$1" .git)}" >&2
     cd "${2:-$(command basename -- "$1" .git || return 125)}" >/dev/null 2>&1 || return 3
     command git clone --verbose --progress --recursive -- "$1" . || return 4
     ;;
@@ -996,7 +996,7 @@ git_config_file_locations() {
   for scope in global system local worktree; do
     # do not return `.git/config` if called from outside a git repository
     test -z "$(command git config --list --show-scope --"${scope-}" 2>/dev/null)" ||
-      printf '%-10s%s\n' "${scope-}" "$(
+      printf -- '%-10s%s\n' "${scope-}" "$(
         command git config --list --show-origin --"${scope-}" |
           command sed \
             -e 's|file:||' \
@@ -1103,7 +1103,7 @@ git_commit_initial_commit() {
       export GIT_COMMITTER_DATE="${git_time-}"
     fi
   # create empty root commit
-  command git commit --allow-empty --signoff --verbose --message="$(printf '\360\237\214\263\302\240 root commit')" &&
+  command git commit --allow-empty --signoff --verbose --message="$(printf -- '\360\237\214\263\302\240 root commit')" &&
     # ...and add a signed v0.0.0 tag to it
     command git tag --annotate --sign v0.0.0 --message='' &&
     # ...and if there are files present...
@@ -1111,7 +1111,7 @@ git_commit_initial_commit() {
     # add them...
     command git add --verbose -- . &&
     # ...and commit them
-    command git commit --signoff --verbose --message="$(printf '\342\234\250\302\240 initial commit')" &&
+    command git commit --signoff --verbose --message="$(printf -- '\342\234\250\302\240 initial commit')" &&
     # ...and add a signed v0.0.1 tag
     command git tag --annotate --sign v0.0.1 --message=''
   unset -- git_time
@@ -1178,7 +1178,7 @@ gdr() {
       command git config --get --global checkout.defaultRemote ||
       command git config --get branch."$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote
   } 2>/dev/null ||
-    printf 'origin\n'
+    printf -- 'origin\n'
 }
 alias git-default-remote='gdr'
 alias git-default-origin='gdr'
@@ -1325,10 +1325,10 @@ gravatar() {
   size="${2:-4096}"
 
   # remove spaces
-  email="$(printf '%s' "${email-}" | command tr -d '[:space:]')"
+  email="$(printf -- '%s' "${email-}" | command tr -d '[:space:]')"
 
   # change to all lowercase
-  email="$(printf '%s' "${email-}" | command tr '[:upper:]' '[:lower:]')"
+  email="$(printf -- '%s' "${email-}" | command tr '[:upper:]' '[:lower:]')"
 
   # discover md5 utility
   if command -v -- md5sum >/dev/null 2>&1; then
@@ -1338,10 +1338,10 @@ gravatar() {
   fi
 
   # hash the email address
-  email="$(printf '%s' "${email-}" | command "${utility-}" | command cut -b 1-32)"
+  email="$(printf -- '%s' "${email-}" | command "${utility-}" | command cut -b 1-32)"
 
   # return the Gravatar image URL
-  printf 'https://gravatar.com/avatar/%s?s=%d\n' "${email-}" "${size-}"
+  printf -- 'https://gravatar.com/avatar/%s?s=%d\n' "${email-}" "${size-}"
 
   # cleanup variables
   unset -- email
@@ -1358,17 +1358,17 @@ hash_abbreviate() {
       length="${OPTARG-}"
       ;;
     *)
-      printf 'usage: %s [-l <length>] <hash> [<hash> ...]\n' "${0##*/}" >&2
+      printf -- 'usage: %s [-l <length>] <hash> [<hash> ...]\n' "${0##*/}" >&2
       ;;
     esac
   done
   shift "$((OPTIND - 1))"
   for hash in "$@"; do
-    if printf '%s' "${hash-}" | command grep -E -q -w -e '^[[:xdigit:]]{4,40}$'; then
-      printf '%s\n' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- '7')"}"
+    if printf -- '%s' "${hash-}" | command grep -E -q -w -e '^[[:xdigit:]]{4,40}$'; then
+      printf -- '%s\n' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- '7')"}"
       # prevent copying trailing newline with `tr` and
       # hide clipboard errors because `pbcopy` is not common
-      printf '%s' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- '7')"}" | command tr -d '[:space:]' | command pbcopy 2>/dev/null
+      printf -- '%s' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- '7')"}" | command tr -d '[:space:]' | command pbcopy 2>/dev/null
     else
       return 1
     fi
@@ -1490,7 +1490,7 @@ non_ascii() {
 odb() {
   # odb: convert hexadecimal escapes to octal escapes
   # usage: odb <string>
-  printf '%s' "$@" |
+  printf -- '%s' "$@" |
     # `-An` hide the address base
     # `-t o1` convert to octal
     command od -A n -t o1 |
@@ -1565,19 +1565,19 @@ path_check() {
       ;;
 
     *)
-      printf 'usage: %s [-v|--verbose]\n' "${0##*/}" >&2
+      printf -- 'usage: %s [-v|--verbose]\n' "${0##*/}" >&2
       return 1
       ;;
     esac
   done
 
-  printf '%s\n' "${PATH-}" |
+  printf -- '%s\n' "${PATH-}" |
     command sed -e 'y/:/\n/' |
     while IFS='' read -r directory; do
       if test -d "${directory-}"; then
-        printf 'is a directory: %s\n' "${directory-}"
+        printf -- 'is a directory: %s\n' "${directory-}"
       else
-        printf 'not a directory: %s\n' "${directory-}"
+        printf -- 'not a directory: %s\n' "${directory-}"
       fi
     done
   unset -- argument
@@ -1633,7 +1633,7 @@ command -v -- python3 >/dev/null 2>&1 &&
 
 # $?
 question_mark() {
-  printf '%d\n' "$?"
+  printf -- '%d\n' "$?"
 }
 alias '?'='question_mark'
 
@@ -1696,10 +1696,10 @@ take() {
     if test ! -d "${directory-}"; then
       command mkdir -p -- "${directory-}"
       test -d "${directory-}" &&
-        printf 'creating directory \342\200\230%s\342\200\231...\n' "${directory-}" ||
+        printf -- 'creating directory \342\200\230%s\342\200\231...\n' "${directory-}" ||
         return 1
     else
-      printf 'directory \342\200\230%s\342\200\231 exists...\n' "${directory-}"
+      printf -- 'directory \342\200\230%s\342\200\231 exists...\n' "${directory-}"
     fi
   done
   unset -- directory
@@ -1711,7 +1711,7 @@ take() {
   done
   if test -d "${directory-}"; then
     cd "${directory-}" >/dev/null 2>&1 &&
-      printf 'moving into \342\200\230%s\342\200\231\n' "${directory-}"
+      printf -- 'moving into \342\200\230%s\342\200\231\n' "${directory-}"
   else
     # it’s not a directory
     return 1
@@ -1721,7 +1721,7 @@ take() {
 
 transfer() {
   for file in "$@"; do
-    command curl --progress-bar --upload-file "${file-}" 'https://transfer.sh/'"${file##*/}" && printf '\n'
+    command curl --progress-bar --upload-file "${file-}" 'https://transfer.sh/'"${file##*/}" && printf -- '\n'
   done
 }
 
@@ -1729,8 +1729,8 @@ transfer() {
 alias unixtime='command awk -- '\''BEGIN {srand(); print srand()}'\'''
 
 user() {
-  printf '%s' "${USER-}" &&
-    printf '\n'
+  printf -- '%s' "${USER-}" &&
+    printf -- '\n'
 }
 
 alias all='which -a'
@@ -1780,10 +1780,10 @@ yamllint_r() {
 # zero
 # https://github.com/zdharma-continuum/Zsh-100-Commits-Club/blob/1f880d03ec/Zsh-Plugin-Standard.adoc#zero-handling
 zero() {
-  printf '0=\044{ZERO:-\044{\044{0:#\044ZSH_ARGZERO}:-\044{(\045):-\045N}}}'
-  printf '\n'
-  printf '0=\044{\044{(M)0:#/*}:-\044{PWD}/\0440}'
-  printf '\n'
+  printf -- '0=\044{ZERO:-\044{\044{0:#\044ZSH_ARGZERO}:-\044{(\045):-\045N}}}'
+  printf -- '\n'
+  printf -- '0=\044{\044{(M)0:#/*}:-\044{PWD}/\0440}'
+  printf -- '\n'
 }
 
 ohmyzsh() {
