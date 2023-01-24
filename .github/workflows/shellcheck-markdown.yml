@@ -17,13 +17,13 @@ jobs:
           # test shell syntax of Markdown code snippets
           # https://github.com/dylanaraps/pure-sh-bible/commit/9d54e96011
 
-          trap 'printf "shellcheck complete\n"' EXIT INT
+          trap 'printf -- "shellcheck complete\n"' EXIT INT
 
           # Extract code blocks from the README.
           while read -r line; do
             test "${code-}" = '1' &&
               test "${line-}" != '```' &&
-              printf '%s\n' "${line-}"
+              printf -- '%s\n' "${line-}"
 
             case "${line-}" in
             '```sh' | '```bash' | '```zsh' | '```shell')
@@ -55,7 +55,7 @@ jobs:
 
           # Print the code blocks.
           while read -r line; do
-            printf '%s\n' "${line-}"
+            printf -- '%s\n' "${line-}"
           done <'./codesnippets_code'
 
           # Run shellcheck on the extracted code blocks

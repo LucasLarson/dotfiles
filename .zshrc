@@ -40,8 +40,8 @@ fi
 
 # set maximum number of lines in history file
 # https://unix.stackexchange.com/a/111777
-SAVEHIST="$(printf '2 ^ 32 - 1\n' | command bc)" # 4,294,967,295 in history file
-HISTSIZE="$((SAVEHIST / 2))"                     # 2,147,478,647 in session
+SAVEHIST="$(printf -- '2 ^ 32 - 1\n' | command bc)" # 4,294,967,295 in history file
+HISTSIZE="$((SAVEHIST / 2))"                        # 2,147,478,647 in session
 export SAVEHIST HISTSIZE
 
 ## zsh compdump
@@ -63,9 +63,9 @@ plugins+=(
 
 # plugin: zsh_codex
 test -r "${XDG_CONFIG_HOME-}"'/openaiapirc' || {
-  printf '[openai]\n'
-  printf 'organization_id = %s\n' "${OPENAI_ORGANIZATION_ID-}"
-  printf 'secret_key = %s\n' "${OPENAI_SECRET_KEY-}"
+  printf -- '[openai]\n'
+  printf -- 'organization_id = %s\n' "${OPENAI_ORGANIZATION_ID-}"
+  printf -- 'secret_key = %s\n' "${OPENAI_SECRET_KEY-}"
 } >|"${XDG_CONFIG_HOME-}"'/openaiapirc' &&
   bindkey '^X' create_completion &&
   plugins+=(
