@@ -455,7 +455,7 @@ count_files() {
     ! -path '*/.git/*' \
     ! -name '.' \
     ! -name '.DS_Store' \
-    -type f \
+    ! -type d \
     -print |
     command grep -c -e '//'
 }
@@ -474,10 +474,7 @@ count_files_by_extension() {
   command find -- . \
     ! -path '*/.git/*' \
     ! -path '*/node_modules/*' \
-    '(' \
-    -type f -o \
-    -type l \
-    ')' \
+    ! -type d \
     '(' \
     -name '.*' -o \
     -name '*.*' \
@@ -492,10 +489,7 @@ count_files_by_extension() {
   command find -- . \
     ! -path '*/.git/*' \
     ! -path '*/node_modules/*' \
-    '(' \
-    -type f -o \
-    -type l \
-    ')' \
+    ! -type d \
     ! -name '*.*' \
     -print 2>/dev/null |
     LC_ALL='C' command sort -u |
@@ -1739,7 +1733,7 @@ yamllint_r() {
   command -v -- yamllint >/dev/null 2>&1 ||
     return 1
   command find -- . \
-    -type f \
+    ! -type d \
     ! -path "${DOTFILES-}"'/Library*' \
     ! -path "${HOME-}"'/Library*' \
     ! -path '*/.git/*' \
