@@ -304,6 +304,7 @@ command find -- . \
   -size 0 \
   '(' \
   ! -path '*/.git/*' \
+  ! -path '*/Test*' \
   ! -path '*/test*' \
   ! -path '*example*' \
   ! -path '*sample*' \
