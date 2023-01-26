@@ -301,7 +301,6 @@ command find -- . \
 command find -- . \
   -type f \
   -size 0 \
-  '(' \
   ! -path '*/.git/*' \
   ! -path '*/Test*' \
   ! -path '*/test*' \
@@ -324,7 +323,6 @@ command find -- . \
   ! -name '.watchmanconfig' \
   ! -name '__init__.py' \
   ! -name 'favicon.*' \
-  ')' \
   -delete
 
 # delete empty directories recursively
