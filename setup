@@ -49,7 +49,7 @@ set -o xtrace
 
 # pacman
 # https://askubuntu.com/a/459425
-command sed -e '1q' /etc/os-release 2>/dev/null | command grep -q -e 'Arch Linux' && {
+command -v -- pacman >/dev/null 2>&1 && {
   command pacman --sync --refresh --refresh ||
     # https://wiki.archlinux.org/?oldid=667441#Installing_packages
     command pacman --sync --refresh --upgrades 2>/dev/null
