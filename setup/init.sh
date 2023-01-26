@@ -257,7 +257,7 @@ command apk update --verbose --verbose --progress
 { set +o xtrace; } 2>/dev/null
 printf -- 'upgrading...\n' 2>/dev/null
 set -o xtrace
-command apk upgrade --verbose --verbose --progress
+command apk upgrade --verbose --progress
 
 { set +o xtrace; } 2>/dev/null
 printf -- 'repairing and resolving dependencies...\n' 2>/dev/null
