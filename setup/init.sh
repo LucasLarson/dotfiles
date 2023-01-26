@@ -305,9 +305,6 @@ command find -- . \
   ! -path '*/Test*' \
   ! -path '*/test*' \
   ! -path '*/.well-known/*' \
-  ! -path '*example*' \
-  ! -path '*sample*' \
-  ! -path '*template*' \
   ! -name "$(printf -- 'Icon\015\012')" \
   ! -name '*LOCK' \
   ! -name '*empty*' \
