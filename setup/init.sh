@@ -304,6 +304,7 @@ command find -- . \
   ! -path '*/.git/*' \
   ! -path '*/Test*' \
   ! -path '*/test*' \
+  ! -path '*/.well-known/*' \
   ! -path '*example*' \
   ! -path '*sample*' \
   ! -path '*template*' \
@@ -315,21 +316,16 @@ command find -- . \
   ! -name '*lock' \
   ! -name '*lockfile' \
   ! -name '.dirstamp' \
+  ! -name '.git' \
   ! -name '.gitkeep' \
   ! -name '.gitmodules' \
   ! -name '.hushlogin' \
   ! -name '.keep' \
   ! -name '.sudo_as_admin_successful' \
   ! -name '.watchmanconfig' \
+  ! -name '.well-known' \
   ! -name '__init__.py' \
   ! -name 'favicon.*' \
-  -delete
-
-# delete empty directories recursively
-# but skip Git-specific and `/.well-known/` directories
-command find -- . -type d -empty \
-  ! -path '*/.git/*' \
-  ! -name '*/.well-known/*' \
   -delete
 
 # if the shell can be changed and
