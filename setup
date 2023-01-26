@@ -7,7 +7,7 @@
 # Assumptions: installation target is one of Arch Linux or Alpine Linux
 
 # Alpine Linux
-# wget -O - https://lucaslarson.net/init.sh | sh
+# wget -O- https://lucaslarson.net/init.sh | sh
 
 # Arch Linux
 # curl https://lucaslarson.net/init.sh | sh
