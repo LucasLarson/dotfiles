@@ -343,7 +343,7 @@ cleanup() {
       done
     fi
 
-    # delete empty, writable files except
+    # delete empty files except
     # those with specific names and
     # those that belong to a repository
     command find -- . \

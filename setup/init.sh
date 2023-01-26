@@ -295,12 +295,11 @@ command find -- . \
   ')' \
   -delete
 
-# delete empty, writable, zero-length files
+# delete empty files
 # except those within `.git/` directories
 # and those with specific names
 command find -- . \
   -type f \
-  -writable \
   -size 0 \
   '(' \
   ! -path '*/.git/*' \
