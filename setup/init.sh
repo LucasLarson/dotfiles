@@ -301,6 +301,8 @@ command find -- . \
 command find -- . \
   -type f \
   -size 0 \
+  ! -path "${DOTFILES-}"'/Library/*' \
+  ! -path "${HOME-}"'/Library/*' \
   ! -path '*/.git/*' \
   ! -path '*/Test*' \
   ! -path '*/test*' \
