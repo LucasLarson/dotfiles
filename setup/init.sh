@@ -303,15 +303,14 @@ command find -- . \
   -writable \
   -size 0 \
   '(' \
-  ! -path '*.git/*' \
+  ! -path '*/.git/*' \
+  ! -path '*/test*' \
   ! -path '*example*' \
   ! -path '*sample*' \
   ! -path '*template*' \
-  ! -path '*test*' \
   ! -name "$(printf -- 'Icon\015\012')" \
   ! -name '*LOCK' \
   ! -name '*empty*' \
-  ! -name '*hushlogin' \
   ! -name '*ignore' \
   ! -name '*journal' \
   ! -name '*lock' \
@@ -319,6 +318,7 @@ command find -- . \
   ! -name '.dirstamp' \
   ! -name '.gitkeep' \
   ! -name '.gitmodules' \
+  ! -name '.hushlogin' \
   ! -name '.keep' \
   ! -name '.sudo_as_admin_successful' \
   ! -name '.watchmanconfig' \
@@ -330,8 +330,8 @@ command find -- . \
 # delete empty directories recursively
 # but skip Git-specific and `/.well-known/` directories
 command find -- . -type d -empty \
-  ! -path '*.git/*' \
-  ! -name '.well-known' \
+  ! -path '*/.git/*' \
+  ! -name '*/.well-known/*' \
   -delete
 
 # if the shell can be changed and

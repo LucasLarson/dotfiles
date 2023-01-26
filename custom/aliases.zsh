@@ -390,7 +390,7 @@ command rm -- "{}"' ';'
       -type d \
       -empty \
       ! -path '*/.git/*' \
-      ! -path '*/.well-known' \
+      ! -path '*/.well-known/*' \
       -delete
 
     # swap each tab for two spaces each in `.git/config` and `$HOME/.gitconfig`
@@ -1737,12 +1737,12 @@ yamllint_r() {
     ! -path "${DOTFILES-}"'/Library*' \
     ! -path "${HOME-}"'/Library*' \
     ! -path '*/.git/*' \
-    ! -path '*/.well-known' \
+    ! -path '*/.well-known/*' \
+    ! -path '*/copilot.vim/*' \
     ! -path '*/node_modules/*' \
     ! -path '*/t/*' \
     ! -path '*/Test*' \
     ! -path '*/test*' \
-    ! -path '*copilot*' \
     ! -path '*vscode*' \
     '(' \
     -name '*.yml' -o \
