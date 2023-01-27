@@ -26,9 +26,6 @@
   branch = main
   path = custom/plugins/zsh-diff-so-fancy
   url = https://github.com/zdharma-continuum/zsh-diff-so-fancy
-[submodule "custom/plugins/git-open"]
-  path = custom/plugins/git-open
-  url = https://github.com/paulirish/git-open
 [submodule "custom/plugins/zsh_codex"]
   branch = main
   path = custom/plugins/zsh_codex
