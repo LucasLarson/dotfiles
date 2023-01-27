@@ -1,0 +1,25 @@
+{
+  "name": "lib",
+  "dependencies": {
+    "@prantlf/jsonlint": {
+      "version": "11.7.0",
+      "overridden": false
+    },
+    "markdownlint-cli": {
+      "version": "0.33.0",
+      "overridden": false
+    },
+    "npm": {
+      "version": "9.4.0",
+      "overridden": false
+    },
+    "standard": {
+      "version": "17.0.0",
+      "overridden": false
+    },
+    "trash-cli": {
+      "version": "5.0.0",
+      "overridden": false
+    }
+  }
+}
