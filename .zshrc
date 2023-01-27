@@ -55,7 +55,6 @@ plugins+=(
   gunstage
   samefile
   git-default-branch
-  git-open
   zsh-abbr
   zsh-diff-so-fancy
   zsh-autosuggestions

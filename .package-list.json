@@ -5,6 +5,10 @@
       "version": "11.7.0",
       "overridden": false
     },
+    "git-open": {
+      "version": "3.0.0",
+      "overridden": false
+    },
     "markdownlint-cli": {
       "version": "0.33.0",
       "overridden": false
