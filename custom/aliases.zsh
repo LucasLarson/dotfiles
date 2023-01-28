@@ -260,7 +260,8 @@ clang_format() {
     -name '*.tli' -o \
     -name '*.tpp' -o \
     -name '*.ts' -o \
-    -name '*.txx' \
+    -name '*.txx' -o \
+    -name '*.xbm' \
     ')' \
     -exec sh -u -v -c "command git ls-files --error-unmatch -- '{}' >/dev/null 2>&1 ||
   ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
