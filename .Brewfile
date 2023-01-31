@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 tap "homebrew/aliases"
 tap "homebrew/autoupdate"
 tap "homebrew/bundle"
