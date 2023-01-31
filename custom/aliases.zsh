@@ -91,13 +91,14 @@ brewfile() {
       -e 's/^\(tap\)/1\1/' \
       -e 's/^\(brew\)/2\1/' \
       -e 's/^\(cask\)/3\1/' |
-    LC_ALL='C' command sort -f |
-    # remove the prepended numbers and
+    LC_ALL='C' command sort -f | {
+    printf -- '#!/usr/bin/env ruby\n'
+    # remove the prepended numbers and then
     # restore each comment to a line above its package
     command sed \
       -e 's/^[[:digit:]]//' \
-      -e 's/\([^#]*\)\(#.*\)/\2\n\1/' \
-      >"${HOME%/}"'/.Brewfile'
+      -e 's/\([^#]*\)\(#.*\)/\2\n\1/'
+  } >"${HOME-}"'/.Brewfile'
 }
 
 # prefer `bat` without line numbers for easier copying
