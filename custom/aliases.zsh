@@ -67,7 +67,6 @@ brewfile() {
   command brew bundle dump \
     --all \
     --cask \
-    --debug \
     --describe \
     --file=- \
     --force \
