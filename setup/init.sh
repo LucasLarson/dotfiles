@@ -45,7 +45,7 @@ now="$(command date -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print sran
 # set it to the POSIX default: `+ `
 # https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
 ps4_temporary="${PS4:-+ }"
-unset -- PS4
+unset -v -- PS4
 set -o xtrace
 
 # pacman
@@ -350,7 +350,7 @@ printf -- 'exiting to apply updates...\n' 2>/dev/null
 
 # restore `$PS4`
 PS4="${ps4_temporary:-+ }"
-unset -- ps4_temporary
+unset -v -- ps4_temporary
 
 {
   printf -- '\n'

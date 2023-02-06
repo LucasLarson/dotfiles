@@ -463,7 +463,7 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 command "${utility-}" --level=0 --mirror --continue --verbose \
 --append-output=./"${wget_server-}".log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --progress=bar --no-check-certificate --random-wait \
 --referer=https://"${wget_server-}" --adjust-extension --page-requisites --convert-links --server-response \
-https://"${wget_server-}"; unset wget_server utility`
+https://"${wget_server-}"; unset -v -- wget_server utility`
 
 ## Wi-Fi
 
@@ -545,7 +545,7 @@ command mkdir -p -- "${HOME-}"'/Library/Developer/Xcode/UserData/IB Support' && 
 command mkdir -p -- "${HOME-}"'/Library/Caches/JetBrains' && command mv -- "${HOME-}"'/Library/Caches/JetBrains' "${HOME-}"'/.Trash/JetBrains-'"${trash_date-}" \
 command mkdir -p -- "${HOME-}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' && command mv -- "${HOME-}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' "${HOME-}"'/.Trash/Carthage-'"${trash_date-}" \
 command mkdir -p -- "${HOME-}"'/Library/Caches/Homebrew/downloads' && command mv -- "${HOME-}"'/Library/Caches/Homebrew/downloads' "${HOME-}"'/.Trash/Homebrew-'"${trash_date-}" \
-command -v -- brew >/dev/null 2>&1 && { command brew autoremove --verbose; command brew cleanup --prune=all --verbose; } { set +o xtrace; unset -- trash_developer; unset -- trash_date; } 2>/dev/null; printf '\n\n\360\237%s\232\256  data successfully trashed\n' "${trash_developer-}"
+command -v -- brew >/dev/null 2>&1 && { command brew autoremove --verbose; command brew cleanup --prune=all --verbose; } { set +o xtrace; unset -v -- trash_developer; unset -v -- trash_date; } 2>/dev/null; printf '\n\n\360\237%s\232\256  data successfully trashed\n' "${trash_developer-}"
 ```
 
 ## delete
