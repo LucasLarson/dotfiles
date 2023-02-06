@@ -61,7 +61,7 @@ bash_pretty() {
       } >"${file-}"'.sh'
     fi
   done
-  unset -- file
+  unset -v -- file
 }
 
 brewfile() {
@@ -129,8 +129,8 @@ cdp() {
     printf -- '\342\200\230%s\342\200\231\n' "${cd_from-}"
     return 1
   fi
-  unset -- cd_from
-  unset -- cd_to
+  unset -v -- cd_from
+  unset -v -- cd_to
 }
 
 # cheat
@@ -270,8 +270,8 @@ clang_format() {
   command clang-format -i --style '{IndentWidth: ${IndentWidth:-2}, ColumnLimit: ${ColumnLimit:-79}}' --verbose -- '{}' 2>&1
 " ';' |
     command sed -e 's/\[1\/1\]//'
-  unset -- IndentWidth
-  unset -- ColumnLimit
+  unset -v -- IndentWidth
+  unset -v -- ColumnLimit
   printf -- '\n'
   printf -- '\342\234\205  done\041\n'
 }
@@ -444,8 +444,8 @@ cy() {
       # -L to follow symbolic links
       command cp -R -L -- "${file-}" "${target-}"
   done
-  unset -- file
-  unset -- target
+  unset -v -- file
+  unset -v -- target
 }
 
 # number of files
@@ -567,7 +567,7 @@ define() {
       builtin functions -x 2 -- "${query-}"
     fi
   done
-  unset -- query
+  unset -v -- query
 }
 alias d='define'
 
@@ -592,7 +592,7 @@ domain_name_from_url() {
     printf -- '%s' "${url-}" &&
       printf -- '\n'
   done
-  unset -- url
+  unset -v -- url
 }
 
 du() {
@@ -626,7 +626,7 @@ filename_spaces_to_underscores() {
           command tr "${1:-[[:space:]]}" "${2:-_}"
       )"
     done
-  unset -- filename
+  unset -v -- filename
 }
 
 file_closes_with_newline() {
@@ -964,7 +964,7 @@ git_clone() {
     command git clone --verbose --progress --recursive -- "$1" . || return 4
     ;;
   esac
-  unset -- remote_branch
+  unset -v -- remote_branch
 }
 alias gcl='git_clone'
 alias gcl1='git_clone -1'
@@ -1001,7 +1001,7 @@ git_config_file_locations() {
           LC_ALL='C' command sort -u
       )"
   done
-  unset -- scope
+  unset -v -- scope
 }
 
 unalias -- 'gd' 2>/dev/null
@@ -1109,9 +1109,9 @@ git_commit_initial_commit() {
     command git commit --signoff --verbose --message="$(printf -- '\342\234\250\302\240 initial commit')" &&
     # ...and add a signed v0.0.1 tag
     command git tag --annotate --sign v0.0.1 --message=''
-  unset -- git_time
-  unset -- GIT_AUTHOR_DATE
-  unset -- GIT_COMMITTER_DATE
+  unset -v -- git_time
+  unset -v -- GIT_AUTHOR_DATE
+  unset -v -- GIT_COMMITTER_DATE
 }
 alias gcic='git_commit_initial_commit'
 alias ginit='command git init && command git status'
@@ -1209,7 +1209,7 @@ git_restore() {
     command git checkout --progress -- "${file-}"
   done &&
     command git status
-  unset -- file
+  unset -v -- file
 }
 alias grs='git_restore'
 
@@ -1219,7 +1219,7 @@ git_search() {
     while IFS='' read -r commit; do
       command git grep --color=always --extended-regexp --ignore-case --line-number -e "$@" "${commit-}" --
     done
-  unset -- commit
+  unset -v -- commit
 }
 alias gsearch='git_search'
 
@@ -1235,7 +1235,7 @@ git_shallow() {
         "$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
     done
   command git submodule update
-  unset -- submodule
+  unset -v -- submodule
 }
 
 alias gsh='command git show'
@@ -1339,9 +1339,9 @@ gravatar() {
   printf -- 'https://gravatar.com/avatar/%s?s=%d\n' "${email-}" "${size-}"
 
   # cleanup variables
-  unset -- email
-  unset -- size
-  unset -- utility
+  unset -v -- email
+  unset -v -- size
+  unset -v -- utility
 }
 
 hash_abbreviate() {
@@ -1368,8 +1368,8 @@ hash_abbreviate() {
       return 1
     fi
   done
-  unset -- hash
-  unset -- length
+  unset -v -- hash
+  unset -v -- length
 }
 alias h7='hash_abbreviate'
 
@@ -1391,7 +1391,7 @@ h1() {
   for file in "$@"; do
     command sed -e '1q' "${file-}"
   done
-  unset -- file
+  unset -v -- file
 }
 
 history_stats() {
@@ -1511,7 +1511,7 @@ command -v -- ocrmypdf >/dev/null 2>&1 &&
         -- \
         "${file-}" "${file-}".ocr.pdf
     done
-    unset -- file
+    unset -v -- file
   }
 
 # open current directory if no argument is given
@@ -1575,8 +1575,8 @@ path_check() {
         printf -- 'not a directory: %s\n' "${directory-}"
       fi
     done
-  unset -- argument
-  unset -- directory
+  unset -v -- argument
+  unset -v -- directory
   {
     set +o xtrace
   } 2>/dev/null
@@ -1679,9 +1679,9 @@ rm() {
     done
     ;;
   esac
-  unset -- file
-  unset -- now
-  unset -- target
+  unset -v -- file
+  unset -v -- now
+  unset -v -- target
 }
 alias rmo='rm --others'
 
@@ -1697,7 +1697,7 @@ take() {
       printf -- 'directory \342\200\230%s\342\200\231 exists...\n' "${directory-}"
     fi
   done
-  unset -- directory
+  unset -v -- directory
 
   # POSIX-compliant `${@:$#}`-style and `${@: -1}`-style string indexing (SC3057)
   # https://stackoverflow.com/a/1853993
@@ -1711,7 +1711,7 @@ take() {
     # it’s not a directory
     return 1
   fi
-  unset -- directory
+  unset -v -- directory
 }
 
 transfer() {
