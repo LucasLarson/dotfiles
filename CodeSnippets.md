@@ -93,10 +93,15 @@
 
 #### manual
 
-<!--
-to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/mackup) might’ve but hasn’t
-`add='`**~/Desktop/example.txt**`' && cp ~/$add $DOTFILES/$add && mv ~/$add ~/.Trash && ln --symbolic $DOTFILES/$add ~/$add`
--->
+to add dotfiles of the variety [Mackup](https://github.com/lra/mackup) might’ve but hasn’t yet:
+
+```shell
+# make `~/Desktop/.example.txt` part of the dotfiles repository
+add="${HOME-}"'/Desktop/.example.txt'
+command mv -- "${add-}" "${DOTFILES-}"'/directory_where_it_should_go_if_any/'"${add##*/}"
+command ln -s -- "${DOTFILES-}"'/directory_where_it_should_go_if_any/'"${add##*/}" "${HOME-}"'/directory_where_it_should_go_if_any/'"${add##*/}"
+unset -v -- add
+```
 
 ##### lists
 
