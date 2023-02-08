@@ -103,7 +103,13 @@ to add dotfiles, for example, of the variety [Mackup](https://github.com/lra/ma
 ###### applications
 
 ```shell
-command find -- /System/Applications /Applications -maxdepth 3 -type d -name '*.app' -print0 | command xargs -0 basename -a -s '.app' -- | LC_ALL='C' command sort -u | LC_ALL='C' command sort -f
+command find -- \
+  /System/Applications \
+  /Applications \
+  -maxdepth 3 \
+  -name '*.app' 2>/dev/null |
+  command sed -e 's/.*\/\(.*\)\.app/\1/' |
+  LC_ALL='C' command sort -d -f
 ```
 
 On Alpine Linux, generate a list of installed packages with:<br>
