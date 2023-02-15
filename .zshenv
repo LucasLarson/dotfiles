@@ -41,7 +41,7 @@ command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
 
 ## Bashhub
 # filter from history
-export BH_FILTER="${BH_FILTER:="(^ |^bh|bashhub)"}"
+export BH_FILTER="${BH_FILTER:="(^ |^bh|bashhub|^google)"}"
 
 ## $CDPATH
 export CDPATH="${CDPATH:+${CDPATH-}:}${HOME-}"

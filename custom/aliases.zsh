@@ -1311,6 +1311,10 @@ gitlab_create_repository() {
   )"
 }
 
+google() {
+  command open -- 'https://www.google.com/search?q='"$*"
+}
+
 gravatar() {
   # gravatar
   # return the URL of a Gravatar image for the given email address
