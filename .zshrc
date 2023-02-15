@@ -235,14 +235,6 @@ set -o share_history
 # permit inline comments
 set -o interactive_comments
 
-## pyenv
-test -d "${HOME-}"'/.pyenv/shims' &&
-  PATH="${HOME-}"'/.pyenv/shims'"${PATH:+:${PATH-}}"
-pyenv() {
-  eval "$(command pyenv init - --no-rehash "${SHELL##*[-./]}")"
-  pyenv "$@"
-}
-
 ## C, C++
 if test -n "$(command xcrun --show-sdk-path 2>/dev/null)"; then
   CPATH="$(command xcrun --show-sdk-path)"'/usr/include'"${CPATH:+:${CPATH-}}"
