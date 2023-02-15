@@ -214,10 +214,6 @@ test "${GOPATH-}" != '' &&
 ## rbenv
 test -d "${HOME%/}"'/.rbenv/shims' &&
   PATH="${HOME%/}"'/.rbenv/shims'"${PATH:+:${PATH-}}"
-rbenv() {
-  eval " $(command rbenv init - --no-rehash "${SHELL##*[-./]}")"
-  rbenv "$@"
-}
 
 ## PATHs
 # prevent duplicate entries
