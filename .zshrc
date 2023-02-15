@@ -47,11 +47,11 @@ plugins+=(
   zsh-autosuggestions
 )
 # plugin: zsh_codex
-test -r "${XDG_CONFIG_HOME-}"'/openaiapirc' || {
+{ test -r "${XDG_CONFIG_HOME-}"'/openaiapirc' || {
   printf -- '[openai]\n'
   printf -- 'organization_id = %s\n' "${OPENAI_ORGANIZATION_ID-}"
   printf -- 'secret_key = %s\n' "${OPENAI_SECRET_KEY-}"
-} >"${XDG_CONFIG_HOME-}"'/openaiapirc' &&
+} >"${XDG_CONFIG_HOME-}"'/openaiapirc'; } &&
   bindkey '^X' create_completion &&
   plugins+=(
     zsh_codex
