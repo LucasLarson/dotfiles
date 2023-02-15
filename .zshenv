@@ -82,6 +82,26 @@ export POSIXLY_CORRECT="${POSIXLY_CORRECT:-1}"
 # https://github.com/mkrasnitski/git-power-rs/tree/2fc2906#installing
 export CARGO_HOME="${HOME-}"'/.cargo'
 
+## SSH, GPG
+for directory in \
+  "${DOTFILES-}"'/.gnupg' \
+  "${DOTFILES-}"'/.ssh' \
+  "${HOME-}"'/.gnupg' \
+  "${HOME-}"'/.ssh'; do
+  test -d "${directory-}" &&
+    command find -- "${directory-}" \
+      -type f \
+      -exec chmod -- 600 {} +
+  command find -- "${directory-}" \
+    -name '*.pub' \
+    -type f \
+    -exec chmod -- 644 {} +
+  command find -- "${directory-}" \
+    -type d \
+    -exec chmod -- 700 {} +
+done
+unset -v -- directory
+
 ## private
 # shellcheck disable=SC1091
 command touch -- "${HOME-}"'/.env' &&
