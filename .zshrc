@@ -61,15 +61,6 @@ plugins+=(
   bindkey '^[OB' history-substring-search-down
 }
 
-## Options
-set -o always_to_end
-set -o complete_in_word
-set +o flow_control
-set -o autocd
-set -o hist_ignore_dups
-set -o hist_ignore_space
-set -o histverify
-
 ## Keyboard shortcuts
 bindkey '^?' backward-delete-char
 bindkey '^A' beginning-of-line
@@ -206,8 +197,6 @@ test -d "${NPM_PACKAGES-}"'/bin' &&
 test -d "${NPM_PACKAGES-}"'/share/man' &&
   MANPATH="${MANPATH:+${MANPATH-}:}${NPM_PACKAGES-}"'/share/man'
 
-# include hidden files in tab completion
-set -o dotglob
 zstyle ':completion:*' special-dirs false
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format %B%F"{green}"%d%f%b
@@ -219,6 +208,16 @@ test -d "${ZSH_CUSTOM-}"'/plugins/zsh-completions/src' &&
 autoload -U compinit &&
   compinit
 
+## Options
+set -o always_to_end
+set -o complete_in_word
+set +o flow_control
+set -o autocd
+set -o hist_ignore_dups
+set -o hist_ignore_space
+set -o histverify
+# include hidden files in tab completion
+set -o dotglob
 # share all commands from everywhere
 set -o share_history
 # permit inline comments
