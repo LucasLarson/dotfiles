@@ -252,8 +252,7 @@ fi
 ## cpplint
 # `$LIBRARY_PATH` || ld: library not found for -lSystem
 if test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
-  LIBRARY_PATH='/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'"${LIBRARY_PATH:+:${LIBRARY_PATH-}}"
-  export LIBRARY_PATH
+  export LIBRARY_PATH='/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'"${LIBRARY_PATH:+:${LIBRARY_PATH-}}"
 fi
 
 ## Go
