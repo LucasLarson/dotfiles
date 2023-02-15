@@ -20,11 +20,7 @@ test -d "${HOME-}"'/.oh-my-zsh' &&
   export ZSH="${HOME-}"'/.oh-my-zsh'
 
 ## Theme
-{
-  test "$(command uname)" = 'Darwin' ||
-    test "$((COLUMNS * LINES))" -gt "$((80 * 24))"
-} &&
-  . "${ZSH_CUSTOM-}"'/themes/powerlevel10k/powerlevel10k.zsh-theme' 2>/dev/null &&
+. "${ZSH_CUSTOM-}"'/themes/powerlevel10k/powerlevel10k.zsh-theme' 2>/dev/null &&
   export ZSH_THEME='powerlevel10k/powerlevel10k'
 
 ## History size
