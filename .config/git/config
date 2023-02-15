@@ -87,6 +87,9 @@
   ff = only
   rebase = true
 
+[rebase]
+  updateRefs = true
+
 [rerere]
   # Git remembers your partial merge choices and replays them next time
   # https://stackoverflow.com/a/28156806
