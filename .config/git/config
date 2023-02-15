@@ -72,6 +72,9 @@
   ff = only
   rebase = true
 
+[rebase]
+  updateRefs = true
+
 [rerere]
   autoUpdate = true
   enabled = true
