@@ -78,7 +78,7 @@ set -o hist_ignore_dups
 set -o hist_ignore_space
 set -o histverify
 
-## shell navigation without the mouse
+## Keyboard shortcuts
 bindkey '^?' backward-delete-char
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
