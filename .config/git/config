@@ -84,6 +84,7 @@
   compression = 9
 
 [pull]
+  ff = only
   rebase = true
 
 [rerere]
