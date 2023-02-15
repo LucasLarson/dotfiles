@@ -43,6 +43,9 @@ command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
 # filter from history
 export BH_FILTER="${BH_FILTER:="(^ |^bh|bashhub|sql|ssh)"}"
 
+## $CDPATH
+export CDPATH="${CDPATH:+${CDPATH-}:}${HOME-}"
+
 ## GitHub
 export GITHUB_ORG="${USER-}"
 
