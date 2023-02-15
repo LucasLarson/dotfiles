@@ -280,7 +280,7 @@ set -o xtrace
 
 # message of the day
 test -w '/etc/motd' &&
-  cp -- '/etc/motd' '/etc/motd-'"${now-}" &&
+  command cp -- '/etc/motd' '/etc/motd-'"${now-}" &&
   printf -- '' >'/etc/motd'
 
 # delete thumbnail cache files
@@ -339,7 +339,7 @@ command find -- . -type d -empty \
 test -w '/etc/passwd' &&
   command -v -- zsh >/dev/null 2>&1 &&
   command grep -E -e '/bin/b?a?sh' '/etc/passwd' 2>&1 &&
-  cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
+  command cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
   command sed -e 's|/bin/b\{0,1\}a\{0,1\}sh$|'"$(command -v -- zsh)"'|' '/etc/passwd-'"${now-}" >'/etc/passwd'
 
 # done
