@@ -66,7 +66,6 @@ set -o always_to_end
 set -o complete_in_word
 set +o flow_control
 set -o autocd
-set -o extended_history
 set -o hist_ignore_dups
 set -o hist_ignore_space
 set -o histverify
