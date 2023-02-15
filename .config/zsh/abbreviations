@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 abbr --global hlep='help'
 abbr --global --hlep='--help'
+abbr --global hlp='help'
+abbr --global --hlp='--help'
+abbr --global ehlp='help'
+abbr --global --ehlp='--help'
 abbr --global lf='exa --all --bytes --classify --color-scale --color=always --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso -- '\''{}'\'' '\''+'\'''
 abbr eixt='exit'
 abbr opne='open'
