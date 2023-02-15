@@ -16,6 +16,9 @@
   precomposeUnicode = true
   pager = command diff-so-fancy | command less --RAW-CONTROL-CHARS --no-init --quit-if-one-screen --tabs=4
 
+[advice]
+  skippedCherryPicks = false
+
 [blame]
   coloring = highlightRecent
 
