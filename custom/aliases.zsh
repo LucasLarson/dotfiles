@@ -476,11 +476,7 @@ count_files_by_extension() {
     ! -path '*/.git/*' \
     ! -path '*/node_modules/*' \
     ! -type d \
-    '(' \
-    -name '.*' -o \
-    -name '*.*' \
-    ')' \
-    -exec basename -a -- '{}' '+' 2>/dev/null |
+    -name '*.*' |
     command sed -e 's/.*\.//' |
     LC_ALL='C' command sort |
     command uniq -c |
