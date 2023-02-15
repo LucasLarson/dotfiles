@@ -3,7 +3,7 @@
 ## Powerlevel10k
 # instant prompt
 # shellcheck disable=SC1090
-. "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${USER-}"'.zsh'
+. "${XDG_CACHE_HOME:-${HOME-}/.cache}"'/p10k-instant-prompt-'"${USER-}"'.zsh' 2>/dev/null
 
 ## PATH
 # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/command.html
