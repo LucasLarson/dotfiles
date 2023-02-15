@@ -2,7 +2,7 @@
 
 ## Powerlevel10k
 # shellcheck disable=SC1090
-. "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${USER-}"'.zsh'
+. "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${USER-}"'.zsh' 2>/dev/null
 
 ## PATH
 PATH="$(command -p -- getconf -- PATH)${PATH:+:${PATH-}}"
@@ -20,14 +20,12 @@ test -d "${HOME-}"'/.oh-my-zsh' &&
   export ZSH="${HOME-}"'/.oh-my-zsh'
 
 ## Theme
-if test -r "${ZSH_CUSTOM-}"'/themes/powerlevel10k/powerlevel10k.zsh-theme' &&
-  {
-    test "$(command uname)" = 'Darwin' ||
-      test "$((COLUMNS * LINES))" -gt "$((80 * 24))"
-  }; then
-  . "${ZSH_CUSTOM-}"'/themes/powerlevel10k/powerlevel10k.zsh-theme'
+{
+  test "$(command uname)" = 'Darwin' ||
+    test "$((COLUMNS * LINES))" -gt "$((80 * 24))"
+} &&
+  . "${ZSH_CUSTOM-}"'/themes/powerlevel10k/powerlevel10k.zsh-theme' 2>/dev/null &&
   export ZSH_THEME='powerlevel10k/powerlevel10k'
-fi
 
 ## History size
 SAVEHIST="$(printf -- '2 ^ 32 - 1\n' | command bc)"
@@ -210,8 +208,7 @@ test -d "${HOME-}"'/.cargo/bin' &&
   PATH="${HOME-}"'/.cargo/bin'"${PATH:+:${PATH-}}"
 
 ## Bashhub
-test -r "${HOME-}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" &&
-  . "${HOME-}"'/.bashhub/bashhub.'"${SHELL##*[-./]}"
+. "${HOME-}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" 2>/dev/null
 
 ## npm
 NPM_PACKAGES="${HOME-}"'/.npm-packages'
@@ -282,5 +279,4 @@ test -n "${ZSH-}" &&
     MANPATH manpath
 
 ## Powerlevel10k
-test "${ZSH_THEME-}" = 'powerlevel10k/powerlevel10k' &&
-  . "${HOME-}"'/.p10k.zsh'
+. "${HOME-}"'/.p10k.zsh' 2>/dev/null
