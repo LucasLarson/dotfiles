@@ -74,6 +74,9 @@ export POSIXLY_CORRECT="${POSIXLY_CORRECT:-1}"
 # https://github.com/mkrasnitski/git-power-rs/tree/2fc2906#installing
 export CARGO_HOME="${HOME%/}"'/.cargo'
 
+# GPG
+export GPG_TTY="${TTY-}"
+
 ## private
 # shellcheck disable=SC1091
 command touch -- "${HOME%/}"'/.env' &&
