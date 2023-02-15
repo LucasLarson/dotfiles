@@ -286,16 +286,6 @@ set -o share_history
 # https://stackoverflow.com/a/11873793
 set -o interactive_comments
 
-## pyenv
-test -d "${HOME%/}"'/.pyenv/shims' &&
-  PATH="${HOME%/}"'/.pyenv/shims'"${PATH:+:${PATH-}}"
-# https://gist.github.com/4a4c4986ccdcaf47b91e8227f9868ded#prezto
-# https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
-pyenv() {
-  eval "$(command pyenv init - --no-rehash "${SHELL##*[-./]}")"
-  pyenv "$@"
-}
-
 ## C, C++
 # headers
 # https://apple.stackexchange.com/a/372600
