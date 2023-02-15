@@ -60,7 +60,7 @@ export GOPATH="${HOME-}"'/.go'
 test -d "${HOME-}"'/Library/Mobile Documents' &&
   export ICLOUD="${HOME-}"'/Library/Mobile Documents'
 
-## Internal Field Separators
+## Input Field Separators
 # https://unix.stackexchange.com/a/220658
 # https://opengroup.org/onlinepubs/009695399/utilities/xcu_chap02.html#tag_02_05_03
 IFS="$(printf -- ' \t\n|')" &&
