@@ -35,6 +35,9 @@ command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
   command chmod 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=${TMPDIR:-/tmp}/xdg_runtime_dir-${USER-}}"
 
+## $CDPATH
+export CDPATH="${CDPATH:+${CDPATH-}:}${HOME%/}"
+
 ## GitHub
 export GITHUB_ORG="${USER-}"
 
