@@ -110,9 +110,6 @@ if test -n "${EDITOR-}"; then
   export VISUAL="${VISUAL:-${EDITOR-}}"
 fi
 
-## GPG
-export GPG_TTY="${TTY-}"
-
 ## Homebrew
 if command -v -- brew >/dev/null 2>&1; then
   HOMEBREW_PREFIX="$(command brew --prefix)"

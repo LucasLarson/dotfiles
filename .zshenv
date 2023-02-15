@@ -101,6 +101,8 @@ for directory in \
     -exec chmod -- 700 {} +
 done
 unset -v -- directory
+# GPG
+export GPG_TTY="${TTY-}"
 
 ## private
 # shellcheck disable=SC1091
