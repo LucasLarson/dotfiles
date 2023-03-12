@@ -1,13 +1,24 @@
 #!/usr/bin/env sh
+# abbreviations
+
+## help
 abbr --global hlep='help'
 abbr --global --hlep='--help'
 abbr --global hlp='help'
 abbr --global --hlp='--help'
 abbr --global ehlp='help'
 abbr --global --ehlp='--help'
+
+## find
 abbr --global lf='exa --all --bytes --classify --color-scale --color=always --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso -- '\''{}'\'' '\''+'\'''
+
+## exit
 abbr eixt='exit'
+
+## open
 abbr opne='open'
+
+## zshrc
 abbr zhsrc='zshrc'
 abbr zsrhc='zshrc'
 abbr zsrhc='zshrc'
