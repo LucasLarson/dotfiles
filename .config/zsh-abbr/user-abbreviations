@@ -2,7 +2,7 @@
 # abbreviations
 
 ## exit
-abbr eixt='exit'
+abbr --global eixt='exit'
 
 ## find
 abbr --global lf='exa --all --bytes --classify --color-scale --color=always --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso -- '\''{}'\'' '\''+'\'''
@@ -16,10 +16,10 @@ abbr --global ehlp='help'
 abbr --global --ehlp='--help'
 
 ## open
-abbr opne='open'
+abbr --global opne='open'
 
 ## zshrc
-abbr zhsrc='zshrc'
-abbr zsrhc='zshrc'
-abbr zsrhc='zshrc'
-abbr zzshrc='zshrc'
+abbr --global zhsrc='zshrc'
+abbr --global zsrhc='zshrc'
+abbr --global zsrhc='zshrc'
+abbr --global zzshrc='zshrc'
