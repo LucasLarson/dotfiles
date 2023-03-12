@@ -408,7 +408,7 @@ command rm -- "{}"' ';'
       -type f \
       -path '*/.git/*' \
       -name 'config' \
-      -exec sed -i -e 's/\t/  /g' '{}' '+' 2>/dev/null
+      -exec sed -i -e 's/\t/  /g' {} ';'
     command sed -i -e 's/\t/  /g' "${HOME%/}"'/.gitconfig'
 
     # remove Git sample hooks
@@ -674,7 +674,7 @@ find_binary_files() {
       ! -path '*/Test*' \
       ! -path '*/test*' \
       ! -path '*vscode*' \
-      -exec file -- '{}' ';' |
+      -exec file -- {} ';' |
       command grep -E -e ' (executable|shared object|binary)' |
       command cut -d ':' -f 1
     command find -- . \
@@ -685,7 +685,7 @@ find_binary_files() {
       ! -path '*/Test*' \
       ! -path '*/test*' \
       ! -path '*vscode*' \
-      -exec grep -I -L -e '.*' -- '{}' ';'
+      -exec grep -I -L -e '.*' -- {} ';'
   } |
     LC_ALL='C' command sort -u |
     LC_ALL='C' command sort -f
@@ -695,7 +695,7 @@ find_binary_files() {
 find_broken_symlinks() {
   command find -- . \
     -type l \
-    -exec test ! -e '{}' ';' \
+    -exec test ! -e {} ';' \
     -print 2>/dev/null
 }
 
@@ -761,7 +761,7 @@ find_oldest_file() {
   command find -- . \
     -type f \
     ! -path '*/.git/*' \
-    -exec /bin/ls -o -r -t -- '{}' '+' 2>/dev/null |
+    -exec /bin/ls -o -r -t -- {} + 2>/dev/null |
     command sed -e "${1:-1}"'q'
 }
 
@@ -1672,8 +1672,8 @@ permissions() {
   # restore default file and directory permissions
   command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "${?:-1}"
-  command find -- . ! -path '*/.*' -type d -exec /bin/chmod -- 755 '{}' '+'
-  command find -- . ! -path '*/.*' -type f -exec /bin/chmod -- 644 '{}' '+'
+  command find -- . ! -path '*/.*' -type d -exec /bin/chmod -- 755 {} +
+  command find -- . ! -path '*/.*' -type f -exec /bin/chmod -- 644 {} +
 }
 
 # pip
@@ -1711,9 +1711,9 @@ plist_r() {
       ')' \
       -type f \
       -print \
-      -exec plutil -convert xml1 -- '{}' ';' \
-      -exec sed -i -e 's/\t/  /g' '{}' ';' \
-      -exec sed -E -i -e 's/^(  |<\/?dict)/  &/' '{}' ';'
+      -exec plutil -convert xml1 -- {} ';' \
+      -exec sed -i -e 's/\t/  /g' {} ';' \
+      -exec sed -E -i -e 's/^(  |<\/?dict)/  &/' {} ';'
     ;;
   esac
 }
