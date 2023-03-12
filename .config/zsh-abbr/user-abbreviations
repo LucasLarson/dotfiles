@@ -20,6 +20,7 @@ abbr --global hlp='help'
 abbr --global --hlp='--help'
 
 ## open
+abbr --global oepn='open'
 abbr --global opne='open'
 
 ## zshrc
