@@ -10,6 +10,10 @@ abbr --global lf='exa --all --bytes --classify --color-scale --color=always --gi
 ## help
 abbr --global ehlp='help'
 abbr --global --ehlp='--help'
+abbr --global hellp='help'
+abbr --global --hellp='--help'
+abbr --global herl='help'
+abbr --global --herl='--help'
 abbr --global hlep='help'
 abbr --global --hlep='--help'
 abbr --global hlp='help'
