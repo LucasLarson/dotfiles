@@ -1,6 +1,20 @@
 #!/usr/bin/env sh
 # abbreviations
 
+## command
+abbr --global cmand='command'
+abbr --global cmmand='command'
+abbr --global comadn='command'
+abbr --global comand='command'
+abbr --global comdn='command'
+abbr --global comdna='command'
+abbr --global commadn='command'
+abbr --global commdn='command'
+abbr --global commdna='command'
+abbr --global commmand='command'
+abbr --global commnd='command'
+abbr --global comnd='command'
+
 ## exit
 abbr --global eixt='exit'
 
