@@ -1685,6 +1685,71 @@ rm() {
 }
 alias rmo='rm --others'
 
+sca() {
+  while getopts s: opt; do
+    case "${opt-}" in
+    s)
+      shell="${OPTARG:-sh}"
+      ;;
+    *)
+      printf -- 'usage: %s [-s [bash|dash|ksh|sh]] [--] [file]\n' "${0##*/}" >&2
+      ;;
+    esac
+  done
+  shift "$((OPTIND - 1))"
+  for file in "${@:-"${DOTFILES-}"/custom/aliases."${SHELL##*[-./]}"}"; do
+    case "${file-}" in
+    --)
+      shift 1
+      ;;
+    *)
+      printf -- '%s...\n' "${file##*/}"
+      for test in \
+        'shellcheck --color=always --enable=all --exclude=SC1071,SC1091,SC2123,SC2312,SC3040 --external-sources --format=gcc --source-path=/dev/null --shell='"${shell:-sh}" \
+        'zsh         -C    -e    -n -u    -o pipefail -o noglob' \
+        'ash         -C    -e -f -n -u -x' \
+        'bash        -C    -e -f -n -u -x -o pipefail -o functrace' \
+        'dash        -C    -e -f -n -u -x' \
+        'ksh         -C -b -e -f -n -u -x -o pipefail' \
+        'ksh93       -C -b -e -f -n -u -x -o pipefail -o posix' \
+        'ksh2020     -C -b -e -f -n -u -x -o pipefail' \
+        'mksh        -C -b -e -f -n -u -x -o pipefail -o posix' \
+        'mksh-static -C -b -e -f -n -u -x -o pipefail -o posix' \
+        'oksh        -C -b -e -f -n -u -x -o pipefail -o posix' \
+        'pdksh       -C -b -e -f -n -u -x -o pipefail -o posix' \
+        'pfksh       -C -b -e -f -n -u -x -o pipefail -o posix' \
+        'posh        -C    -e -f -n -u -x' \
+        'psh         -C    -e -f -n -u -x' \
+        'rbash       -C    -e -f -n -u -x -o pipefail -o functrace' \
+        'rksh        -C -b -e -f -n -u -x -o pipefail' \
+        'rksh93      -C -b -e -f -n -u -x -o pipefail -o posix' \
+        'rksh2020    -C -b -e -f -n -u -x -o pipefail' \
+        'scsh        -C    -e -f -n -u -x' \
+        'yash        -C    -e -f -n -u -x -o pipefail -o posixly-correct' \
+        'sh          -C    -e -f -n -u -x -o pipefail -o posix' \
+        'zsh         -C    -e    -n -u    -o pipefail -o noglob -o posix_aliases -o posix_arg_zero -o posix_builtins -o posix_cd -o posix_identifiers -o posix_jobs -o posix_strings -o posix_traps'; do
+        if command -v -- "${test%% *}" >/dev/null 2>&1; then
+          eval "command ${test-} -- '${file-}'" 2>&1 |
+            # paths in descending specificity:
+            command sed \
+              -e 's|'"${custom-}"'|$\custom|' \
+              -e 's|'"${DOTFILES-}"'|$\DOTFILES|' \
+              -e 's|'"${XDG_CONFIG_HOME-}"'|$\XDG_CONFIG_HOME|' \
+              -e 's|'"${HOME-}"'|~|' &&
+            {
+              printf -- '  passed %s\n' "${test%% *}"
+            } 2>/dev/null ||
+            printf -- '    failed %s\n' "${test%% *}"
+        fi
+      done
+      ;;
+    esac
+  done
+  unset -v -- file
+  unset -v -- test
+  unset -v -- opt
+}
+
 # take: mkdir && cd
 take() {
   for directory in "$@"; do
