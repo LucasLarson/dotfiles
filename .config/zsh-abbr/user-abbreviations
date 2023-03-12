@@ -25,5 +25,4 @@ abbr --global opne='open'
 ## zshrc
 abbr --global zhsrc='zshrc'
 abbr --global zsrhc='zshrc'
-abbr --global zsrhc='zshrc'
 abbr --global zzshrc='zshrc'
