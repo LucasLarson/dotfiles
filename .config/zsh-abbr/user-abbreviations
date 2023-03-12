@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 # abbreviations
 
+## aliases
+abbr --global alaises='aliases'
+
 ## command
 abbr --global cmand='command'
 abbr --global cmmand='command'
