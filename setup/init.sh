@@ -152,12 +152,6 @@ command -v -- git >/dev/null 2>&1 || {
   install git git-doc
 }
 
-# git add --patch
-test -x "$(command git --exec-path)"'/git-add--interactive' || {
-  # https://stackoverflow.com/a/57632778
-  install git-perl
-}
-
 # git user
 command git config --global --get user.name >/dev/null 2>&1 || {
   command git config --global user.name 'Lucas Larson'
