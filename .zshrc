@@ -31,25 +31,15 @@ export SAVEHIST HISTSIZE
 export ZSH_COMPDUMP="${HOME-}"'/.zcompdump'
 
 ## Plugins
-plugins+=(
-  gunstage
-  samefile
-  git-default-branch
-  zsh-abbr
-  zsh-diff-so-fancy
-  zsh-autosuggestions
-)
+PLUGINS='gunstage:samefile:git-default-branch:zsh-abbr:zsh-diff-so-fancy:zsh-autosuggestions'"${PLUGINS:+:${PLUGINS-}}"
 # plugin: fast-syntax-highlighting
-plugins+=(
-  fast-syntax-highlighting
-)
+PLUGINS='fast-syntax-highlighting'"${PLUGINS:+:${PLUGINS-}}"
 # plugin: zsh-history-substring-search
-plugins+=(
-  zsh-history-substring-search
-) && {
+PLUGINS='zsh-history-substring-search'"${PLUGINS:+:${PLUGINS-}}" && {
   bindkey '^[OA' history-substring-search-up
   bindkey '^[OB' history-substring-search-down
 }
+export PLUGINS
 
 ## Keyboard shortcuts
 bindkey '^?' backward-delete-char
