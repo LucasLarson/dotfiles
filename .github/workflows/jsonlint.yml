@@ -84,7 +84,7 @@ jobs:
               command git hash-object -- "{}" \
             )" = "417b7b5370df81a7316ee9f983437444afdae432" && \
               command git restore --progress --source=HEAD -- "{}"' ';'
-      - uses: peter-evans/create-pull-request@v4
+      - uses: peter-evans/create-pull-request@v5
         with:
           commit-message: "[autofix] format JSON content"
           title: "[autofix] format JSON content"
