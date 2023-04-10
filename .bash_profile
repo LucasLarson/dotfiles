@@ -17,5 +17,5 @@ done
 ## Bashhub
 # this should be EOF
 # https://bashhub.com/docs
-test -r "${HOME-}"'/.bashhub/bashhub.sh' &&
-  . "${HOME-}"'/.bashhub/bashhub.sh'
+test -r "${HOME%/}"'/.bashhub/bashhub.sh' &&
+  . "${HOME%/}"'/.bashhub/bashhub.sh'

@@ -97,9 +97,9 @@ to add dotfiles of the variety [Mackup](https://github.com/lra/mackup) might’v
 
 ```shell
 # make `~/Desktop/.example.txt` part of the dotfiles repository
-add="${HOME-}"'/Desktop/.example.txt'
+add="${HOME%/}"'/Desktop/.example.txt'
 command mv -- "${add-}" "${DOTFILES-}"'/directory_where_it_should_go_if_any/'"${add##*/}"
-command ln -s -- "${DOTFILES-}"'/directory_where_it_should_go_if_any/'"${add##*/}" "${HOME-}"'/directory_where_it_should_go_if_any/'"${add##*/}"
+command ln -s -- "${DOTFILES-}"'/directory_where_it_should_go_if_any/'"${add##*/}" "${HOME%/}"'/directory_where_it_should_go_if_any/'"${add##*/}"
 unset -v -- add
 ```
 
@@ -551,11 +551,11 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 ```shell
 trash_developer='1'; command sleep 1; set -o xtrace; trash_date="$(command date -u -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')" \
-command mkdir -p -- "${HOME-}"'/Library/Developer/Xcode/DerivedData' && command mv -- "${HOME-}"'/Library/Developer/Xcode/DerivedData' "${HOME-}"'/.Trash/Xcode-'"${trash_date-}" \
-command mkdir -p -- "${HOME-}"'/Library/Developer/Xcode/UserData/IB Support' && command mv -- "${HOME-}"'/Library/Developer/Xcode/UserData/IB Support' "${HOME-}"'/.Trash/Xcode⁄UserData⁄IB Support-'"${trash_date-}" \
-command mkdir -p -- "${HOME-}"'/Library/Caches/JetBrains' && command mv -- "${HOME-}"'/Library/Caches/JetBrains' "${HOME-}"'/.Trash/JetBrains-'"${trash_date-}" \
-command mkdir -p -- "${HOME-}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' && command mv -- "${HOME-}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' "${HOME-}"'/.Trash/Carthage-'"${trash_date-}" \
-command mkdir -p -- "${HOME-}"'/Library/Caches/Homebrew/downloads' && command mv -- "${HOME-}"'/Library/Caches/Homebrew/downloads' "${HOME-}"'/.Trash/Homebrew-'"${trash_date-}" \
+command mkdir -p -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' && command mv -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' "${HOME%/}"'/.Trash/Xcode-'"${trash_date-}" \
+command mkdir -p -- "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' && command mv -- "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' "${HOME%/}"'/.Trash/Xcode⁄UserData⁄IB Support-'"${trash_date-}" \
+command mkdir -p -- "${HOME%/}"'/Library/Caches/JetBrains' && command mv -- "${HOME%/}"'/Library/Caches/JetBrains' "${HOME%/}"'/.Trash/JetBrains-'"${trash_date-}" \
+command mkdir -p -- "${HOME%/}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' && command mv -- "${HOME%/}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' "${HOME%/}"'/.Trash/Carthage-'"${trash_date-}" \
+command mkdir -p -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' && command mv -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' "${HOME%/}"'/.Trash/Homebrew-'"${trash_date-}" \
 command -v -- brew >/dev/null 2>&1 && { command brew autoremove --verbose; command brew cleanup --prune=all --verbose; } { set +o xtrace; unset -v -- trash_developer; unset -v -- trash_date; } 2>/dev/null; printf '\n\n\360\237%s\232\256  data successfully trashed\n' "${trash_developer-}"
 ```
 

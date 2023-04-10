@@ -19,14 +19,14 @@ test -d '/usr/local/bin' &&
   PATH='/usr/local/bin'"${PATH:+:${PATH-}}"
 
 # set PATH so it includes applicable private `bin`s
-test -d "${HOME-}"'/bin' &&
-  PATH="${HOME-}"'/bin'"${PATH:+:${PATH-}}"
-test -d "${HOME-}"'/.local/bin' &&
-  PATH="${HOME-}"'/.local/bin'"${PATH:+:${PATH-}}"
+test -d "${HOME%/}"'/bin' &&
+  PATH="${HOME%/}"'/bin'"${PATH:+:${PATH-}}"
+test -d "${HOME%/}"'/.local/bin' &&
+  PATH="${HOME%/}"'/.local/bin'"${PATH:+:${PATH-}}"
 
 ## Plugin manager
-test -d "${HOME-}"'/.oh-my-zsh' &&
-  export ZSH="${HOME-}"'/.oh-my-zsh'
+test -d "${HOME%/}"'/.oh-my-zsh' &&
+  export ZSH="${HOME%/}"'/.oh-my-zsh'
 
 ## Theme
 if test -r "${ZSH_CUSTOM-}"'/themes/powerlevel10k/powerlevel10k.zsh-theme' &&
@@ -46,7 +46,7 @@ export SAVEHIST HISTSIZE
 
 ## zsh compdump
 # https://github.com/ohmyzsh/ohmyzsh/commit/d2fe03d
-export ZSH_COMPDUMP="${HOME-}"'/.zcompdump'
+export ZSH_COMPDUMP="${HOME%/}"'/.zcompdump'
 
 ## Plugins
 # plugins at the beginning of the array are
@@ -250,17 +250,17 @@ fi
 
 ## Rust
 # if its `bin` is a directory, then add it to `PATH`
-test -d "${HOME-}"'/.cargo/bin' &&
-  PATH="${HOME-}"'/.cargo/bin'"${PATH:+:${PATH-}}"
+test -d "${HOME%/}"'/.cargo/bin' &&
+  PATH="${HOME%/}"'/.cargo/bin'"${PATH:+:${PATH-}}"
 
 ## Bashhub
-test -r "${HOME-}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" &&
-  . "${HOME-}"'/.bashhub/bashhub.'"${SHELL##*[-./]}"
+test -r "${HOME%/}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" &&
+  . "${HOME%/}"'/.bashhub/bashhub.'"${SHELL##*[-./]}"
 
 ## npm
 # without sudo
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
-NPM_PACKAGES="${HOME-}"'/.npm-packages'
+NPM_PACKAGES="${HOME%/}"'/.npm-packages'
 test -d "${NPM_PACKAGES-}"'/bin' &&
   PATH="${PATH:+${PATH-}:}${NPM_PACKAGES-}"'/bin'
 test -d "${NPM_PACKAGES-}"'/share/man' &&
@@ -295,8 +295,8 @@ set -o share_history
 set -o interactive_comments
 
 ## pyenv
-test -d "${HOME-}"'/.pyenv/shims' &&
-  PATH="${HOME-}"'/.pyenv/shims'"${PATH:+:${PATH-}}"
+test -d "${HOME%/}"'/.pyenv/shims' &&
+  PATH="${HOME%/}"'/.pyenv/shims'"${PATH:+:${PATH-}}"
 # https://gist.github.com/4a4c4986ccdcaf47b91e8227f9868ded#prezto
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
 pyenv() {
@@ -333,8 +333,8 @@ test -n "${GOPATH-}" &&
 # https://hackernoon.com/the-only-sane-way-to-setup-fastlane-on-a-mac-4a14cb8549c8#6a04
 # https://gist.github.com/4a4c4986ccdcaf47b91e8227f9868ded#prezto
 # https://github.com/caarlos0/carlosbecker.com/commit/c5f04d6
-test -d "${HOME-}"'/.rbenv/shims' &&
-  PATH="${HOME-}"'/.rbenv/shims'"${PATH:+:${PATH-}}"
+test -d "${HOME%/}"'/.rbenv/shims' &&
+  PATH="${HOME%/}"'/.rbenv/shims'"${PATH:+:${PATH-}}"
 rbenv() {
   eval "$(command rbenv init - --no-rehash "${SHELL##*[-./]}")"
   rbenv "$@"
@@ -357,4 +357,4 @@ test -n "${ZSH-}" &&
 # if the theme is powerlevel10k,
 test "${ZSH_THEME-}" = 'powerlevel10k/powerlevel10k' &&
   # then source `~/.p10k.zsh`
-  . "${HOME-}"'/.p10k.zsh'
+  . "${HOME%/}"'/.p10k.zsh'
