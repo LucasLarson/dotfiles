@@ -10,12 +10,12 @@ for file in \
   '/etc/profile.d/bash_completion.sh' \
   '/usr/local/etc/profile.d/bash_completion.sh' \
   '/opt/local/etc/profile.d/bash_completion.sh'; do
+  # shellcheck disable=SC1090
   test -r "${file-}" &&
     . "${file-}"
 done
 
 ## Bashhub
-# this should be EOF
-# https://bashhub.com/docs
-test -r "${HOME-}"'/.bashhub/bashhub.sh' &&
-  . "${HOME-}"'/.bashhub/bashhub.sh'
+# shellcheck disable=SC1091
+test -r "${HOME%/}"'/.bashhub/bashhub.sh' &&
+  . "${HOME%/}"'/.bashhub/bashhub.sh'
