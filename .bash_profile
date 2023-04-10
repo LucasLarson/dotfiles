@@ -10,6 +10,7 @@ for file in \
   '/etc/profile.d/bash_completion.sh' \
   '/usr/local/etc/profile.d/bash_completion.sh' \
   '/opt/local/etc/profile.d/bash_completion.sh'; do
+  # shellcheck disable=SC1090
   test -r "${file-}" &&
     . "${file-}"
 done
