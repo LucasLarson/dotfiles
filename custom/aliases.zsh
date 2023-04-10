@@ -14,7 +14,7 @@
 #
 # https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
-alias ,='. "${HOME-}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
+alias ,='. "${HOME%/}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
   command "${EDITOR-}" -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}" &&
     command -v -- shfmt >/dev/null 2>&1 &&
@@ -97,7 +97,7 @@ brewfile() {
     command sed \
       -e 's/^[[:digit:]]//' \
       -e 's/\([^#]*\)\(#.*\)/\2\n\1/'
-  } >"${HOME-}"'/.Brewfile'
+  } >"${HOME%/}"'/.Brewfile'
 }
 
 # prefer `bat` without line numbers for easier copying
@@ -289,12 +289,12 @@ cleanup() {
     # refuse to run from `/`
     test "$(command pwd -P)" = '/' ||
       # or from `$HOME`
-      test "$(command pwd -P)" = "${HOME-}" ||
+      test "$(command pwd -P)" = "${HOME%/}" ||
       # or from any titlecase-named directory just below `$HOME`
       # such the closed set of macOS standard directories:
       # `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Movies`, `Music`, `Pictures`, `Public`, and `Sites`
       # https://web.archive.org/web/0id_/developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGUide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW9
-      test "$(command pwd -P | command xargs -0 dirname)" = "${HOME-}" &&
+      test "$(command pwd -P | command xargs -0 dirname)" = "${HOME%/}" &&
       case "$(command pwd -P | command tr -d '[:space:]' | command xargs basename -- | command cut -c 1)" in
       [A-Z])
         printf -- '\n\n'
@@ -327,14 +327,14 @@ cleanup() {
       test ! "${ZSH_COMPDUMP-}" != "${ZSH_COMPDUMP#*'zcompdump-'}" &&
       test ! "${ZSH_COMPDUMP-}" != "${ZSH_COMPDUMP#*'zcompdump.'}"; then
       while test -n "$(
-        command find -- "${HOME-}" \
+        command find -- "${HOME%/}" \
           -maxdepth 1 \
           -type f \
           ! -name "$(printf -- "*\n*")" \
           ! -name '.zcompdump' \
           -name '.zcompdump*'
       )"; do
-        command find -- "${HOME-}" \
+        command find -- "${HOME%/}" \
           -maxdepth 1 \
           -type f \
           ! -name "$(printf -- "*\n*")" \
@@ -400,7 +400,7 @@ command rm -- "{}"' ';'
       -path '*/.git/*' \
       -name 'config' \
       -exec sed -i -e 's/\t/  /g' {} ';'
-    command sed -i -e 's/\t/  /g' "${HOME-}"'/.gitconfig'
+    command sed -i -e 's/\t/  /g' "${HOME%/}"'/.gitconfig'
 
     # remove Git sample hooks
     command find -- . \
@@ -993,7 +993,7 @@ git_config_file_locations() {
             -e 's|file:||' \
             -e 's|\t.*||' \
             -e 's|^\.|./.|' \
-            -e 's|'"${HOME-}"'|~|' |
+            -e 's|'"${HOME%/}"'|~|' |
           LC_ALL='C' command sort -u
       )"
   done
@@ -1435,8 +1435,8 @@ elif command gls --color=auto >/dev/null 2>&1; then
 elif command ls --color=auto >/dev/null 2>&1; then
   alias ls='command ls --color=auto'
   alias l='command ls --color=auto -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
-elif test "$(command /bin/ls -G -- "${HOME-}" | command od)" = "$(command ls -G -- "${HOME-}" | command od)" &&
-  test "$(command ls -G -- "${HOME-}" | command od)" != "$(command ls --color=auto -- "${HOME-}" 2>/dev/null)"; then
+elif test "$(command /bin/ls -G -- "${HOME%/}" | command od)" = "$(command ls -G -- "${HOME%/}" | command od)" &&
+  test "$(command ls -G -- "${HOME%/}" | command od)" != "$(command ls --color=auto -- "${HOME%/}" 2>/dev/null)"; then
   alias ls='command ls -G'
   alias l='command ls -A -F -G -g -o'
 fi
@@ -1599,12 +1599,12 @@ plist_r() {
   command -v -- plutil >/dev/null 2>&1 ||
     return 127
   case "$(command pwd -P)" in
-  "${HOME-}" | "${DOTFILES-}")
+  "${HOME%/}" | "${DOTFILES-}")
     return 77
     ;;
   *)
     command find -- . \
-      ! -path "${HOME-}"'/Library*' \
+      ! -path "${HOME%/}"'/Library*' \
       ! -path "${DOTFILES-}"'/Library*' \
       ! -type l \
       ! -type d \
@@ -1648,8 +1648,8 @@ alias rectangle_shortcut='command defaults write com.knollsoft.Rectangle maximiz
 
 # remove
 rm() {
-  if test -d "${HOME-}"'/.Trash'; then
-    target="${HOME-}"'/.Trash'
+  if test -d "${HOME%/}"'/.Trash'; then
+    target="${HOME%/}"'/.Trash'
   elif command mkdir -p -- "${XDG_DATA_HOME-}"'/Trash' 2>/dev/null; then
     target="${XDG_DATA_HOME-}"'/Trash'
   elif command mkdir -p -- "${TMPDIR:-/tmp}"'/.Trash' 2>/dev/null; then
@@ -1735,7 +1735,7 @@ sca() {
               -e 's|'"${custom-}"'|$\custom|' \
               -e 's|'"${DOTFILES-}"'|$\DOTFILES|' \
               -e 's|'"${XDG_CONFIG_HOME-}"'|$\XDG_CONFIG_HOME|' \
-              -e 's|'"${HOME-}"'|~|' &&
+              -e 's|'"${HOME%/}"'|~|' &&
             {
               printf -- '  passed %s\n' "${test%% *}"
             } 2>/dev/null ||
@@ -1801,7 +1801,7 @@ yamllint_r() {
   command find -- . \
     ! -type d \
     ! -path "${DOTFILES-}"'/Library*' \
-    ! -path "${HOME-}"'/Library*' \
+    ! -path "${HOME%/}"'/Library*' \
     ! -path '*/.git/*' \
     ! -path '*/.well-known/*' \
     ! -path '*/copilot.vim/*' \
@@ -1851,5 +1851,5 @@ ohmyzsh() {
     command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     command sed -e '$d'
 }
-alias zshenv='command "${EDITOR-}" -- "${HOME-}/.${SHELL##*[-./]}env"; . "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
-alias zshrc='command "${EDITOR-}" -- "${HOME-}/.${SHELL##*[-./]}rc"; . "${HOME-}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
+alias zshenv='command "${EDITOR-}" -- "${HOME%/}/.${SHELL##*[-./]}env"; . "${HOME%/}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
+alias zshrc='command "${EDITOR-}" -- "${HOME%/}/.${SHELL##*[-./]}rc"; . "${HOME%/}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'

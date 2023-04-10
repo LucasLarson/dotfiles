@@ -5,8 +5,8 @@
   . /usr/lib/os-release 2>/dev/null
 
 ## Dotfiles and templates
-command mkdir -p -- "${HOME-}"'/Library/CloudStorage/Dropbox/dotfiles' &&
-  export DOTFILES="${HOME-}"'/Library/CloudStorage/Dropbox/dotfiles' &&
+command mkdir -p -- "${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
+  export DOTFILES="${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
   command mkdir -p -- "${DOTFILES-}"'/custom' &&
   export ZSH_CUSTOM="${DOTFILES-}"'/custom' &&
   export custom="${DOTFILES-}"'/custom' &&
@@ -17,12 +17,12 @@ command mkdir -p -- "${HOME-}"'/Library/CloudStorage/Dropbox/dotfiles' &&
 
 ## XDG
 # https://specifications.freedesktop.org/basedir-spec/0.7/ar01s03.html
-command mkdir -p -- "${HOME-}"'/.local/share' &&
-  export XDG_DATA_HOME="${HOME-}"'/.local/share'
-command mkdir -p -- "${HOME-}"'/.config' &&
-  export XDG_CONFIG_HOME="${HOME-}"'/.config'
-command mkdir -p -- "${HOME-}"'/.local/state' &&
-  export XDG_STATE_HOME="${HOME-}"'/.local/state'
+command mkdir -p -- "${HOME%/}"'/.local/share' &&
+  export XDG_DATA_HOME="${HOME%/}"'/.local/share'
+command mkdir -p -- "${HOME%/}"'/.config' &&
+  export XDG_CONFIG_HOME="${HOME%/}"'/.config'
+command mkdir -p -- "${HOME%/}"'/.local/state' &&
+  export XDG_STATE_HOME="${HOME%/}"'/.local/state'
 command mkdir -p -- '/usr/local/share' &&
   export XDG_DATA_DIRS="${XDG_DATA_DIRS:+${XDG_DATA_DIRS-}:}"'/usr/local/share'
 command mkdir -p -- '/usr/share' &&
@@ -30,8 +30,8 @@ command mkdir -p -- '/usr/share' &&
   export XDG_DATA_DIRS="${XDG_DATA_DIRS:+${XDG_DATA_DIRS-}:}"'/usr/share/'
 command mkdir -p -- '/etc/xdg' &&
   export XDG_CONFIG_DIRS='/etc/xdg'
-command mkdir -p -- "${HOME-}"'/.cache' &&
-  export XDG_CACHE_HOME="${HOME-}"'/.cache' &&
+command mkdir -p -- "${HOME%/}"'/.cache' &&
+  export XDG_CACHE_HOME="${HOME%/}"'/.cache' &&
   command touch -- "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${USER-}"'.zsh'
 
 # `XDG_RUNTIME_DIR` has no default and requires `700` permissions
@@ -44,7 +44,7 @@ command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
 export BH_FILTER="${BH_FILTER:="(^ |^google)"}"
 
 ## $CDPATH
-export CDPATH="${CDPATH:+${CDPATH-}:}${HOME-}"
+export CDPATH="${CDPATH:+${CDPATH-}:}${HOME%/}"
 
 ## GitHub
 export GITHUB_ORG="${USER-}"
@@ -54,11 +54,11 @@ export GITHUB_ORG="${USER-}"
 export GITLAB_USERNAME="${USER-}"
 
 ## Go
-export GOPATH="${HOME-}"'/.go'
+export GOPATH="${HOME%/}"'/.go'
 
 ## iCloud
-test -d "${HOME-}"'/Library/Mobile Documents' &&
-  export ICLOUD="${HOME-}"'/Library/Mobile Documents'
+test -d "${HOME%/}"'/Library/Mobile Documents' &&
+  export ICLOUD="${HOME%/}"'/Library/Mobile Documents'
 
 ## Input Field Separators
 # https://unix.stackexchange.com/a/220658
@@ -80,14 +80,14 @@ export POSIXLY_CORRECT="${POSIXLY_CORRECT:-1}"
 
 ## Rust
 # https://github.com/mkrasnitski/git-power-rs/tree/2fc2906#installing
-export CARGO_HOME="${HOME-}"'/.cargo'
+export CARGO_HOME="${HOME%/}"'/.cargo'
 
 ## SSH, GPG
 for directory in \
   "${DOTFILES-}"'/.gnupg' \
   "${DOTFILES-}"'/.ssh' \
-  "${HOME-}"'/.gnupg' \
-  "${HOME-}"'/.ssh'; do
+  "${HOME%/}"'/.gnupg' \
+  "${HOME%/}"'/.ssh'; do
   test -d "${directory-}" &&
     command find -- "${directory-}" \
       -type f \
@@ -106,6 +106,6 @@ export GPG_TTY="${TTY-}"
 
 ## private
 # shellcheck disable=SC1091
-command touch -- "${HOME-}"'/.env' &&
-  command chmod -- 400 "${HOME-}"'/.env' &&
-  . "${HOME-}"'/.env'
+command touch -- "${HOME%/}"'/.env' &&
+  command chmod -- 400 "${HOME%/}"'/.env' &&
+  . "${HOME%/}"'/.env'

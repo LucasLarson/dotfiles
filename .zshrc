@@ -2,7 +2,7 @@
 
 ## Powerlevel10k
 # shellcheck disable=SC1090
-. "${XDG_CACHE_HOME:-${HOME-}/.cache}"'/p10k-instant-prompt-'"${USER-}"'.zsh' 2>/dev/null
+. "${XDG_CACHE_HOME:-${HOME%/}/.cache}"'/p10k-instant-prompt-'"${USER-}"'.zsh' 2>/dev/null
 # shellcheck disable=SC1091
 . "${DOTFILES-}"'/custom/themes/powerlevel10k/powerlevel10k.zsh-theme' 2>/dev/null &&
   export ZSH_THEME='powerlevel10k/powerlevel10k'
@@ -13,14 +13,14 @@ test -d '/usr/local/sbin' &&
   PATH='/usr/local/sbin'"${PATH:+:${PATH-}}"
 test -d '/usr/local/bin' &&
   PATH='/usr/local/bin'"${PATH:+:${PATH-}}"
-test -d "${HOME-}"'/bin' &&
-  PATH="${HOME-}"'/bin'"${PATH:+:${PATH-}}"
-test -d "${HOME-}"'/.local/bin' &&
-  PATH="${HOME-}"'/.local/bin'"${PATH:+:${PATH-}}"
+test -d "${HOME%/}"'/bin' &&
+  PATH="${HOME%/}"'/bin'"${PATH:+:${PATH-}}"
+test -d "${HOME%/}"'/.local/bin' &&
+  PATH="${HOME%/}"'/.local/bin'"${PATH:+:${PATH-}}"
 
 ## Plugin manager
-test -d "${HOME-}"'/.oh-my-zsh' &&
-  export ZSH="${HOME-}"'/.oh-my-zsh'
+test -d "${HOME%/}"'/.oh-my-zsh' &&
+  export ZSH="${HOME%/}"'/.oh-my-zsh'
 
 ## History size
 SAVEHIST="$(printf -- '2 ^ 32 - 1\n' | command bc)"
@@ -28,7 +28,7 @@ HISTSIZE="$((SAVEHIST / 2))"
 export SAVEHIST HISTSIZE
 
 ## zsh compdump
-export ZSH_COMPDUMP="${HOME-}"'/.zcompdump'
+export ZSH_COMPDUMP="${HOME%/}"'/.zcompdump'
 
 ## Plugins
 PLUGINS='gunstage:samefile:git-default-branch:zsh-abbr:zsh-diff-so-fancy:zsh-autosuggestions'"${PLUGINS:+:${PLUGINS-}}"
@@ -164,14 +164,14 @@ if command -v -- brew >/dev/null 2>&1; then
 fi
 
 ## Rust
-test -d "${HOME-}"'/.cargo/bin' &&
-  PATH="${HOME-}"'/.cargo/bin'"${PATH:+:${PATH-}}"
+test -d "${HOME%/}"'/.cargo/bin' &&
+  PATH="${HOME%/}"'/.cargo/bin'"${PATH:+:${PATH-}}"
 
 ## Bashhub
-. "${HOME-}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" 2>/dev/null
+. "${HOME%/}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" 2>/dev/null
 
 ## npm
-NPM_PACKAGES="${HOME-}"'/.npm-packages'
+NPM_PACKAGES="${HOME%/}"'/.npm-packages'
 test -d "${NPM_PACKAGES-}"'/bin' &&
   PATH="${PATH:+${PATH-}:}${NPM_PACKAGES-}"'/bin'
 test -d "${NPM_PACKAGES-}"'/share/man' &&
@@ -221,8 +221,8 @@ test -n "${GOPATH-}" &&
   PATH="${GOPATH-}"'/bin'"${PATH:+:${PATH-}}"
 
 ## rbenv
-test -d "${HOME-}"'/.rbenv/shims' &&
-  PATH="${HOME-}"'/.rbenv/shims'"${PATH:+:${PATH-}}"
+test -d "${HOME%/}"'/.rbenv/shims' &&
+  PATH="${HOME%/}"'/.rbenv/shims'"${PATH:+:${PATH-}}"
 
 ## PATHs
 # prevent duplicate entries
@@ -234,4 +234,4 @@ test -n "${ZSH-}" &&
     MANPATH manpath
 
 ## Powerlevel10k
-. "${HOME-}"'/.p10k.zsh' 2>/dev/null
+. "${HOME%/}"'/.p10k.zsh' 2>/dev/null

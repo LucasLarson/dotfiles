@@ -34,7 +34,7 @@ printf -- '  a Lucas Larson production\n\n' 2>/dev/null
 command sleep 1
 
 # start from `$HOME`
-cd "${HOME-}" ||
+cd "${HOME%/}" ||
   exit 1
 
 # save `date` for backup files
@@ -228,7 +228,7 @@ command -v -- chsh >/dev/null 2>&1 || {
 
 # Oh My Zsh
 command -v -- omz >/dev/null 2>&1 ||
-  test -d "${ZSH:="${HOME-}"/.oh-my-zsh}" ||
+  test -d "${ZSH:=${HOME%/}/.oh-my-zsh}" ||
   test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' | command cksum)" != '1976015298 9942' || {
   { set +o xtrace; } 2>/dev/null
   printf -- 'installing Oh My Zsh...\n' 2>/dev/null
@@ -296,7 +296,7 @@ command find -- . \
   -type f \
   -size 0 \
   ! -path "${DOTFILES-}"'/Library/*' \
-  ! -path "${HOME-}"'/Library/*' \
+  ! -path "${HOME%/}"'/Library/*' \
   ! -path '*/.git/*' \
   ! -path '*/Test*' \
   ! -path '*/test*' \
