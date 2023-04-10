@@ -16,7 +16,6 @@ for file in \
 done
 
 ## Bashhub
-# this should be EOF
-# https://bashhub.com/docs
+# shellcheck disable=SC1091
 test -r "${HOME%/}"'/.bashhub/bashhub.sh' &&
   . "${HOME%/}"'/.bashhub/bashhub.sh'
