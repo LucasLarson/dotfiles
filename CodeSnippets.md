@@ -137,16 +137,17 @@ command printf -- '%s\n' "${MANPATH-}" |
 
 Definintions of the numbers that follow `man` commands ([via](https://web.archive.org/web/20200627082020id_/manpages.ubuntu.com/cgi-bin/search.py?q=man&titles=Title#distroAndSection))
 
-| section | contents                                                 |
-| :-----: | -------------------------------------------------------- |
-| `1`     | Executable programs or shell commands                    |
-| `2`     | System calls (functions provided by the kernel)          |
-| `3`     | Library calls (functions within program libraries)       |
-| `4`     | Special files (usually found in `/dev`)                  |
-| `5`     | File formats and conventions, `/etc/passwd`, for example |
-| `6`     | Games                                                    |
-| `7`     | Miscellaneous (including macro packages and conventions) |
-| `8`     | System administration commands (usually only for `root`) |
+| section | contents                                                  |
+| :-----: | --------------------------------------------------------- |
+|  `1`    | User commands, executable programs, shell commands        |
+|  `2`    | System calls (functions provided by the kernel)           |
+|  `3`    | Library calls (C library functions)                       |
+|  `4`    | Special files, devices (like in `/dev`)                   |
+|  `5`    | File formats, conventions (like `/etc/passwd`)            |
+|  `6`    | Games                                                     |
+|  `7`    | Miscellaneous; conventions like `man`(7), `man-pages`(7)  |
+|  `8`    | System administration tools, daemons (usually for `root`) |
+| ~`9`~   | ~Kernel interfaces, routines~ [non-standard]              |
 
 ##### pip packages
 
