@@ -129,7 +129,8 @@ command brew list -1
 ##### MANPATH
 
 ```shell
-printf '%s\n' "${MANPATH-}" | sed -e 'y/:/\n/'
+command printf -- '%s\n' "${MANPATH-}" |
+  command sed -e 's/:/\n/g'
 ```
 
 ###### man pages
@@ -169,16 +170,17 @@ Definintions of the numbers that follow `man` commands ([via](https://web.archi
 
 #### and metadata
 
-`find -- . -ls`
+```shell
+command find -- . -ls
+```
 
 #### lines, words, characters
 
 in, for example, a C++ project directory, measuring only `.cpp` and `.hpp`
 files. [via](https://web.archive.org/web/0id_/github.com/bryceco/GoMap/issues/495#issuecomment-780111175)
 
-```sh
-command find -- . '(' -name '*.cpp' -o -name '*.hpp' ')' -print |
-  command xargs wc |
+```shell
+command find -- . '(' -name '*.cpp' -o -name '*.hpp' ')' -exec wc -- {} + |
   LC_ALL='C' command sort -n
 ```
 
@@ -187,22 +189,33 @@ command find -- . '(' -name '*.cpp' -o -name '*.hpp' ')' -print |
 ### `grep`
 
 search for the word “example” inside the current directory which is “.”<br>
-`grep -i -n -r 'example' .`
+
+```shell
+command find -- . \
+  -type f \
+  -exec grep -i -n -e 'example' -- {} +
+```
 
 ### locate all
 
 for example, locate all JPEG files in the current directory `.` and below:<br>
-`command find -- . -type f '(' -name '*.jpg' -o -name '*.JPEG' -o -name '*.JPG' -o -name '*.jpeg' ')'`
+
+```shell
+command find -- . '(' -name '*.jpg' -o -name '*.JPEG' -o -name '*.JPG' -o -name '*.jpeg' ')' -type f
+```
 
 ## PATH
 
 ```shell
-printf '%s\n' "${PATH-}" | sed -e 'y/:/\n/'
+command printf -- '%s\n' "${PATH-}" |
+  command sed -e 's/:/\n/g'
 ```
 
 ### executables
 
-`print -l ${^path-}/*(-*N)` # [via](https://web.archive.org/web/20210206194844id_/grml.org/zsh/zsh-lovers#_unsorted_misc_examples)
+```shell
+command printf -- '%s\n' "${PATH-}" | command sed -e 's/:/\n/g' | while IFS='' read -r directory; do command find -- "${directory-}" -mindepth 1 -maxdepth 1 ! -type d -exec test -x {} ';' -print 2>/dev/null; done
+```
 
 ## text editing
 
@@ -310,26 +323,37 @@ for example, C++17’s `<filesystem>`<br>
 
 ### run `cpplint` recursively
 
-`cpplint --verbose=0 --linelength=79 --recursive --extensions=c++,cc,cp,cpp,cxx,h,h++,hh,hp,hpp,hxx . >>./cpplint.txt`
+```shell
+cpplint --verbose=0 --linelength=79 --recursive --extensions=c++,cc,cp,cpp,cxx,h,h++,hh,hp,hpp,hxx .
+```
 
 ### run `cppcheck` recursively
 
-`cppcheck --force -I $CPATH . >>./cppcheck.txt`
+```shell
+cppcheck --force -I "${CPATH-}" .
+```
 
 ### compile all files of type .𝑥 in a directory
 
 #### C
 
-[via](https://stackoverflow.com/q/32029445), [via](https://stackoverflow.com/q/33662375)<br>
-`gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic *.c`
+[via](https://stackoverflow.com/q/32029445), [via](https://stackoverflow.com/q/33662375)
+
+```shell
+command find -- . -maxdepth 1 -name '*.c' -type f -exec gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic -- {} +
+```
 
 #### C++
 
-`g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ *.cpp`
+```shell
+command find -- . -maxdepth 1 -name '*.cpp' -type f -exec g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ -- {} +
+```
 
 #### Clang
 
-`clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps *.cpp`
+```shell
+command find -- . -maxdepth 1 -name '*.cpp' -type f -exec clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps -- {} +
+```
 
 ## Gatekeeper
 
@@ -351,7 +375,10 @@ do not disable it, because that would allow you to install any software, even if
 ### `git diff`
 
 more detailed `git diff` and how I once found an LF‑to‑CRLF‑only difference<br>
-`git diff --raw`
+
+```shell
+git diff --raw
+```
 
 ### `git commit`
 
@@ -371,7 +398,10 @@ to backdate a commit:<br>
 Vim<br>
 `git config --global core.editor /usr/local/bin/vim`<br>
 Visual Studio Code<br>
-`git config --global core.editor "code --wait"`
+
+```shell
+git config --global core.editor "code --wait"
+```
 
 ### `git tag`
 
@@ -440,7 +470,9 @@ Visual Studio Code<br>
 recursively replace each file’s first line that begins with `#!`, and which later contains `/bin/bash`, `/bin/sh`, or `/bin/ash`, with `#!/usr/bin/env zsh` ([via](https://stackoverflow.com/a/11458836))
 
 ```shell
-find -- . -type f -exec sed \
+command find -- . \
+  -type f \
+  -exec sed \
   -e '/^#!.*\/bin\/b\{0,1\}a\{0,1\}sh$/ {' \
   -e 's//#!\/usr\/bin\/env zsh/' \
   -e ':a' \
@@ -457,7 +489,9 @@ if your example.csv has too many rows ([via](https://web.archive.org/web/2018121
 
 ## SSH
 
-`ssh username@example.com`
+```shell
+ssh username@example.com
+```
 
 ### `ls` on Windows
 
