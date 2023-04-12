@@ -17,6 +17,8 @@ test -d "${HOME%/}"'/bin' &&
   PATH="${HOME%/}"'/bin'"${PATH:+:${PATH-}}"
 test -d "${HOME%/}"'/.local/bin' &&
   PATH="${HOME%/}"'/.local/bin'"${PATH:+:${PATH-}}"
+test -d "${DOTFILES-}"'/bin' &&
+  PATH="${DOTFILES-}"'/bin'"${PATH:+:${PATH-}}"
 
 ## Plugin manager
 test -d "${HOME%/}"'/.oh-my-zsh' &&
