@@ -6,7 +6,17 @@
   set -o nounset
   set -o verbose
   set -o xtrace
-  file="${HISTFILE:-${HOME%/}'/.'"${SHELL##*/}"'_history'}"
+  # find the newest `$HISTFILE`
+  # without specifying the shell
+  file="$(
+    command find -- "${HOME%/}" \
+      -mindepth 1 \
+      -maxdepth 1 \
+      -name '.*history' \
+      -type f \
+      -exec /bin/ls -1 -t -- {} + 2>/dev/null |
+      command sed -e '1q' -
+  )"
   # verify `$HISTFILE` exists and is not empty
   test -s "${file-}" &&
     # ensure a backup directory exists
