@@ -438,14 +438,14 @@ git config --global core.editor "code --wait"
 
 |                        | *parameter* Set and Not Null | *parameter* Set But Null | *parameter* Unset |
 | ---------------------- | ---------------------------- | ------------------------ | ----------------- |
-| ${*parameter*:-*word*} | substitute *parameter*       | substitute *word*        | substitute *word* |
-| ${*parameter*-*word*}  | substitute *parameter*       | substitute null          | substitute *word* |
-| ${*parameter*:=*word*} | substitute *parameter*       | assign *word*            | assign *word*     |
-| ${*parameter*=*word*}  | substitute *parameter*       | substitute null          | assign *word*     |
-| ${*parameter*:?*word*} | substitute *parameter*       | error, exit              | error, exit       |
-| ${*parameter*?*word*}  | substitute *parameter*       | substitute null          | error, exit       |
-| ${*parameter*:+*word*} | substitute *word*            | substitute null          | substitute null   |
-| ${*parameter*+*word*}  | substitute *word*            | substitute *word*        | substitute null   |
+| ${*parameter*:-*word*} | substitute with *parameter*  | substitute with *word*   | substitute with *word* |
+| ${*parameter*-*word*}  | substitute with *parameter*  | substitute with null     | substitute with *word* |
+| ${*parameter*:=*word*} | substitute with *parameter*  | assign *word*            | assign *word*          |
+| ${*parameter*=*word*}  | substitute with *parameter*  | substitute with null     | assign *word*          |
+| ${*parameter*:?*word*} | substitute with *parameter*  | error, exit              | error, exit            |
+| ${*parameter*?*word*}  | substitute with *parameter*  | substitute with null     | error, exit            |
+| ${*parameter*:+*word*} | substitute with *word*       | substitute with null     | substitute with null   |
+| ${*parameter*+*word*}  | substitute with *word*       | substitute with *word*   | substitute with null   |
 
 ## redirection
 
