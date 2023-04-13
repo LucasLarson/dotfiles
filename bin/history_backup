@@ -15,7 +15,7 @@
       -name '.*history' \
       -type f \
       -exec /bin/ls -1 -t -- {} + 2>/dev/null |
-      command sed -e '1q' -
+      command sed -e '1q'
   )"
   # verify `$HISTFILE` exists and is not empty
   test -s "${file-}" &&
@@ -29,7 +29,7 @@
           ! -path '*/.git/*' \
           -type f \
           -exec /bin/ls -1 -t -- {} + 2>/dev/null |
-          command sed -e '1q' -
+          command sed -e '1q'
       )"
     )" != '' &&
     command cp -- "${file-}" "${file-}"'_bak/'"${file##*/}"'_'"$(command date -- '+%Y%m%d')"
