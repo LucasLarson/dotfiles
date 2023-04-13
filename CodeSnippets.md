@@ -152,7 +152,7 @@ Definintions of the numbers that follow `man` commands ([via](https://web.archi
 ##### pip packages
 
 ```shell
-{ command pip list || command pip3 list; } 2>/dev/null
+{ command python -m pip list --format=columns || command python -m pip3 list --format=columns || command python3 -m pip list --format=columns || command python3 -m pip3 list --format=columns; } 2>/dev/null
 ```
 
 ## apk
