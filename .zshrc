@@ -20,10 +20,12 @@ test -d "${DOTFILES-}"'/bin' &&
   PATH="${DOTFILES-}"'/bin'"${PATH:+:${PATH-}}"
 
 ## History
-HISTFILE="${HOME%/}"'/.'"${SHELL##*/}"'_history'
-SAVEHIST="$(command -p -- getconf -- UINT_MAX)"
-HISTSIZE="${SAVEHIST-}"
-export HISTFILE SAVEHIST HISTSIZE
+HISTFILE="${HOME%/}"'/.'"$(basename -- "${SHELL%%[0-9-]*}")"'_history' &&
+  export HISTFILE
+SAVEHIST="$(getconf -- UINT_MAX)" &&
+  export SAVEHIST &&
+  HISTSIZE="${SAVEHIST-}" &&
+  export HISTSIZE
 
 ## Plugins
 PLUGINS='gunstage:git-default-branch:zsh-abbr:zsh-diff-so-fancy:zsh-autosuggestions'"${PLUGINS:+:${PLUGINS-}}"
