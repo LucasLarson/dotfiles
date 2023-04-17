@@ -26,7 +26,7 @@ test -d "${HOME%/}"'/.oh-my-zsh' &&
 
 ## History size
 SAVEHIST="$(command getconf -- UINT_MAX)"
-HISTSIZE="$((SAVEHIST / 2))"
+HISTSIZE="${SAVEHIST-}"
 export SAVEHIST HISTSIZE
 
 ## zsh compdump
