@@ -25,7 +25,7 @@ test -d "${HOME%/}"'/.oh-my-zsh' &&
   export ZSH="${HOME%/}"'/.oh-my-zsh'
 
 ## History size
-SAVEHIST="$(printf -- '2 ^ 32 - 1\n' | command bc)"
+SAVEHIST="$(command getconf -- UINT_MAX)"
 HISTSIZE="$((SAVEHIST / 2))"
 export SAVEHIST HISTSIZE
 
