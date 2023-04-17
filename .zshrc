@@ -24,10 +24,11 @@ test -d "${DOTFILES-}"'/bin' &&
 test -d "${HOME%/}"'/.oh-my-zsh' &&
   export ZSH="${HOME%/}"'/.oh-my-zsh'
 
-## History size
+## History
+HISTFILE="${HOME%/}"'/.'"${SHELL##*/}"'_history'
 SAVEHIST="$(command getconf -- UINT_MAX)"
 HISTSIZE="${SAVEHIST-}"
-export SAVEHIST HISTSIZE
+export HISTFILE SAVEHIST HISTSIZE
 
 ## zsh compdump
 export ZSH_COMPDUMP="${HOME%/}"'/.zcompdump'
