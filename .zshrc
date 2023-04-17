@@ -19,10 +19,13 @@ test -d "${HOME%/}"'/.local/bin' &&
 test -d "${DOTFILES-}"'/bin' &&
   PATH="${DOTFILES-}"'/bin'"${PATH:+:${PATH-}}"
 
-## History size
-SAVEHIST="$(printf -- '2 ^ 32 - 1\n' | command bc)"
-HISTSIZE="$((SAVEHIST / 2))"
-export SAVEHIST HISTSIZE
+## History
+HISTFILE="${HOME%/}"'/.'"$(basename -- "${SHELL%%[0-9-]*}")"'_history' &&
+  export HISTFILE
+SAVEHIST="$(getconf -- UINT_MAX)" &&
+  export SAVEHIST &&
+  HISTSIZE="${SAVEHIST-}" &&
+  export HISTSIZE
 
 ## Plugins
 PLUGINS='gunstage:git-default-branch:zsh-abbr:zsh-diff-so-fancy:zsh-autosuggestions'"${PLUGINS:+:${PLUGINS-}}"
