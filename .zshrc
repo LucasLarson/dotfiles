@@ -20,10 +20,6 @@ test -d "${HOME%/}"'/.local/bin' &&
 test -d "${DOTFILES-}"'/bin' &&
   PATH="${DOTFILES-}"'/bin'"${PATH:+:${PATH-}}"
 
-## Plugin manager
-test -d "${HOME%/}"'/.oh-my-zsh' &&
-  export ZSH="${HOME%/}"'/.oh-my-zsh'
-
 ## History
 HISTFILE="${HOME%/}"'/.'"${SHELL##*/}"'_history'
 SAVEHIST="$(command getconf -- UINT_MAX)"
