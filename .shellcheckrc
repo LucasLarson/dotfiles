@@ -1,0 +1,14 @@
+## .shellcheckrc
+# https://github.com/koalaman/shellcheck/blob/4e703e5c61/shellcheck.1.md#options
+
+# allow conforming shells besides sh, bash, ksh, dash
+disable=SC1071
+
+# allow linking to, but not following, linked scripts
+disable=SC1091
+
+# allow `$PATH` modification
+disable=SC2123
+
+# allow masking return values
+disable=SC2312
