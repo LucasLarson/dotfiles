@@ -948,16 +948,16 @@ git_clone() {
     ;;
   -1 | --shallow)
     shift
-    command mkdir -p -- "${2:-$(command basename -- "$1" .git || return 123)}" >/dev/null 2>&1
+    command mkdir -p -- "${2:-$(command basename -- "$1" .git)}" >/dev/null 2>&1
     printf -- 'moving into %s...\n' "${2:-$(command basename -- "$1" .git)}" >&2
-    cd "${2:-$(command basename -- "$1" .git || return 122)}" >/dev/null 2>&1 || return 5
-    command git clone --verbose --progress --depth 1 --shallow-submodules -- "$1" . || return 6
+    cd "${2:-$(command basename -- "$1" .git)}" >/dev/null 2>&1 || return 1
+    command git clone --verbose --progress --depth 1 --shallow-submodules -- "$1" .
     ;;
   *)
-    command mkdir -p -- "${2:-$(command basename -- "$1" .git || return 126)}" >/dev/null 2>&1
+    command mkdir -p -- "${2:-$(command basename -- "$1" .git)}" >/dev/null 2>&1
     printf -- 'moving into %s...\n' "${2:-$(command basename -- "$1" .git)}" >&2
-    cd "${2:-$(command basename -- "$1" .git || return 125)}" >/dev/null 2>&1 || return 3
-    command git clone --verbose --progress --recursive -- "$1" . || return 4
+    cd "${2:-$(command basename -- "$1" .git)}" >/dev/null 2>&1 || return 1
+    command git clone --verbose --progress --recursive -- "$1" .
     ;;
   esac
 }
