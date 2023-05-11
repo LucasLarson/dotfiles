@@ -96,14 +96,14 @@ for directory in \
   test -d "${directory-}" &&
     command find -- "${directory-}" \
       -type f \
-      -exec chmod -- 600 {} +
-  command find -- "${directory-}" \
-    -name '*.pub' \
-    -type f \
-    -exec chmod -- 644 {} +
-  command find -- "${directory-}" \
-    -type d \
-    -exec chmod -- 700 {} +
+      -exec chmod -- 600 {} + &&
+    command find -- "${directory-}" \
+      -name '*.pub' \
+      -type f \
+      -exec chmod -- 644 {} + &&
+    command find -- "${directory-}" \
+      -type d \
+      -exec chmod -- 700 {} +
 done
 unset -v -- directory
 # GPG
