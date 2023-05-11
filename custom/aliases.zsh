@@ -1023,6 +1023,7 @@ gdom() {
     command git diff upstream/"$(git-default-branch)"
 }
 
+unalias -- 'gf' 2>/dev/null
 alias gf='git fetch --keep --multiple --progress --prune --verbose'
 gfgs() {
   command git fetch --all --prune --verbose &&
