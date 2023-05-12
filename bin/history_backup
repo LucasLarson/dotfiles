@@ -14,7 +14,7 @@
       -maxdepth 1 \
       -name '.*history' \
       -type f \
-      -exec /bin/ls -1 -t -- {} + 2>/dev/null |
+      -exec ls -1 -t -- {} + 2>/dev/null |
       command sed -e '1q'
   )"
   # verify `$HISTFILE` exists and is not empty
@@ -31,7 +31,7 @@
             command find -- "${file-}"'_bak' \
               ! -path '*/.git/*' \
               -type f \
-              -exec /bin/ls -1 -t -- {} + 2>/dev/null |
+              -exec ls -1 -t -- {} + 2>/dev/null |
               command sed -e '1q'
           )"
         )" != ''
