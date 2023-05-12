@@ -23,7 +23,7 @@
     command mkdir -p -- "${file-}"'_bak' &&
     {
       # ...and that it is not empty
-      test "$(command find -- "${file-}"'_bak' -name "${file##*/}"'*' -type f)" = '' ||
+      test "$(command find -- "${file-}"'_bak' -name "${file##*/}"'*' -type f)" != '' ||
         # ...or that its newest file is older than `$HISTFILE`...
         test "$(
           command find -- "${file-}" -prune -newer "$(
