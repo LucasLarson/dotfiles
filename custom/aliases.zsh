@@ -1608,8 +1608,8 @@ plist_r() {
   *)
     command find -- . \
       ! -path '*/Library/*' \
-      -type f \
       -name '*.plist' \
+      -type f \
       -print \
       -exec plutil -convert xml1 -- {} ';' \
       -exec sed -i -e 's/\t/  /g' {} ';' \
