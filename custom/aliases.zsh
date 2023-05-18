@@ -1568,8 +1568,8 @@ plist_r() {
     ;;
   *)
     command find -- . \
-      ! -path "${HOME%/}"'/Library' \
-      ! -path "${DOTFILES-}"'/Library' \
+      ! -path "${HOME%/}"'/Library*' \
+      ! -path "${DOTFILES-}"'/Library*' \
       ! -type l \
       ! -type d \
       -name '*.plist' \
@@ -1745,8 +1745,8 @@ yamllint_r() {
     return 1
   command find -- . \
     -type f \
-    ! -path "${DOTFILES-}"'/Library' \
-    ! -path "${HOME%/}"'/Library' \
+    ! -path "${DOTFILES-}"'/Library*' \
+    ! -path "${HOME%/}"'/Library*' \
     ! -path '*/.git/*' \
     ! -path '*/.well-known' \
     ! -path '*/node_modules/*' \
