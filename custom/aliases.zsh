@@ -1607,8 +1607,7 @@ plist_r() {
     ;;
   *)
     command find -- . \
-      ! -path "${HOME%/}"'/Library*' \
-      ! -path "${DOTFILES-}"'/Library*' \
+      ! -path '*/Library/*' \
       -type f \
       -name '*.plist' \
       -print \
