@@ -1606,8 +1606,7 @@ plist_r() {
     command find -- . \
       ! -path "${HOME%/}"'/Library*' \
       ! -path "${DOTFILES-}"'/Library*' \
-      ! -type l \
-      ! -type d \
+      -type f \
       -name '*.plist' \
       -print \
       -exec plutil -convert xml1 -- {} ';' \
