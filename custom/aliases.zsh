@@ -1608,7 +1608,21 @@ plist_r() {
   *)
     command find -- . \
       ! -path '*/Library/*' \
-      -name '*.plist' \
+      '(' \
+      -name '*.plist' -o \
+      -name '*.caar' -o \
+      -name '*.entitlements' -o \
+      -name '*.fileloc' -o \
+      -name '*.glyphs' -o \
+      -name '*.loctable' -o \
+      -name '*.mobileconfig' -o \
+      -name '*.mom' -o \
+      -name '*.scriptSuite' -o \
+      -name '*.stringsdict' -o \
+      -name '*.textClipping' -o \
+      -name '*.waveform' -o \
+      -name '*.webloc' \
+      ')' \
       -type f \
       -print \
       -exec plutil -convert xml1 -- {} ';' \
