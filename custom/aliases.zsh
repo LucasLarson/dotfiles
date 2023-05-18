@@ -1563,7 +1563,7 @@ plist_r() {
   command -v -- plutil >/dev/null 2>&1 ||
     return 127
   case "$(command pwd -P)" in
-  "${HOME%/}" | "${DOTFILES-}"/*)
+  "${HOME%/}" | "${DOTFILES-}"/* | */trash)
     return 77
     ;;
   *)
