@@ -1600,6 +1600,9 @@ plist_r() {
     return 127
   case "$(command pwd -P)" in
   "${HOME%/}" | "${DOTFILES-}"/* | */trash)
+    printf -- 'permission error\n' >&2
+    printf -- 'do not run command \140%s\140 ' "${0##*/}" >&2
+    printf -- 'from directory \140%s/\140\n' "${PWD##*/}" >&2
     return 77
     ;;
   *)
