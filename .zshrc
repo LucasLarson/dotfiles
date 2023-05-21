@@ -60,17 +60,11 @@ plugins+=(
   zsh-abbr
   zsh-diff-so-fancy
   zsh-autosuggestions
-)
-
-# plugin: fast-syntax-highlighting
-# performs best when loaded late, but before zsh-history-substring-search
-plugins+=(
-  fast-syntax-highlighting
+  F-Sy-H
 )
 
 # plugin: zsh-history-substring-search
 plugins+=(
-  # load after fast-syntax-highlighting
   # https://github.com/zsh-users/zsh-history-substring-search/blob/02a1971540/history-substring-search.zsh
   zsh-history-substring-search
 ) && {

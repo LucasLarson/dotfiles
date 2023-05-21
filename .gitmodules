@@ -8,9 +8,10 @@
 [submodule "custom/plugins/zsh-completions"]
   path = custom/plugins/zsh-completions
   url = https://github.com/clarketm/zsh-completions
-[submodule "custom/plugins/fast-syntax-highlighting"]
-  path = custom/plugins/fast-syntax-highlighting
-  url = https://github.com/zdharma-continuum/fast-syntax-highlighting
+[submodule "custom/plugins/F-Sy-H"]
+  branch = main
+  path = custom/plugins/F-Sy-H
+  url = https://github.com/z-shell/F-Sy-H
 [submodule "custom/plugins/samefile"]
   branch = main
   path = custom/plugins/samefile
