@@ -10,9 +10,9 @@
   # without specifying the shell
   file="$(
     command find -- "${HOME%/}" \
-      -mindepth 1 \
-      -maxdepth 1 \
-      -name '.*history' \
+      -path "${HOME%/}"'/[A-Za-z0-9_-]*' -prune -o \
+      -path "${HOME%/}"'/*/*' -prune -o \
+      -path "${HOME%/}"'/.*history' \
       -type f \
       -exec ls -1 -t -- {} + 2>/dev/null |
       command sed -e '1q'
