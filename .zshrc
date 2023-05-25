@@ -156,7 +156,7 @@ test -d "${HOME%/}"'/.cargo/bin' &&
 . "${HOME%/}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" 2>/dev/null
 
 ## npm
-NPM_PACKAGES="${HOME%/}"'/.npm-packages'
+export NPM_PACKAGES="${HOME%/}"'/.npm-packages'
 test -d "${NPM_PACKAGES-}"'/bin' &&
   PATH="${PATH:+${PATH-}:}${NPM_PACKAGES-}"'/bin'
 test -d "${NPM_PACKAGES-}"'/share/man' &&
