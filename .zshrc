@@ -2,7 +2,7 @@
 
 ## Powerlevel10k
 # shellcheck disable=SC1090
-. "${XDG_CACHE_HOME:-${HOME%/}/.cache}"'/p10k-instant-prompt-'"${USER-}"'.zsh' 2>/dev/null
+. "${XDG_CACHE_HOME:-${HOME%/}/.cache}"'/p10k-instant-prompt-'"${LOGNAME:-${USER-}}"'.zsh' 2>/dev/null
 # shellcheck disable=SC1091
 . "${DOTFILES-}"'/custom/themes/powerlevel10k/powerlevel10k.zsh-theme' 2>/dev/null &&
   export ZSH_THEME='powerlevel10k/powerlevel10k'

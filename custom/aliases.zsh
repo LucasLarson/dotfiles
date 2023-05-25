@@ -1299,7 +1299,7 @@ command -v -- gh >/dev/null 2>&1 &&
   alias ghs='command gh status'
 
 gitlab_create_repository() {
-  command git push --set-upstream git@gitlab.com:"${GITLAB_USERNAME:-${USER-}}"/"$(
+  command git push --set-upstream git@gitlab.com:"${GITLAB_USERNAME:-${LOGNAME:-${USER-}}}"/"$(
     command git rev-parse --show-toplevel |
       command xargs basename --
   )".git "$(
@@ -1804,7 +1804,7 @@ transfer() {
 alias unixtime='command awk -- '\''BEGIN {srand(); print srand()}'\'''
 
 user() {
-  printf -- '%s' "${USER-}" &&
+  printf -- '%s' "${LOGNAME:-${USER-}}" &&
     printf -- '\n'
 }
 
