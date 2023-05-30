@@ -1743,6 +1743,7 @@ transfer() {
   for file in "$@"; do
     command curl --progress-bar --upload-file "${file-}" 'https://temp.sh/'"${file##*/}" && printf -- '\n'
   done
+  unset -v -- file 2>/dev/null || file=''
 }
 
 # Unix epoch seconds
