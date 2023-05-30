@@ -1741,7 +1741,7 @@ take() {
 
 transfer() {
   for file in "$@"; do
-    command curl --progress-bar --upload-file "${file-}" 'https://transfer.sh/'"${file##*/}" && printf -- '\n'
+    command curl --progress-bar --upload-file "${file-}" 'https://temp.sh/'"${file##*/}" && printf -- '\n'
   done
 }
 
