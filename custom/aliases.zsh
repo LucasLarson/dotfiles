@@ -1741,7 +1741,11 @@ take() {
 
 transfer() {
   for file in "$@"; do
-    command curl --progress-bar --upload-file "${file-}" 'https://temp.sh/'"${file##*/}" && printf -- '\n'
+    {
+      command curl --silent --upload-file "${file-}" 'https://temp.sh/'"${file##*/}" ||
+        command wget --method=PUT --output-document=- --quiet --body-file="${file-}" 'https://temp.sh/'"${file##*/}"
+    } 2>/dev/null &&
+      printf -- '\n'
   done
   unset -v -- file 2>/dev/null || file=''
 }
