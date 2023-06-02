@@ -1,5 +1,6 @@
 ---
 name: JSON Lint
+
 on:
   push:
     branches:
@@ -16,7 +17,8 @@ jobs:
           command sudo npm install \
             --location=global \
             --loglevel=verbose \
-            -- @prantlf/jsonlint
+            -- \
+            @prantlf/jsonlint
       - name: Lint
         run: |
           command find -- . \

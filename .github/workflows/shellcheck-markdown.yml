@@ -1,7 +1,8 @@
 ---
 name: Shellcheck code in Markdown
 
-on: [push]
+on:
+  push:
 
 jobs:
   build:
@@ -37,11 +38,11 @@ jobs:
             -type f \
             -exec sh -v -c '
             command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-            ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-            while IFS='\'''\'' read -r line; do
-              command test "${code-}" = 1 &&
-                command test "${line-}" != '\''```'\'' &&
-                command printf -- '\''%s\n'\'' "${line-}"
+              ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+              while IFS='\'''\'' read -r -- line; do
+                command test "${code-}" = '\''1'\'' &&
+                  command test "${line-}" != '\''```'\'' &&
+                  command printf -- '\''%s\n'\'' "${line-}"
 
               case "${line-}" in
               '\''```sh'\''|'\''```bash'\''|'\''```shell'\''|'\''```zsh'\'')
@@ -53,11 +54,11 @@ jobs:
               *) ;;
               esac
 
-              # SC1071: allow shell directives outside sh, bash, ksh, dash
-              # SC1090: allow linking to a dynamic location
-              # SC1091: allow linking to, but not following, linked scripts
-              # SC2123: allow `PATH=...`
-              # SC2312: allow masking of return values
+            # SC1071: allow shell directives outside sh, bash, ksh, dash
+            # SC1090: allow linking to a dynamic location
+            # SC1091: allow linking to, but not following, linked scripts
+            # SC2123: allow `PATH=...`
+            # SC2312: allow masking of return values
             done <"${1-}"' _ {} ';' |
             command shellcheck \
               --check-sourced \
@@ -69,5 +70,5 @@ jobs:
               --source-path=/dev/null \
               -- \
               - ||
-              exit "${?:-1}"
+            exit "${?:-1}"
 ...
