@@ -10,7 +10,7 @@ jobs:
     name: Format JSON files and create a pull request
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.5.2
       - name: Install linter
         run: |
           command sudo npm install \
