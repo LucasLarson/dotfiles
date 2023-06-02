@@ -5,7 +5,6 @@
 #########################
 #########################
 name: Super-Linter
-# https://bit.ly/git-io_workflow-syntax-for-github-actions
 
 #############################
 # Start the job on all push #
@@ -16,8 +15,6 @@ on:
 #####################################
 # Cancel any in-progress job or run #
 #####################################
-# https://github.com/kdeldycke/workflows/commit/8bee3ba877
-# https://docs.github.com/actions/using-jobs/using-concurrency
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true

@@ -1,6 +1,5 @@
 ---
 # Issue template
-# https://bit.ly/github-configuring-the-template-chooser
 blank_issues_enabled: true
 contact_links:
   - name: Bug report

@@ -4,8 +4,6 @@ about: Create a report to help us improve.
 
 ---
 
-# Bug report
-
 <!--
 The text in these Markdown comments is instructions that will not appear in
 the displayed issue.
