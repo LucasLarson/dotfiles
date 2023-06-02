@@ -76,7 +76,6 @@ jobs:
             -exec sh -v -x -c '
             command npm exec -- @prantlf/jsonlint \
               --in-place \
-              --prune-comments \
               --trailing-newline \
               --trim-trailing-commas \
               -- "{}"; \
