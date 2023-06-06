@@ -102,13 +102,13 @@ brewfile() {
 # prefer `bat` without line numbers for easier copying
 alias bat='command bat --decorations=never --paging=never'
 
-alias 1='cd "${OLDPWD-}"' -='cd "${OLDPWD-}"'
-alias 2='cd -2'
-alias 3='cd -3'
-alias 4='cd -4'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
+alias 1='cd -- "${OLDPWD-}"' -='cd -- "${OLDPWD-}"'
+alias 2='cd -- -2'
+alias 3='cd -- -3'
+alias 4='cd -- -4'
+alias ...='cd -- ../..'
+alias ....='cd -- ../../..'
+alias .....='cd -- ../../../..'
 
 cdp() {
   cd_from="$(command pwd -L)"
@@ -116,7 +116,7 @@ cdp() {
   if test "${cd_from-}" != "${cd_to-}"; then
     printf -- 'moving from \342\200\230%s\342\200\231\n' "${cd_from-}"
     command sleep 0.2
-    cd "${cd_to-}" || {
+    cd -- "${cd_to-}" || {
       printf -- 'unable to perform this operation\n'
       return 1
     }
@@ -754,7 +754,7 @@ find_oldest_file() {
 }
 
 find_shell_scripts() {
-  cd "$(command git rev-parse --show-toplevel)" ||
+  cd -- "$(command git rev-parse --show-toplevel)" ||
     return 1
 
   {
@@ -915,12 +915,12 @@ git_clone() {
   -1 | --shallow)
     shift
     command mkdir "${2:-$(command basename -- "$1" .git || return 123)}" >/dev/null 2>&1
-    cd "${2:-$(command basename -- "$1" .git || return 122)}" >/dev/null 2>&1 || return 5
+    cd -- "${2:-$(command basename -- "$1" .git || return 122)}" >/dev/null 2>&1 || return 5
     command git clone --verbose --progress --depth 1 --shallow-submodules "$1" . || return 6
     ;;
   *)
     command mkdir "${2:-$(command basename -- "$1" .git || return 126)}" >/dev/null 2>&1
-    cd "${2:-$(command basename -- "$1" .git || return 125)}" >/dev/null 2>&1 || return 3
+    cd -- "${2:-$(command basename -- "$1" .git || return 125)}" >/dev/null 2>&1 || return 3
     command git clone --verbose --progress --recursive -- "$1" . || return 4
     ;;
   esac
@@ -1520,7 +1520,7 @@ lso() {
 
 # dotfiles
 mu() {
-  cd "${DOTFILES-}" ||
+  cd -- "${DOTFILES-}" ||
     return 1
   command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "$@"
@@ -1840,7 +1840,7 @@ take() {
     :
   done
   if test -d "${directory-}"; then
-    cd "${directory-}" >/dev/null 2>&1 &&
+    cd -- "${directory-}" >/dev/null 2>&1 &&
       printf -- 'moving into \342\200\230%s\342\200\231\n' "${directory-}"
   else
     # it’s not a directory
@@ -1921,7 +1921,7 @@ zero() {
 }
 
 ohmyzsh() {
-  cd "${ZSH-}" &&
+  cd -- "${ZSH-}" &&
     command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     command sed -e '$d'
 }
