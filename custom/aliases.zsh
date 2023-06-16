@@ -647,7 +647,7 @@ filename_spaces_to_underscores() {
   command find -- . \
     -depth \
     -name '*'"${1:- }"'*' |
-    while IFS='' read -r filename; do
+    while IFS='' read -r -- filename; do
       command mv -i -- "${filename-}" "${filename%/*}"/"$(
         printf -- '%s' "${filename##*/}" |
           command tr "${1:-[[:space:]]}" "${2:-_}"
@@ -742,7 +742,7 @@ find_files_with_the_same_names() {
     ! -path '*/node_modules/*' \
     -print0 |
     command awk -F '/' -- 'BEGIN {RS="\0"} {n=$NF} k[n]==1 {print p[n]} k[n] {print $0} {p[n]=$0; k[n]++}' |
-    while IFS='' read -r file; do
+    while IFS='' read -r -- file; do
       printf -- '%s\n' "${file##*/}"
     done |
     LC_ALL='C' command sort -u
@@ -1181,7 +1181,7 @@ alias grs='git_restore'
 git_search() {
   # search all repository content since its creation
   command git rev-list --all |
-    while IFS='' read -r commit; do
+    while IFS='' read -r -- commit; do
       command git grep --color=always --extended-regexp --ignore-case --line-number -e "$@" "${commit-}" --
     done
   unset -v -- commit
@@ -1194,7 +1194,7 @@ git_shallow() {
   command git submodule init
   command git submodule |
     command awk -- '{print $2}' |
-    while IFS='' read -r submodule; do
+    while IFS='' read -r -- submodule; do
       submodule_path="$(command git config --file .gitmodules --get submodule."${submodule-}".path)"
       submodule_url="$(command git config --file .gitmodules --get submodule."${submodule-}".url)"
       command git clone --depth 1 --shallow-submodules "${submodule_url-}" "${submodule_path-}"
@@ -1535,7 +1535,7 @@ path_check() {
 
   printf -- '%s\n' "${PATH-}" |
     command sed -e 'y/:/\n/' |
-    while IFS='' read -r directory; do
+    while IFS='' read -r -- directory; do
       if test -d "${directory-}"; then
         printf -- 'is a directory: %s\n' "${directory-}"
       else
