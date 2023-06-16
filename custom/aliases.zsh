@@ -1510,6 +1510,9 @@ open() {
     esac
   fi
 }
+# if there is no `xdg-open`, then alias it to `open`
+command -v -- xdg-open >/dev/null 2>&1 ||
+  alias xdg-open='open'
 
 path_check() {
   # check that each directory in user `$PATH` still exists and is a directory
