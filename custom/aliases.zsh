@@ -1485,13 +1485,13 @@ open() {
   else
     case "${1-}" in
     p | posix_utilities)
-      test -z "${2-}" ||
-        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html' ||
+      { command test "${2-}" != '' &&
+        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html'; } ||
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html'
       ;;
     pb | posix_builtins)
-      test -z "${2-}" ||
-        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#'"${2-}" ||
+      { command test "${2-}" != '' &&
+        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#'"${2-}"; } ||
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/sbi.html'
       ;;
     sc*)
