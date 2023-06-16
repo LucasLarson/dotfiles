@@ -1501,7 +1501,7 @@ open() {
       command open -- 'https://shellcheck.net/wiki/'"${1-}"
       ;;
     so*)
-      # like cheat.sh’s `so/q/10638538`
+      # like cheat.sh’s `so/q/33041363`
       command open -- 'https://stackoverflow.com/'"${1#so/}"
       ;;
     *)
