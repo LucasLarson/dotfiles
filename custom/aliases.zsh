@@ -632,7 +632,7 @@ epoch_seconds() {
   # https://stackoverflow.com/a/41324810
   # `srand([expr])` will “Set the seed value for `rand` to `expr` or
   # use the time of day if `expr` is omitted.”
-  # https://opengroup.org/onlinepubs/9699919799/utilities/awk.html#tag_20_06_13_12
+  # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/awk.html#tag_20_06_13_12
   command awk -- 'BEGIN {srand(); print srand()}'
 }
 epoch_to_date_time() {
@@ -1486,13 +1486,13 @@ open() {
     case "${1-}" in
     p | posix_utilities)
       test -z "${2-}" ||
-        command open -- 'https://opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html' ||
-        command open -- 'https://opengroup.org/onlinepubs/9699919799/idx/utilities.html'
+        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html' ||
+        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html'
       ;;
     pb | posix_builtins)
       test -z "${2-}" ||
-        command open -- 'https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#'"${2-}" ||
-        command open -- 'https://opengroup.org/onlinepubs/9699919799/idx/sbi.html'
+        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#'"${2-}" ||
+        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/sbi.html'
       ;;
     sc*)
       command open -- 'https://shellcheck.net/wiki/SC'"${1#sc}"

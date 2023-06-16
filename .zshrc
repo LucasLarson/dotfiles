@@ -6,7 +6,7 @@
 . "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${USER-}"'.zsh'
 
 ## PATH
-# https://opengroup.org/onlinepubs/9699919799/utilities/command.html
+# https://pubs.opengroup.org/onlinepubs/9699919799/utilities/command.html
 # prepend without extra colon `:`
 # https://unix.stackexchange.com/a/415028
 PATH="$(command -p -- getconf PATH)${PATH:+:${PATH-}}"

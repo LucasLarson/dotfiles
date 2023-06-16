@@ -43,7 +43,7 @@ now="$(command date -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print sran
 # unset `$PS4`
 # if this quaternary prompt string is already unset, then
 # set it to the POSIX default: `+ `
-# https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
+# https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html
 ps4_temporary="${PS4:-+ }"
 unset -v -- PS4
 set -o xtrace
