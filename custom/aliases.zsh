@@ -657,7 +657,7 @@ filename_spaces_to_underscores() {
 }
 
 file_closes_with_newline() {
-  test "$(command tail -c 1 -- "${1-}" | command wc -l)" -eq '0' &&
+  test "$(command tail -c 1 -- "${1-}" | command wc -l)" -eq 0 &&
     return 1
 }
 
@@ -1062,7 +1062,7 @@ git_commit_initial_commit() {
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
   command git init &&
-    if test "$#" -eq '1'; then
+    if test "$#" -eq 1; then
       # add 12 hours (43,200 seconds) so it occurs around midday
       git_time="$(command date -d @$(($(command date -d "${1:-$(command date '+%Y-%m-%d')}" '+%s') + 43200)) '+%c %z')"
       export GIT_AUTHOR_DATE="${git_time-}"
@@ -1480,7 +1480,7 @@ command -v -- ocrmypdf >/dev/null 2>&1 &&
 
 # open current directory if no argument is given
 open() {
-  if test "$#" -eq '0'; then
+  if test "$#" -eq 0; then
     command open -- .
   else
     case "${1-}" in
@@ -1615,7 +1615,7 @@ alias '?'='question_mark'
 ql() {
   command -v -- qlmanage >/dev/null 2>&1 ||
     return 127
-  while test "$#" -ne '0'; do
+  while test "$#" -ne 0; do
     command qlmanage -p -- "$1" >/dev/null 2>&1 &&
       shift
   done

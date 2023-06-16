@@ -21,7 +21,7 @@ jobs:
 
           # Extract code blocks from the README.
           while read -r line; do
-            test "${code-}" = '1' &&
+            test "${code-}" = 1 &&
               test "${line-}" != '```' &&
               printf -- '%s\n' "${line-}"
 
