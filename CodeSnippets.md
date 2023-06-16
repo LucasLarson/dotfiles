@@ -434,7 +434,7 @@ git config --global core.editor "code --wait"
 
 ## parameter expansion
 
-[via](https://opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02)
+[via](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02)
 
 |                        | *parameter* Set and Not Null | *parameter* Set But Null | *parameter* Unset |
 | ---------------------- | ---------------------------- | ------------------------ | ----------------- |
