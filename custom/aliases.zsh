@@ -1489,7 +1489,7 @@ open() {
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html'; } ||
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html'
       ;;
-    pb | posix_builtins)
+    b | pb | posix_builtins)
       { command test "${2-}" != '' &&
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#'"${2-}"; } ||
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/sbi.html'
