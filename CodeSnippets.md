@@ -215,7 +215,7 @@ command printf -- '%s\n' "${PATH-}" |
 ### executables
 
 ```shell
-command printf -- '%s\n' "${PATH-}" | command sed -e 's/:/\n/g' | while IFS='' read -r directory; do command find -- "${directory-}" -mindepth 1 -maxdepth 1 ! -type d -exec test -x {} ';' -print 2>/dev/null; done
+command printf -- '%s\n' "${PATH-}" | command sed -e 's/:/\n/g' | while IFS='' read -r -- directory; do command find -- "${directory-}" -mindepth 1 -maxdepth 1 ! -type d -exec test -x {} ';' -print 2>/dev/null; done
 ```
 
 ## text editing
