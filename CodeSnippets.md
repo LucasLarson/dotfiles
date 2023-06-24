@@ -541,7 +541,7 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 `npm audit fix && \`<br>
 `npm doctor && #` creates empty `node_modules` directories `\`<br>
-`find -- node_modules -empty -type d -delete #` deletes them [via](https://perma.cc/YNL2-FY3Z)
+`find -- node_modules -links 2 -type d -delete #` deletes them
 
 ### gem
 
@@ -567,9 +567,9 @@ command -v -- brew >/dev/null 2>&1 && { command brew autoremove --verbose; comma
 ### empty directories
 
 make a list of empty folders inside and beneath current directory **`.`** ([via](https://unix.stackexchange.com/a/46326))<br>
-`find -- . -type d -empty -print`<br>
+`find -- . -type d -links 2 -print`<br>
 if satisfied with the results being lost and gone forever, execute:<br>
-`find -- . -type d -empty -delete`
+`find -- . -type d -links 2 -delete`
 
 ### compare two folders
 

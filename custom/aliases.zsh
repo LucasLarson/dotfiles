@@ -398,7 +398,7 @@ command rm -- "{}"' ';'
     command find -- . \
       -depth \
       -type d \
-      -empty \
+      -links 2 \
       ! -path '*/.git/*' \
       ! -path '*/.well-known' \
       -delete 2>/dev/null
@@ -703,7 +703,7 @@ find_broken_symlinks() {
 find_duplicate_files() {
   # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
   command find -- . \
-    ! -empty \
+    ! -size 0 \
     ! -type l \
     -type f \
     -printf '%s\n' 2>/dev/null |

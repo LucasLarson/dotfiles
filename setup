@@ -322,7 +322,7 @@ command find -- . \
 
 # delete empty directories recursively
 # but skip Git-specific and `/.well-known/` directories
-command find -- . -type d -empty \
+command find -- . -type d -links 2 \
   ! -path '*.git/*' \
   ! -name '.well-known' \
   -delete 2>/dev/null
