@@ -673,7 +673,6 @@ find_duplicate_files() {
   # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
   command find -- . \
     ! -size 0 \
-    ! -type l \
     -type f \
     -printf '%s\n' 2>/dev/null |
     LC_ALL='C' command sort -n -r |
