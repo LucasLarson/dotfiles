@@ -29,9 +29,9 @@ printf -- '   \174\137\137\174\137\137\137\174' 2>/dev/null
 printf -- '  \057\137\137\174\174\137\137\174\n' 2>/dev/null
 printf -- '           \134\057\n\n' 2>/dev/null
 printf -- '        Linux setup\n' 2>/dev/null
-command sleep -- 1
+command sleep 1
 printf -- '  a Lucas Larson production\n\n' 2>/dev/null
-command sleep -- 1
+command sleep 1
 
 # start from `$HOME`
 cd -- "${HOME%/}" ||
@@ -332,7 +332,7 @@ test -w '/etc/passwd' &&
 # done
 { set +euvx; } 2>/dev/null
 printf -- 'installation complete\n' 2>/dev/null
-command sleep -- 1
+command sleep 1
 printf -- 'exiting to apply updates...\n' 2>/dev/null
 
 # restore `$PS4`
