@@ -253,7 +253,6 @@ clang_format() {
     -name '*.pcm' -o \
     -name '*.proto' -o \
     -name '*.protodevel' -o \
-    -name '*.rs' -o \
     -name '*.S' -o \
     -name '*.s' -o \
     -name '*.tcc' -o \
