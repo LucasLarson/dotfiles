@@ -73,8 +73,8 @@ EDITOR="$(
   command -v -- nvim ||
     command -v -- vim ||
     command -v -- vi
-)"
-export EDITOR
+)" &&
+  export EDITOR
 alias e='command "${EDITOR:-vi}"'
 export VISUAL="${VISUAL:-${EDITOR:-vi}}"
 
