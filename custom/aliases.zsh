@@ -389,6 +389,18 @@ command rm -- "{}"' ';'
       command find -- . \
         -path '*/.git' -prune -o \
         -path '*/.well-known' -prune -o \
+        -path '*/Empty' -prune -o \
+        -path '*/Library' -prune -o \
+        -path '*/node_modules' -prune -o \
+        -path '*/plugins' -prune -o \
+        -path '*/t' -prune -o \
+        -path '*/Test*' -prune -o \
+        -path '*/test*' -prune -o \
+        -path '*/themes' -prune -o \
+        -path '*/venv' -prune -o \
+        -path '*copilot*' -prune -o \
+        -path '*dummy*' -prune -o \
+        -path '*vscode*' -prune -o \
         -path './*' \
         -type d \
         -links 2 \
@@ -397,6 +409,18 @@ command rm -- "{}"' ';'
       command find -- . \
         -path '*/.git' -prune -o \
         -path '*/.well-known' -prune -o \
+        -path '*/Empty' -prune -o \
+        -path '*/Library' -prune -o \
+        -path '*/node_modules' -prune -o \
+        -path '*/plugins' -prune -o \
+        -path '*/t' -prune -o \
+        -path '*/Test*' -prune -o \
+        -path '*/test*' -prune -o \
+        -path '*/themes' -prune -o \
+        -path '*/venv' -prune -o \
+        -path '*copilot*' -prune -o \
+        -path '*dummy*' -prune -o \
+        -path '*vscode*' -prune -o \
         -path './*' \
         -type d \
         -links 2 \
