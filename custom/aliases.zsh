@@ -541,7 +541,7 @@ count_files_in_this_directory() {
       -maxdepth 1 \
       ! -name '.' \
       ! -name '.DS_Store' \
-      -print |
+      -print 2>/dev/null |
       command grep -c -e '/'
     ;;
 
