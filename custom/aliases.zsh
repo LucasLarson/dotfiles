@@ -385,13 +385,23 @@ command rm -- "{}"' ';'
 
     # delete empty directories recursively
     # but skip Git-specific and `/.well-known/` directories
-    command find -- . \
-      -depth \
-      -type d \
-      -links 2 \
-      ! -path '*/.git/*' \
-      ! -path '*/.well-known/*' \
-      -delete
+    while command test "$(
+      command find -- . \
+        -path '*/.git' -prune -o \
+        -path '*/.well-known' -prune -o \
+        -path './*' \
+        -type d \
+        -links 2 \
+        -print 2>/dev/null
+    )" != ''; do
+      command find -- . \
+        -path '*/.git' -prune -o \
+        -path '*/.well-known' -prune -o \
+        -path './*' \
+        -type d \
+        -links 2 \
+        -delete 2>/dev/null
+    done
 
     # swap each tab for two spaces each in `.git/config` and `$HOME/.gitconfig`
     command find -- . \
