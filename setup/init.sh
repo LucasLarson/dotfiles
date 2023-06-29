@@ -295,12 +295,12 @@ command find -- . \
 command find -- . \
   -type f \
   -size 0 \
-  ! -path "${DOTFILES-}"'/Library/*' \
-  ! -path "${HOME%/}"'/Library/*' \
-  ! -path '*/.git/*' \
-  ! -path '*/Test*' \
-  ! -path '*/test*' \
-  ! -path '*/.well-known/*' \
+  -path "${DOTFILES-}"'/Library' -prune -o \
+  -path "${HOME%/}"'/Library' -prune -o \
+  -path '*/.git' -prune -o \
+  -path '*/Test*' -prune -o \
+  -path '*/test*' -prune -o \
+  -path '*/.well-known' -prune -o \
   ! -name "$(printf -- 'Icon\015\012')" \
   ! -name '*LOCK' \
   ! -name '*empty*' \

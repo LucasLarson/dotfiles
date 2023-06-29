@@ -180,13 +180,12 @@ clang_format() {
   # https://github.com/llvm/llvm-project/blob/cea81e95b0/clang/tools/clang-format/clang-format-diff.py#L50-L51
 
   command find -- . \
-    -type f \
-    ! -path '*/.git/*' \
-    ! -path '*/node_modules/*' \
-    ! -path '*/t/*' \
-    ! -path '*/Test*' \
-    ! -path '*/test*' \
-    ! -path '*vscode*' \
+    -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
+    -path '*/t' -prune -o \
+    -path '*/Test' -prune -o \
+    -path '*/test' -prune -o \
+    -path '*vscode' -prune -o \
     '(' \
     -name '*.adb' -o \
     -name '*.ads' -o \
@@ -264,6 +263,7 @@ clang_format() {
     -name '*.txx' -o \
     -name '*.xbm' \
     ')' \
+    -type f \
     -exec sh -u -v -c "command git ls-files --error-unmatch -- '{}' >/dev/null 2>&1 ||
   ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
   command clang-format -i --style '{IndentWidth: ${IndentWidth:-2}, ColumnLimit: ${ColumnLimit:-79}}' --verbose -- '{}' 2>&1
@@ -347,14 +347,12 @@ cleanup() {
     # those with specific names and
     # those that belong to a repository
     command find -- . \
-      -type f \
-      -size 0 \
-      ! -path '*/.git/*' \
-      ! -path '*/node_modules/*' \
-      ! -path '*/t/*' \
-      ! -path '*/Test*' \
-      ! -path '*/test*' \
-      ! -path '*vscode*' \
+      -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
+      -path '*/t' -prune -o \
+      -path '*/Test*' -prune -o \
+      -path '*/test*' -prune -o \
+      -path '*vscode*' -prune -o \
       ! -name "$(printf -- 'Icon\015\012')" \
       ! -name '*.plugin.zsh' \
       ! -name '*empty*' \
@@ -379,6 +377,8 @@ cleanup() {
       ! -name '.watchmanconfig' \
       ! -name '__init__.py' \
       ! -name 'favicon.*' \
+      -type f \
+      -size 0 \
       -exec sh -v -c 'command git ls-files --error-unmatch -- "{}" >/dev/null 2>&1 ||
 ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
 command rm -- "{}"' ';'
@@ -486,7 +486,7 @@ cy() {
 count_files() {
   # https://unix.stackexchange.com/a/1126
   command find -- .//. \
-    ! -path '*/.git/*' \
+    -path '*/.git' -prune -o \
     ! -name '.' \
     ! -name '.DS_Store' \
     ! -type d \
@@ -496,7 +496,7 @@ count_files() {
 
 count_files_and_directories() {
   command find -- .//. \
-    ! -path '*/.git/*' \
+    -path '*/.git' -prune -o \
     ! -name '.' \
     ! -name '.DS_Store' \
     -print |
@@ -506,8 +506,8 @@ count_files_and_directories() {
 count_files_by_extension() {
   # files with extensions
   command find -- . \
-    ! -path '*/.git/*' \
-    ! -path '*/node_modules/*' \
+    -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     ! -type d \
     -name '*.*' |
     command sed -e 's/.*\.//' |
@@ -517,8 +517,8 @@ count_files_by_extension() {
 
   # files with no extension
   command find -- . \
-    ! -path '*/.git/*' \
-    ! -path '*/node_modules/*' \
+    -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     ! -type d \
     ! -name '*.*' \
     -print 2>/dev/null |
@@ -537,11 +537,10 @@ count_files_in_this_directory() {
   # count files as well as directories
   -d | --directory | --directories)
     command find -- . \
+      -path '*/.git' -prune -o \
       -maxdepth 1 \
-      ! -path '*/.git/*' \
       ! -name '.' \
       ! -name '.DS_Store' \
-      -prune \
       -print |
       command grep -c -e '/'
     ;;
@@ -550,12 +549,11 @@ count_files_in_this_directory() {
   *)
     # https://unix.stackexchange.com/a/1126
     command find -- . \
+      -path '*/.git' -prune -o \
       -maxdepth 1 \
-      -type f \
-      ! -path '*/.git/*' \
       ! -name '.' \
       ! -name '.DS_Store' \
-      -prune \
+      -type f \
       -print |
       command grep -c -e '/'
     ;;
@@ -669,24 +667,24 @@ command -v -- fd >/dev/null 2>&1 &&
 find_binary_files() {
   {
     command find -- . \
+      -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
+      -path '*/t' -prune -o \
+      -path '*/Test*' -prune -o \
+      -path '*/test*' -prune -o \
+      -path '*vscode*' -prune -o \
       -type f \
-      ! -path '*/.git/*' \
-      ! -path '*/node_modules/*' \
-      ! -path '*/t/*' \
-      ! -path '*/Test*' \
-      ! -path '*/test*' \
-      ! -path '*vscode*' \
       -exec file -- {} ';' |
       command grep -E -e ' (executable|shared object|binary)' |
       command cut -d ':' -f 1
     command find -- . \
+      -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
+      -path '*/t' -prune -o \
+      -path '*/Test*' -prune -o \
+      -path '*/test*' -prune -o \
+      -path '*vscode*' -prune -o \
       -type f \
-      ! -path '*/.git/*' \
-      ! -path '*/node_modules/*' \
-      ! -path '*/t/*' \
-      ! -path '*/Test*' \
-      ! -path '*/test*' \
-      ! -path '*vscode*' \
       -exec grep -I -L -e '.*' -- {} ';'
   } |
     LC_ALL='C' command sort -u |
@@ -711,12 +709,12 @@ find_duplicate_files() {
     LC_ALL='C' command sort -n -r |
     command uniq -d |
     command xargs -I '{}' -n 1 find \
-      ! -path '*/.git/*' \
-      ! -path '*/node_modules/*' \
-      ! -path '*/t/*' \
-      ! -path '*/Test*' \
-      ! -path '*/test*' \
-      ! -path '*vscode*' \
+      -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
+      -path '*/t' -prune -o \
+      -path '*/Test*' -prune -o \
+      -path '*/test*' -prune -o \
+      -path '*vscode*' -prune -o \
       ! -type l \
       -type f \
       -size {}c \
@@ -729,7 +727,7 @@ alias fdf='find_duplicate_files'
 
 find_files_with_no_extension() {
   command find -- . \
-    ! -path '*/.git/*' \
+    -path '*/.git' -prune -o \
     -type f \
     ! -name '*.*' \
     -print 2>/dev/null |
@@ -738,10 +736,9 @@ find_files_with_no_extension() {
 
 find_files_with_the_same_names() {
   command find -- . \
+    -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -mindepth 1 \
-    ! -name '.git' \
-    ! -path '*/node_modules/*' \
-    ! -path '*/.git/*' \
     ! -type d \
     ! -type l |
     command sed -e 's/.*\//\.\//' |
@@ -753,16 +750,15 @@ find_files_with_the_same_names() {
 compdef -- 'find_no_git'='find' 2>/dev/null
 find_no_git() {
   command find -- . \
+    -path '*/.git' -prune -o \
     -mindepth 1 \
-    ! -name '.git' \
-    ! -path '*/.git/*' \
     "$@"
 }
 
 find_oldest_file() {
   command find -- . \
+    -path '*/.git' -prune -o \
     -type f \
-    ! -path '*/.git/*' \
     -exec /bin/ls -o -r -t -- {} + 2>/dev/null |
     command sed -e "${1:-1}"'q'
 }
@@ -774,7 +770,7 @@ find_shell_scripts() {
   {
     # all files with `linguist` Shell filename extensions
     command find -- . \
-      ! -path '*/.git/*' \
+      -path '*/.git' -prune -o \
       -type f \
       '(' \
       -name '.sh' -o \
@@ -840,12 +836,12 @@ find_shell_scripts() {
     # files whose first line resembles those of shell scripts
     # https://stackoverflow.com/a/9612232
     command find -- . \
-      ! -path '*/.git/*' \
-      ! -path '*/node_modules/*' \
-      ! -path '*/t/*' \
-      ! -path '*/Test*' \
-      ! -path '*/test*' \
-      ! -path '*vscode*' \
+      -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
+      -path '*/t' -prune -o \
+      -path '*/Test*' -prune -o \
+      -path '*/test*' -prune -o \
+      -path '*vscode*' -prune -o \
       -type f \
       -exec sh -c 'command sed -e "1q" "{}" | command grep -q -e "^#!.*bin.*sh" && printf -- "%s\n" "{}"' ';' 2>/dev/null
 
@@ -1510,7 +1506,7 @@ alias mv='command mv -v -i'
 # find files with non-ASCII characters
 non_ascii() {
   LC_ALL='C' command find -- . \
-    ! -path '*/.git/*' \
+    -path '*/.git' -prune -o \
     -name '*[! -~]*'
 }
 
@@ -1618,8 +1614,8 @@ permissions() {
   # restore default file and directory permissions
   command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "${?:-1}"
-  command find -- . ! -path '*/.*' -type d -exec /bin/chmod -- 755 {} +
-  command find -- . ! -path '*/.*' -type f -exec /bin/chmod -- 644 {} +
+  command find -- . -path '*/.*' -prune -o -type d -exec /bin/chmod -- 755 {} +
+  command find -- . -path '*/.*' -prune -o -type f -exec /bin/chmod -- 644 {} +
 }
 
 # pip
@@ -1639,7 +1635,7 @@ plist_r() {
     ;;
   *)
     command find -- . \
-      ! -path '*/Library/*' \
+      -path '*/Library' -prune -o \
       '(' \
       -name '*.plist' -o \
       -name '*.caar' -o \
@@ -1851,17 +1847,17 @@ yamllint_r() {
   command -v -- yamllint >/dev/null 2>&1 ||
     return 1
   command find -- . \
+    -path "${DOTFILES-}"'/Library' -prune -o \
+    -path "${HOME%/}"'/Library' -prune -o \
+    -path '*/.git' -prune -o \
+    -path '*/.well-known' -prune -o \
+    -path '*/copilot.vim' -prune -o \
+    -path '*/node_modules' -prune -o \
+    -path '*/t' -prune -o \
+    -path '*/Test*' -prune -o \
+    -path '*/test*' -prune -o \
+    -path '*vscode*' -prune -o \
     ! -type d \
-    ! -path "${DOTFILES-}"'/Library*' \
-    ! -path "${HOME%/}"'/Library*' \
-    ! -path '*/.git/*' \
-    ! -path '*/.well-known/*' \
-    ! -path '*/copilot.vim/*' \
-    ! -path '*/node_modules/*' \
-    ! -path '*/t/*' \
-    ! -path '*/Test*' \
-    ! -path '*/test*' \
-    ! -path '*vscode*' \
     '(' \
     -name '*.yml' -o \
     -name '*.CFF' -o \

@@ -22,10 +22,9 @@ jobs:
       - name: Lint
         run: |
           command find -- . \
-            -type f \
-            ! -path '*/.git/*' \
-            ! -path '*/node_modules/*' \
-            ! -path '*vscode*' \
+            -path '*/.git' -prune -o \
+            -path '*/node_modules' -prune -o \
+            -path '*vscode*' -prune -o \
             '(' \
             -name '*.json' -o \
             -name '*.4DForm' -o \
@@ -74,6 +73,7 @@ jobs:
             -name '.whitesource' -o \
             -name 'mcmod.info' \
             ')' \
+            -type f \
             -print \
             -exec sh -v -x -c '
             command git ls-files \
