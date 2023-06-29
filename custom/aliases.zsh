@@ -650,7 +650,7 @@ filename_spaces_to_underscores() {
     while IFS='' read -r -- filename; do
       command mv -i -- "${filename-}" "${filename%/*}"/"$(
         printf -- '%s' "${filename##*/}" |
-          command tr "${1:-[[:space:]]}" "${2:-_}"
+          command tr "${1:-[:space:]}" "${2:-_}"
       )"
     done
   unset -v -- filename
