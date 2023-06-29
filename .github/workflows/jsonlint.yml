@@ -10,6 +10,7 @@ jobs:
   format-json:
     name: Format JSON files and create a pull request
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
       - name: Install linter
