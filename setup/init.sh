@@ -20,8 +20,7 @@ elif command -v -- apt-get >/dev/null 2>&1; then
   alias install='command apt-get install --verbose --show-progress --assume-yes'
 fi
 
-clear
-printf -- '   .\137\137       .\137\137  \137\137\n' 2>/dev/null
+printf -- '\n\n   .\137\137       .\137\137  \137\137\n' 2>/dev/null
 printf -- '   \174\137\137\174 \137\137\137\137 \174\137\137\174\057  \174\137\n' 2>/dev/null
 printf -- '   \174  \174\057    \134\174  \134   \137\137\134\n' 2>/dev/null
 printf -- '   \174  \174   \174  \134  \174\174  \174\n' 2>/dev/null
