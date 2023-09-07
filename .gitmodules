@@ -1,4 +1,5 @@
 [submodule "custom/themes/powerlevel10k"]
+  branch = master
   path = custom/themes/powerlevel10k
   url = https://github.com/romkatv/powerlevel10k
 [submodule "custom/plugins/gunstage"]
@@ -6,9 +7,11 @@
   path = custom/plugins/gunstage
   url = https://github.com/LucasLarson/gunstage
 [submodule "custom/plugins/zsh-completions"]
+  branch = master
   path = custom/plugins/zsh-completions
   url = https://github.com/clarketm/zsh-completions
 [submodule "custom/plugins/fast-syntax-highlighting"]
+  branch = master
   path = custom/plugins/fast-syntax-highlighting
   url = https://github.com/zdharma-continuum/fast-syntax-highlighting
 [submodule "custom/plugins/samefile"]
@@ -20,6 +23,7 @@
   path = custom/plugins/git-default-branch
   url = https://github.com/LucasLarson/git-default-branch
 [submodule "custom/plugins/zsh-history-substring-search"]
+  branch = master
   path = custom/plugins/zsh-history-substring-search
   url = https://github.com/zsh-users/zsh-history-substring-search
 [submodule "custom/plugins/zsh-diff-so-fancy"]
@@ -31,5 +35,6 @@
   path = custom/plugins/zsh-abbr
   url = https://github.com/olets/zsh-abbr
 [submodule "custom/plugins/zsh-autosuggestions"]
+  branch = master
   path = custom/plugins/zsh-autosuggestions
   url = https://github.com/zsh-users/zsh-autosuggestions
