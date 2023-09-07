@@ -76,12 +76,12 @@ brew "doxygen"
 brew "elvish"
 # AST-based pattern checker for JavaScript
 brew "eslint"
-# Modern replacement for 'ls'
-brew "exa"
 # Command-line tool to interact with exercism.io
 brew "exercism"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
+# Modern, maintained replacement for ls
+brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Identify or delete duplicate files
