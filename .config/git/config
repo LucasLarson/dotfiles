@@ -9,23 +9,11 @@
   abbrev = 10
 
   # `autocrlf` is all-lowercase
-  # https://git-scm.com/docs/git-config/2.34.1#Documentation/git-config.txt-coreautocrlf
-  # macOS and Linux only
-  # https://wildlyinaccurate.com/useful-git-configuration-items/#prevent-line-ending-issues
   autocrlf = input
 
-  # aggressive but slow repo compression
-  # https://stackoverflow.com/a/28156806
-  # https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression
   compression = 9
   looseCompression = 9
-
-  # ensure Unicode filenames aren’t mangled by HFS
-  # https://chromium.googlesource.com/chromium/src/+/11eee6b/docs/mac_build_instructions.md#get-the-code
   precomposeUnicode = true
-
-  # better diffs via the person from whom I learned to alias `apm-beta`
-  # https://github.com/jeefberkey/dotfiles/blob/b3513ad/.gitconfig#L11
   pager = command diff-so-fancy | command less --RAW-CONTROL-CHARS --no-init --quit-if-one-screen --tabs=4
 
 [advice]
@@ -63,7 +51,6 @@
 
 [diff]
   # allow `git merge` to examine enormous diffs
-  # https://stackoverflow.com/a/13118734
   renameLimit = 0
 
 [diff-so-fancy]
@@ -79,8 +66,6 @@
   keepBackup = true
 
 [pack]
-  # slow, aggressive compression
-  # https://git-scm.com/docs/git-config/2.25.1#Documentation/git-config.txt-corecompression
   compression = 9
 
 [pull]
@@ -91,8 +76,6 @@
   updateRefs = true
 
 [rerere]
-  # Git remembers your partial merge choices and replays them next time
-  # https://stackoverflow.com/a/28156806
   autoUpdate = true
   enabled = true
 
