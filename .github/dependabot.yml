@@ -95,8 +95,8 @@ updates:
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
 
-  # Maven
-  - package-ecosystem: "maven"
+  # Hex
+  - package-ecosystem: "mix"
     directory: "/"
     schedule:
       interval: "daily"
@@ -105,8 +105,8 @@ updates:
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
 
-  # Mix
-  - package-ecosystem: "mix"
+  # Maven
+  - package-ecosystem: "maven"
     directory: "/"
     schedule:
       interval: "daily"
