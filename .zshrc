@@ -55,7 +55,6 @@ export ZSH_COMPDUMP="${HOME%/}"'/.zcompdump'
 # overridden by plugins at its end
 plugins+=(
   gunstage
-  samefile
   git-default-branch
   zsh-abbr
   zsh-diff-so-fancy
