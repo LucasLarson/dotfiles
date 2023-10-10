@@ -14,10 +14,6 @@
   branch = master
   path = custom/plugins/fast-syntax-highlighting
   url = https://github.com/zdharma-continuum/fast-syntax-highlighting
-[submodule "custom/plugins/samefile"]
-  branch = main
-  path = custom/plugins/samefile
-  url = https://github.com/LucasLarson/samefile
 [submodule "custom/plugins/git-default-branch"]
   branch = main
   path = custom/plugins/git-default-branch

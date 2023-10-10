@@ -30,7 +30,7 @@ export HISTFILE SAVEHIST HISTSIZE
 export ZSH_COMPDUMP="${HOME%/}"'/.zcompdump'
 
 ## Plugins
-PLUGINS='gunstage:samefile:git-default-branch:zsh-abbr:zsh-diff-so-fancy:zsh-autosuggestions'"${PLUGINS:+:${PLUGINS-}}"
+PLUGINS='gunstage:git-default-branch:zsh-abbr:zsh-diff-so-fancy:zsh-autosuggestions'"${PLUGINS:+:${PLUGINS-}}"
 # plugin: fast-syntax-highlighting
 PLUGINS='fast-syntax-highlighting'"${PLUGINS:+:${PLUGINS-}}"
 # plugin: zsh-history-substring-search
