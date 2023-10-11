@@ -98,26 +98,26 @@ command -v -- mandoc >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf -- 'installing mandoc for man pages...\n' >&2
   set -o xtrace
-  install mandoc mandoc-doc
+  install mandoc
 }
 command -v -- less >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf -- 'installing less to read man pages...\n' >&2
   set -o xtrace
-  install less less-doc
+  install less
 }
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Shell_.40_commandline
 # https://web.archive.org/web/20210218201739id_/web.archive.org/screenshot/docs.google.com/document/d/10-8wjANQGbG43XZ0wN57M1RYOLUwu9RZATNe9vJQYKw/mobilebasic
 # https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
-install coreutils coreutils-doc
+install coreutils
 { test -x '/usr/bin/coreutils' &&
   command find --version >/dev/null 2>&1 | command grep -q -e 'findutils'; } || {
   { set +o xtrace; } 2>/dev/null
   printf -- 'installing Linux utilities...\n' >&2
   set -o xtrace
 }
-install util-linux util-linux-doc pciutils pciutils-doc usbutils usbutils-doc coreutils coreutils-doc binutils binutils-doc findutils findutils-doc grep grep-doc wget wget-doc curl curl-doc openssl openssl-doc sudo sudo-doc sed sed-doc attr attr-doc dialog dialog-doc bash bash-doc bash-completion bash-completion-doc readline readline-doc
+install util-linux pciutils usbutils coreutils binutils findutils grep wget curl openssl sudo sed attr dialog bash bash-completion readline
 {
   printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/main\n'
   printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/community\n'
@@ -131,7 +131,7 @@ test -d '/etc/ssh' || {
   { set +o xtrace; } 2>/dev/null
   printf -- 'installing OpenSSH...\n' >&2
   set -o xtrace
-  install openssh openssh-doc
+  install openssh
 }
 
 # gpg
@@ -140,7 +140,7 @@ test -x '/usr/bin/gpg2' || {
   { set +o xtrace; } 2>/dev/null
   printf -- 'installing GPG...\n' >&2
   set -o xtrace
-  install gnupg gnupg-doc
+  install gnupg
 }
 
 # git
@@ -148,7 +148,7 @@ command -v -- git >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf -- 'installing Git...\n' >&2
   set -o xtrace
-  install git git-doc
+  install git
 }
 
 # git user
@@ -165,7 +165,7 @@ command git config --global --get init.defaultBranch >/dev/null 2>&1 || {
 { set +o xtrace; } 2>/dev/null
 printf -- 'updating time zone information...\n' >&2
 set -o xtrace
-install --no-cache tzdata tzdata-doc
+install --no-cache tzdata
 
 # python
 { set +o xtrace; } 2>/dev/null
@@ -175,7 +175,7 @@ command -v -- python >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf -- 'installing Python...\n' >&2
   set -o xtrace
-  install python3 python3-doc
+  install python3
 }
 
 # pip
@@ -216,13 +216,13 @@ command -v -- zsh >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   printf -- 'installing Zsh...\n' >&2
   set -o xtrace
-  install zsh zsh-doc
+  install zsh
 }
 
 # chsh
 # part of shadow on Alpine Linux
 command -v -- chsh >/dev/null 2>&1 || {
-  install shadow shadow-doc
+  install shadow
 }
 
 # Oh My Zsh
