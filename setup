@@ -117,7 +117,7 @@ install coreutils
   printf -- 'installing Linux utilities...\n' >&2
   set -o xtrace
 }
-install util-linux pciutils usbutils coreutils binutils findutils grep wget curl openssl sudo sed attr dialog bash bash-completion readline
+install util-linux pciutils usbutils coreutils binutils findutils grep wget curl openssl sudo sed attr dialog readline
 {
   printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/main\n'
   printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/community\n'
