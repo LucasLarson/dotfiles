@@ -329,7 +329,7 @@ test -w '/etc/passwd' &&
   command sed -e 's|/bin/b\{0,1\}a\{0,1\}sh$|'"$(command -v -- zsh)"'|' '/etc/passwd-'"${now-}" >'/etc/passwd'
 
 # done
-{ set +euvx; } 2>/dev/null
+{ set +o xtrace; } 2>/dev/null
 printf -- 'installation complete\n' >&2
 command sleep 1
 printf -- 'exiting to apply updates...\n' >&2
