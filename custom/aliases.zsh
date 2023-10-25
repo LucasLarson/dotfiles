@@ -12,7 +12,6 @@
 #                           │
 # ──────────────────────────╯
 #
-# https://stackoverflow.com/a/1371283
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 alias ,='. "${HOME%/}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
