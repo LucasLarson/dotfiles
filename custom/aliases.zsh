@@ -1389,9 +1389,9 @@ identify() {
 # list files
 unalias -- 'ls' 2>/dev/null
 unalias -- 'l' 2>/dev/null
-if command exa --color=auto >/dev/null 2>&1; then
-  alias ls='command exa --color=auto'
-  alias l='command exa --color=auto --bytes --classify --git --header --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso'
+if command eza --color=auto >/dev/null 2>&1; then
+  alias ls='command eza --color=auto'
+  alias l='command eza --color=auto --bytes --classify --git --header --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso'
 elif command gls --color=auto >/dev/null 2>&1; then
   alias ls='command gls --color=auto'
   alias l='command gls --color=auto -AFgo --time-style=+%4Y-%m-%d\ %l:%M:%S\ %P'
