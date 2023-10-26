@@ -54,7 +54,7 @@ abbr --global --hlep='--help'
 abbr --global --hlp='--help'
 abbr --global ehlp='help'
 abbr --global hellp='help'
-abbr --global herl='--help'
+abbr --global herl='help'
 abbr --global hlep='help'
 abbr --global hlp='help'
 
