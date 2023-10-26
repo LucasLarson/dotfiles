@@ -106,7 +106,7 @@ abbr --global '--verison'='--version'
 abbr --global 'verison'='version'
 
 ## xtrace
-abbr --global gitset='GIT_TRACE=2 GIT_TRACE_PACK_ACCESS=2 GIT_TRACE_PACKET=2 GIT_TRACE_PERFORMANCE=2 GIT_TRACE_SETUP=2 GIT_MERGE_VERBOSITY=5 GIT_CURL_VERBOSE=1 GIT_TRACE2_EVENT_NESTING="$(command getconf -- UINT_MAX)" GIT_PROGRESS_DELAY=0 GIT_TRACE2_EVENT=1 GIT_TRACE_REFS=1'
+abbr --global gitset=' GIT_TRACE=2 GIT_TRACE_PACK_ACCESS=2 GIT_TRACE_PACKET=2 GIT_TRACE_PERFORMANCE=2 GIT_TRACE_SETUP=2 GIT_MERGE_VERBOSITY=5 GIT_CURL_VERBOSE=1 GIT_TRACE2_EVENT_NESTING="$(command getconf -- UINT_MAX)" GIT_PROGRESS_DELAY=0 GIT_TRACE2_EVENT=1 GIT_TRACE_REFS=1'
 abbr --global setset='( set -Ceuvx -o noglob -o pipefail -o posix_aliases -o posix_argzero -o posix_builtins -o posix_cd -o posix_identifiers -o posix_jobs -o posix_strings -o posix_traps;'
 abbr --global zshset='( zsh -Ceuvx -o noglob -o pipefail -o posix_aliases -o posix_argzero -o posix_builtins -o posix_cd -o posix_identifiers -o posix_jobs -o posix_strings -o posix_traps --no-rcs -c'
 
