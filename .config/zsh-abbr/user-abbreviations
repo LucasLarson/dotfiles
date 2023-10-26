@@ -3,5 +3,110 @@
 # abbreviations
 # shellcheck disable=SC2016
 
+## aliases
+abbr --global alaises='aliases'
+abbr --global alaisees='aliases'
+abbr --global aliasees='aliases'
+
+## chmod
+abbr --global chomd='chmod'
+
+## command
+abbr --global cmand='command'
+abbr --global cmmand='command'
+abbr --global cokmand='command'
+abbr --global comadn='command'
+abbr --global comamd='command'
+abbr --global comand='command'
+abbr --global comdn='command'
+abbr --global comdna='command'
+abbr --global commaand='command'
+abbr --global commadn='command'
+abbr --global commdn='command'
+abbr --global commdna='command'
+abbr --global commmand='command'
+abbr --global commnad='command'
+abbr --global commnd='command'
+abbr --global comnd='command'
+
+## curl
+abbr --global crul='curl'
+
+## echo
+abbr --global ccho='echo'
+abbr --global ehco='echo'
+
+## exit
+abbr --global eixt='exit'
+abbr --global exut='exit'
+abbr --global xit='exit'
+
 ## find
+abbr --global fdin='find'
+abbr --global fidn='find'
 abbr --global lf='eza --all --bytes --classify --color-scale --color=always --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso -- {} +'
+
+## help
+abbr --global --ehlp='--help'
+abbr --global --hellp='--help'
+abbr --global --herl='--help'
+abbr --global --hlep='--help'
+abbr --global --hlp='--help'
+abbr --global ehlp='help'
+abbr --global hellp='help'
+abbr --global herl='--help'
+abbr --global hlep='help'
+abbr --global hlp='help'
+
+## info
+abbr --global inof='info'
+
+## nsfw
+abbr --global nfsw='nsfw'
+abbr --global nswf='nsfw'
+
+## open
+abbr --global oepen='open'
+abbr --global oepn='open'
+abbr --global opn='open'
+abbr --global opne='open'
+abbr --global poen='open'
+
+## path
+abbr --global paht='path'
+
+## printf
+abbr --global piritnf='printf'
+abbr --global pirnt='printf'
+abbr --global pirntf='printf'
+abbr --global pirtf='printf'
+abbr --global pirtnf='printf'
+abbr --global pitnf='printf'
+abbr --global prinf='printf'
+abbr --global pritnf='printf'
+abbr --global prnitf='printf'
+abbr --global prntf='printf'
+abbr --global prtinf='printf'
+abbr --global rpintf='printf'
+
+## soak
+abbr --global saok='soak'
+abbr --global 'c/saok'='cd -- "${HOME%/}"/c/soak'
+abbr --global saok_='soak_'
+abbr --global 'c/saok_'='cd -- "${HOME%/}"/c/soak_'
+
+## version
+abbr --global '--verison'='--version'
+abbr --global 'verison'='version'
+
+## zshenv
+abbr --global shenv='zshenv'
+abbr --global zhsenv='zshenv'
+abbr --global zsehnv='zshenv'
+abbr --global zzshenv='zshenv'
+
+## zshrc
+abbr --global shrc='zshrc'
+abbr --global zhsrc='zshrc'
+abbr --global zsrhc='zshrc'
+abbr --global zzshrc='zshrc'
