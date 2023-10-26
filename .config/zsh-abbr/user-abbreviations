@@ -1,2 +1,7 @@
 #!/usr/bin/env sh
+
+# abbreviations
+# shellcheck disable=SC2016
+
+## find
 abbr --global lf='eza --all --bytes --classify --color-scale --color=always --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso -- {} +'
