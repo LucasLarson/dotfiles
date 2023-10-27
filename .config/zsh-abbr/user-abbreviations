@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 # abbreviations
+# shellcheck disable=SC2016
 
 ## aliases
 abbr --global alaisees='aliases'
