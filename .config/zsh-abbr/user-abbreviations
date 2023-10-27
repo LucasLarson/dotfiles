@@ -92,6 +92,9 @@ abbr --global prntf='printf'
 abbr --global prtinf='printf'
 abbr --global rpintf='printf'
 
+## sed
+abbr --global srn='command sed -n -e '\''H'\'' -e '\''$ {'\'' -e '\''x'\'' -e '\''s/\\n//gp'\'' -e '\''}'\'''
+
 ## soak
 abbr --global saok='soak'
 abbr --global 'c/saok'='cd -- "${HOME%/}"/c/soak'
