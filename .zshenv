@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 ## Dotfiles and templates
-command mkdir -p -- "${HOME%/}"'/Dropbox/dotfiles' &&
-  export DOTFILES="${HOME%/}"'/Dropbox/dotfiles' &&
+command mkdir -p -- "${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
+  export DOTFILES="${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
   command mkdir -p -- "${DOTFILES-}"'/custom' &&
   export ZSH_CUSTOM="${DOTFILES-}"'/custom' &&
   export custom="${DOTFILES-}"'/custom' &&
