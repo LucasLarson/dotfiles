@@ -44,7 +44,7 @@ abbr --global xit='exit'
 ## find
 abbr --global fdin='find'
 abbr --global fidn='find'
-abbr --global lf='eza --all --bytes --classify --color-scale --color=always --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso -- {} +'
+abbr --global lf='eza --all --bytes --classify --color-scale=all --color=always --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso -- {} +'
 
 ## help
 abbr --global --ehlp='--help'
