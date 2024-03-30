@@ -1,8 +1,16 @@
 ---
-# https://github.com/dylanaraps/pure-sh-bible/commit/9d54e96011
 name: Shellcheck code in Markdown
 
-on: [push]
+on:
+  push:
+
+  workflow_call:
+  workflow_dispatch:
+
+# cancel any in-progress job or run
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -10,7 +18,7 @@ jobs:
     timeout-minutes: 10
     defaults:
       run:
-        shell: bash
+        shell: sh
     steps:
       - uses: actions/checkout@v4
       - name: Run shellcheck
@@ -18,69 +26,73 @@ jobs:
           # test shell syntax of Markdown code snippets
           # https://github.com/dylanaraps/pure-sh-bible/commit/9d54e96011
 
-          trap 'printf -- "shellcheck complete\n"' EXIT INT
+          # Markdown filename extensions
+          # github/linguist@7503f/lib/linguist/languages.yml#L3707-L3718
 
-          # Extract code blocks from the README.
-          while IFS='' read -r -- line; do
-            test "${code-}" = 1 &&
-              test "${line-}" != '```' &&
-              printf -- '%s\n' "${line-}"
+          # run shellcheck on the extracted code blocks
+          command find -- . \
+            -path '*/.git' -prune -o \
+            -path '*/.well-known' -prune -o \
+            -path '*/Library' -prune -o \
+            -path '*/node_modules' -prune -o \
+            -path '*/t' -prune -o \
+            -path '*/Test*' -prune -o \
+            -path '*/test*' -prune -o \
+            -path '*/tst*' -prune -o \
+            -path '*copilot*' -prune -o \
+            -path '*dummy*' -prune -o \
+            -path '*vscode*' -prune -o \
+            '(' \
+            -name '*.md' -o \
+            -name '*.livemd' -o \
+            -name '*.markdn' -o \
+            -name '*.markdown' -o \
+            -name '*.mdown' -o \
+            -name '*.mdwn' -o \
+            -name '*.mdx' -o \
+            -name '*.mkd' -o \
+            -name '*.mkdn' -o \
+            -name '*.mkdown' -o \
+            -name '*.ronn' -o \
+            -name '*.scd' -o \
+            -name '*.workbook' -o \
+            -name 'contents.lr' \
+            ')' \
+            -type f \
+            -exec sh -x -c '
+            command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+              ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+              while IFS='\'''\'' read -r -- line; do
+                command test "${code-}" = '\''1'\'' &&
+                  command test "${line-}" != '\''```'\'' &&
+                  command printf -- '\''%s\n'\'' "${line-}"
 
-            case "${line-}" in
-            '```sh' | '```bash' | '```zsh' | '```shell')
-              code='1'
-              ;;
-            '```')
-              code=''
-              ;;
-            *) ;;
+              case "${line-}" in
+              '\''```sh'\''|'\''```bash'\''|'\''```shell'\''|'\''```zsh'\'')
+                code='\''1'\''
+                ;;
+              '\''```'\'')
+                code='\'''\''
+                ;;
+              *) ;;
+              esac
 
-            esac
-          done < <(
-            # Markdown filename extensions
-            # https://github.com/github/linguist/blob/7503f7588c/lib/linguist/languages.yml#L3707-L3718
-            command find -- . \
-              -name '*.md' -o \
-              -name '*.livemd' -o \
-              -name '*.markdown' -o \
-              -name '*.mdown' -o \
-              -name '*.mdwn' -o \
-              -name '*.mdx' -o \
-              -name '*.mkd' -o \
-              -name '*.mkdn' -o \
-              -name '*.mkdown' -o \
-              -name '*.ronn' -o \
-              -name '*.scd' -o \
-              -name '*.workbook'
-          ) >'./codesnippets_code'
-
-          # Print the code blocks.
-          while IFS='' read -r -- line; do
-            printf -- '%s\n' "${line-}"
-          done <'./codesnippets_code'
-
-          # Run shellcheck on the extracted code blocks
-          # and this test script itself.
-
-          # SC1071: allow shell directives outside sh, bash, ksh, dash
-          # SC1090: allow linking to a dynamic location
-          # SC1091: allow linking to, but not following, linked scripts
-          # SC2123: allow `PATH=...`
-          # SC2312: allow masking of return values
-          command shellcheck \
-            --exclude="SC1071,SC1090,SC1091,SC2123,SC2312" \
-            --wiki-link-count="$(command getconf -- UINT_MAX)" \
-            --check-sourced \
-            --enable=all \
-            --source-path=/dev/null \
-            --external-sources \
-            --include="" \
-            --shell=bash \
-            --severity=style \
-            --norc \
-            --color=always \
-            -- \
-            ./codesnippets_code \
-            "$0" ||
-            exit 1
+            # run shellcheck on the extracted code blocks
+            # SC1071: allow conforming shells besides sh, bash, ksh, dash
+            # SC1090: allow linking to a dynamic location
+            # SC1091: allow linking to, but not following, linked scripts
+            # SC2123: allow `$PATH` modification
+            # SC2312: allow masking return values
+            done <"${1-}"' _ {} ';' |
+            command shellcheck \
+              --check-sourced \
+              --enable=all \
+              --exclude='SC1071,SC1090,SC1091,SC2123,SC2312' \
+              --norc \
+              --severity=style \
+              --shell=sh \
+              --source-path=/dev/null \
+              -- \
+              - ||
+            exit "${?:-1}"
 ...
