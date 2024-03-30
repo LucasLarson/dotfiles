@@ -4,13 +4,21 @@ name: Shellcheck code in Markdown
 on:
   push:
 
+  workflow_call:
+  workflow_dispatch:
+
+# cancel any in-progress job or run
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     defaults:
       run:
-        shell: bash
+        shell: sh
     steps:
       - uses: actions/checkout@v3.5.2
       - name: Run shellcheck
@@ -19,11 +27,25 @@ jobs:
           # https://github.com/dylanaraps/pure-sh-bible/commit/9d54e96011
 
           # Markdown filename extensions
-          # github/linguist@7503f7588c/lib/linguist/languages.yml#L3707-L3718
+          # github/linguist@7503f/lib/linguist/languages.yml#L3707-L3718
+
+          # run shellcheck on the extracted code blocks
           command find -- . \
+            -path '*/.git' -prune -o \
+            -path '*/.well-known' -prune -o \
+            -path '*/Library' -prune -o \
+            -path '*/node_modules' -prune -o \
+            -path '*/t' -prune -o \
+            -path '*/Test*' -prune -o \
+            -path '*/test*' -prune -o \
+            -path '*/tst*' -prune -o \
+            -path '*copilot*' -prune -o \
+            -path '*dummy*' -prune -o \
+            -path '*vscode*' -prune -o \
             '(' \
             -name '*.md' -o \
             -name '*.livemd' -o \
+            -name '*.markdn' -o \
             -name '*.markdown' -o \
             -name '*.mdown' -o \
             -name '*.mdwn' -o \
@@ -37,7 +59,7 @@ jobs:
             -name 'contents.lr' \
             ')' \
             -type f \
-            -exec sh -v -c '
+            -exec sh -x -c '
             command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
               ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
               while IFS='\'''\'' read -r -- line; do
@@ -47,7 +69,7 @@ jobs:
 
               case "${line-}" in
               '\''```sh'\''|'\''```bash'\''|'\''```shell'\''|'\''```zsh'\'')
-                code=1
+                code='\''1'\''
                 ;;
               '\''```'\'')
                 code='\'''\''
@@ -55,11 +77,12 @@ jobs:
               *) ;;
               esac
 
-            # SC1071: allow shell directives outside sh, bash, ksh, dash
+            # run shellcheck on the extracted code blocks
+            # SC1071: allow conforming shells besides sh, bash, ksh, dash
             # SC1090: allow linking to a dynamic location
             # SC1091: allow linking to, but not following, linked scripts
-            # SC2123: allow `PATH=...`
-            # SC2312: allow masking of return values
+            # SC2123: allow `$PATH` modification
+            # SC2312: allow masking return values
             done <"${1-}"' _ {} ';' |
             command shellcheck \
               --check-sourced \
