@@ -44,10 +44,6 @@ command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &
   command chmod -- 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=${TMPDIR:-/tmp}/xdg_runtime_dir-${LOGNAME:-${USER-}}}"
 
-## Bashhub
-# filter from history
-export BH_FILTER="${BH_FILTER:="(^ |^google)"}"
-
 ## $CDPATH
 export CDPATH="${CDPATH:+${CDPATH-}:}${HOME%/}"
 

@@ -152,9 +152,6 @@ fi
 test -d "${HOME%/}"'/.cargo/bin' &&
   PATH="${HOME%/}"'/.cargo/bin'"${PATH:+:${PATH-}}"
 
-## Bashhub
-. "${HOME%/}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" 2>/dev/null
-
 ## npm
 export NPM_PACKAGES="${HOME%/}"'/.npm-packages'
 test -d "${NPM_PACKAGES-}"'/bin' &&
