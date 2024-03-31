@@ -15,7 +15,7 @@
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
 alias ,='. "${HOME%/}"/."${SHELL##*[-./]}"rc && exec -l -- "${SHELL##*[-./]}"'
 aliases() {
-  command "${EDITOR-}" -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}" &&
+  command "${EDITOR:-vi}" -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}" &&
     command -v -- shfmt >/dev/null 2>&1 &&
     command shfmt --simplify --write --indent 2 -- "${DOTFILES-}/custom/aliases.${SHELL##*[-./]}"
   # shellcheck disable=SC1090
@@ -1937,5 +1937,5 @@ ohmyzsh() {
     command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     command sed -e '$d'
 }
-alias zshenv='command "${EDITOR-}" -- "${HOME%/}/.${SHELL##*[-./]}env"; . "${HOME%/}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
-alias zshrc='command "${EDITOR-}" -- "${HOME%/}/.${SHELL##*[-./]}rc"; . "${HOME%/}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
+alias zshenv='command "${EDITOR:-vi}" -- "${HOME%/}/.${SHELL##*[-./]}env"; . "${HOME%/}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'
+alias zshrc='command "${EDITOR:-vi}" -- "${HOME%/}/.${SHELL##*[-./]}rc"; . "${HOME%/}/.${SHELL##*[-./]}rc" && exec -l -- "${SHELL##*[-./]}"'

@@ -134,8 +134,8 @@ EDITOR="$(
 )"
 if test -n "${EDITOR-}"; then
   export EDITOR
-  alias e='command "${EDITOR-}"'
-  export VISUAL="${VISUAL:-${EDITOR-}}"
+  alias e='command "${EDITOR:-vi}"'
+  export VISUAL="${VISUAL:-${EDITOR:-vi}}"
 fi
 
 ## Homebrew
