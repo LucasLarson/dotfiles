@@ -98,7 +98,7 @@ brewfile() {
     command sed \
       -e 's/^[[:digit:]]//' \
       -e 's/\([^#]*\)\(#.*\)/\2\n\1/'
-  } >"${HOME-}"'/.Brewfile'
+  } >"${HOME%/}"'/.Brewfile'
 }
 
 # prefer `bat` without line numbers for easier copying
