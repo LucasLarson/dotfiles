@@ -74,6 +74,29 @@ export POSIXLY_CORRECT="${POSIXLY_CORRECT:-1}"
 # https://github.com/mkrasnitski/git-power-rs/tree/2fc2906#installing
 export CARGO_HOME="${HOME%/}"'/.cargo'
 
+## SSH, GPG
+command -p -- find -- \
+  "${DOTFILES-}"'/.gnupg' \
+  "${DOTFILES-}"'/.ssh' \
+  "${HOME%/}"'/.gnupg' \
+  "${HOME%/}"'/.ssh' \
+  -path "${DOTFILES-}"'/.gnupg/*' -prune -o \
+  -path "${DOTFILES-}"'/.ssh/*' -prune -o \
+  -path "${HOME%/}"'/.gnupg/*' -prune -o \
+  -path "${HOME%/}"'/.ssh/*' -prune -o \
+  -type d \
+  -print | while IFS='' read -r -- directory; do
+  command -p -- find -- "${directory-}" \
+    -type f \
+    -exec chmod -- 600 {} +
+  command -p -- find -- "${directory-}" \
+    -name '*.pub' \
+    -type f \
+    -exec chmod -- 644 {} +
+  command -p -- find -- "${directory-}" \
+    -type d \
+    -exec chmod -- 700 {} +
+done
 # GPG
 export GPG_TTY="${TTY-}"
 
