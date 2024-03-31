@@ -50,9 +50,9 @@ set -o xtrace
 # pacman
 # https://askubuntu.com/a/459425
 command -v -- pacman >/dev/null 2>&1 && {
-  command pacman --sync --refresh --refresh ||
+  install --refresh --refresh ||
     # https://wiki.archlinux.org/?oldid=667441#Installing_packages
-    command pacman --sync --refresh --upgrades 2>/dev/null
+    install --refresh --sysupgrade 2>/dev/null
 }
 
 # apk
