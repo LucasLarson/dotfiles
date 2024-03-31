@@ -84,24 +84,28 @@ export POSIXLY_CORRECT="${POSIXLY_CORRECT:-1}"
 export CARGO_HOME="${HOME%/}"'/.cargo'
 
 ## SSH, GPG
-for directory in \
+command -p -- find -- \
   "${DOTFILES-}"'/.gnupg' \
   "${DOTFILES-}"'/.ssh' \
   "${HOME%/}"'/.gnupg' \
-  "${HOME%/}"'/.ssh'; do
-  test -d "${directory-}" &&
-    command find -- "${directory-}" \
-      -type f \
-      -exec chmod -- 600 {} + &&
-    command find -- "${directory-}" \
-      -name '*.pub' \
-      -type f \
-      -exec chmod -- 644 {} + &&
-    command find -- "${directory-}" \
-      -type d \
-      -exec chmod -- 700 {} +
+  "${HOME%/}"'/.ssh' \
+  -path "${DOTFILES-}"'/.gnupg/*' -prune -o \
+  -path "${DOTFILES-}"'/.ssh/*' -prune -o \
+  -path "${HOME%/}"'/.gnupg/*' -prune -o \
+  -path "${HOME%/}"'/.ssh/*' -prune -o \
+  -type d \
+  -print | while IFS='' read -r -- directory; do
+  command -p -- find -- "${directory-}" \
+    -type f \
+    -exec chmod -- 600 {} +
+  command -p -- find -- "${directory-}" \
+    -name '*.pub' \
+    -type f \
+    -exec chmod -- 644 {} +
+  command -p -- find -- "${directory-}" \
+    -type d \
+    -exec chmod -- 700 {} +
 done
-unset -v -- directory
 # GPG
 export GPG_TTY="${TTY-}"
 
