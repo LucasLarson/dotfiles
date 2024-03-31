@@ -1450,6 +1450,125 @@ identify() {
   } 2>/dev/null
 }
 
+jsonlint_r() {
+  command find -- . \
+    -path '*/.git' -prune -o \
+    -path '*/.well-known' -prune -o \
+    -path '*/Library' -prune -o \
+    -path '*/node_modules' -prune -o \
+    -path '*/t' -prune -o \
+    -path '*/Test*' -prune -o \
+    -path '*/test*' -prune -o \
+    -path '*/tst*' -prune -o \
+    -path '*copilot*' -prune -o \
+    -path '*dummy*' -prune -o \
+    -path '*vscode*' -prune -o \
+    '(' \
+    -name '*.json' -o \
+    -name '*.4DForm' -o \
+    -name '*.4DProject' -o \
+    -name '*.avsc' -o \
+    -name '*.babelrc*' -o \
+    -name '*.cjs.map' -o \
+    -name '*.code-workspace' -o \
+    -name '*.css.map' -o \
+    -name '*.cy' -o \
+    -name '*.geojson' -o \
+    -name '*.gltf' -o \
+    -name '*.har' -o \
+    -name '*.ice' -o \
+    -name '*.js.map' -o \
+    -name '*.JSON' -o \
+    -name '*.JSON-tmLanguage' -o \
+    -name '*.JSON5' -o \
+    -name '*.json5' -o \
+    -name '*.jsonl' -o \
+    -name '*.jsonld' -o \
+    -name '*.maxhelp' -o \
+    -name '*.maxpat' -o \
+    -name '*.maxproj' -o \
+    -name '*.mcmeta' -o \
+    -name '*.mxt' -o \
+    -name '*.nmf' -o \
+    -name '*.rcprojectdata' -o \
+    -name '*.sarif' -o \
+    -name '*.stats' -o \
+    -name '*.stringsdata' -o \
+    -name '*.sublime-build' -o \
+    -name '*.sublime-color-scheme' -o \
+    -name '*.sublime-commands' -o \
+    -name '*.sublime-completions' -o \
+    -name '*.sublime-keymap' -o \
+    -name '*.sublime-macro' -o \
+    -name '*.sublime-menu' -o \
+    -name '*.sublime-mousemap' -o \
+    -name '*.sublime-project' -o \
+    -name '*.sublime-settings' -o \
+    -name '*.tern-project' -o \
+    -name '*.tfstate' -o \
+    -name '*.tfstate.backup' -o \
+    -name '*.topojson' -o \
+    -name '*.ts.map' -o \
+    -name '*.tsbuildinfo' -o \
+    -name '*.webapp' -o \
+    -name '*.webmanifest' -o \
+    -name '*.XamlStyler' -o \
+    -name '*.xamlstyler' -o \
+    -name '*.xcscmblueprint' -o \
+    -name '*.xctestplan' -o \
+    -name '*.ytdl' -o \
+    -name '*.yy' -o \
+    -name '*.yyp' -o \
+    -name '*app-site-association' -o \
+    -name '.all-contributorsrc' -o \
+    -name '.arcconfig' -o \
+    -name '.auto-changelog' -o \
+    -name '.bowerrc' -o \
+    -name '.c8rc' -o \
+    -name '.cardinalrc' -o \
+    -name '.couchapprc' -o \
+    -name '.dccache' -o \
+    -name '.dockercfg' -o \
+    -name '.eslintcache' -o \
+    -name '.eslintrc' -o \
+    -name '.flutter' -o \
+    -name '.flutter_tool_state' -o \
+    -name '.ftpconfig' -o \
+    -name '.gutter-theme' -o \
+    -name '.htmlhintrc' -o \
+    -name '.imgbotconfig' -o \
+    -name '.jrnl_config' -o \
+    -name '.jscsrc' -o \
+    -name '.jshintrc' -o \
+    -name '.nycrc' -o \
+    -name '.prettierrc' -o \
+    -name '.remarkrc' -o \
+    -name '.stylelintrc' -o \
+    -name '.tern-config' -o \
+    -name '.tern-project' -o \
+    -name '.textlintrc' -o \
+    -name '.vs-liveshare-keychain' -o \
+    -name '.vsconfig' -o \
+    -name '.watchmanconfig' -o \
+    -name '.whitesource' -o \
+    -name '.yarn-integrity' -o \
+    -name 'composer.lock' -o \
+    -name 'deno.lock' -o \
+    -name 'eslintrc' -o \
+    -name 'flake.lock' -o \
+    -name 'mcmod.info' -o \
+    -name 'Package.resolved' -o \
+    -name 'Pipfile.lock' -o \
+    -name 'proselintrc' -o \
+    -name 'tldrrc' \
+    ')' \
+    -type f \
+    -exec sh -x -c 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  command npm exec -- @prantlf/jsonlint --in-place --trailing-newline --trim-trailing-commas -- "${1-}"
+' _ {} ';'
+}
+
 # list files
 unalias -- 'ls' 2>/dev/null
 unalias -- 'l' 2>/dev/null
