@@ -28,22 +28,22 @@ command mkdir -p -- '/etc/xdg' &&
   export XDG_CONFIG_DIRS='/etc/xdg'
 command mkdir -p -- "${HOME%/}"'/.cache' &&
   export XDG_CACHE_HOME="${HOME%/}"'/.cache' &&
-  command touch -- "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${USER-}"'.zsh'
+  command touch -- "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${LOGNAME:-${USER-}}"'.zsh'
 
 # `XDG_RUNTIME_DIR` has no default and requires `700` permissions
-command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
-  command chmod 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${USER-}" &&
-  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=${TMPDIR:-/tmp}/xdg_runtime_dir-${USER-}}"
+command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
+  command chmod 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
+  export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=${TMPDIR:-/tmp}/xdg_runtime_dir-${LOGNAME:-${USER-}}}"
 
 ## $CDPATH
 export CDPATH="${CDPATH:+${CDPATH-}:}${HOME%/}"
 
 ## GitHub
-export GITHUB_ORG="${USER-}"
+export GITHUB_ORG="${LOGNAME:-${USER-}}"
 
 ## GitLab
 # for `gitlab_create_repository`
-export GITLAB_USERNAME="${USER-}"
+export GITLAB_USERNAME="${LOGNAME:-${USER-}}"
 
 ## Go
 export GOPATH="${HOME%/}"'/.go'
