@@ -245,10 +245,6 @@ fi
 test -d "${HOME%/}"'/.cargo/bin' &&
   PATH="${HOME%/}"'/.cargo/bin'"${PATH:+:${PATH-}}"
 
-## Bashhub
-test -r "${HOME%/}"'/.bashhub/bashhub.'"${SHELL##*[-./]}" &&
-  . "${HOME%/}"'/.bashhub/bashhub.'"${SHELL##*[-./]}"
-
 ## npm
 # without sudo
 # https://github.com/sindresorhus/guides/blob/285270f/npm-global-without-sudo.md#3-ensure-npm-will-find-installed-binaries-and-man-pages
