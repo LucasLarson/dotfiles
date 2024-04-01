@@ -1030,13 +1030,13 @@ gd() {
   if test -n "$(command git diff "$@" 2>/dev/null)"; then
     command git diff "$@"
   else
-    command git diff --staged "$@"
+    command git diff --cached "$@"
   fi
 }
 unalias -- 'gds' 2>/dev/null
 gds() {
-  if test -n "$(command git diff --staged "$@" 2>/dev/null)"; then
-    command git diff --staged "$@"
+  if test -n "$(command git diff --cached "$@" 2>/dev/null)"; then
+    command git diff --cached "$@"
   else
     command git diff "$@"
   fi
