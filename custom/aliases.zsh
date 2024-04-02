@@ -573,7 +573,7 @@ define() {
     command -v -- type >/dev/null 2>&1 &&
       printf -- 'type:\n%s\n———\n' "$(type "${query-}")"
 
-    # `command -V (POSIX)`
+    # `command -V` (POSIX)
     printf -- 'command -V:\n%s\n———\n' "$(command -V -- "${query-}")"
 
     # `command -v` (POSIX)
