@@ -294,12 +294,12 @@ command find -- . \
 command find -- . \
   -type f \
   -size 0 \
+  -path '*/.git' -prune -o \
+  -path '*example*' -prune -o \
+  -path '*sample*' -prune -o \
+  -path '*template*' -prune -o \
+  -path '*test*' -prune -o \
   '(' \
-  ! -path '*.git/*' \
-  ! -path '*example*' \
-  ! -path '*sample*' \
-  ! -path '*template*' \
-  ! -path '*test*' \
   ! -name "$(printf -- 'Icon\015\012')" \
   ! -name '*LOCK' \
   ! -name '*empty*' \
@@ -322,8 +322,8 @@ command find -- . \
 # delete empty directories recursively
 # but skip Git-specific and `/.well-known/` directories
 command find -- . -type d -links 2 \
-  ! -path '*.git/*' \
-  ! -name '.well-known' \
+  -path '*/.git' -prune -o \
+  -path '*/.well-known' -prune -o \
   -delete 2>/dev/null
 
 # if the shell can be changed and
