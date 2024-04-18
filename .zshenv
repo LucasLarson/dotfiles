@@ -1,14 +1,5 @@
 #!/usr/bin/env sh
 
-## Operating system
-if test -r /etc/os-release; then
-  # shellcheck disable=SC1091
-  . /etc/os-release
-elif test -r /usr/lib/os-release; then
-  # shellcheck disable=SC1091
-  . /usr/lib/os-release
-fi
-
 ## Dotfiles and templates
 command mkdir -p -- "${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
   export DOTFILES="${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
