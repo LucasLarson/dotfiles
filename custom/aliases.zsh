@@ -1819,7 +1819,7 @@ rm() {
   else
     return 73
   fi
-  now="$(command date -u -- '+%Y%m%d')"_"$(command awk -- 'BEGIN {srand(); print srand()}')"
+  now="$(command date -- '+%Y%m%d%H%M%S')"
   case "${1-}" in
   -- | -R | -r | --recursive)
     shift
