@@ -85,7 +85,7 @@ command -p -- find -- \
   -path "${HOME%/}"'/.gnupg/*' -prune -o \
   -path "${HOME%/}"'/.ssh/*' -prune -o \
   -type d \
-  -print | while IFS='' read -r -- directory; do
+  -print 2>/dev/null | while IFS='' read -r -- directory; do
   command -p -- find -- "${directory-}" \
     -type f \
     -exec chmod -- 600 {} +
