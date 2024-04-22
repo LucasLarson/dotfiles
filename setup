@@ -106,7 +106,7 @@ command -v -- less >/dev/null 2>&1 || {
 # https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
 install coreutils
 { command -p -- test -x '/usr/bin/coreutils' &&
-  command -p -- find --version >/dev/null 2>&1 | command -p -- grep -q -e 'findutils'; } || {
+  command -p -- find --version >/dev/null 2>&1 | command -p -- grep -e 'findutils' >/dev/null 2>&1; } || {
   { set +o xtrace; } 2>/dev/null
   command -p -- printf -- 'installing Linux utilities...\n' >&2
   set -o xtrace
@@ -291,7 +291,7 @@ command -p -- find -- . -type d -links 2 \
 # if zsh is available, then replace bash, ash, and sh with zsh in `/etc/passwd`
 command -p -- test -w '/etc/passwd' &&
   command -v -- zsh >/dev/null 2>&1 &&
-  command -p -- grep -E -e '/bin/b?a?sh' '/etc/passwd' 2>&1 &&
+  command -p -- grep -E -e '/bin/b?a?sh' '/etc/passwd' >/dev/null 2>&1 &&
   command -p -- cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
   command -p -- sed -e 's|/bin/b\{0,1\}a\{0,1\}sh$|'"$(command -v -- zsh)"'|' '/etc/passwd-'"${now-}" >'/etc/passwd'
 
