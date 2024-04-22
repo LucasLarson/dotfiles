@@ -291,7 +291,7 @@ command -p -- find -- . \
 # if zsh is available, then replace bash, ash, and sh with zsh in `/etc/passwd`
 command -p -- test -w '/etc/passwd' &&
   command -v -- zsh >/dev/null 2>&1 &&
-  command -p -- grep -E -e '/bin/b?a?sh' '/etc/passwd' 2>&1 &&
+  command -p -- grep -E -e '/bin/b?a?sh' '/etc/passwd' >/dev/null 2>&1 &&
   command -p -- cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
   command -p -- sed -e 's|/bin/b\{0,1\}a\{0,1\}sh$|'"$(command -v -- zsh)"'|' '/etc/passwd-'"${now-}" >'/etc/passwd'
 
