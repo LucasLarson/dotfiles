@@ -841,7 +841,7 @@ find_shell_scripts() {
       -path '*/test*' -prune -o \
       -path '*vscode*' -prune -o \
       -type f \
-      -exec sh -c 'command sed -e "1q" "{}" | command grep -q -e "^#!.*bin.*sh" && printf -- "%s\n" "{}"' ';' 2>/dev/null
+      -exec sh -c 'command sed -e "1q" "{}" | command grep -e "^#!.*bin.*sh" >/dev/null 2>&1 && printf -- "%s\n" "{}"' ';' 2>/dev/null
 
     # shfmt also knows how to find shell scripts
     command shfmt --find -- . 2>/dev/null |
@@ -1385,7 +1385,7 @@ hash_abbreviate() {
   done
   shift "$((OPTIND - 1))"
   for hash in "$@"; do
-    if printf -- '%s' "${hash-}" | command grep -E -q -w -e '^[[:xdigit:]]{4,40}$'; then
+    if printf -- '%s' "${hash-}" | command grep -E -w -e '^[[:xdigit:]]{4,40}$' >/dev/null 2>&1; then
       printf -- '%s\n' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- '7')"}"
       # prevent copying trailing newline with `tr` and
       # hide clipboard errors because `pbcopy` is not common

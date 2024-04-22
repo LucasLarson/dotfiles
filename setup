@@ -112,7 +112,7 @@ command -v -- less >/dev/null 2>&1 || {
 # https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
 install coreutils
 { command test -x '/usr/bin/coreutils' &&
-  command find --version >/dev/null 2>&1 | command grep -q -e 'findutils'; } || {
+  command find --version >/dev/null 2>&1 | command grep -e 'findutils' >/dev/null 2>&1; } || {
   { set +o xtrace; } 2>/dev/null
   command printf -- 'installing Linux utilities...\n' >&2
   set -o xtrace
