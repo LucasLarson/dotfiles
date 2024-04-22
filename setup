@@ -178,39 +178,6 @@ command -v -- python >/dev/null 2>&1 || {
   install python3
 }
 
-# pip
-{ set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'checking Python package manager installation...\n' >&2
-set -o xtrace
-command -v -- pip >/dev/null 2>&1 && {
-  { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'updating pip...\n' >&2
-  set -o xtrace
-  command python3 -m pip install --upgrade pip 2>/dev/null
-} || {
-  { set +o xtrace; } 2>/dev/null
-  {
-    command -p -- printf -- 'installing pip...\n'
-    command -p -- printf -- 'verifying integrity of pip bootstrap file...\n'
-  } >&2
-  set -o xtrace
-  command -p -- test "$(command curl --fail --silent --location 'https://web.archive.org/web/20221114002029id_/bootstrap.pypa.io/get-pip.py' | command -p -- cksum)" != '3397773170 2569500'
-} || {
-  { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing pip using bootstrap...\n' >&2
-  command -p -- printf -- 'this may take a while...\n' >&2
-  set -o xtrace
-  command curl 'https://web.archive.org/web/20221114002029id_/bootstrap.pypa.io/get-pip.py' | command python3
-}
-
-# mackup
-command -v -- mackup >/dev/null 2>&1 || {
-  { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing mackup...\n' >&2
-  set -o xtrace
-  command pip install --upgrade mackup
-}
-
 # zsh
 command -v -- zsh >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
