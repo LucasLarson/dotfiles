@@ -61,10 +61,8 @@ command -v -- apk >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   command -p -- printf -- 'verifying apk tools integrity...\n' >&2
   set -o xtrace
-  command -p -- test "$(command wget --output-document=- --quiet -- 'https://web.archive.org/web/20221114182828id_/dl-cdn.alpinelinux.org/alpine/v3.16/main/x86/apk-tools-static-2.12.9-r3.apk' | command -p -- cksum)" != '3008894084 1363723'
-} || {
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
-  command wget --output-document=- -- 'https://web.archive.org/web/20221114182828id_/dl-cdn.alpinelinux.org/alpine/v3.16/main/x86/apk-tools-static-2.12.9-r3.apk' |
+  command wget --output-document=- -- 'https://dl-cdn.alpinelinux.org/alpine/v3.16/main/x86/apk-tools-static-2.12.9-r3.apk' |
     command tar --extract --gzip --strip-components=1 --verbose -- sbin/apk.static &&
     ./apk.static add apk-tools &&
     command -p -- rm -- ./apk.static
@@ -194,16 +192,15 @@ command -v -- chsh >/dev/null 2>&1 || {
 
 # Oh My Zsh
 command -v -- omz >/dev/null 2>&1 ||
-  command -p -- test -d "${ZSH:=${HOME%/}/.oh-my-zsh}" ||
-  command -p -- test "$(command curl --fail --silent --location 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' | command -p -- cksum)" != '1976015298 9942' || {
+  command -p -- test -d "${ZSH:=${HOME%/}/.oh-my-zsh}" || {
   { set +o xtrace; } 2>/dev/null
   command -p -- printf -- 'installing Oh My Zsh...\n' >&2
   if command -v -- wget >/dev/null 2>&1; then
     set -o xtrace
-    command -p -- sh -c "$(command wget 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh' --output-document=-)" "" --unattended --keep-zshrc
+    command -p -- sh -c "$(command wget 'https://github.com/ohmyzsh/ohmyzsh/raw/HEAD/tools/install.sh' --output-document=-)" "" --unattended --keep-zshrc
   elif command -v -- curl >/dev/null 2>&1; then
     set -o xtrace
-    command -p -- sh -c "$(command curl --location 'https://web.archive.org/web/20210520175616id_/raw.githubusercontent.com/ohmyzsh/ohmyzsh/02d07f3e3dba0d50b1d907a8062bbaca18f88478/tools/install.sh')" --unattended --keep-zshrc
+    command -p -- sh -c "$(command curl --location 'https://github.com/ohmyzsh/ohmyzsh/raw/HEAD/tools/install.sh')" --unattended --keep-zshrc
   fi
   { set +o xtrace; } 2>/dev/null
 }
