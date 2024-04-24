@@ -242,7 +242,6 @@ command -p -- test -w '/etc/motd' &&
 
 # delete thumbnail cache files
 command -p -- find -- . \
-  -type f \
   '(' \
   -name '.DS_Store' -o \
   -name 'Desktop.ini' -o \
@@ -250,13 +249,13 @@ command -p -- find -- . \
   -name 'desktop.ini' -o \
   -name 'thumbs.db' \
   ')' \
+  -type f \
   -delete
 
 # delete empty files
 # except those within `.git/` directories
 # and those with specific names
 command -p -- find -- . \
-  -type f \
   -size 0 \
   -path "${DOTFILES-}"'/Library' -prune -o \
   -path "${HOME%/}"'/Library' -prune -o \
@@ -282,6 +281,7 @@ command -p -- find -- . \
   ! -name '.well-known' \
   ! -name '__init__.py' \
   ! -name 'favicon.*' \
+  -type f \
   -delete
 
 # if the shell can be changed and
