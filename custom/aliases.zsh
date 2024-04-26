@@ -151,10 +151,10 @@ clang_format() {
   while getopts i:w: opt; do
     case "${opt-}" in
     i)
-      IndentWidth="${OPTARG-}"
+      export IndentWidth="${OPTARG-}"
       ;;
     w)
-      ColumnLimit="${OPTARG-}"
+      export ColumnLimit="${OPTARG-}"
       ;;
     *)
       printf -- 'only \140-i <indent width>\140 and \140-w <number of columns>\140 are supported\n'
