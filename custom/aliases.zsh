@@ -266,10 +266,10 @@ clang_format() {
     -name '*.xbm' \
     ')' \
     -type f \
-    -exec sh -u -v -c "command git ls-files --error-unmatch -- '{}' >/dev/null 2>&1 ||
+    -exec sh -u -v -c 'command git ls-files --error-unmatch -- {} >/dev/null 2>/dev/null ||
   ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command clang-format -i --style '{IndentWidth: ${IndentWidth:-2}, ColumnLimit: ${ColumnLimit:-79}}' --verbose -- '{}' 2>&1
-" ';' |
+  command clang-format -i --style "{IndentWidth: ${IndentWidth:-2}, ColumnLimit: ${ColumnLimit:-79}}" --verbose -- {} 2>&1
+' ';' |
     command sed -e 's/\[1\/1\]//'
   unset -v -- IndentWidth
   unset -v -- ColumnLimit
