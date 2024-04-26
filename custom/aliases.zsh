@@ -143,7 +143,8 @@ alias chmod='chmod -v'
 clang_format() {
 
   command clang-format --version >/dev/null 2>&1 ||
-    return 2
+    # EX_UNAVAILABLE
+    return 69
 
   # permit arguments in any order
   # https://salsa.debian.org/debian/debianutils/blob/c2a1c435ef/savelog
