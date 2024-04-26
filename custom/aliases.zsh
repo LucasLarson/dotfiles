@@ -270,7 +270,7 @@ clang_format() {
   ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
   command clang-format -i --style "{IndentWidth: ${IndentWidth:-2}, ColumnLimit: ${ColumnLimit:-79}}" --verbose -- {} 2>&1
 ' ';' |
-    command sed -e 's/\[1\/1\]//'
+    command sed -e 's/\[1\/1\]//' >&2
   unset -v -- IndentWidth 2>/dev/null || IndentWidth=''
   unset -v -- ColumnLimit 2>/dev/null || ColumnLimit=''
   printf -- '\n'
