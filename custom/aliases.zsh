@@ -144,7 +144,6 @@ clang_format() {
 
   command clang-format --version >/dev/null 2>&1 ||
     return 2
-  command sleep 1
 
   # permit arguments in any order
   # https://salsa.debian.org/debian/debianutils/blob/c2a1c435ef/savelog
@@ -166,9 +165,7 @@ clang_format() {
   # permit `find` to have a narrower scope by parsing the rest of the arguments
   shift "$((OPTIND - 1))"
 
-  command sleep 1
   printf -- 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
-  command sleep 1
 
   # eligible filename extensions:
   # https://github.com/llvm/llvm-project/blob/92df59c83d/clang/lib/Driver/Types.cpp#L295-L355
