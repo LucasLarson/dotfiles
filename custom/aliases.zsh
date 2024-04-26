@@ -175,11 +175,19 @@ clang_format() {
 
   command find -- . \
     -path '*/.git' -prune -o \
+    -path '*/.rbenv' -prune -o \
+    -path '*/.venv' -prune -o \
+    -path '*/.well-known' -prune -o \
+    -path '*/__pycache__' -prune -o \
+    -path '*/Library' -prune -o \
     -path '*/node_modules' -prune -o \
     -path '*/t' -prune -o \
-    -path '*/Test' -prune -o \
-    -path '*/test' -prune -o \
-    -path '*vscode' -prune -o \
+    -path '*/Test*' -prune -o \
+    -path '*/test*' -prune -o \
+    -path '*/tst*' -prune -o \
+    -path '*copilot*' -prune -o \
+    -path '*dummy*' -prune -o \
+    -path '*vscode*' -prune -o \
     '(' \
     -name '*.adb' -o \
     -name '*.ads' -o \
