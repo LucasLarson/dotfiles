@@ -166,8 +166,6 @@ clang_format() {
   # permit `find` to have a narrower scope by parsing the rest of the arguments
   shift "$((OPTIND - 1))"
 
-  printf -- 'applying clang-format to all applicable files in %s...\n' "${PWD##*/}"
-
   # eligible filename extensions:
   # https://github.com/llvm/llvm-project/blob/92df59c83d/clang/lib/Driver/Types.cpp#L295-L355
   # https://github.com/llvm/llvm-project/blob/81f0f5a0e5/clang/lib/Frontend/FrontendOptions.cpp#L17-L35
