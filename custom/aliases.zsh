@@ -142,7 +142,7 @@ alias chmod='chmod -v'
 
 clang_format() {
 
-  command clang-format --version 2>/dev/null ||
+  command clang-format --version >/dev/null 2>&1 ||
     return 2
   command sleep 1
 
