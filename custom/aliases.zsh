@@ -271,8 +271,8 @@ clang_format() {
   command clang-format -i --style "{IndentWidth: ${IndentWidth:-2}, ColumnLimit: ${ColumnLimit:-79}}" --verbose -- {} 2>&1
 ' ';' |
     command sed -e 's/\[1\/1\]//'
-  unset -v -- IndentWidth
-  unset -v -- ColumnLimit
+  unset -v -- IndentWidth 2>/dev/null || IndentWidth=''
+  unset -v -- ColumnLimit 2>/dev/null || ColumnLimit=''
   printf -- '\n'
   printf -- '\342\234\205  done\041\n'
 }
