@@ -1621,6 +1621,33 @@ mu() {
   esac
 }
 
+## find `-maxdepth` and `-mindepth`
+# generate a POSIX-compliant equivalent
+maxdepth() {
+  # instead of `find . -maxdepth 2 -print`, use `find . -path './*/*/*' -prune -o -print`
+  path_argument='./*'
+  depth="${1:-0}"
+  while command -p -- test "${depth-}" -gt 0; do
+    path_argument="${path_argument-}"'/*' &&
+      depth="$((depth - 1))"
+  done
+  command -p -- printf -- '#!/usr/bin/env sh\ncommand -p -- find -- . -path \047%s\047 -prune -o -print\n' "${path_argument-}"
+  unset -v -- path_argument 2>/dev/null || path_argument=''
+  unset -v -- depth 2>/dev/null || depth=''
+}
+mindepth() {
+  # instead of `find . -mindepth 2 -print`, use `find . -path './*/*' -print`
+  path_argument='.'
+  depth="${1:-0}"
+  while command -p -- test "${depth-}" -gt 0; do
+    path_argument="${path_argument-}"'/*' &&
+      depth="$((depth - 1))"
+  done
+  command -p -- printf -- '#!/usr/bin/env sh\ncommand -p -- find -- . -path \047%s\047 -print\n' "${path_argument-}"
+  unset -v -- path_argument 2>/dev/null || path_argument=''
+  unset -v -- depth 2>/dev/null || depth=''
+}
+
 # https://unix.stackexchange.com/a/30950
 alias mv='command mv -v -i'
 
