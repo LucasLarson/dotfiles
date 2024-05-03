@@ -324,17 +324,17 @@ cleanup() {
     # delete crufty Zsh files
     # if `$ZSH_COMPDUMP` always generates a crufty file then skip
     # https://stackoverflow.com/a/8811800
-    if test -n "${ZSH_COMPDUMP-}" &&
+    if test "${ZSH_COMPDUMP-}" != '' &&
       test ! "${ZSH_COMPDUMP-}" != "${ZSH_COMPDUMP#*'zcompdump-'}" &&
       test ! "${ZSH_COMPDUMP-}" != "${ZSH_COMPDUMP#*'zcompdump.'}"; then
-      while test -n "$(
+      while test "$(
         command find -- "${HOME%/}" \
           -maxdepth 1 \
           -type f \
           ! -name "$(printf -- "*\n*")" \
           ! -name '.zcompdump' \
           -name '.zcompdump*'
-      )"; do
+      )" != ''; do
         command find -- "${HOME%/}" \
           -maxdepth 1 \
           -type f \
@@ -459,8 +459,8 @@ alias cp='cp -R'
 alias cpplint_r='command cpplint --counting=detailed --verbose=0 --filter=-legal/copyright --recursive -- .'
 
 cy() {
-  test -n "${DOTFILES-}" &&
-    test -n "${TEMPLATE-}" ||
+  test "${DOTFILES-}" != '' &&
+    test "${TEMPLATE-}" != '' ||
     return 1
 
   target="$(command git rev-parse --show-toplevel 2>/dev/null || command pwd -L)" ||
@@ -914,7 +914,7 @@ git_add() {
     shift
     ;;
   -o | --others | --untracked)
-    while test -n "$(command git ls-files --others --exclude-standard)"; do
+    while test "$(command git ls-files --others --exclude-standard)" != ''; do
       command git ls-files -z --others --exclude-standard |
         command xargs -0 git add --verbose 2>/dev/null
     done &&
@@ -1015,7 +1015,7 @@ alias gca='git_commit --amend'
 git_config_file_locations() {
   for scope in global system local worktree; do
     # do not return `.git/config` if called from outside a git repository
-    test -z "$(command git config --list --show-scope --"${scope-}" 2>/dev/null)" ||
+    test "$(command git config --list --show-scope --"${scope-}" 2>/dev/null)" = '' ||
       printf -- '%-10s%s\n' "${scope-}" "$(
         command git config --list --show-origin --"${scope-}" |
           command sed \
@@ -1031,7 +1031,7 @@ git_config_file_locations() {
 
 unalias -- 'gd' 2>/dev/null
 gd() {
-  if test -n "$(command git diff "$@" 2>/dev/null)"; then
+  if test "$(command git diff "$@" 2>/dev/null)" != ''; then
     command git diff "$@"
   else
     command git diff --cached "$@"
@@ -1039,7 +1039,7 @@ gd() {
 }
 unalias -- 'gds' 2>/dev/null
 gds() {
-  if test -n "$(command git diff --cached "$@" 2>/dev/null)"; then
+  if test "$(command git diff --cached "$@" 2>/dev/null)" != ''; then
     command git diff --cached "$@"
   else
     command git diff "$@"
@@ -1128,7 +1128,7 @@ git_commit_initial_commit() {
     # ...and add a signed v0.0.0 tag to it
     command git tag --annotate --sign v0.0.0 --message='' &&
     # ...and if there are files present...
-    test -n "$(command git ls-files --others --exclude-standard)" &&
+    test "$(command git ls-files --others --exclude-standard)" != '' &&
     # add them...
     command git add --verbose -- . &&
     # ...and commit them
@@ -1697,12 +1697,12 @@ open() {
   else
     case "${1-}" in
     p | posix_utilities)
-      test -z "${2-}" ||
+      test "${2-}" = '' ||
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html' ||
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html'
       ;;
     pb | posix_builtins)
-      test -z "${2-}" ||
+      test "${2-}" = '' ||
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#'"${2-}" ||
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/sbi.html'
       ;;
