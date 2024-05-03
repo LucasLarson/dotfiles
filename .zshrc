@@ -104,7 +104,7 @@ EDITOR="$(
     command -v -- vim ||
     command -v -- vi
 )"
-if test -n "${EDITOR-}"; then
+if test "${EDITOR-}" != ''; then
   export EDITOR
   alias e='command "${EDITOR:-vi}"'
   export VISUAL="${VISUAL:-${EDITOR:-vi}}"
@@ -210,7 +210,7 @@ set -o share_history
 set -o interactive_comments
 
 ## C, C++
-if test -n "$(command xcrun --show-sdk-path 2>/dev/null)"; then
+if test "$(command xcrun --show-sdk-path 2>/dev/null)" != ''; then
   CPATH="$(command xcrun --show-sdk-path)"'/usr/include'"${CPATH:+:${CPATH-}}"
   export CPATH
 fi
@@ -223,7 +223,7 @@ if test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
 fi
 
 ## Go
-test -n "${GOPATH-}" &&
+test "${GOPATH-}" != '' &&
   test -d "${GOPATH-}"'/bin' &&
   PATH="${GOPATH-}"'/bin'"${PATH:+:${PATH-}}"
 
@@ -237,7 +237,7 @@ rbenv() {
 
 ## PATHs
 # prevent duplicate entries
-test -n "${ZSH-}" &&
+test "${ZSH-}" != '' &&
   export -U \
     PATH path \
     CDPATH cdpath \
