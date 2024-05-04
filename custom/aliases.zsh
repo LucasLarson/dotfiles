@@ -653,30 +653,17 @@ command -v -- fd >/dev/null 2>&1 &&
   alias fd='command fd --hidden'
 
 find_binary_files() {
-  {
-    command find -- . \
-      -type f \
-      -path '*/.git' -prune -o \
-      -path '*/node_modules' -prune -o \
-      -path '*/t' -prune -o \
-      -path '*/Test*' -prune -o \
-      -path '*/test*' -prune -o \
-      -path '*vscode*' -prune -o \
-      -exec file -- {} ';' |
-      command grep -E -e ' (executable|shared object|binary)' |
-      command cut -d ':' -f 1
-    command find -- . \
-      -type f \
-      -path '*/.git' -prune -o \
-      -path '*/node_modules' -prune -o \
-      -path '*/t' -prune -o \
-      -path '*/Test*' -prune -o \
-      -path '*/test*' -prune -o \
-      -path '*vscode*' -prune -o \
-      -exec grep -I -L -e '.*' -- {} ';'
-  } |
-    LC_ALL='C' command sort -u |
-    LC_ALL='C' command sort -f
+  LC_ALL='C' command -p -- find -- . \
+    -path '*/.git' -prune -o \
+    -exec file -- {} + |
+    command -p -- sed \
+      -e '/:.*directory/ d' \
+      -e '/:.*empty/ d' \
+      -e '/:.*JSON/ d' \
+      -e '/:.*text/ d' \
+      -e '/:.*very long lines/ d' \
+      -e '# finally, remove file utility descriptions' \
+      -e 's/:.*//'
 }
 
 # find broken symlinks
