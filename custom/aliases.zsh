@@ -178,7 +178,6 @@ clang_format() {
   # https://github.com/llvm/llvm-project/blob/cea81e95b0/clang/tools/clang-format/clang-format-diff.py#L50-L51
 
   command find -- . \
-    -type f \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path '*/t' -prune -o \
@@ -262,6 +261,7 @@ clang_format() {
     -name '*.txx' -o \
     -name '*.xbm' \
     ')' \
+    -type f \
     -exec sh -u -v -c "command git ls-files --error-unmatch -- '{}' >/dev/null 2>&1 ||
   ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
   command clang-format -i --style '{IndentWidth: ${IndentWidth:-2}, ColumnLimit: ${ColumnLimit:-79}}' --verbose -- '{}' 2>&1
@@ -307,7 +307,6 @@ cleanup() {
     # delete thumbnail cache files
     # and hide `find: ‘./com...’: Operation not permitted` with `2>/dev/null`
     command find -- . \
-      -type f \
       '(' \
       -name '.DS_Store' -o \
       -name 'Desktop.ini' -o \
@@ -315,6 +314,7 @@ cleanup() {
       -name 'Thumbs.db' -o \
       -name 'thumbs.db' \
       ')' \
+      -type f \
       -delete 2>/dev/null
 
     # delete crufty Zsh files
@@ -326,17 +326,18 @@ cleanup() {
       while test "$(
         command find -- "${HOME%/}" \
           -maxdepth 1 \
-          -type f \
-          ! -name "$(printf -- "*\n*")" \
-          ! -name '.zcompdump' \
-          -name '.zcompdump*'
-      )" != ''; do
-        command find -- "${HOME%/}" \
-          -maxdepth 1 \
-          -type f \
           ! -name "$(printf -- "*\n*")" \
           ! -name '.zcompdump' \
           -name '.zcompdump*' \
+          -type f \
+          -print
+      )" != ''; do
+        command find -- "${HOME%/}" \
+          -maxdepth 1 \
+          ! -name "$(printf -- "*\n*")" \
+          ! -name '.zcompdump' \
+          -name '.zcompdump*' \
+          -type f \
           -delete 2>/dev/null
       done
     fi
@@ -345,7 +346,6 @@ cleanup() {
     # those with specific names and
     # those that belong to a repository
     command find -- . \
-      -type f \
       -size 0 \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
@@ -377,6 +377,7 @@ cleanup() {
       ! -name '.watchmanconfig' \
       ! -name '__init__.py' \
       ! -name 'favicon.*' \
+      -type f \
       -exec sh -v -c 'command git ls-files --error-unmatch -- "{}" >/dev/null 2>&1 ||
 ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
 command rm -- "{}"' ';'
@@ -385,25 +386,25 @@ command rm -- "{}"' ';'
     # but skip Git-specific and `/.well-known/` directories
     command find -- . \
       -depth \
-      -type d \
       -links 2 \
       ! -path '*/.git/*' \
       ! -path '*/.well-known' \
+      -type d \
       -delete 2>/dev/null
 
     # swap each tab for two spaces each in `.git/config` and `$HOME/.gitconfig`
     command find -- . \
-      -type f \
       -path '*/.git/*' \
       -name 'config' \
+      -type f \
       -exec sed -i -e 's/\t/  /g' {} ';'
     command sed -i -e 's/\t/  /g' "${HOME%/}"'/.gitconfig'
 
     # remove Git sample hooks
     command find -- . \
-      -type f \
       -path '*/.git/*' \
       -path '*/hooks/*.sample' \
+      -type f \
       -delete 2>/dev/null
 
     ;;
@@ -511,11 +512,8 @@ count_files_in_this_directory() {
   # count files as well as directories
   -d | --directory | --directories)
     command find -- . \
-      -path '*/.git' -prune -o \
-      -maxdepth 1 \
-      ! -name '.' \
+      -path './*/*' -prune -o \
       ! -name '.DS_Store' \
-      -prune \
       -print |
       command grep -c -e /
     ;;
@@ -524,12 +522,9 @@ count_files_in_this_directory() {
   *)
     # https://unix.stackexchange.com/a/1126
     command find -- . \
-      -path '*/.git' -prune -o \
-      -maxdepth 1 \
-      -type f \
-      ! -name '.' \
+      -path './*/*' -prune -o \
       ! -name '.DS_Store' \
-      -prune \
+      ! -type d \
       -print |
       command grep -c -e /
     ;;
@@ -704,18 +699,18 @@ alias fdf='find_duplicate_files'
 find_files_with_no_extension() {
   command find -- . \
     -path '*/.git' -prune -o \
-    -type f \
     ! -name '*.*' \
+    -type f \
     -print 2>/dev/null |
     LC_ALL='C' command sort -u
 }
 
 find_files_with_the_same_names() {
   command find -- . \
-    -type f \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -mindepth 1 \
+    -type f \
     -print0 |
     command awk -F '/' -- 'BEGIN {RS="\0"} {n=$NF} k[n]==1 {print p[n]} k[n] {print $0} {p[n]=$0; k[n]++}' |
     while IFS='' read -r -- file; do
@@ -748,7 +743,6 @@ find_shell_scripts() {
     # all files with extensions `.bash`, `.dash`, `.ksh`, `.mksh`, `.sh`, `.zsh`
     command find -- . \
       -path '*/.git' -prune -o \
-      -type f \
       '(' \
       -name '*.bash' -o \
       -name '*.dash' -o \
@@ -756,7 +750,9 @@ find_shell_scripts() {
       -name '*.mksh' -o \
       -name '*.sh' -o \
       -name '*.zsh' \
-      ')' 2>/dev/null
+      ')' \
+      -type f \
+      -print 2>/dev/null
 
     # files whose first line resembles those of shell scripts
     # https://stackoverflow.com/a/9612232
@@ -1888,7 +1884,6 @@ yamllint_r() {
   command -v -- yamllint >/dev/null 2>&1 ||
     return 1
   command find -- . \
-    -type f \
     -path "${DOTFILES-}"'/Library' -prune -o \
     -path "${HOME%/}"'/Library' -prune -o \
     -path '*/.git' -prune -o \
@@ -1918,6 +1913,7 @@ yamllint_r() {
     -name '.clang-tidy' -o \
     -name '.gemrc' \
     ')' \
+    -type f \
     -print \
     -exec sh -c 'command git ls-files --error-unmatch -- "{}" >/dev/null 2>&1 ||
 ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
