@@ -296,7 +296,7 @@ cleanup() {
       # `Applications`, `Desktop`, `Documents`, `Downloads`, `Library`, `Movies`, `Music`, `Pictures`, `Public`, and `Sites`
       # https://web.archive.org/web/0id_/developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGUide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW9
       test "$(command pwd -P | command xargs -0 dirname)" = "${HOME%/}" &&
-      case "$(command pwd -P | command tr -d '[:space:]' | command xargs basename -- | command cut -c 1)" in
+      case "$(command pwd -P | command sed -e 's/.*\/[[:space:]]*//')" in
       [A-Z])
         printf -- '\n\n'
         printf -- '\342\233\224\357\270\217 aborting: refusing to run from a macOS standard directory\n'
