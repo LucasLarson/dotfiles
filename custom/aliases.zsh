@@ -311,7 +311,6 @@ cleanup() {
     # delete thumbnail cache files
     # and hide `find: ‘./com...’: Operation not permitted` with `2>/dev/null`
     command find -- . \
-      -type f \
       '(' \
       -name '.DS_Store' -o \
       -name 'Desktop.ini' -o \
@@ -319,6 +318,7 @@ cleanup() {
       -name 'Thumbs.db' -o \
       -name 'thumbs.db' \
       ')' \
+      -type f \
       -delete
 
     # delete crufty Zsh files
@@ -330,17 +330,17 @@ cleanup() {
       while test "$(
         command find -- "${HOME%/}" \
           -maxdepth 1 \
-          -type f \
-          ! -name "$(printf -- "*\n*")" \
-          ! -name '.zcompdump' \
-          -name '.zcompdump*'
-      )" != ''; do
-        command find -- "${HOME%/}" \
-          -maxdepth 1 \
-          -type f \
           ! -name "$(printf -- "*\n*")" \
           ! -name '.zcompdump' \
           -name '.zcompdump*' \
+          -type f
+      )" != ''; do
+        command find -- "${HOME%/}" \
+          -maxdepth 1 \
+          ! -name "$(printf -- "*\n*")" \
+          ! -name '.zcompdump' \
+          -name '.zcompdump*' \
+          -type f \
           -delete
       done
     fi
@@ -431,17 +431,17 @@ command rm -- "{}"' ';'
 
     # swap each tab for two spaces each in `.git/config` and `$HOME/.gitconfig`
     command find -- . \
-      -type f \
       -path '*/.git/*' \
       -name 'config' \
+      -type f \
       -exec sed -i -e 's/\t/  /g' {} ';'
     command sed -i -e 's/\t/  /g' "${HOME%/}"'/.gitconfig'
 
     # remove Git sample hooks
     command find -- . \
-      -type f \
       -path '*/.git/*' \
       -path '*/hooks/*.sample' \
+      -type f \
       -delete
 
     ;;
@@ -730,8 +730,8 @@ alias fdf='find_duplicate_files'
 find_files_with_no_extension() {
   command find -- . \
     -path '*/.git' -prune -o \
-    -type f \
     ! -name '*.*' \
+    -type f \
     -print 2>/dev/null |
     LC_ALL='C' command sort -u
 }
@@ -773,7 +773,6 @@ find_shell_scripts() {
     # all files with `linguist` Shell filename extensions
     command find -- . \
       -path '*/.git' -prune -o \
-      -type f \
       '(' \
       -name '.sh' -o \
       -name '*.bash' -o \
@@ -833,7 +832,9 @@ find_shell_scripts() {
       -name 'zprofile' -o \
       -name 'zshenv' -o \
       -name 'zshrc' \
-      ')' 2>/dev/null
+      ')' \
+      -type f \
+      -print 2>/dev/null
 
     # files whose first line resembles those of shell scripts
     # https://stackoverflow.com/a/9612232
@@ -2005,7 +2006,6 @@ yamllint_r() {
     -path '*/Test*' -prune -o \
     -path '*/test*' -prune -o \
     -path '*vscode*' -prune -o \
-    ! -type d \
     '(' \
     -name '*.yml' -o \
     -name '*.CFF' -o \
@@ -2026,6 +2026,7 @@ yamllint_r() {
     -name '.gemrc' -o \
     -name '.yamllint' \
     ')' \
+    ! -type d \
     -print \
     -exec sh -c 'command git ls-files --error-unmatch -- "{}" >/dev/null 2>&1 ||
 ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
