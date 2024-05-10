@@ -58,7 +58,7 @@ command -v -- apk >/dev/null 2>&1 || {
   command -p -- printf -- 'verifying apk tools integrity...\n' >&2
   set -o xtrace
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
-  command wget --output-document=- -- 'https://dl-cdn.alpinelinux.org/alpine/v3.16/main/x86/apk-tools-static-2.12.9-r3.apk' |
+  command wget --output-document=- -- 'https://dl-cdn.alpinelinux.org/alpine/v3.16/main/'"$(command -p -- uname -m)"'/apk-tools-static-2.12.9-r3.apk' |
     command tar --extract --gzip --strip-components=1 --verbose -- sbin/apk.static &&
     ./apk.static add apk-tools &&
     command -p -- rm -- ./apk.static
