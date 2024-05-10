@@ -64,7 +64,7 @@ command -v -- apk >/dev/null 2>&1 || {
     command -p -- rm -- ./apk.static
 
   # configure only main and community repositories at first
-  {
+  command -p -- mkdir -p -- '/etc/apk' && {
     command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n'
     command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n'
   } >'/etc/apk/repositories'
