@@ -1921,7 +1921,7 @@ sca() {
         'sh          -C    -e -f -n -u -x -o pipefail -o posix' \
         'zsh         -C    -e    -n -u    -o pipefail -o noglob -o posix_aliases -o posix_arg_zero -o posix_builtins -o posix_cd -o posix_identifiers -o posix_jobs -o posix_strings -o posix_traps'; do
         if command -v -- "${test%% *}" >/dev/null 2>&1; then
-          eval "command ${test-} -- '${file-}'" 2>&1 |
+          eval " command ${test-} -- '${file-}'" 2>&1 |
             # paths in descending specificity:
             command sed \
               -e 's|'"${custom-}"'|$\custom|' \
