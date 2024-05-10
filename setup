@@ -32,10 +32,6 @@ command -p -- sleep 1
 command -p -- printf -- '  a Lucas Larson production\n\n' >&2
 command -p -- sleep 1
 
-# start from `$HOME`
-cd -- "${HOME%/}" ||
-  exit 1
-
 # save `date` for backup files
 now="$(command -p -- date -- '+%Y%m%d%H%M%S')"
 
