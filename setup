@@ -62,20 +62,20 @@ command -v -- apk >/dev/null 2>&1 || {
     command tar --extract --gzip --strip-components=1 --verbose -- sbin/apk.static &&
     ./apk.static add apk-tools &&
     command -p -- rm -- ./apk.static
+
+  # configure only main and community repositories at first
+  {
+    command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n'
+    command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n'
+  } >'/etc/apk/repositories'
+
+  # update
+  { set +o xtrace; } 2>/dev/null
+  command -p -- printf -- 'updating Alpine Linux repositories...\n' >&2
+  set -o xtrace
+  command apk update --verbose --progress
+  command apk upgrade --verbose --progress
 }
-
-# configure only main and community repositories at first
-{
-  command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n'
-  command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n'
-} >'/etc/apk/repositories'
-
-# update
-{ set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'updating Alpine Linux repositories...\n' >&2
-set -o xtrace
-command apk update --verbose --progress
-command apk upgrade --verbose --progress
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
 # man-pages adds `man0`, `man2`, man4`, `man6` to `/usr/share/man/`
@@ -112,12 +112,17 @@ install coreutils
   set -o xtrace
 }
 install util-linux pciutils usbutils coreutils binutils findutils grep wget curl openssl sudo sed attr dialog readline
-{
-  command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/main\n'
-  command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/community\n'
-  command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/testing\n'
-} >>'/etc/apk/repositories'
-command apk update
+
+# add additional Alpine Linux repositories if applicable
+command -v -- apk >/dev/null 2>&1 &&
+  command -p -- test -s '/etc/apk/repositories' && {
+  {
+    command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/main\n'
+    command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/community\n'
+    command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/testing\n'
+  } >>'/etc/apk/repositories' &&
+    command apk update
+}
 
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
@@ -202,28 +207,26 @@ command -v -- omz >/dev/null 2>&1 ||
 }
 
 # update, repair everything again before close
-{ set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'updating...\n' >&2
-set -o xtrace
-command apk update --verbose --verbose --progress
-
-{ set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'upgrading...\n' >&2
-set -o xtrace
-command apk upgrade --verbose --verbose --progress
-
-{ set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'repairing and resolving dependencies...\n' >&2
-set -o xtrace
-command apk fix --verbose --verbose --depends --progress
-
-{ set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'verifying installations...\n' >&2
-set -o xtrace
-command apk verify --verbose --verbose --progress && {
+command -v -- apk >/dev/null 2>&1 && {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'verified\n' >&2
+  command -p -- printf -- 'updating...\n' >&2
   set -o xtrace
+  command apk update --verbose --verbose --progress
+
+  { set +o xtrace; } 2>/dev/null
+  command -p -- printf -- 'upgrading...\n' >&2
+  set -o xtrace
+  command apk upgrade --verbose --verbose --progress
+
+  { set +o xtrace; } 2>/dev/null
+  command -p -- printf -- 'repairing and resolving dependencies...\n' >&2
+  set -o xtrace
+  command apk fix --verbose --verbose --depends --progress
+
+  { set +o xtrace; } 2>/dev/null
+  command -p -- printf -- 'verifying installations...\n' >&2
+  set -o xtrace
+  command apk verify --verbose --verbose --progress
 }
 
 # cleanup
