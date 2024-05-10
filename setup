@@ -257,7 +257,7 @@ command -p -- find -- . \
 # and those with specific names
 command -p -- find -- . \
   -size 0 \
-  ! -path "${DOTFILES-}"'/Library/*' \
+  ! -path "${DOTFILES:-${HOME%/}/Library/CloudStorage/Dropbox/dotfiles}"'/Library/*' \
   ! -path "${HOME%/}"'/Library/*' \
   ! -path '*/.git/*' \
   ! -path '*/Test*' \
