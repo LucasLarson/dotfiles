@@ -15,9 +15,9 @@
 if command -v -- apk >/dev/null 2>&1; then
   alias install='command apk add --verbose'
 elif command -v -- pacman >/dev/null 2>&1; then
-  alias install='command pacman --sync --verbose --noconfirm'
+  alias install='command pacman --noconfirm --sync --verbose'
 elif command -v -- apt-get >/dev/null 2>&1; then
-  alias install='command apt-get install --show-progress --assume-yes'
+  alias install='command apt-get install --assume-yes --show-progress'
 fi
 
 command -p -- printf -- '\n\n   .\137\137       .\137\137  \137\137\n' >&2
@@ -73,8 +73,8 @@ command -v -- apk >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   command -p -- printf -- 'updating Alpine Linux repositories...\n' >&2
   set -o xtrace
-  command apk update --verbose --progress
-  command apk upgrade --verbose --progress
+  command apk update --progress --verbose
+  command apk upgrade --progress --verbose
 }
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
@@ -211,22 +211,22 @@ command -v -- apk >/dev/null 2>&1 && {
   { set +o xtrace; } 2>/dev/null
   command -p -- printf -- 'updating...\n' >&2
   set -o xtrace
-  command apk update --verbose --verbose --progress
+  command apk update --progress --verbose --verbose
 
   { set +o xtrace; } 2>/dev/null
   command -p -- printf -- 'upgrading...\n' >&2
   set -o xtrace
-  command apk upgrade --verbose --progress
+  command apk upgrade --progress --verbose
 
   { set +o xtrace; } 2>/dev/null
   command -p -- printf -- 'repairing and resolving dependencies...\n' >&2
   set -o xtrace
-  command apk fix --verbose --verbose --depends --progress
+  command apk fix --depends --progress --verbose --verbose
 
   { set +o xtrace; } 2>/dev/null
   command -p -- printf -- 'verifying installations...\n' >&2
   set -o xtrace
-  command apk verify --verbose --verbose --progress && {
+  command apk verify --progress --verbose --verbose && {
     { set +o xtrace; } 2>/dev/null
     command -p -- printf -- 'verified\n' >&2
     set -o xtrace
