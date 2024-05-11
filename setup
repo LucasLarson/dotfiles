@@ -198,7 +198,7 @@ command -v -- omz >/dev/null 2>&1 ||
   command -p -- printf -- 'installing Oh My Zsh...\n' >&2
   if command -v -- wget >/dev/null 2>&1; then
     set -o xtrace
-    command -p -- sh -c "$(command wget 'https://github.com/ohmyzsh/ohmyzsh/raw/HEAD/tools/install.sh' --output-document=-)" "" --unattended --keep-zshrc
+    command -p -- sh -c "$(command wget 'https://github.com/ohmyzsh/ohmyzsh/raw/HEAD/tools/install.sh' --output-document=-)" --unattended --keep-zshrc
   elif command -v -- curl >/dev/null 2>&1; then
     set -o xtrace
     command -p -- sh -c "$(command curl --location 'https://github.com/ohmyzsh/ohmyzsh/raw/HEAD/tools/install.sh')" --unattended --keep-zshrc
