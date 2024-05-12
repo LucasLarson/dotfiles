@@ -260,8 +260,6 @@ brew 'six'
 brew 'ssh-copy-id', link: true
 # Formatting tool for reformatting Swift code
 brew 'swiftformat'
-# Swift code generator for assets, storyboards, Localizable.strings, …
-brew 'swiftgen'
 # Tool to enforce Swift style and conventions
 brew 'swiftlint'
 # Enhanced, fully compatible version of the Berkeley C shell
