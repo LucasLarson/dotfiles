@@ -56,8 +56,6 @@ brew 'curl'
 brew 'dash', args: ['HEAD']
 # File comparison utilities
 brew 'diffutils'
-# Pack, ship and run any application as a lightweight container
-brew 'docker'
 # Convert text between DOS, UNIX, and Mac formats
 brew 'dos2unix'
 # Generate documentation for several programming languages
