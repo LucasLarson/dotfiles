@@ -313,8 +313,6 @@ cask 'google-drive'
 cask 'google-earth-pro'
 # For browsing, enhancing and converting images
 cask 'graphicconverter'
-# Open-source video transcoder
-cask 'handbrake'
 # Hex editor focussing on speed
 cask 'hex-fiend'
 # Vector graphics editor
