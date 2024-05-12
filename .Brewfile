@@ -268,8 +268,6 @@ brew 'tcsh'
 brew 'texinfo'
 # Granddaddy of HTML tools, with support for modern standards
 brew 'tidy-html5'
-# Instant terminal sharing
-brew 'tmate'
 # Terminal multiplexer
 brew 'tmux'
 # Display directories as trees (with optional color/HTML output)
