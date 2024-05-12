@@ -72,8 +72,6 @@ brew 'exiftool'
 brew 'eza'
 # Simple, fast and user-friendly alternative to find
 brew 'fd'
-# Identify or delete duplicate files
-brew 'fdupes'
 # Utility to determine file types
 brew 'file-formula'
 # Collection of GNU find, xargs, and locate
@@ -134,6 +132,8 @@ brew 'imagemagick'
 brew 'isl'
 # Image manipulation library
 brew 'jpeg'
+# Duplicate file finder and an enhanced fork of 'fdupes'
+brew 'jdupes'
 # Lightweight and flexible command-line JSON processor
 brew 'jq'
 # KornShell, ksh93
