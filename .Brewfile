@@ -128,8 +128,6 @@ brew 'icu4c'
 brew 'imagemagick'
 # Integer Set Library for the polyhedral model
 brew 'isl'
-# Image manipulation library
-brew 'jpeg'
 # Duplicate file finder and an enhanced fork of 'fdupes'
 brew 'jdupes'
 # Lightweight and flexible command-line JSON processor
