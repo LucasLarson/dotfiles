@@ -342,7 +342,7 @@ cask 'quicklookase'
 # Move and resize windows using keyboard shortcuts or snap areas
 cask 'rectangle'
 # Instant messaging application focusing on security
-cask 'signal'
+cask 'signal-beta'
 # Application for inspecting installer packages
 cask 'suspicious-package'
 # Messaging app with a focus on speed and security
