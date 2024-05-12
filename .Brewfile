@@ -327,6 +327,8 @@ cask 'macfuse'
 cask 'microsoft-auto-update'
 # Music tagger
 cask 'musicbrainz-picard'
+# Peer to peer Bitorrent client
+cask 'qbittorrent'
 # Display image info and preview unsupported formats in QuickLook
 cask 'qlimagesize'
 # QuickLook plugin for plaintext files without an extension
@@ -347,8 +349,6 @@ cask 'suspicious-package'
 cask 'telegram'
 # Web browser focusing on security
 cask 'tor-browser-alpha'
-# Open-source BitTorrent client
-cask 'transmission-nightly'
 # Virtualizer for x86 hardware
 cask 'virtualbox'
 # Extend the functionality of VirtualBox
