@@ -282,7 +282,7 @@ brew 'yamllint'
 brew 'yarn'
 # Yet another shell: a POSIX-compliant command-line shell
 brew 'yash'
-# Fork of youtube-dl with additional features and fixes
+# Feature-rich command-line audio/video downloader
 brew 'yt-dlp'
 # General-purpose lossless data-compression library
 brew 'zlib'
@@ -292,7 +292,7 @@ brew 'zsh', args: ['HEAD']
 brew 'zsh-lovers'
 # Voice and text chat software
 cask 'discord-canary'
-# App to build and share containerized applications and microservices
+# App to build and share containerised applications and microservices
 cask 'docker'
 # Sci-fi themed terminal emulator and system monitor
 cask 'edex-ui'
@@ -321,13 +321,13 @@ cask 'musicbrainz-picard'
 cask 'qbittorrent'
 # Display image info and preview unsupported formats in QuickLook
 cask 'qlimagesize'
-# QuickLook plugin for plaintext files without an extension
+# Quick Look plugin for plaintext files without an extension
 cask 'qlstephen'
 # Thumbnails, static previews, cover art and metadata for video files
 cask 'qlvideo'
-# QuickLook plugin for JSON files
+# Quick Look plugin for JSON files
 cask 'quicklook-json'
-# QuickLook generator for Adobe Swatch Exchange files
+# Quick Look generator for Adobe Swatch Exchange files
 cask 'quicklookase'
 # Move and resize windows using keyboard shortcuts or snap areas
 cask 'rectangle'
@@ -339,14 +339,15 @@ cask 'suspicious-package'
 cask 'telegram'
 # Web browser focusing on security
 cask 'tor-browser-alpha'
-# Virtualizer for x86 hardware
+# Virtualiser for x86 hardware
 cask 'virtualbox'
 # Open-source cross-platform multimedia player
 cask 'vlc@nightly'
+# Quick Look plugin for webp files
 cask 'webpquicklook'
 # Torrent streaming application
 cask 'webtorrent'
-# Desktop client for WhatsApp
+# Native desktop client for WhatsApp
 cask 'whatsapp-beta'
 # Video communication and virtual meeting platform
 cask 'zoom-for-it-admins'
