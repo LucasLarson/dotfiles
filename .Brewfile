@@ -44,8 +44,6 @@ brew 'clang-format'
 brew 'cmake'
 # Dependency Manager for PHP
 brew 'composer'
-# Utility that creates projects from templates
-brew 'cookiecutter'
 # GNU File, Shell, and Text utilities
 brew 'coreutils'
 # Static analysis of C and C++ code
