@@ -204,8 +204,6 @@ brew 'openssh'
 brew 'openssl@3'
 # Outputs current CPU temperature for OSX
 brew 'osx-cpu-temp'
-# Package manager in the style of Arch's pacman
-brew 'pacapt'
 # Swiss-army knife of markup format conversion
 brew 'pandoc'
 # Highly capable, feature-rich programming language
