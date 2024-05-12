@@ -114,8 +114,6 @@ brew 'gmp'
 brew 'gnu-sed'
 # Open source programming language to build simple/reliable/efficient software
 brew 'go'
-# Open-source build automation tool based on the Groovy and Kotlin DSL
-brew 'gradle'
 # GNU grep, egrep and fgrep
 brew 'grep'
 # Perceptual JPEG encoder
