@@ -348,7 +348,5 @@ cask 'webpquicklook'
 cask 'webtorrent'
 # Desktop client for WhatsApp
 cask 'whatsapp-beta'
-# Open-source version of the X.Org X Window System
-cask 'xquartz'
 # Video communication and virtual meeting platform
 cask 'zoom-for-it-admins'
