@@ -274,8 +274,6 @@ brew 'tmux'
 brew 'tree'
 # Ultra fast grep with query UI, fuzzy search, archive search, and more
 brew 'ugrep'
-# Source code beautifier
-brew 'uncrustify'
 # Vi 'workalike' with many additional features
 brew 'vim'
 # Pager/text based browser
