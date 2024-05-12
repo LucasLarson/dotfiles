@@ -164,8 +164,6 @@ brew 'llvm'
 brew 'lynx'
 # Keep your Mac's application settings in sync
 brew 'mackup', args: ['HEAD']
-# Move files and folders to the trash
-brew 'macos-trash'
 # Utility for directing compilation
 brew 'make'
 # Unix documentation system
