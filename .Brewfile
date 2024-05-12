@@ -28,8 +28,6 @@ brew 'bash-completion@2'
 brew 'bat'
 # Bash Automated Testing System
 brew 'bats-core'
-# Arbitrary precision numeric processing language
-brew 'bc'
 # Remove large files or passwords from Git history like git-filter-branch
 brew 'bfg'
 # Python code formatter
