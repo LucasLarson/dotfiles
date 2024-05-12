@@ -343,8 +343,6 @@ cask 'telegram'
 cask 'tor-browser-alpha'
 # Virtualizer for x86 hardware
 cask 'virtualbox'
-# Extend the functionality of VirtualBox
-cask 'virtualbox-extension-pack'
 # Open-source cross-platform multimedia player
 cask 'vlc-nightly'
 cask 'webpquicklook'
