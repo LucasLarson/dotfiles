@@ -14,10 +14,6 @@ tap 'homebrew/test-bot'
 tap 'microsoft/git'
 # Static checker for GitHub Actions workflow files
 brew 'actionlint'
-# Formatter/translator for text files to numerous formats
-brew 'asciidoc'
-# Text processor and publishing toolchain for AsciiDoc
-brew 'asciidoctor'
 # Source code beautifier for C, C++, C#, and Java
 brew 'astyle'
 # Automatic configure script builder
