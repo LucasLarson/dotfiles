@@ -66,8 +66,6 @@ brew 'doxygen'
 brew 'elvish'
 # AST-based pattern checker for JavaScript
 brew 'eslint'
-# Command-line tool to interact with exercism.io
-brew 'exercism'
 # Perl lib for reading and writing EXIF metadata
 brew 'exiftool'
 # Modern, maintained replacement for ls
