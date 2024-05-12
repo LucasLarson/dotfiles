@@ -174,8 +174,6 @@ brew 'man-db'
 brew 'mandoc'
 # CLI for Node.js style checker and lint tool for Markdown files
 brew 'markdownlint-cli'
-# Fast and user friendly build system
-brew 'meson'
 # MirBSD Korn Shell
 brew 'mksh'
 # Generate Objective-C & Swift classes from your Core Data model
