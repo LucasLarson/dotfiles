@@ -342,7 +342,7 @@ cask 'tor-browser-alpha'
 # Virtualizer for x86 hardware
 cask 'virtualbox'
 # Open-source cross-platform multimedia player
-cask 'vlc-nightly'
+cask 'vlc@nightly'
 cask 'webpquicklook'
 # Torrent streaming application
 cask 'webtorrent'
