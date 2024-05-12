@@ -258,8 +258,6 @@ brew 'shellharden'
 brew 'shfmt', args: ['HEAD']
 # Python 2 and 3 compatibility utilities
 brew 'six'
-# Command-line interface for SQLite
-brew 'sqlite'
 # Add a public key to a remote machine's authorized_keys file
 brew 'ssh-copy-id', link: true
 # Formatting tool for reformatting Swift code
