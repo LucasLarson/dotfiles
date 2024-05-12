@@ -46,8 +46,6 @@ brew 'checkbashisms'
 brew 'clang-format'
 # Cross-platform make
 brew 'cmake'
-# Dependency manager for Cocoa projects
-brew 'cocoapods'
 # Dependency Manager for PHP
 brew 'composer'
 # Utility that creates projects from templates
