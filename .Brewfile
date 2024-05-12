@@ -290,6 +290,8 @@ brew 'zlib'
 brew 'zsh', args: ['HEAD']
 # Tips, tricks, and examples for zsh
 brew 'zsh-lovers'
+# Chromium based browser
+cask 'arc'
 # Voice and text chat software
 cask 'discord-canary'
 # App to build and share containerised applications and microservices
@@ -297,6 +299,8 @@ cask 'docker'
 # Sci-fi themed terminal emulator and system monitor
 cask 'edex-ui'
 cask 'git-credential-manager-core'
+# Web browser
+cask 'google-chrome-canary'
 # Client for the Google Drive storage service
 cask 'google-drive'
 # Virtual globe
@@ -315,8 +319,14 @@ cask 'maccy'
 cask 'macfuse'
 # Provides updates to various Microsoft products
 cask 'microsoft-auto-update'
+# Web browser focused on privacy and on minimizing tracking and fingerprinting
+cask 'mullvad-browser'
 # Music tagger
 cask 'musicbrainz-picard'
+# Web browser
+cask 'opera-developer'
+# WebKit based web browser
+cask 'orion'
 # Peer to peer Bitorrent client
 cask 'qbittorrent'
 # Display image info and preview unsupported formats in QuickLook
@@ -341,6 +351,8 @@ cask 'telegram'
 cask 'tor-browser-alpha'
 # Virtualiser for x86 hardware
 cask 'virtualbox'
+# Web browser with built-in email client focusing on customization and control
+cask 'vivaldi-snapshot'
 # Open-source cross-platform multimedia player
 cask 'vlc@nightly'
 # Quick Look plugin for webp files
