@@ -238,8 +238,6 @@ brew 'ruby'
 brew 'ruby-build'
 # Bash completion for Ruby
 brew 'ruby-completion'
-# Small man page generator
-brew 'scdoc'
 # Static analysis and lint tool, for (ba)sh scripts
 brew 'shellcheck', args: ['HEAD']
 # Bash syntax highlighter that encourages/fixes variables quoting
