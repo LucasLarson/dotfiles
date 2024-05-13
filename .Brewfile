@@ -54,8 +54,6 @@ brew 'curl'
 brew 'dash', args: ['HEAD']
 # File comparison utilities
 brew 'diffutils'
-# Friendly and expressive shell
-brew 'elvish'
 # AST-based pattern checker for JavaScript
 brew 'eslint'
 # Perl lib for reading and writing EXIF metadata
