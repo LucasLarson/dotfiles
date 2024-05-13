@@ -68,8 +68,6 @@ brew 'file-formula'
 brew 'findutils'
 # User-friendly command-line shell for UNIX-like operating systems
 brew 'fish'
-# Lint your Python code for style and logical errors
-brew 'flake8'
 # Examines code and reports possible security weaknesses
 brew 'flawfinder'
 # Software library to render fonts
