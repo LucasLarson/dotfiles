@@ -54,8 +54,6 @@ brew 'curl'
 brew 'dash', args: ['HEAD']
 # File comparison utilities
 brew 'diffutils'
-# Convert text between DOS, UNIX, and Mac formats
-brew 'dos2unix'
 # Generate documentation for several programming languages
 brew 'doxygen'
 # Friendly and expressive shell
