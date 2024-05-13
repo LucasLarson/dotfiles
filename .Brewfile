@@ -252,8 +252,6 @@ brew 'yarn'
 brew 'yash'
 # Feature-rich command-line audio/video downloader
 brew 'yt-dlp'
-# General-purpose lossless data-compression library
-brew 'zlib'
 # UNIX shell (command interpreter)
 brew 'zsh', args: ['HEAD']
 # Chromium based browser
