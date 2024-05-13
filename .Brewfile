@@ -224,8 +224,6 @@ brew 'shellcheck', args: ['HEAD']
 brew 'shellharden'
 # Autoformat shell script source code
 brew 'shfmt', args: ['HEAD']
-# Python 2 and 3 compatibility utilities
-brew 'six'
 # Add a public key to a remote machine's authorized_keys file
 brew 'ssh-copy-id', link: true
 # Formatting tool for reformatting Swift code
