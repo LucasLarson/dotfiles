@@ -14,8 +14,6 @@ tap 'homebrew/test-bot'
 tap 'microsoft/git'
 # Static checker for GitHub Actions workflow files
 brew 'actionlint'
-# Source code beautifier for C, C++, C#, and Java
-brew 'astyle'
 # Automatic configure script builder
 brew 'autoconf'
 # Tool for generating GNU Standards-compliant Makefiles
