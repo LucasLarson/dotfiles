@@ -262,8 +262,6 @@ brew 'yt-dlp'
 brew 'zlib'
 # UNIX shell (command interpreter)
 brew 'zsh', args: ['HEAD']
-# Tips, tricks, and examples for zsh
-brew 'zsh-lovers'
 # Chromium based browser
 cask 'arc'
 # Voice and text chat software
