@@ -1971,6 +1971,16 @@ take() {
   unset -v -- directory
 }
 
+# temperature: return the CPU temperature in degrees Fahrenheit
+temp() {
+  # 𝑛 + narrow non-breaking space + degree sign + F
+  command printf -- '%d\342\200\257\302\260F\n' "$(
+    command sudo -- powermetrics --samplers smc |
+      command awk -- '/CPU die temperature/ {printf "%f * 9 / 5 + 32\n", $4; exit}' |
+      command bc
+  )"
+}
+
 transfer() {
   for file in "$@"; do
     {
