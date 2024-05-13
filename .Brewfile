@@ -242,8 +242,6 @@ brew 'ugrep'
 brew 'webp'
 # Internet file retriever
 brew 'wget'
-# Lookup tool for domain names and other internet resources
-brew 'whois', link: true
 # General-purpose data compression with high compression ratio
 brew 'xz'
 # Linter for YAML files
