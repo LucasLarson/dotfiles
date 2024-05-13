@@ -242,8 +242,6 @@ brew 'tree'
 brew 'ugrep'
 # Vi 'workalike' with many additional features
 brew 'vim'
-# Pager/text based browser
-brew 'w3m'
 # Image format providing lossless and lossy compression for web images
 brew 'webp'
 # Internet file retriever
