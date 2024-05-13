@@ -230,8 +230,6 @@ brew 'ssh-copy-id', link: true
 brew 'swiftformat'
 # Tool to enforce Swift style and conventions
 brew 'swiftlint'
-# Enhanced, fully compatible version of the Berkeley C shell
-brew 'tcsh'
 # Official documentation format of the GNU project
 brew 'texinfo'
 # Granddaddy of HTML tools, with support for modern standards
