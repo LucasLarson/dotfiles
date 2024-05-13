@@ -92,8 +92,6 @@ brew 'git-filter-repo'
 brew 'git-lfs'
 # Audit git repos for secrets
 brew 'gitleaks'
-# Multi-platform library for OpenGL applications
-brew 'glfw'
 # Core application library for C
 brew 'glib'
 # GNU multiple precision arithmetic library
