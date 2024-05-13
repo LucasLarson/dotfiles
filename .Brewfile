@@ -164,8 +164,6 @@ brew 'nano'
 brew 'ncurses'
 # Ambitious Vim-fork focused on extensibility and agility
 brew 'neovim'
-# Small build system for use with gyp or CMake
-brew 'ninja'
 # Platform built on V8 to build network applications
 brew 'node'
 # Adds an OCR text layer to scanned PDF files
