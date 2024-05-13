@@ -54,8 +54,6 @@ brew 'curl'
 brew 'dash', args: ['HEAD']
 # File comparison utilities
 brew 'diffutils'
-# Generate documentation for several programming languages
-brew 'doxygen'
 # Friendly and expressive shell
 brew 'elvish'
 # AST-based pattern checker for JavaScript
