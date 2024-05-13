@@ -202,8 +202,6 @@ brew 'pylint'
 brew 'python@3.10'
 # Ruby version manager
 brew 'rbenv'
-# Implementation of the AT&T Plan 9 shell
-brew 'rc'
 # Library for command-line editing
 brew 'readline'
 # Perl-powered file rename script with many helpful built-ins
