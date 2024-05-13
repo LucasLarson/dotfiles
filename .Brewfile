@@ -226,8 +226,6 @@ brew 'shellharden'
 brew 'shfmt', args: ['HEAD']
 # Add a public key to a remote machine's authorized_keys file
 brew 'ssh-copy-id', link: true
-# Formatting tool for reformatting Swift code
-brew 'swiftformat'
 # Tool to enforce Swift style and conventions
 brew 'swiftlint'
 # Official documentation format of the GNU project
