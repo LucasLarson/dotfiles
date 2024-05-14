@@ -606,8 +606,8 @@ domain_name_from_url() {
 }
 
 du() {
-  command du -h -s |
-    command awk -- '{print $1}'
+  command dust "${@:--Fsx}" 2>/dev/null ||
+    command -p -- du -h -s -- "${1:-.}"
 }
 
 epoch_seconds() {

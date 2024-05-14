@@ -74,6 +74,8 @@ brew 'docker'
 brew 'dos2unix'
 # Generate documentation for several programming languages
 brew 'doxygen'
+# More intuitive version of du in rust
+brew 'dust', args: ['HEAD']
 # Friendly and expressive shell
 brew 'elvish'
 # AST-based pattern checker for JavaScript
