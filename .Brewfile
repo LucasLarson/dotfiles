@@ -56,6 +56,8 @@ brew 'curl'
 brew 'dash', args: ['HEAD']
 # File comparison utilities
 brew 'diffutils'
+# More intuitive version of du in rust
+brew 'dust', args: ['HEAD']
 # AST-based pattern checker for JavaScript
 brew 'eslint'
 # Perl lib for reading and writing EXIF metadata
