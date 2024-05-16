@@ -198,8 +198,6 @@ brew 'poppler'
 brew 'posh'
 # PHP Static Analysis Tool
 brew 'psalm'
-# It's not just a linter that annoys you!
-brew 'pylint'
 # Interpreted, interactive, object-oriented programming language
 brew 'python@3.10'
 # Ruby version manager
