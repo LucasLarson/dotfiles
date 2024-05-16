@@ -34,8 +34,6 @@ brew 'black'
 brew 'brew-cask-completion'
 # Vector graphics library with cross-device output support
 brew 'cairo'
-# Decentralized dependency manager for Cocoa
-brew 'carthage'
 # Checks for bashisms in shell scripts
 brew 'checkbashisms'
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
