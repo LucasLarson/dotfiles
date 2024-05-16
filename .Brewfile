@@ -286,7 +286,7 @@ cask 'mullvad-browser'
 # Music tagger
 cask 'musicbrainz-picard'
 # Web browser
-cask 'opera-developer'
+cask 'opera@developer'
 # WebKit based web browser
 cask 'orion'
 # Peer to peer Bitorrent client
