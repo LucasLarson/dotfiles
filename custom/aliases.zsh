@@ -689,8 +689,11 @@ find_duplicate_files() {
       ! -type l \
       -type f \
       -size {}c \
-      -print0 2>/dev/null |
-    command xargs -0 sha1sum 2>/dev/null |
+      -print 2>/dev/null |
+    command sed \
+      -e '# https://web.archive.org/web/0id_/etalabs.net/sh_tricks.html#:~:text=Using%20find%20with%20xargs' \
+      -e 's/./\\&/g' |
+    command xargs sha1sum 2>/dev/null |
     LC_ALL='C' command sort |
     command uniq -w 32 --all-repeated=separate
 }
@@ -825,7 +828,10 @@ git_add() {
   -D | --deleted)
     # https://gist.github.com/8775224
     command git ls-files -z --deleted |
-      command xargs -0 git add --verbose 2>/dev/null &&
+      command sed \
+        -e '# https://web.archive.org/web/0id_/etalabs.net/sh_tricks.html#:~:text=Using%20find%20with%20xargs' \
+        -e 's/./\\&/g' |
+      command xargs git add --verbose 2>/dev/null &&
       shift
     ;;
   -m | --modified)
@@ -835,7 +841,10 @@ git_add() {
   -o | --others | --untracked)
     while test "$(command git ls-files --others --exclude-standard)" != ''; do
       command git ls-files -z --others --exclude-standard |
-        command xargs -0 git add --verbose 2>/dev/null
+        command sed \
+          -e '# https://web.archive.org/web/0id_/etalabs.net/sh_tricks.html#:~:text=Using%20find%20with%20xargs' \
+          -e 's/./\\&/g' |
+        command xargs git add --verbose 2>/dev/null
     done &&
       shift
     ;;
@@ -1755,7 +1764,10 @@ rm() {
   case "${1-}" in
   -o | --others)
     command git ls-files -z --others --exclude-standard |
-      command xargs -0 "${utility-}"
+      command sed \
+        -e '# https://web.archive.org/web/0id_/etalabs.net/sh_tricks.html#:~:text=Using%20find%20with%20xargs' \
+        -e 's/./\\&/g' |
+      command xargs "${utility-}"
     ;;
   *)
     command "${utility-}" "$@"
