@@ -707,7 +707,7 @@ find_duplicate_files() {
   command find -- . \
     ! -size 0 \
     -type f \
-    -printf '%s\n' 2>/dev/null |
+    -print 2>/dev/null |
     LC_ALL='C' command sort -n -r |
     command uniq -d |
     command xargs -I '{}' -n 1 find \
