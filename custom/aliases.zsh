@@ -405,8 +405,7 @@ command rm -- "{}"' ';'
         -path '*vscode*' -prune -o \
         -path './*' \
         -type d \
-        -links 2 \
-        -print 2>/dev/null
+        -exec sh -c 'for directory in "$@"; do command test "$(command find -- "${directory-}" -path "${directory-}"'\''/*'\'' -print)" = '\'''\'' && command printf -- '\''%s\n'\'' "${directory-}"; done' _ {} +
     )" != ''; do
       command find -- . \
         -path '*/.git' -prune -o \
@@ -425,8 +424,7 @@ command rm -- "{}"' ';'
         -path '*vscode*' -prune -o \
         -path './*' \
         -type d \
-        -links 2 \
-        -delete 2>/dev/null
+        -exec sh -c 'for directory in "$@"; do command test "$(command find -- "${directory-}" -path "${directory-}"'\''/*'\'' -print)" = '\'''\'' && command rmdir -- "${directory-}"; done' _ {} + 2>/dev/null
     done
 
     # swap each tab for two spaces each in `.git/config` and `$HOME/.gitconfig`
