@@ -156,8 +156,6 @@ brew "mackup", args: ["HEAD"]
 brew "make"
 # Unix documentation system
 brew "man-db"
-# UNIX manpage compiler toolset
-brew "mandoc"
 # MirBSD Korn Shell
 brew "mksh"
 # Generate Objective-C & Swift classes from your Core Data model
