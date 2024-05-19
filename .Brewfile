@@ -118,6 +118,8 @@ brew "icu4c"
 brew "imagemagick"
 # Integer Set Library for the polyhedral model
 brew "isl"
+# API Support for your favorite torrent trackers
+brew "jackett", args: ["HEAD"]
 # Duplicate file finder and an enhanced fork of 'fdupes'
 brew "jdupes"
 # Lightweight and flexible command-line JSON processor
