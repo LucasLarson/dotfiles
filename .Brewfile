@@ -228,6 +228,10 @@ brew "shellharden"
 brew "shfmt", args: ["HEAD"]
 # Tool to enforce Swift style and conventions
 brew "swiftlint"
+# OCR (Optical Character Recognition) engine
+brew "tesseract", args: ["HEAD"]
+# Enables extra languages support for Tesseract
+brew "tesseract-lang"
 # Official documentation format of the GNU project
 brew "texinfo"
 # Granddaddy of HTML tools, with support for modern standards
