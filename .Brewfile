@@ -64,6 +64,8 @@ brew "exiftool"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg", args: ["HEAD"]
 # Utility to determine file types
 brew "file-formula"
 # Collection of GNU find, xargs, and locate
