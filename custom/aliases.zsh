@@ -133,7 +133,7 @@ cdp() {
 
 # cheat
 cheat() {
-  command curl --show-error --silent 'https://cheat.sh/'"$(
+  command curl --show-error --silent --url 'https://cheat.sh/'"$(
     printf -- '%s' "$*" | command sed -e 'y/ /+/'
   )"
 }
@@ -1324,7 +1324,7 @@ hashlookup() {
     --show-error \
     --silent \
     --header 'accept: application/json' \
-    'https://hashlookup.circl.lu/lookup/sha256/'"$(
+    --url 'https://hashlookup.circl.lu/lookup/sha256/'"$(
       command sha256sum -- "${1-}" |
         command awk -- '{print $1}'
     )" |
@@ -1874,7 +1874,7 @@ take() {
 transfer() {
   for file in "$@"; do
     {
-      command curl --silent --upload-file "${file-}" 'https://temp.sh/'"${file##*/}" ||
+      command curl --silent --upload-file "${file-}" --url 'https://temp.sh/'"${file##*/}" ||
         command wget --method=PUT --output-document=- --quiet --body-file="${file-}" 'https://temp.sh/'"${file##*/}"
     } 2>/dev/null &&
       printf -- '\n'
