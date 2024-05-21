@@ -102,7 +102,7 @@ brewfile() {
 # prefer `bat` without line numbers for easier copying
 alias bat='command bat --decorations=never --paging=never'
 
-alias 1='cd -- "${OLDPWD-}"' -='cd -- "${OLDPWD-}"'
+alias 1='cd -- "${OLDPWD:--}"' -='cd -- "${OLDPWD:--}"'
 alias 2='cd -- -2'
 alias 3='cd -- -3'
 alias 4='cd -- -4'
