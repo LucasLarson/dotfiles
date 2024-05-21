@@ -115,13 +115,11 @@ cdp() {
   cd_to="$(command pwd -P)"
   if test "${cd_from-}" != "${cd_to-}"; then
     printf -- 'moving from \342\200\230%s\342\200\231\n' "${cd_from-}"
-    command sleep 0.2
     cd -- "${cd_to-}" || {
       printf -- 'unable to perform this operation\n'
       return 1
     }
     printf -- '       into \342\200\230%s\342\200\231\n' "${cd_to-}"
-    command sleep 0.2
   else
     printf -- 'already in unaliased directory '
     printf -- '\342\200\230%s\342\200\231\n' "${cd_from-}"
