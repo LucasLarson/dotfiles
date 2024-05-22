@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 # decimal time according to the Calendrier républicain
 # https://web.archive.org/web/0id_/leahneukirchen.org/dotfiles/bin/fdate
-LC_ALL='C' command date -- '+%H %M %S' |
+LC_ALL='C' command date -- '+'"${1:-%H} ${2:-%M} ${3:-%S}" |
   command awk -- '{
   percentage = ($1 * 60 * 60 + $2 * 60 + $3) / (24 * 60 * 60)
   printf "%d:%02d:%02d\n", substr(percentage, 3, 1), substr(percentage, 4, 2), substr(percentage, 6, 2)
