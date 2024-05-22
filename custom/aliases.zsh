@@ -1256,36 +1256,16 @@ gitlab_create_repository() {
 }
 
 gravatar() {
-  # gravatar
   # return the URL of a Gravatar image for the given email address
-
-  # get the email address
-  email="${1:-$(command git config --get user.email)}"
-  size="${2:-4096}"
-
-  # remove spaces
-  email="$(printf -- '%s' "${email-}" | command tr -d '[:space:]')"
-
-  # change to all lowercase
-  email="$(printf -- '%s' "${email-}" | command tr '[:upper:]' '[:lower:]')"
-
-  # discover md5 utility
-  if command -v -- md5sum >/dev/null 2>&1; then
-    utility='md5sum'
-  else
-    utility='md5'
-  fi
-
-  # hash the email address
-  email="$(printf -- '%s' "${email-}" | command "${utility-}" | command cut -b 1-32)"
-
-  # return the Gravatar image URL
-  printf -- 'https://gravatar.com/avatar/%s?s=%d\n' "${email-}" "${size-}"
-
-  # cleanup variables
-  unset -v -- email
-  unset -v -- size
-  unset -v -- utility
+  command printf -- 'https://gravatar.com/avatar/%.32s?s=%d\n' "$(
+    command printf -- %s "${1:-$(command git config --get user.email)}" |
+      LC_ALL='C' command tr -d '[:space:]' |
+      LC_ALL='C' command tr '[:upper:]' '[:lower:]' |
+      {
+        command md5sum ||
+          command md5
+      } 2>/dev/null
+  )" "${2:-9999}"
 }
 
 hash_abbreviate() {
