@@ -242,6 +242,8 @@ brew "tmux"
 brew "tree"
 # Ultra fast grep with query UI, fuzzy search, archive search, and more
 brew "ugrep"
+# Cross-platform Rust rewrite of the GNU coreutils
+brew "uutils-coreutils", args: ["HEAD"]
 # Image format providing lossless and lossy compression for web images
 brew "webp"
 # Internet file retriever

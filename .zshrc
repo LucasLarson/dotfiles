@@ -122,17 +122,17 @@ if command -v -- brew >/dev/null 2>&1; then
   test -d "${HOMEBREW_PREFIX-}"'/opt/bc/share/man' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/bc/share/man'"${MANPATH:+:${MANPATH-}}"
 
+  # uutils coreutils
+  test -d "${HOMEBREW_PREFIX-}"'/opt/uutils-coreutils/libexec/uubin' &&
+    PATH="${HOMEBREW_PREFIX-}"'/opt/uutils-coreutils/libexec/uubin'"${PATH:+:${PATH-}}"
+  test -d "${HOMEBREW_PREFIX-}"'/opt/uutils-coreutils/libexec/uuman' &&
+    MANPATH="${HOMEBREW_PREFIX-}"'/opt/uutils-coreutils/libexec/uuman'"${MANPATH:+:${MANPATH-}}"
+
   # curl
   test -d "${HOMEBREW_PREFIX-}"'/opt/curl/bin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/curl/bin'"${PATH:+:${PATH-}}"
   test -d "${HOMEBREW_PREFIX-}"'/opt/curl/share/man' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/curl/share/man'"${MANPATH:+:${MANPATH-}}"
-
-  # GNU coreutils
-  test -d "${HOMEBREW_PREFIX-}"'/opt/coreutils/libexec/gnubin' &&
-    PATH="${HOMEBREW_PREFIX-}"'/opt/coreutils/libexec/gnubin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/coreutils/libexec/gnuman' &&
-    MANPATH="${HOMEBREW_PREFIX-}"'/opt/coreutils/libexec/gnuman'"${MANPATH:+:${MANPATH-}}"
 
   # file
   test -d "${HOMEBREW_PREFIX-}"'/opt/file/bin' &&
