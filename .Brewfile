@@ -102,6 +102,8 @@ brew "glib"
 brew "gmp"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
+# GNU version of the tar archiving utility
+brew "gnu-tar"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # GNU grep, egrep and fgrep
