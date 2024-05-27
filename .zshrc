@@ -178,6 +178,13 @@ if command -v -- brew >/dev/null 2>&1; then
     PATH="${HOMEBREW_PREFIX-}"'/opt/gnu-sed/libexec/gnubin'"${PATH:+:${PATH-}}"
   test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-sed/libexec/gnuman' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/gnu-sed/libexec/gnuman'"${MANPATH:+:${MANPATH-}}"
+
+  # GNU tar
+  # otherwise `tar` requires `tar --no-mac-metadata`
+  test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-tar/libexec/gnubin' &&
+    PATH="${HOMEBREW_PREFIX-}"'/opt/gnu-tar/libexec/gnubin'"${PATH:+:${PATH-}}"
+  test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-tar/libexec/gnuman' &&
+    MANPATH="${HOMEBREW_PREFIX-}"'/opt/gnu-tar/libexec/gnuman'"${MANPATH:+:${MANPATH-}}"
 fi
 
 ## Rust
