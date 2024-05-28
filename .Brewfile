@@ -265,7 +265,7 @@ brew "zsh", args: ["HEAD"]
 # Chromium based browser
 cask "arc"
 # Voice and text chat software
-cask "discord-canary"
+cask "discord@canary"
 # App to build and share containerised applications and microservices
 cask "docker"
 # Sci-fi themed terminal emulator and system monitor
