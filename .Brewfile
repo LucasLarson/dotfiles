@@ -272,7 +272,7 @@ cask "docker"
 cask "edex-ui"
 cask "git-credential-manager-core"
 # Web browser
-cask "google-chrome-canary"
+cask "google-chrome@canary"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Virtual globe
