@@ -285,7 +285,7 @@ command -p -- find -- . \
   ! -name '__init__.py' \
   ! -name 'favicon.*' \
   -type f \
-  -delete
+  -delete 2>/dev/null
 
 # if the shell can be changed and
 # if zsh is available, then replace bash, ash, and sh with zsh in `/etc/passwd`
