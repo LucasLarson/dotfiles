@@ -1069,20 +1069,16 @@ alias glog='command git log --graph --branches --remotes --tags --format=format:
 unalias -- 'gm' 2>/dev/null
 gm() {
   # https://news.ycombinator.com/item?id=5512864
-  GIT_MERGE_VERBOSITY='4' command git merge --log --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience
+  command git merge --log --overwrite-ignore --progress --rerere-autoupdate --strategy-option patience
 }
 alias gma='command git merge --abort'
 gmc() {
-  GIT_MERGE_VERBOSITY='4' command git merge --log --continue
+  command git merge --log --continue
 }
 
 # git merge with default branch
 gmm() {
-  # set Git merge verbosity environment variable
-  # 4 “shows all paths as they are processed” but
-  # 5 is “show detailed debugging information”
-  # https://github.com/progit/progit2/commit/aea93a7
-  GIT_MERGE_VERBOSITY='4' command git merge --log --verbose --progress --rerere-autoupdate --strategy-option patience "$(git-default-branch)"
+  command git merge --log --verbose --progress --rerere-autoupdate --strategy-option patience "$(git-default-branch)"
 }
 
 # git move

@@ -38,6 +38,9 @@ command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &
 ## $CDPATH
 export CDPATH="${CDPATH:+${CDPATH-}:}${HOME%/}"
 
+## Git
+export GIT_MERGE_VERBOSITY=4
+
 ## GitHub
 export GITHUB_ORG="${LOGNAME:-${USER-}}"
 
