@@ -322,7 +322,7 @@ cleanup() {
       while test "$(
         command find -- "${HOME%/}" \
           -maxdepth 1 \
-          ! -name "$(printf -- "*\n*")" \
+          ! -name "$(printf -- '*\n*')" \
           ! -name '.zcompdump' \
           -name '.zcompdump*' \
           -type f \
@@ -330,7 +330,7 @@ cleanup() {
       )" != ''; do
         command find -- "${HOME%/}" \
           -maxdepth 1 \
-          ! -name "$(printf -- "*\n*")" \
+          ! -name "$(printf -- '*\n*')" \
           ! -name '.zcompdump' \
           -name '.zcompdump*' \
           -type f \
