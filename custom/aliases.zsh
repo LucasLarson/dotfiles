@@ -632,8 +632,8 @@ epoch_seconds() {
   command awk -- 'BEGIN {srand(); print srand()}'
 }
 epoch_to_date_time() {
-  if command date -d @0 >/dev/null 2>&1; then
-    command date -d @"${1:-0}"
+  if command date -d '@0' >/dev/null 2>&1; then
+    command date -d '@'"${1:-0}"
   else
     command date -r "${1:-0}"
   fi
@@ -1123,7 +1123,7 @@ git_commit_initial_commit() {
   command git init &&
     if test "$#" -eq '1'; then
       # add 12 hours (43,200 seconds) so it occurs around midday
-      git_time="$(command date -d @$(($(command date -d "${1:-$(command date -- '+%Y-%m-%d')}" -- '+%s') + 12 * 60 * 60)) -- '+%c %z')"
+      git_time="$(command date -d '@'"$(($(command date -d "${1:-$(command date -- '+%Y-%m-%d')}" -- '+%s') + 12 * 60 * 60))" -- '+%c %z')"
       export GIT_AUTHOR_DATE="${git_time-}"
       export GIT_COMMITTER_DATE="${git_time-}"
     fi
