@@ -1546,8 +1546,9 @@ non_ascii() {
 
 odb() {
   # odb: convert hexadecimal escapes to octal escapes
-  # usage: odb <string>
-  printf -- '%s' "$@" |
+  # usage: `odb <string>` or `echo <string> | odb`
+  # test for standard input or if not, then use arguments
+  { { command test "${#}" -eq 0 && command cat -- -; } || command printf -- '%s' "${*-}"; } |
     # `-A n` hide the address base
     # `-t o1` convert to octal
     command od -A n -t o1 |
