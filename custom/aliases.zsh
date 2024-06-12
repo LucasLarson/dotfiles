@@ -1642,7 +1642,7 @@ odb() {
   # odb: convert hexadecimal escapes to octal escapes
   # usage: odb <string>
   printf -- '%s' "$@" |
-    # `-An` hide the address base
+    # `-A n` hide the address base
     # `-t o1` convert to octal
     command od -A n -t o1 |
     # replace spaces, tabs, newlines with (escaped) literal backslash `\`
