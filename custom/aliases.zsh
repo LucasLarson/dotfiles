@@ -1645,12 +1645,20 @@ odb() {
   { { command test "${#}" -eq 0 && command cat -- -; } || command printf -- '%s' "${*-}"; } |
     # `-A n` hide the address base
     # `-t o1` convert to octal
-    command od -A n -t o1 |
-    # replace spaces, tabs, newlines with (escaped) literal backslash `\`
-    command tr -s '[:space:]' '\134\134' |
-    # replace trailing backslash `\`
-    # with literal newline `\n`
-    command sed -e 's/\\$/\n/'
+    command od \
+      -A n \
+      -t o1 |
+    command sed \
+      -n \
+      -e '# move the results onto one line' \
+      -e 'H' \
+      -e '$ {' \
+      -e 'x' \
+      -e '# remove trailing final spaces, tabs, and newlines' \
+      -e 's/[[:space:]]*$//' \
+      -e '# replace all remaining strings of spaces, tabs, or newlines with a single backslash "\"' \
+      -e 's/[[:space:]][[:space:]]*/\\/gp' \
+      -e '}'
 }
 
 command -v -- ocrmypdf >/dev/null 2>&1 &&
