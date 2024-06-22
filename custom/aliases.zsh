@@ -724,6 +724,14 @@ find_duplicate_files() {
 }
 alias fdf='find_duplicate_files'
 
+find_executable() {
+  # POSIX emulatation of GNU `find -executable`
+  # printing the names of all files – including directories – whose permissions meet or exceed 700
+  command find -- . \
+    -perm -700 \
+    -print
+}
+
 find_files_with_no_extension() {
   command find -- . \
     -path '*/.git' -prune -o \
