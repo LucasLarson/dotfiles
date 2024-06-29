@@ -367,7 +367,7 @@ do not disable it, because that would allow you to install any software, even if
 
 [via](https://stackoverflow.com/a/15011313)
 
-| content to add                  | git command                         |
+| content to add                  | Git command                         |
 | ------------------------------- | ----------------------------------- |
 | modified files only             | `git add --updated` or `git add -u` |
 | everything except deleted files | `git add .`                         |
