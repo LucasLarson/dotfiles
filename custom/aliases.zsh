@@ -954,13 +954,13 @@ git_all_files_ever() {
   case "${1-}" in
   -D | --deleted)
     # list only files that have been deleted
-    command git log --pretty= --name-only --all --diff-filter=D |
+    command git log --pretty='' --name-only --all --diff-filter=D |
       LC_ALL='C' command sort -u |
       command awk -- '{print "./" $0}'
     ;;
   *)
     # list all files ever
-    command git log --pretty= --name-only --all |
+    command git log --pretty='' --name-only --all |
       LC_ALL='C' command sort -u |
       command awk -- '{print "./" $0}'
     ;;
