@@ -65,13 +65,13 @@ jobs:
             command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
               ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
               while IFS='\'''\'' read -r -- line; do
-                command test "${code-}" = '\''1'\'' &&
+                command test "${code-}" = 1 &&
                   command test "${line-}" != '\''```'\'' &&
                   command printf -- '\''%s\n'\'' "${line-}"
 
               case "${line-}" in
               '\''```sh'\''|'\''```bash'\''|'\''```shell'\''|'\''```zsh'\'')
-                code='\''1'\''
+                code=1
                 ;;
               '\''```'\'')
                 code='\'''\''

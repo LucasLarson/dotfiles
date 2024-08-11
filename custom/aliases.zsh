@@ -653,7 +653,7 @@ filename_spaces_to_underscores() {
 }
 
 file_closes_with_newline() {
-  test "$(command tail -c 1 -- "${1-}" | command wc -l)" -eq '0' &&
+  test "$(command tail -c 1 -- "${1-}" | command wc -l)" -eq 0 &&
     return 1
 }
 
@@ -1102,14 +1102,14 @@ git_garbage_collection() {
       cleanup "$@"
     # see `git gc` and other wrapping commands behind-the-scene mechanics
     # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git fetch --prune --verbose
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git prune --verbose --progress --expire now
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git prune-packed
+    GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 command git fetch --prune --verbose
+    GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 command git prune --verbose --progress --expire now
+    GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 command git prune-packed
     command git maintenance start >/dev/null 2>&1 &&
-      GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git maintenance start
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git gc --aggressive --prune=now
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git repack -a -d -f -F --depth=4095 --window="$(command getconf -- UINT_MAX)"
-    GIT_TRACE='1' GIT_TRACE_PACK_ACCESS='1' GIT_TRACE_PACKET='1' GIT_TRACE_PERFORMANCE='1' GIT_TRACE_SETUP='1' command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+      GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 command git maintenance start
+    GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 command git gc --aggressive --prune=now
+    GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 command git repack -a -d -f -F --depth=4095 --window="$(command getconf -- UINT_MAX)"
+    GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
       command sed -e '$ d'
   else
     return 1
@@ -1129,7 +1129,7 @@ git_commit_initial_commit() {
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
   command git init &&
-    if test "$#" -eq '1'; then
+    if test "$#" -eq 1; then
       # add 12 hours (43,200 seconds) so it occurs around midday
       git_time="$(command date -d '@'"$(($(command date -d "${1:-$(command date -- '+%Y-%m-%d')}" -- '+%s') + 12 * 60 * 60))" -- '+%c %z')"
       export GIT_AUTHOR_DATE="${git_time-}"
@@ -1378,10 +1378,10 @@ hash_abbreviate() {
   shift "$((OPTIND - 1))"
   for hash in "$@"; do
     if printf -- '%s' "${hash-}" | command grep -E -w -e '^[[:xdigit:]]{4,40}$' >/dev/null 2>&1; then
-      printf -- '%s\n' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- '7')"}"
+      printf -- '%s\n' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- 7)"}"
       # prevent copying trailing newline with `tr` and
       # hide clipboard errors because `pbcopy` is not common
-      printf -- '%s' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- '7')"}" | command tr -d '[:space:]' | command pbcopy 2>/dev/null
+      printf -- '%s' "${hash-}" | command cut -c 1-"${length:-"$(command git config --get core.abbrev 2>/dev/null || printf -- 7)"}" | command tr -d '[:space:]' | command pbcopy 2>/dev/null
     else
       return 1
     fi
@@ -1689,7 +1689,7 @@ command -v -- ocrmypdf >/dev/null 2>&1 &&
 
 # open current directory if no argument is given
 open() {
-  if test "$#" -eq '0'; then
+  if test "$#" -eq 0; then
     command open -- .
   else
     case "${1-}" in
@@ -1824,7 +1824,7 @@ alias '?'='question_mark'
 ql() {
   command -v -- qlmanage >/dev/null 2>&1 ||
     return 127
-  while test "$#" -ne '0'; do
+  while test "$#" -ne 0; do
     command qlmanage -p -- "$1" >/dev/null 2>&1 &&
       shift
   done
