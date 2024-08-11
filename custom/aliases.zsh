@@ -564,7 +564,7 @@ define() {
     command -v -- hash >/dev/null 2>&1 &&
       printf -- 'hash return value:\n%d\n———\n' "$(
         hash "${query-}" >/dev/null 2>&1
-        printf -- '%d\n' "$?"
+        printf -- '%d\n' "${?:-1}"
       )"
 
     # `type` (System V; POSIX)
@@ -1816,7 +1816,7 @@ command -v -- python3 >/dev/null 2>&1 &&
 
 # $?
 question_mark() {
-  printf -- '%d\n' "$?"
+  printf -- '%d\n' "${?:-1}"
 }
 alias '?'='question_mark'
 
