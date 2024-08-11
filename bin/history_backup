@@ -15,7 +15,7 @@
       -path "${HOME%/}"'/.*history' \
       -type f \
       -exec ls -1 -t -- {} + 2>/dev/null |
-      command sed -e '1q'
+      command sed -e '1 q'
   )"
   # verify `$HISTFILE` exists and is not empty
   test -s "${file-}" &&
@@ -32,7 +32,7 @@
               -path '*/.git' -prune -o \
               -type f \
               -exec ls -1 -t -- {} + 2>/dev/null |
-              command sed -e '1q'
+              command sed -e '1 q'
           )"
         )" != ''
     } &&
