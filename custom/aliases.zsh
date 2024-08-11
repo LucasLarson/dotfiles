@@ -558,7 +558,7 @@ count_files_in_this_directory() {
 
 # define
 define() {
-  for query in "${@:-"$0"}"; do
+  for query in "${@:-"${0-}"}"; do
 
     # `hash` (POSIX)
     command -v -- hash >/dev/null 2>&1 &&
@@ -990,16 +990,16 @@ git_clone() {
     ;;
   -1 | --shallow)
     shift
-    command mkdir -p -- "${2:-$(command basename -- "$1" .git)}" >/dev/null 2>&1 &&
-      printf -- 'moving into %s...\n' "${2:-$(command basename -- "$1" .git)}" >&2 &&
-      cd -- "${2:-$(command basename -- "$1" .git)}" >/dev/null 2>&1 &&
-      command git clone --verbose --progress --depth 1 --shallow-submodules -- "$1" "${PWD%/}"
+    command mkdir -p -- "${2:-$(command basename -- "${1-}" .git)}" >/dev/null 2>&1 &&
+      printf -- 'moving into %s...\n' "${2:-$(command basename -- "${1-}" .git)}" >&2 &&
+      cd -- "${2:-$(command basename -- "${1-}" .git)}" >/dev/null 2>&1 &&
+      command git clone --verbose --progress --depth 1 --shallow-submodules -- "${1-}" "${PWD%/}"
     ;;
   *)
-    command mkdir -p -- "${2:-$(command basename -- "$1" .git)}" >/dev/null 2>&1 &&
-      printf -- 'moving into %s...\n' "${2:-$(command basename -- "$1" .git)}" >&2 &&
-      cd -- "${2:-$(command basename -- "$1" .git)}" >/dev/null 2>&1 &&
-      command git clone --verbose --progress --recursive -- "$1" "${PWD%/}"
+    command mkdir -p -- "${2:-$(command basename -- "${1-}" .git)}" >/dev/null 2>&1 &&
+      printf -- 'moving into %s...\n' "${2:-$(command basename -- "${1-}" .git)}" >&2 &&
+      cd -- "${2:-$(command basename -- "${1-}" .git)}" >/dev/null 2>&1 &&
+      command git clone --verbose --progress --recursive -- "${1-}" "${PWD%/}"
     ;;
   esac
 }
@@ -1129,7 +1129,7 @@ git_commit_initial_commit() {
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
   command git init &&
-    if test "$#" -eq 1; then
+    if test "${#}" -eq 1; then
       # add 12 hours (43,200 seconds) so it occurs around midday
       git_time="$(command date -d '@'"$(($(command date -d "${1:-$(command date -- '+%Y-%m-%d')}" -- '+%s') + 12 * 60 * 60))" -- '+%c %z')"
       export GIT_AUTHOR_DATE="${git_time-}"
@@ -1689,7 +1689,7 @@ command -v -- ocrmypdf >/dev/null 2>&1 &&
 
 # open current directory if no argument is given
 open() {
-  if test "$#" -eq 0; then
+  if test "${#}" -eq 0; then
     command open -- .
   else
     case "${1-}" in
@@ -1824,8 +1824,8 @@ alias '?'='question_mark'
 ql() {
   command -v -- qlmanage >/dev/null 2>&1 ||
     return 127
-  while test "$#" -ne 0; do
-    command qlmanage -p -- "$1" >/dev/null 2>&1 &&
+  while test "${#}" -ne 0; do
+    command qlmanage -p -- "${1-}" >/dev/null 2>&1 &&
       shift
   done
 }
