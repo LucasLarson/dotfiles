@@ -58,6 +58,7 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_ANSIBLE: false
           VALIDATE_CHECKOV: false
+          VALIDATE_YAML_PRETTIER: false
           DEFAULT_BRANCH: main
           # Super-Linter requires this variable even if it is unset
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
