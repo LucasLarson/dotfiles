@@ -155,7 +155,7 @@ jobs:
               -- \
               "${1-}"
           ' _ {} ';'
-      - uses: peter-evans/create-pull-request@v6
+      - uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "[autofix] format JSON content"
           title: "[autofix] format JSON content"
