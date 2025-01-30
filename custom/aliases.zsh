@@ -4880,7 +4880,9 @@ git_stash_pop() {
     command git show stash:**/* >./tmp-"$(command -p -- date -- '+%Y%m%d%H%M%S')"
   }
 }
-alias -- gstp='git_stash_pop'
+alias -- \
+  gsta='command git -c color.status=always -c core.quotePath=false stash apply --index stash@'\''{'\''0'\''}'\''' \
+  gstp='git_stash_pop'
 
 git_submodule_cleanup() {
   set \
