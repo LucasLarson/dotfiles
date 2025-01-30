@@ -2817,6 +2817,7 @@ find_files_with_the_same_sizes() {
     -path './*' \
     ! -name '.DS_Store' \
     -type f \
+    ! -size 0 \
     -exec cksum -- {} + |
     # cksum prints 3+ columns; we want all but the first
     LC_ALL='C' command -p -- sed \
