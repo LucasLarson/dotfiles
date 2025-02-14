@@ -6721,19 +6721,26 @@ ocr() {
   # TODO! make this work on all PDFs in folder if no argument is provided
   #
   for file in "${@-}"; do
-    command -p -- test "${file-}" != "${file%.pdf}" ||
-      return "${?:-1}"
-    # useful when processing multiple files
-    command -p -- printf -- '\n%s\n' "${file-}"
-    command ocrmypdf \
-      --deskew \
-      --language eng \
-      --optimize 0 \
-      --pdfa-image-compression lossless \
-      --rotate-pages \
-      --skip-text \
-      -- \
-      "${file-}" "${file-}"
+    command -p -- test -s "${file-}" &&
+      command -p -- test ! -L "${file-}" &&
+      case "${file-}" in
+      *.[Pp][Dd][Ff])
+        # useful when processing multiple files
+        command -p -- printf -- '\n%s\n' "${file-}" &&
+          command ocrmypdf \
+            --deskew \
+            --language eng \
+            --optimize 0 \
+            --pdfa-image-compression lossless \
+            --rotate-pages \
+            --skip-text \
+            -- \
+            "${file-}" "${file-}"
+        ;;
+      *)
+        return "${?:-1}"
+        ;;
+      esac
   done
 }
 ocr_eo() {
