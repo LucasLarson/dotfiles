@@ -1700,7 +1700,7 @@ exif_remove() {
     -o noclobber \
     -o nounset \
     -o xtrace
-  for file in "${@-}"; do
+  for file in "${@:-.}"; do
     command -p -- test -s "${file-}" &&
       command -p -- test ! -L "${file-}" &&
       # https://github.com/cirosantilli/dotfiles/blob/60ca745cdc/home/.bashrc#L2838-L2842
