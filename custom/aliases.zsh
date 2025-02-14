@@ -7282,7 +7282,7 @@ advpng_r() {
         command advpng \
           --recompress \
           --shrink-insane \
-          --iter 128 \
+          --iter 1024 \
           -- \
           "${file-}"
         ;;
