@@ -8815,8 +8815,9 @@ subdomains() {
       -e '# replace all strings of commas with a single newline' \
       -e 's/,\{1,\}/\n/g' \
       -e '# replace all closing square brackets with a newline' \
-      -e 's/\]/\n/g'
-  # command jq --raw-output '.[]' |
+      -e 's/\]/\n/g' |
+    LC_ALL='C' command -p -- sort -u |
+    LC_ALL='C' command -p -- sort -f
 }
 
 substring_bash() {
