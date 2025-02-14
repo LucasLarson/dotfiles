@@ -4868,14 +4868,14 @@ git_stash_pop() {
   # https://stackoverflow.com/q/51275777
   command git stash pop || {
     command git stash show --patch |
-      command git -c core.quotePath=false apply --3
+      command git -c color.status=always -c core.quotePath=false apply --3
   } || {
-    command git -c core.quotePath=false checkout stash -- .
+    command git -c color.status=always -c core.quotePath=false checkout stash -- .
   } || {
     command git diff "$(git_current_branch)" stash:**/* |
-      command git -c core.quotePath=false apply --3
+      command git -c color.status=always -c core.quotePath=false apply --3
   } || {
-    command git -c core.quotePath=false diff "$(git_current_branch)" stash:**/*
+    command git -c color.status=always -c core.quotePath=false diff "$(git_current_branch)" stash:**/*
   } || {
     command git -c core.quotePath=false show stash:**/* >./tmp-"$(command -p -- date -- '+%Y%m%d%H%M%S')"
   }
