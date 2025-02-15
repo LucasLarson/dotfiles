@@ -55,8 +55,8 @@ acrobat() {
       command -p -- sed \
         -n \
         -e '/1/ {' \
-        -e ' s/^\/Applications\///' \
-        -e ' s/\.app$//' \
+        -e '  s/^\/Applications\///' \
+        -e '  s/\.app$//' \
         -e '}' \
         -e 'p'
   )" -- "${@-}"
