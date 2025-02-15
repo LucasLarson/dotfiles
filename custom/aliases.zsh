@@ -41,25 +41,29 @@ acrobat() {
     -o nounset \
     -o verbose \
     -o xtrace
-  command -p -- open -a "$(
-    (
-      # /Applications/*/*/* instead of
-      # /Applications/*/* because it’s possibly inside /Applications/Adobe Acrobat DC
-      command -p -- find -- /Applications \
-        -path '/Applications/*/*/*' -prune -o \
-        -name 'Adobe Acrobat.app' \
-        -type d \
-        -exec ls -d -1 -t -- {} + 2>/dev/null \
-        &
-    ) |
-      command -p -- sed \
-        -n \
-        -e '/1/ {' \
-        -e '  s/^\/Applications\///' \
-        -e '  s/\.app$//' \
-        -e '}' \
-        -e 'p'
-  )" -- "${@-}"
+  for file in "${@-}"; do
+    command -p -- test -s "${file-}" &&
+      command -p -- test ! -L "${file-}" &&
+      command -p -- open -a "$(
+        (
+          # /Applications/*/*/* instead of
+          # /Applications/*/* because it’s possibly inside /Applications/Adobe Acrobat DC
+          command -p -- find -- /Applications \
+            -path '/Applications/*/*/*' -prune -o \
+            -name 'Adobe Acrobat.app' \
+            -type d \
+            -exec ls -d -1 -t -- {} + 2>/dev/null \
+            &
+        ) |
+          command -p -- sed \
+            -n \
+            -e '/1/ {' \
+            -e '  s/^\/Applications\///' \
+            -e '  s/\.app$//' \
+            -e '}' \
+            -e 'p'
+      )" -- "${file-}"
+  done
   {
     set \
       +o noclobber \
