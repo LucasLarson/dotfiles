@@ -4855,7 +4855,7 @@ git_stash_save_all() {
     command git stash push
 }
 alias -- gstall='git_stash_save_all'
-gstc() {
+gst_c() {
   command git stash clear &&
     command find -- "${GIT_DIR:-./.git}" \
       -depth \
