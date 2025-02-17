@@ -9562,6 +9562,8 @@ url_to_filename() {
       -e 's|)|'"$(LC_ALL='C' command -p -- printf -- '\357\274\211')"'|g' \
       -e '# replace [especially Wikipedia] “File:” with “File：”' \
       -e 's|:|'"$(LC_ALL='C' command -p -- printf -- '\357\274\232')"'|g' \
+      -e '# replace asterisks with asterisk operator (“∗”)' \
+      -e 's|*|'"$(LC_ALL='C' command -p -- printf -- '\342\210\227')"'|g' \
       -e '# replace spaces with underscores' \
       -e 's| |_|g' \
       -e '# remove trailing hashmarks if any' \
