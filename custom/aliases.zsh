@@ -4855,6 +4855,11 @@ git_stash_save_all() {
     command git stash push
 }
 alias -- gstall='git_stash_save_all'
+git_stash_save_keep() {
+  command git stash push --keep-index -m "${@-}" 2>/dev/null ||
+    command git stash push --keep-index
+}
+alias -- gstk='git_stash_save_keep'
 gst_c() {
   command git stash clear &&
     command find -- "${GIT_DIR:-./.git}" \
