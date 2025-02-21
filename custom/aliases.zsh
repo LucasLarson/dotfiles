@@ -7269,7 +7269,7 @@ to_png() {
   for file in "${@-}"; do
     command magick \
       -background none \
-      -density 2048 \
+      -density "${d:-2048}" \
       -quality 100 \
       -verbose \
       -- \
