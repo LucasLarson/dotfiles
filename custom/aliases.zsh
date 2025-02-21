@@ -2814,8 +2814,7 @@ done
 
 find_files_with_the_same_sizes() {
   set \
-    -o noglob \
-    -o xtrace
+    -o noglob
   LC_ALL='C' command -p -- find -- . \
     -path '*/.git' -prune -o \
     -path './*' \
@@ -2845,8 +2844,7 @@ END {
 }'
   {
     set \
-      +o noglob \
-      +o xtrace
+      +o noglob
   } 2>/dev/null
 }
 alias find_duplicate_sizes='find_files_with_the_same_sizes'
