@@ -1381,11 +1381,12 @@ dimensions() {
   # even for SVGs
   # requires Exiftool
   for file in "${@-}"; do
-    command exiftool \
-      -ViewBox \
-      -short3 \
-      -- \
-      "${file-}" |
+    command -p -- test -s "${file-}" &&
+      command exiftool \
+        -ViewBox \
+        -short3 \
+        -- \
+        "${file-}" |
       command -p -- sed \
         -e '# the following checks for 4 numbers, each of which may be negative and may not be an integer' \
         -e '# it assumes that exiftool will always print the leading 0 in decimals like in zero point eight' \
@@ -1397,27 +1398,27 @@ dimensions() {
         -e '# 5. for the first 3 of 4 numbers are they followed by a space; for the fourth, is it followed by a newline' \
         -e '# 6. the replacement is x2 or \5 minus x1 or \3 newline y2 or \7 minus y1 or \3' \
         -e '# 7. but because any number can be negative, and we need its absolute value, we subtract, then square, then take the square root' -e 's/^\(-\{0,1\}[[:digit:]]\{1,\}\(\.[[:digit:]]\{1,\}\)\{0,1\}\) \(-\{0,1\}[[:digit:]]\{1,\}\(\.[[:digit:]]\{1,\}\)\{0,1\}\) \(-\{0,1\}[[:digit:]]\{1,\}\(\.[[:digit:]]\{1,\}\)\{0,1\}\) \(-\{0,1\}[[:digit:]]\{1,\}\(\.[[:digit:]]\{1,\}\)\{0,1\}\)$/sqrt ( (\5 - \1) ^ 2)\nsqrt ( (\7 - \3) ^ 2)/' |
-      command -p -- bc -l |
-      # reduce `bc`’s trailing decimal zeroes
-      command -p -- sed \
-        -e '# search for lines containing a decimal point' \
-        -e '/\./ {' \
-        -e '  # for integers, remove the decimal altogether' \
-        -e '  s/\.00*$//' \
-        -e '  ### not working # for non-integers, remove trailing zeroes from the decimal' \
-        -e '  ### s/0*$//' \
-        -e '}' |
-      command -p -- sed \
-        -n \
-        -e 'replace width newline height with width then the letter x then height' \
-        -e '# https://chat.openai.com/share/67116f22-0a70-8007-8c8d-f73cd9458075' \
-        -e 'H' \
-        -e '$ {' \
-        -e '  x' \
-        -e '  s/^\n//' \
-        -e '  s/\n/x/g' \
-        -e '  p' \
-        -e '}'
+        command -p -- bc -l |
+        # reduce `bc`’s trailing decimal zeroes
+        command -p -- sed \
+          -e '# search for lines containing a decimal point' \
+          -e '/\./ {' \
+          -e '  # for integers, remove the decimal altogether' \
+          -e '  s/\.00*$//' \
+          -e '  ### not working # for non-integers, remove trailing zeroes from the decimal' \
+          -e '  ### s/0*$//' \
+          -e '}' |
+        command -p -- sed \
+          -n \
+          -e 'replace width newline height with width then the letter x then height' \
+          -e '# https://chat.openai.com/share/67116f22-0a70-8007-8c8d-f73cd9458075' \
+          -e 'H' \
+          -e '$ {' \
+          -e '  x' \
+          -e '  s/^\n//' \
+          -e '  s/\n/x/g' \
+          -e '  p' \
+          -e '}'
     command exiftool -ImageSize -short3 -- "${file-}" >/dev/null 2>&1 &&
       command exiftool \
         -ImageSize \
