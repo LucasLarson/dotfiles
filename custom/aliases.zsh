@@ -5623,13 +5623,23 @@ icns_to_png() {
       case "${file-}" in
       *.[Ii][Cc][Nn][Ss])
         # https://web.archive.org/web/0id_/simplehelp.net/?p=4870
-        command sips \
-          --debug \
-          --setProperty format png \
-          --setProperty formatOptions 100 \
-          "${file-}" \
-          --addIcon \
-          --out "${file%.*}"'.png'
+        command -v -- sips >/dev/null 2>&1 &&
+          command sips \
+            --debug \
+            --setProperty format png \
+            --setProperty formatOptions 100 \
+            "${file-}" \
+            --addIcon \
+            --out "${file%.*}"'.sips.png'
+        command -v -- icns2png >/dev/null 2>&1 &&
+          # icns2png output Goldilocks:
+          #   `--list` increases verbosity
+          #   `2>/dev/null` reduces verbosity
+          command icns2png \
+            --list \
+            --extract \
+            -- \
+            "${file-}" 2>/dev/null
         ;;
       *)
         # EX_DATAERR
