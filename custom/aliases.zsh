@@ -4405,7 +4405,6 @@ git_commit_initial_commit() {
 }
 alias -- \
   gcic='git_commit_initial_commit' \
-  ginit='command git init && command git status' \
   ginit='command git -c init.defaultBranch=main init --template='\'''\'' && command git status'
 
 # git ls
