@@ -9563,6 +9563,8 @@ url_to_filename() {
       -e 's|/|'"$(LC_ALL='C' command -p -- printf -- '\342\210\225')"'|g' \
       -e '# replace question marks with “︖”' \
       -e 's|?|'"$(LC_ALL='C' command -p -- printf -- '\357\270\226')"'|g' \
+      -e '# replace exclamation points with “！”' \
+      -e 's|!|'"$(LC_ALL='C' command -p -- printf -- '\357\274\201')"'|g' \
       -e '# replace ampersands with “＆”' \
       -e 's|&|'"$(LC_ALL='C' command -p -- printf -- '\357\274\206')"'|g' \
       -e '# replace parentheses with fullwidth punctuation' \
