@@ -9,20 +9,20 @@
 
 ## PATH
 PATH="$(command -p -- getconf -- PATH)${PATH:+:${PATH-}}"
-test -d '/usr/local/sbin' &&
+command -p -- test -d '/usr/local/sbin' &&
   PATH='/usr/local/sbin'"${PATH:+:${PATH-}}"
-test -d '/usr/local/bin' &&
+command -p -- test -d '/usr/local/bin' &&
   PATH='/usr/local/bin'"${PATH:+:${PATH-}}"
-test -d "${HOME%/}"'/bin' &&
+command -p -- test -d "${HOME%/}"'/bin' &&
   PATH="${HOME%/}"'/bin'"${PATH:+:${PATH-}}"
-test -d "${HOME%/}"'/.local/bin' &&
+command -p -- test -d "${HOME%/}"'/.local/bin' &&
   PATH="${HOME%/}"'/.local/bin'"${PATH:+:${PATH-}}"
-test -d "${DOTFILES-}"'/bin' &&
+command -p -- test -d "${DOTFILES-}"'/bin' &&
   PATH="${DOTFILES-}"'/bin'"${PATH:+:${PATH-}}"
 
 ## History
 HISTFILE="${HOME%/}"'/.'"${SHELL##*/}"'_history'
-SAVEHIST="$(command getconf -- UINT_MAX)"
+SAVEHIST="$(command -p -- getconf -- UINT_MAX)"
 HISTSIZE="${SAVEHIST-}"
 export HISTFILE SAVEHIST HISTSIZE
 
@@ -61,9 +61,9 @@ done
 unset -v -- file
 
 ## MANPATH
-test -d '/usr/local/man' &&
+command -p -- test -d '/usr/local/man' &&
   MANPATH='/usr/local/man'"${MANPATH:+:${MANPATH-}}"
-test -d '/usr/share/man' &&
+command -p -- test -d '/usr/share/man' &&
   MANPATH='/usr/share/man'"${MANPATH:+:${MANPATH-}}"
 command man -w >/dev/null 2>&1 &&
   MANPATH="${MANPATH:+${MANPATH-}:}$(command man -w)"
@@ -81,89 +81,89 @@ export VISUAL="${VISUAL:-${EDITOR:-vi}}"
 ## Homebrew
 if command -v -- brew >/dev/null 2>&1; then
   HOMEBREW_PREFIX="$(command brew --prefix)"
-  test -d "${HOMEBREW_PREFIX-}"'/sbin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/sbin' &&
     PATH="${HOMEBREW_PREFIX-}"'/sbin'"${PATH:+:${PATH-}}"
 
   # GNU bc
-  test -d "${HOMEBREW_PREFIX-}"'/opt/bc/bin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/bc/bin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/bc/bin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/bc/share/man' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/bc/share/man' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/bc/share/man'"${MANPATH:+:${MANPATH-}}"
 
   # uutils coreutils
-  test -d "${HOMEBREW_PREFIX-}"'/opt/uutils-coreutils/libexec/uubin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/uutils-coreutils/libexec/uubin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/uutils-coreutils/libexec/uubin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/uutils-coreutils/libexec/uuman' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/uutils-coreutils/libexec/uuman' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/uutils-coreutils/libexec/uuman'"${MANPATH:+:${MANPATH-}}"
 
   # curl
-  test -d "${HOMEBREW_PREFIX-}"'/opt/curl/bin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/curl/bin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/curl/bin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/curl/share/man' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/curl/share/man' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/curl/share/man'"${MANPATH:+:${MANPATH-}}"
 
   # file
-  test -d "${HOMEBREW_PREFIX-}"'/opt/file/bin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/file/bin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/file/bin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/file/share/man' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/file/share/man' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/file/share/man'"${MANPATH:+:${MANPATH-}}"
 
   # GNU findutils
-  test -d "${HOMEBREW_PREFIX-}"'/opt/findutils/libexec/gnubin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/findutils/libexec/gnubin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/findutils/libexec/gnubin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/findutils/libexec/gnuman' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/findutils/libexec/gnuman' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/findutils/libexec/gnuman'"${MANPATH:+:${MANPATH-}}"
 
   # GNU grep
-  test -d "${HOMEBREW_PREFIX-}"'/opt/grep/libexec/gnubin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/grep/libexec/gnubin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/grep/libexec/gnubin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/grep/libexec/gnuman' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/grep/libexec/gnuman' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/grep/libexec/gnuman'"${MANPATH:+:${MANPATH-}}"
 
   # libarchive
-  test -d "${HOMEBREW_PREFIX-}"'/opt/libarchive/bin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/libarchive/bin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/libarchive/bin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/libarchive/share/man' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/libarchive/share/man' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/libarchive/share/man'"${MANPATH:+:${MANPATH-}}"
 
   # GNU make
-  test -d "${HOMEBREW_PREFIX-}"'/opt/make/libexec/gnubin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/make/libexec/gnubin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/make/libexec/gnubin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/make/libexec/gnuman' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/make/libexec/gnuman' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/make/libexec/gnuman'"${MANPATH:+:${MANPATH-}}"
 
   # openssl
-  test -d "${HOMEBREW_PREFIX-}"'/opt/openssl/bin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/openssl/bin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/openssl/bin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/openssl/share/man' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/openssl/share/man' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/openssl/share/man'"${MANPATH:+:${MANPATH-}}"
   export LDFLAGS="${LDFLAGS:+${LDFLAGS-} }"'-L'"${HOMEBREW_PREFIX-}"'/opt/openssl/lib'
   export CPPFLAGS="${CPPFLAGS:+${CPPFLAGS-} }"'-I'"${HOMEBREW_PREFIX-}"'/opt/openssl/include'
   PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+${PKG_CONFIG_PATH-}:}${HOMEBREW_PREFIX-}"'/opt/openssl/lib/pkgconfig'
 
   # GNU sed
-  test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-sed/libexec/gnubin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-sed/libexec/gnubin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/gnu-sed/libexec/gnubin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-sed/libexec/gnuman' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-sed/libexec/gnuman' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/gnu-sed/libexec/gnuman'"${MANPATH:+:${MANPATH-}}"
 
   # GNU tar
   # otherwise `tar` requires `tar --no-mac-metadata`
-  test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-tar/libexec/gnubin' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-tar/libexec/gnubin' &&
     PATH="${HOMEBREW_PREFIX-}"'/opt/gnu-tar/libexec/gnubin'"${PATH:+:${PATH-}}"
-  test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-tar/libexec/gnuman' &&
+  command -p -- test -d "${HOMEBREW_PREFIX-}"'/opt/gnu-tar/libexec/gnuman' &&
     MANPATH="${HOMEBREW_PREFIX-}"'/opt/gnu-tar/libexec/gnuman'"${MANPATH:+:${MANPATH-}}"
 fi
 
 ## Rust
-test -d "${HOME%/}"'/.cargo/bin' &&
+command -p -- test -d "${HOME%/}"'/.cargo/bin' &&
   PATH="${HOME%/}"'/.cargo/bin'"${PATH:+:${PATH-}}"
 
 ## npm
 export NPM_PACKAGES="${HOME%/}"'/.npm-packages'
-test -d "${NPM_PACKAGES-}"'/bin' &&
+command -p -- test -d "${NPM_PACKAGES-}"'/bin' &&
   PATH="${PATH:+${PATH-}:}${NPM_PACKAGES-}"'/bin'
-test -d "${NPM_PACKAGES-}"'/share/man' &&
+command -p -- test -d "${NPM_PACKAGES-}"'/share/man' &&
   MANPATH="${MANPATH:+${MANPATH-}:}${NPM_PACKAGES-}"'/share/man'
 
 zstyle ':completion:*' special-dirs false
@@ -171,7 +171,7 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format %B%F"{green}"%d%f%b
 
 ## plugin: zsh-completions
-test -d "${ZSH_CUSTOM-}"'/plugins/zsh-completions/src' &&
+command -p -- test -d "${ZSH_CUSTOM-}"'/plugins/zsh-completions/src' &&
   FPATH="${FPATH:+${FPATH-}:}${ZSH_CUSTOM-}"'/plugins/zsh-completions/src'
 
 autoload -U compinit &&
@@ -193,29 +193,29 @@ set -o share_history
 set -o interactive_comments
 
 ## C, C++
-if test "$(command xcrun --show-sdk-path 2>/dev/null)" != ''; then
+if command -p -- test "$(command xcrun --show-sdk-path 2>/dev/null)" != ''; then
   CPATH="$(command xcrun --show-sdk-path)"'/usr/include'"${CPATH:+:${CPATH-}}"
   export CPATH
 fi
 
 ## cpplint
 # `$LIBRARY_PATH` || ld: library not found for -lSystem
-if test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
+if command -p -- test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
   export LIBRARY_PATH='/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'"${LIBRARY_PATH:+:${LIBRARY_PATH-}}"
 fi
 
 ## Go
-test "${GOPATH-}" != '' &&
-  test -d "${GOPATH-}"'/bin' &&
+command -p -- test "${GOPATH-}" != '' &&
+  command -p -- test -d "${GOPATH-}"'/bin' &&
   PATH="${GOPATH-}"'/bin'"${PATH:+:${PATH-}}"
 
 ## rbenv
-test -d "${HOME%/}"'/.rbenv/shims' &&
+command -p -- test -d "${HOME%/}"'/.rbenv/shims' &&
   PATH="${HOME%/}"'/.rbenv/shims'"${PATH:+:${PATH-}}"
 
 ## PATHs
 # prevent duplicate entries
-test "${ZSH-}" != '' &&
+command -p -- test "${ZSH-}" != '' &&
   export -U \
     PATH path \
     CDPATH cdpath \
