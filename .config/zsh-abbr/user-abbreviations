@@ -4,8 +4,10 @@
 # shellcheck disable=SC2016
 
 ## aliases
+abbr --global alaise='aliases'
 abbr --global alaisees='aliases'
 abbr --global alaises='aliases'
+abbr --global aliaases='aliases'
 abbr --global aliasees='aliases'
 
 ## chmod
