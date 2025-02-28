@@ -6773,18 +6773,25 @@ ocr_eo() {
   command -v -- ocrmypdf >/dev/null 2>&1 ||
     return "${?:-1}"
   for file in "${@-}"; do
-    command -p -- test "${file-}" != "${file%.pdf}" ||
-      return "${?:-1}"
-    command -p -- printf -- '\n%s\n' "${file-}"
-    command ocrmypdf \
-      --deskew \
-      --language eng+epo \
-      --optimize 0 \
-      --pdfa-image-compression lossless \
-      --rotate-pages \
-      --skip-text \
-      -- \
-      "${file-}" "${file-}"
+    command -p -- test -s "${file-}" &&
+      command -p -- test ! -L "${file-}" &&
+      case "${file-}" in
+      *.[Pp][Dd][Ff])
+        command -p -- printf -- '\n%s\n' "${file-}" &&
+          command ocrmypdf \
+            --deskew \
+            --language eng+epo \
+            --optimize 0 \
+            --pdfa-image-compression lossless \
+            --rotate-pages \
+            --skip-text \
+            -- \
+            "${file-}" "${file-}"
+        ;;
+      *)
+        return "${?:-1}"
+        ;;
+      esac
   done
 }
 
