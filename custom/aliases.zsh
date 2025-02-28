@@ -6752,7 +6752,7 @@ ocr() {
       case "${file-}" in
       *.[Pp][Dd][Ff])
         # useful when processing multiple files
-        command -p -- printf -- '\n%s\n' "${file-}" &&
+        command -p -- printf -- '\n%s\n' "${file-}" >&2 &&
           command ocrmypdf \
             --deskew \
             --language eng \
@@ -6777,7 +6777,7 @@ ocr_eo() {
       command -p -- test ! -L "${file-}" &&
       case "${file-}" in
       *.[Pp][Dd][Ff])
-        command -p -- printf -- '\n%s\n' "${file-}" &&
+        command -p -- printf -- '\n%s\n' "${file-}" >&2 &&
           command ocrmypdf \
             --deskew \
             --language eng+epo \
