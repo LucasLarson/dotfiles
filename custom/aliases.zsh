@@ -2463,6 +2463,15 @@ find_files_without_newline() {
     -exec sh -c 'command -p -- file -- "${1-}" | command -p -- grep -v -e '\'':.*executable'\'' -e '\'':.*image'\'' >/dev/null 2>&1 && command -p -- test "$(command -p -- tail -c 1 -- "${1-}" 2>/dev/null)" != '\'''\'' && command -p -- printf -- '\''%s\n'\'' "${1-}"' _ {} ';'
 }
 
+find_files_with_windows_newline() {
+  command find -- . \
+    -path '*/.git' -prune -o \
+    -path './*' \
+    ! -name '.DS_Store' \
+    -type f \
+    -exec sh -c 'command -p -- file -- "${1-}" | command -p -- grep -v -e '\'':.*-bit '\'' -e '\'':.*binary'\'' -e '\'':.*executable'\'' -e '\'': GIF image'\'' -e '\'': JPEG image'\'' -e '\'': PNG image'\'' -e '\'': RIFF '\'' >/dev/null 2>&1 && command -p -- grep -l -e "$(command -p -- printf -- '\''\015\012'\'')" -- "${1-}" 2>/dev/null' _ {} ';'
+}
+
 # find HTML
 find_html_files() {
   command -p -- find -- . \
