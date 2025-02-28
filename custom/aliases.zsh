@@ -6764,7 +6764,7 @@ ocr() {
             "${file-}" "${file-}"
         ;;
       *)
-        return "${?:-1}"
+        shift 1
         ;;
       esac
   done
@@ -6789,7 +6789,7 @@ ocr_eo() {
             "${file-}" "${file-}"
         ;;
       *)
-        return "${?:-1}"
+        shift 1
         ;;
       esac
   done
