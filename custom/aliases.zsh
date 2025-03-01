@@ -5371,6 +5371,31 @@ rg() {
     "${@-}" 2>/dev/null
   unset utility 2>/dev/null || utility=''
 }
+rgv() {
+  utility="$(
+    {
+      command -p -- test -x "$(command -v -- rga)" &&
+        command -v -- rga
+    } || {
+      command -p -- test -x "$(command -v -- rg)" &&
+        command -v -- rg
+    }
+  )"
+  command -p -- test "${utility-}" = '' &&
+    command -p -- grep -E -r -v -e "${@-}"
+  command "${utility-}" \
+    -v \
+    --glob '!**.git' \
+    --glob '!**node_modules' \
+    --glob '!**plugins' \
+    --glob '!**themes' \
+    --glob '!**copilot*' \
+    --glob '!**dummy*' \
+    --glob '!**vscode*' \
+    --hidden \
+    "${@-}" 2>/dev/null
+  unset utility 2>/dev/null || utility=''
+}
 
 grep_but_line() {
   # https://chatgpt.com/share/b7efc291-4902-43c1-b5ff-2efc995eb230
