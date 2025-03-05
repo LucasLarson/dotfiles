@@ -5568,13 +5568,6 @@ histfile() {
   ## remove the last entry from `$HISTFILE`
   # temporarily use a copy of `$HISTFILE` until we figure out if this works
 
-  # guardrails
-  set \
-    -o noclobber \
-    -o noglob \
-    -o verbose \
-    -o xtrace
-
   # create a temporary location for the file
   command -p -- mkdir -p -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash'
 
@@ -5610,13 +5603,6 @@ EOF
     return "${?:-126}"
     ;;
   esac
-  {
-    set \
-      +o noclobber \
-      +o noglob \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
 }
 alias -- hundo='histfile'
 
