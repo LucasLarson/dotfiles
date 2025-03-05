@@ -1319,7 +1319,7 @@ alias -- d='define'
 
 alias -- diff >/dev/null 2>&1 &&
   unalias -- diff
-alias -- diff='command git diff --color-words --no-index'
+alias -- diff='command git -c core.quotePath=false diff --color-words --no-index'
 diffy() {
   command diff \
     --side-by-side \
@@ -4200,41 +4200,41 @@ alias -- gd >/dev/null 2>&1 &&
   unalias -- gd
 gd() {
   if command -p -- test "$(command git diff --shortstat "${@-}" 2>/dev/null)" != ''; then
-    command git diff "${@-}"
+    command git -c core.quotePath=false diff "${@-}"
   else
-    command git diff --cached "${@-}"
+    command git -c core.quotePath=false diff --cached "${@-}"
   fi
 }
 alias -- gds >/dev/null 2>&1 &&
   unalias -- gds
 gds() {
   if command -p -- test "$(command git diff --cached --shortstat "${@-}" 2>/dev/null)" != ''; then
-    command git diff --cached "${@-}"
+    command git -c core.quotePath=false diff --cached "${@-}"
   else
-    command git diff "${@-}"
+    command git -c core.quotePath=false diff "${@-}"
   fi
 }
 git_diff_with_filesizes() {
   {
     command -p -- test "$(command git diff --color=auto --stat "${@-}")" != '' &&
-      command git diff --color=auto --stat "${@-}"
+      command git -c core.quotePath=false diff --color=auto --stat "${@-}"
   } ||
-    command git diff --cached --color=auto --stat "${@-}"
+    command git -c core.quotePath=false diff --cached --color=auto --stat "${@-}"
 }
 git_diff_staged_with_filesizes() {
   {
     command -p -- test "$(command git diff --cached --color=auto --stat "${@-}")" != '' &&
-      command git diff --cached --color=auto --stat "${@-}"
+      command git -c core.quotePath=false diff --cached --color=auto --stat "${@-}"
   } ||
-    command git diff --color=auto --stat "${@-}"
+    command git -c core.quotePath=false diff --color=auto --stat "${@-}"
 }
 
-alias -- gdm='command git diff "$(git-default-branch)" --'
+alias -- gdm='command git -c core.quotePath=false diff "$(git-default-branch)" --'
 gdom() {
-  command git diff "$(command git config --get branch."$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote || command git branch --list --remotes | command -p -- sed -n -e 's/^[[:space:]]*\([^[:space:]]*\)\/HEAD -> [^[:space:]]*$/\1/p')"/"$(git-default-branch)" "${@-}"
+  command git -c core.quotePath=false diff "$(command git config --get branch."$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote || command git branch --list --remotes | command -p -- sed -n -e 's/^[[:space:]]*\([^[:space:]]*\)\/HEAD -> [^[:space:]]*$/\1/p')"/"$(git-default-branch)" "${@-}"
 }
 gdmom() {
-  command git diff "$(git-default-branch)" "$(command git config --get branch."$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote || command git remote --verbose | command -p -- grep -e ' (push)$' | command awk -- '{print $0}' | command -p -- sed -e '1 q')"/"$(git-default-branch)" "${@:---}"
+  command git -c core.quotePath=false diff "$(git-default-branch)" "$(command git config --get branch."$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote || command git remote --verbose | command -p -- grep -e ' (push)$' | command awk -- '{print $0}' | command -p -- sed -e '1 q')"/"$(git-default-branch)" "${@:---}"
 }
 
 gf() {
@@ -4888,7 +4888,7 @@ git_stash_pop() {
   } || {
     command git -c color.status=always -c core.quotePath=false checkout stash -- .
   } || {
-    command git diff "$(git_current_branch)" stash:**/* |
+    command git -c core.quotePath=false diff "$(git_current_branch)" stash:**/* |
       command git -c color.status=always -c core.quotePath=false apply --3
   } || {
     command git -c color.status=always -c core.quotePath=false diff "$(git_current_branch)" stash:**/*
