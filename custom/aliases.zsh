@@ -9582,6 +9582,15 @@ url_to_filename() {
     command -p -- sed \
       -e '# remove https/http/chrome/brave protocol and www' \
       -e 's|.*://\(w*\.\)*||g' \
+      -e '# remove leading github.com/ or gitlab.com/' \
+      -e 's|git..b\.com/||g' \
+      -e '# remove “/blob”, “/-/blob”, “/tree”, “/-/tree”, “/commit”, “/-/commit”' \
+      -e 's|/*-*/blob/|/|' \
+      -e 's|/*-*/tree/|/|' \
+      -e 's|/*-*/commit/|/|' \
+      -e '# replace slash plus up to 40 hexadecimal characters with “@” plus their first 7' \
+      -e '# https://chat.com/share/67cdc568-5cec-8007-99a4-57fb960a96e3' \
+      -e 's|/\([[:xdigit:]]\)\([[:xdigit:]]\)\([[:xdigit:]]\)\([[:xdigit:]]\)\([[:xdigit:]]\)\([[:xdigit:]]\)\([[:xdigit:]]\)[[:xdigit:]]\{33\}|@\1\2\3\4\5\6\7|g' \
       -e '# replace slashes with “∕”' \
       -e 's|/|'"$(LC_ALL='C' command -p -- printf -- '\342\210\225')"'|g' \
       -e '# replace question marks with “︖”' \
