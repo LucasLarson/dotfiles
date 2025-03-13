@@ -7850,6 +7850,9 @@ rename_with_dimensions() {
 
 # remove
 rm() {
+  command -p -- test "${#}" -eq 0 &&
+    # EX_USAGE after `command -p -- rm --`’s response
+    return 64
   (
     PS4=' '
     set \
