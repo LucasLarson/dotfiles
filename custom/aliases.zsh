@@ -4394,14 +4394,8 @@ git_commit_initial_commit() {
   command git commit --allow-empty --signoff --verbose --message="$(command -p -- printf -- '\360\237\214\263\302\240 root commit')" &&
     # ...and add a signed v0.0.0 tag to it
     command git tag --annotate --sign "${2:-v0.0.0}" --message='' &&
-    # ...and if there are files present...
-    # @TODO: change this to `git status --porcelain | grep -e '^??' >/dev/null 2>&1` for speed per ChatGPT
-    command git ls-files -z --exclude-standard --others | LC_ALL='C' command -p -- tr -- '\0' '\n' | while IFS='' read -r -- file; do
-      # if each is not zero-length...
-      command -p -- test -s "${file-}" &&
-      # ...then add it...
-      command git add --verbose -- "${file-}"
-    done &&
+    # ...and if there are files present, then add them...
+    command git add --verbose -- . &&
     # ...and commit them
     command git commit --signoff --verbose --message="$(command -p -- printf -- '\342\234\250\302\240 initial commit')" &&
     # ...and add a signed v0.0.1 tag
