@@ -7242,6 +7242,7 @@ plist_r() {
         -name '*.tmPreferences' -o \
         -name '*.tmSnippet' -o \
         -name '*.tmTheme' -o \
+        -name '*.ttps' -o \
         -name '*.waveform' -o \
         -name '*.webarchive' -o \
         -name '*.webloc' -o \
