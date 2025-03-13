@@ -2577,7 +2577,7 @@ find_image_files() {
         --language=sh \
         --paging=never \
         -- \
-        - 2>/dev/null ||
+        - >&2 2>/dev/null ||
       command -p -- cat \
         -- \
         -
