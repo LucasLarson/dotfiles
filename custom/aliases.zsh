@@ -5905,6 +5905,17 @@ image_color_frequency() {
   done
 }
 
+image_get_pixel() {
+  # https://github.com/cirosantilli/dotfiles/blob/60ca745cdc/home/.bashrc#L2829-L2836
+  # $ image_get_pixel file.png 10 20
+  # to obtain the color of the pixel at x=10, y=20
+  command magick -- "${1-}" -crop 1x1'+'"${2:-1}"'+'"${3:-1}" rgba:- |
+    command -p -- od -A n -t x1 |
+    command -p -- sed \
+      -e 's/^[[:space:]]*//' \
+      -e 'q'
+}
+
 ip() {
   # https://web.archive.org/web/2022/news.ycombinator.com/item?id=29848744
   set -- 'https://ipinfo.io/'"${1-}"'?token='"${IPINFO_TOKEN-}"
