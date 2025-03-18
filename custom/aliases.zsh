@@ -5863,6 +5863,26 @@ alias -- \
   invisible='command chflags -h -v -v -x hidden' \
   uninvisible='command chflags -h -v -v -x nohidden'
 
+image_color_frequency() {
+  for file in "${@-}"; do
+    case "${file-}" in
+    --)
+      shift
+      ;;
+    *)
+      command magick "${file-}" txt:- |
+        command awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ {print $3}' |
+        LC_ALL='C' command -p -- sort |
+        LC_ALL='C' command -p -- uniq -c |
+        LC_ALL='C' command -p -- sort -n |
+        # %10d allows columnar output iff each frequency occurs fewer than 10^9 times
+        command awk -- '{printf "%10d %s\n", $1, $2}' |
+        LC_ALL='C' command -p -- tr -- '[:upper:]' '[:lower:]'
+      ;;
+    esac
+  done
+}
+
 ip() {
   # https://web.archive.org/web/2022/news.ycombinator.com/item?id=29848744
   set -- 'https://ipinfo.io/'"${1-}"'?token='"${IPINFO_TOKEN-}"
