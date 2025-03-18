@@ -5863,6 +5863,28 @@ alias -- \
   invisible='command chflags -h -v -v -x hidden' \
   uninvisible='command chflags -h -v -v -x nohidden'
 
+image_color_count() {
+  # print the number of unique colors found in the image
+  # usage: image_color_count image.jpg
+  for file in "${@-}"; do
+    case "${file-}" in
+    --)
+      shift
+      ;;
+    *)
+      command magick "${file-}" txt:- |
+        # if column 3 is a hashed hexadecimal color,
+        # that has not yet been printed,
+        # then print it
+        command awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ && ! seen[$3]++ {print $3}' |
+        LC_ALL='C' command -p -- sort -f |
+        LC_ALL='C' command -p -- tr -- '[:upper:]' '[:lower:]' |
+        LC_ALL='C' command -p -- nl
+      ;;
+    esac
+  done
+}
+
 image_color_frequency() {
   for file in "${@-}"; do
     case "${file-}" in
