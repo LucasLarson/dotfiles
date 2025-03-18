@@ -2561,6 +2561,7 @@ find_images_with_incorrect_filename_extensions() {
       # `grep -F` for filenames like `/Users/LucasLarson/c/d/grep.app.command -p -- [^ ]* -- .search.20240430.jpg`
       case "${file-}" in
       *.[Aa][Ii]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': PDF document' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
+      *.[Aa][Vv][Ii][Ff]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': ISO Media, AVIF Image' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
       *.[Bb][Mm][Pp]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': PC bitmap' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
       *.[Ee][Pp][Ss]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': DOS EPS Binary File' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
       *.[Gg][Ii][Ff]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': GIF image' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
