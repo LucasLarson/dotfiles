@@ -7342,7 +7342,15 @@ to_png() {
       -verbose \
       -- \
       "${file-}" \
-      "${file%.*}"'.png'
+      "${file%.*}"'.transparent.png' &&
+      command magick \
+        -background white \
+        -density "${d:-2048}" \
+        -quality 100 \
+        -verbose \
+        -- \
+        "${file-}" \
+        "${file%.*}"'.white.png'
   done
   {
     set \
