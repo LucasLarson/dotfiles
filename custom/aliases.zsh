@@ -2405,7 +2405,7 @@ find_executable() {
     -exec sh -c 'for file in "${@-}"; do command -p -- test -x "${file-}" && command -p -- printf -- '\''%s\n'\'' "${file-}"; done' {} +
 }
 find_executable_gnu() {
-  # POSIX emulatation of GNU `find -executable`
+  # POSIX emulation of GNU `find -executable`
   # printing the names of all files – including directories – whose permissions meet or exceed 700
   command -p -- find -- . \
     -perm -700 \
