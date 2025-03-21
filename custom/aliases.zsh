@@ -6895,7 +6895,7 @@ unpax() {
 
 ## pasteboard
 pbc() {
-  # gather content, but also print it without a trailing newline
+  # gather content, but also print it
   command pbcopy &&
     # command -p -- printf -- '%s\n' "$(command pbpaste)" |
     # command -p -- sed \
