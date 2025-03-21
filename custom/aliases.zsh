@@ -763,7 +763,6 @@ cleanup() {
   command -p -- mkdir -p -- "${target%/}/${1%/*}_${now-}" &&
   command -p -- mv -v -- "${1-}" "${target%/}/${1%/*}_${now-}/${1##*/}"
 ' _ {} ';'
-  # -exec sh -x -c 'if command -p -- test "$(command git -C "${1%/*}" rev-parse --show-superproject-working-tree)" = '\'''\'' || ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 || command -p -- test "$(command git ls-files -z --error-unmatch -- "${1-}" >/dev/null 2>&1)" != '\'''\''; then command -p -- mkdir -p -- "${target%/}/${1%/*}_${now-}"; command -p -- mv -v -- "${1-}" "${target%/}/${1%/*}_${now-}/${1##*/}"; fi' _ {} ';'
 
   # delete empty directories
   # but skip certain directories
@@ -2030,7 +2029,6 @@ find_capital_letter_files() {
 }
 
 find_compressed_files() {
-  # was `open **/*.{…,…}`
   {
     command -p -- find -- . \
       -path '*/.git' -prune -o \
@@ -4648,7 +4646,6 @@ alias -- \
 
 # git push
 git_push() {
-  # if command -p -- test "${1-}" = '-r' || command -p -- test "${1-}" = '--all-remotes'; then
   case "${1-}" in
   -r | --all-remotes)
     command git remote show |
@@ -4799,19 +4796,6 @@ git_show() {
     # shift <- no. because it will allow this to run twice
     ;;
   esac
-  #  case "${#}" in
-  #  0)
-  #    set -- HEAD
-  #    ;;
-  #  *)
-  #    command git show "${1-}"
-  #    shift
-  #  ;;
-  #  esac
-  #  while command -p -- test "${#}" -gt 0; do
-  #  done
-  #  ;;
-  #esac
 }
 alias -- \
   gsh='git_show' \
@@ -4915,7 +4899,6 @@ alias -- gtag='command git --no-pager tag --sort=creatordate'
 
 git_tag_edit() {
   # https://stackoverflow.com/a/14130875
-  #       git tag "${1-}" "${1-}"^{} --annotate --force --sign
   command git tag "${1-}" "${1-}"'^'{} --annotate --force --sign
 }
 
@@ -6838,13 +6821,11 @@ open() {
     case "${1-}" in
     P)
       { command -p -- test "${2-}" != '' &&
-        # command -p -- printf -- '%s\n' "${2-}" | command -p -- grep -q -v -e 'break' -e 'colon' -e 'continue' -e 'dot' -e 'eval' -e 'exec' -e 'exit' -e 'export' -e 'readonly' -e 'return' -e 'set' -e 'shift' -e 'times' -e 'trap' -e 'unset' &&
         command open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/utilities/'"${2-}"'.html'; } ||
         command open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/idx/utilities.html'
       ;;
     p)
       { command -p -- test "${2-}" != '' &&
-        # command -p -- printf -- '%s\n' "${2-}" | command -p -- grep -q -v -e 'break' -e 'colon' -e 'continue' -e 'dot' -e 'eval' -e 'exec' -e 'exit' -e 'export' -e 'readonly' -e 'return' -e 'set' -e 'shift' -e 'times' -e 'trap' -e 'unset' &&
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html'; } ||
         command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html'
       ;;
@@ -6896,14 +6877,6 @@ unpax() {
 pbc() {
   # gather content, but also print it
   command pbcopy &&
-    # command -p -- printf -- '%s\n' "$(command pbpaste)" |
-    # command -p -- sed \
-    #   -e ':a' \
-    #   -e '/^\n*$/ {' \
-    #   -e '  $ d' \
-    #   -e '  N' \
-    #   -e '  b a' \
-    #   -e '}'
     command pbpaste
 }
 # https://github.com/ferrarimarco/dotfiles/commit/dc9e378f37
@@ -7025,22 +6998,6 @@ posix_character_classes() {
 posix_special_utilities_list() {
   # break colon continue dot eval exec exit export readonly return set
   # shift times trap unset
-  # command curl \
-  #   --show-error \
-  #   --silent \
-  #   --url 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/sbi.html' |
-  #   # https://archive.today/2022.10.19-184853/https://cyberciti.biz/faq/?p=12818
-  #   command -p -- sed \
-  #     -e ':a' \
-  #     -e 'N' \
-  #     -e '$! b a' \
-  #     -e 's/\n/ /g' \
-  #     -e '# remove Utilities headers' \
-  #     -e 's/.*<ul>//' \
-  #     -e '# remove elements, even if successive' \
-  #     -e 's/\( *<[^>]*>\)*\([[:alnum:]]*\)/\2 /g' \
-  #     -e '# remove the last trailing spaces' \
-  #     -e 's/[[:space:]]*$//'
   command -p -- printf -- 'break colon continue dot eval exec exit export readonly return set shift times trap unset\n'
 }
 alias -- posix_builtins_list='posix_special_utilities_list'
@@ -8360,9 +8317,6 @@ shellharden_r() {
       command -p -- test ! -L "${file-}" &&
       command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
       command shellharden --transform -- "${file-}" >"${TMPDIR:-/tmp}"'/'"${file##*/}" &&
-      #       sed -e 's/""/'\'''\''/g' "${TMPDIR:-/tmp}"'/'"${file-}" >"${file-}"
-      #       sed -e 's/^\([^#]*[[:space:]]\)""/\1'\'''\''/g' "${TMPDIR:-/tmp}"'/'"${file-}" >"${file-}"
-      #       sed -e 's/\([[:space:]]*\)\((*\)"\(\\\)"/\1\2'\''\3'\''/g' "${TMPDIR:-/tmp}"'/'"${file-}" >"${file-}"
       command -p -- sed \
         -e 's/\([[:space:]]*\)\((*\)"\(\\\)"/\1\2'\''\3'\''/g' \
         -e '# replace two double quotes with two single quotes' \
@@ -8440,7 +8394,6 @@ shfmt_r() {
         command -p -- mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp' &&
         command -p -- cp -f -p -- "${file-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" &&
         # prevent `shfmt` from breaking Zsh (($+foo)) constructions
-        # command awk -- 'match($0, /((\$ \+ .*]))/) {tgt = substr($0, RSTART, RLENGTH); gsub(/ /, "", tgt); $0 = substr($0, 1, RSTART - 1) tgt substr($0, RSTART + RLENGTH)}; 1 {print}; {gsub(/\(\($\+commands\[(.+)\]\)\)/, "\\1", $0)}' \
         command -p -- sed \
           -e '# undo shfmt damage to Zshism' \
           -e '# TO DELETE superseded by next line s/(([[:space:]]*\$[[:space:]]*+[[:space:]]*\([^)]*\)))/(($+\1))/g' \
