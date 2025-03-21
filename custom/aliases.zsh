@@ -1465,7 +1465,6 @@ domain_name_from_url() {
     # command -p -- printf -- '%s' "${url-}" &&
     #   command -p -- printf -- '\n'
   done
-  unset url 2>/dev/null || url=''
 }
 
 domain_name_tld_list() {
