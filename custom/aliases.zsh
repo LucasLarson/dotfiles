@@ -5829,11 +5829,11 @@ interactive() {
   # https://unix.stackexchange.com/a/26827
   case "${--}" in
   *i*)
-    # affirmatively interactive shell
+    # interactive shell
     return 0
     ;;
   *)
-    # shell that is not affirmatively interactive
+    # non-interactive shell
     return 1
     ;;
   esac
