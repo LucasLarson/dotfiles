@@ -5139,12 +5139,6 @@ gravatar() {
 
 ## GraphicConverter
 gcr() {
-  set \
-    -o noclobber \
-    -o noglob \
-    -o nounset \
-    -o verbose \
-    -o xtrace
   command -p -- open -a "$(
     {
       set \
@@ -5167,14 +5161,6 @@ gcr() {
         -e '}' \
         -e 'p'
   )" -- "${@-}"
-  {
-    set \
-      +o noclobber \
-      +o noglob \
-      +o nounset \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
 }
 
 ######
