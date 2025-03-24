@@ -4657,7 +4657,7 @@ git_push() {
     ;;
   # https://github.com/ohmyzsh/ohmyzsh/commit/ae21102030
   *)
-    command git -c push.autoSetupRemote=true push --progress --verbose "${@-}" # "$(command git config --get branch."$(git-default-branch)".remote || command git remote)" "$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)" "${@-}"
+    command git -c push.autoSetupRemote=true push --progress --verbose "${@-}"
     ;;
   esac
   command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
