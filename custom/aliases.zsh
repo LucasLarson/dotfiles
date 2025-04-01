@@ -1312,7 +1312,6 @@ define() {
       ;;
     esac
   done
-  unset query 2>/dev/null || query=''
 }
 alias -- d='define'
 
@@ -4140,7 +4139,6 @@ git_config_file_locations() {
           LC_ALL='C' command -p -- sort -u
       )"
   done
-  unset scope 2>/dev/null || scope=''
 }
 
 alias -- gdb >/dev/null 2>&1 &&
@@ -5388,7 +5386,6 @@ hash_abbreviate() {
       return 1
     fi
   done
-  unset hash 2>/dev/null || hash=''
   unset length 2>/dev/null || length=''
 }
 alias -- h7='hash_abbreviate'
@@ -8074,8 +8071,6 @@ sca() {
       ;;
     esac
   done
-  unset file 2>/dev/null || file=''
-  unset test 2>/dev/null || test=''
   unset opt 2>/dev/null || opt=''
 }
 
@@ -8999,7 +8994,6 @@ string_length() {
   for string in "${@-}"; do
     command -p -- printf -- '%d\n' "${#string}"
   done
-  unset string
 }
 
 string_starts_with() {
