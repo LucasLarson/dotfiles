@@ -2485,6 +2485,7 @@ find_image_files() {
     -name '*.[Cc][Uu][Rr]' -o \
     -name '*.[Dd][Dd][Ss]' -o \
     -name '*.[Dd][Vv][Ii]' -o \
+    -name '*.[Ee][Pp][Ss]' -o \
     -name '*.[Ee][Xx][Rr]' -o \
     -name '*.[Ff][Ii][Gg]' -o \
     -name '*.[Gg][Ii][Ff]' -o \
