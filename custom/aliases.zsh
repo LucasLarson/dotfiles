@@ -8867,6 +8867,8 @@ subdomains() {
     --silent \
     --url 'https://api.subdomain.center/?domain='"${1-}" |
     command -p -- sed \
+      -e '# replace capital letters' \
+      -e 'y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/' \
       -e '# remove all string values that begin with "www."' \
       -e 's/"www\.[^"]*"//g' \
       -e '# remove all double quotation marks' \
