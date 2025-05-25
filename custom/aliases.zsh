@@ -4201,18 +4201,18 @@ alias -- gd >/dev/null 2>&1 &&
   unalias -- gd
 gd() {
   if command -p -- test "$(command git diff --shortstat "${@-}" 2>/dev/null)" != ''; then
-    command git -c core.quotePath=false diff "${@-}"
+    command git -c core.quotePath=false diff --color-words --word-diff "${@-}"
   else
-    command git -c core.quotePath=false diff --cached "${@-}"
+    command git -c core.quotePath=false diff --cached --color-words --word-diff "${@-}"
   fi
 }
 alias -- gds >/dev/null 2>&1 &&
   unalias -- gds
 gds() {
   if command -p -- test "$(command git diff --cached --shortstat "${@-}" 2>/dev/null)" != ''; then
-    command git -c core.quotePath=false diff --cached "${@-}"
+    command git -c core.quotePath=false diff --cached --color-words --word-diff "${@-}"
   else
-    command git -c core.quotePath=false diff "${@-}"
+    command git -c core.quotePath=false diff --color-words --word-diff "${@-}"
   fi
 }
 git_diff_with_filesizes() {
