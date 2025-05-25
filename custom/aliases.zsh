@@ -3982,7 +3982,7 @@ git_all_files_ever() {
   # -u: all not unmerged
   # -X: all unknown
   # -x: all not unknown
-  command git log \
+  command git -c core.quotePath=false log \
     --all \
     --diff-filter="${1-}" \
     --find-copies \
@@ -4413,7 +4413,7 @@ alias -- gls >/dev/null 2>&1 &&
 gls() {
   {
     if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-      command git ls-files "${@-}" |
+      command git -c core.quotePath=false ls-files "${@-}" |
         command awk -- '{print "./" $0}'
     elif command -v -- eza >/dev/null 2>&1; then
       command eza \
