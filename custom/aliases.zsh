@@ -2170,6 +2170,7 @@ fdupes() {
     --ext-filter=nostr:node_modules \
     --no-hidden \
     --one-file-system \
+    --order=time \
     --quiet \
     --recurse \
     --size \
