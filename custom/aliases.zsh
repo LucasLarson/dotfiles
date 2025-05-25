@@ -1682,6 +1682,7 @@ exif_remove() {
       # https://github.com/cirosantilli/dotfiles/blob/60ca745cdc/home/.bashrc#L2838-L2842
       command exiftool \
         -all='' \
+        -progress \
         -v0 \
         -- \
         "${file-}"
