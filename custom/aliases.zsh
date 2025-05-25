@@ -209,6 +209,7 @@ bash_pretty_overwrite() {
     IFS='' \
     command find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -name '*.bash' \
     -type f \
     -exec sh -C -e -f -u -x -c 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
@@ -690,6 +691,7 @@ cleanup() {
         -xdev \
         -path '*/.git' -prune -o \
         -path '*/Library' -prune -o \
+        -path '*/node_modules' -prune -o \
         -path "${ZDOTDIR:-${HOME%/}}"'/*/*' -prune -o \
         -name '.zcompdump' -prune -o \
         -name '.zcompdump*' \
@@ -700,6 +702,7 @@ cleanup() {
         -xdev \
         -path '*/.git' -prune -o \
         -path '*/Library' -prune -o \
+        -path '*/node_modules' -prune -o \
         -path "${ZDOTDIR:-${HOME%/}}"'/*/*' -prune -o \
         -name '.zcompdump' -prune -o \
         -name '.zcompdump*' \
@@ -770,6 +773,7 @@ cleanup() {
     LC_ALL='C' IFS='' command find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
+      -path '*/node_modules' -prune -o \
       -path './*' \
       -type d \
       -exec sh -c 'for directory in "${@-}"; do command -p -- test "$(command -p -- find -- "${directory-}" -path "${directory-}"'\''/*'\'' -print)" = '\'''\'' && command -p -- printf -- '\''%s\n'\'' "${directory-}"; done' _ {} +
@@ -777,6 +781,7 @@ cleanup() {
     LC_ALL='C' IFS='' command -p -- find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
+      -path '*/node_modules' -prune -o \
       -path './*' \
       -type d \
       -links 2 \
@@ -1896,6 +1901,7 @@ f() {
     while command -p -- test "${#}" -gt 0; do
       command find -L -- . \
         -path '*/.git' -prune -o \
+        -path '*/node_modules' -prune -o \
         -path './*' \
         '(' \
         -name "$(command -p -- printf -- '%s' "${1-}" | command awk -- '{for (i = 1; i <= length($0); i++) {printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))} printf "\n"}')" \
@@ -1943,6 +1949,7 @@ find_audio_files() {
   command -p -- find -- . \
     -path '*/.git' -prune -o \
     -path '*/Library' -prune -o \
+    -path '*/node_modules' -prune -o \
     '(' \
     -name '*.[Aa][Aa][Cc]' -o \
     -name '*.[Aa][Cc][Cc]' -o \
@@ -1979,6 +1986,7 @@ find_audio_files() {
 find_binary_files() {
   LC_ALL='C' IFS='' command -p -- find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -exec file -- {} + |
     command -p -- sed \
       -e '/:.*directory/ d' \
@@ -2014,12 +2022,14 @@ find_capital_letter_files() {
   case "${1-}" in
   -d | --delete) LC_ALL='C' command find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -path './*' \
     -name '[[:upper:]]*' \
     -type f \
     -exec sh -c '{ command -p -- printf -- '\''removing \342\200\230%s\342\200\231 '\'' "${1-}" >&2 && command -p -- rm -f -r -- "${1-}" && command -p -- printf -- '\''\342\234\223\n'\'' >&2; } || command -p -- printf -- '\''error removing \342\200\230%s\342\200\231\n'\'' "${1-}" >&2' _ {} ';' ;;
   *) LC_ALL='C' command find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -path './*' \
     -name '[[:upper:]]*' \
     -type f \
@@ -2032,6 +2042,7 @@ find_compressed_files() {
     command -p -- find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
+      -path '*/node_modules' -prune -o \
       '(' \
       -iname '*.7z' -o \
       -iname '*.aar' -o \
@@ -2071,6 +2082,7 @@ find_compressed_files() {
     command -p -- find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
+      -path '*/node_modules' -prune -o \
       -type f \
       -exec file -- '{}' + 2>/dev/null |
       # allow `file` to find .sit `Archive` files by setting `$2` to lowercase before checking its value
@@ -2130,6 +2142,7 @@ find_dot_files() {
     command find -- . \
       -depth \
       -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
       -path './*' \
       -name '.*' \
       ! -name '.gitmodules' \
@@ -2139,6 +2152,7 @@ find_dot_files() {
     command find -- . \
       -depth \
       -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
       -path './*' \
       -name '.*' \
       ! -name '.gitmodules' \
@@ -2150,6 +2164,7 @@ find_dot_files() {
 
 fdupes() {
   command jdupes \
+    --ext-filter=nostr:node_modules \
     --no-hidden \
     --one-file-system \
     --quiet \
@@ -2163,6 +2178,7 @@ fdupes() {
 find_duplicate_cksum() {
   command find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -path './*' \
     -xdev \
     -type f \
@@ -2364,6 +2380,7 @@ find_empty() {
     LC_ALL='C' IFS='' command find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
+      -path '*/node_modules' -prune -o \
       -path './*' \
       -type d \
       -exec sh -C -f -u -c 'for directory in "${@-}"; do command -p -- test "$(command -p -- find -- "${directory-}" -path "${directory-}"'\''/*'\'' -print)" = '\'''\'' && command -p -- printf -- '\''%s\n'\'' "${directory-}"; done' _ {} +
@@ -2371,6 +2388,7 @@ find_empty() {
     ### LC_ALL='C' IFS='' command find -- . \
     ###   -path '*/.git' -prune -o \
     ###   -path '*/Library' -prune -o \
+    ###   -path '*/node_modules' -prune -o \
     ###   -path './*' \
     ###   -type d \
     ###   -links 2 \
@@ -2412,6 +2430,7 @@ find_files_with_newline() {
   # https://github.com/yutkat/dotfiles/blob/76e4b7cd02/.zsh/rc/function.zsh#L246
   command find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -path './*' \
     ! -name '.DS_Store' \
     -type f \
@@ -2422,6 +2441,7 @@ find_files_without_newline() {
   # https://github.com/yutkat/dotfiles/blob/76e4b7cd02/.zsh/rc/function.zsh#L246
   command find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -path './*' \
     ! -name '.DS_Store' \
     -type f \
@@ -2431,6 +2451,7 @@ find_files_without_newline() {
 find_files_with_windows_newline() {
   command find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -path './*' \
     ! -name '.DS_Store' \
     -type f \
@@ -2699,6 +2720,7 @@ find_largest_files() {
   (
     command -p -- find -- . \
       -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
       -path '*copilot*' -prune -o \
       ! -name '.DS_Store' \
       -type f \
@@ -2713,6 +2735,7 @@ find_largest_files() {
 find_markdown_files() {
   command find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     '(' \
     -name '*.md' -o \
     -name '*.[Ll][Ii][Vv][Ee][Mm][Dd]' -o \
@@ -2737,6 +2760,7 @@ find_markdown_files() {
 find_microsoft_files() {
   command -p -- find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     '(' \
     -name '*.[Dd][Oo][Cc]' -o \
     -name '*.[Dd][Oo][Cc][Xx]' -o \
@@ -2752,6 +2776,7 @@ find_microsoft_files() {
 find_files_with_no_extension() {
   command find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     ! -name '*.*' \
     ! -type d \
     -print 2>/dev/null
@@ -2795,6 +2820,7 @@ find_files_with_the_same_sizes() {
     -o noglob
   LC_ALL='C' command -p -- find -- . \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -path './*' \
     ! -name '.DS_Store' \
     -type f \
@@ -2832,6 +2858,7 @@ find_oldest_file() {
   (
     command -p -- find -- . \
       -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
       -type f \
       -exec ls -o -r -t -- {} + 2>/dev/null &
   ) |
@@ -3177,6 +3204,7 @@ find_shell_scripts() {
     # all files with `linguist` Shell filename extensions
     command find -- . \
       -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
       '(' \
       -path '*/etc/profile' -o \
       -path '*/bat/config' -o \
@@ -3313,6 +3341,7 @@ find_smallest_files() {
   (
     command -p -- find -- . \
       -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
       ! -name '.DS_Store' \
       -type f \
       -exec ls -n -r -S -- {} + 2>/dev/null &
@@ -3437,6 +3466,7 @@ find_text_files() {
     # find one or more spaces without extended regex https://unix.stackexchange.com/a/19016
     command find -- . \
       -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
       -path './*' \
       -type f \
       -exec file -- {} + |
@@ -3455,6 +3485,7 @@ find_video_files() {
   command -p -- find -- . \
     -path '*/.git' -prune -o \
     -path '*/Library' -prune -o \
+    -path '*/node_modules' -prune -o \
     '(' \
     -name '*.3[Gg][Pp]' -o \
     -name '*.3[Gg][Pp][Pp]' -o \
@@ -6667,6 +6698,7 @@ non_ascii() {
   if command -p -- test "$(
     LC_ALL='C' command find -- "${@:-.}" \
       -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
       -path './*' \
       '(' \
       ! -name '*[[:alnum:]]*' -o \
@@ -6679,6 +6711,7 @@ non_ascii() {
     command -p -- printf -- 'non-ASCII file names:\n'
     LC_ALL='C' command find -- "${@:-.}" \
       -path '*/.git' -prune -o \
+      -path '*/node_modules' -prune -o \
       -path './*' \
       '(' \
       ! -name '*[[:alnum:]]*' -o \
@@ -6707,6 +6740,7 @@ non_ascii() {
 non_ascii_filenames() {
   LC_ALL='C' command find -- "${@:-.}" \
     -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -path './*' \
     '(' \
     ! -name '*[[:alnum:]]*' -o \
