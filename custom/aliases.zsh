@@ -5328,8 +5328,6 @@ rg() {
   command "${utility-}" \
     --glob '!**.git' \
     --glob '!**node_modules' \
-    --glob '!**plugins' \
-    --glob '!**themes' \
     --glob '!**copilot*' \
     --glob '!**dummy*' \
     --glob '!**vscode*' \
@@ -5353,8 +5351,6 @@ rgv() {
     -v \
     --glob '!**.git' \
     --glob '!**node_modules' \
-    --glob '!**plugins' \
-    --glob '!**themes' \
     --glob '!**copilot*' \
     --glob '!**dummy*' \
     --glob '!**vscode*' \
