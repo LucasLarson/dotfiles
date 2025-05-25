@@ -5108,12 +5108,12 @@ gofmt_r() {
   PS4=' ' IFS='' command find -- . \
     -path '*/.git' -prune -o \
     -path '*/Library' -prune -o \
-    -path '*/vendor' -prune -o \
     -path '*/node_modules' -prune -o \
     -path '*/t' -prune -o \
     -path '*/Test*' -prune -o \
     -path '*/test*' -prune -o \
     -path '*/tst*' -prune -o \
+    -path '*/vendor' -prune -o \
     -name '*.go' \
     -type f \
     -exec sh -C -e -f -u -x -c 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
