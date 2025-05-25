@@ -5499,7 +5499,7 @@ headers() {
 }
 
 hooks_r() {
-  command -p -- test -d "${HOME%/}"'/c/hooks' &&
+  command git -C "${HOME%/}"'/c/hooks' rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
     command -p -- test -d "${PWD%/}"'/.git' &&
     command -p -- mkdir -p -- "${PWD%/}"'/.git/hooks' &&
     # cp -p to preserve permissions
