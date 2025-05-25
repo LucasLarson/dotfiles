@@ -5499,10 +5499,10 @@ headers() {
 }
 
 hooks_r() {
-  # cp -p to preserve permissions
   command -p -- test -d "${PWD%/}"'/.git' &&
     command -p -- mkdir -p -- "${PWD%/}"'/.git/hooks' &&
     command -p -- test -d "${HOME%/}"'/c/hooks' &&
+    # cp -p to preserve permissions
     command find -- "${HOME%/}"'/c/hooks' \
       -path "${HOME%/}"'/c/hooks/.*' -prune -o \
       -path "${HOME%/}"'/c/hooks/*/*' -prune -o \
