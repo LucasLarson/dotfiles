@@ -7926,9 +7926,6 @@ rm() {
       ;;
     esac
   )
-  unset file 2>/dev/null || file=''
-  unset now 2>/dev/null || now=''
-  unset target 2>/dev/null || target=''
 }
 alias -- \
   rmo='rm --others' \
