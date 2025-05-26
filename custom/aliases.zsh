@@ -9744,7 +9744,7 @@ webp_r() {
         -qrange 100 100 \
         -v \
         -z 9 \
-        -o "${file%.*}"'-cwebp.webp' \
+        -o "${file%.*}"'.webp' \
         -- \
         "${file-}"
   done
