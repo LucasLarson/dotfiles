@@ -2233,6 +2233,7 @@ find_duplicate_cksum() {
 }
 find_duplicate_files() {
   # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
+  # https://github.com/whodaniel/fuse/blob/b511341/scripts/component-refinement-plan.sh#L81
   command find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
@@ -2252,93 +2253,29 @@ find_duplicate_files() {
     -path './*' \
     -type f \
     ! -size 0 \
-    -exec sh -c 'for file in "${@-}"; do
-  command -p -- wc -c -- <"${file-}"
-done
-' _ {} + 2>/dev/null |
-    LC_ALL='C' command -p -- sort -n -r |
-    command -p -- uniq -d |
-    command -p -- xargs -I {} -n 1 find -- . \
-      -path '*/.git' -prune -o \
-      -path '*/.well-known' -prune -o \
-      -path '*/Empty' -prune -o \
-      -path '*/Library' -prune -o \
-      -path '*/node_modules' -prune -o \
-      -path '*/plugins' -prune -o \
-      -path '*/t' -prune -o \
-      -path '*/Test*' -prune -o \
-      -path '*/test*' -prune -o \
-      -path '*/themes' -prune -o \
-      -path '*/tst*' -prune -o \
-      -path '*copilot*' -prune -o \
-      -path '*dummy*' -prune -o \
-      -path '*vscode*' -prune -o \
-      -xdev \
-      -type f \
-      -size {}c \
-      -print 2>/dev/null |
-    command -p -- sed \
-      -e '# https://web.archive.org/web/0id_/etalabs.net/sh_tricks.html#:~:text=Using%20find%20with%20xargs' \
-      -e 's/./\\&/g' |
-    command -p -- xargs sha1sum 2>/dev/null |
-    LC_ALL='C' command -p -- sort |
-    command uniq -w 32 --all-repeated=separate
-
-  # now begin method 2
-
-  # if command stat -Lf%z -- . >/dev/null 2>&1; then
-  #   argument='-Lf%z'
-  # else
-  #   argument='-Lc%s'
-  # fi
-  # export argument
-  #      -exec sh -c 'command stat "${argument-}" -- "${1-}"' _ {} ';' 2>/dev/null |
-  command find -- . \
-    -path '*/.git' -prune -o \
-    -path '*/.well-known' -prune -o \
-    -path '*/Empty' -prune -o \
-    -path '*/Library' -prune -o \
-    -path '*/node_modules' -prune -o \
-    -path '*/plugins' -prune -o \
-    -path '*/t' -prune -o \
-    -path '*/Test*' -prune -o \
-    -path '*/test*' -prune -o \
-    -path '*/themes' -prune -o \
-    -path '*/tst*' -prune -o \
-    -path '*copilot*' -prune -o \
-    -path '*dummy*' -prune -o \
-    -path '*vscode*' -prune -o \
-    -path './*' \
-    -xdev \
-    ! -size 0 \
-    -type f \
-    -exec wc -m -- {} + |
-    command awk -- '{print $1}' |
-    LC_ALL='C' command -p -- sort -n -r |
-    command -p -- uniq -d |
-    command -p -- xargs -I {} -n 1 find -- . \
-      -path '*/.git' -prune -o \
-      -path '*/.well-known' -prune -o \
-      -path '*/Empty' -prune -o \
-      -path '*/Library' -prune -o \
-      -path '*/node_modules' -prune -o \
-      -path '*/plugins' -prune -o \
-      -path '*/t' -prune -o \
-      -path '*/Test*' -prune -o \
-      -path '*/test*' -prune -o \
-      -path '*/themes' -prune -o \
-      -path '*/tst*' -prune -o \
-      -path '*copilot*' -prune -o \
-      -path '*dummy*' -prune -o \
-      -path '*vscode*' -prune -o \
-      -path './*' \
-      -xdev \
-      -type f \
-      -size {}c \
-      -print 2>/dev/null |
-    command -p -- xargs shasum 2>/dev/null |
-    LC_ALL='C' command -p -- sort |
-    command uniq -w 32 --all-repeated=separate
+    ! -name '.DS_Store' \
+    -exec cksum -- {} + |
+    command awk -- '{
+  checksum = $1
+  size = $2
+  filename = substr($0, index($0, $3))
+  key = checksum FS size
+  if (files[key]) {
+     files[key] = files[key] RS filename
+  } else {
+     files[key] = filename
+  }
+  counts[key]++
+}
+END {
+  separator = ""
+  for (key in counts) {
+    if (counts[key] > 1) {
+      printf "%s%s\n", separator, files[key]
+      separator = "\n"
+    }
+  }
+}'
 }
 alias -- fdf='find_duplicate_files'
 
