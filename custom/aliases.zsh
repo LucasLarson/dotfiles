@@ -420,7 +420,7 @@ changelog_find_newest() {
   LC_ALL='C' command find -- "${pwd%/}" \
     -path "${pwd%/}"'/[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*.[Mm]*[Dd]*' \
     -type f \
-    -exec sh -c 'command git -P log --max-count=1 --pretty=tformat:'\''%at '\''"${1-}"' _ {} ';' |
+    -exec sh -c 'command git --no-pager log --max-count=1 --pretty=tformat:'\''%at '\''"${1-}"' _ {} ';' |
     LC_ALL='C' command -p -- sort -n -r |
     command -p -- sed \
       -e 's/.*\///g' \
@@ -4443,7 +4443,7 @@ gls() {
 
 git_ls_modified() {
   command git ls-files --deduplicate | while IFS='' read -r -- file; do
-    command git -P log \
+    command git --no-pager log \
       --date=local \
       --max-count=1 \
       --pretty=tformat:'%ai%x09./'"${file-}" \
@@ -5296,7 +5296,7 @@ grpt() {
 }
 ggr() {
   # riffing on the above while not feeling great # 2022-09-14
-  command git -P grep \
+  command git --no-pager grep \
     -H \
     -I \
     --break \
