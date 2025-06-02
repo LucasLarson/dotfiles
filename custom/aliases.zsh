@@ -5333,6 +5333,7 @@ rg() {
     --glob '!**dummy*' \
     --glob '!**vscode*' \
     --hidden \
+    --pcre2 \
     "${@-}" 2>/dev/null
   unset utility 2>/dev/null || utility=''
 }
@@ -5356,6 +5357,7 @@ rgv() {
     --glob '!**dummy*' \
     --glob '!**vscode*' \
     --hidden \
+    --pcre2 \
     "${@-}" 2>/dev/null
   unset utility 2>/dev/null || utility=''
 }
