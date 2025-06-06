@@ -30,10 +30,6 @@
   branch = main
   path = custom/plugins/zsh-abbr
   url = https://github.com/olets/zsh-abbr
-[submodule ".config/nvim/pack/github/start/copilot.vim"]
-  branch = release
-  path = .config/nvim/pack/github/start/copilot.vim
-  url = https://github.com/github/copilot.vim
 [submodule "custom/plugins/zsh-autosuggestions"]
   branch = master
   path = custom/plugins/zsh-autosuggestions
