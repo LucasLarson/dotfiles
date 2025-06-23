@@ -5661,7 +5661,6 @@ install() {
       --no-restart \
       --tap \
       --verbose \
-      --vscode \
       --whalebrew \
       "${@-}" |
       # on non-comment lines, replace all double quotes with single quotes
