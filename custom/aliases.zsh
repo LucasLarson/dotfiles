@@ -8694,37 +8694,6 @@ alias -- \
   sshs='command ssh ll@tty.sdf.org' \
   sshu='command ssh menu@sdf.org'
 
-sshfs_r() {
-  if command -v -- sshfs >/dev/null 2>&1; then
-
-    # https://github.com/microsoft/vscode-docs/blob/4d921d6f46/docs/remote/troubleshooting.md
-    export USER_AT_HOST="${1:-lucaslarson@lucaslarson.net}"
-
-    # Create and go to the directory where the remote filesystem will be mounted
-    command -p -- mkdir -p -- "${HOME%/}"'/.sshfs/'"${USER_AT_HOST-}" &&
-      {
-        cd -- "${HOME%/}"'/.sshfs/'"${USER_AT_HOST-}" ||
-          command -p -- printf -- 'Failed to create and go to the directory where the remote filesystem will be mounted\n' >&2 &&
-          # EX_CANTCREAT
-          return 73
-      }
-
-    # Mount the remote filesystem
-    command sshfs \
-      "${USER_AT_HOST-}"':' "${HOME%/}"'/.sshfs/'"${USER_AT_HOST-}" \
-      -ovolname="${USER_AT_HOST-}" \
-      -p 22 \
-      -o workaround=nonodelay \
-      -o transform_symlinks \
-      -o idmap=user \
-      -C # enable compression
-  else
-    command umount "${HOME%/}"'/.sshfs/'"${USER_AT_HOST-}" 2>/dev/null ||
-      command -p -- printf -- 'Failed to unmount the remote filesystem\n' >&2
-  fi
-  unset USER_AT_HOST 2>/dev/null || USER_AT_HOST=''
-}
-
 standard_r() {
   {
     command npm ls -- standard >/dev/null 2>&1 ||
