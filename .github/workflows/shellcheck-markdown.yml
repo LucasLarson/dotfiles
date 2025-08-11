@@ -22,7 +22,7 @@ jobs:
       run:
         shell: sh
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run shellcheck
         run: |
           # test shell syntax of Markdown code snippets
