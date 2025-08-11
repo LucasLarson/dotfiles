@@ -44,7 +44,7 @@ jobs:
       # Checkout the code base #
       ##########################
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           # Super-Linter requires full repository history for analysis
           fetch-depth: 0
