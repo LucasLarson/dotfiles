@@ -160,8 +160,6 @@ brew "mksh"
 brew "mogenerator"
 # C library for multiple-precision floating-point computations
 brew "mpfr"
-# Free (GNU) replacement for the Pico text editor
-brew "nano"
 # Text-based UI library
 brew "ncurses"
 # Ambitious Vim-fork focused on extensibility and agility
