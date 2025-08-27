@@ -146,8 +146,6 @@ brew "libtiff"
 brew "libtool"
 # YAML Parser
 brew "libyaml"
-# Next-gen compiler infrastructure
-brew "llvm"
 # Text-based web browser
 brew "lynx"
 # Keep your Mac's application settings in sync
