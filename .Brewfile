@@ -182,8 +182,6 @@ brew "pandoc"
 brew "perl"
 # General-purpose scripting language
 brew "php"
-# Tool to automatically fix PHP coding standards issues
-brew "php-cs-fixer"
 # Bash completion for Pip
 brew "pip-completion"
 # Manage compile and link flags for libraries
