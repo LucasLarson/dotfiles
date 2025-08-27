@@ -14,8 +14,6 @@ tap "homebrew/test-bot"
 tap "microsoft/git"
 # Static checker for GitHub Actions workflow files
 brew "actionlint"
-# Utility to read Word (.doc) files
-brew "antiword"
 # Automatic configure script builder
 brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
