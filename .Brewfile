@@ -192,8 +192,6 @@ brew "pngcrush"
 brew "poppler"
 # Policy-compliant ordinary shell
 brew "posh"
-# PHP Static Analysis Tool
-brew "psalm"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Ruby version manager
