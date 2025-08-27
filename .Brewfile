@@ -250,8 +250,6 @@ brew "yash"
 brew "yt-dlp"
 # UNIX shell (command interpreter)
 brew "zsh", args: ["HEAD"]
-# Chromium based browser
-cask "arc"
 # Voice and text chat software
 cask "discord@canary"
 # App to build and share containerised applications and microservices
