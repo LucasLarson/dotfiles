@@ -315,7 +315,5 @@ cask "vlc@nightly"
 cask "webpquicklook"
 # Torrent streaming application
 cask "webtorrent"
-# Native desktop client for WhatsApp
-cask "whatsapp-beta"
 # Video communication and virtual meeting platform
 cask "zoom-for-it-admins"
