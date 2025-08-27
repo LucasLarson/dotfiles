@@ -180,8 +180,6 @@ brew "openssl@3"
 brew "pandoc"
 # Highly capable, feature-rich programming language
 brew "perl"
-# General-purpose scripting language
-brew "php"
 # Bash completion for Pip
 brew "pip-completion"
 # Manage compile and link flags for libraries
