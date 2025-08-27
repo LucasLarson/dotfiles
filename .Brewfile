@@ -38,8 +38,6 @@ brew "checkbashisms"
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
-# Dependency Manager for PHP
-brew "composer"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Static analysis of C and C++ code
