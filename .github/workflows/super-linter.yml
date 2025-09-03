@@ -61,4 +61,3 @@ jobs:
           DEFAULT_BRANCH: main
           # Super-Linter requires this variable even if it is unset
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-...
