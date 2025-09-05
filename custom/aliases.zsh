@@ -6224,17 +6224,17 @@ elif command ls --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P >/dev/null 2>&
 else
   if
     command -p -- test "$(
-      command -p -- ls -G --color=always -- "${HOME%/}" |
+      command -p -- ls -G --color=always -- "${HOME%/}" >/dev/null 2>&1 |
         command -p -- od
     )" = "$(
-      command ls -G --color=always -- "${HOME%/}" |
+      command ls -G --color=always -- "${HOME%/}" >/dev/null 2>&1 |
         command -p -- od
     )" &&
       command -p -- test "$(
-        command ls -G --color=always -- "${HOME%/}" |
+        command ls -G --color=always -- "${HOME%/}" >/dev/null 2>&1 |
           command -p -- od
       )" = "$(
-        command ls --color=always -- "${HOME%/}" 2>/dev/null |
+        command ls --color=always -- "${HOME%/}" >/dev/null 2>&1 |
           command -p -- od
       )"
   then
