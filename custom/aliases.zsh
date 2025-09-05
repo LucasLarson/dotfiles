@@ -7123,12 +7123,8 @@ pledit() {
     command -p -- test -s "${file-}" &&
       command -p -- test ! -L "${file-}" &&
       case "$(LC_ALL='C' command -p -- file -- "${file-}")" in
-      *'Apple binary property list'*)
-        restore=1
-        ;;
-      *'XML 1.0 document'*)
-        restore=0
-        ;;
+      *'Apple binary property list'*) ;;
+      *'XML 1.0 document'*) ;;
       *)
         # EX_DATAERR
         return 65
@@ -7137,12 +7133,8 @@ pledit() {
     # convert the binary file to XML
     command plutil -convert xml1 -- "${file-}" &&
       # open with the default editor
-      command "${EDITOR:-${VISUAL:-vi}}" -- "${file-}" &&
-      # if the file was binary before editing, then restore it
-      command -p -- test "${restore-}" -eq 1 &&
-      command plutil -convert binary1 -- "${file-}"
+      command "${EDITOR:-${VISUAL:-vi}}" -- "${file-}"
   done
-  unset restore >/dev/null 2>&1 || restore=''
 }
 
 # .plist
