@@ -382,7 +382,7 @@ cdp() {
     command -p -- printf -- '\342\200\230%s\342\200\231\n' "${PWD-}"
     return 1
   fi
-  unset cd_to 2>/dev/null || cd_to=''
+  unset cd_to >/dev/null 2>&1 || cd_to=''
 }
 
 cdx_to_csv() {
@@ -425,7 +425,7 @@ changelog_find_newest() {
     command -p -- sed \
       -e 's/.*\///g' \
       -e 'q'
-  unset pwd 2>/dev/null || pwd=''
+  unset pwd >/dev/null 2>&1 || pwd=''
 }
 
 # cheat
@@ -617,9 +617,9 @@ clang_format() {
     -exec sh -c -- 'for file in "${@-}"; do ! command -p -- grep -e '\''^#!.*sh'\'' -e '\''moderni.*sh'\'' -- "${file-}" >/dev/null 2>&1 && command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 || ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 && command clang-format -i --style "{ColumnLimit: ${ColumnLimit:-79}, IndentWidth: ${IndentWidth:-2}, SpacesBeforeTrailingComments: ${SpacesBeforeTrailingComments:-2}}" --verbose -- "${file-}"; done' _ {} + 2>&1 |
     command -p -- sed \
       -e 's/ \[1\/1\]//' >&2
-  unset ColumnLimit 2>/dev/null || ColumnLimit=''
-  unset IndentWidth 2>/dev/null || IndentWidth=''
-  unset SpacesBeforeTrailingComments 2>/dev/null || SpacesBeforeTrailingComments=''
+  unset ColumnLimit >/dev/null 2>&1 || ColumnLimit=''
+  unset IndentWidth >/dev/null 2>&1 || IndentWidth=''
+  unset SpacesBeforeTrailingComments >/dev/null 2>&1 || SpacesBeforeTrailingComments=''
 }
 alias -- clang_format_r='clang_format -i 2 -s 2 -w "$(command -p -- getconf -- UINT_MAX)"'
 
@@ -874,9 +874,9 @@ EOF
     set \
       +o xtrace
   } 2>/dev/null
-  unset file 2>/dev/null || file=''
-  unset now 2>/dev/null || now=''
-  unset target 2>/dev/null || target=''
+  unset file >/dev/null 2>&1 || file=''
+  unset now >/dev/null 2>&1 || now=''
+  unset target >/dev/null 2>&1 || target=''
 }
 
 # codesign
@@ -1078,7 +1078,7 @@ cy() {
       +o verbose \
       +o xtrace
   } 2>/dev/null
-  unset target 2>/dev/null || target=''
+  unset target >/dev/null 2>&1 || target=''
 }
 
 # number of files
@@ -1209,7 +1209,7 @@ datauri() {
       -e '$! b a' \
       -e 's/\n//g' |
     command awk -vmime_type="${mime_type-}" -- '{printf "data:%s;base64,%s\n", mime_type, $0}' -
-  unset mime_type 2>/dev/null || mime_type=''
+  unset mime_type >/dev/null 2>&1 || mime_type=''
 }
 alias -- dataurl='datauri'
 
@@ -1376,7 +1376,7 @@ dictionary() {
       LC_ALL='C' command -p -- sort '-f'"${arguments##*-}"
     ;;
   esac
-  unset arguments 2>/dev/null || arguments=''
+  unset arguments >/dev/null 2>&1 || arguments=''
 }
 
 dimensions() {
@@ -2229,7 +2229,7 @@ find_duplicate_cksum() {
       command -p -- uniq -d
   # restore LC_ALL
   eval " ${lc_all_temporary-}"
-  unset lc_all_temporary 2>/dev/null || lc_all_temporary=''
+  unset lc_all_temporary >/dev/null 2>&1 || lc_all_temporary=''
 }
 find_duplicate_files() {
   # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
@@ -2296,7 +2296,7 @@ find_editorconfig() {
       command -p -- printf -- '%s/.editorconfig\n' "${directory-}"
     directory="${directory%/*}"
   done
-  unset directory 2>/dev/null || directory=''
+  unset directory >/dev/null 2>&1 || directory=''
 }
 alias -- \
   editorconfig_applicable='editorconfig_find' \
@@ -2911,7 +2911,7 @@ find_perl_files() {
           -e '/^$/,$ d' \
           -e '# do not prepend each filename with ./' \
           -e '#        s/^/.\//' &&
-        unset utility 2>/dev/null || utility=''
+        unset utility >/dev/null 2>&1 || utility=''
     } |
       command -p -- sed \
         -e '# prepend each line with dot slash without command -p awk upsetting SC2016' \
@@ -3044,7 +3044,7 @@ find_ruby_files() {
           -e '/^$/,$ d' \
           -e '# [do not] prepend each filename with ./' \
           -e '# s/^/.\//' &&
-        unset utility 2>/dev/null || utility=''
+        unset utility >/dev/null 2>&1 || utility=''
       command rubocop \
         --list-target-files
     } |
@@ -3311,7 +3311,7 @@ find_symlinks() {
       +o verbose \
       +o xtrace
   } 2>/dev/null
-  unset target 2>/dev/null || target=''
+  unset target >/dev/null 2>&1 || target=''
 
   command -p -- printf -- 'all symlinks to and from files in this directory or its subdirectories\n' >&2
   command find -L -- . \
@@ -3986,22 +3986,22 @@ gco() {
     )"
     if command -p -- test "${number_of_changed_files:-5}" -ge 5; then
       command -p -- printf -- 'warning: too many modified files; check them out atomically\n' >&2
-      unset number_of_changed_files 2>/dev/null || number_of_changed_files=''
+      unset number_of_changed_files >/dev/null 2>&1 || number_of_changed_files=''
       return 1
     elif command -p -- test "${number_of_changed_files:-5}" -ge 0 &&
       command -p -- test "${number_of_changed_files:-5}" -le 5; then
       command git checkout --progress "${@-}"
     else
-      unset number_of_changed_files 2>/dev/null || number_of_changed_files=''
+      unset number_of_changed_files >/dev/null 2>&1 || number_of_changed_files=''
       return 65
     fi
     ;;
   *)
-    unset number_of_changed_files 2>/dev/null || number_of_changed_files=''
+    unset number_of_changed_files >/dev/null 2>&1 || number_of_changed_files=''
     command git checkout --progress "${@-}"
     ;;
   esac
-  unset number_of_changed_files 2>/dev/null || number_of_changed_files=''
+  unset number_of_changed_files >/dev/null 2>&1 || number_of_changed_files=''
 }
 
 # `git checkout` the default branch
@@ -4036,7 +4036,7 @@ git_clone() {
         command git branch --list |
           command -p -- grep -w -e "${remote_branch##*/}" >/dev/null 2>&1 ||
           command git branch --track "${remote_branch##*/}" "${remote_branch-}"
-        unset remote_branch 2>/dev/null || remote_branch=''
+        unset remote_branch >/dev/null 2>&1 || remote_branch=''
       done
     ;;
   *)
@@ -4047,7 +4047,7 @@ git_clone() {
       command git -c core.ignoreCase=false clone --progress --recursive --template='' -- "${1%.git}" "${PWD%/}" # ||
       # command git clone --progress --recursive --branch "${branch-}" -- "${1%.git}" "${PWD%/}"
     }
-    unset branch 2>/dev/null || branch=''
+    unset branch >/dev/null 2>&1 || branch=''
     ;;
   esac
 }
@@ -4339,10 +4339,10 @@ git_commit_initial_commit() {
     command git commit --signoff --verbose --message="$(command -p -- printf -- '\342\234\250\302\240 initial commit')" &&
     # ...and add a signed v0.0.1 tag
     command git tag --annotate --sign "${3:-v0.0.1}" --message=''
-  unset gdate 2>/dev/null || gdate=''
-  unset git_time 2>/dev/null || git_time=''
-  # unset GIT_AUTHOR_DATE 2>/dev/null || GIT_AUTHOR_DATE=''
-  # unset GIT_COMMITTER_DATE 2>/dev/null || GIT_COMMITTER_DATE=''
+  unset gdate >/dev/null 2>&1 || gdate=''
+  unset git_time >/dev/null 2>&1 || git_time=''
+  # unset GIT_AUTHOR_DATE >/dev/null 2>&1 || GIT_AUTHOR_DATE=''
+  # unset GIT_COMMITTER_DATE >/dev/null 2>&1 || GIT_COMMITTER_DATE=''
 }
 alias -- \
   gcic='git_commit_initial_commit' \
@@ -4660,7 +4660,7 @@ git_rm_r() {
     command -p -- find -- . -path '*/.git/hooks' -exec rmdir -- {} + &&
     command -p -- find -- . -path '*/.git/modules' -exec rm -f -r -- {} +
   PS4="${ps4_temporary-}"
-  unset ps4_temporary 2>/dev/null || ps4_temporary=''
+  unset ps4_temporary >/dev/null 2>&1 || ps4_temporary=''
   {
     set \
       +o xtrace
@@ -5198,7 +5198,7 @@ gr() {
     ! -path 'do not add ! type -l because we actually DO want to search inside symlink targets' \
     ! -type d \
     -exec grep "${arguments:--EIinr}" --color=auto -e "${1-}" {} +
-  unset arguments 2>/dev/null || arguments=''
+  unset arguments >/dev/null 2>&1 || arguments=''
 }
 grpt() {
   # when I’m feeling better I’ll remember why I’m using `grep` instead of `git grep --no-index`
@@ -5229,7 +5229,7 @@ grpt() {
     ! -path 'it is arguments:--Ein below so there is a fallback when I wanna copy-pase' \
     ! -name '.git' \
     -exec grep "${arguments:--EIinr}" --color=auto -e "${1-}" {} +
-  unset arguments 2>/dev/null || arguments=''
+  unset arguments >/dev/null 2>&1 || arguments=''
 }
 ggr() {
   # riffing on the above while not feeling great # 2022-09-14
@@ -5272,7 +5272,7 @@ rg() {
     --hidden \
     --pcre2 \
     "${@-}" 2>/dev/null
-  unset utility 2>/dev/null || utility=''
+  unset utility >/dev/null 2>&1 || utility=''
 }
 rgv() {
   utility="$(
@@ -5296,7 +5296,7 @@ rgv() {
     --hidden \
     --pcre2 \
     "${@-}" 2>/dev/null
-  unset utility 2>/dev/null || utility=''
+  unset utility >/dev/null 2>&1 || utility=''
 }
 
 grep_but_line() {
@@ -5358,7 +5358,7 @@ hash_abbreviate() {
       return 1
     fi
   done
-  unset length 2>/dev/null || length=''
+  unset length >/dev/null 2>&1 || length=''
 }
 alias -- h7='hash_abbreviate'
 
@@ -6156,11 +6156,11 @@ install_less() {
         +o verbose \
         +o xtrace
     } 2>/dev/null
-    unset bindir 2>/dev/null || bindir=''
-    unset mandir 2>/dev/null || mandir=''
-    unset target 2>/dev/null || target=''
-    unset utility 2>/dev/null || utility=''
-    unset with_regex 2>/dev/null || with_regex=''
+    unset bindir >/dev/null 2>&1 || bindir=''
+    unset mandir >/dev/null 2>&1 || mandir=''
+    unset target >/dev/null 2>&1 || target=''
+    unset utility >/dev/null 2>&1 || utility=''
+    unset with_regex >/dev/null 2>&1 || with_regex=''
   )
 }
 alias -- less_install='install_less'
@@ -6195,7 +6195,7 @@ breakdown() {
         -e '$ d'
     ;;
   esac
-  unset utility 2>/dev/null || utility=''
+  unset utility >/dev/null 2>&1 || utility=''
 }
 alias -- \
   bdo='breakdown' \
@@ -6573,13 +6573,13 @@ markdownlint_r() {
     -exec sh -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
   ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
   command markdownlint "${configuration-}" --disable MD013 MD033 --dot --fix -- "${1-}"' _ {} ';'
-  unset configuration 2>/dev/null || configuration=''
+  unset configuration >/dev/null 2>&1 || configuration=''
   {
     set \
       +o verbose \
       +o xtrace
   } 2>/dev/null
-  unset configuration 2>/dev/null || configuration=''
+  unset configuration >/dev/null 2>&1 || configuration=''
 }
 
 ## mindepth and maxdepth
@@ -6593,8 +6593,8 @@ maxdepth() {
       depth="$((depth - 1))"
   done
   command -p -- printf -- '#!/usr/bin/env sh\ncommand -p -- find -- . -path \047%s\047 -prune -o -print\n' "${path_argument-}"
-  unset path_argument 2>/dev/null || path_argument=''
-  unset depth 2>/dev/null || depth=''
+  unset path_argument >/dev/null 2>&1 || path_argument=''
+  unset depth >/dev/null 2>&1 || depth=''
 }
 mindepth() {
   # instead of `find . -mindepth 2 -print`, use `find . -path './*/*' -print`
@@ -6605,8 +6605,8 @@ mindepth() {
       depth="$((depth - 1))"
   done
   command -p -- printf -- '#!/usr/bin/env sh\ncommand -p -- find -- . -path \047%s\047 -print\n' "${path_argument-}"
-  unset path_argument 2>/dev/null || path_argument=''
-  unset depth 2>/dev/null || depth=''
+  unset path_argument >/dev/null 2>&1 || path_argument=''
+  unset depth >/dev/null 2>&1 || depth=''
 }
 m1m1() {
   {
@@ -7142,7 +7142,7 @@ pledit() {
       command -p -- test "${restore-}" -eq 1 &&
       command plutil -convert binary1 -- "${file-}"
   done
-  unset restore 2>/dev/null || restore=''
+  unset restore >/dev/null 2>&1 || restore=''
 }
 
 # .plist
@@ -7570,8 +7570,8 @@ BEGIN {
       exponent="$((exponent - 1))"
     done
     command -p -- printf -- '%d\n' "$((result - 1))"
-    unset exponent 2>/dev/null || exponent=''
-    unset result 2>/dev/null || result=''
+    unset exponent >/dev/null 2>&1 || exponent=''
+    unset result >/dev/null 2>&1 || result=''
   )}" 2>/dev/null)" -vN="${!}" -- 'BEGIN{srand(); printf("%08x%06x\n", rand() * INT_MAX, N)}'
 }
 
@@ -7668,7 +7668,7 @@ rename_sanitize() {
               -e 's/~imageoptim//'
         )"
       done
-      unset filename 2>/dev/null || filename=''
+      unset filename >/dev/null 2>&1 || filename=''
       {
         set \
           +o verbose \
@@ -7683,9 +7683,9 @@ rename_sanitize() {
       n='--dry-run'
       ;;
     *)
-      unset f 2>/dev/null || f=''
-      unset l 2>/dev/null || l=''
-      unset n 2>/dev/null || n=''
+      unset f >/dev/null 2>&1 || f=''
+      unset l >/dev/null 2>&1 || l=''
+      unset n >/dev/null 2>&1 || n=''
       ;;
     esac
   done
@@ -7895,7 +7895,7 @@ rsync_r() {
     command rsync --archive --compress --partial --progress --verbose -- "${1-}" "${target-}"
     shift
   done
-  unset target 2>/dev/null || target=''
+  unset target >/dev/null 2>&1 || target=''
 }
 
 ## rubocop
@@ -8042,7 +8042,7 @@ sca() {
       ;;
     esac
   done
-  unset opt 2>/dev/null || opt=''
+  unset opt >/dev/null 2>&1 || opt=''
 }
 
 scour_r() {
@@ -8315,7 +8315,7 @@ restore_shell_options() {
   command -p -- test "${set_o-}" != '' &&
     command printf -- '%s\n' "${set_o-}" | command "${SHELL-}" -C -e -n -u -x -o noglob - 2>/dev/null &&
     { eval " ${set_o-}" >/dev/null 2>&1 || command true; }
-  unset set_o 2>/dev/null || set_o=''
+  unset set_o >/dev/null 2>&1 || set_o=''
 
   command -p -- test "${set_hyphen-}" != '' &&
     command printf -- '%s' "${set_hyphen-}" |
@@ -8323,8 +8323,8 @@ restore_shell_options() {
       { eval " set -${option-}" >/dev/null 2>&1 || command true; }
     done
 
-  unset set_hyphen 2>/dev/null || set_hyphen=''
-  unset option 2>/dev/null || option=''
+  unset set_hyphen >/dev/null 2>&1 || set_hyphen=''
+  unset option >/dev/null 2>&1 || option=''
 }
 alias -- shell_options_restore='restore_shell_options'
 
@@ -8864,13 +8864,13 @@ substring_bash() {
     set \
       +o noglob
   fi
-  unset flag 2>/dev/null || flag=''
-  unset c 2>/dev/null || c=''
-  unset fng 2>/dev/null || fng=''
-  unset options 2>/dev/null || options=''
-  unset pattern 2>/dev/null || pattern=''
-  unset string 2>/dev/null || string=''
-  unset usage 2>/dev/null || usage=''
+  unset flag >/dev/null 2>&1 || flag=''
+  unset c >/dev/null 2>&1 || c=''
+  unset fng >/dev/null 2>&1 || fng=''
+  unset options >/dev/null 2>&1 || options=''
+  unset pattern >/dev/null 2>&1 || pattern=''
+  unset string >/dev/null 2>&1 || string=''
+  unset usage >/dev/null 2>&1 || usage=''
 }
 
 substring_contains() {
@@ -9024,7 +9024,7 @@ stylelint_r() {
   ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
   command npm exec -- stylelint --allow-empty-input --color "${configuration-}" --fix --formatter=verbose --ignore-disables --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables -- "${1-}"
 ' _ {} ';'
-  unset configuration 2>/dev/null || configuration=''
+  unset configuration >/dev/null 2>&1 || configuration=''
   {
     set \
       +o verbose \
@@ -9192,7 +9192,7 @@ tdt() {
   esac
   command git status 2>/dev/null ||
     command -p -- true
-  unset target 2>/dev/null || target=''
+  unset target >/dev/null 2>&1 || target=''
 }
 alias -- tet='tdt --evil'
 
@@ -9374,8 +9374,8 @@ trash_developer() {
         +o verbose \
         +o xtrace
     } 2>/dev/null
-  unset target 2>/dev/null || target=''
-  unset trash_date 2>/dev/null || trash_date=''
+  unset target >/dev/null 2>&1 || target=''
+  unset trash_date >/dev/null 2>&1 || trash_date=''
   command -p -- printf -- '\n\360\237\232\256  data successfully trashed\n' >&2
 }
 
@@ -9468,8 +9468,8 @@ update_changelog() {
     configuration='--config='"${HOME%/}"'/.markdownlint.json' ||
     configuration='--disable MD013'
   command markdownlint "${configuration-}" --fix -- "${file-}"
-  unset file 2>/dev/null || file=''
-  unset configuration 2>/dev/null || configuration=''
+  unset file >/dev/null 2>&1 || file=''
+  unset configuration >/dev/null 2>&1 || configuration=''
   # ensure nothing else is staged
   command git reset --quiet HEAD -- .
   # stage and commit files
@@ -9499,7 +9499,7 @@ unixtime_set() {
     command -p -- printf -- 'UNIX date to force a matching weekday:\n' >&2 &&
     command -p -- printf -- '          \ndate \047%s%s\047\n' "${year-}" "$(LC_ALL='C' command -p -- date -- '+%m%d%H%M.%S')" &&
     command -p -- printf -- '# UNIX 5.0\ndate \047%s%s\047\n' "$(LC_ALL='C' command -p -- date -- '+%m%d%H%M')" "${year-}"
-  unset year 2>/dev/null || year=''
+  unset year >/dev/null 2>&1 || year=''
 }
 alias -- unixdate_set='unixtime_set'
 
@@ -9610,7 +9610,7 @@ code() {
   } 2>/dev/null # vomiting this kind of garbage since about late 2023
   # [0302/150701.624151:ERROR:codesign_util.cc(108)] SecCodeCheckValidity: Error Domain=NSOSStatusErrorDomain Code=-67062 "(null)" (-67062)
   # [0302/150702.727990:ERROR:codesign_util.cc(108)] SecCodeCheckValidity: Error Domain=NSOSStatusErrorDomain Code=-67062 "(null)" (-67062)
-  unset utility 2>/dev/null || utility=''
+  unset utility >/dev/null 2>&1 || utility=''
 }
 
 wayback() {
@@ -9754,7 +9754,7 @@ wget_download() {
     --user-agent='Mozilla/5.0 (compatible; Googlebot/2.1; +https://www.google.com/bot.html)' \
     'https://'"${wget_server-}" ||
     return 17
-  unset wget_server 2>/dev/null || wget_server=''
+  unset wget_server >/dev/null 2>&1 || wget_server=''
   {
     set \
       +o verbose \
@@ -9800,7 +9800,7 @@ whois() {
     # strip boilerplate footer
     command -p -- grep -e '^   '
 
-  unset domain 2>/dev/null || domain=''
+  unset domain >/dev/null 2>&1 || domain=''
 }
 
 wikipedia() {
@@ -10007,7 +10007,7 @@ zshabbr() {
   command "${EDITOR:-vi}" -- "${target-}" &&
     command shfmt --indent 2 --language-dialect bash --simplify --write -- "${target-}" &&
     abbr load
-  unset target 2>/dev/null || target=''
+  unset target >/dev/null 2>&1 || target=''
   {
     set \
       +o noglob \
@@ -10045,7 +10045,7 @@ zsh_history_recovery() {
       +o verbose \
       +o xtrace
   } 2>/dev/null
-  unset reset 2>/dev/null || reset=''
+  unset reset >/dev/null 2>&1 || reset=''
 }
 alias -- \
   history_restore='zsh_history_recovery' \
