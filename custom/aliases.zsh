@@ -5255,9 +5255,11 @@ rg() {
   utility="$(
     {
       command -p -- test -x "$(command -v -- rga)" &&
+        command -p -- test -f "$(command -v -- rga)" &&
         command -v -- rga
     } || {
       command -p -- test -x "$(command -v -- rg)" &&
+        command -p -- test -f "$(command -v -- rg)" &&
         command -v -- rg
     }
   )"
@@ -5278,9 +5280,11 @@ rgv() {
   utility="$(
     {
       command -p -- test -x "$(command -v -- rga)" &&
+        command -p -- test -f "$(command -v -- rga)" &&
         command -v -- rga
     } || {
       command -p -- test -x "$(command -v -- rg)" &&
+        command -p -- test -f "$(command -v -- rg)" &&
         command -v -- rg
     }
   )"
