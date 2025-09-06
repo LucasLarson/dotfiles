@@ -7674,11 +7674,7 @@ rename_sanitize() {
     n)
       n='--dry-run'
       ;;
-    *)
-      unset f >/dev/null 2>&1 || f=''
-      unset l >/dev/null 2>&1 || l=''
-      unset n >/dev/null 2>&1 || n=''
-      ;;
+    *) ;;
     esac
   done
   shift "$((OPTIND - 1))"
@@ -7715,6 +7711,9 @@ rename_sanitize() {
     "${n-}" \
     -- \
     {} +
+  unset f >/dev/null 2>&1 || f=''
+  unset l >/dev/null 2>&1 || l=''
+  unset n >/dev/null 2>&1 || n=''
 }
 alias -- \
   deimageoptim='rename_sanitize -i' \
