@@ -7742,7 +7742,7 @@ rename_r() {
       -exec rename \
       --verbose \
       --make-dirs \
-      --subst-all "${1-}" "${2-}" \
+      --subst "${1-}" "${2-}" \
       -- \
       {} +
     ;;
