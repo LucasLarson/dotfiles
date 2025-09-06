@@ -9080,7 +9080,7 @@ swiftlint_r() {
     -type f \
     -exec sh -C -f -u -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
   ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command swiftlint lint --enable-all-rules --fix --format --progress --strict -- "${1-}"
+  command swiftlint lint --enable-all-rules --fix --format --progress -- "${1-}"
 ' _ {} ';'
 }
 
