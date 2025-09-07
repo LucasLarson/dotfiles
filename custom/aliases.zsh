@@ -10099,6 +10099,39 @@ alias -- \
   history_restore='zsh_history_recovery' \
   restore_history='zsh_history_recovery'
 
+zshoptions_search() {
+  # prepare a string to use in a zsh manpage grep, where
+  # • underscores are meaningless
+  # • searching by case is not helpful
+  # • a prefix of `no` or `no_` must be ignored
+  command -p -- printf -- '%s\n' "${@-}" |
+    command -p -- sed \
+      -e 's/_//g' \
+      -e 's/^[[:space:]]*//' \
+      -e 's/^[Nn][Oo]//' \
+      -e 's/[[:space:]]*$//' |
+    # command awk -- '{for (i = 1; i <= length($0); i++) {printf "[%s%s]_*", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))}; printf "\n"}' - |
+    command awk -- '
+{
+  for (i = 1; i <= length($0); i++) {
+    printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))
+    # skip printing `_*` after the last character
+    if (i < length($0)) {
+      printf "_*"
+    }
+  }
+  printf "\n"
+}
+' |
+    command -p -- tee -- /dev/tty |
+    {
+      command xclip -selection clipboard ||
+        command xsel --clipboard --input ||
+        command pbcopy -pboard general ||
+        command -p -- cat -- -
+    } >/dev/null 2>&1
+}
+
 ## zero-width space
 # copy to macOS clipboard
 alias -- \
