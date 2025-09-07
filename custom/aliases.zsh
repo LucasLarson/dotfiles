@@ -9823,11 +9823,7 @@ yamllint_r() {
     command python -m pip install -- yamllint 2>/dev/null ||
     command python3 -m pip install -- yamllint 2>/dev/null ||
     return "${?:-127}"
-  # @TODO: does this find command skip the config files because they’re outside git?
-  command find -- \
-    "${HOME%/}"'/.config/yamllint/config' \
-    "${XDG_CONFIG_HOME-}"'/yamllint/config' \
-    . \
+  command find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
     -path '*/Empty' -prune -o \
