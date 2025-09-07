@@ -2261,9 +2261,9 @@ find_duplicate_files() {
   filename = substr($0, index($0, $3))
   key = checksum FS size
   if (files[key]) {
-     files[key] = files[key] RS filename
+    files[key] = files[key] RS filename
   } else {
-     files[key] = filename
+    files[key] = filename
   }
   counts[key]++
 }
