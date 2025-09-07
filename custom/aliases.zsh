@@ -9867,6 +9867,55 @@ yamllint_r() {
 done' _ {} ';'
 }
 
+yaml_prettier_r() {
+  command find -- . \
+    -path '*/.git' -prune -o \
+    -path '*/.well-known' -prune -o \
+    -path '*/Empty' -prune -o \
+    -path '*/Library' -prune -o \
+    -path '*/node_modules' -prune -o \
+    -path '*/t' -prune -o \
+    -path '*/Test*' -prune -o \
+    -path '*/test*' -prune -o \
+    -path '*/tst*' -prune -o \
+    -path '*copilot*' -prune -o \
+    -path '*dummy*' -prune -o \
+    -path '*vscode*' -prune -o \
+    -path './*' \
+    '(' \
+    -name '*.yml' -o \
+    -name '*.CFF' -o \
+    -name '*.cff' -o \
+    -name '*.mir' -o \
+    -name '*.reek' -o \
+    -name '*.rviz' -o \
+    -name '*.sublime-syntax' -o \
+    -name '*.syntax' -o \
+    -name '*.YAML' -o \
+    -name '*.yaml' -o \
+    -name '*.yaml-tmlanguage' -o \
+    -name '*.yaml.sed' -o \
+    -name '*.YML' -o \
+    -name '*.yml.mysql' -o \
+    -name '.clang-format' -o \
+    -name '.clang-tidy' -o \
+    -name '.clangd' -o \
+    -name '.gemrc' -o \
+    -name '.yamllint' -o \
+    -name 'docker_fish_history' -o \
+    -name 'fish_history' -o \
+    -name 'glide.lock' -o \
+    -name 'pixi.lock' -o \
+    -name 'yarn.lock' \
+    ')' \
+    -type f \
+    -exec sh -c -- 'for file in "${@-}"; do
+  command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+    ! command git -C "${file%/*}" rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    command prettier --log-level log --write -- "${file-}"
+done' _ {} ';'
+}
+
 # YouTube downloader
 yt() {
   command -v -- yt-dlp >/dev/null 2>&1 ||
