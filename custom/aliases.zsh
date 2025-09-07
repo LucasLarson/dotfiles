@@ -6788,6 +6788,19 @@ ocr_eo() {
   done
 }
 
+office_update() {
+  # https://github.com/PAPAMICA/terminal/commit/a07e1d8477
+  command -p -- find -- '/Library/Application Support/Microsoft' \
+    -path '/Library/Application Support/Microsoft/*.git' -prune -o \
+    -path '/Library/Application Support/Microsoft/*/node_modules' -prune -o \
+    -path '/Library/Application Support/Microsoft/*' \
+    -name 'msupdate' \
+    -type f \
+    -perm -700 \
+    -exec basename -- {} ';' \
+    -exec {} --list ';' 2>/dev/null
+}
+
 # open current directory if no argument is given
 open() {
   if command -p -- test "${#}" -eq 0; then
