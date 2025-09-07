@@ -9818,11 +9818,6 @@ wikipedia() {
 }
 
 yamllint_r() {
-  command -v -- yamllint >/dev/null 2>&1 ||
-    { command -v -- brew >/dev/null 2>&1 && command brew install -- yamllint; } ||
-    command python -m pip install -- yamllint 2>/dev/null ||
-    command python3 -m pip install -- yamllint 2>/dev/null ||
-    return "${?:-127}"
   command find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
