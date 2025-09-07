@@ -9859,7 +9859,7 @@ yamllint_r() {
     -name 'pixi.lock' -o \
     -name 'yarn.lock' \
     ')' \
-    ! -type d \
+    -type f \
     -exec sh -c -- 'for file in "${@-}"; do
   command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
   ! command git -C "${file%/*}" rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
