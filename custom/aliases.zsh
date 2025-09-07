@@ -1540,7 +1540,7 @@ du() {
   # command -p -- du -h -s -- "${1:-.}" 2>/dev/null |
   #   # awaiting Shellcheck's SC2016 repair to return to `awk '{print $1}'`
   #   command -p -- sed -e 's/^[[:space:]]*\([^[:space:]]*\).*/\1/'
-  command dust "${@:--Fsx}" 2>/dev/null ||
+  command dust "${@:--Fsxn$((LINES - 3))}" 2>/dev/null ||
     command -p -- du -h -s -- "${1:-.}"
 }
 
