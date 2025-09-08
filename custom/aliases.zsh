@@ -1681,10 +1681,12 @@ exif_remove() {
       command -p -- test ! -L "${file-}" &&
       command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
       # https://github.com/cirosantilli/dotfiles/blob/60ca745cdc/home/.bashrc#L2838-L2842
+      # `-recurse` for when `$file` argument is a directory
       command exiftool \
         -all='' \
         -overwrite_original \
         -progress \
+        -recurse \
         -v0 \
         -- \
         "${file-}"
