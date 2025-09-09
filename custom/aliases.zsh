@@ -5471,9 +5471,8 @@ hw() {
   } 2>/dev/null
 }
 
-histfile() {
+hundo() {
   ## remove the last entry from `$HISTFILE`
-  # temporarily use a copy of `$HISTFILE` until we figure out if this works
 
   # create a temporary location for the file
   command -p -- mkdir -p -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash'
@@ -5511,7 +5510,6 @@ EOF
     ;;
   esac
 }
-alias -- hundo='histfile'
 
 history_stats() {
   builtin fc -l 1 |
