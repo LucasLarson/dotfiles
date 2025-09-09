@@ -1,38 +1,38 @@
 #!/usr/bin/env sh
 
 ## Dotfiles and templates
-command mkdir -p -- "${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
+command -p -- mkdir -p -- "${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
   export DOTFILES="${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
-  command mkdir -p -- "${DOTFILES-}"'/custom' &&
+  command -p -- mkdir -p -- "${DOTFILES-}"'/custom' &&
   export ZSH_CUSTOM="${DOTFILES-}"'/custom' &&
   export custom="${DOTFILES-}"'/custom' &&
-  command mkdir -p -- "${DOTFILES-}"'/../Template' &&
+  command -p -- mkdir -p -- "${DOTFILES-}"'/../Template' &&
   export TEMPLATE="${DOTFILES-}"'/../Template' &&
-  command mkdir -p -- "${DOTFILES-}"'/../Default' &&
+  command -p -- mkdir -p -- "${DOTFILES-}"'/../Default' &&
   export DEFAULT="${DOTFILES-}"'/../Default'
 
 ## XDG
 # https://specifications.freedesktop.org/basedir-spec/0.7/ar01s03.html
-command mkdir -p -- "${HOME%/}"'/.local/share' &&
+command -p -- mkdir -p -- "${HOME%/}"'/.local/share' &&
   export XDG_DATA_HOME="${HOME%/}"'/.local/share'
-command mkdir -p -- "${HOME%/}"'/.config' &&
+command -p -- mkdir -p -- "${HOME%/}"'/.config' &&
   export XDG_CONFIG_HOME="${HOME%/}"'/.config'
-command mkdir -p -- "${HOME%/}"'/.local/state' &&
+command -p -- mkdir -p -- "${HOME%/}"'/.local/state' &&
   export XDG_STATE_HOME="${HOME%/}"'/.local/state'
-command mkdir -p -- '/usr/local/share' &&
+command -p -- mkdir -p -- '/usr/local/share' &&
   export XDG_DATA_DIRS="${XDG_DATA_DIRS:+${XDG_DATA_DIRS-}:}"'/usr/local/share'
-command mkdir -p -- '/usr/share' &&
+command -p -- mkdir -p -- '/usr/share' &&
   # this trailing slash is prescribed
   export XDG_DATA_DIRS="${XDG_DATA_DIRS:+${XDG_DATA_DIRS-}:}"'/usr/share/'
-command mkdir -p -- '/etc/xdg' &&
+command -p -- mkdir -p -- '/etc/xdg' &&
   export XDG_CONFIG_DIRS='/etc/xdg'
-command mkdir -p -- "${HOME%/}"'/.cache' &&
+command -p -- mkdir -p -- "${HOME%/}"'/.cache' &&
   export XDG_CACHE_HOME="${HOME%/}"'/.cache' &&
-  command touch -- "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${LOGNAME:-${USER-}}"'.zsh'
+  command -p -- touch -- "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${LOGNAME:-${USER-}}"'.zsh'
 
 # `XDG_RUNTIME_DIR` has no default and requires `700` permissions
-command mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
-  command chmod -- 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
+command -p -- mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
+  command -p -- chmod -- 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=${TMPDIR:-/tmp}/xdg_runtime_dir-${LOGNAME:-${USER-}}}"
 
 ## $CDPATH
@@ -52,13 +52,13 @@ export GITLAB_USERNAME="${LOGNAME:-${USER-}}"
 export GOPATH="${HOME%/}"'/.go'
 
 ## iCloud
-test -d "${HOME%/}"'/Library/Mobile Documents' &&
+command -p -- test -d "${HOME%/}"'/Library/Mobile Documents' &&
   export ICLOUD="${HOME%/}"'/Library/Mobile Documents'
 
 ## Input Field Separators
 # https://unix.stackexchange.com/a/220658
 # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_05_03
-IFS="$(printf -- ' \t\n|')" &&
+IFS="$(command -p -- printf -- ' \t\n|')" &&
   export IFS="${IFS%'|'}"
 
 ## Locale
@@ -105,6 +105,6 @@ export GPG_TTY="${TTY-}"
 
 ## private
 # shellcheck disable=SC1091
-command touch -- "${HOME%/}"'/.env' &&
-  command chmod -- 400 "${HOME%/}"'/.env' &&
+command -p -- touch -- "${HOME%/}"'/.env' &&
+  command -p -- chmod -- 400 "${HOME%/}"'/.env' &&
   . "${HOME%/}"'/.env'
