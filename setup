@@ -135,7 +135,7 @@ command -p -- test -d '/etc/ssh' || {
 
 # gpg
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
-command -p -- test -x '/usr/bin/gpg2' || {
+command -v -- gpg2 >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
   command -p -- printf -- 'installing GPG...\n' >&2
   set -o xtrace
