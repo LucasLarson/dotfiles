@@ -2653,7 +2653,7 @@ find_json_files() {
     -name '[Pp][Aa][Cc][Kk][Aa][Gg][Ee].[Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]' -o \
     -name '[Pp][Ii][Pp][Ff][Ii][Ll][Ee].[Ll][Oo][Cc][Kk]' -o \
     -name '[Pp][Rr][Oo][Ss][Ee][Ll][Ii][Nn][Tt][Rr][Cc]' -o \
-    -name '[Tt][Ll][Dd][Rr][Rr][Cc]' -o \
+    -name '[Tt][Ll][Dd][Rr][Rr][Cc]' \
     ')' \
     -type f \
     -print 2>/dev/null
