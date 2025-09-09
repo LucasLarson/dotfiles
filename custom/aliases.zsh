@@ -7503,6 +7503,21 @@ esac' _ {} +
 }
 alias -- qlr='ql -r'
 
+quote() {
+  # shell-quoting arbitrary strings
+  # https://web.archive.org/web/0id_/etalabs.net/sh_tricks.html
+  for string in "${@-}"; do
+    command -p -- printf -- '%s\n' "${string-}" |
+      command -p -- sed \
+        -e "$(
+          command -p -- printf -- 's/\047/\047\\\\\047\047/g'
+        )" \
+        -e '1 s/^/'\''/' \
+        -e '$ s/$/'\''/'
+  done
+}
+alias -- printf_q='quote'
+
 RANDOM() {
   # https://shellcheck.net/wiki/SC3028/1f83d59#correct-code
   command -p -- awk -vmax="$(
