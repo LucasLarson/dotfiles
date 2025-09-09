@@ -151,13 +151,13 @@ command -v -- git >/dev/null 2>&1 || {
 }
 
 # git user
-command git config --global --get user.name >/dev/null 2>&1 || {
-  command git config --global user.name 'Lucas Larson'
+command git config --global --get -- user.name >/dev/null 2>&1 || {
+  command git config --global -- user.name 'Lucas Larson'
 }
 
 # git default branch
-command git config --global --get init.defaultBranch >/dev/null 2>&1 || {
-  command git config --global init.defaultBranch 'main'
+command git config --global --get -- init.defaultBranch >/dev/null 2>&1 || {
+  command git config --global -- init.defaultBranch 'main'
 }
 
 # time zone
