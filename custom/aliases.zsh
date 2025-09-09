@@ -5960,8 +5960,8 @@ guetzli_r() {
 ## JPEG
 
 jsonlint_r() {
-  command npm list --location=global -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
-    command npm list --location=project -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
+  command npm ls --location=global -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
+    command npm ls --location=project -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
     return "${?:-127}"
   PS4=' ' command find -- . \
     -path '*/.git' -prune -o \
