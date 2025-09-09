@@ -582,20 +582,6 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 `gem cleanup --verbose`
 
-### Xcode, JetBrains, Carthage, Homebrew
-
-```shell
-trash_developer=1; command sleep 1; set -o xtrace; trash_date="$(command date -u -- '+%Y%m%d%H%M%S')" \
-command mkdir -p -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' && command mv -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' "${HOME%/}"'/.Trash/Xcode-'"${trash_date-}" \
-command mkdir -p -- "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' && command mv -- "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' "${HOME%/}"'/.Trash/Xcode⁄UserData⁄IB Support-'"${trash_date-}" \
-command mkdir -p -- "${HOME%/}"'/Library/Caches/JetBrains' && command mv -- "${HOME%/}"'/Library/Caches/JetBrains' "${HOME%/}"'/.Trash/JetBrains-'"${trash_date-}" \
-command mkdir -p -- "${HOME%/}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' && command mv -- "${HOME%/}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' "${HOME%/}"'/.Trash/Carthage-'"${trash_date-}" \
-command mkdir -p -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' && command mv -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' "${HOME%/}"'/.Trash/Homebrew-'"${trash_date-}" \
-command -v -- brew >/dev/null 2>&1 && { command brew autoremove --verbose; command brew cleanup --prune=all --verbose; }; \
-printf -- 'checking for Xcode installation...\n' 2>/dev/null; if command -v -- xcrun >/dev/null 2>&1; then printf -- 'removing unavailable device simulators...\n' 2>/dev/null; command xcrun simctl delete unavailable; else printf -- 'no Xcode installation detected.\n\n' 2>/dev/null; fi; \
-{ set +o xtrace; unset -v -- trash_developer; unset -v -- trash_date; } 2>/dev/null; printf -- '\n\n\360\237%s\232\256  data successfully trashed\n' "${trash_developer-}"
-```
-
 ## delete
 
 `rm -ri /directory #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br>
