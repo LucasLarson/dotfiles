@@ -1992,6 +1992,7 @@ find_binary_files() {
   LC_ALL='C' IFS='' command -p -- find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
+    ! -name '.DS_Store' \
     -exec file -- {} + |
     command -p -- sed \
       -e '/:.*directory/ d' \
