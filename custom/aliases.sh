@@ -2474,6 +2474,8 @@ find_image_files() {
     -name '*.[Jj][Pp][Gg]' -o \
     -name '*.[Jj][Pp][Xx]' -o \
     -name '*.[Jj][Xx][Ll]' -o \
+    -name '*.[Kk][Rr][Aa]' -o \
+    -name '*.[Kk][Rr][Zz]' -o \
     -name '*.[Nn][Ee][Ff]' -o \
     -name '*.[Oo][Dd][Gg]' -o \
     -name '*.[Oo][Rr][Ff]' -o \
