@@ -2440,6 +2440,7 @@ find_image_files() {
   command -p -- find -- . \
     '(' \
     -name '*.[Aa][Ii]' -o \
+    -name '*.[Aa][Pp][Nn][Gg]' -o \
     -name '*.[Aa][Rr][Ww]' -o \
     -name '*.[Aa][Vv][Ii][Ff]' -o \
     -name '*.[Bb][Mm][Pp]' -o \
@@ -2477,6 +2478,9 @@ find_image_files() {
     -name '*.[Pp][Bb][Mm]' -o \
     -name '*.[Pp][Gg][Mm]' -o \
     -name '*.[Pp][Ii][Cc]' -o \
+    -name '*.[Pp][Jj][Pp]' -o \
+    -name '*.[Pp][Jj][Pp][Ee][Gg]' -o \
+    -name '*.[Pp][Jj][Pp][Gg]' -o \
     -name '*.[Pp][Nn][Gg]' -o \
     -name '*.[Pp][Nn][Jj]' -o \
     -name '*.[Pp][Nn][Mm]' -o \
@@ -2490,6 +2494,7 @@ find_image_files() {
     -name '*.[Ss][Gg][Ii]' -o \
     -name '*.[Ss][Rr][Ww]' -o \
     -name '*.[Ss][Vv][Gg]' -o \
+    -name '*.[Ss][Vv][Gg][Zz]' -o \
     -name '*.[Tt][Gg][Aa]' -o \
     -name '*.[Tt][Hh][Mm]' -o \
     -name '*.[Tt][Ii][Ff]' -o \
