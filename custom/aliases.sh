@@ -2454,6 +2454,7 @@ find_image_files() {
     -name '*.[Ee][Pp][Ss]' -o \
     -name '*.[Ee][Xx][Rr]' -o \
     -name '*.[Ff][Ii][Gg]' -o \
+    -name '*.[Ff][Oo][Dd][Gg]' -o \
     -name '*.[Gg][Ii][Ff]' -o \
     -name '*.[Hh][Ee][Ii][Cc]' -o \
     -name '*.[Hh][Ee][Ii][Ff]' -o \
@@ -2474,6 +2475,7 @@ find_image_files() {
     -name '*.[Jj][Pp][Xx]' -o \
     -name '*.[Jj][Xx][Ll]' -o \
     -name '*.[Nn][Ee][Ff]' -o \
+    -name '*.[Oo][Dd][Gg]' -o \
     -name '*.[Oo][Rr][Ff]' -o \
     -name '*.[Pp][Bb][Mm]' -o \
     -name '*.[Pp][Gg][Mm]' -o \
