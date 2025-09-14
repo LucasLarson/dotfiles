@@ -2491,6 +2491,7 @@ find_image_files() {
     -name '*.[Pp][Pp][Mm]' -o \
     -name '*.[Pp][Ss][Dd]' -o \
     -name '*.[Pp][Xx][Mm]' -o \
+    -name '*.[Qq][Oo][Ii]' -o \
     -name '*.[Rr][Aa][Ww]' -o \
     -name '*.[Rr][Ii][Ff]johnalanwoods/maintained-modern-unix@c43c4b3f29/screenshots/zoxide.riff' -o \
     -name '*.[Rr][Ii][Ff]' -o \
