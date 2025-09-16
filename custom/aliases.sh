@@ -9093,7 +9093,7 @@ super_linter_r() {
     --env VALIDATE_YAML=true \
     --volume "$(command git rev-parse --show-toplevel)"':'"${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/lint' \
     ghcr.io/super-linter/super-linter:latest
-  # https://github.com/github/super-linter/commit/c01d0bc870
+  # https://github.com/super-linter/super-linter/commit/c01d0bc870
   command docker run \
     --env ACTIONS_RUNNER_DEBUG=true \
     --env DISABLE_ERRORS=false \
