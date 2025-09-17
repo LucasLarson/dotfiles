@@ -2568,7 +2568,6 @@ find_json_files() {
     -path '*/tst*' -prune -o \
     -path '*copilot*' -prune -o \
     -path '*dummy*' -prune -o \
-    -path '*vscode*' -prune -o \
     '(' \
     -name '*.json' -o \
     -name '*.4[Dd][Ff][Oo][Rr][Mm]' -o \
