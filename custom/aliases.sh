@@ -7970,7 +7970,7 @@ rustfmt_r() {
 }
 
 sc() {
-  for file in "${@:-${DOTFILES}/custom/aliases.sh}"; do
+  for file in "${@:-${DOTFILES-}/custom/aliases.sh}"; do
     case "${file-}" in
     --) shift && continue ;;
     -h* | --help)
@@ -8018,7 +8018,7 @@ sca() {
     esac
   done
   shift "$((OPTIND - 1))"
-  for file in "${@:-"${DOTFILES-}"/custom/aliases."${SHELL##*[-./]}"}"; do
+  for file in "${@:-${DOTFILES-}/custom/aliases.sh}"; do
     case "${file-}" in
     --)
       shift 1
