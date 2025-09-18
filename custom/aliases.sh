@@ -5078,7 +5078,7 @@ gofmt_r() {
 }
 
 google() {
-  set -- 'https://www.google.com/search?safe=off&q='"${*-}"
+  set -- 'https://ddg.gg/?kp=-2&q='"${*-}"
   command xdg-open -- "${1-}" 2>/dev/null ||
     command open -- "${1-}"
 }
