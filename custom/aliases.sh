@@ -9331,7 +9331,7 @@ transfer() {
   for file in "${@-}"; do
     command -p -- test -s "${file-}" &&
       {
-        command curl --fail --form 'expires=1' --form 'file=@'"${file-}" --form 'secret='\'''\''' --location --show-error --silent --url https://0x0.st ||
+        command curl --fail --form 'expires=1' --form 'file=@'"${file-}" --form 'secret='\'''\''' --location --show-error --silent --url https://0x0.st 2>/dev/null ||
           {
             command curl --fail --location --show-error --silent --upload-file "${file-}" --url 'https://bashupload.com' |
               command -p -- sed -n -e '/http/ s/wget //p'
