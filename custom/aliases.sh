@@ -9336,7 +9336,11 @@ transfer() {
             command curl --fail --location --show-error --silent --upload-file "${file-}" --url 'https://bashupload.com' |
               command -p -- sed -n -e '/http/ s/wget //p'
           } ||
-          command curl --fail --form 'file=@'"${file-}" --location --show-error --silent --write-out='\n' --url 'https://tmpfiles.org/api/v1/upload' ||
+          command curl --fail --form 'file=@'"${file-}" --location --show-error --silent --url 'https://tmpfiles.org/api/v1/upload' |
+          command -p -- sed \
+            -n \
+            -e '# emulate jq to insert "dl" into output' \
+            -e 's/.*"url"[^."]*"\(https\{0,1\}:\/\/tmpfiles.org\)\([^"]*\)".*/\1\/dl\2\n/p' ||
           command curl --fail --form 'file=@'"${file-}" --location --show-error --silent --write-out='\n' --url 'https://temp.sh/upload' ||
           command wget --hsts-file=/dev/null --post-file="${file-}" --quiet 'https://temp.sh/upload' ||
           command curl --fail --location --silent --show-error --upload-file "${file-}" --write-out='\n' --url 'https://temp.sh' ||
