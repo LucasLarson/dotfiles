@@ -1189,30 +1189,6 @@ curl_brew() {
     --url "${@-}"
 }
 
-datauri() {
-  # create a data URI from a file
-  # https://github.com/mathiasbynens/dotfiles/commit/5d76fc286f
-  mime_type="$(command file -b --mime-type -- "${1-}")"
-  case "${mime_type-}" in
-  text/*)
-    mime_type="${mime_type-}"'; charset=utf-8'
-    ;;
-  *) ;;
-  esac
-  command -p -- uuencode -m -- "${1-}" /dev/stdout |
-    command -p -- sed \
-      -e '1 d' \
-      -e '$ d' |
-    command -p -- sed \
-      -e ':a' \
-      -e 'N' \
-      -e '$! b a' \
-      -e 's/\n//g' |
-    command awk -vmime_type="${mime_type-}" -- '{printf "data:%s;base64,%s\n", mime_type, $0}' -
-  unset mime_type >/dev/null 2>&1 || mime_type=''
-}
-alias -- dataurl='datauri'
-
 # define
 alias -- d >/dev/null 2>&1 &&
   unalias -- d
