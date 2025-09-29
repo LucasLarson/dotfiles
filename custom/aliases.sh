@@ -9931,17 +9931,17 @@ yt() {
     shift &&
       for video in "${@-}"; do
         # removing `--format`/`-f` ensures the best quality video
-        command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-annotations --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn -- "${video-}"
+        command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn -- "${video-}"
       done
     ;;
   *)
     for video in "${@-}"; do
       # try for m4a first
-      command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-annotations --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --format=m4a -- "${video-}" ||
+      command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --format=m4a -- "${video-}" ||
         # if not then try mp3
-        command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-annotations --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --format=mp3 -- "${video-}" ||
+        command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --format=mp3 -- "${video-}" ||
         # if not then this mess which changes `--format` into `--list-formats`
-        command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-annotations --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --list-formats -- "${video-}"
+        command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --list-formats -- "${video-}"
     done
     ;;
   esac
