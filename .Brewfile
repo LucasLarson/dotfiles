@@ -18,8 +18,6 @@ brew "bat"
 brew "bfg"
 # Python code formatter
 brew "black"
-# Fish completion for brew-cask
-brew "brew-cask-completion"
 # Vector graphics library with cross-device output support
 brew "cairo"
 # Checks for bashisms in shell scripts
