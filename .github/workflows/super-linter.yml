@@ -47,6 +47,7 @@ jobs:
         with:
           # Super-Linter requires full repository history for analysis
           fetch-depth: 0
+          persist-credentials: false
 
       ################################
       # Run Linter against code base #
