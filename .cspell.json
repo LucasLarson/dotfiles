@@ -342,9 +342,5 @@
     "Zunit",
     "zwc"
   ],
-  "flagWords": [
-    "hte",
-    "Lucaslarson",
-    "lucasLarson"
-  ]
+  "flagWords": ["hte", "Lucaslarson", "lucasLarson"]
 }

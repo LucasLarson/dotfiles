@@ -11,8 +11,6 @@
   },
   "remediateSettings": {
     "enableRenovate": true,
-    "extends": [
-      "config:base"
-    ]
+    "extends": ["config:base"]
   }
 }
