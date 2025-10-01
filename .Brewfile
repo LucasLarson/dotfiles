@@ -236,6 +236,8 @@ brew "yarn"
 brew "yash"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
+# Find security issues in GitHub Actions setups
+brew "zizmor"
 # UNIX shell (command interpreter)
 brew "zsh", args: ["HEAD"]
 # Voice and text chat software
