@@ -178,6 +178,8 @@ brew "pngcrush"
 brew "poppler"
 # Policy-compliant ordinary shell
 brew "posh"
+# Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
+brew "prettier"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.10"
 # Ruby version manager
