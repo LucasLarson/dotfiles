@@ -277,16 +277,6 @@ cask "opera@developer"
 cask "orion"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
-# Display image info and preview unsupported formats in QuickLook
-cask "qlimagesize"
-# Quick Look plugin for plaintext files without an extension
-cask "qlstephen"
-# Thumbnails, static previews, cover art and metadata for video files
-cask "qlvideo"
-# Quick Look plugin for JSON files
-cask "quicklook-json"
-# Quick Look generator for Adobe Swatch Exchange files
-cask "quicklookase"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
 # Instant messaging application focusing on security
@@ -303,8 +293,6 @@ cask "virtualbox"
 cask "vivaldi-snapshot"
 # Open-source cross-platform multimedia player
 cask "vlc@nightly"
-# Quick Look plugin for webp files
-cask "webpquicklook"
 # Torrent streaming application
 cask "webtorrent"
 # Video communication and virtual meeting platform
