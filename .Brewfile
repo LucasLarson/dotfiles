@@ -22,6 +22,8 @@ brew "black"
 brew "cairo"
 # Checks for bashisms in shell scripts
 brew "checkbashisms"
+# Prevent cloud misconfigurations during build-time for IaC tools
+brew "checkov"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
 # Cross-platform make
