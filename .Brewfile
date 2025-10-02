@@ -265,6 +265,8 @@ cask "keka"
 cask "maccy"
 # File system integration
 cask "macfuse"
+# Open-source Dropbox client
+cask "maestral"
 # Provides updates to various Microsoft products
 cask "microsoft-auto-update"
 # Web browser focused on privacy and on minimizing tracking and fingerprinting
