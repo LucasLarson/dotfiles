@@ -224,3 +224,8 @@ command -p -- test "${ZSH-}" != '' &&
 
 ## Powerlevel10k
 . "${HOME%/}"'/.p10k.zsh' 2>/dev/null
+
+## shell options
+export set_hyphen="${--}" &&
+  set_o="$(set +o)" &&
+  export set_o
