@@ -254,3 +254,8 @@ test "${ZSH-}" != '' &&
 ## Powerlevel10k
 test "${ZSH_THEME-}" = 'powerlevel10k/powerlevel10k' &&
   . "${HOME%/}"'/.p10k.zsh'
+
+## shell options
+export set_hyphen="${--}" &&
+  set_o="$(set +o)" &&
+  export set_o

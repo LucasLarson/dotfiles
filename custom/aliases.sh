@@ -10143,9 +10143,3 @@ alias -- \
   zwsp='command -p -- printf -- '\''​'\'' | command pbcopy' \
   shrug='command -p -- printf -- '\''\302\257\134_(\343\203\204)_/\302\257'\'' | command -p -- pbcopy && command -p -- printf -- '\''\302\257\134_(\343\203\204)_/\302\257\n'\''' \
   sparkle='command -p -- printf -- '\''\342\234\250'\'' | command pbcopy && command -p -- printf -- '\''\342\234\250\n'\'''
-
-## Zsh options after everything else while testing ~/c/soak/git-trap 2024-03
-set_o="$(set +o)" &&
-  export set_o &&
-  set_hyphen="${--}" &&
-  export set_hyphen
