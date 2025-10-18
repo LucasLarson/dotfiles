@@ -3162,6 +3162,7 @@ find_shell_scripts() {
       -name '*.flaskenv' -o \
       -name '*.ksh' -o \
       -name '*.kshrc' -o \
+      -name '*.lksh' -o \
       -name '*.login' -o \
       -name '*.logout' -o \
       -name '*.mksh' -o \
@@ -8012,6 +8013,7 @@ sca() {
         'ksh88       -b -C -e -f -n -u -x -o pipefail -o posix -o functrace' \
         'ksh93       -b -C -e -f -n -u -x -o pipefail' \
         'ksh2020     -b -C -e -f -n -u -x -o pipefail' \
+        'lksh        -b -C -e -f -n -u -x             -o posix -o sh' \
         'mksh        -b -C -e -f -n -u -x -o pipefail -o posix' \
         'mksh-static -b -C -e -f -n -u -x -o pipefail -o posix' \
         'nksh93      -b -C -e -f -n -u -x -o pipefail -o posix -o functrace' \
