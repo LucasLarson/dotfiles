@@ -3931,13 +3931,8 @@ git_attic() {
   # The output is designed to be copied and pasted: Pass the second field to
   # git show to display the file contents, or just select the hash without ^ to
   # see the commit where removal happened
-  command git log --date=short --diff-filter=D --no-renames --raw --format='%h %cd' "${@-}" |
-    # note that this will not work for files with spaces nor will it work for
-    # deleted files unless they’re prepended with an end-of-options delimiter
-    # even with more careful single quotes, which are commented because they
-    # only appear to fix the problem, but were complicated to add to the Awk command
-    #       awk -- '/^[[:xdigit:]]/ {commit = $1; date = $2} /^:/ && $5 == "D" {print date, commit "'\''^'\'':'\'./'" $6 "'\''"}' |
-    command awk -- '/^[[:xdigit:]]/ {commit = $1; date = $2} /^:/ && $5 == "D" {print date, commit "'\''^'\'':./" $6}' |
+  command git log --date=short --diff-filter=D --no-renames --raw --format='%h %cd' -- "${@-}" |
+    command awk -- '/^[[:xdigit:]]/ {commit = $1; date = $2} /^:/ && $5 == "D" {filename = substr($0, index($0, $6)); print date, commit "'\''^'\'':'\''./" filename "'\''"}' |
     LC_ALL='C' command -p -- sort -r -u
 }
 
