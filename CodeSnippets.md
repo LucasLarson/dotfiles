@@ -100,7 +100,7 @@ to add dotfiles of the variety [Mackup](https://github.com/lra/mackup) might’v
 add="${HOME%/}"'/Desktop/.example.txt'
 command mv -- "${add-}" "${DOTFILES-}"'/directory_where_it_should_go_if_any/'"${add##*/}"
 command ln -s -- "${DOTFILES-}"'/directory_where_it_should_go_if_any/'"${add##*/}" "${HOME%/}"'/directory_where_it_should_go_if_any/'"${add##*/}"
-unset -v -- add
+unset add >/dev/null 2>&1 || add=''
 ```
 
 ##### lists
@@ -509,7 +509,7 @@ ssh username@example.com
 command "${utility-}" --level=0 --mirror --continue --verbose \
 --append-output=./"${wget_server-}".log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --progress=bar --no-check-certificate --random-wait \
 --referer=https://"${wget_server-}" --adjust-extension --page-requisites --convert-links --server-response \
-https://"${wget_server-}"; unset -v -- wget_server utility`
+https://"${wget_server-}"; unset wget_server >/dev/null 2>&1 || wget_server=''; unset utility >/dev/null 2>&1 || utility=''`
 
 ## Wi-Fi
 
