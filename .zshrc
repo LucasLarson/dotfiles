@@ -84,11 +84,9 @@ for file in "${ZSH_CUSTOM-}"/plugins/**/*.plugin.*sh; do
   . "${file-}" 2>/dev/null &&
     FPATH="${FPATH:+${FPATH-}:}${file%/*}"
 done
-unset -v -- file
 for file in "${ZSH_CUSTOM-}"/*sh; do
   . "${file-}"
 done
-unset -v -- file
 
 ## MANPATH
 test -d '/usr/local/man' &&
