@@ -1,7 +1,5 @@
 # Code snippets
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
 - [dotfiles](#dotfiles)
   - [add](#add)
     - [manual](#manual)
@@ -79,13 +77,10 @@
   - [brew](#brew)
   - [npm](#npm)
   - [gem](#gem)
-  - [Xcode, JetBrains, Carthage, Homebrew](#xcode-jetbrains-carthage-homebrew)
 - [delete](#delete)
   - [empty directories](#empty-directories)
   - [compare two folders](#compare-two-folders)
   - [purge memory cache](#purge-memory-cache)
-
-<!-- /TOC -->
 
 ## dotfiles
 
