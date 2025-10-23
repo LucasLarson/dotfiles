@@ -135,7 +135,7 @@ command printf -- '%s\n' "${MANPATH-}" |
 
 ###### man pages
 
-Definintions of the numbers that follow `man` commands ([via](https://web.archive.org/web/20200627082020id_/manpages.ubuntu.com/cgi-bin/search.py?q=man&titles=Title#distroAndSection))
+Definitions of the numbers that follow `man` commands ([via](https://web.archive.org/web/20200627082020id_/manpages.ubuntu.com/cgi-bin/search.py?q=man&titles=Title#distroAndSection))
 
 | section | contents                                                  |
 | :-----: | --------------------------------------------------------- |
