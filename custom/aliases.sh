@@ -2287,7 +2287,7 @@ find_empty() {
     # POSIX- and `find`-compliant `find . -path '*/.git' -prune -o -type d -empty -delete`
     # because `-delete` activates `-depth`, and `-depth` overrides `-prune`, which reverses `-prune logic
     command -p -- printf -- 'are you sure?\n' >&2 &&
-      command -p -- sleep 2 &&
+      command -p -- sleep -- 2 &&
       LC_ALL='C' IFS='' command find -- . \
         ! -path '*/.git*' \
         ! -path '*/Library*' \
@@ -5741,7 +5741,7 @@ install() {
       command pacman --sync -yy "${@-}"
     else
       command -p -- printf -- 'unable to detect system software installer\n'
-      command -p -- sleep 1
+      command -p -- sleep -- 1
       command -p -- printf -- 'aborting\n'
       return 1
     fi
