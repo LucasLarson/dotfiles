@@ -28,9 +28,9 @@ command -p -- printf -- '   \174\137\137\174\137\137\137\174' >&2
 command -p -- printf -- '  \057\137\137\174\174\137\137\174\n' >&2
 command -p -- printf -- '           \134\057\n\n' >&2
 command -p -- printf -- '        Linux setup\n' >&2
-command -p -- sleep 1
+command -p -- sleep -- 1
 command -p -- printf -- '  a Lucas Larson production\n\n' >&2
-command -p -- sleep 1
+command -p -- sleep -- 1
 
 # save `date` for backup files
 now="$(command -p -- date -- '+%Y%m%d%H%M%S')"
@@ -283,7 +283,7 @@ command -p -- test -w '/etc/passwd' &&
 # done
 { set +o xtrace; } 2>/dev/null
 command -p -- printf -- 'installation complete\n' >&2
-command -p -- sleep 1
+command -p -- sleep -- 1
 command -p -- printf -- 'exiting to apply updates...\n' >&2
 
 # restore `$PS4`
