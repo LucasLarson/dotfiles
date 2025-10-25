@@ -3791,29 +3791,26 @@ alias -- g >/dev/null 2>&1 &&
 # `#compdef` instead of `compdef`?
 # https://github.com/zph/dotfiles/blob/735c49534e/home/dot_zsh.d/git.zsh
 command -v -- _git >/dev/null 2>&1 &&
-  compdef -- g='git' &&
-  #compdef _git gm=git-merge &&
-  #compdef _git gd=git-diff &&
-  #compdef _git gds=git-diff
-  g() {
-    case "${1-}" in
-    clone | config | help | init | version | -*)
-      command git "${@-}"
-      ;;
-    *)
-      command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
-        return "${?:-1}"
-      # if first argument is a file, then perform `git status` on it
-      if command -p -- test -e "${1-}"; then
-        command git status -- "${@-}"
-      else
-        command git -c color.status=always -c core.quotePath=false "${@:-status}" |
-          command -p -- sed \
-            -e '$ d'
-      fi
-      ;;
-    esac
-  }
+  compdef -- g='git'
+g() {
+  case "${1-}" in
+  clone | config | help | init | version | -*)
+    command git "${@-}"
+    ;;
+  *)
+    command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
+      return "${?:-1}"
+    # if first argument is a file, then perform `git status` on it
+    if command -p -- test -e "${1-}"; then
+      command git status -- "${@-}"
+    else
+      command git -c color.status=always -c core.quotePath=false "${@:-status}" |
+        command -p -- sed \
+          -e '$ d'
+    fi
+    ;;
+  esac
+}
 alias -- \
   g.='command git -c color.status=auto -c core.quotePath=false status .' \
   gss='command git -c color.status=auto -c core.quotePath=false status --porcelain=v1'
