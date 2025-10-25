@@ -6678,8 +6678,8 @@ nslookup_r() {
     command -p -- printf -- '%s\n' "${output-}" | command -p -- grep -e 'name' | command awk -- '{print $4}'
     shift
   done
-} && # YIPES / @TODO!?
-  command -v -- _nslookup >/dev/null 2>&1 &&
+}
+command -v -- _nslookup >/dev/null 2>&1 &&
   compdef -- nslookup_r='nslookup'
 
 odb() {
