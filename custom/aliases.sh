@@ -9583,8 +9583,6 @@ value_of_variable() {
 }
 
 # Visual Studio Code
-command -v -- _code >/dev/null 2>&1 &&
-  compdef -- code-insiders='code'
 code() {
   if command -v -- code-insiders >/dev/null 2>&1; then
     utility='code-insiders'
@@ -9612,6 +9610,8 @@ code() {
   # [0302/150702.727990:ERROR:codesign_util.cc(108)] SecCodeCheckValidity: Error Domain=NSOSStatusErrorDomain Code=-67062 "(null)" (-67062)
   unset utility >/dev/null 2>&1 || utility=''
 }
+command -v -- _code >/dev/null 2>&1 &&
+  compdef -- code-insiders='code'
 
 wayback() {
   command open -- 'https://web.archive.org/web/'"${1-}"
