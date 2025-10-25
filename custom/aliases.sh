@@ -5247,8 +5247,11 @@ rg() {
         command -v -- rg
     }
   )"
-  command -p -- test "${utility-}" = '' &&
-    command -p -- grep -E -r -e "${@-}"
+  command -p -- test "${utility-}" = '' && {
+    unset utility >/dev/null 2>&1 || utility=''
+    command -p -- grep -E -r "${@-}"
+    return "${??}"
+  }
   command "${utility-}" \
     --glob '!**.git' \
     --glob '!**node_modules' \
