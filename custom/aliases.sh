@@ -6461,19 +6461,14 @@ command -v -- op >/dev/null 2>&1 && {
 
 # batman
 man() {
-
-  # the `compdef` probably belongs after the `batman` check, but
-  # I want it available immediately. It might even
-  # belong outside the function or
-  # even in `~/.zshenv` 2024-05
-  compdef -- batman='man'
-
   if command -v -- batman >/dev/null 2>&1; then
     command batman "${@-}"
   else
     command -p -- man "${@-}"
   fi
 }
+command -v -- _man >/dev/null 2>&1 &&
+  compdef -- batman='man'
 
 man_pdf() {
   set \
