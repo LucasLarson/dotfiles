@@ -8195,6 +8195,27 @@ sed_pretty() {
 }
 alias -- sed_debug='sed_pretty'
 
+seq() {
+  case "${#}" in
+  1)
+    set -- 1 1 "${1-}"
+    ;;
+  2)
+    set -- "${1-}" 1 "${2-}"
+    ;;
+  3)
+    set -- "${1-}" "${2-}" "${3-}"
+    ;;
+  *)
+    return 1
+    ;;
+  esac
+  while command -p -- test "${1-}" -le "${3-}"; do
+    command -p -- printf -- '%d\n' "${1-}"
+    set -- "$(($1 + $2))" "${2-}" "${3-}"
+  done
+}
+
 shellcheck_d() {
   set \
     -o noglob \
