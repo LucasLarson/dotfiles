@@ -2514,6 +2514,7 @@ find_images_with_incorrect_filename_extensions() {
       *.[Bb][Mm][Pp]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': PC bitmap' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
       *.[Ee][Pp][Ss]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': DOS EPS Binary File' -e "${file-}"': PostScript document' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
       *.[Gg][Ii][Ff]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': GIF image' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
+      *.[Hh][Ee][Ii][Cc]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': ISO Media, HEIF Image' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
       *.[Ii][Cc][Nn][Ss]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': Mac OS X icon' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
       *.[Ii][Cc][Oo]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': MS Windows icon' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
       *.[Jj][Pp][Ee] | *.[Jj][Pp][Ee][Gg] | *.[Jj][Pp][Gg]) command -p -- file -- "${file-}" | command -p -- grep -F -e "${file-}"': JPEG image' >/dev/null 2>&1 || command -p -- printf -- '%s\n' "${file-}" ;;
