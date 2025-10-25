@@ -344,7 +344,7 @@ command -v -- bat >/dev/null 2>&1 &&
   alias -- bat='command bat --decorations=never --paging=never' &&
   alias -- bats='bat --language=sh' &&
   command -v -- _bat >/dev/null 2>&1 &&
-  compdef -- bats='bat'
+  compdef -- bats='bat' >/dev/null 2>&1
 
 ## cd
 # this construction:
@@ -1193,8 +1193,8 @@ curl_brew() {
 alias -- d >/dev/null 2>&1 &&
   unalias -- d
 command -v -- _which >/dev/null 2>&1 &&
-  compdef -- define='which' &&
-  compdef -- d='define'
+  compdef -- define='which' >/dev/null 2>&1 &&
+  compdef -- d='define' >/dev/null 2>&1
 define() {
   for query in "${@:-define}"; do
 
@@ -1306,7 +1306,7 @@ diffy() {
     --width="$((COLUMNS / 2 - 1 + COLUMNS / 2 - 1))" \
     "${@-}"
 }
-compdef -- diffy='diff' 2>/dev/null || command -p -- true
+compdef -- diffy='diff' >/dev/null 2>&1
 diff_exif() {
   set \
     -o noclobber \
@@ -3790,10 +3790,10 @@ alias -- g >/dev/null 2>&1 &&
   unalias -- g
 # https://github.com/zph/dotfiles/blob/735c49534e/home/dot_zsh.d/git.zsh
 command -v -- _git >/dev/null 2>&1 &&
-  compdef -- g='git' &&
-  compdef _git gm='git-merge' &&
-  compdef _git gd='git-diff' &&
-  compdef _git gds='git-diff'
+  compdef -- g='git' >/dev/null 2>&1 &&
+  compdef _git gm='git-merge' >/dev/null 2>&1 &&
+  compdef _git gd='git-diff' >/dev/null 2>&1 &&
+  compdef _git gds='git-diff' >/dev/null 2>&1
 g() {
   case "${1-}" in
   clone | config | help | init | version | -*)
@@ -5155,7 +5155,7 @@ alias -- \
 alias -- gr >/dev/null 2>&1 &&
   unalias -- gr
 command -v -- _grep >/dev/null 2>&1 &&
-  compdef -- gr='grep'
+  compdef -- gr='grep' >/dev/null 2>&1
 gr() {
   # when I’m feeling better I’ll remember why I’m using `grep` instead of `git grep --no-index`
   case "${1-}" in
@@ -5231,7 +5231,7 @@ ggr() {
 }
 
 command -v -- _rg >/dev/null 2>&1 &&
-  compdef -- rga='rg'
+  compdef -- rga='rg' >/dev/null 2>&1
 # skip searching `.git` and `node_modules` directories
 # https://github.com/BurntSushi/ripgrep/issues/839#issuecomment-1006723597
 rg() {
@@ -6471,7 +6471,7 @@ man() {
   fi
 }
 command -v -- _man >/dev/null 2>&1 &&
-  compdef -- batman='man'
+  compdef -- batman='man' >/dev/null 2>&1
 
 man_pdf() {
   set \
@@ -6503,7 +6503,7 @@ man_pdf() {
   } 2>/dev/null
 }
 command -v -- _man >/dev/null 2>&1 &&
-  compdef -- man_pdf='man'
+  compdef -- man_pdf='man' >/dev/null 2>&1
 
 markdownlint_r() {
   set \
@@ -6678,7 +6678,7 @@ nslookup_r() {
   done
 }
 command -v -- _nslookup >/dev/null 2>&1 &&
-  compdef -- nslookup_r='nslookup'
+  compdef -- nslookup_r='nslookup' >/dev/null 2>&1
 
 odb() {
   # odb: convert hexadecimal escapes to octal escapes
@@ -9614,7 +9614,7 @@ code() {
   unset utility >/dev/null 2>&1 || utility=''
 }
 command -v -- _code >/dev/null 2>&1 &&
-  compdef -- code-insiders='code'
+  compdef -- code-insiders='code' >/dev/null 2>&1
 
 wayback() {
   command open -- 'https://web.archive.org/web/'"${1-}"
