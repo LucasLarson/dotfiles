@@ -3788,7 +3788,6 @@ gif_webp_r() {
 # Git
 alias -- g >/dev/null 2>&1 &&
   unalias -- g
-# `#compdef` instead of `compdef`?
 # https://github.com/zph/dotfiles/blob/735c49534e/home/dot_zsh.d/git.zsh
 command -v -- _git >/dev/null 2>&1 &&
   compdef -- g='git'
@@ -6608,7 +6607,6 @@ m1m1() {
 }
 
 # https://unix.stackexchange.com/a/30950
-# TODO removing `command` to figure out if I need `compdef` 2022-05-29
 alias -- mv='mv -v -i'
 
 # find files with non-ASCII characters
