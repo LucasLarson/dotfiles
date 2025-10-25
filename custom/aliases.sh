@@ -3790,7 +3790,10 @@ alias -- g >/dev/null 2>&1 &&
   unalias -- g
 # https://github.com/zph/dotfiles/blob/735c49534e/home/dot_zsh.d/git.zsh
 command -v -- _git >/dev/null 2>&1 &&
-  compdef -- g='git'
+  compdef -- g='git' &&
+  compdef _git gm='git-merge' &&
+  compdef _git gd='git-diff' &&
+  compdef _git gds='git-diff'
 g() {
   case "${1-}" in
   clone | config | help | init | version | -*)
