@@ -37,7 +37,7 @@ brew "cpplint"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
 # POSIX-compliant descendant of NetBSD's ash (the Almquist SHell)
-brew "dash", args: ["HEAD"]
+brew "dash-shell"
 # File comparison utilities
 brew "diffutils"
 # More intuitive version of du in rust
