@@ -124,6 +124,9 @@ octal_to_decimal() {
   base_to_base "${1-}" 8 A
 }
 alias -- oct2dec='octal_to_decimal'
+octal_to_hexadecimal() {
+  base_to_base "${1-}" 8 16
+}
 decimal_to_octal() {
   base_to_base "${1-}" A 8
 }
