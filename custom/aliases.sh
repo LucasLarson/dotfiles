@@ -1192,6 +1192,14 @@ curl_brew() {
     --url "${@-}"
 }
 
+date_s() {
+  # POSIX-compliant implementation of `date +%s`
+  # https://web.archive.org/web/0id_/etalabs.net/sh_tricks.html
+  command -p -- printf -- '%d\n' "$(($(
+    command -p -- date -u -- '+( (%Y - 1600) * 365 + (%Y - 1600) / 4 - (%Y - 1600) / 100 + (%Y - 1600) / 400 + %j - 135140) * 86400 + %H * 3600 + %M * 60 + %S'
+  )))"
+}
+
 # define
 alias -- d >/dev/null 2>&1 &&
   unalias -- d
