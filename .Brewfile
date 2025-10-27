@@ -283,6 +283,8 @@ cask "rectangle"
 cask "signal-beta"
 # Application for inspecting installer packages
 cask "suspicious-package"
+# Remote access and connectivity software focused on security
+cask "teamviewer"
 # Messaging app with a focus on speed and security
 cask "telegram"
 # Web browser focusing on security
