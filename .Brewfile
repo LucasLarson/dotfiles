@@ -159,7 +159,7 @@ brew "node"
 # Adds an OCR text layer to scanned PDF files
 brew "ocrmypdf"
 # Bash-compatible Unix shell with more consistent syntax and semantics
-brew "oil"
+brew "oils-for-unix"
 # Portable OpenBSD ksh, based on the public domain Korn shell (pdksh)
 brew "oksh"
 # OpenBSD freely-licensed SSH connectivity tools
