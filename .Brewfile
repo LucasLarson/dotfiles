@@ -281,6 +281,8 @@ cask "orion"
 cask "qbittorrent"
 # Move and resize windows using keyboard shortcuts or snap areas
 cask "rectangle"
+# Open source virtual/remote desktop application
+cask "rustdesk"
 # Instant messaging application focusing on security
 cask "signal-beta"
 # Application for inspecting installer packages
