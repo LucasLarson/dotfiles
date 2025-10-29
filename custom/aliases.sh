@@ -525,6 +525,8 @@ clang_format() {
     -name '*.[Aa][Ss][Tt]' -o \
     -name '*.[Bb][Cc]' -o \
     -name '*.[Cc]' -o \
+    -name '*.[Cc]++' -o \
+    -name '*.[Cc]++[Mm]' -o \
     -name '*.[Cc].[Ii][Nn]' -o \
     -name '*.[Cc][Aa][Kk][Ee]' -o \
     -name '*.[Cc][Aa][Tt][Ss]' -o \
@@ -546,22 +548,21 @@ clang_format() {
     -name '*.[Cc][Xx][Xx]' -o \
     -name '*.[Cc][Xx][Xx].[Ii][Nn]' -o \
     -name '*.[Cc][Xx][Xx][Mm]' -o \
-    -name '*.[Cc]++' -o \
-    -name '*.[Cc]++[Mm]' -o \
     -name '*.[Ee][Cc]' -o \
     -name '*.[Ee][Cc][Pp]' -o \
     -name '*.[Ee][Dd][Cc]' -o \
     -name '*.[Ff]' -o \
-    -name '*.[Ff][Oo][Rr]' -o \
-    -name '*.[Ff][Pp][Pp]' -o \
     -name '*.[Ff]03' -o \
     -name '*.[Ff]08' -o \
     -name '*.[Ff]77' -o \
     -name '*.[Ff]90' -o \
     -name '*.[Ff]95' -o \
+    -name '*.[Ff][Oo][Rr]' -o \
+    -name '*.[Ff][Pp][Pp]' -o \
     -name '*.[Gg][Cc][Hh]' -o \
     -name '*.[Gg][Mm][Ll]' -o \
     -name '*.[Hh]' -o \
+    -name '*.[Hh]++' -o \
     -name '*.[Hh].[Ii][Nn]' -o \
     -name '*.[Hh][Hh]' -o \
     -name '*.[Hh][Hh].[Ii][Nn]' -o \
@@ -572,7 +573,6 @@ clang_format() {
     -name '*.[Hh][Pp][Pp].[Ii][Nn]' -o \
     -name '*.[Hh][Xx][Xx]' -o \
     -name '*.[Hh][Xx][Xx].[Ii][Nn]' -o \
-    -name '*.[Hh]++' -o \
     -name '*.[Ii]' -o \
     -name '*.[Ii][Dd][Cc]' -o \
     -name '*.[Ii][Ff][Ss]' -o \
