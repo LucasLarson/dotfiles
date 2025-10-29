@@ -496,11 +496,11 @@ clang_format() {
   shift "$((OPTIND - 1))"
 
   # eligible filename extensions:
-  # https://github.com/llvm/llvm-project/blob/92df59c83d/clang/lib/Driver/Types.cpp#L295-L355
-  # https://github.com/llvm/llvm-project/blob/81f0f5a0e5/clang/lib/Frontend/FrontendOptions.cpp#L17-L35
-  # https://github.com/llvm/llvm-project/blob/e20a1e486e/clang/tools/clang-format-vs/ClangFormat/ClangFormatPackage.cs#L41-L42
-  # https://github.com/llvm/llvm-project/blob/cea81e95b0/clang/tools/clang-format/git-clang-format#L78-L90
-  # https://github.com/llvm/llvm-project/blob/cea81e95b0/clang/tools/clang-format/clang-format-diff.py#L50-L51
+  # https://github.com/llvm/llvm-project/blob/17c6c8da56/clang/lib/Driver/Types.cpp#L311-L377
+  # https://github.com/llvm/llvm-project/blob/17c6c8da56/clang/lib/Frontend/FrontendOptions.cpp#L17-L38
+  # https://github.com/llvm/llvm-project/blob/f22a8d1822/clang/tools/clang-format-vs/ClangFormat/ClangFormatPackage.cs#L41-L42
+  # https://github.com/llvm/llvm-project/blob/db6ba82acc/clang/tools/clang-format/git-clang-format#L88-L128
+  # https://github.com/llvm/llvm-project/blob/b17f1fd676/clang/tools/clang-format/clang-format-diff.py#L65-L66
 
   command find -- . \
     -path '*/.git' -prune -o \
@@ -521,6 +521,7 @@ clang_format() {
     -name '*.[Aa][Dd][Aa]' -o \
     -name '*.[Aa][Dd][Bb]' -o \
     -name '*.[Aa][Dd][Ss]' -o \
+    -name '*.[Aa][Ss][Cc][Ii][Ii][Pp][Bb]' -o \
     -name '*.[Aa][Ss][Mm]' -o \
     -name '*.[Aa][Ss][Tt]' -o \
     -name '*.[Bb][Cc]' -o \
@@ -533,8 +534,12 @@ clang_format() {
     -name '*.[Cc][Cc]' -o \
     -name '*.[Cc][Cc].[Ii][Nn]' -o \
     -name '*.[Cc][Cc][Mm]' -o \
+    -name '*.[Cc][Ii][Rr]' -o \
+    -name '*.[Cc][Jj][Ss]' -o \
     -name '*.[Cc][Ll]' -o \
     -name '*.[Cc][Ll][Cc][Pp][Pp]' -o \
+    -name '*.[Cc][Ll][Ii]' -o \
+    -name '*.[Cc][Ll][Ii][Ii]' -o \
     -name '*.[Cc][Pp]' -o \
     -name '*.[Cc][Pp][Pp]' -o \
     -name '*.[Cc][Pp][Pp].[Ii][Nn]' -o \
@@ -567,6 +572,7 @@ clang_format() {
     -name '*.[Hh][Hh]' -o \
     -name '*.[Hh][Hh].[Ii][Nn]' -o \
     -name '*.[Hh][Ii][Pp]' -o \
+    -name '*.[Hh][Ii][Pp][Ii]' -o \
     -name '*.[Hh][Ll][Ss][Ll]' -o \
     -name '*.[Hh][Pp]' -o \
     -name '*.[Hh][Pp][Pp]' -o \
@@ -583,6 +589,7 @@ clang_format() {
     -name '*.[Ii][Nn][Ll]' -o \
     -name '*.[Ii][Nn][Oo]' -o \
     -name '*.[Ii][Pp][Pp]' -o \
+    -name '*.[Ii][Pp][Yy][Nn][Bb]' -o \
     -name '*.[Ii][Xx][Xx]' -o \
     -name '*.[Jj][Aa][Vv]' -o \
     -name '*.[Jj][Aa][Vv][Aa]' -o \
@@ -594,25 +601,37 @@ clang_format() {
     -name '*.[Mm][Ee][Tt][Aa][Ll]' -o \
     -name '*.[Mm][Ii]' -o \
     -name '*.[Mm][Ii][Ii]' -o \
+    -name '*.[Mm][Jj][Ss]' -o \
     -name '*.[Mm][Mm]' -o \
     -name '*.[Mm][Tt][Ss]' -o \
     -name '*.[Nn][Uu][Tt]' -o \
+    -name '*.[Oo]' -o \
+    -name '*.[Oo][Bb][Jj]' -o \
+    -name '*.[Pp][Bb].[Tt][Xx][Tt]' -o \
     -name '*.[Pp][Cc][Cc]' -o \
     -name '*.[Pp][Cc][Hh]' -o \
     -name '*.[Pp][Cc][Mm]' -o \
     -name '*.[Pp][Ff][Oo]' -o \
     -name '*.[Pp][Gg][Cc]' -o \
+    -name '*.[Pp][Rr][Oo][Tt][Oo]' -o \
     -name '*.[Pp][Rr][Oo][Tt][Oo][Dd][Ee][Vv][Ee][Ll]' -o \
     -name '*.[Rr][Ee]' -o \
     -name '*.[Ss]' -o \
+    -name '*.[Ss][Vv]' -o \
+    -name '*.[Ss][Vv][Hh]' -o \
     -name '*.[Tt][Cc][Cc]' -o \
     -name '*.[Tt][Dd]' -o \
+    -name '*.[Tt][Ee][Xx][Tt][Pp][Bb]' -o \
+    -name '*.[Tt][Ee][Xx][Tt][Pp][Rr][Oo][Tt][Oo]' -o \
     -name '*.[Tt][Ll][Hh]' -o \
     -name '*.[Tt][Ll][Ii]' -o \
     -name '*.[Tt][Pp][Pp]' -o \
     -name '*.[Tt][Ss]' -o \
     -name '*.[Tt][Ss][Xx]' -o \
+    -name '*.[Tt][Xx][Tt][Pp][Bb]' -o \
     -name '*.[Tt][Xx][Xx]' -o \
+    -name '*.[Vv]' -o \
+    -name '*.[Vv][Hh]' -o \
     -name '*.[Xx][Bb][Mm]' -o \
     -name '*.[Xx][Pp][Mm]' \
     ')' \
