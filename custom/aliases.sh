@@ -4862,7 +4862,7 @@ git_submodule_cleanup() {
         ')' \
         -delete
   done
-  command git submodule foreach --recursive 'command git reset --hard --recurse-submodules --refresh'
+  command git submodule foreach --recursive 'command git reset --hard --recurse-submodules'
   command git submodule foreach --recursive 'command git stash clear'
   command -v -- git_update >/dev/null 2>&1 &&
     git_update "${@-}"
