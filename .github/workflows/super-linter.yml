@@ -53,7 +53,7 @@ jobs:
       # Run Linter against code base #
       ################################
       - name: Lint Code Base
-        uses: super-linter/super-linter@v8
+        uses: super-linter/super-linter@v8 # zizmor: ignore[unpinned-uses]
         env:
           DEFAULT_BRANCH: main
           # Super-Linter requires this variable even if it is unset
