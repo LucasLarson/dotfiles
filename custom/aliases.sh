@@ -8436,7 +8436,7 @@ shfmt_r() {
           -e 's/^\([^#\[]*\)\[\{1,2\}\( [^]]*\) \]\{1,2\}/\1test\2/g' \
           -e '# silence ksh family ((math+1)) warnings, but hide dollar-sign-then-open-parenthesis from shellcheck' \
           -e 's/^\([^#]*=\)\($[(](.*))\)$/\1"\2"/g' \
-          -e '# replace 1>&2 with >&2' \
+          -e '# replace 1>＆2 with >＆2' \
           -e 's/ 1\(>&2\)/ \1/g' \
           -e '# replace uncommented test -n "" with test != ""; \3 is null to hide the ＄{ from shellcheck' \
           -e 's/^\([^#]*\)\(test \)-n \("\$\(\){[^}]*-*}"\)/\1\2\3 != '\''\4'\''/g' \
