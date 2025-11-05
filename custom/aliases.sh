@@ -1526,10 +1526,10 @@ dss() {
   while command -p -- test "$(
     command find -- . \
       '(' \
-      -iname '.DS_Store' -o \
-      -iname '._.DS_Store' -o \
-      -iname 'Desktop.ini' -o \
-      -iname 'Thumbs.db' \
+      -name '.[Dd][Ss]_[Ss][Tt][Oo][Rr][Ee]' -o \
+      -name '._.[Dd][Ss]_[Ss][Tt][Oo][Rr][Ee]' -o \
+      -name '[Dd][Ee][Ss][Kk][Tt][Oo][Pp].[Ii][Nn][Ii]' -o \
+      -name '[Tt][Hh][Uu][Mm][Bb][Ss].[Dd][Bb]' \
       ')' \
       -type f \
       -perm -600 \
@@ -1537,10 +1537,10 @@ dss() {
   )" != ''; do
     command find -- . \
       '(' \
-      -iname '.DS_Store' -o \
-      -iname '._.DS_Store' -o \
-      -iname 'Desktop.ini' -o \
-      -iname 'Thumbs.db' \
+      -name '.[Dd][Ss]_[Ss][Tt][Oo][Rr][Ee]' -o \
+      -name '._.[Dd][Ss]_[Ss][Tt][Oo][Rr][Ee]' -o \
+      -name '[Dd][Ee][Ss][Kk][Tt][Oo][Pp].[Ii][Nn][Ii]' -o \
+      -name '[Tt][Hh][Uu][Mm][Bb][Ss].[Dd][Bb]' \
       ')' \
       -type f \
       -perm -600 \
@@ -1953,7 +1953,15 @@ fn() {
       -path '*/node_modules' -prune -o \
       -path '*/vendor' -prune -o \
       -path './*' \
-      -iname "$(command -p -- printf -- '*%s*' "${@-}")" \
+      -name "$(
+        command -p -- printf -- '*%s*' "${@-}" |
+          command awk -- '{
+  for (i = 1; i <= length($0); i++) {
+    printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))
+  }
+}
+'
+      )" \
       -type f \
       -print 2>/dev/null |
       LC_ALL='C' command -p -- sort -f
@@ -2063,38 +2071,38 @@ find_compressed_files() {
       -path '*/Library' -prune -o \
       -path '*/node_modules' -prune -o \
       '(' \
-      -iname '*.7z' -o \
-      -iname '*.aar' -o \
-      -iname '*.apk' -o \
-      -iname '*.br' -o \
-      -iname '*.bz2' -o \
-      -iname '*.ear' -o \
-      -iname '*.gz' -o \
-      -iname '*.ipa' -o \
-      -iname '*.ipsw' -o \
-      -iname '*.jar' -o \
-      -iname '*.lzma' -o \
-      -iname '*.rar' -o \
-      -iname '*.rpm' -o \
-      -iname '*.tar' -o \
-      -iname '*.tar.bz2' -o \
-      -iname '*.tar.gz' -o \
-      -iname '*.tar.xz' -o \
-      -iname '*.tar.zma' -o \
-      -iname '*.tar.zst' -o \
-      -iname '*.tbz' -o \
-      -iname '*.tbz2' -o \
-      -iname '*.tgz' -o \
-      -iname '*.tlz' -o \
-      -iname '*.txz' -o \
-      -iname '*.tzst' -o \
-      -iname '*.war' -o \
-      -iname '*.whl' -o \
-      -iname '*.xpi' -o \
-      -iname '*.xz' -o \
-      -iname '*.Z' -o \
-      -iname '*.z' -o \
-      -iname '*.zip' \
+      -name '*.7[Zz]' -o \
+      -name '*.[Aa][Aa][Rr]' -o \
+      -name '*.[Aa][Pp][Kk]' -o \
+      -name '*.[Bb][Rr]' -o \
+      -name '*.[Bb][Zz]2' -o \
+      -name '*.[Cc][Pp][Ii][Oo]' -o \
+      -name '*.[Ee][Aa][Rr]' -o \
+      -name '*.[Gg][Zz]' -o \
+      -name '*.[Ii][Pp][Aa]' -o \
+      -name '*.[Ii][Pp][Ss][Ww]' -o \
+      -name '*.[Jj][Aa][Rr]' -o \
+      -name '*.[Ll][Zz][Mm][Aa]' -o \
+      -name '*.[Rr][Aa][Rr]' -o \
+      -name '*.[Rr][Pp][Mm]' -o \
+      -name '*.[Tt][Aa][Rr]' -o \
+      -name '*.[Tt][Aa][Rr].[Bb][Zz]2' -o \
+      -name '*.[Tt][Aa][Rr].[Gg][Zz]' -o \
+      -name '*.[Tt][Aa][Rr].[Xx][Zz]' -o \
+      -name '*.[Tt][Aa][Rr].[Zz][Mm][Aa]' -o \
+      -name '*.[Tt][Aa][Rr].[Zz][Ss][Tt]' -o \
+      -name '*.[Tt][Bb][Zz]' -o \
+      -name '*.[Tt][Bb][Zz]2' -o \
+      -name '*.[Tt][Gg][Zz]' -o \
+      -name '*.[Tt][Ll][Zz]' -o \
+      -name '*.[Tt][Xx][Zz]' -o \
+      -name '*.[Tt][Zz][Ss][Tt]' -o \
+      -name '*.[Ww][Aa][Rr]' -o \
+      -name '*.[Ww][Hh][Ll]' -o \
+      -name '*.[Xx][Pp][Ii]' -o \
+      -name '*.[Xx][Zz]' -o \
+      -name '*.[Zz]' -o \
+      -name '*.[Zz][Ii][Pp]' \
       ')' \
       -type f \
       -print 2>/dev/null
@@ -2889,35 +2897,34 @@ find_perl_files() {
       -path '*vscode*' -prune -o \
       -path './*' \
       '(' \
-      -iname '*.pl' -o \
-      -iname '*.6pl' -o \
-      -iname '*.6pm' -o \
-      -iname '*.al' -o \
-      -iname '*.cgi' -o \
-      -iname '*.fcgi' -o \
-      -iname '*.nqp' -o \
-      -iname '*.p6' -o \
-      -iname '*.p6l' -o \
-      -iname '*.p6m' -o \
-      -iname '*.perl' -o \
-      -iname '*.ph' -o \
-      -iname '*.pl' -o \
-      -iname '*.pl6' -o \
-      -iname '*.plx' -o \
-      -iname '*.pm' -o \
-      -iname '*.pm6' -o \
-      -iname '*.pod' -o \
-      -iname '*.pod6' -o \
-      -iname '*.psgi' -o \
-      -iname '*.raku' -o \
-      -iname '*.rakumod' -o \
-      -iname '*.t' -o \
-      -iname '.latexmkrc' -o \
-      -iname 'ack' -o \
-      -iname 'cpanfile' -o \
-      -iname 'latexmkrc' -o \
-      -iname 'Makefile.PL' -o \
-      -iname 'Rexfile' \
+      -name '*.[Pp][Ll]' -o \
+      -name '*.[Aa][Ll]' -o \
+      -name '*.[Cc][Gg][Ii]' -o \
+      -name '*.[Ff][Cc][Gg][Ii]' -o \
+      -name '*.[Nn][Qq][Pp]' -o \
+      -name '*.[Pp][Ee][Rr][Ll]' -o \
+      -name '*.[Pp][Hh]' -o \
+      -name '*.[Pp][Ll][Xx]' -o \
+      -name '*.[Pp][Ll]6' -o \
+      -name '*.[Pp][Mm]' -o \
+      -name '*.[Pp][Mm]6' -o \
+      -name '*.[Pp][Oo][Dd]' -o \
+      -name '*.[Pp][Oo][Dd]6' -o \
+      -name '*.[Pp][Ss][Gg][Ii]' -o \
+      -name '*.[Pp]6' -o \
+      -name '*.[Pp]6[Ll]' -o \
+      -name '*.[Pp]6[Mm]' -o \
+      -name '*.[Rr][Aa][Kk][Uu]' -o \
+      -name '*.[Rr][Aa][Kk][Uu][Mm][Oo][Dd]' -o \
+      -name '*.[Tt]' -o \
+      -name '*.6[Pp][Ll]' -o \
+      -name '*.6[Pp][Mm]' -o \
+      -name '.[Ll][Aa][Tt][Ee][Xx][Mm][Kk][Rr][Rr][Cc]' -o \
+      -name '[Aa][Cc][Kk]' -o \
+      -name '[Cc][Pp][Aa][Nn][Ff][Ii][Ll][Ee]' -o \
+      -name '[Ll][Aa][Tt][Ee][Xx][Mm][Kk][Rr][Cc]' -o \
+      -name '[Mm][Aa][Kk][Ee][Ff][Ii][Ll][Ee].[Pp][Ll]' -o \
+      -name '[Rr][Ee][Xx][Ff][Ii][Ll][Ee]' \
       ')' \
       ! -type d \
       -print \
