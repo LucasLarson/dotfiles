@@ -5680,12 +5680,7 @@ install() {
       --no-restart \
       --tap \
       --verbose \
-      --whalebrew \
       "${@-}" |
-      # on non-comment lines, replace all double quotes with single quotes
-      ##### make up your mind Super-Linter
-      ##### command -p -- sed \
-      #####   -e '/#/! s/"/'\''/g' |
       # move each package name onto the comment line above it, if any
       command -p -- sed \
         -e '$! N' \
