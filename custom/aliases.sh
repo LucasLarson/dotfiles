@@ -8066,10 +8066,6 @@ sca() {
         'rksh2020    -b -C -e -f -n -u -x -o pipefail' \
         'scsh           -C -e -f -n -u -x -o pipefail' \
         'yash           -C -e -f -n -u -x -o pipefail -o posixly-correct' \
-        '# https://oilshell.org/release/latest/doc/ref/chap-option.html#Debugging:~:text=From%20bash%3A-,extdebug,-Interactive' \
-        '# ysh          -C -e -f -n -u -x -o pipefail -o command_sub_errexit -o extdebug -o inherit_errexit -o noclobber -o parse_at -o parse_brace -o parse_equals -o parse_paren -o parse_proc -o parse_sh_arith -o parse_triple_quote -o parse_ysh_string -o process_sub_fail -o sigpipe_status_ok -o simple_echo -o simple_eval_builtin -o simple_test_builtin -o simple_word_eval -o strict_argv -o strict_array -o strict_control_flow +o strict_errexit -o strict_glob -o strict_nameref -o strict_tilde -o strict_word_eval -o verbose -o verbose_errexit -o xtrace_details -o xtrace_rich --ast-format none' \
-        'ysh            -C -e -f -n -u -x -o pipefail -o command_sub_errexit             -o inherit_errexit -o noclobber -o parse_at -o parse_brace -o parse_equals -o parse_paren -o parse_proc -o parse_sh_arith -o parse_triple_quote -o parse_ysh_string -o process_sub_fail -o sigpipe_status_ok -o simple_echo -o simple_eval_builtin -o simple_test_builtin -o simple_word_eval -o strict_argv -o strict_array -o strict_control_flow +o strict_errexit -o strict_glob -o strict_nameref -o strict_tilde -o strict_word_eval -o verbose -o verbose_errexit -o xtrace_details -o xtrace_rich --ast-format none' \
-        '# sh        -C    -e -f -n -u -x -o pipefail' \
         'sh          -C    -e -f -n -u -x' \
         'zsh         -C    -e    -n -u    -o pipefail -o noglob -o posix_aliases -o posix_arg_zero -o posix_builtins -o posix_cd -o posix_identifiers -o posix_jobs -o posix_strings -o posix_traps'; do
         if command -v -- "${test%% *}" >/dev/null 2>&1; then
