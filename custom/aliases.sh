@@ -1342,7 +1342,8 @@ diffy() {
     --width="$((COLUMNS / 2 - 1 + COLUMNS / 2 - 1))" \
     "${@-}"
 }
-compdef -- diffy='diff' >/dev/null 2>&1
+command -v -- _diff >/dev/null 2>&1 &&
+  compdef -- diffy='diff' >/dev/null 2>&1
 diff_exif() {
   set \
     -o noclobber \
