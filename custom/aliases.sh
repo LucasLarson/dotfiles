@@ -227,7 +227,13 @@ bitly() {
       --data '{"bitlink_id":"bit.ly/'"${link-}"'"}' \
       --header 'Authorization: Bearer '"${BITLY_TOKEN-}" \
       --header 'Content-Type: application/json' \
-      --url 'https://api-ssl.bitly.com/v4/expand'
+      --show-error \
+      --silent \
+      --url 'https://api-ssl.bitly.com/v4/expand' |
+      command -p -- sed \
+        -e '# remove everything but the last doublequoted string or long_url value' \
+        -e '# and add a newline' \
+        -e 's/.*"\(.*\)".*/\1\n/g'
   done
 }
 
