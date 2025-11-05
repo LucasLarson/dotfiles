@@ -5500,6 +5500,12 @@ hw() {
   } 2>/dev/null
 }
 
+htail() {
+  command -p -- tail -n "$((${LINES:-"$(
+    command -p -- tput -- lines 2>/dev/null ||
+      command -p -- printf -- '10 + 2'
+  )"} - 3))" -- "${HISTFILE?}"
+}
 hundo() {
   ## remove the last entry from `$HISTFILE`
 
