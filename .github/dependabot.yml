@@ -13,6 +13,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # Cargo
   - package-ecosystem: "cargo"
@@ -23,6 +25,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # Composer
   - package-ecosystem: "composer"
@@ -33,6 +37,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # Docker
   - package-ecosystem: "docker"
@@ -43,6 +49,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # Elm
   - package-ecosystem: "elm"
@@ -53,6 +61,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # git submodules
   - package-ecosystem: "gitsubmodule"
@@ -63,6 +73,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # GitHub Actions
   - package-ecosystem: "github-actions"
@@ -73,6 +85,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # Go modules
   - package-ecosystem: "gomod"
@@ -83,6 +97,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # Gradle
   - package-ecosystem: "gradle"
@@ -93,6 +109,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # Hex
   - package-ecosystem: "mix"
@@ -103,6 +121,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # Maven
   - package-ecosystem: "maven"
@@ -113,6 +133,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # npm
   - package-ecosystem: "npm"
@@ -123,6 +145,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # NuGet
   - package-ecosystem: "nuget"
@@ -133,6 +157,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # pip
   - package-ecosystem: "pip"
@@ -143,6 +169,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # pub
   - package-ecosystem: "pub"
@@ -153,6 +181,8 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   # Terraform
   - package-ecosystem: "terraform"
@@ -163,3 +193,5 @@ updates:
       # ignore patch updates for all dependencies
       - dependency-name: "*"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
