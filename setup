@@ -184,6 +184,7 @@ command -v -- zsh >/dev/null 2>&1 || {
   command -p -- printf -- 'installing Zsh...\n' >&2
   set -o xtrace
   install zsh
+  { set +o xtrace; } 2>/dev/null
 }
 
 # chsh
