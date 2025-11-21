@@ -165,7 +165,8 @@ command git config --global --get -- init.defaultBranch >/dev/null 2>&1 || {
 { set +o xtrace; } 2>/dev/null
 command -p -- printf -- 'updating time zone information...\n' >&2
 set -o xtrace
-install --no-cache tzdata
+install --no-cache tzdata ||
+  install tzdata
 
 # python
 { set +o xtrace; } 2>/dev/null
