@@ -283,6 +283,23 @@ command -p -- test -w '/etc/passwd' &&
   command -p -- cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
   command -p -- sed -e 's|/bin/b\{0,1\}a\{0,1\}sh$|'"$(command -v -- zsh)"'|' '/etc/passwd-'"${now-}" >'/etc/passwd'
 
+# install dotfiles
+{ set +o xtrace; } 2>/dev/null
+command -p -- printf -- 'ensuring there is local access to dotfiles...\n'
+set -o xtrace
+command git -C "${DOTFILES:-${HOME%/}/Maestral/dotfiles}" rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
+  command -p -- mkdir -- "${DOTFILES:-${HOME%/}/Maestral}" &&
+    command -p -- mkdir -- "${DOTFILES:-${HOME%/}/Maestral/dotfiles}" &&
+    command git -c core.ignoreCase=false clone \
+      --branch dev \
+      --progress \
+      --recursive \
+      --template='' \
+      -- \
+      https://github.com/LucasLarson/dotfiles \
+      "${DOTFILES:-${HOME%/}/Maestral/dotfiles}"
+}
+
 # done
 { set +o xtrace; } 2>/dev/null
 command -p -- printf -- 'installation complete\n' >&2
