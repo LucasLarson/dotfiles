@@ -3279,6 +3279,7 @@ find_shell_scripts() {
       -path '*/etc/profile' -prune -o \
       -path '*/bat/config' -prune -o \
       -path './*' \
+      ! -name '*.fish' \
       ! -name '*.rs' \
       -type f \
       -exec sh -c -- 'LC_ALL='\''C'\'' command -p -- sed -e '\''# does the first non-empty line resemble a shell directive?'\'' -e '\''/./,$! d'\'' -e '\''1 q'\'' "${1-}" | command -p -- grep -e '\''^#!.*bin.*[^c]sh'\'' -e '\''^[[:space:]]*\(function[[:space:]]\)\{0,1\}[[:space:]]*[A-Za-z_][-A-Za-z_0-9]*()[[:space:]]*{.*$'\'' -e '\''autoload'\'' -e '\''compdef'\'' -e '\''openrc'\'' >/dev/null 2>&1 && command -p -- printf -- '\''%s\n'\'' "${1-}"' _ {} ';'
