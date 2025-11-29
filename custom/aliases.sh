@@ -3260,12 +3260,10 @@ find_shell_scripts() {
       -type f \
       -print 2>/dev/null
 
-    # files whose first lines resemble those of shell scripts,
-    # but whose filenames do not (do not search the first line of scripts named `.sh` for example)
+    # files whose first lines resemble those of shell scripts
     # https://stackoverflow.com/a/9612232
     # https://stackoverflow.com/q/307015#comment14013364_307154
     # https://unix.stackexchange.com/a/480738
-    # https://github.com/super-linter/super-linter/commit/4faa6433ab the `! ( ... )` lines, which are barely faster than normal prune
     command find -- . \
       -path '*/.git' -prune -o \
       -path '*/.well-known' -prune -o \
