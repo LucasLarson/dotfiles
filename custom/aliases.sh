@@ -3244,6 +3244,7 @@ find_shell_scripts() {
       -name 'kshrc' -o \
       -name 'login' -o \
       -name 'man' -o \
+      -name 'mvnw' -o \
       -name 'os-release' -o \
       -name 'PKGBUILD' -o \
       -name 'profile' -o \
