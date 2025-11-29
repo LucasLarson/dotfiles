@@ -3227,6 +3227,8 @@ find_shell_scripts() {
       -name '*.zshenv' -o \
       -name '*.zshrc' -o \
       -name '.aliases' -o \
+      -name '.xinitrc' -o \
+      -name '.xsession' -o \
       -name '9fs' -o \
       -name 'APKBUILD' -o \
       -name 'bash_aliases' -o \
@@ -3246,6 +3248,8 @@ find_shell_scripts() {
       -name 'PKGBUILD' -o \
       -name 'profile' -o \
       -name 'tmux.conf' -o \
+      -name 'xinitrc' -o \
+      -name 'xsession' -o \
       -name 'zlogin' -o \
       -name 'zlogout' -o \
       -name 'zprofile' -o \
