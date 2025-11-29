@@ -3226,6 +3226,7 @@ find_shell_scripts() {
       -name '*.zsh-theme' -o \
       -name '*.zshenv' -o \
       -name '*.zshrc' -o \
+      -name '.aliases' -o \
       -name '9fs' -o \
       -name 'APKBUILD' -o \
       -name 'bash_aliases' -o \
