@@ -3196,7 +3196,6 @@ find_shell_scripts() {
       -name '*.bats' -o \
       -name '*.cgi' -o \
       -name '*.command' -o \
-      -name '*.cshrc' -o \
       -name '*.dash' -o \
       -name '*.ebuild' -o \
       -name '*.eclass' -o \
@@ -3235,7 +3234,6 @@ find_shell_scripts() {
       -name 'bash_logout' -o \
       -name 'bash_profile' -o \
       -name 'bashrc' -o \
-      -name 'cshrc' -o \
       -name 'ebuild' -o \
       -name 'eclass' -o \
       -name 'envrc' -o \
