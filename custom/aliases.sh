@@ -3301,6 +3301,9 @@ find_shell_scripts() {
           -e '/^$/,$ d' \
           -e '# [do not] prepend each filename with ./ because that is done below' \
           -e '# s/^/.\//' \
+          -e '# remove only the two leading spaces' \
+          -e '# because processing text ouput may be easier than emulating jq' \
+          -e 's/^  //' \
           -e '# until Linguist learns that Fish is not Shell' \
           -e '/\.fish$/ d'
     } 2>/dev/null |
