@@ -106,8 +106,10 @@ unset add >/dev/null 2>&1 || add=''
 command find -- \
   /System/Applications \
   /Applications \
-  -maxdepth 3 \
-  -name '*.app' 2>/dev/null |
+  -path '/System/Applications/*/*/*' -prune -o \
+  -path '/Applications/*/*/*' -prune -o \
+  -name '*.app' \
+  -print 2>/dev/null |
   command sed -e 's/.*\/\(.*\)\.app/\1/' |
   LC_ALL='C' command sort -d -f
 ```
@@ -210,7 +212,7 @@ command printf -- '%s\n' "${PATH-}" |
 ### executables
 
 ```shell
-command printf -- '%s\n' "${PATH-}" | command sed -e 's/:/\n/g' | while IFS='' read -r -- directory; do command find -- "${directory-}" -mindepth 1 -maxdepth 1 ! -type d -exec test -x {} ';' -print 2>/dev/null; done
+command printf -- '%s\n' "${PATH-}" | command sed -e 's/:/\n/g' | while IFS='' read -r -- directory; do command find -- "${directory-}" -path "${directory-}"'/*/*' -prune -o -path "${directory-}"'/*' ! -type d -exec test -x {} ';' -print 2>/dev/null; done
 ```
 
 ## text editing
@@ -336,19 +338,19 @@ cppcheck --force -I "${CPATH-}" .
 [via](https://stackoverflow.com/q/32029445), [via](https://stackoverflow.com/q/33662375)
 
 ```shell
-command find -- . -maxdepth 1 -name '*.c' -type f -exec gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic -- {} +
+command find -- . -path './*/*' -prune -o -name '*.c' -type f -exec gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic -- {} +
 ```
 
 #### C++
 
 ```shell
-command find -- . -maxdepth 1 -name '*.cpp' -type f -exec g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ -- {} +
+command find -- . -path './*/*' -prune -o -name '*.cpp' -type f -exec g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ -- {} +
 ```
 
 #### Clang
 
 ```shell
-command find -- . -maxdepth 1 -name '*.cpp' -type f -exec clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps -- {} +
+command find -- . -path './*/*' -prune -o -name '*.cpp' -type f -exec clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps -- {} +
 ```
 
 ## Gatekeeper
