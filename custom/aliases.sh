@@ -6781,6 +6781,7 @@ ocr() {
             --deskew \
             --language eng \
             --optimize 0 \
+            --output-type pdfa \
             --pdfa-image-compression lossless \
             --rotate-pages \
             --skip-text \
@@ -6806,6 +6807,7 @@ ocr_eo() {
             --deskew \
             --language eng+epo \
             --optimize 0 \
+            --output-type pdfa \
             --pdfa-image-compression lossless \
             --rotate-pages \
             --skip-text \
