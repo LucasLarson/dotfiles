@@ -480,7 +480,7 @@ clang_format() {
 
   # permit arguments in any order
   # https://salsa.debian.org/debian/debianutils/blob/c2a1c435ef/savelog
-  while command -p -- getopts -- 'i:s:w:' opt; do
+  while getopts -- 'i:s:w:' opt; do
     case "${opt-}" in
     i)
       export IndentWidth="${OPTARG-}"
@@ -5377,7 +5377,7 @@ grep_o() {
 hash_abbreviate() {
   # abbreviate commit hash and copy to clipboard
   # usage: hash_abbreviate [-l <length>] <hash> [<hash> ...]
-  while command -p -- getopts -- 'l:' opt; do
+  while getopts -- 'l:' opt; do
     case "${opt-}" in
     l)
       length="${OPTARG-}"
@@ -7690,7 +7690,7 @@ rename_sanitize() {
   # -n: dry run
   # location: directory with files to rename (default current directory and below)
 
-  while command -p -- getopts -- 'filn' opt; do
+  while getopts -- 'filn' opt; do
     case "${opt-}" in
     f)
       f='--force'
@@ -8029,7 +8029,7 @@ sc() {
 }
 
 sca() {
-  while command -p -- getopts -- 's:' opt; do
+  while getopts -- 's:' opt; do
     case "${opt-}" in
     s)
       shell="${OPTARG:-sh}"
@@ -8874,7 +8874,7 @@ substring_bash() {
   options="l:L:r:R:"
 
   OPTIND=1
-  while command -p -- getopts -- "${options-}" c; do
+  while getopts -- "${options-}" c; do
     case "${c-}" in
     l | L | r | R)
       flag="-${c-}"
