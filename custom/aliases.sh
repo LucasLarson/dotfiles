@@ -8277,8 +8277,8 @@ shellcheck_d() {
       command -p -- rm -f -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/'"${1##*/}" &&
       command -p -- cp -f -p -- "${1-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/'"${1##*/}" &&
       command -p -- sed \
-        -e '/\#[[:blank:]][[:blank:]]*shellcheck[[:blank:]][[:blank:]]*disable/ d' \
-        -e 's/[[:blank:]]*\#[[:blank:]][[:blank:]]*shellcheck[[:blank:]][[:blank:]]*shell=\(.*\)sh/#!\/usr\/bin\/env \1sh/' \
+        -e '/\#[[:blank:]]*shellcheck[[:blank:]][[:blank:]]*disable/ d' \
+        -e 's/[[:blank:]]*\#[[:blank:]]*shellcheck[[:blank:]][[:blank:]]*shell=\(.*\)sh/#!\/usr\/bin\/env \1sh/' \
         "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/'"${1##*/}" \
         >"${1-}"
     shift
