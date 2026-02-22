@@ -6614,15 +6614,22 @@ markdownlint_r() {
 # not defined by POSIX, but these are equivalent
 maxdepth() {
   # instead of `find . -maxdepth 2 -print`, use `find . -path './*/*/*' -prune -o -print`
-  path_argument='./*'
-  depth="${1:-0}"
-  while command -p -- test "${depth-}" -gt 0; do
-    path_argument="${path_argument-}"'/*' &&
-      depth="$((depth - 1))"
+  set -- "${1:-0}" './*'
+  while command -p -- test "${1-}" -gt 0; do
+    set -- "$((${1-} - 1))" "${2-}"'/*'
   done
-  command -p -- printf -- '#!/usr/bin/env sh\ncommand -p -- find -- . -path \047%s\047 -prune -o -print\n' "${path_argument-}"
-  unset path_argument >/dev/null 2>&1 || path_argument=''
-  unset depth >/dev/null 2>&1 || depth=''
+  command -p -- printf -- '#!/usr/bin/env sh\ncommand -p -- find -- . -path \047%s\047 -prune -o -print\n' "${2-}" | {
+    command bat \
+      --color=auto \
+      --decorations=never \
+      --language=sh \
+      --paging=never \
+      -- \
+      - 2>/dev/null ||
+      command -p -- cat \
+        -- \
+        -
+  }
 }
 mindepth() {
   # instead of `find . -mindepth 2 -print`, use `find . -path './*/*' -print`
@@ -6644,19 +6651,18 @@ mindepth() {
   }
 }
 m1m1() {
-  {
-    command -p -- printf -- '#!/usr/bin/env sh\n'
-    command -p -- printf -- 'command -p -- find -- . -path \047./*/*\047 -prune -o -path \047./*\047 -print\n'
-  } | command bat \
-    --color=auto \
-    --decorations=never \
-    --language=sh \
-    --paging=never \
-    -- \
-    - 2>/dev/null ||
-    command -p -- cat \
+  command -p -- printf -- '#!/usr/bin/env sh\ncommand -p -- find -- . -path \047./*/*\047 -prune -o -path \047./*\047 -print\n' | {
+    command bat \
+      --color=auto \
+      --decorations=never \
+      --language=sh \
+      --paging=never \
       -- \
-      -
+      - 2>/dev/null ||
+      command -p -- cat \
+        -- \
+        -
+  }
 }
 
 # https://unix.stackexchange.com/a/30950
