@@ -7690,7 +7690,7 @@ rename_sanitize() {
   # -n: dry run
   # location: directory with files to rename (default current directory and below)
 
-  while getopts -- 'filn' opt; do
+  while getopts 'filn' opt; do
     case "${opt-}" in
     f)
       f='--force'
