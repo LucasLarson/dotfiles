@@ -7679,6 +7679,9 @@ rename_sanitize() {
   # usage rename_sanitize [ -l ] [ -n ]
   # -l: rename using lowercase
   # -n: dry run
+  command -v -- rename >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   while getopts 'ln' opt; do
     case "${opt-}" in
     l)
@@ -7727,6 +7730,9 @@ rename_sanitize() {
   unset n >/dev/null 2>&1 || n=''
 }
 rename_r() {
+  command -v -- rename >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   case "${#}" in
   2)
     command find -- . \
