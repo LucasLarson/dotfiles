@@ -437,14 +437,6 @@ changelog_find_newest() {
   unset pwd >/dev/null 2>&1 || pwd=''
 }
 
-# cheat
-cheat() {
-  command curl --show-error --silent --url 'https://cheat.sh/'"$(
-    command -p -- printf -- '%s' "$*" |
-      command -p -- sed -e 's/ /+/g'
-  )"
-}
-
 checkbashisms_r() {
   find_shell_scripts | while IFS='' read -r -- file; do
     command checkbashisms --extra --force --lint --newline --posix "${file-}" 2>&1 |
