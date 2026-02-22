@@ -7676,12 +7676,11 @@ rename_install() {
 # brew install rename
 # https://github.com/ap/rename
 rename_sanitize() {
-  # usage rename_sanitize [ -f ] [ -l ] [ location ]
+  # usage rename_sanitize [ -f ] [ -i ] [ -l ] [ -n ]
   # -f: force overwrite
+  # -i: cleanup after `imageoptim`
   # -l: rename using lowercase
   # -n: dry run
-  # location: directory with files to rename (default current directory and below)
-
   while getopts 'filn' opt; do
     case "${opt-}" in
     f)
