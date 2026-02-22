@@ -5432,7 +5432,7 @@ alias -- \
   h2='command -p -- head -n 2' \
   h3='command -p -- head -n 3'
 head_c() {
-  command -p -- test "$(($1 + 0))" -eq "${1-}" ||
+  command -p -- test "$((${1-} + 0))" -eq "${1-}" ||
     # EX_DATAERR
     return 65
   command -p -- dd bs=1 count="${1-}" <"${2-}" 2>/dev/null ||
@@ -8210,7 +8210,7 @@ seq() {
   esac
   while command -p -- test "${1-}" -le "${3-}"; do
     command -p -- printf -- '%d\n' "${1-}"
-    set -- "$(($1 + $2))" "${2-}" "${3-}"
+    set -- "$((${1-} + ${2-}))" "${2-}" "${3-}"
   done
 }
 
