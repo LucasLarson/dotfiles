@@ -6626,15 +6626,22 @@ maxdepth() {
 }
 mindepth() {
   # instead of `find . -mindepth 2 -print`, use `find . -path './*/*' -print`
-  path_argument='.'
-  depth="${1:-0}"
-  while command -p -- test "${depth-}" -gt 0; do
-    path_argument="${path_argument-}"'/*' &&
-      depth="$((depth - 1))"
+  set -- "${1:-0}" '.'
+  while command -p -- test "${1-}" -gt 0; do
+    set -- "$((${1-} - 1))" "${2-}"'/*'
   done
-  command -p -- printf -- '#!/usr/bin/env sh\ncommand -p -- find -- . -path \047%s\047 -print\n' "${path_argument-}"
-  unset path_argument >/dev/null 2>&1 || path_argument=''
-  unset depth >/dev/null 2>&1 || depth=''
+  command -p -- printf -- '#!/usr/bin/env sh\ncommand -p -- find -- . -path \047%s\047 -print\n' "${2-}" | {
+    command bat \
+      --color=auto \
+      --decorations=never \
+      --language=sh \
+      --paging=never \
+      -- \
+      - 2>/dev/null ||
+      command -p -- cat \
+        -- \
+        -
+  }
 }
 m1m1() {
   {
