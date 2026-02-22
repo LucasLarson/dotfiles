@@ -7676,54 +7676,11 @@ rename_install() {
 # brew install rename
 # https://github.com/ap/rename
 rename_sanitize() {
-  # usage rename_sanitize [ -f ] [ -i ] [ -l ] [ -n ]
-  # -f: force overwrite
-  # -i: cleanup after `imageoptim`
+  # usage rename_sanitize [ -l ] [ -n ]
   # -l: rename using lowercase
   # -n: dry run
-  while getopts 'filn' opt; do
+  while getopts 'ln' opt; do
     case "${opt-}" in
-    f)
-      f='--force'
-      ;;
-    i)
-      set \
-        -o verbose \
-        -o xtrace
-      command find -- . \
-        -depth \
-        ! -path '*/.git/*' \
-        ! -path '*/.well-known/*' \
-        ! -path '*/Library/*' \
-        ! -path '*/node_modules/*' \
-        ! -path '*/t/*' \
-        ! -path '*/Test*' \
-        ! -path '*/test*' \
-        ! -path '*/tst*' \
-        ! -path '*copilot*' \
-        ! -path '*dummy*' \
-        ! -path '*vscode*' \
-        ! -name '*.icloud' \
-        ! -name '.DS_Store' \
-        -name '.*~imageoptim.*' \
-        -type f \
-        -print 2>/dev/null | while IFS='' read -r -- filename; do
-        command -p -- mv -f -- "${filename-}" "${filename%/*}"/"$(
-          command -p -- printf -- '%s' "${filename##*/}" |
-            command -p -- sed \
-              -e '# does ↓ this with ##*/ above work if the file is in a subdirectory?' \
-              -e 's/^\.//' \
-              -e 's/~imageoptim//'
-        )"
-      done
-      unset filename >/dev/null 2>&1 || filename=''
-      {
-        set \
-          +o verbose \
-          +o xtrace
-      } 2>/dev/null
-      return 0
-      ;;
     l)
       l='--lower-case'
       ;;
@@ -7762,19 +7719,13 @@ rename_sanitize() {
     --transcode=ascii \
     --urlesc \
     --verbose \
-    "${f-}" \
     "${l-}" \
     "${n-}" \
     -- \
     {} +
-  unset f >/dev/null 2>&1 || f=''
   unset l >/dev/null 2>&1 || l=''
   unset n >/dev/null 2>&1 || n=''
 }
-alias -- \
-  deimageoptim='rename_sanitize -i' \
-  de_io='deimageoptim' \
-  deio='de_io'
 rename_r() {
   case "${#}" in
   2)
