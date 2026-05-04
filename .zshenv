@@ -5,38 +5,38 @@ export columns="${COLUMNS:-80}"
 export lines="${LINES:-24}"
 
 ## Dotfiles and templates
-command -p -- mkdir -p -- "${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
+mkdir -p -- "${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
   export DOTFILES="${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
-  command -p -- mkdir -p -- "${DOTFILES-}"'/custom' &&
+  mkdir -p -- "${DOTFILES-}"'/custom' &&
   export ZSH_CUSTOM="${DOTFILES-}"'/custom' &&
   export custom="${DOTFILES-}"'/custom' &&
-  command -p -- mkdir -p -- "${DOTFILES-}"'/../Template' &&
+  mkdir -p -- "${DOTFILES-}"'/../Template' &&
   export TEMPLATE="${DOTFILES-}"'/../Template' &&
-  command -p -- mkdir -p -- "${DOTFILES-}"'/../Default' &&
+  mkdir -p -- "${DOTFILES-}"'/../Default' &&
   export DEFAULT="${DOTFILES-}"'/../Default'
 
 ## XDG
 # https://specifications.freedesktop.org/basedir-spec/0.7/ar01s03.html
-command -p -- mkdir -p -- "${HOME%/}"'/.local/share' &&
+mkdir -p -- "${HOME%/}"'/.local/share' &&
   export XDG_DATA_HOME="${HOME%/}"'/.local/share'
-command -p -- mkdir -p -- "${HOME%/}"'/.config' &&
+mkdir -p -- "${HOME%/}"'/.config' &&
   export XDG_CONFIG_HOME="${HOME%/}"'/.config'
-command -p -- mkdir -p -- "${HOME%/}"'/.local/state' &&
+mkdir -p -- "${HOME%/}"'/.local/state' &&
   export XDG_STATE_HOME="${HOME%/}"'/.local/state'
-command -p -- mkdir -p -- '/usr/local/share' &&
+mkdir -p -- '/usr/local/share' &&
   export XDG_DATA_DIRS="${XDG_DATA_DIRS:+${XDG_DATA_DIRS-}:}"'/usr/local/share'
-command -p -- mkdir -p -- '/usr/share' &&
+mkdir -p -- '/usr/share' &&
   # this trailing slash is prescribed
   export XDG_DATA_DIRS="${XDG_DATA_DIRS:+${XDG_DATA_DIRS-}:}"'/usr/share/'
-command -p -- mkdir -p -- '/etc/xdg' &&
+mkdir -p -- '/etc/xdg' &&
   export XDG_CONFIG_DIRS='/etc/xdg'
-command -p -- mkdir -p -- "${HOME%/}"'/.cache' &&
+mkdir -p -- "${HOME%/}"'/.cache' &&
   export XDG_CACHE_HOME="${HOME%/}"'/.cache' &&
-  command -p -- touch -- "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${LOGNAME:-${USER-}}"'.zsh'
+  touch -- "${XDG_CACHE_HOME-}"'/p10k-instant-prompt-'"${LOGNAME:-${USER-}}"'.zsh'
 
 # `XDG_RUNTIME_DIR` has no default and requires `700` permissions
-command -p -- mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
-  command -p -- chmod -- 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
+mkdir -p -- "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
+  chmod -- 700 "${TMPDIR:-/tmp}"'/xdg_runtime_dir-'"${LOGNAME:-${USER-}}" &&
   export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=${TMPDIR:-/tmp}/xdg_runtime_dir-${LOGNAME:-${USER-}}}"
 
 ## $CDPATH
@@ -56,13 +56,13 @@ export GITLAB_USERNAME="${LOGNAME:-${USER-}}"
 export GOPATH="${HOME%/}"'/.go'
 
 ## iCloud
-command -p -- test -d "${HOME%/}"'/Library/Mobile Documents' &&
+test -d "${HOME%/}"'/Library/Mobile Documents' &&
   export ICLOUD="${HOME%/}"'/Library/Mobile Documents'
 
 ## Input Field Separators
 # https://unix.stackexchange.com/a/220658
 # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_05_03
-IFS="$(command -p -- printf -- ' \t\n|')" &&
+IFS="$(printf -- ' \t\n|')" &&
   export IFS="${IFS%'|'}"
 
 ## Locale
@@ -82,7 +82,7 @@ export POSIXLY_CORRECT="${POSIXLY_CORRECT:-1}"
 export CARGO_HOME="${HOME%/}"'/.cargo'
 
 ## SSH, GPG
-command -p -- find -- \
+find -- \
   "${DOTFILES-}"'/.gnupg' \
   "${DOTFILES-}"'/.ssh' \
   "${HOME%/}"'/.gnupg' \
@@ -93,14 +93,14 @@ command -p -- find -- \
   -path "${HOME%/}"'/.ssh/*' -prune -o \
   -type d \
   -print 2>/dev/null | while IFS='' read -r -- directory; do
-  command -p -- find -- "${directory-}" \
+  find -- "${directory-}" \
     -type f \
     -exec chmod -- 600 {} +
-  command -p -- find -- "${directory-}" \
+  find -- "${directory-}" \
     -name '*.pub' \
     -type f \
     -exec chmod -- 644 {} +
-  command -p -- find -- "${directory-}" \
+  find -- "${directory-}" \
     -type d \
     -exec chmod -- 700 {} +
 done
@@ -109,6 +109,6 @@ export GPG_TTY="${TTY-}"
 
 ## private
 # shellcheck disable=SC1091
-command -p -- touch -- "${HOME%/}"'/.env' &&
-  command -p -- chmod -- 400 "${HOME%/}"'/.env' &&
+touch -- "${HOME%/}"'/.env' &&
+  chmod -- 400 "${HOME%/}"'/.env' &&
   . "${HOME%/}"'/.env'
