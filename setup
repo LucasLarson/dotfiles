@@ -20,20 +20,20 @@ elif command -v -- apt-get >/dev/null 2>&1; then
   alias install='command apt-get install --show-progress --assume-yes'
 fi
 
-command -p -- printf -- '\n\n   .\137\137       .\137\137  \137\137\n' >&2
-command -p -- printf -- '   \174\137\137\174 \137\137\137\137 \174\137\137\174\057  \174\137\n' >&2
-command -p -- printf -- '   \174  \174\057    \134\174  \134   \137\137\134\n' >&2
-command -p -- printf -- '   \174  \174   \174  \134  \174\174  \174\n' >&2
-command -p -- printf -- '   \174\137\137\174\137\137\137\174' >&2
-command -p -- printf -- '  \057\137\137\174\174\137\137\174\n' >&2
-command -p -- printf -- '           \134\057\n\n' >&2
-command -p -- printf -- '        Linux setup\n' >&2
-command -p -- sleep 1
-command -p -- printf -- '  a Lucas Larson production\n\n' >&2
-command -p -- sleep 1
+printf -- '\n\n   .\137\137       .\137\137  \137\137\n' >&2
+printf -- '   \174\137\137\174 \137\137\137\137 \174\137\137\174\057  \174\137\n' >&2
+printf -- '   \174  \174\057    \134\174  \134   \137\137\134\n' >&2
+printf -- '   \174  \174   \174  \134  \174\174  \174\n' >&2
+printf -- '   \174\137\137\174\137\137\137\174' >&2
+printf -- '  \057\137\137\174\174\137\137\174\n' >&2
+printf -- '           \134\057\n\n' >&2
+printf -- '        Linux setup\n' >&2
+sleep 1
+printf -- '  a Lucas Larson production\n\n' >&2
+sleep 1
 
 # save `date` for backup files
-now="$(command -p -- date -- '+%Y%m%d%H%M%S')"
+now="$(date -- '+%Y%m%d%H%M%S')"
 
 # unset `$PS4`
 # if this quaternary prompt string is already unset, then
@@ -55,49 +55,49 @@ command -v -- pacman >/dev/null 2>&1 && {
 command -v -- apk >/dev/null 2>&1 || {
   # trust apk only if it matches a known checksum
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'verifying apk tools integrity...\n' >&2
+  printf -- 'verifying apk tools integrity...\n' >&2
   set -o xtrace
   # https://web.archive.org/web/20201127045648id_/github.com/ish-app/ish/wiki/Installing-apk-on-the-App-Store-Version#wiki-body
-  command wget --output-document=- -- 'https://dl-cdn.alpinelinux.org/alpine/v3.16/main/'"$(command -p -- uname -m)"'/apk-tools-static-2.12.9-r3.apk' |
-    command tar --extract --gzip --strip-components=1 --verbose -- sbin/apk.static &&
+  wget --output-document=- -- 'https://dl-cdn.alpinelinux.org/alpine/v3.16/main/'"$(uname -m)"'/apk-tools-static-2.12.9-r3.apk' |
+    tar --extract --gzip --strip-components=1 --verbose -- sbin/apk.static &&
     ./apk.static add apk-tools &&
-    command -p -- rm -- ./apk.static
+    rm -- ./apk.static
 
   # configure only main and community repositories at first
-  command -p -- mkdir -- '/etc' &&
-    command -p -- mkdir -- '/etc/apk' && {
-    command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n'
-    command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n'
+  { test -d '/etc' || mkdir -- '/etc'; } &&
+    { test -d '/etc/apk' || mkdir -- '/etc/apk'; } && {
+    printf -- 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\n'
+    printf -- 'https://dl-cdn.alpinelinux.org/alpine/latest-stable/community\n'
   } >'/etc/apk/repositories'
 
   # update
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'updating Alpine Linux repositories...\n' >&2
+  printf -- 'updating Alpine Linux repositories...\n' >&2
   set -o xtrace
-  command apk update --verbose --progress
-  command apk upgrade --verbose --progress
+  apk update --progress --verbose
+  apk upgrade --progress --verbose
 }
 
 # https://wiki.alpinelinux.org/w/index.php?oldid=17773&title=How_to_get_regular_stuff_working#Man_pages
 # man-pages adds `man0`, `man2`, man4`, `man6` to `/usr/share/man/`
-{ command -p -- test -d '/usr/share/man/man0' &&
-  command -p -- test -d '/usr/share/man/man2' &&
-  command -p -- test -d '/usr/share/man/man4' &&
-  command -p -- test -d '/usr/share/man/man6'; } || {
+{ test -d '/usr/share/man/man0' &&
+  test -d '/usr/share/man/man2' &&
+  test -d '/usr/share/man/man4' &&
+  test -d '/usr/share/man/man6'; } || {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing man pages...\n' >&2
+  printf -- 'installing man pages...\n' >&2
   set -o xtrace
   install man-pages
 }
 command -v -- mandoc >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing mandoc for man pages...\n' >&2
+  printf -- 'installing mandoc for man pages...\n' >&2
   set -o xtrace
   install mandoc
 }
 command -v -- less >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing less to read man pages...\n' >&2
+  printf -- 'installing less to read man pages...\n' >&2
   set -o xtrace
   install less
 }
@@ -106,30 +106,30 @@ command -v -- less >/dev/null 2>&1 || {
 # https://web.archive.org/web/20210218201739id_/web.archive.org/screenshot/docs.google.com/document/d/10-8wjANQGbG43XZ0wN57M1RYOLUwu9RZATNe9vJQYKw/mobilebasic
 # https://wiki.alpinelinux.org/w/index.php?oldid=18038&title=Alpine_newbie_apk_packages#coreutils_libc_and_utmps_in_alpine
 install coreutils
-{ command -p -- test -x '/usr/bin/coreutils' &&
-  command -p -- find --version >/dev/null 2>&1 | command -p -- grep -e 'findutils' >/dev/null 2>&1; } || {
+{ command -v -- coreutils >/dev/null 2>&1 &&
+  find -- . --version 2>/dev/null | grep -e 'findutils' >/dev/null 2>&1; } || {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing Linux utilities...\n' >&2
+  printf -- 'installing Linux utilities...\n' >&2
   set -o xtrace
 }
 install util-linux pciutils usbutils coreutils binutils findutils grep wget curl openssl sudo sed attr dialog readline
 
 # add additional Alpine Linux repositories if applicable
 command -v -- apk >/dev/null 2>&1 &&
-  command -p -- test -s '/etc/apk/repositories' && {
+  test -s '/etc/apk/repositories' && {
   {
-    command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/main\n'
-    command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/community\n'
-    command -p -- printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/testing\n'
+    printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/main\n'
+    printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/community\n'
+    printf -- 'https://dl-cdn.alpinelinux.org/alpine/edge/testing\n'
   } >>'/etc/apk/repositories' &&
-    command apk update
+    apk update
 }
 
 # ssh
 # https://wiki.alpinelinux.org/w/index.php?oldid=13842&title=Setting_up_a_ssh-server#OpenSSH
-command -p -- test -d '/etc/ssh' || {
+test -d '/etc/ssh' || {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing OpenSSH...\n' >&2
+  printf -- 'installing OpenSSH...\n' >&2
   set -o xtrace
   install openssh
 }
@@ -138,7 +138,7 @@ command -p -- test -d '/etc/ssh' || {
 # https://wiki.alpinelinux.org/w/index.php?oldid=17295&title=Setting_up_a_laptop#Creating_GPG_keys
 command -v -- gpg2 >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing GPG...\n' >&2
+  printf -- 'installing GPG...\n' >&2
   set -o xtrace
   install gnupg
 }
@@ -146,35 +146,35 @@ command -v -- gpg2 >/dev/null 2>&1 || {
 # git
 command -v -- git >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing Git...\n' >&2
+  printf -- 'installing Git...\n' >&2
   set -o xtrace
   install git
 }
 
 # git user
-command git config --global --get -- user.name >/dev/null 2>&1 || {
-  command git config --global -- user.name 'Lucas Larson'
+git config --global --get -- user.name >/dev/null 2>&1 || {
+  git config --global -- user.name 'Lucas Larson'
 }
 
 # git default branch
-command git config --global --get -- init.defaultBranch >/dev/null 2>&1 || {
-  command git config --global -- init.defaultBranch 'main'
+git config --global --get -- init.defaultBranch >/dev/null 2>&1 || {
+  git config --global -- init.defaultBranch 'main'
 }
 
 # time zone
 { set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'updating time zone information...\n' >&2
+printf -- 'updating time zone information...\n' >&2
 set -o xtrace
 install --no-cache tzdata ||
   install tzdata
 
 # python
 { set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'checking Python installation...\n' >&2
+printf -- 'checking Python installation...\n' >&2
 set -o xtrace
 command -v -- python >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing Python...\n' >&2
+  printf -- 'installing Python...\n' >&2
   set -o xtrace
   install python3
 }
@@ -182,7 +182,7 @@ command -v -- python >/dev/null 2>&1 || {
 # zsh
 command -v -- zsh >/dev/null 2>&1 || {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'installing Zsh...\n' >&2
+  printf -- 'installing Zsh...\n' >&2
   set -o xtrace
   install zsh
   { set +o xtrace; } 2>/dev/null
@@ -197,39 +197,43 @@ command -v -- chsh >/dev/null 2>&1 || {
 # update, repair everything again before close
 command -v -- apk >/dev/null 2>&1 && {
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'updating...\n' >&2
+  printf -- 'updating...\n' >&2
   set -o xtrace
-  command apk update --verbose --verbose --progress
+  apk update --progress --verbose --verbose
 
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'upgrading...\n' >&2
+  printf -- 'upgrading...\n' >&2
   set -o xtrace
-  command apk upgrade --verbose --verbose --progress
+  apk upgrade --progress --verbose
 
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'repairing and resolving dependencies...\n' >&2
+  printf -- 'repairing and resolving dependencies...\n' >&2
   set -o xtrace
-  command apk fix --verbose --verbose --depends --progress
+  apk fix --depends --progress --verbose --verbose
 
   { set +o xtrace; } 2>/dev/null
-  command -p -- printf -- 'verifying installations...\n' >&2
+  printf -- 'verifying installations...\n' >&2
   set -o xtrace
-  command apk verify --verbose --verbose --progress
+  apk verify --progress --verbose --verbose && {
+    { set +o xtrace; } 2>/dev/null
+    printf -- 'verified\n' >&2
+    set -o xtrace
+  }
 }
 
 # cleanup
 { set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'cleaning up temporary installation files and performing housekeeping...\n' >&2
+printf -- 'cleaning up temporary installation files and performing housekeeping...\n' >&2
 set -o xtrace
 
 # message of the day
-command -p -- test -w '/etc/motd' &&
-  command -p -- cp -- '/etc/motd' '/etc/motd-'"${now-}" &&
-  command -p -- printf -- '' >'/etc/motd'
+test -w '/etc/motd' &&
+  test -s '/etc/motd' &&
+  cp -- '/etc/motd' '/etc/motd-'"${now-}" &&
+  touch '/etc/motd'
 
 # delete thumbnail cache files
-command -p -- find -- . \
-  -type f \
+find -- . \
   '(' \
   -name '.DS_Store' -o \
   -name 'Desktop.ini' -o \
@@ -242,15 +246,15 @@ command -p -- find -- . \
 # delete empty files
 # except those within `.git/` directories
 # and those with specific names
-command -p -- find -- . \
-  -type f \
+find -- . \
   -size 0 \
-  -path '*/.git' -prune -o \
-  -path '*example*' -prune -o \
-  -path '*sample*' -prune -o \
-  -path '*template*' -prune -o \
-  -path '*test*' -prune -o \
-  ! -name "$(command -p -- printf -- 'Icon\015\012')" \
+  ! -path "${DOTFILES:-${HOME%/}/Library/CloudStorage/Dropbox/dotfiles}"'/Library/*' \
+  ! -path "${HOME%/}"'/Library/*' \
+  ! -path '*/.git/*' \
+  ! -path '*/Test*' \
+  ! -path '*/test*' \
+  ! -path '*/.well-known/*' \
+  ! -name "$(printf -- 'Icon\015\012')" \
   ! -name '*LOCK' \
   ! -name '*empty*' \
   ! -name '*hushlogin' \
@@ -270,27 +274,29 @@ command -p -- find -- . \
 
 # delete empty directories recursively
 # but skip Git-specific and `/.well-known/` directories
-command -p -- find -- . -type d -links 2 \
+find -- . \
+  -type d \
+  -links 2 \
   -path '*/.git' -prune -o \
   -path '*/.well-known' -prune -o \
   -delete 2>/dev/null
 
 # if the shell can be changed and
 # if zsh is available, then replace bash, ash, and sh with zsh in `/etc/passwd`
-command -p -- test -w '/etc/passwd' &&
+test -w '/etc/passwd' &&
   command -v -- zsh >/dev/null 2>&1 &&
-  command -p -- grep -E -e '/bin/b?a?sh' '/etc/passwd' >/dev/null 2>&1 &&
-  command -p -- cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
-  command -p -- sed -e 's|/bin/b\{0,1\}a\{0,1\}sh$|'"$(command -v -- zsh)"'|' '/etc/passwd-'"${now-}" >'/etc/passwd'
+  grep -E -e '/bin/b?a?sh' '/etc/passwd' >/dev/null 2>&1 &&
+  cp -- '/etc/passwd' '/etc/passwd-'"${now-}" &&
+  sed -e 's|/bin/b\{0,1\}a\{0,1\}sh$|'"$(command -v -- zsh)"'|' '/etc/passwd-'"${now-}" >'/etc/passwd'
 
 # install dotfiles
 { set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'ensuring there is local access to dotfiles...\n'
+printf -- 'ensuring there is local access to dotfiles...\n'
 set -o xtrace
-command git -C "${DOTFILES:-${HOME%/}/Maestral/dotfiles}" rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
-  command -p -- mkdir -- "${DOTFILES:-${HOME%/}/Maestral}" &&
-    command -p -- mkdir -- "${DOTFILES:-${HOME%/}/Maestral/dotfiles}" &&
-    command git -c core.ignoreCase=false clone \
+git -C "${DOTFILES:-${HOME%/}/Maestral/dotfiles}" rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
+  { test -d "${DOTFILES:-${HOME%/}/Maestral}" || mkdir -- "${DOTFILES:-${HOME%/}/Maestral}"; } &&
+    { test -d "${DOTFILES:-${HOME%/}/Maestral/dotfiles}" || mkdir -- "${DOTFILES:-${HOME%/}/Maestral/dotfiles}"; } &&
+    git -c core.ignoreCase=false clone \
       --branch dev \
       --progress \
       --recursive \
@@ -302,17 +308,17 @@ command git -C "${DOTFILES:-${HOME%/}/Maestral/dotfiles}" rev-parse --is-inside-
 
 # done
 { set +o xtrace; } 2>/dev/null
-command -p -- printf -- 'installation complete\n' >&2
-command -p -- sleep 1
-command -p -- printf -- 'exiting to apply updates...\n' >&2
+printf -- 'installation complete\n' >&2
+sleep 1
+printf -- 'exiting to apply updates...\n' >&2
 
 # restore `$PS4`
 PS4="${ps4_temporary:-+ }"
 unset ps4_temporary >/dev/null 2>&1 || ps4_temporary=''
 
 {
-  command -p -- printf -- '\n'
-  command -p -- printf -- 'done!\n'
+  printf -- '\n'
+  printf -- 'done!\n'
 } >&2
 
 exit

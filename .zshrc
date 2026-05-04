@@ -40,22 +40,13 @@ export SAVEHIST HISTSIZE
 export ZSH_COMPDUMP="${HOME%/}"'/.zcompdump'
 
 ## Plugins
-plugins+=(
-  gunstage
-  git-default-branch
-  zsh-abbr
-  zsh-diff-so-fancy
-  zsh-autosuggestions
-)
+PLUGINS='gunstage:git-default-branch:zsh-abbr:zsh-diff-so-fancy:zsh-autosuggestions'"${PLUGINS:+:${PLUGINS-}}"
 
 # plugin: fast-syntax-highlighting
-plugins+=(
-  fast-syntax-highlighting
-)
+PLUGINS='fast-syntax-highlighting'"${PLUGINS:+:${PLUGINS-}}"
+
 # plugin: zsh-history-substring-search
-plugins+=(
-  zsh-history-substring-search
-) && {
+PLUGINS='zsh-history-substring-search'"${PLUGINS:+:${PLUGINS-}}" && {
   bindkey '^[OA' history-substring-search-up
   bindkey '^[OB' history-substring-search-down
 }
@@ -190,7 +181,7 @@ test -d "${HOME%/}"'/.cargo/bin' &&
   PATH="${HOME%/}"'/.cargo/bin'"${PATH:+:${PATH-}}"
 
 ## npm
-NPM_PACKAGES="${HOME%/}"'/.npm-packages'
+export NPM_PACKAGES="${HOME%/}"'/.npm-packages'
 test -d "${NPM_PACKAGES-}"'/bin' &&
   PATH="${PATH:+${PATH-}:}${NPM_PACKAGES-}"'/bin'
 test -d "${NPM_PACKAGES-}"'/share/man' &&
@@ -223,8 +214,7 @@ fi
 ## cpplint
 # `$LIBRARY_PATH` || ld: library not found for -lSystem
 if test -d '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'; then
-  LIBRARY_PATH='/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'"${LIBRARY_PATH:+:${LIBRARY_PATH-}}"
-  export LIBRARY_PATH
+  export LIBRARY_PATH='/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib'"${LIBRARY_PATH:+:${LIBRARY_PATH-}}"
 fi
 
 ## Go
