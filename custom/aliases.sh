@@ -6325,34 +6325,6 @@ literoj() {
   LC_ALL='eo' command -p -- printf -- 'ĈĉĜĝĤĥĴĵŜŝŬŭ\n'
 }
 
-# list --octal
-ls8() {
-  # https://github.com/xero/dotfiles/blob/fd651dbdc7/zsh/.config/zsh/06-aliases.zsh#L19
-  command -p -- ls -A -F -G -g -h --color=always -- "${@-}" |
-    command -p -- sed \
-      -e 's/--x/1/g' \
-      -e 's/-w-/2/g' \
-      -e 's/-wx/3/g' \
-      -e 's/r--/4/g' \
-      -e 's/r-x/5/g' \
-      -e 's/rw-/6/g' \
-      -e 's/rwx/7/g' \
-      -e 's/---/0/g' \
-      -e 's/rwt/7/g' |
-    command -p -- sed -e 's/^\(....\) [[:digit:]] /\1 /'
-
-  command -p -- ls -l |
-    command -p -- sed \
-      -e 's/rwx/7/g' \
-      -e 's/rw-/6/g' \
-      -e 's/r-x/5/g' \
-      -e 's/r--/4/g' \
-      -e 's/-wx/3/g' \
-      -e 's/-w-/2/g' \
-      -e 's/--x/1/g' \
-      -e 's/---/0/g'
-}
-
 # list --others
 lso() {
   command git -c color.status=always -c core.quotePath=false ls-files --exclude-standard --others "${@-}" |
