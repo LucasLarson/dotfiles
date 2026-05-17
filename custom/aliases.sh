@@ -5698,7 +5698,6 @@ install() {
       --mas \
       --no-restart \
       --tap \
-      --verbose \
       "${@-}" |
       # move each package name onto the comment line above it, if any
       command -p -- sed \
