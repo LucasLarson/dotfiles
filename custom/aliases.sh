@@ -5688,7 +5688,6 @@ install() {
       -o verbose \
       -o xtrace
     command brew bundle dump \
-      --all \
       --cask \
       --debug \
       --describe \
