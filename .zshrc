@@ -48,15 +48,17 @@ bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 bindkey '^[[Z' reverse-menu-complete
 
-## Oh My Zsh
-. "${ZSH-}"'/oh-my-zsh.sh'
-for file in "${ZSH_CUSTOM-}"/plugins/**/*.plugin.*sh; do
-  . "${file-}" 2>/dev/null &&
-    FPATH="${FPATH:+${FPATH-}:}${file%/*}"
-done
-for file in "${ZSH_CUSTOM-}"/*sh; do
-  . "${file-}"
-done
+## Plugins and custom scripts
+test -d "${ZSH_CUSTOM-}" &&
+  {
+    for file in "${ZSH_CUSTOM-}"/plugins/**/*.plugin.*sh; do
+      . "${file-}" 2>/dev/null &&
+        FPATH="${FPATH:+${FPATH-}:}${file%/*}"
+    done
+    for file in "${ZSH_CUSTOM-}"/*sh; do
+      . "${file-}"
+    done
+  }
 
 ## MANPATH
 test -d '/usr/local/man' &&
