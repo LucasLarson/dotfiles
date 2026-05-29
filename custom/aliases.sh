@@ -2560,7 +2560,7 @@ find_images_with_incorrect_filename_extensions() {
       *.[Ss][Vv][Gg]) file -- "${file-}" | grep -F -e "${file-}"': SVG Scalable Vector Graphics image' >/dev/null 2>&1 || printf -- '%s\n' "${file-}" ;;
       *.[Tt][Ii][Ff] | *.[Tt][Ii][Ff][Ff]) file -- "${file-}" | grep -F -e "${file-}"': TIFF image' >/dev/null 2>&1 || printf -- '%s\n' "${file-}" ;;
       # `file` calls `.webp` files `RIFF... Web/P`
-      *.[Ww][Ee][Bb][Pp]) file -- "${file-}" | grep -F -e "${file-}"': RIFF' >/dev/null 2>&1 | grep -e ' Web/P image' >/dev/null 2>&1 || printf -- '%s\n' "${file-}" ;;
+      *.[Ww][Ee][Bb][Pp]) file -- "${file-}" | grep -F -e "${file-}"': RIFF' 2>/dev/null | grep -e ' Web/P image' >/dev/null 2>&1 || printf -- '%s\n' "${file-}" ;;
       *) printf -- '%s: this test does not yet test \140%s\140 files\n' "${file-}" "$(
         printf -- '%s\n' "${file##*.}" |
           LC_ALL='C' tr -- '[:lower:]' '[:upper:]'
@@ -6253,17 +6253,17 @@ elif command ls --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P >/dev/null 2>&
 else
   if
     test "$(
-      ls -G --color=always -- "${HOME%/}" >/dev/null 2>&1 |
+      ls -G --color=always -- "${HOME%/}" 2>/dev/null |
         od
     )" = "$(
-      command ls -G --color=always -- "${HOME%/}" >/dev/null 2>&1 |
+      command ls -G --color=always -- "${HOME%/}" 2>/dev/null |
         od
     )" &&
       test "$(
-        command ls -G --color=always -- "${HOME%/}" >/dev/null 2>&1 |
+        command ls -G --color=always -- "${HOME%/}" 2>/dev/null |
           od
       )" = "$(
-        command ls --color=always -- "${HOME%/}" >/dev/null 2>&1 |
+        command ls --color=always -- "${HOME%/}" 2>/dev/null |
           od
       )"
   then
