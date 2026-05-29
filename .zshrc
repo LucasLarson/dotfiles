@@ -234,12 +234,15 @@ rbenv() {
 
 ## PATHs
 # prevent duplicate entries
-test "${ZSH-}" != '' &&
+case "${SHELL-}" in *zsh*)
   export -U \
     PATH path \
     CDPATH cdpath \
     FPATH fpath \
     MANPATH manpath
+  ;;
+*) ;;
+esac
 
 ## Powerlevel10k
 test "${ZSH_THEME-}" = 'powerlevel10k/powerlevel10k' &&
