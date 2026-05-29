@@ -6253,7 +6253,7 @@ elif command ls --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P >/dev/null 2>&
 else
   if
     test "$(
-      ls -G --color=always -- "${HOME%/}" 2>/dev/null |
+      find -- "${HOME%/}" -prune -exec sh -c -- 'ls -G --color=always "${@-}"' _ {} + |
         od
     )" = "$(
       command ls -G --color=always -- "${HOME%/}" 2>/dev/null |
