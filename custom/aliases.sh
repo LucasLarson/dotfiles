@@ -8646,8 +8646,6 @@ standard_r() {
   {
     command npm ls -- standard >/dev/null 2>&1 ||
       command npm ls --location=global -- standard >/dev/null 2>&1 ||
-      #       npm install --loglevel=verbose --no-fund -- standard ||
-      #       npm install --location=global --loglevel=verbose --no-fund -- standard ||
       # EX_UNAVAILABLE
       return 69
   } &&
@@ -9167,10 +9165,8 @@ alias -- temp='temperature'
 textlint_r() {
   command npm config --location=global -- get prefix >/dev/null 2>&1 &&
     test -d "$(command npm config --location=global -- get prefix)" &&
-    test -d "$(command npm config --location=global -- get prefix)"'/lib/node_modules/textlint-rule-terminology' || {
-    command npm install --location=global --loglevel=verbose --no-fund -- textlint
-    command npm install --location=global --loglevel=verbose --no-fund -- textlint-rule-terminology
-  } || return 127
+    test -d "$(command npm config --location=global -- get prefix)"'/lib/node_modules/textlint-rule-terminology' ||
+    return 127
   set \
     -o xtrace
   # find all Markdown text files, then run `textlint` on them
@@ -9341,10 +9337,12 @@ update_changelog() {
       test "${GITHUB_TOKEN-}" != ''
   } && {
     command -v -- github_changelog_generator >/dev/null 2>&1 ||
-      command gem install github_changelog_generator
+      # EX_UNAVAILABLE
+      return 69
   } && {
     command -v -- markdownlint >/dev/null 2>&1 ||
-      command npm install --location=global --no-fund -- markdownlint
+      # EX_UNAVAILABLE
+      return 69
   } ||
     return 1
   # find one existing changelog once
@@ -9580,7 +9578,8 @@ wayback_r() {
     command -v -- gem >/dev/null 2>&1 ||
       return 127
     command -v -- wayback_machine_downloader >/dev/null 2>&1 ||
-      command gem install --verbose wayback_machine_downloader
+      # EX_UNAVAILABLE
+      return 69
     command wayback_machine_downloader --all-timestamps "${1-}"
   )
 }
