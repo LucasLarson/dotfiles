@@ -9166,7 +9166,8 @@ textlint_r() {
   command npm config --location=global -- get prefix >/dev/null 2>&1 &&
     test -d "$(command npm config --location=global -- get prefix)" &&
     test -d "$(command npm config --location=global -- get prefix)"'/lib/node_modules/textlint-rule-terminology' ||
-    return 127
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o xtrace
   # find all Markdown text files, then run `textlint` on them
@@ -9330,21 +9331,21 @@ trash_developer() {
 }
 
 update_changelog() {
-  command -v -- gem >/dev/null 2>&1 && {
-    test "${CHANGELOG_GITHUB_TOKEN-}" != '' ||
-      test "${GITHUB_API_TOKEN-}" != '' ||
-      test "${GITHUB_OAUTH_TOKEN-}" != '' ||
-      test "${GITHUB_TOKEN-}" != ''
-  } && {
-    command -v -- github_changelog_generator >/dev/null 2>&1 ||
-      # EX_UNAVAILABLE
-      return 69
-  } && {
-    command -v -- markdownlint >/dev/null 2>&1 ||
-      # EX_UNAVAILABLE
-      return 69
-  } ||
-    return 1
+  command -v -- gem >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  test "${CHANGELOG_GITHUB_TOKEN-}" != '' ||
+    test "${GITHUB_API_TOKEN-}" != '' ||
+    test "${GITHUB_OAUTH_TOKEN-}" != '' ||
+    test "${GITHUB_TOKEN-}" != '' ||
+    # EX_CONFIG
+    return 78
+  command -v -- github_changelog_generator >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  command -v -- markdownlint >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   # find one existing changelog once
   file="$(
     cd -- "$(
@@ -9576,7 +9577,8 @@ wayback_r() {
       -o verbose \
       -o xtrace
     command -v -- gem >/dev/null 2>&1 ||
-      return 127
+      # EX_UNAVAILABLE
+      return 69
     command -v -- wayback_machine_downloader >/dev/null 2>&1 ||
       # EX_UNAVAILABLE
       return 69
