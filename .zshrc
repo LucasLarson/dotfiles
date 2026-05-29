@@ -215,12 +215,15 @@ test -d "${HOME%/}"'/.rbenv/shims' &&
 
 ## PATHs
 # prevent duplicate entries
-test "${ZSH-}" != '' &&
+case "${SHELL-}" in *zsh*)
   export -U \
     PATH path \
     CDPATH cdpath \
     FPATH fpath \
     MANPATH manpath
+  ;;
+*) ;;
+esac
 
 ## Powerlevel10k
 . "${HOME%/}"'/.p10k.zsh' 2>/dev/null
