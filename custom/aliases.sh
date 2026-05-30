@@ -7115,7 +7115,7 @@ pledit() {
     # convert the binary file to XML
     command plutil -convert xml1 -- "${file-}" &&
       # open with the default editor
-      command "${EDITOR:-${VISUAL:-vi}}" -- "${file-}"
+      command "${EDITOR:-vi}" -- "${file-}"
   done
 }
 
