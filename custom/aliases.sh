@@ -3325,47 +3325,6 @@ find_smallest_files() {
     )"} - 3))" "${@-}"
 }
 
-find_symlinks() {
-  # find all symlinks to a file
-  # https://stackoverflow.com/a/6185052
-  # command sudo -- find -L -- / -samefile /usr/local/Cellar/rbenv/1.2.0/completions/rbenv.zsh 2>/dev/null
-
-  set \
-    -o verbose \
-    -o xtrace
-  # GPT
-  target="$(command realpath -- "${1-}")"
-  export target
-  command find -L -- "${2:-.}" \
-    -exec sh -c -- 'test "$(realpath -- "${1-}")" = "${target-}" && printf -- '\''%s\n'\'' "${1-}"' _ {} ';'
-  {
-    set \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
-  unset target >/dev/null 2>&1 || target=''
-
-  printf -- 'all symlinks to and from files in this directory or its subdirectories\n' >&2
-  command find -L -- . \
-    -type l \
-    -exec find -L -- . -samefile {} ';' \
-    -exec printf -- '\n' ';' 2>&1 |
-    while IFS='' read -r -- file; do
-      command ls -A -F -g -o --color=always -- "${file-}" 2>&1 |
-        sed -e '/: No such file or directory/d'
-    done
-
-  test "${#}" -gt 0 ||
-    return 0
-  printf -- 'all symlinks in the current directory or below to the specific file %s\n' "${1-}" >&2
-  command find -L -- . -samefile "${1-}" 2>/dev/null
-
-  test "${#}" -gt 1 ||
-    return 0
-  printf -- 'all symlinks in all directories to the specific file %s\n' "${2-}" >&2
-  command find -L -- / -samefile "${2-}" 2>/dev/null
-}
-
 find_text_files() {
   {
     command find -- . \
