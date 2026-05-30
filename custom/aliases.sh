@@ -8400,7 +8400,7 @@ shred_r() {
       size="$(
         LC_ALL='C' find -- "${file-}" \
           -type f \
-          exec ls -l -- {} ';' |
+          -exec ls -l -- {} ';' |
           LC_ALL='C' command awk -- '{printf "%d\n", $5}'
       )" &&
       command shred \
