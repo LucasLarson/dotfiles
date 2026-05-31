@@ -9650,10 +9650,10 @@ wget_download() {
         grep -c -e '.'
     )" -eq 1 ||
     # or we fail
-    return 11
-
+    # EX_CONFIG
+    return 78
   cd -- "${HOME%/}"'/Sites' ||
-    return 13
+    return "${?:-1}"
 
   # user agent
   # https://web.archive.org/web/0id_/developers.google.com/search/blog/2019/10/updating-user-agent-of-googlebot#the-new-evergreen-googlebot-and-its-user-agent
@@ -9685,7 +9685,7 @@ wget_download() {
     --timestamping \
     --user-agent='Mozilla/5.0 (compatible; Googlebot/2.1; +https://www.google.com/bot.html)' \
     'https://'"${1-}" ||
-    return 17
+    return "${?:-1}"
 }
 
 which() {
