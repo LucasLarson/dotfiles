@@ -9623,14 +9623,13 @@ wget_download() {
   set \
     -o verbose \
     -o xtrace
-  wget_server="${1-}"
   command -v -- wget >/dev/null 2>&1 ||
     return 127
 
   # either the two files’ [targets] match
-  test "$(command stat -L -c %d:%i -- "${HOME%/}"'/Code/'"${wget_server-}"'/.https')" = "$(command stat -L -c %d:%i -- "${HOME%/}"'/Sites/'"${wget_server-}")" ||
+  test "$(command stat -L -c %d:%i -- "${HOME%/}"'/Code/'"${1-}"'/.https')" = "$(command stat -L -c %d:%i -- "${HOME%/}"'/Sites/'"${1-}")" ||
     # or we create that symlink
-    ln -f -s "${HOME%/}"'/Code/'"${wget_server-}"'/.https' "${HOME%/}"'/Sites/'"${wget_server-}" ||
+    ln -f -s "${HOME%/}"'/Code/'"${1-}"'/.https' "${HOME%/}"'/Sites/'"${1-}" ||
     # or we fail
     return 11
 
@@ -9641,11 +9640,11 @@ wget_download() {
   # https://web.archive.org/web/0id_/developers.google.com/search/blog/2019/10/updating-user-agent-of-googlebot#the-new-evergreen-googlebot-and-its-user-agent
   command wget \
     --adjust-extension \
-    --append-output="${wget_server-}"'.log' \
+    --append-output="${1-}"'.log' \
     --continue \
     --convert-links \
     --debug \
-    --directory-prefix="${HOME%/}"'/Sites/'"${wget_server-}" \
+    --directory-prefix="${HOME%/}"'/Sites/'"${1-}" \
     --domains="$(printf -- '%s' "${1-}" | sed -e 's/.*@//' -e 's/https\{0,1\}:\/\///' -e 's/www\.//' -e 's/[:/].*//')" \
     --execute robots=off \
     --force-directories \
@@ -9666,9 +9665,8 @@ wget_download() {
     --server-response \
     --timestamping \
     --user-agent='Mozilla/5.0 (compatible; Googlebot/2.1; +https://www.google.com/bot.html)' \
-    'https://'"${wget_server-}" ||
+    'https://'"${1-}" ||
     return 17
-  unset wget_server >/dev/null 2>&1 || wget_server=''
   {
     set \
       +o verbose \
