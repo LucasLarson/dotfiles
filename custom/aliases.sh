@@ -9626,8 +9626,18 @@ wget_download() {
   test "${#}" -eq 1 ||
     # EX_USAGE
     return 64
-  # either the two files’ [targets] match
-  test "$(command stat -L -c %d:%i -- "${HOME%/}"'/Code/'"${1-}"'/.https')" = "$(command stat -L -c %d:%i -- "${HOME%/}"'/Sites/'"${1-}")" ||
+  # check that there is just
+  # 1 unique file serial number amongst the
+  # 2 targets
+  test "$(
+    find -- \
+      "${HOME%/}"'/Code/'"${1-}"'/.https' \
+      "${HOME%/}"'/Sites/'"${1-}" \
+      -prune \
+      -exec ls -1 -d -i -L -- {} + |
+      awk -- '! seen[$1]++ {print $1}' |
+      grep -c -e '.'
+  )" -eq 1 ||
     # or we fail
     return 11
 
