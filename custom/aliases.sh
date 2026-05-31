@@ -23,9 +23,9 @@ alias -- ,='exec "${SHELL:-sh}"'             # portable
 alias -- ,='exec - "${SHELL##*/}"'           # Zsh-only using `-` precommand modifier to generate `-zsh` instead of `zsh`, but POSIX parameter expansion
 aliases() {
   set -- "${DOTFILES-}"'/custom/aliases.sh'
-  command "${EDITOR:-vi}" -- "${1-}" &&
+  "${EDITOR:-vi}" -- "${1-}" &&
     command -v -- shfmt >/dev/null 2>&1 &&
-    command shfmt --indent 2 --language-dialect bash --simplify --write -- "${1-}"
+    shfmt --indent 2 --language-dialect bash --simplify --write -- "${1-}"
   # shellcheck disable=SC1090
   . "${1-}"
   command -v -- sc >/dev/null 2>&1 &&
@@ -75,7 +75,7 @@ acrobat() {
 }
 
 awk_pretty() {
-  command gawk \
+  gawk \
     --no-optimize \
     --posix \
     --pretty-print=- \
@@ -89,7 +89,7 @@ awk_pretty() {
       -e 's/\n{\n/ {\n/g' \
       -e 's/\t/  /g' \
       -e '/^$/ d' | {
-    command bat \
+    bat \
       --language=awk \
       --paging=never \
       --style=plain \
@@ -149,7 +149,7 @@ basename_r() {
 bash_major_version() {
   # confirm Bash version is at least any given version (default: at least Bash 6)
   if test "$(
-    command bash --version |
+    bash --version |
       sed \
         -e 's/^[^[:digit:]]*//' \
         -e 's/[^[:digit:]].*$//' \
@@ -186,12 +186,12 @@ bash_pretty() {
       # if `bash --pretty-print` fails on the file, skip it
       # noting that `bash --pretty-print` prints to `stdout`
       # but since this part is a test, send both `stdout` and `stderr` to `/dev/null`
-      command bash --pretty-print -- "${file-}" >/dev/null 2>&1 &&
+      bash --pretty-print -- "${file-}" >/dev/null 2>&1 &&
       {
         # add the shell directive then the `bash --pretty-print` content
         printf -- '#!/usr/bin/env sh\n\n' &&
           # add the shell directive then the `bash --pretty-print` content
-          command bash --pretty-print -- "${file-}"
+          bash --pretty-print -- "${file-}"
 
         # save `$file`'s interpolated content into a file called `$file.bash`
       } >"${file-}"'.bash' &&
@@ -210,20 +210,20 @@ bash_pretty() {
 bash_pretty_overwrite() {
   LC_ALL='C' \
     IFS='' \
-    command find -- . \
+    find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -name '*.bash' \
     -type f \
-    -exec sh -C -e -f -u -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command git mv --force --verbose -- "${1-}" "${1%.bash}"
+    -exec sh -C -e -f -u -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  git mv --force --verbose -- "${1-}" "${1%.bash}"
 ' _ {} ';'
 }
 
 bitly() {
   for link in "${@-}"; do
-    command curl \
+    curl \
       --data '{"bitlink_id":"bit.ly/'"${link-}"'"}' \
       --header 'Authorization: Bearer '"${BITLY_TOKEN-}" \
       --header 'Content-Type: application/json' \
@@ -241,7 +241,7 @@ black_r() {
   command -v -- black >/dev/null 2>&1 ||
     return 127
   # https://github.com/psf/black/blob/b1d0601016/src/black/const.py
-  command find -- . \
+  find -- . \
     '(' \
     -name '*.py' -o \
     -name '*.py3' -o \
@@ -250,9 +250,9 @@ black_r() {
     ')' \
     -type f \
     -exec sh -c -- 'for file in "${@-}"; do
-  command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
-    ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-    command black --preview --verbose -- "${file-}"
+  git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+    ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    black --preview --verbose -- "${file-}"
 done' _ {} +
 }
 
@@ -266,7 +266,7 @@ braces() {
       rm -f -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/'"${1##*/}" &&
       cp -f -p -- "${1-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/'"${1##*/}" &&
       # add braces to shell variables but do not even try with `awk` commands
-      command sed \
+      sed \
         -e '# do not apply to awk content' \
         -e '/awk /! {' \
         -e '# replace uncommented ＄var/＄var[@] with "＄{var-}"/"＄{var[@]-}"' \
@@ -321,12 +321,12 @@ browse() {
 cargo_install() {
   # https://forge.rust-lang.org/infra/other-installation-methods.html#rustup
   set -- 'https://sh.rustup.rs' && {
-    command curl \
+    curl \
       --fail \
       --show-error \
       --silent \
       --url "${1-}" ||
-      command wget \
+      wget \
         --content-on-error \
         --hsts-file=/dev/null \
         --output-document=- \
@@ -338,7 +338,7 @@ cargo_install() {
 }
 alias -- install_cargo='cargo_install'
 cargo_list() {
-  command cargo install --list 2>/dev/null |
+  cargo install --list 2>/dev/null |
     sed \
       -e 's/[[:space:]].*//' \
       -e '/^$/ d'
@@ -350,7 +350,7 @@ cargo_list() {
 alias -- bat >/dev/null 2>&1 &&
   unalias -- bat
 command -v -- bat >/dev/null 2>&1 &&
-  alias -- bat='command bat --decorations=never --paging=never' &&
+  alias -- bat='bat --decorations=never --paging=never' &&
   alias -- bats='bat --language=sh' &&
   command -v -- _bat >/dev/null 2>&1 &&
   compdef -- bats='bat' >/dev/null 2>&1
@@ -406,7 +406,7 @@ cdx_to_csv() {
       test ! -L "${file-}" &&
       case "${file-}" in
       *.[Jj][Ss][Oo][Nn])
-        command jq --raw-output '(.[0] | @csv), (.[1:] [] | @csv)' "${file-}" >"${file%.json}"'.csv'
+        jq --raw-output '(.[0] | @csv), (.[1:] [] | @csv)' "${file-}" >"${file%.json}"'.csv'
         ;;
       *) ;;
       esac
@@ -421,15 +421,15 @@ cdx_to_csv() {
 
 changelog_find_newest() {
   pwd="$(
-    command git rev-parse --show-toplevel --path-format=relative | sed -e '1 q' ||
-      command git rev-parse --show-toplevel ||
-      command find -- . -name '.git' -type d -exec dirname -- {} ';'
+    git rev-parse --show-toplevel --path-format=relative | sed -e '1 q' ||
+      git rev-parse --show-toplevel ||
+      find -- . -name '.git' -type d -exec dirname -- {} ';'
   )" 2>/dev/null ||
     return "${?:-1}"
-  LC_ALL='C' command find -- "${pwd%/}" \
+  LC_ALL='C' find -- "${pwd%/}" \
     -path "${pwd%/}"'/[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*.[Mm]*[Dd]*' \
     -type f \
-    -exec sh -c -- 'command git --no-pager log --max-count=1 --pretty=tformat:'\''%at '\''"${1-}"' _ {} ';' |
+    -exec sh -c -- 'git --no-pager log --max-count=1 --pretty=tformat:'\''%at '\''"${1-}"' _ {} ';' |
     LC_ALL='C' sort -n -r |
     sed \
       -e 's/.*\///g' \
@@ -439,7 +439,7 @@ changelog_find_newest() {
 
 checkbashisms_r() {
   find_shell_scripts | while IFS='' read -r -- file; do
-    command checkbashisms --extra --force --lint --newline --posix "${file-}" 2>&1 |
+    checkbashisms --extra --force --lint --newline --posix "${file-}" 2>&1 |
       sed \
         -e '# skip warnings about commands prepended by "command", which POSIX does allow' \
         -e '# https://pubs.opengroup.org/onlinepubs/9699919799/utilities/command.html#tag_20_22_03' \
@@ -466,7 +466,7 @@ clang_r() {
 
 clang_format() {
 
-  command clang-format --version >/dev/null 2>&1 ||
+  clang-format --version >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
 
@@ -500,7 +500,7 @@ clang_format() {
   # https://github.com/llvm/llvm-project/blob/db6ba82acc/clang/tools/clang-format/git-clang-format#L88-L128
   # https://github.com/llvm/llvm-project/blob/b17f1fd676/clang/tools/clang-format/clang-format-diff.py#L65-L66
 
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.rbenv' -prune -o \
     -path '*/.venv' -prune -o \
@@ -634,7 +634,7 @@ clang_format() {
     -name '*.[Xx][Pp][Mm]' \
     ')' \
     -type f \
-    -exec sh -c -- 'for file in "${@-}"; do ! grep -e '\''^#!.*sh'\'' -e '\''moderni.*sh'\'' -- "${file-}" >/dev/null 2>&1 && command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 || ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 && command clang-format -i --style "{ColumnLimit: ${ColumnLimit:-79}, IndentWidth: ${IndentWidth:-2}, SpacesBeforeTrailingComments: ${SpacesBeforeTrailingComments:-2}}" --verbose -- "${file-}"; done' _ {} + 2>&1 |
+    -exec sh -c -- 'for file in "${@-}"; do ! grep -e '\''^#!.*sh'\'' -e '\''moderni.*sh'\'' -- "${file-}" >/dev/null 2>&1 && git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 || ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 && clang-format -i --style "{ColumnLimit: ${ColumnLimit:-79}, IndentWidth: ${IndentWidth:-2}, SpacesBeforeTrailingComments: ${SpacesBeforeTrailingComments:-2}}" --verbose -- "${file-}"; done' _ {} + 2>&1 |
     sed \
       -e 's/ \[1\/1\]//' >&2
   unset ColumnLimit >/dev/null 2>&1 || ColumnLimit=''
@@ -707,7 +707,7 @@ cleanup() {
     # the first prune should mean that the Library line is unnecessary, but that is not the case ¯\_(ツ)_/¯
     # so it appears that all find commands should prune at least both `*/.git` and `*/Library`
     while test "$(
-      command find -- "${ZDOTDIR:-${HOME%/}}" \
+      find -- "${ZDOTDIR:-${HOME%/}}" \
         -xdev \
         -path '*/.git' -prune -o \
         -path '*/Library' -prune -o \
@@ -718,7 +718,7 @@ cleanup() {
         -type f \
         -print
     )" != ''; do
-      command find -- "${ZDOTDIR:-${HOME%/}}" \
+      find -- "${ZDOTDIR:-${HOME%/}}" \
         -xdev \
         -path '*/.git' -prune -o \
         -path '*/Library' -prune -o \
@@ -733,7 +733,7 @@ cleanup() {
 
   # delete empty files except
   # those with specific names
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.rbenv' -prune -o \
     -path '*/.venv' -prune -o \
@@ -780,9 +780,9 @@ cleanup() {
     -size 0 \
     -type f \
     -print \
-    -exec sh -C -f -u -x -c -- 'test "$(command git -C "${1%/*}" rev-parse --show-superproject-working-tree)" = '\'''\'' ||
-  command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    -exec sh -C -f -u -x -c -- 'test "$(git -C "${1%/*}" rev-parse --show-superproject-working-tree)" = '\'''\'' ||
+  git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
   mkdir -p -- "${target%/}/${1%/*}_${now-}" &&
   mv -v -- "${1-}" "${target%/}/${1%/*}_${now-}/${1##*/}"
 ' _ {} ';'
@@ -790,7 +790,7 @@ cleanup() {
   # delete empty directories
   # but skip certain directories
   while LC_ALL='C' IFS='' test "$(
-    LC_ALL='C' IFS='' command find -- . \
+    LC_ALL='C' IFS='' find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
       -path '*/node_modules' -prune -o \
@@ -816,7 +816,7 @@ cleanup() {
     ###    rm -f -r -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp' &&
     ###    mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp' &&
     {
-      command find -- \
+      find -- \
         "${XDG_CONFIG_HOME-}"'/git/config' \
         "${HOME%/}"'/.config/git/config' \
         "${DOTFILES-}"'/.config/git/config' \
@@ -857,7 +857,7 @@ EOF
   )
 
   # remove Git sample hooks and Dropbox pollution from `.git/` directories
-  command find -- . \
+  find -- . \
     -path '*/.git/*' \
     '(' \
     -name '._*' -o \
@@ -867,7 +867,7 @@ EOF
     -type f \
     -print \
     -delete
-  command find -- . \
+  find -- . \
     -path '*/.git/*' \
     -name 'description' \
     -type f \
@@ -876,13 +876,13 @@ EOF
     -size '88c' \
     ')' \
     -exec sh -x -c -- 'case "$(cksum -- "${1-}" | sed -e '\''s/ 73 .*//'\'' -e '\''s/ 88 .*//'\'' )" in 1558055404|76865375) printf -- '\''%s\n'\'' "${1-}" && rm -- "${1-}" ;; *) ;; esac' _ {} ';'
-  command find -- . \
+  find -- . \
     -path '*/.git/info/*' \
     -name 'exclude' \
     -type f \
     -size '240c' \
     -exec sh -x -c -- 'test "$(cksum -- "${1-}" | sed -e '\''s/ 240 .*//'\'')" -eq 684386549 && printf -- '\''%s\n'\'' "${1-}" && rm -- "${1-}"' _ {} ';'
-  command find -- . \
+  find -- . \
     -path '*/.git/*' \
     -path '*.gitstatus.*' \
     -type d \
@@ -903,8 +903,8 @@ EOF
 codesign_r() {
   set \
     -o xtrace
-  command codesign --deep --force --options runtime --timestamp --verbose --options runtime --sign "$(
-    command security find-identity -v -p codesigning |
+  codesign --deep --force --options runtime --timestamp --verbose --options runtime --sign "$(
+    security find-identity -v -p codesigning |
       sed \
         -e 's/.*\([[:xdigit:]]\{40\}\).*/\1/' \
         -e 'q'
@@ -933,7 +933,7 @@ cpplint_filename_extensions() {
     LC_ALL='C' sort -f
 }
 cpplint_r() {
-  PS4=' ' command find -- . \
+  PS4=' ' find -- . \
     -path '*/.git' -prune -o \
     -path '*/.rbenv' -prune -o \
     -path '*/.venv' -prune -o \
@@ -1049,9 +1049,9 @@ cpplint_r() {
     -name '*.[Xx][Pp][Mm]' \
     ')' \
     -type f \
-    -exec sh -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command cpplint --counting=detailed --verbose=0 --filter=-legal/copyright -- "${1-}"
+    -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  cpplint --counting=detailed --verbose=0 --filter=-legal/copyright -- "${1-}"
 ' _ {} ';' 2>&1
 }
 
@@ -1066,8 +1066,8 @@ cy() {
     return 1
 
   target="$(
-    command git rev-parse --show-toplevel --path-format=relative 2>/dev/null | sed -e '1 q' ||
-      command git rev-parse --show-toplevel 2>/dev/null ||
+    git rev-parse --show-toplevel --path-format=relative 2>/dev/null | sed -e '1 q' ||
+      git rev-parse --show-toplevel 2>/dev/null ||
       pwd -L
   )" ||
     return 1
@@ -1105,7 +1105,7 @@ cy() {
 # this directory and below
 count_files() {
   # https://unix.stackexchange.com/a/1126
-  command find -- .//. \
+  find -- .//. \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     ! -name '.DS_Store' \
@@ -1135,7 +1135,7 @@ count_files_by_extension() {
   # skip files:
   #   with no extension
   #   with a trailing dot
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
@@ -1152,7 +1152,7 @@ count_files_by_extension() {
   # - https://github.com/super-linter/super-linter/commit/4faa6433ab
   # - https://github.com/super-linter/super-linter/pull/1640
   # - https://github.com/super-linter/super-linter/pull/1536
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     ! -name '*.*' \
@@ -1172,7 +1172,7 @@ count_files_in_this_directory() {
   case "${1-}" in
   # count files as well as directories
   -d | --directory | --directories)
-    command find -- . \
+    find -- . \
       -path './*/*' -prune -o \
       ! -name '.DS_Store' \
       -print |
@@ -1184,7 +1184,7 @@ count_files_in_this_directory() {
   # count only regular, non-directory files
   *)
     # https://unix.stackexchange.com/a/1126
-    command find -- . \
+    find -- . \
       -path './*/*' -prune -o \
       ! -name '.DS_Store' \
       ! -type d \
@@ -1198,7 +1198,7 @@ count_files_in_this_directory() {
 
 curl_brew() {
   # https://github.com/Homebrew/install/issues/737#issuecomment-1433428464
-  command curl \
+  curl \
     --disable \
     --fail \
     --compressed \
@@ -1266,28 +1266,28 @@ define() {
         # shellcheck disable=SC3044
         # `functions | bash | shfmt`
         if builtin declare -f -- "${query-}" >/dev/null 2>&1 &&
-          command bash --pretty-print -- "${query-}" >/dev/null 2>&1 &&
-          command shfmt -- "${query-}" >/dev/null 2>&1; then
+          bash --pretty-print -- "${query-}" >/dev/null 2>&1 &&
+          shfmt -- "${query-}" >/dev/null 2>&1; then
           builtin declare -f -- "${query-}" |
-            command bash --pretty-print |
+            bash --pretty-print |
             sed \
               -e 's/\&\& /\&\&\n/g' \
               -e 's/\|\| /||\n/g' \
               -e '# these expressions are escaped on the search (that is, ˋs/\&\&...ˋ and ˋs/\|\|...ˋ instead of ˋs/&&...ˋ and ˋs/||...ˋ) so that ˋdefine defineˋ will not insert newlines into the presentation of the sed expressions. For the ampersands, the replacement string requires escaping or will print both the search then the replacement (ˋ&& &&\nˋ instead of ˋ&&\nˋ)' |
-            command shfmt --indent 2 --language-dialect bash --simplify -- -
+            shfmt --indent 2 --language-dialect bash --simplify -- -
 
         # `functions | shfmt`
         elif builtin declare -f -- "${query-}" >/dev/null 2>&1 |
           sed \
             -e 's/\&\& /\&\&\n/g' \
             -e 's/\|\| /||\n/g' |
-          command shfmt >/dev/null 2>&1; then
+          shfmt >/dev/null 2>&1; then
           builtin declare -f -- "${query-}" |
             sed \
               -e 's/\&\& /\&\&\n/g' \
               -e 's/\|\| /||\n/g' \
               -e '# these expressions are escaped on the search (that is, ˋs/\&\&...ˋ and ˋs/\|\|...ˋ instead of ˋs/&&...ˋ and ˋs/||...ˋ) so that ˋdefine defineˋ will not insert newlines into the presentation of the sed expressions. For the ampersands, the replacement string requires escaping or will print both the search then the replacement (ˋ&& &&\nˋ instead of ˋ&&\nˋ)' |
-            command shfmt --indent 2 --language-dialect bash --simplify -- -
+            shfmt --indent 2 --language-dialect bash --simplify -- -
 
         # `functions -x2`
         # because in Zsh,
@@ -1308,7 +1308,7 @@ define() {
           -e 's/'\'' '\''\([[:alnum:]]*sh[^[:space:]]*\)/'\''\n          '\''\1/g' \
           -e '# also move the first shell to be called onto its own indented line' \
           -e 's/" '\''zsh/"\n          '\''zsh/' | {
-        command bat \
+        bat \
           --color=auto \
           --decorations=never \
           --language=sh \
@@ -1326,9 +1326,9 @@ alias -- d='define'
 
 alias -- diff >/dev/null 2>&1 &&
   unalias -- diff
-alias -- diff='command git -c core.quotePath=false diff --color-words --no-index'
+alias -- diff='git -c core.quotePath=false diff --color-words --no-index'
 diffy() {
-  command diff \
+  diff \
     --side-by-side \
     --suppress-common-lines \
     --width="$((COLUMNS / 2 - 1 + COLUMNS / 2 - 1))" \
@@ -1345,9 +1345,9 @@ diff_exif() {
     -o xtrace
   set -- "${1-}" "${2-}" "${XDG_CACHE_HOME:-${HOME%/}/.cache}"'/tmp/diff_exif' &&
     mkdir -p -- "${3-}" &&
-    command exiftool "${1-}" >"${3-}"'/1' &&
-    command exiftool "${2-}" >"${3-}"'/2' &&
-    command diff \
+    exiftool "${1-}" >"${3-}"'/1' &&
+    exiftool "${2-}" >"${3-}"'/2' &&
+    diff \
       --side-by-side \
       --suppress-common-lines \
       --width="$((COLUMNS / 2 - 1 + COLUMNS / 2 - 1))" \
@@ -1390,14 +1390,14 @@ dimensions() {
   # requires Exiftool
   for file in "${@-}"; do
     test -s "${file-}" &&
-      command exiftool \
+      exiftool \
         -ViewBox \
         -short3 \
         -- \
         "${file-}" |
-      command awk -- '{print $3 "x" $4}'
-    command exiftool -ImageSize -short3 -- "${file-}" >/dev/null 2>&1 &&
-      command exiftool \
+      awk -- '{print $3 "x" $4}'
+    exiftool -ImageSize -short3 -- "${file-}" >/dev/null 2>&1 &&
+      exiftool \
         -ImageSize \
         -short3 \
         -- \
@@ -1421,17 +1421,17 @@ docker_r() {
     set -- --archlinux
     ;;
   --latest)
-    command docker exec --interactive --tty "$(command docker ps "${1-}" --quiet)" "${2:-/bin/zsh}" ||
-      command docker exec --interactive --tty "$(command docker ps "${1-}" --quiet)" "${2:-/usr/bin/zsh}" ||
-      command docker exec --interactive --tty "$(command docker ps "${1-}" --quiet)" "${2:-/bin/sh}"
+    docker exec --interactive --tty "$(docker ps "${1-}" --quiet)" "${2:-/bin/zsh}" ||
+      docker exec --interactive --tty "$(docker ps "${1-}" --quiet)" "${2:-/usr/bin/zsh}" ||
+      docker exec --interactive --tty "$(docker ps "${1-}" --quiet)" "${2:-/bin/sh}"
     ;;
   *)
     {
-      command docker pull "${1##*--}" &&
-        command docker run --interactive --tty "${1##*--}"
+      docker pull "${1##*--}" &&
+        docker run --interactive --tty "${1##*--}"
     } || {
-      command docker pull -- "${1##*--}"
-      command docker exec --interactive --tty "$(command docker ps --latest --quiet)"
+      docker pull -- "${1##*--}"
+      docker exec --interactive --tty "$(docker ps --latest --quiet)"
     }
     ;;
   esac
@@ -1477,10 +1477,10 @@ domain_name_from_url() {
 
 domain_name_tld_list() {
   {
-    command curl --location --show-error --silent --url https://www.internic.net/domain/root.zone ||
-      command wget --hsts-file=/dev/null --output-document=- --quiet -- https://www.internic.net/domain/root.zone
-    command curl --location --show-error --silent --url https://data.iana.org/TLD/tlds-alpha-by-domain.txt ||
-      command wget --hsts-file=/dev/null --output-document=- --quiet -- https://data.iana.org/TLD/tlds-alpha-by-domain.txt
+    curl --location --show-error --silent --url https://www.internic.net/domain/root.zone ||
+      wget --hsts-file=/dev/null --output-document=- --quiet -- https://www.internic.net/domain/root.zone
+    curl --location --show-error --silent --url https://data.iana.org/TLD/tlds-alpha-by-domain.txt ||
+      wget --hsts-file=/dev/null --output-document=- --quiet -- https://data.iana.org/TLD/tlds-alpha-by-domain.txt
   } 2>/dev/null |
     sed \
       -e 's/\.[[:space:]].*//' \
@@ -1496,7 +1496,7 @@ dotfiles_not_found() {
     -o noclobber \
     -o noglob \
     -o verbose
-  command find -- "${DOTFILES-}" \
+  find -- "${DOTFILES-}" \
     -path "${DOTFILES-}"'/*/*' -prune -o \
     -name '.git*' -prune -o \
     -name '.*' \
@@ -1516,7 +1516,7 @@ dss() {
   #   find: ‘./Library/CloudStorage/GoogleDrive-lucas.larson@gmail.com/.tmp’: Permission denied
   #   find: ‘./Library/com.apple.internal.ck’: Operation not permitted
   while test "$(
-    command find -- . \
+    find -- . \
       '(' \
       -name '.[Dd][Ss]_[Ss][Tt][Oo][Rr][Ee]' -o \
       -name '._.[Dd][Ss]_[Ss][Tt][Oo][Rr][Ee]' -o \
@@ -1527,7 +1527,7 @@ dss() {
       -perm -600 \
       -print
   )" != ''; do
-    command find -- . \
+    find -- . \
       '(' \
       -name '.[Dd][Ss]_[Ss][Tt][Oo][Rr][Ee]' -o \
       -name '._.[Dd][Ss]_[Ss][Tt][Oo][Rr][Ee]' -o \
@@ -1542,11 +1542,8 @@ dss() {
 
 du() {
   # # print the human-readable size of a given directory (defaults to current directory)
-  # du -h -s -- "${1:-.}" 2>/dev/null |
-  #   # awaiting Shellcheck's SC2016 repair to return to `awk '{print $1}'`
-  #   sed -e 's/^[[:space:]]*\([^[:space:]]*\).*/\1/'
-  command dust "${@:--Fsxn$((LINES - 3))}" 2>/dev/null ||
-    du -h -s -- "${1:-.}"
+  dust "${@:--Fsxn$((LINES - 3))}" 2>/dev/null ||
+    command -p -- du -h -s -- "${1:-.}"
 }
 
 epoch_seconds() {
@@ -1555,13 +1552,13 @@ epoch_seconds() {
   # `srand([expr])` will “Set the seed value for `rand` to `expr` or
   # use the time of day if `expr` is omitted.”
   # https://pubs.opengroup.org/onlinepubs/9699919799.2018edition/utilities/awk.html#tag_20_06_13_12
-  command awk -- 'BEGIN {srand(); print srand()}'
+  awk -- 'BEGIN {srand(); print srand()}'
 }
 epoch_to_date_time() {
-  if command date -d '@0' >/dev/null 2>&1; then
-    command date -d '@'"${1:-0}"
+  if date -d '@0' >/dev/null 2>&1; then
+    date -d '@'"${1:-0}"
   else
-    command date -r "${1:-0}"
+    date -r "${1:-0}"
   fi
 }
 
@@ -1650,19 +1647,19 @@ exif_copy_tags() {
   test -s "${1-}" &&
     test -s "${2-}" &&
     test ! -L "${2-}" &&
-    command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-    command exiftool \
+    git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    exiftool \
       -preserve \
       -overwrite_original \
-      -ImageDescription="$(command exiftool -ImageDescription "${1-}" | sed -e 's/[^:]*: //' -e 's/\./\n/g')" \
-      -Caption-Abstract="$(command exiftool -Caption-Abstract "${1-}" | sed -e 's/[^:]*: //' -e 's/\./\n/g')" \
+      -ImageDescription="$(exiftool -ImageDescription "${1-}" | sed -e 's/[^:]*: //' -e 's/\./\n/g')" \
+      -Caption-Abstract="$(exiftool -Caption-Abstract "${1-}" | sed -e 's/[^:]*: //' -e 's/\./\n/g')" \
       "${2-}" &&
     case "${2-}" in
     *.[Pp][Nn][Gg])
-      command exiftool \
+      exiftool \
         -preserve \
         -overwrite_original \
-        -XMP:Description="$(command exiftool -Caption-Abstract "${1-}" | sed -e 's/[^:]*: //' -e 's/\./\n/g')" \
+        -XMP:Description="$(exiftool -Caption-Abstract "${1-}" | sed -e 's/[^:]*: //' -e 's/\./\n/g')" \
         "${2-}"
       ;;
     *) ;;
@@ -1684,10 +1681,10 @@ exif_remove() {
   for file in "${@:-.}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
-      command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
+      git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
       # https://github.com/cirosantilli/dotfiles/blob/60ca745cdc/home/.bashrc#L2838-L2842
       # `-recurse` for when `$file` argument is a directory
-      command exiftool \
+      exiftool \
         -all='' \
         -overwrite_original \
         -progress \
@@ -1779,7 +1776,7 @@ export_U() {
       -e 's/::*/\n/g' \
       -e 's/^://' \
       -e 's/:$//' |
-    command awk -- '! seen[$0]++ {print}' |
+    awk -- '! seen[$0]++ {print}' |
     sed \
       -e ':a' \
       -e 'N' \
@@ -1787,7 +1784,7 @@ export_U() {
       -e 's/\n/:/g'
   PATH=$(
     printf -- '%s' "${PATH}" |
-      command awk -vRS=':' -- '{ if (! arr[$0]++) {printf "%s%s", ! ln++ ? "" : ":", $0}}'
+      awk -vRS=':' -- '{ if (! arr[$0]++) {printf "%s%s", ! ln++ ? "" : ":", $0}}'
   )
   export PATH
 }
@@ -1796,13 +1793,13 @@ alias -- \
   export_u='export_U'
 
 extract() {
-  until test "$(command find -- . -name '*.rpm' -type f -print)" = ''; do
-    IFS=' ' command find -- . \
+  until test "$(find -- . -name '*.rpm' -type f -print)" = ''; do
+    IFS=' ' find -- . \
       -name '*.rpm' \
       -type f \
-      -exec sh -C -e -f -u -x -c -- 'mkdir -p -- "$(basename -- "${1%.*}")" && command rpm2cpio "${1-}" >./"$(basename -- "${1%.*}")"'\''/'\''"$(basename -- "${1%.*}"'\''.cpio'\'')" && cd -- ./"$(basename -- "${1%.*}")" && test -s "$(basename -- "${1%.*}"'\''.cpio'\'')" && command cpio --extract --make-directories --verbose <"$(basename -- "${1%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${1%.*}"'\''.cpio'\'')" && cd -- "${OLDPWD:--}" && rm -- "${1-}" && shift' _ {} ';'
+      -exec sh -C -e -f -u -x -c -- 'mkdir -p -- "$(basename -- "${1%.*}")" && rpm2cpio "${1-}" >./"$(basename -- "${1%.*}")"'\''/'\''"$(basename -- "${1%.*}"'\''.cpio'\'')" && cd -- ./"$(basename -- "${1%.*}")" && test -s "$(basename -- "${1%.*}"'\''.cpio'\'')" && cpio --extract --make-directories --verbose <"$(basename -- "${1%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${1%.*}"'\''.cpio'\'')" && cd -- "${OLDPWD:--}" && rm -- "${1-}" && shift' _ {} ';'
   done
-  command find -- . \
+  find -- . \
     '(' \
     -name '*.7[Zz]' -o \
     -name '*.[Aa][Aa][Rr]' -o \
@@ -1856,7 +1853,7 @@ filename_without_extension() {
 }
 
 filename_spaces_to_underscores() {
-  command find -- . \
+  find -- . \
     -depth \
     -name '*'"${1:-[[:space:]]}"'*' |
     while IFS='' read -r -- file; do
@@ -1867,7 +1864,7 @@ filename_spaces_to_underscores() {
     done
 }
 filename_underscores_to_spaces() {
-  command find -- . \
+  find -- . \
     -depth \
     -name '*_*' |
     while IFS='' read -r -- file; do
@@ -1880,7 +1877,7 @@ filename_underscores_to_spaces() {
 
 file_closes_with_newline() {
   while test "${#}" -gt 0; do
-    command find -- "${1-}" \
+    find -- "${1-}" \
       -type f \
       -exec sh -c -- 'test "$(tail -c 1 -- "${1-}" | wc -l)" -ne 0 || printf -- '\''%s does not close with a newline\n'\'' "${1-}" >&2' _ {} ';'
     shift
@@ -1893,7 +1890,7 @@ alias -- \
 
 file_has_trailing_whitespace() {
   while test "${#}" -gt 0; do
-    command find -- "${1-}" \
+    find -- "${1-}" \
       -type f \
       -exec sh -c -- 'test "$(sed -e '\''s/[[:space:]]*$//'\'' <"${1-}" | wc -l)" -eq "$(sed -e '\''s/[[:space:]]*$//'\'' <"${1-}" | wc -l)" || printf -- '\''%s has trailing whitespace\n'\'' "${1-}" >&2' _ {} ';'
     shift
@@ -1903,18 +1900,18 @@ file_has_trailing_whitespace() {
 f() {
   # try using `fd`, if not then `find`
   if command -v -- fd >/dev/null 2>&1 && test -x "$(command -v -- fd)"; then
-    command fd \
+    fd \
       --follow \
       --hidden \
       "${@-}"
   else
     while test "${#}" -gt 0; do
-      command find -L -- . \
+      find -L -- . \
         -path '*/.git' -prune -o \
         -path '*/node_modules' -prune -o \
         -path './*' \
         '(' \
-        -name "$(printf -- '%s' "${1-}" | command awk -- '{for (i = 1; i <= length($0); i++) {printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))} printf "\n"}')" \
+        -name "$(printf -- '%s' "${1-}" | awk -- '{for (i = 1; i <= length($0); i++) {printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))} printf "\n"}')" \
         ')' \
         -print
       shift
@@ -1924,7 +1921,7 @@ f() {
 
 fn() {
   if command -v -- fd >/dev/null 2>&1 && test -x "$(command -v -- fd)"; then
-    command fd \
+    fd \
       --follow \
       --hidden \
       "${@-}"
@@ -1947,7 +1944,7 @@ fn() {
       -path './*' \
       -name "$(
         printf -- '*%s*' "${@-}" |
-          command awk -- '{
+          awk -- '{
   for (i = 1; i <= length($0); i++) {
     printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))
   }
@@ -2022,15 +2019,15 @@ find_broken_symlinks() {
   # https://gitlab.opengroup.org/the-austin-group/sus_html/blob/783a8fc6d3/html/utilities/find.html#L697
   case "${1-}" in
   -d | --delete)
-    command find -L -- . \
+    find -L -- . \
       -type l \
       -exec sh -c -- 'ls -g -o -- "${1-}" &&
   rm "${1-}" &&
-  command git rm -- "${1-}" 2>/dev/null
+  git rm -- "${1-}" 2>/dev/null
 ' _ {} ';'
     ;;
   *)
-    command find -L -- . \
+    find -L -- . \
       -type l \
       -exec ls -g -o -- {} + 2>/dev/null
     ;;
@@ -2039,14 +2036,14 @@ find_broken_symlinks() {
 
 find_capital_letter_files() {
   case "${1-}" in
-  -d | --delete) LC_ALL='C' command find -- . \
+  -d | --delete) LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
     -name '[[:upper:]]*' \
     -type f \
     -exec sh -c -- '{ printf -- '\''removing \342\200\230%s\342\200\231 '\'' "${1-}" >&2 && rm -f -r -- "${1-}" && printf -- '\''\342\234\223\n'\'' >&2; } || printf -- '\''error removing \342\200\230%s\342\200\231\n'\'' "${1-}" >&2' _ {} ';' ;;
-  *) LC_ALL='C' command find -- . \
+  *) LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
@@ -2105,7 +2102,7 @@ find_compressed_files() {
       -type f \
       -exec file -- '{}' + 2>/dev/null |
       # allow `file` to find .sit `Archive` files by setting `$2` to lowercase before checking its value
-      LC_ALL='C' command awk -F':' -- '{if (tolower($2) ~ /archive|compress/) print $1}'
+      LC_ALL='C' awk -F':' -- '{if (tolower($2) ~ /archive|compress/) print $1}'
 
   } |
     LC_ALL='C' sort -u |
@@ -2118,7 +2115,7 @@ find_debug() {
   # `find -- . -name '*'`
   {
     printf -- '# find --debug\n' >&2
-    printf -- ' command find -D opt -- .\n' >&2
+    printf -- ' find -D opt -- .\n' >&2
     printf -- '  # "\044{arguments-}"\n' >&2
     printf -- '  -print 2>&1 | ' >&2
     printf -- 'sed' >&2
@@ -2138,12 +2135,12 @@ find_debug() {
     printf -- ' -e \047# enclose paths and names with single quotes\047' >&2
     printf -- ' -e \047s/\134(-i\134{0,1\134}[np]a[mt][eh]\134)[[:space:]]\134([^[:space:]]*\134)/\\1 \047\134\047\047\\2\047\134\047\047/g\047' >&2
     printf -- ' -e \047s/[[:space:]][[:space:]]*/ /g\047' >&2
-    printf -- ' -e \047s/ *\134(.*\134)/#!\134/usr\134/bin\134/env sh\\ncommand find -- . \\1/g\047 | ' >&2
-    printf -- 'command shfmt --indent 2 --language-dialect bash --simplify -- - | ' >&2
-    printf -- '{ command bat --decorations=never --language=sh --paging=never -- - 2>/dev/null || ' >&2
+    printf -- ' -e \047s/ *\134(.*\134)/#!\134/usr\134/bin\134/env sh\\nfind -- . \\1/g\047 | ' >&2
+    printf -- 'shfmt --indent 2 --language-dialect bash --simplify -- - | ' >&2
+    printf -- '{ bat --decorations=never --language=sh --paging=never -- - 2>/dev/null || ' >&2
     printf -- 'cat -- -; }\n' >&2
   } 2>&1 | {
-    command bat \
+    bat \
       --decorations=never \
       --language=sh \
       --paging=never \
@@ -2158,7 +2155,7 @@ find_debug() {
 find_dot_files() {
   case "${1-}" in
   -d | --delete)
-    command find -- . \
+    find -- . \
       -depth \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
@@ -2168,7 +2165,7 @@ find_dot_files() {
       -exec sh -c -- '{ printf -- '\''removing \342\200\230%s\342\200\231 '\'' "${1-}" >&2 && rm -f -r -- "${1-}" && printf -- '\''\342\234\223\n'\'' >&2; } || printf -- '\''error removing \342\200\230%s\342\200\231\n'\'' "${1-}" >&2' _ {} ';'
     ;;
   *)
-    command find -- . \
+    find -- . \
       -depth \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
@@ -2182,7 +2179,7 @@ find_dot_files() {
 }
 
 fdupes() {
-  command jdupes \
+  jdupes \
     --ext-filter=nostr:node_modules \
     --no-hidden \
     --one-file-system \
@@ -2196,7 +2193,7 @@ fdupes() {
       -e '/^No duplicates found\.$/ d'
 }
 find_duplicate_cksum() {
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
@@ -2220,7 +2217,7 @@ find_duplicate_cksum() {
   )" &&
     export lc_all_temporary &&
     export LC_ALL='C' &&
-    command find -- . \
+    find -- . \
       -path '*/.git' -prune -o \
       -path '*/.well-known' -prune -o \
       -path '*/Empty' -prune -o \
@@ -2250,7 +2247,7 @@ find_duplicate_cksum() {
 find_duplicate_files() {
   # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
   # https://github.com/whodaniel/fuse/blob/b511341/scripts/component-refinement-plan.sh#L81
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
     -path '*/Empty' -prune -o \
@@ -2271,7 +2268,7 @@ find_duplicate_files() {
     ! -size 0 \
     ! -name '.DS_Store' \
     -exec cksum -- {} + |
-    command awk -- '{
+    awk -- '{
   checksum = $1
   size = $2
   filename = substr($0, index($0, $3))
@@ -2296,12 +2293,12 @@ END {
 alias -- fdf='find_duplicate_files'
 
 find_duplicate_images() {
-  command findimagedupes \
+  findimagedupes \
     --quiet \
     --recurse \
     -- \
     . 2>/dev/null |
-    command column -t
+    column -t
 }
 alias -- fdi='find_duplicate_images'
 
@@ -2325,7 +2322,7 @@ find_empty() {
     # because `-delete` activates `-depth`, and `-depth` overrides `-prune`, which reverses `-prune logic
     printf -- 'are you sure?\n' >&2 &&
       sleep 2 &&
-      LC_ALL='C' IFS='' command find -- . \
+      LC_ALL='C' IFS='' find -- . \
         ! -path '*/.git*' \
         ! -path '*/Library*' \
         -path './*' \
@@ -2334,7 +2331,7 @@ find_empty() {
     ;;
   *)
     # POSIX-compliant `find . -type d -empty`
-    LC_ALL='C' IFS='' command find -- . \
+    LC_ALL='C' IFS='' find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
       -path '*/node_modules' -prune -o \
@@ -2342,7 +2339,7 @@ find_empty() {
       -type d \
       -exec sh -C -f -u -c -- 'for directory in "${@-}"; do test "$(find -- "${directory-}" -path "${directory-}"'\''/*'\'' -print)" = '\'''\'' && printf -- '\''%s\n'\'' "${directory-}"; done' _ {} +
     ### # POSIX-compliant, but non-portable, `find . -type d -empty`
-    ### LC_ALL='C' IFS='' command find -- . \
+    ### LC_ALL='C' IFS='' find -- . \
     ###   -path '*/.git' -prune -o \
     ###   -path '*/Library' -prune -o \
     ###   -path '*/node_modules' -prune -o \
@@ -2355,7 +2352,7 @@ find_empty() {
 }
 
 find_executable() {
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
     -path '*/Empty' -prune -o \
@@ -2385,7 +2382,7 @@ find_executable_gnu() {
 
 find_files_with_newline() {
   # https://github.com/yutkat/dotfiles/blob/76e4b7cd02/.zsh/rc/function.zsh#L246
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
@@ -2396,7 +2393,7 @@ find_files_with_newline() {
 
 find_files_without_newline() {
   # https://github.com/yutkat/dotfiles/blob/76e4b7cd02/.zsh/rc/function.zsh#L246
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
@@ -2406,7 +2403,7 @@ find_files_without_newline() {
 }
 
 find_files_with_windows_newline() {
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
@@ -2527,7 +2524,7 @@ find_image_files() {
   {
     # when the following portion is removed, you may also remove `2>/dev/null` from `find_images_with_incorrect_filename_extensions` probably
     printf -- '#!/usr/bin/env sh\ncd -- "\044{HOME-}"'\''/c'\'' &&\n  LC_ALL='\''C'\'' IFS='\'''\'' find -L -- . -path '\''*/.git'\'' -prune -o -type f -exec file -- '\''{}'\'' + |\n  LC_ALL='\''C'\'' IFS='\'''\'' sed \\\n    -n \\\n    -e '\''/: .* image/ {'\'' \\\n    -e '\''  s/^\\([^:]*\\):.*$/\\1/p'\'' \\\n    -e '\''}'\''\n' |
-      command bat \
+      bat \
         --decorations=never \
         --language=sh \
         --paging=never \
@@ -2699,7 +2696,7 @@ find_largest_files() {
 }
 
 find_markdown_files() {
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     '(' \
@@ -2740,7 +2737,7 @@ find_microsoft_files() {
 }
 
 find_files_with_no_extension() {
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     ! -name '*.*' \
@@ -2750,7 +2747,7 @@ find_files_with_no_extension() {
 alias -- fnx='find_files_with_no_extension'
 
 find_files_with_the_same_names() {
-  LC_ALL='C' command find -- . \
+  LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
@@ -2765,7 +2762,7 @@ done
     LC_ALL='C' sort |
     LC_ALL='C' uniq -d
 
-  LC_ALL='C' command find -- . \
+  LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
@@ -2796,7 +2793,7 @@ find_files_with_the_same_sizes() {
     LC_ALL='C' sed \
       -e 's/^[[:space:]]\{0,\}[[:digit:]]\{1,\}[[:space:]]\{1,\}\([[:digit:]]\{1,\}\)[[:space:]]\{1,\}\(.*\)$/\1 \2/' |
     LC_ALL='C' sort -n |
-    LC_ALL='C' command awk -- '{
+    LC_ALL='C' awk -- '{
   sizes[$1]++
   if (lines[$1]) {
     lines[$1] = lines[$1] RS $0
@@ -2927,7 +2924,7 @@ find_perl_files() {
           command -v -- linguist
       )"
       command -v -- "${utility-}" >/dev/null 2>&1 &&
-        command "${utility-}" --breakdown -- . 2>/dev/null |
+        "${utility-}" --breakdown -- . 2>/dev/null |
         sed \
           -e '# print all lines from Perl: to the last line' \
           -e '1,/^Perl:/ d' \
@@ -2961,7 +2958,7 @@ find_animated_png() {
 alias find_png_animated='find_animated_png'
 
 find_powershell_files() {
-  command find -- . \
+  find -- . \
     '(' \
     -name '*.ps1' -o \
     -name '*.[Pp][Ss]1' -o \
@@ -2977,7 +2974,7 @@ find_powershell_files() {
 find_ruby_files() {
   {
     # https://github.com/github-linguist/linguist/blob/2b40a3acbd/lib/linguist/languages.yml#L6022-L6079
-    command find -- . \
+    find -- . \
       -path '*/.bundle' -prune -o \
       -path '*/.cabal-sandbox' -prune -o \
       -path '*/.cache' -prune -o \
@@ -3060,7 +3057,7 @@ find_ruby_files() {
           command -v -- linguist
       )"
       command -v -- "${utility-}" >/dev/null 2>&1 &&
-        command "${utility-}" --breakdown -- . 2>/dev/null |
+        "${utility-}" --breakdown -- . 2>/dev/null |
         sed \
           -e '# print all lines from Ruby: to the last line' \
           -e '1,/^Ruby:/ d' \
@@ -3069,10 +3066,10 @@ find_ruby_files() {
           -e '# [do not] prepend each filename with ./' \
           -e '# s/^/.\//' &&
         unset utility >/dev/null 2>&1 || utility=''
-      command rubocop \
+      rubocop \
         --list-target-files
     } |
-      command awk -- '{print "./" $0}'
+      awk -- '{print "./" $0}'
   } |
     LC_ALL='C' sort -u |
     LC_ALL='C' sort -f
@@ -3094,10 +3091,10 @@ find_setup_files() {
   # ./setup
   # ./script/setup
 
-  command find -- "${1:-.}" \
+  find -- "${1:-.}" \
     -name '.git' \
     -print 2>/dev/null | while IFS='' read -r -- git_file; do
-    command find -- "${1:-.}" \
+    find -- "${1:-.}" \
       '(' \
       -path "${git_file%/*}"'/install.sh' -o \
       -path "${git_file%/*}"'/install' -o \
@@ -3131,10 +3128,10 @@ find_setup_files_delete_others() {
   # ./setup
   # ./script/setup
 
-  command find -- "${1:-.}" \
+  find -- "${1:-.}" \
     -name '.git' \
     -print 2>/dev/null | while IFS='' read -r -- git_file; do
-    command find -- "${1:-.}" \
+    find -- "${1:-.}" \
       '(' \
       -path "${git_file%/*}"'/install.sh' -o \
       -path "${git_file%/*}"'/install' -o \
@@ -3152,13 +3149,13 @@ find_setup_files_delete_others() {
 }
 
 find_shell_scripts() {
-  command git rev-parse >/dev/null 2>&1 || return "${?:-1}"
+  git rev-parse >/dev/null 2>&1 || return "${?:-1}"
   cd -- "$(
-    command git rev-parse --show-toplevel --path-format=relative |
+    git rev-parse --show-toplevel --path-format=relative |
       sed -e '1 q'
   )" 2>/dev/null ||
     cd -- "$(
-      command git rev-parse --show-toplevel
+      git rev-parse --show-toplevel
     )" ||
     cd -- "${PWD%/}" || # 😬
     return "${?:-1}"
@@ -3167,7 +3164,7 @@ find_shell_scripts() {
 
   {
     # all files with `linguist` Shell filename extensions
-    command find -- . \
+    find -- . \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
       '(' \
@@ -3255,7 +3252,7 @@ find_shell_scripts() {
     # https://stackoverflow.com/a/9612232
     # https://stackoverflow.com/q/307015#comment14013364_307154
     # https://unix.stackexchange.com/a/480738
-    command find -- . \
+    find -- . \
       -path '*/.git' -prune -o \
       -path '*/.well-known' -prune -o \
       -path '*/Library' -prune -o \
@@ -3279,14 +3276,14 @@ find_shell_scripts() {
     # - they both require a prepended `./`
     # - send errors for both to `/dev/null` once
     {
-      command shfmt --find -- .
+      shfmt --find -- .
 
       # https://github.com/bzz/LangID/blob/37c4960/README.md#collect-the-data
-      command github-linguist --breakdown -- . | # --json -- . |
+      github-linguist --breakdown -- . | # --json -- . |
 
         # https://web.archive.org/web/20210904183309id_/earthly.dev/blog/jq-select/#cb22
         # https://github.com/stedolan/jq/issues/1735#issuecomment-427863218
-        # command jq --raw-output '.Shell.files[]' # |
+        # jq --raw-output '.Shell.files[]' # |
         sed \
           -e '# print all lines from Shell: to the last line' \
           -e '1,/^Shell:/ d' \
@@ -3302,12 +3299,12 @@ find_shell_scripts() {
     } 2>/dev/null |
 
       # prepend filenames with `./`
-      command awk -- '{print "./" $0}'
+      awk -- '{print "./" $0}'
     # @TODO!: consider alternatively `sed -e 's/^\(\.\/\)\{0,1\}/.\/&/'` to prepend `./` to each line iff it needs it
     # @TODO!consider additionally `grep -v` to hide unwanted results faster
 
   } |
-    command awk -- '! seen[$0]++ {print}'
+    awk -- '! seen[$0]++ {print}'
 }
 
 find_smallest_files() {
@@ -3327,7 +3324,7 @@ find_smallest_files() {
 
 find_text_files() {
   {
-    command find -- . \
+    find -- . \
       -path '*/.git' -prune -o \
       -path '*/.well-known' -prune -o \
       -path '*/Empty*' -prune -o \
@@ -3396,7 +3393,7 @@ find_text_files() {
       -print
     # find text files https://stackoverflow.com/a/6419372
     # find one or more spaces without extended regex https://unix.stackexchange.com/a/19016
-    command find -- . \
+    find -- . \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
       -path './*' \
@@ -3470,7 +3467,7 @@ find_xargs() {
     printf -- 'xargs \\\n' >&2
     printf -- '  # "\044{command-}"\n' >&2
   } 2>&1 | {
-    command bat \
+    bat \
       --decorations=never \
       --language=sh \
       --paging=never \
@@ -3483,7 +3480,7 @@ find_xargs() {
 }
 
 find_yaml_files() {
-  command find -- . \
+  find -- . \
     '(' \
     -name '*.yml' -o \
     -name '*.CFF' -o \
@@ -3534,28 +3531,28 @@ first_character() {
 }
 
 fish_r() {
-  PS4=' ' command find -- . \
+  PS4=' ' find -- . \
     -name '*.fish' \
     -type f \
     -exec sh -x -c -- 'for file in "${@-}"; do
-command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command fish_indent --write -- "${file-}"
+git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  fish_indent --write -- "${file-}"
 done' _ {} +
 }
 
 flawfinder_install() {
   # https://github.com/awdeorio/dotfiles/commit/a46000d807
   set -- 'git+https://github.com/david-a-wheeler/flawfinder@master'
-  command brew install --HEAD --verbose -- "$(basename -- "${1%%@*}")" ||
-    command python -m pip install --upgrade --verbose -- "${1-}" ||
-    command python3 -m pip3 install --upgrade --verbose -- "${1-}"
+  brew install --HEAD --verbose -- "$(basename -- "${1%%@*}")" ||
+    python -m pip install --upgrade --verbose -- "${1-}" ||
+    python3 -m pip3 install --upgrade --verbose -- "${1-}"
 }
 flawfinder_r() {
   command -v -- flawfinder >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
-  IFS=' ' command find -- . \
+  IFS=' ' find -- . \
     -path '*/.git' -prune -o \
     -path '*/.rbenv' -prune -o \
     -path '*/.venv' -prune -o \
@@ -3695,9 +3692,9 @@ flawfinder_r() {
     -name '*.xpm' \
     ')' \
     -type f \
-    -exec sh -C -e -f -u -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command flawfinder --error-level=1 --minlevel=0 -- "${1-}"
+    -exec sh -C -e -f -u -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  flawfinder --error-level=1 --minlevel=0 -- "${1-}"
 ' _ {} ';' 2>&1
 }
 
@@ -3725,8 +3722,8 @@ get_github_stars() {
   while test "${#}" -gt 0; do
     set -- 'https://api.github.com/repos/'"${1-}" &&
       {
-        command curl --location --show-error --silent --url "${1-}" ||
-        command wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" ||
+        curl --location --show-error --silent --url "${1-}" ||
+        wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" ||
           return "${?:-1}"
       } 2>/dev/null |
         sed \
@@ -3744,10 +3741,10 @@ to_gif() {
     -o verbose \
     -o xtrace
   for file in "${@-}"; do
-    command ffmpeg \
+    ffmpeg \
       -ss 0 \
       -i "${file-}" \
-      -vf 'scale='"$(command exiftool -ImageWidth -short -short -short -- "${file-}")"':-1:flags=lanczos' \
+      -vf 'scale='"$(exiftool -ImageWidth -short -short -short -- "${file-}")"':-1:flags=lanczos' \
       -loop 0 \
       -- \
       "${file%.*}"'.gif'
@@ -3767,7 +3764,7 @@ gif_webp_r() {
     -o verbose \
     -o xtrace
   for file in "${@-}"; do
-    command gif2webp \
+    gif2webp \
       -q 100 \
       -m 6 \
       -metadata all \
@@ -3799,16 +3796,16 @@ command -v -- _git >/dev/null 2>&1 &&
 g() {
   case "${1-}" in
   clone | config | help | init | version | -*)
-    command git "${@-}"
+    git "${@-}"
     ;;
   *)
-    command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
+    git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
       return "${?:-1}"
     # if first argument is a file, then perform `git status` on it
     if test -e "${1-}"; then
-      command git status -- "${@-}"
+      git status -- "${@-}"
     else
-      command git -c color.status=always -c core.quotePath=false "${@:-status}" |
+      git -c color.status=always -c core.quotePath=false "${@:-status}" |
         sed \
           -e '$ d'
     fi
@@ -3816,10 +3813,10 @@ g() {
   esac
 }
 alias -- \
-  g.='command git -c color.status=auto -c core.quotePath=false status .' \
-  gss='command git -c color.status=auto -c core.quotePath=false status --porcelain=v1'
+  g.='git -c color.status=auto -c core.quotePath=false status .' \
+  gss='git -c color.status=auto -c core.quotePath=false status --porcelain=v1'
 guo() {
-  command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+  git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed \
       -e '$ d'
 }
@@ -3829,7 +3826,7 @@ git_add() {
   case "${1-}" in
   -p | --patch)
     shift
-    command git add --verbose --patch "${@:-.}"
+    git add --verbose --patch "${@:-.}"
     ;;
   -A | --all)
     # to prevent data loss as much as possible,
@@ -3841,38 +3838,38 @@ git_add() {
     ;;
   -D | --deleted)
     # https://gist.github.com/8775224
-    command git ls-files -z --deleted |
+    git ls-files -z --deleted |
       LC_ALL='C' tr -- '\0' '\n' |
       while IFS='' read -r -- file; do
         # `git-rm`(1) instead of `git-add`(1) for fewer errors and because
         # there is no risk of losing files that are indexed but already removed
-        command git rm -- "${file-}"
+        git rm -- "${file-}"
       done &&
       shift
     ;;
   -m | --modified | --update)
     shift &&
-      command git add --update --verbose -- "${@:-.}"
+      git add --update --verbose -- "${@:-.}"
     ;;
   -o | --others | --untracked)
-    while test "$(command git ls-files -z --exclude-standard --others)" != ''; do
-      command git ls-files -z --exclude-standard --others |
+    while test "$(git ls-files -z --exclude-standard --others)" != ''; do
+      git ls-files -z --exclude-standard --others |
         LC_ALL='C' tr -- '\0' '\n' |
         while IFS='' read -r -- file; do
-          command git add --verbose -- "${file-}"
+          git add --verbose -- "${file-}"
         done
     done &&
       shift
     ;;
   '')
-    command git add --verbose --patch -- .
+    git add --verbose --patch -- .
     ;;
   *)
     # do not default to everything in the current directory and below
-    command git add --verbose "${@-}"
+    git add --verbose "${@-}"
     ;;
   esac &&
-    command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+    git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed \
       -e '$ d'
 }
@@ -3913,7 +3910,7 @@ git_all_files_ever() {
   # -u: all not unmerged
   # -X: all unknown
   # -x: all not unknown
-  command git -c core.quotePath=false log \
+  git -c core.quotePath=false log \
     --all \
     --diff-filter="${1-}" \
     --find-copies \
@@ -3921,7 +3918,7 @@ git_all_files_ever() {
     --format='' \
     --name-only |
     # print only unique, non-blank entries and prepend them with dot-slash
-    command awk -- '! seen[$0]++ && $0 != "" {print "./" $0}' |
+    awk -- '! seen[$0]++ && $0 != "" {print "./" $0}' |
     LC_ALL='C' sort -f
 }
 
@@ -3932,23 +3929,23 @@ git_attic() {
   # The output is designed to be copied and pasted: Pass the second field to
   # git show to display the file contents, or just select the hash without ^ to
   # see the commit where removal happened
-  command git log --date=short --diff-filter=D --no-renames --raw --format='%h %cd' -- "${@-}" |
-    command awk -- '/^[[:xdigit:]]/ {commit = $1; date = $2} /^:/ && $5 == "D" {filename = substr($0, index($0, $6)); print date, commit "'\''^'\'':'\''./" filename "'\''"}' |
+  git log --date=short --diff-filter=D --no-renames --raw --format='%h %cd' -- "${@-}" |
+    awk -- '/^[[:xdigit:]]/ {commit = $1; date = $2} /^:/ && $5 == "D" {filename = substr($0, index($0, $6)); print date, commit "'\''^'\'':'\''./" filename "'\''"}' |
     LC_ALL='C' sort -r -u
 }
 
 # git blame
-alias -- gblame='command git blame'
+alias -- gblame='git blame'
 
 alias -- \
-  gba='command git branch --all' \
-  gbD='command git branch --delete --force'
+  gba='git branch --all' \
+  gbD='git branch --delete --force'
 
 git_branches_by_date() {
-  command git for-each-ref --format='%(committerdate:format:%F) %(refname:short)' refs/heads |
+  git for-each-ref --format='%(committerdate:format:%F) %(refname:short)' refs/heads |
     LC_ALL='C' sort -n
   printf -- '\n ———\n\n' >&2
-  command git for-each-ref --format='%(committerdate:format:%F) %(refname:short)' refs/remotes |
+  git for-each-ref --format='%(committerdate:format:%F) %(refname:short)' refs/remotes |
     LC_ALL='C' sort -n
 }
 
@@ -3957,7 +3954,7 @@ gco() {
   case "${1-}" in
   '.')
     number_of_changed_files="$(
-      command git -c core.ignoreCase=false -c core.quotePath=false status \
+      git -c core.ignoreCase=false -c core.quotePath=false status \
         -z \
         --ignore-submodules \
         --porcelain=v2 \
@@ -3975,7 +3972,7 @@ gco() {
       return 1
     elif test "${number_of_changed_files:-5}" -ge 0 &&
       test "${number_of_changed_files:-5}" -le 5; then
-      command git checkout --progress "${@-}"
+      git checkout --progress "${@-}"
     else
       unset number_of_changed_files >/dev/null 2>&1 || number_of_changed_files=''
       return 65
@@ -3983,21 +3980,21 @@ gco() {
     ;;
   *)
     unset number_of_changed_files >/dev/null 2>&1 || number_of_changed_files=''
-    command git checkout --progress "${@-}"
+    git checkout --progress "${@-}"
     ;;
   esac
   unset number_of_changed_files >/dev/null 2>&1 || number_of_changed_files=''
 }
 
 # `git checkout` the default branch
-alias -- gcom='command git checkout --progress "$(git-default-branch)"'
+alias -- gcom='git checkout --progress "$(git-default-branch)"'
 
 # git cherry-pick
 alias -- \
-  gcp='command git cherry-pick' \
-  gcpa='command git cherry-pick --abort' \
-  gcpc='command git cherry-pick --continue' \
-  gcpn='command git cherry-pick --no-commit'
+  gcp='git cherry-pick' \
+  gcpa='git cherry-pick --abort' \
+  gcpc='git cherry-pick --continue' \
+  gcpn='git cherry-pick --no-commit'
 
 # git clone
 git_clone() {
@@ -4012,15 +4009,15 @@ git_clone() {
       cd -- "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 &&
       # using `--quiet` plus `--progress` to
       # hide the suprising the `Cloning into '.'...`
-      command git -c core.ignoreCase=false clone --depth 1 --progress --quiet --shallow-submodules --template='' -- "${1%.git}" "${PWD%/}"
+      git -c core.ignoreCase=false clone --depth 1 --progress --quiet --shallow-submodules --template='' -- "${1%.git}" "${PWD%/}"
     ;;
   -b | --branches)
-    command git branch --remotes |
+    git branch --remotes |
       grep -v -e '\*' -e ' -> ' |
       while IFS='' read -r -- remote_branch; do
-        command git branch --list |
+        git branch --list |
           grep -w -e "${remote_branch##*/}" >/dev/null 2>&1 ||
-          command git branch --track "${remote_branch##*/}" "${remote_branch-}"
+          git branch --track "${remote_branch##*/}" "${remote_branch-}"
         unset remote_branch >/dev/null 2>&1 || remote_branch=''
       done
     ;;
@@ -4029,8 +4026,8 @@ git_clone() {
       printf -- 'moving into %s...\n' "${2:-$(basename -- "${1-}" .git)}" >&2 &&
       cd -- "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 && {
       # test "${3-}" = '' ||
-      command git -c core.ignoreCase=false clone --progress --recursive --template='' -- "${1%.git}" "${PWD%/}" # ||
-      # command git clone --progress --recursive --branch "${branch-}" -- "${1%.git}" "${PWD%/}"
+      git -c core.ignoreCase=false clone --progress --recursive --template='' -- "${1%.git}" "${PWD%/}" # ||
+      # git clone --progress --recursive --branch "${branch-}" -- "${1%.git}" "${PWD%/}"
     }
     unset branch >/dev/null 2>&1 || branch=''
     ;;
@@ -4045,13 +4042,13 @@ git_commit() {
   case "${1-}" in
   --amend | '')
     ### does `--signoff` obviate the need for `--trailer`? 2024-02-02
-    ### command git commit ### --signoff ### --verbose \
-    command git commit \
+    ### git commit ### --signoff ### --verbose \
+    git commit \
       --verbose \
-      --trailer='Signed-off-by: '"$(command git config --get -- user.name)"' <'"$(command git config --get -- user.email)"'>' \
+      --trailer='Signed-off-by: '"$(git config --get -- user.name)"' <'"$(git config --get -- user.email)"'>' \
       "${@-}" ||
       # ancient git cannot do trailer
-      command git commit \
+      git commit \
         --signoff \
         --verbose \
         "${@-}" ||
@@ -4059,11 +4056,11 @@ git_commit() {
     ;;
   --count)
     # https://github.com/unixorn/git-extra-commands/commit/87fc4b2cac
-    command git rev-list --all "${@-}" &&
+    git rev-list --all "${@-}" &&
       return
     ;;
   *)
-    command git commit \
+    git commit \
       --signoff \
       --verbose \
       -m "${@-}" \
@@ -4072,7 +4069,7 @@ git_commit() {
       return 5
     ;;
   esac
-  command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+  git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed \
       -e '$ d'
 }
@@ -4084,9 +4081,9 @@ alias -- \
 git_config_file_locations() {
   for scope in system global local worktree command; do
     # do not return `.git/config` if called from outside a git repository
-    test "$(command git config --list --show-scope --"${scope-}" 2>/dev/null)" = '' ||
+    test "$(git config --list --show-scope --"${scope-}" 2>/dev/null)" = '' ||
       printf -- '%-9s%s\n' "${scope-}" "$(
-        command git config --list --show-origin --"${scope-}" 2>/dev/null |
+        git config --list --show-origin --"${scope-}" 2>/dev/null |
           sed \
             -e 's|file:||' \
             -e 's|\t.*||' \
@@ -4109,7 +4106,7 @@ gdb() {
       -o xtrace
     printf -- 'main\nmaster\ntrunk\nHEAD\nmainline\ndefault\ndevelopment\n' | while IFS='' read -r -- branch; do
       {
-        test "$(command git branch --list -- "${branch-}")" != '' &&
+        test "$(git branch --list -- "${branch-}")" != '' &&
           printf -- '%s\n' "${branch-}" &&
           return 0
       } || {
@@ -4123,46 +4120,46 @@ gdb() {
 alias -- gd >/dev/null 2>&1 &&
   unalias -- gd
 gd() {
-  if test "$(command git diff --shortstat "${@-}" 2>/dev/null)" != ''; then
-    command git -c core.quotePath=false diff --color-words --word-diff "${@-}"
+  if test "$(git diff --shortstat "${@-}" 2>/dev/null)" != ''; then
+    git -c core.quotePath=false diff --color-words --word-diff "${@-}"
   else
-    command git -c core.quotePath=false diff --cached --color-words --word-diff "${@-}"
+    git -c core.quotePath=false diff --cached --color-words --word-diff "${@-}"
   fi
 }
 alias -- gds >/dev/null 2>&1 &&
   unalias -- gds
 gds() {
-  if test "$(command git diff --cached --shortstat "${@-}" 2>/dev/null)" != ''; then
-    command git -c core.quotePath=false diff --cached --color-words --word-diff "${@-}"
+  if test "$(git diff --cached --shortstat "${@-}" 2>/dev/null)" != ''; then
+    git -c core.quotePath=false diff --cached --color-words --word-diff "${@-}"
   else
-    command git -c core.quotePath=false diff --color-words --word-diff "${@-}"
+    git -c core.quotePath=false diff --color-words --word-diff "${@-}"
   fi
 }
 git_diff_with_filesizes() {
   {
-    test "$(command git diff --color=auto --stat "${@-}")" != '' &&
-      command git -c core.quotePath=false diff --color=auto --stat "${@-}"
+    test "$(git diff --color=auto --stat "${@-}")" != '' &&
+      git -c core.quotePath=false diff --color=auto --stat "${@-}"
   } ||
-    command git -c core.quotePath=false diff --cached --color=auto --stat "${@-}"
+    git -c core.quotePath=false diff --cached --color=auto --stat "${@-}"
 }
 git_diff_staged_with_filesizes() {
   {
-    test "$(command git diff --cached --color=auto --stat "${@-}")" != '' &&
-      command git -c core.quotePath=false diff --cached --color=auto --stat "${@-}"
+    test "$(git diff --cached --color=auto --stat "${@-}")" != '' &&
+      git -c core.quotePath=false diff --cached --color=auto --stat "${@-}"
   } ||
-    command git -c core.quotePath=false diff --color=auto --stat "${@-}"
+    git -c core.quotePath=false diff --color=auto --stat "${@-}"
 }
 
-alias -- gdm='command git -c core.quotePath=false diff "$(git-default-branch)" --'
+alias -- gdm='git -c core.quotePath=false diff "$(git-default-branch)" --'
 gdom() {
-  command git -c core.quotePath=false diff "$(command git config --get branch."$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote || command git branch --list --remotes | sed -n -e 's/^[[:space:]]*\([^[:space:]]*\)\/HEAD -> [^[:space:]]*$/\1/p')"/"$(git-default-branch)" "${@-}"
+  git -c core.quotePath=false diff "$(git config --get branch."$(git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote || git branch --list --remotes | sed -n -e 's/^[[:space:]]*\([^[:space:]]*\)\/HEAD -> [^[:space:]]*$/\1/p')"/"$(git-default-branch)" "${@-}"
 }
 gdmom() {
-  command git -c core.quotePath=false diff "$(git-default-branch)" "$(command git config --get branch."$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote || command git remote --verbose | grep -e ' (push)$' | command awk -- '{print $0}' | sed -e '1 q')"/"$(git-default-branch)" "${@:---}"
+  git -c core.quotePath=false diff "$(git-default-branch)" "$(git config --get branch."$(git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote || git remote --verbose | grep -e ' (push)$' | awk -- '{print $0}' | sed -e '1 q')"/"$(git-default-branch)" "${@:---}"
 }
 
 gf() {
-  command git fetch \
+  git fetch \
     --all \
     --keep \
     --multiple \
@@ -4172,7 +4169,7 @@ gf() {
     "${@-}"
 }
 gfgs() {
-  command git fetch \
+  git fetch \
     --all \
     --keep \
     --multiple \
@@ -4180,7 +4177,7 @@ gfgs() {
     --prune \
     --verbose \
     "${@-}" &&
-    command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+    git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed \
       -e '$ d'
 }
@@ -4189,20 +4186,20 @@ gfgs() {
 git_find_child() {
   # return the commit hash that occurred after the given one (default current)
   # usage: git_find_child [<commit>]
-  command git rev-list --ancestry-path "${1:-HEAD}".."$(git-default-branch)" |
+  git rev-list --ancestry-path "${1:-HEAD}".."$(git-default-branch)" |
     tail -n 1
 }
 git_find_parent() {
   # return the hash prior to the current commit
   # if an argument is provided, return the commit prior to that commit
   # usage: git_find_parent [<commit>]
-  command git rev-list --max-count=1 "${1:-"$(command git rev-parse HEAD)"}"'^' --
+  git rev-list --max-count=1 "${1:-"$(git rev-parse HEAD)"}"'^' --
 }
 git_find_parents() {
   # return all hashes prior to the current commit
   # if an argument is provided, return all commits prior to that commit
   # usage: git_find_parents [<commit>]
-  command git rev-list "${1:-"$(command git rev-parse HEAD)"}"'^' --
+  git rev-list "${1:-"$(git rev-parse HEAD)"}"'^' --
 }
 alias -- \
   git_parent='git_find_parent' \
@@ -4215,7 +4212,7 @@ git_find_deleted_string() {
   set \
     -o verbose \
     -o xtrace
-  command git log --cc -S"${1:-*}" "${2:-./}" # >&2 # testing avoiding pager ¯\_(ツ)_/¯
+  git log --cc -S"${1:-*}" "${2:-./}" # >&2 # testing avoiding pager ¯\_(ツ)_/¯
   {
     set \
       +o verbose \
@@ -4225,26 +4222,26 @@ git_find_deleted_string() {
 alias -- git_find_deleted_text='git_find_deleted_string'
 
 git_garbage_collection() {
-  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     # see `git gc` and other wrapping commands behind-the-scene mechanics
     # https://github.com/git/git/blob/49eb8d3/contrib/examples/README#L14-L16
     GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 \
-      command git fetch \
+      git fetch \
       --prune \
       --verbose
     GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 \
-      command git reflog expire \
+      git reflog expire \
       --all \
       --expire-unreachable=now
     GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 \
-      command git prune \
+      git prune \
       --expire=now \
       --progress \
       --verbose
     GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 \
-      command git prune-packed
+      git prune-packed
     GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 \
-      command git repack \
+      git repack \
       -a \
       -d \
       -F \
@@ -4252,17 +4249,17 @@ git_garbage_collection() {
       --depth=4095 \
       --window="${UINT_MAX:-$(command -p -- getconf -- UINT_MAX)}"
     GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 \
-      command git gc \
+      git gc \
       --aggressive \
       --prune=now
-    command git maintenance start >/dev/null 2>&1 &&
+    git maintenance start >/dev/null 2>&1 &&
       GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 \
-        command git maintenance run \
+        git maintenance run \
         --task gc \
         --task loose-objects \
         --task incremental-repack \
         --task pack-refs
-    command git maintenance unregister --force >/dev/null 2>&1
+    git maintenance unregister --force >/dev/null 2>&1
     set \
       -o verbose \
       -o xtrace
@@ -4273,7 +4270,7 @@ git_garbage_collection() {
         +o verbose \
         +o xtrace
     } 2>/dev/null
-    command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+    git -c color.status=always -c core.quotePath=false status --untracked-files=no |
       sed \
         -e '$ d'
   else
@@ -4285,7 +4282,7 @@ alias -- ggc='git_garbage_collection'
 ## initial commits
 # find initial commit
 git_find_initial_commit() {
-  command git rev-list --max-parents=0 HEAD --
+  git rev-list --max-parents=0 HEAD --
 }
 alias -- gic='git_find_initial_commit'
 
@@ -4294,7 +4291,7 @@ git_commit_initial_commit() {
   # usage: git_commit_initial_commit [yyyy-mm-dd[Thh:mm:ss]]]
   # create initial commits: one empty root, then the rest
   # https://news.ycombinator.com/item?id=25515963
-  command git \
+  git \
     -c init.defaultBranch=main \
     -c core.ignoreCase=false \
     init \
@@ -4315,15 +4312,15 @@ git_commit_initial_commit() {
       export GIT_COMMITTER_DATE="${git_time-}"
     fi
   # create empty root commit
-  command git commit --allow-empty --signoff --verbose --message="$(printf -- '\360\237\214\263\302\240 root commit')" &&
+  git commit --allow-empty --signoff --verbose --message="$(printf -- '\360\237\214\263\302\240 root commit')" &&
     # ...and add a signed v0.0.0 tag to it
-    command git tag --annotate --sign "${2:-v0.0.0}" --message='' &&
+    git tag --annotate --sign "${2:-v0.0.0}" --message='' &&
     # ...and if there are files present, then add them...
-    command git add --verbose -- . &&
+    git add --verbose -- . &&
     # ...and commit them
-    command git commit --signoff --verbose --message="$(printf -- '\342\234\250\302\240 initial commit')" &&
+    git commit --signoff --verbose --message="$(printf -- '\342\234\250\302\240 initial commit')" &&
     # ...and add a signed v0.0.1 tag
-    command git tag --annotate --sign "${3:-v0.0.1}" --message=''
+    git tag --annotate --sign "${3:-v0.0.1}" --message=''
   unset gdate >/dev/null 2>&1 || gdate=''
   unset git_time >/dev/null 2>&1 || git_time=''
   # unset GIT_AUTHOR_DATE >/dev/null 2>&1 || GIT_AUTHOR_DATE=''
@@ -4331,18 +4328,18 @@ git_commit_initial_commit() {
 }
 alias -- \
   gcic='git_commit_initial_commit' \
-  ginit='command git -c init.defaultBranch=main init --template='\'''\'' && command git status'
+  ginit='git -c init.defaultBranch=main init --template='\'''\'' && git status'
 
 # git ls
 alias -- gls >/dev/null 2>&1 &&
   unalias -- gls
 gls() {
   {
-    if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-      command git -c core.quotePath=false ls-files "${@-}" |
-        command awk -- '{print "./" $0}'
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+      git -c core.quotePath=false ls-files "${@-}" |
+        awk -- '{print "./" $0}'
     elif command -v -- eza >/dev/null 2>&1; then
-      command eza \
+      eza \
         --all \
         --classify \
         --color-scale=all \
@@ -4364,8 +4361,8 @@ gls() {
 }
 
 git_ls_modified() {
-  command git ls-files --deduplicate | while IFS='' read -r -- file; do
-    command git --no-pager log \
+  git ls-files --deduplicate | while IFS='' read -r -- file; do
+    git --no-pager log \
       --date=local \
       --max-count=1 \
       --pretty=tformat:'%ai%x09./'"${file-}" \
@@ -4373,22 +4370,22 @@ git_ls_modified() {
       "${file-}"
   done
   # https://gist.github.com/8775224
-  command git ls-tree --name-only HEAD -- . | while IFS='' read -r -- file; do
-    printf -- '%s\t./%s\n' "$(command git log --format='%ci' --max-count=1 -- "${file-}")" "${file-}"
+  git ls-tree --name-only HEAD -- . | while IFS='' read -r -- file; do
+    printf -- '%s\t./%s\n' "$(git log --format='%ci' --max-count=1 -- "${file-}")" "${file-}"
   done
 }
 
 #########
 # git log
 alias -- \
-  glog='command git log --all --decorate --graph --oneline' \
-  glod='command git log --all --decorate --graph --oneline --pretty='\''%Cred%h%Creset%C(auto)%d%Creset %s %Cgreen%ad%Creset'\'' --date=short'
+  glog='git log --all --decorate --graph --oneline' \
+  glod='git log --all --decorate --graph --oneline --pretty='\''%Cred%h%Creset%C(auto)%d%Creset %s %Cgreen%ad%Creset'\'' --date=short'
 glof() {
   for file in "${@-}"; do
     # follow files even in other directories
-    command git -C "$(realpath -- "$(dirname -- "${file-}")")" log --all --decorate --oneline --follow -- "$(realpath -- "${file-}")" 2>/dev/null ||
-      command git -C "${file%/*}" log --all --decorate --oneline --follow -- "${file-}" 2>/dev/null ||
-      command git -C "$(dirname -- "${file-}")" log --all --decorate --oneline --follow -- "${file-}"
+    git -C "$(realpath -- "$(dirname -- "${file-}")")" log --all --decorate --oneline --follow -- "$(realpath -- "${file-}")" 2>/dev/null ||
+      git -C "${file%/*}" log --all --decorate --oneline --follow -- "${file-}" 2>/dev/null ||
+      git -C "$(dirname -- "${file-}")" log --all --decorate --oneline --follow -- "${file-}"
   done
 }
 # git log
@@ -4396,7 +4393,7 @@ glof() {
 
 # git mailmap
 git_mailmap() {
-  command git log --pretty='%an <%ae>%n%cn <%ce>' |
+  git log --pretty='%an <%ae>%n%cn <%ce>' |
     LC_ALL='C' sort |
     uniq -c |
     LC_ALL='C' sort -n -r |
@@ -4406,7 +4403,7 @@ git_mailmap() {
       -e 's/github-actions /GitHub /'
   # overline
   printf -- '\342\200\276\342\200\276\342\200\276\342\200\276\342\200\276\n'
-  command git shortlog --all --email --numbered --summary |
+  git shortlog --all --email --numbered --summary |
     sed \
       -e 's/^[[:space:]]*[1-9][[:digit:]]*[[:space:]]*//' \
       -e 's/\[bot\] / /' \
@@ -4423,8 +4420,8 @@ git_make_git() {
   set -- "$(
     set -- 'https://api.github.com/repos/git/git/tags'
     {
-      command wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" 2>/dev/null ||
-        command curl --location --show-error --silent --url "${1-}"
+      wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" 2>/dev/null ||
+        curl --location --show-error --silent --url "${1-}"
     } |
       sed \
         -n \
@@ -4434,10 +4431,10 @@ git_make_git() {
         -e '}'
   )"
   {
-    command wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" 2>/dev/null ||
-      command curl --location --silent --url "${1-}"
+    wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" 2>/dev/null ||
+      curl --location --silent --url "${1-}"
   } |
-    command tar -f- -x -z --transform 's/^[^/]*\///'
+    tar -f- -x -z --transform 's/^[^/]*\///'
   (
     set \
       -o verbose \
@@ -4455,21 +4452,21 @@ alias -- gm >/dev/null 2>&1 &&
 # https://github.com/alexsanford/config/blob/1f917be788/zsh_aliases#L46
 gm() {
   # https://news.ycombinator.com/item?id=5512864
-  command git merge --no-ff --log --overwrite-ignore --progress --rerere-autoupdate --signoff --strategy-option=patience --verbose "${@-}" ||
-    command git merge "${@-}"
+  git merge --no-ff --log --overwrite-ignore --progress --rerere-autoupdate --signoff --strategy-option=patience --verbose "${@-}" ||
+    git merge "${@-}"
 }
 alias -- \
-  gma='command git merge --abort' \
-  gmc='command git merge --continue'
+  gma='git merge --abort' \
+  gmc='git merge --continue'
 
 # git merge with default branch
 gmm() {
-  command git merge --no-ff --log --overwrite-ignore --progress --rerere-autoupdate --signoff --strategy-option=patience --verbose "$(git-default-branch)"
+  git merge --no-ff --log --overwrite-ignore --progress --rerere-autoupdate --signoff --strategy-option=patience --verbose "$(git-default-branch)"
 }
 # git move
 git_move() {
-  if command git mv --force --verbose "${@-}" 2>/dev/null; then
-    command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+  if git mv --force --verbose "${@-}" 2>/dev/null; then
+    git -c color.status=always -c core.quotePath=false status --untracked-files=no |
       sed \
         -e '$ d'
   elif mv -i "${@-}"; then
@@ -4488,23 +4485,23 @@ gopen() {
   -d | --dependabot)
     url="$(
       printf -- '%s/network/updates#dependabot-updates\n' "$(
-        command git open --print |
+        git open --print |
           cut -d '/' -f -5
       )"
     )"
     ;;
   -c | --commit | -i | --issue | -s | --suffix | -p | --print)
-    command git open "${@-}"
+    git open "${@-}"
     ;;
   *)
-    url="$(command git open --print "${@-}" 2>/dev/null)"
+    url="$(git open --print "${@-}" 2>/dev/null)"
     ;;
   esac
   # https://github.com/travis-ci/travis-build/blob/5f10098/lib/travis/build/bash/travis_setup_env.bash#L22-L38
   case "$(uname | tr -- '[:upper:]' '[:lower:]')" in
   darwin*)
     # MacOS
-    command open -- "${url-}"
+    open -- "${url-}"
     ;;
   msys*)
     # Git-Bash on Windows
@@ -4512,15 +4509,15 @@ gopen() {
     ;;
   *microsoft*)
     # Windows Subsystem for Linux
-    command powershell.exe -c 'Start-Process "'"${url-}"'"' 2>/dev/null ||
-      command powershell -c 'Start-Process "'"${url-}"'"' 2>/dev/null ||
-      command pwsh.exe -c 'Start-Process "'"${url-}"'"' 2>/dev/null ||
-      command pwsh -c 'Start-Process "'"${url-}"'"'
+    powershell.exe -c 'Start-Process "'"${url-}"'"' 2>/dev/null ||
+      powershell -c 'Start-Process "'"${url-}"'"' 2>/dev/null ||
+      pwsh.exe -c 'Start-Process "'"${url-}"'"' 2>/dev/null ||
+      pwsh -c 'Start-Process "'"${url-}"'"'
     ;;
   *)
     # fallback to Linux `xdg-open`
-    command xdg-open -- "${url-}" 2>/dev/null ||
-      command xdg-open "${url-}"
+    xdg-open -- "${url-}" 2>/dev/null ||
+      xdg-open "${url-}"
     ;;
   esac
 }
@@ -4530,27 +4527,27 @@ alias -- gopend='gopen --dependabot'
 git_pull() {
   # https://github.com/ohmyzsh/ohmyzsh/commit/3d2542f
   {
-    command git pull --all --autostash --ff-only --gpg-sign --log --progress --prune --rebase --signoff --verbose --verify "${@-}"
+    git pull --all --autostash --ff-only --gpg-sign --log --progress --prune --rebase --signoff --verbose --verify "${@-}"
   } || {
-    command git rebase --abort 2>/dev/null
-    command git pull --all --autostash --ff --gpg-sign --log --progress --prune --rebase --signoff --verbose --verify "${@-}"
+    git rebase --abort 2>/dev/null
+    git pull --all --autostash --ff --gpg-sign --log --progress --prune --rebase --signoff --verbose --verify "${@-}"
   } || {
-    command git rebase --abort 2>/dev/null
-    command git pull --all --autostash --gpg-sign --log --progress --prune --rebase --signoff --verbose --verify "${@-}"
+    git rebase --abort 2>/dev/null
+    git pull --all --autostash --gpg-sign --log --progress --prune --rebase --signoff --verbose --verify "${@-}"
   } || {
-    command git rebase --abort 2>/dev/null
-    command git pull --all --autostash --prune --rebase --verbose "${@-}"
+    git rebase --abort 2>/dev/null
+    git pull --all --autostash --prune --rebase --verbose "${@-}"
   } || {
-    command git rebase --abort 2>/dev/null
-    command git pull --autostash --prune --rebase --verbose "${@-}"
+    git rebase --abort 2>/dev/null
+    git pull --autostash --prune --rebase --verbose "${@-}"
   } || {
-    command git rebase --abort 2>/dev/null
-    command git rebase --strategy-option=theirs --update-refs
+    git rebase --abort 2>/dev/null
+    git rebase --strategy-option=theirs --update-refs
   } || {
-    command git rebase --abort 2>/dev/null
-    command git rebase --strategy-option=theirs
+    git rebase --abort 2>/dev/null
+    git rebase --strategy-option=theirs
   }
-  command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+  git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed \
       -e '$ d'
 }
@@ -4584,18 +4581,18 @@ git_current_remote() {
 
 gdr() {
   {
-    command git config --get --worktree -- checkout.defaultRemote ||
-      command git config --get --local -- checkout.defaultRemote ||
-      command git config --get --system -- checkout.defaultRemote ||
-      command git config --get --global checkout.defaultRemote ||
-      command git config --get -- branch."$(command git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote
+    git config --get --worktree -- checkout.defaultRemote ||
+      git config --get --local -- checkout.defaultRemote ||
+      git config --get --system -- checkout.defaultRemote ||
+      git config --get --global checkout.defaultRemote ||
+      git config --get -- branch."$(git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote
   } 2>/dev/null ||
-    command git config --default origin --get -- branch."$(
-      command git symbolic-ref --quiet --short HEAD 2>/dev/null ||
-        command git rev-parse --short HEAD 2>/dev/null
+    git config --default origin --get -- branch."$(
+      git symbolic-ref --quiet --short HEAD 2>/dev/null ||
+        git rev-parse --short HEAD 2>/dev/null
     )".remote
   # https://gitlab.com/engmark/root/commit/ca5e6f02ca2
-  command git config --get --default=origin -- checkout.defaultRemote
+  git config --get --default=origin -- checkout.defaultRemote
 }
 alias -- \
   git-default-remote='gdr' \
@@ -4605,36 +4602,36 @@ alias -- \
 git_push() {
   case "${1-}" in
   -r | --all-remotes)
-    command git remote show |
+    git remote show |
       while IFS='' read -r -- remote; do
-        command git -c push.autoSetupRemote=true push "${remote-}" "$(
-          command git symbolic-ref --quiet --short HEAD -- 2>/dev/null
+        git -c push.autoSetupRemote=true push "${remote-}" "$(
+          git symbolic-ref --quiet --short HEAD -- 2>/dev/null
         )" --atomic --follow-tags --no-thin --progress --prune --recurse-submodules=check --signed=if-asked --tags --verbose --verify
       done
     ;;
   # https://github.com/ohmyzsh/ohmyzsh/commit/ae21102030
   *)
-    command git -c push.autoSetupRemote=true push --progress --verbose "${@-}"
+    git -c push.autoSetupRemote=true push --progress --verbose "${@-}"
     ;;
   esac
-  command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+  git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed \
       -e '$ d'
 }
 alias -- gps='git_push'
 
 alias -- \
-  grba='command git rebase --abort' \
-  grbi='command git rebase --interactive --update-refs 2>/dev/null || command git rebase --interactive' \
-  grbc='command git rebase --continue --update-refs 2>/dev/null || command git rebase --continue' \
-  gref='command git reflog'
+  grba='git rebase --abort' \
+  grbi='git rebase --interactive --update-refs 2>/dev/null || git rebase --interactive' \
+  grbc='git rebase --continue --update-refs 2>/dev/null || git rebase --continue' \
+  gref='git reflog'
 
 # git rm
 alias -- grm >/dev/null 2>&1 &&
   unalias -- grm
 alias -- grm='rm'
 git_rm_r() {
-  command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
+  git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "${?:-1}"
   ps4_temporary="${PS4-}"
   PS4=' '
@@ -4652,8 +4649,8 @@ git_rm_r() {
   } 2>/dev/null
   command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "${@-}"
-  command git reset --quiet HEAD -- . &&
-    command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+  git reset --quiet HEAD -- . &&
+    git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed \
       -e '$ d'
 }
@@ -4661,8 +4658,8 @@ alias -- grm.='git_rm_r'
 
 git_remote_verbose() {
   # print `git remote -v` into columns as narrow as possible
-  command git remote --verbose |
-    command awk -vmax="$(command git remote | command awk -- 'BEGIN {max = 0} {if (length($0) > max) {max = length($0)} } END {print max}' -)" \
+  git remote --verbose |
+    awk -vmax="$(git remote | awk -- 'BEGIN {max = 0} {if (length($0) > max) {max = length($0)} } END {print max}' -)" \
       -- \
       '! seen[$2]++ {printf "%-" max "s %s\n", $1, $2}' -
 }
@@ -4672,18 +4669,18 @@ git_restore() {
   # TODO: allow end-of-options parameter
   case "${1-}" in
   -d | --deleted)
-    command git -c core.quotePath=false ls-files -z --deleted |
+    git -c core.quotePath=false ls-files -z --deleted |
       sed -e 's/./\\&/g' |
       xargs git checkout --progress --
     ;;
   *)
     while test "${#}" -gt 0; do
-      command git checkout --progress -- "${1-}"
+      git checkout --progress -- "${1-}"
       shift
     done
     ;;
   esac
-  command git -c color.status=always -c core.quotePath=false "${@:-status}" |
+  git -c color.status=always -c core.quotePath=false "${@:-status}" |
     sed -e '$ d'
 }
 alias -- \
@@ -4692,11 +4689,11 @@ alias -- \
 
 git_search() {
   # search all repository content since its creation
-  command git rev-list --all |
+  git rev-list --all |
     while IFS='' read -r -- commit; do
       # H: print filename
       # I: skip binary files
-      command git --no-pager grep \
+      git --no-pager grep \
         -H \
         -I \
         --perl-regexp \
@@ -4711,18 +4708,18 @@ alias -- gsearch='git_search'
 git_shallow() {
   # Shallow .gitmodules submodule installations
   # Mauricio Scheffer https://stackoverflow.com/a/2169914
-  command git submodule init &&
-    command git submodule |
-    command awk -- '{print $2}' |
+  git submodule init &&
+    git submodule |
+    awk -- '{print $2}' |
       while IFS='' read -r -- submodule; do
         # using `--progress`, `--verbose` and `--no-quiet` because
         # we’re not already in the target directory
-        command git -c core.ignoreCase=false \
+        git -c core.ignoreCase=false \
           clone --depth 1 --progress --shallow-submodules --template='' --verbose -- \
-          "$(command git config --file .gitmodules --get -- submodule."${submodule-}".url)" \
-          "$(command git config --file .gitmodules --get -- submodule."${submodule-}".path)"
+          "$(git config --file .gitmodules --get -- submodule."${submodule-}".url)" \
+          "$(git config --file .gitmodules --get -- submodule."${submodule-}".path)"
       done
-  command git submodule update
+  git submodule update
 }
 
 git_show() {
@@ -4730,7 +4727,7 @@ git_show() {
 
   --date)
     shift
-    command git log --max-count=1 --format='%ci'
+    git log --max-count=1 --format='%ci'
     ;;
 
   --files)
@@ -4738,7 +4735,7 @@ git_show() {
     shift
 
     # https://stackoverflow.com/a/424142
-    command git diff-tree -B -C -M -r --find-copies-harder --name-only --no-commit-id --root --text "${@:-HEAD}" -- |
+    git diff-tree -B -C -M -r --find-copies-harder --name-only --no-commit-id --root --text "${@:-HEAD}" -- |
       LC_ALL='C' sort -f |
       sed -e 's/^/.\//'
     ;;
@@ -4748,8 +4745,8 @@ git_show() {
     if test "${#}" -eq 0; then
       set -- HEAD
     fi
-    command git show "${1-}" 2>/dev/null ||
-      command git show "${1-}" --
+    git show "${1-}" 2>/dev/null ||
+      git show "${1-}" --
     # shift <- no. because it will allow this to run twice
     ;;
   esac
@@ -4762,18 +4759,18 @@ alias -- \
 # `git stash`
 git_stash_save_all() {
   # https://github.com/ohmyzsh/ohmyzsh/commit/69ba6e4359
-  command git stash push -m "${@-}" 2>/dev/null ||
-    command git stash push
+  git stash push -m "${@-}" 2>/dev/null ||
+    git stash push
 }
 alias -- gstall='git_stash_save_all'
 git_stash_save_keep() {
-  command git stash push --keep-index -m "${@-}" 2>/dev/null ||
-    command git stash push --keep-index
+  git stash push --keep-index -m "${@-}" 2>/dev/null ||
+    git stash push --keep-index
 }
 alias -- gstk='git_stash_save_keep'
 gst_c() {
-  command git stash clear &&
-    command find -- "${GIT_DIR:-./.git}" \
+  git stash clear &&
+    find -- "${GIT_DIR:-./.git}" \
       -depth \
       -path './*/*' \
       '(' \
@@ -4786,29 +4783,29 @@ gst_c() {
 }
 git_stash_pop() {
   # https://stackoverflow.com/q/51275777
-  command git stash pop || {
-    command git stash show --patch |
-      command git -c color.status=always -c core.quotePath=false apply --3
+  git stash pop || {
+    git stash show --patch |
+      git -c color.status=always -c core.quotePath=false apply --3
   } || {
-    command git -c color.status=always -c core.quotePath=false checkout stash -- .
+    git -c color.status=always -c core.quotePath=false checkout stash -- .
   } || {
-    command git -c core.quotePath=false diff "$(git_current_branch)" stash:**/* |
-      command git -c color.status=always -c core.quotePath=false apply --3
+    git -c core.quotePath=false diff "$(git_current_branch)" stash:**/* |
+      git -c color.status=always -c core.quotePath=false apply --3
   } || {
-    command git -c color.status=always -c core.quotePath=false diff "$(git_current_branch)" stash:**/*
+    git -c color.status=always -c core.quotePath=false diff "$(git_current_branch)" stash:**/*
   } || {
-    command git -c core.quotePath=false show stash:**/* >./tmp-"$(date -- '+%Y%m%d%H%M%S')"
+    git -c core.quotePath=false show stash:**/* >./tmp-"$(date -- '+%Y%m%d%H%M%S')"
   }
 }
 alias -- \
-  gsta='command git -c color.status=always -c core.quotePath=false stash apply --index stash@'\''{'\''0'\''}'\''' \
+  gsta='git -c color.status=always -c core.quotePath=false stash apply --index stash@'\''{'\''0'\''}'\''' \
   gstp='git_stash_pop'
 
 git_submodule_cleanup() {
   set \
     -o verbose
   while test "$(
-    command find -- . \
+    find -- . \
       '(' \
       -path '*/.git/modules/*index.lock' -o \
       -path '*/.git/modules/*index.stash.*' -o \
@@ -4817,7 +4814,7 @@ git_submodule_cleanup() {
       -print 2>/dev/null
   )" != ''; do
     printf -- 'deleting %s...\n' "$(
-      command find -- . \
+      find -- . \
         '(' \
         -path '*/.git/modules/*index.lock' -o \
         -path '*/.git/modules/*index.stash.*' -o \
@@ -4825,7 +4822,7 @@ git_submodule_cleanup() {
         ')' \
         -print 2>/dev/null
     )" >&2 &&
-      command find -- . \
+      find -- . \
         '(' \
         -path '*/.git/modules/*index.lock' -o \
         -path '*/.git/modules/*index.stash.*' -o \
@@ -4833,8 +4830,8 @@ git_submodule_cleanup() {
         ')' \
         -delete
   done
-  command git submodule foreach --recursive 'command git reset --hard --recurse-submodules'
-  command git submodule foreach --recursive 'command git stash clear'
+  git submodule foreach --recursive 'git reset --hard --recurse-submodules'
+  git submodule foreach --recursive 'git stash clear'
   command -v -- git_update >/dev/null 2>&1 &&
     git_update "${@-}"
   set \
@@ -4844,25 +4841,25 @@ alias -- gsc='git_submodule_cleanup'
 
 git_submodule_update() {
   # @TODO!: ensure this harmonizes with `git_update`’s submodule updater below
-  command git submodule update --init --remote "${@-}" &&
-    command git submodule sync "${@-}" &&
-    command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+  git submodule update --init --remote "${@-}" &&
+    git submodule sync "${@-}" &&
+    git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed \
       -e '$ d'
 }
 alias -- gsu='git_submodule_update'
 
-alias -- gtag='command git --no-pager tag --sort=creatordate'
+alias -- gtag='git --no-pager tag --sort=creatordate'
 
 git_tag_edit() {
   # https://stackoverflow.com/a/14130875
-  command git tag "${1-}" "${1-}"'^'{} --annotate --force --sign
+  git tag "${1-}" "${1-}"'^'{} --annotate --force --sign
 }
 
 git_tags_by_date() {
   # https://github.com/crowdbotics-apps/firemeapp-3088/blob/cad844a221/client/app/components/linux/Sourcetree-Beta.app/Contents/Resources/git-tags-by-date.sh
-  command git tag --list | while IFS='' read -r -- tag; do
-    printf -- '%s\t%s\n' "$(command git log --max-count=1 --format='%cd' --date=format:'%F' "${tag-}" --)" "${tag-}"
+  git tag --list | while IFS='' read -r -- tag; do
+    printf -- '%s\t%s\n' "$(git log --max-count=1 --format='%cd' --date=format:'%F' "${tag-}" --)" "${tag-}"
   done | {
     case "${1-}" in
     -r | --reverse)
@@ -4880,30 +4877,30 @@ git_time() {
   # convert yyyy-mm-dd at the current time to Git’s preferred format
   # show the 2 variables need to be set as what – interactive shell only @TODO!
   # printf -- 'GIT_AUTHOR_DATE="%s" GIT_COMMITTER_DATE="%s"'
-  # git_time="$(command gdate -d '@'"$(($(command gdate -d "${1:-$(date '+%Y-%m-%d')}" '+%s') + 12 * 60 * 60))" -- '+%c %z')"
+  # git_time="$(gdate -d '@'"$(($(gdate -d "${1:-$(date '+%Y-%m-%d')}" '+%s') + 12 * 60 * 60))" -- '+%c %z')"
   case "${1-}" in
   -h | --help)
     printf -- 'Usage: git_time [date] [time]\n'
     ;;
   [1-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] | [1-9][0-9][0-9][0-9][0-1][0-9][0-3][0-9])
     shift
-    command /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-+%Y-%m-%d}"'T'"${2:-%H:%M:%S}"'Z' '+%c %z'
+    /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-+%Y-%m-%d}"'T'"${2:-%H:%M:%S}"'Z' '+%c %z'
     ;;
   [1-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]T[0-2][0-9]:[0-5][0-9]:[0-5][0-9]Z)
     shift
-    command /usr/local/opt/coreutils/libexec/gnubin/date -d "${1-}"T"${2-}"Z '+%c %z'
+    /usr/local/opt/coreutils/libexec/gnubin/date -d "${1-}"T"${2-}"Z '+%c %z'
     ;;
   *)
-    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(command /usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(command /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%dT%H:%M:%S')}" -- '+%s')" -- '+%c %z')" "$(command /usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(command /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%dT%H:%M:%S')}" -- '+%s')" -- '+%c %z')"
-    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(command /usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(command /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s')" -- '+%c %z')" "$(command /usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(command /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s')" -- '+%c %z')"
-    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(command /usr/local/opt/coreutils/libexec/gnubin/date -d '@'$(($(command /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s'))) -- '+%c %z')" "$(command /usr/local/opt/coreutils/libexec/gnubin/date -d '@'$(($(command /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s'))) -- '+%c %z')"
+    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%dT%H:%M:%S')}" -- '+%s')" -- '+%c %z')" "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%dT%H:%M:%S')}" -- '+%s')" -- '+%c %z')"
+    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s')" -- '+%c %z')" "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s')" -- '+%c %z')"
+    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'$(($(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s'))) -- '+%c %z')" "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'$(($(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s'))) -- '+%c %z')"
     ;;
   esac
 }
 alias -- git-date='git_time'
 
 git_undo() {
-  command git reset HEAD@'{'"${1:-1}"'}'
+  git reset HEAD@'{'"${1:-1}"'}'
 }
 alias -- gundo='git_undo'
 
@@ -4914,7 +4911,7 @@ git_update() {
     -o xtrace
   # run only from within a Git repository
   # https://stackoverflow.com/a/53809163
-  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 
     command -v -- cleanup >/dev/null 2>&1 &&
       set \
@@ -4923,20 +4920,20 @@ git_update() {
     set \
       -o noclobber
 
-    command git fetch --all --keep --multiple --progress --prune --verbose --update-shallow
+    git fetch --all --keep --multiple --progress --prune --verbose --update-shallow
 
     # `git submodule update` with `--remote` appears to slow Git to a crawl
     # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
     case "${1-}" in
     -r | --remote)
       shift
-      command git submodule update --init --recursive --remote "${@-}"
+      git submodule update --init --recursive --remote "${@-}"
       ;;
     *)
-      command git submodule update --init --recursive "${@-}"
+      git submodule update --init --recursive "${@-}"
       ;;
     esac
-    command git submodule sync --recursive "${@-}"
+    git submodule sync --recursive "${@-}"
   fi
   {
     set \
@@ -4944,7 +4941,7 @@ git_update() {
       +o noglob \
       +o xtrace
   } 2>/dev/null
-  command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+  git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed \
       -e '$ d'
 }
@@ -4954,31 +4951,31 @@ gvc() {
   # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
   # if there is an argument (commit hash), use it
   # otherwise check `HEAD`
-  command git verify-commit "${1:-HEAD}"
+  git verify-commit "${1:-HEAD}"
 }
 
-alias -- ghs='command gh status'
+alias -- ghs='gh status'
 
 github_create_repository() {
   # https://gist.github.com/alexpchin/dc91e723d4db5018fef8?permalink_comment_id=4252359#gistcomment-4252359
-  command curl \
-    --data '{"name": "'"$(command git rev-parse --show-toplevel | tr -d '[:space:]' | sed -e 's/./\\&/g' | xargs basename --)"'", "private": true, "visibility": "private"}' \
+  curl \
+    --data '{"name": "'"$(git rev-parse --show-toplevel | tr -d '[:space:]' | sed -e 's/./\\&/g' | xargs basename --)"'", "private": true, "visibility": "private"}' \
     --fail \
     --header 'Authorization: token '"${GITHUB_API_TOKEN-}" \
     --show-error \
     --silent \
     --url 'https://api.github.com/user/repos' &&
-    command git remote add origin "$(
-      command curl \
+    git remote add origin "$(
+      curl \
         --fail \
         --header 'Authorization: token '"${GITHUB_API_TOKEN-}" \
         --show-error \
         --silent \
         --url 'https://api.github.com/repos/'"${GITHUB_ORG-}"/"$(
-          command git rev-parse --show-toplevel |
+          git rev-parse --show-toplevel |
             tr -d '[:space:]' |
             sed -e 's/./\\&/g' |
-            command xargs basename --
+            xargs basename --
         )" |
         sed \
           -n \
@@ -4988,14 +4985,14 @@ github_create_repository() {
     )"
 }
 gitlab_create_repository() {
-  command git push --set-upstream git@gitlab.com:"${GITLAB_USERNAME:-${LOGNAME:-${USER-}}}"/"$(
-    command git rev-parse --show-toplevel |
+  git push --set-upstream git@gitlab.com:"${GITLAB_USERNAME:-${LOGNAME:-${USER-}}}"/"$(
+    git rev-parse --show-toplevel |
       xargs basename --
   )" "$(
-    command git rev-parse --abbrev-ref HEAD
+    git rev-parse --abbrev-ref HEAD
   )" &&
-    command git remote add origin git@gitlab.com:"${GITLAB_USERNAME:-${LOGNAME:-${USER-}}}"/"$(
-      command git rev-parse --show-toplevel |
+    git remote add origin git@gitlab.com:"${GITLAB_USERNAME:-${LOGNAME:-${USER-}}}"/"$(
+      git rev-parse --show-toplevel |
         xargs basename --
     )"
 }
@@ -5004,7 +5001,7 @@ github_keys() {
   test "${GITHUB_API_TOKEN-}" != '' ||
     # EX_CONFIG
     return 78
-  command curl \
+  curl \
     --fail \
     --header 'Authorization: token '"${GITHUB_API_TOKEN-}" \
     --show-error \
@@ -5017,8 +5014,8 @@ github_keys() {
 
 github_search() {
   set -- 'https://github.com/search?type=code&q='"${*-}"
-  command xdg-open -- "${1-}" 2>/dev/null ||
-    command open -- "${1-}"
+  xdg-open -- "${1-}" 2>/dev/null ||
+    open -- "${1-}"
 }
 
 gofmt_r() {
@@ -5028,7 +5025,7 @@ gofmt_r() {
   set \
     -o verbose \
     -o xtrace
-  PS4=' ' IFS='' command find -- . \
+  PS4=' ' IFS='' find -- . \
     -path '*/.git' -prune -o \
     -path '*/Library' -prune -o \
     -path '*/node_modules' -prune -o \
@@ -5039,9 +5036,9 @@ gofmt_r() {
     -path '*/vendor' -prune -o \
     -name '*.go' \
     -type f \
-    -exec sh -C -e -f -u -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command gofumpt -extra -w -- "${1-}"
+    -exec sh -C -e -f -u -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  gofumpt -extra -w -- "${1-}"
 ' _ {} ';'
   {
     set \
@@ -5052,8 +5049,8 @@ gofmt_r() {
 
 google() {
   set -- 'https://ddg.gg/?kp=-2&q='"${*-}"
-  command xdg-open -- "${1-}" 2>/dev/null ||
-    command open -- "${1-}"
+  xdg-open -- "${1-}" 2>/dev/null ||
+    open -- "${1-}"
 }
 
 gravatar() {
@@ -5064,7 +5061,7 @@ gravatar() {
 
   # return the Gravatar image URL
   printf -- 'https://gravatar.com/avatar/%.32s?s=%d\n' "$(
-    printf -- %s "${1:-$(command git config --get -- user.email)}" |
+    printf -- %s "${1:-$(git config --get -- user.email)}" |
       LC_ALL='C' tr -d '[:space:]' |
       LC_ALL='C' tr -- '[:upper:]' '[:lower:]' |
       {
@@ -5126,7 +5123,7 @@ alias -- sed_grep='grep_sed'
 grep_awk() {
   # print only lines that match regular expression (emulates "grep")
   set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
-  command gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '/'"${1-}"'/' "${2:--}"
+  gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '/'"${1-}"'/' "${2:--}"
 }
 alias -- awk_grep='grep_awk'
 grep_sed_v() {
@@ -5148,7 +5145,7 @@ alias -- \
 grep_awk_v() {
   # print only lines that do NOT match regex (emulates "grep -v")
   set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
-  command gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '!/'"${1-}"'/' "${2:--}"
+  gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '!/'"${1-}"'/' "${2:--}"
 }
 alias -- \
   awk_grep_v='grep_v_awk' \
@@ -5170,7 +5167,7 @@ gr() {
     ;;
   esac
   # -find -L instead of ! -type d because I want to search inside symlinks 2023-01-29
-  command find -L -- "${2:-.}" \
+  find -L -- "${2:-.}" \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path '*/t' -prune -o \
@@ -5197,7 +5194,7 @@ grpt() {
     ;;
   esac
   # -find -L instead of ! -type d because I want to search inside symlinks 2023-01-29
-  command find -L -- "${2:-.}" \
+  find -L -- "${2:-.}" \
     ! -path '*/.git/*' \
     ! -path '*/node_modules/*' \
     ! -path '*/t/*' \
@@ -5218,7 +5215,7 @@ grpt() {
 }
 ggr() {
   # riffing on the above while not feeling great # 2022-09-14
-  command git --no-pager grep \
+  git --no-pager grep \
     -H \
     -I \
     --break \
@@ -5253,7 +5250,7 @@ rg() {
     grep -E -r "${@-}"
     return "${??}"
   }
-  command "${utility-}" \
+  "${utility-}" \
     --glob '!**.git' \
     --glob '!**node_modules' \
     --glob '!**copilot*' \
@@ -5278,7 +5275,7 @@ rgv() {
   )"
   test "${utility-}" = '' &&
     grep -E -r -v -e "${@-}"
-  command "${utility-}" \
+  "${utility-}" \
     -v \
     --glob '!**.git' \
     --glob '!**node_modules' \
@@ -5296,17 +5293,17 @@ grep_but_line() {
   # https://g.co/gemini/share/213f77a8c93b
 
   # should NOT work
-  command awk -vgood="${1-}" -vbad="${2-}" -- '/good/ && !/bad/ {print}'
+  awk -vgood="${1-}" -vbad="${2-}" -- '/good/ && !/bad/ {print}'
 
   # SHOULD work
-  command awk -vgood="${1-}" -vbad="${2-}" -- '$0 ~ good && $0 !~ bad {print}'
+  awk -vgood="${1-}" -vbad="${2-}" -- '$0 ~ good && $0 !~ bad {print}'
 }
 alias -- \
   grep_but='grep_but_line' \
   grep_but_not_line='grep_but_line'
 grep_but_file() {
   # https://web.archive.org/web/0id_/mywiki.wooledge.org/BashFAQ/079?rev=32#line-111
-  command gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '/'"${1-}"'/{good=1} /'"${2-}"'/{good=0;exit} END{exit !good}'
+  gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '/'"${1-}"'/{good=1} /'"${2-}"'/{good=0;exit} END{exit !good}'
 }
 alias -- grep_but_not_file='grep_but_file'
 
@@ -5341,11 +5338,11 @@ hash_abbreviate() {
   shift "$((OPTIND - 1))"
   for hash in "${@-}"; do
     if printf -- '%s' "${hash-}" | grep -E -w -e '^[[:xdigit:]]{4,}$' >/dev/null 2>&1; then
-      printf -- '%.'"${length:-"$(command git config --get --default=7 -- core.abbrev)"}"'s\n' "${hash-}"
+      printf -- '%.'"${length:-"$(git config --get --default=7 -- core.abbrev)"}"'s\n' "${hash-}"
       # prevent copying trailing newline with `tr` and
       # hide clipboard errors because `pbcopy` is not common
-      printf -- '%.'"${length:-"$(command git config --get --default=7 -- core.abbrev)"}"'s' "${hash-}" |
-        command pbcopy 2>/dev/null
+      printf -- '%.'"${length:-"$(git config --get --default=7 -- core.abbrev)"}"'s' "${hash-}" |
+        pbcopy 2>/dev/null
     else
       return 1
     fi
@@ -5358,27 +5355,27 @@ hashlookup() {
   test -f "${1-}" ||
     # EX_NOINPUT
     return 66
-  command curl \
+  curl \
     --header 'Accept: application/json' \
     --show-error \
     --silent \
     --url 'https://hashlookup.circl.lu/lookup/sha1/'"$(
       {
-        command sha1sum -- "${1-}" 2>/dev/null ||
-          command shasum -- "${1-}"
+        sha1sum -- "${1-}" 2>/dev/null ||
+          shasum -- "${1-}"
       } |
-        command awk -- '{print $1}'
+        awk -- '{print $1}'
     )" |
-    command jq --raw-output '.parents[]' 2>/dev/null
+    jq --raw-output '.parents[]' 2>/dev/null
 }
 
 head() {
   case "${1-}" in
   -*)
-    head "${@-}"
+    command -p -- head "${@-}"
     ;;
   *)
-    head -n "$((${LINES:-"$(
+    command -p -- head -n "$((${LINES:-"$(
       tput -- lines 2>/dev/null ||
         printf -- '10 + 2'
     )"} - 2))" "${@-}"
@@ -5408,7 +5405,7 @@ headers() {
     -o xtrace
   for host in "${@-}"; do
     # https://github.com/wincent/wincent/commit/fb6c4e8713
-    command curl \
+    curl \
       --dump-header - \
       --location \
       --output /dev/null \
@@ -5427,11 +5424,11 @@ headers() {
 }
 
 hooks_r() {
-  command git -C "${HOME%/}"'/c/hooks' rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  git -C "${HOME%/}"'/c/hooks' rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
     test -d "${PWD%/}"'/.git' &&
     mkdir -p -- "${PWD%/}"'/.git/hooks' &&
     # cp -p to preserve permissions
-    command find -- "${HOME%/}"'/c/hooks' \
+    find -- "${HOME%/}"'/c/hooks' \
       -path "${HOME%/}"'/c/hooks/.*' -prune -o \
       -path "${HOME%/}"'/c/hooks/*/*' -prune -o \
       -path "${HOME%/}"'/c/hooks/*' \
@@ -5470,7 +5467,7 @@ hundo() {
   mkdir -p -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash'
 
   # remove the old copy if any
-  command find -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' \
+  find -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' \
     -name "${HISTFILE##*/}" \
     -type f \
     -print \
@@ -5504,7 +5501,7 @@ EOF
 
 history_stats() {
   builtin fc -l 1 |
-    command awk -- '{
+    awk -- '{
   history[$2]++
   count++
 }
@@ -5541,7 +5538,7 @@ icns_to_png() {
       *.[Ii][Cc][Nn][Ss])
         # https://web.archive.org/web/0id_/simplehelp.net/?p=4870
         command -v -- sips >/dev/null 2>&1 &&
-          command sips \
+          sips \
             --debug \
             --setProperty format png \
             --setProperty formatOptions 100 \
@@ -5552,7 +5549,7 @@ icns_to_png() {
           # icns2png output Goldilocks:
           #   `--list` increases verbosity
           #   `2>/dev/null` reduces verbosity
-          command icns2png \
+          icns2png \
             --list \
             --extract \
             -- \
@@ -5576,9 +5573,9 @@ icns_to_png() {
 identify_os() {
   {
     uname -a
-    command sw_vers
-    command lsb_release --all
-    command hostnamectl
+    sw_vers
+    lsb_release --all
+    hostnamectl
     cat -- \
       '/etc/os-release' \
       '/usr/lib/os-release' \
@@ -5615,8 +5612,8 @@ install() {
     } 2>/dev/null
     case "${1-}" in
     environment*)
-      command brew list -1 --formula | while IFS='' read -r -- formula; do
-        if command brew info --formula -- "${formula-}" |
+      brew list -1 --formula | while IFS='' read -r -- formula; do
+        if brew info --formula -- "${formula-}" |
           grep \
             -e 'print the names of formulae where there is a § Caveats' \
             -e ' Caveats' \
@@ -5626,8 +5623,8 @@ install() {
       done
       ;;
     *)
-      command brew list -1 --formula | while IFS='' read -r -- formula; do
-        if command brew info --formula -- "${formula-}" |
+      brew list -1 --formula | while IFS='' read -r -- formula; do
+        if brew info --formula -- "${formula-}" |
           grep \
             -e 'print the names of formulae where environmental-variable modification is suggested' \
             -e '[[:upper:]]=' \
@@ -5644,7 +5641,7 @@ install() {
       -o noclobber \
       -o verbose \
       -o xtrace
-    command brew bundle dump \
+    brew bundle dump \
       --cask \
       --debug \
       --describe \
@@ -5694,8 +5691,8 @@ install() {
         +o verbose \
         +o xtrace
     } 2>/dev/null
-    command brew list -1 --formula | while IFS='' read -r -- formula; do
-      if command brew info --formula -- "${formula-}" |
+    brew list -1 --formula | while IFS='' read -r -- formula; do
+      if brew info --formula -- "${formula-}" |
         grep \
           -e 'print the names of formulae where --HEAD is available' \
           -e '^--HEAD$' \
@@ -5709,7 +5706,7 @@ install() {
     brewsearch "${@-}"
     ;;
   info)
-    command brew "${@-}"
+    brew "${@-}"
     ;;
   --)
     shift
@@ -5722,25 +5719,25 @@ install() {
 
     # Homebrew
     if command -v -- brew >/dev/null 2>&1; then
-      command brew install "${@-}"
+      brew install "${@-}"
     # search brew search --debug --verbose --desc git; brew search git
 
     # Alpine Linux
     elif command -v -- apk >/dev/null 2>&1; then
-      command apk add "${@-}"
+      apk add "${@-}"
 
     # Ubuntu, Debian
     elif command -v -- apt >/dev/null 2>&1; then
-      command sudo -- apt install "${@-}"
+      sudo -- apt install "${@-}"
     elif command -v -- apt-get >/dev/null 2>&1; then
       # https://clarkgrubb.com/package-managers#pkg-managers
-      command sudo -- apt-get install -y "${@-}"
+      sudo -- apt-get install -y "${@-}"
 
     # Arch Linux
     elif command -v -- pacman >/dev/null 2>&1; then
       # https://unix.stackexchange.com/a/34607
       # if Arch fails here, try `pacman --sync -yy`
-      command pacman --sync -yy "${@-}"
+      pacman --sync -yy "${@-}"
     else
       printf -- 'unable to detect system software installer\n'
       sleep 1
@@ -5758,7 +5755,7 @@ install() {
 alias -- i='install'
 brewsearch() {
   while test "${#}" -ne 0; do
-    command brew search --formula --verbose "${1-}"
+    brew search --formula --verbose "${1-}"
     shift
   done
 }
@@ -5784,8 +5781,8 @@ interactive() {
 # -x stay on current system
 # -vv be verbose and print old and new flags
 alias -- \
-  invisible='command chflags -h -v -v -x hidden' \
-  uninvisible='command chflags -h -v -v -x nohidden'
+  invisible='chflags -h -v -v -x hidden' \
+  uninvisible='chflags -h -v -v -x nohidden'
 
 image_color_count() {
   # print the number of unique colors found in the image
@@ -5796,11 +5793,11 @@ image_color_count() {
       shift
       ;;
     *)
-      command magick "${file-}" txt:- |
+      magick "${file-}" txt:- |
         # if column 3 is a hashed hexadecimal color,
         # that has not yet been printed,
         # then print it
-        command awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ && ! seen[$3]++ {print $3}' |
+        awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ && ! seen[$3]++ {print $3}' |
         LC_ALL='C' sort -f |
         LC_ALL='C' tr -- '[:upper:]' '[:lower:]' |
         LC_ALL='C' nl
@@ -5816,13 +5813,13 @@ image_color_frequency() {
       shift
       ;;
     *)
-      command magick "${file-}" txt:- |
-        command awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ {print $3}' |
+      magick "${file-}" txt:- |
+        awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ {print $3}' |
         LC_ALL='C' sort |
         LC_ALL='C' uniq -c |
         LC_ALL='C' sort -n |
         # %10d allows columnar output iff each frequency occurs fewer than 10^9 times
-        command awk -- '{printf "%10d %s\n", $1, $2}' |
+        awk -- '{printf "%10d %s\n", $1, $2}' |
         LC_ALL='C' tr -- '[:upper:]' '[:lower:]'
       ;;
     esac
@@ -5838,11 +5835,11 @@ image_color_list() {
       shift
       ;;
     *)
-      command magick "${file-}" txt:- |
+      magick "${file-}" txt:- |
         # if column 3 is a hashed hexadecimal color,
         # that has not yet been printed,
         # then print it
-        command awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ && ! seen[$3]++ {print $3}' |
+        awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ && ! seen[$3]++ {print $3}' |
         LC_ALL='C' sort -f |
         LC_ALL='C' tr -- '[:upper:]' '[:lower:]'
       ;;
@@ -5854,7 +5851,7 @@ image_get_pixel() {
   # https://github.com/cirosantilli/dotfiles/blob/60ca745cdc/home/.bashrc#L2829-L2836
   # $ image_get_pixel file.png 10 20
   # to obtain the color of the pixel at x=10, y=20
-  command magick -- "${1-}" -crop 1x1'+'"${2:-1}"'+'"${3:-1}" rgba:- |
+  magick -- "${1-}" -crop 1x1'+'"${2:-1}"'+'"${3:-1}" rgba:- |
     od -A n -t x1 |
     sed \
       -e 's/^[[:space:]]*//' \
@@ -5865,12 +5862,12 @@ ip() {
   # https://web.archive.org/web/2022/news.ycombinator.com/item?id=29848744
   set -- 'https://ipinfo.io/'"${1-}"'?token='"${IPINFO_TOKEN-}"
   {
-    command curl \
+    curl \
       --fail \
       --show-error \
       --silent \
       --url "${1-}" ||
-      command wget \
+      wget \
         --content-on-error \
         --hsts-file=/dev/null \
         --output-document=- \
@@ -5893,7 +5890,7 @@ to_jpg() {
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
-      command magick \
+      magick \
         -quality 100 \
         -verbose \
         -- \
@@ -5919,7 +5916,7 @@ guetzli_r() {
       test ! -e "${file%.*}"'-guetzli.jpg' &&
       case "${file-}" in
       *.[Jj][Pp][Ee][Gg] | *.[Jj][Pp][Gg])
-        command guetzli \
+        guetzli \
           --nomemlimit \
           --quality 100 \
           --verbose \
@@ -5944,10 +5941,10 @@ guetzli_r() {
 ## JPEG
 
 jsonlint_r() {
-  command npm ls --location=global -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
-    command npm ls --location=project -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
+  npm ls --location=global -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
+    npm ls --location=project -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
     return "${?:-127}"
-  PS4=' ' command find -- . \
+  PS4=' ' find -- . \
     -path '*/.git' -prune -o \
     -path '*/.rbenv' -prune -o \
     -path '*/.venv' -prune -o \
@@ -6066,9 +6063,9 @@ jsonlint_r() {
     ')' \
     -type f \
     -exec sh -x -c -- 'for file in "${@-}"; do
-  command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
-    ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-    command npm exec -- @prantlf/jsonlint --in-place --trailing-newline --trim-trailing-commas -- "${file-}"
+  git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+    ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    npm exec -- @prantlf/jsonlint --in-place --trailing-newline --trim-trailing-commas -- "${file-}"
 done
 ' _ {} +
 }
@@ -6086,11 +6083,11 @@ length_of_longest_line() {
   # https://unix.stackexchange.com/a/523516
   # `$1` is a file as an argument and
   # `-` is stdin
-  command awk -- 'BEGIN {max = 0} {if (length($0) > max) {max = length($0)} } END {print max}' "${1:--}"
+  awk -- 'BEGIN {max = 0} {if (length($0) > max) {max = length($0)} } END {print max}' "${1:--}"
 }
 sort_by_line_length() {
-  command awk -- '{print length($0), $0}' "${1:--}" |
-    LC_ALL='C' command sort -k 1,2 -n "${2:--}"
+  awk -- '{print length($0), $0}' "${1:--}" |
+    LC_ALL='C' sort -k 1,2 -n "${2:--}"
 }
 alias -- length_of_line_sort='sort_by_line_length'
 
@@ -6110,8 +6107,8 @@ install_less() {
     cd -L -- "${target-}" ||
       return 1
 
-    command git -C "${target-}" pull 2>/dev/null ||
-      command git -c core.ignoreCase=false clone --progress --recursive --template='' -- https://github.com/gwsw/less "${target-}" 2>&1 |
+    git -C "${target-}" pull 2>/dev/null ||
+      git -c core.ignoreCase=false clone --progress --recursive --template='' -- https://github.com/gwsw/less "${target-}" 2>&1 |
       sed \
         -e 's|'\''.'\''|'"${target-}"'|' \
         -e 's|'"${custom-}"'|$\custom|' \
@@ -6119,8 +6116,8 @@ install_less() {
         -e 's|'"${XDG_CONFIG_HOME-}"'|$\XDG_CONFIG_HOME|' \
         -e 's|'"${HOME%/}"'|~|'
     rm -f -r -- "${target-}"'/.gitingore'
-    command "${utility:-make}" -C "${target-}" -f Makefile.aut distfiles
-    command "${utility:-make}" -C "${target-}" -f Makefile.aut distfiles
+    "${utility:-make}" -C "${target-}" -f Makefile.aut distfiles
+    "${utility:-make}" -C "${target-}" -f Makefile.aut distfiles
     if test -w '/usr/local/bin'; then
       bindir='/usr/local/bin'
     elif mkdir -p -- "${HOME%/}"'/.local/bin' 2>/dev/null; then
@@ -6132,13 +6129,13 @@ install_less() {
       mandir="${HOME%/}"'/.local/share/man'
     fi
     # `pcre-config`, `pcre2-config` require `--version` to return a zero exit code
-    if command pcre2-config --version >/dev/null 2>&1; then
+    if pcre2-config --version >/dev/null 2>&1; then
       with_regex='pcre2'
-    elif command pcre-config --version >/dev/null 2>&1; then
+    elif pcre-config --version >/dev/null 2>&1; then
       with_regex='pcre'
     fi
     sh ./configure --with-editor="${EDITOR:-vi}" --with-regex="${with_regex:-auto}" bindir="${bindir-}" mandir="${mandir-}"
-    command "${utility:-make}" install
+    "${utility:-make}" install
     {
       set \
         +o verbose \
@@ -6162,23 +6159,23 @@ breakdown() {
   )"
   test "${utility-}" = '' &&
     return 127
-  command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
+  git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "${?:-1}"
   case "${1-}" in
   -s | --summary)
     shift
-    command "${utility-}" "${@-}" "$(
-      command git rev-parse --show-toplevel --path-format=relative |
+    "${utility-}" "${@-}" "$(
+      git rev-parse --show-toplevel --path-format=relative |
         sed -e '1 q'
     )" 2>/dev/null ||
-      command "${utility-}" "${@-}" "$(command git rev-parse --show-toplevel)" 2>/dev/null
+      "${utility-}" "${@-}" "$(git rev-parse --show-toplevel)" 2>/dev/null
     ;;
   *)
-    command "${utility-}" --breakdown "${@-}" "$(
-      command git rev-parse --show-toplevel --path-format=relative |
+    "${utility-}" --breakdown "${@-}" "$(
+      git rev-parse --show-toplevel --path-format=relative |
         sed -e '1 q'
     )" 2>/dev/null ||
-      command "${utility-}" --breakdown "${@-}" "$(command git rev-parse --show-toplevel)" 2>/dev/null |
+      "${utility-}" --breakdown "${@-}" "$(git rev-parse --show-toplevel)" 2>/dev/null |
       sed \
         -e '$ d'
     ;;
@@ -6194,50 +6191,50 @@ alias -- ld >/dev/null 2>&1 &&
   unalias -- ld
 alias -- l >/dev/null 2>&1 &&
   unalias -- l
-if command eza --color=auto >/dev/null 2>&1; then
+if eza --color=auto >/dev/null 2>&1; then
   alias -- \
-    l='command eza --all --bytes --classify --color-scale=all --color=auto --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
-    ld='command eza --color=auto --color-scale=all --all --bytes --classify --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --total-size --only-dirs' \
-    lg='command eza --all --bytes --classify --color-scale=all --color=auto --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
-    lgs='command eza --all --bytes --classify --color-scale=all --color=auto --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --sort=size' \
-    lm='command eza --all --bytes --classify --color-scale=all --color=auto --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --sort=modified'
-elif command gls --color=auto >/dev/null 2>&1; then
+    l='eza --all --bytes --classify --color-scale=all --color=auto --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
+    ld='eza --color=auto --color-scale=all --all --bytes --classify --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --total-size --only-dirs' \
+    lg='eza --all --bytes --classify --color-scale=all --color=auto --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
+    lgs='eza --all --bytes --classify --color-scale=all --color=auto --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --sort=size' \
+    lm='eza --all --bytes --classify --color-scale=all --color=auto --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --sort=modified'
+elif gls --color=auto >/dev/null 2>&1; then
   alias -- \
-    l='command gls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
-    ld='command find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec gls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
-elif command ls --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P >/dev/null 2>&1; then
+    l='gls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
+    ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec gls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
+elif ls --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P >/dev/null 2>&1; then
   alias -- \
-    l='command ls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
-    ld='command find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
+    l='ls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
+    ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
 else
   if
     test "$(
       find -- "${HOME%/}" -prune -exec sh -c -- 'ls -G --color=always "${@-}"' _ {} + |
         od
     )" = "$(
-      command ls -G --color=always -- "${HOME%/}" 2>/dev/null |
+      ls -G --color=always -- "${HOME%/}" 2>/dev/null |
         od
     )" &&
       test "$(
-        command ls -G --color=always -- "${HOME%/}" 2>/dev/null |
+        ls -G --color=always -- "${HOME%/}" 2>/dev/null |
           od
       )" = "$(
-        command ls --color=always -- "${HOME%/}" 2>/dev/null |
+        ls --color=always -- "${HOME%/}" 2>/dev/null |
           od
       )"
   then
     alias -- \
-      l='command ls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
-      ld='command find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
+      l='ls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
+      ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
   else
     alias -- \
-      l='command ls -A -F -g -o --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
-      ld='command find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
+      l='ls -A -F -g -o --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
+      ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
   fi
   # TODO: `ls -o` (`ls -l` without group) is not POSIX
   alias -- \
     l='ls -A -F -G -g -o' \
-    ld='command find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -G -d -g -o -- {} +'
+    ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -G -d -g -o -- {} +'
 fi
 
 list_functions() {
@@ -6273,7 +6270,7 @@ list_uniform_type_identifiers() {
     -name 'lsregister' \
     -type f \
     -exec sh -c -- '{} -dump' ';' |
-    command awk -- '/^uti:/ && ! seen[$2]++ {print $2}' |
+    awk -- '/^uti:/ && ! seen[$2]++ {print $2}' |
     LC_ALL='C' sort -f
 }
 alias -- list_utis='list_uniform_type_identifiers'
@@ -6284,8 +6281,8 @@ literoj() {
 
 # list --others
 lso() {
-  command git -c color.status=always -c core.quotePath=false ls-files --exclude-standard --others "${@-}" |
-    command awk -- '{print "./" $0}'
+  git -c color.status=always -c core.quotePath=false ls-files --exclude-standard --others "${@-}" |
+    awk -- '{print "./" $0}'
 }
 
 ## M4A
@@ -6296,7 +6293,7 @@ to_m4a() {
     -o xtrace
   for file in "${@-}"; do
     # https://stackoverflow.com/a/55478355
-    command ffmpeg \
+    ffmpeg \
       -nostdin \
       -i "${file-}" \
       -b:a 320k \
@@ -6325,7 +6322,7 @@ to_mp3() {
     # `-c:a libmp3lame` a high-quality MP3 encoder
     # `-q:a 0`: 0 = lossless
     # "${file%.*}": filename without extension
-    command ffmpeg \
+    ffmpeg \
       -i "${file-}" \
       -vn \
       -c:a libmp3lame \
@@ -6348,11 +6345,11 @@ to_mp4() {
     -o xtrace
   # https://stackoverflow.com/a/66248591
   for file in "${@-}"; do
-    command ffmpeg \
+    ffmpeg \
       -i "${file-}" \
       -crf 0 \
       "${file%.*}"'mp4' ||
-      command ffmpeg \
+      ffmpeg \
         -i "${file-}" \
         -crf 18 \
         -filter:v format=yuv420p \
@@ -6375,16 +6372,16 @@ mu() {
     return 1
   command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "${@-}"
-  command mackup backup --force --root --verbose |
+  mackup backup --force --root --verbose |
     sed \
       -e 's|'"${custom-}"'|$\custom|' \
       -e 's|'"${DOTFILES-}"'|$\DOTFILES|' \
       -e 's|'"${XDG_CONFIG_HOME-}"'|$\XDG_CONFIG_HOME|' \
       -e 's|'"${HOME%/}"'|~|'
-  command git fetch --all --keep --multiple --progress --prune --verbose --update-shallow
-  command git submodule update --init --recursive
-  command git submodule sync --recursive
-  command git -c color.status=always -c core.quotePath=false status --untracked-files=no |
+  git fetch --all --keep --multiple --progress --prune --verbose --update-shallow
+  git submodule update --init --recursive
+  git submodule sync --recursive
+  git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed \
       -e '$ d'
 }
@@ -6395,7 +6392,7 @@ dot() {
     return 1
   l 2>/dev/null ||
     ls -A -F -g -o 2>/dev/null
-  command git -c color.status=always -c core.quotePath=false status --untracked-files=no 2>/dev/null |
+  git -c color.status=always -c core.quotePath=false status --untracked-files=no 2>/dev/null |
     sed \
       -e '$ d'
 }
@@ -6407,18 +6404,18 @@ alias -- \
 ## Maestral && 1Password somehow
 command -v -- maestral >/dev/null 2>&1 && {
   command -v -- _maestral >/dev/null 2>&1 || {
-    command maestral completion "$(basename -- "${SHELL%%[0-9-]*}")" >/dev/null 2>&1 &&
+    maestral completion "$(basename -- "${SHELL%%[0-9-]*}")" >/dev/null 2>&1 &&
       test "${FPATH-}" != '' &&
       case ':'"${FPATH-}"':' in
       *:/usr/local/share/"$(basename -- "${SHELL%%[0-9-]*}")"/site-functions:*)
-        command maestral completion "$(basename -- "${SHELL%%[0-9-]*}")" >/usr/local/share/"$(basename -- "${SHELL%%[0-9-]*}")"/site-functions/_maestral
+        maestral completion "$(basename -- "${SHELL%%[0-9-]*}")" >/usr/local/share/"$(basename -- "${SHELL%%[0-9-]*}")"/site-functions/_maestral
         ;;
       *) ;;
       esac
   }
 }
 ms() {
-  command maestral status |
+  maestral status |
     sed \
       -e '/^$/ N' \
       -e '/\\n$/ D' \
@@ -6426,11 +6423,11 @@ ms() {
 }
 command -v -- op >/dev/null 2>&1 && {
   command -v -- _op >/dev/null 2>&1 || {
-    command op completion "$(basename -- "${SHELL%%[0-9]*}")" >/dev/null 2>&1 &&
+    op completion "$(basename -- "${SHELL%%[0-9]*}")" >/dev/null 2>&1 &&
       test "${FPATH-}" != '' &&
       case ':'"${FPATH-}"':' in
       *:/usr/local/share/"$(basename -- "${SHELL%%[0-9]*}")"/site-functions:*)
-        command op completion "$(basename -- "${SHELL%%[0-9]*}")" >/usr/local/share/"$(basename -- "${SHELL%%[0-9]*}")"/site-functions/_op
+        op completion "$(basename -- "${SHELL%%[0-9]*}")" >/usr/local/share/"$(basename -- "${SHELL%%[0-9]*}")"/site-functions/_op
         ;;
       *) ;;
       esac
@@ -6440,9 +6437,9 @@ command -v -- op >/dev/null 2>&1 && {
 # batman
 man() {
   if command -v -- batman >/dev/null 2>&1; then
-    command batman "${@-}"
+    batman "${@-}"
   else
-    man "${@-}"
+    command -p -- man "${@-}"
   fi
 }
 command -v -- _man >/dev/null 2>&1 &&
@@ -6457,7 +6454,7 @@ man_pdf() {
   if command -v -- ps2pdf >/dev/null 2>&1; then
     while test "${#}" -gt 0; do
       command man -t -- "${1-}" 2>/dev/null |
-        command ps2pdf - - | command open -a Preview -f
+        ps2pdf - - | open -a Preview -f
       shift
     done
   elif command -v -- mandoc >/dev/null 2>&1 && {
@@ -6465,8 +6462,8 @@ man_pdf() {
       test -x /Applications/Preview.app/Contents/MacOS/Preview
   }; then
     while test "${#}" -gt 0; do
-      command mandoc -T pdf "$(command man -w "${1-}" 2>/dev/null)" |
-        command open -a Preview -f
+      mandoc -T pdf "$(command man -w "${1-}" 2>/dev/null)" |
+        open -a Preview -f
     done
   fi
   {
@@ -6495,7 +6492,7 @@ markdownlint_r() {
   export configuration
   # Markdown filename extensions
   # https://github.com/github/linguist/blob/7503f7588c/lib/linguist/languages.yml#L3707-L3718
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
     -path '*/Library' -prune -o \
@@ -6525,9 +6522,9 @@ markdownlint_r() {
     ')' \
     -type f \
     -print \
-    -exec sh -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command markdownlint "${configuration-}" --disable MD013 MD033 --dot --fix -- "${1-}"' _ {} ';'
+    -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  markdownlint "${configuration-}" --disable MD013 MD033 --dot --fix -- "${1-}"' _ {} ';'
   unset configuration >/dev/null 2>&1 || configuration=''
   {
     set \
@@ -6546,7 +6543,7 @@ maxdepth() {
     set -- "$((${1-} - 1))" "${2-}"'/*'
   done
   printf -- '#!/usr/bin/env sh\nfind -- . -path \047%s\047 -prune -o -print\n' "${2-}" | {
-    command bat \
+    bat \
       --color=auto \
       --decorations=never \
       --language=sh \
@@ -6565,7 +6562,7 @@ mindepth() {
     set -- "$((${1-} - 1))" "${2-}"'/*'
   done
   printf -- '#!/usr/bin/env sh\nfind -- . -path \047%s\047 -print\n' "${2-}" | {
-    command bat \
+    bat \
       --color=auto \
       --decorations=never \
       --language=sh \
@@ -6579,7 +6576,7 @@ mindepth() {
 }
 m1m1() {
   printf -- '#!/usr/bin/env sh\nfind -- . -path \047./*/*\047 -prune -o -path \047./*\047 -print\n' | {
-    command bat \
+    bat \
       --color=auto \
       --decorations=never \
       --language=sh \
@@ -6601,7 +6598,7 @@ non_ascii() {
   # https://unix.stackexchange.com/a/109753
 
   if test "$(
-    LC_ALL='C' command find -- "${@:-.}" \
+    LC_ALL='C' find -- "${@:-.}" \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
       -path './*' \
@@ -6614,7 +6611,7 @@ non_ascii() {
   )" != ''; then
 
     printf -- 'non-ASCII file names:\n'
-    LC_ALL='C' command find -- "${@:-.}" \
+    LC_ALL='C' find -- "${@:-.}" \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
       -path './*' \
@@ -6633,9 +6630,9 @@ non_ascii() {
   # https://stackoverflow.com/a/9395552
   # `-I`: exclude binary files
   # `-e`: search expression
-  if LC_ALL='C' command git --no-pager grep -I --no-index --max-depth=0 --exclude-standard --perl-regexp --quiet --recursive -e '[\200-\377]|[^\t -~]'; then
+  if LC_ALL='C' git --no-pager grep -I --no-index --max-depth=0 --exclude-standard --perl-regexp --quiet --recursive -e '[\200-\377]|[^\t -~]'; then
     printf -- 'file content i.\n'
-    LC_ALL='C' command git --no-pager grep -I --no-index --max-depth=0 --exclude-standard --perl-regexp --line-number --recursive -e '[\200-\377]|[^\t -~]'
+    LC_ALL='C' git --no-pager grep -I --no-index --max-depth=0 --exclude-standard --perl-regexp --line-number --recursive -e '[\200-\377]|[^\t -~]'
   fi
   #  # https://stackoverflow.com/a/3208902
   #  LC_ALL='C' grep --color -r -e '[^ -~]' >/dev/null 2>&1 &&
@@ -6643,7 +6640,7 @@ non_ascii() {
   #    LC_ALL='C' grep --color -n -r -e '[^ -~]'
 }
 non_ascii_filenames() {
-  LC_ALL='C' command find -- "${@:-.}" \
+  LC_ALL='C' find -- "${@:-.}" \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
@@ -6659,9 +6656,9 @@ non_ascii_filenames() {
 nslookup_r() {
   # repeated nameserver lookup like itools.com/internet of olden times
   while test "${#}" -gt 0; do
-    output="$(command nslookup "${1-}" 2>&1)"
-    printf -- '%s\n' "${output-}" | grep -A 1 -e 'Name' | tail -n 1 | command awk -- '{print $2}'
-    printf -- '%s\n' "${output-}" | grep -e 'name' | command awk -- '{print $4}'
+    output="$(nslookup "${1-}" 2>&1)"
+    printf -- '%s\n' "${output-}" | grep -A 1 -e 'Name' | tail -n 1 | awk -- '{print $2}'
+    printf -- '%s\n' "${output-}" | grep -e 'name' | awk -- '{print $4}'
     shift
   done
 }
@@ -6709,7 +6706,7 @@ ocr() {
       *.[Pp][Dd][Ff])
         # useful when processing multiple files
         printf -- '\n%s\n' "${file-}" >&2 &&
-          command ocrmypdf \
+          ocrmypdf \
             --deskew \
             --language eng \
             --optimize 0 \
@@ -6735,7 +6732,7 @@ ocr_eo() {
       case "${file-}" in
       *.[Pp][Dd][Ff])
         printf -- '\n%s\n' "${file-}" >&2 &&
-          command ocrmypdf \
+          ocrmypdf \
             --deskew \
             --language eng+epo \
             --optimize 0 \
@@ -6769,45 +6766,45 @@ office_update() {
 # open current directory if no argument is given
 open() {
   if test "${#}" -eq 0; then
-    command open -- "${PWD:-.}"
+    open -- "${PWD:-.}"
   else
     case "${1-}" in
     P)
       { test "${2-}" != '' &&
-        command open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/utilities/'"${2-}"'.html'; } ||
-        command open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/idx/utilities.html'
+        open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/utilities/'"${2-}"'.html'; } ||
+        open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/idx/utilities.html'
       ;;
     p)
       { test "${2-}" != '' &&
-        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html'; } ||
-        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html'
+        open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html'; } ||
+        open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html'
       ;;
     B)
       { test "${2-}" != '' &&
-        command open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#'"${2-}"; } ||
-        command open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/idx/sbi.html'
+        open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/utilities/V3_chap02.html#'"${2-}"; } ||
+        open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/idx/sbi.html'
       ;;
     b)
       { test "${2-}" != '' &&
-        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#'"${2-}"; } ||
-        command open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/sbi.html'
+        open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#'"${2-}"; } ||
+        open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/sbi.html'
       ;;
     g)
       shift &&
         gopen "${@-}"
       ;;
     sc*)
-      command open -- 'https://github.com/koalaman/shellcheck/wiki/SC'"${1#sc}"
+      open -- 'https://github.com/koalaman/shellcheck/wiki/SC'"${1#sc}"
       ;;
     SC*)
-      command open -- 'https://github.com/koalaman/shellcheck/wiki/'"${1-}"
+      open -- 'https://github.com/koalaman/shellcheck/wiki/'"${1-}"
       ;;
     so*)
       # like cheat.sh’s `so/q/33041363`
-      command open -- 'https://stackoverflow.com/'"${1#so/}"
+      open -- 'https://stackoverflow.com/'"${1#so/}"
       ;;
     *)
-      command open "${@-}"
+      open "${@-}"
       ;;
     esac
   fi
@@ -6829,8 +6826,8 @@ unpax() {
 ## pasteboard
 pbc() {
   # gather content, but also print it
-  command pbcopy &&
-    command pbpaste
+  pbcopy &&
+    pbpaste
 }
 # https://github.com/ferrarimarco/dotfiles/commit/dc9e378f37
 command -v -- pbcopy >/dev/null 2>&1 ||
@@ -6853,7 +6850,7 @@ pdf_images() {
       *.[Pp][Dd][Ff])
         # -p: add page numbers to filenames
         # -print-filenames: to standard output
-        command pdfimages \
+        pdfimages \
           -all \
           -p \
           -print-filenames \
@@ -6883,13 +6880,13 @@ perltidy_r() {
     command -v -- perltidy >/dev/null 2>&1 ||
     return 127
   find_perl_files | while IFS='' read -r -- file; do
-    command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
-      ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+      ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
       test -s "${file-}" &&
       test ! -L "${file-}" &&
       mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/perltidy' &&
       cp -f -p -- "${file-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/perltidy/'"${file##*/}" &&
-      command perltidy --outfile "${file-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/perltidy/'"${file##*/}"
+      perltidy --outfile "${file-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/perltidy/'"${file##*/}"
   done
   {
     set \
@@ -6906,7 +6903,7 @@ permissions() {
   # set owner and group to current user
   set \
     -o xtrace
-  command git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
+  git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "${?:-1}"
   chown -R "$(id -u)":"$(id -g)" .
   # make all directories traversable
@@ -6926,13 +6923,13 @@ permissions() {
 posix_character_classes() {
   set -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/tr.html'
   {
-    command wget \
+    wget \
       --hsts-file=/dev/null \
       --output-document=- \
       --quiet \
       -- \
       "${1-}" ||
-      command curl \
+      curl \
         --fail \
         --location \
         --show-error \
@@ -6968,7 +6965,7 @@ posix_utilities_list() {
   # type ulimit umask unalias uname uncompress unexpand unget uniq unlink
   # uucp uudecode uuencode uustat uux val vi wait wc what who write xargs [xgettext]
   # yacc zcat
-  command curl \
+  curl \
     --show-error \
     --silent \
     --url 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html' |
@@ -7018,8 +7015,8 @@ posix_variables_list() {
   # TERMCAP TERMINFO TMPDIR TZ USER VISUAL YACC YFLAGS
   set -- 'https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html'
   {
-    command wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" ||
-      command curl --fail --show-error --silent --url "${1-}"
+    wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" ||
+      curl --fail --show-error --silent --url "${1-}"
   } 2>/dev/null |
     sed \
       -n \
@@ -7057,7 +7054,7 @@ print_duplicate_lines() {
     LC_ALL='C' sort -f
 
   # https://github.com/gongchengra/hacker/blob/master/bash/sed_vs_awk.txt#L583
-  command awk -- 'a[$0]++' "${1-}" |
+  awk -- 'a[$0]++' "${1-}" |
     LC_ALL='C' sort -u |
     LC_ALL='C' sort -f
 }
@@ -7080,11 +7077,11 @@ priority() {
     set -- "${1:-bird}"
     ;;
   esac
-  command sudo -- renice -n -20 -p "$(
+  sudo -- renice -n -20 -p "$(
     ps -a -u "$(
       id -u
     )" |
-      command awk -vquery="${1-}" -- '$0 ~ query {print $2; exit}'
+      awk -vquery="${1-}" -- '$0 ~ query {print $2; exit}'
   )" ||
     return "${?:-1}"
   {
@@ -7113,9 +7110,9 @@ pledit() {
         ;;
       esac
     # convert the binary file to XML
-    command plutil -convert xml1 -- "${file-}" &&
+    plutil -convert xml1 -- "${file-}" &&
       # open with the default editor
-      command "${EDITOR:-vi}" -- "${file-}"
+      "${EDITOR:-vi}" -- "${file-}"
   done
 }
 
@@ -7137,7 +7134,7 @@ plist_r() {
   *)
     if test "${#}" -eq 0; then
       # https://bit.ly/apple_property_list_filename_extensions
-      command find -- . \
+      find -- . \
         -path '*/Library' -prune -o \
         -path "${DOTFILES-}"'/*' -prune -o \
         -path '*/Trash' -prune -o \
@@ -7186,10 +7183,10 @@ plist_r() {
         ')' \
         -type f \
         -print \
-        -exec sh -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 || ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 && command plutil -convert xml1 -o /tmp/"${1##*/}" -- "${1-}" && sed -e '\''# replace tabs with two spaces each'\'' -e '\''s/\t/  /g'\'' -e '\''# insert each indented line by two more spaces'\'' -e '\''s/^  /    /'\'' -e '\''# indent top-level <dict> elements by two spaces'\'' -e '\''s/^\(<\/\{0,1\}dict>\)/  \1/'\'' /tmp/"${1##*/}" >"${1-}"' _ {} ';'
+        -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 || ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 && plutil -convert xml1 -o /tmp/"${1##*/}" -- "${1-}" && sed -e '\''# replace tabs with two spaces each'\'' -e '\''s/\t/  /g'\'' -e '\''# insert each indented line by two more spaces'\'' -e '\''s/^  /    /'\'' -e '\''# indent top-level <dict> elements by two spaces'\'' -e '\''s/^\(<\/\{0,1\}dict>\)/  \1/'\'' /tmp/"${1##*/}" >"${1-}"' _ {} ';'
     else
       while test "${#}" -gt 0; do
-        command plutil -convert xml1 -o "${TMPDIR:-/tmp}"'/'"${1##*/}" -- "${1-}" &&
+        plutil -convert xml1 -o "${TMPDIR:-/tmp}"'/'"${1##*/}" -- "${1-}" &&
           sed \
             -e '# replace tabs with two spaces each' \
             -e 's/\t/  /g' \
@@ -7213,7 +7210,7 @@ plist_r() {
 # PlistBuddy
 test -x '/usr/libexec/PlistBuddy' &&
   # https://apple.stackexchange.com/a/414774
-  alias -- plistbuddy='command /usr/libexec/PlistBuddy'
+  alias -- plistbuddy='/usr/libexec/PlistBuddy'
 
 ## PNG
 to_png() {
@@ -7222,7 +7219,7 @@ to_png() {
     -o noglob \
     -o xtrace
   for file in "${@-}"; do
-    command magick \
+    magick \
       -background none \
       -density "${d:-2048}" \
       -quality 100 \
@@ -7230,7 +7227,7 @@ to_png() {
       -- \
       "${file-}" \
       "${file%.*}"'.transparent.png' &&
-      command magick \
+      magick \
         -background white \
         -density "${d:-2048}" \
         -quality 100 \
@@ -7258,7 +7255,7 @@ advpng_r() {
       test ! -L "${file-}" &&
       case "${file-}" in
       *.[Pp][Nn][Gg])
-        command advpng \
+        advpng \
           --recompress \
           --shrink-insane \
           --iter 1024 \
@@ -7287,7 +7284,7 @@ optipng_r() {
       test ! -L "${file-}" &&
       case "${file-}" in
       *.[Pp][Nn][Gg])
-        command optipng \
+        optipng \
           -fix \
           -force \
           -nb \
@@ -7324,7 +7321,7 @@ oxipng_r() {
       test ! -L "${file-}" &&
       case "${file-}" in
       *.[Pp][Nn][Gg])
-        command oxipng \
+        oxipng \
           --filters=0,9 \
           --opt=max \
           --out="${file%.*}"'-oxipng.png' \
@@ -7360,7 +7357,7 @@ pngcrush_r() {
         shift
         ;;
       *.[Pp][Nn][Gg])
-        command pngcrush \
+        pngcrush \
           -brute \
           -fix \
           -force \
@@ -7389,7 +7386,7 @@ pngout_r() {
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
-      command pngout \
+      pngout \
         -b0 \
         -d0 \
         -f4 \
@@ -7421,7 +7418,7 @@ ql() {
     return 127
   case "${1-}" in
   -r)
-    command find -- . \
+    find -- . \
       -path './*/*' -prune -o \
       -path './*.*.*' -prune -o \
       -path './* *' -prune -o \
@@ -7433,7 +7430,7 @@ ql() {
       -type f \
       -exec sh -c -- 'case "${1-}" in
 *.asciidoc | *.adoc | *.asc)
-  command bat \
+  bat \
     --color=auto \
     --decorations=never \
     --language=asciidoc \
@@ -7445,8 +7442,8 @@ ql() {
     "${1-}" 2>/dev/null
   ;;
 *)
-  command qlmanage -p -- "${1-}" >/dev/null 2>&1 ||
-    command bat \
+  qlmanage -p -- "${1-}" >/dev/null 2>&1 ||
+    bat \
       --color=auto \
       --decorations=never \
       --paging=never \
@@ -7460,7 +7457,7 @@ esac' _ {} +
     ;;
   *)
     while test "${#}" -ne 0; do
-      command qlmanage -p -- "${1-}" >/dev/null 2>&1 &&
+      qlmanage -p -- "${1-}" >/dev/null 2>&1 &&
         shift
     done
     ;;
@@ -7507,8 +7504,8 @@ random_r() {
       -e 's/:posh$//' \
       -e 's/:posh://' |
     sed -e 's/:/\n/g' | while IFS='' read -r -- shell; do
-    { eval " $(printf -- 'command %s -c \047\042%s\140t\044(Get-Random)\042\047\n' "${shell-}" "${shell-}")" ||
-      eval " $(printf -- 'command %s -c \047printf -- \047\134\047\047%s\134t\045s\134n\047\134\047\047 "\044{RANDOM}"\047\n' "${shell-}" "${shell-}")"; } |
+    { eval " $(printf -- '%s -c \047\042%s\140t\044(Get-Random)\042\047\n' "${shell-}" "${shell-}")" ||
+      eval " $(printf -- '%s -c \047printf -- \047\134\047\047%s\134t\045s\134n\047\134\047\047 "\044{RANDOM}"\047\n' "${shell-}" "${shell-}")"; } |
       sed \
         -n \
         -e '/[[:space:]][[:digit:]]/p' \
@@ -7544,14 +7541,14 @@ random_string() {
 
   # https://github.com/hectorm/hblock/commit/7b9518ad14
   true &
-  command awk -vN="${!:--1}" -- '
+  awk -vN="${!:--1}" -- '
 BEGIN {
   srand()
   printf("%08x%06x", rand() * 2^31-1,N)
 }'
 
   true &
-  command awk -vINT_MAX="$(printf -- '%d\n' "${INT_MAX:-$(
+  awk -vINT_MAX="$(printf -- '%d\n' "${INT_MAX:-$(
     exponent=31
     result=1
     while test "${exponent-}" -gt 0; do
@@ -7568,15 +7565,15 @@ rbenv_update_r() {
   set \
     -o verbose \
     -o xtrace
-  # for file in "$(command rbenv prefix)"/bin/**/*; do
-  #   command gem install --verbose "${file##*/}"
+  # for file in "$(rbenv prefix)"/bin/**/*; do
+  #   gem install --verbose "${file##*/}"
   # done
-  command find -- "$(command rbenv prefix)"'/bin' \
-    -path "$(command rbenv prefix)"'/bin/*/*' -prune -o \
+  find -- "$(rbenv prefix)"'/bin' \
+    -path "$(rbenv prefix)"'/bin/*/*' -prune -o \
     -type f \
     -exec sh -x -c -- 'for file in "${@-}"; do
   test -x "${file-}" &&
-    command gem install --verbose "${file##*/}"
+    gem install --verbose "${file##*/}"
 done
 ' {} +
   {
@@ -7589,7 +7586,7 @@ alias -- gem_update_r='rbenv_update_r'
 
 ## Rectangle
 # set ⌘⌥F to maximize the focused window
-alias -- rectangle_shortcut='command defaults write com.knollsoft.Rectangle maximize -dict-add keyCode -float 3 modifierFlags -float 1572864 2>/dev/null'
+alias -- rectangle_shortcut='defaults write com.knollsoft.Rectangle maximize -dict-add keyCode -float 3 modifierFlags -float 1572864 2>/dev/null'
 
 remove_trailing_slash() {
   # POSIX-compliant remove trailing slashes
@@ -7608,8 +7605,8 @@ rename_install() {
   set -- "${DOTFILES-}"'/bin/rename' 'https://github.com/ap/rename/raw/HEAD/rename' &&
     mkdir -p -- "${1##*/}" &&
     {
-      command wget --hsts-file=/dev/null --quiet --output-document="${1-}" -- "${2-}" ||
-        command curl --fail --location --show-error --silent --output --url "${2-}" -- "${1-}"
+      wget --hsts-file=/dev/null --quiet --output-document="${1-}" -- "${2-}" ||
+        curl --fail --location --show-error --silent --output --url "${2-}" -- "${1-}"
     } 2>/dev/null &&
     chmod -- 755 "${1-}"
 }
@@ -7635,7 +7632,7 @@ rename_sanitize() {
   done
   shift "$((OPTIND - 1))"
 
-  command find -- . \
+  find -- . \
     -depth \
     ! -path '*/.git/*' \
     ! -path '*/.well-known/*' \
@@ -7675,7 +7672,7 @@ rename_r() {
     return 69
   case "${#}" in
   2)
-    command find -- . \
+    find -- . \
       -depth \
       ! -path '*/.git/*' \
       ! -path '*/.well-known/*' \
@@ -7696,7 +7693,7 @@ rename_r() {
       {} +
     ;;
   0)
-    command find -- . \
+    find -- . \
       -depth \
       ! -path '*/.git/*' \
       ! -path '*/.well-known/*' \
@@ -7736,17 +7733,17 @@ rename_with_dimensions() {
     -o verbose \
     -o xtrace
   for file in "${@-}"; do
-    command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
       test -s "${file-}" &&
       test ! -L "${file-}" &&
 
       # if extracting the image dimensions works...
-      command exiftool -ImageSize -short3 -- "${file-}" >/dev/null 2>&1 &&
+      exiftool -ImageSize -short3 -- "${file-}" >/dev/null 2>&1 &&
 
       # then rename the file
       mv -i -- \
         "${file-}" \
-        "${file%.*}"'.'"$(command exiftool -ImageSize -short3 -- "${file-}")"'.'"${file##*.}"
+        "${file%.*}"'.'"$(exiftool -ImageSize -short3 -- "${file-}")"'.'"${file##*.}"
   done
   {
     set \
@@ -7780,7 +7777,7 @@ rsync_r() {
   esac
   shift
   while test "${#}" -gt 0; do
-    command rsync --archive --compress --partial --progress --verbose -- "${1-}" "${target-}"
+    rsync --archive --compress --partial --progress --verbose -- "${1-}" "${target-}"
     shift
   done
   unset target >/dev/null 2>&1 || target=''
@@ -7792,9 +7789,9 @@ rubocop_r() {
     command -v -- rubocop >/dev/null 2>&1 ||
     return 127
   find_ruby_files | while IFS='' read -r -- file; do
-    command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
-      ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-      command rubocop \
+    git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+      ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+      rubocop \
         --autocorrect-all \
         --extra-details \
         --format github \
@@ -7809,12 +7806,12 @@ rustfmt_r() {
   set \
     -o verbose \
     -o xtrace
-  command find -- . \
+  find -- . \
     -name '*.rs' \
     -type f \
-    -exec sh -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command rustfmt --emit files --verbose -- "${1-}"
+    -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  rustfmt --emit files --verbose -- "${1-}"
 ' _ {} ';'
   {
     set \
@@ -7833,7 +7830,7 @@ sc() {
       return 0
       ;;
     *)
-      command test -f "${file-}" ||
+      test -f "${file-}" ||
         {
           printf -- '%s: %s: No such file\n' "${0##*/}" "${file-}" >&2
           # EX_NOINPUT
@@ -7911,7 +7908,7 @@ sca() {
         'zsh         -C    -e    -n -u    -o pipefail -o noglob -o posix_aliases -o posix_arg_zero -o posix_builtins -o posix_cd -o posix_identifiers -o posix_jobs -o posix_strings -o posix_traps'; do
         if command -v -- "${test%% *}" >/dev/null 2>&1; then
           { {
-            eval " command ${test-} -- \"${file-}\"" 2>&1 &&
+            eval "  ${test-} -- \"${file-}\"" 2>&1 &&
               printf -- '  passed %s\n' "${test%% *}"
           } ||
             printf -- '    %s failed %s\n' "${file##*/}" "${test%% *}"; } |
@@ -7936,12 +7933,12 @@ scour_r() {
     -o verbose \
     -o xtrace
   for file in "${@-}"; do
-    command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
       test -s "${file-}" &&
       test ! -L "${file-}" &&
       case "${file-}" in
       *.[Ss][Vv][Gg])
-        command scour \
+        scour \
           --create-groups \
           --disable-embed-rasters \
           --enable-comment-stripping \
@@ -7980,7 +7977,7 @@ scour_r() {
 # DEFER? This is me attempting to defer `SDKPATH` until after the first load of `~/.zshrc`. ¯\_(ツ)_/¯
 # I feel like I’ve done this accidentally before (was it Python) and it worked, but I can’t remember
 if command -v -- xcrun >/dev/null 2>&1; then
-  SDKPATH="$(command xcrun --show-sdk-path)" &&
+  SDKPATH="$(xcrun --show-sdk-path)" &&
     export SDKPATH &&
     test -d "${SDKPATH%/}"'/usr/share/man' &&
     MANPATH="${MANPATH:+${MANPATH-}:}${SDKPATH%/}"'/usr/share/man'
@@ -7999,7 +7996,7 @@ sed_help() {
 
 sed_pretty() {
   printf -- '\n' |
-    command gsed \
+    gsed \
       --debug \
       --posix \
       --sandbox "$(
@@ -8020,13 +8017,13 @@ sed_pretty() {
       -e 's/\([^[:space:]].*\)$/-e '\''\1'\'' \\/' \
       -e '# add shebang and call sed' \
       -e '1 s/.*/#!\/usr\/bin\/env sh\nsed \\/' |
-    command shfmt \
+    shfmt \
       --indent 2 \
       --language-dialect bash \
       --simplify \
       -- \
       - | {
-    command bat \
+    bat \
       --color=auto \
       --decorations=never \
       --language=sh \
@@ -8038,7 +8035,7 @@ sed_pretty() {
         -
   }
   printf -- '%s\n' "${@-}" |
-    command gsed \
+    gsed \
       --debug \
       --posix \
       --sandbox \
@@ -8057,13 +8054,13 @@ sed_pretty() {
       -e 's/\([^[:space:]].*\)$/-e '\''\1'\'' \\/' \
       -e '# add shebang and call sed' \
       -e '1 s/.*/#!\/usr\/bin\/env sh\nsed \\/' |
-    command shfmt \
+    shfmt \
       --indent 2 \
       --language-dialect bash \
       --simplify \
       -- \
       - | {
-    command bat \
+    bat \
       --color=auto \
       --decorations=never \
       --language=sh \
@@ -8136,7 +8133,7 @@ shellcheck_markdown() {
   # SC1091: allow linking to, but not following, linked scripts
   # SC2123: allow `$PATH` modification
   # SC2312: allow masking return values
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
     -path '*/Library' -prune -o \
@@ -8165,8 +8162,8 @@ shellcheck_markdown() {
     -name 'contents.lr' \
     ')' \
     -type f \
-    -exec sh -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 || ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 && while IFS='\'''\'' read -r -- line; do test "${code-}" = '\''1'\'' && test "${line-}" != '\''```'\'' && printf -- '\''%s\n'\'' "${line-}"; case "${line-}" in '\''```sh'\'' | '\''```bash'\'' | '\''```shell'\'' | '\''```zsh'\'' ) code=1 ;; '\''```'\'') code='\'''\'' ;; *) ;; esac; done <"${1-}"' _ {} ';' |
-    command shellcheck \
+    -exec sh -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 || ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 && while IFS='\'''\'' read -r -- line; do test "${code-}" = '\''1'\'' && test "${line-}" != '\''```'\'' && printf -- '\''%s\n'\'' "${line-}"; case "${line-}" in '\''```sh'\'' | '\''```bash'\'' | '\''```shell'\'' | '\''```zsh'\'' ) code=1 ;; '\''```'\'') code='\'''\'' ;; *) ;; esac; done <"${1-}"' _ {} ';' |
+    shellcheck \
       --check-sourced \
       --enable=all \
       --exclude='SC1071,SC1090,SC1091,SC2123,SC2312' \
@@ -8187,8 +8184,8 @@ shellharden_r() {
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
-      command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
-      command shellharden --transform -- "${file-}" >"${TMPDIR:-/tmp}"'/'"${file##*/}" &&
+      git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
+      shellharden --transform -- "${file-}" >"${TMPDIR:-/tmp}"'/'"${file##*/}" &&
       sed \
         -e 's/\([[:space:]]*\)\((*\)"\(\\\)"/\1\2'\''\3'\''/g' \
         -e '# replace two double quotes with two single quotes' \
@@ -8219,14 +8216,14 @@ restore_shell_options() {
 
   # restore options
   test "${set_o-}" != '' &&
-    command printf -- '%s\n' "${set_o-}" | command "${SHELL-}" -C -e -n -u -x -o noglob - 2>/dev/null &&
-    { eval " ${set_o-}" >/dev/null 2>&1 || command true; }
+    printf -- '%s\n' "${set_o-}" | "${SHELL-}" -C -e -n -u -x -o noglob - 2>/dev/null &&
+    { eval " ${set_o-}" >/dev/null 2>&1 || true; }
   unset set_o >/dev/null 2>&1 || set_o=''
 
   test "${set_hyphen-}" != '' &&
-    command printf -- '%s' "${set_hyphen-}" |
-    command sed -e 's/\(.\)/\1\n/g' | while IFS='' read -r -- option; do
-      { eval " set -${option-}" >/dev/null 2>&1 || command true; }
+    printf -- '%s' "${set_hyphen-}" |
+    sed -e 's/\(.\)/\1\n/g' | while IFS='' read -r -- option; do
+      { eval " set -${option-}" >/dev/null 2>&1 || true; }
     done
 
   unset set_hyphen >/dev/null 2>&1 || set_hyphen=''
@@ -8243,7 +8240,7 @@ shf() {
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
-      command shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}"
+      shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}"
   done
   {
     set \
@@ -8259,8 +8256,8 @@ shfmt_r() {
     -o xtrace
   find_shell_scripts |
     while IFS='' read -r -- file; do
-      command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
-        command shfmt --indent "${@:-2}" --language-dialect bash --simplify --write -- "${file-}" &&
+      git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
+        shfmt --indent "${@:-2}" --language-dialect bash --simplify --write -- "${file-}" &&
         test -s "${file-}" &&
         test ! -L "${file-}" &&
         mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp' &&
@@ -8320,14 +8317,14 @@ shfmt_r_() {
   set \
     -o xtrace
   for file in "${@-}"; do
-    command shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}" &&
+    shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}" &&
       test -s "${file-}" &&
       # prevent overwriting symlinks and turning them into regular files
       test ! -L "${file-}" &&
       mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp' &&
       cp -f -p -- "${file-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" &&
-      command awk -- 'match($0,/((\$ \+ .*]))/) { tgt=substr($0,RSTART,RLENGTH); gsub(/ /,"",tgt); $0=substr($0,1,RSTART-1) tgt substr($0,RSTART+RLENGTH) } 1; {gsub(/\(\($\+commands\[(.+)\]\)\)/, "\\1")}' "${file-}" >"${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" &&
-      command sed \
+      awk -- 'match($0,/((\$ \+ .*]))/) { tgt=substr($0,RSTART,RLENGTH); gsub(/ /,"",tgt); $0=substr($0,1,RSTART-1) tgt substr($0,RSTART+RLENGTH) } 1; {gsub(/\(\($\+commands\[(.+)\]\)\)/, "\\1")}' "${file-}" >"${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" &&
+      sed \
         -e 's/\$\([a-zA-Z1-9_][a-zA-Z0-9_]*\(\[[^]]\{1,\}\]\)\{0,1\}\)/\${\1}/g' \
         -e 's/(([[:space:]]*\$[[:space:]]*+[[:space:]]*\([^)]*\)))/(($+\1))/g' \
         -e 's/\[\([^[:space:]]*\)[[:space:]]*\([^[:space:]]*\)[[:space:]]*\([^[:space:]]*\)\]/\[\1\2\3\]/g' \
@@ -8342,13 +8339,13 @@ shfmt_r_r_() {
   set \
     -o xtrace
   for file in "${@-}"; do
-    command shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}" &&
+    shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}" &&
       test -s "${file-}" &&
       # prevent overwriting symlinks and turning them into regular files
       test ! -L "${file-}" &&
       mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp' &&
       cp -f -p -- "${file-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" &&
-      command sed \
+      sed \
         -e 's/^\([^#]*\)\$\([a-zA-Z1-9_][a-zA-Z0-9_]*\(\[[^]]\{1,\}\]\)\{0,1\}\)/\1\${\2}/g' \
         -e 's/^\([^#]*\)\(([[:space:]]*\$[[:space:]]*+[[:space:]]*\([^)]*\))\)/\1(($+\3))/g' \
         -e 's/^\([^#]*\)\[\([^[:space:]]*\)[[:space:]]*\([^[:space:]]*\)[[:space:]]*\([^[:space:]]*\)\]/\1\[\2\3\4\]/g' \
@@ -8363,13 +8360,13 @@ shfmt_r_r_r() {
   set \
     -o xtrace
   for file in "${@-}"; do
-    command shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}" &&
+    shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}" &&
       test -s "${file-}" &&
       # prevent overwriting symlinks and turning them into regular files
       test ! -L "${file-}" &&
       mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp' &&
       cp -f -p -- "${file-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" &&
-      command sed \
+      sed \
         -e 's/^\([^#]*\)\$\([a-zA-Z1-9_][a-zA-Z0-9_]*\(\[[^]]\{1,\}\]\)\{0,1\}\)/\1\${\2}/g' \
         -e 's/^\([^#]*\)\(([[:space:]]*\$[[:space:]]*+[[:space:]]*\([^)]*\))\)/\1(($+\3))/g' \
         -e 's/^\([^#]*\)\[\([^[:space:]]*\)[[:space:]]*\([^[:space:]]*\)[[:space:]]*\([^[:space:]]*\)\]/\1\[\2\3\4\]/g' \
@@ -8400,10 +8397,10 @@ shred_r() {
       size="$(
         LC_ALL='C' find -- "${file-}" \
           -type f \
-          -exec ls -l -- {} ';' |
-          LC_ALL='C' command awk -- '{printf "%d\n", $5}'
+          exec ls -l -- {} ';' |
+          LC_ALL='C' awk -- '{printf "%d\n", $5}'
       )" &&
-      command shred \
+      shred \
         --force \
         --iterations="$(command -p -- getconf -- CHAR_MAX)" \
         --remove='wipesync' \
@@ -8519,7 +8516,7 @@ sk() {
     -o noglob \
     -o verbose \
     -o xtrace
-  command sudo \
+  sudo \
     -- \
     killall -z \
     -- \
@@ -8565,7 +8562,7 @@ spotify_request_token() {
     -o xtrace
   SPOTIFY_TOKEN="$(
     # https://web.archive.org/web/2023id_/developer.spotify.com/documentation/web-api/tutorials/getting-started#request-an-access-token
-    command curl \
+    curl \
       --data 'grant_type=client_credentials' \
       --data 'client_id='"${SPOTIFY_CLIENT_ID-}" \
       --data 'client_secret='"${SPOTIFY_CLIENT_SECRET-}" \
@@ -8593,22 +8590,22 @@ spotify_request_token() {
 }
 
 alias -- \
-  sshf='command ssh llarson@freeshell.de' \
-  sshk='command ssh kevoc7@oconnor.nyc' \
+  sshf='ssh llarson@freeshell.de' \
+  sshk='ssh kevoc7@oconnor.nyc' \
   sshc='sshk' \
   ssho='sshk' \
-  sshl='command ssh lucaslarson@lucaslarson.net' \
-  sshs='command ssh ll@tty.sdf.org' \
-  sshu='command ssh menu@sdf.org'
+  sshl='ssh lucaslarson@lucaslarson.net' \
+  sshs='ssh ll@tty.sdf.org' \
+  sshu='ssh menu@sdf.org'
 
 standard_r() {
   {
-    command npm ls -- standard >/dev/null 2>&1 ||
-      command npm ls --location=global -- standard >/dev/null 2>&1 ||
+    npm ls -- standard >/dev/null 2>&1 ||
+      npm ls --location=global -- standard >/dev/null 2>&1 ||
       # EX_UNAVAILABLE
       return 69
   } &&
-    PS4=' ' command find -- . \
+    PS4=' ' find -- . \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
       -path '*/coverage' -prune -o \
@@ -8645,9 +8642,9 @@ standard_r() {
       ! -name '*-min.js' \
       ! -name '*.min.js' \
       -type f \
-      -exec sh -C -e -f -u -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command npm exec -- standard --fix -- "${1-}"
+      -exec sh -C -e -f -u -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  npm exec -- standard --fix -- "${1-}"
 ' _ {} ';'
 }
 
@@ -8673,7 +8670,7 @@ string_contains_alternative() {
 
 subdomains() {
   # TODO: merklemap.com API, begun at $custom/subdomains_merklemap.sh
-  command curl \
+  curl \
     --fail \
     --location \
     --show-error \
@@ -8820,7 +8817,7 @@ substring_contains() {
         # argument count is not 2
         # `return 3` because `return 1` means `$1` does not contain `$2`
         exit_code=3
-        command "${0-}" --help >&2
+        "${0-}" --help >&2
       fi
       ;;
     esac
@@ -8897,7 +8894,7 @@ stylelint_r() {
     -o verbose \
     -o xtrace
   configuration="$(
-    command find -L -- "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint' \
+    find -L -- "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint' \
       '(' \
       -path "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc' -o \
       -path "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.cjs' -o \
@@ -8911,7 +8908,7 @@ stylelint_r() {
       sed -e '1 q'
   )" &&
     export configuration='--config='"${configuration-}"
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
     -path '*/Empty' -prune -o \
@@ -8926,9 +8923,9 @@ stylelint_r() {
     -path '*vscode*' -prune -o \
     -name '*.css' \
     -type f \
-    -exec sh -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command npm exec -- stylelint --allow-empty-input --color "${configuration-}" --fix --formatter=verbose --ignore-disables --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables -- "${1-}"
+    -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  npm exec -- stylelint --allow-empty-input --color "${configuration-}" --fix --formatter=verbose --ignore-disables --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables -- "${1-}"
 ' _ {} ';'
   unset configuration >/dev/null 2>&1 || configuration=''
   {
@@ -8940,7 +8937,7 @@ stylelint_r() {
 
 super_linter_r() {
   # https://github.com/super-linter/super-linter/issues/5383#issuecomment-1998289936
-  command docker run \
+  docker run \
     --env DEFAULT_WORKSPACE="${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/lint' \
     --env IGNORE_GITIGNORED_FILES=true \
     --env LOG_LEVEL=DEBUG \
@@ -8963,10 +8960,10 @@ super_linter_r() {
     --env VALIDATE_PYTHON_BLACK=true \
     --env VALIDATE_RUBY=true \
     --env VALIDATE_YAML=true \
-    --volume "$(command git rev-parse --show-toplevel)"':'"${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/lint' \
+    --volume "$(git rev-parse --show-toplevel)"':'"${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/lint' \
     ghcr.io/super-linter/super-linter:latest
   # https://github.com/super-linter/super-linter/commit/c01d0bc870
-  command docker run \
+  docker run \
     --env ACTIONS_RUNNER_DEBUG=true \
     --env DISABLE_ERRORS=false \
     --env ERROR_ON_MISSING_EXEC_BIT=true \
@@ -8986,12 +8983,12 @@ swiftlint_r() {
     return 69
   # {} + was finding too many files.... so moved to {} \; and then to
   # -exec sh with too many flags
-  IFS=' ' command find -- . \
+  IFS=' ' find -- . \
     -name '*.swift' \
     -type f \
-    -exec sh -C -f -u -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command swiftlint lint --enable-all-rules --fix --format --progress -- "${1-}"
+    -exec sh -C -f -u -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  swiftlint lint --enable-all-rules --fix --format --progress -- "${1-}"
 ' _ {} ';'
 }
 
@@ -9045,10 +9042,10 @@ EOF
 tail() {
   case "${1-}" in
   -*)
-    tail "${@-}"
+    command -p -- tail "${@-}"
     ;;
   *)
-    tail -n "$((${LINES:-"$(
+    command -p -- tail -n "$((${LINES:-"$(
       tput -- lines 2>/dev/null ||
         printf -- '10 + 2'
     )"} - 3))" "${@-}"
@@ -9096,7 +9093,7 @@ tdt() {
       return 1
     ;;
   esac
-  command git status 2>/dev/null ||
+  git status 2>/dev/null ||
     true
   unset target >/dev/null 2>&1 || target=''
 }
@@ -9109,8 +9106,8 @@ temperature() {
     -o noglob
   # 𝑛 + narrow non-breaking space + degree sign + F
   printf -- '%d\342\200\257\302\260F\n' "$(
-    command sudo -- powermetrics --samplers smc |
-      command awk -- '/CPU die temperature/ {printf "%f * 9 / 5 + 32\n", $4; exit}' |
+    sudo -- powermetrics --samplers smc |
+      awk -- '/CPU die temperature/ {printf "%f * 9 / 5 + 32\n", $4; exit}' |
       bc
   )"
   {
@@ -9122,15 +9119,15 @@ temperature() {
 alias -- temp='temperature'
 
 textlint_r() {
-  command npm config --location=global -- get prefix >/dev/null 2>&1 &&
-    test -d "$(command npm config --location=global -- get prefix)" &&
-    test -d "$(command npm config --location=global -- get prefix)"'/lib/node_modules/textlint-rule-terminology' ||
+  npm config --location=global -- get prefix >/dev/null 2>&1 &&
+    test -d "$(npm config --location=global -- get prefix)" &&
+    test -d "$(npm config --location=global -- get prefix)"'/lib/node_modules/textlint-rule-terminology' ||
     # EX_UNAVAILABLE
     return 69
   set \
     -o xtrace
   # find all Markdown text files, then run `textlint` on them
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
     -path '*/Empty' -prune -o \
@@ -9190,9 +9187,9 @@ textlint_r() {
     -name 'use.stable.mask' \
     ')' \
     -type f \
-    -exec sh -x -c -- 'command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  command npm exec -- textlint --experimental --fix --rule terminology -- "${1-}"
+    -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+  npm exec -- textlint --experimental --fix --rule terminology -- "${1-}"
 ' _ {} ';'
   {
     set \
@@ -9204,24 +9201,24 @@ transfer() {
   for file in "${@-}"; do
     test -s "${file-}" &&
       {
-        command curl --fail --form 'expires=1' --form 'file=@'"${file-}" --form 'secret='\'''\''' --location --show-error --silent --url https://0x0.st 2>/dev/null ||
+        curl --fail --form 'expires=1' --form 'file=@'"${file-}" --form 'secret='\'''\''' --location --show-error --silent --url https://0x0.st 2>/dev/null ||
           {
-            command curl --fail --location --show-error --silent --upload-file "${file-}" --url 'https://bashupload.com' |
+            curl --fail --location --show-error --silent --upload-file "${file-}" --url 'https://bashupload.com' |
               sed -n -e '/http/ s/wget //p'
           } ||
-          command curl --fail --form 'file=@'"${file-}" --location --show-error --silent --url 'https://tmpfiles.org/api/v1/upload' |
+          curl --fail --form 'file=@'"${file-}" --location --show-error --silent --url 'https://tmpfiles.org/api/v1/upload' |
           sed \
             -n \
             -e '# emulate jq to insert "dl" into output' \
             -e 's/.*"url"[^."]*"\(https\{0,1\}:\/\/tmpfiles.org\)\([^"]*\)".*/\1\/dl\2\n/p' ||
-          command curl --fail --form 'file=@'"${file-}" --location --show-error --silent --write-out='\n' --url 'https://temp.sh/upload' ||
-          command wget --hsts-file=/dev/null --post-file="${file-}" --quiet 'https://temp.sh/upload' ||
-          command curl --fail --location --silent --show-error --upload-file "${file-}" --write-out='\n' --url 'https://temp.sh' ||
-          command curl --fail --location --silent --show-error --upload-file - --write-out='\n' --url 'https://temp.sh/'"${file-}" ||
-          command curl --fail --location --silent --show-error --upload-file "${file-}" --write-out='\n' --url 'https://temp.sh/'"${file##*/}" ||
-          command wget --body-file="${file-}" --hsts-file=/dev/null --method=PUT --output-document=- --quiet 'https://temp.sh/'"${file##*/}" ||
-          command curl --fail --location --show-error --silent --upload-file "${file-}" --write-out='\n' --url 'https://transfer.sh/'"${file##*/}" ||
-          command wget --body-file="${file-}" --hsts-file=/dev/null --method=PUT --output-document=- --quiet 'https://transfer.sh/'"${file##*/}"
+          curl --fail --form 'file=@'"${file-}" --location --show-error --silent --write-out='\n' --url 'https://temp.sh/upload' ||
+          wget --hsts-file=/dev/null --post-file="${file-}" --quiet 'https://temp.sh/upload' ||
+          curl --fail --location --silent --show-error --upload-file "${file-}" --write-out='\n' --url 'https://temp.sh' ||
+          curl --fail --location --silent --show-error --upload-file - --write-out='\n' --url 'https://temp.sh/'"${file-}" ||
+          curl --fail --location --silent --show-error --upload-file "${file-}" --write-out='\n' --url 'https://temp.sh/'"${file##*/}" ||
+          wget --body-file="${file-}" --hsts-file=/dev/null --method=PUT --output-document=- --quiet 'https://temp.sh/'"${file##*/}" ||
+          curl --fail --location --show-error --silent --upload-file "${file-}" --write-out='\n' --url 'https://transfer.sh/'"${file##*/}" ||
+          wget --body-file="${file-}" --hsts-file=/dev/null --method=PUT --output-document=- --quiet 'https://transfer.sh/'"${file##*/}"
       }
   done
 }
@@ -9254,14 +9251,14 @@ trash_developer() {
   mkdir -p -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' &&
     mv -f -i -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' "${target-}"'/Homebrew-'"${trash_date-}"
   command -v -- brew >/dev/null 2>&1 && {
-    command brew autoremove --verbose
-    command brew cleanup --prune=all --verbose
+    brew autoremove --verbose
+    brew cleanup --prune=all --verbose
   }
   command -v -- gem >/dev/null 2>&1 &&
-    command gem cleanup --verbose
+    gem cleanup --verbose
   case "$(
     command -v -- xcrun >/dev/null 2>&1 &&
-      command xcrun simctl list -j devices unavailable |
+      xcrun simctl list -j devices unavailable |
       sed \
         -n \
         -e 'H' \
@@ -9274,7 +9271,7 @@ trash_developer() {
   *)
     # this may require `sudo` and
     # this may be on a virtual but ejectable disk
-    command xcrun simctl delete unavailable
+    xcrun simctl delete unavailable
     ;;
   esac &&
     {
@@ -9309,22 +9306,22 @@ update_changelog() {
   file="$(
     cd -- "$(
       # attempt relative-path access
-      command git rev-parse \
+      git rev-parse \
         --show-toplevel \
         --path-format=relative |
         sed \
           -e '1 q'
     )" 2>/dev/null ||
       cd -- "$(
-        command git rev-parse \
+        git rev-parse \
           --show-toplevel
       )" ||
       return "${?:-1}"
     # find the Markdown changelog with the latest commit
-    command find -- . \
+    find -- . \
       -path './[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*.[Mm]*[Dd]*' \
       -type f \
-      -exec sh -c -- 'command git log --max-count=1 --pretty=tformat:'\''%at '\''"${1-}"' _ {} ';' |
+      -exec sh -c -- 'git log --max-count=1 --pretty=tformat:'\''%at '\''"${1-}"' _ {} ';' |
       LC_ALL='C' sort -n -r |
       sed \
         -e '# print only the second field of the first line' \
@@ -9336,9 +9333,9 @@ update_changelog() {
   # ensure the file exists
   touch -- "${file-}"
   # create local changes
-  command gem exec github_changelog_generator \
+  gem exec github_changelog_generator \
     --user "$(
-      command git ls-remote --get-url |
+      git ls-remote --get-url |
         sed \
           -e '# replace colons with forward slashes' \
           -e 's/:/\//g' \
@@ -9347,7 +9344,7 @@ update_changelog() {
           -e 's/.*\/\([^/]*\)\/[^/]*/\1/'
     )" \
     --project "$(
-      command git ls-remote --get-url |
+      git ls-remote --get-url |
         sed \
           -e 's/.*\///' \
           -e 's/\.git$//'
@@ -9379,14 +9376,14 @@ update_changelog() {
   test ! -e "${HOME%/}"'/.markdownlint.json' ||
     configuration='--config='"${HOME%/}"'/.markdownlint.json' ||
     configuration='--disable MD013'
-  command markdownlint "${configuration-}" --fix -- "${file-}"
+  markdownlint "${configuration-}" --fix -- "${file-}"
   unset file >/dev/null 2>&1 || file=''
   unset configuration >/dev/null 2>&1 || configuration=''
   # ensure nothing else is staged
-  command git reset --quiet HEAD -- .
+  git reset --quiet HEAD -- .
   # stage and commit files
-  command git add --verbose -- ./"${file-}"
-  command git commit \
+  git add --verbose -- ./"${file-}"
+  git commit \
     --author='GitHub <actions@github.com>' \
     --message='update changelog' \
     --verbose ||
@@ -9394,7 +9391,7 @@ update_changelog() {
 }
 
 # Unix epoch seconds
-alias -- unixtime='command awk -- '\''BEGIN {srand(); print srand()}'\'''
+alias -- unixtime='awk -- '\''BEGIN {srand(); print srand()}'\'''
 unixtime_set() {
   # force weekday matching when only 1970 to 1999 are available using perpetual calendar
   # UNIX 5.0: `date [ mmddhhmm[yy] ]`
@@ -9512,11 +9509,11 @@ code() {
     utility='/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'
   fi
   {
-    command "${utility-}" "${@:-.}" ||
-      command open -a 'Visual Studio Code - Insiders' "${@:-.}" ||
-      command open -n -a 'Visual Studio Code - Insiders' "${@:-.}" ||
-      command open -a 'Visual Studio Code' "${@:-.}" ||
-      command open -n -a 'Visual Studio Code' "${@:-.}"
+    "${utility-}" "${@:-.}" ||
+      open -a 'Visual Studio Code - Insiders' "${@:-.}" ||
+      open -n -a 'Visual Studio Code - Insiders' "${@:-.}" ||
+      open -a 'Visual Studio Code' "${@:-.}" ||
+      open -n -a 'Visual Studio Code' "${@:-.}"
   } 2>/dev/null # vomiting this kind of garbage since about late 2023
   # [0302/150701.624151:ERROR:codesign_util.cc(108)] SecCodeCheckValidity: Error Domain=NSOSStatusErrorDomain Code=-67062 "(null)" (-67062)
   # [0302/150702.727990:ERROR:codesign_util.cc(108)] SecCodeCheckValidity: Error Domain=NSOSStatusErrorDomain Code=-67062 "(null)" (-67062)
@@ -9526,7 +9523,7 @@ command -v -- _code >/dev/null 2>&1 &&
   compdef -- code-insiders='code' >/dev/null 2>&1
 
 wayback() {
-  command open -- 'https://web.archive.org/web/'"${1-}"
+  open -- 'https://web.archive.org/web/'"${1-}"
 }
 alias -- archive='wayback'
 
@@ -9541,7 +9538,7 @@ wayback_r() {
     command -v -- wayback_machine_downloader >/dev/null 2>&1 ||
       # EX_UNAVAILABLE
       return 69
-    command wayback_machine_downloader --all-timestamps "${1-}"
+    wayback_machine_downloader --all-timestamps "${1-}"
   )
 }
 
@@ -9555,7 +9552,7 @@ webp_r() {
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
-      command cwebp \
+      cwebp \
         -alpha_filter best \
         -lossless \
         -m 6 \
@@ -9583,9 +9580,9 @@ webp_r() {
 troubleshoot_website() {
   {
     printf -- '# https://web.archive.org/web/20221203151931/help.dreamhost.com/hc/en-us/articles/215867298-Commands-to-troubleshoot-your-websites\n'
-    printf -- 'command uptime\n'
-    printf -- 'command lsof -u "\044{LOGNAME:-\044{USER-}}" | grep -e '\''php'\'' | grep -e '\''/home'\''\n'
-    printf -- 'command watch "command lsof -u "\044{LOGNAME:-\044{USER-}}" | grep -e '\''php'\'' | grep -e '\''/home'\'' | tee -a -- ./results.txt"\n'
+    printf -- 'uptime\n'
+    printf -- 'lsof -u "\044{LOGNAME:-\044{USER-}}" | grep -e '\''php'\'' | grep -e '\''/home'\''\n'
+    printf -- 'watch "lsof -u "\044{LOGNAME:-\044{USER-}}" | grep -e '\''php'\'' | grep -e '\''/home'\'' | tee -a -- ./results.txt"\n'
     printf -- 'cat -- ./results.txt\n'
     printf -- '# https://web.archive.org/web/20221005032620/help.dreamhost.com/hc/en-us/articles/115000683852-Using-the-top-command-to-troubleshoot-your-website\n'
     printf -- 'top\n'
@@ -9597,15 +9594,15 @@ troubleshoot_website() {
     printf -- '# https://web.archive.org/web/20221203051014/help.dreamhost.com/hc/en-us/articles/216105097-Viewing-and-examining-your-access-log-via-SSH\n'
     printf -- 'cd -- "\044{HOME\045/}"'\''/logs/'\''"\044{LOGNAME:-\044{USER-}}"'\''.net'\''\n'
     printf -- '# list the last 10,000 site hits\n'
-    printf -- 'command find -L -- . -name '\''access.log'\'' -type f -exec tail -n 10000 -- {} + | command awk -- '\''{print \0441}'\'' | LC_ALL='\''C'\'' sort | uniq -c | LC_ALL='\''C'\'' sort -n\n'
+    printf -- 'find -L -- . -name '\''access.log'\'' -type f -exec tail -n 10000 -- {} + | awk -- '\''{print \0441}'\'' | LC_ALL='\''C'\'' sort | uniq -c | LC_ALL='\''C'\'' sort -n\n'
     printf -- '# watch the server log in real time\n'
     printf -- 'tail -f -- **/*access.log\n'
     printf -- '# list files being called the most\n'
-    printf -- 'command awk '\''{print \0447}'\'' ./access.log | cut -d? -f 1 | LC_ALL='\''C'\'' sort | uniq -c | LC_ALL='\''C'\'' sort -k -n 1 | tail -n 10\n'
+    printf -- 'awk '\''{print \0447}'\'' ./access.log | cut -d? -f 1 | LC_ALL='\''C'\'' sort | uniq -c | LC_ALL='\''C'\'' sort -k -n 1 | tail -n 10\n'
     printf -- '# list traffic for all user domains on server\n'
     printf -- 'cd -- "\044{HOME\045/}"'\''/logs\n && for k in \044(ls -S */https/access.log); do wc -l -- "\044{k-}" | LC_ALL='\''C'\'' sort -n -r; done\n'
   } | {
-    command bat \
+    bat \
       --decorations=never \
       --language=sh \
       --paging=never \
@@ -9657,7 +9654,7 @@ wget_download() {
 
   # user agent
   # https://web.archive.org/web/0id_/developers.google.com/search/blog/2019/10/updating-user-agent-of-googlebot#the-new-evergreen-googlebot-and-its-user-agent
-  command wget \
+  wget \
     --adjust-extension \
     --append-output="${1-}"'.log' \
     --continue \
@@ -9691,8 +9688,8 @@ wget_download() {
 which() {
   if builtin which "${@-}" >/dev/null 2>&1; then
     builtin which -a -s -x 2 "${@-}"
-  elif command "${HOMEBREW_PREFIX-}"'/bin/which' "${@-}" >/dev/null 2>&1; then
-    command "${HOMEBREW_PREFIX-}"'/bin/which' "${@-}"
+  elif "${HOMEBREW_PREFIX-}"'/bin/which' "${@-}" >/dev/null 2>&1; then
+    "${HOMEBREW_PREFIX-}"'/bin/which' "${@-}"
   elif command '/usr/bin/which' "${@-}" >/dev/null 2>&1; then
     command '/usr/bin/which' "${@-}"
   elif command '/bin/which' "${@-}" >/dev/null 2>&1; then
@@ -9721,7 +9718,7 @@ whois() {
     domain="${1-}"
 
   # this is the best whois server
-  command whois --host whois.internic.net "${domain-}" |
+  command -p -- whois --host whois.internic.net "${domain-}" |
 
     # strip boilerplate footer
     grep -e '^   '
@@ -9731,12 +9728,12 @@ whois() {
 
 wikipedia() {
   set -- 'https://lucaslarson.net/wiki/'"${*-}"
-  command xdg-open -- "${1-}" 2>/dev/null ||
-    command open -- "${1-}"
+  xdg-open -- "${1-}" 2>/dev/null ||
+    open -- "${1-}"
 }
 
 yamllint_r() {
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
     -path '*/Empty' -prune -o \
@@ -9779,14 +9776,14 @@ yamllint_r() {
     ')' \
     -type f \
     -exec sh -c -- 'for file in "${@-}"; do
-  command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
-    ! command git -C "${file%/*}" rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-    command yamllint --format colored --strict -- "${file-}"
+  git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+    ! git -C "${file%/*}" rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    yamllint --format colored --strict -- "${file-}"
 done' _ {} ';'
 }
 
 yaml_prettier_r() {
-  command find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
     -path '*/Empty' -prune -o \
@@ -9828,9 +9825,9 @@ yaml_prettier_r() {
     ')' \
     -type f \
     -exec sh -c -- 'for file in "${@-}"; do
-  command git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
-    ! command git -C "${file%/*}" rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-    command prettier --log-level log --write -- "${file-}"
+  git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+    ! git -C "${file%/*}" rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    prettier --log-level log --write -- "${file-}"
 done' _ {} ';'
 }
 
@@ -9844,17 +9841,17 @@ yt() {
     shift &&
       for video in "${@-}"; do
         # removing `--format`/`-f` ensures the best quality video
-        command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn -- "${video-}"
+        yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn -- "${video-}"
       done
     ;;
   *)
     for video in "${@-}"; do
       # try for m4a first
-      command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --format=m4a -- "${video-}" ||
+      yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --format=m4a -- "${video-}" ||
         # if not then try mp3
-        command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --format=mp3 -- "${video-}" ||
+        yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --format=mp3 -- "${video-}" ||
         # if not then this mess which changes `--format` into `--list-formats`
-        command yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --list-formats -- "${video-}"
+        yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn --list-formats -- "${video-}"
     done
     ;;
   esac
@@ -9871,7 +9868,7 @@ zero() {
     #                        0="${ZERO:-${${${(M)${0::=${(%):-%x}}:#/*}:-$PWD/$0}:A}}"
     printf -- '0="\044{ZERO:-\044{\044{\044{(M)\044{0::=\044{(\045):-\045x}}:#/*}:-\044PWD/\0440}:A}}"\n'
   } | {
-    command bat \
+    bat \
       --decorations=never \
       --language=zsh \
       --paging=never \
@@ -9950,7 +9947,7 @@ ohmyzsh() {
       l
   } ||
     ls -A -F -g -o
-  command git -c color.status=always -c core.quotePath=false status --untracked-files=no 2>/dev/null |
+  git -c color.status=always -c core.quotePath=false status --untracked-files=no 2>/dev/null |
     sed \
       -e '$ d'
 }
@@ -9970,8 +9967,8 @@ zshabbr() {
     # EX_NOINPUT
     return 66
   fi
-  command "${EDITOR:-vi}" -- "${target-}" &&
-    command shfmt --indent 2 --language-dialect bash --simplify --write -- "${target-}" &&
+  "${EDITOR:-vi}" -- "${target-}" &&
+    shfmt --indent 2 --language-dialect bash --simplify --write -- "${target-}" &&
     abbr load
   unset target >/dev/null 2>&1 || target=''
   {
@@ -9982,12 +9979,12 @@ zshabbr() {
   } 2>/dev/null
 }
 alias -- \
-  zshenv='command "${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"/."$(basename -- "${SHELL%%[0-9-]*}")"env && exec - "${SHELL##*/}"' \
-  zlogin='command "${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogin'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
-  zlogout='command "${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogout'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
-  zlogout='command "${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogout'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
-  zprofile='command "${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1sprofile'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
-  zshrc='command "${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(basename -- "${SHELL%%[0-9-]*}")"'\''rc'\'' && exec - "${SHELL##*/}"' \
+  zshenv='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"/."$(basename -- "${SHELL%%[0-9-]*}")"env && exec - "${SHELL##*/}"' \
+  zlogin='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogin'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
+  zlogout='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogout'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
+  zlogout='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogout'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
+  zprofile='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1sprofile'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
+  zshrc='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(basename -- "${SHELL%%[0-9-]*}")"'\''rc'\'' && exec - "${SHELL##*/}"' \
   z='. "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(basename -- "${SHELL%%[0-9-]*}")"'\''rc'\''' \
   zshdebug='( builtin emulate -R zsh -C -v -x -c -- '\''. "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(basename -- "${SHELL%%[0-9-]*}")"'\''rc'\'';'\''; );' \
   zshdebug_rc='( builtin emulate -R zsh -C -v -x -c -- '\''zmodload zsh/zprof; . "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(basename -- "${SHELL%%[0-9-]*}")"rc; zprof;'\''; );' \
@@ -10028,8 +10025,8 @@ zshoptions_search() {
       -e 's/^[[:space:]]*//' \
       -e 's/^[Nn][Oo]//' \
       -e 's/[[:space:]]*$//' |
-    # command awk -- '{for (i = 1; i <= length($0); i++) {printf "[%s%s]_*", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))}; printf "\n"}' - |
-    command awk -- '
+    # awk -- '{for (i = 1; i <= length($0); i++) {printf "[%s%s]_*", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))}; printf "\n"}' - |
+    awk -- '
 {
   for (i = 1; i <= length($0); i++) {
     printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))
@@ -10043,9 +10040,9 @@ zshoptions_search() {
 ' |
     tee -- /dev/tty |
     {
-      command xclip -selection clipboard ||
-        command xsel --clipboard --input ||
-        command pbcopy -pboard general ||
+      xclip -selection clipboard ||
+        xsel --clipboard --input ||
+        pbcopy -pboard general ||
         cat -- -
     } >/dev/null 2>&1
 }
@@ -10053,6 +10050,6 @@ zshoptions_search() {
 ## zero-width space
 # copy to macOS clipboard
 alias -- \
-  zwsp='printf -- '\''​'\'' | command pbcopy' \
+  zwsp='printf -- '\''​'\'' | pbcopy' \
   shrug='printf -- '\''\302\257\134_(\343\203\204)_/\302\257'\'' | pbcopy && printf -- '\''\302\257\134_(\343\203\204)_/\302\257\n'\''' \
-  sparkle='printf -- '\''\342\234\250'\'' | command pbcopy && printf -- '\''\342\234\250\n'\'''
+  sparkle='printf -- '\''\342\234\250'\'' | pbcopy && printf -- '\''\342\234\250\n'\'''
