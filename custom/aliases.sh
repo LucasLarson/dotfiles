@@ -9620,12 +9620,12 @@ alias -- website_troubleshoot='troubleshoot_website'
 
 # wget
 wget_download() {
-  set \
-    -o verbose \
-    -o xtrace
   command -v -- wget >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  set \
+    -o verbose \
+    -o xtrace
 
   # either the two files’ [targets] match
   test "$(command stat -L -c %d:%i -- "${HOME%/}"'/Code/'"${1-}"'/.https')" = "$(command stat -L -c %d:%i -- "${HOME%/}"'/Sites/'"${1-}")" ||
