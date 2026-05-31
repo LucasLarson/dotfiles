@@ -9628,8 +9628,6 @@ wget_download() {
 
   # either the two files’ [targets] match
   test "$(command stat -L -c %d:%i -- "${HOME%/}"'/Code/'"${1-}"'/.https')" = "$(command stat -L -c %d:%i -- "${HOME%/}"'/Sites/'"${1-}")" ||
-    # or we create that symlink
-    ln -f -s "${HOME%/}"'/Code/'"${1-}"'/.https' "${HOME%/}"'/Sites/'"${1-}" ||
     # or we fail
     return 11
 
