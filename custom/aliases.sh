@@ -9634,18 +9634,21 @@ wget_download() {
         -e 's/www\.//' \
         -e 's/[:/].*//'
   )"
-  # check that there is just
-  # 1 unique file serial number amongst the
-  # 2 targets
-  test "$(
-    find -- \
-      "${HOME%/}"'/Code/'"${1-}"'/.https' \
-      "${HOME%/}"'/Sites/'"${1-}" \
-      -prune \
-      -exec ls -1 -d -i -L -- {} + |
-      awk -- '! seen[$1]++ {print $1}' |
-      grep -c -e '.'
-  )" -eq 1 ||
+  # check both targets exist
+  test -d "${HOME%/}"'/Code/'"${1-}"'/.https' &&
+    test -d "${HOME%/}"'/Sites/'"${1-}" &&
+    # check that there is just
+    # 1 unique file serial number amongst the
+    # 2 targets
+    test "$(
+      find -- \
+        "${HOME%/}"'/Code/'"${1-}"'/.https' \
+        "${HOME%/}"'/Sites/'"${1-}" \
+        -prune \
+        -exec ls -1 -d -i -L -- {} + |
+        awk -- '! seen[$1]++ {print $1}' |
+        grep -c -e '.'
+    )" -eq 1 ||
     # or we fail
     return 11
 
