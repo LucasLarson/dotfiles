@@ -9624,7 +9624,8 @@ wget_download() {
     -o verbose \
     -o xtrace
   command -v -- wget >/dev/null 2>&1 ||
-    return 127
+    # EX_UNAVAILABLE
+    return 69
 
   # either the two files’ [targets] match
   test "$(command stat -L -c %d:%i -- "${HOME%/}"'/Code/'"${1-}"'/.https')" = "$(command stat -L -c %d:%i -- "${HOME%/}"'/Sites/'"${1-}")" ||
