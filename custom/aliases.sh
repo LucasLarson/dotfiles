@@ -9626,10 +9626,6 @@ wget_download() {
   test "${#}" -eq 1 ||
     # EX_USAGE
     return 64
-  set \
-    -o verbose \
-    -o xtrace
-
   # either the two files’ [targets] match
   test "$(command stat -L -c %d:%i -- "${HOME%/}"'/Code/'"${1-}"'/.https')" = "$(command stat -L -c %d:%i -- "${HOME%/}"'/Sites/'"${1-}")" ||
     # or we fail
@@ -9669,11 +9665,6 @@ wget_download() {
     --user-agent='Mozilla/5.0 (compatible; Googlebot/2.1; +https://www.google.com/bot.html)' \
     'https://'"${1-}" ||
     return 17
-  {
-    set \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
 }
 
 which() {
