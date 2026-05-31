@@ -9626,6 +9626,14 @@ wget_download() {
   test "${#}" -eq 1 ||
     # EX_USAGE
     return 64
+  set -- "$(
+    printf -- '%s\n' "${1-}" |
+      sed \
+        -e 's/.*@//' \
+        -e 's/https\{0,1\}:\/\///' \
+        -e 's/www\.//' \
+        -e 's/[:/].*//'
+  )"
   # check that there is just
   # 1 unique file serial number amongst the
   # 2 targets
@@ -9653,7 +9661,7 @@ wget_download() {
     --convert-links \
     --debug \
     --directory-prefix="${HOME%/}"'/Sites/'"${1-}" \
-    --domains="$(printf -- '%s' "${1-}" | sed -e 's/.*@//' -e 's/https\{0,1\}:\/\///' -e 's/www\.//' -e 's/[:/].*//')" \
+    --domains="${1-}" \
     --execute robots=off \
     --force-directories \
     --hsts-file=/dev/null \
