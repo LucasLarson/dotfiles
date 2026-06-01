@@ -6021,8 +6021,7 @@ guetzli_r() {
 ## JPEG
 
 jsonlint_r() {
-  npm ls --location=global -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
-    npm ls --location=project -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
+  command -v -- prettier >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
   PS4=' ' find -- . \
@@ -6146,7 +6145,7 @@ jsonlint_r() {
     -exec sh -x -c -- 'for file in "${@-}"; do
   git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
     ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-    npm exec -- @prantlf/jsonlint --in-place --trailing-newline --trim-trailing-commas -- "${file-}"
+    prettier --log-level log --parser json --write -- "${file-}"
 done
 ' _ {} +
 }
