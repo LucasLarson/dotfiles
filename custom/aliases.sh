@@ -8852,7 +8852,7 @@ substring_bash() {
   done
 
   if test "${OPTIND-}" -gt 1; then
-    shift $((OPTIND - 1))
+    shift "$((OPTIND - 1))"
   fi
 
   if test "${#}" -eq 0 || test "${#}" -gt 2; then
