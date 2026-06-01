@@ -75,6 +75,9 @@ acrobat() {
 }
 
 awk_pretty() {
+  command -v -- gawk >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   gawk \
     --no-optimize \
     --posix \
@@ -161,6 +164,9 @@ bash_major_version() {
 }
 
 bash_pretty() {
+  command -v -- bash >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -239,7 +245,8 @@ bitly() {
 
 black_r() {
   command -v -- black >/dev/null 2>&1 ||
-    return 127
+    # EX_UNAVAILABLE
+    return 69
   # https://github.com/psf/black/blob/b1d0601016/src/black/const.py
   find -- . \
     '(' \
@@ -397,6 +404,9 @@ cdp() {
 cdx_to_csv() {
   # https://web.archive.org/cdx/search/cdx?url=popkorn.it/*&output=json
   # https://claude.ai/chat/13791398-d210-48ba-904d-c529be5272c0
+  command -v -- jq >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o verbose \
@@ -1388,6 +1398,9 @@ dimensions() {
   # print image file dimensions
   # even for SVGs
   # requires Exiftool
+  command -v -- exiftool >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   for file in "${@-}"; do
     test -s "${file-}" &&
       exiftool \
@@ -1794,6 +1807,10 @@ alias -- \
 
 extract() {
   until test "$(find -- . -name '*.rpm' -type f -print)" = ''; do
+    command -v -- rpm2cpio >/dev/null 2>&1 &&
+      command -v -- cpio >/dev/null 2>&1 ||
+      # EX_UNAVAILABLE
+      return 69
     IFS=' ' find -- . \
       -name '*.rpm' \
       -type f \
@@ -2539,6 +2556,9 @@ alias fif='find_image_files'
 
 find_images_with_incorrect_filename_extensions() {
   # 2>/dev/null until `find_image_files` removes post-completion helpful hint
+  command -v -- find_image_files >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   find_image_files 2>/dev/null |
     while IFS='' read -r -- file; do
       case "${file-}" in
@@ -3531,6 +3551,9 @@ first_character() {
 }
 
 fish_r() {
+  command -v -- fish_indent >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   PS4=' ' find -- . \
     -name '*.fish' \
     -type f \
@@ -5527,6 +5550,10 @@ alias -- zsh_stats='history_stats'
 ## .icns files
 # convert to .png
 icns_to_png() {
+  command -v -- sips >/dev/null 2>&1 ||
+    command -v -- icns2png >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -5787,6 +5814,9 @@ alias -- \
 image_color_count() {
   # print the number of unique colors found in the image
   # usage: image_color_count image.jpg
+  command -v -- magick >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   for file in "${@-}"; do
     case "${file-}" in
     --)
@@ -5807,6 +5837,9 @@ image_color_count() {
 }
 
 image_color_frequency() {
+  command -v -- magick >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   for file in "${@-}"; do
     case "${file-}" in
     --)
@@ -5829,6 +5862,9 @@ image_color_frequency() {
 image_color_list() {
   # print the number of unique colors found in the image
   # usage: image_color_count image.jpg
+  command -v -- magick >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   for file in "${@-}"; do
     case "${file-}" in
     --)
@@ -5883,6 +5919,9 @@ ip() {
 
 ## JPEG
 to_jpg() {
+  command -v -- magick >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -5906,6 +5945,9 @@ to_jpg() {
 }
 
 guetzli_r() {
+  command -v -- guetzli >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -5937,13 +5979,13 @@ guetzli_r() {
       +o xtrace
   } 2>/dev/null
 }
-
 ## JPEG
 
 jsonlint_r() {
   npm ls --location=global -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
     npm ls --location=project -- '@prantlf/jsonlint' >/dev/null 2>&1 ||
-    return "${?:-127}"
+    # EX_UNAVAILABLE
+    return 69
   PS4=' ' find -- . \
     -path '*/.git' -prune -o \
     -path '*/.rbenv' -prune -o \
@@ -6158,7 +6200,8 @@ breakdown() {
       command -v -- linguist
   )"
   test "${utility-}" = '' &&
-    return 127
+    # EX_UNAVAILABLE
+    return 69
   git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "${?:-1}"
   case "${1-}" in
@@ -6287,6 +6330,9 @@ lso() {
 
 ## M4A
 to_m4a() {
+  command -v -- ffmpeg >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o verbose \
@@ -6312,6 +6358,9 @@ to_m4a() {
 
 ## any audio to MP3
 to_mp3() {
+  command -v -- ffmpeg >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -6339,6 +6388,9 @@ to_mp3() {
 }
 
 to_mp4() {
+  command -v -- ffmpeg >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -6365,10 +6417,10 @@ to_mp4() {
 
 ## mackup
 mu() {
-  {
-    command -v -- mackup >/dev/null 2>&1 &&
-      cd -- "${DOTFILES-}"
-  } ||
+  command -v -- mackup >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  cd -- "${DOTFILES-}" ||
     return 1
   command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "${@-}"
@@ -6446,6 +6498,14 @@ command -v -- _man >/dev/null 2>&1 &&
   compdef -- batman='man' >/dev/null 2>&1
 
 man_pdf() {
+  command -v -- /System/Applications/Preview.app/Contents/MacOS/Preview >/dev/null 2>&1 ||
+    command -v -- /Applications/Preview.app/Contents/MacOS/Preview >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  command -v -- ps2pdf >/dev/null 2>&1 ||
+    command -v -- mandoc >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -6478,6 +6538,9 @@ command -v -- _man >/dev/null 2>&1 &&
   compdef -- man_pdf='man' >/dev/null 2>&1
 
 markdownlint_r() {
+  command -v -- markdownlint >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o verbose \
     -o xtrace
@@ -6655,6 +6718,9 @@ non_ascii_filenames() {
 
 nslookup_r() {
   # repeated nameserver lookup like itools.com/internet of olden times
+  command -v -- nslookup >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   while test "${#}" -gt 0; do
     output="$(nslookup "${1-}" 2>&1)"
     printf -- '%s\n' "${output-}" | grep -A 1 -e 'Name' | tail -n 1 | awk -- '{print $2}'
@@ -6695,7 +6761,8 @@ odb() {
 
 ocr() {
   command -v -- ocrmypdf >/dev/null 2>&1 ||
-    return "${?:-1}"
+    # EX_UNAVAILABLE
+    return 69
   #
   # TODO! make this work on all PDFs in folder if no argument is provided
   #
@@ -6725,7 +6792,8 @@ ocr() {
 }
 ocr_eo() {
   command -v -- ocrmypdf >/dev/null 2>&1 ||
-    return "${?:-1}"
+    # EX_UNAVAILABLE
+    return 69
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
@@ -6838,6 +6906,9 @@ command -v -- pbpaste >/dev/null 2>&1 ||
 pdf_images() {
   ## extract images from a PDF
   # requires `pdfimages` from `poppler`
+  command -v -- pdfimages >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -6878,7 +6949,8 @@ perltidy_r() {
     -o xtrace
   command -v -- find_perl_files >/dev/null 2>&1 &&
     command -v -- perltidy >/dev/null 2>&1 ||
-    return 127
+    # EX_UNAVAILABLE
+    return 69
   find_perl_files | while IFS='' read -r -- file; do
     git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
       ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
@@ -7098,6 +7170,9 @@ pledit() {
   # Convert a binary plist file to XML and open with `$EDITOR`
   # Copyright 2017, Joe Block <jpb@unixorn.net>
   # https://github.com/unixorn/tumult.plugin.zsh/blob/2f83fb8287/bin/pledit
+  command -v -- plutil >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
@@ -7119,7 +7194,8 @@ pledit() {
 # .plist
 plist_r() {
   command -v -- plutil >/dev/null 2>&1 ||
-    return 127
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o verbose \
     -o xtrace
@@ -7214,6 +7290,9 @@ test -x '/usr/libexec/PlistBuddy' &&
 
 ## PNG
 to_png() {
+  command -v -- magick >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -7246,6 +7325,9 @@ to_png() {
 
 # AdvPNG (AdvanceCOMP)
 advpng_r() {
+  command -v -- advpng >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o verbose \
@@ -7275,6 +7357,9 @@ advpng_r() {
 
 # OptiPNG
 optipng_r() {
+  command -v -- optipng >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o verbose \
@@ -7312,6 +7397,9 @@ optipng_r() {
 
 # OxiPNG
 oxipng_r() {
+  command -v -- oxipng >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o verbose \
@@ -7345,6 +7433,9 @@ oxipng_r() {
 
 # pngcrush
 pngcrush_r() {
+  command -v -- pngcrush >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o verbose \
@@ -7379,6 +7470,9 @@ pngcrush_r() {
 }
 
 pngout_r() {
+  command -v -- pngout >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o verbose \
@@ -7415,7 +7509,8 @@ alias -- '?'='question_mark'
 # QuickLook
 ql() {
   command -v -- qlmanage >/dev/null 2>&1 ||
-    return 127
+    # EX_UNAVAILABLE
+    return 69
   case "${1-}" in
   -r)
     find -- . \
@@ -7727,6 +7822,9 @@ rename_r() {
 }
 
 rename_with_dimensions() {
+  command -v -- exiftool >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -7756,7 +7854,8 @@ rename_with_dimensions() {
 
 rsync_r() {
   command -v -- rsync >/dev/null 2>&1 ||
-    return 127
+    # EX_UNAVAILABLE
+    return 69
   case "${1-}" in
   c | k | o)
     target='kevoc7@oconnor.nyc:/home/kevoc7/.local/share/Trash/'"${2##*/}"
@@ -7787,7 +7886,8 @@ rsync_r() {
 rubocop_r() {
   command -v -- find_ruby_files >/dev/null 2>&1 &&
     command -v -- rubocop >/dev/null 2>&1 ||
-    return 127
+    # EX_UNAVAILABLE
+    return 69
   find_ruby_files | while IFS='' read -r -- file; do
     git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
       ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
@@ -7803,6 +7903,9 @@ rubocop_r() {
 
 ## rustfmt
 rustfmt_r() {
+  command -v -- rustfmt >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o verbose \
     -o xtrace
@@ -7928,6 +8031,9 @@ sca() {
 }
 
 scour_r() {
+  command -v -- scour >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o verbose \
@@ -7995,6 +8101,9 @@ sed_help() {
 }
 
 sed_pretty() {
+  command -v -- gsed >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   printf -- '\n' |
     gsed \
       --debug \
@@ -8133,6 +8242,9 @@ shellcheck_markdown() {
   # SC1091: allow linking to, but not following, linked scripts
   # SC2123: allow `$PATH` modification
   # SC2312: allow masking return values
+  command -v -- shellcheck >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
@@ -8177,6 +8289,9 @@ shellcheck_markdown() {
 }
 
 shellharden_r() {
+  command -v -- shellharden >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noglob \
     -o verbose \
@@ -8232,6 +8347,9 @@ restore_shell_options() {
 alias -- shell_options_restore='restore_shell_options'
 
 shf() {
+  command -v -- shfmt >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -8252,6 +8370,10 @@ shf() {
 }
 
 shfmt_r() {
+  command -v -- find_shell_scripts >/dev/null 2>&1 &&
+    command -v -- shfmt >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o xtrace
   find_shell_scripts |
@@ -8314,6 +8436,9 @@ shfmt_r() {
   } 2>/dev/null
 }
 shfmt_r_() {
+  command -v -- shfmt >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o xtrace
   for file in "${@-}"; do
@@ -8336,6 +8461,9 @@ shfmt_r_() {
   } 2>/dev/null
 }
 shfmt_r_r_() {
+  command -v -- shfmt >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o xtrace
   for file in "${@-}"; do
@@ -8385,6 +8513,9 @@ shlvl() {
 
 # shred
 shred_r() {
+  command -v -- shred >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -8936,6 +9067,9 @@ stylelint_r() {
 }
 
 super_linter_r() {
+  command -v -- docker >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   # https://github.com/super-linter/super-linter/issues/5383#issuecomment-1998289936
   docker run \
     --env DEFAULT_WORKSPACE="${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/lint' \
@@ -9010,6 +9144,9 @@ tabs_to_spaces() {
 }
 
 tabs_to_spaces_ed() {
+  command -v -- ed >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -9119,9 +9256,12 @@ temperature() {
 alias -- temp='temperature'
 
 textlint_r() {
-  npm config --location=global -- get prefix >/dev/null 2>&1 &&
-    test -d "$(npm config --location=global -- get prefix)" &&
-    test -d "$(npm config --location=global -- get prefix)"'/lib/node_modules/textlint-rule-terminology' ||
+  {
+    command -v -- npm >/dev/null 2>&1 &&
+      npm config --location=global -- get prefix >/dev/null 2>&1 &&
+      test -d "$(npm config --location=global -- get prefix)" &&
+      test -d "$(npm config --location=global -- get prefix)"'/lib/node_modules/textlint-rule-terminology'
+  } ||
     # EX_UNAVAILABLE
     return 69
   set \
@@ -9287,7 +9427,9 @@ trash_developer() {
 }
 
 update_changelog() {
-  command -v -- gem >/dev/null 2>&1 ||
+  command -v -- gem >/dev/null 2>&1 &&
+    command -v -- github_changelog_generator >/dev/null 2>&1 &&
+    command -v -- markdownlint >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
   test "${CHANGELOG_GITHUB_TOKEN-}" != '' ||
@@ -9296,12 +9438,6 @@ update_changelog() {
     test "${GITHUB_TOKEN-}" != '' ||
     # EX_CONFIG
     return 78
-  command -v -- github_changelog_generator >/dev/null 2>&1 ||
-    # EX_UNAVAILABLE
-    return 69
-  command -v -- markdownlint >/dev/null 2>&1 ||
-    # EX_UNAVAILABLE
-    return 69
   # find one existing changelog once
   file="$(
     cd -- "$(
@@ -9543,6 +9679,9 @@ wayback_r() {
 }
 
 webp_r() {
+  command -v -- cwebp >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noclobber \
     -o noglob \
@@ -9783,6 +9922,9 @@ done' _ {} ';'
 }
 
 yaml_prettier_r() {
+  command -v -- prettier >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
@@ -9953,6 +10095,10 @@ ohmyzsh() {
 }
 
 zshabbr() {
+  command -v -- shfmt >/dev/null 2>&1 &&
+    command -v -- abbr >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   set \
     -o noglob \
     -o verbose \
