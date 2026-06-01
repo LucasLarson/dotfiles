@@ -1323,7 +1323,6 @@ define() {
           -e '# also move the first shell to be called onto its own indented line' \
           -e 's/" '\''zsh/"\n          '\''zsh/' | {
         bat \
-          --color=auto \
           --decorations=never \
           --language=sh \
           --paging=never \
@@ -4191,17 +4190,17 @@ gds() {
 }
 git_diff_with_filesizes() {
   {
-    test "$(git diff --color=auto --stat "${@-}")" != '' &&
-      git -c core.quotePath=false diff --color=auto --stat "${@-}"
+    test "$(git diff --stat "${@-}")" != '' &&
+      git -c core.quotePath=false diff --stat "${@-}"
   } ||
-    git -c core.quotePath=false diff --cached --color=auto --stat "${@-}"
+    git -c core.quotePath=false diff --cached --stat "${@-}"
 }
 git_diff_staged_with_filesizes() {
   {
-    test "$(git diff --cached --color=auto --stat "${@-}")" != '' &&
-      git -c core.quotePath=false diff --cached --color=auto --stat "${@-}"
+    test "$(git diff --cached --stat "${@-}")" != '' &&
+      git -c core.quotePath=false diff --cached --stat "${@-}"
   } ||
-    git -c core.quotePath=false diff --color=auto --stat "${@-}"
+    git -c core.quotePath=false diff --stat "${@-}"
 }
 
 alias -- gdm='git -c core.quotePath=false diff "$(git-default-branch)" --'
@@ -5236,7 +5235,7 @@ gr() {
     -path '*vscode*' -prune -o \
     ! -path 'do not add ! type -l because we actually DO want to search inside symlink targets' \
     ! -type d \
-    -exec grep "${arguments:--EIinr}" --color=auto -e "${1-}" {} +
+    -exec grep "${arguments:--EIinr}" -e "${1-}" {} +
   unset arguments >/dev/null 2>&1 || arguments=''
 }
 grpt() {
@@ -5267,7 +5266,7 @@ grpt() {
     ! -type d \
     ! -path 'it is arguments:--Ein below so there is a fallback when I wanna copy-pase' \
     ! -name '.git' \
-    -exec grep "${arguments:--EIinr}" --color=auto -e "${1-}" {} +
+    -exec grep "${arguments:--EIinr}" -e "${1-}" {} +
   unset arguments >/dev/null 2>&1 || arguments=''
 }
 ggr() {
@@ -5276,7 +5275,6 @@ ggr() {
     -H \
     -I \
     --break \
-    --color=auto \
     --extended-regexp \
     --ignore-case \
     --line-number \
@@ -6660,7 +6658,6 @@ maxdepth() {
   done
   printf -- '#!/usr/bin/env sh\nfind -- . -path \047%s\047 -prune -o -print\n' "${2-}" | {
     bat \
-      --color=auto \
       --decorations=never \
       --language=sh \
       --paging=never \
@@ -6679,7 +6676,6 @@ mindepth() {
   done
   printf -- '#!/usr/bin/env sh\nfind -- . -path \047%s\047 -print\n' "${2-}" | {
     bat \
-      --color=auto \
       --decorations=never \
       --language=sh \
       --paging=never \
@@ -6693,7 +6689,6 @@ mindepth() {
 m1m1() {
   printf -- '#!/usr/bin/env sh\nfind -- . -path \047./*/*\047 -prune -o -path \047./*\047 -print\n' | {
     bat \
-      --color=auto \
       --decorations=never \
       --language=sh \
       --paging=never \
@@ -7585,7 +7580,6 @@ ql() {
       -exec sh -c -- 'case "${1-}" in
 *.asciidoc | *.adoc | *.asc)
   bat \
-    --color=auto \
     --decorations=never \
     --language=asciidoc \
     --paging=never \
@@ -7598,7 +7592,6 @@ ql() {
 *)
   qlmanage -p -- "${1-}" >/dev/null 2>&1 ||
     bat \
-      --color=auto \
       --decorations=never \
       --paging=never \
       -- \
@@ -8198,7 +8191,6 @@ sed_pretty() {
       -- \
       - | {
     bat \
-      --color=auto \
       --decorations=never \
       --language=sh \
       --paging=never \
@@ -8235,7 +8227,6 @@ sed_pretty() {
       -- \
       - | {
     bat \
-      --color=auto \
       --decorations=never \
       --language=sh \
       --paging=never \
