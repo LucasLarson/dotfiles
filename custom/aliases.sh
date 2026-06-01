@@ -2947,15 +2947,18 @@ find_perl_files() {
       -path '*vscode*' -prune -o \
       -path './*' \
       '(' \
-      -name '*.[Pp][Ll]' -o \
+      -name '*.pl' -o \
+      -name '*.6[Pp][Ll]' -o \
+      -name '*.6[Pp][Mm]' -o \
       -name '*.[Aa][Ll]' -o \
       -name '*.[Cc][Gg][Ii]' -o \
       -name '*.[Ff][Cc][Gg][Ii]' -o \
       -name '*.[Nn][Qq][Pp]' -o \
       -name '*.[Pp][Ee][Rr][Ll]' -o \
       -name '*.[Pp][Hh]' -o \
-      -name '*.[Pp][Ll][Xx]' -o \
+      -name '*.[Pp][Ll]' -o \
       -name '*.[Pp][Ll]6' -o \
+      -name '*.[Pp][Ll][Xx]' -o \
       -name '*.[Pp][Mm]' -o \
       -name '*.[Pp][Mm]6' -o \
       -name '*.[Pp][Oo][Dd]' -o \
@@ -2965,10 +2968,11 @@ find_perl_files() {
       -name '*.[Pp]6[Ll]' -o \
       -name '*.[Pp]6[Mm]' -o \
       -name '*.[Rr][Aa][Kk][Uu]' -o \
+      -name '*.[Rr][Aa][Kk][Uu][Dd][Oo][Cc]' -o \
       -name '*.[Rr][Aa][Kk][Uu][Mm][Oo][Dd]' -o \
+      -name '*.[Rr][Aa][Kk][Uu][Tt][Ee][Ss][Tt]' -o \
       -name '*.[Tt]' -o \
-      -name '*.6[Pp][Ll]' -o \
-      -name '*.6[Pp][Mm]' -o \
+      -name '*.[Xx][Ss]' -o \
       -name '.[Ll][Aa][Tt][Ee][Xx][Mm][Kk][Rr][Rr][Cc]' -o \
       -name '[Aa][Cc][Kk]' -o \
       -name '[Cc][Pp][Aa][Nn][Ff][Ii][Ll][Ee]' -o \
