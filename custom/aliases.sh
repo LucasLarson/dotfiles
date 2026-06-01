@@ -155,20 +155,6 @@ basename_r() {
   done
 }
 
-bash_major_version() {
-  # confirm Bash version is at least any given version (default: at least Bash 6)
-  if test "$(
-    bash --version |
-      sed \
-        -e 's/^[^[:digit:]]*//' \
-        -e 's/[^[:digit:]].*$//' \
-        -e 'q'
-  )" -lt "${1:-6}"; then
-    printf -- 'You will need to upgrade to version %d for full functionality.\n' "${1:-6}" >&2
-    return 1
-  fi
-}
-
 bash_pretty() {
   command -v -- bash >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
@@ -5579,31 +5565,6 @@ EOF
   esac
 }
 
-history_stats() {
-  builtin fc -l 1 |
-    awk -- '{
-  history[$2]++
-  count++
-}
-END {
-  for (command in history) {
-    printf "%-4s %-.2f%% %s\n", history[command], history[command] * 100 / count, command
-  }
-}' |
-    grep \
-      -v \
-      -e './' \
-      -e '(' |
-    LC_ALL='C' sort -n -r |
-    head -n "$((${LINES:-"$(
-      tput -- lines 2>/dev/null ||
-        printf -- '10 + 2 + 10 + 2 + 2'
-    )"} - 3))" "${@-}"
-}
-alias -- zsh_stats >/dev/null 2>&1 &&
-  unalias -- zsh_stats
-alias -- zsh_stats='history_stats'
-
 ## .icns files
 # convert to .png
 icns_to_png() {
@@ -6966,10 +6927,6 @@ open() {
     SC*)
       open -- 'https://github.com/koalaman/shellcheck/wiki/'"${1-}"
       ;;
-    so*)
-      # like cheat.sh’s `so/q/33041363`
-      open -- 'https://stackoverflow.com/'"${1#so/}"
-      ;;
     *)
       open "${@-}"
       ;;
@@ -7211,26 +7168,6 @@ posix_variables_list() {
   for variable in ARFLAGS IFS MAILPATH PS1 CC LANG MAILRC PS2 CDPATH LC_ALL MAKEFLAGS PS3 CFLAGS LC_COLLATE MAKESHELL PS4 CHARSET LC_CTYPE MANPATH PWD COLUMNS LC_MESSAGES MBOX RANDOM DATEMSK LC_MONETARY MORE SECONDS DEAD LC_NUMERIC MSGVERB SHELL EDITOR LC_TIME NLSPATH TERM ENV LDFLAGS NPROC TERMCAP EXINIT LEX OLDPWD TERMINFO FC LFLAGS OPTARG TMPDIR FCEDIT LINENO OPTERR TZ FFLAGS LINES OPTIND USER GET LISTER PAGER VISUAL GFLAGS LOGNAME PATH YACC HISTFILE LPDEST PPID YFLAGS HISTORY MAIL PRINTER HISTSIZE MAILCHECK PROCLANG HOME MAILER PROJECTDIR; do
     eval " echo ${variable-}:		\$${variable-}" 2>/dev/null
   done
-}
-
-# duplicate lines only
-print_duplicate_lines() {
-  test -s "${1-}" ||
-    return "${?:-1}"
-  LC_ALL='C' sort "${1-}" |
-    sed \
-      -e '# https://pement.org/sed/sed1line.txt' \
-      -e '$! N' \
-      -e 's/^\(.*\)\n\1$/\1/' \
-      -e 't' \
-      -e 'D' |
-    LC_ALL='C' sort -u |
-    LC_ALL='C' sort -f
-
-  # https://github.com/gongchengra/hacker/blob/master/bash/sed_vs_awk.txt#L583
-  awk -- 'a[$0]++' "${1-}" |
-    LC_ALL='C' sort -u |
-    LC_ALL='C' sort -f
 }
 
 ## iCloud
@@ -8814,21 +8751,6 @@ sk() {
   } 2>/dev/null
 }
 
-split_r() {
-  set \
-    -o noclobber \
-    -o verbose \
-    -o xtrace
-  test -s "${1-}" &&
-    split -l "${2:-10000}" -- "${1-}" "${1%.*}"-
-  {
-    set \
-      +o noclobber \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
-}
-
 spotify_request_token() {
   set \
     -o noclobber \
@@ -8873,56 +8795,6 @@ alias -- \
   sshs='ssh ll@tty.sdf.org' \
   sshu='ssh menu@sdf.org'
 
-standard_r() {
-  {
-    npm ls -- standard >/dev/null 2>&1 ||
-      npm ls --location=global -- standard >/dev/null 2>&1 ||
-      # EX_UNAVAILABLE
-      return 69
-  } &&
-    PS4=' ' find -- . \
-      -path '*/.git' -prune -o \
-      -path '*/node_modules' -prune -o \
-      -path '*/coverage' -prune -o \
-      -path '*/vendor' -prune -o \
-      '(' \
-      -name '*.js' -o \
-      -name '*._js' -o \
-      -name '*.bones' -o \
-      -name '*.cjs' -o \
-      -name '*.es' -o \
-      -name '*.es6' -o \
-      -name '*.frag' -o \
-      -name '*.gjs' -o \
-      -name '*.gs' -o \
-      -name '*.jake' -o \
-      -name '*.javascript' -o \
-      -name '*.jsb' -o \
-      -name '*.jscad' -o \
-      -name '*.jsfl' -o \
-      -name '*.jslib' -o \
-      -name '*.jsm' -o \
-      -name '*.jspre' -o \
-      -name '*.jss' -o \
-      -name '*.jsx' -o \
-      -name '*.mjs' -o \
-      -name '*.njs' -o \
-      -name '*.pac' -o \
-      -name '*.sjs' -o \
-      -name '*.ssjs' -o \
-      -name '*.xsjs' -o \
-      -name '*.xsjslib' -o \
-      -name 'Jakefile' \
-      ')' \
-      ! -name '*-min.js' \
-      ! -name '*.min.js' \
-      -type f \
-      -exec sh -C -e -f -u -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  npm exec -- standard --fix -- "${1-}"
-' _ {} ';'
-}
-
 string_contains_alternative() {
   (
     # in subshell to avoid polluting the environment
@@ -8966,89 +8838,6 @@ subdomains() {
       -e 's/\]/\n/g' |
     LC_ALL='C' sort -u |
     LC_ALL='C' sort -f
-}
-
-substring_bash() {
-  #  Copyright 2002 Chester Ramey under GNU GPL v2.0+
-  # -l == remove shortest from left
-  # -L == remove longest from left
-  # -r == remove shortest from right (the default)
-  # -R == remove longest from right
-  usage="usage: substring -lLrR pattern string or substring string pattern"
-  options="l:L:r:R:"
-
-  OPTIND=1
-  while getopts -- "${options-}" c; do
-    case "${c-}" in
-    l | L | r | R)
-      flag="-${c-}"
-      pattern="${OPTARG-}"
-      ;;
-    -* | '?')
-      printf -- '%s\n' "${usage-}"
-      return 1
-      ;;
-    *)
-      flag="-r"
-      pattern="${OPTARG-}"
-      ;;
-    esac
-  done
-
-  if test "${OPTIND-}" -gt 1; then
-    shift "$((OPTIND - 1))"
-  fi
-
-  if test "${#}" -eq 0 || test "${#}" -gt 2; then
-    printf -- 'substring: bad argument count\n' >&2
-    return 2
-  fi
-
-  string="${1-}"
-
-  # We don't want `set -f`/`set -o noglob`, but we don't want to turn it back on if
-  # we didn't have it already
-  case "${-}" in
-  "*f*") ;;
-  *)
-    fng=1
-    set \
-      -o noglob
-    ;;
-  esac
-
-  case "${flag-}" in
-  -l)
-    string="${string#"${pattern-}"}" # substring -l pattern string
-    ;;
-  -L)
-    string="${string##"${pattern-}"}" # substring -L pattern string
-    ;;
-  -r)
-    string="${string%"${pattern-}"}" # substring -r pattern string
-    ;;
-  -R)
-    string="${string%%"${pattern-}"}" # substring -R pattern string
-    ;;
-  *)
-    string="${string%"${2-}"}" # substring string pattern
-    ;;
-  esac
-
-  printf -- '%s\n' "${string-}"
-
-  # If we had `set -f` when we started, re-enable it
-  if test "${fng-}" -eq 1; then
-    set \
-      +o noglob
-  fi
-  unset flag >/dev/null 2>&1 || flag=''
-  unset c >/dev/null 2>&1 || c=''
-  unset fng >/dev/null 2>&1 || fng=''
-  unset options >/dev/null 2>&1 || options=''
-  unset pattern >/dev/null 2>&1 || pattern=''
-  unset string >/dev/null 2>&1 || string=''
-  unset usage >/dev/null 2>&1 || usage=''
 }
 
 substring_contains() {
@@ -9145,23 +8934,6 @@ string_ends_with() {
 }
 alias -- substring_ends_with='string_ends_with'
 
-string_starts_with_gitflow() {
-  # https://github.com/nvie/gitflow/blob/e0d8af3bec/gitflow-common#L34-L35
-  test "${1-}" != "${1#"${2-}"}"
-}
-alias -- substring_starts_with_gitflow='string_starts_with_gitflow'
-string_ends_with_gitflow() {
-  # https://github.com/nvie/gitflow/blob/e0d8af3bec/gitflow-common#L34-L35
-  test "${1-}" != "${1%"${2-}"}"
-}
-alias -- substring_ends_with_gitflow='string_ends_with_gitflow'
-
-strikethrough() {
-  printf -- '%s\n' "${@-}" |
-    sed \
-      -e 's/[[:graph:]]/&̸/g'
-}
-
 stylelint_r() {
   command -v -- stylelint >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
@@ -9209,51 +8981,6 @@ stylelint_r() {
       +o verbose \
       +o xtrace
   } 2>/dev/null
-}
-
-super_linter_r() {
-  command -v -- docker >/dev/null 2>&1 ||
-    # EX_UNAVAILABLE
-    return 69
-  # https://github.com/super-linter/super-linter/issues/5383#issuecomment-1998289936
-  docker run \
-    --env DEFAULT_WORKSPACE="${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/lint' \
-    --env IGNORE_GITIGNORED_FILES=true \
-    --env LOG_LEVEL=DEBUG \
-    --env LOG_TRACE=true \
-    --env MULTI_STATUS=true \
-    --env RUN_LOCAL=true \
-    --env SUPPRESS_POSSUM=true \
-    --env USE_FIND_ALGORITHM=true \
-    --env VALIDATE_ALL_CODEBASE=true \
-    --env VALIDATE_BASH=true \
-    --env VALIDATE_CSS=true \
-    --env VALIDATE_DOCKERFILE_HADOLINT=true \
-    --env VALIDATE_ENV=true \
-    --env VALIDATE_HTML=true \
-    --env VALIDATE_JAVASCRIPT_STANDARD=true \
-    --env VALIDATE_JSON=true \
-    --env VALIDATE_LANGUAGE=true \
-    --env VALIDATE_MARKDOWN=true \
-    --env VALIDATE_NATURAL_LANGUAGE=true \
-    --env VALIDATE_PYTHON_BLACK=true \
-    --env VALIDATE_RUBY=true \
-    --env VALIDATE_YAML=true \
-    --volume "$(git rev-parse --show-toplevel)"':'"${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/lint' \
-    ghcr.io/super-linter/super-linter:latest
-  # https://github.com/super-linter/super-linter/commit/c01d0bc870
-  docker run \
-    --env ACTIONS_RUNNER_DEBUG=true \
-    --env DISABLE_ERRORS=false \
-    --env ERROR_ON_MISSING_EXEC_BIT=true \
-    --env LOG_LEVEL=DEBUG \
-    --env LOG_TRACE=true \
-    --env LINTER_RULES_PATH=. \
-    --env MULTI_STATUS=false \
-    --env RUN_LOCAL=true \
-    --env VALIDATE_ALL_CODEBASE=true \
-    --volume "$(pwd)":/tmp/lint \
-    ghcr.io/super-linter/super-linter:latest
 }
 
 swiftlint_r() {
@@ -10159,36 +9886,6 @@ yt() {
   esac
 }
 
-## zero
-# https://stackoverflow.com/a/23259585
-# https://github.com/zdharma-continuum/Zsh-100-Commits-Club/blob/1f880d03ec/Zsh-Plugin-Standard.adoc#zero-handling
-# @TODO! https://docs.google.com/spreadsheets/d/e/2PACX-1vRmk1GBk-8XwtC6wTek9h63_dpsapDIlnBOK8cEU5vSD-0nN6_Pg7R6LQxYObdqbPYyeTRFqfd3lqDq/pubhtml
-zero() {
-  {
-    printf -- '#!/usr/bin/env zsh\n'
-    printf -- '# https://bit.ly/zshzero\n'
-    #                        0="${ZERO:-${${${(M)${0::=${(%):-%x}}:#/*}:-$PWD/$0}:A}}"
-    printf -- '0="\044{ZERO:-\044{\044{\044{(M)\044{0::=\044{(\045):-\045x}}:#/*}:-\044PWD/\0440}:A}}"\n'
-  } | {
-    bat \
-      --decorations=never \
-      --language=zsh \
-      --paging=never \
-      -- \
-      - 2>/dev/null ||
-      cat \
-        -- \
-        -
-  }
-  # https://github.com/powerline/fonts/blob/74dad88f8b/install.sh#L4
-  printf -- '%s\n' "$(
-    cd -- "$(
-      dirname -- "${1-}"
-    )" &&
-      pwd
-  )"
-}
-
 zsh_make_zsh() {
   # sed -e 's/[",]//g;s/enable-etcdir.*/disable-etcdir/g;s/\#{HOMEBREW_PREFIX}\(.*\)/"\$\{HOME%\/\}"'\''\/.local\1'\''/g;s/\#{pkgshare}\(.*\)/"\$\{HOME%\/\}"'\''\/.local\/share\1'\''/g;s/\#{prefix}\(.*\)/"\$\{HOME%\/\}"'\''\/.local\1'\''/g;s/^\([[:space:]]*\)system[[:space:]]*/\1/' ~/c/Homebrew-core/Formula/zsh.rb
   cd -- "${HOME%/}"'/c/zsh' ||
@@ -10239,19 +9936,6 @@ zsh_make_zsh() {
       make install.modules &&
       make install.fns
   )
-}
-
-ohmyzsh() {
-  cd -- "${ZSH:-${HOME%/}/.oh-my-zsh}" ||
-    return 1
-  {
-    command -v -- l >/dev/null 2>&1 &&
-      l
-  } ||
-    ls -A -F -g -o
-  git -c color.status=always -c core.quotePath=false status --untracked-files=no 2>/dev/null |
-    sed \
-      -e '$ d'
 }
 
 zshabbr() {
