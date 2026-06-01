@@ -1867,7 +1867,9 @@ extract() {
     -name '*.[Xx][Pp][Ii]' -o \
     -name '*.[Xx][Zz]' -o \
     -name '*.[Zz]' -o \
-    -name '*.[Zz][Ii][Pp]' \
+    -name '*.[Zz][Ii][Pp]' -o \
+    -name '*.[Zz][Mm][Aa]' -o \
+    -name '*.[Zz][Ss][Tt]' \
     ')' \
     -type f \
     -print 2>/dev/null
