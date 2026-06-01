@@ -35,6 +35,9 @@ aliases() {
 
 ## Adobe Acrobat
 acrobat() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -144,6 +147,9 @@ decimal_to_binary() {
 alias -- dec2bin='decimal_to_binary'
 
 basename_r() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     printf -- '%s\n' "${file##*/}"
   done
@@ -167,6 +173,9 @@ bash_pretty() {
   command -v -- bash >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -228,6 +237,9 @@ bash_pretty_overwrite() {
 }
 
 bitly() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for link in "${@-}"; do
     curl \
       --data '{"bitlink_id":"bit.ly/'"${link-}"'"}' \
@@ -265,6 +277,9 @@ done' _ {} +
 
 ## braces
 braces() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noglob \
     -o xtrace
@@ -407,6 +422,9 @@ cdx_to_csv() {
   command -v -- jq >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o verbose \
@@ -1401,6 +1419,9 @@ dimensions() {
   command -v -- exiftool >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     test -s "${file-}" &&
       exiftool \
@@ -1419,6 +1440,9 @@ dimensions() {
 }
 
 dirname_r() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     printf -- '%s\n' "${file%/*}"
   done
@@ -1456,6 +1480,9 @@ docker_r() {
 }
 
 domain_name_from_url() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for url in "${@-}"; do
     printf -- '%s\n' "${url-}" |
       sed \
@@ -1580,6 +1607,9 @@ eo_from() {
   # Convert Cx-like esperanto typography into the correct unicode character (Ĉ ĉ Ĝ ĝ Ĥ ĥ Ĵ ĵ Ŝ ŝ Ŭ ŭ)
   # Xx is convert to x
   # https://github.com/Aeredren/txt2eo/blob/47c4e3a5ec/txt2eo
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -1618,6 +1648,9 @@ eo_to() {
   # Convert Cx-like esperanto typography into the correct unicode character (Ĉ ĉ Ĝ ĝ Ĥ ĥ Ĵ ĵ Ŝ ŝ Ŭ ŭ)
   # Xx is convert to x
   # https://github.com/Aeredren/txt2eo/blob/47c4e3a5ec/txt2eo
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -1857,12 +1890,18 @@ extract() {
 alias -- rpm_extract='extract'
 
 filename_extension() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     printf -- '%s\n' "${file##*.}"
   done
 }
 
 filename_without_extension() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     # https://stackoverflow.com/a/12152997
     basename -- "${file%.*}"
@@ -3758,6 +3797,9 @@ get_github_stars() {
 
 ## GIF
 to_gif() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -3781,6 +3823,9 @@ to_gif() {
   } 2>/dev/null
 }
 gif_webp_r() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -4404,6 +4449,9 @@ alias -- \
   glog='git log --all --decorate --graph --oneline' \
   glod='git log --all --decorate --graph --oneline --pretty='\''%Cred%h%Creset%C(auto)%d%Creset %s %Cgreen%ad%Creset'\'' --date=short'
 glof() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     # follow files even in other directories
     git -C "$(realpath -- "$(dirname -- "${file-}")")" log --all --decorate --oneline --follow -- "$(realpath -- "${file-}")" 2>/dev/null ||
@@ -5347,6 +5395,9 @@ grep_o() {
 hash_abbreviate() {
   # abbreviate commit hash and copy to clipboard
   # usage: hash_abbreviate [-l <length>] <hash> [<hash> ...]
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   while getopts -- 'l:' opt; do
     case "${opt-}" in
     l)
@@ -5375,6 +5426,9 @@ hash_abbreviate() {
 alias -- h7='hash_abbreviate'
 
 hashlookup() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   test -f "${1-}" ||
     # EX_NOINPUT
     return 66
@@ -5420,6 +5474,9 @@ head_c() {
 }
 
 headers() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -5554,6 +5611,9 @@ icns_to_png() {
     command -v -- icns2png >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -5781,6 +5841,9 @@ install() {
 }
 alias -- i='install'
 brewsearch() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   while test "${#}" -ne 0; do
     brew search --formula --verbose "${1-}"
     shift 1
@@ -5817,6 +5880,9 @@ image_color_count() {
   command -v -- magick >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     case "${file-}" in
     --)
@@ -5840,6 +5906,9 @@ image_color_frequency() {
   command -v -- magick >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     case "${file-}" in
     --)
@@ -5865,6 +5934,9 @@ image_color_list() {
   command -v -- magick >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     case "${file-}" in
     --)
@@ -5922,6 +5994,9 @@ to_jpg() {
   command -v -- magick >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -5948,6 +6023,9 @@ guetzli_r() {
   command -v -- guetzli >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -6282,6 +6360,9 @@ fi
 
 list_functions() {
   # print the names of functions found in a shell script file
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     sed \
       -e '# does the first non-empty line resemble a shell directive?' \
@@ -6333,6 +6414,9 @@ to_m4a() {
   command -v -- ffmpeg >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o verbose \
@@ -6361,6 +6445,9 @@ to_mp3() {
   command -v -- ffmpeg >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -6391,6 +6478,9 @@ to_mp4() {
   command -v -- ffmpeg >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -6506,6 +6596,9 @@ man_pdf() {
     command -v -- mandoc >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -6763,6 +6856,9 @@ ocr() {
   command -v -- ocrmypdf >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   #
   # TODO! make this work on all PDFs in folder if no argument is provided
   #
@@ -6794,6 +6890,9 @@ ocr_eo() {
   command -v -- ocrmypdf >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
@@ -6909,6 +7008,9 @@ pdf_images() {
   command -v -- pdfimages >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -7173,6 +7275,9 @@ pledit() {
   command -v -- plutil >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
@@ -7293,6 +7398,9 @@ to_png() {
   command -v -- magick >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -7328,6 +7436,9 @@ advpng_r() {
   command -v -- advpng >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o verbose \
@@ -7360,6 +7471,9 @@ optipng_r() {
   command -v -- optipng >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o verbose \
@@ -7400,6 +7514,9 @@ oxipng_r() {
   command -v -- oxipng >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o verbose \
@@ -7436,6 +7553,9 @@ pngcrush_r() {
   command -v -- pngcrush >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o verbose \
@@ -7473,6 +7593,9 @@ pngout_r() {
   command -v -- pngout >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o verbose \
@@ -7825,6 +7948,9 @@ rename_with_dimensions() {
   command -v -- exiftool >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -8034,6 +8160,9 @@ scour_r() {
   command -v -- scour >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o verbose \
@@ -8292,6 +8421,9 @@ shellharden_r() {
   command -v -- shellharden >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noglob \
     -o verbose \
@@ -8350,6 +8482,9 @@ shf() {
   command -v -- shfmt >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -8439,6 +8574,9 @@ shfmt_r_() {
   command -v -- shfmt >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o xtrace
   for file in "${@-}"; do
@@ -8464,6 +8602,9 @@ shfmt_r_r_() {
   command -v -- shfmt >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o xtrace
   for file in "${@-}"; do
@@ -8516,6 +8657,9 @@ shred_r() {
   command -v -- shred >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -8945,10 +9089,8 @@ substring_contains() {
           exit_code=1
         fi
       else
-        # argument count is not 2
-        # `return 3` because `return 1` means `$1` does not contain `$2`
-        exit_code=3
-        "${0-}" --help >&2
+        # EX_USAGE
+        return 64
       fi
       ;;
     esac
@@ -8967,6 +9109,9 @@ alias -- sudo='sudo '
 
 string_length() {
   # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for string in "${@-}"; do
     printf -- '%d\n' "${#string}"
   done
@@ -9127,6 +9272,9 @@ swiftlint_r() {
 }
 
 tabs_to_spaces() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     # apply to any file, except for
     # - zero-length files
@@ -9147,6 +9295,9 @@ tabs_to_spaces_ed() {
   command -v -- ed >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -9338,6 +9489,9 @@ textlint_r() {
 }
 
 transfer() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   for file in "${@-}"; do
     test -s "${file-}" &&
       {
@@ -9550,8 +9704,8 @@ alias -- unixdate_set='unixtime_set'
 
 url_to_filename() {
   test "${#}" -gt 0 ||
-    # EX_NOINPUT
-    return 66
+    # EX_USAGE
+    return 64
   printf -- '%s\n' "${*-}" |
     sed \
       -e '# remove https/http/chrome/brave protocol and www' \
@@ -9682,6 +9836,9 @@ webp_r() {
   command -v -- cwebp >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o noclobber \
     -o noglob \
@@ -9978,6 +10135,9 @@ yt() {
   command -v -- yt-dlp >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   case "${1-}" in
   --video)
     shift 1 &&
