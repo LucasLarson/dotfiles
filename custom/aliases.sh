@@ -2496,10 +2496,13 @@ find_image_files() {
     -name '*.[Aa][Pp][Nn][Gg]' -o \
     -name '*.[Aa][Rr][Ww]' -o \
     -name '*.[Aa][Vv][Ii][Ff]' -o \
+    -name '*.[Bb][Ii][Tt][Mm][Aa][Pp]' -o \
     -name '*.[Bb][Mm][Pp]' -o \
+    -name '*.[Bb][Mm][Pp]24' -o \
     -name '*.[Cc][Aa][Rr]' -o \
     -name '*.[Cc][Bb][Rr]' -o \
     -name '*.[Cc][Bb][Zz]' -o \
+    -name '*.[Cc][Gg][Mm]' -o \
     -name '*.[Cc][Rr]2' -o \
     -name '*.[Cc][Uu][Rr]' -o \
     -name '*.[Dd][Dd][Ss]' -o \
@@ -2509,10 +2512,16 @@ find_image_files() {
     -name '*.[Ff][Ii][Gg]' -o \
     -name '*.[Ff][Oo][Dd][Gg]' -o \
     -name '*.[Gg][Ii][Ff]' -o \
+    -name '*.[Gg][Ii][Ff]87' -o \
+    -name '*.[Gg][Ii][Ff]89' -o \
     -name '*.[Hh][Ee][Ii][Cc]' -o \
     -name '*.[Hh][Ee][Ii][Ff]' -o \
     -name '*.[Ii][Cc][Nn][Ss]' -o \
     -name '*.[Ii][Cc][Oo]' -o \
+    -name '*.[Ii][Mm]{1,8,24} Sun raster image' -o \
+    -name '*.[Ii][Mm]1' -o \
+    -name '*.[Ii][Mm]8' -o \
+    -name '*.[Ii][Mm]24' -o \
     -name '*.[Ii][Tt][Cc] Apple Music.app JPEGs' -o \
     -name '*.[Ii][Tt][Cc]' -o \
     -name '*.[Jj]2[Cc]' -o \
@@ -2521,6 +2530,7 @@ find_image_files() {
     -name '*.[Jj][Ff][Ii][Ff]' -o \
     -name '*.[Jj][Ii][Ff]' -o \
     -name '*.[Jj][Pp]2' -o \
+    -name '*.[Jj][Pp][Cc]' -o \
     -name '*.[Jj][Pp][Ee]' -o \
     -name '*.[Jj][Pp][Ee][Gg]' -o \
     -name '*.[Jj][Pp][Ff]' -o \
@@ -2529,12 +2539,17 @@ find_image_files() {
     -name '*.[Jj][Xx][Ll]' -o \
     -name '*.[Kk][Rr][Aa]' -o \
     -name '*.[Kk][Rr][Zz]' -o \
+    -name '*.[Mm][Vv][Gg] ImageMagick Vector Graphic' -o \
+    -name '*.[Mm][Vv][Gg]' -o \
     -name '*.[Nn][Ee][Ff]' -o \
     -name '*.[Oo][Dd][Gg]' -o \
     -name '*.[Oo][Rr][Ff]' -o \
+    -name '*.[Pp]7 XV thumbnail image data' -o \
+    -name '*.[Pp]7' -o \
     -name '*.[Pp][Bb][Mm]' -o \
     -name '*.[Pp][Gg][Mm]' -o \
     -name '*.[Pp][Ii][Cc]' -o \
+    -name '*.[Pp][Ii][Cc][Tt]' -o \
     -name '*.[Pp][Jj][Pp]' -o \
     -name '*.[Pp][Jj][Pp][Ee][Gg]' -o \
     -name '*.[Pp][Jj][Pp][Gg]' -o \
@@ -2549,6 +2564,7 @@ find_image_files() {
     -name '*.[Rr][Ii][Ff]johnalanwoods/maintained-modern-unix@c43c4b3f29/screenshots/zoxide.riff' -o \
     -name '*.[Rr][Ii][Ff]' -o \
     -name '*.[Rr][Ii][Ff][Ff]' -o \
+    -name '*.[Rr][Ll][Ee]' -o \
     -name '*.[Ss][Gg][Ii]' -o \
     -name '*.[Ss][Rr][Ww]' -o \
     -name '*.[Ss][Vv][Gg]' -o \
