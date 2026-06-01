@@ -30,7 +30,7 @@ aliases() {
   . "${1-}"
   command -v -- sc >/dev/null 2>&1 &&
     sc -- "${1-}"
-  shift
+  shift 1
 }
 
 ## Adobe Acrobat
@@ -285,7 +285,7 @@ braces() {
         "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/'"${1##*/}" \
         >"${1-}" &&
       rm -f -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/'"${1##*/}"
-    shift
+    shift 1
   done
   {
     set \
@@ -1238,7 +1238,7 @@ define() {
 
     case "${query-}" in
     --)
-      shift
+      shift 1
       ;;
 
     *)
@@ -1380,11 +1380,11 @@ dictionary() {
   arguments=''
   case "${1-}" in
   --)
-    shift
+    shift 1
     ;;
   -*)
     arguments="${1##*-}"
-    shift
+    shift 1
     ;;
   *)
     LC_ALL='C' sort -u "${1:--}" |
@@ -1814,7 +1814,7 @@ extract() {
     IFS=' ' find -- . \
       -name '*.rpm' \
       -type f \
-      -exec sh -C -e -f -u -x -c -- 'mkdir -p -- "$(basename -- "${1%.*}")" && rpm2cpio "${1-}" >./"$(basename -- "${1%.*}")"'\''/'\''"$(basename -- "${1%.*}"'\''.cpio'\'')" && cd -- ./"$(basename -- "${1%.*}")" && test -s "$(basename -- "${1%.*}"'\''.cpio'\'')" && cpio --extract --make-directories --verbose <"$(basename -- "${1%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${1%.*}"'\''.cpio'\'')" && cd -- "${OLDPWD:--}" && rm -- "${1-}" && shift' _ {} ';'
+      -exec sh -C -e -f -u -x -c -- 'mkdir -p -- "$(basename -- "${1%.*}")" && rpm2cpio "${1-}" >./"$(basename -- "${1%.*}")"'\''/'\''"$(basename -- "${1%.*}"'\''.cpio'\'')" && cd -- ./"$(basename -- "${1%.*}")" && test -s "$(basename -- "${1%.*}"'\''.cpio'\'')" && cpio --extract --make-directories --verbose <"$(basename -- "${1%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${1%.*}"'\''.cpio'\'')" && cd -- "${OLDPWD:--}" && rm -- "${1-}" && shift 1' _ {} ';'
   done
   find -- . \
     '(' \
@@ -1897,7 +1897,7 @@ file_closes_with_newline() {
     find -- "${1-}" \
       -type f \
       -exec sh -c -- 'test "$(tail -c 1 -- "${1-}" | wc -l)" -ne 0 || printf -- '\''%s does not close with a newline\n'\'' "${1-}" >&2' _ {} ';'
-    shift
+    shift 1
   done
 }
 alias -- \
@@ -1910,7 +1910,7 @@ file_has_trailing_whitespace() {
     find -- "${1-}" \
       -type f \
       -exec sh -c -- 'test "$(sed -e '\''s/[[:space:]]*$//'\'' <"${1-}" | wc -l)" -eq "$(sed -e '\''s/[[:space:]]*$//'\'' <"${1-}" | wc -l)" || printf -- '\''%s has trailing whitespace\n'\'' "${1-}" >&2' _ {} ';'
-    shift
+    shift 1
   done
 }
 
@@ -1931,7 +1931,7 @@ f() {
         -name "$(printf -- '%s' "${1-}" | awk -- '{for (i = 1; i <= length($0); i++) {printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))} printf "\n"}')" \
         ')' \
         -print
-      shift
+      shift 1
     done
   fi
 }
@@ -3752,7 +3752,7 @@ get_github_stars() {
         sed \
           -n \
           -e 's/.*"stargazers_count":[^[:digit:]]*\([[:digit:]][[:digit:]]*\).*/\1/p'
-    shift
+    shift 1
   done
 }
 
@@ -3848,7 +3848,7 @@ guo() {
 git_add() {
   case "${1-}" in
   -p | --patch)
-    shift
+    shift 1
     git add --verbose --patch "${@:-.}"
     ;;
   -A | --all)
@@ -3857,7 +3857,7 @@ git_add() {
     git_add --others &&
       # then add modified files
       git_add --modified &&
-      shift
+      shift 1
     ;;
   -D | --deleted)
     # https://gist.github.com/8775224
@@ -3868,10 +3868,10 @@ git_add() {
         # there is no risk of losing files that are indexed but already removed
         git rm -- "${file-}"
       done &&
-      shift
+      shift 1
     ;;
   -m | --modified | --update)
-    shift &&
+    shift 1 &&
       git add --update --verbose -- "${@:-.}"
     ;;
   -o | --others | --untracked)
@@ -3882,7 +3882,7 @@ git_add() {
           git add --verbose -- "${file-}"
         done
     done &&
-      shift
+      shift 1
     ;;
   '')
     git add --verbose --patch -- .
@@ -4026,7 +4026,7 @@ git_clone() {
     printf -- 'Usage: %s <git_url> [<dir_name>]\n' "${0##*/}" >&2
     ;;
   -1 | --shallow)
-    shift
+    shift 1
     { mkdir "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 || return 73; } &&
       printf -- 'moving into %s...\n' "${2:-$(basename -- "${1-}" .git)}" >&2 &&
       cd -- "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 &&
@@ -4503,7 +4503,7 @@ alias -- gmv='git_move'
 gopen() {
   case "${1-}" in
   --)
-    shift
+    shift 1
     ;;
   -d | --dependabot)
     url="$(
@@ -4699,7 +4699,7 @@ git_restore() {
   *)
     while test "${#}" -gt 0; do
       git checkout --progress -- "${1-}"
-      shift
+      shift 1
     done
     ;;
   esac
@@ -4749,13 +4749,13 @@ git_show() {
   case "${1-}" in
 
   --date)
-    shift
+    shift 1
     git log --max-count=1 --format='%ci'
     ;;
 
   --files)
     # remove `--files` from the argument string
-    shift
+    shift 1
 
     # https://stackoverflow.com/a/424142
     git diff-tree -B -C -M -r --find-copies-harder --name-only --no-commit-id --root --text "${@:-HEAD}" -- |
@@ -4906,11 +4906,11 @@ git_time() {
     printf -- 'Usage: git_time [date] [time]\n'
     ;;
   [1-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] | [1-9][0-9][0-9][0-9][0-1][0-9][0-3][0-9])
-    shift
+    shift 1
     /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-+%Y-%m-%d}"'T'"${2:-%H:%M:%S}"'Z' '+%c %z'
     ;;
   [1-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]T[0-2][0-9]:[0-5][0-9]:[0-5][0-9]Z)
-    shift
+    shift 1
     /usr/local/opt/coreutils/libexec/gnubin/date -d "${1-}"T"${2-}"Z '+%c %z'
     ;;
   *)
@@ -4949,7 +4949,7 @@ git_update() {
     # https://docs.google.com/spreadsheets/d/14W8w71DK0YpsePbgtDkyFFpFY1NVrCmVMaw06QY64eU
     case "${1-}" in
     -r | --remote)
-      shift
+      shift 1
       git submodule update --init --recursive --remote "${@-}"
       ;;
     *)
@@ -5183,7 +5183,7 @@ gr() {
   case "${1-}" in
   -*)
     arguments="${1-}"'EIinr'
-    shift
+    shift 1
     ;;
   *)
     arguments='-EIinr'
@@ -5210,7 +5210,7 @@ grpt() {
   case "${1-}" in
   -*)
     arguments="${1-}"'EIinr'
-    shift
+    shift 1
     ;;
   *)
     arguments='-EIinr'
@@ -5631,7 +5631,7 @@ install() {
     -o xtrace
   case "${1-}" in
   caveat*)
-    shift
+    shift 1
     {
       set \
         +o verbose \
@@ -5663,7 +5663,7 @@ install() {
     esac
     ;;
   file*)
-    shift
+    shift 1
     set \
       -o noclobber \
       -o verbose \
@@ -5712,7 +5712,7 @@ install() {
     } 2>/dev/null
     ;;
   HEAD*)
-    shift
+    shift 1
     {
       set \
         +o verbose \
@@ -5729,14 +5729,14 @@ install() {
     done
     ;;
   search)
-    shift
+    shift 1
     brewsearch "${@-}"
     ;;
   info)
     brew "${@-}"
     ;;
   --)
-    shift
+    shift 1
     ;;
   *)
     # @TODO! this should allow for  install --search  -- 𝑥
@@ -5783,7 +5783,7 @@ alias -- i='install'
 brewsearch() {
   while test "${#}" -ne 0; do
     brew search --formula --verbose "${1-}"
-    shift
+    shift 1
   done
 }
 
@@ -5820,7 +5820,7 @@ image_color_count() {
   for file in "${@-}"; do
     case "${file-}" in
     --)
-      shift
+      shift 1
       ;;
     *)
       magick "${file-}" txt:- |
@@ -5843,7 +5843,7 @@ image_color_frequency() {
   for file in "${@-}"; do
     case "${file-}" in
     --)
-      shift
+      shift 1
       ;;
     *)
       magick "${file-}" txt:- |
@@ -5868,7 +5868,7 @@ image_color_list() {
   for file in "${@-}"; do
     case "${file-}" in
     --)
-      shift
+      shift 1
       ;;
     *)
       magick "${file-}" txt:- |
@@ -6117,7 +6117,7 @@ alias -- last_character='tail -c -1'
 last_word() {
   while test "${#}" -gt 0; do
     printf -- '%s\n' "${1##* }"
-    shift
+    shift 1
   done
 }
 
@@ -6206,7 +6206,7 @@ breakdown() {
     return "${?:-1}"
   case "${1-}" in
   -s | --summary)
-    shift
+    shift 1
     "${utility-}" "${@-}" "$(
       git rev-parse --show-toplevel --path-format=relative |
         sed -e '1 q'
@@ -6515,7 +6515,7 @@ man_pdf() {
     while test "${#}" -gt 0; do
       command man -t -- "${1-}" 2>/dev/null |
         ps2pdf - - | open -a Preview -f
-      shift
+      shift 1
     done
   elif command -v -- mandoc >/dev/null 2>&1 && {
     test -x /System/Applications/Preview.app/Contents/MacOS/Preview ||
@@ -6725,7 +6725,7 @@ nslookup_r() {
     output="$(nslookup "${1-}" 2>&1)"
     printf -- '%s\n' "${output-}" | grep -A 1 -e 'Name' | tail -n 1 | awk -- '{print $2}'
     printf -- '%s\n' "${output-}" | grep -e 'name' | awk -- '{print $4}'
-    shift
+    shift 1
   done
 }
 command -v -- _nslookup >/dev/null 2>&1 &&
@@ -6858,7 +6858,7 @@ open() {
         open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/sbi.html'
       ;;
     g)
-      shift &&
+      shift 1 &&
         gopen "${@-}"
       ;;
     sc*)
@@ -6887,7 +6887,7 @@ unpax() {
     uncompress -f -v -- "${1-}" &&
       set -- "${1%.Z}"
     pax -r -v -f "${1-}"
-    shift
+    shift 1
   done
 }
 
@@ -7014,7 +7014,7 @@ posix_character_classes() {
       -e '  s/.*>\([[:alpha:]]\{1,\}\).*/[:\1:]/p' \
       -e '}' |
     LC_ALL='C' sort -u
-  shift
+  shift 1
 }
 
 posix_special_utilities_list() {
@@ -7102,7 +7102,7 @@ posix_variables_list() {
       test "$(eval " printf -- '%s\\n' \$${variable-}" 2>/dev/null)" = '' ||
         printf -- '%s:\t%s\n' "${variable-}" "$(eval " printf -- '%s\\n' \$${variable-}")"
     done
-  shift
+  shift 1
   #   @TODO:
   #   printf -- 'ADMIN:%-12s%s\n' "${ADMIN-}"
   #   because the longest variable names are 11 characters long
@@ -7445,7 +7445,7 @@ pngcrush_r() {
       test ! -L "${file-}" &&
       case "${file-}" in
       *-pngcrush.png)
-        shift
+        shift 1
         ;;
       *.[Pp][Nn][Gg])
         pngcrush \
@@ -7553,7 +7553,7 @@ esac' _ {} +
   *)
     while test "${#}" -ne 0; do
       qlmanage -p -- "${1-}" >/dev/null 2>&1 &&
-        shift
+        shift 1
     done
     ;;
   esac
@@ -7691,7 +7691,7 @@ remove_trailing_slash() {
       set -- "${1%/}"
     done
     printf -- '%s\n' "${1-}"
-    shift
+    shift 1
   done
 }
 
@@ -7874,10 +7874,10 @@ rsync_r() {
     return 64
     ;;
   esac
-  shift
+  shift 1
   while test "${#}" -gt 0; do
     rsync --archive --compress --partial --progress --verbose -- "${1-}" "${target-}"
-    shift
+    shift 1
   done
   unset target >/dev/null 2>&1 || target=''
 }
@@ -7926,7 +7926,7 @@ rustfmt_r() {
 sc() {
   for file in "${@:-${DOTFILES-}/custom/aliases.sh}"; do
     case "${file-}" in
-    --) shift && continue ;;
+    --) shift 1 && continue ;;
     -h* | --help)
       printf -- 'Usage: %s [--] [file ...]\n' "${0##*/}" >&2
       # EX_OK
@@ -8066,7 +8066,7 @@ scour_r() {
           -o "${file%.*}"'-scour.svg'
         ;;
       *)
-        shift
+        shift 1
         ;;
       esac
   done
@@ -8219,7 +8219,7 @@ shellcheck_d() {
         -e 's/[[:blank:]]*\#[[:blank:]]*shellcheck[[:blank:]][[:blank:]]*shell=\(.*\)sh/#!\/usr\/bin\/env \1sh/' \
         "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/'"${1##*/}" \
         >"${1-}"
-    shift
+    shift 1
   done
   {
     set \
@@ -9205,7 +9205,7 @@ take() {
       printf -- 'entering directory \342\200\230%s\342\200\231\n' "${1##*"${PWD}"/}" >&2 &&
       cd -- "${1-}" ||
       return "${?:-1}"
-    shift
+    shift 1
   done
 }
 alias -- md >/dev/null 2>&1 &&
@@ -9980,7 +9980,7 @@ yt() {
     return 69
   case "${1-}" in
   --video)
-    shift &&
+    shift 1 &&
       for video in "${@-}"; do
         # removing `--format`/`-f` ensures the best quality video
         yt-dlp --verbose --console-title --abort-on-error --break-on-existing --restrict-filenames --windows-filenames --no-overwrites --write-thumbnail --audio-quality=0 --keep-video --embed-thumbnail --add-metadata --xattrs --fixup=detect_or_warn -- "${video-}"
