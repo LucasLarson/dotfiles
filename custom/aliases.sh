@@ -223,6 +223,9 @@ bash_pretty_overwrite() {
 }
 
 bitly() {
+  test "${BITLY_TOKEN-}" != '' ||
+    # EX_CONFIG
+    return 78
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
@@ -1077,7 +1080,8 @@ cy() {
   test -d "${DOTFILES-}" ||
     test -d "${TEMPLATE-}" ||
     test -d "${_GITHUB-}" ||
-    return 1
+    # EX_CONFIG
+    return 78
 
   target="$(
     git rev-parse --show-toplevel --path-format=relative 2>/dev/null | sed -e '1 q' ||
@@ -1521,6 +1525,9 @@ dotfiles_not_found() {
     -o noclobber \
     -o noglob \
     -o verbose
+  test "${DOTFILES-}" != '' ||
+    # EX_CONFIG
+    return 78
   find -- "${DOTFILES-}" \
     -path "${DOTFILES-}"'/*/*' -prune -o \
     -name '.git*' -prune -o \
@@ -5035,6 +5042,9 @@ gvc() {
 alias -- ghs='gh status'
 
 github_create_repository() {
+  test "${GITHUB_API_TOKEN-}" != '' ||
+    # EX_CONFIG
+    return 78
   # https://gist.github.com/alexpchin/dc91e723d4db5018fef8?permalink_comment_id=4252359#gistcomment-4252359
   curl \
     --data '{"name": "'"$(git rev-parse --show-toplevel | tr -d '[:space:]' | sed -e 's/./\\&/g' | xargs basename --)"'", "private": true, "visibility": "private"}' \
@@ -5541,6 +5551,9 @@ hw() {
 }
 
 htail() {
+  test "${HISTFILE-}" != '' ||
+    # EX_CONFIG
+    return 78
   tail -n "$((${LINES:-"$(
     tput -- lines 2>/dev/null ||
       printf -- '10 + 2'
@@ -5948,6 +5961,9 @@ image_get_pixel() {
 }
 
 ip() {
+  test "${IPINFO_TOKEN-}" != '' ||
+    # EX_CONFIG
+    return 78
   # https://web.archive.org/web/2022/news.ycombinator.com/item?id=29848744
   set -- 'https://ipinfo.io/'"${1-}"'?token='"${IPINFO_TOKEN-}"
   {
@@ -6490,6 +6506,9 @@ mu() {
   command -v -- mackup >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${DOTFILES-}" != '' ||
+    # EX_CONFIG
+    return 78
   cd -- "${DOTFILES-}" ||
     return 1
   command -v -- cleanup >/dev/null 2>&1 &&
@@ -6510,6 +6529,9 @@ mu() {
 
 # dotfiles
 dot() {
+  test "${DOTFILES-}" != '' ||
+    # EX_CONFIG
+    return 78
   cd -- "${DOTFILES-}" ||
     return 1
   l 2>/dev/null ||
@@ -8764,6 +8786,10 @@ sk() {
 }
 
 spotify_request_token() {
+  test "${SPOTIFY_CLIENT_ID-}" != '' &&
+    test "${SPOTIFY_CLIENT_SECRET-}" != '' ||
+    # EX_CONFIG
+    return 78
   set \
     -o noclobber \
     -o noglob \
