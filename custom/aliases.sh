@@ -6233,7 +6233,6 @@ install_less() {
         -e 's|'"${HOME%/}"'|~|'
     rm -f -r -- "${target-}"'/.gitingore'
     "${utility:-make}" -C "${target-}" -f Makefile.aut distfiles
-    "${utility:-make}" -C "${target-}" -f Makefile.aut distfiles
     if test -w '/usr/local/bin'; then
       bindir='/usr/local/bin'
     elif mkdir -p -- "${HOME%/}"'/.local/bin' 2>/dev/null; then
@@ -10009,7 +10008,6 @@ zshabbr() {
 alias -- \
   zshenv='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"/."$(basename -- "${SHELL%%[0-9-]*}")"env && exec - "${SHELL##*/}"' \
   zlogin='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogin'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
-  zlogout='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogout'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
   zlogout='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogout'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
   zprofile='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1sprofile'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
   zshrc='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(basename -- "${SHELL%%[0-9-]*}")"'\''rc'\'' && exec - "${SHELL##*/}"' \
