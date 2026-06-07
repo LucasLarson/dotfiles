@@ -7504,7 +7504,6 @@ oxipng_r() {
           --out="${file%.*}"'-oxipng.png' \
           --strip=all \
           --verbose \
-          --verbose \
           --zopfli \
           -- \
           "${file-}"
