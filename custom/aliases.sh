@@ -30,7 +30,6 @@ aliases() {
   . "${1-}"
   command -v -- sc >/dev/null 2>&1 &&
     sc -- "${1-}"
-  shift 1
 }
 
 ## Adobe Acrobat
@@ -7110,7 +7109,6 @@ posix_character_classes() {
       -e '  s/.*>\([[:alpha:]]\{1,\}\).*/[:\1:]/p' \
       -e '}' |
     LC_ALL='C' sort -u
-  shift 1
 }
 
 posix_special_utilities_list() {
