@@ -5725,7 +5725,6 @@ install() {
     brew bundle dump \
       --cask \
       --debug \
-      --describe \
       --file=- \
       --force \
       --formula \
