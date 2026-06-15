@@ -437,7 +437,7 @@ cdx_to_csv() {
 
 changelog_find_newest() {
   pwd="$(
-    git rev-parse --show-toplevel --path-format=relative | sed -e '1 q' ||
+    git rev-parse --path-format=relative --show-toplevel | sed -e '1 q' ||
       git rev-parse --show-toplevel ||
       find -- . -name '.git' -type d -exec dirname -- {} ';'
   )" 2>/dev/null ||
@@ -1083,7 +1083,7 @@ cy() {
     return 78
 
   target="$(
-    git rev-parse --show-toplevel --path-format=relative 2>/dev/null | sed -e '1 q' ||
+    git rev-parse --path-format=relative --show-toplevel 2>/dev/null | sed -e '1 q' ||
       git rev-parse --show-toplevel 2>/dev/null ||
       pwd -L
   )" ||
@@ -3223,7 +3223,7 @@ find_setup_files_delete_others() {
 find_shell_scripts() {
   git rev-parse >/dev/null 2>&1 || return "${?:-1}"
   cd -- "$(
-    git rev-parse --show-toplevel --path-format=relative |
+    git rev-parse --path-format=relative --show-toplevel |
       sed -e '1 q'
   )" 2>/dev/null ||
     cd -- "$(
@@ -6279,14 +6279,14 @@ breakdown() {
   -s | --summary)
     shift 1
     "${utility-}" "${@-}" "$(
-      git rev-parse --show-toplevel --path-format=relative |
+      git rev-parse --path-format=relative --show-toplevel |
         sed -e '1 q'
     )" 2>/dev/null ||
       "${utility-}" "${@-}" "$(git rev-parse --show-toplevel)" 2>/dev/null
     ;;
   *)
     "${utility-}" --breakdown "${@-}" "$(
-      git rev-parse --show-toplevel --path-format=relative |
+      git rev-parse --path-format=relative --show-toplevel |
         sed -e '1 q'
     )" 2>/dev/null ||
       "${utility-}" --breakdown "${@-}" "$(git rev-parse --show-toplevel)" 2>/dev/null |
@@ -9357,8 +9357,8 @@ update_changelog() {
     cd -- "$(
       # attempt relative-path access
       git rev-parse \
-        --show-toplevel \
-        --path-format=relative |
+        --path-format=relative \
+        --show-toplevel |
         sed \
           -e '1 q'
     )" 2>/dev/null ||
