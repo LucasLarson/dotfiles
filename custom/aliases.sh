@@ -827,51 +827,31 @@ cleanup() {
   done
 
   # swap each tab for two spaces each in gitconfig files
-  (
-    set \
-      -o noglob
-    ###    rm -f -r -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp' &&
-    ###    mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp' &&
-    {
-      find -- \
-        "${XDG_CONFIG_HOME-}"'/git/config' \
-        "${HOME%/}"'/.config/git/config' \
-        "${DOTFILES-}"'/.config/git/config' \
-        "${HOME%/}"'/.gitconfig' \
-        "${DOTFILES-}"'/.gitconfig' \
-        "${GIT_DIR:-./.git}"'/config' \
-        "${GIT_DIR:-./.git}"'/config.worktree' \
-        ! -size 0 \
-        -type f \
-        -print || true
-    } 2>/dev/null | while IFS='' read -r -- file; do
-      # if test -s "${file-}" && cp -f -p -- "${file-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}"; then
-      #   sed -e 's/\t/  /g' "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" >"${file-}"
-      # fi
-
-      #
-      ##
-      ###
-      ####
-      ###     test -s "${file-}" &&
-      ###     test ! -L "${file-}" &&
-      ###       grep -v -e 'bplist' -- "${file-}" >/dev/null 2>&1 &&
-      ###       LC_ALL='C' file -- "${file-}" |
-      ###       grep -v -e 'binary' >/dev/null 2>&1 &&
-      ed -s -- "${file-}" <<EOF
+  command -v -- ed >/dev/null 2>&1 &&
+    (
+      set -o noglob &&
+        {
+          find -- \
+            "${XDG_CONFIG_HOME-}"'/git/config' \
+            "${HOME%/}"'/.config/git/config' \
+            "${DOTFILES-}"'/.config/git/config' \
+            "${HOME%/}"'/.gitconfig' \
+            "${DOTFILES-}"'/.gitconfig' \
+            "${GIT_DIR:-./.git}"'/config' \
+            "${GIT_DIR:-./.git}"'/config.worktree' \
+            ! -size 0 \
+            -type f \
+            -print || true
+        } 2>/dev/null | while IFS='' read -r -- file; do
+          ed -s -- "${file-}" <<EOF
 1,\$ s/	/  /g
 w
 q
 EOF
-      ####
-      ###
-      ##
-      #
-    done |
-      # suppress `ed` question mark-only lines
-      sed \
-        -e '/^?$/ d'
-  )
+        done |
+        # suppress `ed` question mark-only lines
+        sed -e '/^?$/ d'
+    )
 
   # remove Git sample hooks and Dropbox pollution from `.git/` directories
   find -- . \
@@ -1599,6 +1579,9 @@ eo_from() {
   # Convert Cx-like esperanto typography into the correct unicode character (Ĉ ĉ Ĝ ĝ Ĥ ĥ Ĵ ĵ Ŝ ŝ Ŭ ŭ)
   # Xx is convert to x
   # https://github.com/Aeredren/txt2eo/blob/47c4e3a5ec/txt2eo
+  command -v -- ed >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
@@ -5561,16 +5544,17 @@ htail() {
 }
 hundo() {
   ## remove the last entry from `$HISTFILE`
-
+  command -v -- ed >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   # create a temporary location for the file
-  mkdir -p -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash'
-
-  # remove the old copy if any
-  find -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' \
-    -name "${HISTFILE##*/}" \
-    -type f \
-    -print \
-    -exec sh -f -u -v -x -c -- 'mv -- "${1-}" "${1-}".bak' _ {} +
+  mkdir -p -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' &&
+    # remove the old copy if any
+    find -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' \
+      -name "${HISTFILE##*/}" \
+      -type f \
+      -print \
+      -exec sh -f -u -v -x -c -- 'mv -- "${1-}" "${1-}".bak' _ {} +
 
   # create the copy
   # use the target directory AND target filename for less jarring stderr messages
