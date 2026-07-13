@@ -13,14 +13,14 @@
 # ──────────────────────────╯
 #
 # https://github.com/mathiasbynens/dotfiles/commit/cb8843b
-alias -- ,='exec -l -- "${SHELL:-sh}"'       # unnecessary pre-reset run-command reload
-alias -- ,='exec -- - "${SHELL:-sh}"'        # Zsh-only           (but this generates `zsh` instead of `-zsh`)
-alias -- ,='exec "${SHELL:-sh}" -l'          # any POSIX shell
-alias -- ,='exec -l -- "${SHELL:-sh}"'       # Zsh or Bash (but in Zsh this generates `zsh` instead of `-zsh`)
-alias -- ,='exec -l - "${${SHELL##*/}:-sh}"' # Zsh-only using `-` precommand modifier to generate `-zsh` instead of `zsh` and the `-l` is not required
-alias -- ,='exec - "${${SHELL##*/}:-sh}"'    # Zsh-only using `-` precommand modifier to generate `-zsh` instead of `zsh`
-alias -- ,='exec "${SHELL:-sh}"'             # portable
-alias -- ,='exec - "${SHELL##*/}"'           # Zsh-only using `-` precommand modifier to generate `-zsh` instead of `zsh`, but POSIX parameter expansion
+alias ,='exec -l -- "${SHELL:-sh}"'       # unnecessary pre-reset run-command reload
+alias ,='exec -- - "${SHELL:-sh}"'        # Zsh-only           (but this generates `zsh` instead of `-zsh`)
+alias ,='exec "${SHELL:-sh}" -l'          # any POSIX shell
+alias ,='exec -l -- "${SHELL:-sh}"'       # Zsh or Bash (but in Zsh this generates `zsh` instead of `-zsh`)
+alias ,='exec -l - "${${SHELL##*/}:-sh}"' # Zsh-only using `-` precommand modifier to generate `-zsh` instead of `zsh` and the `-l` is not required
+alias ,='exec - "${${SHELL##*/}:-sh}"'    # Zsh-only using `-` precommand modifier to generate `-zsh` instead of `zsh`
+alias ,='exec "${SHELL:-sh}"'             # portable
+alias ,='exec - "${SHELL##*/}"'           # Zsh-only using `-` precommand modifier to generate `-zsh` instead of `zsh`, but POSIX parameter expansion
 aliases() {
   set -- "${DOTFILES-}"'/custom/aliases.sh'
   "${EDITOR:-vi}" -- "${1-}" &&
@@ -118,32 +118,32 @@ base_to_base() {
 hexadecimal_to_decimal() {
   base_to_base "${1-}" 16 A
 }
-alias -- \
+alias \
   hex2dec='hexadecimal_to_decimal' \
   hex_to_decimal='hexadecimal_to_decimal'
 decimal_to_hexadecimal() {
   base_to_base "${1-}" A 16
 }
-alias -- dec2hex='decimal_to_hexadecimal'
+alias dec2hex='decimal_to_hexadecimal'
 octal_to_decimal() {
   base_to_base "${1-}" 8 A
 }
-alias -- oct2dec='octal_to_decimal'
+alias oct2dec='octal_to_decimal'
 octal_to_hexadecimal() {
   base_to_base "${1-}" 8 16
 }
 decimal_to_octal() {
   base_to_base "${1-}" A 8
 }
-alias -- dec2oct='decimal_to_octal'
+alias dec2oct='decimal_to_octal'
 binary_to_decimal() {
   base_to_base "${1-}" 2 A
 }
-alias -- bin2dec='binary_to_decimal'
+alias bin2dec='binary_to_decimal'
 decimal_to_binary() {
   base_to_base "${1-}" A 2
 }
-alias -- dec2bin='decimal_to_binary'
+alias dec2bin='decimal_to_binary'
 
 basename_r() {
   test "${#}" -gt 0 ||
@@ -346,7 +346,7 @@ cargo_install() {
   } |
     sh -s -- --no-modify-path
 }
-alias -- install_cargo='cargo_install'
+alias install_cargo='cargo_install'
 cargo_list() {
   cargo install --list 2>/dev/null |
     sed \
@@ -357,11 +357,11 @@ cargo_list() {
 # prefer `bat` without line numbers for easier copying
 # this includes `command` otherwise
 # `bat` appears unprepared to accept filenames as arguments
-alias -- bat >/dev/null 2>&1 &&
+alias bat >/dev/null 2>&1 &&
   unalias -- bat
 command -v -- bat >/dev/null 2>&1 &&
-  alias -- bat='bat --decorations=never --paging=never' &&
-  alias -- bats='bat --language=sh' &&
+  alias bat='bat --decorations=never --paging=never' &&
+  alias bats='bat --language=sh' &&
   command -v -- _bat >/dev/null 2>&1 &&
   compdef -- bats='bat' >/dev/null 2>&1
 
@@ -370,22 +370,22 @@ command -v -- bat >/dev/null 2>&1 &&
 # - skips printing the new directory
 # - coerces Zsh into creating an alias named `-` without
 #   tripping up BusyBox `alias`, which does not support `-`
-alias -- 1='cd -- "${OLDPWD:--}"' -='cd -- "${OLDPWD:--}"'
-alias -- 2='cd -- -2'
-alias -- 3='cd -- -3'
-alias -- 4='cd -- -4'
-alias -- 5='cd -- -5'
-alias -- 6='cd -- -6'
-alias -- 7='cd -- -7'
-alias -- 8='cd -- -8'
-alias -- 9='cd -- -9'
-alias -- ...='cd -- ../..'
-alias -- ....='cd -- ../../..'
-alias -- .....='cd -- ../../../..'
-alias -- ......='cd -- ../../../../..'
-alias -- .......='cd -- ../../../../../..'
-alias -- ........='cd -- ../../../../../../..'
-alias -- .........='cd -- ../../../../../../../..'
+alias 1='cd -- "${OLDPWD:--}"' -='cd -- "${OLDPWD:--}"'
+alias 2='cd -- -2'
+alias 3='cd -- -3'
+alias 4='cd -- -4'
+alias 5='cd -- -5'
+alias 6='cd -- -6'
+alias 7='cd -- -7'
+alias 8='cd -- -8'
+alias 9='cd -- -9'
+alias ...='cd -- ../..'
+alias ....='cd -- ../../..'
+alias .....='cd -- ../../../..'
+alias ......='cd -- ../../../../..'
+alias .......='cd -- ../../../../../..'
+alias ........='cd -- ../../../../../../..'
+alias .........='cd -- ../../../../../../../..'
 
 cdp() {
   cd_to="$(pwd -P)"
@@ -657,7 +657,7 @@ clang_format() {
   unset IndentWidth >/dev/null 2>&1 || IndentWidth=''
   unset SpacesBeforeTrailingComments >/dev/null 2>&1 || SpacesBeforeTrailingComments=''
 }
-alias -- clang_format_r='clang_format -i 2 -s 2 -w "$(command -p -- getconf -- UINT_MAX)"'
+alias clang_format_r='clang_format -i 2 -s 2 -w "$(command -p -- getconf -- UINT_MAX)"'
 
 cleanup() {
   # this function is POSIX in an obnoxiously pedantic way and must never be used
@@ -1161,7 +1161,7 @@ count_files_by_extension() {
     sed \
       -e 's/.$/ [no extension]/'
 }
-alias -- cfx='count_files_by_extension'
+alias cfx='count_files_by_extension'
 
 # number of files
 # in current directory
@@ -1215,7 +1215,7 @@ date_s() {
 }
 
 # define
-alias -- d >/dev/null 2>&1 &&
+alias d >/dev/null 2>&1 &&
   unalias -- d
 command -v -- _which >/dev/null 2>&1 &&
   compdef -- define='which' >/dev/null 2>&1 &&
@@ -1318,11 +1318,11 @@ define() {
     esac
   done
 }
-alias -- d='define'
+alias d='define'
 
-alias -- diff >/dev/null 2>&1 &&
+alias diff >/dev/null 2>&1 &&
   unalias -- diff
-alias -- diff='git -c core.quotePath=false diff --color-words --no-index'
+alias diff='git -c core.quotePath=false diff --color-words --no-index'
 diffy() {
   diff \
     --side-by-side \
@@ -1519,7 +1519,7 @@ dotfiles_not_found() {
       +o verbose
   } 2>/dev/null
 }
-alias -- find_missing_dotfiles='dotfiles_not_found'
+alias find_missing_dotfiles='dotfiles_not_found'
 
 dss() {
   # delete thumbnail cache files
@@ -1691,7 +1691,7 @@ exif_copy_tags() {
       +o xtrace
   } 2>/dev/null
 }
-alias -- convert_exif='exif_copy_tags'
+alias convert_exif='exif_copy_tags'
 
 exif_remove() {
   set \
@@ -1808,7 +1808,7 @@ export_U() {
   )
   export PATH
 }
-alias -- \
+alias \
   typeset_U='export_U' \
   export_u='export_U'
 
@@ -1863,7 +1863,7 @@ extract() {
     -type f \
     -print 2>/dev/null
 }
-alias -- rpm_extract='extract'
+alias rpm_extract='extract'
 
 filename_extension() {
   test "${#}" -gt 0 ||
@@ -1915,7 +1915,7 @@ file_closes_with_newline() {
     shift 1
   done
 }
-alias -- \
+alias \
   file_ends_with_newline='file_closes_with_newline' \
   newline_file_closes_with='file_closes_with_newline' \
   linelint='file_closes_with_newline' # name inspiration https://github.com/lra/mackup/commit/28811b7440
@@ -2322,7 +2322,7 @@ END {
   }
 }'
 }
-alias -- fdf='find_duplicate_files'
+alias fdf='find_duplicate_files'
 
 find_duplicate_images() {
   findimagedupes \
@@ -2332,7 +2332,7 @@ find_duplicate_images() {
     . 2>/dev/null |
     column -t
 }
-alias -- fdi='find_duplicate_images'
+alias fdi='find_duplicate_images'
 
 find_editorconfig() {
   directory="${PWD%/}"
@@ -2343,7 +2343,7 @@ find_editorconfig() {
   done
   unset directory >/dev/null 2>&1 || directory=''
 }
-alias -- \
+alias \
   editorconfig_applicable='editorconfig_find' \
   editorconfig_find='find_editorconfig'
 
@@ -2795,7 +2795,7 @@ find_files_with_no_extension() {
     -type f \
     -print 2>/dev/null
 }
-alias -- fnx='find_files_with_no_extension'
+alias fnx='find_files_with_no_extension'
 
 find_files_with_the_same_names() {
   LC_ALL='C' find -- . \
@@ -2904,7 +2904,7 @@ find_newest_file() {
   ) |
     head -n "${1:-10}"
 }
-alias -- fnf='find_newest_file'
+alias fnf='find_newest_file'
 
 find_perl_files() {
   # via `find_ruby_files` via `perltidy` 2024-08
@@ -3165,7 +3165,7 @@ find_setup_files() {
       2>/dev/null
   done
 }
-alias -- find_bootstrap_files='find_setup_files'
+alias find_bootstrap_files='find_setup_files'
 
 find_setup_files_delete_others() {
 
@@ -3765,7 +3765,7 @@ font_bold() {
       '𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇 ' &&
     printf -- '\n' >&2
 }
-alias -- bold='font_bold'
+alias bold='font_bold'
 font_italic() {
   { { test "${#}" -eq 0 && cat -- -; } || printf -- '%s' "${*-}"; } |
     IFS='' tr \
@@ -3774,7 +3774,7 @@ font_italic() {
       '𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻 ' &&
     printf -- '\n' >&2
 }
-alias -- italic='font_italic'
+alias italic='font_italic'
 
 get_github_stars() {
   while test "${#}" -gt 0; do
@@ -3849,7 +3849,7 @@ gif_webp_r() {
 }
 
 # Git
-alias -- g >/dev/null 2>&1 &&
+alias g >/dev/null 2>&1 &&
   unalias -- g
 # https://github.com/zph/dotfiles/blob/735c49534e/home/dot_zsh.d/git.zsh
 command -v -- _git >/dev/null 2>&1 &&
@@ -3876,7 +3876,7 @@ g() {
     ;;
   esac
 }
-alias -- \
+alias \
   g.='git -c color.status=auto -c core.quotePath=false status .' \
   gss='git -c color.status=auto -c core.quotePath=false status --porcelain=v1'
 guo() {
@@ -3937,7 +3937,7 @@ git_add() {
     sed \
       -e '$ d'
 }
-alias -- \
+alias \
   ga='git_add' \
   gaa='git_add --all' \
   gaaa='git_add --all --force' \
@@ -3999,9 +3999,9 @@ git_attic() {
 }
 
 # git blame
-alias -- gblame='git blame'
+alias gblame='git blame'
 
-alias -- \
+alias \
   gba='git branch --all' \
   gbD='git branch --delete --force'
 
@@ -4051,10 +4051,10 @@ gco() {
 }
 
 # `git checkout` the default branch
-alias -- gcom='git checkout --progress "$(git-default-branch)"'
+alias gcom='git checkout --progress "$(git-default-branch)"'
 
 # git cherry-pick
-alias -- \
+alias \
   gcp='git cherry-pick' \
   gcpa='git cherry-pick --abort' \
   gcpc='git cherry-pick --continue' \
@@ -4097,7 +4097,7 @@ git_clone() {
     ;;
   esac
 }
-alias -- \
+alias \
   gcl='git_clone' \
   gcl1='git_clone -1'
 
@@ -4137,7 +4137,7 @@ git_commit() {
     sed \
       -e '$ d'
 }
-alias -- \
+alias \
   gc='git_commit' \
   gca='git_commit --amend' \
   git_commit_count='git_commit --count'
@@ -4161,7 +4161,7 @@ git_config_file_locations() {
   done
 }
 
-alias -- gdb >/dev/null 2>&1 &&
+alias gdb >/dev/null 2>&1 &&
   unalias -- gdb
 gdb() {
   (
@@ -4181,7 +4181,7 @@ gdb() {
   )
 }
 
-alias -- gd >/dev/null 2>&1 &&
+alias gd >/dev/null 2>&1 &&
   unalias -- gd
 gd() {
   if test "$(git diff --shortstat "${@-}" 2>/dev/null)" != ''; then
@@ -4190,7 +4190,7 @@ gd() {
     git -c core.quotePath=false diff --cached --color-words --word-diff "${@-}"
   fi
 }
-alias -- gds >/dev/null 2>&1 &&
+alias gds >/dev/null 2>&1 &&
   unalias -- gds
 gds() {
   if test "$(git diff --cached --shortstat "${@-}" 2>/dev/null)" != ''; then
@@ -4214,7 +4214,7 @@ git_diff_staged_with_filesizes() {
     git -c core.quotePath=false diff --stat "${@-}"
 }
 
-alias -- gdm='git -c core.quotePath=false diff "$(git-default-branch)" --'
+alias gdm='git -c core.quotePath=false diff "$(git-default-branch)" --'
 gdom() {
   git -c core.quotePath=false diff "$(git config --get branch."$(git symbolic-ref --quiet --short HEAD -- 2>/dev/null)".remote || git branch --list --remotes | sed -n -e 's/^[[:space:]]*\([^[:space:]]*\)\/HEAD -> [^[:space:]]*$/\1/p')"/"$(git-default-branch)" "${@-}"
 }
@@ -4265,7 +4265,7 @@ git_find_parents() {
   # usage: git_find_parents [<commit>]
   git rev-list "${1:-"$(git rev-parse HEAD)"}"'^' --
 }
-alias -- \
+alias \
   git_parent='git_find_parent' \
   gfp='git_find_parent' \
   gfc='git_find_child' \
@@ -4283,7 +4283,7 @@ git_find_deleted_string() {
       +o xtrace
   } 2>/dev/null
 }
-alias -- git_find_deleted_text='git_find_deleted_string'
+alias git_find_deleted_text='git_find_deleted_string'
 
 git_garbage_collection() {
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
@@ -4341,14 +4341,14 @@ git_garbage_collection() {
     return "${?:-1}"
   fi
 }
-alias -- ggc='git_garbage_collection'
+alias ggc='git_garbage_collection'
 
 ## initial commits
 # find initial commit
 git_find_initial_commit() {
   git rev-list --max-parents=0 HEAD --
 }
-alias -- gic='git_find_initial_commit'
+alias gic='git_find_initial_commit'
 
 # commit initial commit
 git_commit_initial_commit() {
@@ -4390,12 +4390,12 @@ git_commit_initial_commit() {
   # unset GIT_AUTHOR_DATE >/dev/null 2>&1 || GIT_AUTHOR_DATE=''
   # unset GIT_COMMITTER_DATE >/dev/null 2>&1 || GIT_COMMITTER_DATE=''
 }
-alias -- \
+alias \
   gcic='git_commit_initial_commit' \
   ginit='git -c init.defaultBranch=main init --template='\'''\'' && git status'
 
 # git ls
-alias -- gls >/dev/null 2>&1 &&
+alias gls >/dev/null 2>&1 &&
   unalias -- gls
 gls() {
   {
@@ -4441,7 +4441,7 @@ git_ls_modified() {
 
 #########
 # git log
-alias -- \
+alias \
   glog='git log --all --decorate --graph --oneline' \
   glod='git log --all --decorate --graph --oneline --pretty='\''%Cred%h%Creset%C(auto)%d%Creset %s %Cgreen%ad%Creset'\'' --date=short'
 glof() {
@@ -4514,7 +4514,7 @@ git_make_git() {
 }
 
 # git merge
-alias -- gm >/dev/null 2>&1 &&
+alias gm >/dev/null 2>&1 &&
   unalias -- gm
 # https://github.com/alexsanford/config/blob/1f917be788/zsh_aliases#L46
 gm() {
@@ -4522,7 +4522,7 @@ gm() {
   git merge --no-ff --log --overwrite-ignore --progress --rerere-autoupdate --signoff --strategy-option=patience --verbose "${@-}" ||
     git merge "${@-}"
 }
-alias -- \
+alias \
   gma='git merge --abort' \
   gmc='git merge --continue'
 
@@ -4542,7 +4542,7 @@ git_move() {
     return 1
   fi
 }
-alias -- gmv='git_move'
+alias gmv='git_move'
 
 gopen() {
   case "${1-}" in
@@ -4588,7 +4588,7 @@ gopen() {
     ;;
   esac
 }
-alias -- gopend='gopen --dependabot'
+alias gopend='gopen --dependabot'
 
 # git pull
 git_pull() {
@@ -4618,7 +4618,7 @@ git_pull() {
     sed \
       -e '$ d'
 }
-alias -- gp='git_pull'
+alias gp='git_pull'
 
 git_current_remote() {
   git config --get branch."$({ git symbolic-ref --quiet --short HEAD -- || git rev-parse --short HEAD || git rev-parse --abbrev-ref HEAD; } 2>/dev/null)".remote
@@ -4661,7 +4661,7 @@ gdr() {
   # https://gitlab.com/engmark/root/commit/ca5e6f02ca2
   git config --get --default=origin -- checkout.defaultRemote
 }
-alias -- \
+alias \
   git-default-remote='gdr' \
   git-default-origin='gdr'
 
@@ -4685,18 +4685,18 @@ git_push() {
     sed \
       -e '$ d'
 }
-alias -- gps='git_push'
+alias gps='git_push'
 
-alias -- \
+alias \
   grba='git rebase --abort' \
   grbi='git rebase --interactive --update-refs 2>/dev/null || git rebase --interactive' \
   grbc='git rebase --continue --update-refs 2>/dev/null || git rebase --continue' \
   gref='git reflog'
 
 # git rm
-alias -- grm >/dev/null 2>&1 &&
+alias grm >/dev/null 2>&1 &&
   unalias -- grm
-alias -- grm='rm'
+alias grm='rm'
 git_rm_r() {
   git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "${?:-1}"
@@ -4721,7 +4721,7 @@ git_rm_r() {
     sed \
       -e '$ d'
 }
-alias -- grm.='git_rm_r'
+alias grm.='git_rm_r'
 
 git_remote_verbose() {
   # print `git remote -v` into columns as narrow as possible
@@ -4730,7 +4730,7 @@ git_remote_verbose() {
       -- \
       '! seen[$2]++ {printf "%-" max "s %s\n", $1, $2}' -
 }
-alias -- grv='git_remote_verbose'
+alias grv='git_remote_verbose'
 
 git_restore() {
   # TODO: allow end-of-options parameter
@@ -4750,7 +4750,7 @@ git_restore() {
   git -c color.status=always -c core.quotePath=false "${@:-status}" |
     sed -e '$ d'
 }
-alias -- \
+alias \
   grs='git_restore' \
   grsd='git_restore --deleted'
 
@@ -4770,7 +4770,7 @@ git_search() {
         "${commit-}" --
     done
 }
-alias -- gsearch='git_search'
+alias gsearch='git_search'
 
 git_shallow() {
   # Shallow .gitmodules submodule installations
@@ -4818,7 +4818,7 @@ git_show() {
     ;;
   esac
 }
-alias -- \
+alias \
   gsh='git_show' \
   gshd='git_show --date' \
   gshf='git_show --files'
@@ -4829,12 +4829,12 @@ git_stash_save_all() {
   git stash push -m "${@-}" 2>/dev/null ||
     git stash push
 }
-alias -- gstall='git_stash_save_all'
+alias gstall='git_stash_save_all'
 git_stash_save_keep() {
   git stash push --keep-index -m "${@-}" 2>/dev/null ||
     git stash push --keep-index
 }
-alias -- gstk='git_stash_save_keep'
+alias gstk='git_stash_save_keep'
 gst_c() {
   git stash clear &&
     find -- "${GIT_DIR:-./.git}" \
@@ -4864,7 +4864,7 @@ git_stash_pop() {
     git -c core.quotePath=false show stash:**/* >./tmp-"$(date -- '+%Y%m%d%H%M%S')"
   }
 }
-alias -- \
+alias \
   gsta='git -c color.status=always -c core.quotePath=false stash apply --index stash@'\''{'\''0'\''}'\''' \
   gstp='git_stash_pop'
 
@@ -4904,7 +4904,7 @@ git_submodule_cleanup() {
   set \
     +o verbose
 }
-alias -- gsc='git_submodule_cleanup'
+alias gsc='git_submodule_cleanup'
 
 git_submodule_update() {
   # @TODO!: ensure this harmonizes with `git_update`’s submodule updater below
@@ -4914,9 +4914,9 @@ git_submodule_update() {
     sed \
       -e '$ d'
 }
-alias -- gsu='git_submodule_update'
+alias gsu='git_submodule_update'
 
-alias -- gtag='git --no-pager tag --sort=creatordate'
+alias gtag='git --no-pager tag --sort=creatordate'
 
 git_tag_edit() {
   # https://stackoverflow.com/a/14130875
@@ -4938,7 +4938,7 @@ git_tags_by_date() {
     esac
   }
 }
-alias -- gtags_by_date='git_tags_by_date'
+alias gtags_by_date='git_tags_by_date'
 
 git_time() {
   # convert yyyy-mm-dd at the current time to Git’s preferred format
@@ -4964,12 +4964,12 @@ git_time() {
     ;;
   esac
 }
-alias -- git-date='git_time'
+alias git-date='git_time'
 
 git_undo() {
   git reset HEAD@'{'"${1:-1}"'}'
 }
-alias -- gundo='git_undo'
+alias gundo='git_undo'
 
 git_update() {
   set \
@@ -5012,7 +5012,7 @@ git_update() {
     sed \
       -e '$ d'
 }
-alias -- gu='git_update'
+alias gu='git_update'
 
 gvc() {
   # https://github.com/tarunsk/dotfiles/blob/5b31fd6/.always_forget.txt#L1957
@@ -5021,7 +5021,7 @@ gvc() {
   git verify-commit "${1:-HEAD}"
 }
 
-alias -- ghs='gh status'
+alias ghs='gh status'
 
 github_create_repository() {
   test "${GITHUB_API_TOKEN-}" != '' ||
@@ -5189,13 +5189,13 @@ grep_sed() {
   sed -n -e '/'"${1-}"'/ p' "${2:--}"
   sed -e '/'"${1-}"'/! d' "${2:--}"
 }
-alias -- sed_grep='grep_sed'
+alias sed_grep='grep_sed'
 grep_awk() {
   # print only lines that match regular expression (emulates "grep")
   set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
   gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '/'"${1-}"'/' "${2:--}"
 }
-alias -- awk_grep='grep_awk'
+alias awk_grep='grep_awk'
 grep_sed_v() {
   # print only lines that do NOT match regexp (emulates "grep -v")
   set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
@@ -5209,7 +5209,7 @@ grep_sed_v() {
   sed -n -e '/'"${1-}"'/! p' "${2:--}"
   sed -e '/'"${1-}"'/ d' "${2:--}"
 }
-alias -- \
+alias \
   sed_grep_v='grep_v_sed' \
   sed_grep_v='grep_sed_v'
 grep_awk_v() {
@@ -5217,11 +5217,11 @@ grep_awk_v() {
   set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
   gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '!/'"${1-}"'/' "${2:--}"
 }
-alias -- \
+alias \
   awk_grep_v='grep_v_awk' \
   awk_grep_v='grep_awk_v'
 
-alias -- gr >/dev/null 2>&1 &&
+alias gr >/dev/null 2>&1 &&
   unalias -- gr
 command -v -- _grep >/dev/null 2>&1 &&
   compdef -- gr='grep' >/dev/null 2>&1
@@ -5367,16 +5367,16 @@ grep_but_line() {
   # SHOULD work
   awk -vgood="${1-}" -vbad="${2-}" -- '$0 ~ good && $0 !~ bad {print}'
 }
-alias -- \
+alias \
   grep_but='grep_but_line' \
   grep_but_not_line='grep_but_line'
 grep_but_file() {
   # https://web.archive.org/web/0id_/mywiki.wooledge.org/BashFAQ/079?rev=32#line-111
   gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '/'"${1-}"'/{good=1} /'"${2-}"'/{good=0;exit} END{exit !good}'
 }
-alias -- grep_but_not_file='grep_but_file'
+alias grep_but_not_file='grep_but_file'
 
-alias -- ug='ugrep --hidden'
+alias ug='ugrep --hidden'
 
 grep_o() {
   # POSIX-compliant implementation of GNU `grep -o`
@@ -5421,7 +5421,7 @@ hash_abbreviate() {
   done
   unset length >/dev/null 2>&1 || length=''
 }
-alias -- h7='hash_abbreviate'
+alias h7='hash_abbreviate'
 
 hashlookup() {
   test "${#}" -gt 0 ||
@@ -5457,7 +5457,7 @@ head() {
     ;;
   esac
 }
-alias -- \
+alias \
   h1='head -n 1' \
   h2='head -n 2' \
   h3='head -n 3'
@@ -5815,7 +5815,7 @@ install() {
       +o xtrace
   } 2>/dev/null
 }
-alias -- i='install'
+alias i='install'
 brewsearch() {
   test "${#}" -gt 0 ||
     # EX_USAGE
@@ -5846,7 +5846,7 @@ interactive() {
 # -h apply to symlinks, not targets
 # -x stay on current system
 # -vv be verbose and print old and new flags
-alias -- \
+alias \
   invisible='chflags -h -v -v -x hidden' \
   uninvisible='chflags -h -v -v -x nohidden'
 
@@ -6169,7 +6169,7 @@ done
 }
 
 ## last
-alias -- last_character='tail -c -1'
+alias last_character='tail -c -1'
 last_word() {
   while test "${#}" -gt 0; do
     printf -- '%s\n' "${1##* }"
@@ -6187,7 +6187,7 @@ sort_by_line_length() {
   awk -- '{print length($0), $0}' "${1:--}" |
     LC_ALL='C' sort -k 1,2 -n "${2:--}"
 }
-alias -- length_of_line_sort='sort_by_line_length'
+alias length_of_line_sort='sort_by_line_length'
 
 # less: install the pager
 install_less() {
@@ -6245,7 +6245,7 @@ install_less() {
     unset with_regex >/dev/null 2>&1 || with_regex=''
   )
 }
-alias -- less_install='install_less'
+alias less_install='install_less'
 
 # linguist
 breakdown() {
@@ -6280,28 +6280,28 @@ breakdown() {
   esac
   unset utility >/dev/null 2>&1 || utility=''
 }
-alias -- \
+alias \
   bdo='breakdown' \
   bdos='breakdown --summary'
 
 # list files
-alias -- ld >/dev/null 2>&1 &&
+alias ld >/dev/null 2>&1 &&
   unalias -- ld
-alias -- l >/dev/null 2>&1 &&
+alias l >/dev/null 2>&1 &&
   unalias -- l
 if eza --color=auto >/dev/null 2>&1; then
-  alias -- \
+  alias \
     l='eza --all --bytes --classify --color-scale=all --color=auto --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
     ld='eza --color=auto --color-scale=all --all --bytes --classify --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --total-size --only-dirs' \
     lg='eza --all --bytes --classify --color-scale=all --color=auto --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
     lgs='eza --all --bytes --classify --color-scale=all --color=auto --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --sort=size' \
     lm='eza --all --bytes --classify --color-scale=all --color=auto --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --sort=modified'
 elif gls --color=auto >/dev/null 2>&1; then
-  alias -- \
+  alias \
     l='gls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
     ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec gls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
 elif ls --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P >/dev/null 2>&1; then
-  alias -- \
+  alias \
     l='ls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
     ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
 else
@@ -6321,16 +6321,16 @@ else
           od
       )"
   then
-    alias -- \
+    alias \
       l='ls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
       ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
   else
-    alias -- \
+    alias \
       l='ls -A -F -g -o --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
       ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
   fi
   # TODO: `ls -o` (`ls -l` without group) is not POSIX
-  alias -- \
+  alias \
     l='ls -A -F -G -g -o' \
     ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -G -d -g -o -- {} +'
 fi
@@ -6363,7 +6363,7 @@ list_functions() {
   done
 }
 
-alias -- list_all_functions='print ${(F)${(-)${(k)functions}}}'
+alias list_all_functions='print ${(F)${(-)${(k)functions}}}'
 
 list_uniform_type_identifiers() {
   # https://github.com/moretension/duti/blob/46a5b28913/duti.1#L295-L300
@@ -6374,7 +6374,7 @@ list_uniform_type_identifiers() {
     awk -- '/^uti:/ && ! seen[$2]++ {print $2}' |
     LC_ALL='C' sort -f
 }
-alias -- list_utis='list_uniform_type_identifiers'
+alias list_utis='list_uniform_type_identifiers'
 
 literoj() {
   LC_ALL='eo' printf -- 'ĈĉĜĝĤĥĴĵŜŝŬŭ\n'
@@ -6521,7 +6521,7 @@ dot() {
     sed \
       -e '$ d'
 }
-alias -- \
+alias \
   .f='{ mkdir -p -- "${HOME%/}"'\''/c/.f'\'' && cd -- "${HOME%/}"'\''/c/.f'\''; } || return "${?:-1}"' \
   .m='{ mkdir -p -- "${HOME%/}"'\''/c/.m'\'' && cd -- "${HOME%/}"'\''/c/.m'\''; } || return "${?:-1}"' \
   .g='{ mkdir -p -- "${_GITHUB:-${HOME%/}/c/.g}" && cd -- "${_GITHUB:-${HOME%/}/c/.g}"; } || return "${?:-1}"'
@@ -6726,7 +6726,7 @@ m1m1() {
 }
 
 # https://unix.stackexchange.com/a/30950
-alias -- mv='mv -v -i'
+alias mv='mv -v -i'
 
 # find files with non-ASCII characters
 non_ascii() {
@@ -6954,7 +6954,7 @@ open() {
 }
 # if there is no `xdg-open`, then alias it to `open`
 command -v -- xdg-open >/dev/null 2>&1 ||
-  alias -- xdg-open='open'
+  alias xdg-open='open'
 
 ## pax
 unpax() {
@@ -6974,9 +6974,9 @@ pbc() {
 }
 # https://github.com/ferrarimarco/dotfiles/commit/dc9e378f37
 command -v -- pbcopy >/dev/null 2>&1 ||
-  alias -- pbcopy='xclip -selection clipboard'
+  alias pbcopy='xclip -selection clipboard'
 command -v -- pbpaste >/dev/null 2>&1 ||
-  alias -- pbpaste='xclip -selection clipboard -o'
+  alias pbpaste='xclip -selection clipboard -o'
 
 pdf_images() {
   ## extract images from a PDF
@@ -7099,7 +7099,7 @@ posix_special_utilities_list() {
   # shift times trap unset
   printf -- 'break colon continue dot eval exec exit export readonly return set shift times trap unset\n'
 }
-alias -- posix_builtins_list='posix_special_utilities_list'
+alias posix_builtins_list='posix_special_utilities_list'
 posix_utilities_list() {
   # admin alias ar asa at awk basename batch bc bg c̸9̸9̸ [c17] cal cat cd cflow
   # chgrp chmod chown cksum cmp comm command compress cp crontab csplit
@@ -7346,7 +7346,7 @@ plist_r() {
 # PlistBuddy
 test -x '/usr/libexec/PlistBuddy' &&
   # https://apple.stackexchange.com/a/414774
-  alias -- plistbuddy='/usr/libexec/PlistBuddy'
+  alias plistbuddy='/usr/libexec/PlistBuddy'
 
 ## PNG
 to_png() {
@@ -7581,7 +7581,7 @@ question_mark() {
   # `??`: return a specific error in the very unlikely even that `$?` is not set
   printf -- '%d\n' "${??}"
 }
-alias -- '?'='question_mark'
+alias '?'='question_mark'
 
 # QuickLook
 ql() {
@@ -7633,7 +7633,7 @@ esac' _ {} +
     ;;
   esac
 }
-alias -- qlr='ql -r'
+alias qlr='ql -r'
 
 quote() {
   # shell-quoting arbitrary strings
@@ -7648,7 +7648,7 @@ quote() {
         -e '$ s/$/'\''/'
   done
 }
-alias -- printf_q='quote'
+alias printf_q='quote'
 
 RANDOM() {
   # https://shellcheck.net/wiki/SC3028/1f83d59#correct-code
@@ -7752,11 +7752,11 @@ done
       +o xtrace
   } 2>/dev/null
 }
-alias -- gem_update_r='rbenv_update_r'
+alias gem_update_r='rbenv_update_r'
 
 ## Rectangle
 # set ⌘⌥F to maximize the focused window
-alias -- rectangle_shortcut='defaults write com.knollsoft.Rectangle maximize -dict-add keyCode -float 3 modifierFlags -float 1572864 2>/dev/null'
+alias rectangle_shortcut='defaults write com.knollsoft.Rectangle maximize -dict-add keyCode -float 3 modifierFlags -float 1572864 2>/dev/null'
 
 remove_trailing_slash() {
   # POSIX-compliant remove trailing slashes
@@ -8260,7 +8260,7 @@ sed_pretty() {
         -
   }
 }
-alias -- sed_debug='sed_pretty'
+alias sed_debug='sed_pretty'
 
 seq() {
   case "${#}" in
@@ -8426,7 +8426,7 @@ restore_shell_options() {
   unset set_hyphen >/dev/null 2>&1 || set_hyphen=''
   unset option >/dev/null 2>&1 || option=''
 }
-alias -- shell_options_restore='restore_shell_options'
+alias shell_options_restore='restore_shell_options'
 
 shf() {
   command -v -- shfmt >/dev/null 2>&1 ||
@@ -8803,7 +8803,7 @@ spotify_request_token() {
   } 2>/dev/null
 }
 
-alias -- \
+alias \
   sshf='ssh llarson@freeshell.de' \
   sshk='ssh kevoc7@oconnor.nyc' \
   sshc='sshk' \
@@ -8909,9 +8909,9 @@ substring_contains() {
     # } 2>/dev/null
   )
 }
-alias -- string_contains='substring_contains'
+alias string_contains='substring_contains'
 
-alias -- sudo='sudo '
+alias sudo='sudo '
 
 string_length() {
   # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02
@@ -8949,7 +8949,7 @@ string_ends_with() {
     ;;
   esac
 }
-alias -- substring_ends_with='string_ends_with'
+alias substring_ends_with='string_ends_with'
 
 stylelint_r() {
   command -v -- stylelint >/dev/null 2>&1 ||
@@ -9103,9 +9103,9 @@ take() {
     shift 1
   done
 }
-alias -- md >/dev/null 2>&1 &&
+alias md >/dev/null 2>&1 &&
   unalias -- md
-alias -- md='mkdir -p'
+alias md='mkdir -p'
 
 tdt() {
   case "${1-}" in
@@ -9129,7 +9129,7 @@ tdt() {
     true
   unset target >/dev/null 2>&1 || target=''
 }
-alias -- tet='tdt --evil'
+alias tet='tdt --evil'
 
 # temperature: return the CPU temperature in degrees Fahrenheit
 temperature() {
@@ -9148,7 +9148,7 @@ temperature() {
       +o noglob
   } 2>/dev/null
 }
-alias -- temp='temperature'
+alias temp='temperature'
 
 textlint_r() {
   {
@@ -9425,7 +9425,7 @@ update_changelog() {
 }
 
 # Unix epoch seconds
-alias -- unixtime='awk -- '\''BEGIN {srand(); print srand()}'\'''
+alias unixtime='awk -- '\''BEGIN {srand(); print srand()}'\'''
 unixtime_set() {
   # force weekday matching when only 1970 to 1999 are available using perpetual calendar
   # UNIX 5.0: `date [ mmddhhmm[yy] ]`
@@ -9444,7 +9444,7 @@ unixtime_set() {
     printf -- '# UNIX 5.0\ndate \047%s%s\047\n' "$(LC_ALL='C' date -- '+%m%d%H%M')" "${year-}"
   unset year >/dev/null 2>&1 || year=''
 }
-alias -- unixdate_set='unixtime_set'
+alias unixdate_set='unixtime_set'
 
 url_to_filename() {
   test "${#}" -gt 0 ||
@@ -9559,7 +9559,7 @@ command -v -- _code >/dev/null 2>&1 &&
 wayback() {
   open -- 'https://web.archive.org/web/'"${1-}"
 }
-alias -- archive='wayback'
+alias archive='wayback'
 
 wayback_r() {
   (
@@ -9653,7 +9653,7 @@ troubleshoot_website() {
         -
   }
 }
-alias -- website_troubleshoot='troubleshoot_website'
+alias website_troubleshoot='troubleshoot_website'
 
 # wget
 wget_download() {
@@ -9738,7 +9738,7 @@ which() {
     return 1
   fi
 }
-alias -- all='which -a'
+alias all='which -a'
 
 whois() {
   # whois a domain or a URL
@@ -9985,7 +9985,7 @@ zshabbr() {
       +o xtrace
   } 2>/dev/null
 }
-alias -- \
+alias \
   zshenv='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"/."$(basename -- "${SHELL%%[0-9-]*}")"env && exec - "${SHELL##*/}"' \
   zlogin='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogin'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
   zlogout='"${EDITOR:-vi}" -- "${ZDOTDIR:-${HOME%/}}"'\''/.'\''"$(printf -- '\''%.1slogout'\'' "${SHELL##*/}")" && exec - "${SHELL##*/}"' \
@@ -10016,7 +10016,7 @@ zsh_history_recovery() {
   } 2>/dev/null
   unset reset >/dev/null 2>&1 || reset=''
 }
-alias -- \
+alias \
   history_restore='zsh_history_recovery' \
   restore_history='zsh_history_recovery'
 
@@ -10055,7 +10055,7 @@ zshoptions_search() {
 
 ## zero-width space
 # copy to macOS clipboard
-alias -- \
+alias \
   zwsp='printf -- '\''​'\'' | pbcopy' \
   shrug='printf -- '\''\302\257\134_(\343\203\204)_/\302\257'\'' | pbcopy && printf -- '\''\302\257\134_(\343\203\204)_/\302\257\n'\''' \
   sparkle='printf -- '\''\342\234\250'\'' | pbcopy && printf -- '\''\342\234\250\n'\'''
