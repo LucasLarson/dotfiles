@@ -7991,11 +7991,8 @@ sc() {
       ;;
     *)
       test -f "${file-}" ||
-        {
-          printf -- '%s: %s: No such file\n' "${0##*/}" "${file-}" >&2
-          # EX_NOINPUT
-          return 66
-        }
+        # EX_NOINPUT
+        return 66
       printf -- '%s\n' "${SHELLS-}" |
         sed \
           -e 's/:/\n/g' |
