@@ -6297,43 +6297,22 @@ if eza --color=auto >/dev/null 2>&1; then
     lg='eza --all --bytes --classify --color-scale=all --color=auto --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
     lgs='eza --all --bytes --classify --color-scale=all --color=auto --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --sort=size' \
     lm='eza --all --bytes --classify --color-scale=all --color=auto --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --sort=modified'
-elif gls --color=auto >/dev/null 2>&1; then
+elif command gls --color=auto >/dev/null 2>&1; then
   alias \
-    l='gls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
-    ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec gls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
-elif ls --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P >/dev/null 2>&1; then
+    l='command gls -A -F -g -o --color=auto' \
+    ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec gls -A -F -d -g -o --color=auto -- {} +'
+elif ls --color=auto >/dev/null 2>&1; then
   alias \
-    l='ls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
-    ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
+    l='ls -A -F -g -o --color=auto' \
+    ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto -- {} +'
+elif ls -o >/dev/null 2>&1; then
+  alias \
+    l='ls -A -F -g -o' \
+    ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o -- {} +'
 else
-  if
-    test "$(
-      find -- "${HOME%/}" -prune -exec sh -c -- 'ls -G --color=always "${@-}"' _ {} + |
-        od
-    )" = "$(
-      ls -G --color=always -- "${HOME%/}" 2>/dev/null |
-        od
-    )" &&
-      test "$(
-        ls -G --color=always -- "${HOME%/}" 2>/dev/null |
-          od
-      )" = "$(
-        ls --color=always -- "${HOME%/}" 2>/dev/null |
-          od
-      )"
-  then
-    alias \
-      l='ls -A -F -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
-      ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
-  else
-    alias \
-      l='ls -A -F -g -o --time-style=+%Y-%m-%d\ %l:%M:%S\ %P' \
-      ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -o --color=auto --time-style=+%Y-%m-%d\ %l:%M:%S\ %P -- {} +'
-  fi
-  # TODO: `ls -o` (`ls -l` without group) is not POSIX
   alias \
-    l='ls -A -F -G -g -o' \
-    ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -G -d -g -o -- {} +'
+    l='ls -A -F -g' \
+    ld='find -- . -path '\''./*/*'\'' -prune -o -path '\''*/.git'\'' -prune -o -path '\''./*'\'' -type d -exec ls -A -F -d -g -- {} +'
 fi
 
 list_functions() {
