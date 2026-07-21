@@ -4406,8 +4406,8 @@ gls() {
       eza \
         --all \
         --classify \
-        --color-scale=all \
         --color=always \
+        --color-scale=all \
         --git \
         --icons \
         --no-permissions \
@@ -6291,11 +6291,11 @@ alias l >/dev/null 2>&1 &&
   unalias -- l
 if eza --color=auto >/dev/null 2>&1; then
   alias \
-    l='eza --all --bytes --classify --color-scale=all --color=auto --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
-    ld='eza --color=auto --color-scale=all --all --bytes --classify --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --total-size --only-dirs' \
-    lg='eza --all --bytes --classify --color-scale=all --color=auto --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
-    lgs='eza --all --bytes --classify --color-scale=all --color=auto --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --sort=size' \
-    lm='eza --all --bytes --classify --color-scale=all --color=auto --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso --sort=modified'
+    l='eza --all --bytes --classify --color=auto --color-scale=all --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
+    ld='eza --all --bytes --classify --color=auto --color-scale=all --icons --long --no-permissions --no-user --octal-permissions --only-dirs --time-style=long-iso --total-size' \
+    lg='eza --all --bytes --classify --color=auto --color-scale=all --git --icons --long --no-permissions --no-user --octal-permissions --time-style=long-iso' \
+    lgs='eza --all --bytes --classify --color=auto --color-scale=all --git --icons --long --no-permissions --no-user --octal-permissions --sort=size --time-style=long-iso' \
+    lm='eza --all --bytes --classify --color=auto --color-scale=all --icons --long --no-permissions --no-user --octal-permissions --sort=modified --time-style=long-iso'
 elif command gls --color=auto >/dev/null 2>&1; then
   alias \
     l='command gls -A -F -g -o --color=auto' \
