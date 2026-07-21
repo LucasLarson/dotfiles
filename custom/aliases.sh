@@ -8791,26 +8791,6 @@ alias \
   sshs='ssh ll@tty.sdf.org' \
   sshu='ssh menu@sdf.org'
 
-string_contains_alternative() {
-  (
-    # in subshell to avoid polluting the environment
-    # https://github.com/koalaman/shellcheck/wiki/SC2081/e2c255237339bb0479d090494ea8b316ab9430f5#rationale
-    set \
-      -o xtrace
-    case "${#}" in
-    2)
-      string="${1-}"
-      substring="${2-}"
-      test "${string-}" != "${string#"${substring-}"}" ||
-        return 1
-      ;;
-    *)
-      printf -- 'Usage: %s <string> <substring>\n' "${0##*/}"
-      ;;
-    esac
-  )
-}
-
 subdomains() {
   # TODO: merklemap.com API, begun at $custom/subdomains_merklemap.sh
   curl \
@@ -8837,58 +8817,14 @@ subdomains() {
 }
 
 substring_contains() {
-  (
-    # does string/$1 contain substring/$2?
-    # returns 0 if the specified string contains the specified substring,
-    # otherwise returns 1
-    # in subshell to avoid polluting the environment without bash `local`
-    set \
-      -o verbose \
-      -o xtrace
-    exit_code=0
-
-    case "${1-}" in
-    -h | --help)
-      printf -- 'Usage: %s string substring\n' "${0##*/}"
-      ;;
-    *)
-      if test "${#}" -eq 2; then
-        string="$(
-          printf -- '%s' "${1-}" |
-            sed -e 's/\/*$//'
-        )"
-        substring="${2-}"
-        # equivalent to bash:
-        #   [[ $string == *$substring* ]]
-        #   [[ $string =~ *$substring  ]]
-        #   [[ $string =~ *$substring* ]]
-        #   [[ $string =~  $substring  ]]
-        #   [[ $string =~  $substring* ]]
-        #   [[ $string =  *$substring* ]]
-        # https://stackoverflow.com/a/8811800
-        if test "${string-}" != "${string#"${substring-}"}"; then
-          # $substring is in $string
-          exit_code=0
-        else
-          # $substring is not in $string
-          exit_code=1
-        fi
-      else
-        # EX_USAGE
-        return 64
-      fi
-      ;;
-    esac
-    return "${exit_code:-126}"
-    # unset string substring exit_code
-    # {
-    #   set \
-    #     +o verbose \
-    #     +o xtrace
-    # } 2>/dev/null
-  )
+  # does string/$1 contain substring/$2?
+  test "${#}" -eq 2 &&
+    # https://stackoverflow.com/a/8811800
+    test "${1-}" != "${1#"${2-}"}"
 }
-alias string_contains='substring_contains'
+alias \
+  string_contains='substring_contains' \
+  string_contains_alternative='substring_contains'
 
 alias sudo='sudo '
 
