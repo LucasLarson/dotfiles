@@ -7714,9 +7714,6 @@ rbenv_update_r() {
   set \
     -o verbose \
     -o xtrace
-  # for file in "$(rbenv prefix)"/bin/**/*; do
-  #   gem install --verbose "${file##*/}"
-  # done
   find -- "$(rbenv prefix)"'/bin' \
     -path "$(rbenv prefix)"'/bin/*/*' -prune -o \
     -type f \
