@@ -7711,6 +7711,12 @@ BEGIN {
 }
 
 rbenv_update_r() {
+  command -v -- rbenv >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  test -d "$(rbenv prefix 2>/dev/null)" ||
+    # EX_NOINPUT
+    return 66
   set \
     -o verbose \
     -o xtrace
