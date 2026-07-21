@@ -5403,7 +5403,7 @@ hash_abbreviate() {
       length="${OPTARG-}"
       ;;
     *)
-      printf -- 'usage: %s [-l <length>] <hash> [<hash> ...]\n' "${0##*/}" >&2
+      printf -- 'Usage: %s [-l <length>] <hash> [<hash> ...]\n' "${0##*/}" >&2
       return
       ;;
     esac
@@ -8024,7 +8024,7 @@ sca() {
       shell="${OPTARG:-sh}"
       ;;
     *)
-      printf -- 'usage: %s [-s [bash|dash|ksh|sh]] [--] [file]\n' "${0##*/}" >&2
+      printf -- 'Usage: %s [-s [bash|dash|ksh|sh]] [--] [file]\n' "${0##*/}" >&2
       ;;
     esac
   done
