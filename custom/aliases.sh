@@ -4065,7 +4065,7 @@ alias \
 git_clone() {
   case "${1-}" in
   -h | --help)
-    printf -- 'Usage: %s <git_url> [<dir_name>]\n' "${0##*/}" >&2
+    printf -- 'Usage: git_clone <git_url> [<dir_name>]\n' >&2
     ;;
   -1 | --shallow)
     shift 1
@@ -5403,7 +5403,7 @@ hash_abbreviate() {
       length="${OPTARG-}"
       ;;
     *)
-      printf -- 'Usage: %s [-l <length>] <hash> [<hash> ...]\n' "${0##*/}" >&2
+      printf -- 'Usage: hash_abbreviate [-l <length>] <hash> [<hash> ...]\n' >&2
       return
       ;;
     esac
@@ -7243,7 +7243,7 @@ plist_r() {
   case "$(pwd -P)" in
   "${HOME%/}" | */trash)
     printf -- 'permission error\n' >&2
-    printf -- 'do not run command \140%s\140 ' "${0##*/}" >&2
+    printf -- 'do not run command \140plist_r\140 ' >&2
     printf -- 'from directory \140%s/\140\n' "${PWD##*/}" >&2
     # EX_NOPERM
     return 77
@@ -7988,7 +7988,7 @@ sc() {
     case "${file-}" in
     --) shift 1 && continue ;;
     -h* | --help)
-      printf -- 'Usage: %s [--] [file ...]\n' "${0##*/}" >&2
+      printf -- 'Usage: sc [--] [file ...]\n' >&2
       # EX_OK
       return 0
       ;;
@@ -8024,7 +8024,7 @@ sca() {
       shell="${OPTARG:-sh}"
       ;;
     *)
-      printf -- 'Usage: %s [-s [bash|dash|ksh|sh]] [--] [file]\n' "${0##*/}" >&2
+      printf -- 'Usage: sca [-s [bash|dash|ksh|sh]] [--] [file]\n' >&2
       ;;
     esac
   done
