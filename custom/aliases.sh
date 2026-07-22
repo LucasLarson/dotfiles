@@ -9158,10 +9158,6 @@ transfer() {
     test -s "${file-}" &&
       {
         curl --fail --form 'expires=1' --form 'file=@'"${file-}" --form 'secret='\'''\''' --location --show-error --silent --url https://0x0.st 2>/dev/null ||
-          {
-            curl --fail --location --show-error --silent --upload-file "${file-}" --url 'https://bashupload.com' |
-              sed -n -e '/http/ s/wget //p'
-          } ||
           curl --fail --form 'file=@'"${file-}" --location --show-error --silent --url 'https://tmpfiles.org/api/v1/upload' |
           sed \
             -n \
