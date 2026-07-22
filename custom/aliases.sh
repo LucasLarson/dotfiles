@@ -9430,28 +9430,19 @@ value_of_variable() {
 
 # Visual Studio Code
 code() {
-  if command -v -- code-insiders >/dev/null 2>&1; then
-    utility='code-insiders'
-  elif test -x '/usr/bin/code-insiders'; then
-    utility='/usr/bin/code-insiders'
-  elif test -x "${HOMEBREW_PREFIX-}"'/bin/code-insiders'; then
-    utility="${HOMEBREW_PREFIX-}"'/bin/code-insiders'
-  elif test -x '/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/code'; then
-    utility='/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/code'
-  elif test -x '/usr/bin/code'; then
-    utility='/usr/bin/code'
-  elif test -x "${HOMEBREW_PREFIX-}"'/bin/code'; then
-    utility="${HOMEBREW_PREFIX-}"'/bin/code'
-  elif test -x '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'; then
-    utility='/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'
-  fi
   {
-    "${utility-}" "${@:-.}" ||
+    "$(
+      command -v -- code-insiders ||
+        command -v -- "${HOMEBREW_PREFIX-}"'/bin/code-insiders' ||
+        command -v -- '/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/code' ||
+        command -v -- code ||
+        command -v -- "${HOMEBREW_PREFIX-}"'/bin/code' ||
+        command -v -- '/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'
+    )" "${@:-.}" ||
       open -a 'Visual Studio Code - Insiders' "${@:-.}" ||
       open -n -a 'Visual Studio Code - Insiders' "${@:-.}" ||
       open -a 'Visual Studio Code' "${@:-.}" ||
       open -n -a 'Visual Studio Code' "${@:-.}"
-    unset utility >/dev/null 2>&1 || utility=''
   } 2>/dev/null
 }
 command -v -- _code >/dev/null 2>&1 &&
