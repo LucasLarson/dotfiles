@@ -9451,10 +9451,8 @@ code() {
       open -n -a 'Visual Studio Code - Insiders' "${@:-.}" ||
       open -a 'Visual Studio Code' "${@:-.}" ||
       open -n -a 'Visual Studio Code' "${@:-.}"
-  } 2>/dev/null # vomiting this kind of garbage since about late 2023
-  # [0302/150701.624151:ERROR:codesign_util.cc(108)] SecCodeCheckValidity: Error Domain=NSOSStatusErrorDomain Code=-67062 "(null)" (-67062)
-  # [0302/150702.727990:ERROR:codesign_util.cc(108)] SecCodeCheckValidity: Error Domain=NSOSStatusErrorDomain Code=-67062 "(null)" (-67062)
-  unset utility >/dev/null 2>&1 || utility=''
+    unset utility >/dev/null 2>&1 || utility=''
+  } 2>/dev/null
 }
 command -v -- _code >/dev/null 2>&1 &&
   compdef -- code-insiders='code' >/dev/null 2>&1
