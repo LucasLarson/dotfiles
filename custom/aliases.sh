@@ -196,8 +196,8 @@ bash_pretty() {
 
         # save `$file`'s interpolated content into a file called `$file.bash`
       } >"${file-}"'.bash' &&
-      test -x "${file-}" &&
-      chmod -- 755 "${file-}"'.bash'
+      # match the input file’s permissions without `test -x` or `command -v`
+      find -- "${file-}" -perm -700 -exec chmod -- 755 "${file-}"'.bash' ';'
   done
   {
     set \
@@ -2397,7 +2397,8 @@ find_executable() {
     -path '*vscode*' -prune -o \
     -path './*' \
     -type f \
-    -exec sh -c -- 'for file in "${@-}"; do test -x "${file-}" && printf -- '\''%s\n'\'' "${file-}"; done' {} +
+    -perm -700 \
+    -print
 }
 find_executable_gnu() {
   # POSIX emulation of GNU `find -executable`
@@ -5298,17 +5299,7 @@ command -v -- _rg >/dev/null 2>&1 &&
 # skip searching `.git` and `node_modules` directories
 # https://github.com/BurntSushi/ripgrep/issues/839#issuecomment-1006723597
 rg() {
-  utility="$(
-    {
-      test -x "$(command -v -- rga)" &&
-        test -f "$(command -v -- rga)" &&
-        command -v -- rga
-    } || {
-      test -x "$(command -v -- rg)" &&
-        test -f "$(command -v -- rg)" &&
-        command -v -- rg
-    }
-  )"
+  utility="$(env -- sh -c -- 'command -v -- rga || command -v -- rg')"
   test "${utility-}" = '' && {
     unset utility >/dev/null 2>&1 || utility=''
     grep -E -r "${@-}"
@@ -5326,17 +5317,7 @@ rg() {
   unset utility >/dev/null 2>&1 || utility=''
 }
 rgv() {
-  utility="$(
-    {
-      test -x "$(command -v -- rga)" &&
-        test -f "$(command -v -- rga)" &&
-        command -v -- rga
-    } || {
-      test -x "$(command -v -- rg)" &&
-        test -f "$(command -v -- rg)" &&
-        command -v -- rg
-    }
-  )"
+  utility="$(env -- sh -c -- 'command -v -- rga || command -v -- rg')"
   test "${utility-}" = '' &&
     grep -E -r -v -e "${@-}"
   "${utility-}" \
@@ -5506,7 +5487,8 @@ hooks_r() {
       -path "${HOME%/}"'/c/hooks/*/*' -prune -o \
       -path "${HOME%/}"'/c/hooks/*' \
       -type f \
-      -exec sh -x -c -- 'test -x "${1-}" && cp -p -- "${1-}" ./.git/hooks' _ {} ';' 2>&1 |
+      -perm -700 \
+      -exec sh -x -c -- 'cp -p -- "${1-}" ./.git/hooks' _ {} ';' 2>&1 |
     sed \
       -e 's|'"${custom-}"'|$\custom|' \
       -e 's|'"${DOTFILES-}"'|$\DOTFILES|' \
@@ -6568,8 +6550,8 @@ man_pdf() {
       shift 1
     done
   elif command -v -- mandoc >/dev/null 2>&1 && {
-    test -x /System/Applications/Preview.app/Contents/MacOS/Preview ||
-      test -x /Applications/Preview.app/Contents/MacOS/Preview
+    command -v -- /System/Applications/Preview.app/Contents/MacOS/Preview >/dev/null 2>&1 ||
+      command -v -- /Applications/Preview.app/Contents/MacOS/Preview >/dev/null 2>&1
   }; then
     while test "${#}" -gt 0; do
       mandoc -T pdf "$(command man -w "${1-}" 2>/dev/null)" |
@@ -7319,7 +7301,7 @@ plist_r() {
 }
 
 # PlistBuddy
-test -x '/usr/libexec/PlistBuddy' &&
+command -v -- /usr/libexec/PlistBuddy >/dev/null 2>&1 &&
   # https://apple.stackexchange.com/a/414774
   alias plistbuddy='/usr/libexec/PlistBuddy'
 
@@ -7720,9 +7702,9 @@ rbenv_update_r() {
   find -- "$(rbenv prefix)"'/bin' \
     -path "$(rbenv prefix)"'/bin/*/*' -prune -o \
     -type f \
+    -perm -700 \
     -exec sh -x -c -- 'for file in "${@-}"; do
-  test -x "${file-}" &&
-    gem install --verbose "${file##*/}"
+  gem install --verbose "${file##*/}"
 done
 ' {} +
   {

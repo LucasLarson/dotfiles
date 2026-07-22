@@ -212,7 +212,7 @@ command printf -- '%s\n' "${PATH-}" |
 ### executables
 
 ```shell
-command printf -- '%s\n' "${PATH-}" | command sed -e 's/:/\n/g' | while IFS='' read -r -- directory; do command find -- "${directory-}" -path "${directory-}"'/*/*' -prune -o -path "${directory-}"'/*' ! -type d -exec test -x {} ';' -print 2>/dev/null; done
+command printf -- '%s\n' "${PATH-}" | command sed -e 's/:/\n/g' | while IFS='' read -r -- directory; do command test -d "${directory-}" && command find -- "${directory-}" -path "${directory-}"'/*/*' -prune -o -path "${directory-}"'/*' ! -type d -perm -700 -print 2>/dev/null; done
 ```
 
 ## text editing
