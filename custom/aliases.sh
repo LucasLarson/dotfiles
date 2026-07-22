@@ -724,7 +724,6 @@ cleanup() {
     # so it appears that all find commands should prune at least both `*/.git` and `*/Library`
     while test "$(
       find -- "${ZDOTDIR:-${HOME%/}}" \
-        -xdev \
         -path '*/.git' -prune -o \
         -path '*/Library' -prune -o \
         -path '*/node_modules' -prune -o \
@@ -735,7 +734,6 @@ cleanup() {
         -print
     )" != ''; do
       find -- "${ZDOTDIR:-${HOME%/}}" \
-        -xdev \
         -path '*/.git' -prune -o \
         -path '*/Library' -prune -o \
         -path '*/node_modules' -prune -o \
@@ -2229,7 +2227,6 @@ find_duplicate_cksum() {
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     -path './*' \
-    -xdev \
     -type f \
     -exec sh -c -- 'cksum -- "${1-}"' _ {} ';' |
     sed -e 's/\([[:digit:]][[:digit:]]*\)[[:space:]]\([[:digit:]][[:digit:]]*\)[[:space:]]\(.*\)/\1 \2/' |
@@ -2267,7 +2264,6 @@ find_duplicate_cksum() {
       -path './*' \
       -type f \
       ! -size 0 \
-      -xdev \
       -exec sh -c -- 'cksum -- "${1-}"' _ {} ';' |
     sed -e 's/\([[:digit:]][[:digit:]]*\)[[:space:]]\([[:digit:]][[:digit:]]*\)[[:space:]]\(.*\)/\1 \2/' |
       sort |
@@ -2294,7 +2290,6 @@ find_duplicate_files() {
     -path '*copilot*' -prune -o \
     -path '*dummy*' -prune -o \
     -path '*vscode*' -prune -o \
-    -xdev \
     -path './*' \
     -type f \
     ! -size 0 \
@@ -2401,7 +2396,6 @@ find_executable() {
     -path '*vscode*' -prune -o \
     -path './*' \
     -type f \
-    -xdev \
     -exec sh -c -- 'for file in "${@-}"; do test -x "${file-}" && printf -- '\''%s\n'\'' "${file-}"; done' {} +
 }
 find_executable_gnu() {
