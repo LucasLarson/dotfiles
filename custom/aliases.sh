@@ -9158,11 +9158,6 @@ transfer() {
     test -s "${file-}" &&
       {
         curl --fail --form 'expires=1' --form 'file=@'"${file-}" --form 'secret='\'''\''' --location --show-error --silent --url https://0x0.st 2>/dev/null ||
-          curl --fail --form 'file=@'"${file-}" --location --show-error --silent --url 'https://tmpfiles.org/api/v1/upload' |
-          sed \
-            -n \
-            -e '# emulate jq to insert "dl" into output' \
-            -e 's/.*"url"[^."]*"\(https\{0,1\}:\/\/tmpfiles.org\)\([^"]*\)".*/\1\/dl\2\n/p' ||
           curl --fail --form 'file=@'"${file-}" --location --show-error --silent --write-out='\n' --url 'https://temp.sh/upload' ||
           wget --hsts-file=/dev/null --post-file="${file-}" --quiet 'https://temp.sh/upload' ||
           curl --fail --location --silent --show-error --upload-file "${file-}" --write-out='\n' --url 'https://temp.sh' ||
