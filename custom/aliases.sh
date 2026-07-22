@@ -1930,7 +1930,7 @@ file_has_trailing_whitespace() {
 
 f() {
   # try using `fd`, if not then `find`
-  if command -v -- fd >/dev/null 2>&1 && test -x "$(command -v -- fd)"; then
+  if command -v -- fd >/dev/null 2>&1; then
     fd \
       --follow \
       --hidden \
@@ -1951,7 +1951,7 @@ f() {
 }
 
 fn() {
-  if command -v -- fd >/dev/null 2>&1 && test -x "$(command -v -- fd)"; then
+  if command -v -- fd >/dev/null 2>&1; then
     fd \
       --follow \
       --hidden \
