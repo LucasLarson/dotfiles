@@ -5539,7 +5539,8 @@ q
 EOF
   case "${?:-1}" in
   0)
-    diff -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/'"${HISTFILE##*/}" "${HISTFILE-}"
+    # `! diff` instead of `diff` because two different files actually indicates success
+    ! diff -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/'"${HISTFILE##*/}" "${HISTFILE-}"
     ;;
   *)
     return "${?:-126}"
