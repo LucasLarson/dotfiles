@@ -1782,29 +1782,12 @@ exponent() {
 }
 
 export_U() {
-  # https://github.com/webpro/dotfiles/blob/d287e6978f/system/.path
-  # https://chat.openai.com/share/8f8afb8b-7d87-4be3-a046-8c76bcdb8177
-  # Remove duplicates (preserving prepended items)
-  # Source: http://unix.stackexchange.com/a/40755
-  {
-    command -p -- getconf -- PATH 2>/dev/null ||
-      printf -- '%s\n' "${PATH-}"
-  } |
-    sed \
-      -e 's/::*/\n/g' \
-      -e 's/^://' \
-      -e 's/:$//' |
-    awk -- '! seen[$0]++ {print}' |
-    sed \
-      -e ':a' \
-      -e 'N' \
-      -e '$! b a' \
-      -e 's/\n/:/g'
-  PATH=$(
-    printf -- '%s' "${PATH}" |
-      awk -vRS=':' -- '{ if (! arr[$0]++) {printf "%s%s", ! ln++ ? "" : ":", $0}}'
-  )
-  export PATH
+  # remove duplicates from colon-delimited arrays
+  # (preserving prepended items)
+  printf -- '%s:::%s\n' "${1:-${PATH-}}" "${2:-${1:-${PATH-}}}" |
+    sed -e 's/:/\n/g' |
+    awk -- '! seen[$0]++ && NF {print $0}' |
+    paste -d ':' -s
 }
 alias \
   typeset_U='export_U' \
