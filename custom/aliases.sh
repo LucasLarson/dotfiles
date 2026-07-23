@@ -5519,8 +5519,7 @@ hundo() {
     find -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' \
       -name "${HISTFILE##*/}" \
       -type f \
-      -print \
-      -exec sh -f -u -v -x -c -- 'mv -- "${1-}" "${1-}".bak' _ {} +
+      -exec sh -c -- 'mv -f -- {} {}.bak' ';'
 
   # create the copy
   # use the target directory AND target filename for less jarring stderr messages
