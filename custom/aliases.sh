@@ -2786,8 +2786,7 @@ find_files_with_the_same_names() {
   # treat all as identical: `file.txt`, `file 1.txt`, `file.text`
   #        was `basename -- "${file%.*}"`
   basename "${file%[0-9]*.*}"
-done
-' _ {} + |
+done' _ {} + |
     LC_ALL='C' sort |
     LC_ALL='C' uniq -d
 
@@ -6123,8 +6122,7 @@ jsonlint_r() {
   git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
     ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
     prettier --log-level log --parser json --write -- "${file-}"
-done
-' _ {} +
+done' _ {} +
 }
 
 ## last
@@ -7685,8 +7683,7 @@ rbenv_update_r() {
     -perm -700 \
     -exec sh -x -c -- 'for file in "${@-}"; do
   gem install --verbose "${file##*/}"
-done
-' {} +
+done' {} +
   {
     set \
       +o verbose \
