@@ -5504,6 +5504,9 @@ hundo() {
   command -v -- ed >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${HISTFILE-}" != '' ||
+    # EX_CONFIG
+    return 78
   # create a temporary location for the file
   mkdir -p -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' &&
     # remove the old copy if any
