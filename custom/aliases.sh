@@ -5494,6 +5494,9 @@ htail() {
   test "${HISTFILE-}" != '' ||
     # EX_CONFIG
     return 78
+  test -s "${HISTFILE-}" ||
+    # EX_NOINPUT
+    return 66
   tail -n "$((${LINES:-"$(
     tput -- lines 2>/dev/null ||
       printf -- '10 + 2'
@@ -5507,6 +5510,9 @@ hundo() {
   test "${HISTFILE-}" != '' ||
     # EX_CONFIG
     return 78
+  test -s "${HISTFILE-}" ||
+    # EX_NOINPUT
+    return 66
   # create a temporary location for the file
   mkdir -p -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' &&
     # remove the old copy if any
