@@ -5497,7 +5497,7 @@ htail() {
   tail -n "$((${LINES:-"$(
     tput -- lines 2>/dev/null ||
       printf -- '10 + 2'
-  )"} - 3))" -- "${HISTFILE?}"
+  )"} - 3))" -- "${HISTFILE-}"
 }
 hundo() {
   ## remove the last entry from `$HISTFILE`
