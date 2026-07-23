@@ -5539,7 +5539,7 @@ q
 EOF
   case "${?:-1}" in
   0)
-    diff -- "${HISTFILE-}" "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/'"${HISTFILE##*/}"
+    diff -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash/'"${HISTFILE##*/}" "${HISTFILE-}"
     ;;
   *)
     return "${?:-126}"
