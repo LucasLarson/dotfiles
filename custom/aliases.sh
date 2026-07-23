@@ -2380,7 +2380,17 @@ find_executable() {
     -path './*' \
     -type f \
     -perm -700 \
-    -print
+    -print 2>/dev/null |
+    awk -- 'BEGIN {
+  found = 0
+}
+NF {
+ print
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 find_executable_gnu() {
   # POSIX emulation of GNU `find -executable`
