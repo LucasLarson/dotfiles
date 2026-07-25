@@ -64,6 +64,7 @@ set -o histverify
 ## shell navigation without the mouse
 bindkey '^?' backward-delete-char
 bindkey '^A' beginning-of-line
+bindkey '^[[3~' delete-char
 bindkey '^E' end-of-line
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
