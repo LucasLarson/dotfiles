@@ -95,12 +95,11 @@ EDITOR="$(
   command -v -- nvim ||
     command -v -- vim ||
     command -v -- vi
-)"
-if test "${EDITOR-}" != ''; then
-  export EDITOR
-  alias e='"${EDITOR:-vi}"'
-  export VISUAL="${VISUAL:-${EDITOR:-vi}}"
-fi
+)" &&
+  export EDITOR &&
+  alias e='"${EDITOR:-vi}"' &&
+  VISUAL="${VISUAL:-${EDITOR:-vi}}" &&
+  export VISUAL
 
 ## Homebrew
 if command -v -- brew >/dev/null 2>&1; then
