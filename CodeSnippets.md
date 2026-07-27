@@ -1,14 +1,12 @@
 # Code snippets
 
 - [dotfiles](#dotfiles)
-  - [add](#add)
-    - [manual](#manual)
-      - [lists](#lists)
-        - [applications](#applications)
-      - [Homebrew](#homebrew)
-      - [MANPATH](#manpath)
-        - [man pages](#man-pages)
-      - [pip packages](#pip-packages)
+  - [lists](#lists)
+    - [applications](#applications)
+  - [Homebrew](#homebrew)
+  - [MANPATH](#manpath)
+    - [man pages](#man-pages)
+  - [pip packages](#pip-packages)
 - [apk](#apk)
   - [testing](#testing)
 - [list everything recursively in a directory](#list-everything-recursively-in-a-directory)
@@ -84,23 +82,9 @@
 
 ## dotfiles
 
-### add
+### lists
 
-#### manual
-
-to add dotfiles of the variety [Mackup](https://github.com/lra/mackup) might’ve but hasn’t yet:
-
-```shell
-# make `~/Desktop/.example.txt` part of the dotfiles repository
-add="${HOME%/}"'/Desktop/.example.txt'
-command mv -- "${add-}" "${DOTFILES-}"'/directory_where_it_should_go_if_any/'"${add##*/}"
-command ln -s -- "${DOTFILES-}"'/directory_where_it_should_go_if_any/'"${add##*/}" "${HOME%/}"'/directory_where_it_should_go_if_any/'"${add##*/}"
-unset add >/dev/null 2>&1 || add=''
-```
-
-##### lists
-
-###### applications
+#### applications
 
 ```shell
 command find -- \
