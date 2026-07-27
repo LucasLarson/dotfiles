@@ -53,7 +53,9 @@ test -d "${custom-}" &&
         FPATH="${FPATH:+${FPATH-}:}${file%/*}"
     done
     for file in "${custom-}"/*sh; do
-      . "${file-}"
+      test -s "${file-}" &&
+        test ! -L "${file-}" &&
+        . "${file-}"
     done
   }
 
