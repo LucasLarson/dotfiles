@@ -87,31 +87,31 @@
 #### applications
 
 ```shell
-command find -- \
+find -- \
   /System/Applications \
   /Applications \
   -path '/System/Applications/*/*/*' -prune -o \
   -path '/Applications/*/*/*' -prune -o \
   -name '*.app' \
   -print 2>/dev/null |
-  command sed -e 's/.*\/\(.*\)\.app/\1/' |
-  LC_ALL='C' command sort -d -f
+  sed -e 's/.*\/\(.*\)\.app/\1/' |
+  LC_ALL='C' sort -d -f
 ```
 
 On Alpine Linux, generate a list of installed packages with:<br>
-`command apk --verbose --verbose info | LC_ALL='C' command sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
+`apk --verbose --verbose info | LC_ALL='C' sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
 
 ##### Homebrew
 
 ```shell
-command brew list -1
+brew list -1
 ```
 
 ##### MANPATH
 
 ```shell
-command printf -- '%s\n' "${MANPATH-}" |
-  command sed -e 's/:/\n/g'
+printf -- '%s\n' "${MANPATH-}" |
+  sed -e 's/:/\n/g'
 ```
 
 ###### man pages
@@ -133,7 +133,7 @@ Definitions of the numbers that follow `man` commands ([via](https://web.archiv
 ##### pip packages
 
 ```shell
-{ command python -m pip list --format=columns || command python -m pip3 list --format=columns || command python3 -m pip list --format=columns || command python3 -m pip3 list --format=columns; } 2>/dev/null
+{ python -m pip list --format=columns || python -m pip3 list --format=columns || python3 -m pip list --format=columns || python3 -m pip3 list --format=columns; } 2>/dev/null
 ```
 
 ## apk
@@ -153,7 +153,7 @@ Definitions of the numbers that follow `man` commands ([via](https://web.archiv
 #### and metadata
 
 ```shell
-command find -- . -ls
+find -- . -ls
 ```
 
 #### lines, words, characters
@@ -162,8 +162,8 @@ in, for example, a C++ project directory, measuring only `.cpp` and `.hpp`
 files. [via](https://web.archive.org/web/0id_/github.com/bryceco/GoMap/issues/495#issuecomment-780111175)
 
 ```shell
-command find -- . '(' -name '*.cpp' -o -name '*.hpp' ')' -exec wc -- {} + |
-  LC_ALL='C' command sort -n
+find -- . '(' -name '*.cpp' -o -name '*.hpp' ')' -exec wc -- {} + |
+  LC_ALL='C' sort -n
 ```
 
 ## search
@@ -173,7 +173,7 @@ command find -- . '(' -name '*.cpp' -o -name '*.hpp' ')' -exec wc -- {} + |
 search for the word “example” inside the current directory which is “.”<br>
 
 ```shell
-command find -- . \
+find -- . \
   -type f \
   -exec grep -i -n -e 'example' -- {} +
 ```
@@ -183,20 +183,20 @@ command find -- . \
 for example, locate all JPEG files in the current directory `.` and below:<br>
 
 ```shell
-command find -- . '(' -name '*.jpg' -o -name '*.JPEG' -o -name '*.JPG' -o -name '*.jpeg' ')' -type f
+find -- . '(' -name '*.jpg' -o -name '*.JPEG' -o -name '*.JPG' -o -name '*.jpeg' ')' -type f
 ```
 
 ## PATH
 
 ```shell
-command printf -- '%s\n' "${PATH-}" |
-  command sed -e 's/:/\n/g'
+printf -- '%s\n' "${PATH-}" |
+  sed -e 's/:/\n/g'
 ```
 
 ### executables
 
 ```shell
-command printf -- '%s\n' "${PATH-}" | command sed -e 's/:/\n/g' | while IFS='' read -r -- directory; do command test -d "${directory-}" && command find -- "${directory-}" -path "${directory-}"'/*/*' -prune -o -path "${directory-}"'/*' ! -type d -perm -700 -print 2>/dev/null; done
+printf -- '%s\n' "${PATH-}" | sed -e 's/:/\n/g' | while IFS='' read -r -- directory; do test -d "${directory-}" && find -- "${directory-}" -path "${directory-}"'/*/*' -prune -o -path "${directory-}"'/*' ! -type d -perm -700 -print 2>/dev/null; done
 ```
 
 ## text editing
@@ -209,8 +209,8 @@ command printf -- '%s\n' "${PATH-}" | command sed -e 's/:/\n/g' | while IFS='' r
 
 #### sort
 
-`command env >./example.txt` # save an unordered list of `env` variables<br>
-`command env | LC_ALL='C' command sort >./example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
+`env >./example.txt` # save an unordered list of `env` variables<br>
+`env | LC_ALL='C' sort >./example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
 
 ### EOL and EOF encoding
 
@@ -245,8 +245,8 @@ remove bogus entries from Finder’s “Open With” menu ([via](https://githu
 [via](https://wordpress.org/support/article/hardening-wordpress/#changing-file-permissions)
 
 ```shell
-command find -- . -path '*/.*' -prune -o -type d -exec chmod -- 755 {} +
-command find -- . -path '*/.*' -prune -o -type f -exec chmod -- 644 {} +
+find -- . -path '*/.*' -prune -o -type d -exec chmod -- 755 {} +
+find -- . -path '*/.*' -prune -o -type f -exec chmod -- 644 {} +
 ```
 
 #### date modified modify
@@ -322,19 +322,19 @@ cppcheck --force -I "${CPATH-}" .
 [via](https://stackoverflow.com/q/32029445), [via](https://stackoverflow.com/q/33662375)
 
 ```shell
-command find -- . -path './*/*' -prune -o -name '*.c' -type f -exec gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic -- {} +
+find -- . -path './*/*' -prune -o -name '*.c' -type f -exec gcc -std=c89 --verbose -save-temps -v -Wall -Wextra -pedantic -- {} +
 ```
 
 #### C++
 
 ```shell
-command find -- . -path './*/*' -prune -o -name '*.cpp' -type f -exec g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ -- {} +
+find -- . -path './*/*' -prune -o -name '*.cpp' -type f -exec g++ -std=c++2a --verbose -Wall -Wextra -pedantic -save-temps -v -pthread -fgnu-tm -lm -latomic -lstdc++ -- {} +
 ```
 
 #### Clang
 
 ```shell
-command find -- . -path './*/*' -prune -o -name '*.cpp' -type f -exec clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps -- {} +
+find -- . -path './*/*' -prune -o -name '*.cpp' -type f -exec clang++ -std=c++2a --verbose -Wall -Wextra -pedantic -v -lm -lstdc++ -pthread -save-temps -- {} +
 ```
 
 ## Gatekeeper
@@ -452,7 +452,7 @@ git config --global core.editor "code --wait"
 recursively replace each file’s first line that begins with `#!`, and which later contains `/bin/bash`, `/bin/sh`, or `/bin/ash`, with `#!/usr/bin/env zsh` ([via](https://stackoverflow.com/a/11458836))
 
 ```shell
-command find -- . \
+find -- . \
   -type f \
   -exec sed \
   -e '/^#!.*\/bin\/b\{0,1\}a\{0,1\}sh$/ {' \
@@ -487,7 +487,7 @@ ssh username@example.com
 ## wget
 
 `wget_server='`**example.com**`'; if command -v -- wget2 >/dev/null 2>&1; then utility='wget2'; else utility='wget'; fi; \
-command "${utility-}" --level=0 --mirror --continue --verbose \
+"${utility-}" --level=0 --mirror --continue --verbose \
 --append-output=./"${wget_server-}".log --execute robots=off --restrict-file-names=nocontrol --timestamping --debug --recursive --progress=bar --no-check-certificate --random-wait \
 --referer=https://"${wget_server-}" --adjust-extension --page-requisites --convert-links --server-response \
 https://"${wget_server-}"; unset wget_server >/dev/null 2>&1 || wget_server=''; unset utility >/dev/null 2>&1 || utility=''`

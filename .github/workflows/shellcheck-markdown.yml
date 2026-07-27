@@ -34,7 +34,7 @@ jobs:
           # github/linguist@7503f/lib/linguist/languages.yml#L3707-L3718
 
           # run shellcheck on the extracted code blocks
-          command find -- . \
+          find -- . \
             -path '*/.git' -prune -o \
             -path '*/.well-known' -prune -o \
             -path '*/Library' -prune -o \
@@ -64,12 +64,12 @@ jobs:
             ')' \
             -type f \
             -exec sh -x -c '
-            command git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-              ! command git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+            git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+              ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
               while IFS='\'''\'' read -r -- line; do
-                command test "${code-}" = 1 &&
-                  command test "${line-}" != '\''```'\'' &&
-                  command printf -- '\''%s\n'\'' "${line-}"
+                test "${code-}" = 1 &&
+                  test "${line-}" != '\''```'\'' &&
+                  printf -- '\''%s\n'\'' "${line-}"
 
               case "${line-}" in
               '\''```sh'\''|'\''```bash'\''|'\''```shell'\''|'\''```zsh'\'')
@@ -88,7 +88,7 @@ jobs:
             # SC2123: allow `$PATH` modification
             # SC2312: allow masking return values
             done <"${1-}"' _ {} ';' |
-            command shellcheck \
+            shellcheck \
               --check-sourced \
               --enable=all \
               --exclude='SC1071,SC1090,SC1091,SC2123,SC2312' \

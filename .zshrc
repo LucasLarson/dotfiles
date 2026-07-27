@@ -76,7 +76,7 @@ EDITOR="$(
     command -v -- vi
 )" &&
   export EDITOR
-alias e='command "${EDITOR:-vi}"'
+alias e='"${EDITOR:-vi}"'
 export VISUAL="${VISUAL:-${EDITOR:-vi}}"
 
 ## Homebrew
