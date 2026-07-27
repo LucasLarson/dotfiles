@@ -8,7 +8,6 @@ export lines="${LINES:-24}"
 mkdir -p -- "${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
   export DOTFILES="${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
   mkdir -p -- "${DOTFILES-}"'/custom' &&
-  export ZSH_CUSTOM="${DOTFILES-}"'/custom' &&
   export custom="${DOTFILES-}"'/custom' &&
   mkdir -p -- "${DOTFILES-}"'/../Template' &&
   export TEMPLATE="${DOTFILES-}"'/../Template' &&

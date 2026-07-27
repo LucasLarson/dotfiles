@@ -4,8 +4,7 @@
 # shellcheck disable=SC1090
 . "${XDG_CACHE_HOME:-${HOME%/}/.cache}"'/p10k-instant-prompt-'"${LOGNAME:-${USER-}}"'.zsh' 2>/dev/null
 # shellcheck disable=SC1091
-. "${DOTFILES-}"'/custom/themes/powerlevel10k/powerlevel10k.zsh-theme' 2>/dev/null &&
-  export ZSH_THEME='powerlevel10k/powerlevel10k'
+. "${DOTFILES-}"'/custom/themes/powerlevel10k/powerlevel10k.zsh-theme' 2>/dev/null
 
 ## PATH
 PATH="$(command -p -- getconf -- PATH)${PATH:+:${PATH-}}"
@@ -25,9 +24,6 @@ HISTFILE="${HOME%/}"'/.'"${SHELL##*/}"'_history'
 SAVEHIST="$(command -p -- getconf -- UINT_MAX)"
 HISTSIZE="${SAVEHIST-}"
 export HISTFILE SAVEHIST HISTSIZE
-
-## zsh compdump
-export ZSH_COMPDUMP="${HOME%/}"'/.zcompdump'
 
 ## Plugins
 PLUGINS='gunstage:git-default-branch:zsh-abbr:zsh-diff-so-fancy:zsh-autosuggestions'"${PLUGINS:+:${PLUGINS-}}"
@@ -50,13 +46,13 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[Z' reverse-menu-complete
 
 ## Plugins and custom scripts
-test -d "${ZSH_CUSTOM-}" &&
+test -d "${custom-}" &&
   {
-    for file in "${ZSH_CUSTOM-}"/plugins/**/*.plugin.*sh; do
+    for file in "${custom-}"/plugins/**/*.plugin.*sh; do
       . "${file-}" 2>/dev/null &&
         FPATH="${FPATH:+${FPATH-}:}${file%/*}"
     done
-    for file in "${ZSH_CUSTOM-}"/*sh; do
+    for file in "${custom-}"/*sh; do
       . "${file-}"
     done
   }
