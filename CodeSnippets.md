@@ -95,7 +95,7 @@ find -- \
   -name '*.app' \
   -print 2>/dev/null |
   sed -e 's/.*\/\(.*\)\.app/\1/' |
-  LC_ALL='C' sort -d -f
+  LC_ALL='C' sort -f
 ```
 
 On Alpine Linux, generate a list of installed packages with:<br>
@@ -153,7 +153,7 @@ Definitions of the numbers that follow `man` commands ([via](https://web.archiv
 #### and metadata
 
 ```shell
-find -- . -ls
+find -- . -exec ls -d -- {} +
 ```
 
 #### lines, words, characters
