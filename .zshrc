@@ -3,6 +3,8 @@
 ## Powerlevel10k
 # shellcheck disable=SC1090
 . "${XDG_CACHE_HOME:-${HOME%/}/.cache}"'/p10k-instant-prompt-'"${LOGNAME:-${USER-}}"'.zsh' 2>/dev/null
+# shellcheck disable=SC1091
+. "${DOTFILES-}"'/custom/themes/powerlevel10k/powerlevel10k.zsh-theme' 2>/dev/null
 
 ## PATH
 PATH="$(command -p -- getconf -- PATH)${PATH:+:${PATH-}}"
@@ -17,27 +19,10 @@ test -d "${HOME%/}"'/.local/bin' &&
 test -d "${DOTFILES-}"'/bin' &&
   PATH="${DOTFILES-}"'/bin'"${PATH:+:${PATH-}}"
 
-## Plugin manager
-test -d "${HOME%/}"'/.oh-my-zsh' &&
-  export ZSH="${HOME%/}"'/.oh-my-zsh'
-
-## Theme
-if test -r "${ZSH_CUSTOM-}"'/themes/powerlevel10k/powerlevel10k.zsh-theme' &&
-  {
-    test "$(command uname)" = 'Darwin' ||
-      test "$((COLUMNS * LINES))" -gt "$((80 * 24))"
-  }; then
-  . "${ZSH_CUSTOM-}"'/themes/powerlevel10k/powerlevel10k.zsh-theme'
-  export ZSH_THEME='powerlevel10k/powerlevel10k'
-fi
-
 ## History size
 SAVEHIST="$(printf -- '2 ^ 32 - 1\n' | command bc)"
 HISTSIZE="$((SAVEHIST / 2))"
 export SAVEHIST HISTSIZE
-
-## zsh compdump
-export ZSH_COMPDUMP="${HOME%/}"'/.zcompdump'
 
 ## Plugins
 PLUGINS='gunstage:git-default-branch:zsh-abbr:zsh-diff-so-fancy:zsh-autosuggestions'"${PLUGINS:+:${PLUGINS-}}"
@@ -71,13 +56,13 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[Z' reverse-menu-complete
 
 ## Plugins and custom scripts
-test -d "${ZSH_CUSTOM-}" &&
+test -d "${custom-}" &&
   {
-    for file in "${ZSH_CUSTOM-}"/plugins/**/*.plugin.*sh; do
+    for file in "${custom-}"/plugins/**/*.plugin.*sh; do
       . "${file-}" 2>/dev/null &&
         FPATH="${FPATH:+${FPATH-}:}${file%/*}"
     done
-    for file in "${ZSH_CUSTOM-}"/*sh; do
+    for file in "${custom-}"/*sh; do
       . "${file-}"
     done
   }
@@ -196,8 +181,8 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format %B%F"{green}"%d%f%b
 
 ## plugin: zsh-completions
-test -d "${ZSH_CUSTOM-}"'/plugins/zsh-completions/src' &&
-  FPATH="${FPATH:+${FPATH-}:}${ZSH_CUSTOM-}"'/plugins/zsh-completions/src'
+test -d "${custom-}"'/plugins/zsh-completions/src' &&
+  FPATH="${FPATH:+${FPATH-}:}${custom-}"'/plugins/zsh-completions/src'
 
 autoload -U compinit &&
   compinit
@@ -245,8 +230,7 @@ case "${SHELL-}" in *zsh*)
 esac
 
 ## Powerlevel10k
-test "${ZSH_THEME-}" = 'powerlevel10k/powerlevel10k' &&
-  . "${HOME%/}"'/.p10k.zsh'
+. "${HOME%/}"'/.p10k.zsh' 2>/dev/null
 
 ## shell options
 export set_hyphen="${--}" &&
