@@ -5110,26 +5110,6 @@ google() {
     open -- "${1-}"
 }
 
-gravatar() {
-  # gravatar
-  # return the URL of a Gravatar image for the given email address
-  # TODO use getopts
-  # TODO add the option of opening the URL in a browser
-
-  # return the Gravatar image URL
-  printf -- 'https://gravatar.com/avatar/%.32s?s=%d\n' "$(
-    printf -- %s "${1:-$(git config --get -- user.email)}" |
-      LC_ALL='C' tr -d '[:space:]' |
-      LC_ALL='C' tr -- '[:upper:]' '[:lower:]' |
-      {
-        md5sum ||
-          md5
-      } 2>/dev/null
-    # Gravatar: 4096
-    # MaxURL:   9999
-  )" "${2:-9999}"
-}
-
 ## GraphicConverter
 gcr() {
   open -a "$(
