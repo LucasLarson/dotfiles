@@ -46,18 +46,18 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[Z' reverse-menu-complete
 
 ## Plugins and custom scripts
-test -d "${custom-}" &&
-  {
-    for file in "${custom-}"/plugins/**/*.plugin.*sh; do
-      . "${file-}" 2>/dev/null &&
-        FPATH="${FPATH:+${FPATH-}:}${file%/*}"
-    done
-    for file in "${custom-}"/*sh; do
-      test -s "${file-}" &&
-        test ! -L "${file-}" &&
-        . "${file-}"
-    done
-  }
+# shellcheck disable=SC1090
+test -d "${custom-}" && {
+  for file in "${custom-}"/plugins/**/*.plugin.*sh; do
+    . "${file-}" 2>/dev/null &&
+      FPATH="${FPATH:+${FPATH-}:}${file%/*}"
+  done
+  for file in "${custom-}"/*sh; do
+    test -s "${file-}" &&
+      test ! -L "${file-}" &&
+      . "${file-}"
+  done
+}
 
 ## MANPATH
 test -d '/usr/local/man' &&
@@ -171,8 +171,8 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format %B%F"{green}"%d%f%b
 
 ## plugin: zsh-completions
-test -d "${ZSH_CUSTOM-}"'/plugins/zsh-completions/src' &&
-  FPATH="${FPATH:+${FPATH-}:}${ZSH_CUSTOM-}"'/plugins/zsh-completions/src'
+test -d "${custom-}"'/plugins/zsh-completions/src' &&
+  FPATH="${FPATH:+${FPATH-}:}${custom-}"'/plugins/zsh-completions/src'
 
 autoload -U compinit &&
   compinit
