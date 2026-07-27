@@ -98,7 +98,7 @@ EDITOR="$(
 )"
 if test "${EDITOR-}" != ''; then
   export EDITOR
-  alias e='command "${EDITOR:-vi}"'
+  alias e='"${EDITOR:-vi}"'
   export VISUAL="${VISUAL:-${EDITOR:-vi}}"
 fi
 

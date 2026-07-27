@@ -9,32 +9,32 @@
   # find the newest `$HISTFILE`
   # without specifying the shell
   file="$(
-    command find -- "${HOME%/}" \
+    find -- "${HOME%/}" \
       -path "${HOME%/}"'/[A-Za-z0-9_-]*' -prune -o \
       -path "${HOME%/}"'/*/*' -prune -o \
       -path "${HOME%/}"'/.*history' \
       -type f \
       -exec ls -1 -t -- {} + 2>/dev/null |
-      command sed -e '1 q'
+      sed -e '1 q'
   )"
   # verify `$HISTFILE` exists and is not empty
   test -s "${file-}" &&
     # ensure a backup directory exists...
-    command mkdir -p -- "${file-}"'_bak' &&
+    mkdir -p -- "${file-}"'_bak' &&
     {
       # ...and that it is not empty
-      test "$(command find -- "${file-}"'_bak' -name "${file##*/}"'*' -type f)" != '' ||
+      test "$(find -- "${file-}"'_bak' -name "${file##*/}"'*' -type f)" != '' ||
         # ...or that its newest file is older than `$HISTFILE`...
         test "$(
-          command find -- "${file-}" -prune -newer "$(
+          find -- "${file-}" -prune -newer "$(
             # ...by comparing it to the newest file in the backup directory
-            command find -- "${file-}"'_bak' \
+            find -- "${file-}"'_bak' \
               -path '*/.git' -prune -o \
               -type f \
               -exec ls -1 -t -- {} + 2>/dev/null |
-              command sed -e '1 q'
+              sed -e '1 q'
           )"
         )" != ''
     } &&
-    command cp -- "${file-}" "${file-}"'_bak/'"${file##*/}"'_'"$(command date -- '+%Y%m%d')"
+    cp -- "${file-}" "${file-}"'_bak/'"${file##*/}"'_'"$(date -- '+%Y%m%d')"
 )
