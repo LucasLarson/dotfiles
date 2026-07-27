@@ -75,9 +75,10 @@ EDITOR="$(
     command -v -- vim ||
     command -v -- vi
 )" &&
-  export EDITOR
-alias e='"${EDITOR:-vi}"'
-export VISUAL="${VISUAL:-${EDITOR:-vi}}"
+  export EDITOR &&
+  alias e='"${EDITOR:-vi}"' &&
+  VISUAL="${VISUAL:-${EDITOR:-vi}}" &&
+  export VISUAL
 
 ## Homebrew
 if command -v -- brew >/dev/null 2>&1; then
