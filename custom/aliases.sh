@@ -823,8 +823,8 @@ cleanup() {
       -path '*/node_modules' -prune -o \
       -path './*' \
       -type d \
-      -links 2 \
-      -exec rmdir -p -- {} +
+      -exec rmdir -p -- {} + >/dev/null 2>&1 ||
+      true
   done
 
   # swap each tab for two spaces each in gitconfig files
@@ -884,7 +884,7 @@ EOF
     -path '*/.git/*' \
     -path '*.gitstatus.*' \
     -type d \
-    -exec rmdir -- {} + 2>/dev/null || # `rmdir` does not delete non-empty directories
+    -exec rmdir -- {} + >/dev/null 2>&1 ||
     true
 
   {
