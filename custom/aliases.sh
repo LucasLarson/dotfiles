@@ -9262,18 +9262,22 @@ unixtime_set() {
   # UNIX 5.0: `date [ mmddhhmm[yy] ]`
   # fail if called before 2000, after 2066
   # https://web.archive.org/web/0id_/i.pinimg.com/originals/8a/23/99/8a2399cf3774165dddc728641a6b0c06.jpg
-  year="$(LC_ALL='C' date -- '+%Y')" &&
-    test 2000 -le "${year-}" &&
-    test "${year-}" -le 2066 &&
-    if test "${year-}" -lt 2026; then
-      year="$((year + 72 - 2000))" # 2000’s calendar matches 1972’s... 2025’s matches 1997’s
+  set -- "$(LC_ALL='C' date -- '+%Y')" &&
+    test 2000 -le "${1-}" &&
+    test "${1-}" -le 2066 &&
+    if test "${1-}" -ge 2026; then
+      # 2026’s calendar matches 1970's... 2066’s matches 1999’s
+      set -- "$((${1-} + 44))" &&
+        set -- "$((${1-} - 2000))"
     else
-      year="$((year + 44 - 2000))" # 2026’s calendar matches 1970's... 2066’s matches 1999’s
+      # 2000’s calendar matches 1972’s... 2025’s matches 1997’s
+      set -- "$((${1-} + 72))" &&
+        set -- "$((${1-} - 2000))"
     fi &&
-    printf -- 'UNIX date to force a matching weekday:\n' >&2 &&
-    printf -- '          \ndate \047%s%s\047\n' "${year-}" "$(LC_ALL='C' date -- '+%m%d%H%M.%S')" &&
-    printf -- '# UNIX 5.0\ndate \047%s%s\047\n' "$(LC_ALL='C' date -- '+%m%d%H%M')" "${year-}"
-  unset year >/dev/null 2>&1 || year=''
+    printf -- 'UNIX date to force a matching weekday:\n\n' >&2 &&
+    printf -- 'date \047%d%s\047\n' "${1-}" "$(LC_ALL='C' date -- '+%m%d%H%M.%S')" &&
+    printf -- '# UNIX 5.0\n' >&2 &&
+    printf -- 'date \047%s%d\047\n' "$(LC_ALL='C' date -- '+%m%d%H%M')" "${1-}"
 }
 alias unixdate_set='unixtime_set'
 
