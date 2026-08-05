@@ -6141,7 +6141,7 @@ install_less() {
     target="${HOME%/}"'/c/less'
     mkdir -p -- "${target-}"
 
-    # because `make -C` is not POSIX... but neither is `make -f`...
+    # because `make -C` is not POSIX
     CDPATH='.' cd -L "${target-}" >/dev/null 2>&1 ||
       return 1
 
