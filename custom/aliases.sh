@@ -7681,16 +7681,19 @@ alias rectangle_shortcut='defaults write com.knollsoft.Rectangle maximize -dict-
 
 ## rename
 rename_install() {
-  set -- "${DOTFILES-}"'/bin/rename' 'https://github.com/ap/rename/raw/HEAD/rename' &&
-    mkdir -p -- "${1##*/}" &&
-    {
+  command -v -- rename 2>/dev/null || {
+    set -- "${DOTFILES-}"'/bin/rename' 'https://github.com/ap/rename/raw/HEAD/rename' &&
+      command -v -- brew >/dev/null 2>&1 && {
+      brew install --HEAD -- "${1##*/}" ||
+        brew install -- "${1##*/}"
+    } ||
+      printf -- ':%s:\n' "${PATH-}" | grep -e ':'"${1%/*}"':' >/dev/null 2>&1 && {
       wget --hsts-file=/dev/null --quiet --output-document="${1-}" -- "${2-}" ||
-        curl --fail --location --show-error --silent --output --url "${2-}" -- "${1-}"
+        curl --fail --location --show-error --silent --output "${1-}" --url "${2-}"
     } 2>/dev/null &&
-    chmod -- 755 "${1-}"
+      chmod -- 755 "${1-}"
+  }
 }
-# brew install rename
-# https://github.com/ap/rename
 rename_sanitize() {
   # usage rename_sanitize [ -l ] [ -n ]
   # -l: rename using lowercase
