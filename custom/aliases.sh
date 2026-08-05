@@ -799,7 +799,6 @@ cleanup() {
     ! -name 'README*' \
     -size 0 \
     -type f \
-    -print \
     -exec sh -C -f -u -x -c -- 'test "$(git -C "${1%/*}" rev-parse --show-superproject-working-tree)" = '\'''\'' ||
   git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
   ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
@@ -825,7 +824,6 @@ cleanup() {
       -path './*' \
       -type d \
       -links 2 \
-      -print \
       -exec rmdir -p -- {} +
   done
 
@@ -886,7 +884,6 @@ EOF
     -path '*/.git/*' \
     -path '*.gitstatus.*' \
     -type d \
-    -print \
     -exec rmdir -- {} + 2>/dev/null || # `rmdir` does not delete non-empty directories
     true
 
