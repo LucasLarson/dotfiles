@@ -3983,9 +3983,29 @@ git_attic() {
   # The output is designed to be copied and pasted: Pass the second field to
   # git show to display the file contents, or just select the hash without ^ to
   # see the commit where removal happened
-  git log --date=short --diff-filter=D --no-renames --raw --format='%h %cd' -- "${@-}" |
-    awk -- '/^[[:xdigit:]]/ {commit = $1; date = $2} /^:/ && $5 == "D" {filename = substr($0, index($0, $6)); print date, commit "'\''^'\'':'\''./" filename "'\''"}' |
-    LC_ALL='C' sort -r -u
+  git -c core.quotePath=false log \
+    --date=short \
+    --diff-filter=D \
+    --format='%h %cd' \
+    --no-renames \
+    --raw \
+    -- \
+    "${@-}" |
+    awk -- 'BEGIN {
+  found = 0
+}
+/^[[:xdigit:]]/ {
+  commit = $1
+  date = $2
+}
+/^:/ && $5 == "D" {
+  filename = substr($0, index($0, $6))
+  print date, commit "\047^\047:\047./" filename "\047"
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 
 # git blame
