@@ -5324,8 +5324,6 @@ grep_but_file() {
 }
 alias grep_but_not_file='grep_but_file'
 
-alias ug='ugrep --hidden'
-
 grep_o() {
   # POSIX-compliant implementation of GNU `grep -o`
   # https://github.com/acmesh-official/acmetest/blob/b00e8f1875/letest.sh#L169
@@ -5782,21 +5780,6 @@ brewsearch() {
     brew search --formula --verbose "${1-}"
     shift 1
   done
-}
-
-interactive() {
-  # POSIX-compliant check for interactive shell
-  # https://unix.stackexchange.com/a/26827
-  case "${--}" in
-  *i*)
-    # interactive shell
-    return 0
-    ;;
-  *)
-    # non-interactive shell
-    return 1
-    ;;
-  esac
 }
 
 ## invisible
@@ -7696,18 +7679,6 @@ alias gem_update_r='rbenv_update_r'
 # set ⌘⌥F to maximize the focused window
 alias rectangle_shortcut='defaults write com.knollsoft.Rectangle maximize -dict-add keyCode -float 3 modifierFlags -float 1572864 2>/dev/null'
 
-remove_trailing_slash() {
-  # POSIX-compliant remove trailing slashes
-  # https://stackoverflow.com/a/5471032
-  while test "${#}" -gt 0; do
-    while test "${1-}" != "${1%/}" && test "${1-}" != '/'; do
-      set -- "${1%/}"
-    done
-    printf -- '%s\n' "${1-}"
-    shift 1
-  done
-}
-
 ## rename
 rename_install() {
   set -- "${DOTFILES-}"'/bin/rename' 'https://github.com/ap/rename/raw/HEAD/rename' &&
@@ -9340,12 +9311,6 @@ url_to_filename() {
       -e 's|#|'"$(LC_ALL='C' printf -- '\357\274\203')"'|g' \
       -e '# remove trailing slashes if any' \
       -e 's|/*$||g'
-}
-
-user() {
-  test "${LOGNAME:-${USER-}}" != '' ||
-    return "${?:-1}"
-  printf -- '%s\n' "${LOGNAME:-${USER-}}"
 }
 
 variable_value() {
