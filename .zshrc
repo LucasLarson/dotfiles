@@ -222,6 +222,7 @@ rbenv() {
 ## PATHs
 # prevent duplicate entries
 case "${SHELL-}" in *zsh*)
+  # shellcheck disable=SC3045
   export -U \
     PATH path \
     CDPATH cdpath \
@@ -232,6 +233,7 @@ case "${SHELL-}" in *zsh*)
 esac
 
 ## Powerlevel10k
+# shellcheck disable=SC1094
 . "${HOME%/}"'/.p10k.zsh' 2>/dev/null
 
 ## shell options
