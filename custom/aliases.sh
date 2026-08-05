@@ -364,8 +364,9 @@ cargo_list() {
 alias bat >/dev/null 2>&1 &&
   unalias -- bat
 command -v -- bat >/dev/null 2>&1 &&
-  alias bat='bat --decorations=never --paging=never' &&
-  alias bats='bat --language=sh' &&
+  alias \
+    bat='bat --decorations=never --paging=never' \
+    bats='bat --language=sh' &&
   command -v -- _bat >/dev/null 2>&1 &&
   compdef -- bats='bat' >/dev/null 2>&1
 
@@ -2857,8 +2858,9 @@ END {
       +o noglob
   } 2>/dev/null
 }
-alias find_duplicate_sizes='find_files_with_the_same_sizes'
-alias fds='find_files_with_the_same_sizes'
+alias \
+  find_duplicate_sizes='find_files_with_the_same_sizes' \
+  fds='find_files_with_the_same_sizes'
 
 find_oldest_file() {
   (
