@@ -113,7 +113,8 @@ base_to_base() {
     printf -- '%s' "${1-}" |
       LC_ALL='C' tr -- '[:lower:]' '[:upper:]' |
       sed -e 's/^0[BODX]//'
-  )" | bc
+  )" |
+    bc
 }
 hexadecimal_to_decimal() {
   base_to_base "${1-}" 16 A
@@ -2386,7 +2387,7 @@ find_executable() {
   found = 0
 }
 NF {
- print
+  print
   found = 1
 }
 END {
@@ -7998,7 +7999,7 @@ sca() {
         'zsh         -C    -e    -n -u    -o pipefail -o noglob -o posix_aliases -o posix_arg_zero -o posix_builtins -o posix_cd -o posix_identifiers -o posix_jobs -o posix_strings -o posix_traps'; do
         if command -v -- "${test%% *}" >/dev/null 2>&1; then
           { {
-            eval "  ${test-} -- \"${file-}\"" 2>&1 &&
+            eval " ${test-} -- \"${file-}\"" 2>&1 &&
               printf -- '  passed %s\n' "${test%% *}"
           } ||
             printf -- '    %s failed %s\n' "${file##*/}" "${test%% *}"; } |
