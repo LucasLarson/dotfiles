@@ -6138,7 +6138,8 @@ install_less() {
       -o verbose \
       -o xtrace
     utility="$(
-      command -v -- gmake
+      command -v -- gmake ||
+        command -v -- make
     )"
     target="${HOME%/}"'/c/less'
     mkdir -p -- "${target-}"
