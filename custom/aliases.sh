@@ -370,28 +370,29 @@ command -v -- bat >/dev/null 2>&1 &&
 # - skips printing the new directory
 # - coerces Zsh into creating an alias named `-` without
 #   tripping up BusyBox `alias`, which does not support `-`
-alias 1='cd -- "${OLDPWD:--}"' -='cd -- "${OLDPWD:--}"'
-alias 2='cd -- -2'
-alias 3='cd -- -3'
-alias 4='cd -- -4'
-alias 5='cd -- -5'
-alias 6='cd -- -6'
-alias 7='cd -- -7'
-alias 8='cd -- -8'
-alias 9='cd -- -9'
-alias ...='cd -- ../..'
-alias ....='cd -- ../../..'
-alias .....='cd -- ../../../..'
-alias ......='cd -- ../../../../..'
-alias .......='cd -- ../../../../../..'
-alias ........='cd -- ../../../../../../..'
-alias .........='cd -- ../../../../../../../..'
+alias 1='CDPATH='\''.'\'' cd "${OLDPWD:--}" >/dev/null 2>&1' -='CDPATH='\''.'\'' cd "${OLDPWD:--}" >/dev/null 2>&1'
+alias \
+  2='CDPATH='\''.'\'' cd -2 >/dev/null 2>&1' \
+  3='CDPATH='\''.'\'' cd -3 >/dev/null 2>&1' \
+  4='CDPATH='\''.'\'' cd -4 >/dev/null 2>&1' \
+  5='CDPATH='\''.'\'' cd -5 >/dev/null 2>&1' \
+  6='CDPATH='\''.'\'' cd -6 >/dev/null 2>&1' \
+  7='CDPATH='\''.'\'' cd -7 >/dev/null 2>&1' \
+  8='CDPATH='\''.'\'' cd -8 >/dev/null 2>&1' \
+  9='CDPATH='\''.'\'' cd -9 >/dev/null 2>&1' \
+  ...='CDPATH='\''.'\'' cd ./../.. >/dev/null 2>&1' \
+  ....='CDPATH='\''.'\'' cd ./../../.. >/dev/null 2>&1' \
+  .....='CDPATH='\''.'\'' cd ./../../../.. >/dev/null 2>&1' \
+  ......='CDPATH='\''.'\'' cd ./../../../../.. >/dev/null 2>&1' \
+  .......='CDPATH='\''.'\'' cd ./../../../../../.. >/dev/null 2>&1' \
+  ........='CDPATH='\''.'\'' cd ./../../../../../../.. >/dev/null 2>&1' \
+  .........='CDPATH='\''.'\'' cd ./../../../../../../../.. >/dev/null 2>&1'
 
 cdp() {
   cd_to="$(pwd -P)"
   if test "${PWD-}" != "${cd_to-}"; then
     printf -- 'moving from \342\200\230%s\342\200\231\n' "${PWD-}"
-    cd -- "${cd_to-}" || {
+    CDPATH='.' cd "${cd_to-}" >/dev/null 2>&1 || {
       printf -- 'unable to perform this operation\n'
       return 1
     }
@@ -1802,7 +1803,7 @@ extract() {
     IFS=' ' find -- . \
       -name '*.rpm' \
       -type f \
-      -exec sh -C -e -f -u -x -c -- 'mkdir -p -- "$(basename -- "${1%.*}")" && rpm2cpio "${1-}" >./"$(basename -- "${1%.*}")"'\''/'\''"$(basename -- "${1%.*}"'\''.cpio'\'')" && cd -- ./"$(basename -- "${1%.*}")" && test -s "$(basename -- "${1%.*}"'\''.cpio'\'')" && cpio --extract --make-directories --verbose <"$(basename -- "${1%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${1%.*}"'\''.cpio'\'')" && cd -- "${OLDPWD:--}" && rm -- "${1-}" && shift 1' _ {} ';'
+      -exec sh -C -e -f -u -x -c -- 'mkdir -p -- "$(basename -- "${1%.*}")" && rpm2cpio "${1-}" >./"$(basename -- "${1%.*}")"'\''/'\''"$(basename -- "${1%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd ./"$(basename -- "${1%.*}")" >/dev/null 2>&1 && test -s "$(basename -- "${1%.*}"'\''.cpio'\'')" && cpio --extract --make-directories --verbose <"$(basename -- "${1%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${1%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd "${OLDPWD:--}" >/dev/null 2>&1 && rm -- "${1-}" && shift 1' _ {} ';'
   done
   find -- . \
     '(' \
@@ -2559,7 +2560,7 @@ find_image_files() {
     -print 2>/dev/null
   {
     # when the following portion is removed, you may also remove `2>/dev/null` from `find_images_with_incorrect_filename_extensions` probably
-    printf -- '#!/usr/bin/env sh\ncd -- "\044{HOME-}"'\''/c'\'' &&\n  LC_ALL='\''C'\'' IFS='\'''\'' find -L -- . -path '\''*/.git'\'' -prune -o -type f -exec file -- '\''{}'\'' + |\n  LC_ALL='\''C'\'' IFS='\'''\'' sed \\\n    -n \\\n    -e '\''/: .* image/ {'\'' \\\n    -e '\''  s/^\\([^:]*\\):.*$/\\1/p'\'' \\\n    -e '\''}'\''\n' |
+    printf -- '#!/usr/bin/env sh\nCDPATH='\''.'\'' cd "\044{HOME-}"'\''/c'\'' >/dev/null 2>&1 &&\n  LC_ALL='\''C'\'' IFS='\'''\'' find -L -- . -path '\''*/.git'\'' -prune -o -type f -exec file -- '\''{}'\'' + |\n  LC_ALL='\''C'\'' IFS='\'''\'' sed \\\n    -n \\\n    -e '\''/: .* image/ {'\'' \\\n    -e '\''  s/^\\([^:]*\\):.*$/\\1/p'\'' \\\n    -e '\''}'\''\n' |
       bat \
         --decorations=never \
         --language=sh \
@@ -3192,14 +3193,14 @@ find_setup_files_delete_others() {
 
 find_shell_scripts() {
   git rev-parse >/dev/null 2>&1 || return "${?:-1}"
-  cd -- "$(
+  CDPATH='.' cd "$(
     git rev-parse --path-format=relative --show-toplevel |
       sed -e '1 q'
-  )" 2>/dev/null ||
-    cd -- "$(
+  )" >/dev/null 2>&1 ||
+    CDPATH='.' cd "$(
       git rev-parse --show-toplevel
-    )" ||
-    cd -- "${PWD%/}" || # 😬
+    )" >/dev/null 2>&1 ||
+    CDPATH='.' cd "${PWD%/}" >/dev/null 2>&1 || # 😬
     return "${?:-1}"
   # @TODO because this appears to work even outside a Git repository
   # exit 1
@@ -4057,7 +4058,7 @@ git_clone() {
     shift 1
     { mkdir "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 || return 73; } &&
       printf -- 'moving into %s...\n' "${2:-$(basename -- "${1-}" .git)}" >&2 &&
-      cd -- "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 &&
+      CDPATH='.' cd "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 &&
       # using `--quiet` plus `--progress` to
       # hide the suprising the `Cloning into '.'...`
       git -c core.ignoreCase=false clone --depth 1 --progress --quiet --shallow-submodules --template='' -- "${1%.git}" "${PWD%/}"
@@ -4075,7 +4076,7 @@ git_clone() {
   *)
     { mkdir "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 || return 73; } &&
       printf -- 'moving into %s...\n' "${2:-$(basename -- "${1-}" .git)}" >&2 &&
-      cd -- "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 && {
+      CDPATH='.' cd "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 && {
       # test "${3-}" = '' ||
       git -c core.ignoreCase=false clone --progress --recursive --template='' -- "${1%.git}" "${PWD%/}" # ||
       # git clone --progress --recursive --branch "${branch-}" -- "${1%.git}" "${PWD%/}"
@@ -4469,7 +4470,7 @@ git_mailmap() {
 # git make git
 git_make_git() {
   mkdir -p -- "${HOME%/}"'/c/git'
-  cd -- "${HOME%/}"'/c/git' ||
+  CDPATH='.' cd "${HOME%/}"'/c/git' >/dev/null 2>&1 ||
     return "${?:-1}"
   set -- "$(
     set -- 'https://api.github.com/repos/git/git/tags'
@@ -6158,7 +6159,7 @@ install_less() {
     mkdir -p -- "${target-}"
 
     # because `make -C` is not POSIX... but neither is `make -f`...
-    cd -L -- "${target-}" ||
+    CDPATH='.' cd -L "${target-}" >/dev/null 2>&1 ||
       return 1
 
     git -C "${target-}" pull 2>/dev/null ||
@@ -6425,7 +6426,7 @@ mu() {
   test "${DOTFILES-}" != '' ||
     # EX_CONFIG
     return 78
-  cd -- "${DOTFILES-}" ||
+  CDPATH='.' cd "${DOTFILES-}" >/dev/null 2>&1 ||
     return 1
   command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "${@-}"
@@ -6448,7 +6449,7 @@ dot() {
   test "${DOTFILES-}" != '' ||
     # EX_CONFIG
     return 78
-  cd -- "${DOTFILES-}" ||
+  CDPATH='.' cd "${DOTFILES-}" >/dev/null 2>&1 ||
     return 1
   l 2>/dev/null ||
     ls -A -F -g -o 2>/dev/null
@@ -6457,9 +6458,9 @@ dot() {
       -e '$ d'
 }
 alias \
-  .f='{ mkdir -p -- "${HOME%/}"'\''/c/.f'\'' && cd -- "${HOME%/}"'\''/c/.f'\''; } || return "${?:-1}"' \
-  .m='{ mkdir -p -- "${HOME%/}"'\''/c/.m'\'' && cd -- "${HOME%/}"'\''/c/.m'\''; } || return "${?:-1}"' \
-  .g='{ mkdir -p -- "${_GITHUB:-${HOME%/}/c/.g}" && cd -- "${_GITHUB:-${HOME%/}/c/.g}"; } || return "${?:-1}"'
+  .f='{ mkdir -p -- "${HOME%/}"'\''/c/.f'\'' && CDPATH='\''.'\'' cd "${HOME%/}"'\''/c/.f'\'' >/dev/null 2>&1; } || return "${?:-1}"' \
+  .m='{ mkdir -p -- "${HOME%/}"'\''/c/.m'\'' && CDPATH='\''.'\'' cd "${HOME%/}"'\''/c/.m'\'' >/dev/null 2>&1; } || return "${?:-1}"' \
+  .g='{ mkdir -p -- "${_GITHUB:-${HOME%/}/c/.g}" && CDPATH='\''.'\'' cd "${_GITHUB:-${HOME%/}/c/.g}" >/dev/null 2>&1; } || return "${?:-1}"'
 
 ## Maestral && 1Password somehow
 command -v -- maestral >/dev/null 2>&1 && {
@@ -8423,8 +8424,6 @@ shfmt_r() {
           -e 's/^\([^#]*\)\(test \)-n \("\$\(\){[^}]*-*}"\)/\1\2\3 != '\''\4'\''/g' \
           -e '# replace uncommented test -z "" with test = ""; \3 is null but hides the ＄{ from shellcheck' \
           -e 's/^\([^#]*\)\(test \)-z \("\$\(\){[^}]*-*}"\)/\1\2\3 = '\''\4'\''/g' \
-          -e '# replace cd foo with cd -- foo unless cd is to the right of a single quote or is commented' \
-          -e 's/^\([^#'\'']*cd \)\([^-][^-] *\)/\1-- \2/g' \
           -e '# replace all strings like ＄＄ with "＄{＄:--1}"' \
           -e 's/ "\{0,1\}\(\$\){\{0,1\}\(\$\):\{0,1\}-\{0,2\}[[:digit:]]*}\{0,1\}"\{0,1\}/ "\1{\2:--1}"/g' \
           -e '# replace all strings like ＄? with "＄{＄:-1}" ' \
@@ -8968,7 +8967,7 @@ take() {
     # https://stackoverflow.com/q/1853946
     test "${#}" -eq 1 &&
       printf -- 'entering directory \342\200\230%s\342\200\231\n' "${1##*"${PWD}"/}" >&2 &&
-      cd -- "${1-}" ||
+      CDPATH='.' cd "${1-}" >/dev/null 2>&1 ||
       return "${?:-1}"
     shift 1
   done
@@ -8983,14 +8982,14 @@ tdt() {
     {
       target="${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp.trash/evil-'"$(date -- '+%Y%m%d%H%M%S')"
       mkdir -p -- "${target-}" &&
-        cd -- "${target-}"
+        CDPATH='.' cd "${target-}" >/dev/null 2>&1
     } ||
       return 1
     ;;
   *)
     {
       mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp.trash' &&
-        cd -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp.trash'
+        CDPATH='.' cd "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp.trash' >/dev/null 2>&1
     } ||
       return 1
     ;;
@@ -9003,20 +9002,14 @@ alias tet='tdt --evil'
 
 # temperature: return the CPU temperature in degrees Fahrenheit
 temperature() {
-  set \
-    -o noclobber \
-    -o noglob
-  # 𝑛 + narrow non-breaking space + degree sign + F
-  printf -- '%d\342\200\257\302\260F\n' "$(
-    sudo -- powermetrics --samplers smc |
-      awk -- '/CPU die temperature/ {printf "%f * 9 / 5 + 32\n", $4; exit}' |
-      bc
-  )"
+  command -v -- powermetrics >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   {
-    set \
-      +o noclobber \
-      +o noglob
-  } 2>/dev/null
+    sudo -- powermetrics --samplers smc &
+  } |
+    # 𝑛 + narrow non-breaking space + degree sign + F
+    awk -- '/CPU die temperature/ {printf "%.3f\342\200\257\302\260F\n", $4 * 9 / 5 + 32; exit}'
 }
 alias temp='temperature'
 
@@ -9199,18 +9192,18 @@ update_changelog() {
     return 78
   # find one existing changelog once
   file="$(
-    cd -- "$(
+    CDPATH='.' cd "$(
       # attempt relative-path access
       git rev-parse \
         --path-format=relative \
         --show-toplevel |
         sed \
           -e '1 q'
-    )" 2>/dev/null ||
-      cd -- "$(
+    )" >/dev/null 2>&1 ||
+      CDPATH='.' cd "$(
         git rev-parse \
           --show-toplevel
-      )" ||
+      )" >/dev/null 2>&1 ||
       return "${?:-1}"
     # find the Markdown changelog with the latest commit
     find -- . \
@@ -9482,7 +9475,7 @@ troubleshoot_website() {
     printf -- '# memory\n'
     printf -- 'ps -A -o pmem,pid,user,args | LC_ALL='\''C'\'' sort -k 1 -r | head -n 10\n'
     printf -- '# https://web.archive.org/web/20221203051014/help.dreamhost.com/hc/en-us/articles/216105097-Viewing-and-examining-your-access-log-via-SSH\n'
-    printf -- 'cd -- "\044{HOME\045/}"'\''/logs/'\''"\044{LOGNAME:-\044{USER-}}"'\''.net'\''\n'
+    printf -- 'CDPATH='\''.'\'' cd "\044{HOME\045/}"'\''/logs/'\''"\044{LOGNAME:-\044{USER-}}"'\''.net'\'' >/dev/null 2>&1\n'
     printf -- '# list the last 10,000 site hits\n'
     printf -- 'find -L -- . -name '\''access.log'\'' -type f -exec tail -n 10000 -- {} + | awk -- '\''{print \0441}'\'' | LC_ALL='\''C'\'' sort | uniq -c | LC_ALL='\''C'\'' sort -n\n'
     printf -- '# watch the server log in real time\n'
@@ -9490,7 +9483,7 @@ troubleshoot_website() {
     printf -- '# list files being called the most\n'
     printf -- 'awk '\''{print \0447}'\'' ./access.log | cut -d? -f 1 | LC_ALL='\''C'\'' sort | uniq -c | LC_ALL='\''C'\'' sort -k -n 1 | tail -n 10\n'
     printf -- '# list traffic for all user domains on server\n'
-    printf -- 'cd -- "\044{HOME\045/}"'\''/logs\n && for k in \044(ls -S */https/access.log); do wc -l -- "\044{k-}" | LC_ALL='\''C'\'' sort -n -r; done\n'
+    printf -- 'CDPATH='\''.'\'' cd "\044{HOME\045/}"'\''/logs'\'' >/dev/null 2>&1 &&\n  for k in \044(ls -S */https/access.log); do wc -l -- "\044{k-}" | LC_ALL='\''C'\'' sort -n -r; done\n'
   } | {
     bat \
       --decorations=never \
@@ -9539,7 +9532,7 @@ wget_download() {
     # or we fail
     # EX_CONFIG
     return 78
-  cd -- "${HOME%/}"'/Sites' ||
+  CDPATH='.' cd "${HOME%/}"'/Sites' >/dev/null 2>&1 ||
     return "${?:-1}"
 
   # user agent
@@ -9755,7 +9748,7 @@ yt() {
 
 zsh_make_zsh() {
   # sed -e 's/[",]//g;s/enable-etcdir.*/disable-etcdir/g;s/\#{HOMEBREW_PREFIX}\(.*\)/"\$\{HOME%\/\}"'\''\/.local\1'\''/g;s/\#{pkgshare}\(.*\)/"\$\{HOME%\/\}"'\''\/.local\/share\1'\''/g;s/\#{prefix}\(.*\)/"\$\{HOME%\/\}"'\''\/.local\1'\''/g;s/^\([[:space:]]*\)system[[:space:]]*/\1/' ~/c/Homebrew-core/Formula/zsh.rb
-  cd -- "${HOME%/}"'/c/zsh' ||
+  CDPATH='.' cd "${HOME%/}"'/c/zsh' >/dev/null 2>&1 ||
     return "${?:-1}"
   rm -f -r -- "${HOME%/}"'/c/zsh/.gitignore'
   (

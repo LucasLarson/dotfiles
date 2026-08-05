@@ -99,9 +99,9 @@ abbr --global srn='sed -n -e '\''H'\'' -e '\''$ {'\'' -e '\''x'\'' -e '\''s/\\n/
 
 ## soak
 abbr --global saok='soak'
-abbr --global 'c/saok'='cd -- "${HOME%/}"/c/soak'
+abbr --global 'c/saok'='CDPATH='\''.'\'' cd "${HOME%/}"/c/soak >/dev/null 2>&1'
 abbr --global saok_='soak_'
-abbr --global 'c/saok_'='cd -- "${HOME%/}"/c/soak_'
+abbr --global 'c/saok_'='CDPATH='\''.'\'' cd "${HOME%/}"/c/soak_ >/dev/null 2>&1'
 
 ## version
 abbr --global '--verison'='--version'
