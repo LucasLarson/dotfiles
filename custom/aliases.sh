@@ -3203,7 +3203,6 @@ find_shell_scripts() {
     CDPATH='.' cd "$(
       git rev-parse --show-toplevel
     )" >/dev/null 2>&1 ||
-    CDPATH='.' cd "${PWD%/}" >/dev/null 2>&1 || # 😬
     return "${?:-1}"
   # @TODO because this appears to work even outside a Git repository
   # exit 1
