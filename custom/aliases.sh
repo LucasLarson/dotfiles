@@ -5161,55 +5161,6 @@ gcr() {
 ######
 # grep
 
-# sed
-grep_sed() {
-  # print only lines that match regular expression (emulates "grep")
-  # macOS `sed`’s `man` page incorrectly claims that `-` is standard input, but when using
-  # "${2-}" it finds no file named ‘’ (null), and when using
-  # "${2--}" it finds no file named ‘-’
-  set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
-  sed -e '#n' -e '/'"${1-}"'/ p'
-  sed -n -e '/'"${1-}"'/ p'
-  sed -e '/'"${1-}"'/! d'
-  sed -e '#n' -e '/'"${1-}"'/ p' "${2-}"
-  sed -n -e '/'"${1-}"'/ p' "${2-}"
-  sed -e '/'"${1-}"'/! d' "${2-}"
-  sed -e '#n' -e '/'"${1-}"'/ p' "${2:--}"
-  sed -n -e '/'"${1-}"'/ p' "${2:--}"
-  sed -e '/'"${1-}"'/! d' "${2:--}"
-}
-alias sed_grep='grep_sed'
-grep_awk() {
-  # print only lines that match regular expression (emulates "grep")
-  set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
-  gawk --lint --lint-old --no-optimize --posix --use-lc-numeric -- '/'"${1-}"'/' "${2:--}"
-}
-alias awk_grep='grep_awk'
-grep_sed_v() {
-  # print only lines that do NOT match regexp (emulates "grep -v")
-  set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
-  sed -e '#n' -e '/'"${1-}"'/! p'
-  sed -n -e '/'"${1-}"'/! p'
-  sed -e '/'"${1-}"'/ d'
-  sed -e '#n' -e '/'"${1-}"'/! p' "${2-}"
-  sed -n -e '/'"${1-}"'/! p' "${2-}"
-  sed -e '/'"${1-}"'/ d' "${2-}"
-  sed -e '#n' -e '/'"${1-}"'/! p' "${2:--}"
-  sed -n -e '/'"${1-}"'/! p' "${2:--}"
-  sed -e '/'"${1-}"'/ d' "${2:--}"
-}
-alias \
-  sed_grep_v='grep_v_sed' \
-  sed_grep_v='grep_sed_v'
-grep_awk_v() {
-  # print only lines that do NOT match regex (emulates "grep -v")
-  set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
-  gawk --lint --lint-old --no-optimize --posix --use-lc-numeric -- '!/'"${1-}"'/' "${2:--}"
-}
-alias \
-  awk_grep_v='grep_v_awk' \
-  awk_grep_v='grep_awk_v'
-
 alias gr >/dev/null 2>&1 &&
   unalias -- gr
 command -v -- _grep >/dev/null 2>&1 &&
@@ -5325,25 +5276,6 @@ rgv() {
     "${@-}" 2>/dev/null
   unset utility >/dev/null 2>&1 || utility=''
 }
-
-grep_but_line() {
-  # https://chatgpt.com/share/b7efc291-4902-43c1-b5ff-2efc995eb230
-  # https://g.co/gemini/share/213f77a8c93b
-
-  # should NOT work
-  awk -vgood="${1-}" -vbad="${2-}" -- '/good/ && !/bad/ {print}'
-
-  # SHOULD work
-  awk -vgood="${1-}" -vbad="${2-}" -- '$0 ~ good && $0 !~ bad {print}'
-}
-alias \
-  grep_but='grep_but_line' \
-  grep_but_not_line='grep_but_line'
-grep_but_file() {
-  # https://web.archive.org/web/0id_/mywiki.wooledge.org/BashFAQ/079?rev=32#line-111
-  gawk --lint --lint-old --no-optimize --posix --use-lc-numeric -- '/'"${1-}"'/{good=1} /'"${2-}"'/{good=0;exit} END{exit !good}'
-}
-alias grep_but_not_file='grep_but_file'
 
 grep_o() {
   # POSIX-compliant implementation of GNU `grep -o`
