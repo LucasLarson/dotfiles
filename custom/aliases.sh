@@ -84,7 +84,6 @@ awk_pretty() {
     --no-optimize \
     --posix \
     --pretty-print=- \
-    --sandbox \
     --use-lc-numeric \
     "${@-}" |
     sed \
@@ -5183,7 +5182,7 @@ alias sed_grep='grep_sed'
 grep_awk() {
   # print only lines that match regular expression (emulates "grep")
   set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
-  gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '/'"${1-}"'/' "${2:--}"
+  gawk --lint --lint-old --no-optimize --posix --use-lc-numeric -- '/'"${1-}"'/' "${2:--}"
 }
 alias awk_grep='grep_awk'
 grep_sed_v() {
@@ -5205,7 +5204,7 @@ alias \
 grep_awk_v() {
   # print only lines that do NOT match regex (emulates "grep -v")
   set -- "$(printf -- '%s\n' "${1-}" | sed -e 's/\//\\\//g')" "${2-}"
-  gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '!/'"${1-}"'/' "${2:--}"
+  gawk --lint --lint-old --no-optimize --posix --use-lc-numeric -- '!/'"${1-}"'/' "${2:--}"
 }
 alias \
   awk_grep_v='grep_v_awk' \
@@ -5342,7 +5341,7 @@ alias \
   grep_but_not_line='grep_but_line'
 grep_but_file() {
   # https://web.archive.org/web/0id_/mywiki.wooledge.org/BashFAQ/079?rev=32#line-111
-  gawk --lint --lint-old --no-optimize --posix --sandbox --use-lc-numeric -- '/'"${1-}"'/{good=1} /'"${2-}"'/{good=0;exit} END{exit !good}'
+  gawk --lint --lint-old --no-optimize --posix --use-lc-numeric -- '/'"${1-}"'/{good=1} /'"${2-}"'/{good=0;exit} END{exit !good}'
 }
 alias grep_but_not_file='grep_but_file'
 
