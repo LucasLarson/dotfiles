@@ -9841,7 +9841,6 @@ zshoptions_search() {
       -e 's/^[[:space:]]*//' \
       -e 's/^[Nn][Oo]//' \
       -e 's/[[:space:]]*$//' |
-    # awk -- '{for (i = 1; i <= length($0); i++) {printf "[%s%s]_*", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))}; printf "\n"}' - |
     awk -- '
 {
   for (i = 1; i <= length($0); i++) {
