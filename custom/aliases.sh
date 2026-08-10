@@ -469,6 +469,9 @@ checkbashisms_r() {
 }
 
 clang_r() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   # https://news.ycombinator.com/item?id=35758898
   cc \
     -g3 \
@@ -897,6 +900,9 @@ EOF
 
 # codesign
 codesign_r() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o xtrace
   codesign --deep --force --options runtime --timestamp --verbose --options runtime --sign "$(
@@ -1194,6 +1200,9 @@ count_files_in_this_directory() {
 }
 
 curl_brew() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   # https://github.com/Homebrew/install/issues/737#issuecomment-1433428464
   curl \
     --disable \
@@ -1418,6 +1427,9 @@ dirname_r() {
 
 docker_r() {
   # run things like `docker_r --alpine` and `docker_r --ubuntu`
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o verbose \
     -o xtrace
@@ -6434,6 +6446,9 @@ command -v -- op >/dev/null 2>&1 && {
 
 # batman
 man() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   if command -v -- batman >/dev/null 2>&1; then
     batman "${@-}"
   else
@@ -8034,6 +8049,9 @@ if command -v -- xcrun >/dev/null 2>&1; then
 fi
 
 sed_help() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   # @mislav and @arp242
   # https://github.com/arp242/dotfiles/blob/9ade674954/local/script/tz
   sed \
@@ -8437,6 +8455,9 @@ shfmt_r_r_() {
   } 2>/dev/null
 }
 shfmt_r_r_r() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   set \
     -o xtrace
   for file in "${@-}"; do
@@ -9794,6 +9815,9 @@ zshoptions_search() {
   # • underscores are meaningless
   # • searching by case is not helpful
   # • a prefix of `no` or `no_` must be ignored
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   printf -- '%s\n' "${@-}" |
     sed \
       -e 's/_//g' \
