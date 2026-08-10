@@ -5267,7 +5267,12 @@ rg() {
   utility="$(env -- sh -c -- 'command -v -- rga || command -v -- rg')"
   test "${utility-}" = '' && {
     unset utility >/dev/null 2>&1 || utility=''
-    grep -E -r "${@-}"
+    find -- . \
+      -path '*./git' -prune -o \
+      -path '*/node_modules' -prune -o \
+      ! -name '.DS_Store' \
+      -type f \
+      -exec grep -E "${@-}" -- {} +
     return "${??}"
   }
   "${utility-}" \
@@ -5283,8 +5288,11 @@ rg() {
 }
 rgv() {
   utility="$(env -- sh -c -- 'command -v -- rga || command -v -- rg')"
-  test "${utility-}" = '' &&
-    grep -E -r -v -e "${@-}"
+  test "${utility-}" = '' && {
+    unset utility >/dev/null 2>&1 || utility=''
+    grep -E -v "${@-}"
+    return "${??}"
+  }
   "${utility-}" \
     -v \
     --glob '!**.git' \
