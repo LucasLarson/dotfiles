@@ -1,9 +1,5 @@
 #!/usr/bin/env sh
 
-# pseudo-tied variables
-export columns="${COLUMNS:-80}"
-export lines="${LINES:-24}"
-
 ## Dotfiles and templates
 mkdir -p -- "${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
   export DOTFILES="${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
