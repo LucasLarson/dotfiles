@@ -5298,10 +5298,10 @@ rgv() {
 grep_o() {
   # POSIX-compliant implementation of GNU `grep -o`
   # https://github.com/acmesh-official/acmetest/blob/b00e8f1875/letest.sh#L169
-  { { test "${#}" -eq 0 && cat -- -; } || printf -- '%s\n' "${@-}"; } |
+  { { test "${#}" -eq 0 && cat -- -; } || test "${#}" -eq 2 && printf -- '%s\n' "${@-}"; } |
     sed \
       -n \
-      -e 's/.*\('"${1-}"'\).*/\1/p'
+      -e 's/.*\('"${1-}"'\).*/\1/p' "${2:--}"
 }
 
 # grep
