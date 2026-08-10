@@ -469,11 +469,14 @@ checkbashisms_r() {
 }
 
 clang_r() {
+  command -v -- "${CC:-c99}" >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
   # https://news.ycombinator.com/item?id=35758898
-  cc \
+  "${CC:-c99}" \
     -g3 \
     -Wall \
     -Wextra \
