@@ -1946,9 +1946,7 @@ f() {
         -path '*/.git' -prune -o \
         -path '*/node_modules' -prune -o \
         -path './*' \
-        '(' \
-        -name "$(printf -- '%s' "${1-}" | awk -- '{for (i = 1; i <= length($0); i++) {printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))} printf "\n"}')" \
-        ')' \
+        -name '*'"$(printf -- '%s\n' "${1-}" | awk -- '{for (i = 1; i <= length($0); i++) {if (substr($0, i, 1) ~ /[[:alpha:]]/) {printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))} else {printf "%s", substr($0, i, 1)}} printf "\n"}')"'*' \
         -print
       shift 1
     done
@@ -1977,16 +1975,7 @@ fn() {
       -path '*/.venv' -prune -o \
       -path '*/node_modules' -prune -o \
       -path '*/vendor' -prune -o \
-      -path './*' \
-      -name "$(
-        printf -- '*%s*' "${@-}" |
-          awk -- '{
-  for (i = 1; i <= length($0); i++) {
-    printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))
-  }
-}
-'
-      )" \
+      -name '*'"$(printf -- '%s\n' "${1-}" | awk -- '{for (i = 1; i <= length($0); i++) {if (substr($0, i, 1) ~ /[[:alpha:]]/) {printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))} else {printf "%s", substr($0, i, 1)}} printf "\n"}')"'*' \
       -type f \
       -print 2>/dev/null |
       LC_ALL='C' sort -f
