@@ -1552,7 +1552,7 @@ dss() {
 }
 
 du() {
-  # # print the human-readable size of a given directory (defaults to current directory)
+  # print the human-readable size of a given directory (defaults to current directory)
   dust "${@:--Fsxn$((LINES - 3))}" 2>/dev/null ||
     command -p -- du -h -s -- "${1:-.}"
 }
@@ -8035,7 +8035,7 @@ fi
 
 sed_help() {
   # @mislav and @arp242
-  # # https://github.com/arp242/dotfiles/blob/9ade674954/local/script/tz
+  # https://github.com/arp242/dotfiles/blob/9ade674954/local/script/tz
   sed \
     -e '1,2 d' \
     -e '/^[^#]/ q' \
