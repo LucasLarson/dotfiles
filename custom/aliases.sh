@@ -718,7 +718,7 @@ cleanup() {
     export now
 
   # delete thumbnail cache files
-  dss "${@-}"
+  dss
 
   # delete crufty Zsh files
   # if `$ZSH_COMPDUMP` always generates a crufty file then skip, but
@@ -4352,7 +4352,7 @@ git_garbage_collection() {
       -o verbose \
       -o xtrace
     cleanup "${@-}"
-    dss "${@-}"
+    dss
     {
       set \
         +o verbose \
