@@ -1333,6 +1333,9 @@ alias diff >/dev/null 2>&1 &&
   unalias -- diff
 alias diff='git -c core.quotePath=false diff --color-words --no-index'
 diffy() {
+  test "${#}" -eq 2 ||
+    # EX_USAGE
+    return 64
   diff \
     --side-by-side \
     --suppress-common-lines \
