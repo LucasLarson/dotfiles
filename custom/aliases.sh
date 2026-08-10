@@ -903,6 +903,9 @@ EOF
 
 # codesign
 codesign_r() {
+  command -v -- xcrun >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
@@ -1206,6 +1209,9 @@ count_files_in_this_directory() {
 }
 
 curl_brew() {
+  command -v -- curl >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
@@ -1438,6 +1444,9 @@ dirname_r() {
 
 docker_r() {
   # run things like `docker_r --alpine` and `docker_r --ubuntu`
+  command -v -- docker >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
@@ -5391,6 +5400,9 @@ head_c() {
 }
 
 headers() {
+  command -v -- curl >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
@@ -8463,6 +8475,9 @@ shfmt_r_r_() {
   } 2>/dev/null
 }
 shfmt_r_r_r() {
+  command -v -- shfmt >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
