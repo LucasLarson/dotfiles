@@ -1209,16 +1209,18 @@ curl_brew() {
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
-  # https://github.com/Homebrew/install/issues/737#issuecomment-1433428464
-  curl \
-    --disable \
-    --fail \
-    --compressed \
-    --speed-limit 100 \
-    --speed-limit 5 \
-    --location \
-    --remote-name \
-    --url "${@-}"
+  for url in "${@-}"; do
+    # https://github.com/Homebrew/install/issues/737#issuecomment-1433428464
+    curl \
+      --disable \
+      --fail \
+      --compressed \
+      --speed-limit 100 \
+      --speed-limit 5 \
+      --location \
+      --remote-name \
+      --url "${url-}"
+  done
 }
 
 date_s() {
