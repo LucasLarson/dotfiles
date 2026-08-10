@@ -906,18 +906,12 @@ codesign_r() {
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
-  set \
-    -o xtrace
   codesign --deep --force --options runtime --timestamp --verbose --sign "$(
     security find-identity -p codesigning -v |
       sed \
         -e 's/.*\([[:xdigit:]]\{40\}\).*/\1/' \
         -e 'q'
   )" "${@-}"
-  {
-    set \
-      +o xtrace
-  } 2>/dev/null
 }
 
 cpplint_filename_extensions() {
