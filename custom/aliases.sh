@@ -908,8 +908,8 @@ codesign_r() {
     return 64
   set \
     -o xtrace
-  codesign --deep --force --options runtime --timestamp --verbose --options runtime --sign "$(
-    security find-identity -v -p codesigning |
+  codesign --deep --force --options runtime --timestamp --verbose --sign "$(
+    security find-identity -p codesigning -v |
       sed \
         -e 's/.*\([[:xdigit:]]\{40\}\).*/\1/' \
         -e 'q'
