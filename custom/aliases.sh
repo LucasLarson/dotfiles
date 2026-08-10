@@ -906,14 +906,14 @@ codesign_r() {
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
-  codesign \
+  xcrun --run -- codesign \
     --deep \
     --force \
     --options runtime \
     --timestamp \
     --verbose \
     --sign "$(
-      security \
+      xcrun --run -- security \
         find-identity \
         -p codesigning \
         -v |
