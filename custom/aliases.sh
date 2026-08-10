@@ -920,7 +920,7 @@ codesign_r() {
         sed \
           -e 's/.*\([[:xdigit:]]\{40\}\).*/\1/' \
           -e 'q'
-    )" "${@-}"
+    )" -- "${@-}"
 }
 
 cpplint_filename_extensions() {
