@@ -6471,6 +6471,8 @@ man() {
     return 64
   if command -v -- batman >/dev/null 2>&1; then
     batman "${@-}"
+  elif command -v -- gman >/dev/null 2>&1; then
+    gman "${@-}"
   else
     command -p -- man "${@-}"
   fi
