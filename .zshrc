@@ -29,8 +29,10 @@ SAVEHIST="$(getconf -- UINT_MAX)" &&
 
 ## Plugins
 PLUGINS='gunstage:git-default-branch:zsh-abbr:zsh-diff-so-fancy:zsh-autosuggestions'"${PLUGINS:+:${PLUGINS-}}"
+
 # plugin: fast-syntax-highlighting
 PLUGINS='fast-syntax-highlighting'"${PLUGINS:+:${PLUGINS-}}"
+
 # plugin: zsh-history-substring-search
 PLUGINS='zsh-history-substring-search'"${PLUGINS:+:${PLUGINS-}}" && {
   bindkey '^[OA' history-substring-search-up
