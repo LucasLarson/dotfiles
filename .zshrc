@@ -38,6 +38,7 @@ PLUGINS='zsh-history-substring-search'"${PLUGINS:+:${PLUGINS-}}" && {
   bindkey '^[OA' history-substring-search-up
   bindkey '^[OB' history-substring-search-down
 }
+export PLUGINS
 
 ## Options
 set -o always_to_end
@@ -187,7 +188,8 @@ zstyle ':completion:*:descriptions' format %B%F"{green}"%d%f%b
 
 ## plugin: zsh-completions
 test -d "${custom-}"'/plugins/zsh-completions/src' &&
-  FPATH="${FPATH:+${FPATH-}:}${custom-}"'/plugins/zsh-completions/src'
+  FPATH="${FPATH:+${FPATH-}:}${custom-}"'/plugins/zsh-completions/src' &&
+  export FPATH
 
 autoload -U compinit &&
   compinit
