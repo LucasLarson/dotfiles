@@ -174,7 +174,8 @@ zstyle ':completion:*:descriptions' format %B%F"{green}"%d%f%b
 
 ## plugin: zsh-completions
 test -d "${custom-}"'/plugins/zsh-completions/src' &&
-  FPATH="${FPATH:+${FPATH-}:}${custom-}"'/plugins/zsh-completions/src'
+  FPATH="${FPATH:+${FPATH-}:}${custom-}"'/plugins/zsh-completions/src' &&
+  export FPATH
 
 autoload -U compinit &&
   compinit
