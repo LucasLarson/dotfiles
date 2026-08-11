@@ -1208,27 +1208,6 @@ count_files_in_this_directory() {
   esac
 }
 
-curl_brew() {
-  command -v -- curl >/dev/null 2>&1 ||
-    # EX_UNAVAILABLE
-    return 69
-  test "${#}" -gt 0 ||
-    # EX_USAGE
-    return 64
-  for url in "${@-}"; do
-    # https://github.com/Homebrew/install/issues/737#issuecomment-1433428464
-    curl \
-      --disable \
-      --fail \
-      --compressed \
-      --speed-limit 100 \
-      --speed-limit 5 \
-      --location \
-      --remote-name \
-      --url "${url-}"
-  done
-}
-
 date_s() {
   # POSIX-compliant implementation of `date +%s`
   # https://web.archive.org/web/0id_/etalabs.net/sh_tricks.html
