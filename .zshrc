@@ -51,7 +51,7 @@ set \
   -o hist_ignore_dups \
   -o hist_ignore_space \
   -o histverify \
-  -o interactive_comments
+  -o interactive_comments \
   -o share_history
 
 ## shell navigation without the mouse
@@ -195,7 +195,6 @@ test -d "${custom-}"'/plugins/zsh-completions/src' &&
 
 autoload -U compinit &&
   compinit
-
 
 ## C, C++
 if test "$(command xcrun --show-sdk-path 2>/dev/null)" != ''; then
