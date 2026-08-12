@@ -46,7 +46,7 @@ set \
   -o autocd \
   -o complete_in_word \
   -o dotglob \
-  -o extended_history \
+  +o extended_history \
   +o flow_control \
   -o hist_ignore_dups \
   -o hist_ignore_space \
