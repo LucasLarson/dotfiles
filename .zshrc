@@ -183,19 +183,17 @@ autoload -U compinit &&
   compinit
 
 ## Options
-set -o always_to_end
-set -o complete_in_word
-set +o flow_control
-set -o autocd
-set -o hist_ignore_dups
-set -o hist_ignore_space
-set -o histverify
-# include hidden files in tab completion
-set -o dotglob
-# share all commands from everywhere
-set -o share_history
-# permit inline comments
-set -o interactive_comments
+set \
+  -o always_to_end \
+  -o autocd \
+  -o complete_in_word \
+  -o dotglob \
+  +o flow_control \
+  -o hist_ignore_dups \
+  -o hist_ignore_space \
+  -o histverify \
+  -o interactive_comments \
+  -o share_history
 
 ## C, C++
 if test "$(command xcrun --show-sdk-path 2>/dev/null)" != ''; then
