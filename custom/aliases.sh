@@ -393,20 +393,28 @@ alias \
   .........='CDPATH='\''.'\'' cd ./../../../../../../../.. >/dev/null 2>&1'
 
 cdp() {
-  cd_to="$(pwd -P)"
-  if test "${PWD-}" != "${cd_to-}"; then
-    printf -- 'moving from \342\200\230%s\342\200\231\n' "${PWD-}"
-    CDPATH='.' cd "${cd_to-}" >/dev/null 2>&1 || {
-      printf -- 'unable to perform this operation\n'
+  set -- "$(pwd -P)" &&
+    if test "${PWD%/}" != "${1-}"; then
+      printf -- 'moving from \342\200\230' >&2 &&
+        printf -- '%s' "${PWD%/}" &&
+        printf -- '\342\200\231' >&2 &&
+        printf -- '\n' &&
+        CDPATH='.' cd "${1-}" >/dev/null 2>&1 || {
+        printf -- 'unable to perform this operation\n' >&2
+        return 1
+      } &&
+        printf -- '       into \342\200\230' >&2 &&
+        printf -- '%s' "${1-}" &&
+        printf -- '\342\200\231' >&2 &&
+        printf -- '\n'
+    else
+      printf -- 'already in unaliased directory ' >&2 &&
+        printf -- '\342\200\230' >&2 &&
+        printf -- '%s' "${PWD%/}" &&
+        printf -- '\342\200\231' >&2 &&
+        printf -- '\n'
       return 1
-    }
-    printf -- '       into \342\200\230%s\342\200\231\n' "${cd_to-}"
-  else
-    printf -- 'already in unaliased directory '
-    printf -- '\342\200\230%s\342\200\231\n' "${PWD-}"
-    return 1
-  fi
-  unset cd_to >/dev/null 2>&1 || cd_to=''
+    fi
 }
 
 cdx_to_csv() {
