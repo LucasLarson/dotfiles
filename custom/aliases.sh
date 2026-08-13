@@ -1783,17 +1783,18 @@ exponent() {
   # return $(( $1 ** $2 ))
   # base ^ exponent
   # defaults to $1¹ or 0¹
-  base="${1:-0}"
-  exponent="${2:-1}"
-  result=1
-  while test "${exponent-}" -gt 0; do
-    result="$((result * base))"
-    exponent="$((exponent - 1))"
-  done
-  printf -- '%d\n' "${result-}"
-  unset base || base=''
-  unset exponent || exponent=''
-  unset result || result=''
+  command -v -- bc >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  printf -- '%f ^ %d\n' "${1:-0}" "${2:-1}" |
+    bc -l |
+    sed \
+      -e '# prepend 0 to results that begin with a decimal point' \
+      -e 's/^\./0./' \
+      -e '# trim trailing decimal zeroes' \
+      -e 's/\(\.[[:digit:]]*[1-9]\)0*$/\1/' \
+      -e '# remove trailing dot if fraction becomes empty' \
+      -e 's/\.0*$//'
 }
 
 export_U() {
