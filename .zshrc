@@ -64,6 +64,7 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[Z' reverse-menu-complete
 
 ## Plugins and custom scripts
+# shellcheck disable=SC1090
 test -d "${custom-}" &&
   {
     for file in "${custom-}"/plugins/**/*.plugin.*sh; do
