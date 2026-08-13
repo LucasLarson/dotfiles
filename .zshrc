@@ -54,7 +54,7 @@ set \
   -o interactive_comments \
   -o share_history
 
-## shell navigation without the mouse
+## Keyboard shortcuts
 bindkey '^?' backward-delete-char
 bindkey '^A' beginning-of-line
 bindkey '^[[3~' delete-char
