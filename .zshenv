@@ -1,14 +1,14 @@
 #!/usr/bin/env sh
 
 ## Dotfiles and templates
-mkdir -p -- "${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
-  export DOTFILES="${HOME%/}"'/Library/CloudStorage/Dropbox/dotfiles' &&
+mkdir -p -- "${HOME%/}"'/Documents/dotfiles' &&
+  export DOTFILES="${HOME%/}"'/Documents/dotfiles' &&
   mkdir -p -- "${DOTFILES-}"'/custom' &&
   export custom="${DOTFILES-}"'/custom' &&
-  mkdir -p -- "${DOTFILES-}"'/../Template' &&
-  export TEMPLATE="${DOTFILES-}"'/../Template' &&
-  mkdir -p -- "${DOTFILES-}"'/../Default' &&
-  export DEFAULT="${DOTFILES-}"'/../Default'
+  mkdir -p -- "${DOTFILES-}"'/../Code/Template' &&
+  export TEMPLATE="${DOTFILES-}"'/../Code/Template' &&
+  mkdir -p -- "${DOTFILES-}"'/../Code/Default' &&
+  export DEFAULT="${DOTFILES-}"'/../Code/Default'
 
 ## XDG
 # https://specifications.freedesktop.org/basedir-spec/0.7/ar01s03.html

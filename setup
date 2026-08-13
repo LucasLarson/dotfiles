@@ -248,7 +248,7 @@ find -- . \
 # and those with specific names
 find -- . \
   -size 0 \
-  ! -path "${DOTFILES:-${HOME%/}/Library/CloudStorage/Dropbox/dotfiles}"'/Library/*' \
+  ! -path "${DOTFILES:-${HOME%/}/Documents/dotfiles}"'/Library/*' \
   ! -path "${HOME%/}"'/Library/*' \
   ! -path '*/.git/*' \
   ! -path '*/Test*' \
@@ -293,9 +293,9 @@ test -w '/etc/passwd' &&
 { set +o xtrace; } 2>/dev/null
 printf -- 'ensuring there is local access to dotfiles...\n'
 set -o xtrace
-git -C "${DOTFILES:-${HOME%/}/Maestral/dotfiles}" rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
-  { test -d "${DOTFILES:-${HOME%/}/Maestral}" || mkdir -- "${DOTFILES:-${HOME%/}/Maestral}"; } &&
-    { test -d "${DOTFILES:-${HOME%/}/Maestral/dotfiles}" || mkdir -- "${DOTFILES:-${HOME%/}/Maestral/dotfiles}"; } &&
+git -C "${DOTFILES:-${HOME%/}/Documents/dotfiles}" rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
+  { test -d "${DOTFILES:-${HOME%/}/Documents}" || mkdir -- "${DOTFILES:-${HOME%/}/Documents}"; } &&
+    { test -d "${DOTFILES:-${HOME%/}/Documents/dotfiles}" || mkdir -- "${DOTFILES:-${HOME%/}/Documents/dotfiles}"; } &&
     git -c core.ignoreCase=false clone \
       --branch dev \
       --progress \
@@ -303,7 +303,7 @@ git -C "${DOTFILES:-${HOME%/}/Maestral/dotfiles}" rev-parse --is-inside-work-tre
       --template='' \
       -- \
       https://github.com/LucasLarson/dotfiles \
-      "${DOTFILES:-${HOME%/}/Maestral/dotfiles}"
+      "${DOTFILES:-${HOME%/}/Documents/dotfiles}"
 }
 
 # done
