@@ -65,18 +65,17 @@ bindkey '^[[Z' reverse-menu-complete
 
 ## Plugins and custom scripts
 # shellcheck disable=SC1090
-test -d "${custom-}" &&
-  {
-    for file in "${custom-}"/plugins/**/*.plugin.*sh; do
-      . "${file-}" 2>/dev/null &&
-        FPATH="${FPATH:+${FPATH-}:}${file%/*}"
-    done
-    for file in "${custom-}"/*sh; do
-      test -s "${file-}" &&
-        test ! -L "${file-}" &&
-        . "${file-}"
-    done
-  }
+test -d "${custom-}" && {
+  for file in "${custom-}"/plugins/**/*.plugin.*sh; do
+    . "${file-}" 2>/dev/null &&
+      FPATH="${FPATH:+${FPATH-}:}${file%/*}"
+  done
+  for file in "${custom-}"/*sh; do
+    test -s "${file-}" &&
+      test ! -L "${file-}" &&
+      . "${file-}"
+  done
+}
 
 ## MANPATH
 test -d '/usr/local/man' &&
