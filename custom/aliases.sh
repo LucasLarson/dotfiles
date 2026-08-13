@@ -1780,8 +1780,6 @@ exit_codes() {
 }
 
 exponent() {
-  set \
-    -o xtrace
   # return $(( $1 ** $2 ))
   # base ^ exponent
   # defaults to $1¹ or 0¹
@@ -1793,10 +1791,6 @@ exponent() {
     exponent="$((exponent - 1))"
   done
   printf -- '%d\n' "${result-}"
-  {
-    set \
-      +o xtrace
-  } 2>/dev/null
   unset base || base=''
   unset exponent || exponent=''
   unset result || result=''
