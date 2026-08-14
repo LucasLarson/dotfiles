@@ -113,7 +113,7 @@ base_to_base() {
   # https://stackoverflow.com/a/13280173
   printf -- 'ibase=%s; obase=%s; %s\n' "${2:-10}" "${3:-10}" "$(
     printf -- '%s' "${1-}" |
-      LC_ALL='C' tr -- '[:lower:]' '[:upper:]' |
+      LANG='C' LC_ALL='C' tr -- '[:lower:]' '[:upper:]' |
       sed -e 's/^0[BODX]//'
   )" |
     bc
@@ -459,7 +459,7 @@ changelog_find_newest() {
     -path "${pwd%/}"'/[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*.[Mm]*[Dd]*' \
     -type f \
     -exec sh -c -- 'git --no-pager log --max-count=1 --pretty=tformat:'\''%at '\''"${1-}"' _ {} ';' |
-    LC_ALL='C' sort -n -r |
+    LANG='C' LC_ALL='C' sort -n -r |
     sed \
       -e 's/.*\///g' \
       -e 'q'
@@ -725,7 +725,7 @@ cleanup() {
 
   set \
     -o xtrace
-  now="$(date -- '+%Y%m%d%H%M%S')" &&
+  now="$(LANG='C' LC_ALL='C' date -- '+%Y%m%d%H%M%S')" &&
     export now
 
   # delete thumbnail cache files
@@ -947,9 +947,9 @@ cpplint_filename_extensions() {
     # https://github.com/BurntSushi/ripgrep/blob/0bc4f0447b/ignore/src/default_types.rs#L37-L40 2023-07
     printf -- 'cpp hpp cxx hxx hh inl C.in h.in H.in cpp.in hpp.in cxx.in hxx.in hh.in\n'
   } |
-    tr -s -- '[:space:]' '\n' |
-    LC_ALL='C' sort -u |
-    LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' tr -s -- '[:space:]' '\n' |
+    LANG='C' LC_ALL='C' sort -u |
+    LANG='C' LC_ALL='C' sort -f
 }
 cpplint_r() {
   PS4=' ' find -- . \
@@ -1164,9 +1164,9 @@ count_files_by_extension() {
     ! -name '.DS_Store' \
     ! -type d \
     -exec sh -c -- 'for file in "${@-}"; do printf -- '\''%s\n'\'' "${file##*.}"; done' _ {} + |
-    LC_ALL='C' sort |
+    LANG='C' LC_ALL='C' sort |
     uniq -c |
-    LC_ALL='C' sort -n
+    LANG='C' LC_ALL='C' sort -n
 
   # files with no extension
   # - https://github.com/super-linter/super-linter/commit/4faa6433ab
@@ -1220,7 +1220,7 @@ date_s() {
   # POSIX-compliant implementation of `date +%s`
   # https://web.archive.org/web/0id_/etalabs.net/sh_tricks.html
   printf -- '%d\n' "$(($(
-    date -u -- '+( (%Y - 1600) * 365 + (%Y - 1600) / 4 - (%Y - 1600) / 100 + (%Y - 1600) / 400 + %j - 135140) * 86400 + %H * 3600 + %M * 60 + %S'
+    LANG='C' LC_ALL='C' date -u -- '+( (%Y - 1600) * 365 + (%Y - 1600) / 4 - (%Y - 1600) / 100 + (%Y - 1600) / 400 + %j - 135140) * 86400 + %H * 3600 + %M * 60 + %S'
   )))"
 }
 
@@ -1386,8 +1386,8 @@ dictionary() {
     shift 1
     ;;
   *)
-    LC_ALL='C' sort -u "${1:--}" |
-      LC_ALL='C' sort '-f'"${arguments##*-}"
+    LANG='C' LC_ALL='C' sort -u "${1:--}" |
+      LANG='C' LC_ALL='C' sort '-f'"${arguments##*-}"
     ;;
   esac
   unset arguments >/dev/null 2>&1 || arguments=''
@@ -1514,8 +1514,8 @@ domain_name_tld_list() {
       -e 's/.*\.//' \
       -e '/^$/ d' \
       -e '/#/ d' |
-    LC_ALL='C' tr -- '[:upper:]' '[:lower:]' |
-    LC_ALL='C' sort -u
+    LANG='C' LC_ALL='C' tr -- '[:upper:]' '[:lower:]' |
+    LANG='C' LC_ALL='C' sort -u
 }
 
 dotfiles_not_found() {
@@ -1586,9 +1586,9 @@ epoch_seconds() {
 }
 epoch_to_date_time() {
   if date -d '@0' >/dev/null 2>&1; then
-    date -d '@'"${1:-0}"
+    LANG='C' LC_ALL='C' date -d '@'"${1:-0}"
   else
-    date -r "${1:-0}"
+    LANG='C' LC_ALL='C' date -r "${1:-0}"
   fi
 }
 
@@ -1902,7 +1902,7 @@ filename_spaces_to_underscores() {
     while IFS='' read -r -- file; do
       mv -i -- "${file-}" "${file%/*}"/"$(
         printf -- '%s' "${file##*/}" |
-          tr -s -- "${1:-[:space:]}" "${2:-_}"
+          LANG='C' LC_ALL='C' tr -s -- "${1:-[:space:]}" "${2:-_}"
       )"
     done
 }
@@ -1913,7 +1913,7 @@ filename_underscores_to_spaces() {
     while IFS='' read -r -- file; do
       mv -i -- "${file-}" "${file%/*}"/"$(
         printf -- '%s' "${file##*/}" |
-          tr -s -- "${1:-_}" "${2:- }"
+          LANG='C' LC_ALL='C' tr -s -- "${1:-_}" "${2:- }"
       )"
     done
 }
@@ -1985,7 +1985,7 @@ fn() {
       -name '*'"$(printf -- '%s\n' "${1-}" | awk -- '{for (i = 1; i <= length($0); i++) {if (substr($0, i, 1) ~ /[[:alpha:]]/) {printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))} else {printf "%s", substr($0, i, 1)}} printf "\n"}')"'*' \
       -type f \
       -print 2>/dev/null |
-      LC_ALL='C' sort -f
+      LANG='C' LC_ALL='C' sort -f
   fi
 }
 
@@ -2137,8 +2137,8 @@ find_compressed_files() {
       LC_ALL='C' awk -F':' -- '{if (tolower($2) ~ /archive|compress/) print $1}'
 
   } |
-    LC_ALL='C' sort -u |
-    LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' sort -u |
+    LANG='C' LC_ALL='C' sort -f
 }
 
 find_debug() {
@@ -2205,7 +2205,7 @@ find_dot_files() {
       -name '.*' \
       ! -name '.gitmodules' \
       -print |
-      LC_ALL='C' sort -f
+      LANG='C' LC_ALL='C' sort -f
     ;;
   esac
 }
@@ -2232,7 +2232,7 @@ find_duplicate_cksum() {
     -type f \
     -exec sh -c -- 'cksum -- "${1-}"' _ {} ';' |
     sed -e 's/\([[:digit:]][[:digit:]]*\)[[:space:]]\([[:digit:]][[:digit:]]*\)[[:space:]]\(.*\)/\1 \2/' |
-    LC_ALL='C' sort -k 1,1n -k 2,2n |
+    LANG='C' LC_ALL='C' sort -k 1,1n -k 2,2n |
     uniq -D -f 1 |
     sed -e 's/^[[:digit:]][[:digit:]]*[[:space:]][[:digit:]][[:digit:]]*[[:space:]]//'
   lc_all_temporary="$(
@@ -2268,7 +2268,7 @@ find_duplicate_cksum() {
       ! -size 0 \
       -exec sh -c -- 'cksum -- "${1-}"' _ {} ';' |
     sed -e 's/\([[:digit:]][[:digit:]]*\)[[:space:]]\([[:digit:]][[:digit:]]*\)[[:space:]]\(.*\)/\1 \2/' |
-      sort |
+      LANG='C' LC_ALL='C' sort |
       uniq -d
   # restore LC_ALL
   eval " ${lc_all_temporary-}"
@@ -2618,7 +2618,7 @@ find_images_with_incorrect_filename_extensions() {
       *.[Ww][Ee][Bb][Pp]) file -- "${file-}" | grep -F -e "${file-}"': RIFF' 2>/dev/null | grep -e ' Web/P image' >/dev/null 2>&1 || printf -- '%s\n' "${file-}" ;;
       *) printf -- '%s: this test does not yet test \140%s\140 files\n' "${file-}" "$(
         printf -- '%s\n' "${file##*.}" |
-          LC_ALL='C' tr -- '[:lower:]' '[:upper:]'
+          LANG='C' LC_ALL='C' tr -- '[:lower:]' '[:upper:]'
       )" >&2 ;;
       esac
     done
@@ -2816,7 +2816,7 @@ find_files_with_the_same_names() {
   #        was `basename -- "${file%.*}"`
   basename "${file%[0-9]*.*}"
 done' _ {} + |
-    LC_ALL='C' sort |
+    LANG='C' LC_ALL='C' sort |
     LC_ALL='C' uniq -d
 
   LC_ALL='C' find -- . \
@@ -2831,7 +2831,7 @@ done' _ {} + |
       -e 's/.*\/\([^/]*\)\.[^.]*$/\1/' |
     LC_ALL='C' sed \
       -e 's/ 1$//' |
-    LC_ALL='C' sort |
+    LANG='C' LC_ALL='C' sort |
     LC_ALL='C' uniq -d
 }
 
@@ -2849,7 +2849,7 @@ find_files_with_the_same_sizes() {
     # cksum prints 3+ columns; we want all but the first
     LC_ALL='C' sed \
       -e 's/^[[:space:]]\{0,\}[[:digit:]]\{1,\}[[:space:]]\{1,\}\([[:digit:]]\{1,\}\)[[:space:]]\{1,\}\(.*\)$/\1 \2/' |
-    LC_ALL='C' sort -n |
+    LANG='C' LC_ALL='C' sort -n |
     LC_ALL='C' awk -- '{
   sizes[$1]++
   if (lines[$1]) {
@@ -3000,8 +3000,8 @@ find_perl_files() {
         -e '# prepend each line with dot slash' \
         -e 's/^/.\//'
   } |
-    LC_ALL='C' sort -u |
-    LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' sort -u |
+    LANG='C' LC_ALL='C' sort -f
 }
 
 find_animated_png() {
@@ -3133,8 +3133,8 @@ find_ruby_files() {
     } |
       awk -- '{print "./" $0}'
   } |
-    LC_ALL='C' sort -u |
-    LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' sort -u |
+    LANG='C' LC_ALL='C' sort -f
 }
 
 find_setup_files() {
@@ -3464,8 +3464,8 @@ find_text_files() {
         -n \
         -e '/: \{1,\}ASCII text$/ s/: \{1,\}ASCII text$//p'
   } |
-    LC_ALL='C' sort -u |
-    LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' sort -u |
+    LANG='C' LC_ALL='C' sort -f
 }
 
 find_video_files() {
@@ -3765,7 +3765,7 @@ flawfinder_r() {
 ## font
 font_bold() {
   { { test "${#}" -eq 0 && cat -- -; } || printf -- '%s' "${*-}"; } |
-    IFS='' tr \
+    IFS='' LANG='C' LC_ALL='C' tr \
       -- \
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ' \
       '𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇 ' &&
@@ -3774,7 +3774,7 @@ font_bold() {
 alias bold='font_bold'
 font_italic() {
   { { test "${#}" -eq 0 && cat -- -; } || printf -- '%s' "${*-}"; } |
-    IFS='' tr \
+    IFS='' LANG='C' LC_ALL='C' tr \
       -- \
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ' \
       '𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻 ' &&
@@ -3909,7 +3909,7 @@ git_add() {
   -D | --deleted)
     # https://gist.github.com/8775224
     git ls-files -z --deleted |
-      LC_ALL='C' tr -- '\0' '\n' |
+      LANG='C' LC_ALL='C' tr -- '\0' '\n' |
       while IFS='' read -r -- file; do
         # `git-rm`(1) instead of `git-add`(1) for fewer errors and because
         # there is no risk of losing files that are indexed but already removed
@@ -3924,7 +3924,7 @@ git_add() {
   -o | --others | --untracked)
     while test "$(git ls-files -z --exclude-standard --others)" != ''; do
       git ls-files -z --exclude-standard --others |
-        LC_ALL='C' tr -- '\0' '\n' |
+        LANG='C' LC_ALL='C' tr -- '\0' '\n' |
         while IFS='' read -r -- file; do
           git add --verbose -- "${file-}"
         done
@@ -3989,7 +3989,7 @@ git_all_files_ever() {
     --name-only |
     # print only unique, non-blank entries and prepend them with dot-slash
     awk -- '! seen[$0]++ && $0 != "" {print "./" $0}' |
-    LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' sort -f
 }
 
 git_attic() {
@@ -4033,10 +4033,10 @@ alias \
 
 git_branches_by_date() {
   git for-each-ref --format='%(committerdate:format:%F) %(refname:short)' refs/heads |
-    LC_ALL='C' sort -n
+    LANG='C' LC_ALL='C' sort -n
   printf -- '\n ———\n\n' >&2
   git for-each-ref --format='%(committerdate:format:%F) %(refname:short)' refs/remotes |
-    LC_ALL='C' sort -n
+    LANG='C' LC_ALL='C' sort -n
 }
 
 # git checkout more safely
@@ -4049,7 +4049,7 @@ gco() {
         --ignore-submodules \
         --porcelain=v2 \
         --untracked-files=no |
-        LC_ALL='C' IFS='' tr -- '\0' '\n' |
+        IFS='' LANG='C' LC_ALL='C' tr -- '\0' '\n' |
         grep \
           -c \
           -e '^1 \.D ' \
@@ -4182,7 +4182,7 @@ git_config_file_locations() {
             -e 's|'"${DOTFILES-}"'|$\DOTFILES|' \
             -e 's|'"${XDG_CONFIG_HOME-}"'|$\XDG_CONFIG_HOME|' \
             -e 's|'"${HOME%/}"'|~|' |
-          LC_ALL='C' sort -u
+          LANG='C' LC_ALL='C' sort -u
       )"
   done
 }
@@ -4397,7 +4397,7 @@ git_commit_initial_commit() {
           date
       )"
       export gdate
-      git_time="$(gdate -d '@'"$(($(gdate -d "${1:-$(gdate -- '+%Y-%m-%d')}" -- '+%s')))" -- '+%c %z')"
+      git_time="$(LANG='C' LC_ALL='C' gdate -d '@'"$(($(LANG='C' LC_ALL='C' gdate -d "${1:-$(LANG='C' LC_ALL='C' gdate -- '+%Y-%m-%d')}" -- '+%s')))" -- '+%c %z')"
       export GIT_AUTHOR_DATE="${git_time-}"
       export GIT_COMMITTER_DATE="${git_time-}"
     fi
@@ -4446,8 +4446,8 @@ gls() {
       ls -1 "${@-}"
     fi
   } |
-    LC_ALL='C' sort -u |
-    LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' sort -u |
+    LANG='C' LC_ALL='C' sort -f
 }
 
 git_ls_modified() {
@@ -4487,9 +4487,9 @@ glof() {
 # git mailmap
 git_mailmap() {
   git log --pretty='%an <%ae>%n%cn <%ce>' |
-    LC_ALL='C' sort |
+    LANG='C' LC_ALL='C' sort |
     uniq -c |
-    LC_ALL='C' sort -n -r |
+    LANG='C' LC_ALL='C' sort -n -r |
     sed \
       -e 's/^[[:space:]]*[1-9][[:digit:]]*[[:space:]]*//' \
       -e 's/\[bot\] / /' \
@@ -4591,7 +4591,7 @@ gopen() {
     ;;
   esac
   # https://github.com/travis-ci/travis-build/blob/5f10098/lib/travis/build/bash/travis_setup_env.bash#L22-L38
-  case "$(uname | tr -- '[:upper:]' '[:lower:]')" in
+  case "$(uname | LANG='C' LC_ALL='C' tr -- '[:upper:]' '[:lower:]')" in
   darwin*)
     # MacOS
     open -- "${url-}"
@@ -4829,7 +4829,7 @@ git_show() {
 
     # https://stackoverflow.com/a/424142
     git diff-tree -B -C -M -r --find-copies-harder --name-only --no-commit-id --root --text "${@:-HEAD}" -- |
-      LC_ALL='C' sort -f |
+      LANG='C' LC_ALL='C' sort -f |
       sed -e 's/^/.\//'
     ;;
   *)
@@ -4887,7 +4887,7 @@ git_stash_pop() {
   } || {
     git -c color.status=always -c core.quotePath=false diff "$(git_current_branch)" stash:**/*
   } || {
-    git -c core.quotePath=false show stash:**/* >./tmp-"$(date -- '+%Y%m%d%H%M%S')"
+    git -c core.quotePath=false show stash:**/* >./tmp-"$(LANG='C' LC_ALL='C' date -- '+%Y%m%d%H%M%S')"
   }
 }
 alias \
@@ -4956,10 +4956,10 @@ git_tags_by_date() {
   done | {
     case "${1-}" in
     -r | --reverse)
-      LC_ALL='C' sort -n -r
+      LANG='C' LC_ALL='C' sort -n -r
       ;;
     *)
-      LC_ALL='C' sort -n
+      LANG='C' LC_ALL='C' sort -n
       ;;
     esac
   }
@@ -4977,16 +4977,16 @@ git_time() {
     ;;
   [1-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9] | [1-9][0-9][0-9][0-9][0-1][0-9][0-3][0-9])
     shift 1
-    /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-+%Y-%m-%d}"'T'"${2:-%H:%M:%S}"'Z' '+%c %z'
+    LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-+%Y-%m-%d}"'T'"${2:-%H:%M:%S}"'Z' '+%c %z'
     ;;
   [1-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]T[0-2][0-9]:[0-5][0-9]:[0-5][0-9]Z)
     shift 1
-    /usr/local/opt/coreutils/libexec/gnubin/date -d "${1-}"T"${2-}"Z '+%c %z'
+    LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d "${1-}"T"${2-}"Z '+%c %z'
     ;;
   *)
-    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%dT%H:%M:%S')}" -- '+%s')" -- '+%c %z')" "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%dT%H:%M:%S')}" -- '+%s')" -- '+%c %z')"
-    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s')" -- '+%c %z')" "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s')" -- '+%c %z')"
-    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'$(($(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s'))) -- '+%c %z')" "$(/usr/local/opt/coreutils/libexec/gnubin/date -d '@'$(($(/usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s'))) -- '+%c %z')"
+    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(LANG='C' LC_ALL='C' date -- '+%Y-%m-%dT%H:%M:%S')}" -- '+%s')" -- '+%c %z')" "$(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(LANG='C' LC_ALL='C' date -- '+%Y-%m-%dT%H:%M:%S')}" -- '+%s')" -- '+%c %z')"
+    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(LANG='C' LC_ALL='C' date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s')" -- '+%c %z')" "$(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d '@'"$(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(LANG='C' LC_ALL='C' date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s')" -- '+%c %z')"
+    printf -- ' GIT_AUTHOR_DATE=\047%s\047 GIT_COMMITTER_DATE=\047%s\047 \n' "$(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d '@'$(($(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(LANG='C' LC_ALL='C' date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s'))) -- '+%c %z')" "$(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d '@'$(($(LANG='C' LC_ALL='C' /usr/local/opt/coreutils/libexec/gnubin/date -d "${1:-$(LANG='C' LC_ALL='C' date -- '+%Y-%m-%d %H:%M:%S')}" -- '+%s'))) -- '+%c %z')"
     ;;
   esac
 }
@@ -5055,7 +5055,7 @@ github_create_repository() {
     return 78
   # https://gist.github.com/alexpchin/dc91e723d4db5018fef8?permalink_comment_id=4252359#gistcomment-4252359
   curl \
-    --data '{"name": "'"$(git rev-parse --show-toplevel | tr -d '[:space:]' | sed -e 's/./\\&/g' | xargs basename --)"'", "private": true, "visibility": "private"}' \
+    --data '{"name": "'"$(git rev-parse --show-toplevel | LANG='C' LC_ALL='C' tr -d '[:space:]' | sed -e 's/./\\&/g' | xargs basename --)"'", "private": true, "visibility": "private"}' \
     --fail \
     --header 'Authorization: token '"${GITHUB_API_TOKEN-}" \
     --show-error \
@@ -5069,7 +5069,7 @@ github_create_repository() {
         --silent \
         --url 'https://api.github.com/repos/'"${GITHUB_ORG-}"/"$(
           git rev-parse --show-toplevel |
-            tr -d '[:space:]' |
+            LANG='C' LC_ALL='C' tr -d '[:space:]' |
             sed -e 's/./\\&/g' |
             xargs basename --
         )" |
@@ -5667,7 +5667,7 @@ install() {
         -e 's/^\(brew\)/2\1/' \
         -e 's/^\(cask\)/3\1/' |
       # sort output by package name
-      LC_ALL='C' sort -f | {
+      LANG='C' LC_ALL='C' sort -f | {
       printf -- '#!/usr/bin/env ruby\n'
       printf -- '# frozen_string_literal: true\n\n'
       sed \
@@ -5792,8 +5792,8 @@ image_color_count() {
         # that has not yet been printed,
         # then print it
         awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ && ! seen[$3]++ {print $3}' |
-        LC_ALL='C' sort -f |
-        LC_ALL='C' tr -- '[:upper:]' '[:lower:]' |
+        LANG='C' LC_ALL='C' sort -f |
+        LANG='C' LC_ALL='C' tr -- '[:upper:]' '[:lower:]' |
         LC_ALL='C' nl
       ;;
     esac
@@ -5815,12 +5815,12 @@ image_color_frequency() {
     *)
       magick "${file-}" txt:- |
         awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ {print $3}' |
-        LC_ALL='C' sort |
+        LANG='C' LC_ALL='C' sort |
         LC_ALL='C' uniq -c |
-        LC_ALL='C' sort -n |
+        LANG='C' LC_ALL='C' sort -n |
         # %10d allows columnar output iff each frequency occurs fewer than 10^9 times
         awk -- '{printf "%10d %s\n", $1, $2}' |
-        LC_ALL='C' tr -- '[:upper:]' '[:lower:]'
+        LANG='C' LC_ALL='C' tr -- '[:upper:]' '[:lower:]'
       ;;
     esac
   done
@@ -5846,8 +5846,8 @@ image_color_list() {
         # that has not yet been printed,
         # then print it
         awk -- '$3 ~ /^#[[:xdigit:]]{6,8}$/ && ! seen[$3]++ {print $3}' |
-        LC_ALL='C' sort -f |
-        LC_ALL='C' tr -- '[:upper:]' '[:lower:]'
+        LANG='C' LC_ALL='C' sort -f |
+        LANG='C' LC_ALL='C' tr -- '[:upper:]' '[:lower:]'
       ;;
     esac
   done
@@ -6106,7 +6106,7 @@ length_of_longest_line() {
 }
 sort_by_line_length() {
   awk -- '{print length($0), $0}' "${1:--}" |
-    LC_ALL='C' sort -k 1,2 -n "${2:--}"
+    LANG='C' LC_ALL='C' sort -k 1,2 -n "${2:--}"
 }
 alias length_of_line_sort='sort_by_line_length'
 
@@ -6260,7 +6260,7 @@ list_functions() {
         -e '# the last dot star is for one-line functions like in hblock but has not been well tested' \
         -e 's/^\([[:alpha:]_][[:alpha:][:digit:]_]*\)()[[:space:]]*{.*/\1/p' \
         "${file-}" |
-      LC_ALL='C' sort -f
+      LANG='C' LC_ALL='C' sort -f
   done
 }
 
@@ -6273,7 +6273,7 @@ list_uniform_type_identifiers() {
     -type f \
     -exec sh -c -- '{} -dump' ';' |
     awk -- '/^uti:/ && ! seen[$2]++ {print $2}' |
-    LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' sort -f
 }
 alias list_utis='list_uniform_type_identifiers'
 
@@ -6997,7 +6997,7 @@ posix_character_classes() {
       -e '/"tent"/ {' \
       -e '  s/.*>\([[:alpha:]]\{1,\}\).*/[:\1:]/p' \
       -e '}' |
-    LC_ALL='C' sort -u
+    LANG='C' LC_ALL='C' sort -u
 }
 
 posix_special_utilities_list() {
@@ -7078,8 +7078,8 @@ posix_variables_list() {
       -e '/"tent"/ {' \
       -e '  s/.*>\([[:upper:]]\{1,\}[[:upper:]_]*\).*/\1/p' \
       -e '}' |
-    LC_ALL='C' sort -u |
-    LC_ALL='C' sort -f |
+    LANG='C' LC_ALL='C' sort -u |
+    LANG='C' LC_ALL='C' sort -f |
     while IFS='' read -r -- variable; do
       # escape even backslashes in double-quoted strings (OILS-ERR-12)
       test "$(eval " printf -- '%s\\n' \$${variable-}" 2>/dev/null)" = '' ||
@@ -7586,7 +7586,7 @@ random_r() {
         -n \
         -e '/[[:space:]][[:digit:]]/p' \
         -e 'q' |
-      LC_ALL='C' sort
+      LANG='C' LC_ALL='C' sort
   done 2>/dev/null
   awk -vmax="$(
     command -p -- getconf -- SHRT_MAX
@@ -7610,7 +7610,7 @@ random_string() {
     # EX_OSFILE
     return 72
   # print all non-space ASCII characters from standard input
-  LC_ALL='C' tr -c -d '\41-\176' </dev/random |
+  LANG='C' LC_ALL='C' tr -c -d '\41-\176' </dev/random |
     # default to 10 characters
     dd bs=1 count="${1:-10}" 2>/dev/null &&
     printf -- '\n'
@@ -8736,8 +8736,8 @@ subdomains() {
       -e 's/,\{1,\}/\n/g' \
       -e '# replace all closing square brackets with a newline' \
       -e 's/\]/\n/g' |
-    LC_ALL='C' sort -u |
-    LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' sort -u |
+    LANG='C' LC_ALL='C' sort -f
 }
 
 substring_contains() {
@@ -8950,7 +8950,7 @@ tdt() {
   case "${1-}" in
   --evil)
     {
-      target="${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp.trash/evil-'"$(date -- '+%Y%m%d%H%M%S')"
+      target="${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp.trash/evil-'"$(LANG='C' LC_ALL='C' date -- '+%Y%m%d%H%M%S')"
       mkdir -p -- "${target-}" &&
         CDPATH='.' cd "${target-}" >/dev/null 2>&1
     } ||
@@ -9101,7 +9101,7 @@ trash_developer() {
     # EX_CANTCREAT
     return 73
   fi
-  trash_date="$(date -- '+%Y%m%d%H%M%S')"
+  trash_date="$(LANG='C' LC_ALL='C' date -- '+%Y%m%d%H%M%S')"
   mkdir -p -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' &&
     mv -f -i -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' "${target-}"'/Xcode-'"${trash_date-}"
   mkdir -p -- "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' &&
@@ -9180,7 +9180,7 @@ update_changelog() {
       -path './[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*.[Mm]*[Dd]*' \
       -type f \
       -exec sh -c -- 'git log --max-count=1 --pretty=tformat:'\''%at '\''"${1-}"' _ {} ';' |
-      LC_ALL='C' sort -n -r |
+      LANG='C' LC_ALL='C' sort -n -r |
       sed \
         -e '# print only the second field of the first line' \
         -e '1 s/.*\///g' \
@@ -9255,7 +9255,7 @@ unixtime_set() {
   # UNIX 5.0: `date [ mmddhhmm[yy] ]`
   # fail if called before 2000, after 2066
   # https://web.archive.org/web/0id_/i.pinimg.com/originals/8a/23/99/8a2399cf3774165dddc728641a6b0c06.jpg
-  set -- "$(LC_ALL='C' date -- '+%Y')" &&
+  set -- "$(LANG='C' LC_ALL='C' date -- '+%Y')" &&
     test 2000 -le "${1-}" &&
     test "${1-}" -le 2066 &&
     if test "${1-}" -ge 2026; then
@@ -9268,9 +9268,9 @@ unixtime_set() {
         set -- "$((${1-} - 2000))"
     fi &&
     printf -- 'UNIX date to force a matching weekday:\n\n' >&2 &&
-    printf -- 'date \047%d%s\047\n' "${1-}" "$(LC_ALL='C' date -- '+%m%d%H%M.%S')" &&
+    printf -- 'date \047%d%s\047\n' "${1-}" "$(LANG='C' LC_ALL='C' date -- '+%m%d%H%M.%S')" &&
     printf -- '# UNIX 5.0\n' >&2 &&
-    printf -- 'date \047%s%d\047\n' "$(LC_ALL='C' date -- '+%m%d%H%M')" "${1-}"
+    printf -- 'date \047%s%d\047\n' "$(LANG='C' LC_ALL='C' date -- '+%m%d%H%M')" "${1-}"
 }
 alias unixdate_set='unixtime_set'
 
@@ -9439,19 +9439,19 @@ troubleshoot_website() {
     printf -- 'top\n'
     printf -- '# https://web.archive.org/web/20221004111114/help.dreamhost.com/hc/en-us/articles/214880098-Using-the-ps-command-to-troubleshoot-your-website\n'
     printf -- '# cpu\n'
-    printf -- 'ps -A -o pcpu,pid,user,args | LC_ALL='\''C'\'' sort -k 1 -r | head -n 10\n'
+    printf -- 'ps -A -o pcpu,pid,user,args | LANG='\''C'\'' LC_ALL='\''C'\'' sort -k 1 -r | head -n 10\n'
     printf -- '# memory\n'
-    printf -- 'ps -A -o pmem,pid,user,args | LC_ALL='\''C'\'' sort -k 1 -r | head -n 10\n'
+    printf -- 'ps -A -o pmem,pid,user,args | LANG='\''C'\'' LC_ALL='\''C'\'' sort -k 1 -r | head -n 10\n'
     printf -- '# https://web.archive.org/web/20221203051014/help.dreamhost.com/hc/en-us/articles/216105097-Viewing-and-examining-your-access-log-via-SSH\n'
     printf -- 'CDPATH='\''.'\'' cd "\044{HOME\045/}"'\''/logs/'\''"\044{LOGNAME:-\044{USER-}}"'\''.net'\'' >/dev/null 2>&1 &&\n'
     printf -- '  # list the last 10,000 site hits\n'
-    printf -- '  find -L -- . -name '\''access.log'\'' -type f -exec tail -n 10000 -- {} + | awk -- '\''{print \0441}'\'' | LC_ALL='\''C'\'' sort | uniq -c | LC_ALL='\''C'\'' sort -n\n'
+    printf -- '  find -L -- . -name '\''access.log'\'' -type f -exec tail -n 10000 -- {} + | awk -- '\''{print \0441}'\'' | LANG='\''C'\'' LC_ALL='\''C'\'' sort | uniq -c | LANG='\''C'\'' LC_ALL='\''C'\'' sort -n\n'
     printf -- '# watch the server log in real time\n'
     printf -- 'tail -f -- **/*access.log\n'
     printf -- '# list files being called the most\n'
-    printf -- 'awk '\''{print \0447}'\'' ./access.log | cut -d? -f 1 | LC_ALL='\''C'\'' sort | uniq -c | LC_ALL='\''C'\'' sort -k -n 1 | tail -n 10\n'
+    printf -- 'awk '\''{print \0447}'\'' ./access.log | cut -d? -f 1 | LANG='\''C'\'' LC_ALL='\''C'\'' sort | uniq -c | LANG='\''C'\'' LC_ALL='\''C'\'' sort -k -n 1 | tail -n 10\n'
     printf -- '# list traffic for all user domains on server\n'
-    printf -- 'CDPATH='\''.'\'' cd "\044{HOME\045/}"'\''/logs'\'' >/dev/null 2>&1 &&\n  for k in \044(ls -S */https/access.log); do wc -l -- "\044{k-}" | LC_ALL='\''C'\'' sort -n -r; done\n'
+    printf -- 'CDPATH='\''.'\'' cd "\044{HOME\045/}"'\''/logs'\'' >/dev/null 2>&1 &&\n  for k in \044(ls -S */https/access.log); do wc -l -- "\044{k-}" | LANG='\''C'\'' LC_ALL='\''C'\'' sort -n -r; done\n'
   } | {
     bat \
       --decorations=never \
@@ -9817,7 +9817,7 @@ zsh_history_recovery() {
     -o noclobber \
     -o verbose \
     -o xtrace
-  builtin fc -W "${1:-./.zsh_history_recovery_$(date -- '+%Y%m%d_%H%M%S')}"
+  builtin fc -W "${1:-./.zsh_history_recovery_$(LANG='C' LC_ALL='C' date -- '+%Y%m%d_%H%M%S')}"
   builtin eval " ${reset-}"
   {
     set \

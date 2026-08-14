@@ -36,5 +36,5 @@
           )"
         )" != ''
     } &&
-    cp -- "${file-}" "${file-}"'_bak/'"${file##*/}"'_'"$(date -- '+%Y%m%d')"
+    cp -- "${file-}" "${file-}"'_bak/'"${file##*/}"'_'"$(LANG='C' LC_ALL='C' date -- '+%Y%m%d')"
 )
