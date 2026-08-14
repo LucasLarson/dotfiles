@@ -1862,6 +1862,20 @@ extract() {
 }
 alias rpm_extract='extract'
 
+factorial() {
+  test "${#}" -eq 1 ||
+    # EX_USAGE
+    return 64
+  printf -- '%s\n' "${1-}" | grep -E -e '^[[:digit:]]+$' >/dev/null 2>&1 ||
+    # EX_USAGE
+    return 64
+  set -- 1 "${1-}" &&
+    while test "${2-}" -gt 0; do
+      set -- "$((${1-} * ${2-}))" "$((${2-} - 1))"
+    done &&
+    printf -- '%d\n' "${1-}"
+}
+
 filename_extension() {
   test "${#}" -gt 0 ||
     # EX_USAGE
