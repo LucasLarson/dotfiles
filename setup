@@ -33,7 +33,7 @@ printf -- '  a Lucas Larson production\n\n' >&2
 sleep 1
 
 # save `date` for backup files
-now="$(date -- '+%Y%m%d%H%M%S')"
+now="$(LANG='C' LC_ALL='C' date -- '+%Y%m%d%H%M%S')"
 
 # unset `$PS4`
 # if this quaternary prompt string is already unset, then

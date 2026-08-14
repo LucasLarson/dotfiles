@@ -95,11 +95,11 @@ find -- \
   -name '*.app' \
   -print 2>/dev/null |
   sed -e 's/.*\/\(.*\)\.app/\1/' |
-  LC_ALL='C' sort -f
+  LANG='C' LC_ALL='C' sort -f
 ```
 
 On Alpine Linux, generate a list of installed packages with:<br>
-`apk --verbose --verbose info | LC_ALL='C' sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
+`apk --verbose --verbose info | LANG='C' LC_ALL='C' sort #` [via](https://wiki.alpinelinux.org/wiki/Special:PermanentLink/10079#Listing_installed_packages)
 
 ##### Homebrew
 
@@ -163,7 +163,7 @@ files. [via](https://web.archive.org/web/0id_/github.com/bryceco/GoMap/issues/49
 
 ```shell
 find -- . '(' -name '*.cpp' -o -name '*.hpp' ')' -exec wc -- {} + |
-  LC_ALL='C' sort -n
+  LANG='C' LC_ALL='C' sort -n
 ```
 
 ## search
@@ -210,7 +210,7 @@ printf -- '%s\n' "${PATH-}" | sed -e 's/:/\n/g' | while IFS='' read -r -- direct
 #### sort
 
 `env >./example.txt` # save an unordered list of `env` variables<br>
-`env | LC_ALL='C' sort >./example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
+`env | LANG='C' LC_ALL='C' sort >./example.txt` # [via](https://howtogeek.com/439199/15-special-characters-you-need-to-know-for-bash) save the variables in an alphabetically ordered list
 
 ### EOL and EOF encoding
 
