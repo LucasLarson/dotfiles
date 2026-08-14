@@ -7078,7 +7078,7 @@ posix_variables_list() {
       -e '/"tent"/ {' \
       -e '  s/.*>\([[:upper:]]\{1,\}[[:upper:]_]*\).*/\1/p' \
       -e '}' |
-    LC_ALL='C' sort -u - |
+    LC_ALL='C' sort -u |
     LC_ALL='C' sort -f |
     while IFS='' read -r -- variable; do
       # escape even backslashes in double-quoted strings (OILS-ERR-12)
