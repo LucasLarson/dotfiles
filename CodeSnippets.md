@@ -76,7 +76,6 @@
   - [npm](#npm)
   - [gem](#gem)
 - [delete](#delete)
-  - [empty directories](#empty-directories)
   - [compare two folders](#compare-two-folders)
   - [purge memory cache](#purge-memory-cache)
 
