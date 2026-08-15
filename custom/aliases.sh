@@ -3265,8 +3265,10 @@ find_shell_scripts() {
       -name '*.pdksh' -o \
       -name '*.profile' -o \
       -name '*.rc' -o \
+      -name '*.sbatch' -o \
       -name '*.sh' -o \
       -name '*.sh.in' -o \
+      -name '*.slurm' -o \
       -name '*.textmate_init' -o \
       -name '*.tmux' -o \
       -name '*.tmux.conf' -o \
