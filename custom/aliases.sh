@@ -3262,6 +3262,7 @@ find_shell_scripts() {
       -name '*.login' -o \
       -name '*.logout' -o \
       -name '*.mksh' -o \
+      -name '*.pacscript' -o \
       -name '*.pdksh' -o \
       -name '*.profile' -o \
       -name '*.rc' -o \
