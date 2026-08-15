@@ -556,7 +556,7 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 `npm audit fix && \`<br>
 `npm doctor && #` creates empty `node_modules` directories `\`<br>
-`find -- node_modules -links 2 -type d -delete #` deletes them
+`find -- node_modules -type d -exec rmdir -- {} + >/dev/null 2>&1 || true` # deletes them if empty
 
 ### gem
 
