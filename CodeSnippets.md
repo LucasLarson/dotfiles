@@ -3,10 +3,10 @@
 - [dotfiles](#dotfiles)
   - [lists](#lists)
     - [applications](#applications)
-  - [Homebrew](#homebrew)
-  - [MANPATH](#manpath)
-    - [man pages](#man-pages)
-  - [pip packages](#pip-packages)
+      - [Homebrew](#homebrew)
+      - [MANPATH](#manpath)
+        - [man pages](#man-pages)
+      - [pip packages](#pip-packages)
 - [apk](#apk)
   - [testing](#testing)
 - [list everything recursively in a directory](#list-everything-recursively-in-a-directory)
@@ -119,15 +119,15 @@ Definitions of the numbers that follow `man` commands ([via](https://web.archiv
 
 | section | contents                                                  |
 | :-----: | --------------------------------------------------------- |
-|  `1`    | User commands, executable programs, shell commands        |
-|  `2`    | System calls (functions provided by the kernel)           |
-|  `3`    | Library calls (C library functions)                       |
-|  `4`    | Special files, devices (like in `/dev`)                   |
-|  `5`    | File formats, conventions (like `/etc/passwd`)            |
-|  `6`    | Games                                                     |
-|  `7`    | Miscellaneous; conventions like `man`(7), `man-pages`(7)  |
-|  `8`    | System administration tools, daemons (usually for `root`) |
-| ~`9`~   | ~Kernel interfaces, routines~ [non-standard]              |
+|   `1`   | User commands, executable programs, shell commands        |
+|   `2`   | System calls (functions provided by the kernel)           |
+|   `3`   | Library calls (C library functions)                       |
+|   `4`   | Special files, devices (like in `/dev`)                   |
+|   `5`   | File formats, conventions (like `/etc/passwd`)            |
+|   `6`   | Games                                                     |
+|   `7`   | Miscellaneous; conventions like `man`(7), `man-pages`(7)  |
+|   `8`   | System administration tools, daemons (usually for `root`) |
+| ~~`9`~~ | ~~Kernel interfaces, routines~~ [non-standard]            |
 
 ##### pip packages
 
@@ -203,8 +203,8 @@ printf -- '%s\n' "${PATH-}" | sed -e 's/:/\n/g' | while IFS='' read -r -- direct
 ### export output
 
 `printf 'First Name\n'` **>**`./ExampleFileWithGivenName.txt` # create a text file with “First Name” and a new line<br>
-`printf 'Other First Name\n'` **>**`./ExampleFileWithGivenName.txt` # the “`>`” *overwrites* the existing file<br>
-`printf 'Last Name\n'` **>>**`./ExampleFileWithGivenName.txt` # the “`>>`” *appends* to the existing document
+`printf 'Other First Name\n'` **>**`./ExampleFileWithGivenName.txt` # the “`>`” _overwrites_ the existing file<br>
+`printf 'Last Name\n'` **>>**`./ExampleFileWithGivenName.txt` # the “`>>`” _appends_ to the existing document
 
 #### sort
 
@@ -416,16 +416,16 @@ git config --global core.editor "code --wait"
 
 [via](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02)
 
-|                        | *parameter* Set and Not Null | *parameter* Set But Null | *parameter* Unset      |
+|                        | _parameter_ Set and Not Null | _parameter_ Set But Null | _parameter_ Unset      |
 | ---------------------- | ---------------------------- | ------------------------ | ---------------------- |
-| ${*parameter*:-*word*} | substitute with *parameter*  | substitute with *word*   | substitute with *word* |
-| ${*parameter*-*word*}  | substitute with *parameter*  | substitute with null     | substitute with *word* |
-| ${*parameter*:=*word*} | substitute with *parameter*  | assign *word*            | assign *word*          |
-| ${*parameter*=*word*}  | substitute with *parameter*  | substitute with null     | assign *word*          |
-| ${*parameter*:?*word*} | substitute with *parameter*  | error, exit              | error, exit            |
-| ${*parameter*?*word*}  | substitute with *parameter*  | substitute with null     | error, exit            |
-| ${*parameter*:+*word*} | substitute with *word*       | substitute with null     | substitute with null   |
-| ${*parameter*+*word*}  | substitute with *word*       | substitute with *word*   | substitute with null   |
+| ${_parameter_:-_word_} | substitute with _parameter_  | substitute with _word_   | substitute with _word_ |
+| ${_parameter_-_word_}  | substitute with _parameter_  | substitute with null     | substitute with _word_ |
+| ${_parameter_:=_word_} | substitute with _parameter_  | assign _word_            | assign _word_          |
+| ${_parameter_=_word_}  | substitute with _parameter_  | substitute with null     | assign _word_          |
+| ${_parameter_:?_word_} | substitute with _parameter_  | error, exit              | error, exit            |
+| ${_parameter_?_word_}  | substitute with _parameter_  | substitute with null     | error, exit            |
+| ${_parameter_:+_word_} | substitute with _word_       | substitute with null     | substitute with null   |
+| ${_parameter_+_word_}  | substitute with _word_       | substitute with _word_   | substitute with null   |
 
 ## redirection
 
@@ -433,13 +433,13 @@ git config --global core.editor "code --wait"
 
 | syntax        | meaning                                  | POSIX compliance |
 | ------------- | ---------------------------------------- | :--------------: |
-| `>file`       | redirect `stdout` to `file`              | ✅               |
-| `1>file`      | redirect `stdout` to `file`              | ✅               |
-| `2>file`      | redirect `stderr` to `file`              | ✅               |
-| `>file 2>&1`  | redirect `stdout` and `stderr` to `file` | ✅               |
-| `&>file`      | redirect `stdout` and `stderr` to `file` | 🚫               |
-| `>>file 2>&1` | append `stdout` and `stderr` to `file`   | ✅               |
-| `&>>/file`    | append `stdout` and `stderr` to `file`   | 🚫               |
+| `>file`       | redirect `stdout` to `file`              |        ✅        |
+| `1>file`      | redirect `stdout` to `file`              |        ✅        |
+| `2>file`      | redirect `stderr` to `file`              |        ✅        |
+| `>file 2>&1`  | redirect `stdout` and `stderr` to `file` |        ✅        |
+| `&>file`      | redirect `stdout` and `stderr` to `file` |        🚫        |
+| `>>file 2>&1` | append `stdout` and `stderr` to `file`   |        ✅        |
+| `&>>/file`    | append `stdout` and `stderr` to `file`   |        🚫        |
 
 ## rename files
 
