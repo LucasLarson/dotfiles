@@ -676,7 +676,7 @@ clang_format() {
   unset IndentWidth >/dev/null 2>&1 || IndentWidth=''
   unset SpacesBeforeTrailingComments >/dev/null 2>&1 || SpacesBeforeTrailingComments=''
 }
-alias clang_format_r='clang_format -i 2 -s 2 -w "$(command -p -- getconf -- UINT_MAX)"'
+alias clang_format_r='clang_format -i 2 -s 2 -w "$(getconf -- UINT_MAX)"'
 
 cleanup() {
   # this function is POSIX in an obnoxiously pedantic way and must never be used
@@ -4343,7 +4343,7 @@ git_garbage_collection() {
       -F \
       -f \
       --depth=4095 \
-      --window="${UINT_MAX:-$(command -p -- getconf -- UINT_MAX)}"
+      --window="$(getconf -- UINT_MAX)"
     GIT_TRACE=1 GIT_TRACE_PACK_ACCESS=1 GIT_TRACE_PACKET=1 GIT_TRACE_PERFORMANCE=1 GIT_TRACE_SETUP=1 \
       git gc \
       --aggressive \
@@ -7447,9 +7447,7 @@ alias printf_q='quote'
 
 RANDOM() {
   # https://shellcheck.net/wiki/SC3028/1f83d59#correct-code
-  awk -vmax="$(
-    command -p -- getconf -- SHRT_MAX
-  )" -- 'BEGIN {
+  awk -vmax="$(getconf -- SHRT_MAX)" -- 'BEGIN {
   srand()
   printf "%d\n", int(rand() * max)
 }'
@@ -7477,9 +7475,7 @@ random_r() {
         -e 'q' |
       LANG='C' LC_ALL='C' sort
   done 2>/dev/null
-  awk -vmax="$(
-    command -p -- getconf -- SHRT_MAX
-  )" -- 'BEGIN {
+  awk -vmax="$(getconf -- SHRT_MAX)" -- 'BEGIN {
   srand()
   printf "awk\t%d\n", int(rand() * max)
 }'
@@ -7924,7 +7920,7 @@ scour_r() {
           --remove-descriptive-elements \
           --remove-metadata \
           --remove-titles \
-          --set-precision="$(command -p -- getconf -- CHAR_MAX)" \
+          --set-precision="$(getconf -- CHAR_MAX)" \
           --strip-xml-prolog \
           --strip-xml-space \
           --verbose \
@@ -8419,7 +8415,7 @@ shred_r() {
       )" &&
       shred \
         --force \
-        --iterations="$(command -p -- getconf -- CHAR_MAX)" \
+        --iterations="$(getconf -- CHAR_MAX)" \
         --remove='wipesync' \
         --size="${size-}" \
         --verbose \
