@@ -1637,6 +1637,9 @@ eo_to() {
   # Convert Cx-like esperanto typography into the correct unicode character (Ĉ ĉ Ĝ ĝ Ĥ ĥ Ĵ ĵ Ŝ ŝ Ŭ ŭ)
   # Xx is convert to x
   # https://github.com/Aeredren/txt2eo/blob/47c4e3a5ec/txt2eo
+  command -v -- ed >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
