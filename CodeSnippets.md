@@ -416,8 +416,8 @@ git config --global core.editor "code --wait"
 
 [via](https://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_06_02)
 
-|                        | *parameter* Set and Not Null | *parameter* Set But Null | *parameter* Unset |
-| ---------------------- | ---------------------------- | ------------------------ | ----------------- |
+|                        | *parameter* Set and Not Null | *parameter* Set But Null | *parameter* Unset      |
+| ---------------------- | ---------------------------- | ------------------------ | ---------------------- |
 | ${*parameter*:-*word*} | substitute with *parameter*  | substitute with *word*   | substitute with *word* |
 | ${*parameter*-*word*}  | substitute with *parameter*  | substitute with null     | substitute with *word* |
 | ${*parameter*:=*word*} | substitute with *parameter*  | assign *word*            | assign *word*          |
@@ -433,13 +433,13 @@ git config --global core.editor "code --wait"
 
 | syntax        | meaning                                  | POSIX compliance |
 | ------------- | ---------------------------------------- | :--------------: |
-| `>file`       | redirect `stdout` to `file`              | ✅                |
-| `1>file`      | redirect `stdout` to `file`              | ✅                |
-| `2>file`      | redirect `stderr` to `file`              | ✅                |
-| `>file 2>&1`  | redirect `stdout` and `stderr` to `file` | ✅                |
-| `&>file`      | redirect `stdout` and `stderr` to `file` | 🚫                |
-| `>>file 2>&1` | append `stdout` and `stderr` to `file`   | ✅                |
-| `&>>/file`    | append `stdout` and `stderr` to `file`   | 🚫                |
+| `>file`       | redirect `stdout` to `file`              | ✅               |
+| `1>file`      | redirect `stdout` to `file`              | ✅               |
+| `2>file`      | redirect `stderr` to `file`              | ✅               |
+| `>file 2>&1`  | redirect `stdout` and `stderr` to `file` | ✅               |
+| `&>file`      | redirect `stdout` and `stderr` to `file` | 🚫               |
+| `>>file 2>&1` | append `stdout` and `stderr` to `file`   | ✅               |
+| `&>>/file`    | append `stdout` and `stderr` to `file`   | 🚫               |
 
 ## rename files
 
