@@ -2648,10 +2648,12 @@ find_json_files() {
     -name '*.[Gg][Ee][Oo][Jj][Ss][Oo][Nn]' -o \
     -name '*.[Gg][Ll][Tt][Ff]' -o \
     -name '*.[Hh][Aa][Rr]' -o \
+    -name '*.[Hh][Uu][Jj][Ss][Oo][Nn]' -o \
     -name '*.[Ii][Cc][Ee]' -o \
     -name '*.[Jj][Ss].[Mm][Aa][Pp]' -o \
     -name '*.[Jj][Ss][Oo][Nn]' -o \
     -name '*.[Jj][Ss][Oo][Nn]-[Tt][Mm][Ll][Aa][Nn][Gg][Uu][Aa][Gg][Ee]' -o \
+    -name '*.[Jj][Ss][Oo][Nn].[Ee][Xx][Aa][Mm][Pp][Ll][Ee]' -o \
     -name '*.[Jj][Ss][Oo][Nn]5' -o \
     -name '*.[Jj][Ss][Oo][Nn][Ll]' -o \
     -name '*.[Jj][Ss][Oo][Nn][Ll][Dd]' -o \
@@ -2675,6 +2677,7 @@ find_json_files() {
     -name '*.[Ss][Uu][Bb][Ll][Ii][Mm][Ee]-[Mm][Oo][Uu][Ss][Ee][Mm][Aa][Pp]' -o \
     -name '*.[Ss][Uu][Bb][Ll][Ii][Mm][Ee]-[Pp][Rr][Oo][Jj][Ee][Cc][Tt]' -o \
     -name '*.[Ss][Uu][Bb][Ll][Ii][Mm][Ee]-[Ss][Ee][Tt][Tt][Ii][Nn][Gg][Ss]' -o \
+    -name '*.[Tt][Aa][Cc][Tt]' -o \
     -name '*.[Tt][Ee][Rr][Nn]-[Pp][Rr][Oo][Jj][Ee][Cc][Tt]' -o \
     -name '*.[Tt][Ff][Ss][Tt][Aa][Tt][Ee]' -o \
     -name '*.[Tt][Ff][Ss][Tt][Aa][Tt][Ee].[Bb][Aa][Cc][Kk][Uu][Pp]' -o \
@@ -2727,6 +2730,7 @@ find_json_files() {
     -name '[Ee][Ss][Ll][Ii][Nn][Tt][Rr][Cc]' -o \
     -name '[Ff][Ll][Aa][Kk][Ee].[Ll][Oo][Cc][Kk]' -o \
     -name '[Mm][Cc][Mm][Oo][Dd].[Ii][Nn][Ff][Oo]' -o \
+    -name '[Mm][Oo][Dd][Uu][Ll][Ee].[Bb][Aa][Zz][Ee][Ll].[Ll][Oo][Cc][Kk]' -o \
     -name '[Pp][Aa][Cc][Kk][Aa][Gg][Ee].[Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]' -o \
     -name '[Pp][Ii][Pp][Ff][Ii][Ll][Ee].[Ll][Oo][Cc][Kk]' -o \
     -name '[Pp][Rr][Oo][Ss][Ee][Ll][Ii][Nn][Tt][Rr][Cc]' -o \
