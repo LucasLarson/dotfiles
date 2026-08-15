@@ -1177,12 +1177,8 @@ count_files_by_extension() {
     -path '*/node_modules' -prune -o \
     ! -name '*.*' \
     ! -type d \
-    -print 2>/dev/null |
-    # these steps ensure the output format conforms with the count of files WITH extensions
-    awk -- '{print ""}' |
-    LC_ALL='C' uniq -c |
-    sed \
-      -e 's/.$/ [no extension]/'
+    -exec printf -- '[no extension]\n' ';' 2>/dev/null |
+    uniq -c
 }
 alias cfx='count_files_by_extension'
 
