@@ -112,7 +112,7 @@ base_to_base() {
     return 69
   # https://stackoverflow.com/a/13280173
   printf -- 'ibase=%s; obase=%s; %s\n' "${2:-10}" "${3:-10}" "$(
-    printf -- '%s' "${1-}" |
+    printf -- '%s\n' "${1-}" |
       LANG='C' LC_ALL='C' tr -- '[:lower:]' '[:upper:]' |
       sed -e 's/^0[BODX]//'
   )" |
@@ -1901,7 +1901,7 @@ filename_spaces_to_underscores() {
     -name '*'"${1:-[[:space:]]}"'*' |
     while IFS='' read -r -- file; do
       mv -i -- "${file-}" "${file%/*}"/"$(
-        printf -- '%s' "${file##*/}" |
+        printf -- '%s\n' "${file##*/}" |
           LANG='C' LC_ALL='C' tr -s -- "${1:-[:space:]}" "${2:-_}"
       )"
     done
@@ -1912,7 +1912,7 @@ filename_underscores_to_spaces() {
     -name '*_*' |
     while IFS='' read -r -- file; do
       mv -i -- "${file-}" "${file%/*}"/"$(
-        printf -- '%s' "${file##*/}" |
+        printf -- '%s\n' "${file##*/}" |
           LANG='C' LC_ALL='C' tr -s -- "${1:-_}" "${2:- }"
       )"
     done
@@ -5333,7 +5333,7 @@ hash_abbreviate() {
   done
   shift "$((OPTIND - 1))"
   for hash in "${@-}"; do
-    if printf -- '%s' "${hash-}" | grep -E -w -e '^[[:xdigit:]]{4,}$' >/dev/null 2>&1; then
+    if printf -- '%s\n' "${hash-}" | grep -E -w -e '^[[:xdigit:]]{4,}$' >/dev/null 2>&1; then
       printf -- '%.'"${length:-"$(git config --get --default=7 -- core.abbrev)"}"'s\n' "${hash-}"
       # prevent copying trailing newline with `tr` and
       # hide clipboard errors because `pbcopy` is not common
@@ -8317,7 +8317,7 @@ restore_shell_options() {
   unset set_o >/dev/null 2>&1 || set_o=''
 
   test "${set_hyphen-}" != '' &&
-    printf -- '%s' "${set_hyphen-}" |
+    printf -- '%s\n' "${set_hyphen-}" |
     sed -e 's/\(.\)/\1\n/g' | while IFS='' read -r -- option; do
       { eval " set -${option-}" >/dev/null 2>&1 || true; }
     done
@@ -9557,7 +9557,7 @@ whois() {
 
   # get domain from URL
   domain="$(
-    printf -- '%s' "${1-}" |
+    printf -- '%s\n' "${1-}" |
       sed \
         -e 's/.*@//' \
         -e 's/https\{0,1\}:\/\///' \
