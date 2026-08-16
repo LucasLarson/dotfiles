@@ -458,7 +458,7 @@ changelog_find_newest() {
   LC_ALL='C' find -- "${pwd%/}" \
     -path "${pwd%/}"'/[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*.[Mm]*[Dd]*' \
     -type f \
-    -exec sh -c -- 'git --no-pager log --max-count=1 --pretty=tformat:'\''%at '\''"${1-}"' _ {} ';' |
+    -exec sh -c -- 'git --no-pager log --max-count=1 --format='\''%at '\''"${1-}"' _ {} ';' |
     LANG='C' LC_ALL='C' sort -n -r |
     sed \
       -e 's/.*\///g' \
@@ -4461,7 +4461,7 @@ git_ls_modified() {
     git --no-pager log \
       --date=local \
       --max-count=1 \
-      --pretty=tformat:'%ai%x09./'"${file-}" \
+      --format='%ai%x09./'"${file-}" \
       -- \
       "${file-}"
   done
@@ -4475,7 +4475,7 @@ git_ls_modified() {
 # git log
 alias \
   glog='git log --all --decorate --graph --oneline' \
-  glod='git log --all --decorate --graph --oneline --pretty='\''%Cred%h%Creset%C(auto)%d%Creset %s %Cgreen%ad%Creset'\'' --date=short'
+  glod='git log --all --decorate --graph --oneline --format='\''%C(yellow bold)%h%Creset%C(auto)%d%Creset %s %Cgreen%ad%Creset'\'' --date=short'
 glof() {
   test "${#}" -gt 0 ||
     # EX_USAGE
@@ -4492,7 +4492,7 @@ glof() {
 
 # git mailmap
 git_mailmap() {
-  git log --pretty='%an <%ae>%n%cn <%ce>' |
+  git log --format='%an <%ae>%n%cn <%ce>' |
     LANG='C' LC_ALL='C' sort |
     uniq -c |
     LANG='C' LC_ALL='C' sort -n -r |
@@ -9064,7 +9064,7 @@ update_changelog() {
     find -- . \
       -path './[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*.[Mm]*[Dd]*' \
       -type f \
-      -exec sh -c -- 'git log --max-count=1 --pretty=tformat:'\''%at '\''"${1-}"' _ {} ';' |
+      -exec sh -c -- 'git log --max-count=1 --format='\''%at '\''"${1-}"' _ {} ';' |
       LANG='C' LC_ALL='C' sort -n -r |
       sed \
         -e '# print only the second field of the first line' \
