@@ -4973,50 +4973,6 @@ gvc() {
 
 alias ghs='gh status'
 
-github_create_repository() {
-  test "${GITHUB_API_TOKEN-}" != '' ||
-    # EX_CONFIG
-    return 78
-  # https://gist.github.com/alexpchin/dc91e723d4db5018fef8?permalink_comment_id=4252359#gistcomment-4252359
-  curl \
-    --data '{"name": "'"$(git rev-parse --show-toplevel | LANG='C' LC_ALL='C' tr -d '[:space:]' | sed -e 's/./\\&/g' | xargs basename --)"'", "private": true, "visibility": "private"}' \
-    --fail \
-    --header 'Authorization: token '"${GITHUB_API_TOKEN-}" \
-    --show-error \
-    --silent \
-    --url 'https://api.github.com/user/repos' &&
-    git remote add origin "$(
-      curl \
-        --fail \
-        --header 'Authorization: token '"${GITHUB_API_TOKEN-}" \
-        --show-error \
-        --silent \
-        --url 'https://api.github.com/repos/'"${GITHUB_ORG-}"/"$(
-          git rev-parse --show-toplevel |
-            LANG='C' LC_ALL='C' tr -d '[:space:]' |
-            sed -e 's/./\\&/g' |
-            xargs basename --
-        )" |
-        sed \
-          -n \
-          -e '# emulate jq -r .html_url using prepended jq -r .full_name instead' \
-          -e '# parses GitHub json even if minified' \
-          -e 's/.*"full_name"[^."]*"\([^"]*\)".*/https:\/\/github.com\/\1/p'
-    )"
-}
-gitlab_create_repository() {
-  git push --set-upstream git@gitlab.com:"${GITLAB_USERNAME:-${LOGNAME:-${USER-}}}"/"$(
-    git rev-parse --show-toplevel |
-      xargs basename --
-  )" "$(
-    git rev-parse --abbrev-ref HEAD
-  )" &&
-    git remote add origin git@gitlab.com:"${GITLAB_USERNAME:-${LOGNAME:-${USER-}}}"/"$(
-      git rev-parse --show-toplevel |
-        xargs basename --
-    )"
-}
-
 github_keys() {
   test "${GITHUB_API_TOKEN-}" != '' ||
     # EX_CONFIG
