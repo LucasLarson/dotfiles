@@ -4293,7 +4293,7 @@ git_find_deleted_string() {
     # EX_USAGE
     return 64
   # https://stackoverflow.com/a/12591569
-  git log --cc -S"${1:-*}" "${2:-./}" # >&2 # testing avoiding pager ¯\_(ツ)_/¯
+  git log --cc -S"${1-}" "${2:-.}"
 }
 alias git_find_deleted_text='git_find_deleted_string'
 
