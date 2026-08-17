@@ -9427,58 +9427,6 @@ yt() {
   esac
 }
 
-zsh_make_zsh() {
-  # sed -e 's/[",]//g;s/enable-etcdir.*/disable-etcdir/g;s/\#{HOMEBREW_PREFIX}\(.*\)/"\$\{HOME%\/\}"'\''\/.local\1'\''/g;s/\#{pkgshare}\(.*\)/"\$\{HOME%\/\}"'\''\/.local\/share\1'\''/g;s/\#{prefix}\(.*\)/"\$\{HOME%\/\}"'\''\/.local\1'\''/g;s/^\([[:space:]]*\)system[[:space:]]*/\1/' ~/c/Homebrew-core/Formula/zsh.rb
-  CDPATH='.' cd "${HOME%/}"'/c/zsh' >/dev/null 2>&1 ||
-    return "${?:-1}"
-  rm -f -r -- "${HOME%/}"'/c/zsh/.gitignore'
-  (
-    set \
-      -o verbose \
-      -o xtrace
-    ./Util/preconfig &&
-      make configure &&
-      # CC='c99' ./configure \
-      CC='clang' ./configure \
-        --disable-etcdir \
-        --enable-cap \
-        --enable-cflags=-O0 \
-        --enable-fndir="${HOME%/}"'/.local/share/functions' \
-        --enable-libs \
-        --enable-multibyte \
-        --enable-pcre \
-        --enable-runhelpdir="${HOME%/}"'/.local/share/help' \
-        --enable-scriptdir="${HOME%/}"'/.local/share/scripts' \
-        --enable-site-fndir="${HOME%/}"'/.local/share/zsh/site-functions' \
-        --enable-site-scriptdir="${HOME%/}"'/.local/share/zsh/site-scripts' \
-        --enable-unicode9 \
-        --enable-zsh-debug \
-        --enable-zsh-hash-debug \
-        --enable-zsh-mem \
-        --enable-zsh-mem-debug \
-        --enable-zsh-mem-warning \
-        --enable-zsh-secure-free \
-        --prefix="${HOME%/}"'/.local' \
-        --with-tcsetpgrp \
-        DL_EXT=bundle &&
-      ./config.status --recheck &&
-      make \
-        CFLAGS='-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -Wno-implicit-function-declaration' \
-        CPATH='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include' \
-        CPLUS_INCLUDE_PATH='/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include' \
-        CPPFLAGS='-I/usr/local/opt/llvm/include -I/usr/local/opt/libarchive/include -I/usr/local/opt/openssl/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -I/usr/local/opt/ruby/include' \
-        CXXFLAGS='-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include' \
-        LDFLAGS='-L/usr/local/opt/llvm/lib/c++ -Wl,-rpath,/usr/local/opt/llvm/lib/c++ -L/usr/local/opt/llvm/lib -L/usr/local/opt/libarchive/lib -L/usr/local/opt/openssl/lib -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib -L/usr/local/opt/ruby/lib' \
-        LIBRARY_PATH='/usr/local/lib:/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib' \
-        LIBS='-l/usr/local/lib -l/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib' \
-        PKG_CONFIG_PATH='/usr/local/opt/libarchive/lib/pkgconfig:/usr/local/opt/openssl/lib/pkgconfig' &&
-      make check &&
-      make install &&
-      make install.modules &&
-      make install.fns
-  )
-}
-
 zshabbr() {
   command -v -- shfmt >/dev/null 2>&1 &&
     command -v -- abbr >/dev/null 2>&1 ||
