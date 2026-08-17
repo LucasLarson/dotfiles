@@ -3788,21 +3788,6 @@ font_italic() {
 }
 alias italic='font_italic'
 
-get_github_stars() {
-  while test "${#}" -gt 0; do
-    set -- 'https://api.github.com/repos/'"${1-}" &&
-      {
-        curl --location --show-error --silent --url "${1-}" ||
-        wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" ||
-          return "${?:-1}"
-      } 2>/dev/null |
-        sed \
-          -n \
-          -e 's/.*"stargazers_count":[^[:digit:]]*\([[:digit:]][[:digit:]]*\).*/\1/p'
-    shift 1
-  done
-}
-
 ## GIF
 to_gif() {
   test "${#}" -gt 0 ||
@@ -5020,21 +5005,6 @@ gvc() {
 }
 
 alias ghs='gh status'
-
-github_keys() {
-  test "${GITHUB_API_TOKEN-}" != '' ||
-    # EX_CONFIG
-    return 78
-  curl \
-    --fail \
-    --header 'Authorization: token '"${GITHUB_API_TOKEN-}" \
-    --show-error \
-    --silent \
-    --url https://api.github.com/meta 2>/dev/null |
-    sed \
-      -e '/[^:[:space:]][[:space:]][^:[:space:]]/! d' \
-      -e 's/^[[:space:]]*"\([^[:space:]]*\)[[:space:]][[:space:]]*\([^",]*\)",*/github.com \1 \2/'
-}
 
 github_search() {
   set -- 'https://github.com/search?type=code&q='"${*-}"
