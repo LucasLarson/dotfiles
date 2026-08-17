@@ -4511,40 +4511,6 @@ git_mailmap() {
   printf -- 'https://gist.github.com/fcea3c4301ec5100460ac571a5fe99c4\n'
 }
 
-# git make git
-git_make_git() {
-  mkdir -p -- "${HOME%/}"'/c/git'
-  CDPATH='.' cd "${HOME%/}"'/c/git' >/dev/null 2>&1 ||
-    return "${?:-1}"
-  set -- "$(
-    set -- 'https://api.github.com/repos/git/git/tags'
-    {
-      wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" 2>/dev/null ||
-        curl --location --show-error --silent --url "${1-}"
-    } |
-      sed \
-        -n \
-        -e '/tarball_url/ {' \
-        -e '  s/.*: "\(.*\)",/\1/p' \
-        -e '  q' \
-        -e '}'
-  )"
-  {
-    wget --hsts-file=/dev/null --output-document=- --quiet -- "${1-}" 2>/dev/null ||
-      curl --location --silent --url "${1-}"
-  } |
-    tar -f- -x -z --transform 's/^[^/]*\///'
-  (
-    set \
-      -o verbose \
-      -o xtrace
-    make -- configure &&
-      ./configure --prefix="${HOME%/}"'/.local' &&
-      NO_TCLTK=1 make &&
-      NO_TCLTK=1 make -- install
-  )
-}
-
 # git merge
 alias gm >/dev/null 2>&1 &&
   unalias -- gm
