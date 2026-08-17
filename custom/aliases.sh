@@ -5886,65 +5886,6 @@ sort_by_line_length() {
 }
 alias length_of_line_sort='sort_by_line_length'
 
-# less: install the pager
-install_less() {
-  (
-    set \
-      -o verbose \
-      -o xtrace
-    utility="$(
-      command -v -- gmake ||
-        command -v -- make
-    )"
-    target="${HOME%/}"'/c/less'
-    mkdir -p -- "${target-}"
-
-    # because `make -C` is not POSIX
-    CDPATH='.' cd -L "${target-}" >/dev/null 2>&1 ||
-      return 1
-
-    git -C "${target-}" pull 2>/dev/null ||
-      git -c core.ignoreCase=false clone --progress --recursive --template='' -- https://github.com/gwsw/less "${target-}" 2>&1 |
-      sed \
-        -e 's|'\''.'\''|'"${target-}"'|' \
-        -e 's|'"${custom-}"'|$\custom|' \
-        -e 's|'"${DOTFILES-}"'|$\DOTFILES|' \
-        -e 's|'"${XDG_CONFIG_HOME-}"'|$\XDG_CONFIG_HOME|' \
-        -e 's|'"${HOME%/}"'|~|'
-    rm -f -r -- "${target-}"'/.gitingore'
-    "${utility:-make}" -C "${target-}" -f Makefile.aut distfiles
-    if test -w '/usr/local/bin'; then
-      bindir='/usr/local/bin'
-    elif mkdir -p -- "${HOME%/}"'/.local/bin' 2>/dev/null; then
-      bindir="${HOME%/}"'/.local/bin'
-    fi
-    if test -w '/usr/local/share/man'; then
-      mandir='/usr/local/share/man'
-    elif mkdir -p -- "${HOME%/}"'/.local/share/man' 2>/dev/null; then
-      mandir="${HOME%/}"'/.local/share/man'
-    fi
-    # `pcre-config`, `pcre2-config` require `--version` to return a zero exit code
-    if pcre2-config --version >/dev/null 2>&1; then
-      with_regex='pcre2'
-    elif pcre-config --version >/dev/null 2>&1; then
-      with_regex='pcre'
-    fi
-    sh ./configure --with-editor="${EDITOR:-vi}" --with-regex="${with_regex:-auto}" bindir="${bindir-}" mandir="${mandir-}"
-    "${utility:-make}" install
-    {
-      set \
-        +o verbose \
-        +o xtrace
-    } 2>/dev/null
-    unset bindir >/dev/null 2>&1 || bindir=''
-    unset mandir >/dev/null 2>&1 || mandir=''
-    unset target >/dev/null 2>&1 || target=''
-    unset utility >/dev/null 2>&1 || utility=''
-    unset with_regex >/dev/null 2>&1 || with_regex=''
-  )
-}
-alias less_install='install_less'
-
 # linguist
 breakdown() {
   utility="$(
