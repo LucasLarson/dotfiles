@@ -4290,15 +4290,7 @@ alias \
 
 git_find_deleted_string() {
   # https://stackoverflow.com/a/12591569
-  set \
-    -o verbose \
-    -o xtrace
   git log --cc -S"${1:-*}" "${2:-./}" # >&2 # testing avoiding pager ¯\_(ツ)_/¯
-  {
-    set \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
 }
 alias git_find_deleted_text='git_find_deleted_string'
 
