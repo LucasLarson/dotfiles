@@ -1177,7 +1177,7 @@ count_files_by_extension() {
     -path '*/node_modules' -prune -o \
     ! -name '*.*' \
     ! -type d \
-    -exec printf -- '[no extension]\n' ';' 2>/dev/null |
+    -exec sh -c -- 'for file in "${@-}"; do printf -- '\''[no extension]\n'\''; done' _ {} + 2>/dev/null |
     uniq -c
 }
 alias cfx='count_files_by_extension'
