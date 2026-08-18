@@ -8389,45 +8389,6 @@ sk() {
   } 2>/dev/null
 }
 
-spotify_request_token() {
-  test "${SPOTIFY_CLIENT_ID-}" != '' &&
-    test "${SPOTIFY_CLIENT_SECRET-}" != '' ||
-    # EX_CONFIG
-    return 78
-  set \
-    -o noclobber \
-    -o noglob \
-    -o verbose \
-    -o xtrace
-  SPOTIFY_TOKEN="$(
-    # https://web.archive.org/web/2023id_/developer.spotify.com/documentation/web-api/tutorials/getting-started#request-an-access-token
-    curl \
-      --data 'grant_type=client_credentials' \
-      --data 'client_id='"${SPOTIFY_CLIENT_ID-}" \
-      --data 'client_secret='"${SPOTIFY_CLIENT_SECRET-}" \
-      --fail \
-      --location \
-      --header 'Content-Type: application/x-www-form-urlencoded' \
-      --request 'POST' \
-      --show-error \
-      --silent \
-      --url 'https://accounts.spotify.com/api/token' |
-      sed \
-        -e '# search for the first quotation-marks-surrounded string following token and print only that' \
-        -e '# assumption that Spotify returns JSON without optional spaces' \
-        -e 's/.*token"[^:]*:[^"]*"\([^"]*\)".*/\1/'
-  )" &&
-    export SPOTIFY_TOKEN &&
-    printf -- '%s\n' "${SPOTIFY_TOKEN-}"
-  {
-    set \
-      +o noclobber \
-      +o noglob \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
-}
-
 alias \
   sshf='ssh llarson@freeshell.de' \
   sshk='ssh kevoc7@oconnor.nyc' \
