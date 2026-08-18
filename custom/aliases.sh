@@ -5976,6 +5976,9 @@ jsonlint_r() {
 ## last
 alias last_character='tail -c -1'
 last_word() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   while test "${#}" -gt 0; do
     printf -- '%s\n' "${1##* }"
     shift 1
@@ -7378,6 +7381,9 @@ ql() {
   command -v -- qlmanage >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   case "${1-}" in
   -r)
     find -- . \
