@@ -8403,12 +8403,6 @@ shred_r() {
     # EX_USAGE
     return 64
   }
-  set \
-    -o noclobber \
-    -o noglob \
-    -o nounset \
-    -o verbose \
-    -o xtrace
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
@@ -8429,14 +8423,6 @@ shred_r() {
         "${file-}"
     unset size >/dev/null 2>&1 || size=''
   done
-  {
-    set \
-      +o noclobber \
-      +o noglob \
-      +o nounset \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
 }
 
 signals() {
