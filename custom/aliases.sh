@@ -4094,7 +4094,7 @@ git_clone() {
     ;;
   -b | --branches)
     git branch --remotes |
-      grep -v -e '\*' -e ' -> ' |
+      awk -- 'NF == 1 {print $1}' |
       while IFS='' read -r -- remote_branch; do
         git branch --list |
           grep -w -e "${remote_branch##*/}" >/dev/null 2>&1 ||
