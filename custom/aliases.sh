@@ -8239,22 +8239,15 @@ shred_r() {
   for file in "${@-}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
-      size="$(
-        LC_ALL='C' find -- "${file-}" \
-          -type f \
-          exec ls -l -- {} ';' |
-          LC_ALL='C' awk -- '{printf "%d\n", $5}'
-      )" &&
       shred \
         --force \
         --iterations="$(getconf -- CHAR_MAX)" \
         --remove='wipesync' \
-        --size="${size-}" \
+        --size="$(LANG='C' LC_ALL='C' find -- "${file-}" -exec ls -d -l -- {} + | awk -- '$5 >= 0 {printf "%d\n", $5}')" \
         --verbose \
         --zero \
         -- \
         "${file-}"
-    unset size >/dev/null 2>&1 || size=''
   done
 }
 
