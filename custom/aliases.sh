@@ -4097,7 +4097,8 @@ git_clone() {
       awk -- 'NF == 1 {print $1}' |
       while IFS='' read -r -- remote_branch; do
         git branch --list |
-          grep -w -e "${remote_branch##*/}" >/dev/null 2>&1 ||
+          # emulate non-standard `grep -q -w`
+          awk -vremote_branch="${remote_branch##*/}" -- 'BEGIN {found = 0} $NF == remote_branch {found = 1} END {exit ! found}' ||
           git branch --track "${remote_branch##*/}" "${remote_branch-}"
       done
     ;;
@@ -5221,7 +5222,7 @@ hash_abbreviate() {
   done
   shift "$((OPTIND - 1))"
   for hash in "${@-}"; do
-    if printf -- '%s\n' "${hash-}" | grep -E -w -e '^[[:xdigit:]]{4,}$' >/dev/null 2>&1; then
+    if printf -- '%s\n' "${hash-}" | grep -E -e '^[[:xdigit:]]{4,}$' >/dev/null 2>&1; then
       printf -- '%.'"${length:-"$(git config --get --default=7 -- core.abbrev)"}"'s\n' "${hash-}"
       # prevent copying trailing newline with `tr` and
       # hide clipboard errors because `pbcopy` is not common
