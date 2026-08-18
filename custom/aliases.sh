@@ -7103,6 +7103,7 @@ plist_r() {
         -name '*.waveform' -o \
         -name '*.webarchive' -o \
         -name '*.webloc' -o \
+        -name '*.wflow' -o \
         -name '*.xccheckout' -o \
         -name '*.xccolortheme' -o \
         -name '*.xccurrentversion' -o \
