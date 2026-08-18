@@ -4119,12 +4119,8 @@ git_clone() {
   *)
     { mkdir "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 || return 73; } &&
       printf -- 'moving into %s...\n' "${2:-$(basename -- "${1-}" .git)}" >&2 &&
-      CDPATH='.' cd "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 && {
-      # test "${3-}" = '' ||
-      git -c core.ignoreCase=false clone --progress --recursive --template='' -- "${1%.git}" "${PWD%/}" # ||
-      # git clone --progress --recursive --branch "${branch-}" -- "${1%.git}" "${PWD%/}"
-    }
-    unset branch >/dev/null 2>&1 || branch=''
+      CDPATH='.' cd "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 &&
+      git -c core.ignoreCase=false clone --progress --recursive --template='' -- "${1%.git}" "${PWD%/}"
     ;;
   esac
 }
