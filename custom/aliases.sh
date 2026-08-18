@@ -4099,7 +4099,6 @@ git_clone() {
         git branch --list |
           grep -w -e "${remote_branch##*/}" >/dev/null 2>&1 ||
           git branch --track "${remote_branch##*/}" "${remote_branch-}"
-        unset remote_branch >/dev/null 2>&1 || remote_branch=''
       done
     ;;
   *)
