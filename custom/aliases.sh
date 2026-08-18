@@ -8396,9 +8396,12 @@ shred_r() {
   command -v -- shred >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
-  test "${#}" -gt 0 ||
+  test "${#}" -gt 0 || {
+    # let `shred` provide the error message
+    shred >&2
     # EX_USAGE
     return 64
+  }
   set \
     -o noclobber \
     -o noglob \
