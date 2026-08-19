@@ -5080,7 +5080,7 @@ rg() {
   test "${utility-}" = '' && {
     unset utility >/dev/null 2>&1 || utility=''
     find -- . \
-      -path '*./git' -prune -o \
+      -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
       ! -name '.DS_Store' \
       -type f \
