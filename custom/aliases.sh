@@ -5311,7 +5311,7 @@ hundo() {
     return 66
   # create a temporary location for the file
   mkdir -p -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' &&
-    # remove the old copy if any
+    # move old copy if any
     find -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' \
       -name "${HISTFILE##*/}" \
       -type f \
