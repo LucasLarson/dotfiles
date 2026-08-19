@@ -5164,6 +5164,14 @@ hash_abbreviate() {
 alias h7='hash_abbreviate'
 
 hashlookup() {
+  command -v -- curl >/dev/null 2>&1 &&
+    command -v -- jq >/dev/null 2>&1 &&
+    {
+      command -v -- sha1sum >/dev/null 2>&1 ||
+        command -v -- shasum >/dev/null 2>&1
+    } ||
+    # EX_UNAVAILABLE
+    return 69
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
