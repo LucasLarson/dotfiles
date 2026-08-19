@@ -4404,14 +4404,14 @@ git_mailmap() {
       -e 's/\[bot\] / /' \
       -e 's/github-actions /GitHub /'
   # overline
-  printf -- '\342\200\276\342\200\276\342\200\276\342\200\276\342\200\276\n'
+  printf -- '\342\200\276\342\200\276\342\200\276\342\200\276\342\200\276\n' >&2
   git shortlog --all --email --numbered --summary |
     sed \
       -e 's/^[[:space:]]*[1-9][[:digit:]]*[[:space:]]*//' \
       -e 's/\[bot\] / /' \
       -e 's/github-actions /GitHub /'
-  printf -- '\342\200\276\342\200\276\342\200\276\342\200\276\342\200\276\n'
-  printf -- 'https://gist.github.com/fcea3c4301ec5100460ac571a5fe99c4\n'
+  printf -- '\342\200\276\342\200\276\342\200\276\342\200\276\342\200\276\n' >&2
+  printf -- 'https://gist.github.com/fcea3c4301ec5100460ac571a5fe99c4\n' >&2
 }
 
 # git merge
