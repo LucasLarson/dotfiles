@@ -5175,21 +5175,23 @@ hashlookup() {
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
-  test -f "${1-}" ||
-    # EX_NOINPUT
-    return 66
-  curl \
-    --header 'Accept: application/json' \
-    --show-error \
-    --silent \
-    --url 'https://hashlookup.circl.lu/lookup/sha1/'"$(
-      {
-        sha1sum -- "${1-}" 2>/dev/null ||
-          shasum -- "${1-}"
-      } |
-        awk -- '{print $1}'
-    )" |
-    jq --raw-output '.parents[]' 2>/dev/null
+  for file in "${@-}"; do
+    test -f "${file-}" ||
+      # EX_NOINPUT
+      return 66
+    curl \
+      --header 'Accept: application/json' \
+      --show-error \
+      --silent \
+      --url 'https://hashlookup.circl.lu/lookup/sha1/'"$(
+        {
+          sha1sum -- "${file-}" ||
+            shasum -- "${file-}"
+        } 2>/dev/null |
+          awk -- '{print $1}'
+      )" |
+      jq --raw-output '.parents[]' 2>/dev/null
+  done
 }
 
 head() {
