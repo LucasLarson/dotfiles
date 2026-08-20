@@ -9029,7 +9029,7 @@ troubleshoot_website() {
     printf -- '# https://web.archive.org/web/20221203151931/help.dreamhost.com/hc/en-us/articles/215867298-Commands-to-troubleshoot-your-websites\n'
     printf -- 'uptime\n'
     printf -- 'lsof -u "\044{LOGNAME:-\044{USER-}}" | grep -e '\''php'\'' | grep -e '\''/home'\''\n'
-    printf -- 'watch "lsof -u "\044{LOGNAME:-\044{USER-}}" | grep -e '\''php'\'' | grep -e '\''/home'\'' | tee -a -- ./results.txt"\n'
+    printf -- 'watch "lsof -u \044{LOGNAME:-\044{USER-}} | grep -e '\''php'\'' | grep -e '\''/home'\'' | tee -a -- ./results.txt"\n'
     printf -- 'cat -- ./results.txt\n'
     printf -- '# https://web.archive.org/web/20221005032620/help.dreamhost.com/hc/en-us/articles/115000683852-Using-the-top-command-to-troubleshoot-your-website\n'
     printf -- 'top\n'
@@ -9043,11 +9043,12 @@ troubleshoot_website() {
     printf -- '  # list the last 10,000 site hits\n'
     printf -- '  find -L -- . -name '\''access.log'\'' -type f -exec tail -n 10000 -- {} + | awk -- '\''{print \0441}'\'' | LANG='\''C'\'' LC_ALL='\''C'\'' sort | uniq -c | LANG='\''C'\'' LC_ALL='\''C'\'' sort -n\n'
     printf -- '# watch the server log in real time\n'
-    printf -- 'tail -f -- **/*access.log\n'
+    printf -- 'tail -f -- ./**/*access.log\n'
     printf -- '# list files being called the most\n'
-    printf -- 'awk '\''{print \0447}'\'' ./access.log | cut -d? -f 1 | LANG='\''C'\'' LC_ALL='\''C'\'' sort | uniq -c | LANG='\''C'\'' LC_ALL='\''C'\'' sort -k -n 1 | tail -n 10\n'
+    printf -- 'awk '\''{print \0447}'\'' ./access.log | cut -d'\''?'\'' -f 1 | LANG='\''C'\'' LC_ALL='\''C'\'' sort | uniq -c | LANG='\''C'\'' LC_ALL='\''C'\'' sort -k -n 1 | tail -n 10\n'
     printf -- '# list traffic for all user domains on server\n'
-    printf -- 'CDPATH='\''.'\'' cd "\044{HOME\045/}"'\''/logs'\'' >/dev/null 2>&1 &&\n  for k in \044(ls -S */https/access.log); do wc -l -- "\044{k-}" | LANG='\''C'\'' LC_ALL='\''C'\'' sort -n -r; done\n'
+    printf -- 'CDPATH='\''.'\'' cd "\044{HOME\045/}"'\''/logs'\'' >/dev/null 2>&1 &&\n'
+    printf -- '  for k in \044(ls -S -- ./**/*/https/access.log); do wc -l -- "\044{k-}" | LANG='\''C'\'' LC_ALL='\''C'\'' sort -n -r; done\n'
   } | {
     bat \
       --decorations=never \
