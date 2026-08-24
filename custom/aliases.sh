@@ -5500,7 +5500,9 @@ install() {
         -e '# remove the prepended numbers' \
         -e 's/^[[:digit:]]//' \
         -e '# restore each comment to a line above its package' \
-        -e 's/\([^#]*\)\(#.*\)/\2\n\1/'
+        -e 's/\([^#]*\)\(#.*\)/\2\n\1/' \
+        -e '# remove end-of-line “, args: ["HEAD"]”' \
+        -e 's/, args: \["HEAD"\]$//'
     } >|"${HOMEBREW_BUNDLE_FILE_GLOBAL:-${HOMEBREW_BUNDLE_FILE:-${HOME%/}/.Brewfile}}" &&
       chmod -- 755 "${HOMEBREW_BUNDLE_FILE_GLOBAL:-${HOMEBREW_BUNDLE_FILE:-${HOME%/}/.Brewfile}}"
     {
