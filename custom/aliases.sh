@@ -5502,7 +5502,9 @@ install() {
         -e '# restore each comment to a line above its package' \
         -e 's/\([^#]*\)\(#.*\)/\2\n\1/' \
         -e '# remove end-of-line “, args: ["HEAD"]”' \
-        -e 's/, args: \["HEAD"\]$//'
+        -e 's/, args: \["HEAD"\]$//' \
+        -e '# remove @beta, @canary, @dev, etc., but not @2 or @3, etc.' \
+        -e 's/\(.*\)@[[:alpha:]]\{1,\}/\1/g'
     } >|"${HOMEBREW_BUNDLE_FILE_GLOBAL:-${HOMEBREW_BUNDLE_FILE:-${HOME%/}/.Brewfile}}" &&
       chmod -- 755 "${HOMEBREW_BUNDLE_FILE_GLOBAL:-${HOMEBREW_BUNDLE_FILE:-${HOME%/}/.Brewfile}}"
     {
