@@ -5075,9 +5075,7 @@ rg() {
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
-  utility="$(env -i -- sh -c -- 'command -v -- rga || command -v -- rg')"
-  test "${utility-}" = '' && {
-    unset utility >/dev/null 2>&1 || utility=''
+  env -i -- sh -c -- 'command -v -- rga || command -v -- rg' >/dev/null 2>&1 || {
     find -- . \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
@@ -5086,7 +5084,7 @@ rg() {
       -exec grep -E "${@-}" -- {} +
     return "${??}"
   }
-  "${utility-}" \
+  "$(env -i -- sh -c -- 'command -v -- rga || command -v -- rg')" \
     --glob '!**.git' \
     --glob '!**node_modules' \
     --glob '!**copilot*' \
@@ -5095,19 +5093,16 @@ rg() {
     --hidden \
     --pcre2 \
     "${@-}" 2>/dev/null
-  unset utility >/dev/null 2>&1 || utility=''
 }
 rgv() {
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
-  utility="$(env -i -- sh -c -- 'command -v -- rga || command -v -- rg')"
-  test "${utility-}" = '' && {
-    unset utility >/dev/null 2>&1 || utility=''
+  env -i -- sh -c -- 'command -v -- rga || command -v -- rg' >/dev/null 2>&1 || {
     grep -E -v "${@-}"
     return "${??}"
   }
-  "${utility-}" \
+  "$(env -i -- sh -c -- 'command -v -- rga || command -v -- rg')" \
     -v \
     --glob '!**.git' \
     --glob '!**node_modules' \
@@ -5117,7 +5112,6 @@ rgv() {
     --hidden \
     --pcre2 \
     "${@-}" 2>/dev/null
-  unset utility >/dev/null 2>&1 || utility=''
 }
 command -v -- _rg >/dev/null 2>&1 &&
   compdef -- rga='rg' >/dev/null 2>&1
