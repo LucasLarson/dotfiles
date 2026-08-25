@@ -5073,8 +5073,6 @@ ggr() {
 
 command -v -- _rg >/dev/null 2>&1 &&
   compdef -- rga='rg' >/dev/null 2>&1
-# skip searching `.git` and `node_modules` directories
-# https://github.com/BurntSushi/ripgrep/issues/839#issuecomment-1006723597
 rg() {
   utility="$(env -- sh -c -- 'command -v -- rga || command -v -- rg')"
   test "${utility-}" = '' && {
