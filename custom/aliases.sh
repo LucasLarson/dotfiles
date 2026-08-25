@@ -5071,8 +5071,6 @@ ggr() {
     -e "${@-}"
 }
 
-command -v -- _rg >/dev/null 2>&1 &&
-  compdef -- rga='rg' >/dev/null 2>&1
 rg() {
   utility="$(env -- sh -c -- 'command -v -- rga || command -v -- rg')"
   test "${utility-}" = '' && {
@@ -5115,6 +5113,8 @@ rgv() {
     "${@-}" 2>/dev/null
   unset utility >/dev/null 2>&1 || utility=''
 }
+command -v -- _rg >/dev/null 2>&1 &&
+  compdef -- rga='rg' >/dev/null 2>&1
 
 grep_o() {
   # POSIX-compliant implementation of GNU `grep -o`
