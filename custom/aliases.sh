@@ -5072,6 +5072,9 @@ ggr() {
 }
 
 rg() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   utility="$(env -- sh -c -- 'command -v -- rga || command -v -- rg')"
   test "${utility-}" = '' && {
     unset utility >/dev/null 2>&1 || utility=''
@@ -5095,6 +5098,9 @@ rg() {
   unset utility >/dev/null 2>&1 || utility=''
 }
 rgv() {
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
   utility="$(env -- sh -c -- 'command -v -- rga || command -v -- rg')"
   test "${utility-}" = '' && {
     unset utility >/dev/null 2>&1 || utility=''
