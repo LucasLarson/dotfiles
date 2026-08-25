@@ -1280,7 +1280,7 @@ define() {
             shfmt --indent 2 --language-dialect bash --simplify -- -
 
         # `functions | shfmt`
-        elif builtin declare -f -- "${query-}" >/dev/null 2>&1 |
+        elif builtin declare -f -- "${query-}" 2>/dev/null |
           sed \
             -e 's/\&\& /\&\&\n/g' \
             -e 's/\|\| /||\n/g' |
