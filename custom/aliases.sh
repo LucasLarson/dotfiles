@@ -2663,6 +2663,7 @@ find_json_files() {
     -name '*.[Nn][Mm][Ff]' -o \
     -name '*.[Rr][Cc][Pp][Rr][Oo][Jj][Ee][Cc][Tt][Dd][Aa][Tt][Aa]' -o \
     -name '*.[Ss][Aa][Rr][Ii][Ff]' -o \
+    -name '*.[Ss][Ll][Nn][Ll][Aa][Uu][Nn][Cc][Hh]' -o \
     -name '*.[Ss][Tt][Aa][Tt][Ss]' -o \
     -name '*.[Ss][Tt][Rr][Ii][Nn][Gg][Ss][Dd][Aa][Tt][Aa]' -o \
     -name '*.[Ss][Uu][Bb][Ll][Ii][Mm][Ee]-[Bb][Uu][Ii][Ll][Dd]' -o \
