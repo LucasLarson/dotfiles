@@ -1162,7 +1162,6 @@ count_files_by_extension() {
   find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     -name '*.*' \
     ! -name '*.' \
     ! -name '.DS_Store' \
@@ -2078,14 +2077,12 @@ find_capital_letter_files() {
   -d | --delete) LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     -name '[[:upper:]]*' \
     -type f \
     -exec sh -c -- '{ printf -- '\''removing \342\200\230%s\342\200\231 '\'' "${1-}" >&2 && rm -f -r -- "${1-}" && printf -- '\''\342\234\223\n'\'' >&2; } || printf -- '\''error removing \342\200\230%s\342\200\231\n'\'' "${1-}" >&2' _ {} ';' ;;
   *) LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     -name '[[:upper:]]*' \
     -type f \
     -print ;;
@@ -2235,7 +2232,6 @@ find_duplicate_cksum() {
   find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     -type f \
     -exec sh -c -- 'cksum -- "${1-}"' _ {} ';' |
     sed -e 's/\([[:digit:]][[:digit:]]*\)[[:space:]]\([[:digit:]][[:digit:]]*\)[[:space:]]\(.*\)/\1 \2/' |
@@ -2270,7 +2266,6 @@ find_duplicate_cksum() {
       -path '*copilot*' -prune -o \
       -path '*dummy*' -prune -o \
       -path '*vscode*' -prune -o \
-      -path './*' \
       -type f \
       ! -size 0 \
       -exec sh -c -- 'cksum -- "${1-}"' _ {} ';' |
@@ -2299,7 +2294,6 @@ find_duplicate_files() {
     -path '*copilot*' -prune -o \
     -path '*dummy*' -prune -o \
     -path '*vscode*' -prune -o \
-    -path './*' \
     -type f \
     ! -size 0 \
     ! -name '.DS_Store' \
@@ -2403,7 +2397,6 @@ find_executable() {
     -path '*copilot*' -prune -o \
     -path '*dummy*' -prune -o \
     -path '*vscode*' -prune -o \
-    -path './*' \
     -type f \
     -perm -700 \
     -print 2>/dev/null |
@@ -2431,7 +2424,6 @@ find_files_with_newline() {
   find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     ! -name '.DS_Store' \
     -type f \
     -exec sh -c -- 'file -- "${1-}" | grep -v -e '\'':.*executable'\'' >/dev/null 2>&1 && test "$(tail -c 1 -- "${1-}" 2>/dev/null)" = '\'''\'' && printf -- '\''%s\n'\'' "${1-}"' _ {} ';'
@@ -2442,7 +2434,6 @@ find_files_without_newline() {
   find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     ! -name '.DS_Store' \
     -type f \
     -exec sh -c -- 'file -- "${1-}" | grep -v -e '\'':.*executable'\'' -e '\'':.*image'\'' >/dev/null 2>&1 && test "$(tail -c 1 -- "${1-}" 2>/dev/null)" != '\'''\'' && printf -- '\''%s\n'\'' "${1-}"' _ {} ';'
@@ -2452,7 +2443,6 @@ find_files_with_windows_newline() {
   find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     ! -name '.DS_Store' \
     -type f \
     -exec sh -c -- 'file -- "${1-}" | grep -v -e '\'':.*-bit '\'' -e '\'':.*binary'\'' -e '\'':.*executable'\'' -e '\'': GIF image'\'' -e '\'': JPEG image'\'' -e '\'': PNG image'\'' -e '\'': RIFF '\'' >/dev/null 2>&1 && grep -l -e "$(printf -- '\''\015\012'\'')" -- "${1-}" 2>/dev/null' _ {} ';'
@@ -2819,7 +2809,6 @@ find_files_with_the_same_names() {
   LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     ! -name '.DS_Store' \
     -type f \
     -exec sh -c -- 'for file in "${@-}"; do
@@ -2833,7 +2822,6 @@ done' _ {} + |
   LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     ! -name '.DS_Store' \
     -type f \
     -print |
@@ -2852,7 +2840,6 @@ find_files_with_the_same_sizes() {
   LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     ! -name '.DS_Store' \
     -type f \
     ! -size 0 \
@@ -2952,7 +2939,6 @@ find_perl_files() {
       -path '*copilot*' -prune -o \
       -path '*dummy*' -prune -o \
       -path '*vscode*' -prune -o \
-      -path './*' \
       '(' \
       -name '*.pl' -o \
       -name '*.6[Pp][Ll]' -o \
@@ -3018,7 +3004,6 @@ find_perl_files() {
 find_animated_png() {
   find -- . \
     -path '*/.git' -prune -o \
-    -path './*' \
     -name '*.[Pp][Nn][Gg]' \
     -type f \
     -exec file -- {} + |
@@ -3071,7 +3056,6 @@ find_ruby_files() {
       -path '*copilot*' -prune -o \
       -path '*dummy*' -prune -o \
       -path '*vscode*' -prune -o \
-      -path './*' \
       '(' \
       -name '*.rb' -o \
       -name '.Brewfile' -o \
@@ -3268,7 +3252,6 @@ find_shell_scripts() {
       -path '*vscode*' -prune -o \
       -path '*/etc/profile' -prune -o \
       -path '*/bat/config' -prune -o \
-      -path './*' \
       ! -name '*.fish' \
       ! -name '*.rs' \
       -type f \
@@ -3398,7 +3381,6 @@ find_text_files() {
     find -- . \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
-      -path './*' \
       -type f \
       -exec file -- {} + |
       sed \
@@ -6306,7 +6288,6 @@ non_ascii() {
     LC_ALL='C' find -- "${@:-.}" \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
-      -path './*' \
       '(' \
       ! -name '*[[:alnum:]]*' -o \
       -name '*[[:space:]]*' \
@@ -6319,7 +6300,6 @@ non_ascii() {
     LC_ALL='C' find -- "${@:-.}" \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
-      -path './*' \
       '(' \
       ! -name '*[[:alnum:]]*' -o \
       -name '*[[:space:]]*' \
@@ -6348,7 +6328,6 @@ non_ascii_filenames() {
   LC_ALL='C' find -- "${@:-.}" \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -path './*' \
     '(' \
     ! -name '*[[:alnum:]]*' -o \
     -name '*[[:space:]]*' \
@@ -9257,7 +9236,6 @@ yaml_prettier_r() {
     -path '*copilot*' -prune -o \
     -path '*dummy*' -prune -o \
     -path '*vscode*' -prune -o \
-    -path './*' \
     '(' \
     -name '*.yml' -o \
     -name '*.CFF' -o \
