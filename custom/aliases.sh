@@ -3017,8 +3017,8 @@ find_perl_files() {
 
 find_animated_png() {
   find -- . \
-    -path '*/.git' -prune \
-    -o -path './*' \
+    -path '*/.git' -prune -o \
+    -path './*' \
     -name '*.[Pp][Nn][Gg]' \
     -type f \
     -exec file -- {} + |
