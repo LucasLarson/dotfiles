@@ -1923,8 +1923,10 @@ filename_underscores_to_spaces() {
 
 file_closes_with_newline() {
   while test "${#}" -gt 0; do
+    test -f "${1-}" ||
+      # EX_USAGE
+      return 64
     find -- "${1-}" \
-      -type f \
       -exec sh -c -- 'test "$(tail -c 1 -- "${1-}" | wc -l)" -ne 0 || printf -- '\''%s does not close with a newline\n'\'' "${1-}" >&2' _ {} ';'
     shift 1
   done
@@ -1936,8 +1938,10 @@ alias \
 
 file_has_trailing_whitespace() {
   while test "${#}" -gt 0; do
+    test -f "${1-}" ||
+      # EX_USAGE
+      return 64
     find -- "${1-}" \
-      -type f \
       -exec sh -c -- 'test "$(sed -e '\''s/[[:space:]]*$//'\'' <"${1-}" | wc -l)" -eq "$(sed -e '\''s/[[:space:]]*$//'\'' <"${1-}" | wc -l)" || printf -- '\''%s has trailing whitespace\n'\'' "${1-}" >&2' _ {} ';'
     shift 1
   done
