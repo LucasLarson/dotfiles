@@ -110,6 +110,10 @@ base_to_base() {
   command -v -- bc >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -gt 0 &&
+    test "${#}" -lt 4 ||
+    # EX_USAGE
+    return 64
   # https://stackoverflow.com/a/13280173
   printf -- 'ibase=%s; obase=%s; %s\n' "${2:-10}" "${3:-10}" "$(
     printf -- '%s\n' "${1-}" |
