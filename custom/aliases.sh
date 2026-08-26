@@ -1371,7 +1371,7 @@ diff_exif() {
       +o verbose \
       +o xtrace
   } 2>/dev/null
-  rm -r -- "${3-}" 2>/dev/null
+  rm -f -R -- "${3-}" 2>/dev/null
 }
 
 dictionary() {
