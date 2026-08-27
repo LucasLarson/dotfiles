@@ -1901,7 +1901,7 @@ filename_without_extension() {
     return 64
   for file in "${@-}"; do
     # https://stackoverflow.com/a/12152997
-    basename -- "${file%.*}"
+    printf -- '%s\n' "${file%.*}"
   done
 }
 
