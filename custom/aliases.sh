@@ -1511,10 +1511,18 @@ domain_name_tld_list() {
     sed \
       -e 's/\.[[:space:]].*//' \
       -e 's/.*\.//' \
-      -e '/^$/ d' \
       -e '/#/ d' |
     LANG='C' LC_ALL='C' tr -- '[:upper:]' '[:lower:]' |
-    LANG='C' LC_ALL='C' sort -u
+    awk -- 'BEGIN {
+  found = 0
+}
+NF && ! seen[$0]++ {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 
 dotfiles_not_found() {
