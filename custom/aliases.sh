@@ -4996,68 +4996,6 @@ gcr() {
 ######
 # grep
 
-alias gr >/dev/null 2>&1 &&
-  unalias -- gr
-command -v -- _grep >/dev/null 2>&1 &&
-  compdef -- gr='grep' >/dev/null 2>&1
-gr() {
-  # when I’m feeling better I’ll remember why I’m using `grep` instead of `git grep --no-index`
-  case "${1-}" in
-  -*)
-    arguments="${1-}"'EIinr'
-    shift 1
-    ;;
-  *)
-    arguments='-EIinr'
-    ;;
-  esac
-  # -find -L instead of ! -type d because I want to search inside symlinks 2023-01-29
-  find -L -- "${2:-.}" \
-    -path '*/.git' -prune -o \
-    -path '*/node_modules' -prune -o \
-    -path '*/t' -prune -o \
-    -path '*/Test*' -prune -o \
-    -path '*/test*' -prune -o \
-    -path '*/tst*' -prune -o \
-    -path '*copilot*' -prune -o \
-    -path '*dummy*' -prune -o \
-    -path '*vscode*' -prune -o \
-    ! -path 'do not add ! type -l because we actually DO want to search inside symlink targets' \
-    ! -type d \
-    -exec grep "${arguments:--EIinr}" -e "${1-}" {} +
-  unset arguments >/dev/null 2>&1 || arguments=''
-}
-grpt() {
-  # when I’m feeling better I’ll remember why I’m using `grep` instead of `git grep --no-index`
-  case "${1-}" in
-  -*)
-    arguments="${1-}"'EIinr'
-    shift 1
-    ;;
-  *)
-    arguments='-EIinr'
-    ;;
-  esac
-  # -find -L instead of ! -type d because I want to search inside symlinks 2023-01-29
-  find -L -- "${2:-.}" \
-    ! -path '*/.git/*' \
-    ! -path '*/node_modules/*' \
-    ! -path '*/t/*' \
-    ! -path '*/Test*' \
-    ! -path '*/plugins/*' \
-    ! -path '*/test*' \
-    ! -path '*/themes/*' \
-    ! -path '*/tst*' \
-    ! -path '*copilot*' \
-    ! -path '*dummy*' \
-    ! -path '*vscode*' \
-    ! -path 'do not add ! type -l because we actually DO want to search inside symlink targets' \
-    ! -type d \
-    ! -path 'it is arguments:--Ein below so there is a fallback when I wanna copy-pase' \
-    ! -name '.git' \
-    -exec grep "${arguments:--EIinr}" -e "${1-}" {} +
-  unset arguments >/dev/null 2>&1 || arguments=''
-}
 ggr() {
   # riffing on the above while not feeling great # 2022-09-14
   git --no-pager grep \
