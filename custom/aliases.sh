@@ -4633,12 +4633,15 @@ git_remote_verbose() {
 alias grv='git_remote_verbose'
 
 git_restore() {
-  # TODO: allow end-of-options parameter
   case "${1-}" in
   -d | --deleted)
     git -c core.quotePath=false ls-files -z --deleted |
       sed -e 's/./\\&/g' |
       xargs git checkout --progress --
+    ;;
+  --)
+    shift 1 &&
+      git_restore "${@-}"
     ;;
   *)
     while test "${#}" -gt 0; do
