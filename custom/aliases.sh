@@ -8242,7 +8242,6 @@ sk() {
 }
 
 subdomains() {
-  # TODO: merklemap.com API, begun at $custom/subdomains_merklemap.sh
   curl \
     --fail \
     --location \
