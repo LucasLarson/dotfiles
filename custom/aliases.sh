@@ -939,21 +939,10 @@ codesign_r() {
 }
 
 cpplint_filename_extensions() {
-  # valid filename extensions
-  # from 2019-12 until at least 2022-05
-  {
-    # https://github.com/cpplint/cpplint/blob/2cba6ce8df/cpplint.py#L939
-    printf -- 'h hh hpp hxx h++ cuh\n'
-    # https://github.com/cpplint/cpplint/blob/2cba6ce8df/cpplint.py#L945
-    printf -- 'c cc cpp cxx c++ cu\n'
-    # using uppercase filename extensions only where `clang-format` does
-    printf -- 'C c c++ CC cc CPP cpp cu cuh CXX cxx H h h++ hh hpp hxx\n'
-    # https://github.com/BurntSushi/ripgrep/blob/0bc4f0447b/ignore/src/default_types.rs#L37-L40 2023-07
-    printf -- 'cpp hpp cxx hxx hh inl C.in h.in H.in cpp.in hpp.in cxx.in hxx.in hh.in\n'
-  } |
-    LANG='C' LC_ALL='C' tr -s -- '[:space:]' '\n' |
-    LANG='C' LC_ALL='C' sort -u |
-    LANG='C' LC_ALL='C' sort -f
+  # cpplint has had 12 valid filename extensions
+  # since 2018-05-07 until at least 2026
+  # https://github.com/cpplint/cpplint/commit/3d8f6f876d
+  printf -- 'c c++ cc cpp cu cuh cxx h h++ hh hpp hxx\n'
 }
 cpplint_r() {
   PS4=' ' find -- . \
