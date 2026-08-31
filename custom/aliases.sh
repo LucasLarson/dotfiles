@@ -8241,15 +8241,6 @@ sk() {
   } 2>/dev/null
 }
 
-alias \
-  sshf='ssh llarson@freeshell.de' \
-  sshk='ssh kevoc7@oconnor.nyc' \
-  sshc='sshk' \
-  ssho='sshk' \
-  sshl='ssh lucaslarson@lucaslarson.net' \
-  sshs='ssh ll@tty.sdf.org' \
-  sshu='ssh menu@sdf.org'
-
 subdomains() {
   # TODO: merklemap.com API, begun at $custom/subdomains_merklemap.sh
   curl \
