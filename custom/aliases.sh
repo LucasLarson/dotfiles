@@ -2138,8 +2138,17 @@ find_compressed_files() {
       LC_ALL='C' awk -F':' -- '{if (tolower($2) ~ /archive|compress/) print $1}'
 
   } |
-    LANG='C' LC_ALL='C' sort -u |
-    LANG='C' LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' sort -f |
+    awk -- 'BEGIN {
+  found = 0
+}
+NF && ! seen[$0]++ {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 
 find_debug() {
