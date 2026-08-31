@@ -2374,15 +2374,6 @@ find_empty() {
       -path './*' \
       -type d \
       -exec sh -C -f -u -c -- 'for directory in "${@-}"; do test "$(find -- "${directory-}" -path "${directory-}"'\''/*'\'' -print)" = '\'''\'' && printf -- '\''%s\n'\'' "${directory-}"; done' _ {} +
-    ### # POSIX-compliant, but non-portable, `find . -type d -empty`
-    ### LC_ALL='C' IFS='' find -- . \
-    ###   -path '*/.git' -prune -o \
-    ###   -path '*/Library' -prune -o \
-    ###   -path '*/node_modules' -prune -o \
-    ###   -path './*' \
-    ###   -type d \
-    ###   -links 2 \
-    ###   -print
     ;;
   esac
 }
