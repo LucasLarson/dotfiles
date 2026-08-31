@@ -2133,7 +2133,7 @@ find_compressed_files() {
       -path '*/Library' -prune -o \
       -path '*/node_modules' -prune -o \
       -type f \
-      -exec file -- '{}' + 2>/dev/null |
+      -exec file -- {} + 2>/dev/null |
       # allow `file` to find .sit `Archive` files by setting `$2` to lowercase before checking its value
       LC_ALL='C' awk -F':' -- '{if (tolower($2) ~ /archive|compress/) print $1}'
 
