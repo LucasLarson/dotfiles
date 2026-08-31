@@ -2152,9 +2152,6 @@ END {
 }
 
 find_debug() {
-  # @TODO!:
-  # `find -- . -name '[A-Z]*'` returns
-  # `find -- . -name '*'`
   {
     printf -- '# find --debug\n' >&2
     printf -- ' find -D opt -- .\n' >&2
@@ -2170,8 +2167,14 @@ find_debug() {
     printf -- 'sed' >&2
     printf -- ' -e \047# remove redundant -a operator\047' >&2
     printf -- ' -e \047s/[[:space:]]-a[[:space:]]//g\047' >&2
+    printf -- ' -e \047# suppress "[call stat]"\047' >&2
+    printf -- ' -e \047s/\134[call stat\134]//g\047' >&2
+    printf -- ' -e \047# suppress "[need type]"\047' >&2
+    printf -- ' -e \047s/\134[need type\134]//g\047' >&2
+    printf -- ' -e \047# suppress "[need inum]"\047' >&2
+    printf -- ' -e \047s/\134[need inum\134]//g\047' >&2
     printf -- ' -e \047# remove estimates\047' >&2
-    printf -- ' -e \047s/\134[[^]]*\134]//g\047' >&2
+    printf -- ' -e \047s/\134[est success rate[^]]*\134]//g\047' >&2
     printf -- ' -e \047# escape parentheses and colons\047' >&2
     printf -- ' -e \047s/\134([()\134;]\134)/\047\134\047\047\\1\047\134\047\047/g\047' >&2
     printf -- ' -e \047# enclose paths and names with single quotes\047' >&2
