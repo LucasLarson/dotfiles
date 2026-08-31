@@ -8245,6 +8245,9 @@ subdomains() {
   command -v -- curl >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -eq 1 ||
+    # EX_USAGE
+    return 64
   curl \
     --fail \
     --location \
