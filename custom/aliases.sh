@@ -4352,7 +4352,6 @@ gls() {
       ls -1 "${@-}"
     fi
   } |
-    LANG='C' LC_ALL='C' sort -u |
     LANG='C' LC_ALL='C' sort -f
 }
 
