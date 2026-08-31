@@ -8242,6 +8242,9 @@ sk() {
 }
 
 subdomains() {
+  command -v -- curl >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   curl \
     --fail \
     --location \
