@@ -2347,9 +2347,7 @@ find_editorconfig() {
   done
   unset directory >/dev/null 2>&1 || directory=''
 }
-alias \
-  editorconfig_applicable='editorconfig_find' \
-  editorconfig_find='find_editorconfig'
+alias editorconfig_find='find_editorconfig'
 
 find_empty() {
   case "${1-}" in
