@@ -212,8 +212,6 @@ brew "wget"
 brew "xz"
 # Linter for YAML files
 brew "yamllint"
-# JavaScript package manager
-brew "yarn"
 # Yet another shell: a POSIX-compliant command-line shell
 brew "yash"
 # Feature-rich command-line audio/video downloader
