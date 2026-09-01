@@ -202,8 +202,6 @@ brew "tesseract-lang"
 brew "texinfo"
 # Granddaddy of HTML tools, with support for modern standards
 brew "tidy-html5"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Ultra fast grep with query UI, fuzzy search, archive search, and more
 brew "ugrep"
 # Cross-platform Rust rewrite of the GNU coreutils
