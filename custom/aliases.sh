@@ -2826,7 +2826,7 @@ find_files_with_no_extension() {
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     ! -name '*.*' \
-    -type f \
+    ! -type d \
     -print 2>/dev/null
 }
 alias fnx='find_files_with_no_extension'
