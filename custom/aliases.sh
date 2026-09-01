@@ -2342,9 +2342,19 @@ find_editorconfig() {
   set -- "${PWD%/}" &&
     while test "${1-}" != ''; do
       test -f "${1-}"'/.editorconfig' &&
-        printf -- '%s/.editorconfig\n' "${1-}"
+      printf -- '%s/.editorconfig\n' "${1-}"
       set -- "${1%/*}"
-    done
+    done |
+      awk -- 'BEGIN {
+  found = 0
+}
+NF {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 alias editorconfig_find='find_editorconfig'
 
