@@ -106,8 +106,6 @@ brew "ksh93"
 brew "less", args: ["HEAD"]
 # Multi-format archive and compression library
 brew "libarchive"
-# Library for manipulation of the macOS .icns resource format
-brew "libicns"
 # International domain name library (IDNA2008, Punycode and TR46)
 brew "libidn2"
 # X.509 and CMS library
