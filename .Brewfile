@@ -132,8 +132,6 @@ brew "make"
 brew "man-db"
 # MirBSD Korn Shell
 brew "mksh"
-# Generate Objective-C & Swift classes from your Core Data model
-brew "mogenerator"
 # C library for multiple-precision floating-point computations
 brew "mpfr"
 # Text-based UI library
