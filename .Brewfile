@@ -72,8 +72,6 @@ brew "ghostscript"
 brew "git", args: ["HEAD"]
 # Quickly rewrite git repository history
 brew "git-filter-repo"
-# Git extension for versioning large files
-brew "git-lfs"
 # Audit git repos for secrets
 brew "gitleaks"
 # Core application library for C
