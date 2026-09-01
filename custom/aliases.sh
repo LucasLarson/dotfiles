@@ -2339,13 +2339,12 @@ find_duplicate_images() {
 alias fdi='find_duplicate_images'
 
 find_editorconfig() {
-  directory="${PWD%/}"
-  while test "${directory-}" != ''; do
-    test -f "${directory-}"'/.editorconfig' &&
-      printf -- '%s/.editorconfig\n' "${directory-}"
-    directory="${directory%/*}"
-  done
-  unset directory >/dev/null 2>&1 || directory=''
+  set -- "${PWD%/}" &&
+    while test "${1-}" != ''; do
+      test -f "${1-}"'/.editorconfig' &&
+        printf -- '%s/.editorconfig\n' "${1-}"
+      set -- "${1%/*}"
+    done
 }
 alias editorconfig_find='find_editorconfig'
 
