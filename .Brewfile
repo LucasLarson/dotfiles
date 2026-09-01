@@ -88,8 +88,6 @@ brew "go"
 brew "grep"
 # Perceptual JPEG encoder
 brew "guetzli"
-# Convert source code to formatted text with syntax highlighting
-brew "highlight"
 # Website copier/offline browser
 brew "httrack"
 # C/C++ and Java libraries for Unicode and globalization
