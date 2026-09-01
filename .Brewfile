@@ -62,8 +62,6 @@ brew "freetype"
 brew "gawk"
 # GNU compiler collection
 brew "gcc"
-# Bash completion for gem
-brew "gem-completion"
 # GNU internationalization (i18n) and localization (l10n) library
 brew "gettext"
 # GitHub command-line tool
