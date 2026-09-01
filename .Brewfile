@@ -86,8 +86,6 @@ brew "gnu-tar"
 brew "go"
 # GNU grep, egrep and fgrep
 brew "grep"
-# Perceptual JPEG encoder
-brew "guetzli"
 # Website copier/offline browser
 brew "httrack"
 # C/C++ and Java libraries for Unicode and globalization
