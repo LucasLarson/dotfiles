@@ -2452,6 +2452,26 @@ find_files_with_windows_newline() {
     -exec sh -c -- 'file -- "${1-}" | grep -v -e '\'':.*-bit '\'' -e '\'':.*binary'\'' -e '\'':.*executable'\'' -e '\'': GIF image'\'' -e '\'': JPEG image'\'' -e '\'': PNG image'\'' -e '\'': RIFF '\'' >/dev/null 2>&1 && grep -l -e "$(printf -- '\''\015\012'\'')" -- "${1-}" 2>/dev/null' _ {} ';'
 }
 
+find_gitignore() {
+  set -- "${PWD%/}" &&
+    while test "${1-}" != ''; do
+      test -f "${1-}"'/.gitignore' &&
+      printf -- '%s/.gitignore\n' "${1-}"
+      set -- "${1%/*}"
+    done |
+      awk -- 'BEGIN {
+  found = 0
+}
+NF {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
+}
+alias gitignore_find='find_gitignore'
+
 # find HTML
 find_html_files() {
   find -- . \
