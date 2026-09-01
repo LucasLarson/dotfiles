@@ -2711,6 +2711,7 @@ find_json_files() {
     -name '.[Jj][Ss][Hh][Ii][Nn][Tt][Rr][Cc]' -o \
     -name '.[Nn][Yy][Cc][Rr][Cc]' -o \
     -name '.[Pp][Rr][Ee][Tt][Tt][Ii][Ee][Rr][Rr][Cc]' -o \
+    -name '.[Rr][Ee][Ll][Ee][Aa][Ss][Ee][Rr][Cc]' -o \
     -name '.[Rr][Ee][Mm][Aa][Rr][Kk][Rr][Cc]' -o \
     -name '.[Ss][Tt][Yy][Ll][Ee][Ll][Ii][Nn][Tt][Rr][Cc]' -o \
     -name '.[Tt][Ee][Rr][Nn]-[Cc][Oo][Nn][Ff][Ii][Gg]' -o \
@@ -3482,6 +3483,7 @@ find_yaml_files() {
     -name '.clang-tidy' -o \
     -name '.clangd' -o \
     -name '.gemrc' -o \
+    -name '.releaserc' -o \
     -name '.yamllint' -o \
     -name 'docker_fish_history' -o \
     -name 'fish_history' -o \
