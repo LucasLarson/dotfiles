@@ -222,8 +222,6 @@ brew "zizmor"
 brew "zsh", args: ["HEAD"]
 # Voice and text chat software
 cask "discord@canary"
-# App to build and share containerised applications and microservices
-cask "docker"
 # Sci-fi themed terminal emulator and system monitor
 cask "edex-ui"
 cask "git-credential-manager-core"
