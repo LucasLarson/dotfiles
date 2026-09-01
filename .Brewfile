@@ -28,8 +28,6 @@ brew "clang-format"
 brew "cmake"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Static analysis of C and C++ code
-brew "cppcheck"
 # Static code checker for C++
 brew "cpplint"
 # Get a file from an HTTP, HTTPS or FTP server
