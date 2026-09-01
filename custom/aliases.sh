@@ -2341,7 +2341,7 @@ alias fdi='find_duplicate_images'
 find_editorconfig() {
   directory="${PWD%/}"
   while test "${directory-}" != ''; do
-    test -r "${directory-}"'/.editorconfig' &&
+    test -f "${directory-}"'/.editorconfig' &&
       printf -- '%s/.editorconfig\n' "${directory-}"
     directory="${directory%/*}"
   done
