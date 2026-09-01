@@ -14,8 +14,6 @@ brew "bash", args: ["HEAD"]
 brew "bash-completion@2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Remove large files or passwords from Git history like git-filter-branch
-brew "bfg"
 # Python code formatter
 brew "black"
 # Vector graphics library with cross-device output support
