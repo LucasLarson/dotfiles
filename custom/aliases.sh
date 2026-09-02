@@ -2810,7 +2810,7 @@ find_files_with_the_same_names() {
     -exec sh -c -- 'for file in "${@-}"; do
   # treat all as identical: `file.txt`, `file 1.txt`, `file.text`
   #        was `basename -- "${file%.*}"`
-  basename "${file%[0-9]*.*}"
+  basename -- "${file%[0-9]*.*}"
 done' _ {} + |
     LANG='C' LC_ALL='C' sort |
     LC_ALL='C' uniq -d
