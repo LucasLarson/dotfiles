@@ -3012,6 +3012,69 @@ find_animated_png() {
 }
 alias find_png_animated='find_animated_png'
 
+find_plist_files() {
+  # https://bit.ly/apple_property_list_filename_extensions
+  find -- . \
+    -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
+    '(' \
+    -name '*.plist' -o \
+    -name '*.[Aa][Aa][Ee]' -o \
+    -name '*.[Aa][Pp][Pp][Ee][Xx]' -o \
+    -name '*.[Bb][Bb][Cc][Oo][Ll][Oo][Rr][Ss][Cc][Hh][Ee][Mm][Ee]' -o \
+    -name '*.[Cc][Aa][Aa][Rr]' -o \
+    -name '*.[Cc][Oo][Dd][Ee][Ss][Nn][Ii][Pp][Pp][Ee][Tt]' -o \
+    -name '*.[Ee][Nn][Tt][Ii][Tt][Ll][Ee][Mm][Ee][Nn][Tt][Ss]' -o \
+    -name '*.[Ff][Ii][Ll][Ee][Ll][Oo][Cc]' -o \
+    -name '*.[Gg][Ll][Yy][Pp][Hh][Ss]' -o \
+    -name '*.[Ii][Dd][Ee][Kk][Ee][Yy][Bb][Ii][Nn][Dd][Ii][Nn][Gg][Ss]' -o \
+    -name '*.[Ii][Nn][Ee][Tt][Ll][Oo][Cc]' -o \
+    -name '*.[Ii][Nn][Tt][Ee][Nn][Tt][Dd][Ee][Ff][Ii][Nn][Ii][Tt][Ii][Oo][Nn]' -o \
+    -name '*.[Ii][Tt][Ee][Rr][Mm][Cc][Oo][Ll][Oo][Rr][Ss]' -o \
+    -name '*.[Ll][Oo][Cc][Tt][Aa][Bb][Ll][Ee]' -o \
+    -name '*.[Mm][Oo][Bb][Ii][Ll][Ee][Cc][Oo][Nn][Ff][Ii][Gg]' -o \
+    -name '*.[Mm][Oo][Mm]' -o \
+    -name '*.[Pp][Ll][Ii][Ss][Tt]' -o \
+    -name '*.[Pp][Ll][Ii][Ss][Tt].[Ii][Nn]' -o \
+    -name '*.[Ss][Cc][Rr][Ii][Pp][Tt][Ss][Uu][Ii][Tt][Ee]' -o \
+    -name '*.[Ss][Tt][Rr][Ii][Nn][Gg][Ss]' -o \
+    -name '*.[Ss][Tt][Rr][Ii][Nn][Gg][Ss][Dd][Ii][Cc][Tt]' -o \
+    -name '*.[Ss][Tt][Tt][Hh][Ee][Mm][Ee]' -o \
+    -name '*.[Tt][Aa][Gg][Pp][Oo][Oo][Ll]' -o \
+    -name '*.[Tt][Aa][Gg][Ss][Ee][Tt]' -o \
+    -name '*.[Tt][Ee][Xx][Tt][Cc][Ll][Ii][Pp][Pp][Ii][Nn][Gg]' -o \
+    -name '*.[Tt][Mm][Cc][Oo][Mm][Mm][Aa][Nn][Dd]' -o \
+    -name '*.[Tt][Mm][Ll][Aa][Nn][Gg][Uu][Aa][Gg][Ee]' -o \
+    -name '*.[Tt][Mm][Mm][Aa][Cc][Rr][Oo]' -o \
+    -name '*.[Tt][Mm][Pp][Rr][Ee][Ff][Ee][Rr][Ee][Nn][Cc][Ee][Ss]' -o \
+    -name '*.[Tt][Mm][Ss][Nn][Ii][Pp][Pp][Ee][Tt]' -o \
+    -name '*.[Tt][Mm][Tt][Hh][Ee][Mm][Ee]' -o \
+    -name '*.[Tt][Tt][Pp][Ss]' -o \
+    -name '*.[Ww][Aa][Vv][Ee][Ff][Oo][Rr][Mm]' -o \
+    -name '*.[Ww][Ee][Bb][Aa][Rr][Cc][Hh][Ii][Vv][Ee]' -o \
+    -name '*.[Ww][Ee][Bb][Ll][Oo][Cc]' -o \
+    -name '*.[Ww][Ff][Ll][Oo][Ww]' -o \
+    -name '*.[Xx][Cc][Cc][Hh][Ee][Cc][Kk][Oo][Uu][Tt]' -o \
+    -name '*.[Xx][Cc][Cc][Oo][Ll][Oo][Rr][Tt][Hh][Ee][Mm][Ee]' -o \
+    -name '*.[Xx][Cc][Cc][Uu][Rr][Rr][Ee][Nn][Tt][Vv][Ee][Rr][Ss][Ii][Oo][Nn]' -o \
+    -name '*.[Xx][Cc][Pp][Rr][Ii][Vv][Aa][Cc][Yy]' -o \
+    -name '*.[Xx][Cc][Ss][Ee][Tt][Tt][Ii][Nn][Gg][Ss]' -o \
+    -name '*.[Xx][Cc][Uu][Ss][Ee][Rr][Ss][Tt][Aa][Tt][Ee]' \
+    ')' \
+    -type f \
+    -print 2>/dev/null |
+    awk -- 'BEGIN {
+  found = 0
+}
+NF {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
+}
+
 find_powershell_files() {
   find -- . \
     '(' \
