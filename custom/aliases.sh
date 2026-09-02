@@ -2902,7 +2902,7 @@ alias \
   find_duplicate_sizes='find_files_with_the_same_sizes' \
   fds='find_files_with_the_same_sizes'
 
-find_oldest_file() {
+find_oldest_files() {
   (
     find -- . \
       -path '*/.git' -prune -o \
@@ -2912,8 +2912,9 @@ find_oldest_file() {
   ) |
     head -n "${1:-10}"
 }
+alias find_oldest_file='find_oldest_files'
 
-find_newest_file() {
+find_newest_files() {
   (
     find -- . \
       -path '*/.git' -prune -o \
@@ -2938,7 +2939,9 @@ find_newest_file() {
   ) |
     head -n "${1:-10}"
 }
-alias fnf='find_newest_file'
+alias \
+  find_newest_file='find_newest_files' \
+  fnf='find_newest_files'
 
 find_perl_files() {
   # via `find_ruby_files` via `perltidy` 2024-08
