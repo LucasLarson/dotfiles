@@ -6208,16 +6208,6 @@ markdownlint_r() {
   set \
     -o verbose \
     -o xtrace
-  configuration='--config='\''/dev/null'\'''
-  { test -e "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/markdownlint/config.json' &&
-    configuration='--config='"${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/markdownlint/config.json'; } ||
-    { test -e "${XDG_CONFIG_HOME-}"'/markdownlint/config.json' &&
-      configuration='--config='"${XDG_CONFIG_HOME-}"'/markdownlint/config.json'; } ||
-    { test -e "${HOME%/}"'/.markdownlint.json' &&
-      configuration='--config='"${HOME%/}"'/.markdownlint.json'; } ||
-    { test -e "${HOME%/}"'/.markdownlint.yml' &&
-      configuration='--config='"${HOME%/}"'/.markdownlint.yml'; }
-  export configuration
   # Markdown filename extensions
   # https://github.com/github/linguist/blob/7503f7588c/lib/linguist/languages.yml#L3707-L3718
   find -- . \
@@ -6249,18 +6239,12 @@ markdownlint_r() {
     -name 'contents.lr' \
     ')' \
     -type f \
-    -exec sh -x -c -- 'for file in "${@-}"; do
-  git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
-    ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-    markdownlint "${configuration-}" --disable MD013 MD033 --dot --fix -- "${file-}"
-done' _ {} +
-  unset configuration >/dev/null 2>&1 || configuration=''
+    -exec sh -x -c -- 'configuration="$(find -- "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'\''/markdownlint/config.json'\'' "${HOME%/}"'\''/.markdownlint.json'\'' "${HOME%/}"'\''/.markdownlint.yml'\'' /dev/null -exec ls -S -- {} + 2>/dev/null | sed -e '\''1 q'\'')" && for file in "${@-}"; do git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 || ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 && markdownlint --config="${configuration-}" --disable MD013 MD033 --dot --fix -- "${file-}"; done' _ {} +
   {
     set \
       +o verbose \
       +o xtrace
   } 2>/dev/null
-  unset configuration >/dev/null 2>&1 || configuration=''
 }
 
 ## mindepth and maxdepth
