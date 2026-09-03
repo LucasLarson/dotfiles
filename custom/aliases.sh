@@ -6145,6 +6145,7 @@ markdownlint_r() {
   set \
     -o verbose \
     -o xtrace
+  configuration='--config='\''/dev/null'\'''
   { test -e "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/markdownlint/config.json' &&
     configuration='--config='"${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/markdownlint/config.json'; } ||
     { test -e "${XDG_CONFIG_HOME-}"'/markdownlint/config.json' &&
