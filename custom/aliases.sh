@@ -3398,6 +3398,7 @@ find_text_files() {
       -name 'README.me' -o \
       -name 'README.mysql' -o \
       -name 'README.nss' -o \
+      -name 'README.pc' -o \
       -name 'SHA1SUMS' -o \
       -name 'SHA256SUMS' -o \
       -name 'SHA256SUMS.txt' -o \
