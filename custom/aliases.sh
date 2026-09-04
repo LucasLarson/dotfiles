@@ -6489,12 +6489,12 @@ open() {
     case "${1-}" in
     P)
       { test "${2-}" != '' &&
-        open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/utilities/'"${2-}"'.html'; } ||
+        open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/utilities/'"${2-}"'.html#top'; } ||
         open -- 'https://pubs.opengroup.org/onlinepubs/9799919799/idx/utilities.html'
       ;;
     p)
       { test "${2-}" != '' &&
-        open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html'; } ||
+        open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/utilities/'"${2-}"'.html#top'; } ||
         open -- 'https://pubs.opengroup.org/onlinepubs/9699919799/idx/utilities.html'
       ;;
     B)
