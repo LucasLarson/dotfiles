@@ -6568,7 +6568,7 @@ permissions() {
   find -- . -type d -exec chmod -- 755 {} +
   # set non-dotfiles to read-only
   find -- . -path '*/.*' -prune -o -type f -exec chmod -- 644 {} +
-  # make git hooks to executable
+  # make git hooks executable
   find -- . -path '*/.git/hooks/*' -type f -exec chmod -- 755 {} +
   find -- . -path '*/.git/objects' -prune -o -path '*/.git/hooks' -prune -o -type f -exec chmod -- 644 {} +
   find -- . -path '*/.git/objects/*' -type f -exec chmod -- 444 {} +
