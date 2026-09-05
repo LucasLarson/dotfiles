@@ -6827,7 +6827,6 @@ plist_r() {
         -name '*.xcuserstate' \
         ')' \
         -type f \
-        -print \
         -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 || ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 && plutil -convert xml1 -o /tmp/"${1##*/}" -- "${1-}" && sed -e '\''# replace tabs with two spaces each'\'' -e '\''s/\t/  /g'\'' -e '\''# insert each indented line by two more spaces'\'' -e '\''s/^  /    /'\'' -e '\''# indent top-level <dict> elements by two spaces'\'' -e '\''s/^\(<\/\{0,1\}dict>\)/  \1/'\'' /tmp/"${1##*/}" >"${1-}"' _ {} ';'
     else
       while test "${#}" -gt 0; do
