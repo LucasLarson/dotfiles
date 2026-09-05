@@ -7254,7 +7254,7 @@ rbenv_update_r() {
     -perm -700 \
     -exec sh -x -c -- 'for file in "${@-}"; do
   gem install --verbose "${file##*/}"
-done' {} +
+done' _ {} +
   {
     set \
       +o verbose \
