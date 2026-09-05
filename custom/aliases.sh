@@ -7795,7 +7795,8 @@ shellcheck_d() {
       cp -f -p -- "${1-}" "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/'"${1##*/}" &&
       sed \
         -e '/\#[[:blank:]]*shellcheck[[:blank:]][[:blank:]]*disable/ d' \
-        -e 's/[[:blank:]]*\#[[:blank:]]*shellcheck[[:blank:]][[:blank:]]*shell=\(.*\)sh/#!\/usr\/bin\/env \1sh/' \
+        -e '# replace shellcheck shell=𝑥sh, if on line 1, with #!/usr/bin/env 𝑥sh' \
+        -e '1 s/[[:blank:]]*\#[[:blank:]]*shellcheck[[:blank:]][[:blank:]]*shell=\(.*\)sh/#!\/usr\/bin\/env \1sh/' \
         "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/'"${1##*/}" \
         >"${1-}"
     shift 1
