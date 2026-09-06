@@ -9180,7 +9180,7 @@ yamllint_r() {
   git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
     ! git -C "${file%/*}" rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
     yamllint --format colored --strict -- "${file-}"
-done' _ {} ';'
+done' _ {} +
 }
 
 yaml_prettier_r() {
@@ -9231,7 +9231,7 @@ yaml_prettier_r() {
   git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
     ! git -C "${file%/*}" rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
     prettier --log-level log --write -- "${file-}"
-done' _ {} ';'
+done' _ {} +
 }
 
 # YouTube downloader
