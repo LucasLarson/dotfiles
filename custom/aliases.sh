@@ -8704,26 +8704,26 @@ trash_developer() {
     -o verbose \
     -o xtrace
   if test -d "${HOME%/}"'/.Trash'; then
-    target="${HOME%/}"'/.Trash'
+    set -- "${HOME%/}"'/.Trash'
   elif mkdir -p -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash' 2>/dev/null; then
-    target="${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash'
+    set -- "${XDG_DATA_HOME:-${HOME%/}/.local/share}"'/Trash'
   elif mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/.Trash' 2>/dev/null; then
-    target="${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/.Trash'
+    set -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/.Trash'
   else
     # EX_CANTCREAT
     return 73
   fi
-  trash_date="$(LANG='C' LC_ALL='C' date -- '+%Y%m%d%H%M%S')"
+  set -- "${1-}" "$(LANG='C' LC_ALL='C' date -- '+%Y%m%d%H%M%S')"
   mkdir -p -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' &&
-    mv -f -i -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' "${target-}"'/Xcode-'"${trash_date-}"
+    mv -f -i -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' "${1-}"'/Xcode-'"${2-}"
   mkdir -p -- "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' &&
-    mv -f -i -- "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' "${target-}"'/Xcode⁄UserData⁄IB Support-'"${trash_date-}"
+    mv -f -i -- "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' "${1-}"'/Xcode⁄UserData⁄IB Support-'"${2-}"
   mkdir -p -- "${HOME%/}"'/Library/Caches/JetBrains' &&
-    mv -f -i -- "${HOME%/}"'/Library/Caches/JetBrains' "${target-}"'/JetBrains-'"${trash_date-}"
+    mv -f -i -- "${HOME%/}"'/Library/Caches/JetBrains' "${1-}"'/JetBrains-'"${2-}"
   mkdir -p -- "${HOME%/}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' &&
-    mv -f -i -- "${HOME%/}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' "${target-}"'/Carthage-'"${trash_date-}"
+    mv -f -i -- "${HOME%/}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' "${1-}"'/Carthage-'"${2-}"
   mkdir -p -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' &&
-    mv -f -i -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' "${target-}"'/Homebrew-'"${trash_date-}"
+    mv -f -i -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' "${1-}"'/Homebrew-'"${2-}"
   command -v -- brew >/dev/null 2>&1 && {
     brew autoremove --verbose
     brew cleanup --prune=all --verbose
@@ -8755,8 +8755,6 @@ trash_developer() {
         +o verbose \
         +o xtrace
     } 2>/dev/null
-  unset target >/dev/null 2>&1 || target=''
-  unset trash_date >/dev/null 2>&1 || trash_date=''
   printf -- '\n\360\237\232\256  data successfully trashed\n' >&2
 }
 
