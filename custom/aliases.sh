@@ -3372,7 +3372,7 @@ find_shell_scripts() {
           -e '# [do not] prepend each filename with ./ because that is done below' \
           -e '# s/^/.\//' \
           -e '# remove only the two leading spaces' \
-          -e '# because processing text ouput may be easier than emulating jq' \
+          -e '# because processing text output may be easier than emulating jq' \
           -e 's/^  //' \
           -e '# until Linguist learns that Fish is not Shell' \
           -e '/\.fish$/ d'
@@ -4103,7 +4103,7 @@ git_clone() {
       printf -- 'moving into %s...\n' "${2:-$(basename -- "${1-}" .git)}" >&2 &&
       CDPATH='.' cd "${2:-$(basename -- "${1-}" .git)}" >/dev/null 2>&1 &&
       # using `--quiet` plus `--progress` to
-      # hide the suprising the `Cloning into '.'...`
+      # hide the surprising the `Cloning into '.'...`
       git -c core.ignoreCase=false clone --depth 1 --progress --quiet --shallow-submodules --template='' -- "${1%.git}" "${PWD%/}"
     ;;
   -b | --branches)
