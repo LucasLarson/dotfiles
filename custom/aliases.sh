@@ -8387,7 +8387,10 @@ swiftlint_r() {
   find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
-    -name '*.swift' \
+    '(' \
+    -name '*.swift' -o \
+    -name '*.[Ss][Ww][Ii][Ff][Tt]' \
+    ')' \
     -type f \
     -exec sh -x -c -- 'for file in "${@-}"; do
   git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
