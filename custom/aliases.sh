@@ -8447,15 +8447,14 @@ swiftlint_r() {
   command -v -- swiftlint >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
-  # {} + was finding too many files.... so moved to {} \; and then to
-  # -exec sh with too many flags
   IFS=' ' find -- . \
     -name '*.swift' \
     -type f \
-    -exec sh -C -f -u -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  swiftlint lint --enable-all-rules --fix --format --progress -- "${1-}"
-' _ {} ';'
+    -exec sh -x -c -- 'for file in "${@-}"; do
+  git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+    ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    swiftlint lint --enable-all-rules --fix --format --progress -- "${file-}"
+done' _ {} +
 }
 
 tabs_to_spaces() {
