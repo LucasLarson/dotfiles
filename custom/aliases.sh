@@ -8385,6 +8385,8 @@ swiftlint_r() {
     # EX_UNAVAILABLE
     return 69
   find -- . \
+    -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     -name '*.swift' \
     -type f \
     -exec sh -x -c -- 'for file in "${@-}"; do
