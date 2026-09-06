@@ -8384,7 +8384,7 @@ swiftlint_r() {
   command -v -- swiftlint >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
-  IFS=' ' find -- . \
+  find -- . \
     -name '*.swift' \
     -type f \
     -exec sh -x -c -- 'for file in "${@-}"; do
