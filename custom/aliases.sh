@@ -6175,6 +6175,8 @@ markdownlint_r() {
     -name '*.workbook' -o \
     -name 'contents.lr' \
     ')' \
+    ! -name 'changelog.md' \
+    ! -name '[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*.[Mm]*[Dd]*' \
     -type f \
     -exec sh -x -c -- 'configuration="$(find -- "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'\''/markdownlint/config.json'\'' "${HOME%/}"'\''/.markdownlint.json'\'' "${HOME%/}"'\''/.markdownlint.yml'\'' /dev/null -exec ls -S -- {} + 2>/dev/null | sed -e '\''1 q'\'')" && for file in "${@-}"; do git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 || ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 && markdownlint --config="${configuration-}" --disable MD013 MD033 --dot --fix -- "${file-}"; done' _ {} +
   {
@@ -8599,6 +8601,8 @@ textlint_r() {
     -name 'use.mask' -o \
     -name 'use.stable.mask' \
     ')' \
+    ! -name 'changelog*' \
+    ! -name '[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*' \
     -type f \
     -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
   ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
