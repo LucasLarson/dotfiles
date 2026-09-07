@@ -8666,10 +8666,11 @@ textlint_r() {
     ! -name 'changelog*' \
     ! -name '[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*' \
     -type f \
-    -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  npm exec -- textlint --experimental --fix --rule terminology -- "${1-}"
-' _ {} ';'
+    -exec sh -x -c -- 'for file in "${@-}"; do
+  git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+    ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    npm exec -- textlint --experimental --fix --rule terminology -- "${file-}"
+done' _ {} +
   {
     set \
       +o xtrace
