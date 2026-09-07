@@ -8625,7 +8625,6 @@ transfer() {
           { curl --fail --form 'file=@'"${file-}" --location --show-error --silent --url 'https://temp.sh/upload' && printf -- '\n' >&2; } ||
           wget --hsts-file=/dev/null --post-file="${file-}" --quiet 'https://temp.sh/upload' ||
           { curl --fail --location --silent --show-error --upload-file "${file-}" --url 'https://temp.sh' && printf -- '\n' >&2; } ||
-          { curl --fail --location --silent --show-error --upload-file - --url 'https://temp.sh/'"${file-}" && printf -- '\n' >&2; } ||
           { curl --fail --location --silent --show-error --upload-file "${file-}" --url 'https://temp.sh/'"${file##*/}" && printf -- '\n' >&2; } ||
           wget --body-file="${file-}" --hsts-file=/dev/null --method=PUT --output-document=- --quiet 'https://temp.sh/'"${file##*/}" ||
           { curl --fail --location --show-error --silent --upload-file "${file-}" --url 'https://transfer.sh/'"${file##*/}" && printf -- '\n' >&2; } ||
