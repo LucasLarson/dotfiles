@@ -6,7 +6,6 @@
   - [All Applications](#all-applications)
     - [Standard](#standard)
     - [Custom](#custom)
-  - [Brave](#brave)
 - [Status](#status)
 
 ## Access
@@ -58,7 +57,6 @@
 | HTTPS±                        | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd title=Control>⌃</kbd><kbd>H</kbd>                         | bookmarklet                                                  |
 | Make Upper Case               | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd>U</kbd>                                                   | [@Apple](https://github.com/apple) Xcode                     |
 | Minimize All                  | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd title=Control>⌃</kbd><kbd title=Shift>⇧</kbd><kbd>/</kbd> |                                                              |
-| New Private Window with Tor   | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>N</kbd>                                                    | [@Brave](https://github.com/brave) Brave                     |
 | Paste and Match Formatting    | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>V</kbd>                                                    | [@Microsoft](https://github.com/microsoft) Word              |
 | Paste and Match Style         | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>V</kbd>                                                    |                                                              |
 | Quit Safari                   | <kbd title=Command>⌘</kbd><kbd title=Control>⌃</kbd><kbd>Q</kbd>                                                  | [@Apple](https://github.com/apple) Safari                    |
@@ -69,12 +67,6 @@
 | System Preferences…           | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>,</kbd>                                                    | [@Apple](https://github.com/apple) macOS                     |
 | Unfreeze Panes                | <kbd title=Function>fn</kbd><kbd>F3</kbd>                                                                         | [@Microsoft](https://github.com/microsoft) Excel             |
 | WWW±                          | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd title=Control>⌃</kbd><kbd>W</kbd>                         | bookmarklet                                                  |
-
-### Brave
-
-| Menu Title         | Keyboard Shortcut                                                                                                 | Notes                                                                                        |
-|--------------------|-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
-| New Private Window | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd title=Control>⌃</kbd><kbd title=Shift>⇧</kbd><kbd>N</kbd> | this frees <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>N</kbd> for activating Tor |
 
 ## Status
 
