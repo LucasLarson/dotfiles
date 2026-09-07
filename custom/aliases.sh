@@ -8669,7 +8669,9 @@ trash_developer() {
     gem cleanup --verbose
   case "$(
     command -v -- xcrun >/dev/null 2>&1 &&
-      xcrun simctl list -j devices unavailable |
+      xcrun --run -- simctl \
+        list -j \
+        devices unavailable |
       sed \
         -n \
         -e 'H' \
@@ -8682,7 +8684,7 @@ trash_developer() {
   *)
     # this may require `sudo` and
     # this may be on a virtual but ejectable disk
-    xcrun simctl delete unavailable
+    xcrun --run -- simctl delete unavailable
     ;;
   esac &&
     {
