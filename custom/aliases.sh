@@ -6699,22 +6699,13 @@ posix_variables_list() {
 
 ## iCloud
 priority() {
-  case "${1-}" in
-  a)
-    set -- 'American'
-    ;;
-  e)
-    set -- 'Euro'
-    ;;
-  *)
-    set -- "${1:-bird}"
-    ;;
-  esac
+  # increase priority of running process
+  # default iCloud/`bird`
   sudo -- renice -n -20 -p "$(
     ps -a -u "$(
       id -u
     )" |
-      awk -vquery="${1-}" -- '$0 ~ query {print $2; exit}'
+      awk -vquery="${1:-bird}" -- '$0 ~ query {print $2; exit}'
   )" ||
     return "${?:-1}"
 }
