@@ -6762,11 +6762,6 @@ posix_variables_list() {
 
 ## iCloud
 priority() {
-  set \
-    -o noclobber \
-    -o noglob \
-    -o verbose \
-    -o xtrace
   case "${1-}" in
   a)
     set -- 'American'
@@ -6785,13 +6780,6 @@ priority() {
       awk -vquery="${1-}" -- '$0 ~ query {print $2; exit}'
   )" ||
     return "${?:-1}"
-  {
-    set \
-      +o noclobber \
-      +o noglob \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
 }
 
 pledit() {
