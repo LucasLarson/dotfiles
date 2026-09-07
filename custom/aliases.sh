@@ -4828,8 +4828,10 @@ git_submodule_cleanup() {
   git submodule foreach --recursive 'git stash clear'
   command -v -- git_update >/dev/null 2>&1 &&
     git_update "${@-}"
-  set \
-    +o verbose
+  {
+    set \
+      +o verbose
+  } 2>/dev/null
 }
 alias gsc='git_submodule_cleanup'
 
