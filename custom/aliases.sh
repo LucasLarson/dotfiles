@@ -9232,22 +9232,17 @@ alias \
 # history recovery
 # https://unix.stackexchange.com/a/551083
 zsh_history_recovery() {
-  reset="$(
-    set +o
-  )"
   set \
     -o noclobber \
     -o verbose \
     -o xtrace
   builtin fc -W "${1:-./.zsh_history_recovery_$(LANG='C' LC_ALL='C' date -- '+%Y%m%d_%H%M%S')}"
-  builtin eval " ${reset-}"
   {
     set \
       +o noclobber \
       +o verbose \
       +o xtrace
   } 2>/dev/null
-  unset reset >/dev/null 2>&1 || reset=''
 }
 alias \
   history_restore='zsh_history_recovery' \
