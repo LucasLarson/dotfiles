@@ -305,12 +305,10 @@ braces() {
 }
 
 browse() {
-  set \
-    -o xtrace
+  set -o xtrace
   open -a "$(
     {
-      set \
-        +o xtrace
+      set +o xtrace
     } 2>/dev/null
     (
       find -- /Applications \
@@ -329,8 +327,7 @@ browse() {
         -e 'p'
   )" -- "${@-}"
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
 }
 
@@ -684,8 +681,7 @@ alias clang_format_r='clang_format -i 2 -s 2 -w "$(getconf -- UINT_MAX)"'
 
 cleanup() {
   # this function is POSIX in an obnoxiously pedantic way and must never be used
-  set \
-    -o xtrace
+  set -o xtrace
 
   if test -d "${HOME%/}"'/.Trash'; then
     target="${HOME%/}"'/.Trash'
@@ -717,8 +713,7 @@ cleanup() {
       printf -- '\n\n' >&2
       printf -- '\342\233\224\357\270\217 aborting: refusing to run from a macOS standard directory\n' >&2
       printf -- '\n\n' >&2
-      set \
-        +o verbose
+      set +o verbose
       # EX_NOPERM
       return 77
       ;;
@@ -727,8 +722,7 @@ cleanup() {
       ;;
     esac
 
-  set \
-    -o xtrace
+  set -o xtrace
   now="$(LANG='C' LC_ALL='C' date -- '+%Y%m%d%H%M%S')" &&
     export now
 
@@ -905,8 +899,7 @@ EOF
     true
 
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
   unset file >/dev/null 2>&1 || file=''
   unset now >/dev/null 2>&1 || now=''
@@ -2864,8 +2857,7 @@ done' _ {} + |
 }
 
 find_files_with_the_same_sizes() {
-  set \
-    -o noglob
+  set -o noglob
   LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
@@ -2894,8 +2886,7 @@ END {
   }
 }'
   {
-    set \
-      +o noglob
+    set +o noglob
   } 2>/dev/null
 }
 alias \
@@ -4626,8 +4617,7 @@ git_rm_r() {
     return "${?:-1}"
   ps4_temporary="${PS4-}"
   PS4=' '
-  set \
-    -o xtrace
+  set -o xtrace
   find -- . -path '*/.git' -prune -o -path './*/*' -prune -o -path './*' -exec rm -r -- {} + &&
     find -- . -path '*/.git/hooks/*' -type f -exec rm -r -- {} + &&
     find -- . -path '*/.git/hooks' -exec rmdir -- {} + &&
@@ -4635,8 +4625,7 @@ git_rm_r() {
   PS4="${ps4_temporary-}"
   unset ps4_temporary >/dev/null 2>&1 || ps4_temporary=''
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
   command -v -- cleanup >/dev/null 2>&1 &&
     cleanup "${@-}"
@@ -4796,8 +4785,7 @@ alias \
   gstp='git_stash_pop'
 
 git_submodule_cleanup() {
-  set \
-    -o xtrace
+  set -o xtrace
   while test "$(
     find -- . \
       '(' \
@@ -4829,8 +4817,7 @@ git_submodule_cleanup() {
   command -v -- git_update >/dev/null 2>&1 &&
     git_update "${@-}"
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
 }
 alias gsc='git_submodule_cleanup'
@@ -4910,11 +4897,9 @@ git_update() {
   if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 
     command -v -- cleanup >/dev/null 2>&1 &&
-      set \
-        +o noclobber &&
+      set +o noclobber &&
       cleanup "${@-}"
-    set \
-      -o noclobber
+    set -o noclobber
 
     git fetch --all --keep --multiple --progress --prune --verbose --update-shallow
 
@@ -5241,12 +5226,10 @@ hooks_r() {
 }
 
 hw() {
-  set \
-    -o xtrace
+  set -o xtrace
   printf -- 'Hello,%sworld!\n' "${IFS-}"
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
 }
 
@@ -6563,8 +6546,7 @@ perltidy_r() {
 permissions() {
   # restore default file and directory permissions and
   # set owner and group to current user
-  set \
-    -o xtrace
+  set -o xtrace
   git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "${?:-1}"
   chown -R "$(id -u)":"$(id -g)" .
@@ -6577,8 +6559,7 @@ permissions() {
   find -- . -path '*/.git/objects' -prune -o -path '*/.git/hooks' -prune -o -type f -exec chmod -- 644 {} +
   find -- . -path '*/.git/objects/*' -type f -exec chmod -- 444 {} +
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
 }
 
@@ -7942,8 +7923,7 @@ shfmt_r() {
     command -v -- shfmt >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
-  set \
-    -o xtrace
+  set -o xtrace
   find_shell_scripts |
     while IFS='' read -r -- file; do
       git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
@@ -7997,8 +7977,7 @@ shfmt_r() {
           "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" >"${file-}"
     done
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
 }
 shfmt_r_() {
@@ -8008,8 +7987,7 @@ shfmt_r_() {
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
-  set \
-    -o xtrace
+  set -o xtrace
   for file in "${@-}"; do
     shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}" &&
       test -s "${file-}" &&
@@ -8025,8 +8003,7 @@ shfmt_r_() {
         "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" >"${file-}"
   done
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
 }
 shfmt_r_r_() {
@@ -8036,8 +8013,7 @@ shfmt_r_r_() {
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
-  set \
-    -o xtrace
+  set -o xtrace
   for file in "${@-}"; do
     shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}" &&
       test -s "${file-}" &&
@@ -8052,8 +8028,7 @@ shfmt_r_r_() {
         "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" >"${file-}"
   done
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
 }
 shfmt_r_r_r() {
@@ -8063,8 +8038,7 @@ shfmt_r_r_r() {
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
-  set \
-    -o xtrace
+  set -o xtrace
   for file in "${@-}"; do
     shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}" &&
       test -s "${file-}" &&
@@ -8079,8 +8053,7 @@ shfmt_r_r_r() {
         "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp/'"${file##*/}" >"${file-}"
   done
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
 }
 
@@ -8519,8 +8492,7 @@ textlint_r() {
   } ||
     # EX_UNAVAILABLE
     return 69
-  set \
-    -o xtrace
+  set -o xtrace
   # find all Markdown text files, then run `textlint` on them
   find -- . \
     -path '*/.git' -prune -o \
@@ -8590,8 +8562,7 @@ textlint_r() {
     npm exec -- textlint --experimental --fix --rule terminology -- "${file-}"
 done' _ {} +
   {
-    set \
-      +o xtrace
+    set +o xtrace
   } 2>/dev/null
 }
 
