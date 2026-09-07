@@ -304,32 +304,6 @@ braces() {
   } 2>/dev/null
 }
 
-browse() {
-  set -o xtrace
-  open -a "$(
-    {
-      set +o xtrace
-    } 2>/dev/null
-    (
-      find -- /Applications \
-        -path '/Applications/*/*' -prune -o \
-        -name 'Brave*' \
-        -type d \
-        -exec ls -d -1 -t -- {} + 2>/dev/null \
-        &
-    ) |
-      sed \
-        -n \
-        -e '/1/ {' \
-        -e '  s/^\/Applications\///' \
-        -e '  s/\.app$//' \
-        -e '}' \
-        -e 'p'
-  )" -- "${@-}"
-  {
-    set +o xtrace
-  } 2>/dev/null
-}
 
 # cargo
 cargo_install() {
