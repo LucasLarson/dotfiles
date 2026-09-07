@@ -6126,7 +6126,7 @@ ms() {
   maestral status |
     sed \
       -e '/^$/ N' \
-      -e '/\\n$/ D' \
+      -e '/\n$/ D' \
       -e '/Path *Error/,$ d'
 }
 command -v -- op >/dev/null 2>&1 && {
@@ -6748,9 +6748,8 @@ posix_variables_list() {
     LANG='C' LC_ALL='C' sort -u |
     LANG='C' LC_ALL='C' sort -f |
     while IFS='' read -r -- variable; do
-      # escape even backslashes in double-quoted strings (OILS-ERR-12)
-      test "$(eval " printf -- '%s\\n' \$${variable-}" 2>/dev/null)" = '' ||
-        printf -- '%s:\t%s\n' "${variable-}" "$(eval " printf -- '%s\\n' \$${variable-}")"
+      test "$(eval " printf -- '%s\n' \$${variable-}" 2>/dev/null)" = '' ||
+        printf -- '%s:\t%s\n' "${variable-}" "$(eval " printf -- '%s\n' \$${variable-}")"
     done
   shift 1
   #   @TODO:
