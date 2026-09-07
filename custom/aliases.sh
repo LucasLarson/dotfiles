@@ -4797,7 +4797,7 @@ alias \
 
 git_submodule_cleanup() {
   set \
-    -o verbose
+    -o xtrace
   while test "$(
     find -- . \
       '(' \
@@ -4830,7 +4830,7 @@ git_submodule_cleanup() {
     git_update "${@-}"
   {
     set \
-      +o verbose
+      +o xtrace
   } 2>/dev/null
 }
 alias gsc='git_submodule_cleanup'
