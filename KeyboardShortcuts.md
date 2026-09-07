@@ -1,5 +1,7 @@
 # Keyboard Shortcuts
+
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
 - [Access](#access)
 - [Shortcuts](#shortcuts)
   - [Keys](#keys)
@@ -15,17 +17,17 @@
 1. select the <kbd>Shortcuts</kbd> tab
 1. select <kbd>App Shortcuts</kbd> from the left column
 1. tap <kbd>+</kbd> to add a new one:
-    1. set <kbd>Application:</kbd> to <kbd>All Applications</kbd>
-    1. set <kbd>Menu Title:</kbd> to match exactly the menu entry targeted
-    1. set <kbd>Keyboard Shortcut:</kbd> to your taste
-    1. tap <kbd>Add</kbd>
+   1. set <kbd>Application:</kbd> to <kbd>All Applications</kbd>
+   1. set <kbd>Menu Title:</kbd> to match exactly the menu entry targeted
+   1. set <kbd>Keyboard Shortcut:</kbd> to your taste
+   1. tap <kbd>Add</kbd>
 
 ## Shortcuts
 
 ### Keys
 
 | Name    | Glyph                      | Code                         |
-|---------|----------------------------|------------------------------|
+| ------- | -------------------------- | ---------------------------- |
 | Command | <kbd title=Command>⌘</kbd> | `<kbd title=Command>⌘</kbd>` |
 | Option  | <kbd title=Option>⌥</kbd>  | `<kbd title=Option>⌥</kbd>`  |
 | Control | <kbd title=Control>⌃</kbd> | `<kbd title=Control>⌃</kbd>` |
@@ -45,13 +47,13 @@
 #### Standard
 
 | Menu Title     | Keyboard Shortcut                                              |
-|----------------|----------------------------------------------------------------|
+| -------------- | -------------------------------------------------------------- |
 | Show Help menu | <kbd title=Command>⌘</kbd><kbd title=Shift>⇧</kbd><kbd>/</kbd> |
 
 #### Custom
 
 | Menu Title                    | Keyboard Shortcut                                                                                                 | Application                                                  |
-|-------------------------------|-------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
 | All Upper Case                | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd>U</kbd>                                                   | Barebones [@BBEdit](https://github.com/BBEdit)               |
 | Freeze Panes                  | <kbd title=Function>fn</kbd><kbd>F3</kbd>                                                                         | [@Microsoft](https://github.com/microsoft) Excel             |
 | HTTPS±                        | <kbd title=Command>⌘</kbd><kbd title=Option>⌥</kbd><kbd title=Control>⌃</kbd><kbd>H</kbd>                         | bookmarklet                                                  |
