@@ -9324,8 +9324,7 @@ zshoptions_search() {
       -e 's/^[[:space:]]*//' \
       -e 's/^[Nn][Oo]//' \
       -e 's/[[:space:]]*$//' |
-    awk -- '
-{
+    awk -- '{
   for (i = 1; i <= length($0); i++) {
     printf "[%s%s]", toupper(substr($0, i, 1)), tolower(substr($0, i, 1))
     # skip printing `_*` after the last character
@@ -9334,8 +9333,7 @@ zshoptions_search() {
     }
   }
   printf "\n"
-}
-' |
+}' |
     tee -- /dev/tty |
     {
       xclip -selection clipboard ||
