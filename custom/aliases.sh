@@ -9343,7 +9343,7 @@ zshoptions_search() {
     } >/dev/null 2>&1
 }
 
-## zero-width space
+## zero-width space, shrug, and sparkle
 # copy to macOS clipboard
 alias \
   zwsp='printf -- '\''​'\'' | pbcopy' \
