@@ -8854,7 +8854,10 @@ url_to_filename() {
 }
 
 variable_value() {
-  for possible_variable in "${@:-HOME}"; do
+  test "${#}" -gt 0 ||
+    # EX_USAGE
+    return 64
+  for possible_variable in "${@-}"; do
     test "$(eval " printf -- '%s' \"\${${possible_variable-}-}\"")" != '' &&
       printf -- '%s:\t%s\n' "${possible_variable-}" "$(eval " echo \$${possible_variable-}")"
   done
