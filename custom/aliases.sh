@@ -9305,7 +9305,7 @@ alias \
 # history recovery
 # https://unix.stackexchange.com/a/551083
 zsh_history_recovery() {
-  builtin fc -W "${1:-./zsh_history_recovery_$(LANG='C' LC_ALL='C' date -- '+%Y%m%d_%H%M%S')}"
+  builtin fc -W ./zsh_history_recovery_"$(LANG='C' LC_ALL='C' date -- '+%Y%m%d')"
 }
 alias \
   history_restore='zsh_history_recovery' \
