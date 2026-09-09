@@ -9269,19 +9269,18 @@ zshabbr() {
     -o verbose \
     -o xtrace
   if test -s "${ABBR_USER_ABBREVIATIONS_FILE-}"; then
-    target="${ABBR_USER_ABBREVIATIONS_FILE-}"
+    set -- "${ABBR_USER_ABBREVIATIONS_FILE-}"
   elif test -s "${XDG_CONFIG_HOME-}"'/zsh-abbr/user-abbreviations'; then
-    target="${XDG_CONFIG_HOME-}"'/zsh-abbr/user-abbreviations'
+    set -- "${XDG_CONFIG_HOME-}"'/zsh-abbr/user-abbreviations'
   elif test -s "${XDG_CONFIG_HOME-}"'/zsh/abbreviations'; then
-    target="${XDG_CONFIG_HOME-}"'/zsh/abbreviations'
+    set -- "${XDG_CONFIG_HOME-}"'/zsh/abbreviations'
   else
     # EX_NOINPUT
     return 66
   fi
-  "${EDITOR:-vi}" -- "${target-}" &&
-    shfmt --indent 2 --language-dialect bash --simplify --write -- "${target-}" &&
+  "${EDITOR:-vi}" -- "${1-}" &&
+    shfmt --indent 2 --language-dialect bash --simplify --write -- "${1-}" &&
     abbr load
-  unset target >/dev/null 2>&1 || target=''
   {
     set \
       +o noglob \
