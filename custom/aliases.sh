@@ -8857,8 +8857,9 @@ variable_value() {
     # EX_USAGE
     return 64
   for possible_variable in "${@-}"; do
-    test "$(eval " printf -- '%s' \"\${${possible_variable-}-}\"")" != '' &&
-      printf -- '%s:\t%s\n' "${possible_variable-}" "$(eval " echo \$${possible_variable-}")"
+    eval " test \"\${${possible_variable-}+x}\" != ''" &&
+      printf -- '\044%s\t' "${possible_variable-}" >&2 &&
+      eval " printf -- '%s\n' \"\${${possible_variable-}-}\""
   done
 }
 # return string's value as a variable if so set
