@@ -9035,9 +9035,14 @@ wget_download() {
         awk -- '! seen[$1]++ {print $1}' |
         grep -c -e '.'
     )" -eq 1 ||
-    # or we fail
-    # EX_CONFIG
-    return 78
+    {
+      {
+        set +o xtrace
+      } 2>/dev/null
+      # EX_CONFIG
+      return 78
+    }
+
   CDPATH='.' cd "${HOME%/}"'/Sites' >/dev/null 2>&1 ||
     return "${?:-1}"
 
