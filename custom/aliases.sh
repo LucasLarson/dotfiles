@@ -9085,8 +9085,8 @@ wget_download() {
 which() {
   if builtin which "${@-}" >/dev/null 2>&1; then
     builtin which -a -s -x 2 "${@-}"
-  elif "${HOMEBREW_PREFIX-}"'/bin/which' "${@-}" >/dev/null 2>&1; then
-    "${HOMEBREW_PREFIX-}"'/bin/which' "${@-}"
+  elif command "${HOMEBREW_PREFIX-}"'/bin/which' "${@-}" >/dev/null 2>&1; then
+    command "${HOMEBREW_PREFIX-}"'/bin/which' "${@-}"
   elif command '/usr/bin/which' "${@-}" >/dev/null 2>&1; then
     command '/usr/bin/which' "${@-}"
   elif command '/bin/which' "${@-}" >/dev/null 2>&1; then
