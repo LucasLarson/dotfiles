@@ -304,7 +304,6 @@ braces() {
   } 2>/dev/null
 }
 
-
 # cargo
 cargo_install() {
   # https://forge.rust-lang.org/infra/other-installation-methods.html#rustup
