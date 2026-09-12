@@ -6437,7 +6437,6 @@ office_update() {
     -name 'msupdate' \
     -type f \
     -perm -700 \
-    -exec basename -- {} ';' \
     -exec {} --list ';' 2>/dev/null
 }
 
