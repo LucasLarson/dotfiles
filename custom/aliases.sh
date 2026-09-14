@@ -3323,8 +3323,8 @@ find_shell_scripts() {
       -path '*vscode*' -prune -o \
       -path '*/etc/profile' -prune -o \
       -path '*/bat/config' -prune -o \
-      ! -name '*.fish' \
-      ! -name '*.rs' \
+      ! -name '*.[Ff][Ii][Ss][Hh]' \
+      ! -name '*.[Rr][Ss]' \
       -type f \
       -exec sh -c -- 'LC_ALL='\''C'\'' sed -e '\''# does the first non-empty line resemble a shell directive?'\'' -e '\''/./,$! d'\'' -e '\''1 q'\'' "${1-}" | grep -e '\''^#!.*bin.*[^c]sh'\'' -e '\''^[[:space:]]*\(function[[:space:]]\)\{0,1\}[[:space:]]*[A-Za-z_][-A-Za-z_0-9]*()[[:space:]]*{.*$'\'' -e '\''autoload'\'' -e '\''compdef'\'' -e '\''openrc'\'' >/dev/null 2>&1 && printf -- '\''%s\n'\'' "${1-}"' _ {} ';'
 
