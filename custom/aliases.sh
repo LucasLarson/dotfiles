@@ -3326,7 +3326,7 @@ find_shell_scripts() {
       ! -name '*.[Ff][Ii][Ss][Hh]' \
       ! -name '*.[Rr][Ss]' \
       -type f \
-      -exec sh -c -- 'LC_ALL='\''C'\'' sed -e '\''# does the first non-empty line resemble a shell directive?'\'' -e '\''/./,$! d'\'' -e '\''q'\'' "${1-}" | grep -e '\''^#!.*bin.*[^c]sh'\'' -e '\''^[[:space:]]*\(function[[:space:]]\)\{0,1\}[[:space:]]*[A-Za-z_][-A-Za-z_0-9]*()[[:space:]]*{.*$'\'' -e '\''autoload'\'' -e '\''compdef'\'' -e '\''openrc'\'' >/dev/null 2>&1 && printf -- '\''%s\n'\'' "${1-}"' _ {} ';'
+      -exec sh -c -- 'for file in "${@-}"; do LC_ALL='\''C'\'' sed -e '\''# does the first non-empty line resemble a shell directive?'\'' -e '\''/./,$! d'\'' -e '\''q'\'' -- "${file-}" | grep -e '\''^#!.*bin.*[^c]sh'\'' -e '\''^[[:space:]]*\(function[[:space:]]\)\{0,1\}[[:space:]]*[A-Za-z_][-A-Za-z_0-9]*()[[:space:]]*{.*$'\'' -e '\''autoload'\'' -e '\''compdef'\'' -e '\''openrc'\'' >/dev/null 2>&1 && printf -- '\''%s\n'\'' "${file-}"; done' _ {} +
 
     ## combine `shfmt -f` and `linguist --breakdown`:
     # - they both require a prepended `./`
