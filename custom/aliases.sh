@@ -3230,7 +3230,19 @@ find_shell_scripts() {
       -name '*.ebuild' -o \
       -name '*.eclass' -o \
       -name '*.env' -o \
+      -name '*.env.ci' -o \
+      -name '*.env.dev' -o \
+      -name '*.env.development' -o \
+      -name '*.env.development.local' -o \
       -name '*.env.example' -o \
+      -name '*.env.local' -o \
+      -name '*.env.prod' -o \
+      -name '*.env.production' -o \
+      -name '*.env.sample' -o \
+      -name '*.env.staging' -o \
+      -name '*.env.template' -o \
+      -name '*.env.test' -o \
+      -name '*.env.testing' -o \
       -name '*.envrc' -o \
       -name '*.fcgi' -o \
       -name '*.flaskenv' -o \
