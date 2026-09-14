@@ -3360,7 +3360,19 @@ find_shell_scripts() {
     # @TODO!consider additionally `grep -v` to hide unwanted results faster
 
   } |
-    awk -- '! seen[$0]++ {print}'
+    # suppress Fish files,
+    # suppress duplicates, and
+    # fail if there is no output
+    awk -- 'BEGIN {
+  found = 0
+}
+NF && ! seen[$0]++ && ! /\.[Ff][Ii][Ss][Hh]$/ {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 
 find_smallest_files() {
