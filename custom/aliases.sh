@@ -37,12 +37,6 @@ acrobat() {
   test "${#}" -gt 0 ||
     # EX_USAGE
     return 64
-  set \
-    -o noclobber \
-    -o noglob \
-    -o nounset \
-    -o verbose \
-    -o xtrace
   for file in "${@}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
@@ -66,14 +60,6 @@ acrobat() {
             -e 'p'
       )" -- "${file-}"
   done
-  {
-    set \
-      +o noclobber \
-      +o noglob \
-      +o nounset \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
 }
 
 awk_pretty() {
