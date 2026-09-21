@@ -665,8 +665,7 @@ cleanup() {
     test "${PWD%/*}" = "${HOME%/}" &&
     case "$(
       pwd -P |
-        sed \
-          -e 's/.*\/[[:space:]]*//'
+        sed -e 's/.*\/[[:space:]]*//'
     )" in
     [[:upper:]]*)
       printf -- '\n\n' >&2
@@ -2186,8 +2185,7 @@ fdupes() {
     --size \
     "${@:-.}" \
     2>/dev/null |
-    sed \
-      -e '/^No duplicates found\.$/ d'
+    sed -e '/^No duplicates found\.$/ d'
 }
 find_duplicate_cksum() {
   find -- . \
@@ -3855,8 +3853,7 @@ g() {
       git status -- "${@}"
     else
       git -c color.status=always -c core.quotePath=false "${@:-status}" |
-        sed \
-          -e '$ d'
+        sed -e '$ d'
     fi
     ;;
   esac
@@ -3866,8 +3863,7 @@ alias \
   gss='git -c color.status=auto -c core.quotePath=false status --porcelain=v1'
 guo() {
   git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 
 # git add
@@ -3919,8 +3915,7 @@ git_add() {
     ;;
   esac &&
     git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 alias \
   ga='git_add' \
@@ -4135,8 +4130,7 @@ git_commit() {
     ;;
   esac
   git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 alias \
   gc='git_commit' \
@@ -4243,8 +4237,7 @@ gfgs() {
     --verbose \
     "${@}" &&
     git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 
 # git parents, git child
@@ -4331,8 +4324,7 @@ git_garbage_collection() {
         +o xtrace
     } 2>/dev/null
     git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-      sed \
-        -e '$ d'
+      sed -e '$ d'
   else
     return "${?:-1}"
   fi
@@ -4495,8 +4487,7 @@ gmm() {
 git_move() {
   if git mv --force --verbose "${@}" 2>/dev/null; then
     git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-      sed \
-        -e '$ d'
+      sed -e '$ d'
   elif mv -i "${@}"; then
     return 0
   else
@@ -4576,8 +4567,7 @@ git_pull() {
     git rebase --strategy-option=theirs
   }
   git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 alias gp='git_pull'
 
@@ -4643,8 +4633,7 @@ git_push() {
     ;;
   esac
   git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 alias gps='git_push'
 
@@ -4677,8 +4666,7 @@ git_rm_r() {
     cleanup "${@}"
   git reset --quiet HEAD -- . &&
     git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 alias grm.='git_rm_r'
 
@@ -4873,8 +4861,7 @@ git_submodule_update() {
   git submodule update --init --remote "${@}" &&
     git submodule sync "${@}" &&
     git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 alias gsu='git_submodule_update'
 
@@ -4969,8 +4956,7 @@ git_update() {
       +o xtrace
   } 2>/dev/null
   git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 alias gu='git_update'
 
@@ -5846,8 +5832,7 @@ breakdown() {
         sed -e '1 q'
     )" 2>/dev/null ||
       "${utility-}" --breakdown "${@}" "$(git rev-parse --show-toplevel)" 2>/dev/null |
-      sed \
-        -e '$ d'
+      sed -e '$ d'
     ;;
   esac
   unset utility >/dev/null 2>&1 || utility=''
@@ -6055,8 +6040,7 @@ mu() {
   git submodule update --init --recursive
   git submodule sync --recursive
   git -c color.status=always -c core.quotePath=false status --untracked-files=no |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 
 # dotfiles
@@ -6069,8 +6053,7 @@ dot() {
   l 2>/dev/null ||
     ls -A -F -g -o 2>/dev/null
   git -c color.status=always -c core.quotePath=false status --untracked-files=no 2>/dev/null |
-    sed \
-      -e '$ d'
+    sed -e '$ d'
 }
 alias \
   .f='{ mkdir -p -- "${HOME%/}"'\''/c/.f'\'' && CDPATH='\''.'\'' cd "${HOME%/}"'\''/c/.f'\'' >/dev/null 2>&1; } || return "${?:-1}"' \
@@ -8709,8 +8692,7 @@ update_changelog() {
       git rev-parse \
         --path-format=relative \
         --show-toplevel |
-        sed \
-          -e '1 q'
+        sed -e '1 q'
     )" >/dev/null 2>&1 ||
       CDPATH='.' cd "$(
         git rev-parse \
