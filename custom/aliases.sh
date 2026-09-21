@@ -1391,7 +1391,8 @@ docker_r() {
     -o xtrace
   case "${1-}" in
   --arch)
-    set -- --archlinux
+    shift 1 &&
+      set -- --archlinux "${@}"
     ;;
   --latest)
     docker exec --interactive --tty "$(docker ps "${1-}" --quiet)" "${2:-/bin/zsh}" ||
