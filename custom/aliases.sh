@@ -1265,7 +1265,17 @@ define() {
       }
       ;;
     esac
-  done
+  done |
+    awk -- 'BEGIN {
+  found = 0
+}
+NF {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 alias d='define'
 
