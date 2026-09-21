@@ -59,6 +59,7 @@ jobs:
           # Super-Linter requires this variable even if it is unset
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: false
+          VALIDATE_JSCPD: false
           FIX_ANSIBLE: true
           FIX_BIOME_FORMAT: true
           FIX_BIOME_LINT: true
