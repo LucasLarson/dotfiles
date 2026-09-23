@@ -13,10 +13,6 @@
       "version": "9.4.0",
       "overridden": false
     },
-    "standard": {
-      "version": "17.0.0",
-      "overridden": false
-    },
     "trash-cli": {
       "version": "5.0.0",
       "overridden": false
