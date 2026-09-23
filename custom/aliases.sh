@@ -8517,7 +8517,6 @@ temperature() {
     # 𝑛 + narrow non-breaking space + degree sign + F
     awk -- '/CPU die temperature/ {printf "%.3f\342\200\257\302\260F\n", $4 * 9 / 5 + 32; exit}'
 }
-alias temp='temperature'
 
 textlint_r() {
   {
