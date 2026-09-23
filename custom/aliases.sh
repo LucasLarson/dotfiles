@@ -4727,7 +4727,7 @@ git_search() {
         --perl-regexp \
         --ignore-case \
         --line-number \
-        -e "${@}" \
+        "${@}" \
         "${commit-}" --
     done
 }
@@ -5062,7 +5062,7 @@ ggr() {
     --no-index \
     --recurse-submodules \
     --recursive \
-    -e "${@}"
+    "${@}"
 }
 
 rg() {
