@@ -1484,7 +1484,7 @@ dotfiles_not_found() {
     -path "${DOTFILES-}"'/*/*' -prune -o \
     -name '.git*' -prune -o \
     -name '.*' \
-    -exec sh -c -- 'for file in "${@}"; do test -e "${HOME%/}${file##*"${DOTFILES-}"}" || printf -- '\''~%s not found\n'\'' "${file##*"${DOTFILES-}"}" >&2; done' _ {} +
+    -exec sh -c -- 'for file in "${@}"; do test -e "${HOME%/}${file##*"${DOTFILES-}"}" || { printf -- '\''~%s'\'' "${file##*"${DOTFILES-}"}" && printf -- '\'' not found'\'' >&2 && printf -- '\''\n'\''; }; done' _ {} +
 }
 alias find_missing_dotfiles='dotfiles_not_found'
 
