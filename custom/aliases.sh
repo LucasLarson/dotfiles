@@ -1477,10 +1477,6 @@ END {
 }
 
 dotfiles_not_found() {
-  set \
-    -o noclobber \
-    -o noglob \
-    -o verbose
   test "${DOTFILES-}" != '' ||
     # EX_CONFIG
     return 78
@@ -1489,12 +1485,6 @@ dotfiles_not_found() {
     -name '.git*' -prune -o \
     -name '.*' \
     -exec sh -c -- 'test -e "${HOME%/}${1##*"${DOTFILES-}"}" || printf -- '\''~%s not found\n'\'' "${1##*"${DOTFILES-}"}" >&2' _ {} ';'
-  {
-    set \
-      +o noclobber \
-      +o noglob \
-      +o verbose
-  } 2>/dev/null
 }
 alias find_missing_dotfiles='dotfiles_not_found'
 
