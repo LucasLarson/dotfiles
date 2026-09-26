@@ -7956,7 +7956,7 @@ shfmt_r() {
   find_shell_scripts |
     while IFS='' read -r -- file; do
       git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
-        shfmt --indent "${@:-2}" --language-dialect bash --simplify --write -- "${file-}" &&
+        shfmt --indent 2 --language-dialect bash --simplify --write -- "${file-}" &&
         test -s "${file-}" &&
         test ! -L "${file-}" &&
         mkdir -p -- "${TMPDIR:-${TEMP:-${TMP:-/tmp}}}"'/tmp' &&
