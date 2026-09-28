@@ -6075,6 +6075,9 @@ command -v -- maestral >/dev/null 2>&1 && {
   }
 }
 ms() {
+  command -v -- maestral >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   maestral status |
     sed \
       -e '/^$/ N' \
