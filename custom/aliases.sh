@@ -8583,6 +8583,8 @@ textlint_r() {
     ')' \
     ! -name 'changelog*' \
     ! -name '[Cc][Hh][Aa][Nn][Gg][Ee]*[Ll][Oo][Gg]*' \
+    ! -name 'LICENSE*' \
+    ! -name '[Ll][Ii][Cc][Ee][Nn][CcSs][Ee]*' \
     -type f \
     -exec sh -x -c -- 'for file in "${@}"; do
   git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
