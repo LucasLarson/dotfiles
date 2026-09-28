@@ -6057,9 +6057,9 @@ dot() {
     sed -e '$ d'
 }
 alias \
-  .f='{ mkdir -p -- "${HOME%/}"'\''/c/.f'\'' && CDPATH='\''.'\'' cd "${HOME%/}"'\''/c/.f'\'' >/dev/null 2>&1; } || return "${?:-1}"' \
-  .m='{ mkdir -p -- "${HOME%/}"'\''/c/.m'\'' && CDPATH='\''.'\'' cd "${HOME%/}"'\''/c/.m'\'' >/dev/null 2>&1; } || return "${?:-1}"' \
-  .g='{ mkdir -p -- "${_GITHUB:-${HOME%/}/c/.g}" && CDPATH='\''.'\'' cd "${_GITHUB:-${HOME%/}/c/.g}" >/dev/null 2>&1; } || return "${?:-1}"'
+  .f='{ test -d "${HOME%/}"'\''/c/.f'\'' && CDPATH='\''.'\'' cd "${HOME%/}"'\''/c/.f'\'' >/dev/null 2>&1; } || return "${?:-1}"' \
+  .m='{ test -d "${HOME%/}"'\''/c/.m'\'' && CDPATH='\''.'\'' cd "${HOME%/}"'\''/c/.m'\'' >/dev/null 2>&1; } || return "${?:-1}"' \
+  .g='{ test -d "${_GITHUB:-${HOME%/}/c/.g}" && CDPATH='\''.'\'' cd "${_GITHUB:-${HOME%/}/c/.g}" >/dev/null 2>&1; } || return "${?:-1}"'
 
 ## Maestral && 1Password somehow
 command -v -- maestral >/dev/null 2>&1 && {
