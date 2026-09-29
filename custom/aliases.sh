@@ -9169,7 +9169,7 @@ yamllint_r() {
     -type f \
     -exec sh -c -- 'for file in "${@}"; do
   git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
-    ! git -C "${file%/*}" rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
     yamllint --format colored --strict -- "${file-}"
 done' _ {} +
 }
@@ -9220,7 +9220,7 @@ yaml_prettier_r() {
     -type f \
     -exec sh -c -- 'for file in "${@}"; do
   git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
-    ! git -C "${file%/*}" rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
     prettier --log-level log --write -- "${file-}"
 done' _ {} +
 }
