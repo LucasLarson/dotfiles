@@ -5700,6 +5700,56 @@ ip() {
       -e 's/.*"\(.*\)".*/\1/p'
 }
 
+javascript_prettier_r() {
+  command -v -- prettier >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  find -- . \
+    -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
+    -path '*/coverage' -prune -o \
+    -path '*/vendor' -prune -o \
+    '(' \
+    -name '*.js' -o \
+    -name '*._[Jj][Ss]' -o \
+    -name '*.[Bb][Oo][Nn][Ee][Ss]' -o \
+    -name '*.[Cc][Jj][Ss]' -o \
+    -name '*.[Ee][Ss]' -o \
+    -name '*.[Ee][Ss]6' -o \
+    -name '*.[Ff][Rr][Aa][Gg]' -o \
+    -name '*.[Gg][Jj][Ss]' -o \
+    -name '*.[Gg][Ss]' -o \
+    -name '*.[Jj][Aa][Kk][Ee]' -o \
+    -name '*.[Jj][Aa][Kk][Ee][Ff][Ii][Ll][Ee]' -o \
+    -name '*.[Jj][Aa][Vv][Aa][Ss][Cc][Rr][Ii][Pp][Tt]' -o \
+    -name '*.[Jj][Ss]' -o \
+    -name '*.[Jj][Ss][Bb]' -o \
+    -name '*.[Jj][Ss][Cc][Aa][Dd]' -o \
+    -name '*.[Jj][Ss][Ff][Ll]' -o \
+    -name '*.[Jj][Ss][Ll][Ii][Bb]' -o \
+    -name '*.[Jj][Ss][Mm]' -o \
+    -name '*.[Jj][Ss][Pp][Rr][Ee]' -o \
+    -name '*.[Jj][Ss][Ss]' -o \
+    -name '*.[Jj][Ss][Xx]' -o \
+    -name '*.[Mm][Jj][Ss]' -o \
+    -name '*.[Nn][Jj][Ss]' -o \
+    -name '*.[Pp][Aa][Cc]' -o \
+    -name '*.[Ss][Jj][Ss]' -o \
+    -name '*.[Ss][Ss][Jj][Ss]' -o \
+    -name '*.[Xx][Ss][Jj][Ss]' -o \
+    -name '*.[Xx][Ss][Jj][Ss][Ll][Ii][Bb]' \
+    ')' \
+    ! -name '*-[Mm][Ii][Nn].[Jj][Ss]' \
+    ! -name '*.[Mm][Ii][Nn].[Jj][Ss]' \
+    -type f \
+    -exec sh -x -c -- 'for file in "${@}"; do
+  git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+    ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    prettier --log-level log --write -- "${file-}"
+done' _ {} +
+}
+alias standard_r='javascript_prettier_r'
+
 ## JPEG
 to_jpg() {
   command -v -- magick >/dev/null 2>&1 ||
