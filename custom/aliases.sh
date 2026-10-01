@@ -8405,7 +8405,10 @@ stylelint_r() {
     -path '*copilot*' -prune -o \
     -path '*dummy*' -prune -o \
     -path '*vscode*' -prune -o \
-    -name '*.css' \
+    '(' \
+    -name '*.css' -o \
+    -name '*.[Cc][Ss][Ss]' \
+    ')' \
     -type f \
     -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
   ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
