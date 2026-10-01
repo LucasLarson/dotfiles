@@ -8388,7 +8388,11 @@ stylelint_r() {
       -exec ls -1 -S -- {} + 2>/dev/null |
       sed -e '1 q'
   )" &&
-    export configuration='--config='"${configuration-}"
+    test -s "${configuration-}" ||
+    # EX_CONFIG
+    return 78
+    configuration='--config='"${configuration-}" &&
+      export configuration
   set \
     -o verbose \
     -o xtrace
