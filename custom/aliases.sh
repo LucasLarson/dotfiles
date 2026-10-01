@@ -8375,15 +8375,14 @@ stylelint_r() {
     # EX_UNAVAILABLE
     return 69
   configuration="$(
-    find -L -- "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint' \
-      '(' \
-      -path "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc' -o \
-      -path "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.cjs' -o \
-      -path "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.js' -o \
-      -path "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.json' -o \
-      -path "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.yaml' -o \
-      -path "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.yml' \
-      ')' \
+    find -L -- \
+      './stylelint.config.mjs' \
+      "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc' \
+      "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.cjs' \
+      "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.js' \
+      "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.json' \
+      "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.yaml' \
+      "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc.yml' \
       -type f \
       -exec ls -1 -S -- {} + 2>/dev/null |
       sed -e '1 q'
