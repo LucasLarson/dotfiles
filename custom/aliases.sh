@@ -8366,7 +8366,12 @@ string_ends_with() {
 alias substring_ends_with='string_ends_with'
 
 stylelint_r() {
-  command -v -- stylelint >/dev/null 2>&1 ||
+  command -v -- stylelint >/dev/null 2>&1 &&
+    command -v -- npm >/dev/null 2>&1 &&
+    npm config --location=global -- get prefix >/dev/null 2>&1 &&
+    test -d "$(npm config --location=global -- get prefix)" &&
+    test -d "$(npm config --location=global -- get prefix)"'/lib/node_modules/stylelint-config-standard' &&
+    test -d "$(npm config --location=global -- get prefix)"'/lib/node_modules/stylelint-config-recommended' ||
     # EX_UNAVAILABLE
     return 69
   set \
