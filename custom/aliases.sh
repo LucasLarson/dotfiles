@@ -6789,16 +6789,8 @@ pledit() {
   for file in "${@}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
-      case "$(LC_ALL='C' file -- "${file-}")" in
-      *'Apple binary property list'*) ;;
-      *'XML 1.0 document'*) ;;
-      *)
-        # EX_DATAERR
-        return 65
-        ;;
-      esac
-    # convert the binary file to XML
-    plutil -convert xml1 -- "${file-}" &&
+      # convert the binary file to XML
+      plutil -convert xml1 -- "${file-}" &&
       # open with the default editor
       "${EDITOR:-vi}" -- "${file-}"
   done
