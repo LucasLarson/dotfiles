@@ -8374,9 +8374,6 @@ stylelint_r() {
     test -d "$(npm config --location=global -- get prefix)"'/lib/node_modules/stylelint-config-recommended' ||
     # EX_UNAVAILABLE
     return 69
-  set \
-    -o verbose \
-    -o xtrace
   configuration="$(
     find -L -- "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint' \
       '(' \
@@ -8392,6 +8389,9 @@ stylelint_r() {
       sed -e '1 q'
   )" &&
     export configuration='--config='"${configuration-}"
+  set \
+    -o verbose \
+    -o xtrace
   find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
