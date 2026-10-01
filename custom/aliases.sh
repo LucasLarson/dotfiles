@@ -8374,7 +8374,7 @@ stylelint_r() {
     test -d "$(npm config --location=global -- get prefix)"'/lib/node_modules/stylelint-config-recommended' ||
     # EX_UNAVAILABLE
     return 69
-  configuration="$(
+  set -- "$(
     find -L -- \
       './stylelint.config.mjs' \
       "${XDG_CONFIG_HOME:-${HOME%/}/.config}"'/stylelint/.stylelintrc' \
@@ -8387,15 +8387,13 @@ stylelint_r() {
       -exec ls -1 -S -- {} + 2>/dev/null |
       sed -e '1 q'
   )" &&
-    test -s "${configuration-}" ||
+    test -s "${1-}" ||
     # EX_CONFIG
     return 78
-  configuration='--config='"${configuration-}" &&
-    export configuration
   set \
     -o verbose \
     -o xtrace
-  find -- . \
+  configuration="${1-}" find -- . \
     -path '*/.git' -prune -o \
     -path '*/.well-known' -prune -o \
     -path '*/Empty' -prune -o \
@@ -8416,9 +8414,8 @@ stylelint_r() {
     -exec sh -x -c -- 'for file in "${@}"; do
   git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
     ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-    npm exec -- stylelint --allow-empty-input --color "${configuration-}" --fix --formatter=verbose --ignore-disables --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables -- "${file-}"
+    npm exec -- stylelint --allow-empty-input --color --config="${configuration-}" --fix --formatter=verbose --ignore-disables --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables -- "${file-}"
 done' _ {} +
-  unset configuration >/dev/null 2>&1 || configuration=''
   {
     set \
       +o verbose \
