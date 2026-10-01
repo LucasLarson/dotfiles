@@ -8410,10 +8410,11 @@ stylelint_r() {
     -name '*.[Cc][Ss][Ss]' \
     ')' \
     -type f \
-    -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-  ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-  npm exec -- stylelint --allow-empty-input --color "${configuration-}" --fix --formatter=verbose --ignore-disables --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables -- "${1-}"
-' _ {} ';'
+    -exec sh -x -c -- 'for file in "${@}"; do
+  git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
+    ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+    npm exec -- stylelint --allow-empty-input --color "${configuration-}" --fix --formatter=verbose --ignore-disables --report-descriptionless-disables --report-invalid-scope-disables --report-needless-disables -- "${file-}"
+done' _ {} +
   unset configuration >/dev/null 2>&1 || configuration=''
   {
     set \
