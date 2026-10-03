@@ -7243,12 +7243,17 @@ random_r() {
 }
 
 random_string() {
-  # ensure `/dev/random` is a character special
-  test -c /dev/random ||
+  # ensure `/dev/urandom` or `/dev/random` is a character special
+  if test -c /dev/urandom; then
+    set -- "${1:-10}" /dev/urandom
+  elif test -c /dev/random; then
+    set -- "${1:-10}" /dev/random
+  else
     # EX_OSFILE
     return 72
   # print all non-space ASCII characters from standard input
-  LANG='C' LC_ALL='C' tr -c -d '\41-\176' </dev/random |
+  fi
+  LANG='C' LC_ALL='C' tr -c -d '\41-\176' <"${2-}" |
     # default to 10 characters
     dd bs=1 count="${1:-10}" 2>/dev/null &&
     printf -- '\n'
