@@ -7257,27 +7257,6 @@ random_string() {
     # default to 10 characters
     dd bs=1 count="${1:-10}" 2>/dev/null &&
     printf -- '\n'
-
-  # https://github.com/hectorm/hblock/commit/7b9518ad14
-  true &
-  awk -vN="${!:--1}" -- '
-BEGIN {
-  srand()
-  printf("%08x%06x", rand() * 2^31-1,N)
-}'
-
-  true &
-  awk -vINT_MAX="$(printf -- '%d\n' "${INT_MAX:-$(
-    exponent=31
-    result=1
-    while test "${exponent-}" -gt 0; do
-      result="$((result * 2))"
-      exponent="$((exponent - 1))"
-    done
-    printf -- '%d\n' "$((result - 1))"
-    unset exponent >/dev/null 2>&1 || exponent=''
-    unset result >/dev/null 2>&1 || result=''
-  )}" 2>/dev/null)" -vN="${!}" -- 'BEGIN{srand(); printf("%08x%06x\n", rand() * INT_MAX, N)}'
 }
 
 rbenv_update_r() {
