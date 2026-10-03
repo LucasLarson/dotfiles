@@ -7253,7 +7253,7 @@ random_string() {
     return 72
   fi
   # print all non-space ASCII characters
-  LANG='C' LC_ALL='C' tr -c -d '\41-\176' <"${2-}" |
+  LANG='C' LC_ALL='C' tr -c -d -- '\41-\176' <"${2-}" |
     # default to 10 characters
     dd bs=1 count="${1:-10}" 2>/dev/null &&
     printf -- '\n'
