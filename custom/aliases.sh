@@ -8667,15 +8667,15 @@ trash_developer() {
     return 73
   fi
   set -- "${1-}" "$(LANG='C' LC_ALL='C' date -- '+%Y%m%d%H%M%S')"
-  mkdir -p -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' &&
+  test -d "${HOME%/}"'/Library/Developer/Xcode/DerivedData' &&
     mv -f -- "${HOME%/}"'/Library/Developer/Xcode/DerivedData' "${1-}"'/Xcode-'"${2-}"
-  mkdir -p -- "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' &&
+  test -d "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' &&
     mv -f -- "${HOME%/}"'/Library/Developer/Xcode/UserData/IB Support' "${1-}"'/Xcode⁄UserData⁄IB Support-'"${2-}"
-  mkdir -p -- "${HOME%/}"'/Library/Caches/JetBrains' &&
+  test -d "${HOME%/}"'/Library/Caches/JetBrains' &&
     mv -f -- "${HOME%/}"'/Library/Caches/JetBrains' "${1-}"'/JetBrains-'"${2-}"
-  mkdir -p -- "${HOME%/}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' &&
+  test -d "${HOME%/}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' &&
     mv -f -- "${HOME%/}"'/Library/Caches/org.carthage.CarthageKit/DerivedData' "${1-}"'/Carthage-'"${2-}"
-  mkdir -p -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' &&
+  test -d "${HOME%/}"'/Library/Caches/Homebrew/downloads' &&
     mv -f -- "${HOME%/}"'/Library/Caches/Homebrew/downloads' "${1-}"'/Homebrew-'"${2-}"
   command -v -- brew >/dev/null 2>&1 && {
     brew autoremove --verbose
