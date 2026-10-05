@@ -8890,30 +8890,7 @@ variable_value() {
       eval " printf -- '%s\n' \"\${${possible_variable-}-}\""
   done
 }
-# return string's value as a variable if so set
-value_of_variable() {
-  set \
-    -o verbose \
-    -o xtrace
-  if eval " $(
-    printf -- '%s\n' "${1-}" |
-      sed -e 's/^\(.*\)=.*$/echo "\1=\1"/'
-  )"; then
-    printf -- '%s\n' "${1-}"
-  fi
-  query="${1-}"
-  if test "${query-}" != ''; then
-    eval " $(
-      printf -- '%s' "${query-}" &&
-        printf -- '\n'
-    )"
-  fi
-  {
-    set \
-      +o verbose \
-      +o xtrace
-  } 2>/dev/null
-}
+alias value_of_variable='variable_value'
 
 # Visual Studio Code
 code() {
