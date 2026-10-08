@@ -2191,54 +2191,6 @@ fdupes() {
     2>/dev/null |
     sed -e '/^No duplicates found\.$/ d'
 }
-find_duplicate_cksum() {
-  find -- . \
-    -path '*/.git' -prune -o \
-    -path '*/node_modules' -prune -o \
-    -type f \
-    -exec sh -c -- 'cksum -- "${1-}"' _ {} ';' |
-    sed -e 's/\([[:digit:]][[:digit:]]*\)[[:space:]]\([[:digit:]][[:digit:]]*\)[[:space:]]\(.*\)/\1 \2/' |
-    LANG='C' LC_ALL='C' sort -k 1,1n -k 2,2n |
-    uniq -D -f 1 |
-    sed -e 's/^[[:digit:]][[:digit:]]*[[:space:]][[:digit:]][[:digit:]]*[[:space:]]//'
-  lc_all_temporary="$(
-    set |
-      grep -e '^LC_' |
-      sed \
-        -e 's/\(.*\)/export \1; /' |
-      sed \
-        -e ':a' \
-        -e 'N' \
-        -e '$! b a' \
-        -e 's/\n//g'
-  )" &&
-    export lc_all_temporary &&
-    export LC_ALL='C' &&
-    find -- . \
-      -path '*/.git' -prune -o \
-      -path '*/.well-known' -prune -o \
-      -path '*/Empty' -prune -o \
-      -path '*/Library' -prune -o \
-      -path '*/node_modules' -prune -o \
-      -path '*/plugins' -prune -o \
-      -path '*/t' -prune -o \
-      -path '*/Test*' -prune -o \
-      -path '*/test*' -prune -o \
-      -path '*/themes' -prune -o \
-      -path '*/tst*' -prune -o \
-      -path '*copilot*' -prune -o \
-      -path '*dummy*' -prune -o \
-      -path '*vscode*' -prune -o \
-      -type f \
-      ! -size 0 \
-      -exec sh -c -- 'cksum -- "${1-}"' _ {} ';' |
-    sed -e 's/\([[:digit:]][[:digit:]]*\)[[:space:]]\([[:digit:]][[:digit:]]*\)[[:space:]]\(.*\)/\1 \2/' |
-      LANG='C' LC_ALL='C' sort |
-      uniq -d
-  # restore LC_ALL
-  eval " ${lc_all_temporary-}"
-  unset lc_all_temporary >/dev/null 2>&1 || lc_all_temporary=''
-}
 find_duplicate_files() {
   # https://linuxjournal.com/content/boost-productivity-bash-tips-and-tricks
   # https://github.com/whodaniel/fuse/blob/b511341/scripts/component-refinement-plan.sh#L81
