@@ -2721,7 +2721,17 @@ find_json_files() {
     -name '[Tt][Ll][Dd][Rr][Rr][Cc]' \
     ')' \
     -type f \
-    -print 2>/dev/null
+    -print 2>/dev/null |
+    awk -- 'BEGIN {
+  found = 0
+}
+NF {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 
 find_largest_files() {
