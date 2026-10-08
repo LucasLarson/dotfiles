@@ -224,7 +224,8 @@ brew "zsh"
 cask "discord"
 # Sci-fi themed terminal emulator and system monitor
 cask "edex-ui"
-cask "git-credential-manager-core"
+# Cross-platform Git credential storage for multiple hosting providers
+cask "git-credential-manager"
 # Client for the Google Drive storage service
 cask "google-drive"
 # Virtual globe
