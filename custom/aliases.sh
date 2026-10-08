@@ -2238,6 +2238,9 @@ END {
 alias fdf='find_duplicate_files'
 
 find_duplicate_images() {
+  command -v -- findimagedupes >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
   findimagedupes \
     --quiet \
     --recurse \
