@@ -66,6 +66,9 @@ awk_pretty() {
   command -v -- gawk >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
+  test "${#}" -ne 0 ||
+    # EX_USAGE
+    return 64
   gawk \
     --no-optimize \
     --posix \
