@@ -9,7 +9,7 @@ brew "autoconf"
 # Tool for generating GNU Standards-compliant Makefiles
 brew "automake"
 # Bourne-Again SHell, a UNIX command interpreter
-brew "bash", args: ["HEAD"]
+brew "bash"
 # Programmable completion for Bash 4.2+
 brew "bash-completion@2"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -37,7 +37,7 @@ brew "dash-shell"
 # File comparison utilities
 brew "diffutils"
 # More intuitive version of du in rust
-brew "dust", args: ["HEAD"]
+brew "dust"
 # AST-based pattern checker for JavaScript
 brew "eslint"
 # Perl lib for reading and writing EXIF metadata
@@ -47,7 +47,7 @@ brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Play, record, convert, and stream audio and video
-brew "ffmpeg", args: ["HEAD"]
+brew "ffmpeg"
 # Utility to determine file types
 brew "file-formula"
 # Collection of GNU find, xargs, and locate
@@ -69,7 +69,7 @@ brew "gh"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
 # Distributed revision control system
-brew "git", args: ["HEAD"]
+brew "git"
 # Quickly rewrite git repository history
 brew "git-filter-repo"
 # Audit git repos for secrets
@@ -95,7 +95,7 @@ brew "imagemagick"
 # Integer Set Library for the polyhedral model
 brew "isl"
 # API Support for your favorite torrent trackers
-brew "jackett", args: ["HEAD"]
+brew "jackett"
 # Duplicate file finder and an enhanced fork of 'fdupes'
 brew "jdupes"
 # Lightweight and flexible command-line JSON processor
@@ -103,7 +103,7 @@ brew "jq"
 # KornShell, ksh93
 brew "ksh93"
 # Pager program similar to more
-brew "less", args: ["HEAD"]
+brew "less"
 # Multi-format archive and compression library
 brew "libarchive"
 # International domain name library (IDNA2008, Punycode and TR46)
@@ -125,7 +125,7 @@ brew "libyaml"
 # Text-based web browser
 brew "lynx"
 # Keep your Mac's application settings in sync
-brew "mackup", args: ["HEAD"]
+brew "mackup"
 # Utility for directing compilation
 brew "make"
 # Unix documentation system
@@ -149,7 +149,7 @@ brew "oksh"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
 # Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
+brew "openssl"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
 # Highly capable, feature-rich programming language
@@ -167,7 +167,7 @@ brew "posh"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
 brew "prettier"
 # Interpreted, interactive, object-oriented programming language
-brew "python@3.10"
+brew "python"
 # Ruby version manager
 brew "rbenv"
 # Library for command-line editing
@@ -187,15 +187,15 @@ brew "ruby-build"
 # Bash completion for Ruby
 brew "ruby-completion"
 # Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck", args: ["HEAD"]
+brew "shellcheck"
 # Bash syntax highlighter that encourages/fixes variables quoting
 brew "shellharden"
 # Autoformat shell script source code
-brew "shfmt", args: ["HEAD"]
+brew "shfmt"
 # Tool to enforce Swift style and conventions
 brew "swiftlint"
 # OCR (Optical Character Recognition) engine
-brew "tesseract", args: ["HEAD"]
+brew "tesseract"
 # Enables extra languages support for Tesseract
 brew "tesseract-lang"
 # Official documentation format of the GNU project
@@ -203,7 +203,7 @@ brew "texinfo"
 # Granddaddy of HTML tools, with support for modern standards
 brew "tidy-html5"
 # Cross-platform Rust rewrite of the GNU coreutils
-brew "uutils-coreutils", args: ["HEAD"]
+brew "uutils-coreutils"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
 # Internet file retriever
@@ -219,9 +219,9 @@ brew "yt-dlp"
 # Find security issues in GitHub Actions setups
 brew "zizmor"
 # UNIX shell (command interpreter)
-brew "zsh", args: ["HEAD"]
+brew "zsh"
 # Voice and text chat software
-cask "discord@canary"
+cask "discord"
 # Sci-fi themed terminal emulator and system monitor
 cask "edex-ui"
 cask "git-credential-manager-core"
@@ -258,7 +258,7 @@ cask "rectangle"
 # Open source virtual/remote desktop application
 cask "rustdesk"
 # Instant messaging application focusing on security
-cask "signal-beta"
+cask "signal"
 # Application for inspecting installer packages
 cask "suspicious-package"
 # Remote access and connectivity software focused on security
@@ -266,13 +266,13 @@ cask "teamviewer"
 # Messaging app with a focus on speed and security
 cask "telegram"
 # Web browser focusing on security
-cask "tor-browser-alpha"
+cask "tor-browser"
 # Virtualiser for x86 hardware
 cask "virtualbox"
 # Web browser with built-in email client focusing on customization and control
-cask "vivaldi-snapshot"
+cask "vivaldi"
 # Open-source cross-platform multimedia player
-cask "vlc@nightly"
+cask "vlc"
 # Torrent streaming application
 cask "webtorrent"
 # Video communication and virtual meeting platform
