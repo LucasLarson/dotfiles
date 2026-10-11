@@ -5033,7 +5033,7 @@ rg() {
       -path '*/node_modules' -prune -o \
       ! -name '.DS_Store' \
       -type f \
-      -exec grep -E "${@}" -- {} +
+      -exec grep -E "${@}" {} +
     return "${??}"
   }
   "$(env -i -- sh -c -- 'command -v -- rga || command -v -- rg')" \
