@@ -328,9 +328,9 @@ alias bat >/dev/null 2>&1 &&
 command -v -- bat >/dev/null 2>&1 &&
   alias \
     bat='bat --decorations=never --paging=never' \
-    bats='bat --language=sh' &&
+    batsh='bat --language=sh' &&
   command -v -- _bat >/dev/null 2>&1 &&
-  compdef -- bats='bat' >/dev/null 2>&1
+  compdef -- batsh='bat' >/dev/null 2>&1
 
 ## cd
 # this construction:
