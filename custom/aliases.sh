@@ -4572,7 +4572,7 @@ git_rm_r() {
   PS4=' '
   set -o xtrace
   find -- . -path '*/.git' -prune -o -path './*/*' -prune -o -path './*' -exec rm -r -- {} + &&
-    find -- . -path '*/.git/hooks/*' -type f -exec rm -r -- {} + &&
+    find -- . -path '*/.git/hooks/*' -type f -exec rm -- {} + &&
     find -- . -path '*/.git/hooks' -exec rmdir -- {} + &&
     find -- . -path '*/.git/modules' -exec rm -f -r -- {} +
   PS4="${ps4_temporary-}"
