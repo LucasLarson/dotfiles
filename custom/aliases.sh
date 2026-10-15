@@ -3734,8 +3734,7 @@ gif_webp_r() {
       -mt \
       -v \
       "${file-}" \
-      -o \
-      "${file-}"'.webp'
+      -o "${file-}"'.webp'
   done
   {
     set \
