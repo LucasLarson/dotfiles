@@ -2080,7 +2080,7 @@ find_compressed_files() {
       ')' \
       -type f \
       -print 2>/dev/null
-    find -- . \
+    LANG='C' LC_ALL='C' find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
       -path '*/node_modules' -prune -o \
