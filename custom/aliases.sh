@@ -2087,8 +2087,11 @@ find_compressed_files() {
       -type f \
       -exec file -- {} + 2>/dev/null |
       # allow `file` to find .sit `Archive` files by setting `$2` to lowercase before checking its value
-      LC_ALL='C' awk -F':' -- '{if (tolower($2) ~ /archive|compress/) print $1}'
-
+      LC_ALL='C' awk -F':' -- '{
+  if (tolower($2) ~ /archive|compress/) {
+    print $1
+  }
+}'
   } |
     LANG='C' LC_ALL='C' sort -f |
     awk -- 'BEGIN {
