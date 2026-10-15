@@ -3319,7 +3319,6 @@ find_text_files() {
       -name '*.sha3' -o \
       -name '*.sha384' -o \
       -name '*.sha512' -o \
-      -name 'checksums.txt' -o \
       -name 'CITATION' -o \
       -name 'CITATIONS' -o \
       -name 'cksums' -o \
@@ -3334,7 +3333,6 @@ find_text_files() {
       -name 'keep.me' -o \
       -name 'LICENSE' -o \
       -name 'LICENSE.mysql' -o \
-      -name 'md5sum.txt' -o \
       -name 'MD5SUMS' -o \
       -name 'NEWS' -o \
       -name 'package.mask' -o \
@@ -3348,7 +3346,6 @@ find_text_files() {
       -name 'README.pc' -o \
       -name 'SHA1SUMS' -o \
       -name 'SHA256SUMS' -o \
-      -name 'SHA256SUMS.txt' -o \
       -name 'SHA512SUMS' -o \
       -name 'test.me' -o \
       -name 'use.mask' -o \
