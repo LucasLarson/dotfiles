@@ -1768,6 +1768,8 @@ extract() {
     # EX_UNAVAILABLE
     return 69
   find -- . \
+    -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
     '(' \
     -name '*.rpm' -o \
     -name '*.[Rr][Pp][Mm]' \
