@@ -1774,45 +1774,6 @@ extract() {
       -type f \
       -exec sh -C -e -f -u -x -c -- 'mkdir -p -- "$(basename -- "${1%.*}")" && rpm2cpio "${1-}" >./"$(basename -- "${1%.*}")"'\''/'\''"$(basename -- "${1%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd ./"$(basename -- "${1%.*}")" >/dev/null 2>&1 && test -s "$(basename -- "${1%.*}"'\''.cpio'\'')" && cpio --extract --make-directories --verbose <"$(basename -- "${1%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${1%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd "${OLDPWD:--}" >/dev/null 2>&1 && rm -- "${1-}" && shift 1' _ {} ';'
   done
-  find -- . \
-    '(' \
-    -name '*.7[Zz]' -o \
-    -name '*.[Aa][Aa][Rr]' -o \
-    -name '*.[Aa][Pp][Kk]' -o \
-    -name '*.[Bb][Rr]' -o \
-    -name '*.[Bb][Zz]2' -o \
-    -name '*.[Cc][Pp][Ii][Oo]' -o \
-    -name '*.[Ee][Aa][Rr]' -o \
-    -name '*.[Gg][Zz]' -o \
-    -name '*.[Ii][Pp][Aa]' -o \
-    -name '*.[Ii][Pp][Ss][Ww]' -o \
-    -name '*.[Jj][Aa][Rr]' -o \
-    -name '*.[Ll][Zz][Mm][Aa]' -o \
-    -name '*.[Rr][Aa][Rr]' -o \
-    -name '*.[Rr][Pp][Mm]' -o \
-    -name '*.[Tt][Aa][Rr]' -o \
-    -name '*.[Tt][Aa][Rr].[Bb][Zz]2' -o \
-    -name '*.[Tt][Aa][Rr].[Gg][Zz]' -o \
-    -name '*.[Tt][Aa][Rr].[Xx][Zz]' -o \
-    -name '*.[Tt][Aa][Rr].[Zz][Mm][Aa]' -o \
-    -name '*.[Tt][Aa][Rr].[Zz][Ss][Tt]' -o \
-    -name '*.[Tt][Bb][Zz]' -o \
-    -name '*.[Tt][Bb][Zz]2' -o \
-    -name '*.[Tt][Gg][Zz]' -o \
-    -name '*.[Tt][Ll][Zz]' -o \
-    -name '*.[Tt][Xx][Zz]' -o \
-    -name '*.[Tt][Zz][Ss][Tt]' -o \
-    -name '*.[Ww][Aa][Rr]' -o \
-    -name '*.[Ww][Hh][Ll]' -o \
-    -name '*.[Xx][Pp][Ii]' -o \
-    -name '*.[Xx][Zz]' -o \
-    -name '*.[Zz]' -o \
-    -name '*.[Zz][Ii][Pp]' -o \
-    -name '*.[Zz][Mm][Aa]' -o \
-    -name '*.[Zz][Ss][Tt]' \
-    ')' \
-    -type f \
-    -print 2>/dev/null
 }
 alias rpm_extract='extract'
 
