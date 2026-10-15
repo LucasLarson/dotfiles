@@ -3360,9 +3360,18 @@ find_text_files() {
       -type f \
       -exec file -- {} + |
       awk -F':' -- '$2 ~ /^  *ASCII text$/ {print $1}'
-  } |
-    LANG='C' LC_ALL='C' sort -u |
-    LANG='C' LC_ALL='C' sort -f
+  } 2>/dev/null |
+    LANG='C' LC_ALL='C' sort -f |
+    awk -- 'BEGIN {
+  found = 0
+}
+NF && ! seen[$0]++ {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 
 find_video_files() {
