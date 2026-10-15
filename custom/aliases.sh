@@ -205,7 +205,6 @@ bash_pretty() {
 }
 bash_pretty_overwrite() {
   LC_ALL='C' \
-    IFS='' \
     find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
@@ -780,8 +779,8 @@ cleanup() {
 
   # delete empty directories
   # but skip certain directories
-  while LC_ALL='C' IFS='' test "$(
-    LC_ALL='C' IFS='' find -- . \
+  while LC_ALL='C' test "$(
+    LC_ALL='C' find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
       -path '*/node_modules' -prune -o \
@@ -789,7 +788,7 @@ cleanup() {
       -type d \
       -exec sh -c -- 'for directory in "${@}"; do test "$(find -- "${directory-}" -path "${directory-}"'\''/*'\'' -print)" = '\'''\'' && printf -- '\''%s\n'\'' "${directory-}"; done' _ {} +
   )" != ''; do
-    LC_ALL='C' IFS='' find -- . \
+    LC_ALL='C' find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
       -path '*/node_modules' -prune -o \
@@ -1768,7 +1767,7 @@ extract() {
     command -v -- cpio >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
-  IFS=' ' find -- . \
+  find -- . \
     '(' \
     -name '*.rpm' -o \
     -name '*.[Rr][Pp][Mm]' \
@@ -1951,7 +1950,7 @@ find_audio_files() {
 }
 
 find_binary_files() {
-  LC_ALL='C' IFS='' find -- . \
+  LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
     ! -name '.DS_Store' \
@@ -2239,7 +2238,7 @@ find_empty() {
     # because `-delete` activates `-depth`, and `-depth` overrides `-prune`, which reverses `-prune logic
     printf -- 'are you sure?\n' >&2 &&
       sleep 2 &&
-      LC_ALL='C' IFS='' find -- . \
+      LC_ALL='C' find -- . \
         ! -path '*/.git*' \
         ! -path '*/Library*' \
         -path './*' \
@@ -2248,7 +2247,7 @@ find_empty() {
     ;;
   *)
     # POSIX-compliant `find . -type d -empty`
-    LC_ALL='C' IFS='' find -- . \
+    LC_ALL='C' find -- . \
       -path '*/.git' -prune -o \
       -path '*/Library' -prune -o \
       -path '*/node_modules' -prune -o \
@@ -2473,7 +2472,7 @@ find_image_files() {
     -print 2>/dev/null
   {
     # when the following portion is removed, you may also remove `2>/dev/null` from `find_images_with_incorrect_filename_extensions` probably
-    printf -- '#!/usr/bin/env sh\nCDPATH='\''.'\'' cd "\044{HOME-}"'\''/c'\'' >/dev/null 2>&1 &&\n  LC_ALL='\''C'\'' IFS='\'''\'' find -L -- . -path '\''*/.git'\'' -prune -o -type f -exec file -- '\''{}'\'' + |\n  LC_ALL='\''C'\'' IFS='\'''\'' sed \\\n    -n \\\n    -e '\''/: .* image/ {'\'' \\\n    -e '\''  s/^\\([^:]*\\):.*$/\\1/p'\'' \\\n    -e '\''}'\''\n' |
+    printf -- '#!/usr/bin/env sh\nCDPATH='\''.'\'' cd "\044{HOME-}"'\''/c'\'' >/dev/null 2>&1 &&\n  LC_ALL='\''C'\'' find -L -- . -path '\''*/.git'\'' -prune -o -type f -exec file -- '\''{}'\'' + |\n  LC_ALL='\''C'\'' sed \\\n    -n \\\n    -e '\''/: .* image/ {'\'' \\\n    -e '\''  s/^\\([^:]*\\):.*$/\\1/p'\'' \\\n    -e '\''}'\''\n' |
       bat \
         --decorations=never \
         --language=sh \
@@ -3539,7 +3538,7 @@ flawfinder_r() {
   command -v -- flawfinder >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
     return 69
-  IFS=' ' find -- . \
+  find -- . \
     -path '*/.git' -prune -o \
     -path '*/.rbenv' -prune -o \
     -path '*/.venv' -prune -o \
@@ -4913,7 +4912,7 @@ gofmt_r() {
   set \
     -o verbose \
     -o xtrace
-  PS4=' ' IFS='' find -- . \
+  PS4=' ' find -- . \
     -path '*/.git' -prune -o \
     -path '*/Library' -prune -o \
     -path '*/node_modules' -prune -o \
