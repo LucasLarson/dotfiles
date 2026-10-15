@@ -564,8 +564,8 @@ it. Restart restart to get a profile of startup time usage.&nbsp;[via](https://
 
 ## delete
 
-`rm -Ri /directory #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br>
-`rm  -i /document.txt # -i` stands for interactive
+`rm -iR /directory #` [via](https://github.com/herrbischoff/awesome-macos-command-line/blob/cf9e47c26780aa23206ecde6474426071fb54f71/README.md#securely-remove-path-force)<br>
+`rm -i  /document.txt # -i` stands for interactive
 
 ### compare two folders
 
