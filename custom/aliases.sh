@@ -1977,7 +1977,7 @@ find_capital_letter_files() {
     -path '*/node_modules' -prune -o \
     -name '[[:upper:]]*' \
     -type f \
-    -exec sh -c -- '{ printf -- '\''removing \342\200\230%s\342\200\231 '\'' "${1-}" >&2 && rm -f -r -- "${1-}" && printf -- '\''\342\234\223\n'\'' >&2; } || printf -- '\''error removing \342\200\230%s\342\200\231\n'\'' "${1-}" >&2' _ {} ';' ;;
+    -exec sh -c -- '{ printf -- '\''removing \342\200\230%s\342\200\231 '\'' "${1-}" >&2 && rm -f -R -- "${1-}" && printf -- '\''\342\234\223\n'\'' >&2; } || printf -- '\''error removing \342\200\230%s\342\200\231\n'\'' "${1-}" >&2' _ {} ';' ;;
   *) LC_ALL='C' find -- . \
     -path '*/.git' -prune -o \
     -path '*/node_modules' -prune -o \
@@ -2108,7 +2108,7 @@ find_dot_files() {
       -path './*' \
       -name '.*' \
       ! -name '.gitmodules' \
-      -exec sh -c -- '{ printf -- '\''removing \342\200\230%s\342\200\231 '\'' "${1-}" >&2 && rm -f -r -- "${1-}" && printf -- '\''\342\234\223\n'\'' >&2; } || printf -- '\''error removing \342\200\230%s\342\200\231\n'\'' "${1-}" >&2' _ {} ';'
+      -exec sh -c -- '{ printf -- '\''removing \342\200\230%s\342\200\231 '\'' "${1-}" >&2 && rm -f -R -- "${1-}" && printf -- '\''\342\234\223\n'\'' >&2; } || printf -- '\''error removing \342\200\230%s\342\200\231\n'\'' "${1-}" >&2' _ {} ';'
     ;;
   *)
     find -- . \
@@ -4571,10 +4571,10 @@ git_rm_r() {
   ps4_temporary="${PS4-}"
   PS4=' '
   set -o xtrace
-  find -- . -path '*/.git' -prune -o -path './*/*' -prune -o -path './*' -exec rm -r -- {} + &&
+  find -- . -path '*/.git' -prune -o -path './*/*' -prune -o -path './*' -exec rm -R -- {} + &&
     find -- . -path '*/.git/hooks/*' -type f -exec rm -- {} + &&
     find -- . -path '*/.git/hooks' -exec rmdir -- {} + &&
-    find -- . -path '*/.git/modules' -exec rm -f -r -- {} +
+    find -- . -path '*/.git/modules' -exec rm -f -R -- {} +
   PS4="${ps4_temporary-}"
   unset ps4_temporary >/dev/null 2>&1 || ps4_temporary=''
   {
