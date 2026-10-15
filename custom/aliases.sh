@@ -1764,19 +1764,17 @@ alias \
   export_u='export_U'
 
 extract() {
-  until test "$(find -- . -name '*.rpm' -type f -print)" = ''; do
-    command -v -- rpm2cpio >/dev/null 2>&1 &&
-      command -v -- cpio >/dev/null 2>&1 ||
-      # EX_UNAVAILABLE
-      return 69
-    IFS=' ' find -- . \
-      '(' \
-      -name '*.rpm' -o \
-      -name '*.[Rr][Pp][Mm]' \
-      ')' \
-      -type f \
-      -exec sh -C -e -f -u -x -c -- 'mkdir -p -- "$(basename -- "${1%.*}")" && rpm2cpio "${1-}" >./"$(basename -- "${1%.*}")"'\''/'\''"$(basename -- "${1%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd ./"$(basename -- "${1%.*}")" >/dev/null 2>&1 && test -s "$(basename -- "${1%.*}"'\''.cpio'\'')" && cpio --extract --make-directories --verbose <"$(basename -- "${1%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${1%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd "${OLDPWD:--}" >/dev/null 2>&1 && rm -- "${1-}" && shift 1' _ {} ';'
-  done
+  command -v -- rpm2cpio >/dev/null 2>&1 &&
+    command -v -- cpio >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  IFS=' ' find -- . \
+    '(' \
+    -name '*.rpm' -o \
+    -name '*.[Rr][Pp][Mm]' \
+    ')' \
+    -type f \
+    -exec sh -C -e -f -u -x -c -- 'mkdir -p -- "$(basename -- "${1%.*}")" && rpm2cpio "${1-}" >./"$(basename -- "${1%.*}")"'\''/'\''"$(basename -- "${1%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd ./"$(basename -- "${1%.*}")" >/dev/null 2>&1 && test -s "$(basename -- "${1%.*}"'\''.cpio'\'')" && cpio --extract --make-directories --verbose <"$(basename -- "${1%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${1%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd "${OLDPWD:--}" >/dev/null 2>&1 && rm -- "${1-}" && shift 1' _ {} ';'
 }
 alias rpm_extract='extract'
 
