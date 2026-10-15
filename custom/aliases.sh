@@ -1762,22 +1762,6 @@ alias \
   typeset_U='export_U' \
   export_u='export_U'
 
-rpm_extract() {
-  command -v -- rpm2cpio >/dev/null 2>&1 &&
-    command -v -- cpio >/dev/null 2>&1 ||
-    # EX_UNAVAILABLE
-    return 69
-  find -- . \
-    -path '*/.git' -prune -o \
-    -path '*/node_modules' -prune -o \
-    '(' \
-    -name '*.rpm' -o \
-    -name '*.[Rr][Pp][Mm]' \
-    ')' \
-    -type f \
-    -exec sh -x -c -- 'for file in "${@}"; do mkdir -p -- "$(basename -- "${file%.*}")" && rpm2cpio -- "${file-}" >"$(basename -- "${file%.*}")"'\''/'\''"$(basename -- "${file%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd "$(basename -- "${file%.*}")" >/dev/null 2>&1 && test -s "$(basename -- "${file%.*}"'\''.cpio'\'')" && cpio --extract --make-directories --verbose <"$(basename -- "${file%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${file%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd "${OLDPWD:--}" >/dev/null 2>&1 && rm -- "${file-}"; done' _ {} +
-}
-
 factorial() {
   test "${#}" -eq 1 ||
     # EX_USAGE
@@ -7379,6 +7363,22 @@ rename_with_dimensions() {
       +o verbose \
       +o xtrace
   } 2>/dev/null
+}
+
+rpm_extract() {
+  command -v -- rpm2cpio >/dev/null 2>&1 &&
+    command -v -- cpio >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  find -- . \
+    -path '*/.git' -prune -o \
+    -path '*/node_modules' -prune -o \
+    '(' \
+    -name '*.rpm' -o \
+    -name '*.[Rr][Pp][Mm]' \
+    ')' \
+    -type f \
+    -exec sh -x -c -- 'for file in "${@}"; do mkdir -p -- "$(basename -- "${file%.*}")" && rpm2cpio -- "${file-}" >"$(basename -- "${file%.*}")"'\''/'\''"$(basename -- "${file%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd "$(basename -- "${file%.*}")" >/dev/null 2>&1 && test -s "$(basename -- "${file%.*}"'\''.cpio'\'')" && cpio --extract --make-directories --verbose <"$(basename -- "${file%.*}"'\''.cpio'\'')" && rm -- "$(basename -- "${file%.*}"'\''.cpio'\'')" && CDPATH='\''.'\'' cd "${OLDPWD:--}" >/dev/null 2>&1 && rm -- "${file-}"; done' _ {} +
 }
 
 rsync_r() {
