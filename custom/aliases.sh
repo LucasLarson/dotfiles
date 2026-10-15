@@ -3354,7 +3354,7 @@ find_text_files() {
       -type f \
       -print
     # find text files https://stackoverflow.com/a/6419372
-    find -- . \
+    LANG='C' LC_ALL='C' find -- . \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
       -type f \
