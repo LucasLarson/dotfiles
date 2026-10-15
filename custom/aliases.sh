@@ -1958,7 +1958,7 @@ find_broken_symlinks() {
     find -L -- . \
       -type l \
       -exec sh -c -- 'ls -g -o -- "${1-}" &&
-  rm "${1-}" &&
+  rm -- "${1-}" &&
   git rm -- "${1-}" 2>/dev/null
 ' _ {} ';'
     ;;
