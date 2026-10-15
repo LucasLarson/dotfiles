@@ -2063,11 +2063,6 @@ find_compressed_files() {
       -name '*.[Rr][Aa][Rr]' -o \
       -name '*.[Rr][Pp][Mm]' -o \
       -name '*.[Tt][Aa][Rr]' -o \
-      -name '*.[Tt][Aa][Rr].[Bb][Zz]2' -o \
-      -name '*.[Tt][Aa][Rr].[Gg][Zz]' -o \
-      -name '*.[Tt][Aa][Rr].[Xx][Zz]' -o \
-      -name '*.[Tt][Aa][Rr].[Zz][Mm][Aa]' -o \
-      -name '*.[Tt][Aa][Rr].[Zz][Ss][Tt]' -o \
       -name '*.[Tt][Bb][Zz]' -o \
       -name '*.[Tt][Bb][Zz]2' -o \
       -name '*.[Tt][Gg][Zz]' -o \
@@ -2079,7 +2074,9 @@ find_compressed_files() {
       -name '*.[Xx][Pp][Ii]' -o \
       -name '*.[Xx][Zz]' -o \
       -name '*.[Zz]' -o \
-      -name '*.[Zz][Ii][Pp]' \
+      -name '*.[Zz][Ii][Pp]' -o \
+      -name '*.[Zz][Mm][Aa]' -o \
+      -name '*.[Zz][Ss][Tt]' \
       ')' \
       -type f \
       -print 2>/dev/null
