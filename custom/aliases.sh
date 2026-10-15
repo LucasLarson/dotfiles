@@ -3357,15 +3357,12 @@ find_text_files() {
       -type f \
       -print
     # find text files https://stackoverflow.com/a/6419372
-    # find one or more spaces without extended regex https://unix.stackexchange.com/a/19016
     find -- . \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
       -type f \
       -exec file -- {} + |
-      sed \
-        -n \
-        -e '/: \{1,\}ASCII text$/ s/: \{1,\}ASCII text$//p'
+      awk -F':' -- '$2 ~ /^  *ASCII text$/ {print $1}'
   } |
     LANG='C' LC_ALL='C' sort -u |
     LANG='C' LC_ALL='C' sort -f
