@@ -3666,7 +3666,7 @@ flawfinder_r() {
     -name '*.xpm' \
     ')' \
     -type f \
-    -exec sh -C -e -f -u -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
+    -exec sh -x -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
   ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
   flawfinder --error-level=1 --minlevel=0 -- "${1-}"
 ' _ {} ';' 2>&1
