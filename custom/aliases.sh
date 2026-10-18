@@ -3515,13 +3515,6 @@ git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 ||
 done' _ {} +
 }
 
-flawfinder_install() {
-  # https://github.com/awdeorio/dotfiles/commit/a46000d807
-  set -- 'git+https://github.com/david-a-wheeler/flawfinder@master'
-  brew install --HEAD --verbose -- "$(basename -- "${1%%@*}")" ||
-    python -m pip install --upgrade --verbose -- "${1-}" ||
-    python3 -m pip3 install --upgrade --verbose -- "${1-}"
-}
 flawfinder_r() {
   command -v -- flawfinder >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
