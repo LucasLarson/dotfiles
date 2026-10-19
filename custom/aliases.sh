@@ -2101,6 +2101,9 @@ find_debug() {
 find_dot_files() {
   case "${1-}" in
   -d | --delete)
+    git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
+      # EX_NOPERM
+      return 77
     find -- . \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
