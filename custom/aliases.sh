@@ -2110,7 +2110,7 @@ find_dot_files() {
       -path './*' \
       -name '.*' \
       ! -name '.gitmodules' \
-      -exec sh -c -- '{ printf -- '\''removing \342\200\230%s\342\200\231 '\'' "${1-}" >&2 && rm -f -R -- "${1-}" && printf -- '\''\342\234\223\n'\'' >&2; } || printf -- '\''error removing \342\200\230%s\342\200\231\n'\'' "${1-}" >&2' _ {} ';'
+      -exec sh -c -- 'for file in "${@}"; do { printf -- '\''removing \342\200\230%s\342\200\231 '\'' "${file-}" >&2 && rm -f -R -- "${file-}" && printf -- '\''\342\234\223\n'\'' >&2; } || printf -- '\''error removing \342\200\230%s\342\200\231\n'\'' "${file-}" >&2; done' _ {} +
     ;;
   *)
     find -- . \
