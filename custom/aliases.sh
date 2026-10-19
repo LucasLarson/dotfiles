@@ -9255,10 +9255,10 @@ zshoptions_search() {
   # • underscores are meaningless
   # • searching by case is not helpful
   # • a prefix of `no` or `no_` must be ignored
-  test "${#}" -gt 0 ||
+  test "${#}" -eq 1 ||
     # EX_USAGE
     return 64
-  printf -- '%s\n' "${@}" |
+  printf -- '%s\n' "${1-}" |
     sed \
       -e 's/_//g' \
       -e 's/^[[:space:]]*//' \
