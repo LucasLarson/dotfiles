@@ -2102,7 +2102,6 @@ find_dot_files() {
   case "${1-}" in
   -d | --delete)
     find -- . \
-      -depth \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
       -path './*' \
@@ -2112,7 +2111,6 @@ find_dot_files() {
     ;;
   *)
     find -- . \
-      -depth \
       -path '*/.git' -prune -o \
       -path '*/node_modules' -prune -o \
       -path './*' \
