@@ -2119,7 +2119,7 @@ find_dot_files() {
       -path './*' \
       -name '.*' \
       ! -name '.gitmodules' \
-      -print |
+      -print 2>/dev/null |
       LANG='C' LC_ALL='C' sort -f
     ;;
   esac
