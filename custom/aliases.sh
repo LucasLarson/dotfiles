@@ -2120,7 +2120,17 @@ find_dot_files() {
       -name '.*' \
       ! -name '.gitmodules' \
       -print 2>/dev/null |
-      LANG='C' LC_ALL='C' sort -f
+      LANG='C' LC_ALL='C' sort -f |
+      awk -- 'BEGIN {
+  found = 0
+}
+NF {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
     ;;
   esac
 }
