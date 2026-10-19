@@ -4572,15 +4572,11 @@ alias grm='rm'
 git_rm_r() {
   git rev-parse --is-inside-work-tree >/dev/null 2>&1 ||
     return "${?:-1}"
-  ps4_temporary="${PS4-}"
-  PS4=' '
   set -o xtrace
-  find -- . -path '*/.git' -prune -o -path './*/*' -prune -o -path './*' -exec rm -R -- {} + &&
-    find -- . -path '*/.git/hooks/*' -type f -exec rm -- {} + &&
-    find -- . -path '*/.git/hooks' -exec rmdir -- {} + &&
-    find -- . -path '*/.git/modules' -exec rm -f -R -- {} +
-  PS4="${ps4_temporary-}"
-  unset ps4_temporary >/dev/null 2>&1 || ps4_temporary=''
+  PS4=' ' find -- . -path '*/.git' -prune -o -path './*/*' -prune -o -path './*' -exec rm -R -- {} + &&
+    PS4=' ' find -- . -path '*/.git/hooks/*' -type f -exec rm -- {} + &&
+    PS4=' ' find -- . -path '*/.git/hooks' -exec rmdir -- {} + &&
+    PS4=' ' find -- . -path '*/.git/modules' -exec rm -f -R -- {} +
   {
     set +o xtrace
   } 2>/dev/null
