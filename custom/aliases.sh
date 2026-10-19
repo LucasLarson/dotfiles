@@ -1756,7 +1756,7 @@ export_U() {
   printf -- '%s:::%s\n' "${1:-${PATH-}}" "${2:-${1:-${PATH-}}}" |
     sed -e 's/:/\n/g' |
     awk -- '! seen[$0]++ && NF {print $0}' |
-    paste -d ':' -s
+    paste -d ':' -s -
 }
 alias \
   typeset_U='export_U' \
