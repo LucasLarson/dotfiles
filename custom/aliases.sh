@@ -9272,13 +9272,12 @@ zshoptions_search() {
   }
   printf "\n"
 }' |
-    tee -- /dev/tty |
-    {
-      xclip -selection clipboard ||
-        xsel --clipboard --input ||
-        pbcopy -pboard general ||
-        cat -- -
-    } >/dev/null 2>&1
+    tee -- /dev/tty | {
+    xclip -selection clipboard ||
+      xsel --clipboard --input ||
+      pbcopy -pboard general ||
+      cat -- -
+  } >/dev/null 2>&1
 }
 
 ## zero-width space, shrug, and sparkle
