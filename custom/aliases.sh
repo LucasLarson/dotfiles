@@ -8081,7 +8081,7 @@ signals() {
   # https://web.archive.org/web/20240704012105id_/dsa.cs.tsinghua.edu.cn/oj/static/unix_signal.html
   # https://web.archive.org/web/20240725101237id_/man7.org/linux/man-pages/man7/signal.7.html
   printf -- ' signal    | portable name | value\n'
-  printf -- ' ----------+---------------+-------\n'
+  printf -- ' ----------+---------------+------\n'
   printf -- ' 0         | 0             |     0\n'
   printf -- ' SIGHUP    | HUP           |     1\n'
   printf -- ' SIGINT    | INT           |     2\n'
