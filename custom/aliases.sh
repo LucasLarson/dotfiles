@@ -4663,8 +4663,8 @@ git_shallow() {
           --template='' \
           --verbose \
           -- \
-          "$(git config --file .gitmodules --get -- submodule."${submodule-}".url)" \
-          "$(git config --file .gitmodules --get -- submodule."${submodule-}".path)"
+          "$(git config --file ./.gitmodules --get -- submodule."${submodule-}".url)" \
+          "$(git config --file ./.gitmodules --get -- submodule."${submodule-}".path)"
       done &&
     git submodule update
 }
