@@ -4626,10 +4626,8 @@ git_search() {
   # search all repository content since its creation
   git rev-list --all |
     while IFS='' read -r -- commit; do
-      # H: print filename
       # I: skip binary files
       git --no-pager grep \
-        -H \
         -I \
         --perl-regexp \
         --ignore-case \
@@ -4965,7 +4963,6 @@ gcr() {
 ggr() {
   # riffing on the above while not feeling great # 2022-09-14
   git --no-pager grep \
-    -H \
     -I \
     --break \
     --extended-regexp \
