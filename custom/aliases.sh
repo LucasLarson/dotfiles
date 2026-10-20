@@ -4246,7 +4246,8 @@ git_garbage_collection() {
     set \
       -o verbose \
       -o xtrace
-    cleanup "${@}"
+    command -v -- cleanup >/dev/null 2>&1 &&
+      cleanup "${@}"
     command -v -- dss >/dev/null 2>&1 &&
       dss
     {
