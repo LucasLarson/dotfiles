@@ -7580,7 +7580,7 @@ scour_r() {
   for file in "${@}"; do
     test -s "${file-}" &&
       test ! -L "${file-}" &&
-      git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
+      git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
       case "${file-}" in
       *.[Ss][Vv][Gg])
         scour \
