@@ -6278,10 +6278,6 @@ non_ascii() {
     printf -- 'file content i.\n'
     LC_ALL='C' git --no-pager grep -I --no-index --max-depth=0 --exclude-standard --perl-regexp --line-number --recursive -e '[\200-\377]|[^\t -~]'
   fi
-  #  # https://stackoverflow.com/a/3208902
-  #  LC_ALL='C' grep --color -r -e '[^ -~]' >/dev/null 2>&1 &&
-  #    printf -- 'file content ii.\n' &&
-  #    LC_ALL='C' grep --color -n -r -e '[^ -~]'
 }
 non_ascii_filenames() {
   LC_ALL='C' find -- "${@:-.}" \
