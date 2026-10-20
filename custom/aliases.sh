@@ -4665,8 +4665,8 @@ git_shallow() {
           -- \
           "$(git config --file .gitmodules --get -- submodule."${submodule-}".url)" \
           "$(git config --file .gitmodules --get -- submodule."${submodule-}".path)"
-      done
-  git submodule update
+      done &&
+    git submodule update
 }
 
 git_show() {
