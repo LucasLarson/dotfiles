@@ -4247,7 +4247,7 @@ git_garbage_collection() {
       -o verbose \
       -o xtrace
     command -v -- cleanup >/dev/null 2>&1 &&
-      cleanup "${@}"
+      cleanup
     command -v -- dss >/dev/null 2>&1 &&
       dss
     {
@@ -4591,7 +4591,7 @@ git_rm_r() {
     set +o xtrace
   } 2>/dev/null
   command -v -- cleanup >/dev/null 2>&1 &&
-    cleanup "${@}"
+    cleanup
   git reset --quiet HEAD -- . &&
     git -c color.status=always -c core.quotePath=false status --untracked-files=no |
     sed -e '$ d'
@@ -4862,7 +4862,7 @@ git_update() {
 
     command -v -- cleanup >/dev/null 2>&1 &&
       set +o noclobber &&
-      cleanup "${@}"
+      cleanup
     set -o noclobber
 
     git fetch --all --keep --multiple --progress --prune --verbose --update-shallow
@@ -6009,7 +6009,7 @@ mu() {
   CDPATH='.' cd "${DOTFILES-}" >/dev/null 2>&1 ||
     return 1
   command -v -- cleanup >/dev/null 2>&1 &&
-    cleanup "${@}"
+    cleanup
   mackup backup --force --root --verbose |
     sed \
       -e 's|'"${custom-}"'|$\custom|' \
