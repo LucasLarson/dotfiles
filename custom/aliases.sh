@@ -4649,8 +4649,13 @@ git_shallow() {
       while IFS='' read -r -- submodule; do
         # using `--progress`, `--verbose` and `--no-quiet` because
         # we’re not already in the target directory
-        git -c core.ignoreCase=false \
-          clone --depth 1 --progress --shallow-submodules --template='' --verbose -- \
+        git -c core.ignoreCase=false clone \
+          --depth 1 \
+          --progress \
+          --shallow-submodules \
+          --template='' \
+          --verbose \
+          -- \
           "$(git config --file .gitmodules --get -- submodule."${submodule-}".url)" \
           "$(git config --file .gitmodules --get -- submodule."${submodule-}".path)"
       done
