@@ -7578,9 +7578,9 @@ scour_r() {
     -o verbose \
     -o xtrace
   for file in "${@}"; do
-    git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-      test -s "${file-}" &&
+    test -s "${file-}" &&
       test ! -L "${file-}" &&
+      git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
       case "${file-}" in
       *.[Ss][Vv][Gg])
         scour \
