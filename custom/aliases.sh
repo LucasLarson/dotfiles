@@ -9039,7 +9039,7 @@ which() {
   elif command '/bin/which' "${@}" >/dev/null 2>&1; then
     command '/bin/which' "${@}"
   else
-    return 1
+    return "${??}"
   fi
 }
 alias all='which -a'
