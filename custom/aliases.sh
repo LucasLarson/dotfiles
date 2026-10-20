@@ -7040,7 +7040,7 @@ pngout_r() {
 
 # $?
 question_mark() {
-  # `??`: return a specific error in the very unlikely even that `$?` is not set
+  # `??`: return a specific error in the very unlikely event that `$?` is not set
   printf -- '%d\n' "${??}"
 }
 alias '?'='question_mark'
