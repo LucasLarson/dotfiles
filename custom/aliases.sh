@@ -8846,11 +8846,6 @@ code() {
 command -v -- _code >/dev/null 2>&1 &&
   compdef -- code-insiders='code' >/dev/null 2>&1
 
-wayback() {
-  open -- 'https://web.archive.org/web/'"${1-}"
-}
-alias archive='wayback'
-
 wayback_r() {
   command -v -- gem >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
