@@ -5880,8 +5880,8 @@ list_uniform_type_identifiers() {
     -name 'lsregister' \
     -type f \
     -exec sh -c -- '{} -dump' ';' |
-    awk -- '/^uti:/ && ! seen[$2]++ {print $2}' |
-    LANG='C' LC_ALL='C' sort -f
+    LANG='C' LC_ALL='C' sort -f |
+    awk -- '/^uti:/ && ! seen[$2]++ {print $2}'
 }
 alias list_utis='list_uniform_type_identifiers'
 
