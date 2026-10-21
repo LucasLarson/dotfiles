@@ -8859,18 +8859,21 @@ wayback() {
 alias archive='wayback'
 
 wayback_r() {
-  (
+  command -v -- gem >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  command -v -- wayback_machine_downloader >/dev/null 2>&1 ||
+    # EX_UNAVAILABLE
+    return 69
+  set \
+    -o verbose \
+    -o xtrace
+  wayback_machine_downloader --all-timestamps "${1-}"
+  {
     set \
-      -o verbose \
-      -o xtrace
-    command -v -- gem >/dev/null 2>&1 ||
-      # EX_UNAVAILABLE
-      return 69
-    command -v -- wayback_machine_downloader >/dev/null 2>&1 ||
-      # EX_UNAVAILABLE
-      return 69
-    wayback_machine_downloader --all-timestamps "${1-}"
-  )
+      +o verbose \
+      +o xtrace
+  } 2>/dev/null
 }
 
 webp_r() {
