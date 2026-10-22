@@ -6033,7 +6033,7 @@ alias \
   .m='{ test -d "${HOME%/}"'\''/c/.m'\'' && CDPATH='\''.'\'' cd "${HOME%/}"'\''/c/.m'\'' >/dev/null 2>&1; } || return "${?:-1}"' \
   .g='{ test -d "${_GITHUB:-${HOME%/}/c/.g}" && CDPATH='\''.'\'' cd "${_GITHUB:-${HOME%/}/c/.g}" >/dev/null 2>&1; } || return "${?:-1}"'
 
-## Maestral && 1Password somehow
+# Maestral
 command -v -- maestral >/dev/null 2>&1 && {
   command -v -- _maestral >/dev/null 2>&1 || {
     maestral completion "$(basename -- "${SHELL%%[0-9-]*}")" >/dev/null 2>&1 &&
@@ -6055,18 +6055,6 @@ ms() {
       -e '/^$/ N' \
       -e '/\n$/ D' \
       -e '/Path *Error/,$ d'
-}
-command -v -- op >/dev/null 2>&1 && {
-  command -v -- _op >/dev/null 2>&1 || {
-    op completion "$(basename -- "${SHELL%%[0-9]*}")" >/dev/null 2>&1 &&
-      test "${FPATH-}" != '' &&
-      case ':'"${FPATH-}"':' in
-      *:/usr/local/share/"$(basename -- "${SHELL%%[0-9]*}")"/site-functions:*)
-        op completion "$(basename -- "${SHELL%%[0-9]*}")" >/usr/local/share/"$(basename -- "${SHELL%%[0-9]*}")"/site-functions/_op
-        ;;
-      *) ;;
-      esac
-  }
 }
 
 # batman
