@@ -6034,18 +6034,6 @@ alias \
   .g='{ test -d "${_GITHUB:-${HOME%/}/c/.g}" && CDPATH='\''.'\'' cd "${_GITHUB:-${HOME%/}/c/.g}" >/dev/null 2>&1; } || return "${?:-1}"'
 
 # Maestral
-command -v -- maestral >/dev/null 2>&1 && {
-  command -v -- _maestral >/dev/null 2>&1 || {
-    maestral completion "$(basename -- "${SHELL%%[0-9-]*}")" >/dev/null 2>&1 &&
-      test "${FPATH-}" != '' &&
-      case ':'"${FPATH-}"':' in
-      *:/usr/local/share/"$(basename -- "${SHELL%%[0-9-]*}")"/site-functions:*)
-        maestral completion "$(basename -- "${SHELL%%[0-9-]*}")" >/usr/local/share/"$(basename -- "${SHELL%%[0-9-]*}")"/site-functions/_maestral
-        ;;
-      *) ;;
-      esac
-  }
-}
 ms() {
   command -v -- maestral >/dev/null 2>&1 ||
     # EX_UNAVAILABLE
