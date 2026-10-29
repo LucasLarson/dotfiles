@@ -63,31 +63,32 @@ jobs:
             -name 'contents.lr' \
             ')' \
             -type f \
-            -exec sh -x -c '
-            git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 ||
-              ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 &&
-              while IFS='\'''\'' read -r -- line; do
-                test "${code-}" = 1 &&
-                  test "${line-}" != '\''```'\'' &&
-                  printf -- '\''%s\n'\'' "${line-}"
+            -exec sh -x -c -- '
+              for file in "${@}"; do
+                git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 &&
+                  while IFS='\'''\'' read -r -- line; do
+                    test "${code-}" = 1 &&
+                      test "${line-}" != '\''```'\'' &&
+                      printf -- '\''%s\n'\'' "${line-}"
 
-              case "${line-}" in
-              '\''```sh'\''|'\''```bash'\''|'\''```shell'\''|'\''```zsh'\'')
-                code=1
-                ;;
-              '\''```'\'')
-                code='\'''\''
-                ;;
-              *) ;;
-              esac
+                  case "${line-}" in
+                  '\''```sh'\''|'\''```bash'\''|'\''```shell'\''|'\''```zsh'\'')
+                    code=1
+                    ;;
+                  '\''```'\'')
+                    code='\'''\''
+                    ;;
+                  *) ;;
+                  esac
 
-            # run ShellCheck on the extracted code blocks
-            # SC1071: allow conforming shells besides sh, bash, ksh, dash
-            # SC1090: allow linking to a dynamic location
-            # SC1091: allow linking to, but not following, linked scripts
-            # SC2123: allow `$PATH` modification
-            # SC2312: allow masking return values
-            done <"${1-}"' _ {} ';' |
+                # run ShellCheck on the extracted code blocks
+                # SC1071: allow conforming shells besides sh, bash, ksh, dash
+                # SC1090: allow linking to a dynamic location
+                # SC1091: allow linking to, but not following, linked scripts
+                # SC2123: allow `$PATH` modification
+                # SC2312: allow masking return values
+                done <"${file-}"
+              done' _ {} + |
             shellcheck \
               --check-sourced \
               --enable=all \

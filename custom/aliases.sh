@@ -7785,7 +7785,7 @@ shellcheck_markdown() {
     -name 'contents.lr' \
     ')' \
     -type f \
-    -exec sh -c -- 'git ls-files --error-unmatch -- "${1-}" >/dev/null 2>&1 || ! git rev-parse --is-inside-work-tree >/dev/null 2>&1 && while IFS='\'''\'' read -r -- line; do test "${code-}" = '\''1'\'' && test "${line-}" != '\''```'\'' && printf -- '\''%s\n'\'' "${line-}"; case "${line-}" in '\''```sh'\'' | '\''```bash'\'' | '\''```shell'\'' | '\''```zsh'\'' ) code=1 ;; '\''```'\'') code='\'''\'' ;; *) ;; esac; done <"${1-}"' _ {} ';' |
+    -exec sh -c -- 'for file in "${@}"; do git ls-files --error-unmatch -- "${file-}" >/dev/null 2>&1 && while IFS='\'''\'' read -r -- line; do test "${code-}" = '\''1'\'' && test "${line-}" != '\''```'\'' && printf -- '\''%s\n'\'' "${line-}"; case "${line-}" in '\''```sh'\'' | '\''```bash'\'' | '\''```shell'\'' | '\''```zsh'\'' ) code=1 ;; '\''```'\'') code='\'''\'' ;; *) ;; esac; done <"${file-}"; done' _ {} + |
     shellcheck \
       --check-sourced \
       --enable=all \
