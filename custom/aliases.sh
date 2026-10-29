@@ -7747,7 +7747,7 @@ shellcheck_markdown() {
   # Markdown filename extensions
   # https://github.com/github/linguist/blob/7503f7588c/lib/linguist/languages.yml#L3707-L3718
 
-  # run shellcheck on the extracted code blocks
+  # run ShellCheck on the extracted code blocks
   # SC1071: allow conforming shells besides sh, bash, ksh, dash
   # SC1090: allow linking to a dynamic location
   # SC1091: allow linking to, but not following, linked scripts
@@ -7912,13 +7912,13 @@ shfmt_r() {
           -e '/awk/! s/\(^[^#]*printf \)\('\''\)/\1-- \2/g' \
           -e '# replace uncommented [ foo ] and [[ foo ]] with test foo' \
           -e 's/^\([^#\[]*\)\[\{1,2\}\( [^]]*\) \]\{1,2\}/\1test\2/g' \
-          -e '# silence ksh family ((math+1)) warnings, but hide dollar-sign-then-open-parenthesis from shellcheck' \
+          -e '# silence ksh family ((math+1)) warnings, but hide dollar-sign-then-open-parenthesis from ShellCheck' \
           -e 's/^\([^#]*=\)\($[(](.*))\)$/\1"\2"/g' \
           -e '# replace 1>＆2 with >＆2' \
           -e 's/ 1\(>&2\)/ \1/g' \
-          -e '# replace uncommented test -n "" with test != ""; \3 is null to hide the ＄{ from shellcheck' \
+          -e '# replace uncommented test -n "" with test != ""; \3 is null to hide the ＄{ from ShellCheck' \
           -e 's/^\([^#]*\)\(test \)-n \("\$\(\){[^}]*-*}"\)/\1\2\3 != '\''\4'\''/g' \
-          -e '# replace uncommented test -z "" with test = ""; \3 is null but hides the ＄{ from shellcheck' \
+          -e '# replace uncommented test -z "" with test = ""; \3 is null but hides the ＄{ from ShellCheck' \
           -e 's/^\([^#]*\)\(test \)-z \("\$\(\){[^}]*-*}"\)/\1\2\3 = '\''\4'\''/g' \
           -e '# replace all strings like ＄＄ with "＄{＄:--1}"' \
           -e 's/ "\{0,1\}\(\$\){\{0,1\}\(\$\):\{0,1\}-\{0,2\}[[:digit:]]*}\{0,1\}"\{0,1\}/ "\1{\2:--1}"/g' \

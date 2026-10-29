@@ -1,5 +1,5 @@
 ---
-name: Shellcheck code in Markdown
+name: ShellCheck code in Markdown
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
-      - name: Run shellcheck
+      - name: Run ShellCheck
         run: |
           # test shell syntax of Markdown code snippets
           # https://github.com/dylanaraps/pure-sh-bible/commit/9d54e96011
@@ -33,7 +33,7 @@ jobs:
           # Markdown filename extensions
           # github/linguist@7503f/lib/linguist/languages.yml#L3707-L3718
 
-          # run shellcheck on the extracted code blocks
+          # run ShellCheck on the extracted code blocks
           find -- . \
             -path '*/.git' -prune -o \
             -path '*/.well-known' -prune -o \
@@ -81,7 +81,7 @@ jobs:
               *) ;;
               esac
 
-            # run shellcheck on the extracted code blocks
+            # run ShellCheck on the extracted code blocks
             # SC1071: allow conforming shells besides sh, bash, ksh, dash
             # SC1090: allow linking to a dynamic location
             # SC1091: allow linking to, but not following, linked scripts
