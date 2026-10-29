@@ -5853,7 +5853,7 @@ list_functions() {
     sed \
       -e '# does the first non-empty line resemble a shell directive?' \
       -e '/./,$! d' \
-      -e '1 q' \
+      -e 'q' \
       "${file-}" |
       grep \
         -e '^#!.*bin.*[^c]sh' \
