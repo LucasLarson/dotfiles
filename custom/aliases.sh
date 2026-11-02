@@ -1951,7 +1951,17 @@ find_binary_files() {
       -e '/:.*text/ d' \
       -e '/:.*very long lines/ d' \
       -e '# finally, remove file utility descriptions' \
-      -e 's/:.*//'
+      -e 's/:.*//' |
+    awk -- 'BEGIN {
+  found = 0
+}
+NF {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 
 find_broken_symlinks() {
