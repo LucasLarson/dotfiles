@@ -1944,6 +1944,8 @@ find_binary_files() {
     sed \
       -e '/:.*directory/ d' \
       -e '/:.*empty/ d' \
+      -e '# `/etc/gitconfig`' \
+      -e '/:.*Generic INItialization configuration/ d' \
       -e '/:.*JSON/ d' \
       -e '/:.*text/ d' \
       -e '/:.*very long lines/ d' \
