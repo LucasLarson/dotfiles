@@ -1947,6 +1947,7 @@ find_binary_files() {
       -e '# `/etc/gitconfig`' \
       -e '/:.*Generic INItialization configuration/ d' \
       -e '/:.*JSON/ d' \
+      -e '/:.*PGP public key/ d' \
       -e '/:.*text/ d' \
       -e '/:.*very long lines/ d' \
       -e '# finally, remove file utility descriptions' \
