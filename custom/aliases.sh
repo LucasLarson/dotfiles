@@ -2010,6 +2010,8 @@ find_compressed_files() {
       '(' \
       -name '*.7[Zz]' -o \
       -name '*.[Aa][Aa][Rr]' -o \
+      -name '*.[Aa][Ee][Aa]''Apple Encrypted Archive' -o \
+      -name '*.[Aa][Ee][Aa]' -o \
       -name '*.[Aa][Pp][Kk]' -o \
       -name '*.[Bb][Rr]' -o \
       -name '*.[Bb][Zz]2' -o \
