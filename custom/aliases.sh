@@ -2218,8 +2218,7 @@ find_duplicate_images() {
     --quiet \
     --recurse \
     -- \
-    . 2>/dev/null |
-    column -t
+    . 2>/dev/null
 }
 alias fdi='find_duplicate_images'
 
