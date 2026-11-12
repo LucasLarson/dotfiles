@@ -2696,7 +2696,17 @@ find_markdown_files() {
     -name '[Cc][Oo][Nn][Tt][Ee][Nn][Tt][Ss].[Ll][Rr]' \
     ')' \
     -type f \
-    -print 2>/dev/null
+    -print 2>/dev/null |
+    awk -- 'BEGIN {
+  found = 0
+}
+NF {
+  print $0
+  found = 1
+}
+END {
+  exit ! found
+}'
 }
 
 find_microsoft_files() {
